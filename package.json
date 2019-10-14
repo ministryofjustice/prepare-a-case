@@ -1,0 +1,30 @@
+{
+  "name": "prepare-a-case",
+  "version": "0.0.0",
+  "private": true,
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true
+  },
+  "scripts": {
+    "test:unit": "NODE_ENV=test npx jest",
+    "test:bdd": "NODE_ENV=test npx cucumber-js --fail-fast",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@ministryofjustice/frontend": "0.0.15-alpha",
+    "cookie-parser": "1.4.4",
+    "debug": "4.1.1",
+    "express": "4.17.1",
+    "govuk-frontend": "3.3.0",
+    "morgan": "1.9.1",
+    "nunjucks": "3.2.0"
+  },
+  "devDependencies": {
+    "cucumber": "6.0.2",
+    "jest": "24.9.0",
+    "node-sass-middleware": "0.11.0",
+    "puppeteer": "1.20.0",
+    "supertest": "4.0.2"
+  }
+}
