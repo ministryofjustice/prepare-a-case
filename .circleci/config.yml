@@ -1,10 +1,10 @@
-version: 2.0
+version: 2
 jobs:
   build:
     docker:
       - image: circleci/node:10.16.3
 
-    working_directory: ~/test
+    working_directory: ~/repo
 
     steps:
       - checkout
@@ -14,11 +14,11 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
 
-      - run: npm install
+      - run: yarn install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run test:unit
+      - run: yarn test:unit
