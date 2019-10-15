@@ -1,11 +1,14 @@
-version: 2
-jobs:
-  build:
+version: 2.1
+
+executors:
+  node-lts-executor:
     docker:
       - image: circleci/node:10.16.3
+    working_directory: /repo
 
-    working_directory: ~/repo
-
+jobs:
+  build:
+    executor: node-lts-executor
     steps:
       - checkout
 
@@ -21,4 +24,23 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - persist_to_workspace:
+          root: /repo
+
+  test:
+    executor: my-executor
+    steps:
+      - attach_workspace:
+          at: /repo
+
       - run: yarn test:unit
+
+workflows:
+  version: 2
+
+  build-test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
