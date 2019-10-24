@@ -6,13 +6,24 @@
     "testEnvironment": "node",
     "verbose": true
   },
+  "jest-junit": {
+    "suiteName": "jest tests",
+    "outputDirectory": "./test-results/jest",
+    "outputName": "results.xml",
+    "uniqueOutputName": "false",
+    "classNameTemplate": "{classname}-{title}",
+    "titleTemplate": "{classname}-{title}",
+    "ancestorSeparator": " › ",
+    "usePathForSuiteName": "true"
+  },
   "scripts": {
-    "test:unit": "NODE_ENV=test npx jest",
+    "record-build-info": "node ./bin/build-info",
+    "test:unit": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage",
     "test:bdd": "NODE_ENV=test npx cucumber-js --fail-fast",
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@ministryofjustice/frontend": "0.0.15-alpha",
+    "@ministryofjustice/frontend": "0.0.17-alpha",
     "cookie-parser": "1.4.4",
     "debug": "4.1.1",
     "express": "4.17.1",
@@ -23,8 +34,9 @@
   "devDependencies": {
     "cucumber": "6.0.2",
     "jest": "24.9.0",
+    "jest-junit": "9.0.0",
     "node-sass-middleware": "0.11.0",
-    "puppeteer": "1.20.0",
+    "puppeteer": "2.0.0",
     "supertest": "4.0.2"
   }
 }

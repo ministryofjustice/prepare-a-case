@@ -3,3 +3,6 @@ node_modules/
 dist-*.tgz
 .idea
 .env
+test-results/
+coverage/
+build-info.json
