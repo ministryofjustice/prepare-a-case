@@ -16,7 +16,10 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "verbose": true
+    "verbose": true,
+    "testMatch": [
+      "<rootDir>/(tests)/**/?(*.)(spec|test).{js,jsx,mjs}"
+    ]
   },
   "jest-junit": {
     "suiteName": "jest tests",
@@ -46,6 +49,7 @@
     "cypress-cucumber-preprocessor": "1.16.2",
     "jest": "24.9.0",
     "jest-junit": "9.0.0",
-    "node-sass-middleware": "0.11.0"
+    "node-sass-middleware": "0.11.0",
+    "supertest": "4.0.2"
   }
 }
