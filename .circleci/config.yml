@@ -63,6 +63,8 @@ jobs:
     executor: builder
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/app
       - restore_cache:
           keys:
             - dependency-cache-{{ checksum "package.json" }}
@@ -110,6 +112,9 @@ jobs:
             - dependency-cache-{{ checksum "package.json" }}
             - dependency-cache-
       - run:
+          name: Install Cypress
+          command: ./node_modules/.bin/cypress install
+      - run:
           name: Run the app
           command: yarn start
           background: true
@@ -117,8 +122,14 @@ jobs:
           name: Wait for node app to start
           command: sleep 5
       - run:
-          name: Cucumber tests
-          command: yarn test:bdd
+          name: Run integration tests
+          command: yarn int-test
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: integration-tests/videos
+      - store_artifacts:
+          path: integration-tests/screenshots
 
   build_docker:
     executor: deployer
@@ -141,7 +152,7 @@ jobs:
                --label "build.url=$CIRCLE_BUILD_URL" \
                --label "build.gitref=$CIRCLE_SHA1"
 
-            if [[ "${CIRCLE_BRANCH}" == "master" || "${CIRCLE_BRANCH}" == "develop" ]]; then
+            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
               # publish to docker hub as the tag
              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
              docker tag mojdigitalstudio/prepare-a-case:$APP_VERSION mojdigitalstudio/prepare-a-case:latest
@@ -176,15 +187,15 @@ workflows:
       - test:
           requires:
             - build
-      #      - bdd_test:
-      #          requires:
-      #            - test
-      - build_docker:
+      - bdd_test:
           requires:
             - test
+      - build_docker:
+          requires:
+            - bdd_test
           filters:
             branches:
-              ignore: /feature\/.*/
+              only: master
       - deploy_dev:
           requires:
             - build_docker
