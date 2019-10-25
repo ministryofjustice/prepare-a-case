@@ -63,6 +63,8 @@ jobs:
     executor: builder
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/app
       - restore_cache:
           keys:
             - dependency-cache-{{ checksum "package.json" }}
@@ -73,6 +75,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
+            - ~/.cache
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Record the Application Version
@@ -83,7 +86,11 @@ jobs:
             yarn record-build-info
       - persist_to_workspace:
           root: ~/app
-          paths: .
+          paths:
+            - node_modules
+            - build-info.json
+            - .cache/Cypress
+            - .
 
   test:
     executor: builder
