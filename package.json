@@ -1,7 +1,19 @@
 {
   "name": "prepare-a-case",
   "version": "0.0.0",
+  "author": "MoJ D&T Probation in Court <probation-in-court-team@digital.justice.gov.uk>",
+  "license": "MIT",
   "private": true,
+  "main": "app.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "int-test:ui": "cypress run --headed --browser chrome --spec 'integration-tests/**/*.feature'",
+    "int-test": "cypress run --spec 'integration-tests/**/*.feature'",
+    "record-build-info": "node ./bin/build-info",
+    "start": "node ./bin/www",
+    "test:unit": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage",
+    "test:bdd": "NODE_ENV=test npx cucumber-js --fail-fast"
+  },
   "jest": {
     "testEnvironment": "node",
     "verbose": true
@@ -16,11 +28,8 @@
     "ancestorSeparator": " › ",
     "usePathForSuiteName": "true"
   },
-  "scripts": {
-    "record-build-info": "node ./bin/build-info",
-    "test:unit": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage",
-    "test:bdd": "NODE_ENV=test npx cucumber-js --fail-fast",
-    "start": "node ./bin/www"
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   },
   "dependencies": {
     "@ministryofjustice/frontend": "0.0.17-alpha",
@@ -33,10 +42,10 @@
   },
   "devDependencies": {
     "cucumber": "6.0.2",
+    "cypress": "3.5.0",
+    "cypress-cucumber-preprocessor": "1.16.2",
     "jest": "24.9.0",
     "jest-junit": "9.0.0",
-    "node-sass-middleware": "0.11.0",
-    "puppeteer": "2.0.0",
-    "supertest": "4.0.2"
+    "node-sass-middleware": "0.11.0"
   }
 }
