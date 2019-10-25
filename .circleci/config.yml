@@ -75,7 +75,6 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-            - /home/circleci/.cache/Cypress
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Record the Application Version
@@ -112,6 +111,9 @@ jobs:
           keys:
             - dependency-cache-{{ checksum "package.json" }}
             - dependency-cache-
+      - run:
+          name: Install Cypress
+          command: cypress install
       - run:
           name: Run the app
           command: yarn start
