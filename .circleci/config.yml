@@ -113,7 +113,7 @@ jobs:
             - dependency-cache-
       - run:
           name: Install Cypress
-          command: cypress install
+          command: ./node_modules/.bin/cypress install
       - run:
           name: Run the app
           command: yarn start
