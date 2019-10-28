@@ -1,14 +1,13 @@
 {
   "name": "prepare-a-case",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "MoJ D&T Probation in Court <probation-in-court-team@digital.justice.gov.uk>",
   "license": "MIT",
   "private": true,
   "main": "app.js",
   "scripts": {
-    "cypress:open": "cypress open",
-    "int-test:ui": "cypress run --headed --browser chrome --spec 'integration-tests/**/*.feature'",
-    "int-test": "cypress run --spec 'integration-tests/**/*.feature' --record --group Linux/Electron --parallel",
+    "int-test": "cypress run --spec 'integration-tests/**/*.feature'",
+    "int-test:dev": "cypress run --headed --browser chrome --spec 'integration-tests/**/*.feature'",
     "record-build-info": "node ./bin/build-info",
     "start": "node ./bin/www",
     "unit-test": "NODE_ENV=test yarn jest --ci --reporters=default --reporters=jest-junit --collect-coverage"
