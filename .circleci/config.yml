@@ -75,7 +75,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-            - ~/.cache
+            - ~/.cache/Cypress
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Record the Application Version
