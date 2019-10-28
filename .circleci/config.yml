@@ -68,18 +68,14 @@ jobs:
       - restore_cache:
           keys:
             - dependency-cache-{{ checksum "package.json" }}
-            - dependency-cache-
+            - dependency-cache
       - run:
           name: Install dependencies
-          command: yarn install
+          command: yarn install --frozen-lockfile
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
-            - node_modules
-      - save_cache:
-          key: cypress-cache-{{ checksum "package.json" }}
-          paths:
-            - ~/.cache/Cypress
+            - ~/.cache
       - run:
           name: Record the Application Version
           command: |
@@ -111,6 +107,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/app
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Run the app
           command: yarn start
@@ -118,10 +116,6 @@ jobs:
       - run:
           name: Wait for node app to start
           command: sleep 5
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - restore_cache:
-          key: cypress-cache-{{ checksum "package.json" }}
 #      - run:
 #          name: Install Cypress
 #          command: ./node_modules/.bin/cypress install
