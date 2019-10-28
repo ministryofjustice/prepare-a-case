@@ -53,10 +53,6 @@ executors:
     docker:
       - image: circleci/node:12.13.0-browsers
     working_directory: ~/app
-  integration-tests:
-    docker:
-      - image: circleci/openjdk:11-jdk-node-browsers
-    working_directory: ~/app
 
 orbs:
   kubernetes: circleci/kubernetes@0.3.0
@@ -90,7 +86,10 @@ jobs:
             yarn record-build-info
       - persist_to_workspace:
           root: ~/app
-          paths: .
+          paths:
+            - node_modules
+            - build-info.json
+            - .cache/Cypress
 
   test:
     executor: builder
@@ -107,14 +106,11 @@ jobs:
           path: coverage
 
   integration_test:
-    executor: integration-tests
+    executor: builder
     steps:
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-#      - run:
-#          name: Install Cypress
-#          command: ./node_modules/.bin/cypress install
+      - attach_workspace:
+          at: ~/app
       - run:
           name: Run the app
           command: yarn start
@@ -122,6 +118,11 @@ jobs:
       - run:
           name: Wait for node app to start
           command: sleep 5
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+#      - run:
+#          name: Install Cypress
+#          command: ./node_modules/.bin/cypress install
       - run:
           name: Run integration tests
           command: yarn int-test
