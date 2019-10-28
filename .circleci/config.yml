@@ -73,10 +73,13 @@ jobs:
           name: Install dependencies
           command: yarn install
       - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
+      - save_cache:
+          key: cypress-cache-{{ checksum "package.json" }}
+          paths:
             - ~/.cache/Cypress
-          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Record the Application Version
           command: |
@@ -86,10 +89,7 @@ jobs:
             yarn record-build-info
       - persist_to_workspace:
           root: ~/app
-          paths:
-            - node_modules
-            - build-info.json
-            - .cache/Cypress
+          paths: .
 
   test:
     executor: builder
@@ -120,6 +120,8 @@ jobs:
           command: sleep 5
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
+      - restore_cache:
+          key: cypress-cache-{{ checksum "package.json" }}
 #      - run:
 #          name: Install Cypress
 #          command: ./node_modules/.bin/cypress install
