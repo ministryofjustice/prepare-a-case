@@ -91,6 +91,8 @@ jobs:
     executor: builder
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/app
       - restore_cache:
           key: dependencies-cache-{{ checksum "package.json" }}
       - run:

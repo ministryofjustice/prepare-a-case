@@ -11,8 +11,8 @@
     "int-test": "cypress run --spec 'integration-tests/**/*.feature'",
     "record-build-info": "node ./bin/build-info",
     "start": "node ./bin/www",
-    "test:unit": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage",
-    "test:bdd": "NODE_ENV=test npx cucumber-js --fail-fast"
+    "test:unit": "NODE_ENV=test yarn jest --ci --reporters=default --reporters=jest-junit --collect-coverage",
+    "test:bdd": "NODE_ENV=test yarn cucumber-js --fail-fast"
   },
   "jest": {
     "testEnvironment": "node",
