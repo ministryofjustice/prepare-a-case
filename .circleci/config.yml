@@ -53,6 +53,10 @@ executors:
     docker:
       - image: circleci/node:12.13.0-browsers
     working_directory: ~/app
+  integration-tests:
+    docker:
+      - image: circleci/openjdk:11-jdk-node-browsers
+    working_directory: ~/app
 
 orbs:
   kubernetes: circleci/kubernetes@0.3.0
@@ -103,7 +107,7 @@ jobs:
           path: coverage
 
   integration_test:
-    executor: builder
+    executor: integration-tests
     steps:
       - checkout
       - restore_cache:
