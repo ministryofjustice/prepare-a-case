@@ -44,7 +44,7 @@
     "nunjucks": "3.2.0"
   },
   "devDependencies": {
-    "cucumber": "6.0.2",
+    "cucumber": "6.0.3",
     "cypress": "3.5.0",
     "cypress-cucumber-preprocessor": "1.16.2",
     "jest": "24.9.0",

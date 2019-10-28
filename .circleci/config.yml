@@ -67,13 +67,13 @@ jobs:
           at: ~/app
       - restore_cache:
           keys:
-            - dependency-cache-{{ checksum "package.json" }}
-            - dependency-cache
+            - dependencies-cache-{{ checksum "package.json" }}
+            - dependencies-cache
       - run:
           name: Install dependencies
           command: yarn install --frozen-lockfile
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependencies-cache-{{ checksum "package.json" }}
           paths:
             - ~/.cache
       - run:
@@ -92,7 +92,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependencies-cache-{{ checksum "package.json" }}
       - run:
           name: Unit tests
           command: yarn test:unit
@@ -108,7 +108,7 @@ jobs:
       - attach_workspace:
           at: ~/app
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependencies-cache-{{ checksum "package.json" }}
       - run:
           name: Run the app
           command: yarn start
