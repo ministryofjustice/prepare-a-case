@@ -3,4 +3,5 @@
 {% block content %}
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Dashboard</h1>
   <p class="govuk-body">Walking skeleton dashboard view</p>
+  <p class="govuk-body">Application status: {% if healthy %}Healthy{% else %}Error{% endif %}</p>
 {% endblock %}

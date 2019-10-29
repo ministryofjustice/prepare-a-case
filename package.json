@@ -15,6 +15,7 @@
   "jest": {
     "testEnvironment": "node",
     "verbose": true,
+    "clearMocks": true,
     "testMatch": [
       "<rootDir>/(tests)/**/?(*.)(spec|test).{js,jsx,mjs}"
     ]
@@ -23,17 +24,18 @@
     "suiteName": "jest tests",
     "outputDirectory": "./test-results/jest",
     "outputName": "results.xml",
-    "uniqueOutputName": "false",
+    "uniqueOutputName": false,
     "classNameTemplate": "{classname}-{title}",
     "titleTemplate": "{classname}-{title}",
     "ancestorSeparator": " › ",
-    "usePathForSuiteName": "true"
+    "usePathForSuiteName": true
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
   },
   "dependencies": {
     "@ministryofjustice/frontend": "0.0.17-alpha",
+    "axios": "0.19.0",
     "cookie-parser": "1.4.4",
     "debug": "4.1.1",
     "express": "4.17.1",
