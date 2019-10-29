@@ -1,5 +1,5 @@
 const axios = require('axios')
-const courtCaseService = 'court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk'
+const courtCaseService = 'http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk'
 
 const health = async (req, res, next) => {
   try {
