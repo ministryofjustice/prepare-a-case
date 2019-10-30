@@ -4,6 +4,9 @@ A service to allow probation staff to prepare court cases.
 
 ---
 
+## Environment variables
+Specify the court-case-service URL with ```COURT_CASE_SERVICE_URL```
+
 ## Running the app for development
 The project uses [Yarn](http://yarnpkg.com) instead of npm for dependency management.
 
