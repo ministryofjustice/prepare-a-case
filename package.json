@@ -9,8 +9,8 @@
     "delete:reports": "rm ./test-results/cypress/* || true",
     "preint-test": "yarn delete:reports",
     "preint-test:dev": "yarn delete:reports",
-    "int-test": "cypress run --spec 'integration-tests/**/*.feature'",
-    "int-test:dev": "cypress run --headed --browser chrome --spec 'integration-tests/**/*.feature'",
+    "int-test": "cypress run",
+    "int-test:dev": "cypress run --headed --browser chrome",
     "record-build-info": "node ./bin/build-info",
     "start": "node ./bin/www",
     "unit-test": "NODE_ENV=test yarn jest --ci --reporters=default --reporters=jest-junit --collect-coverage"
