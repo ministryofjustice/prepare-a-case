@@ -5,6 +5,6 @@ Feature: Case list
 
   Scenario: View the case list
     Given I am a registered user
-    When I open the application
     When I navigate to the "case-list" route
     Then I should be on the "Case list" page
+    And There should be no a11y violations

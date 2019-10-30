@@ -1,10 +1,12 @@
 {
+  "nodeVersion": "system",
   "chromeWebSecurity": false,
   "baseUrl": "http://localhost:3000",
   "fixturesFolder": "integration-tests/fixtures",
   "ignoreTestFiles": ["*.js", "*.md"],
   "integrationFolder": "integration-tests/integration",
   "pluginsFile": "integration-tests/plugins/index.js",
+  "trashAssetsBeforeRuns": true,
   "screenshotsFolder": "integration-tests/screenshots",
   "supportFile": "integration-tests/support/index.js",
   "videosFolder": "integration-tests/videos",
