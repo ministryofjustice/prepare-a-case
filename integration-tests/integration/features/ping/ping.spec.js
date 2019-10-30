@@ -1,5 +1,6 @@
-import { Then } from 'cypress-cucumber-preprocessor/steps';
+/* global cy */
+import { Then } from 'cypress-cucumber-preprocessor/steps'
 
-Then(`I should see the text {string}`, $text => {
+Then('I should see the text {string}', $text => {
   cy.contains($text)
-});
+})

@@ -1,10 +1,10 @@
+/* global describe, beforeEach, afterEach, it, expect, jest */
 const request = require('supertest')
 const healthcheck = require('../../routes/middleware/healthcheck')
 
 let app
 
 describe('Routes', () => {
-
   jest.spyOn(healthcheck, 'health').mockImplementation(function (req, res, next) {
     return next()
   })
