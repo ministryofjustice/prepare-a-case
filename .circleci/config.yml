@@ -96,6 +96,9 @@ jobs:
       - restore_cache:
           key: dependencies-cache-{{ checksum "package.json" }}
       - run:
+          name: Lint
+          command: yarn lint
+      - run:
           name: Unit tests
           command: yarn unit-test
       - store_test_results:
