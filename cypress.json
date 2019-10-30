@@ -3,6 +3,7 @@
   "chromeWebSecurity": false,
   "baseUrl": "http://localhost:3000",
   "fixturesFolder": "integration-tests/fixtures",
+  "testFiles": "features/**/*.feature",
   "ignoreTestFiles": ["*.js", "*.md"],
   "integrationFolder": "integration-tests/integration",
   "pluginsFile": "integration-tests/plugins/index.js",
