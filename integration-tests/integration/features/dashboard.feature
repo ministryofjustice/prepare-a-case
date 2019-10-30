@@ -7,4 +7,4 @@ Feature: Dashboard
     Given I am a registered user
     When I open the application
     Then I should be on the "Dashboard" page
-
+    And There should be no a11y violations

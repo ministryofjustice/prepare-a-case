@@ -6,6 +6,9 @@
   "private": true,
   "main": "app.js",
   "scripts": {
+    "delete:reports": "rm ./test-results/cypress/* || true",
+    "preint-test": "yarn delete:reports",
+    "preint-test:dev": "yarn delete:reports",
     "int-test": "cypress run --spec 'integration-tests/**/*.feature'",
     "int-test:dev": "cypress run --headed --browser chrome --spec 'integration-tests/**/*.feature'",
     "record-build-info": "node ./bin/build-info",
@@ -44,8 +47,10 @@
     "nunjucks": "3.2.0"
   },
   "devDependencies": {
+    "axe-core": "3.4.0",
     "cucumber": "6.0.3",
     "cypress": "3.5.0",
+    "cypress-axe": "0.5.1",
     "cypress-cucumber-preprocessor": "1.16.2",
     "jest": "24.9.0",
     "jest-junit": "9.0.0",
