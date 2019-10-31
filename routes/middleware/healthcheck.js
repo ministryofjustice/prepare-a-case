@@ -1,9 +1,8 @@
 const axios = require('axios')
-const courtCaseServiceUrl = process.env.COURT_CASE_SERVICE_URL
 
 const health = async (req, res, next) => {
   try {
-    const response = await axios.get(`${courtCaseServiceUrl}/ping`)
+    const response = await axios.get(`${process.env.COURT_CASE_SERVICE_URL || 'http://localhost:8082'}/ping`)
     req.healthy = response && response.status === 200
     next()
   } catch (e) {
