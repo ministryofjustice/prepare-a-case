@@ -44,6 +44,8 @@ commands:
               --values ~/git/helm_deploy/values-<< parameters.env >>.yaml \
               --values - \
               --set image.tag="${APP_VERSION}"
+      - store_artifacts:
+          path: build-info.json
 executors:
   deployer:
     docker:
