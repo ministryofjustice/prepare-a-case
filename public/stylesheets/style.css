@@ -44,7 +44,7 @@
       word-wrap: break-word; } }
 
 .govuk-link--muted:link, .govuk-link--muted:visited, .govuk-link--muted:hover, .govuk-link--muted:active {
-  color: #6f777b; }
+  color: #626a6e; }
 
 .govuk-link--muted:focus {
   color: #0b0c0c; }
@@ -271,7 +271,7 @@
   line-height: 1.11111;
   display: block;
   margin-bottom: 5px;
-  color: #6f777b; }
+  color: #626a6e; }
   @media print {
     .govuk-caption-xl {
       font-family: sans-serif; } }
@@ -295,7 +295,7 @@
   line-height: 1.11111;
   display: block;
   margin-bottom: 5px;
-  color: #6f777b; }
+  color: #626a6e; }
   @media print {
     .govuk-caption-l {
       font-family: sans-serif; } }
@@ -321,7 +321,7 @@
   font-size: 1rem;
   line-height: 1.25;
   display: block;
-  color: #6f777b; }
+  color: #626a6e; }
   @media print {
     .govuk-caption-m {
       font-family: sans-serif; } }
@@ -917,9 +917,7 @@
   position: relative;
   margin-top: 15px;
   margin-bottom: 15px;
-  padding-left: 14px;
-  border-bottom: 1px solid #0b0c0c;
-  text-decoration: none; }
+  padding-left: 14px; }
   @media (min-width: 40.0625em) {
     .govuk-back-link {
       font-size: 16px;
@@ -943,24 +941,29 @@
     @media print {
       .govuk-back-link:link, .govuk-back-link:visited, .govuk-back-link:hover, .govuk-back-link:active, .govuk-back-link:focus {
         color: #000000; } }
-  .govuk-back-link:focus {
+
+.govuk-back-link[href] {
+  border-bottom: 1px solid #0b0c0c;
+  text-decoration: none; }
+  .govuk-back-link[href]:focus {
     border-bottom-color: transparent; }
-  .govuk-back-link:before {
-    display: block;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-color: transparent;
-    -webkit-clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
-    clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
-    border-width: 5px 6px 5px 0;
-    border-right-color: inherit;
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto; }
+
+.govuk-back-link:before {
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  -webkit-clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
+  clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
+  border-width: 5px 6px 5px 0;
+  border-right-color: inherit;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto; }
 
 .govuk-breadcrumbs {
   font-family: "GDS Transport", Arial, sans-serif;
@@ -1020,7 +1023,7 @@
     transform: rotate(45deg);
     border: solid;
     border-width: 1px 1px 0 0;
-    border-color: #6f777b; }
+    border-color: #626a6e; }
   .govuk-breadcrumbs__list-item:first-child {
     margin-left: 0;
     padding-left: 0; }
@@ -1369,7 +1372,7 @@
   line-height: 1.25;
   display: block;
   margin-bottom: 15px;
-  color: #6f777b; }
+  color: #626a6e; }
   @media print {
     .govuk-hint {
       font-family: sans-serif; } }
@@ -2827,7 +2830,7 @@
       line-height: 1; } }
 
 .govuk-tag--inactive {
-  background-color: #6f777b; }
+  background-color: #626a6e; }
 
 .govuk-phase-banner {
   padding-top: 10px;
@@ -4394,7 +4397,7 @@
     background: #f3f2f1;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.15) inset; }
   .moj-scrollable-pane > div::-webkit-scrollbar-thumb {
-    background: #6f777b;
+    background: #626a6e;
     border-radius: 5px; } }
 
 .moj-action-bar {
@@ -4499,8 +4502,8 @@
     border-color: #0b0c0c;
     color: #0b0c0c; }
   .moj-badge--grey {
-    border-color: #6f777b;
-    color: #6f777b; }
+    border-color: #626a6e;
+    color: #626a6e; }
   .moj-badge--large {
     font-family: "GDS Transport", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -5249,7 +5252,7 @@ span.moj-header__link:hover {
     font-size: 1rem;
     line-height: 1.25;
     padding: 15px 0;
-    color: #6f777b;
+    color: #626a6e;
     display: inline-block;
     text-align: center;
     width: 100%; }
@@ -6100,7 +6103,7 @@ span.moj-header__link:hover {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.25;
-  color: #6f777b;
+  color: #626a6e;
   font-weight: normal;
   margin: 0;
   padding: 10px;
@@ -6377,8 +6380,8 @@ span.moj-header__link:hover {
     background-color: #0b0c0c;
     color: #ffffff; }
   .moj-tag--grey {
-    border: 2px solid #6f777b;
-    background-color: #6f777b;
+    border: 2px solid #626a6e;
+    background-color: #626a6e;
     color: #ffffff; }
 
 /* ==========================================================================
@@ -6545,7 +6548,7 @@ span.moj-header__link:hover {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.25;
-  color: #6f777b;
+  color: #626a6e;
   display: inline;
   margin: 0; }
   @media print {
