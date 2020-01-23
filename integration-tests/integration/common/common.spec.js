@@ -24,3 +24,7 @@ Then('I should be on the {string} page', $title => {
 And('There should be no a11y violations', () => {
   cy.checkA11y('main#main-content')
 })
+
+And('I should see the body text {string}',$text => {
+  cy.get('.govuk-body').contains($text)
+})
