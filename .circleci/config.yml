@@ -117,6 +117,10 @@ jobs:
       - restore_cache:
           key: dependencies-cache-{{ checksum "package.json" }}
       - run:
+          name: Run wiremock
+          command: java -jar wiremock-standalone-2.25.1.jar --global-response-templating --port 9091
+          background: true
+      - run:
           name: Run the app
           command: yarn start
           background: true

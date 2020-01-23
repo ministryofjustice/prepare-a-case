@@ -6,10 +6,13 @@ const nunjucks = require('nunjucks')
 const sassMiddleware = require('node-sass-middleware')
 const viewRouter = require('./routes/view')
 const apiRouter = require('./routes/api')
+const moment = require('moment')
 
 const app = express()
+const shortDateFormat = 'YYYY-MM-DD'
+const longDateFormat = 'dddd, D MMMM YYYY'
 
-nunjucks.configure([
+const env = nunjucks.configure([
   path.join(__dirname, '/node_modules/govuk-frontend/'),
   path.join(__dirname, '/node_modules/@ministryofjustice/frontend/'),
   path.join(__dirname, '/views')
@@ -18,6 +21,13 @@ nunjucks.configure([
   express: app,
   watch: true
 })
+
+env.addGlobal('today', moment().format(shortDateFormat))
+env.addGlobal('tomorrow', moment().add(1, 'days').format(shortDateFormat))
+env.addGlobal('dayAfter', moment().add(2, 'days').format(shortDateFormat))
+env.addGlobal('todayLong', moment(env.getGlobal('today')).format(longDateFormat))
+env.addGlobal('tomorrowLong', moment(env.getGlobal('tomorrow')).format(longDateFormat))
+env.addGlobal('dayAfterLong', moment(env.getGlobal('dayAfter')).format(longDateFormat))
 
 app.set('view engine', 'njk')
 
