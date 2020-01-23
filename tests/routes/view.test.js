@@ -1,7 +1,6 @@
 /* global describe, beforeEach, afterEach, it, expect, jest */
 const moxios = require('moxios')
 const request = require('supertest')
-const moment = require('moment')
 
 const defaults = require('../../routes/middleware/defaults')
 const healthcheck = require('../../routes/middleware/healthcheck')
@@ -45,7 +44,7 @@ describe('Routes', () => {
   })
 
   it('case list route should call the API to fetch case list data', async () => {
-    moxios.stubRequest(`http://court_case_service.url/court/SHF/cases/2020-01-01`, {
+    moxios.stubRequest('http://court_case_service.url/court/SHF/cases/2020-01-01', {
       status: 200,
       response: {
         data: {
@@ -56,12 +55,11 @@ describe('Routes', () => {
 
     const response = await request(app).get('/cases/2020-01-01')
     expect(moxios.requests.mostRecent().url).toBe('http://court_case_service.url/court/SHF/cases/2020-01-01')
-
     return response
   })
 
   it('should fail silently if the case list API is down', async () => {
-    moxios.stubRequest(`http://court_case_service.url/court/SHF/cases/2020-01-01`, {
+    moxios.stubRequest('http://court_case_service.url/court/SHF/cases/2020-01-01', {
       status: 500
     })
 
