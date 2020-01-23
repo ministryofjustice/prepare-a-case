@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z]*)/cases/2020-01-01"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json",
+      "transformers": ["response-template"]
+    },
+    "status": 200,
+    "jsonBody": {
+      "cases": []
+    }
+  }
+}

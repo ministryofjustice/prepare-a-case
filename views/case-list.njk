@@ -39,25 +39,27 @@
     {{ title }}
   </h1>
 
-  {% block subnavigation %}
-    {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
-    {{ mojSubNavigation({
-      label: 'Sub navigation',
-      items: [{
-        text: todayLong,
-        href: today,
-        active: params.date === today
-      }, {
-        text: tomorrowLong,
-        href: tomorrow,
-        active: params.date === tomorrow
-      }, {
-        text: dayAfterLong,
-        href: dayAfter,
-        active: params.date === dayAfter
-      }]
-    }) }}
-  {% endblock %}
+  {% if params.date === today or params.date === tomorrow or params.date === dayAfter %}
+    {% block subnavigation %}
+      {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
+      {{ mojSubNavigation({
+        label: 'Sub navigation',
+        items: [{
+          text: todayLong,
+          href: today,
+          active: params.date === today
+        }, {
+          text: tomorrowLong,
+          href: tomorrow,
+          active: params.date === tomorrow
+        }, {
+          text: dayAfterLong,
+          href: dayAfter,
+          active: params.date === dayAfter
+        }]
+      }) }}
+    {% endblock %}
+  {% endif %}
 
   {% if tableData.rows|length %}
     {% block table %}

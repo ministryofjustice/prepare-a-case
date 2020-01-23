@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "urlPathPattern": "/court/([A-Z]*)/cases/(\\d{4})-(\\d{2})-(\\d{2})"
+    "urlPathPattern": "/court/SHF/cases/(\\d{4})-(\\d{2})-(\\d{2})"
   },
   "response": {
     "headers": {
