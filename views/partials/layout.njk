@@ -38,7 +38,7 @@
   {%- from "moj/components/header/macro.njk" import mojHeader -%}
   {{ mojHeader({
     organisationLabel: {
-      text: 'Ministry of Justice',
+      text: 'HMPPS',
       href: '/'
     },
     serviceLabel: {
@@ -66,31 +66,22 @@
         active: title === 'Dashboard'
       },
       {
-        text: 'Case list',
-        href: '/case-list',
-        active: title === 'Case list'
+        text: 'Cases',
+        href: '/cases',
+        active: title === 'Cases'
       }
     ]
   }) }}
 {% endblock %}
 
 <div class="govuk-width-container">
-
-  {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link govuk-link--no-visited-state" href="https://forms.gle/FgR5oJcyx41waMfS8">feedback</a> will help us to improve it.'
-  }) }}
-
   <main class="govuk-main-wrapper" id="main-content" role="main">
     {% block content %}{% endblock %}
   </main>
 </div>
 
 {% block footer %}
-  {% from "govuk/components/footer/macro.njk" import govukFooter %}
+  {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
   {{ govukFooter({}) }}
 {% endblock %}
 

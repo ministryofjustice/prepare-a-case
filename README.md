@@ -1,6 +1,6 @@
 # Prepare a case
 
-Prepare a case is a service that allows probation staff to prepare court cases. 
+Prepare a case is a service that allows probation staff to prepare defaultParams cases. 
 
 ## Prerequisities
 Before you begin, ensure you have met the following requirements:
@@ -23,10 +23,30 @@ yarn
 
 And then, to build the assets and start the app with
 ```
-yarn start
+env COURT_CASE_SERVICE_URL=http://defaultParams-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk yarn start
+```
+
+Or to use alongside a local instance of *defaultParams-case-service* 
+
+```
+env COURT_CASE_SERVICE_URL=http://127.0.0.1:8080 yarn start
 ```
 
 ## For development, there are additional tasks:
+
+### Start app with mocked backend
+
+If unspecified, the app will use your local defaultParams-case-service app but you can also use WireMock.
+ 
+Start the standalone WireMock server
+```
+java -jar wiremock-standalone-2.25.1.jar --global-response-templating --port 9091
+```
+
+And then, to build assets and start app with
+```
+env COURT_CASE_SERVICE_URL=http://127.0.0.1:9091 npx nodemon ./bin/www
+```
 
 ### Run linter
 ```
@@ -62,4 +82,4 @@ yarn int-test:ui
 ### Court case service
 Default: http://localhost:8082
 
-Specify the court-case-service URL with ```COURT_CASE_SERVICE_URL```
+Specify the defaultParams-case-service URL with ```COURT_CASE_SERVICE_URL```

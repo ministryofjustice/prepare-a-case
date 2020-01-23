@@ -1,0 +1,96 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z]*)/cases/(\\d{4})-(\\d{2})-(\\d{2})"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json",
+      "transformers": ["response-template"]
+    },
+    "status": 200,
+    "jsonBody": {
+      "cases": [
+        {
+          "session": "Morning",
+          "court": "1",
+          "inf": "POL01",
+          "h_id": 1246272,
+          "def_name": "JCONE",
+          "def_addr": {
+            "line3": "a3",
+            "line2": "a2",
+            "line1": "a1"
+          },
+          "type": "C",
+          "caseno": 1600028912,
+          "def_dob": "01/01/1998",
+          "valid": "Y",
+          "cseq": 1,
+          "listno": "1st",
+          "offences": {
+            "offence": [
+              {
+                "as": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+                "code": "TH68010",
+                "oseq": 1,
+                "co_id": 1142407,
+                "maxpen": "EW: 6M &/or Ultd Fine",
+                "sum": "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.",
+                "title": "Theft from a shop"
+              },
+              {
+                "as": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+                "code": "TH68010",
+                "oseq": 2,
+                "co_id": 1142408,
+                "maxpen": "EW: 6M &/or Ultd Fine",
+                "sum": "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.",
+                "title": "Theft from a shop"
+              }
+            ]
+          },
+          "def_age": 18,
+          "c_id": 1168460,
+          "def_type": "P",
+          "def_sex": "M"
+        },
+        {
+          "session": "Afternoon",
+          "court": "2",
+          "inf": "POL01",
+          "h_id": 1246278,
+          "def_name": "Mr Joe JMBBLOGGS",
+          "def_addr": {
+            "pcode": "RG2 6UA",
+            "line3": "l3",
+            "line2": "line2",
+            "line1": "line1"
+          },
+          "type": "C",
+          "caseno": 1600028955,
+          "def_dob": "16/08/1990",
+          "valid": "Y",
+          "cseq": 2,
+          "listno": "1st",
+          "offences": {
+            "offence": {
+              "as": "Contrary to section 363(2) and (4) of the Communications Act 2003.",
+              "code": "CA03010",
+              "oseq": 1,
+              "co_id": 1142414,
+              "maxpen": "S: L3",
+              "sum": "On 05/09/2016 used a colour television receiver without a licence at the above address.",
+              "sof": ".",
+              "title": "Use a television set without a licence"
+            }
+          },
+          "def_age": 26,
+          "c_id": 1168464,
+          "def_type": "P",
+          "def_sex": "N"
+        }
+      ]
+    }
+  }
+}

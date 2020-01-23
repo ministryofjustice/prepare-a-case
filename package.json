@@ -26,6 +26,13 @@
     "start": "node ./bin/www",
     "unit-test": "NODE_ENV=test yarn jest --ci --reporters=default --reporters=jest-junit --collect-coverage"
   },
+  "nodemonConfig": {
+    "ignore": [
+      "tests/*",
+      "coverage/*"
+    ],
+    "delay": 2500
+  },
   "standard": {
     "ignore": [
       "/integration-tests/config",
@@ -52,27 +59,31 @@
     "usePathForSuiteName": true
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "integration-tests/integration/"
   },
   "dependencies": {
     "@ministryofjustice/frontend": "0.0.17-alpha",
-    "axios": "0.19.0",
+    "axios": "0.19.2",
     "cookie-parser": "1.4.4",
     "debug": "4.1.1",
     "express": "4.17.1",
-    "govuk-frontend": "3.4.0",
+    "govuk-frontend": "3.5.0",
+    "moment": "2.24.0",
     "morgan": "1.9.1",
     "nunjucks": "3.2.0"
   },
   "devDependencies": {
-    "axe-core": "3.4.0",
+    "axe-core": "3.4.1",
     "cucumber": "6.0.5",
-    "cypress": "3.7.0",
+    "cypress": "3.8.2",
     "cypress-axe": "0.5.3",
-    "cypress-cucumber-preprocessor": "1.18.0",
-    "jest": "24.9.0",
+    "cypress-cucumber-preprocessor": "2.0.1",
+    "jest": "25.1.0",
     "jest-junit": "10.0.0",
+    "moxios": "0.4.0",
     "node-sass-middleware": "0.11.0",
+    "nodemon": "2.0.2",
     "standard": "14.3.1",
     "supertest": "4.0.2"
   }

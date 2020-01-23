@@ -1,7 +1,71 @@
+{% set tableData = {
+  head: [
+    { text: "Defendant" },
+    { text: "Probation record" },
+    { text: "Offence" },
+    { text: "Listing" },
+    { text: "Session" },
+    { text: "Court" }
+  ],
+  rows: []
+} %}
+
+{% for item in data %}
+  {% set offences = [] %}
+  {% if item.offences.offence.title %}
+    {{ offences.push(item.offences.offence.title|escape) }}
+    {% elif item.offences.offence|length %}
+    {{ offences.push('<ol class="govuk-list govuk-list--number govuk-!-margin-bottom-0">') }}
+    {% for offence in item.offences.offence %}
+      {{ offences.push('<li>' + offence.title|escape + '</li>') }}
+    {% endfor %}
+    {{ offences.push('</ol>') }}
+  {% endif %}
+  {{ tableData.rows.push([
+    { text: ('<a href="#" class="govuk-link govuk-link--no-visited-state">' + item.def_name|escape + '</a>')|safe },
+    { text: 'Not known' },
+    { text: offences|join('')|safe },
+    { text: item.listno + ' listing' },
+    { text: item.session },
+    { text: item.court }
+  ]) }}
+{% endfor %}
+
 {% extends "partials/layout.njk" %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Case list</h1>
-  <p class="govuk-body">Walking skeleton case list view</p>
-  <p class="govuk-body">Application status: {% if healthy %}Healthy{% else %}Error{% endif %}</p>
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">
+    <span class="govuk-caption-xl">{{ params.courtName }}</span>
+    {{ title }}
+  </h1>
+
+  {% block subnavigation %}
+    {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
+    {{ mojSubNavigation({
+      label: 'Sub navigation',
+      items: [{
+        text: todayLong,
+        href: today,
+        active: params.date === today
+      }, {
+        text: tomorrowLong,
+        href: tomorrow,
+        active: params.date === tomorrow
+      }, {
+        text: dayAfterLong,
+        href: dayAfter,
+        active: params.date === dayAfter
+      }]
+    }) }}
+  {% endblock %}
+
+  {% if tableData.rows|length %}
+    {% block table %}
+      {%- from "govuk/components/table/macro.njk" import govukTable -%}
+      {{ govukTable(tableData) }}
+    {% endblock %}
+  {% else %}
+    <p class="govuk-body">No case data available for today.</p>
+  {% endif %}
+
 {% endblock %}
