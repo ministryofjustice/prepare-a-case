@@ -24,7 +24,6 @@ describe('Default values middleware', () => {
   })
 
   it('should change apiUrl if env var is set', async () => {
-
     process.env.COURT_CASE_SERVICE_URL = 'http://court_case_service.url'
 
     await defaults(reqObj, {}, mockNext)
