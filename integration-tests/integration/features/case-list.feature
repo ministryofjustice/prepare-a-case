@@ -14,9 +14,9 @@ Feature: Cases
 
   Scenario: View the case list with no data for the given day
     Given I am a registered user
-    When I navigate to the "cases/2020-01-01" route
+    When I navigate to the "cases/20200101" route
     Then I should be on the "Cases" page
     And There should be no a11y violations
-    And I should not see a table list
+    And I should not see the table list
     And I should see the body text "No case data available for today."
 

@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "urlPathPattern": "/court/([A-Z]*)/cases/2020-01-01"
+    "urlPathPattern": "/court/([A-Z]*)/cases/20200101"
   },
   "response": {
     "headers": {

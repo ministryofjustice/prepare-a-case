@@ -22,6 +22,6 @@ And('I should see a list of defendants', () => {
   cy.get('.govuk-link.govuk-link--no-visited-state').eq(1).contains('Mr Joe JMBBLOGGS')
 })
 
-And('I should not see a table list', () => {
+And('I should not see the table list', () => {
   cy.get('.govuk-table').should('not.exist')
 })
