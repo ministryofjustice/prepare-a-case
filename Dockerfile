@@ -1,6 +1,6 @@
 FROM node:12.13.0
 
-MAINTAINER MoJ Digital, Probation in Court <probation-in-defaultParams-team@digital.justice.gov.uk>
+MAINTAINER MoJ Digital, Probation in Court <probation-in-court-team@digital.justice.gov.uk>
 
 ARG BUILD_NUMBER
 ARG GIT_REF
