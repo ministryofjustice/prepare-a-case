@@ -21,6 +21,10 @@ Then('I should be on the {string} page', $title => {
   cy.get('h1').contains($title)
 })
 
+And('I should see the caption {string}', $caption => {
+  cy.get('.govuk-caption-xl').contains($caption)
+})
+
 And('There should be no a11y violations', () => {
   cy.checkA11y('main#main-content')
 })
