@@ -10,7 +10,7 @@ Feature: Cases
     And I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following table
-      | Defendant        | Probation record | Offence                                        | Listing     | Session   | Court |
+      | Defendant        | Probation status | Offence                                        | Listing     | Session   | Court |
       | JCONE            | Not known        | Theft from a shop                              | 1st listing | Morning   | 1     |
       | Mr Joe JMBBLOGGS | Not known        | Use a television set without a licence         | 2nd listing | Morning   | 1     |
       | MR TEST OLLIEONE | Not known        | Caused to be published a tobacco advertisement | 1st listing | Morning   | 2     |
