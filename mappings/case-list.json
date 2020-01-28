@@ -1,222 +1,72 @@
 {
   "request": {
     "method": "GET",
-    "urlPathPattern": "/court/SHF/cases/(\\d{4})-(\\d{2})-(\\d{2})"
+    "urlPathPattern": "/court/([A-Z]*)/cases",
+    "queryParameters": {
+      "date": {
+        "matches": "(\\d{4})-(\\d{2})-(\\d{2})"
+      }
+    }
   },
   "response": {
     "headers": {
       "Content-Type": "application/json",
-      "transformers": ["response-template"]
+      "transformers": [
+        "response-template"
+      ]
     },
     "status": 200,
     "jsonBody": {
       "cases": [
         {
-          "session": "Morning",
-          "court": "1",
-          "inf": "POL01",
-          "h_id": 1246272,
-          "def_name": "JCONE",
-          "def_addr": {
-            "line3": "a3",
-            "line2": "a2",
-            "line1": "a1"
-          },
-          "type": "C",
-          "caseno": 1600028912,
-          "def_dob": "01/01/1998",
-          "valid": "Y",
-          "cseq": 1,
-          "listno": "1st",
-          "offences": {
-            "offence": [
-              {
-                "as": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-                "code": "TH68010",
-                "oseq": 1,
-                "co_id": 1142407,
-                "maxpen": "EW: 6M &/or Ultd Fine",
-                "sum": "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.",
-                "title": "Theft from a shop"
-              },
-              {
-                "as": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-                "code": "TH68010",
-                "oseq": 2,
-                "co_id": 1142408,
-                "maxpen": "EW: 6M &/or Ultd Fine",
-                "sum": "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.",
-                "title": "Theft from a shop"
-              }
-            ]
-          },
-          "def_age": 18,
-          "c_id": 1168460,
-          "def_type": "P",
-          "def_sex": "M"
+          "caseId": "1168460",
+          "caseNo": "1600028912",
+          "courtCode": "SHF",
+          "courtRoom": "1",
+          "sessionStartTime": "2019-12-14T09:00:00",
+          "probationStatus": "No record",
+          "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"1st\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"JCONE\", \"def_type\": \"P\", \"offences\": {\"offence\": [{\"as\": \"Contrary to section 1(1) and 7 of the Theft Act 1968.\", \"sum\": \"On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Theft from a shop\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}, {\"as\": \"Contrary to section 1(1) and 7 of the Theft Act 1968.\", \"sum\": \"On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.\", \"code\": \"TH68010\", \"oseq\": 2, \"co_id\": 1142408, \"title\": \"Theft from a shop\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}]}}",
+          "session": "Morning"
         },
         {
-          "session": "Morning",
-          "court": "1",
-          "inf": "POL01",
-          "h_id": 1246278,
-          "def_name": "Mr Joe JMBBLOGGS",
-          "def_addr": {
-            "pcode": "RG2 6UA",
-            "line3": "l3",
-            "line2": "line2",
-            "line1": "line1"
-          },
-          "type": "C",
-          "caseno": 1600028955,
-          "def_dob": "16/08/1990",
-          "valid": "Y",
-          "cseq": 2,
-          "listno": "2nd",
-          "offences": {
-            "offence": {
-              "as": "Contrary to section 363(2) and (4) of the Communications Act 2003.",
-              "code": "CA03010",
-              "oseq": 1,
-              "co_id": 1142414,
-              "maxpen": "S: L3",
-              "sum": "On 05/09/2016 used a colour television receiver without a licence at the above address.",
-              "sof": ".",
-              "title": "Use a television set without a licence"
-            }
-          },
-          "def_age": 26,
-          "c_id": 1168464,
-          "def_type": "P",
-          "def_sex": "N"
+          "caseId": "1168463",
+          "caseNo": "1600028974",
+          "courtCode": "SHF",
+          "courtRoom": "1",
+          "sessionStartTime": "2019-12-14T09:00:00",
+          "probationStatus": "No record",
+          "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"2nd\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"Mr Joe JMBBLOGGS\", \"def_type\": \"P\", \"offences\": {\"offence\": {\"as\": \"Contrary to section 363(2) and (4) of the Communications Act 2003.\", \"sum\": \"On 05/09/2016 used a colour television receiver without a licence at the above address.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Use a television set without a licence\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}}}",
+          "session": "Morning"
         },
         {
-          "session": "Morning",
-          "court": "2",
-          "inf": 6543,
-          "h_id": 1246273,
-          "def_name": "MR TEST OLLIEONE",
-          "def_addr": {
-            "line4": "THE PLACE",
-            "pcode": "POST COD",
-            "line3": "THE TOWN",
-            "line2": "THE STREET",
-            "line1": "THE HOUSE"
-          },
-          "type": "C",
-          "caseno": 1600028920,
-          "def_dob": "08/08/1933",
-          "valid": "Y",
-          "cseq": 1,
-          "listno": "1st",
-          "offences": {"offence": [
-            {
-              "code": "TA02002",
-              "oseq": 1,
-              "co_id": 1142409,
-              "sum": "THIS IS THE OFFENCE WORDING",
-              "title": "Caused to be published a tobacco advertisement"
-            },
-            {
-              "as": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-              "code": "TH68001",
-              "oseq": 2,
-              "co_id": 1142410,
-              "maxpen": "EW: 6M &/or Ultd Fine",
-              "sum": "On 24/03/2016 at BURY ST EDS in the county of SUFFOLK stole XBOX ONE, to the value of 300.00, belonging to MR GAMESMASTER.",
-              "title": "Theft from the person of another"
-            }
-          ]},
-          "def_age": 83,
-          "c_id": 1168461,
-          "def_type": "P",
-          "def_sex": "M"
+          "caseId": "1168461",
+          "caseNo": "1600028920",
+          "courtCode": "SHF",
+          "courtRoom": "2",
+          "sessionStartTime": "2019-12-14T09:00:00",
+          "probationStatus": "Previously known",
+          "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"1st\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"MR TEST OLLIEONE\", \"def_type\": \"P\", \"offences\": {\"offence\": {\"as\": \"Contrary to section 363(2) and (4) of the Communications Act 2003.\", \"sum\": \"On 05/09/2016 used a colour television receiver without a licence at the above address.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Caused to be published a tobacco advertisement\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}}}",
+          "session": "Morning"
         },
         {
-          "session": "Afternoon",
-          "court": "2",
-          "inf": 6543,
-          "h_id": 1246274,
-          "def_name": "MR TEST OLLIETWO",
-          "def_addr": {
-            "pcode": "post cod",
-            "line3": "the town",
-            "line2": "the street",
-            "line1": "the house"
-          },
-          "type": "C",
-          "caseno": 1600028939,
-          "def_dob": "08/08/1944",
-          "valid": "Y",
-          "cseq": 1,
-          "listno": "1st",
-          "offences": {"offence": [
-            {
-              "code": "TA02002",
-              "oseq": 1,
-              "co_id": 1142411,
-              "sum": "this is the offence wording for terst case two",
-              "title": "Caused to be published a tobacco advertisement"
-            },
-            {
-              "as": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
-              "code": "TH68001A",
-              "oseq": 2,
-              "co_id": 1142412,
-              "maxpen": "EW: 6M &/or Ultd Fine",
-              "sum": "On 25/03/2015 at bury st edmunds attempted to steal flat screen tv to the value of 1000.00 belonging to THE TVMAN.",
-              "title": "Attempt theft from the person of another"
-            }
-          ]},
-          "def_age": 72,
-          "c_id": 1168462,
-          "def_type": "P",
-          "def_sex": "M"
+          "caseId": "1168461",
+          "caseNo": "1600028920",
+          "courtCode": "SHF",
+          "courtRoom": "2",
+          "sessionStartTime": "2019-12-14T09:00:00",
+          "probationStatus": "Current",
+          "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"1st\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"MR TEST OLLIETWO\", \"def_type\": \"P\", \"offences\": {\"offence\": {\"as\": \"Contrary to section 363(2) and (4) of the Communications Act 2003.\", \"sum\": \"On 05/09/2016 used a colour television receiver without a licence at the above address.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Attempt theft from the person of another\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}}}",
+          "session": "Afternoon"
         },
         {
-          "session": "Afternoon",
-          "court": "3",
-          "inf": "POL01",
-          "h_id": 1249277,
-          "def_name": "DLFOUR",
-          "def_addr": {"line1": "A1"},
-          "type": "C",
-          "caseno": 1600029145,
-          "valid": "Y",
-          "cseq": 3,
-          "listno": "1st",
-          "offences": {"offence": [
-            {
-              "as": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-              "code": "TH68010",
-              "oseq": 1,
-              "co_id": 1145421,
-              "maxpen": "EW: 6M &/or Ultd Fine",
-              "sum": "On 01/01/2016 at Town, stole Article, to the value of £100.00, belonging to Person.",
-              "title": "Theft from a shop"
-            },
-            {
-              "as": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-              "code": "TH68010",
-              "oseq": 2,
-              "co_id": 1145422,
-              "maxpen": "EW: 6M &/or Ultd Fine",
-              "sum": "On 01/01/2016 at Town, stole Article, to the value of £100.00, belonging to Person.",
-              "title": "Theft from a shop"
-            },
-            {
-              "as": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-              "code": "TH68010",
-              "oseq": 3,
-              "co_id": 1145423,
-              "maxpen": "EW: 6M &/or Ultd Fine",
-              "sum": "On 01/01/2016 at Town, stole Article, to the value of £100.00, belonging to Person.",
-              "title": "Theft from a shop"
-            }
-          ]},
-          "c_id": 1172464,
-          "def_type": "P",
-          "def_sex": "N"
+          "caseId": "1172464",
+          "caseNo": "1600029145",
+          "courtCode": "SHF",
+          "courtRoom": "3",
+          "sessionStartTime": "2019-12-14T09:00:00",
+          "probationStatus": "No record",
+          "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"1st\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"DLFOUR\", \"def_type\": \"P\", \"offences\": {\"offence\": {\"as\": \"Contrary to section 363(2) and (4) of the Communications Act 2003.\", \"sum\": \"On 05/09/2016 used a colour television receiver without a licence at the above address.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Theft from a shop\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}}}",
+          "session": "Afternoon"
         }
       ]
     }

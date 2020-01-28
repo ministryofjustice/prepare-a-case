@@ -11,23 +11,24 @@
 } %}
 
 {% for item in data %}
+  {% set caseData = item.data | json %}
   {% set offences = [] %}
-  {% if item.offences.offence.title %}
-    {{ offences.push(item.offences.offence.title|escape) }}
-    {% elif item.offences.offence|length %}
+  {% if caseData.offences.offence.title %}
+    {{ offences.push(caseData.offences.offence.title | escape) }}
+    {% elif caseData.offences.offence | length %}
     {{ offences.push('<ol class="govuk-list govuk-list--number govuk-!-margin-bottom-0">') }}
-    {% for offence in item.offences.offence %}
-      {{ offences.push('<li>' + offence.title|escape + '</li>') }}
+    {% for offence in caseData.offences.offence %}
+      {{ offences.push('<li>' + offence.title |  escape + '</li>') }}
     {% endfor %}
     {{ offences.push('</ol>') }}
   {% endif %}
   {{ tableData.rows.push([
-    { text: ('<a href="#" class="govuk-link govuk-link--no-visited-state">' + item.def_name|escape + '</a>')|safe },
-    { text: 'Not known' },
-    { text: offences|join('')|safe },
-    { text: item.listno + ' listing' },
+    { text: ('<a href="#" class="govuk-link govuk-link--no-visited-state">' + caseData.def_name | escape + '</a>') | safe },
+    { text: item.probationStatus },
+    { text: offences | join('') | safe },
+    { text: caseData.listno + ' listing' },
     { text: item.session },
-    { text: item.court }
+    { text: item.courtRoom }
   ]) }}
 {% endfor %}
 
@@ -61,7 +62,7 @@
     {% endblock %}
   {% endif %}
 
-  {% if tableData.rows|length %}
+  {% if tableData.rows | length %}
     {% block table %}
       {%- from "govuk/components/table/macro.njk" import govukTable -%}
       {{ govukTable(tableData) }}

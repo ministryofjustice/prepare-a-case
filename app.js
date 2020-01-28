@@ -22,6 +22,10 @@ const env = nunjucks.configure([
   watch: true
 })
 
+env.addFilter('json', function (value) {
+  return JSON.parse(value)
+})
+
 env.addGlobal('today', moment().format(shortDateFormat))
 env.addGlobal('tomorrow', moment().add(1, 'days').format(shortDateFormat))
 env.addGlobal('dayAfter', moment().add(2, 'days').format(shortDateFormat))
