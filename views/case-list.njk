@@ -27,7 +27,7 @@
     { text: item.probationStatus },
     { text: offences | join('') | safe },
     { text: caseData.listno + ' listing' },
-    { text: item.session },
+    { text: item.session | capitalize },
     { text: item.courtRoom }
   ]) }}
 {% endfor %}

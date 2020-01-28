@@ -18,11 +18,6 @@ router.get('/cases/:date', health, defaults, async (req, res) => {
   } catch (e) {
     // Silent as issue should be caught by health middleware
   }
-  if (response.data && response.data.cases) {
-    response.data.cases.forEach(item => {
-      console.log(item.data)
-    })
-  }
   res.render('case-list', { title: 'Cases', healthy: req.healthy, params: req.params, data: (response.data && response.data.cases) || [] })
 })
 
