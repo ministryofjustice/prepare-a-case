@@ -10,12 +10,12 @@ Feature: Cases
     And I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following table
-      | Defendant        | Probation status | Offence                                        | Listing     | Session   | Court |
-      | JCONE            | No record        | Theft from a shop                              | 1st listing | Morning   | 1     |
-      | Mr Joe JMBBLOGGS | No record        | Use a television set without a licence         | 2nd listing | Morning   | 1     |
-      | MR TEST OLLIEONE | Previously known | Caused to be published a tobacco advertisement | 1st listing | Morning   | 2     |
-      | MR TEST OLLIETWO | Current          | Attempt theft from the person of another       | 1st listing | Afternoon | 2     |
-      | DLFOUR           | No record        | Theft from a shop                              | 1st listing | Afternoon | 3     |
+      | Defendant        | Probation status | Offence                                        | Listing | Session   | Court |
+      | JCONE            | No record        | Theft from a shop                              | 1st     | Morning   | 1     |
+      | Mr Joe JMBBLOGGS | No record        | Use a television set without a licence         | 2nd     | Morning   | 1     |
+      | MR TEST OLLIEONE | Previously known | Caused to be published a tobacco advertisement | 1st     | Morning   | 2     |
+      | MR TEST OLLIETWO | Current          | Attempt theft from the person of another       | 1st     | Afternoon | 2     |
+      | DLFOUR           | No record        | Theft from a shop                              | 1st     | Afternoon | 3     |
     And The following defendant names should be links
       | JCONE | Mr Joe JMBBLOGGS | MR TEST OLLIEONE | MR TEST OLLIETWO | DLFOUR |
     And There should be no a11y violations
