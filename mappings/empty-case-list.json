@@ -1,7 +1,12 @@
 {
   "request": {
     "method": "GET",
-    "urlPathPattern": "/court/([A-Z]*)/cases/20200101"
+    "urlPathPattern": "/court/([A-Z]*)/cases",
+    "queryParameters": {
+      "date": {
+        "matches": "(\\d{8})"
+      }
+    }
   },
   "response": {
     "headers": {
