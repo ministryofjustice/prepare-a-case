@@ -33,7 +33,6 @@ app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   outputStyle: 'compressed',
-  response: false,
   sourceMap: true
 }))
 app.use('/assets', [
