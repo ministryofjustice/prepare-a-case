@@ -16,6 +16,7 @@ router.get('/cases/:date', health, defaults, async (req, res) => {
   try {
     response = await axios.get(`${req.params.apiUrl}/court/${req.params.courtCode}/cases?date=${req.params.date}`)
   } catch (e) {
+    console.error(e)
     // Silent as issue should be caught by health middleware
   }
   res.render('case-list', { title: 'Cases', healthy: req.healthy, params: req.params, data: (response.data && response.data.cases) || [] })
