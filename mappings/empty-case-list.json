@@ -1,17 +1,17 @@
 {
+  "id" : "23fccccc-f5e2-4a08-8422-d5f53ae5d4cc",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/court/([A-Z]*)/cases",
+    "urlPathPattern": "/court/([A-Z]{3})/cases",
     "queryParameters": {
       "date": {
-        "matches": "(\\d{8})"
+        "matches": "2020-01-01"
       }
     }
   },
   "response": {
     "headers": {
-      "Content-Type": "application/json",
-      "transformers": ["response-template"]
+      "Content-Type": "application/json"
     },
     "status": 200,
     "jsonBody": {
