@@ -5,8 +5,8 @@
     "urlPathPattern": "/court/([A-Z]*)/cases",
     "queryParameters": {
       "date": {
-        "matches": "(\\d{4})-(\\d{2})-(\\d{2})",
-        "doesNotMatch" : "2020-01-01"
+        "doesNotMatch" : "2020-01-01",
+        "matches": "(\\d{4})-(\\d{2})-(\\d{2})"
       }
     }
   },
