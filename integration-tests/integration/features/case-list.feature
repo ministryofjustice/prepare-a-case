@@ -28,3 +28,8 @@ Feature: Cases
     And I should not see the table list
     And I should see the body text "No case data available for this day."
     And There should be no a11y violations
+
+Scenario: A user needs to know when the data in the list was created (as a proxy to know how reliable it is)
+    Given I am a registered user
+    When I view the court list
+    Then Display “last updated” time with a timestamp of the most recent Libra data

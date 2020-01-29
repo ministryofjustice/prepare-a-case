@@ -33,3 +33,7 @@ And('The following defendant names should be links', $data => {
 And('I should not see the table list', () => {
   cy.get('.govuk-table').should('not.exist')
 })
+
+Then('Display “last updated” time with a timestamp of the most recent Libra data', () => {
+  cy.get('#last-updated').eq('Last updated Tuesday 3 Dec at 08:30')
+})
