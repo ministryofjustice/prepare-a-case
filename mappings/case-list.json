@@ -51,7 +51,7 @@
           "caseNo": "1600028920",
           "courtCode": "SHF",
           "courtRoom": "2",
-          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:00:00",
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T13:00:00",
           "probationStatus": "Current",
           "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"1st\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"MR TEST OLLIETWO\", \"def_type\": \"P\", \"offences\": {\"offence\": {\"as\": \"Contrary to section 363(2) and (4) of the Communications Act 2003.\", \"sum\": \"On 05/09/2016 used a colour television receiver without a licence at the above address.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Attempt theft from the person of another\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}}}",
           "session": "AFTERNOON"
@@ -61,7 +61,7 @@
           "caseNo": "1600029145",
           "courtCode": "SHF",
           "courtRoom": "3",
-          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:00:00",
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T13:00:00",
           "probationStatus": "No record",
           "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"1st\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"DLFOUR\", \"def_type\": \"P\", \"offences\": {\"offence\": {\"as\": \"Contrary to section 363(2) and (4) of the Communications Act 2003.\", \"sum\": \"On 05/09/2016 used a colour television receiver without a licence at the above address.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Theft from a shop\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}}}",
           "session": "AFTERNOON"
