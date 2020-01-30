@@ -1,5 +1,5 @@
 /* global cy */
-import { And } from 'cypress-cucumber-preprocessor/steps'
+import { And, Then } from 'cypress-cucumber-preprocessor/steps'
 import moment from 'moment'
 
 And('I should see sub navigation with default dates', () => {
