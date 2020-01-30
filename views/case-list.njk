@@ -32,6 +32,35 @@
   ]) }}
 {% endfor %}
 
+{% set totalPages = (params.total / params.limit) | round(0, "ceil") | string %}
+
+{% if (params.page | int) === 1 %}
+  {% set previousLink = null %}
+{% else %}
+  {% set previousLink = {
+    text: 'Previous',
+    href: '?page=' + ((params.page | int) - 1)
+  } %}
+{% endif %}
+
+{% if params.page === totalPages %}
+  {% set nextLink = null %}
+{% else %}
+  {% set nextLink = {
+    text: 'Next',
+    href: '?page=' + ((params.page | int) + 1)
+  } %}
+{% endif %}
+
+{% set pageItems = [] %}
+{% for i in range(1, (totalPages | int) + 1) -%}
+  {{ pageItems.push({
+    text: i,
+    href: '?page=' + i,
+    selected: params.page === (i | string)
+  }) }}
+{%- endfor %}
+
 {% extends "partials/layout.njk" %}
 
 {% block content %}
@@ -78,6 +107,22 @@
     {% endblock %}
   {% else %}
     <p class="govuk-body">No case data available for this day.</p>
+  {% endif %}
+
+  {% if (totalPages | int) > 1 %}
+  {% block pagination %}
+    {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+    {{ mojPagination({
+      results: {
+        from: params.from + 1,
+        to: params.to,
+        count: params.total
+      },
+      previous: previousLink,
+      next: nextLink,
+      items: pageItems
+    }) }}
+  {% endblock %}
   {% endif %}
 
 {% endblock %}

@@ -30,6 +30,34 @@ And('The following defendant names should be links', $data => {
   })
 })
 
+And('I should see pagination text {string}', $string => {
+  cy.get('.moj-pagination__results').contains($string)
+})
+
 And('I should not see the table list', () => {
   cy.get('.govuk-table').should('not.exist')
+})
+
+And('I should see pagination', () => {
+  cy.get('.moj-pagination').should('exist')
+})
+
+And('I should see pagination link {string} with href {string}', ($string, $href) => {
+  cy.get('.moj-pagination__link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+})
+
+And('I should see pagination page {string} highlighted', $string => {
+  cy.get('.moj-pagination__item--active').contains($string).should('exist')
+})
+
+And('I should not see pagination link {string}', $string => {
+  cy.get('.moj-pagination__link').contains($string).should('not.exist')
+})
+
+And('I should not see pagination', () => {
+  cy.get('.moj-pagination').should('not.exist')
+})
+
+And('I click pagination link {string}', $string => {
+  cy.get('.moj-pagination__link').contains($string).click()
 })
