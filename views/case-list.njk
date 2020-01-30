@@ -57,7 +57,7 @@
   {{ pageItems.push({
     text: i,
     href: '?page=' + i,
-    selected: params.page === (i | string)
+    selected: (params.page | int) === i
   }) }}
 {%- endfor %}
 
