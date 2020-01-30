@@ -123,6 +123,8 @@ jobs:
       - run:
           name: Run the app
           command: yarn start
+          environment:
+            CASES_PER_PAGE: 5
           background: true
       - run:
           name: Wait for node app to start
