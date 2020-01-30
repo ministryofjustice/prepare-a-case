@@ -109,7 +109,7 @@
     <p class="govuk-body">No case data available for this day.</p>
   {% endif %}
 
-  {% if (totalPages | int) > 1 %}
+  {% if totalPages > 1 %}
   {% block pagination %}
     {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
     {{ mojPagination({
