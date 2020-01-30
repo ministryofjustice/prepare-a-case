@@ -17,7 +17,7 @@ When('I navigate to the {string} route', $route => {
 })
 
 When('I view the court list', () => {
-  cy.visit('cases/2020-01-01')
+  cy.visit('cases')
   cy.injectAxe()
 })
 

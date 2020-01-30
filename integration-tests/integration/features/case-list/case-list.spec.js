@@ -35,5 +35,5 @@ And('I should not see the table list', () => {
 })
 
 Then('Display “last updated” time with a timestamp of the most recent Libra data', () => {
-  cy.get('#last-updated').eq('Last updated Tuesday 3 Dec at 08:30')
+  cy.get('.pac-last-updated').contains('Last updated Tuesday, 3 December 2019 at 08:30')
 })

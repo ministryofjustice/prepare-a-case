@@ -20,15 +20,15 @@ router.get('/cases/:date', health, defaults, async (req, res) => {
     // Silent as issue should be caught by health middleware
   }
 
-  req.params = {
-    lastUpdated: response.data && response.data.lastUpdated || "",
-    ...req.params
-  }
+  const params = req.params
 
   const templateValues = { 
     title: 'Cases', 
     healthy: req.healthy, 
-    params: req.params, 
+    params: {
+      lastUpdated: response.data && response.data.lastUpdated || "",
+      ...params
+    }, 
     data: (response.data && response.data.cases) || [] 
   }
   res.render('case-list', templateValues)

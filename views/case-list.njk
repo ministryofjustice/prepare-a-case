@@ -48,6 +48,8 @@
   {% if params.date === today or params.date === tomorrow or params.date === dayAfter %}
     {% block subnavigation %}
 
+      <span class="govuk-caption-m pac-last-updated">{{ lastUpdated }}</span>
+
       {%  set todayLong = params.moment(today).format('dddd, D MMMM YYYY') %}
       {%  set tomorrowLong = params.moment(tomorrow).format('dddd, D MMMM YYYY') %}
       {%  set dayAfterLong = params.moment(dayAfter).format('dddd, D MMMM YYYY') %}
@@ -72,7 +74,6 @@
     {% endblock %}
   {% endif %}
 
-  <p>{{ lastUpdated }}</p>
 
   {% if tableData.rows | length %}
     {% block table %}

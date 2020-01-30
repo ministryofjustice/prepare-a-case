@@ -30,7 +30,8 @@
   "nodemonConfig": {
     "ignore": [
       "tests/*",
-      "coverage/*"
+      "coverage/*",
+      "integration-tests/*"
     ],
     "delay": 1000
   },
