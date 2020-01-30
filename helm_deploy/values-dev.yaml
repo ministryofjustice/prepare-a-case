@@ -19,6 +19,7 @@ ingress:
 
 env:
   COURT_CASE_SERVICE_URL: http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk
+  CASES_PER_PAGE: 20
 
 whitelist:
   office: "217.33.148.210/32"
