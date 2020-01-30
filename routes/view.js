@@ -19,9 +19,9 @@ router.get('/cases/:date', health, defaults, async (req, res) => {
     // Silent as issue should be caught by health middleware and the user should be suitably notified
   }
   const totalCount = (response.data && response.data.cases && response.data && response.data.cases.length) || 0
-  const startCount = ((req.query.page - 1) || 0) * req.params.limit
+  const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * req.params.limit
   const endCount = Math.min(startCount + parseInt(req.params.limit, 10), totalCount)
-  req.params = { ...req.params, page: req.query.page || 1, from: startCount, to: endCount, total: totalCount }
+  req.params = { ...req.params, page: parseInt(req.query.page, 10) || 1, from: startCount, to: endCount, total: totalCount }
   res.render('case-list', { title: 'Cases', healthy: req.healthy, params: req.params, data: (response.data && response.data.cases && response.data.cases.slice(startCount, endCount)) || [] })
 })
 
