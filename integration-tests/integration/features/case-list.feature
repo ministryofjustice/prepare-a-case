@@ -3,7 +3,7 @@ Feature: Cases
   As a registered user
   I want to see a case list view
 
-  Scenario: View the full case list with data for the given day
+  Scenario: View the case list with data containing 11 cases for the given day
     Given I am a registered user
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
@@ -28,7 +28,7 @@ Feature: Cases
     And I should see pagination text "Showing 1 to 5 of 11 results"
     And There should be no a11y violations
 
-  Scenario: View the full case list with data for the given day and navigate to page 2
+  Scenario: View the case list with data containing 11 cases for the given day and navigate to page 2
     Given I am a registered user
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
@@ -53,7 +53,7 @@ Feature: Cases
     And I should see pagination link "Next" with href "?page=3"
     And I should see pagination text "Showing 6 to 10 of 11 results"
 
-  Scenario: View the full case list with data for the given day and navigate to page 3
+  Scenario: View the case list with data containing 11 cases for the given day and navigate to page 3
     Given I am a registered user
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
@@ -74,7 +74,7 @@ Feature: Cases
     And I should not see pagination link "Next"
     And I should see pagination text "Showing 11 to 11 of 11 results"
 
-  Scenario: View the short case list with data for the given day
+  Scenario: View the case list with data containing 5 cases for the given day
     Given I am a registered user
     When I navigate to the "cases/2020-01-02" route
     Then I should be on the "Cases" page
