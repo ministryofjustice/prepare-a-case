@@ -15,7 +15,9 @@
     "yarn": "^1.19.0"
   },
   "scripts": {
-    "precommit": "yarn lint && yarn unit-test && yarn int-test",
+    "precommit": "yarn lint && yarn unit-te yarn int-test",
+    "pre-commit-lite": "yarn lint && yarn unit-test",
+    "pre-push": "yarn int-test",
     "delete:reports": "rm ./test-results/cypress/* || true",
     "preint-test": "yarn delete:reports",
     "preint-test:dev": "yarn delete:reports",
