@@ -43,7 +43,7 @@
   } %}
 {% endif %}
 
-{% if params.page === totalPages %}
+{% if (params.page | int) === totalPages %}
   {% set nextLink = null %}
 {% else %}
   {% set nextLink = {
