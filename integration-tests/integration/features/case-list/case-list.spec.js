@@ -2,8 +2,9 @@
 import { And, Then } from 'cypress-cucumber-preprocessor/steps'
 import moment from 'moment'
 
+const dateFormat = 'dddd D MMM'
+
 And('I should see sub navigation with default dates', () => {
-  const dateFormat = 'dddd D MMM'
   cy.get('.moj-sub-navigation__link').eq(0).contains(moment().format(dateFormat))
   cy.get('.moj-sub-navigation__link').eq(1).contains(moment().add(1, 'days').format(dateFormat))
   cy.get('.moj-sub-navigation__link').eq(2).contains(moment().add(2, 'days').format(dateFormat))
@@ -36,5 +37,6 @@ And('I should not see the table list', () => {
 })
 
 Then('Display “last updated” time with a timestamp of the most recent Libra data', () => {
-  cy.get('.pac-last-updated').contains('Last updated Tuesday 3 Dec at 08:30')
+  const formattedDate = moment().format(dateFormat)
+  cy.get('.pac-last-updated').contains(`Last updated ${formattedDate} at 08:30`)
 })
