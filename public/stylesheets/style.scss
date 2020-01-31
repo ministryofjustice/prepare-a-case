@@ -12,5 +12,6 @@ $govuk-brand-colour: #204060;
         top: 12px;
         float: right;
         position: relative;
+        @include govuk-clearfix;
     }
 }
