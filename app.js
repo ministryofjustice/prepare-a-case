@@ -16,7 +16,7 @@ const env = nunjucks.configure([
 ], {
   autoescape: true,
   express: app,
-  watch: true
+  watch: process.env.WATCH_TEMPLATES
 })
 
 env.addFilter('json', function (value) {

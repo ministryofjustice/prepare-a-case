@@ -9,7 +9,7 @@ const oldEnv = process.env
 
 describe('Default values middleware', () => {
   beforeEach(() => {
-    process.env = { ...oldEnv }
+    process.env = {}
   })
 
   afterEach(() => {

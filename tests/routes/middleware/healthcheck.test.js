@@ -11,7 +11,7 @@ let axiosSpy
 describe('Health check middleware', () => {
   beforeEach(() => {
     jest.resetModules()
-    process.env = { ...oldEnv }
+    process.env = {}
 
     axiosSpy = jest.spyOn(axios, 'get').mockImplementation(url => {
       return new Promise(resolve => {
@@ -23,6 +23,7 @@ describe('Health check middleware', () => {
   })
 
   afterEach(() => {
+    process.env = { ...oldEnv }
     jest.clearAllMocks()
   })
 

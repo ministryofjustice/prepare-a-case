@@ -16,6 +16,11 @@ When('I navigate to the {string} route', $route => {
   cy.injectAxe()
 })
 
+When('I view the court list', () => {
+  cy.visit('cases')
+  cy.injectAxe()
+})
+
 Then('I should be on the {string} page', $title => {
   cy.get('title').contains(`${$title} - `)
   cy.get('h1').contains($title)

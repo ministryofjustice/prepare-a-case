@@ -16,6 +16,8 @@
   },
   "scripts": {
     "precommit": "yarn lint && yarn unit-test && yarn int-test",
+    "pre-commit-lite": "yarn lint && yarn unit-test",
+    "pre-push": "yarn int-test",
     "delete:reports": "rm ./test-results/cypress/* || true",
     "preint-test": "yarn delete:reports",
     "preint-test:dev": "yarn delete:reports",
@@ -24,14 +26,16 @@
     "lint": "standard",
     "record-build-info": "node ./bin/build-info",
     "start": "node ./bin/www",
+    "start:watch": "nodemon --exec npm start --scripts-prepend-node-path",
     "unit-test": "NODE_ENV=test yarn jest --ci --reporters=default --reporters=jest-junit --collect-coverage"
   },
   "nodemonConfig": {
     "ignore": [
       "tests/*",
-      "coverage/*"
+      "coverage/*",
+      "integration-tests/*"
     ],
-    "delay": 2500
+    "delay": 1000
   },
   "standard": {
     "ignore": [
@@ -83,7 +87,7 @@
     "jest-junit": "10.0.0",
     "moxios": "0.4.0",
     "node-sass-middleware": "0.11.0",
-    "nodemon": "2.0.2",
+    "nodemon": "^2.0.2",
     "standard": "14.3.1",
     "supertest": "4.0.2"
   }
