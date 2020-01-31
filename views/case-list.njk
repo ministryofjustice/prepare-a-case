@@ -40,16 +40,20 @@
     {{ title }}
   </h1>
 
-  {% set today = params.moment().format('YYYY-MM-DD') %}
-  {% set tomorrow = params.moment().add(1, 'days').format('YYYY-MM-DD') %}
-  {% set dayAfter = params.moment().add(2, 'days').format('YYYY-MM-DD') %}
+  {%  set dateFormat = 'dddd D MMM'%}
+  {%  set today = params.moment().format('YYYY-MM-DD') %}
+  {%  set tomorrow = params.moment().add(1, 'days').format('YYYY-MM-DD') %}
+  {%  set dayAfter = params.moment().add(2, 'days').format('YYYY-MM-DD') %}
+  {%  set lastUpdated = params.moment(params.lastUpdated).format('[Last updated] ' + dateFormat + ' [at] hh:mm') %}
 
   {% if params.date === today or params.date === tomorrow or params.date === dayAfter %}
     {% block subnavigation %}
 
-      {% set todayLong = params.moment(today).format('dddd, D MMMM YYYY') %}
-      {% set tomorrowLong = params.moment(tomorrow).format('dddd, D MMMM YYYY') %}
-      {% set dayAfterLong = params.moment(dayAfter).format('dddd, D MMMM YYYY') %}
+      <span class="govuk-caption-m pac-last-updated">{{ lastUpdated }}</span>
+
+      {%  set todayLong = params.moment(today).format(dateFormat) %}
+      {%  set tomorrowLong = params.moment(tomorrow).format(dateFormat) %}
+      {%  set dayAfterLong = params.moment(dayAfter).format(dateFormat) %}
 
       {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
       {{ mojSubNavigation({
@@ -70,6 +74,7 @@
       }) }}
     {% endblock %}
   {% endif %}
+
 
   {% if tableData.rows | length %}
     {% block table %}

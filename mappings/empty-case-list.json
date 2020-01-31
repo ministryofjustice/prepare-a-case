@@ -15,6 +15,7 @@
     },
     "status": 200,
     "jsonBody": {
+      "lastUpdated": "2020-01-01T08:30:00",
       "cases": []
     }
   }
