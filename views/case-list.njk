@@ -5,7 +5,7 @@
     { text: "Offence" },
     { text: "Listing" },
     { text: "Session" },
-    { text: "Court" }
+    { text: "Court", format: "numeric" }
   ],
   rows: []
 } %}
@@ -28,7 +28,7 @@
     { text: offences | join('') | safe },
     { text: caseData.listno },
     { text: item.session | capitalize },
-    { text: item.courtRoom }
+    { text: item.courtRoom, format: "numeric" }
   ]) }}
 {% endfor %}
 
@@ -69,16 +69,16 @@
     {{ title }}
   </h1>
 
-  {%  set today = params.moment().format('YYYY-MM-DD') %}
-  {%  set tomorrow = params.moment().add(1, 'days').format('YYYY-MM-DD') %}
-  {%  set dayAfter = params.moment().add(2, 'days').format('YYYY-MM-DD') %}
+  {% set today = params.moment().format('YYYY-MM-DD') %}
+  {% set tomorrow = params.moment().add(1, 'days').format('YYYY-MM-DD') %}
+  {% set dayAfter = params.moment().add(2, 'days').format('YYYY-MM-DD') %}
 
   {% if params.date === today or params.date === tomorrow or params.date === dayAfter %}
     {% block subnavigation %}
 
-      {%  set todayLong = params.moment(today).format('dddd, D MMMM YYYY') %}
-      {%  set tomorrowLong = params.moment(tomorrow).format('dddd, D MMMM YYYY') %}
-      {%  set dayAfterLong = params.moment(dayAfter).format('dddd, D MMMM YYYY') %}
+      {% set todayLong = params.moment(today).format('dddd, D MMMM YYYY') %}
+      {% set tomorrowLong = params.moment(tomorrow).format('dddd, D MMMM YYYY') %}
+      {% set dayAfterLong = params.moment(dayAfter).format('dddd, D MMMM YYYY') %}
 
       {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
       {{ mojSubNavigation({
