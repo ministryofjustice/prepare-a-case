@@ -5,7 +5,7 @@
     { text: "Offence" },
     { text: "Listing" },
     { text: "Session" },
-    { text: "Court" }
+    { text: "Court", format: "numeric" }
   ],
   rows: []
 } %}
@@ -28,7 +28,7 @@
     { text: offences | join('') | safe },
     { text: caseData.listno },
     { text: item.session | capitalize },
-    { text: item.courtRoom }
+    { text: item.courtRoom, format: "numeric" }
   ]) }}
 {% endfor %}
 
