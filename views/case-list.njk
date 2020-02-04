@@ -11,7 +11,7 @@
 } %}
 
 {% for item in data %}
-  {% set caseData = item.data | json %}
+  {% set caseData = item.data %}
   {% set offences = [] %}
   {% if caseData.offences.offence.title %}
     {{ offences.push(caseData.offences.offence.title | escape) }}
@@ -32,8 +32,6 @@
   ]) }}
 {% endfor %}
 
-{% set totalPages = (params.total / params.limit) | round(0, "ceil") %}
-
 {% if params.page === 1 %}
   {% set previousLink = null %}
 {% else %}
@@ -52,12 +50,25 @@
   } %}
 {% endif %}
 
+{% set currentPage = params.page %}
+{% set startNum = currentPage - 2 %}
+{% set endNum = currentPage + 2 %}
+{% set totalPages = (params.total / params.limit) | round(0, "ceil") %}
+
+{% if startNum < 1 %}
+  {% set startNum = 1 %}
+  {% set endNum = 5 %}
+{% elif endNum > totalPages %}
+  {% set startNum = totalPages - 4 %}
+  {% set endNum = totalPages %}
+{% endif %}
+
 {% set pageItems = [] %}
-{% for i in range(1, totalPages + 1) -%}
+{% for i in range(startNum, endNum + 1) -%}
   {{ pageItems.push({
     text: i,
     href: '?page=' + i,
-    selected: params.page === i
+    selected: currentPage === i
   }) }}
 {%- endfor %}
 
@@ -103,7 +114,6 @@
       }) }}
     {% endblock %}
   {% endif %}
-
 
   {% if tableData.rows | length %}
     {% block table %}

@@ -21,10 +21,9 @@ router.get('/cases/:date', health, defaults, async (req, res) => {
   }
 
   const params = req.params
-
   const totalCount = (response.data && response.data.cases && response.data && response.data.cases.length) || 0
-  const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * req.params.limit
-  const endCount = Math.min(startCount + parseInt(req.params.limit, 10), totalCount)
+  const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * params.limit
+  const endCount = Math.min(startCount + parseInt(params.limit, 10), totalCount)
   const templateValues = {
     title: 'Cases',
     healthy: req.healthy,
