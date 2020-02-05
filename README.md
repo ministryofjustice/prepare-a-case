@@ -45,7 +45,7 @@ java -jar wiremock-standalone-2.25.1.jar --global-response-templating --port 909
 
 And then, to build assets and start app with
 ```
-env COURT_CASE_SERVICE_URL=http://127.0.0.1:9091 env CASES_PER_PAGE=5 npx nodemon ./bin/www
+npx nodemon ./bin/www
 ```
 
 ### Run linter
@@ -80,6 +80,11 @@ yarn int-test:ui
 ## Environment variables
 
 ### Court case service
-Default: http://localhost:8082
+Default:  http://127.0.0.1:9091
 
 Specify the court-case-service URL with ```COURT_CASE_SERVICE_URL```
+
+### Cases per page
+Default: 20
+
+Specify the number of cases to display, per page with ```CASES_PER_PAGE```
