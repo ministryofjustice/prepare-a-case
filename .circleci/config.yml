@@ -197,10 +197,10 @@ workflows:
             - build
       - integration_test:
           requires:
-            - test
+            - build
       - build_docker:
           requires:
-            - integration_test
+            - test
           filters:
             branches:
               only: master
