@@ -131,6 +131,7 @@ jobs:
           command: sleep 5
       - run:
           name: Run integration tests
+          halt_build_on_fail: false
           command: yarn int-test
       - store_test_results:
           path: test-results
@@ -197,10 +198,10 @@ workflows:
             - build
       - integration_test:
           requires:
-            - test
+            - build
       - build_docker:
           requires:
-            - integration_test
+            - test
           filters:
             branches:
               only: master
