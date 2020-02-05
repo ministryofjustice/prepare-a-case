@@ -32,34 +32,20 @@
   ]) }}
 {% endfor %}
 
-{% if params.page === 1 %}
-  {% set previousLink = null %}
-{% else %}
-  {% set previousLink = {
-    text: 'Previous',
-    href: '?page=' + (params.page - 1)
-  } %}
-{% endif %}
-
-{% if params.page === totalPages %}
-  {% set nextLink = null %}
-{% else %}
-  {% set nextLink = {
-    text: 'Next',
-    href: '?page=' + (params.page + 1)
-  } %}
-{% endif %}
-
+{% set maxPagesDisplay = 5 %}
 {% set currentPage = params.page %}
-{% set startNum = currentPage - 2 %}
-{% set endNum = currentPage + 2 %}
+{% set startNum = currentPage - ((maxPagesDisplay - 1) / 2) %}
+{% set endNum = currentPage + ((maxPagesDisplay - 1) / 2) %}
 {% set totalPages = (params.total / params.limit) | round(0, "ceil") %}
 
-{% if startNum < 1 %}
+{% if startNum < 1 or totalPages <= maxPagesDisplay %}
   {% set startNum = 1 %}
-  {% set endNum = 5 %}
+  {% set endNum = maxPagesDisplay %}
 {% elif endNum > totalPages %}
-  {% set startNum = totalPages - 4 %}
+  {% set startNum = totalPages - (maxPagesDisplay - 1) %}
+{% endif %}
+
+{% if endNum > totalPages %}
   {% set endNum = totalPages %}
 {% endif %}
 
@@ -71,6 +57,24 @@
     selected: currentPage === i
   }) }}
 {%- endfor %}
+
+{% if currentPage === 1 %}
+  {% set previousLink = null %}
+{% else %}
+  {% set previousLink = {
+    text: 'Previous',
+    href: '?page=' + (currentPage - 1)
+  } %}
+{% endif %}
+
+{% if currentPage === totalPages %}
+  {% set nextLink = null %}
+{% else %}
+  {% set nextLink = {
+    text: 'Next',
+    href: '?page=' + (currentPage + 1)
+  } %}
+{% endif %}
 
 {% extends "partials/layout.njk" %}
 

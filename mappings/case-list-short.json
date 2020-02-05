@@ -18,54 +18,215 @@
       "lastUpdated": "2020-01-02T08:30:00",
       "cases": [
         {
-          "caseId": "1168460",
-          "caseNo": "1600028912",
+          "caseId": 727473,
+          "caseNo": 2291844339,
           "courtCode": "SHF",
-          "courtRoom": "1",
-          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:00:00",
-          "probationStatus": "No record",
-          "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"1st\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"JCONE\", \"def_type\": \"P\", \"offences\": {\"offence\": [{\"as\": \"Contrary to section 1(1) and 7 of the Theft Act 1968.\", \"sum\": \"On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Theft from a shop\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}, {\"as\": \"Contrary to section 1(1) and 7 of the Theft Act 1968.\", \"sum\": \"On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.\", \"code\": \"TH68010\", \"oseq\": 2, \"co_id\": 1142408, \"title\": \"Theft from a shop\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}]}}",
-          "session": "MORNING"
-        },
-        {
-          "caseId": "1168463",
-          "caseNo": "1600028974",
-          "courtCode": "SHF",
-          "courtRoom": "1",
-          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:00:00",
-          "probationStatus": "No record",
-          "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"2nd\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"Mr Joe JMBBLOGGS\", \"def_type\": \"P\", \"offences\": {\"offence\": {\"as\": \"Contrary to section 363(2) and (4) of the Communications Act 2003.\", \"sum\": \"On 05/09/2016 used a colour television receiver without a licence at the above address.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Use a television set without a licence\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}}}",
-          "session": "MORNING"
-        },
-        {
-          "caseId": "1168461",
-          "caseNo": "1600028920",
-          "courtCode": "SHF",
-          "courtRoom": "2",
-          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:00:00",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "probationStatus": "Previously known",
-          "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"1st\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"MR TEST OLLIEONE\", \"def_type\": \"P\", \"offences\": {\"offence\": {\"as\": \"Contrary to section 363(2) and (4) of the Communications Act 2003.\", \"sum\": \"On 05/09/2016 used a colour television receiver without a licence at the above address.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Caused to be published a tobacco advertisement\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}}}",
+          "data": {
+            "inf": "POL01",
+            "c_id": 727473,
+            "cseq": 1,
+            "h_id": 2841938,
+            "type": "C",
+            "valid": "Y",
+            "caseno": 2291844339,
+            "listno": "1st",
+            "def_age": 37,
+            "def_dob": "04-06-1983",
+            "def_sex": "M",
+            "def_addr": {
+              "line1": 33,
+              "line2": "Bergen Place",
+              "line3": "London"
+            },
+            "def_name": "Jonathan Moss",
+            "def_type": "P",
+            "offences": {
+              "offence": {
+                "as": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+                "sum": "On 24/03/2016 at Manchester stole LAPTOP to the value of 300.00, belonging to Whitley Prince.",
+                "code": "TH68010",
+                "oseq": 1,
+                "co_id": 1142407,
+                "title": "Theft from the person of another",
+                "maxpen": "EW: 6M &/or Ultd Fine"
+              }
+            }
+          },
           "session": "MORNING"
         },
         {
-          "caseId": "1168461",
-          "caseNo": "1600028920",
+          "caseId": 656383,
+          "caseNo": 21350795,
           "courtCode": "SHF",
-          "courtRoom": "2",
-          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T13:00:00",
-          "probationStatus": "Current",
-          "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"1st\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"MR TEST OLLIETWO\", \"def_type\": \"P\", \"offences\": {\"offence\": {\"as\": \"Contrary to section 363(2) and (4) of the Communications Act 2003.\", \"sum\": \"On 05/09/2016 used a colour television receiver without a licence at the above address.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Attempt theft from the person of another\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}}}",
-          "session": "AFTERNOON"
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "probationStatus": "Previously known",
+          "data": {
+            "inf": "POL01",
+            "c_id": 656383,
+            "cseq": 2,
+            "h_id": 4596151,
+            "type": "C",
+            "valid": "N",
+            "caseno": 21350795,
+            "listno": "3rd",
+            "def_age": 75,
+            "def_dob": "28-12-1945",
+            "def_sex": "F",
+            "def_addr": {
+              "line1": 47,
+              "line2": "Manhattan Court",
+              "line3": "London"
+            },
+            "def_name": "Beth Rasmussen",
+            "def_type": "P",
+            "offences": {
+              "offence": {
+                "as": "Contrary to section 39 of the Criminal Justice Act 1988.",
+                "sum": "On 01/01/2016 at Leeds assaulted Stout Hebert by beating him.",
+                "code": "TH68010",
+                "oseq": 1,
+                "co_id": 1142407,
+                "title": "Assault by beating",
+                "maxpen": "EW: 6M &/or Ultd Fine"
+              }
+            }
+          },
+          "session": "MORNING"
         },
         {
-          "caseId": "1172464",
-          "caseNo": "1600029145",
+          "caseId": 641332,
+          "caseNo": 3222777831,
           "courtCode": "SHF",
-          "courtRoom": "3",
-          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T13:00:00",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "probationStatus": "Current",
+          "data": {
+            "inf": "POL01",
+            "c_id": 641332,
+            "cseq": 3,
+            "h_id": 7826442,
+            "type": "C",
+            "valid": "Y",
+            "caseno": 3222777831,
+            "listno": "3rd",
+            "def_age": 33,
+            "def_dob": "07-08-1987",
+            "def_sex": "F",
+            "def_addr": {
+              "line1": 29,
+              "line2": "Kent Street",
+              "line3": "Liverpool"
+            },
+            "def_name": "Penelope Brewer",
+            "def_type": "P",
+            "offences": {
+              "offence": [
+                {
+                  "as": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+                  "sum": "On 01/01/2015 at Spacewax, Sheffield, stole ARTWORK to the value of £987.00, belonging to Johnston Sheppard.",
+                  "code": "TH68010",
+                  "oseq": 1,
+                  "co_id": 1142407,
+                  "title": "Theft from a shop",
+                  "maxpen": "EW: 6M &/or Ultd Fine"
+                },
+                {
+                  "as": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+                  "sum": "On 24/03/2016 at Sheffield stole PLAYSTATION 4 to the value of 300.00, belonging to Moss Sykes.",
+                  "code": "TH68010",
+                  "oseq": 1,
+                  "co_id": 1142407,
+                  "title": "Theft from the person of another",
+                  "maxpen": "EW: 6M &/or Ultd Fine"
+                }
+              ]
+            }
+          },
+          "session": "MORNING"
+        },
+        {
+          "caseId": 152283,
+          "caseNo": 7365759595,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "probationStatus": "Previously known",
+          "data": {
+            "inf": "POL01",
+            "c_id": 152283,
+            "cseq": 4,
+            "h_id": 6175504,
+            "type": "C",
+            "valid": "Y",
+            "caseno": 7365759595,
+            "listno": "2nd",
+            "def_age": 34,
+            "def_dob": "13-02-1986",
+            "def_sex": "F",
+            "def_addr": {
+              "line1": 57,
+              "line2": "Meadow Street",
+              "line3": "Sheffield"
+            },
+            "def_name": "Monique Griffin",
+            "def_type": "P",
+            "offences": {
+              "offence": {
+                "as": "Contrary to section 39 of the Criminal Justice Act 1988.",
+                "sum": "On 01/01/2016 at Liverpool assaulted Delaney Payne by beating him.",
+                "code": "TH68010",
+                "oseq": 1,
+                "co_id": 1142407,
+                "title": "Assault by beating",
+                "maxpen": "EW: 6M &/or Ultd Fine"
+              }
+            }
+          },
+          "session": "MORNING"
+        },
+        {
+          "caseId": 211465,
+          "caseNo": 969644878,
+          "courtCode": "SHF",
+          "courtRoom": 7,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "probationStatus": "No record",
-          "data": "{\"inf\": \"POL01\", \"c_id\": 1168460, \"cseq\": 1, \"h_id\": 1246272, \"type\": \"C\", \"valid\": \"Y\", \"caseno\": 1600028912, \"listno\": \"1st\", \"def_age\": 18, \"def_dob\": \"01/01/1998\", \"def_sex\": \"M\", \"def_addr\": {\"line1\": \"a1\", \"line2\": \"a2\", \"line3\": \"a3\"}, \"def_name\": \"DLFOUR\", \"def_type\": \"P\", \"offences\": {\"offence\": {\"as\": \"Contrary to section 363(2) and (4) of the Communications Act 2003.\", \"sum\": \"On 05/09/2016 used a colour television receiver without a licence at the above address.\", \"code\": \"TH68010\", \"oseq\": 1, \"co_id\": 1142407, \"title\": \"Theft from a shop\", \"maxpen\": \"EW: 6M &/or Ultd Fine\"}}}",
-          "session": "AFTERNOON"
+          "data": {
+            "inf": "POL01",
+            "c_id": 211465,
+            "cseq": 5,
+            "h_id": 3911987,
+            "type": "C",
+            "valid": "N",
+            "caseno": 969644878,
+            "listno": "3rd",
+            "def_age": 39,
+            "def_dob": "03-12-1981",
+            "def_sex": "F",
+            "def_addr": {
+              "line1": 103,
+              "line2": "Belmont Avenue",
+              "line3": "Preston"
+            },
+            "def_name": "Melody Abbott",
+            "def_type": "P",
+            "offences": {
+              "offence": {
+                "as": "Contrary to section 39 of the Criminal Justice Act 1988.",
+                "sum": "On 01/01/2016 at London assaulted Simpson Cobb by beating him.",
+                "code": "TH68010",
+                "oseq": 1,
+                "co_id": 1142407,
+                "title": "Assault by beating",
+                "maxpen": "EW: 6M &/or Ultd Fine"
+              }
+            }
+          },
+          "session": "MORNING"
         }
       ]
     }
