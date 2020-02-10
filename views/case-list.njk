@@ -11,7 +11,7 @@
 } %}
 
 {% for item in data %}
-  {% set caseData = item.data %}
+  {% set caseData = item.data | json %}
   {% set offences = [] %}
   {% if caseData.offences.offence.title %}
     {{ offences.push(caseData.offences.offence.title | escape) }}

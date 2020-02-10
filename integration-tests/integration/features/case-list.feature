@@ -10,12 +10,12 @@ Feature: Cases
     And I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following table
-      | Defendant       | Probation status | Offence                          | Listing | Session | Court |
-      | Jonathan Moss   | Previously known | Theft from the person of another | 1st     | Morning | 4     |
-      | Beth Rasmussen  | Previously known | Assault by beating               | 3rd     | Morning | 6     |
-      | Penelope Brewer | Current          | Theft from a shop                | 3rd     | Morning | 4     |
+      | Defendant      | Probation status | Offence                                  | Listing | Session | Court |
+      | Kara Ayers     | No record        | Assault by beating                       | 1st     | Morning | 10    |
+      | Mann Carroll   | No record        | Assault by beating                       | 3rd     | Morning | 2     |
+      | Guadalupe Hess | No record        | Attempt theft from the person of another | 3rd     | Morning | 7     |
     And The following defendant names should be links
-      | Jonathan Moss | Beth Rasmussen | Penelope Brewer |
+      | Kara Ayers | Mann Carroll | Guadalupe Hess |
     And I should see pagination
     And I should not see pagination link "Previous"
     And I should not see pagination link "1"
@@ -34,12 +34,12 @@ Feature: Cases
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following table
-      | Defendant        | Probation status | Offence                                  | Listing | Session | Court |
-      | Annabelle Lowery | Current          | Theft from the person of another         | 2nd     | Morning | 8     |
-      | Matilda Cummings | Previously known | Attempt theft from the person of another | 1st     | Morning | 5     |
-      | Marian Alvarez   | Previously known | Theft from a shop                        | 1st     | Morning | 10    |
+      | Defendant      | Probation status | Offence                          | Listing | Session | Court |
+      | Robert Hardin  | No record        | Theft from the person of another | 3rd     | Morning | 3     |
+      | Vance Landry   | No record        | Theft from the person of another | 3rd     | Morning | 3     |
+      | Kirsten Cotton | Current          | Theft from a shop                | 3rd     | Morning | 4     |
     And The following defendant names should be links
-      | Annabelle Lowery | Matilda Cummings | Marian Alvarez |
+      | Robert Hardin | Vance Landry | Kirsten Cotton |
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=1"
     And I should see pagination link "1" with href "?page=1"
@@ -59,12 +59,12 @@ Feature: Cases
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following table
-      | Defendant        | Probation status | Offence                          | Listing | Session | Court |
-      | Judy Stuart      | No record        | Theft from the person of another | 1st     | Morning | 3     |
-      | Anastasia Willis | Current          | Assault by beating               | 2nd     | Morning | 3     |
-      | Sparks Strong    | Current          | Assault by beating               | 3rd     | Morning | 2     |
+      | Defendant       | Probation status | Offence                                  | Listing | Session | Court |
+      | Amanda Mckay    | Current          | Theft from the person of another         | 3rd     | Morning | 1     |
+      | Perry Delacruz  | No record        | Attempt theft from the person of another | 1st     | Morning | 1     |
+      | Burgess Hartman | Previously known | Theft from a shop                        | 2nd     | Morning | 3     |
     And The following defendant names should be links
-      | Judy Stuart | Anastasia Willis | Sparks Strong |
+      | Amanda Mckay | Perry Delacruz | Burgess Hartman |
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=2"
     And I should see pagination link "1" with href "?page=1"
@@ -85,11 +85,11 @@ Feature: Cases
     And I should see sub navigation with default dates
     And I should see the following table
       | Defendant       | Probation status | Offence                                  | Listing | Session | Court |
-      | Ladonna English | No record        | Assault by beating                       | 2nd     | Morning | 8     |
-      | Rojas Bonner    | Previously known | Attempt theft from the person of another | 3rd     | Morning | 1     |
-      | Carney Solomon  | Previously known | Theft from the person of another         | 1st     | Morning | 8     |
+      | Leticia Santana | Previously known | Assault by beating                       | 3rd     | Morning | 8     |
+      | Maribel Camacho | Previously known | Attempt theft from the person of another | 1st     | Morning | 6     |
+      | Burt Gonzalez   | No record        | Assault by beating                       | 3rd     | Morning | 1     |
     And The following defendant names should be links
-      | Ladonna English | Rojas Bonner | Carney Solomon |
+      | Leticia Santana | Maribel Camacho | Burt Gonzalez |
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=4"
     And I should not see pagination link "1"
@@ -118,12 +118,12 @@ Feature: Cases
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following table
-      | Defendant      | Probation status | Offence                                  | Listing | Session   | Court |
-      | Ortiz Lane     | No record        | Theft from the person of another         | 1st     | Afternoon | 2     |
-      | Mavis Hamilton | Previously known | Theft from the person of another         | 1st     | Afternoon | 2     |
-      | Bright Maynard | No record        | Attempt theft from the person of another | 1st     | Afternoon | 10    |
+      | Defendant         | Probation status | Offence                          | Listing | Session   | Court |
+      | Luisa Alston      | No record        | Theft from a shop                | 3rd     | Afternoon | 3     |
+      | Macdonald Ellison | Previously known | Theft from the person of another | 3rd     | Afternoon | 4     |
+      | Huff Walsh        | No record        | Assault by beating               | 1st     | Afternoon | 4     |
     And The following defendant names should be links
-      | Ortiz Lane | Mavis Hamilton | Bright Maynard |
+      | Luisa Alston | Macdonald Ellison | Huff Walsh |
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=10"
     And I should see pagination link "7" with href "?page=7"
@@ -141,14 +141,14 @@ Feature: Cases
     Then I should be on the "Cases" page
     And I should see the caption "Sheffield Magistrates' Court"
     And I should see the following table
-      | Defendant       | Probation status | Offence                          | Listing | Session | Court |
-      | Jonathan Moss   | Previously known | Theft from the person of another | 1st     | Morning | 4     |
-      | Beth Rasmussen  | Previously known | Assault by beating               | 3rd     | Morning | 6     |
-      | Penelope Brewer | Current          | Theft from a shop                | 3rd     | Morning | 4     |
-      | Monique Griffin | Previously known | Assault by beating               | 2nd     | Morning | 4     |
-      | Melody Abbott   | No record        | Assault by beating               | 3rd     | Morning | 7     |
+      | Defendant      | Probation status | Offence                                  | Listing | Session | Court |
+      | Gill Arnold    | Current          | Theft from the person of another         | 3rd     | Morning | 1     |
+      | Cornelia Mccoy | Previously known | Assault by beating                       | 2nd     | Morning | 1     |
+      | Moses Hawkins  | Current          | Assault by beating                       | 2nd     | Morning | 7     |
+      | Jessie Ray     | No record        | Attempt theft from the person of another | 3rd     | Morning | 1     |
+      | Shelton Lamb   | No record        | Theft from the person of another         | 3rd     | Morning | 8     |
     And The following defendant names should be links
-      | Jonathan Moss | Beth Rasmussen | Penelope Brewer | Monique Griffin | Melody Abbott |
+      | Gill Arnold | Cornelia Mccoy | Moses Hawkins | Jessie Ray | Shelton Lamb |
     And I should not see pagination
     And There should be no a11y violations
 
