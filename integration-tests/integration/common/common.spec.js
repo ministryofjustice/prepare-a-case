@@ -53,6 +53,10 @@ And('I should see the body text {string}', $text => {
   cy.get('.govuk-body').contains($text)
 })
 
+And('I should see the body text {string} in bold', $text => {
+  cy.get('.govuk-body').contains($text).should('exist').should('have.attr', 'class').and('include', 'govuk-!-font-weight-bold')
+})
+
 And('I should see the caption text {string}', $text => {
   cy.get('.govuk-caption-m').contains($text)
 })
