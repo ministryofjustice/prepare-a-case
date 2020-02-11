@@ -5,13 +5,3 @@ $govuk-brand-colour: #204060;
 @import "node_modules/govuk-frontend/govuk/all";
 @import "node_modules/@ministryofjustice/frontend/moj/all";
 @import "app/all";
-
-// 'pac' prefix used for custom styles to prevent collisions
-.pac-last-updated {
-    @include govuk-media-query($from: tablet) {
-        top: 12px;
-        float: right;
-        position: relative;
-        @include govuk-clearfix;
-    }
-}

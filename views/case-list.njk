@@ -32,6 +32,50 @@
   ]) }}
 {% endfor %}
 
+{% set maxPagesDisplay = 5 %}
+{% set currentPage = params.page %}
+{% set startNum = currentPage - ((maxPagesDisplay - 1) / 2) %}
+{% set endNum = currentPage + ((maxPagesDisplay - 1) / 2) %}
+{% set totalPages = (params.total / params.limit) | round(0, "ceil") %}
+
+{% if startNum < 1 or totalPages <= maxPagesDisplay %}
+  {% set startNum = 1 %}
+  {% set endNum = maxPagesDisplay %}
+{% elif endNum > totalPages %}
+  {% set startNum = totalPages - (maxPagesDisplay - 1) %}
+{% endif %}
+
+{% if endNum > totalPages %}
+  {% set endNum = totalPages %}
+{% endif %}
+
+{% set pageItems = [] %}
+{% for i in range(startNum, endNum + 1) -%}
+  {{ pageItems.push({
+    text: i,
+    href: '?page=' + i,
+    selected: currentPage === i
+  }) }}
+{%- endfor %}
+
+{% if currentPage === 1 %}
+  {% set previousLink = null %}
+{% else %}
+  {% set previousLink = {
+    text: 'Previous',
+    href: '?page=' + (currentPage - 1)
+  } %}
+{% endif %}
+
+{% if currentPage === totalPages %}
+  {% set nextLink = null %}
+{% else %}
+  {% set nextLink = {
+    text: 'Next',
+    href: '?page=' + (currentPage + 1)
+  } %}
+{% endif %}
+
 {% extends "partials/layout.njk" %}
 
 {% block content %}
@@ -75,7 +119,6 @@
     {% endblock %}
   {% endif %}
 
-
   {% if tableData.rows | length %}
     {% block table %}
       {%- from "govuk/components/table/macro.njk" import govukTable -%}
@@ -83,6 +126,22 @@
     {% endblock %}
   {% else %}
     <p class="govuk-body">No case data available for this day.</p>
+  {% endif %}
+
+  {% if totalPages > 1 %}
+  {% block pagination %}
+    {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+    {{ mojPagination({
+      results: {
+        from: params.from + 1,
+        to: params.to,
+        count: params.total
+      },
+      previous: previousLink,
+      next: nextLink,
+      items: pageItems
+    }) }}
+  {% endblock %}
   {% endif %}
 
 {% endblock %}

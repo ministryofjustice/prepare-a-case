@@ -1,0 +1,9 @@
+// 'pac' prefix used for custom styles to prevent collisions
+.pac-last-updated {
+  @include govuk-media-query($from: tablet) {
+    top: 12px;
+    float: right;
+    position: relative;
+    @include govuk-clearfix;
+  }
+}

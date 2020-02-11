@@ -17,19 +17,25 @@ router.get('/cases/:date', health, defaults, async (req, res) => {
     response = await axios.get(`${req.params.apiUrl}/court/${req.params.courtCode}/cases?date=${req.params.date}`)
   } catch (e) {
     console.error(e)
-    // Silent as issue should be caught by health middleware
+    // Silent as issue should be caught by health middleware and the user should be suitably notified
   }
 
   const params = req.params
-
+  const totalCount = (response.data && response.data.cases && response.data && response.data.cases.length) || 0
+  const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * params.limit
+  const endCount = Math.min(startCount + parseInt(params.limit, 10), totalCount)
   const templateValues = {
     title: 'Cases',
     healthy: req.healthy,
     params: {
+      page: parseInt(req.query.page, 10) || 1,
+      from: startCount,
+      to: endCount,
+      total: totalCount,
       lastUpdated: response.data ? response.data.lastUpdated : '',
       ...params
     },
-    data: response.data ? response.data.cases : []
+    data: (response.data && response.data.cases && response.data.cases.slice(startCount, endCount)) || []
   }
   res.render('case-list', templateValues)
 })

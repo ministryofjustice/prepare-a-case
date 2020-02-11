@@ -5,3 +5,7 @@
 .moj-sub-navigation__link {
   @extend .govuk-link--no-visited-state;
 }
+
+.moj-pagination__results {
+  @extend .govuk-body;
+}
