@@ -72,7 +72,7 @@ describe('Routes', () => {
     moxios.stubRequest('http://court_case_service.url/court/SHF/case/8678951874', {
       status: 200,
       response: {
-        data: ""
+        data: ''
       }
     })
 
