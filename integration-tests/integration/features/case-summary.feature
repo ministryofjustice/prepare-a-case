@@ -3,6 +3,16 @@ Feature: Case summry
   As a registered user
   I want to see a case summary view
 
+  Scenario: View the case summary for the given defendant by clicking the link on the case list page
+    Given I am a registered user
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+    And I should see the heading "Cases"
+    And I should see the caption "Sheffield Magistrates' Court"
+    When I click the "Kara Ayers" link
+    Then I should be on the "Case details" page
+    And I should see the heading "Kara Ayers"
+
   Scenario: View the case summary for the given defendant with no probation record
     Given I am a registered user
     When I navigate to the "case/8678951874/details" route
