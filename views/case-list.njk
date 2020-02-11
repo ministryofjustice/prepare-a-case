@@ -15,7 +15,7 @@
   {% set offences = [] %}
   {% if caseData.offences.offence.title %}
     {{ offences.push(caseData.offences.offence.title | escape) }}
-    {% elif caseData.offences.offence | length %}
+  {% elif caseData.offences.offence | length %}
     {{ offences.push('<ol class="govuk-list govuk-list--number govuk-!-margin-bottom-0">') }}
     {% for offence in caseData.offences.offence %}
       {{ offences.push('<li>' + offence.title |  escape + '</li>') }}
@@ -23,7 +23,7 @@
     {{ offences.push('</ol>') }}
   {% endif %}
   {{ tableData.rows.push([
-    { text: ('<a href="#" class="govuk-link govuk-link--no-visited-state">' + caseData.def_name | escape + '</a>') | safe },
+    { text: ('<a href="/case/' + caseData.caseno + '/details" class="govuk-link govuk-link--no-visited-state">' + caseData.def_name | escape + '</a>') | safe },
     { text: (item.probationStatus + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + params.moment(item.previouslyKnownTerminationDate).format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate)) | safe },
     { text: offences | join('') | safe },
     { text: caseData.listno },

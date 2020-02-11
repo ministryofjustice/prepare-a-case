@@ -1,0 +1,24 @@
+<section class="pac-key-details-bar" aria-label="Key details">
+  <div class="pac-key-details-bar__key-details">
+    <div class="pac-key-details-bar__top-block">
+      <h1 class="pac-key-details-bar__name">{% if params.accTitle %}<span class="govuk-visually-hidden">{{ params.accTitle }}</span>{% endif %}{{ params.title }}</h1>
+      {% if params.nino %}
+        <span class="pac-key-details-bar__nino">{{ params.nino }}</span>
+      {% endif %}
+      {% if params.alerts | length %}
+        {% for alert in params.alerts %}
+          <span class="pac-key-details-bar__status govuk-!-margin-left-2" role="{% if alert.important %}alert{% else %}status{% endif %}">
+            <span class="govuk-visually-hidden">{{ alert.description }} </span>{{ alert.title }}
+          </span>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="pac-key-details-bar__bottom-block">
+      {% if params.information | length %}
+        {% for item in params.information %}
+          <span class="govuk-body govuk-!-margin-right-6">{{ item }}</span>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>

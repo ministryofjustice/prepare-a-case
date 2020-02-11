@@ -1,0 +1,71 @@
+.pac-key-details-bar {
+  background-color: $govuk-brand-colour;
+
+  * {
+    color: govuk-colour("white");
+  }
+
+  &__top-block, &__bottom-block {
+    @extend .govuk-clearfix;
+  }
+
+  &__bottom-block {
+    margin-top: 10px;
+  }
+
+  &__key-details {
+    @include moj-width-container;
+    margin: 0 auto;
+    padding: 20px 0;
+    @media(max-width: 670px) {
+      padding: 20px 15px;
+    }
+  }
+
+  &__status {
+    @include govuk-font(16);
+    font-weight: 700;
+    line-height: 1.25;
+    padding: 5px 8px;
+    color: $govuk-brand-colour;
+    background-color: govuk-colour("white");
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    float: right;
+    margin: 5px 0 0;
+
+    @media(max-width: 670px) {
+      @include govuk-font(14);
+      float: left;
+      clear: both;
+      margin-top: 5px;
+    }
+  }
+
+  &__nino {
+    @include govuk-font(19);
+    line-height: 1;
+    margin-top: 12px;
+    @media(max-width: 670px) {
+      @include govuk-font(16);
+      float: left;
+      margin: 5px 0 0 0;
+    }
+  }
+
+  &__name {
+    @include govuk-font(24);
+    font-weight: 700;
+    line-height: 1.11111;
+    margin: 0 10px 0 0;
+    margin-inline-start: 0;
+    display: inline-block;
+    @media(max-width: 670px) {
+      @include govuk-font(24);
+      line-height: 1.04167;
+      float: left;
+      margin: 0 5px 0 0;
+    }
+  }
+}

@@ -67,4 +67,27 @@ describe('Routes', () => {
     expect(moxios.requests.mostRecent().url).toBe('http://court_case_service.url/court/SHF/cases?date=2020-01-01')
     return response
   })
+
+  it('case summary route should call the API to fetch case data', async () => {
+    moxios.stubRequest('http://court_case_service.url/court/SHF/case/8678951874', {
+      status: 200,
+      response: {
+        data: ''
+      }
+    })
+
+    const response = await request(app).get('/case/8678951874/details')
+    expect(moxios.requests.mostRecent().url).toBe('http://court_case_service.url/court/SHF/case/8678951874')
+    return response
+  })
+
+  it('should fail silently if the case list API is down', async () => {
+    moxios.stubRequest('http://court_case_service.url/court/SHF/case/8678951874', {
+      status: 500
+    })
+
+    const response = await request(app).get('/case/8678951874/details')
+    expect(moxios.requests.mostRecent().url).toBe('http://court_case_service.url/court/SHF/case/8678951874')
+    return response
+  })
 })
