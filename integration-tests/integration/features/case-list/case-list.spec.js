@@ -36,6 +36,18 @@ And('I should not see the table list', () => {
   cy.get('.govuk-table').should('not.exist')
 })
 
+And('I see defendant "MR TEST OLLIEONE"', $data => {
+  cy.get('.govuk-table__body').contains('td', 'OLLIEONE')
+})
+
+And('I should see the defendant has a probation status of "Previously known"', () => {
+  cy.get('.govuk-table__body').contains('td', 'Previously known').should('be.visible')
+})
+
+Then('I should see previously known termination date', () => {
+  cy.get('[data-cy=previously-known-termination-date]').contains('Order ended 1 January 2010')
+})
+
 Then('Display “last updated” time with a timestamp of the most recent Libra data', () => {
   const formattedDate = moment().format(dateFormat)
   cy.get('.pac-last-updated').contains(`Last updated ${formattedDate} at 08:30`)
