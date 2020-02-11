@@ -32,12 +32,50 @@ And('The following defendant names should be links', $data => {
   })
 })
 
+Then('Display “last updated” time with a timestamp of the most recent Libra data', () => {
+  const formattedDate = moment().format(dateFormat)
+  cy.get('.pac-last-updated').contains(`Last updated ${formattedDate} at 08:30`)
+})
+
+And('I should see pagination text {string}', $string => {
+  cy.get('.moj-pagination__results').contains($string)
+})
+
 And('I should not see the table list', () => {
   cy.get('.govuk-table').should('not.exist')
 })
 
-And('I see defendant "MR TEST OLLIEONE"', $data => {
-  cy.get('.govuk-table__body').contains('td', 'OLLIEONE')
+Then('Display “last updated” time with a timestamp of the most recent Libra data', () => {
+  const formattedDate = moment().format(dateFormat)
+  cy.get('.pac-last-updated').contains(`Last updated ${formattedDate} at 08:30`)
+})
+
+And('I should see pagination', () => {
+  cy.get('.moj-pagination').should('exist')
+})
+
+And('I should see pagination link {string} with href {string}', ($string, $href) => {
+  cy.get('.moj-pagination__link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+})
+
+And('I should see pagination page {string} highlighted', $string => {
+  cy.get('.moj-pagination__item--active').contains($string).should('exist')
+})
+
+And('I should not see pagination link {string}', $string => {
+  cy.get('.moj-pagination__link').contains($string).should('not.exist')
+})
+
+And('I should not see pagination', () => {
+  cy.get('.moj-pagination').should('not.exist')
+})
+
+And('I click pagination link {string}', $string => {
+  cy.get('.moj-pagination__link').contains($string).click()
+})
+
+And('I see defendant "Webb Mitchell"', $data => {
+  cy.get('.govuk-table__body').contains('td', 'Webb Mitchell')
 })
 
 And('I should see the defendant has a probation status of "Previously known"', () => {
@@ -45,10 +83,5 @@ And('I should see the defendant has a probation status of "Previously known"', (
 })
 
 Then('I should see previously known termination date', () => {
-  cy.get('[data-cy=previously-known-termination-date]').contains('Order ended 1 January 2010')
-})
-
-Then('Display “last updated” time with a timestamp of the most recent Libra data', () => {
-  const formattedDate = moment().format(dateFormat)
-  cy.get('.pac-last-updated').contains(`Last updated ${formattedDate} at 08:30`)
+  cy.get('[data-cy=previously-known-termination-date]').contains('Order ended 13 December 2007')
 })

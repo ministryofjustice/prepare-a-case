@@ -39,6 +39,7 @@ app.use('/assets', [
   express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')),
   express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets'))
 ])
+app.use('/moj', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj')))
 app.use('/govuk', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk')))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', viewRouter)
