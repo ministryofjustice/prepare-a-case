@@ -166,3 +166,10 @@ Feature: Cases
     Given I am a registered user
     When I view the court list
     Then Display “last updated” time with a timestamp of the most recent Libra data
+
+  Scenario: A user needs to see the closing date of a users previous order
+    Given I am a registered user
+    When I view the court list
+    And I see defendant "Webb Mitchell"
+    And I should see the defendant has a probation status of "Previously known"
+    Then I should see previously known termination date
