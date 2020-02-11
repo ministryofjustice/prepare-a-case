@@ -1,0 +1,37 @@
+{% extends "partials/case-details.njk" %}
+
+{% block caseContent %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <h2 class="govuk-heading-m">Appearance</h2>
+            <p class="govuk-body">Court room {{ data.courtRoom }}
+                on {{ params.moment(data.sessionStartTime).format(dateFormat) }}, {{ data.session | lower }}
+                session.</p>
+
+            <h2 class="govuk-heading-m">Offences</h2>
+
+            {% if data.caseData.offences.offence.title %}
+                <p class="govuk-body govuk-!-font-weight-bold">{{ data.caseData.offences.offence.title }}</p>
+                <p class="govuk-body govuk-!-margin-bottom-0">{{ data.caseData.offences.offence.sum }}</p>
+                <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-8">{{ data.caseData.offences.offence.as }}</p>
+                {% elif data.caseData.offences.offence | length %}
+                {% for offence in data.caseData.offences.offence %}
+                    <p class="govuk-body govuk-!-font-weight-bold">{{ offence.title }}</p>
+                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.sum }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-8">{{ offence.as }}</p>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+        <div class="govuk-grid-column-one-third">
+
+            <h3 class="govuk-heading-s">CPS pack</h3>
+            <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">View CPS Pack (opens in
+                    Court Store)</a></p>
+
+        </div>
+    </div>
+
+{% endblock %}
