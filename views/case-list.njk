@@ -10,6 +10,8 @@
   rows: []
 } %}
 
+
+
 {% for item in data %}
   {% set caseData = item.data | json %}
   {% set offences = [] %}
@@ -24,7 +26,7 @@
   {% endif %}
   {{ tableData.rows.push([
     { text: ('<a href="#" class="govuk-link govuk-link--no-visited-state">' + caseData.def_name | escape + '</a>') | safe },
-    { text: (item.probationStatus + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + params.moment(item.previouslyKnownTerminationDate).format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate)) | safe },
+    { text: (('<span class="moj-badge moj-badge--black pac-suspended-sentence">Sso</span>' | safe if item.suspendedSentenceOrder) + item.probationStatus + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + params.moment(item.previouslyKnownTerminationDate).format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate)) | safe },
     { text: offences | join('') | safe },
     { text: caseData.listno },
     { text: item.session | capitalize },
