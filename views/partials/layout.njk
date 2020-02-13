@@ -68,11 +68,13 @@
       {
         text: 'Cases',
         href: '/cases',
-        active: title === 'Cases'
+        active: title === 'Cases' or title === 'Case details' or title === 'Person' or title === 'Probation record' or title === 'Risk registers'
       }
     ]
   }) }}
 {% endblock %}
+
+{% block keydetails %}{% endblock %}
 
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content" role="main">

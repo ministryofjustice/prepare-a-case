@@ -1,0 +1,26 @@
+{
+  "id": "73d0aa46-f1de-4406-b5b8-17e4b140e50a",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z]*)/case/1755252276"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "caseId": 786150,
+      "caseNo": 1755252276,
+      "courtCode": "SHF",
+      "courtRoom": 5,
+      "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+      "probationStatus": "No record",
+      "crn": "",
+      "pnc": "A/1234560BA",
+      "rosh": "",
+      "data": "{\"inf\":\"POL01\",\"c_id\":786150,\"cseq\":4,\"h_id\":1819125,\"type\":\"C\",\"valid\":\"Y\",\"caseno\":1755252276,\"listno\":\"3rd\",\"def_age\":42,\"def_dob\":\"18-07-1978\",\"def_sex\":\"M\",\"def_addr\":{\"line1\":96,\"line2\":\"Hamilton Avenue\",\"line3\":\"Manchester\"},\"def_name\":\"Rodriquez Rodgers\",\"def_type\":\"P\",\"offences\":{\"offence\":[{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 24/03/2016 at Bangor stole NINTENDO SWITCH to the value of 300.00, belonging to Bray Andrews.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 01/01/2015 at Zentury, Liverpool, stole COMPUTER to the value of £987.00, belonging to Abbott Best.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from a shop\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 24/03/2016 at Edinburgh stole PLAYSTATION 4 to the value of 300.00, belonging to Guerrero Goff.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}]}}",
+      "session": "MORNING"
+    }
+  }
+}

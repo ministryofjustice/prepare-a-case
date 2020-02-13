@@ -7,6 +7,7 @@ Feature: Cases
     Given I am a registered user
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
+    And I should see the heading "Cases"
     And I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following table
@@ -30,6 +31,7 @@ Feature: Cases
     Given I am a registered user
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
+    And I should see the heading "Cases"
     And I click pagination link "2"
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
@@ -55,6 +57,7 @@ Feature: Cases
     Given I am a registered user
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
+    And I should see the heading "Cases"
     And I click pagination link "3"
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
@@ -80,6 +83,7 @@ Feature: Cases
     Given I am a registered user
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
+    And I should see the heading "Cases"
     And I click pagination link "5"
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
@@ -111,6 +115,7 @@ Feature: Cases
     Given I am a registered user
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
+    And I should see the heading "Cases"
     And I click pagination link "5"
     And I click pagination link "7"
     And I click pagination link "9"
@@ -139,6 +144,7 @@ Feature: Cases
     Given I am a registered user
     When I navigate to the "cases/2020-01-02" route
     Then I should be on the "Cases" page
+    And I should see the heading "Cases"
     And I should see the caption "Sheffield Magistrates' Court"
     And I should see the following table
       | Defendant      | Probation status | Offence                                  | Listing | Session | Court |
@@ -156,6 +162,7 @@ Feature: Cases
     Given I am a registered user
     When I navigate to the "cases/2020-01-01" route
     Then I should be on the "Cases" page
+    And I should see the heading "Cases"
     And I should see the caption "Sheffield Magistrates' Court"
     And I should not see the table list
     And I should see the body text "No case data available for this day."
@@ -179,3 +186,4 @@ Feature: Cases
     When I view the court list
     And I see defendant "Webb Mitchell"
     Then the flag SSO appears above the defendants probation status
+

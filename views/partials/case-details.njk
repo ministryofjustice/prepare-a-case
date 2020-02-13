@@ -1,0 +1,66 @@
+{% extends "./layout.njk" %}
+
+{% set dateFormat = 'dddd D MMM' %}
+
+{% set subNavItems = [{
+    text: 'Case details',
+    href: '/case/' + data.caseNo + '/details',
+    active: title === 'Case details'
+}, {
+    text: 'Person',
+    href: '/case/' + data.caseNo + '/person',
+    active: title === 'Person'
+}] %}
+
+{% if data.probationStatus !== 'No record' %}
+    {{ subNavItems.push({
+        text: 'Probation record',
+        href: '/case/' + data.caseNo + '/record',
+        active: title === 'Probation record'
+    }) }}
+    {{ subNavItems.push({
+        text: 'Risk registers',
+        href: '/case/' + data.caseNo + '/risk',
+        active: title === 'Risk registers'
+    }) }}
+{% endif %}
+
+{% set alerts = [] %}
+{{ alerts.push({
+    description: "Status from nDelius:",
+    title: "Current offender"
+}) if data.probationStatus === 'Current' }}
+
+{{ alerts.push({
+    description: "Risk register from nDelius:",
+    title: data.rosh + " Risk of Serious Harm",
+    important: true
+}) if data.rosh }}
+
+{% set offenderInfo = ["Date of birth: " + data.caseData.def_dob] %}
+{{ offenderInfo.push("CRN: " + data.crn) if data.crn }}
+{{ offenderInfo.push("PNC: " + data.pnc) if data.pnc }}
+
+{% block keydetails %}
+
+    {%- from "components/key-details-bar/macro.njk" import pacKeyDetailsBar -%}
+    {{ pacKeyDetailsBar({
+        accTitle: "Defendant: ",
+        title: data.caseData.def_name,
+        information: offenderInfo,
+        alerts: alerts
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+    {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
+    {{ mojSubNavigation({
+        label: 'Sub navigation',
+        items: subNavItems
+    }) }}
+
+    {% block caseContent %}{% endblock %}
+
+{% endblock %}

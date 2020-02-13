@@ -44,4 +44,43 @@ router.get('/cases', async (req, res) => {
   res.redirect(`/cases/${moment().format('YYYY-MM-DD')}`)
 })
 
+router.get('/case/:caseNo/:detail', health, defaults, async (req, res) => {
+  let template
+  let response = {}
+  try {
+    response = await axios.get(`${req.params.apiUrl}/court/${req.params.courtCode}/case/${req.params.caseNo}`)
+  } catch (e) {
+    console.error(e)
+    // Silent as issue should be caught by health middleware and the user should be suitably notified
+  }
+  const templateValues = {
+    healthy: req.healthy,
+    params: {
+      ...req.params
+    },
+    data: {
+      ...response.data,
+      caseData: response.data && response.data.data ? JSON.parse(response.data.data) : {}
+    }
+  }
+  switch (req.params.detail) {
+    case 'person':
+      templateValues.title = 'Person'
+      template = 'case-summary-person'
+      break
+    case 'record':
+      templateValues.title = 'Probation record'
+      template = 'case-summary-record'
+      break
+    case 'risk':
+      templateValues.title = 'Risk registers'
+      template = 'case-summary-risk'
+      break
+    default:
+      templateValues.title = 'Case details'
+      template = 'case-summary'
+  }
+  res.render(template, templateValues)
+})
+
 module.exports = router
