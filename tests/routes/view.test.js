@@ -69,7 +69,6 @@ describe('Routes', () => {
   })
 
   describe('Case summary', () => {
-
     beforeEach(() => {
       moxios.stubRequest('http://court_case_service.url/court/SHF/case/8678951874', {
         status: 200,

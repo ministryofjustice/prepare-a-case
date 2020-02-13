@@ -33,8 +33,7 @@
 
 {{ alerts.push({
     description: "Risk register from nDelius:",
-    title: data.rosh + " Risk of Serious Harm",
-    important: true
+    title: data.rosh + " Risk of Serious Harm"
 }) if data.rosh }}
 
 {% set offenderInfo = ["Date of birth: " + params.moment(data.caseData.def_dob, 'DD-MM-YYYY').format('DD/MM/YYYY')] %}
