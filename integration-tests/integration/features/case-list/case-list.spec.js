@@ -87,5 +87,5 @@ Then('I should see previously known termination date', () => {
 })
 
 Then('the flag SSO appears above the defendants probation status', () => {
-  cy.get('.pac_suspended-sentence').should('exist')
+  cy.get('.pac-suspended-sentence').should('exist')
 })
