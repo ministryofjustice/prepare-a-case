@@ -1,6 +1,7 @@
 /* global cy */
 import { And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import 'cypress-axe'
+import moment from 'moment'
 
 Given('I am a registered user', () => {
   // @TODO: Implement registered user test
@@ -53,6 +54,10 @@ And('I should see the body text {string}', $text => {
   cy.get('.govuk-body').contains($text)
 })
 
+And('I should see the body text {string} with date today', $text => {
+  cy.get('.govuk-body').contains($text.replace('TODAY', moment().format('dddd D MMM')))
+})
+
 And('I should see the body text {string} in bold', $text => {
   cy.get('.govuk-body').contains($text).should('exist').should('have.attr', 'class').and('include', 'govuk-!-font-weight-bold')
 })
@@ -69,6 +74,10 @@ And('I should see sub navigation with the following links', $data => {
   $data.raw()[0].forEach((text, index) => {
     cy.get('.moj-sub-navigation__link').eq(index).contains(text)
   })
+})
+
+When('I click the sub navigation with {string} text', $string => {
+  cy.get('.moj-sub-navigation__link').contains($string).click()
 })
 
 When('I click the {string} link', $string => {

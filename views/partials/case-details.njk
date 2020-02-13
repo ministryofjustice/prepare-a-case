@@ -37,7 +37,7 @@
     important: true
 }) if data.rosh }}
 
-{% set offenderInfo = ["Date of birth: " + data.caseData.def_dob] %}
+{% set offenderInfo = ["Date of birth: " + params.moment(data.caseData.def_dob, 'DD-MM-YYYY').format('DD/MM/YYYY')] %}
 {{ offenderInfo.push("CRN: " + data.crn) if data.crn }}
 {{ offenderInfo.push("PNC: " + data.pnc) if data.pnc }}
 
