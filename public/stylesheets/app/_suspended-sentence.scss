@@ -1,0 +1,7 @@
+// 'pac' prefix used for custom styles to prevent collisions
+.pac-suspended-sentence {
+  @include govuk-media-query($from: tablet) {
+    display: block;
+    max-width: 35px;
+  }
+}

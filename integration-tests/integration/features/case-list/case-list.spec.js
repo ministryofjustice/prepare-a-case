@@ -85,3 +85,7 @@ And('I should see the defendant has a probation status of "Previously known"', (
 Then('I should see previously known termination date', () => {
   cy.get('[data-cy=previously-known-termination-date]').contains('Order ended 13 December 2007')
 })
+
+Then('the flag SSO appears above the defendants probation status', () => {
+  cy.get('.pac-suspended-sentence').should('exist')
+})
