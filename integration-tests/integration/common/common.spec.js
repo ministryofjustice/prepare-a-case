@@ -1,6 +1,7 @@
 /* global cy */
 import { And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import 'cypress-axe'
+import moment from 'moment'
 
 Given('I am a registered user', () => {
   // @TODO: Implement registered user test
@@ -51,6 +52,11 @@ And('There should be no a11y violations', () => {
 
 And('I should see the body text {string}', $text => {
   cy.get('.govuk-body').contains($text)
+})
+
+And('I should see the session is in Court room {string} this morning', $text => {
+  const date = moment().format('dddd DD MMM')
+  cy.get('.govuk-body').contains(`Court room ${$text} on ${date}, morning session.`)
 })
 
 And('I should see the body text {string} in bold', $text => {
