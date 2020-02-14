@@ -28,6 +28,7 @@ Feature: Case summry
       | CPS pack |
     And I should see link "View CPS Pack (opens in Court Store)" with href "#"
     And I should see the body text "Court room 10 on Friday 14 Feb, morning session."
+    And I should see the body text "Court room 10 on Thursday 13 Feb, morning session."
     And I should see the body text "Assault by beating" in bold
     And I should see the body text "On 01/01/2016 at Newcastle assaulted Short Pearson by beating him."
     And I should see the caption text "Contrary to section 39 of the Criminal Justice Act 1988."
@@ -49,6 +50,7 @@ Feature: Case summry
       | CPS pack |
     And I should see link "View CPS Pack (opens in Court Store)" with href "#"
     And I should see the body text "Court room 8 on Friday 14 Feb, morning session."
+    And I should see the body text "Court room 8 on Thursday 13 Feb, morning session."
     And I should see the body text "Theft from the person of another" in bold
     And I should see the body text "On 24/03/2016 at Edinburgh stole PLAYSTATION 4 to the value of 300.00, belonging to Dillard Everett."
     And I should see the caption text "Contrary to section 1(1) and 7 of the Theft Act 1968."
@@ -72,6 +74,7 @@ Feature: Case summry
       | CPS pack |
     And I should see link "View CPS Pack (opens in Court Store)" with href "#"
     And I should see the body text "Court room 6 on Friday 14 Feb, morning session."
+    And I should see the body text "Court room 6 on Thursday 13 Feb, morning session."
     And I should see the body text "Attempt theft from the person of another" in bold
     And I should see the body text "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Clemons Barron."
     And I should see the caption text "Contrary to section 1(1) of the Criminal Attempts Act 1981."
