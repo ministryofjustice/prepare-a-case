@@ -54,8 +54,9 @@ And('I should see the body text {string}', $text => {
   cy.get('.govuk-body').contains($text)
 })
 
-And('I should see the body text {string} with date today', $text => {
-  cy.get('.govuk-body').contains($text.replace('TODAY', moment().format('dddd D MMM')))
+And('I should see the session is in Court room {string} this morning', $text => {
+  const date = moment().format('dddd DD MMM')
+  cy.get('.govuk-body').contains(`Court room ${$text} on ${date}, morning session.`)
 })
 
 And('I should see the body text {string} in bold', $text => {

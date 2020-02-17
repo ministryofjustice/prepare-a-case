@@ -180,3 +180,9 @@ Feature: Case list
     And I see defendant "Webb Mitchell"
     And I should see the defendant has a probation status of "Previously known"
     Then I should see previously known termination date
+
+  Scenario: A user needs to know if a defendant has a suspended sentence order
+    Given I am a registered user
+    When I view the court list
+    And I see defendant "Webb Mitchell"
+    Then the flag SSO appears above the defendants probation status
