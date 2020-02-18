@@ -1,6 +1,6 @@
 {% extends "partials/case-details.njk" %}
 
-{%- set probationData = data.probationData -%}
+{%- set communityData = data.communityData -%}
 {%- set caseData = data.caseData -%}
 
 {% block caseContent %}
@@ -8,7 +8,7 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
-            <h2 class="govuk-heading-m">Defendant details</h2>
+            <h2 class="govuk-heading-m">Personal details from charge</h2>
 
             <table class="govuk-table">
                 <tbody class="govuk-table__body">
@@ -45,31 +45,31 @@
 
             {% if data.probationStatus !== 'No record' %}
 
-                <h2 class="govuk-heading-m govuk-!-margin-top-8">Offender record details</h2>
+                <h2 class="govuk-heading-m govuk-!-margin-top-8">Personal details from Probation Service</h2>
 
                 <table class="govuk-table">
                     <tbody class="govuk-table__body">
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header govuk-!-width-one-half">Aliases</th>
-                        <td class="govuk-table__cell govuk-!-width-one-half">{{ "Yes (" + probationData.offenderAliases | length + ")" if probationData.offenderAliases | length else "No" }}</td>
+                        <td class="govuk-table__cell govuk-!-width-one-half">{{ "Yes (" + communityData.offenderAliases | length + ")" if communityData.offenderAliases | length else "No" }}</td>
                     </tr>
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">NI Number</th>
-                        <td class="govuk-table__cell">{{ probationData.otherIds.niNumber or "Unknown" }}</td>
+                        <td class="govuk-table__cell">{{ communityData.otherIds.niNumber or "Unknown" }}</td>
                     </tr>
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Ethnicity</th>
-                        <td class="govuk-table__cell">{{ probationData.offenderProfile.ethnicity or "Unknown" }}</td>
+                        <td class="govuk-table__cell">{{ communityData.offenderProfile.ethnicity or "Unknown" }}</td>
                     </tr>
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Interpreter required</th>
-                        <td class="govuk-table__cell">{{ "Yes" if probationData.offenderProfile.offenderLanguages.requiresInterpreter === true else "No" }}</td>
+                        <td class="govuk-table__cell">{{ "Yes" if communityData.offenderProfile.offenderLanguages.requiresInterpreter === true else "No" }}</td>
                     </tr>
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Disability status</th>
                         <td class="govuk-table__cell">
-                            {% if probationData.offenderProfile.disabilities | length %}
-                                {%- for disability in probationData.offenderProfile.disabilities if probationData.offenderProfile.disabilities | length %}
+                            {% if communityData.offenderProfile.disabilities | length %}
+                                {%- for disability in communityData.offenderProfile.disabilities if communityData.offenderProfile.disabilities | length %}
                                     {{ disability.disabilityType.description }}<br/>
                                 {% endfor -%}
                             {% else %}
@@ -81,7 +81,7 @@
                         <th scope="col" class="govuk-table__header">Telephone</th>
                         <td class="govuk-table__cell">
                             {%- set telNumber = "Unknown" -%}
-                                {%- for phone in probationData.contactDetails.phoneNumbers %}
+                                {%- for phone in communityData.contactDetails.phoneNumbers %}
                                     {% if phone.type === 'TELEPHONE' and telNumber === 'Unknown' %}
                                         {%- set telNumber = phone.number -%}
                                     {% endif %}
@@ -91,13 +91,13 @@
                     </tr>
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Email</th>
-                        <td class="govuk-table__cell">{{ probationData.contactDetails.emailAddresses[0] or "Unknown" }}</td>
+                        <td class="govuk-table__cell">{{ communityData.contactDetails.emailAddresses[0] or "Unknown" }}</td>
                     </tr>
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Mobile</th>
                         <td class="govuk-table__cell">
                             {%- set mobileNumber = "Unknown" -%}
-                                {%- for phone in probationData.contactDetails.phoneNumbers %}
+                                {%- for phone in communityData.contactDetails.phoneNumbers %}
                                     {% if phone.type === 'MOBILE' and mobileNumber === 'Unknown' %}
                                         {%- set mobileNumber = phone.number -%}
                                     {% endif %}
@@ -108,8 +108,8 @@
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Address</th>
                         <td class="govuk-table__cell">
-                            {% if probationData.contactDetails.addresses | length %}
-                                {%- set address = probationData.contactDetails.addresses[0] -%}
+                            {% if communityData.contactDetails.addresses | length %}
+                                {%- set address = communityData.contactDetails.addresses[0] -%}
                                 {% if address.buildingName %}{{ address.buildingName }}<br/>{% endif %}
                                 {% if address.addressNumber %}{{ address.addressNumber }}{% endif %}
                                 {% if address.streetName %}{{ address.streetName }}<br/>{% endif %}

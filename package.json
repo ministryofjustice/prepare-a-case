@@ -78,9 +78,9 @@
     "nunjucks": "3.2.0"
   },
   "devDependencies": {
-    "axe-core": "3.5.0",
+    "axe-core": "3.5.1",
     "cucumber": "6.0.5",
-    "cypress": "4.0.1",
+    "cypress": "4.0.2",
     "cypress-axe": "0.5.3",
     "cypress-cucumber-preprocessor": "2.0.1",
     "jest": "25.1.0",

@@ -18,7 +18,7 @@ Feature: Case summary
     When I navigate to the "case/8678951874/details" route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
-      | Case details | Person |
+      | Case details | Personal details |
     And I should see the heading "Kara Ayers"
     And I should see the body text "Date of birth: 31/10/1980"
     And I should see the body text "PNC: A/1234560BA"
@@ -38,7 +38,7 @@ Feature: Case summary
     When I navigate to the "case/6627839278/details" route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
-      | Case details | Person | Probation record | Risk registers |
+      | Case details | Personal details | Probation record | Risk registers |
     And I should see the heading "Webb Mitchell"
     And I should see the body text "Date of birth: 13/10/1958"
     And I should see the body text "CRN: D541487"
@@ -59,7 +59,7 @@ Feature: Case summary
     When I navigate to the "case/668911253/details" route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
-      | Case details | Person | Probation record | Risk registers |
+      | Case details | Personal details | Probation record | Risk registers |
     And I should see the heading "Lenore Marquez"
     And I should see the body text "Date of birth: 18/08/1979"
     And I should see the body text "CRN: DX12340A"
@@ -88,7 +88,7 @@ Feature: Case summary
     And I should see the heading "Kara Ayers"
     When I click the sub navigation with "Person" text
     Then I should see the following level 2 headings
-      | Defendant details |
+      | Personal details from charge |
     And I should see the following "defendant details" summary table
       | Name          | Kara Ayers                        |
       | Gender        | Female                            |
@@ -107,7 +107,7 @@ Feature: Case summary
     And I should see the heading "Webb Mitchell"
     When I click the sub navigation with "Person" text
     Then I should see the following level 2 headings
-      | Defendant details | Offender record details |
+      | Personal details from charge | Personal details from Probation Service |
     And I should see the following "defendant details" summary table
       | Name          | Webb Mitchell                       |
       | Gender        | Male                                |

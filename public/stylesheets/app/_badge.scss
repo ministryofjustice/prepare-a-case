@@ -1,0 +1,13 @@
+// 'pac' prefix used for custom styles to prevent collisions
+.pac-badge {
+  display: block;
+  text-align: center;
+  margin-bottom: 3px;
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+    padding: 0 10px;
+    &:not(:last-child) {
+      margin-right: 3px;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 const express = require('express')
-const axios = require('axios')
 const moment = require('moment')
-
+const { getCaseList, getCase } = require('../services/case-service')
+const { getPersonalDetails } = require('../services/community-service')
 const router = express.Router()
 
 const { health } = require('./middleware/healthcheck')
@@ -12,16 +12,9 @@ router.get('/', health, (req, res) => {
 })
 
 router.get('/cases/:date', health, defaults, async (req, res) => {
-  let response = {}
-  try {
-    response = await axios.get(`${req.params.apiUrl}/court/${req.params.courtCode}/cases?date=${req.params.date}`)
-  } catch (e) {
-    console.error(e)
-    // Silent as issue should be caught by health middleware and the user should be suitably notified
-  }
-
+  const response = await getCaseList(req.params.courtCode, req.params.date)
   const params = req.params
-  const totalCount = (response.data && response.data.cases && response.data && response.data.cases.length) || 0
+  const totalCount = (response && response.cases && response.cases.length) || 0
   const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * params.limit
   const endCount = Math.min(startCount + parseInt(params.limit, 10), totalCount)
   const templateValues = {
@@ -32,41 +25,38 @@ router.get('/cases/:date', health, defaults, async (req, res) => {
       from: startCount,
       to: endCount,
       total: totalCount,
-      lastUpdated: response.data ? response.data.lastUpdated : '',
+      lastUpdated: response ? response.lastUpdated : '',
       ...params
     },
-    data: (response.data && response.data.cases && response.data.cases.slice(startCount, endCount)) || []
+    data: (response && response.cases && response.cases.slice(startCount, endCount)) || []
   }
   res.render('case-list', templateValues)
 })
 
-router.get('/cases', async (req, res) => {
+router.get('/cases', (req, res) => {
   res.redirect(`/cases/${moment().format('YYYY-MM-DD')}`)
 })
 
 router.get('/case/:caseNo/:detail', health, defaults, async (req, res) => {
   let template
-  let response = {}
-  try {
-    response = await axios.get(`${req.params.apiUrl}/court/${req.params.courtCode}/case/${req.params.caseNo}`)
-  } catch (e) {
-    console.error(e)
-    // Silent as issue should be caught by health middleware and the user should be suitably notified
-  }
+  let communityResponse = {}
+  const response = await getCase(req.params.courtCode, req.params.caseNo)
   const templateValues = {
     healthy: req.healthy,
     params: {
       ...req.params
     },
     data: {
-      ...response.data,
-      caseData: response.data && response.data.data ? JSON.parse(response.data.data) : {}
+      ...response
     }
   }
   switch (req.params.detail) {
     case 'person':
       templateValues.title = 'Person'
       template = 'case-summary-person'
+      if (response && response.crn) {
+        communityResponse = await getPersonalDetails(response.crn)
+      }
       break
     case 'record':
       templateValues.title = 'Probation record'
@@ -80,7 +70,9 @@ router.get('/case/:caseNo/:detail', health, defaults, async (req, res) => {
       templateValues.title = 'Case details'
       template = 'case-summary'
   }
+  templateValues.data.caseData = response && response.data ? JSON.parse(response.data) : {}
+  templateValues.data.communityData = communityResponse || {}
   res.render(template, templateValues)
-})
+}, defaults)
 
 module.exports = router
