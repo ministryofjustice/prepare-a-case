@@ -89,7 +89,7 @@ Feature: Case summary
     When I click the sub navigation with "Personal details" text
     Then I should see the following level 2 headings
       | Personal details from charge |
-    And I should see the following "defendant details" summary table
+    And I should see the "first" summary table
       | Name          | Kara Ayers                        |
       | Gender        | Female                            |
       | Date of birth | 31 October 1980                   |
@@ -108,13 +108,13 @@ Feature: Case summary
     When I click the sub navigation with "Personal details" text
     Then I should see the following level 2 headings
       | Personal details from charge | Personal details from Probation Service |
-    And I should see the following "defendant details" summary table
+    And I should see the "first" summary table
       | Name          | Webb Mitchell                       |
       | Gender        | Male                                |
       | Date of birth | 13 October 1958                     |
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
       | Nationality   | Polish                              |
-    And I should see the following "offender record details" summary table
+    And I should see the "second" summary table
       | Aliases              | Yes (1)                                                        |
       | NI Number            | JB 86 84 81 D                                                  |
       | Ethnicity            | Black British                                                  |
