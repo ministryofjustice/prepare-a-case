@@ -35,7 +35,8 @@
       "coverage/*",
       "integration-tests/*"
     ],
-    "delay": 1000
+    "delay": 1000,
+    "ext": "js,html,njk"
   },
   "standard": {
     "ignore": [
@@ -69,6 +70,7 @@
   "dependencies": {
     "@ministryofjustice/frontend": "0.0.17-alpha",
     "axios": "0.19.2",
+    "compression": "1.7.4",
     "cookie-parser": "1.4.4",
     "debug": "4.1.1",
     "express": "4.17.1",

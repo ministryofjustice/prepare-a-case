@@ -86,7 +86,7 @@ Feature: Case summary
     When I click the "Kara Ayers" link
     Then I should be on the "Case details" page
     And I should see the heading "Kara Ayers"
-    When I click the sub navigation with "Person" text
+    When I click the sub navigation with "Personal details" text
     Then I should see the following level 2 headings
       | Personal details from charge |
     And I should see the following "defendant details" summary table
@@ -105,7 +105,7 @@ Feature: Case summary
     When I click the "Webb Mitchell" link
     Then I should be on the "Case details" page
     And I should see the heading "Webb Mitchell"
-    When I click the sub navigation with "Person" text
+    When I click the sub navigation with "Personal details" text
     Then I should see the following level 2 headings
       | Personal details from charge | Personal details from Probation Service |
     And I should see the following "defendant details" summary table
@@ -124,3 +124,18 @@ Feature: Case summary
       | Email                | lizzie.lambert@anarco.net                                      |
       | Mobile               | 07886 541 286                                                  |
       | Address              | Isoplex Towers 36 Abbey Court Sheffield South Yorkshire S1 1JD |
+
+  Scenario: View the probation record section of the case summary for a defendant with an existing probation record by clicking the defendant link from the case list page
+    Given I am a registered user
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+    And I should see the heading "Cases"
+    And I should see the caption "Sheffield Magistrates' Court"
+    When I click the "Webb Mitchell" link
+    Then I should be on the "Case details" page
+    And I should see the heading "Webb Mitchell"
+    When I click the sub navigation with "Probation record" text
+    Then I should see the following level 2 headings
+      | Current orders (6) | Previous orders (5) |
+    And I should see the body text "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
+    And I should see the hint text "Noise offences - 82200"
