@@ -63,7 +63,13 @@ router.get('/case/:caseNo/:detail', health, defaults, async (req, res) => {
       template = 'case-summary-record'
       if (response && response.crn) {
         communityResponse = await getConvictions(response.crn)
+        const personalDetails = await getPersonalDetails(response.crn)
+        communityResponse = {
+          ...communityResponse,
+          personalDetails
+        }
       }
+      console.info(communityResponse)
       break
     case 'risk':
       templateValues.title = 'Risk registers'

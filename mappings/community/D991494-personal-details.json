@@ -162,6 +162,76 @@
       "middleNames": [
         "William"
       ],
+      "offenderManagers": [
+        {
+          "trustOfficer": {
+            "forenames": "Avis",
+            "surname": "Mcmillan"
+          },
+          "staff": {
+            "forenames": "Katharine",
+            "surname": "Yeung"
+          },
+          "partitionArea": "National Data",
+          "softDeleted": false,
+          "team": {
+            "description": "OMU A",
+            "telephone": "01964 498 226",
+            "district": {
+              "code": "N04NPSA",
+              "description": "N04 Division"
+            },
+            "borough": {
+              "code": "N04100",
+              "description": "N04 Cluster 1"
+            }
+          },
+          "probationArea": {
+            "code": "N04",
+            "description": "NPS Midlands"
+          },
+          "fromDate": "2017-02-27",
+          "active": true,
+          "allocationReason": {
+            "code": "OM",
+            "description": "Offender Moved"
+          }
+        },
+        {
+          "trustOfficer": {
+            "forenames": "Katharine",
+            "surname": "Cherry"
+          },
+          "staff": {
+            "forenames": "Lopez",
+            "surname": "Head"
+          },
+          "partitionArea": "National Data",
+          "softDeleted": false,
+          "team": {
+            "description": "OMU A",
+            "telephone": "01952 432 327",
+            "district": {
+              "code": "N04NPSA",
+              "description": "N04 Division"
+            },
+            "borough": {
+              "code": "N04100",
+              "description": "N04 Cluster 1"
+            }
+          },
+          "probationArea": {
+            "code": "N04",
+            "description": "NPS Midlands"
+          },
+          "fromDate": "2016-06-29",
+          "active": false,
+          "allocationReason": {
+            "code": "OM",
+            "description": "Offender Moved"
+          }
+        }
+      ],
       "offenderProfile": {
         "nationality": "British",
         "ethnicity": "Black Caribbean",

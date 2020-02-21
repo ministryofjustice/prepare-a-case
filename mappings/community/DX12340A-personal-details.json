@@ -110,6 +110,76 @@
         "niNumber": "JD 91 44 29 D"
       },
       "middleNames": [],
+      "offenderManagers": [
+        {
+          "trustOfficer": {
+            "forenames": "Butler",
+            "surname": "Contreras"
+          },
+          "staff": {
+            "forenames": "Rhoda",
+            "surname": "Britt"
+          },
+          "partitionArea": "National Data",
+          "softDeleted": false,
+          "team": {
+            "description": "OMU A",
+            "telephone": "01943 565 297",
+            "district": {
+              "code": "N04NPSA",
+              "description": "N04 Division"
+            },
+            "borough": {
+              "code": "N04100",
+              "description": "N04 Cluster 1"
+            }
+          },
+          "probationArea": {
+            "code": "N04",
+            "description": "NPS Midlands"
+          },
+          "fromDate": "2018-08-03",
+          "active": true,
+          "allocationReason": {
+            "code": "OM",
+            "description": "Offender Moved"
+          }
+        },
+        {
+          "trustOfficer": {
+            "forenames": "Fields",
+            "surname": "Nash"
+          },
+          "staff": {
+            "forenames": "Hyde",
+            "surname": "Hopper"
+          },
+          "partitionArea": "National Data",
+          "softDeleted": false,
+          "team": {
+            "description": "OMU A",
+            "telephone": "01858 492 289",
+            "district": {
+              "code": "N04NPSA",
+              "description": "N04 Division"
+            },
+            "borough": {
+              "code": "N04100",
+              "description": "N04 Cluster 1"
+            }
+          },
+          "probationArea": {
+            "code": "N04",
+            "description": "NPS Midlands"
+          },
+          "fromDate": "2016-08-24",
+          "active": false,
+          "allocationReason": {
+            "code": "OM",
+            "description": "Offender Moved"
+          }
+        }
+      ],
       "offenderProfile": {
         "nationality": "British",
         "ethnicity": "Asian British Chinese",

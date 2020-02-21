@@ -125,7 +125,7 @@ Feature: Case summary
       | Mobile               | 07886 541 286                                                  |
       | Address              | Isoplex Towers 36 Abbey Court Sheffield South Yorkshire S1 1JD |
 
-  Scenario: View the probation record section of the case summary for a defendant with an existing probation record by clicking the defendant link from the case list page
+  Scenario: View the probation record section of the case summary for a previously known offender by clicking the defendant link from the case list page
     Given I am a registered user
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
@@ -136,6 +136,30 @@ Feature: Case summary
     And I should see the heading "Webb Mitchell"
     When I click the sub navigation with "Probation record" text
     Then I should see the following level 2 headings
-      | Current orders (6) | Previous orders (5) |
-    And I should see the body text "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
-    And I should see the hint text "Noise offences - 82200"
+      | Previous orders (5) |
+    And I should see the following level 3 headings
+      | Offender Manager |
+    And I should see the body text "Not active"
+    And I should see link "CJA - Indeterminate Public Prot." with href "#"
+
+  Scenario: View the probation record section of the case summary for a current offender by clicking the defendant link from the case list page
+    Given I am a registered user
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+    And I should see the heading "Cases"
+    And I should see the caption "Sheffield Magistrates' Court"
+    When I click the "Lenore Marquez" link
+    Then I should be on the "Case details" page
+    And I should see the heading "Lenore Marquez"
+    When I click the sub navigation with "Probation record" text
+    Then I should see the following level 2 headings
+      | Current orders (4) | Previous orders (8) |
+    And I should see the following level 3 headings
+      | Offender Manager |
+    And I should see the body text "Rhoda Britt"
+    And I should see the hint text "Allocated on 3 Aug 2018"
+    And I should see the body text "Telephone: 01943 565 297"
+    And I should see link "CJA - Std Determinate Custody" with href "#"
+    And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+    And I should see link "Life imprisonment (Adult)" with href "#"
+    And I should see the hint text "Weights and Measures Acts - 18900"

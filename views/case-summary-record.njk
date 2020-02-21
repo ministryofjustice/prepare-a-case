@@ -1,12 +1,20 @@
 {% extends "partials/case-details.njk" %}
 
+{%- set communityData = data.communityData -%}
 {%- set activeOrders = [] -%}
 {%- set previousOrders = [] -%}
-{%- for order in data.communityData.convictions if data.communityData.convictions | length %}
+{%- for order in communityData.convictions if communityData.convictions | length %}
     {% if order.active %}
         {{ activeOrders.push(order) }}
     {% else %}
         {{ previousOrders.push(order) }}
+    {% endif %}
+{% endfor -%}
+
+{%- set offenderManager = {} -%}
+{%- for manager in communityData.personalDetails.offenderManagers if communityData.personalDetails.offenderManagers | length %}
+    {% if manager.active %}
+        {%- set offenderManager = manager -%}
     {% endif %}
 {% endfor -%}
 
@@ -71,7 +79,19 @@
             {% endif %}
 
         </div>
-        <div class="govuk-grid-column-one-third">&nbsp;</div>
+        <div class="govuk-grid-column-one-third">
+
+            <h3 class="govuk-heading-s">Offender Manager</h3>
+
+            {% if offenderManager.active %}
+                <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.staff.forenames }} {{ offenderManager.staff.surname }}</p>
+                <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ params.moment(offenderManager.fromDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                <p class="govuk-body">Telephone: {{ offenderManager.team.telephone }}</p>
+            {% else %}
+                <p class="govuk-body">Not active</p>
+            {% endif %}
+
+        </div>
     </div>
 
 {% endblock %}

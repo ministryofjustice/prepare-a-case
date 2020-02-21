@@ -119,6 +119,110 @@
         "niNumber": "JA 89 95 90 A"
       },
       "middleNames": [],
+      "offenderManagers": [
+        {
+          "trustOfficer": {
+            "forenames": "Keisha",
+            "surname": "Rowland"
+          },
+          "staff": {
+            "forenames": "Edwards",
+            "surname": "Schroeder"
+          },
+          "partitionArea": "National Data",
+          "softDeleted": false,
+          "team": {
+            "description": "OMU A",
+            "telephone": "01909 525 317",
+            "district": {
+              "code": "N04NPSA",
+              "description": "N04 Division"
+            },
+            "borough": {
+              "code": "N04100",
+              "description": "N04 Cluster 1"
+            }
+          },
+          "probationArea": {
+            "code": "N04",
+            "description": "NPS Midlands"
+          },
+          "fromDate": "2015-10-29",
+          "active": true,
+          "allocationReason": {
+            "code": "OM",
+            "description": "Offender Moved"
+          }
+        },
+        {
+          "trustOfficer": {
+            "forenames": "Alisha",
+            "surname": "Vargas"
+          },
+          "staff": {
+            "forenames": "Carol",
+            "surname": "Wheeler"
+          },
+          "partitionArea": "National Data",
+          "softDeleted": false,
+          "team": {
+            "description": "OMU A",
+            "telephone": "01897 506 277",
+            "district": {
+              "code": "N04NPSA",
+              "description": "N04 Division"
+            },
+            "borough": {
+              "code": "N04100",
+              "description": "N04 Cluster 1"
+            }
+          },
+          "probationArea": {
+            "code": "N04",
+            "description": "NPS Midlands"
+          },
+          "fromDate": "2019-12-11",
+          "active": false,
+          "allocationReason": {
+            "code": "OM",
+            "description": "Offender Moved"
+          }
+        },
+        {
+          "trustOfficer": {
+            "forenames": "Mari",
+            "surname": "Joyce"
+          },
+          "staff": {
+            "forenames": "Berg",
+            "surname": "Hunter"
+          },
+          "partitionArea": "National Data",
+          "softDeleted": false,
+          "team": {
+            "description": "OMU A",
+            "telephone": "01864 489 336",
+            "district": {
+              "code": "N04NPSA",
+              "description": "N04 Division"
+            },
+            "borough": {
+              "code": "N04100",
+              "description": "N04 Cluster 1"
+            }
+          },
+          "probationArea": {
+            "code": "N04",
+            "description": "NPS Midlands"
+          },
+          "fromDate": "2015-01-09",
+          "active": false,
+          "allocationReason": {
+            "code": "OM",
+            "description": "Offender Moved"
+          }
+        }
+      ],
       "offenderProfile": {
         "nationality": "British",
         "ethnicity": "Asian British Indian",
