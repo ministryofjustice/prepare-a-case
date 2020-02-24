@@ -7,7 +7,7 @@
     href: '/case/' + data.caseNo + '/details',
     active: title === 'Case details'
 }, {
-    text: 'Person',
+    text: 'Personal details',
     href: '/case/' + data.caseNo + '/person',
     active: title === 'Person'
 }] %}
@@ -33,11 +33,10 @@
 
 {{ alerts.push({
     description: "Risk register from nDelius:",
-    title: data.rosh + " Risk of Serious Harm",
-    important: true
+    title: data.rosh + " Risk of Serious Harm"
 }) if data.rosh }}
 
-{% set offenderInfo = ["Date of birth: " + data.caseData.def_dob] %}
+{% set offenderInfo = ["Date of birth: " + params.moment(data.caseData.def_dob, 'DD-MM-YYYY').format('DD/MM/YYYY')] %}
 {{ offenderInfo.push("CRN: " + data.crn) if data.crn }}
 {{ offenderInfo.push("PNC: " + data.pnc) if data.pnc }}
 

@@ -45,8 +45,12 @@ java -jar wiremock-standalone-2.25.1.jar --global-response-templating --port 909
 
 And then, to build assets and start app with
 ```
-npx nodemon ./bin/www
+yarn nodemon ./bin/www -e js,njk --ignore integration-tests/ --ignore tests/
 ```
+
+This will watch for changes in the application JavaScript and Nunjucks templates and automatically restart as required.
+
+This will also ensure that the application does not restart due to changes to test scripts. 
 
 ### Run linter
 ```

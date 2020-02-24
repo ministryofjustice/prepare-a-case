@@ -89,7 +89,7 @@ jobs:
           root: ~/app
           paths: .
 
-  test:
+  lint:
     executor: builder
     steps:
       - checkout
@@ -99,7 +99,17 @@ jobs:
           key: dependencies-cache-{{ checksum "package.json" }}
       - run:
           name: Lint
+          halt_build_on_fail: false
           command: yarn lint
+
+  test:
+    executor: builder
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/app
+      - restore_cache:
+          key: dependencies-cache-{{ checksum "package.json" }}
       - run:
           name: Unit tests
           command: yarn unit-test
@@ -191,6 +201,9 @@ workflows:
           filters:
             tags:
               ignore: /.*/
+      - lint:
+          requires:
+            - build
       - test:
           requires:
             - build

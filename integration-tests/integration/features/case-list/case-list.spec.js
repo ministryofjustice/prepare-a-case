@@ -10,7 +10,7 @@ And('I should see sub navigation with default dates', () => {
   cy.get('.moj-sub-navigation__link').eq(2).contains(moment().add(2, 'days').format(dateFormat))
 })
 
-And('I should see the following table', $data => {
+And('I should see the following case list table', $data => {
   $data.raw()[0].forEach((text, index) => {
     cy.get('.govuk-table__head > .govuk-table__row').within(() => {
       cy.get('.govuk-table__header').eq(index).contains(text)
@@ -87,5 +87,5 @@ Then('I should see previously known termination date', () => {
 })
 
 Then('the flag SSO appears above the defendants probation status', () => {
-  cy.get('.pac-suspended-sentence').should('exist')
+  cy.get('.pac-badge').contains('Sso').should('exist')
 })

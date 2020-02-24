@@ -1,4 +1,4 @@
-Feature: Case summry
+Feature: Case summary
   In order to view the of summary of a case sitting on the day in court
   As a registered user
   I want to see a case summary view
@@ -18,9 +18,9 @@ Feature: Case summry
     When I navigate to the "case/8678951874/details" route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
-      | Case details | Person |
+      | Case details | Personal details |
     And I should see the heading "Kara Ayers"
-    And I should see the body text "Date of birth: 31-10-1980"
+    And I should see the body text "Date of birth: 31/10/1980"
     And I should see the body text "PNC: A/1234560BA"
     And I should see the following level 2 headings
       | Appearance | Offences |
@@ -38,11 +38,11 @@ Feature: Case summry
     When I navigate to the "case/6627839278/details" route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
-      | Case details | Person | Probation record | Risk registers |
+      | Case details | Personal details | Probation record | Risk registers |
     And I should see the heading "Webb Mitchell"
-    And I should see the body text "Date of birth: 13-10-1958"
-    And I should see the body text "CRN: DX12340A"
-    And I should see the body text "PNC: A/1234560BA"
+    And I should see the body text "Date of birth: 13/10/1958"
+    And I should see the body text "CRN: D541487"
+    And I should see the body text "PNC: A/8404713BA"
     And I should see the following level 2 headings
       | Appearance | Offences |
     And I should see the following level 3 headings
@@ -59,9 +59,9 @@ Feature: Case summry
     When I navigate to the "case/668911253/details" route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
-      | Case details | Person | Probation record | Risk registers |
+      | Case details | Personal details | Probation record | Risk registers |
     And I should see the heading "Lenore Marquez"
-    And I should see the body text "Date of birth: 18-08-1979"
+    And I should see the body text "Date of birth: 18/08/1979"
     And I should see the body text "CRN: DX12340A"
     And I should see the body text "PNC: A/1234560BA"
     And I should see the following alerts
@@ -76,3 +76,51 @@ Feature: Case summry
     And I should see the body text "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Clemons Barron."
     And I should see the caption text "Contrary to section 1(1) of the Criminal Attempts Act 1981."
     And There should be no a11y violations
+
+  Scenario: View the person section of the case summary for a defendant with no probation record by clicking the defendant link from the case list page
+    Given I am a registered user
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+    And I should see the heading "Cases"
+    And I should see the caption "Sheffield Magistrates' Court"
+    When I click the "Kara Ayers" link
+    Then I should be on the "Case details" page
+    And I should see the heading "Kara Ayers"
+    When I click the sub navigation with "Person" text
+    Then I should see the following level 2 headings
+      | Personal details from charge |
+    And I should see the following "defendant details" summary table
+      | Name          | Kara Ayers                        |
+      | Gender        | Female                            |
+      | Date of birth | 31 October 1980                   |
+      | Address       | 22 Waldorf Court Cardiff AD21 5DR |
+      | Nationality   | Unknown                           |
+
+  Scenario: View the person section of the case summary for a defendant with an existing probation record by clicking the defendant link from the case list page
+    Given I am a registered user
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+    And I should see the heading "Cases"
+    And I should see the caption "Sheffield Magistrates' Court"
+    When I click the "Webb Mitchell" link
+    Then I should be on the "Case details" page
+    And I should see the heading "Webb Mitchell"
+    When I click the sub navigation with "Person" text
+    Then I should see the following level 2 headings
+      | Personal details from charge | Personal details from Probation Service |
+    And I should see the following "defendant details" summary table
+      | Name          | Webb Mitchell                       |
+      | Gender        | Male                                |
+      | Date of birth | 13 October 1958                     |
+      | Address       | 49 Rochester Avenue Bangor AD21 5DR |
+      | Nationality   | Polish                              |
+    And I should see the following "offender record details" summary table
+      | Aliases              | Yes (1)                                                        |
+      | NI Number            | JB 86 84 81 D                                                  |
+      | Ethnicity            | Black British                                                  |
+      | Interpreter required | No                                                             |
+      | Disability status    | Speech Impairment                                              |
+      | Telephone            | 01941 580 367                                                  |
+      | Email                | lizzie.lambert@anarco.net                                      |
+      | Mobile               | 07886 541 286                                                  |
+      | Address              | Isoplex Towers 36 Abbey Court Sheffield South Yorkshire S1 1JD |

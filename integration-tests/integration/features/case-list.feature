@@ -1,4 +1,4 @@
-Feature: Cases
+Feature: Case list
   In order to view the list of cases sitting on the day in court
   As a registered user
   I want to see a case list view
@@ -10,7 +10,7 @@ Feature: Cases
     And I should see the heading "Cases"
     And I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
-    And I should see the following table
+    And I should see the following case list table
       | Defendant      | Probation status | Offence                                  | Listing | Session | Court |
       | Kara Ayers     | No record        | Assault by beating                       | 1st     | Morning | 10    |
       | Mann Carroll   | No record        | Assault by beating                       | 3rd     | Morning | 2     |
@@ -35,7 +35,7 @@ Feature: Cases
     And I click pagination link "2"
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
-    And I should see the following table
+    And I should see the following case list table
       | Defendant      | Probation status | Offence                          | Listing | Session | Court |
       | Robert Hardin  | No record        | Theft from the person of another | 3rd     | Morning | 3     |
       | Vance Landry   | No record        | Theft from the person of another | 3rd     | Morning | 3     |
@@ -61,7 +61,7 @@ Feature: Cases
     And I click pagination link "3"
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
-    And I should see the following table
+    And I should see the following case list table
       | Defendant       | Probation status | Offence                                  | Listing | Session | Court |
       | Amanda Mckay    | Current          | Theft from the person of another         | 3rd     | Morning | 1     |
       | Perry Delacruz  | No record        | Attempt theft from the person of another | 1st     | Morning | 1     |
@@ -87,7 +87,7 @@ Feature: Cases
     And I click pagination link "5"
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
-    And I should see the following table
+    And I should see the following case list table
       | Defendant       | Probation status | Offence                                  | Listing | Session | Court |
       | Leticia Santana | Previously known | Assault by beating                       | 3rd     | Morning | 8     |
       | Maribel Camacho | Previously known | Attempt theft from the person of another | 1st     | Morning | 6     |
@@ -122,7 +122,7 @@ Feature: Cases
     And I click pagination link "11"
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
-    And I should see the following table
+    And I should see the following case list table
       | Defendant         | Probation status | Offence                          | Listing | Session   | Court |
       | Luisa Alston      | No record        | Theft from a shop                | 3rd     | Afternoon | 3     |
       | Macdonald Ellison | Previously known | Theft from the person of another | 3rd     | Afternoon | 4     |
@@ -146,7 +146,7 @@ Feature: Cases
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
     And I should see the caption "Sheffield Magistrates' Court"
-    And I should see the following table
+    And I should see the following case list table
       | Defendant      | Probation status | Offence                                  | Listing | Session | Court |
       | Gill Arnold    | Current          | Theft from the person of another         | 3rd     | Morning | 1     |
       | Cornelia Mccoy | Previously known | Assault by beating                       | 2nd     | Morning | 1     |

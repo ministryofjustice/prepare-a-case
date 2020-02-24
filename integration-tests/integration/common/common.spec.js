@@ -77,6 +77,10 @@ And('I should see sub navigation with the following links', $data => {
   })
 })
 
+When('I click the sub navigation with {string} text', $string => {
+  cy.get('.moj-sub-navigation__link').contains($string).click()
+})
+
 When('I click the {string} link', $string => {
   cy.get('.govuk-link').contains($string).click()
 })
