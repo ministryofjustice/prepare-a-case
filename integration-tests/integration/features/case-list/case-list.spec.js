@@ -74,8 +74,8 @@ And('I click pagination link {string}', $string => {
   cy.get('.moj-pagination__link').contains($string).click()
 })
 
-And('I see defendant "Webb Mitchell"', $data => {
-  cy.get('.govuk-table__body').contains('td', 'Webb Mitchell')
+And('I see defendant "Kara Ayers"', $data => {
+  cy.get('.govuk-table__body').contains('td', 'Kara Ayers')
 })
 
 And('I should see the defendant has a probation status of "Previously known"', () => {
@@ -88,4 +88,8 @@ Then('I should see previously known termination date', () => {
 
 Then('the flag SSO appears above the defendants probation status', () => {
   cy.get('.pac-badge').contains('Sso').should('exist')
+})
+
+Then('the flag BREACH appears above the defendants probation status', () => {
+  cy.get('.pac-badge').contains('Breach').should('exist')
 })
