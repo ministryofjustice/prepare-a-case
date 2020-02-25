@@ -104,6 +104,51 @@
         "Laurel",
         "Yesenia"
       ],
+      "offenderManagers": [
+        {
+          "trustOfficer": {
+            "forenames": "Maureen",
+            "surname": "Vang"
+          },
+          "staff": {
+            "forenames": "Reyna",
+            "surname": "Rivas"
+          },
+          "partitionArea": "National Data",
+          "softDeleted": false,
+          "team": {
+            "description": "OMU A",
+            "telephone": "01899 569 253",
+            "district": {
+              "code": "N04NPSA",
+              "description": "N04 Division"
+            },
+            "borough": {
+              "code": "N04100",
+              "description": "N04 Cluster 1"
+            }
+          },
+          "address": {
+            "addressNumber": 69,
+            "buildingName": "Filodyne House",
+            "streetName": "Downing Street",
+            "town": "Preston",
+            "county": "Lancashire",
+            "district": null,
+            "postcode": "PR8 4PX"
+          },
+          "probationArea": {
+            "code": "N04",
+            "description": "NPS Lancashire"
+          },
+          "fromDate": "2016-03-04",
+          "active": true,
+          "allocationReason": {
+            "code": "OM",
+            "description": "Offender Moved"
+          }
+        }
+      ],
       "offenderProfile": {
         "nationality": "British",
         "ethnicity": "Multiple ethnic background",

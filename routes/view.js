@@ -69,7 +69,6 @@ router.get('/case/:caseNo/:detail', health, defaults, async (req, res) => {
           personalDetails
         }
       }
-      console.info(communityResponse)
       break
     case 'risk':
       templateValues.title = 'Risk registers'
