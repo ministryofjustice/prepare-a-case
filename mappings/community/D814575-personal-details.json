@@ -142,7 +142,7 @@
             "description": "NPS Lancashire"
           },
           "fromDate": "2016-03-04",
-          "active": true,
+          "active": false,
           "allocationReason": {
             "code": "OM",
             "description": "Offender Moved"

@@ -158,12 +158,7 @@ Feature: Case summary
       | Offender Manager |
     And I should see the body text "Mcmahon Buchanan"
     And I should see the hint text "Allocated on 12 Aug 2017"
-    And I should see the body text "NPS West Yorkshire"
-    And I should see the body text "Ecolight Towers"
-    And I should see the body text "71 Ocean Parkway"
-    And I should see the body text "Leeds"
-    And I should see the body text "West Yorkshire"
-    And I should see the body text "LS7 4JP"
+    And I should see the body text "NPS West Yorkshire Ecolight Towers 71 Ocean Parkway Leeds West Yorkshire LS7 4JP"
     And I should see the body text "Telephone: 01890 547 292"
     And I should see link "CJA - Std Determinate Custody" with href "#"
     And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
