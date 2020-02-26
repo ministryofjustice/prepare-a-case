@@ -1,0 +1,197 @@
+{
+  "id": "4e81d50a-23b2-45d2-a86f-19a68346a193",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D814575/convictions"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "convictions": [
+        {
+          "convictionId": 241412130,
+          "active": false,
+          "inBreach": true,
+          "convictionDate": "2018-07-06",
+          "referralDate": "2018-07-06",
+          "offences": [
+            {
+              "offenceId": "M1369976926",
+              "detail": {
+                "code": "04200",
+                "mainCategoryCode": "042",
+                "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag",
+                "mainCategoryAbbreviation": "Stealing mail bags or postal packets or unlawfull",
+                "ogrsOffenceCategory": "Theft (Non-motor)",
+                "subCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag"
+              },
+              "offenceDate": "2018-01-06T00:00:00",
+              "offenceCount": 1,
+              "mainOffence": true,
+              "offenderId": 2815399430,
+              "createdDatetime": "2018-05-06T00:00:00",
+              "lastUpdatedDatetime": "2018-05-06T00:00:00"
+            },
+            {
+              "offenceId": "M1369976926",
+              "detail": {
+                "code": "06200",
+                "mainCategoryCode": "062",
+                "description": "High treason - 06200",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "High treason",
+                "mainCategoryAbbreviation": "High treason",
+                "ogrsOffenceCategory": "Other offence",
+                "subCategoryDescription": "High treason"
+              },
+              "offenceDate": "2018-01-06T00:00:00",
+              "offenceCount": 2,
+              "mainOffence": false,
+              "offenderId": 715133561,
+              "createdDatetime": "2018-05-06T00:00:00",
+              "lastUpdatedDatetime": "2018-05-06T00:00:00"
+            },
+            {
+              "offenceId": "M1369976926",
+              "detail": {
+                "code": 10501,
+                "mainCategoryCode": 105,
+                "description": "Common assault and battery - 10501",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Common and other types of assault",
+                "mainCategoryAbbreviation": "Common and other types of assault",
+                "ogrsOffenceCategory": "Violence",
+                "subCategoryDescription": "Common assault and battery"
+              },
+              "offenceDate": "2018-01-06T00:00:00",
+              "offenceCount": 3,
+              "mainOffence": false,
+              "offenderId": 1248373858,
+              "createdDatetime": "2018-05-06T00:00:00",
+              "lastUpdatedDatetime": "2018-05-06T00:00:00"
+            }
+          ],
+          "sentence": {
+            "description": "CJA - Indeterminate Public Prot.",
+            "originalLength": 18,
+            "originalLengthUnits": "Months",
+            "defaultLength": 18,
+            "lengthInDays": 547
+          },
+          "latestCourtAppearanceOutcome": {
+            "code": "843",
+            "description": "Warrant without Bail"
+          }
+        },
+        {
+          "convictionId": 864007527,
+          "active": false,
+          "inBreach": true,
+          "convictionDate": "2018-01-24",
+          "referralDate": "2018-01-24",
+          "offences": [
+            {
+              "offenceId": "M1369976926",
+              "detail": {
+                "code": "18900",
+                "mainCategoryCode": "189",
+                "description": "Weights and Measures Acts - 18900",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Weights and Measures Acts",
+                "mainCategoryAbbreviation": "Weights and Measures Acts",
+                "ogrsOffenceCategory": "Other offence",
+                "subCategoryDescription": "Weights and Measures Acts"
+              },
+              "offenceDate": "2017-07-24T00:00:00",
+              "offenceCount": 1,
+              "mainOffence": true,
+              "offenderId": 1321388685,
+              "createdDatetime": "2017-11-24T00:00:00",
+              "lastUpdatedDatetime": "2017-11-24T00:00:00"
+            },
+            {
+              "offenceId": "M1369976926",
+              "detail": {
+                "code": "04200",
+                "mainCategoryCode": "042",
+                "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag",
+                "mainCategoryAbbreviation": "Stealing mail bags or postal packets or unlawfull",
+                "ogrsOffenceCategory": "Theft (Non-motor)",
+                "subCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag"
+              },
+              "offenceDate": "2017-07-24T00:00:00",
+              "offenceCount": 2,
+              "mainOffence": false,
+              "offenderId": 2552451008,
+              "createdDatetime": "2017-11-24T00:00:00",
+              "lastUpdatedDatetime": "2017-11-24T00:00:00"
+            },
+            {
+              "offenceId": "M1369976926",
+              "detail": {
+                "code": 6200,
+                "mainCategoryCode": 62,
+                "description": "High treason - 06200",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "High treason",
+                "mainCategoryAbbreviation": "High treason",
+                "ogrsOffenceCategory": "Other offence",
+                "subCategoryDescription": "High treason"
+              },
+              "offenceDate": "2017-07-24T00:00:00",
+              "offenceCount": 3,
+              "mainOffence": false,
+              "offenderId": 295847429,
+              "createdDatetime": "2017-11-24T00:00:00",
+              "lastUpdatedDatetime": "2017-11-24T00:00:00"
+            },
+            {
+              "offenceId": "M1369976926",
+              "detail": {
+                "code": 10100,
+                "mainCategoryCode": 101,
+                "description": "Adulteration of food, drugs etc (Summary) - 10100",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Adulteration of food, drugs etc (Summary)",
+                "mainCategoryAbbreviation": "Adulteration of food, drugs etc (Summary)",
+                "ogrsOffenceCategory": "Other offence",
+                "subCategoryDescription": "Adulteration of food, drugs etc (Summary)"
+              },
+              "offenceDate": "2017-07-24T00:00:00",
+              "offenceCount": 4,
+              "mainOffence": false,
+              "offenderId": 1973693171,
+              "createdDatetime": "2017-11-24T00:00:00",
+              "lastUpdatedDatetime": "2017-11-24T00:00:00"
+            }
+          ],
+          "sentence": {
+            "description": "ORA Suspended Sentence Order",
+            "originalLength": 18,
+            "originalLengthUnits": "Months",
+            "defaultLength": 18,
+            "lengthInDays": 547
+          },
+          "latestCourtAppearanceOutcome": {
+            "code": "502",
+            "description": "ORA Community Order"
+          }
+        }
+      ]
+    }
+  }
+}

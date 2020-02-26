@@ -86,10 +86,10 @@ Feature: Case summary
     When I click the "Kara Ayers" link
     Then I should be on the "Case details" page
     And I should see the heading "Kara Ayers"
-    When I click the sub navigation with "Person" text
+    When I click the sub navigation with "Personal details" text
     Then I should see the following level 2 headings
       | Personal details from charge |
-    And I should see the following "defendant details" summary table
+    And I should see the "first" summary table
       | Name          | Kara Ayers                        |
       | Gender        | Female                            |
       | Date of birth | 31 October 1980                   |
@@ -105,16 +105,16 @@ Feature: Case summary
     When I click the "Webb Mitchell" link
     Then I should be on the "Case details" page
     And I should see the heading "Webb Mitchell"
-    When I click the sub navigation with "Person" text
+    When I click the sub navigation with "Personal details" text
     Then I should see the following level 2 headings
       | Personal details from charge | Personal details from Probation Service |
-    And I should see the following "defendant details" summary table
+    And I should see the "first" summary table
       | Name          | Webb Mitchell                       |
       | Gender        | Male                                |
       | Date of birth | 13 October 1958                     |
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
       | Nationality   | Polish                              |
-    And I should see the following "offender record details" summary table
+    And I should see the "second" summary table
       | Aliases              | Yes (1)                                                        |
       | NI Number            | JB 86 84 81 D                                                  |
       | Ethnicity            | Black British                                                  |
@@ -124,3 +124,43 @@ Feature: Case summary
       | Email                | lizzie.lambert@anarco.net                                      |
       | Mobile               | 07886 541 286                                                  |
       | Address              | Isoplex Towers 36 Abbey Court Sheffield South Yorkshire S1 1JD |
+
+  Scenario: View the probation record section of the case summary for a previously known offender by clicking the defendant link from the case list page
+    Given I am a registered user
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+    And I should see the heading "Cases"
+    And I should see the caption "Sheffield Magistrates' Court"
+    When I click the "Webb Mitchell" link
+    Then I should be on the "Case details" page
+    And I should see the heading "Webb Mitchell"
+    When I click the sub navigation with "Probation record" text
+    Then I should see the following level 2 headings
+      | Previous orders (5) |
+    And I should see the following level 3 headings
+      | Offender Manager |
+    And I should see the body text "Not active"
+    And I should see link "CJA - Indeterminate Public Prot." with href "#"
+
+  Scenario: View the probation record section of the case summary for a current offender by clicking the defendant link from the case list page
+    Given I am a registered user
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+    And I should see the heading "Cases"
+    And I should see the caption "Sheffield Magistrates' Court"
+    When I click the "Lenore Marquez" link
+    Then I should be on the "Case details" page
+    And I should see the heading "Lenore Marquez"
+    When I click the sub navigation with "Probation record" text
+    Then I should see the following level 2 headings
+      | Current orders (4) | Previous orders (8) |
+    And I should see the following level 3 headings
+      | Offender Manager |
+    And I should see the body text "Mcmahon Buchanan"
+    And I should see the hint text "Allocated on 12 Aug 2017"
+    And I should see the body text "NPS West Yorkshire Ecolight Towers 71 Ocean Parkway Leeds West Yorkshire LS7 4JP"
+    And I should see the body text "Telephone: 01890 547 292"
+    And I should see link "CJA - Std Determinate Custody" with href "#"
+    And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+    And I should see link "Life imprisonment (Adult)" with href "#"
+    And I should see the hint text "Weights and Measures Acts - 18900"

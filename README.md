@@ -40,12 +40,12 @@ If unspecified, the app will use your local court-case-service app but you can a
  
 Start the standalone WireMock server
 ```
-java -jar wiremock-standalone-2.25.1.jar --global-response-templating --port 9091
+java -jar wiremock-standalone-2.26.0.jar --global-response-templating --port 9091
 ```
 
 And then, to build assets and start app with
 ```
-yarn nodemon ./bin/www -e js,njk --ignore integration-tests/ --ignore tests/
+yarn nodemon ./bin/www
 ```
 
 This will watch for changes in the application JavaScript and Nunjucks templates and automatically restart as required.

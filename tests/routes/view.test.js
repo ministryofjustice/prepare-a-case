@@ -37,6 +37,10 @@ describe('Routes', () => {
     return {}
   })
 
+  jest.spyOn(communityService, 'getConvictions').mockImplementation(function () {
+    return {}
+  })
+
   beforeEach(() => {
     app = require('../../app')
   })
@@ -94,10 +98,15 @@ describe('Routes', () => {
     return response
   })
 
-  // @TODO: Implement tests when completing this section of work and delete this TODO
   it('case summary probation record route should call the case service to fetch case data', async () => {
+    caseResponse = {
+      probationStatus: 'Current',
+      crn: 'D985513'
+    }
     const response = await request(app).get('/case/8678951874/record')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '8678951874')
+    expect(communityService.getConvictions).toHaveBeenCalledWith('D985513')
+    expect(communityService.getPersonalDetails).toHaveBeenCalledWith('D985513')
     return response
   })
 
