@@ -29,17 +29,19 @@ const filters = (req, res, next) => {
     }]
   }]
 
-  /* @TODO: Get the courtroom numbers/names for the given court, for now push 10 courtrooms */
-  for (let step = 1; step <= 10; step++) {
+  /* @TODO: Get the courtroom numbers/names for the given court, Sheffield has 8 */
+  for (let step = 1; step <= 8; step++) {
     filters[1].items.push({ label: step.toString() })
   }
 
   // Ensure selected filters are type Array
-  Object.keys(selectedFilters).forEach(item => {
-    if (typeof selectedFilters[item] === 'string') {
-      selectedFilters[item] = new Array(selectedFilters[item])
-    }
-  })
+  if (selectedFilters) {
+    Object.keys(selectedFilters).forEach(item => {
+      if (typeof selectedFilters[item] === 'string') {
+        selectedFilters[item] = new Array(selectedFilters[item])
+      }
+    })
+  }
 
   // Flag selected filters
   filters.forEach(item => {

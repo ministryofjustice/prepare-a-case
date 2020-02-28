@@ -90,12 +90,6 @@
     {% set dayAfter = params.moment().add(2, 'days').format('YYYY-MM-DD') %}
     {% set lastUpdated = params.moment(params.lastUpdated).format('[Last updated] ' + dateFormat + ' [at] hh:mm') %}
 
-    {%- from "components/filter/macro.njk" import pacFilter -%}
-    {{ pacFilter({
-        formName: 'listFilterForm',
-        filters: params.filters
-    }) }}
-
     {% if params.date === today or params.date === tomorrow or params.date === dayAfter %}
         {% block subnavigation %}
 
@@ -108,6 +102,7 @@
             {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
             {{ mojSubNavigation({
                 label: 'Sub navigation',
+                classes: 'govuk-!-margin-bottom-4',
                 items: [{
                     text: todayLong,
                     href: today,
@@ -124,6 +119,12 @@
             }) }}
         {% endblock %}
     {% endif %}
+
+    {%- from "components/filter/macro.njk" import pacFilter -%}
+    {{ pacFilter({
+        formName: 'listFilterForm',
+        filters: params.filters
+    }) }}
 
     {% if tableData.rows | length %}
         {% block table %}

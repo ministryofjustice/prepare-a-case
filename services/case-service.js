@@ -21,9 +21,11 @@ const getCaseList = async (courtCode, date, filters) => {
     })
   }
 
-  filters.forEach(filterObj => {
-    applyFilter(filterObj)
-  })
+  if (filters) {
+    filters.forEach(filterObj => {
+      applyFilter(filterObj)
+    })
+  }
 
   return {
     ...res.data,
