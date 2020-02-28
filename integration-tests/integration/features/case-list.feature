@@ -177,12 +177,18 @@ Feature: Case list
   Scenario: A user needs to see the closing date of a users previous order
     Given I am a registered user
     When I view the court list
-    And I see defendant "Webb Mitchell"
+    And I see defendant "Kara Ayers"
     And I should see the defendant has a probation status of "Previously known"
     Then I should see previously known termination date
 
   Scenario: A user needs to know if a defendant has a suspended sentence order
     Given I am a registered user
     When I view the court list
-    And I see defendant "Webb Mitchell"
+    And I see defendant "Kara Ayers"
     Then the flag SSO appears above the defendants probation status
+
+  Scenario: A user needs to know if a defendant is in "Breach"
+    Given I am a registered user
+    When I view the court list
+    And I see defendant "Kara Ayers"
+    Then the flag BREACH appears above the defendants probation status
