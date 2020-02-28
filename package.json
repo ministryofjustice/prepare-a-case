@@ -71,13 +71,16 @@
     "@ministryofjustice/frontend": "0.0.17-alpha",
     "axios": "0.19.2",
     "compression": "1.7.4",
+    "connect-redis": "4.0.4",
     "cookie-parser": "1.4.4",
     "debug": "4.1.1",
     "express": "4.17.1",
+    "express-session": "1.17.0",
     "govuk-frontend": "3.5.0",
     "moment": "2.24.0",
     "morgan": "1.9.1",
-    "nunjucks": "3.2.0"
+    "nunjucks": "3.2.0",
+    "redis": "3.0.2"
   },
   "devDependencies": {
     "axe-core": "3.5.1",

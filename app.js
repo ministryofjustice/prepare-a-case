@@ -5,8 +5,13 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const nunjucks = require('nunjucks')
 const sassMiddleware = require('node-sass-middleware')
+const session = require('express-session')
 const viewRouter = require('./routes/view')
 const apiRouter = require('./routes/api')
+const redis = require('redis')
+
+const RedisStore = require('connect-redis')(session)
+const redisClient = redis.createClient()
 
 const app = express()
 
@@ -27,9 +32,15 @@ env.addFilter('json', function (value) {
 app.set('view engine', 'njk')
 
 app.use(compression())
+app.use(session({
+  store: new RedisStore({ client: redisClient }),
+  secret: process.env.SESSION_SECRET || 'prepare-a-case',
+  resave: true,
+  saveUninitialized: true
+}))
 app.use(logger('dev'))
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),

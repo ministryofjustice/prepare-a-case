@@ -6,13 +6,14 @@ const router = express.Router()
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
+const { filters } = require('./middleware/filters')
 
 router.get('/', health, (req, res) => {
   res.render('dashboard', { title: 'Dashboard', healthy: req.healthy })
 })
 
-router.get('/cases/:date', health, defaults, async (req, res) => {
-  const response = await getCaseList(req.params.courtCode, req.params.date)
+router.get('/cases/:date', health, defaults, filters, async (req, res) => {
+  const response = await getCaseList(req.params.courtCode, req.params.date, req.params.filters)
   const params = req.params
   const totalCount = (response && response.cases && response.cases.length) || 0
   const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * params.limit
@@ -31,6 +32,11 @@ router.get('/cases/:date', health, defaults, async (req, res) => {
     data: (response && response.cases && response.cases.slice(startCount, endCount)) || []
   }
   res.render('case-list', templateValues)
+})
+
+router.post('/cases/:date', health, defaults, async (req, res) => {
+  req.session.selectedFilters = req.body
+  res.redirect(`/cases/${req.params.date}`)
 })
 
 router.get('/cases', (req, res) => {

@@ -1,9 +1,34 @@
 const { request } = require('./utils/request')
 const { apiUrl } = require('../config/defaults')
 
-const getCaseList = async (courtCode, date) => {
+// @TODO: Use the passed filters to filter the list
+const getCaseList = async (courtCode, date, filters) => {
   const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
-  return res.data
+
+  let filteredCases = res.data.cases
+
+  function applyFilter (filterObj) {
+    filteredCases = filteredCases.filter(courtCase => {
+      let notFiltered = true
+      let matched = false
+      filterObj.items.forEach(item => {
+        if (item.checked) {
+          notFiltered = false
+          matched = matched || courtCase[filterObj.id].toString() === item.value.toString()
+        }
+      })
+      return notFiltered || matched
+    })
+  }
+
+  filters.forEach(filterObj => {
+    applyFilter(filterObj)
+  })
+
+  return {
+    ...res.data,
+    cases: filteredCases
+  }
 }
 
 const getCase = async (courtCode, caseNo) => {

@@ -1,35 +1,35 @@
 {% set tableData = {
-  head: [
-    { text: "Defendant" },
-    { text: "Probation status" },
-    { text: "Offence" },
-    { text: "Listing" },
-    { text: "Session" },
-    { text: "Court", format: "numeric" }
-  ],
-  rows: []
+    head: [
+        { text: "Defendant" },
+        { text: "Probation status" },
+        { text: "Offence" },
+        { text: "Listing" },
+        { text: "Session" },
+        { text: "Court", format: "numeric" }
+    ],
+    rows: []
 } %}
 
 {% for item in data %}
-  {% set caseData = item.data | json %}
-  {% set offences = [] %}
-  {% if caseData.offences.offence.title %}
-    {{ offences.push(caseData.offences.offence.title | escape) }}
-  {% elif caseData.offences.offence | length %}
-    {{ offences.push('<ol class="govuk-list govuk-list--number govuk-!-margin-bottom-0">') }}
-    {% for offence in caseData.offences.offence %}
-      {{ offences.push('<li>' + offence.title |  escape + '</li>') }}
-    {% endfor %}
-    {{ offences.push('</ol>') }}
-  {% endif %}
-  {{ tableData.rows.push([
-    { text: ('<a href="/case/' + caseData.caseno + '/details" class="govuk-link govuk-link--no-visited-state">' + caseData.def_name | escape + '</a>') | safe },
-    { text: (('<div><span class="moj-badge moj-badge--black pac-badge">Sso</span></div>' | safe if item.suspendedSentenceOrder) + item.probationStatus + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + params.moment(item.previouslyKnownTerminationDate).format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate)) | safe },
-    { text: offences | join('') | safe },
-    { text: caseData.listno },
-    { text: item.session | capitalize },
-    { text: item.courtRoom, format: "numeric" }
-  ]) }}
+    {% set caseData = item.data | json %}
+    {% set offences = [] %}
+    {% if caseData.offences.offence.title %}
+        {{ offences.push(caseData.offences.offence.title | escape) }}
+        {% elif caseData.offences.offence | length %}
+        {{ offences.push('<ol class="govuk-list govuk-list--number govuk-!-margin-bottom-0">') }}
+        {% for offence in caseData.offences.offence %}
+            {{ offences.push('<li>' + offence.title |  escape + '</li>') }}
+        {% endfor %}
+        {{ offences.push('</ol>') }}
+    {% endif %}
+    {{ tableData.rows.push([
+        { text: ('<a href="/case/' + caseData.caseno + '/details" class="govuk-link govuk-link--no-visited-state">' + caseData.def_name | escape + '</a>') | safe },
+        { text: (('<div><span class="moj-badge moj-badge--black pac-badge">Sso</span></div>' | safe if item.suspendedSentenceOrder) + item.probationStatus + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + params.moment(item.previouslyKnownTerminationDate).format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate)) | safe },
+        { text: offences | join('') | safe },
+        { text: caseData.listno },
+        { text: item.session | capitalize },
+        { text: item.courtRoom, format: "numeric" }
+    ]) }}
 {% endfor %}
 
 {% set maxPagesDisplay = 5 %}
@@ -39,109 +39,115 @@
 {% set totalPages = (params.total / params.limit) | round(0, "ceil") %}
 
 {% if startNum < 1 or totalPages <= maxPagesDisplay %}
-  {% set startNum = 1 %}
-  {% set endNum = maxPagesDisplay %}
-{% elif endNum > totalPages %}
-  {% set startNum = totalPages - (maxPagesDisplay - 1) %}
+    {% set startNum = 1 %}
+    {% set endNum = maxPagesDisplay %}
+    {% elif endNum > totalPages %}
+    {% set startNum = totalPages - (maxPagesDisplay - 1) %}
 {% endif %}
 
 {% if endNum > totalPages %}
-  {% set endNum = totalPages %}
+    {% set endNum = totalPages %}
 {% endif %}
 
 {% set pageItems = [] %}
 {% for i in range(startNum, endNum + 1) -%}
-  {{ pageItems.push({
-    text: i,
-    href: '?page=' + i,
-    selected: currentPage === i
-  }) }}
+    {{ pageItems.push({
+        text: i,
+        href: '?page=' + i,
+        selected: currentPage === i
+    }) }}
 {%- endfor %}
 
 {% if currentPage === 1 %}
-  {% set previousLink = null %}
+    {% set previousLink = null %}
 {% else %}
-  {% set previousLink = {
-    text: 'Previous',
-    href: '?page=' + (currentPage - 1)
-  } %}
+    {% set previousLink = {
+        text: 'Previous',
+        href: '?page=' + (currentPage - 1)
+    } %}
 {% endif %}
 
 {% if currentPage === totalPages %}
-  {% set nextLink = null %}
+    {% set nextLink = null %}
 {% else %}
-  {% set nextLink = {
-    text: 'Next',
-    href: '?page=' + (currentPage + 1)
-  } %}
+    {% set nextLink = {
+        text: 'Next',
+        href: '?page=' + (currentPage + 1)
+    } %}
 {% endif %}
 
 {% extends "partials/layout.njk" %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">
-    <span class="govuk-caption-xl">{{ params.courtName }}</span>
-    {{ title }}
-  </h1>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">
+        <span class="govuk-caption-xl">{{ params.courtName }}</span>
+        {{ title }}
+    </h1>
 
-  {%  set dateFormat = 'dddd D MMM'%}
-  {%  set today = params.moment().format('YYYY-MM-DD') %}
-  {%  set tomorrow = params.moment().add(1, 'days').format('YYYY-MM-DD') %}
-  {%  set dayAfter = params.moment().add(2, 'days').format('YYYY-MM-DD') %}
-  {%  set lastUpdated = params.moment(params.lastUpdated).format('[Last updated] ' + dateFormat + ' [at] hh:mm') %}
+    {% set dateFormat = 'dddd D MMM' %}
+    {% set today = params.moment().format('YYYY-MM-DD') %}
+    {% set tomorrow = params.moment().add(1, 'days').format('YYYY-MM-DD') %}
+    {% set dayAfter = params.moment().add(2, 'days').format('YYYY-MM-DD') %}
+    {% set lastUpdated = params.moment(params.lastUpdated).format('[Last updated] ' + dateFormat + ' [at] hh:mm') %}
 
-  {% if params.date === today or params.date === tomorrow or params.date === dayAfter %}
-    {% block subnavigation %}
-
-      <span class="govuk-caption-m pac-last-updated">{{ lastUpdated }}</span>
-
-      {%  set todayLong = params.moment(today).format(dateFormat) %}
-      {%  set tomorrowLong = params.moment(tomorrow).format(dateFormat) %}
-      {%  set dayAfterLong = params.moment(dayAfter).format(dateFormat) %}
-
-      {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
-      {{ mojSubNavigation({
-        label: 'Sub navigation',
-        items: [{
-          text: todayLong,
-          href: today,
-          active: params.date === today
-        }, {
-          text: tomorrowLong,
-          href: tomorrow,
-          active: params.date === tomorrow
-        }, {
-          text: dayAfterLong,
-          href: dayAfter,
-          active: params.date === dayAfter
-        }]
-      }) }}
-    {% endblock %}
-  {% endif %}
-
-  {% if tableData.rows | length %}
-    {% block table %}
-      {%- from "govuk/components/table/macro.njk" import govukTable -%}
-      {{ govukTable(tableData) }}
-    {% endblock %}
-  {% else %}
-    <p class="govuk-body">No case data available for this day.</p>
-  {% endif %}
-
-  {% if totalPages > 1 %}
-  {% block pagination %}
-    {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
-    {{ mojPagination({
-      results: {
-        from: params.from + 1,
-        to: params.to,
-        count: params.total
-      },
-      previous: previousLink,
-      next: nextLink,
-      items: pageItems
+    {%- from "components/filter/macro.njk" import pacFilter -%}
+    {{ pacFilter({
+        formName: 'listFilterForm',
+        filters: params.filters
     }) }}
-  {% endblock %}
-  {% endif %}
+
+    {% if params.date === today or params.date === tomorrow or params.date === dayAfter %}
+        {% block subnavigation %}
+
+            <span class="govuk-caption-m pac-last-updated">{{ lastUpdated }}</span>
+
+            {% set todayLong = params.moment(today).format(dateFormat) %}
+            {% set tomorrowLong = params.moment(tomorrow).format(dateFormat) %}
+            {% set dayAfterLong = params.moment(dayAfter).format(dateFormat) %}
+
+            {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
+            {{ mojSubNavigation({
+                label: 'Sub navigation',
+                items: [{
+                    text: todayLong,
+                    href: today,
+                    active: params.date === today
+                }, {
+                    text: tomorrowLong,
+                    href: tomorrow,
+                    active: params.date === tomorrow
+                }, {
+                    text: dayAfterLong,
+                    href: dayAfter,
+                    active: params.date === dayAfter
+                }]
+            }) }}
+        {% endblock %}
+    {% endif %}
+
+    {% if tableData.rows | length %}
+        {% block table %}
+            {%- from "govuk/components/table/macro.njk" import govukTable -%}
+            {{ govukTable(tableData) }}
+        {% endblock %}
+    {% else %}
+        <p class="govuk-body">No case data available for this day.</p>
+    {% endif %}
+
+    {% if totalPages > 1 %}
+        {% block pagination %}
+            {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+            {{ mojPagination({
+                results: {
+                    from: params.from + 1,
+                    to: params.to,
+                    count: params.total
+                },
+                previous: previousLink,
+                next: nextLink,
+                items: pageItems
+            }) }}
+        {% endblock %}
+    {% endif %}
 
 {% endblock %}
