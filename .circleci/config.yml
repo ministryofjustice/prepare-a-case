@@ -55,6 +55,13 @@ executors:
     docker:
       - image: circleci/node:12.16.1-browsers
     working_directory: ~/app
+  integration-tests:
+    docker:
+      - image: circleci/node:12.16.1-browsers
+      - image: bitnami/redis:5.0
+        environment:
+          ALLOW_EMPTY_PASSWORD=yes
+    working_directory: ~/app
 
 orbs:
   kubernetes: circleci/kubernetes@0.3.0
@@ -119,7 +126,7 @@ jobs:
           path: coverage
 
   integration_test:
-    executor: builder
+    executor: integration-tests
     steps:
       - checkout
       - attach_workspace:
