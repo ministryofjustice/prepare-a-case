@@ -66,7 +66,7 @@ describe('Routes', () => {
 
   it('case list route should call the case service to fetch case list data', async () => {
     const response = await request(app).get('/cases/2020-01-01')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01')
+    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01', expect.any(Array))
     return response
   })
 
