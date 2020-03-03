@@ -11,7 +11,12 @@ const apiRouter = require('./routes/api')
 const redis = require('redis')
 
 const RedisStore = require('connect-redis')(session)
-const redisClient = redis.createClient()
+const redisClient = redis.createClient({
+  host: process.env.REDIS_HOST || '127.0.0.1',
+  port: process.env.REDIS_PORT || 6379,
+  password: process.env.REDIS_AUTH_TOKEN,
+  tls: process.env.REDIS_TLS_ENABLED || false,
+})
 
 const app = express()
 
