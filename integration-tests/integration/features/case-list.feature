@@ -185,10 +185,62 @@ Feature: Case list
     Given I am a registered user
     When I view the court list
     And I see defendant "Kara Ayers"
-    Then the flag SSO appears above the defendants probation status
+    Then the flag "Sso" appears above the defendants probation status
 
   Scenario: A user needs to know if a defendant is in "Breach"
     Given I am a registered user
     When I view the court list
     And I see defendant "Kara Ayers"
-    Then the flag BREACH appears above the defendants probation status
+    Then the flag "Breach" appears above the defendants probation status
+
+  Scenario: A user wants to filter the list to show only Current offenders and quickly clear that selection
+    Given I am a registered user
+    When I view the court list
+    Then I see defendant "Kara Ayers"
+    When I click the "Probation status" filter button
+    And I select the "Current" filter
+    And I click the "Apply filters" button
+    Then I should not see defendant "Kara Ayers"
+    And I see defendant "Lenore Marquez"
+    When I click the clear "Current" filter tag
+    Then I see defendant "Kara Ayers"
+
+  Scenario: A user wants to filter the list to show only court room 1 and quickly clear that selection
+    Given I am a registered user
+    When I view the court list
+    Then I see defendant "Kara Ayers"
+    When I click the "Courtroom" filter button
+    And I select the "1" filter
+    And I click the "Apply filters" button
+    Then I should not see defendant "Kara Ayers"
+    And I see defendant "Sharpe Trujillo"
+    When I click the clear "1" filter tag
+    Then I see defendant "Kara Ayers"
+
+  Scenario: A user wants to filter the list to show only the afternoon session and quickly clear that selection
+    Given I am a registered user
+    When I view the court list
+    Then I see defendant "Kara Ayers"
+    When I click the "Session" filter button
+    And I select the "AFTERNOON" filter
+    And I click the "Apply filters" button
+    Then I should not see defendant "Kara Ayers"
+    And I see defendant "Marcie Jordan"
+    When I click the clear "Afternoon" filter tag
+    Then I see defendant "Kara Ayers"
+
+  Scenario: A user wants to filter the list to show only Current offenders in courtroom 1 during the afternoon session and quickly clear the selections
+    Given I am a registered user
+    When I view the court list
+    Then I see defendant "Kara Ayers"
+    When I click the "Probation status" filter button
+    And I select the "Current" filter
+    And I click the "Courtroom" filter button
+    And I select the "1" filter
+    And I click the "Session" filter button
+    And I select the "AFTERNOON" filter
+    And I click the "Apply filters" button
+    Then I should not see defendant "Kara Ayers"
+    And I see defendant "Porter Salas"
+    When I click the "Clear all" link
+    Then I see defendant "Kara Ayers"

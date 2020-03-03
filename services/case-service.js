@@ -21,7 +21,7 @@ const getCaseList = async (courtCode, date, filters) => {
     })
   }
 
-  if (filters) {
+  if (filters && filteredCases) {
     filters.forEach(filterObj => {
       applyFilter(filterObj)
     })

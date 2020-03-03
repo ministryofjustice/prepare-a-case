@@ -1,17 +1,17 @@
 const filters = (req, res, next) => {
-  // Get selected filters from session
-  const selectedFilters = req.session.selectedFilters
-
   // Configure the available filters
-  const filters = [{
+  const caseListFilters = [{
     id: 'probationStatus',
     label: 'Probation status',
     items: [{
-      label: 'Current'
+      label: 'Current',
+      value: 'Current'
     }, {
-      label: 'Previously known'
+      label: 'Previously known',
+      value: 'Previously known'
     }, {
-      label: 'No record'
+      label: 'No record',
+      value: 'No record'
     }]
   }, {
     id: 'courtRoom',
@@ -29,9 +29,12 @@ const filters = (req, res, next) => {
     }]
   }]
 
+  // Get selected filters from session
+  const selectedFilters = req.session.selectedFilters
+
   /* @TODO: Get the courtroom numbers/names for the given court, Sheffield has 8 */
   for (let step = 1; step <= 8; step++) {
-    filters[1].items.push({ label: step.toString() })
+    caseListFilters[1].items.push({ label: step.toString(), value: step.toString() })
   }
 
   // Ensure selected filters are type Array
@@ -44,20 +47,19 @@ const filters = (req, res, next) => {
   }
 
   // Flag selected filters
-  filters.forEach(item => {
+  caseListFilters.forEach(item => {
     item.items.forEach(obj => {
-      obj.value = obj.value || obj.label // Set value to label if undefined
       Object.keys(obj).forEach(() => {
         if (selectedFilters && selectedFilters[item.id]) {
           selectedFilters[item.id].forEach(selection => {
-            obj.checked = obj.checked || obj.value === selection || obj.label === selection
+            obj.checked = obj.checked || obj.value === selection
           })
         }
       })
     })
   })
 
-  req.params.filters = filters
+  req.params.filters = caseListFilters
   next()
 }
 
