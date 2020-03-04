@@ -1,7 +1,6 @@
 const { request } = require('./utils/request')
 const { apiUrl } = require('../config/defaults')
 
-// @TODO: Use the passed filters to filter the list
 const getCaseList = async (courtCode, date, filters) => {
   const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
 

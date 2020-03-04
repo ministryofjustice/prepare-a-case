@@ -81,8 +81,8 @@
                     <div class="pac-filters-applied">
                         {% for item in filter.items %}
                             {% if item.checked %}
-                                <div class="moj-filter__tag pac-filter__tag"
-                                     data-controls="checkbox-{{ filter.id }}-{{ loop.index }}">{{ item.label }}</div>
+                                <button class="moj-filter__tag pac-filter__tag" type="button"
+                                     data-controls="checkbox-{{ filter.id }}-{{ loop.index }}">{{ item.label }}</button>
                             {% endif %}
                         {% endfor %}
                     </div>
