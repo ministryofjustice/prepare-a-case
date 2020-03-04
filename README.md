@@ -6,48 +6,12 @@ Prepare a case is a service that allows probation staff to prepare court cases.
 Before you begin, ensure you have met the following requirements:
 * You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Erbium) >= v12.13.0
 * You have [Yarn](http://yarnpkg.com) installed
-* You have Redis installed (see below)
 
 For code quality the project adheres to [JavaScript Standard Style](https://standardjs.com/) which requires minimal configuration of your chosen IDE.
 
 Unit tests use [Jest](https://jestjs.io).
 
 Integration tests use [Cypress](https://www.cypress.io) and employ [Gherkin](https://cucumber.io/docs/gherkin/reference/) features, integration tests also check for accessibility violations with [Axe](https://www.deque.com/axe/axe-for-web/documentation/api-documentation).
-
-## Redis
-
-Instructions for macOS with [Homebrew](https://brew.sh/).
-
-Install Redis:
-
-```
-brew update
-brew install redis
-```
-
-To have launchd start redis now and restart at login:
-
-```
-brew services start redis
-```
-
-Or, if you don't want/need a background service you can just run:
-
-```
-redis-server /usr/local/etc/redis.conf
-```
-
-Test if Redis server is running, should reply PONG:
-
-```
-redis-cli ping
-```
-
-To uninstall Redis:
-
-```
-brew uninstall redis
-```
 
 ## To use Prepare a case, follow these steps:
 
@@ -69,6 +33,12 @@ env COURT_CASE_SERVICE_URL=http://127.0.0.1:8080 yarn start
 ```
 
 ## For development, there are additional tasks:
+
+### Start Redis server
+
+```
+docker-compose up
+```
 
 ### Start app with mocked backend
 
