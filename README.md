@@ -34,13 +34,19 @@ env COURT_CASE_SERVICE_URL=http://127.0.0.1:8080 yarn start
 
 ## For development, there are additional tasks:
 
+### Start Redis server
+
+```
+docker-compose up
+```
+
 ### Start app with mocked backend
 
 If unspecified, the app will use your local court-case-service app but you can also use WireMock.
  
 Start the standalone WireMock server
 ```
-java -jar wiremock-standalone-2.26.0.jar --global-response-templating --port 9091
+java -jar wiremock-standalone-2.26.2.jar --global-response-templating --port 9091
 ```
 
 And then, to build assets and start app with

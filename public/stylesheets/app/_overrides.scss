@@ -9,3 +9,9 @@
 .moj-pagination__results {
   @extend .govuk-body;
 }
+
+body.js-enabled {
+  .moj-js-hidden {
+    @include govuk-visually-hidden;
+  }
+}

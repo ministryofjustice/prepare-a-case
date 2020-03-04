@@ -1,4 +1,6 @@
 /* global describe, beforeEach, afterEach, it, expect, jest */
+const redis = require('redis')
+const redisMock = require('redis-mock')
 const request = require('supertest')
 const caseService = require('../../services/case-service')
 const communityService = require('../../services/community-service')
@@ -6,6 +8,7 @@ const communityService = require('../../services/community-service')
 const defaults = require('../../routes/middleware/defaults')
 const healthcheck = require('../../routes/middleware/healthcheck')
 
+jest.spyOn(redis, 'createClient').mockImplementation(redisMock.createClient)
 jest.mock('../../services/case-service')
 jest.mock('../../services/community-service')
 
@@ -66,7 +69,7 @@ describe('Routes', () => {
 
   it('case list route should call the case service to fetch case list data', async () => {
     const response = await request(app).get('/cases/2020-01-01')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01')
+    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01', expect.any(Array))
     return response
   })
 

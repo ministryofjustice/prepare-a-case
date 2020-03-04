@@ -53,7 +53,14 @@ executors:
     working_directory: ~/app
   builder:
     docker:
-      - image: circleci/node:12.14.1-browsers
+      - image: circleci/node:12.16.1-browsers
+    working_directory: ~/app
+  integration-tests:
+    docker:
+      - image: circleci/node:12.16.1-browsers
+      - image: bitnami/redis:5.0
+        environment:
+          ALLOW_EMPTY_PASSWORD=yes
     working_directory: ~/app
 
 orbs:
@@ -119,7 +126,7 @@ jobs:
           path: coverage
 
   integration_test:
-    executor: builder
+    executor: integration-tests
     steps:
       - checkout
       - attach_workspace:
@@ -128,7 +135,7 @@ jobs:
           key: dependencies-cache-{{ checksum "package.json" }}
       - run:
           name: Run wiremock
-          command: java -jar wiremock-standalone-2.26.0.jar --global-response-templating --port 9091
+          command: java -jar wiremock-standalone-2.26.2.jar --global-response-templating --port 9091
           background: true
       - run:
           name: Run the app
