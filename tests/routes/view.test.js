@@ -1,6 +1,4 @@
 /* global describe, beforeEach, afterEach, it, expect, jest */
-const redis = require('redis')
-const redisMock = require('redis-mock')
 const request = require('supertest')
 const caseService = require('../../services/case-service')
 const communityService = require('../../services/community-service')
@@ -8,7 +6,6 @@ const communityService = require('../../services/community-service')
 const defaults = require('../../routes/middleware/defaults')
 const healthcheck = require('../../routes/middleware/healthcheck')
 
-jest.spyOn(redis, 'createClient').mockImplementation(redisMock.createClient)
 jest.mock('../../services/case-service')
 jest.mock('../../services/community-service')
 
