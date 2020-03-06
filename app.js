@@ -8,7 +8,7 @@ const sassMiddleware = require('node-sass-middleware')
 const session = require('express-session')
 const viewRouter = require('./routes/view')
 const apiRouter = require('./routes/api')
-const memoryStore = require('memorystore')(session)
+const MemoryStore = require('memorystore')(session)
 const sessionExpiry = 12 * 60 * 60 * 1000 // 12hrs
 const app = express()
 
@@ -31,7 +31,7 @@ app.set('view engine', 'njk')
 app.use(compression())
 app.use(session({
   cookie: { maxAge: sessionExpiry },
-  store: new memoryStore({
+  store: new MemoryStore({
     checkPeriod: sessionExpiry
   }),
   secret: process.env.SESSION_SECRET || 'prepare-a-case',
