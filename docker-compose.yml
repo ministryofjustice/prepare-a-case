@@ -1,8 +1,0 @@
-version: '3.7'
-services:
-  pac-redis:
-    image: 'bitnami/redis:5.0'
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-    ports:
-      - '6379:6379'
