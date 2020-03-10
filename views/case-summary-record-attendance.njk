@@ -1,0 +1,101 @@
+{%- set hideSubnav = true -%}
+{% extends "./partials/case-details.njk" %}
+
+{%- set communityData = data.communityData -%}
+{%- set currentOrder = {} -%}
+{%- for order in communityData.convictions if communityData.convictions | length %}
+    {% if order.convictionId | string === params.detail | string %}
+        {%- set currentOrder = order -%}
+    {% endif %}
+{% endfor -%}
+
+{%- set moment = params.moment -%}
+{%- set preciseDiff = params.preciseDiff -%}
+
+{% set elapsedTime = preciseDiff(moment(), moment(currentOrder.referralDate, 'YYYY-MM-DD'), true) %}
+{% set elapsedTimeArr = [] %}
+{{ elapsedTimeArr.push(elapsedTime.years + (' years' if elapsedTime.years > 1 else ' year')) if elapsedTime.years }}
+{{ elapsedTimeArr.push(elapsedTime.months + (' months' if elapsedTime.months > 1 else ' month')) if elapsedTime.months }}
+{{ elapsedTimeArr.push(elapsedTime.days + (' days' if elapsedTime.days > 1 else ' day')) if elapsedTime.days }}
+
+{% block caseContent %}
+
+    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
+    {{ govukBackLink({
+        classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-7',
+        text: "Back to probation record",
+        href: '/case/' + data.caseNo + '/record'
+    }) }}
+
+    <h1 class="govuk-heading-l govuk-!-margin-0">{{ currentOrder.sentence.description }}</h1>
+
+    <div class="govuk-grid-row govuk-!-margin-top-4">
+        <div class="govuk-grid-column-two-thirds">
+
+            <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ currentOrder.offences[0].detail.description }}</p>
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-hint govuk-!-margin-bottom-0">Started</p>
+                    <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0">{{ moment(currentOrder.referralDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                </div>
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-hint govuk-!-margin-bottom-0">Ends</p>
+                    <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0">NO DATA</p>
+                </div>
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-hint govuk-!-margin-bottom-0">Time elapsed</p>
+                    <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0">{{ elapsedTimeArr | join(', ') }}</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="govuk-grid-column-one-third">&nbsp;</div>
+    </div>
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-8">Appointment attendance</h2>
+
+    <p class="govuk-body">Last attendance: </p>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Appointments to date</h2>
+        </div>
+        <div class="govuk-grid-column-three-quarters">
+            <h2 class="govuk-heading-m app-dashboard-count govuk-!-margin-bottom-0">39</h2>
+        </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible app-section-break--heavy govuk-!-width-two-thirds">
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+            <h2 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Attended</h2>
+        </div>
+        <div class="govuk-grid-column-three-quarters">
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0"><span class="govuk-heading-m app-dashboard-count">25</span>Complied</p>
+            <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">11</span>Planned office visit</p>
+            <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">7</span>IAPS / Accredited programme</p>
+            <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">6</span>Unpaid work</p>
+            <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">1</span>Appointment with External Agency</p>
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 govuk-!-margin-top-2"><span class="govuk-heading-m app-dashboard-count">0</span>Failed to comply</p>
+        </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-width-two-thirds">
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+            <h2 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Absences</h2>
+        </div>
+        <div class="govuk-grid-column-three-quarters">
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0"><span class="govuk-heading-m app-dashboard-count">12</span>Acceptable</p>
+            <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">6</span>Employment</p>
+            <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">3</span>Professional judgement decision</p>
+            <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">2</span>Medical</p>
+            <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">1</span>Rescheduled</p>
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 govuk-!-margin-top-2"><span class="govuk-heading-m app-dashboard-count">0</span>Unacceptable</p>
+        </div>
+    </div>
+
+{% endblock %}

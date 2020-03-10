@@ -1,7 +1,7 @@
 const express = require('express')
 const moment = require('moment')
 const { getCaseList, getCase } = require('../services/case-service')
-const { getPersonalDetails, getConvictions } = require('../services/community-service')
+const { getPersonalDetails, getConvictions, getAttendanceDetails } = require('../services/community-service')
 const router = express.Router()
 
 const { health } = require('./middleware/healthcheck')
@@ -13,8 +13,8 @@ router.get('/', health, (req, res) => {
 })
 
 router.get('/cases/:date', health, defaults, filters, async (req, res) => {
-  const response = await getCaseList(req.params.courtCode, req.params.date, req.params.filters)
   const params = req.params
+  const response = await getCaseList(params.courtCode, params.date, req.params.filters)
   const totalCount = (response && response.cases && response.cases.length) || 0
   const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * params.limit
   const endCount = Math.min(startCount + parseInt(params.limit, 10), totalCount)
@@ -43,20 +43,21 @@ router.get('/cases', (req, res) => {
   res.redirect(`/cases/${moment().format('YYYY-MM-DD')}`)
 })
 
-router.get('/case/:caseNo/:detail', health, defaults, async (req, res) => {
+router.get('/case/:caseNo/:section?/:detail?', health, defaults, async (req, res) => {
   let template
   let communityResponse = {}
-  const response = await getCase(req.params.courtCode, req.params.caseNo)
+  const params = req.params
+  const response = await getCase(params.courtCode, params.caseNo)
   const templateValues = {
     healthy: req.healthy,
     params: {
-      ...req.params
+      ...params
     },
     data: {
       ...response
     }
   }
-  switch (req.params.detail) {
+  switch (params.section) {
     case 'person':
       templateValues.title = 'Personal details'
       template = 'case-summary-person'
@@ -65,14 +66,22 @@ router.get('/case/:caseNo/:detail', health, defaults, async (req, res) => {
       }
       break
     case 'record':
-      templateValues.title = 'Probation record'
-      template = 'case-summary-record'
+      templateValues.title = params.detail ? 'Order details' : 'Probation record'
+      template = !params.detail ? 'case-summary-record' : 'case-summary-record-attendance'
       if (response && response.crn) {
         communityResponse = await getConvictions(response.crn)
-        const personalDetails = await getPersonalDetails(response.crn)
-        communityResponse = {
-          ...communityResponse,
-          personalDetails
+        if (!params.detail) {
+          const personalDetails = await getPersonalDetails(response.crn)
+          communityResponse = {
+            ...communityResponse,
+            personalDetails
+          }
+        } else {
+          const attendanceDetails = await getAttendanceDetails(response.crn, params.detail)
+          communityResponse = {
+            ...communityResponse,
+            attendanceDetails
+          }
         }
       }
       break
@@ -87,6 +96,6 @@ router.get('/case/:caseNo/:detail', health, defaults, async (req, res) => {
   templateValues.data.caseData = response && response.data ? JSON.parse(response.data) : {}
   templateValues.data.communityData = communityResponse || {}
   res.render(template, templateValues)
-}, defaults)
+})
 
 module.exports = router

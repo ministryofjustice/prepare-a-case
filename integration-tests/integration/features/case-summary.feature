@@ -140,7 +140,7 @@ Feature: Case summary
     And I should see the following level 3 headings
       | Offender Manager |
     And I should see the body text "Not active"
-    And I should see link "CJA - Indeterminate Public Prot." with href "#"
+    And I should see link "CJA - Indeterminate Public Prot." with href "record/1531139839"
 
   Scenario: View the probation record section of the case summary for a current offender by clicking the defendant link from the case list page
     Given I am a registered user
@@ -160,7 +160,7 @@ Feature: Case summary
     And I should see the hint text "Allocated on 12 Aug 2017"
     And I should see the body text "NPS West Yorkshire Ecolight Towers 71 Ocean Parkway Leeds West Yorkshire LS7 4JP"
     And I should see the body text "Telephone: 01890 547 292"
-    And I should see link "CJA - Std Determinate Custody" with href "#"
+    And I should see link "CJA - Std Determinate Custody" with href "record/1787635525"
     And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
-    And I should see link "Life imprisonment (Adult)" with href "#"
+    And I should see link "Life imprisonment (Adult)" with href "record/1179756612"
     And I should see the hint text "Weights and Measures Acts - 18900"

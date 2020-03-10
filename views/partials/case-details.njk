@@ -58,7 +58,7 @@
     {{ mojSubNavigation({
         label: 'Sub navigation',
         items: subNavItems
-    }) }}
+    }) if not hideSubnav }}
 
     {% block caseContent %}{% endblock %}
 
