@@ -20,7 +20,11 @@ And('I should see the following case list table', $data => {
   $data.rows().forEach((row, index) => {
     row.forEach((text, index2) => {
       cy.get('.govuk-table__body > .govuk-table__row').eq(index).within(() => {
-        cy.get('.govuk-table__cell').eq(index2).contains(text)
+        if (text.indexOf('*') !== -1) {
+          cy.get('.govuk-table__cell').eq(index2).get('li').contains(text.substring(1))
+        } else {
+          cy.get('.govuk-table__cell').eq(index2).contains(text)
+        }
       })
     })
   })
