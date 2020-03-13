@@ -11,10 +11,10 @@ Feature: Case list
     And I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following case list table
-      | Defendant      | Probation status | Offence                                  | Listing | Session | Court |
-      | Kara Ayers     | No record        | Assault by beating                       | 1st     | Morning | 10    |
-      | Mann Carroll   | No record        | Assault by beating                       | 3rd     | Morning | 2     |
-      | Guadalupe Hess | No record        | Attempt theft from the person of another | 3rd     | Morning | 7     |
+      | Defendant      | Probation status | Offence                                   | Listing | Session | Court |
+      | Kara Ayers     | No record        | *Assault by beating                       | 1st     | Morning | 10    |
+      | Mann Carroll   | No record        | *Assault by beating                       | 3rd     | Morning | 2     |
+      | Guadalupe Hess | No record        | *Attempt theft from the person of another | 3rd     | Morning | 7     |
     And The following defendant names should be links
       | Kara Ayers | Mann Carroll | Guadalupe Hess |
     And I should see pagination
@@ -36,10 +36,10 @@ Feature: Case list
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following case list table
-      | Defendant      | Probation status | Offence                          | Listing | Session | Court |
-      | Robert Hardin  | No record        | Theft from the person of another | 3rd     | Morning | 3     |
-      | Vance Landry   | No record        | Theft from the person of another | 3rd     | Morning | 3     |
-      | Kirsten Cotton | Current          | Theft from a shop                | 3rd     | Morning | 4     |
+      | Defendant      | Probation status | Offence                           | Listing | Session | Court |
+      | Robert Hardin  | No record        | *Theft from the person of another | 3rd     | Morning | 3     |
+      | Vance Landry   | No record        | Theft from the person of another  | 3rd     | Morning | 3     |
+      | Kirsten Cotton | Current          | *Theft from a shop                | 3rd     | Morning | 4     |
     And The following defendant names should be links
       | Robert Hardin | Vance Landry | Kirsten Cotton |
     And I should see pagination
@@ -62,10 +62,10 @@ Feature: Case list
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following case list table
-      | Defendant       | Probation status | Offence                                  | Listing | Session | Court |
-      | Amanda Mckay    | Current          | Theft from the person of another         | 3rd     | Morning | 1     |
-      | Perry Delacruz  | No record        | Attempt theft from the person of another | 1st     | Morning | 1     |
-      | Burgess Hartman | Previously known | Theft from a shop                        | 2nd     | Morning | 3     |
+      | Defendant       | Probation status | Offence                                   | Listing | Session | Court |
+      | Amanda Mckay    | Current          | *Theft from the person of another         | 3rd     | Morning | 1     |
+      | Perry Delacruz  | No record        | *Attempt theft from the person of another | 1st     | Morning | 1     |
+      | Burgess Hartman | Previously known | *Theft from a shop                        | 2nd     | Morning | 3     |
     And The following defendant names should be links
       | Amanda Mckay | Perry Delacruz | Burgess Hartman |
     And I should see pagination
@@ -88,10 +88,10 @@ Feature: Case list
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following case list table
-      | Defendant       | Probation status | Offence                                  | Listing | Session | Court |
-      | Leticia Santana | Previously known | Assault by beating                       | 3rd     | Morning | 8     |
-      | Maribel Camacho | Previously known | Attempt theft from the person of another | 1st     | Morning | 6     |
-      | Burt Gonzalez   | No record        | Assault by beating                       | 3rd     | Morning | 1     |
+      | Defendant       | Probation status | Offence                                   | Listing | Session | Court |
+      | Leticia Santana | Previously known | *Assault by beating                       | 3rd     | Morning | 8     |
+      | Maribel Camacho | Previously known | *Attempt theft from the person of another | 1st     | Morning | 6     |
+      | Burt Gonzalez   | No record        | Assault by beating                        | 3rd     | Morning | 1     |
     And The following defendant names should be links
       | Leticia Santana | Maribel Camacho | Burt Gonzalez |
     And I should see pagination
@@ -123,10 +123,10 @@ Feature: Case list
     Then I should see the caption "Sheffield Magistrates' Court"
     And I should see sub navigation with default dates
     And I should see the following case list table
-      | Defendant         | Probation status | Offence                          | Listing | Session   | Court |
-      | Luisa Alston      | No record        | Theft from a shop                | 3rd     | Afternoon | 3     |
-      | Macdonald Ellison | Previously known | Theft from the person of another | 3rd     | Afternoon | 4     |
-      | Huff Walsh        | No record        | Assault by beating               | 1st     | Afternoon | 4     |
+      | Defendant         | Probation status | Offence                           | Listing | Session   | Court |
+      | Luisa Alston      | No record        | Theft from a shop                 | 3rd     | Afternoon | 3     |
+      | Macdonald Ellison | Previously known | *Theft from the person of another | 3rd     | Afternoon | 4     |
+      | Huff Walsh        | No record        | *Assault by beating               | 1st     | Afternoon | 4     |
     And The following defendant names should be links
       | Luisa Alston | Macdonald Ellison | Huff Walsh |
     And I should see pagination
@@ -147,12 +147,12 @@ Feature: Case list
     And I should see the heading "Cases"
     And I should see the caption "Sheffield Magistrates' Court"
     And I should see the following case list table
-      | Defendant      | Probation status | Offence                                  | Listing | Session | Court |
-      | Gill Arnold    | Current          | Theft from the person of another         | 3rd     | Morning | 1     |
-      | Cornelia Mccoy | Previously known | Assault by beating                       | 2nd     | Morning | 1     |
-      | Moses Hawkins  | Current          | Assault by beating                       | 2nd     | Morning | 7     |
-      | Jessie Ray     | No record        | Attempt theft from the person of another | 3rd     | Morning | 1     |
-      | Shelton Lamb   | No record        | Theft from the person of another         | 3rd     | Morning | 8     |
+      | Defendant      | Probation status | Offence                                   | Listing | Session | Court |
+      | Gill Arnold    | Current          | Theft from the person of another          | 3rd     | Morning | 1     |
+      | Cornelia Mccoy | Previously known | *Assault by beating                       | 2nd     | Morning | 1     |
+      | Moses Hawkins  | Current          | Assault by beating                        | 2nd     | Morning | 7     |
+      | Jessie Ray     | No record        | *Attempt theft from the person of another | 3rd     | Morning | 1     |
+      | Shelton Lamb   | No record        | *Theft from the person of another         | 3rd     | Morning | 8     |
     And The following defendant names should be links
       | Gill Arnold | Cornelia Mccoy | Moses Hawkins | Jessie Ray | Shelton Lamb |
     And I should not see pagination
