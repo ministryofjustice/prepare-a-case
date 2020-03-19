@@ -15,15 +15,3 @@ body.js-enabled {
     @include govuk-visually-hidden;
   }
 }
-
-.app-dashboard-count {
-  padding: 0 10px 0 0;
-  text-align: right;
-  min-width: 30px !important;
-  display: inline-block;
-  margin: 0;
-}
-
-.app-section-break--heavy {
-  border-bottom: 2px solid;
-}
