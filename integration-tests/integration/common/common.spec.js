@@ -42,6 +42,10 @@ And('I should see the following level 3 headings', $data => {
   })
 })
 
+And('I should not see the heading level {int} with text {string}', ($level, $text) => {
+  cy.get(`h${$level}`).contains($text).should('not.exist')
+})
+
 And('I should see the caption {string}', $caption => {
   cy.get('.govuk-caption-xl').contains($caption)
 })
@@ -52,6 +56,16 @@ And('There should be no a11y violations', () => {
 
 And('I should see the body text {string}', $text => {
   cy.get('.govuk-body').contains($text)
+})
+
+And('I should see the text {string} within element with class {string}', ($text, $class) => {
+  cy.get(`.${$class}`).contains($text)
+})
+
+And('I should see the following elements with {string} class text', ($class, $data) => {
+  $data.raw()[0].forEach((text, index) => {
+    cy.get(`.${$class}`).eq(index).contains(text)
+  })
 })
 
 And('I should see the hint text {string}', $text => {

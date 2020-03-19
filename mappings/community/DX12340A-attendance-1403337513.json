@@ -1,0 +1,147 @@
+{
+  "id": "171275b2-941b-4ff7-8142-36ae32017ba3",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/DX12340A/convictions/1403337513"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "attendances": [
+        {
+          "contactId": 867430,
+          "attended": false,
+          "complied": false,
+          "attendanceDate": "2018-03-06",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 899407
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 964445,
+          "attended": "",
+          "complied": "",
+          "attendanceDate": "",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 985513
+          },
+          "outcome": {
+            "description": ""
+          }
+        },
+        {
+          "contactId": 928547,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2020-03-04",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 947482
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 868600,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2019-10-09",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 878549
+          },
+          "outcome": {
+            "description": "Medical"
+          }
+        },
+        {
+          "contactId": 826480,
+          "attended": false,
+          "complied": false,
+          "attendanceDate": "2018-11-08",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 913536
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 881479,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-07-22",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 950459
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 874408,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2018-10-30",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 911596
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 996547,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-06-06",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 809554
+          },
+          "outcome": {
+            "description": "Medical"
+          }
+        },
+        {
+          "contactId": 932430,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-12-14",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 848483
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 993407,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-08-17",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 917402
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        }
+      ]
+    }
+  }
+}

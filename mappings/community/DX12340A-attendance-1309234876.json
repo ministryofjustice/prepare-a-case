@@ -1,0 +1,758 @@
+{
+  "id": "976a661b-5a63-43c6-9718-a72e6a87b293",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/DX12340A/convictions/1309234876"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "attendances": [
+        {
+          "contactId": 866569,
+          "attended": false,
+          "complied": false,
+          "attendanceDate": "2018-07-31",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 867576
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 804402,
+          "attended": false,
+          "complied": true,
+          "attendanceDate": "2018-02-03",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 900553
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 890407,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-11-19",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 896426
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 879500,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2019-06-27",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 871585
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 948513,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2019-03-01",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 952586
+          },
+          "outcome": {
+            "description": "Medical"
+          }
+        },
+        {
+          "contactId": 995419,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2020-02-25",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 845570
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 901432,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2019-08-13",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 807440
+          },
+          "outcome": {
+            "description": "Medical"
+          }
+        },
+        {
+          "contactId": 818502,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-04-17",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 889421
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 860464,
+          "attended": "",
+          "complied": "",
+          "attendanceDate": "",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 886418
+          },
+          "outcome": {
+            "description": ""
+          }
+        },
+        {
+          "contactId": 884447,
+          "attended": "",
+          "complied": "",
+          "attendanceDate": "",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 930416
+          },
+          "outcome": {
+            "description": ""
+          }
+        },
+        {
+          "contactId": 965401,
+          "attended": false,
+          "complied": true,
+          "attendanceDate": "2018-05-25",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 865449
+          },
+          "outcome": {
+            "description": "Medical"
+          }
+        },
+        {
+          "contactId": 827546,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2019-09-23",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 829443
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 968590,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-01-19",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 844597
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 995594,
+          "attended": "",
+          "complied": "",
+          "attendanceDate": "",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 859493
+          },
+          "outcome": {
+            "description": ""
+          }
+        },
+        {
+          "contactId": 851489,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2020-02-26",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 870593
+          },
+          "outcome": {
+            "description": "Medical"
+          }
+        },
+        {
+          "contactId": 814572,
+          "attended": "",
+          "complied": "",
+          "attendanceDate": "",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 948478
+          },
+          "outcome": {
+            "description": ""
+          }
+        },
+        {
+          "contactId": 995576,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2020-02-12",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 937444
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 860587,
+          "attended": "",
+          "complied": "",
+          "attendanceDate": "",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 802554
+          },
+          "outcome": {
+            "description": ""
+          }
+        },
+        {
+          "contactId": 970451,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-06-27",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 877548
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 860501,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2020-02-05",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 943472
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 928456,
+          "attended": false,
+          "complied": false,
+          "attendanceDate": "2018-10-07",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 834488
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 864538,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2019-03-17",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 813488
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 803574,
+          "attended": false,
+          "complied": true,
+          "attendanceDate": "2018-08-01",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 878516
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 855575,
+          "attended": false,
+          "complied": false,
+          "attendanceDate": "2020-03-05",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 955595
+          },
+          "outcome": {
+            "description": "Medical"
+          }
+        },
+        {
+          "contactId": 907443,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2018-06-04",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 807592
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 813455,
+          "attended": false,
+          "complied": true,
+          "attendanceDate": "2020-02-09",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 843417
+          },
+          "outcome": {
+            "description": "Medical"
+          }
+        },
+        {
+          "contactId": 897506,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2020-02-01",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 860599
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 967527,
+          "attended": "",
+          "complied": "",
+          "attendanceDate": "",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 833428
+          },
+          "outcome": {
+            "description": ""
+          }
+        },
+        {
+          "contactId": 814403,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2019-06-10",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 882575
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 941404,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2018-02-01",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 959467
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 928597,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2019-03-21",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 894413
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 851507,
+          "attended": false,
+          "complied": false,
+          "attendanceDate": "2018-06-19",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 856477
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 919522,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2019-07-26",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 952592
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 946479,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2020-03-10",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 885593
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 881419,
+          "attended": false,
+          "complied": true,
+          "attendanceDate": "2019-02-16",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 975505
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 829463,
+          "attended": false,
+          "complied": false,
+          "attendanceDate": "2019-07-02",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 811593
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 852435,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2019-03-03",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 987572
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 804579,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-10-26",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 887558
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 896529,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-08-30",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 982599
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 843566,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2018-12-25",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 812471
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 997559,
+          "attended": "",
+          "complied": "",
+          "attendanceDate": "",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 927578
+          },
+          "outcome": {
+            "description": ""
+          }
+        },
+        {
+          "contactId": 828513,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-02-02",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 896537
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 949521,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2019-10-05",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 986484
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 942596,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2019-05-24",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 947490
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 807474,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2018-12-27",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 995558
+          },
+          "outcome": {
+            "description": "Rescheduled"
+          }
+        },
+        {
+          "contactId": 927566,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-09-12",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 855494
+          },
+          "outcome": {
+            "description": "Medical"
+          }
+        },
+        {
+          "contactId": 800553,
+          "attended": "",
+          "complied": "",
+          "attendanceDate": "",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 975510
+          },
+          "outcome": {
+            "description": ""
+          }
+        },
+        {
+          "contactId": 904439,
+          "attended": "",
+          "complied": "",
+          "attendanceDate": "",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 958501
+          },
+          "outcome": {
+            "description": ""
+          }
+        },
+        {
+          "contactId": 834497,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-10-06",
+          "contact": {
+            "description": "Unpaid work",
+            "code": 886523
+          },
+          "outcome": {
+            "description": "Medical"
+          }
+        },
+        {
+          "contactId": 807566,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-05-28",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 822440
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 954461,
+          "attended": false,
+          "complied": true,
+          "attendanceDate": "2019-10-30",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 991543
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 808584,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2018-11-15",
+          "contact": {
+            "description": "IAPS / Accredited programme",
+            "code": 949413
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 912565,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-07-15",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 874498
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        },
+        {
+          "contactId": 875408,
+          "attended": "",
+          "complied": "",
+          "attendanceDate": "",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 948420
+          },
+          "outcome": {
+            "description": ""
+          }
+        },
+        {
+          "contactId": 952573,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-01-31",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 919557
+          },
+          "outcome": {
+            "description": "Professional judgement decision"
+          }
+        },
+        {
+          "contactId": 930600,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2020-02-21",
+          "contact": {
+            "description": "Planned office visit",
+            "code": 858437
+          },
+          "outcome": {
+            "description": "Medical"
+          }
+        },
+        {
+          "contactId": 836588,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2019-05-06",
+          "contact": {
+            "description": "Appointment with External Agency",
+            "code": 996505
+          },
+          "outcome": {
+            "description": "Employment"
+          }
+        }
+      ]
+    }
+  }
+}

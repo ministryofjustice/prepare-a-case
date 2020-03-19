@@ -41,6 +41,12 @@ describe('Routes', () => {
     return {}
   })
 
+  jest.spyOn(communityService, 'getAttendanceDetails').mockImplementation(function () {
+    return {
+      attendances: []
+    }
+  })
+
   beforeEach(() => {
     app = require('../../app')
   })
@@ -107,6 +113,18 @@ describe('Routes', () => {
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '8678951874')
     expect(communityService.getConvictions).toHaveBeenCalledWith('D985513')
     expect(communityService.getPersonalDetails).toHaveBeenCalledWith('D985513')
+    return response
+  })
+
+  it('case summary attendance route should call the case service to fetch attendance data', async () => {
+    caseResponse = {
+      probationStatus: 'Current',
+      crn: 'D985513'
+    }
+    const response = await request(app).get('/case/668911253/record/1403337513')
+    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
+    expect(communityService.getConvictions).toHaveBeenCalledWith('D985513')
+    expect(communityService.getAttendanceDetails).toHaveBeenCalledWith('D985513', '1403337513')
     return response
   })
 
