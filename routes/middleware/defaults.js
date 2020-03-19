@@ -17,7 +17,7 @@ function getMonthsAndDays (startTime, endTime) {
   return ['months', 'days'].map(interval => {
     const diff = endTime.diff(startTime, interval)
     startTime.add(diff, interval)
-    return diff + ' ' + interval
+    return diff + ' ' + (diff === 1 ? interval.substring(0, interval.length - 1) : interval)
   }).join(', ')
 }
 
@@ -33,5 +33,6 @@ const defaults = (req, res, next) => {
 
 module.exports = {
   defaults,
+  getPath,
   getMonthsAndDays
 }
