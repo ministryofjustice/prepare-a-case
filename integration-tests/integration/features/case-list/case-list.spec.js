@@ -1,5 +1,5 @@
 /* global cy */
-import { And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import moment from 'moment'
 
 const dateFormat = 'dddd D MMM'
@@ -20,7 +20,16 @@ And('I should see the following case list table', $data => {
   $data.rows().forEach((row, index) => {
     row.forEach((text, index2) => {
       cy.get('.govuk-table__body > .govuk-table__row').eq(index).within(() => {
-        cy.get('.govuk-table__cell').eq(index2).contains(text)
+        if (text.indexOf('*') === 0) {
+          cy.get('.govuk-table__cell').eq(index2).within(() => {
+            cy.get('li').contains(text.substring(1))
+          })
+        } else {
+          cy.get('.govuk-table__cell').eq(index2).contains(text)
+          cy.get('.govuk-table__cell').eq(index2).within(() => {
+            cy.get('li').should('not.exist')
+          })
+        }
       })
     })
   })
@@ -28,7 +37,7 @@ And('I should see the following case list table', $data => {
 
 And('The following defendant names should be links', $data => {
   $data.raw()[0].forEach((string, index) => {
-    cy.get('.govuk-link.govuk-link--no-visited-state').eq(index).contains(string)
+    cy.get('.pac-defendant-link').eq(index).contains(string)
   })
 })
 
@@ -74,18 +83,38 @@ And('I click pagination link {string}', $string => {
   cy.get('.moj-pagination__link').contains($string).click()
 })
 
-And('I see defendant "Webb Mitchell"', $data => {
-  cy.get('.govuk-table__body').contains('td', 'Webb Mitchell')
+And('I see defendant {string}', $string => {
+  cy.get('.govuk-table__body').contains('td', $string)
 })
 
-And('I should see the defendant has a probation status of "Previously known"', () => {
-  cy.get('.govuk-table__body').contains('td', 'Previously known').should('be.visible')
+And('I should not see defendant {string}', $string => {
+  cy.get('.govuk-table__body').contains('td', $string).should('not.exist')
+})
+
+And('I should see the defendant has a probation status of {string}', $string => {
+  cy.get('.govuk-table__body').contains('td', $string).should('be.visible')
 })
 
 Then('I should see previously known termination date', () => {
   cy.get('[data-cy=previously-known-termination-date]').contains('Order ended 13 December 2007')
 })
 
-Then('the flag SSO appears above the defendants probation status', () => {
-  cy.get('.pac-badge').contains('Sso').should('exist')
+Then('the flag {string} appears above the defendants probation status', $string => {
+  cy.get('.pac-badge').contains($string).should('exist')
+})
+
+When('I click the {string} filter button', $string => {
+  cy.get('.pac-filter-button').contains($string).click()
+})
+
+When('I select the {string} filter', $string => {
+  cy.get('[type="checkbox"]').check($string)
+})
+
+When('I click the {string} button', $string => {
+  cy.get('button').contains($string).click()
+})
+
+When('I click the clear {string} filter tag', $string => {
+  cy.get('.pac-filter__tag').contains($string).click()
 })

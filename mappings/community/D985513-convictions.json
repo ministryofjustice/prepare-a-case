@@ -1,0 +1,77 @@
+{
+  "id": "695b4a38-8826-465b-b0ee-6bf5ec536c87",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D985513/convictions"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "convictions": [
+        {
+          "convictionId": 1679300004,
+          "active": true,
+          "inBreach": false,
+          "convictionDate": "2018-11-23",
+          "referralDate": "2018-11-23",
+          "offences": [
+            {
+              "offenceId": "M2755599477",
+              "detail": {
+                "code": "08303",
+                "mainCategoryCode": "083",
+                "description": "Acknowledging bail in false name - 08303",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Offences relating to bail (Category)",
+                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
+                "ogrsOffenceCategory": "Absconding or bail offences",
+                "subCategoryDescription": "Acknowledging bail in false name"
+              },
+              "offenceDate": "2018-05-23T00:00:00",
+              "offenceCount": 1,
+              "mainOffence": true,
+              "offenderId": 2489724533,
+              "createdDatetime": "2018-09-23T00:00:00",
+              "lastUpdatedDatetime": "2018-09-23T00:00:00"
+            },
+            {
+              "offenceId": "M2755599477",
+              "detail": {
+                "code": "03604",
+                "mainCategoryCode": "036",
+                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Kidnapping (Category)",
+                "mainCategoryAbbreviation": "Kidnapping (Category)",
+                "ogrsOffenceCategory": "Violence",
+                "subCategoryDescription": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982)"
+              },
+              "offenceDate": "2018-05-23T00:00:00",
+              "offenceCount": 2,
+              "mainOffence": false,
+              "offenderId": 2607888810,
+              "createdDatetime": "2018-09-23T00:00:00",
+              "lastUpdatedDatetime": "2018-09-23T00:00:00"
+            }
+          ],
+          "sentence": {
+            "description": "CJA - Std Determinate Custody",
+            "originalLength": 18,
+            "originalLengthUnits": "Months",
+            "defaultLength": 18,
+            "lengthInDays": 547
+          },
+          "latestCourtAppearanceOutcome": {
+            "code": "647",
+            "description": "Adult Custody < 12m"
+          }
+        }
+      ]
+    }
+  }
+}

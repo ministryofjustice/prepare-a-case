@@ -1,0 +1,357 @@
+{
+  "id": "716da826-d614-42dd-9c06-6a639c318797",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D541487/convictions"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "convictions": [
+        {
+          "convictionId": 1531139839,
+          "active": false,
+          "inBreach": true,
+          "convictionDate": "2018-01-06",
+          "referralDate": "2018-01-06",
+          "offences": [
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": "82200",
+                "mainCategoryCode": "822",
+                "description": "Noise offences - 82200",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Noise offences",
+                "mainCategoryAbbreviation": "Noise offences",
+                "ogrsOffenceCategory": "Other motoring",
+                "subCategoryDescription": "Noise offences"
+              },
+              "offenceDate": "2017-07-06T00:00:00",
+              "offenceCount": 1,
+              "mainOffence": true,
+              "offenderId": 152924888,
+              "createdDatetime": "2017-11-06T00:00:00",
+              "lastUpdatedDatetime": "2017-11-06T00:00:00"
+            },
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": "08303",
+                "mainCategoryCode": "083",
+                "description": "Acknowledging bail in false name - 08303",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Offences relating to bail (Category)",
+                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
+                "ogrsOffenceCategory": "Absconding or bail offences",
+                "subCategoryDescription": "Acknowledging bail in false name"
+              },
+              "offenceDate": "2017-07-06T00:00:00",
+              "offenceCount": 2,
+              "mainOffence": false,
+              "offenderId": 1712377627,
+              "createdDatetime": "2017-11-06T00:00:00",
+              "lastUpdatedDatetime": "2017-11-06T00:00:00"
+            },
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": 2801,
+                "mainCategoryCode": 28,
+                "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Burglary in a dwelling",
+                "mainCategoryAbbreviation": "Burglary in a dwelling",
+                "ogrsOffenceCategory": "Burglary (Domestic)",
+                "subCategoryDescription": "Burglary (dwelling) with intent to commit, or the commission of, an offence triable only on indictment"
+              },
+              "offenceDate": "2017-07-06T00:00:00",
+              "offenceCount": 3,
+              "mainOffence": false,
+              "offenderId": 1051019526,
+              "createdDatetime": "2017-11-06T00:00:00",
+              "lastUpdatedDatetime": "2017-11-06T00:00:00"
+            },
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": 12400,
+                "mainCategoryCode": 124,
+                "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles",
+                "mainCategoryAbbreviation": "Highways Acts - Other offences, other than those ",
+                "ogrsOffenceCategory": "Other offence",
+                "subCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles"
+              },
+              "offenceDate": "2017-07-06T00:00:00",
+              "offenceCount": 4,
+              "mainOffence": false,
+              "offenderId": 1449192838,
+              "createdDatetime": "2017-11-06T00:00:00",
+              "lastUpdatedDatetime": "2017-11-06T00:00:00"
+            }
+          ],
+          "sentence": {
+            "description": "CJA - Indeterminate Public Prot.",
+            "originalLength": 18,
+            "originalLengthUnits": "Months",
+            "defaultLength": 18,
+            "lengthInDays": 547
+          },
+          "latestCourtAppearanceOutcome": {
+            "code": "804",
+            "description": "Final Review"
+          }
+        },
+        {
+          "convictionId": 2194354691,
+          "active": false,
+          "inBreach": false,
+          "convictionDate": "2018-09-23",
+          "referralDate": "2018-09-23",
+          "offences": [
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": 8902,
+                "mainCategoryCode": 89,
+                "description": "(Adulteration etc of milk products - 08902)",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Adulteration of food or drugs (Food Safety Act 1990)",
+                "mainCategoryAbbreviation": "Adulteration of food or drugs (Food Safety Act 19",
+                "ogrsOffenceCategory": "Other offence",
+                "subCategoryDescription": "Adulteration etc of milk products"
+              },
+              "offenceDate": "2018-03-23T00:00:00",
+              "offenceCount": 1,
+              "mainOffence": true,
+              "offenderId": 713804660,
+              "createdDatetime": "2018-07-23T00:00:00",
+              "lastUpdatedDatetime": "2018-07-23T00:00:00"
+            },
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": 8902,
+                "mainCategoryCode": 89,
+                "description": "(Adulteration etc of milk products - 08902)",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Adulteration of food or drugs (Food Safety Act 1990)",
+                "mainCategoryAbbreviation": "Adulteration of food or drugs (Food Safety Act 19",
+                "ogrsOffenceCategory": "Other offence",
+                "subCategoryDescription": "Adulteration etc of milk products"
+              },
+              "offenceDate": "2018-03-23T00:00:00",
+              "offenceCount": 2,
+              "mainOffence": false,
+              "offenderId": 1477808228,
+              "createdDatetime": "2018-07-23T00:00:00",
+              "lastUpdatedDatetime": "2018-07-23T00:00:00"
+            }
+          ],
+          "sentence": {
+            "description": "Adult Custody < 12m",
+            "originalLength": 18,
+            "originalLengthUnits": "Months",
+            "defaultLength": 18,
+            "lengthInDays": 547
+          },
+          "latestCourtAppearanceOutcome": {
+            "code": 85,
+            "description": "Adult Custody < 12m"
+          }
+        },
+        {
+          "convictionId": 1235666200,
+          "active": false,
+          "inBreach": true,
+          "convictionDate": "2018-12-24",
+          "referralDate": "2018-12-24",
+          "offences": [
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": 4200,
+                "mainCategoryCode": 42,
+                "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag",
+                "mainCategoryAbbreviation": "Stealing mail bags or postal packets or unlawfull",
+                "ogrsOffenceCategory": "Theft (Non-motor)",
+                "subCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag"
+              },
+              "offenceDate": "2018-06-24T00:00:00",
+              "offenceCount": 1,
+              "mainOffence": true,
+              "offenderId": 208222997,
+              "createdDatetime": "2018-10-24T00:00:00",
+              "lastUpdatedDatetime": "2018-10-24T00:00:00"
+            },
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": 12400,
+                "mainCategoryCode": 124,
+                "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles",
+                "mainCategoryAbbreviation": "Highways Acts - Other offences, other than those ",
+                "ogrsOffenceCategory": "Other offence",
+                "subCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles"
+              },
+              "offenceDate": "2018-06-24T00:00:00",
+              "offenceCount": 2,
+              "mainOffence": false,
+              "offenderId": 1990432648,
+              "createdDatetime": "2018-10-24T00:00:00",
+              "lastUpdatedDatetime": "2018-10-24T00:00:00"
+            }
+          ],
+          "sentence": {
+            "description": "CJA - Indeterminate Public Prot.",
+            "originalLength": 18,
+            "originalLengthUnits": "Months",
+            "defaultLength": 18,
+            "lengthInDays": 547
+          },
+          "latestCourtAppearanceOutcome": {
+            "code": 414,
+            "description": "Warrant without Bail"
+          }
+        },
+        {
+          "convictionId": 2191294734,
+          "active": false,
+          "inBreach": true,
+          "convictionDate": "2018-08-13",
+          "referralDate": "2018-08-13",
+          "offences": [
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": 1600,
+                "mainCategoryCode": 16,
+                "description": "(Buggery and attempted buggery - 01600)",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Buggery and attempted buggery",
+                "mainCategoryAbbreviation": "Buggery and attempted buggery",
+                "ogrsOffenceCategory": "Sexual (not against child)",
+                "subCategoryDescription": "Buggery and attempted buggery"
+              },
+              "offenceDate": "2018-02-13T00:00:00",
+              "offenceCount": 1,
+              "mainOffence": true,
+              "offenderId": 2961417753,
+              "createdDatetime": "2018-06-13T00:00:00",
+              "lastUpdatedDatetime": "2018-06-13T00:00:00"
+            },
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": 8902,
+                "mainCategoryCode": 89,
+                "description": "(Adulteration etc of milk products - 08902)",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Adulteration of food or drugs (Food Safety Act 1990)",
+                "mainCategoryAbbreviation": "Adulteration of food or drugs (Food Safety Act 19",
+                "ogrsOffenceCategory": "Other offence",
+                "subCategoryDescription": "Adulteration etc of milk products"
+              },
+              "offenceDate": "2018-02-13T00:00:00",
+              "offenceCount": 2,
+              "mainOffence": false,
+              "offenderId": 684670980,
+              "createdDatetime": "2018-06-13T00:00:00",
+              "lastUpdatedDatetime": "2018-06-13T00:00:00"
+            },
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": 10501,
+                "mainCategoryCode": 105,
+                "description": "Common assault and battery - 10501",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Common and other types of assault",
+                "mainCategoryAbbreviation": "Common and other types of assault",
+                "ogrsOffenceCategory": "Violence",
+                "subCategoryDescription": "Common assault and battery"
+              },
+              "offenceDate": "2018-02-13T00:00:00",
+              "offenceCount": 3,
+              "mainOffence": false,
+              "offenderId": 758282823,
+              "createdDatetime": "2018-06-13T00:00:00",
+              "lastUpdatedDatetime": "2018-06-13T00:00:00"
+            }
+          ],
+          "sentence": {
+            "description": "ORA Community Order",
+            "originalLength": 18,
+            "originalLengthUnits": "Months",
+            "defaultLength": 18,
+            "lengthInDays": 547
+          },
+          "latestCourtAppearanceOutcome": {
+            "code": 753,
+            "description": "Adult Custody < 12m"
+          }
+        },
+        {
+          "convictionId": 754729727,
+          "active": false,
+          "inBreach": true,
+          "convictionDate": "2018-11-14",
+          "referralDate": "2018-11-14",
+          "offences": [
+            {
+              "offenceId": "M0336289246",
+              "detail": {
+                "code": 9400,
+                "mainCategoryCode": 94,
+                "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
+                "subCategoryCode": 2,
+                "form20Code": 12,
+                "mainCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)",
+                "mainCategoryAbbreviation": "Town and Country Planning Act 1990/Planning (List",
+                "ogrsOffenceCategory": "Other offence",
+                "subCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)"
+              },
+              "offenceDate": "2018-05-14T00:00:00",
+              "offenceCount": 1,
+              "mainOffence": true,
+              "offenderId": 1902665164,
+              "createdDatetime": "2018-09-14T00:00:00",
+              "lastUpdatedDatetime": "2018-09-14T00:00:00"
+            }
+          ],
+          "sentence": {
+            "description": "ORA Suspended Sentence Order",
+            "originalLength": 18,
+            "originalLengthUnits": "Months",
+            "defaultLength": 18,
+            "lengthInDays": 547
+          },
+          "latestCourtAppearanceOutcome": {
+            "code": 797,
+            "description": "Final Review"
+          }
+        }
+      ]
+    }
+  }
+}

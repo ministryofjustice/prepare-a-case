@@ -1,0 +1,192 @@
+{%- set formName = params.formName or 'pacFilterForm' -%}
+
+<section class="pac-filter-card govuk-!-margin-bottom-6">
+    <form name="{{ formName }}" id="{{ formName }}" method="post">
+
+        <p class="govuk-heading-s">Filters</p>
+
+        {% for filter in params.filters %}
+
+            {%- set hasSelected = false -%}
+            {% for item in filter.items %}
+                {% if item.checked %}
+                    {% set hasSelected = true %}
+                {% endif %}
+            {% endfor %}
+
+            <div class="pac-filter-container">
+                <button id="button-{{ filter.id }}" type="button"
+                        class="pac-filter-button{% if hasSelected %} pac-filter-button--selected{% endif %}"
+                        data-controls="filter-{{ filter.id }}-selection"
+                        aria-controls="filter-{{ filter.id }}-selection">{{ filter.label }}
+                </button>
+
+                <div id="filter-{{ filter.id }}-selection" class="pac-filter-selection moj-js-hidden">
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend moj-js-hidden">
+                                Probation
+                                record
+                            </legend>
+                            <div class="govuk-checkboxes govuk-checkboxes--small">
+
+                                {% for item in filter.items %}
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input pac-filter-checkbox"
+                                               id="checkbox-{{ filter.id }}-{{ loop.index }}"
+                                               name="{{ filter.id }}"
+                                               type="checkbox"
+                                               value="{{ item.value or item.label }}"{% if item.checked %} checked{% endif %}>
+                                        <label class="govuk-label govuk-checkboxes__label"
+                                               for="checkbox-{{ filter.id }}-{{ loop.index }}">{{ item.label }}</label>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="govuk-button pac-apply-filters-button">Apply filters</button>
+
+        {%- set hasSelected = false -%}
+        {% for filter in params.filters %}
+            {% for item in filter.items %}
+                {% if item.checked %}
+                    {% set hasSelected = true %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+        <div class="pac-selected-filters{% if not hasSelected %} moj-js-hidden{% endif %}">
+            <p class="govuk-body govuk-!-margin-bottom-0">
+                <span class="govuk-!-font-weight-bold">Applied filters</span>
+                <a href="#" id="reset-filters" class="govuk-link govuk-link--no-visited-state govuk-body-s govuk-!-margin-left-2">Clear all</a></p>
+
+            {% for filter in params.filters %}
+
+                {%- set hasSelected = false -%}
+                {% for item in filter.items %}
+                    {% if item.checked %}
+                        {% set hasSelected = true %}
+                    {% endif %}
+                {% endfor %}
+
+                <div id="pac-filters-applied-{{ filter.id }}"
+                     class="pac-filters-applied--container{% if not hasSelected %} moj-js-hidden{% endif %}">
+                    <p class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0 pac-selected-filters--label">{{ filter.label }}</p>
+                    <div class="pac-filters-applied">
+                        {% for item in filter.items %}
+                            {% if item.checked %}
+                                <button class="moj-filter__tag pac-filter__tag" type="button"
+                                     data-controls="checkbox-{{ filter.id }}-{{ loop.index }}">{{ item.label }}</button>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </form>
+</section>
+
+<script type="text/javascript">
+
+  (function setupFilterComponent () {
+
+    'use strict'
+
+    function resizeFilterSections () {
+      var filterButtons = document.getElementsByClassName('pac-filter-button')
+      var filterSections = document.getElementsByClassName('pac-filter-selection')
+      Array.prototype.forEach.call(filterSections, function(element, index) {
+        element.classList.remove('moj-js-hidden')
+        filterButtons[index].style.width = element.offsetWidth > 1 ? element.offsetWidth + 'px' : filterButtons[index].style.width
+        element.classList.add('moj-js-hidden')
+      })
+    }
+
+    function configureFilterButtons () {
+      var filterButtons = document.getElementsByClassName('pac-filter-button')
+
+      function toggleFilter (e) {
+        e.stopPropagation()
+        var $el = e.target
+        var current = !$el.active && $el.dataset['controls']
+        var filterSections = document.getElementsByClassName('pac-filter-selection')
+        Array.prototype.forEach.call(filterButtons, function(element, index) {
+          current === element.dataset['controls'] ? element.classList.add('pac-filter-button--open') : element.classList.remove('pac-filter-button--open')
+          current === filterSections[index].id ? filterSections[index].classList.remove('moj-js-hidden') : filterSections[index].classList.add('moj-js-hidden')
+          if (!$el.active) {
+            element.active = false
+          }
+        })
+        $el.active = !$el.active
+      }
+
+      Array.prototype.forEach.call(filterButtons, function(element) {
+        element.addEventListener('click', toggleFilter)
+      })
+    }
+
+    function configureClearTags () {
+      function clearFilter (e) {
+        e.stopPropagation()
+        var checkbox = document.getElementById(e.target.dataset['controls'])
+        checkbox.click()
+        document.getElementById('{{ formName }}').submit()
+      }
+
+      var clearTags = document.getElementsByClassName('moj-filter__tag pac-filter__tag')
+      Array.prototype.forEach.call(clearTags, function(element) {
+        element.addEventListener('click', clearFilter)
+      })
+    }
+
+    function configureCheckboxes () {
+      function checkboxClick (e) {
+        e.stopPropagation()
+        var button = document.getElementById('button-' + e.target.name.substring(e.target.name.indexOf('-') + 1))
+        var anySelected = false
+        var checkboxesInGroup = document.querySelectorAll('[id^="checkbox-' + e.target.name + '"]')
+        Array.prototype.forEach.call(checkboxesInGroup, function(element) {
+          anySelected = anySelected || element.checked
+        })
+        anySelected ? button.classList.add('pac-filter-button--selected') : button.classList.remove('pac-filter-button--selected')
+      }
+
+      var checkboxes = document.getElementsByClassName('pac-filter-checkbox')
+      Array.prototype.forEach.call(checkboxes, function(element) {
+        element.addEventListener('click', checkboxClick)
+      })
+    }
+
+    function configureResetButton () {
+      function resetFilters (e) {
+        e.stopPropagation()
+        var form = document.getElementById('{{ formName }}')
+        var checkboxes = document.getElementsByClassName('pac-filter-checkbox')
+        Array.prototype.forEach.call(checkboxes, function(element) {
+          if (element.checked) {
+            element.click()
+          }
+        })
+        form.submit()
+      }
+
+      var resetBtn = document.getElementById('reset-filters')
+      resetBtn.addEventListener('click', resetFilters)
+    }
+
+    resizeFilterSections()
+    configureFilterButtons()
+    configureClearTags()
+    configureCheckboxes()
+    configureResetButton()
+
+  })()
+
+</script>

@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const request = async (url) => {
+const request = async url => {
   let response = {}
   try {
     response = await axios.get(url)

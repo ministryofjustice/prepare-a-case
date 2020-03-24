@@ -18,9 +18,7 @@ describe('Case service', () => {
     moxios.stubRequest(`${apiUrl}/court/SHF/cases?date=2020-01-01`, {
       status: 200,
       response: {
-        data: {
-          cases: []
-        }
+        cases: []
       }
     })
 
@@ -32,13 +30,95 @@ describe('Case service', () => {
   it('should call the API to request case detail data', async () => {
     moxios.stubRequest(`${apiUrl}/court/SHF/case/123456`, {
       status: 200,
-      response: {
-        data: {}
-      }
+      response: {}
     })
 
     const response = await getCase('SHF', '123456')
     expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/case/123456`)
+    return response
+  })
+
+  it('should filter the case list by probation status', async () => {
+    const filtersArr = [{
+      id: 'probationStatus',
+      label: 'Probation status',
+      items: [{
+        label: 'Current',
+        value: 'Current',
+        checked: true
+      }]
+    }]
+
+    moxios.stubRequest(`${apiUrl}/court/SHF/cases?date=2020-01-01`, {
+      status: 200,
+      response: {
+        cases: [{
+          probationStatus: 'Current'
+        }, {
+          probationStatus: 'No record'
+        }]
+      }
+    })
+
+    const response = await getCaseList('SHF', '2020-01-01', filtersArr)
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
+    expect(response.cases.length).toEqual(1)
+    return response
+  })
+
+  it('should filter the case list by court room', async () => {
+    const filtersArr = [{
+      id: 'courtRoom',
+      label: 'Courtroom',
+      items: [{
+        label: '1',
+        value: '1',
+        checked: true
+      }]
+    }]
+
+    moxios.stubRequest(`${apiUrl}/court/SHF/cases?date=2020-01-01`, {
+      status: 200,
+      response: {
+        cases: [{
+          courtRoom: '1'
+        }, {
+          courtRoom: '2'
+        }]
+      }
+    })
+
+    const response = await getCaseList('SHF', '2020-01-01', filtersArr)
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
+    expect(response.cases.length).toEqual(1)
+    return response
+  })
+
+  it('should filter the case list by session', async () => {
+    const filtersArr = [{
+      id: 'session',
+      label: 'Session',
+      items: [{
+        label: 'Morning',
+        value: 'MORNING',
+        checked: true
+      }]
+    }]
+
+    moxios.stubRequest(`${apiUrl}/court/SHF/cases?date=2020-01-01`, {
+      status: 200,
+      response: {
+        cases: [{
+          session: 'MORNING'
+        }, {
+          session: 'AFTERNOON'
+        }]
+      }
+    })
+
+    const response = await getCaseList('SHF', '2020-01-01', filtersArr)
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
+    expect(response.cases.length).toEqual(1)
     return response
   })
 })

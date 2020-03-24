@@ -1,12 +1,15 @@
 const express = require('express')
+const compression = require('compression')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const nunjucks = require('nunjucks')
 const sassMiddleware = require('node-sass-middleware')
+const session = require('express-session')
 const viewRouter = require('./routes/view')
 const apiRouter = require('./routes/api')
-
+const MemoryStore = require('memorystore')(session)
+const sessionExpiry = 12 * 60 * 60 * 1000 // 12hrs
 const app = express()
 
 const env = nunjucks.configure([
@@ -25,9 +28,19 @@ env.addFilter('json', function (value) {
 
 app.set('view engine', 'njk')
 
+app.use(compression())
+app.use(session({
+  cookie: { maxAge: sessionExpiry },
+  store: new MemoryStore({
+    checkPeriod: sessionExpiry
+  }),
+  secret: process.env.SESSION_SECRET || 'prepare-a-case',
+  resave: true,
+  saveUninitialized: true
+}))
 app.use(logger('dev'))
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),

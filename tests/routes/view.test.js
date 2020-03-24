@@ -37,6 +37,16 @@ describe('Routes', () => {
     return {}
   })
 
+  jest.spyOn(communityService, 'getConvictions').mockImplementation(function () {
+    return {}
+  })
+
+  jest.spyOn(communityService, 'getAttendanceDetails').mockImplementation(function () {
+    return {
+      attendances: []
+    }
+  })
+
   beforeEach(() => {
     app = require('../../app')
   })
@@ -62,7 +72,7 @@ describe('Routes', () => {
 
   it('case list route should call the case service to fetch case list data', async () => {
     const response = await request(app).get('/cases/2020-01-01')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01')
+    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01', expect.any(Array))
     return response
   })
 
@@ -94,10 +104,27 @@ describe('Routes', () => {
     return response
   })
 
-  // @TODO: Implement tests when completing this section of work and delete this TODO
   it('case summary probation record route should call the case service to fetch case data', async () => {
+    caseResponse = {
+      probationStatus: 'Current',
+      crn: 'D985513'
+    }
     const response = await request(app).get('/case/8678951874/record')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '8678951874')
+    expect(communityService.getConvictions).toHaveBeenCalledWith('D985513')
+    expect(communityService.getPersonalDetails).toHaveBeenCalledWith('D985513')
+    return response
+  })
+
+  it('case summary attendance route should call the case service to fetch attendance data', async () => {
+    caseResponse = {
+      probationStatus: 'Current',
+      crn: 'D985513'
+    }
+    const response = await request(app).get('/case/668911253/record/1403337513')
+    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
+    expect(communityService.getConvictions).toHaveBeenCalledWith('D985513')
+    expect(communityService.getAttendanceDetails).toHaveBeenCalledWith('D985513', '1403337513')
     return response
   })
 

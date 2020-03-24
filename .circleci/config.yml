@@ -53,12 +53,13 @@ executors:
     working_directory: ~/app
   builder:
     docker:
-      - image: circleci/node:12.14.1-browsers
+      - image: circleci/node:12.16.1-browsers
     working_directory: ~/app
 
 orbs:
   kubernetes: circleci/kubernetes@0.3.0
   helm: circleci/helm@0.1.2
+  snyk: snyk/snyk@0.0.9
 
 jobs:
   build:
@@ -74,6 +75,11 @@ jobs:
       - run:
           name: Install dependencies
           command: yarn install --frozen-lockfile
+      - snyk/scan:
+          fail-on-issues: false
+          monitor-on-build: true
+          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}'
+          organization: 'digital-probation-services'
       - save_cache:
           key: dependencies-cache-{{ checksum "package.json" }}
           paths:
@@ -128,7 +134,7 @@ jobs:
           key: dependencies-cache-{{ checksum "package.json" }}
       - run:
           name: Run wiremock
-          command: java -jar wiremock-standalone-2.25.1.jar --global-response-templating --port 9091
+          command: java -jar wiremock-standalone-2.26.2.jar --global-response-templating --port 9091
           background: true
       - run:
           name: Run the app
@@ -176,6 +182,13 @@ jobs:
              docker push mojdigitalstudio/prepare-a-case:$APP_VERSION
              docker push mojdigitalstudio/prepare-a-case:latest
             fi
+      - snyk/scan:
+          docker-image-name: 'mojdigitalstudio/prepare-a-case:latest'
+          target-file: 'Dockerfile'
+          fail-on-issues: false
+          monitor-on-build: true
+          project: '${CIRCLE_PROJECT_REPONAME}/latest'
+          organization: 'digital-probation-services'
 
   deploy_dev:
     executor: deployer

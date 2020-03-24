@@ -24,10 +24,11 @@
           "courtRoom": 1,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "probationStatus": "Current",
-          "data": "{\"inf\":\"POL01\",\"c_id\":58407,\"cseq\":1,\"h_id\":196337,\"type\":\"C\",\"valid\":\"N\",\"caseno\":1474726180,\"listno\":\"3rd\",\"def_age\":20,\"def_dob\":\"27-12-2000\",\"def_sex\":\"M\",\"def_addr\":{\"line1\":77,\"line2\":\"Thames Street\",\"pcode\":\"ad21 5dr\",\"line3\":\"Cardiff\"},\"def_name\":\"Gill Arnold\",\"def_type\":\"P\",\"offences\":{\"offence\":[{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 24/03/2016 at Edinburgh stole NINTENDO SWITCH to the value of 300.00, belonging to Randolph Nieves.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}]}}",
+          "data": "{\"inf\":\"POL01\",\"c_id\":58407,\"cseq\":1,\"h_id\":196337,\"type\":\"C\",\"valid\":\"N\",\"caseno\":1474726180,\"listno\":\"3rd\",\"def_age\":20,\"def_dob\":\"27-12-2000\",\"def_sex\":\"M\",\"def_addr\":{\"line1\":77,\"line2\":\"Thames Street\",\"pcode\":\"ad21 5dr\",\"line3\":\"Cardiff\"},\"def_name\":\"Gill Arnold\",\"def_type\":\"P\",\"offences\":{\"offence\":{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 24/03/2016 at Edinburgh stole NINTENDO SWITCH to the value of 300.00, belonging to Randolph Nieves.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}}}",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
-          "suspendedSentenceOrder": false
+          "suspendedSentenceOrder": false,
+          "breach": true
         },
         {
           "caseId": 54017,
@@ -39,7 +40,8 @@
           "data": "{\"inf\":\"POL01\",\"c_id\":54017,\"cseq\":2,\"h_id\":2601418,\"type\":\"C\",\"valid\":\"Y\",\"caseno\":4071719588,\"listno\":\"2nd\",\"def_age\":27,\"def_dob\":\"18-12-1993\",\"def_sex\":\"F\",\"def_addr\":{\"line1\":38,\"line2\":\"Pineapple Street\",\"pcode\":\"ad21 5dr\",\"line3\":\"Bangor\"},\"def_name\":\"Cornelia Mccoy\",\"def_type\":\"P\",\"offences\":{\"offence\":[{\"as\":\"Contrary to section 39 of the Criminal Justice Act 1988.\",\"sum\":\"On 01/01/2016 at Manchester assaulted Weeks Slater by beating him.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Assault by beating\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) of the Criminal Attempts Act 1981.\",\"sum\":\"On 05/09/2016 at Preston attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Bradley Knight.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Attempt theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 01/01/2015 at Gracker, Liverpool, stole LAPTOP to the value of £987.00, belonging to Mcgowan Langley.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from a shop\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) of the Criminal Attempts Act 1981.\",\"sum\":\"On 05/09/2016 at Glasgow attempted to steal MOTORCYCLE to the value of 750.00, belonging to Kinney Tyler.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Attempt theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}]}}",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
-          "suspendedSentenceOrder": true
+          "suspendedSentenceOrder": true,
+          "breach": true
         },
         {
           "caseId": 495183,
@@ -48,10 +50,11 @@
           "courtRoom": 7,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "probationStatus": "Current",
-          "data": "{\"inf\":\"POL01\",\"c_id\":495183,\"cseq\":3,\"h_id\":765552,\"type\":\"C\",\"valid\":\"Y\",\"caseno\":1674533419,\"listno\":\"2nd\",\"def_age\":45,\"def_dob\":\"06-01-1975\",\"def_sex\":\"M\",\"def_addr\":{\"line1\":94,\"line2\":\"Dare Court\",\"pcode\":\"ad21 5dr\",\"line3\":\"Preston\"},\"def_name\":\"Moses Hawkins\",\"def_type\":\"P\",\"offences\":{\"offence\":[{\"as\":\"Contrary to section 39 of the Criminal Justice Act 1988.\",\"sum\":\"On 01/01/2016 at Leeds assaulted Curtis Dean by beating him.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Assault by beating\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}]}}",
+          "data": "{\"inf\":\"POL01\",\"c_id\":495183,\"cseq\":3,\"h_id\":765552,\"type\":\"C\",\"valid\":\"Y\",\"caseno\":1674533419,\"listno\":\"2nd\",\"def_age\":45,\"def_dob\":\"06-01-1975\",\"def_sex\":\"M\",\"def_addr\":{\"line1\":94,\"line2\":\"Dare Court\",\"pcode\":\"ad21 5dr\",\"line3\":\"Preston\"},\"def_name\":\"Moses Hawkins\",\"def_type\":\"P\",\"offences\":{\"offence\":{\"as\":\"Contrary to section 39 of the Criminal Justice Act 1988.\",\"sum\":\"On 01/01/2016 at Leeds assaulted Curtis Dean by beating him.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Assault by beating\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}}}",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
-          "suspendedSentenceOrder": false
+          "suspendedSentenceOrder": false,
+          "breach": false
         },
         {
           "caseId": 282799,
@@ -63,7 +66,8 @@
           "data": "{\"inf\":\"POL01\",\"c_id\":282799,\"cseq\":4,\"h_id\":9851780,\"type\":\"C\",\"valid\":\"Y\",\"caseno\":1625017313,\"listno\":\"3rd\",\"def_age\":20,\"def_dob\":\"22-11-2000\",\"def_sex\":\"F\",\"def_addr\":{\"line1\":27,\"line2\":\"Elm Place\",\"pcode\":\"ad21 5dr\",\"line3\":\"Bangor\"},\"def_name\":\"Jessie Ray\",\"def_type\":\"P\",\"offences\":{\"offence\":[{\"as\":\"Contrary to section 1(1) of the Criminal Attempts Act 1981.\",\"sum\":\"On 05/09/2016 at Preston attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Massey Bentley.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Attempt theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 01/01/2015 at Buzzworks, Manchester, stole ROBOTS to the value of £987.00, belonging to Goodwin Heath.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from a shop\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 24/03/2016 at Aberdeen stole NINTENDO SWITCH to the value of 300.00, belonging to Giles Chambers.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}]}}",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
-          "suspendedSentenceOrder": false
+          "suspendedSentenceOrder": false,
+          "breach": false
         },
         {
           "caseId": 494987,
@@ -75,7 +79,8 @@
           "data": "{\"inf\":\"POL01\",\"c_id\":494987,\"cseq\":5,\"h_id\":4653329,\"type\":\"C\",\"valid\":\"Y\",\"caseno\":8170180452,\"listno\":\"3rd\",\"def_age\":59,\"def_dob\":\"27-06-1961\",\"def_sex\":\"M\",\"def_addr\":{\"line1\":56,\"line2\":\"Henderson Walk\",\"pcode\":\"ad21 5dr\",\"line3\":\"Aberdeen\"},\"def_name\":\"Shelton Lamb\",\"def_type\":\"P\",\"offences\":{\"offence\":[{\"as\":\"Contrary to section 1(1) of the Criminal Attempts Act 1981.\",\"sum\":\"On 05/09/2016 at Preston attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Hester Preston.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Attempt theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 24/03/2016 at Sheffield stole NINTENDO SWITCH to the value of 300.00, belonging to Patrick Grimes.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}]}}",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
-          "suspendedSentenceOrder": true
+          "suspendedSentenceOrder": true,
+          "breach": false
         }
       ]
     }

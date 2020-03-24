@@ -9,7 +9,7 @@
 }, {
     text: 'Personal details',
     href: '/case/' + data.caseNo + '/person',
-    active: title === 'Person'
+    active: title === 'Personal details'
 }] %}
 
 {% if data.probationStatus !== 'No record' %}
@@ -58,7 +58,7 @@
     {{ mojSubNavigation({
         label: 'Sub navigation',
         items: subNavItems
-    }) }}
+    }) if not hideSubnav }}
 
     {% block caseContent %}{% endblock %}
 

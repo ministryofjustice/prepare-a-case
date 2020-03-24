@@ -29,7 +29,7 @@
 <body class="govuk-template__body">
 
 <script>
-  document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled')
+  document.body.classList.add('js-enabled')
 </script>
 
 <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
@@ -68,7 +68,12 @@
       {
         text: 'Cases',
         href: '/cases',
-        active: title === 'Cases' or title === 'Case details' or title === 'Person' or title === 'Probation record' or title === 'Risk registers'
+        active: title === 'Cases' or
+          title === 'Case details' or
+          title === 'Personal details' or
+          title === 'Probation record' or
+          title === 'Risk registers' or
+          title === 'Order details'
       }
     ]
   }) }}
