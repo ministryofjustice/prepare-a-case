@@ -6,9 +6,8 @@
         <div class="govuk-grid-column-two-thirds">
 
             <h2 class="govuk-heading-m">Appearance</h2>
-            <p class="govuk-body">Court room {{ data.courtRoom }}
-                on {{ params.moment(data.sessionStartTime).format(dateFormat) }}, {{ data.session | lower }}
-                session.</p>
+            <p class="govuk-body">Court {{ data.courtRoom }}, {{ data.session | lower }} session,
+                {{ params.moment(data.sessionStartTime).format(dateFormat) }}, ({{ data.caseData.listno }} listing).</p>
 
             <h2 class="govuk-heading-m">Offences</h2>
 
