@@ -19,10 +19,22 @@ And('I should see the {string} summary table', ($position, $data) => {
   })
 })
 
+Then('I should see a summary list', ($data) => {
+  cy.get('.govuk-summary-list').should('exist')
+})
+
 And('I should see the correct time elapsed between {string} and {string}', ($startDate, $endDate) => {
   const startDate = moment($startDate, 'YYYY-MM-DD')
   const endDate = moment($endDate, 'YYYY-MM-DD').isAfter() ? moment() : moment($endDate, 'YYYY-MM-DD')
   cy.get('.qa-elapsed-time').contains(getMonthsAndDays(startDate, endDate))
+})
+
+And('I should see the row with the key {string}', $title => {
+  cy.get('.govuk-summary-list__key').contains($title)
+})
+
+And('I should see the value {string}', $title => {
+  cy.get('.govuk-summary-list__value').contains($title)
 })
 
 Then('I should see a key details banner with a level 1 heading {string}', $title => {

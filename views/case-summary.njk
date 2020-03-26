@@ -1,6 +1,15 @@
 {% extends "partials/case-details.njk" %}
 
+{%- set communityData = data.communityData -%}
+{%- set caseData = data.caseData -%}
+
 {% block caseContent %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <h1 class="govuk-heading-l">Case Details</h1>
+        </div>
+    </div>
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
@@ -22,6 +31,59 @@
                     <p class="govuk-caption-m govuk-!-margin-top-1 govuk-!-margin-bottom-8">{{ offence.as }}</p>
                 {% endfor %}
             {% endif %}
+
+                <h2 class="govuk-heading-m">
+                    Personal details from police
+                </h2>
+
+                <dl class="govuk-summary-list govuk-summary-list--no-border">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ caseData.def_name }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Gender
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {% if caseData.def_sex === "F" %}Female{% elif caseData.def_sex === "M" %}Male{% else %}Unknown{% endif %}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Date of birth
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ params.moment(caseData.def_dob, 'DD-MM-YYYY').format('D MMMM YYYY') }} ({{ params.moment().diff(params.moment(caseData.def_dob, 'DD-MM-YYYY'), 'years') }} years old)
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {%- set address = caseData.def_addr -%}
+                            {% if address.line1 %}{{ address.line1 }}<br/>{% endif %}
+                            {% if address.line2 %}{{ address.line2 }}<br/>{% endif %}
+                            {% if address.line3 %}{{ address.line3 }}<br/>{% endif %}
+                            {% if address.line4 %}{{ address.line4 }}<br/>{% endif %}
+                            {% if address.line5 %}{{ address.line5 }}<br/>{% endif %}
+                            {% if address.pcode %}{{ address.pcode | upper }}{% endif %}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Nationality
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ caseData.nationality_1 or "Unknown" }}{{ " / " + caseData.nationality_2 if caseData.nationality_2 }}
+                        </dd>
+                    </div>
+                </dl>
 
         </div>
         <div class="govuk-grid-column-one-third">
