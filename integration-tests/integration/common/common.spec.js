@@ -72,9 +72,9 @@ And('I should see the hint text {string}', $text => {
   cy.get('.govuk-hint').contains($text)
 })
 
-And('I should see the session is in Court room {string} this morning', $text => {
-  const date = moment().format('dddd D MMM')
-  cy.get('.govuk-body').contains(`Court room ${$text} on ${date}, morning session.`)
+And('I should see the session is in Court {string} this morning', $text => {
+  const date = moment().format('dddd DD MMM')
+  cy.get('.govuk-body').contains(`Court ${$text}, morning session, ${date}`)
 })
 
 And('I should see the body text {string} in bold', $text => {
