@@ -6,8 +6,9 @@ const getPersonalDetails = async crn => {
   return res.data
 }
 
-const getConvictions = async crn => {
-  const res = await request(`${apiUrl}/offender/${crn}/convictions`)
+const getProbationRecord = async crn => {
+  console.log(`Now calling for probation-record: ${apiUrl}/offender/${crn}/probation-record`)
+  const res = await request(`${apiUrl}/offender/${crn}/probation-record`)
   return res.data
 }
 
@@ -18,6 +19,6 @@ const getAttendanceDetails = async (crn, orderId) => {
 
 module.exports = {
   getPersonalDetails,
-  getConvictions,
+  getProbationRecord: getProbationRecord,
   getAttendanceDetails
 }
