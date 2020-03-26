@@ -30,6 +30,10 @@ And('I should see the heading {string}', $title => {
   cy.get('h1').contains($title)
 })
 
+And('I should see the level 2 heading {string}', $title => {
+  cy.get('h2').contains($title)
+})
+
 And('I should see the following level 2 headings', $data => {
   $data.raw()[0].forEach((text, index) => {
     cy.get('h2').eq(index).contains(text)
@@ -73,7 +77,7 @@ And('I should see the hint text {string}', $text => {
 })
 
 And('I should see the session is in Court {string} this morning', $text => {
-  const date = moment().format('dddd DD MMM')
+  const date = moment().format('dddd DD MMMM')
   cy.get('.govuk-body').contains(`Court ${$text}, morning session, ${date}`)
 })
 

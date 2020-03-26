@@ -24,21 +24,20 @@
         active: title === 'Risk registers'
     }) }}
 {% endif %}
+{% set crn = [] %}
+{{ crn.push(data.crn) if data.crn }}
 
-{% set alerts = [] %}
-{{ alerts.push({
-    description: "Status from nDelius:",
-    title: "Current offender"
-}) if data.probationStatus === 'Current' }}
+{% set pnc = [] %}
+{{ pnc.push(data.pnc) if data.pnc }}
 
-{{ alerts.push({
-    description: "Risk register from nDelius:",
-    title: data.rosh + " Risk of Serious Harm"
-}) if data.rosh }}
+{% if data.breach == true %}
+{% set breach = [] %}
+{{ breach.push(data.breach) if data.breach }}
+{% endif %}
 
-{% set offenderInfo = ["Date of birth: " + params.moment(data.caseData.def_dob, 'DD-MM-YYYY').format('DD/MM/YYYY')] %}
-{{ offenderInfo.push("CRN: " + data.crn) if data.crn }}
-{{ offenderInfo.push("PNC: " + data.pnc) if data.pnc }}
+{% set dob = [params.moment(data.caseData.def_dob, 'DD-MM-YYYY').format('Do MMMM YYYY')] %}
+{% set probationStatus = [] %}
+{{ probationStatus.push(data.probationStatus) if data.probationStatus }}
 
 {% block keydetails %}
 
@@ -46,8 +45,11 @@
     {{ pacKeyDetailsBar({
         accTitle: "Defendant: ",
         title: data.caseData.def_name,
-        information: offenderInfo,
-        alerts: alerts
+        crn: crn,
+        pnc: pnc,
+        dob: dob,
+        probationStatus: probationStatus,
+        breach: breach
     }) }}
 
 {% endblock %}

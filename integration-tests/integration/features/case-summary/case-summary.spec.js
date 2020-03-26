@@ -1,6 +1,6 @@
 /* global cy */
 import moment from 'moment'
-import { And } from 'cypress-cucumber-preprocessor/steps'
+import { And, Then } from 'cypress-cucumber-preprocessor/steps'
 import { getMonthsAndDays } from '../../../../routes/middleware/defaults'
 
 And('I should see the following alerts', $data => {
@@ -23,4 +23,12 @@ And('I should see the correct time elapsed between {string} and {string}', ($sta
   const startDate = moment($startDate, 'YYYY-MM-DD')
   const endDate = moment($endDate, 'YYYY-MM-DD').isAfter() ? moment() : moment($endDate, 'YYYY-MM-DD')
   cy.get('.qa-elapsed-time').contains(getMonthsAndDays(startDate, endDate))
+})
+
+Then('I should see a key details banner with a level 1 heading {string}', $title => {
+  cy.get('h1').contains($title)
+})
+
+And('I should see a straight line divide', () => {
+  cy.get('.pac-key-details-bar__divider').should('exist')
 })
