@@ -7,7 +7,7 @@
 
             <h2 class="govuk-heading-m">Appearance</h2>
             <p class="govuk-body">Court {{ data.courtRoom }}, {{ data.session | lower }} session,
-                {{ params.moment(data.sessionStartTime).format(dateFormat) }}, ({{ data.caseData.listno }} listing).</p>
+                {{ params.moment(data.sessionStartTime).format('dddd Do MMMM') }} ({{ data.caseData.listno }} listing).</p>
 
             <h2 class="govuk-heading-m">Offences</h2>
 

@@ -20,14 +20,13 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case details | Personal details |
     And I should see the heading "Kara Ayers"
-    And I should see the body text "Date of birth: 31/10/1980"
+    And I should see the body text "Date of birth: 31st October 1980"
     And I should see the body text "PNC: A/1234560BA"
     And I should see the following level 2 headings
       | Appearance | Offences |
     And I should see the following level 3 headings
       | CPS pack |
     And I should see link "View CPS Pack (opens in Court Store)" with href "#"
-    And I should see the session is in Court "10" this morning
     And I should see the body text "Assault by beating" in bold
     And I should see the body text "On 01/01/2016 at Newcastle assaulted Short Pearson by beating him."
     And I should see the caption text "Contrary to section 39 of the Criminal Justice Act 1988."
@@ -40,7 +39,7 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case details | Personal details | Probation record | Risk registers |
     And I should see the heading "Webb Mitchell"
-    And I should see the body text "Date of birth: 13/10/1958"
+    And I should see the body text "Date of birth: 13th October 1958"
     And I should see the body text "CRN: D541487"
     And I should see the body text "PNC: A/8404713BA"
     And I should see the following level 2 headings
@@ -48,7 +47,6 @@ Feature: Case summary
     And I should see the following level 3 headings
       | CPS pack |
     And I should see link "View CPS Pack (opens in Court Store)" with href "#"
-    And I should see the session is in Court "8" this morning
     And I should see the body text "Theft from the person of another" in bold
     And I should see the body text "On 24/03/2016 at Edinburgh stole PLAYSTATION 4 to the value of 300.00, belonging to Dillard Everett."
     And I should see the caption text "Contrary to section 1(1) and 7 of the Theft Act 1968."
@@ -61,17 +59,14 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case details | Personal details | Probation record | Risk registers |
     And I should see the heading "Lenore Marquez"
-    And I should see the body text "Date of birth: 18/08/1979"
+    And I should see the body text "Date of birth: 18th August 1979"
     And I should see the body text "CRN: DX12340A"
     And I should see the body text "PNC: A/1234560BA"
-    And I should see the following alerts
-      | Medium Risk of Serious Harm | Current offender |
     And I should see the following level 2 headings
       | Appearance | Offences |
     And I should see the following level 3 headings
       | CPS pack |
     And I should see link "View CPS Pack (opens in Court Store)" with href "#"
-    And I should see the session is in Court "6" this morning
     And I should see the body text "Attempt theft from the person of another" in bold
     And I should see the body text "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Clemons Barron."
     And I should see the caption text "Contrary to section 1(1) of the Criminal Attempts Act 1981."
@@ -202,3 +197,43 @@ Feature: Case summary
     And I should see the text "8 Mar 2017" within element with class "qa-start-date"
     And I should see the text "2 Jan 2018" within element with class "qa-end-date"
     And I should not see the heading level 2 with text "Appointment attendance"
+
+  Scenario: View the case details to see the probation status and PNC/CRN numbers of a defendant currently known to probation
+    Given I am a registered user
+    When I navigate to the "case/668911253/details" route
+    Then I should see a key details banner with a level 1 heading "Lenore Marquez"
+    And I should see the body text "CRN: DX12340A"
+    And I should see a straight line divide
+    And I should see the body text "PNC: A/1234560BA"
+    Then I should see the body text "Probation status: Current"
+
+  Scenario: View the case details to see the probation status and PNC/CRN numbers of a defendant currently known to probation and in breach of their order
+    Given I am a registered user
+    When I navigate to the "case/5222601242/details" route
+    Then I should see a key details banner with a level 1 heading "Olsen Alexander"
+    And I should see the body text "CRN: D991494"
+    And I should see a straight line divide
+    And I should see the body text "PNC: D/9874483AB"
+    Then I should see the body text "Probation status: Current (Breach)"
+
+  Scenario: View the case details to see the probation status and PNC/CRN numbers of a defendant previously known to probation
+    Given I am a registered user
+    When I navigate to the "case/381157762/details" route
+    Then I should see a key details banner with a level 1 heading "Jannie Mcbride"
+    And I should see a straight line divide
+    And I should see the body text "PNC: A/1234560BA"
+    Then I should see the body text "Probation status: Previously known"
+
+  Scenario: View the case details to see the probation status and PNC/CRN numbers of a defendant with a probation status of no record
+    Given I am a registered user
+    When I navigate to the "case/3597035492/details" route
+    Then I should see a key details banner with a level 1 heading "Guadalupe Hess"
+    And I should see a straight line divide
+    And I should see the body text "PNC: A/1234560BA"
+    Then I should see the body text "Probation status: No record"
+
+  Scenario: View the case details to see when and where a defendant is appearing in court.
+    Given I am a registered user
+    When I navigate to the "case/3597035492/details" route
+    Then I should see the level 2 heading "Appearance"
+    Then I should see the session is in Court "7" this morning with "3rd" listing

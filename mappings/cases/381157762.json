@@ -15,12 +15,13 @@
       "courtCode": "SHF",
       "courtRoom": 8,
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-      "probationStatus": "No record",
+      "probationStatus": "Previously known",
       "crn": "",
       "pnc": "A/1234560BA",
       "rosh": "",
       "data": "{\"inf\":\"POL01\",\"c_id\":389432,\"cseq\":8,\"h_id\":2386961,\"type\":\"C\",\"valid\":\"Y\",\"caseno\":381157762,\"listno\":\"2nd\",\"def_age\":67,\"def_dob\":\"02-01-1954\",\"def_sex\":\"F\",\"def_addr\":{\"line1\":99,\"line2\":\"Billings Place\",\"pcode\":\"ad21 5dr\",\"line3\":\"Leeds\"},\"def_name\":\"Jannie Mcbride\",\"def_type\":\"P\",\"nationality_1\":\"Lebanese\",\"nationality_2\":\"Malaysian\",\"offences\":{\"offence\":[{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 01/01/2015 at Enervate, Aberdeen, stole LAPTOP to the value of £987.00, belonging to Hyde Pacheco.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from a shop\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 24/03/2016 at Preston stole NINTENDO SWITCH to the value of 300.00, belonging to Vaughn Holcomb.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}]}}",
-      "session": "MORNING"
+      "session": "MORNING",
+      "breach": false
     }
   }
 }
