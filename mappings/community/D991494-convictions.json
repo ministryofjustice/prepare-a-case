@@ -2,7 +2,7 @@
   "id": "8de5d670-bf88-41d5-bda1-56485a41551b",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/D991494/convictions"
+    "urlPathPattern": "/offender/D991494/probation-record"
   },
   "response": {
     "headers": {

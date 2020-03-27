@@ -2,7 +2,7 @@
 const moxios = require('moxios')
 const { apiUrl } = require('../../config/defaults')
 
-const { getPersonalDetails, getConvictions, getAttendanceDetails } = require('../../services/community-service')
+const { getPersonalDetails, getProbationRecord, getAttendanceDetails } = require('../../services/community-service')
 
 describe('Community service', () => {
   beforeEach(() => {
@@ -28,15 +28,15 @@ describe('Community service', () => {
   })
 
   it('should call the API to request offender conviction details data', async () => {
-    moxios.stubRequest(`${apiUrl}/offender/D123456/convictions`, {
+    moxios.stubRequest(`${apiUrl}/offender/D123456/probation-record`, {
       status: 200,
       response: {
         data: {}
       }
     })
 
-    const response = await getConvictions('D123456')
-    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/convictions`)
+    const response = await getProbationRecord('D123456')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/probation-record`)
     return response
   })
 
@@ -56,12 +56,12 @@ describe('Community service', () => {
   })
 
   it('should fail silently', async () => {
-    moxios.stubRequest(`${apiUrl}/offender/D123456/convictions`, {
+    moxios.stubRequest(`${apiUrl}/offender/D123456/probation-record`, {
       status: 500,
       response: {}
     })
     expect(async () => {
-      await getConvictions('D123456')
+      await getProbationRecord('D123456')
     }).not.toThrow()
   })
 })
