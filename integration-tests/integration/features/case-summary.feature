@@ -236,5 +236,4 @@ Feature: Case summary
     Given I am a registered user
     When I navigate to the "case/3597035492/details" route
     Then I should see the level 2 heading "Appearance"
-    Then I should see the body text "Court 7, morning session,"
-    Then I should see the body text "(3rd listing)."
+    Then I should see the session is in Court "7" this morning with "3rd" listing

@@ -32,3 +32,8 @@ Then('I should see a key details banner with a level 1 heading {string}', $title
 And('I should see a straight line divide', () => {
   cy.get('.pac-key-details-bar__divider').should('exist')
 })
+
+And('I should see the session is in Court {string} this morning with {string} listing', ($court, $listing) => {
+  const date = moment().format('dddd Do MMMM')
+  cy.get('.govuk-body').contains(`Court ${$court}, morning session, ${date} (${$listing} listing).`)
+})

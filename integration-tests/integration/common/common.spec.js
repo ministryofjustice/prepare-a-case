@@ -76,11 +76,6 @@ And('I should see the hint text {string}', $text => {
   cy.get('.govuk-hint').contains($text)
 })
 
-And('I should see the session is in Court {string} this morning', $text => {
-  const date = moment().format('dddd DD MMMM')
-  cy.get('.govuk-body').contains(`Court ${$text}, morning session, ${date}`)
-})
-
 And('I should see the body text {string} in bold', $text => {
   cy.get('.govuk-body').contains($text).should('exist').should('have.attr', 'class').and('include', 'govuk-!-font-weight-bold')
 })
