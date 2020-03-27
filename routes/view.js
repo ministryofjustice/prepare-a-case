@@ -1,7 +1,7 @@
 const express = require('express')
 const moment = require('moment')
 const { getCaseList, getCase } = require('../services/case-service')
-const { getPersonalDetails, getConvictions, getAttendanceDetails } = require('../services/community-service')
+const { getPersonalDetails, getProbationRecord, getAttendanceDetails } = require('../services/community-service')
 const router = express.Router()
 
 const { health } = require('./middleware/healthcheck')
@@ -62,7 +62,7 @@ router.get('/case/:caseNo/:section?/:detail?', health, defaults, async (req, res
       templateValues.title = params.detail ? 'Order details' : 'Probation record'
       template = !params.detail ? 'case-summary-record' : 'case-summary-record-attendance'
       if (response && response.crn) {
-        communityResponse = await getConvictions(response.crn)
+        communityResponse = await getProbationRecord(response.crn)
         if (!params.detail) {
           const personalDetails = await getPersonalDetails(response.crn)
           communityResponse = {

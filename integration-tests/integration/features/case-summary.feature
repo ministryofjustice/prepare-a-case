@@ -184,15 +184,11 @@ Feature: Case summary
     And I should see the body text "PNC: A/1234560BA"
     Then I should see the body text "Probation status: No record"
 
-  Scenario: View the case details to see when and where a defendant is appearing in court
-    Given I am a registered user
-    When I navigate to the "case/3597035492/details" route
-    Then I should see the level 2 heading "Appearance"
-    Then I should see the body text "Court 7, morning session, Thursday 26th March (3rd listing)."
-
   Scenario: View the case details to see the personal details of a defendant appearing in court
     Given I am a registered user
     When I navigate to the "case/3597035492/details" route
+    Then I should see the level 2 heading "Appearance"
+    Then I should see the session is in Court "7" this morning with "3rd" listing
     Then I should see the level 2 heading "Personal details from police"
     Then I should see a summary list
     And I should see the row with the key "Name"
