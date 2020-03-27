@@ -1,7 +1,6 @@
 /* global cy */
 import { And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import 'cypress-axe'
-import moment from 'moment'
 
 Given('I am a registered user', () => {
   // @TODO: Implement registered user test
