@@ -14,3 +14,5 @@ cypress/
 integration-tests/videos/
 integration-tests/integration/examples/
 integration-tests/screenshots/
+.vscode/settings.json
+.vscode/launch.json
