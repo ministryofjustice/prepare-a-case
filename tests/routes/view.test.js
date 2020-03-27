@@ -93,17 +93,6 @@ describe('Routes', () => {
     return response
   })
 
-  it('case summary personal details route should call the community service to fetch probation data when the defendant is known to probation', async () => {
-    caseResponse = {
-      probationStatus: 'Current',
-      crn: 'D985513'
-    }
-    const response = await request(app).get('/case/8678951874/person')
-    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '8678951874')
-    expect(communityService.getPersonalDetails).toHaveBeenCalledWith('D985513')
-    return response
-  })
-
   it('case summary probation record route should call the case service to fetch case data', async () => {
     caseResponse = {
       probationStatus: 'Current',

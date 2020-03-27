@@ -58,13 +58,6 @@ router.get('/case/:caseNo/:section?/:detail?', health, defaults, async (req, res
     }
   }
   switch (params.section) {
-    case 'person':
-      templateValues.title = 'Personal details'
-      template = 'case-summary-person'
-      if (response && response.crn) {
-        communityResponse = await getPersonalDetails(response.crn)
-      }
-      break
     case 'record':
       templateValues.title = params.detail ? 'Order details' : 'Probation record'
       template = !params.detail ? 'case-summary-record' : 'case-summary-record-attendance'
