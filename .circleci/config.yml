@@ -75,11 +75,6 @@ jobs:
       - run:
           name: Install dependencies
           command: yarn install --frozen-lockfile
-      - snyk/scan:
-          fail-on-issues: false
-          monitor-on-build: true
-          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}'
-          organization: 'digital-probation-services'
       - save_cache:
           key: dependencies-cache-{{ checksum "package.json" }}
           paths:
@@ -182,6 +177,23 @@ jobs:
              docker push mojdigitalstudio/prepare-a-case:$APP_VERSION
              docker push mojdigitalstudio/prepare-a-case:latest
             fi
+
+  app-scan:
+    executor: builder
+    steps:
+      - checkout
+      - snyk/scan:
+          fail-on-issues: false
+          monitor-on-build: true
+          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}'
+          organization: 'digital-probation-services'
+
+  image-scan:
+    executor: deployer
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - snyk/scan:
           docker-image-name: 'mojdigitalstudio/prepare-a-case:latest'
           target-file: 'Dockerfile'
@@ -208,6 +220,17 @@ jobs:
 
 workflows:
   version: 2
+  scheduled:
+    triggers:
+      - schedule:
+          cron: "0 7 * * 1-5"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - app-scan
+      - image-scan
   build-test-and-deploy:
     jobs:
       - build:
