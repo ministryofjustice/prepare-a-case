@@ -3,6 +3,19 @@ import moment from 'moment'
 import { And, Then } from 'cypress-cucumber-preprocessor/steps'
 import { getMonthsAndDays } from '../../../../routes/middleware/defaults'
 
+const world = {
+  local: {},
+  dev: {
+    caseSummary: {
+      currentDefendant: {},
+      currentDefendantWithBreach: {
+        name: 'Mr Joe JMBBLOGGS'
+      },
+      previouslyKnownDefendant: {}
+    }
+  }
+}
+
 And('I should see the following alerts', $data => {
   $data.raw()[0].forEach((text, index) => {
     cy.get('.pac-key-details-bar__status').contains(text)
@@ -24,17 +37,17 @@ Then('I should see a summary list', ($data) => {
 })
 
 Then('I click the defendant name link', () => {
-      var env = process.env("environment");
-      switch (env) {
-        case local:
-          cy.get('.govuk-link').contains("Kara Ayers").click();
-          break;
-        case dev:
-          "Joe JMBBLOGGS";
-          break;
-      }
-    }
+    const env = Cypress.env('ENVIRONMENT')
+    const name = world[env].caseSummary.currentDefendantWithBreach.name
+    cy.get('.govuk-link').contains(name).click()
+  }
 )
+
+Then('I should see the heading has the defendant name', function () {
+  const env = Cypress.env('ENVIRONMENT')
+  const name = world[env].caseSummary.currentDefendantWithBreach.name
+  cy.get('h1').contains(name)
+})
 
 And('I should see the correct time elapsed between {string} and {string}', ($startDate, $endDate) => {
   const startDate = moment($startDate, 'YYYY-MM-DD')
