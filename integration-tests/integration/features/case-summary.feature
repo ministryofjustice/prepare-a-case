@@ -5,6 +5,17 @@ Feature: Case summary
 
   Scenario: View the case summary for the given defendant by clicking the link on the case list page
     Given I am a registered user
+    And I have data for the environment
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+    And I should see the heading "Cases"
+    And I should see the caption "Sheffield Magistrates' Court"
+    When I click the defendant name link
+    Then I should be on the "Case details" page
+    And I should see the heading has the defendant name
+
+  Scenario: View the case summary for the given defendant by clicking the link on the case list page
+    Given I am a registered user
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"

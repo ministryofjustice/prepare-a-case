@@ -23,6 +23,19 @@ Then('I should see a summary list', ($data) => {
   cy.get('.govuk-summary-list').should('exist')
 })
 
+Then('I click the defendant name link', () => {
+      var env = process.env("environment");
+      switch (env) {
+        case local:
+          cy.get('.govuk-link').contains("Kara Ayers").click();
+          break;
+        case dev:
+          "Joe JMBBLOGGS";
+          break;
+      }
+    }
+)
+
 And('I should see the correct time elapsed between {string} and {string}', ($startDate, $endDate) => {
   const startDate = moment($startDate, 'YYYY-MM-DD')
   const endDate = moment($endDate, 'YYYY-MM-DD').isAfter() ? moment() : moment($endDate, 'YYYY-MM-DD')
