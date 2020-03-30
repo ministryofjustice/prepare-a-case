@@ -1,20 +1,61 @@
 /* global cy */
 import moment from 'moment'
-import { And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import { getMonthsAndDays } from '../../../../routes/middleware/defaults'
 
+let currentDefendantScenario
+
 const world = {
-  local: {},
-  dev: {
+  local: {
     caseSummary: {
+      notKnownDefendant: {
+        caseNo: 8678951874,
+        name: 'Kara Ayers'
+      },
       currentDefendant: {},
       currentDefendantWithBreach: {
+        caseNo: 6627839278,
+        name: 'Webb Mitchell'
+      },
+      previouslyKnownDefendant: {
+
+      }
+    }
+  },
+  dev: {
+    caseSummary: {
+      notKnownDefendant: {
+
+      },
+      currentDefendant: {},
+      currentDefendantWithBreach: {
+        caseNo: 1585562016194,
         name: 'Mr Joe JMBBLOGGS'
       },
-      previouslyKnownDefendant: {}
+      previouslyKnownDefendant: {
+
+      }
     }
   }
 }
+
+function getCurrentDefendant() {
+  const env = Cypress.env('ENVIRONMENT')
+  return world[env].caseSummary[currentDefendantScenario]
+}
+
+And('I am looking at a current defendant with breach', () => {
+  currentDefendantScenario = 'currentDefendantWithBreach'
+})
+
+And('I am looking at a not known defendant', () => {
+  currentDefendantScenario = 'notKnownDefendant'
+})
+
+When('I navigate to the case details route', function () {
+  const caseNo = getCurrentDefendant().caseNo
+  cy.visit(`case/${caseNo}/details`)
+})
 
 And('I should see the following alerts', $data => {
   $data.raw()[0].forEach((text, index) => {
@@ -37,15 +78,12 @@ Then('I should see a summary list', ($data) => {
 })
 
 Then('I click the defendant name link', () => {
-    const env = Cypress.env('ENVIRONMENT')
-    const name = world[env].caseSummary.currentDefendantWithBreach.name
-    cy.get('.govuk-link').contains(name).click()
-  }
-)
+  const name = getCurrentDefendant().name
+  cy.get('.govuk-link').contains(name).click()
+})
 
 Then('I should see the heading has the defendant name', function () {
-  const env = Cypress.env('ENVIRONMENT')
-  const name = world[env].caseSummary.currentDefendantWithBreach.name
+  const name = getCurrentDefendant().name
   cy.get('h1').contains(name)
 })
 

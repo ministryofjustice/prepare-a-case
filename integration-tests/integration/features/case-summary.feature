@@ -5,6 +5,7 @@ Feature: Case summary
 
   Scenario: View the case summary for the given defendant by clicking the link on the case list page
     Given I am a registered user
+    And I am looking at a not known defendant
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
@@ -15,11 +16,12 @@ Feature: Case summary
 
   Scenario: View the case summary for the given defendant with no probation record
     Given I am a registered user
-    When I navigate to the "case/8678951874/details" route
+    And I am looking at a not known defendant
+    When I navigate to the case details route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
       | Case details |
-    And I should see the heading "Kara Ayers"
+    And I should see the heading has the defendant name
     And I should see the body text "Date of birth: 31st October 1980"
     And I should see the body text "PNC: A/1234560BA"
     And I should see the following level 2 headings
@@ -30,15 +32,15 @@ Feature: Case summary
     And I should see the body text "Assault by beating" in bold
     And I should see the body text "On 01/01/2016 at Newcastle assaulted Short Pearson by beating him."
     And I should see the caption text "Contrary to section 39 of the Criminal Justice Act 1988."
-    And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with an existing probation record
     Given I am a registered user
-    When I navigate to the "case/6627839278/details" route
+    And I am looking at a current defendant with breach
+    When I navigate to the case details route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
       | Case details | Probation record | Risk registers |
-    And I should see the heading "Webb Mitchell"
+    And I should see the heading has the defendant name
     And I should see the body text "Date of birth: 13th October 1958"
     And I should see the body text "CRN: D541487"
     And I should see the body text "PNC: A/8404713BA"
@@ -50,7 +52,6 @@ Feature: Case summary
     And I should see the body text "Theft from the person of another" in bold
     And I should see the body text "On 24/03/2016 at Edinburgh stole PLAYSTATION 4 to the value of 300.00, belonging to Dillard Everett."
     And I should see the caption text "Contrary to section 1(1) and 7 of the Theft Act 1968."
-    And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with a current probation record and risk of serious harm
     Given I am a registered user
