@@ -42,8 +42,24 @@ Then('I click the defendant name link', () => {
   cy.get('.govuk-link').contains(world.data.name).click()
 })
 
-Then('I should see the heading has the defendant name', function () {
+Then('I should see the heading has the defendant name', () => {
   cy.get('h1').contains(world.data.name)
+})
+
+And('I should see the body text {string} and the defendant {string}', ($label, $key) => {
+  cy.get('.govuk-body').contains(`${$label} ${world.data[$key]}`)
+})
+
+And('I should see the body text with the defendant {string} in bold', $key => {
+  cy.get('.govuk-body').contains(world.data[$key]).should('exist').should('have.attr', 'class').and('include', 'govuk-!-font-weight-bold')
+})
+
+And('I should see the body text with the defendant {string}', $key => {
+  cy.get('.govuk-body').contains(world.data[$key])
+})
+
+And('I should see the caption text with the defendant {string}', $key => {
+  cy.get('.govuk-caption-m').contains(world.data[$key])
 })
 
 And('I should see the correct time elapsed between {string} and {string}', ($startDate, $endDate) => {

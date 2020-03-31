@@ -22,16 +22,16 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case details |
     And I should see the heading has the defendant name
-    And I should see the body text "Date of birth: 31st October 1980"
-    And I should see the body text "PNC: A/1234560BA"
+    And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
+    And I should see the body text "PNC:" and the defendant "pnc"
     And I should see the following level 2 headings
       | Appearance | Offences |
     And I should see the following level 3 headings
       | CPS pack |
     And I should see link "View CPS Pack (opens in Court Store)" with href "#"
-    And I should see the body text "Assault by beating" in bold
-    And I should see the body text "On 01/01/2016 at Newcastle assaulted Short Pearson by beating him."
-    And I should see the caption text "Contrary to section 39 of the Criminal Justice Act 1988."
+    And I should see the body text with the defendant "offence" in bold
+    And I should see the body text with the defendant "offenceDetails"
+    And I should see the caption text with the defendant "offenceCaption"
 
   Scenario: View the case summary for the given defendant with an existing probation record
     Given I am a registered user
