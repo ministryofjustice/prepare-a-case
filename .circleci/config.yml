@@ -59,7 +59,7 @@ executors:
 orbs:
   kubernetes: circleci/kubernetes@0.3.0
   helm: circleci/helm@0.1.2
-  snyk: snyk/snyk@0.0.9
+  snyk: snyk/snyk@0.0.10
 
 jobs:
   build:
