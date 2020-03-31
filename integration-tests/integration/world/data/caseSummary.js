@@ -18,7 +18,15 @@ const caseSummaryTestData = {
       }
     },
     dev: {
-      notKnownDefendant: {},
+      notKnownDefendant: {
+        caseNo: 1585562016194,
+        name: 'Mr Joe JMBBLOGGS',
+        dateOfBirth: '1st January 1998',
+        pnc: '',
+        offence: 'Theft from a shop',
+        offenceDetails: 'On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.',
+        offenceCaption: 'Contrary to section 1(1) and 7 of the Theft Act 1968.'
+      },
       previouslyKnownDefendant: {},
       currentDefendant: {},
       currentDefendantWithBreach: {
