@@ -14,7 +14,13 @@ const caseSummaryTestData = {
       currentDefendant: {},
       currentDefendantWithBreach: {
         caseNo: 6627839278,
-        name: 'Webb Mitchell'
+        pnc: 'A/8404713BA',
+        crn: 'D541487',
+        name: 'Webb Mitchell',
+        dateOfBirth: '13th October 1958',
+        offence: 'Theft from the person of another',
+        offenceDetails: 'On 24/03/2016 at Edinburgh stole PLAYSTATION 4 to the value of 300.00, belonging to Dillard Everett.',
+        offenceCaption: 'Contrary to section 1(1) and 7 of the Theft Act 1968.'
       }
     },
     dev: {

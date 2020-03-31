@@ -41,17 +41,17 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case details | Probation record | Risk registers |
     And I should see the heading has the defendant name
-    And I should see the body text "Date of birth: 13th October 1958"
-    And I should see the body text "CRN: D541487"
-    And I should see the body text "PNC: A/8404713BA"
+    And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
+    And I should see the body text "CRN:" and the defendant "crn"
+    And I should see the body text "PNC:" and the defendant "pnc"
     And I should see the following level 2 headings
       | Appearance | Offences |
     And I should see the following level 3 headings
       | CPS pack |
     And I should see link "View CPS Pack (opens in Court Store)" with href "#"
-    And I should see the body text "Theft from the person of another" in bold
-    And I should see the body text "On 24/03/2016 at Edinburgh stole PLAYSTATION 4 to the value of 300.00, belonging to Dillard Everett."
-    And I should see the caption text "Contrary to section 1(1) and 7 of the Theft Act 1968."
+    And I should see the body text with the defendant "offence" in bold
+    And I should see the body text with the defendant "offenceDetails"
+    And I should see the caption text with the defendant "offenceCaption"
 
   Scenario: View the case summary for the given defendant with a current probation record and risk of serious harm
     Given I am a registered user
