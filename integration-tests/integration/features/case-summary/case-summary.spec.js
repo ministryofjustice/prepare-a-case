@@ -2,9 +2,9 @@
 import moment from 'moment'
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import { getMonthsAndDays } from '../../../../routes/middleware/defaults'
-import World from '../../utils/World'
+import World from '../../world/World'
 
-const world = new World()
+const world = new World('caseSummary')
 
 And('I am looking at a current defendant with breach', () => {
   world.scenario = 'currentDefendantWithBreach'
@@ -19,7 +19,7 @@ When('I navigate to the case details route', function () {
 })
 
 And('I should see the following alerts', $data => {
-  $data.raw()[0].forEach((text, index) => {
+  $data.raw()[0].forEach(text => {
     cy.get('.pac-key-details-bar__status').contains(text)
   })
 })
