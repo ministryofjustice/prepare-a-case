@@ -1,14 +1,13 @@
 /* global Cypress */
-
+const { caseListTestData } = require('./data/caseList')
 const { caseSummaryTestData } = require('./data/caseSummary')
 
 export default class World {
-
-  testData = {
-    ...caseSummaryTestData
-  }
-  
   constructor (section) {
+    this.testData = {
+      ...caseListTestData,
+      ...caseSummaryTestData
+    }
     this.section = section || ''
     this.scenario = ''
     this.environment = Cypress.env('ENVIRONMENT') || 'local'

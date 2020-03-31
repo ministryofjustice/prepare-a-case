@@ -100,5 +100,3 @@ When('I click the sub navigation with {string} text', $string => {
 When('I click the {string} link', $string => {
   cy.get('.govuk-link').contains($string).click()
 })
-
-
