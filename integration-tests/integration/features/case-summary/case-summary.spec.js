@@ -14,6 +14,10 @@ And('I am looking at a not known defendant', () => {
   world.scenario = 'notKnownDefendant'
 })
 
+And('I am looking at a previously known defendant', () => {
+  world.scenario = 'previouslyKnownDefendant'
+})
+
 When('I navigate to the case details route', function () {
   cy.visit(`case/${world.data.caseNo}/details`)
 })

@@ -35,7 +35,7 @@ Feature: Case summary
 
   Scenario: View the case summary for the given defendant with an existing probation record
     Given I am a registered user
-    And I am looking at a current defendant with breach
+    And I am looking at a previously known defendant
     When I navigate to the case details route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
@@ -53,25 +53,24 @@ Feature: Case summary
     And I should see the body text with the defendant "offenceDetails"
     And I should see the caption text with the defendant "offenceCaption"
 
-  Scenario: View the case summary for the given defendant with a current probation record and risk of serious harm
+  Scenario: View the case summary for the given defendant with a current probation record
     Given I am a registered user
-    When I navigate to the "case/668911253/details" route
+    When I navigate to the case details route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
       | Case details | Probation record | Risk registers |
-    And I should see the heading "Lenore Marquez"
-    And I should see the body text "Date of birth: 18th August 1979"
-    And I should see the body text "CRN: DX12340A"
-    And I should see the body text "PNC: A/1234560BA"
+    And I should see the heading has the defendant name
+    And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
+    And I should see the body text "CRN:" and the defendant "crn"
+    And I should see the body text "PNC:" and the defendant "pnc"
     And I should see the following level 2 headings
       | Appearance | Offences |
     And I should see the following level 3 headings
       | CPS pack |
     And I should see link "View CPS Pack (opens in Court Store)" with href "#"
-    And I should see the body text "Attempt theft from the person of another" in bold
-    And I should see the body text "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Clemons Barron."
-    And I should see the caption text "Contrary to section 1(1) of the Criminal Attempts Act 1981."
-    And There should be no a11y violations
+    And I should see the body text with the defendant "offence" in bold
+    And I should see the body text with the defendant "offenceDetails"
+    And I should see the caption text with the defendant "offenceCaption"
 
   Scenario: View the probation record section of the case summary for a previously known offender by clicking the defendant link from the case list page
     Given I am a registered user
