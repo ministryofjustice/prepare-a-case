@@ -2,59 +2,20 @@
 import moment from 'moment'
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import { getMonthsAndDays } from '../../../../routes/middleware/defaults'
+import World from '../../utils/World'
 
-let currentDefendantScenario
-
-const world = {
-  local: {
-    caseSummary: {
-      notKnownDefendant: {
-        caseNo: 8678951874,
-        name: 'Kara Ayers'
-      },
-      currentDefendant: {},
-      currentDefendantWithBreach: {
-        caseNo: 6627839278,
-        name: 'Webb Mitchell'
-      },
-      previouslyKnownDefendant: {
-
-      }
-    }
-  },
-  dev: {
-    caseSummary: {
-      notKnownDefendant: {
-
-      },
-      currentDefendant: {},
-      currentDefendantWithBreach: {
-        caseNo: 1585562016194,
-        name: 'Mr Joe JMBBLOGGS'
-      },
-      previouslyKnownDefendant: {
-
-      }
-    }
-  }
-}
-
-function getCurrentDefendant() {
-  const env = Cypress.env('ENVIRONMENT')
-  return world[env].caseSummary[currentDefendantScenario]
-}
+const world = new World()
 
 And('I am looking at a current defendant with breach', () => {
-  currentDefendantScenario = 'currentDefendantWithBreach'
+  world.scenario = 'currentDefendantWithBreach'
 })
 
 And('I am looking at a not known defendant', () => {
-  currentDefendantScenario = 'notKnownDefendant'
+  world.scenario = 'notKnownDefendant'
 })
 
 When('I navigate to the case details route', function () {
-  const caseNo = getCurrentDefendant().caseNo
-  cy.visit(`case/${caseNo}/details`)
+  cy.visit(`case/${world.data.caseNo}/details`)
 })
 
 And('I should see the following alerts', $data => {
@@ -78,13 +39,11 @@ Then('I should see a summary list', ($data) => {
 })
 
 Then('I click the defendant name link', () => {
-  const name = getCurrentDefendant().name
-  cy.get('.govuk-link').contains(name).click()
+  cy.get('.govuk-link').contains(world.data.name).click()
 })
 
 Then('I should see the heading has the defendant name', function () {
-  const name = getCurrentDefendant().name
-  cy.get('h1').contains(name)
+  cy.get('h1').contains(world.data.name)
 })
 
 And('I should see the correct time elapsed between {string} and {string}', ($startDate, $endDate) => {
