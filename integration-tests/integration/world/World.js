@@ -7,7 +7,7 @@ export default class World {
   testData = {
     ...caseSummaryTestData
   }
-
+  
   constructor (section) {
     this.section = section || ''
     this.scenario = ''
