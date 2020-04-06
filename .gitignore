@@ -4,6 +4,7 @@ dist-*.tgz
 .idea
 .env
 .eslintcache
+.java-version
 yarn-error.log
 test-results/
 coverage/

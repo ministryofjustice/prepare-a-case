@@ -13,10 +13,12 @@ Feature: Case summary
     When I click the defendant name link
     Then I should be on the "Case details" page
     And I should see the heading has the defendant name
+    And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with no probation record
     Given I am a registered user
     And I am looking at a not known defendant
+
     When I navigate to the case details route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
@@ -24,18 +26,37 @@ Feature: Case summary
     And I should see the heading has the defendant name
     And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "PNC:" and the defendant "pnc"
+    Then I should see the body text "Probation status: No record"
+    And I should see a straight line divide
     And I should see the following level 2 headings
-      | Appearance | Offences |
+      | Appearance | Offences | Personal details from police |
     And I should see the following level 3 headings
       | CPS pack |
-    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
+
+    And I should see court room, session and the correct listing
     And I should see the body text with the defendant "offence" in bold
     And I should see the body text with the defendant "offenceDetails"
     And I should see the caption text with the defendant "offenceCaption"
+
+    And I should see a summary list
+    And I should see the row with the key "Name"
+    And I should see the value with defendant "name"
+    Then I should see the row with the key "Gender"
+    And I should see the value with defendant "gender"
+    Then I should see the row with the key "Date of birth"
+    And I should see the value with defendant "dateOfBirth"
+    Then I should see the row with the key "Address"
+    And I should see the value with defendant "address"
+    Then I should see the row with the key "Nationality"
+    And I should see the value with defendant "nationality"
+
+    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
+    And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with an existing probation record
     Given I am a registered user
     And I am looking at a previously known defendant
+
     When I navigate to the case details route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
@@ -44,17 +65,37 @@ Feature: Case summary
     And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "CRN:" and the defendant "crn"
     And I should see the body text "PNC:" and the defendant "pnc"
+    Then I should see the body text "Probation status: Previously known"
+    And I should see a straight line divide
     And I should see the following level 2 headings
-      | Appearance | Offences |
+      | Appearance | Offences | Personal details from police |
     And I should see the following level 3 headings
       | CPS pack |
-    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
+
+    And I should see court room, session and the correct listing
     And I should see the body text with the defendant "offence" in bold
     And I should see the body text with the defendant "offenceDetails"
     And I should see the caption text with the defendant "offenceCaption"
+
+    And I should see a summary list
+    And I should see the row with the key "Name"
+    And I should see the value with defendant "name"
+    Then I should see the row with the key "Gender"
+    And I should see the value with defendant "gender"
+    Then I should see the row with the key "Date of birth"
+    And I should see the value with defendant "dateOfBirth"
+    Then I should see the row with the key "Address"
+    And I should see the value with defendant "address"
+    Then I should see the row with the key "Nationality"
+    And I should see the value with defendant "nationality"
+
+    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
+    And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with a current probation record
     Given I am a registered user
+    And I am looking at a current defendant
+
     When I navigate to the case details route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
@@ -63,141 +104,151 @@ Feature: Case summary
     And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "CRN:" and the defendant "crn"
     And I should see the body text "PNC:" and the defendant "pnc"
+    And I should see the body text "Probation status: Current"
+    And I should see a straight line divide
     And I should see the following level 2 headings
-      | Appearance | Offences |
+      | Appearance | Offences | Personal details from police |
     And I should see the following level 3 headings
       | CPS pack |
-    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
+
+    And I should see court room, session and the correct listing
     And I should see the body text with the defendant "offence" in bold
     And I should see the body text with the defendant "offenceDetails"
     And I should see the caption text with the defendant "offenceCaption"
 
-  Scenario: View the probation record section of the case summary for a previously known offender by clicking the defendant link from the case list page
+    And I should see a summary list
+    And I should see the row with the key "Name"
+    And I should see the value with defendant "name"
+    Then I should see the row with the key "Gender"
+    And I should see the value with defendant "gender"
+    Then I should see the row with the key "Date of birth"
+    And I should see the value with defendant "dateOfBirth"
+    Then I should see the row with the key "Address"
+    And I should see the value with defendant "address"
+    Then I should see the row with the key "Nationality"
+    And I should see the value with defendant "nationality"
+
+    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
+    And There should be no a11y violations
+
+  Scenario: View the case summary for the given defendant in breach of a current order
     Given I am a registered user
+    And I am looking at a current defendant with breach
+
+    When I navigate to the case details route
+    Then I should be on the "Case details" page
+    And I should see sub navigation with the following links
+      | Case details | Probation record | Risk registers |
+    And I should see the heading has the defendant name
+    And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
+    And I should see the body text "CRN:" and the defendant "crn"
+    And I should see the body text "PNC:" and the defendant "pnc"
+    And I should see the body text "Probation status: Current (Breach)"
+    And I should see a straight line divide
+    And I should see the following level 2 headings
+      | Appearance | Offences | Personal details from police |
+    And I should see the following level 3 headings
+      | CPS pack |
+
+    And I should see court room, session and the correct listing
+    And I should see the body text with the defendant "offence" in bold
+    And I should see the body text with the defendant "offenceDetails"
+    And I should see the caption text with the defendant "offenceCaption"
+
+    And I should see a summary list
+    And I should see the row with the key "Name"
+    And I should see the value with defendant "name"
+    Then I should see the row with the key "Gender"
+    And I should see the value with defendant "gender"
+    Then I should see the row with the key "Date of birth"
+    And I should see the value with defendant "dateOfBirth"
+    Then I should see the row with the key "Address"
+    And I should see the value with defendant "address"
+    Then I should see the row with the key "Nationality"
+    And I should see the value with defendant "nationality"
+
+    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
+    And There should be no a11y violations
+
+  Scenario: View the probation record section of the case summary for a previously known offender
+    Given I am a registered user
+    And I am looking at a previously known defendant
+
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
     And I should see the caption "Sheffield Magistrates' Court"
-    When I click the "Webb Mitchell" link
+    When I click the defendant name link
     Then I should be on the "Case details" page
-    And I should see the heading "Webb Mitchell"
+    And I should see the heading has the defendant name
     When I click the sub navigation with "Probation record" text
-    Then I should see the following level 2 headings
-      | Previous orders (5) |
+    Then I should see the offender previous order count
     And I should see the following level 3 headings
       | Offender Manager |
-    And I should see the body text "Not active"
-    And I should see link "CJA - Indeterminate Public Prot." with href "record/1531139839"
+    And I should see the offender manager details
+    And I should see link to the first previous order
+    And There should be no a11y violations
 
-  Scenario: View the probation record section of the case summary for a current offender by clicking the defendant link from the case list page
+  Scenario: View the probation record section of the case summary for a current offender
     Given I am a registered user
+    And I am looking at a current defendant
+
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
-    And I should see the heading "Cases"
-    And I should see the caption "Sheffield Magistrates' Court"
-    When I click the "Lenore Marquez" link
-    Then I should be on the "Case details" page
-    And I should see the heading "Lenore Marquez"
-    When I click the sub navigation with "Probation record" text
-    Then I should see the following level 2 headings
-      | Current orders (5) | Previous orders (11) |
+
+    When I click the defendant name link
+    And I click the sub navigation with "Probation record" text
+    Then I should see the offender current order count
+    And I should see link to the first current order
+    And I should see the current order offence
+    And I should see the current order start date
+
+    And I should see the offender previous order count
+    And I should see link to the first previous order
+    And I should see the previous order offence
+
     And I should see the following level 3 headings
       | Offender Manager |
-    And I should see the body text "Mcmahon Buchanan"
-    And I should see the hint text "Allocated on 12 Aug 2017"
-    And I should see the body text "NPS West Yorkshire Ecolight Towers 71 Ocean Parkway Leeds West Yorkshire LS7 4JP"
-    And I should see the body text "Telephone: 01890 547 292"
-    And I should see link "ORA Adult Custody (inc PSS)" with href "record/1403337513"
-    And I should see the body text "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
-    And I should see link "CJA - Std Determinate Custody" with href "record/2788607022"
-    And I should see the hint text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+    And I should see the offender manager details
+    And There should be no a11y violations
 
-  Scenario: View the attendance record section of the current offender order ORA Adult Custody (inc PSS)
+  Scenario: View the attendance record section of the current offender order
     Given I am a registered user
-    When I navigate to the "case/668911253/record" route
+    And I am looking at a current defendant
+
+    When I navigate to the probation record route
     Then I should be on the "Probation record" page
-    And I should see the heading "Lenore Marquez"
-    When I click the "ORA Adult Custody (inc PSS)" link
+    And I should see the heading has the defendant name
+
+    When I click the first "current" order link
     Then I should be on the "Order details" page
-    Then I should see the following level 2 headings
-      | ORA Adult Custody (inc PSS) | Appointment attendance |
-    And I should see the body text "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
+    And I should see the level 2 heading with the "current" order title
+    And I should see the level 2 heading "Appointment attendance"
+
+    And I should see the body text with the defendant "currentOrderOffence"
     And I should see the following level 3 headings
       | Appointments to date | Complied | Failures to comply | Awaiting outcome |
-    And I should see the body text "Last attendance: 4 Mar 2020 - Planned office visit (Attended - Complied)"
-    And I should see the text "19 May 2019" within element with class "qa-start-date"
-    And I should see the text "25 May 2020" within element with class "qa-end-date"
-    And I should see the correct time elapsed between "2019-05-19" and "2020-05-25"
-    And I should see the following elements with "app-dashboard-count" class text
-      | 10 | 6 | 2 | 2 | 1 | 1 | 0 | 1 | 1 | 2 | 2 | 1 |
-    And I should see the body text "Attendances"
-    And I should see the body text "Planned office visit"
-    And I should see the body text "Unpaid work"
-    And I should see the body text "Appointment with External Agency"
-    And I should see the body text "IAPS / Accredited programme"
+    And I should see the body text "Last attendance:" and the defendant "currentOrderLastAttendance"
 
-  Scenario: View the attendance record section of the previous offender order CJA - Std Determinate Custody
+    And I should see the "current" order start and end dates
+    And I should see the correctly calculated elapsed time for the "current" order
+
+    And I should see the appointment attendance information
+    And There should be no a11y violations
+
+  Scenario: View the attendance record section of the previous offender order
     Given I am a registered user
-    When I navigate to the "case/668911253/record" route
+    And I am looking at a current defendant
+
+    When I navigate to the probation record route
     Then I should be on the "Probation record" page
-    And I should see the heading "Lenore Marquez"
-    When I click the "CJA - Std Determinate Custody" link
+    And I should see the heading has the defendant name
+
+    When I click the first "previous" order link
     Then I should be on the "Order details" page
-    Then I should see the following level 2 headings
-      | CJA - Std Determinate Custody |
-    And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
-    And I should see the text "8 Mar 2017" within element with class "qa-start-date"
-    And I should see the text "2 Jan 2018" within element with class "qa-end-date"
+    And I should see the level 2 heading with the "previous" order title
+
+    And I should see the body text with the defendant "previousOrderOffence"
+    And I should see the correctly calculated elapsed time for the "previous" order
     And I should not see the heading level 2 with text "Appointment attendance"
-
-  Scenario: View the case details to see the probation status and PNC/CRN numbers of a defendant currently known to probation
-    Given I am a registered user
-    When I navigate to the "case/668911253/details" route
-    Then I should see a key details banner with a level 1 heading "Lenore Marquez"
-    And I should see the body text "CRN: DX12340A"
-    And I should see a straight line divide
-    And I should see the body text "PNC: A/1234560BA"
-    Then I should see the body text "Probation status: Current"
-
-  Scenario: View the case details to see the probation status and PNC/CRN numbers of a defendant currently known to probation and in breach of their order
-    Given I am a registered user
-    When I navigate to the "case/5222601242/details" route
-    Then I should see a key details banner with a level 1 heading "Olsen Alexander"
-    And I should see the body text "CRN: D991494"
-    And I should see a straight line divide
-    And I should see the body text "PNC: D/9874483AB"
-    Then I should see the body text "Probation status: Current (Breach)"
-
-  Scenario: View the case details to see the probation status and PNC/CRN numbers of a defendant previously known to probation
-    Given I am a registered user
-    When I navigate to the "case/381157762/details" route
-    Then I should see a key details banner with a level 1 heading "Jannie Mcbride"
-    And I should see a straight line divide
-    And I should see the body text "PNC: A/1234560BA"
-    Then I should see the body text "Probation status: Previously known"
-
-  Scenario: View the case details to see the probation status and PNC/CRN numbers of a defendant with a probation status of no record
-    Given I am a registered user
-    When I navigate to the "case/3597035492/details" route
-    Then I should see a key details banner with a level 1 heading "Guadalupe Hess"
-    And I should see a straight line divide
-    And I should see the body text "PNC: A/1234560BA"
-    Then I should see the body text "Probation status: No record"
-
-  Scenario: View the case details to see the personal details of a defendant appearing in court
-    Given I am a registered user
-    When I navigate to the "case/3597035492/details" route
-    Then I should see the level 2 heading "Appearance"
-    Then I should see the session is in Court "7" this morning with "3rd" listing
-    Then I should see the level 2 heading "Personal details from police"
-    Then I should see a summary list
-    And I should see the row with the key "Name"
-    And I should see the value "Guadalupe Hess"
-    Then I should see the row with the key "Gender"
-    And I should see the value "Female"
-    Then I should see the row with the key "Date of birth"
-    And I should see the value "12 May 1979 (40 years old)"
-    Then I should see the row with the key "Address"
-    And I should see the value "43 Hunterfly Place Birmingham AD21 5DR"
-    Then I should see the row with the key "Nationality"
-    And I should see the value "Unknown"
+    And There should be no a11y violations

@@ -16,7 +16,7 @@ export default class World {
         if (world.section === '' || world.scenario === '') {
           throw new Error('Section and scenario must be set')
         }
-        return world.testData[world.section][world.environment][world.scenario][prop]
+        return world.testData[world.section][world.scenario][world.environment][prop]
       }
     })
   }
