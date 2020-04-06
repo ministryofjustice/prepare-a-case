@@ -12,7 +12,7 @@ const notKnownDefendant = {
     nationality: 'Unknown',
     offence: 'Assault by beating',
     offenceDetails: 'On 01/01/2016 at Newcastle assaulted Short Pearson by beating him.',
-    offenceCaption: 'Contrary to section 39 of the Criminal Justice Act 1988.',
+    offenceCaption: 'Contrary to section 39 of the Criminal Justice Act 1988.'
   },
   dev: {
     caseNo: 1585562016194,
