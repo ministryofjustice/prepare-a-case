@@ -34,13 +34,31 @@ const previouslyKnownDefendant = {
   },
   dev: {
     caseNo: 1585562016194,
-    name: 'Mr Joe JMBBLOGGS',
+    name: 'Mr Ureet JMBALERNAEU',
     dateOfBirth: '1998-01-01',
-    crn: 'X340906',
-    pnc: '',
-    offence: 'Theft from a shop',
-    offenceDetails: 'On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.',
-    offenceCaption: 'Contrary to section 1(1) and 7 of the Theft Act 1968.'
+    gender: 'Male',
+    address: '',
+    nationality: '',
+    offence: '',
+    offenceDetails: '',
+    offenceCaption: '',
+    currentOrderCount: 0,
+    currentOrderTitle: '',
+    currentOrderId: '',
+    previousOrderCount: 0,
+    previousOrderTitle: '',
+    previousOrderId: '',
+    offenderManager: '',
+    offenderManagerDetails: {
+      allocated: '',
+      address1: '',
+      address2: '',
+      address3: '',
+      address4: '',
+      address5: '',
+      postcode: '',
+      telephone: ''
+    }
   }
 }
 
