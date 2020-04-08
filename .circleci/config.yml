@@ -121,47 +121,27 @@ jobs:
 
   integration_test:
     executor: builder
-    parameters:
-      env:
-        type: string
-        default: "local"
-      local:
-        type: boolean
-        default: false
-      dev:
-        type: boolean
-        default: false
     steps:
       - checkout
       - attach_workspace:
           at: ~/app
       - restore_cache:
           key: dependencies-cache-{{ checksum "package.json" }}
-      - when:
-          condition: << parameters.local >>
-          steps:
-            - run:
-                name: Run wiremock
-                command: java -jar wiremock-standalone-2.26.2.jar --global-response-templating --port 9091
-                background: true
-            - run:
-                name: Run the app
-                command: yarn start
-                background: true
-      - when:
-          condition: << parameters.dev >>
-          steps:
-            - run:
-                name: Run the app
-                command: COURT_CASE_SERVICE_URL=http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk yarn start
-                background: true
+      - run:
+          name: Run wiremock
+          command: java -jar wiremock-standalone-2.26.2.jar --global-response-templating --port 9091
+          background: true
+      - run:
+          name: Run the app
+          command: yarn start
+          background: true
       - run:
           name: Wait for node app to start
           command: sleep 5
       - run:
           name: Run integration tests
           halt_build_on_fail: false
-          command: CYPRESS_ENVIRONMENT=<< parameters.env >> yarn int-test
+          command: yarn int-test
       - store_test_results:
           path: test-results
       - store_artifacts:
@@ -264,12 +244,6 @@ workflows:
           requires:
             - build
       - integration_test:
-          local: true
-          requires:
-            - build
-      - integration_test:
-          env: "dev"
-          dev: true
           requires:
             - build
       - build_docker:
