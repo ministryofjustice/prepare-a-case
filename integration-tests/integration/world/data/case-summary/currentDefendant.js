@@ -54,7 +54,7 @@ const currentDefendant = {
     name: 'Mr Joe JMBBLOGGS',
     dateOfBirth: '1999-01-01',
     gender: 'Male',
-    address: '32 Scotland St',
+    address: '32 Scotland St Sheffield S3 7BS',
     nationality: 'Unknown',
     offence: 'Theft from a shop',
     offenceDetails: 'On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.',
