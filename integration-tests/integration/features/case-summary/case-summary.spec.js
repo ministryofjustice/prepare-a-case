@@ -176,3 +176,27 @@ And('I should see the appointment attendance information', () => {
     cy.get('.govuk-body').contains($text)
   })
 })
+
+And('If the total number of charges is greater than one', () => {
+  cy.get('.govuk-accordion').should('exist')
+})
+
+Then('I should see the following list of charges in an accordion component', $data => {
+  $data.raw()[0].forEach((text, index) => {
+    cy.get('.govuk-accordion__section-button').eq(index).contains(text)
+  })
+})
+
+Then('I should see a list of charges in an accordion component', () => {
+  cy.get('.govuk-accordion').should('exist')
+})
+
+Then('the accordion section should expand', () => {
+  cy.get('.govuk-accordion__section-content').should('exist')
+})
+
+And('I should see the following body text', $data => {
+  $data.raw()[0].forEach((text, index) => {
+    cy.get('.govuk-accordion__section-content').eq(index).contains(world.data.court)
+  })
+})

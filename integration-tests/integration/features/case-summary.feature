@@ -29,14 +29,12 @@ Feature: Case summary
     Then I should see the body text "Probation status: No record"
     And I should see a straight line divide
     And I should see the following level 2 headings
-      | Appearance | Offences | Personal details from police |
+      | Appearance | Offences |
     And I should see the following level 3 headings
       | CPS pack |
 
     And I should see court room, session and the correct listing
-    And I should see the body text with the defendant "offence" in bold
-    And I should see the body text with the defendant "offenceDetails"
-    And I should see the caption text with the defendant "offenceCaption"
+    Then I should see a list of charges in an accordion component
 
     And I should see a summary list
     And I should see the row with the key "Name"
@@ -68,14 +66,12 @@ Feature: Case summary
     Then I should see the body text "Probation status: Previously known"
     And I should see a straight line divide
     And I should see the following level 2 headings
-      | Appearance | Offences | Personal details from police |
+      | Appearance | Offences |
     And I should see the following level 3 headings
       | CPS pack |
 
     And I should see court room, session and the correct listing
-    And I should see the body text with the defendant "offence" in bold
-    And I should see the body text with the defendant "offenceDetails"
-    And I should see the caption text with the defendant "offenceCaption"
+    Then I should see a list of charges in an accordion component
 
     And I should see a summary list
     And I should see the row with the key "Name"
@@ -107,14 +103,12 @@ Feature: Case summary
     And I should see the body text "Probation status: Current"
     And I should see a straight line divide
     And I should see the following level 2 headings
-      | Appearance | Offences | Personal details from police |
+      | Appearance | Offences |
     And I should see the following level 3 headings
       | CPS pack |
 
     And I should see court room, session and the correct listing
-    And I should see the body text with the defendant "offence" in bold
-    And I should see the body text with the defendant "offenceDetails"
-    And I should see the caption text with the defendant "offenceCaption"
+    Then I should see a list of charges in an accordion component
 
     And I should see a summary list
     And I should see the row with the key "Name"
@@ -146,7 +140,7 @@ Feature: Case summary
     And I should see the body text "Probation status: Current (Breach)"
     And I should see a straight line divide
     And I should see the following level 2 headings
-      | Appearance | Offences | Personal details from police |
+      | Appearance | Offences |
     And I should see the following level 3 headings
       | CPS pack |
 
@@ -252,3 +246,14 @@ Feature: Case summary
     And I should see the correctly calculated elapsed time for the "previous" order
     And I should not see the heading level 2 with text "Appointment attendance"
     And There should be no a11y violations
+
+  Scenario: View the case details of a defendant to see a list of current charges and the associated details/description
+    Given I am a registered user
+    When I navigate to the case details route
+    Then I should see the level 2 heading "Offences"
+    And If the total number of charges is greater than one
+    Then I should see a list of charges in an accordion component
+    And I click the "Attempt theft from the person of another" button
+    Then the accordion section should expand
+    And I should see the body text with the defendant "offenceDetails"
+    And I should see the caption text with the defendant "offenceCaption"
