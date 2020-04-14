@@ -83,15 +83,15 @@
   },
   "devDependencies": {
     "cucumber": "6.0.5",
-    "cypress": "4.3.0",
+    "cypress": "4.4.0",
     "cypress-axe": "0.8.1",
-    "cypress-cucumber-preprocessor": "2.2.0",
+    "cypress-cucumber-preprocessor": "2.3.0",
     "cypress-intellij-reporter": "^0.0.4",
-    "jest": "25.2.7",
+    "jest": "25.3.0",
     "jest-junit": "10.0.0",
     "moxios": "0.4.0",
     "node-sass-middleware": "0.11.0",
-    "nodemon": "2.0.2",
+    "nodemon": "2.0.3",
     "standard": "14.3.3",
     "supertest": "4.0.2"
   }

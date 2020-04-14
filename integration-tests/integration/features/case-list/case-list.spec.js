@@ -1,8 +1,22 @@
 /* global cy */
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import moment from 'moment'
+import World from '../../world/World'
 
+const world = new World('caseList')
 const dateFormat = 'dddd D MMM'
+
+And('I am viewing the {string} case list', $string => {
+  world.scenario = $string
+})
+
+When('I navigate to the court list for the chosen day', () => {
+  cy.visit(world.data.route)
+})
+
+And('I should see the caption with the relevant court', () => {
+  cy.get('.govuk-caption-xl').contains(world.data.court)
+})
 
 And('I should see sub navigation with default dates', () => {
   cy.get('.moj-sub-navigation__link').eq(0).contains(moment().format(dateFormat))
@@ -10,38 +24,62 @@ And('I should see sub navigation with default dates', () => {
   cy.get('.moj-sub-navigation__link').eq(2).contains(moment().add(2, 'days').format(dateFormat))
 })
 
-And('I should see the following case list table', $data => {
-  $data.raw()[0].forEach((text, index) => {
+And('I should see the case list table with headings', $data => {
+  function cellCheck ($row, $col, $text) {
+    cy.get('.govuk-table__body > .govuk-table__row').eq($row).within(() => {
+      if ($text.indexOf('*') === 0) {
+        cy.get('.govuk-table__cell').eq($col).within(() => {
+          cy.get('li').contains($text.substring(1))
+        })
+      } else {
+        cy.get('.govuk-table__cell').eq($col).contains($text)
+        cy.get('.govuk-table__cell').eq($col).within(() => {
+          cy.get('li').should('not.exist')
+        })
+      }
+    })
+  }
+
+  function flagCheck ($row, $col, $flag) {
+    cy.get('.govuk-table__body > .govuk-table__row').eq($row).within(() => {
+      cy.get('.govuk-table__cell').eq($col).within(() => {
+        cy.get('.pac-badge').contains($flag).should('exist')
+      })
+    })
+  }
+
+  $data.raw().flat().forEach((text, index) => {
     cy.get('.govuk-table__head > .govuk-table__row').within(() => {
       cy.get('.govuk-table__header').eq(index).contains(text)
     })
   })
 
-  $data.rows().forEach((row, index) => {
-    row.forEach((text, index2) => {
-      cy.get('.govuk-table__body > .govuk-table__row').eq(index).within(() => {
-        if (text.indexOf('*') === 0) {
-          cy.get('.govuk-table__cell').eq(index2).within(() => {
-            cy.get('li').contains(text.substring(1))
-          })
-        } else {
-          cy.get('.govuk-table__cell').eq(index2).contains(text)
-          cy.get('.govuk-table__cell').eq(index2).within(() => {
-            cy.get('li').should('not.exist')
-          })
-        }
-      })
-    })
+  world.data.list.forEach(($item, $index) => {
+    cellCheck($index, 0, $item.defendant)
+    cellCheck($index, 1, $item.probationStatus)
+    if ($item.terminationDate) {
+      cellCheck($index, 1, $item.terminationDate)
+    }
+    if ($item.breach) {
+      flagCheck($index, 1, 'Breach')
+    }
+    if ($item.sso) {
+      flagCheck($index, 1, 'Sso')
+    }
+    cellCheck($index, 2, $item.offence)
+    cellCheck($index, 3, $item.listing)
+    cellCheck($index, 4, $item.session)
+    cellCheck($index, 5, $item.court)
   })
 })
 
-And('The following defendant names should be links', $data => {
-  $data.raw()[0].forEach((string, index) => {
-    cy.get('.pac-defendant-link').eq(index).contains(string)
+And('The defendant names should be links', () => {
+  world.data.list.forEach(({ defendant }, $index) => {
+    cy.get('.pac-defendant-link').eq($index).contains(defendant)
   })
 })
 
-Then('Display “last updated” time with a timestamp of the most recent Libra data', () => {
+And('I should see a timestamp of the most recent Libra data', () => {
   const formattedDate = moment().format(dateFormat)
   cy.get('.pac-last-updated').contains(`Last updated ${formattedDate} at 08:30`)
 })
@@ -52,11 +90,6 @@ And('I should see pagination text {string}', $string => {
 
 And('I should not see the table list', () => {
   cy.get('.govuk-table').should('not.exist')
-})
-
-Then('Display “last updated” time with a timestamp of the most recent Libra data', () => {
-  const formattedDate = moment().format(dateFormat)
-  cy.get('.pac-last-updated').contains(`Last updated ${formattedDate} at 08:30`)
 })
 
 And('I should see pagination', () => {
@@ -83,24 +116,38 @@ And('I click pagination link {string}', $string => {
   cy.get('.moj-pagination__link').contains($string).click()
 })
 
-And('I see defendant {string}', $string => {
-  cy.get('.govuk-table__body').contains('td', $string)
+And('I should see the first defendant on the {string} list', $type => {
+  cy.get('.govuk-table__body > .govuk-table__row').eq(0).within(() => {
+    cy.get('.govuk-table__cell').eq(0).contains(world.data[$type].name)
+  })
 })
 
-And('I should not see defendant {string}', $string => {
-  cy.get('.govuk-table__body').contains('td', $string).should('not.exist')
+And('I should only see a list of current defendants', $type => {
+  cy.get('.govuk-table__body > .govuk-table__row').each($el => {
+    cy.wrap($el).within(() => {
+      cy.get('.govuk-table__cell').eq(1).contains('Current')
+    })
+  })
 })
 
-And('I should see the defendant has a probation status of {string}', $string => {
-  cy.get('.govuk-table__body').contains('td', $string).should('be.visible')
+And('I should only see a list of cases in court room 1', $type => {
+  cy.get('.govuk-table__body > .govuk-table__row').each($el => {
+    cy.wrap($el).within(() => {
+      cy.get('.govuk-table__cell').eq(5).contains('1')
+    })
+  })
 })
 
-Then('I should see previously known termination date', () => {
-  cy.get('[data-cy=previously-known-termination-date]').contains('Order ended 13 December 2007')
+And('I should only see a list of cases in the afternoon session', $type => {
+  cy.get('.govuk-table__body > .govuk-table__row').each($el => {
+    cy.wrap($el).within(() => {
+      cy.get('.govuk-table__cell').eq(4).contains('Afternoon')
+    })
+  })
 })
 
-Then('the flag {string} appears above the defendants probation status', $string => {
-  cy.get('.pac-badge').contains($string).should('exist')
+Then('I should not see the defendant on the {string} list', $type => {
+  cy.get('.govuk-table__body').contains('td', world.data[$type].name).should('not.exist')
 })
 
 When('I click the {string} filter button', $string => {
