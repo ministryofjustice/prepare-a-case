@@ -8,17 +8,14 @@ Given('I am a registered user', () => {
 
 When('I open the application', () => {
   cy.visit('/')
-  cy.injectAxe()
 })
 
 When('I navigate to the {string} route', $route => {
   cy.visit(`${$route}`)
-  cy.injectAxe()
 })
 
 When('I view the court list', () => {
   cy.visit('cases')
-  cy.injectAxe()
 })
 
 Then('I should be on the {string} page', $title => {
@@ -54,6 +51,7 @@ And('I should see the caption {string}', $caption => {
 })
 
 And('There should be no a11y violations', () => {
+  cy.injectAxe()
   cy.checkA11y('main#main-content')
 })
 

@@ -1,0 +1,67 @@
+const previouslyKnownDefendant = {
+  local: {
+    caseNo: 6627839278,
+    court: '8',
+    session: 'morning',
+    listing: '2nd',
+    pnc: 'A/8404713BA',
+    crn: 'D541487',
+    name: 'Webb Mitchell',
+    dateOfBirth: '1958-10-13',
+    gender: 'Male',
+    address: '49 Rochester Avenue Bangor AD21 5DR',
+    nationality: 'Polish',
+    offence: 'Theft from the person of another',
+    offenceDetails: 'On 24/03/2016 at Edinburgh stole PLAYSTATION 4 to the value of 300.00, belonging to Dillard Everett.',
+    offenceCaption: 'Contrary to section 1(1) and 7 of the Theft Act 1968.',
+    currentOrderCount: 0,
+    currentOrderTitle: '',
+    currentOrderId: '',
+    previousOrderCount: 5,
+    previousOrderTitle: 'CJA - Indeterminate Public Prot.',
+    previousOrderId: '1531139839',
+    offenderManager: 'Not active',
+    offenderManagerDetails: {
+      allocated: '',
+      address1: '',
+      address2: '',
+      address3: '',
+      address4: '',
+      address5: '',
+      postcode: '',
+      telephone: ''
+    }
+  },
+  dev: {
+    caseNo: 1585562016194,
+    name: 'Mr Ureet JMBALERNAEU',
+    dateOfBirth: '1998-01-01',
+    gender: 'Male',
+    address: '',
+    nationality: '',
+    offence: '',
+    offenceDetails: '',
+    offenceCaption: '',
+    currentOrderCount: 0,
+    currentOrderTitle: '',
+    currentOrderId: '',
+    previousOrderCount: 0,
+    previousOrderTitle: '',
+    previousOrderId: '',
+    offenderManager: '',
+    offenderManagerDetails: {
+      allocated: '',
+      address1: '',
+      address2: '',
+      address3: '',
+      address4: '',
+      address5: '',
+      postcode: '',
+      telephone: ''
+    }
+  }
+}
+
+module.exports = {
+  previouslyKnownDefendant
+}
