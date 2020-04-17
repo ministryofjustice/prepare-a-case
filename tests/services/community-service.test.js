@@ -31,7 +31,12 @@ describe('Community service', () => {
     moxios.stubRequest(`${apiUrl}/offender/D123456/probation-record`, {
       status: 200,
       response: {
-        data: {}
+        data: {
+          convictions: [{
+            active: false,
+            convictionId: 1234567890
+          }]
+        }
       }
     })
 

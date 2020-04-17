@@ -4,10 +4,12 @@
 {%- set activeOrders = [] -%}
 {%- set previousOrders = [] -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
-    {% if order.active %}
-        {{ activeOrders.push(order) }}
-    {% else %}
-        {{ previousOrders.push(order) }}
+    {% if order.sentence %}
+        {% if order.active %}
+                {{ activeOrders.push(order) }}
+        {% else %}
+            {{ previousOrders.push(order) }}
+        {% endif %}
     {% endif %}
 {% endfor -%}
 
@@ -26,34 +28,27 @@
             {% if activeOrders | length %}
                 <h2 class="govuk-heading-m">Current orders ({{ activeOrders | length }})</h2>
                 {%- for order in activeOrders %}
-                    {% if order.sentence %}
-                        <p class="govuk-body govuk-!-margin-bottom-0"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a></p>
-                        <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].detail.description }}</p>
-                        <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-0">Started on {{ params.moment(order.referralDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                    <p class="govuk-body govuk-!-margin-bottom-0"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a></p>
+                    <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].detail.description }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started on {{ params.moment(order.referralDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
 
-                        <table class="govuk-table govuk-!-margin-top-4">
-                            <thead class="govuk-table__head">
-                                <tr class="govuk-table__row">
-                                    <th scope="col" class="govuk-table__header">Requirement</th>
-                                    <th scope="col" class="govuk-table__header">Length</th>
-                                </tr>
-                            </thead>
-                            <tbody class="govuk-table__body">
-                                <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">Rehabilitation Activity Requirement (RAR)</td>
-                                    <td class="govuk-table__cell">20 days</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">Court - Accredited Programme - Building Better Relationships (BBR)</td>
-                                    <td class="govuk-table__cell">-</td>
-                                </tr>
-                                <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">Unpaid Work - Regular</td>
-                                    <td class="govuk-table__cell">40 hours</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    {% if order.requirements and order.requirements | length %}
+                        <h3 class="govuk-heading-s">Requirements</h3>
+
+                        <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
+                        {%- for requirement in order.requirements %}
+                            <li>
+                                {{ requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description }}
+                                {{ '(' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')' }}
+                                {{ '- ' + requirement.length if requirement.length }}
+                                {{ requirement.lengthUnit if requirement.lengthUnit }}
+                            </li>
+                        {% endfor %}
+                        </ul>
                     {% endif %}
+
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" />
+
                 {% endfor -%}
             {% endif %}
 
@@ -62,7 +57,6 @@
                 <table class="govuk-table">
                     <tbody class="govuk-table__body">
                         {%- for order in previousOrders %}
-                            {% if order.sentence %}
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell govuk-!-width-two-thirds">
                                     <p class="govuk-body govuk-!-margin-bottom-0"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a></p>
@@ -72,7 +66,6 @@
                                     <p class="govuk-hint govuk-!-margin-bottom-0">Ended on {{ params.moment(order.terminatedDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
                                 </td>
                             </tr>
-                            {% endif %}
                         {% endfor -%}
                     </tbody>
                 </table>

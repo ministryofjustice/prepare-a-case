@@ -14,7 +14,7 @@ const currentDefendant = {
     offence: 'Attempt theft from the person of another',
     offenceDetails: 'On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Clemons Barron.',
     offenceCaption: 'Contrary to section 1(1) of the Criminal Attempts Act 1981.',
-    currentOrderCount: 5,
+    currentOrderCount: 3,
     currentOrderTitle: 'ORA Adult Custody (inc PSS)',
     currentOrderOffence: 'Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200',
     currentOrderStartDate: '2019-05-19',
@@ -26,6 +26,12 @@ const currentDefendant = {
       headings: ['Appointments to date', 'Complied', 'Failures to comply', 'Awaiting outcome'],
       types: ['Planned office visit', 'Unpaid work', 'Appointment with External Agency', 'IAPS / Accredited programme']
     },
+    currentOrderRequirements: [
+      'Unpaid Work (Regular) - 60 Hours',
+      'Rehabilitation Activity Requirement (RAR) - 20 Days',
+      'Court - Accredited Programme (ASRO)',
+      'Court - Accredited Programme - Building Better Relationships (BBR)'
+    ],
     previousOrderCount: 11,
     previousOrderTitle: 'CJA - Std Determinate Custody',
     previousOrderOffence: 'Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801',
