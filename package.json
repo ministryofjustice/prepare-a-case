@@ -26,7 +26,7 @@
     "lint": "standard",
     "record-build-info": "node ./bin/build-info",
     "start": "node ./bin/www",
-    "start:watch": "nodemon --exec npm start --scripts-prepend-node-path",
+    "start:watch": "nodemon --exec yarn start --scripts-prepend-node-path",
     "unit-test": "NODE_ENV=test yarn jest --ci --reporters=default --reporters=jest-junit --collect-coverage"
   },
   "nodemonConfig": {
@@ -87,7 +87,7 @@
     "cypress-axe": "0.8.1",
     "cypress-cucumber-preprocessor": "2.3.1",
     "cypress-intellij-reporter": "^0.0.4",
-    "jest": "25.3.0",
+    "jest": "25.4.0",
     "jest-junit": "10.0.0",
     "moxios": "0.4.0",
     "node-sass-middleware": "0.11.0",

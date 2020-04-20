@@ -37,7 +37,8 @@ const currentDefendant = {
     previousOrderOffence: 'Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801',
     previousOrderId: '2788607022',
     previousOrderStartDate: '2017-03-08',
-    previousOrderEndDate: '2018-01-02',
+    previousOrderEndDate: '2018-01-23',
+    previousOrderTerminationReason: 'ICMS Miscellaneous Event',
     offenderManager: 'Mcmahon Buchanan',
     offenderManagerDetails: {
       allocated: '12 Aug 2017',
@@ -83,6 +84,7 @@ const currentDefendant = {
     previousOrderId: '',
     previousOrderStartDate: '',
     previousOrderEndDate: '',
+    previousOrderTerminationReason: '',
     offenderManager: '',
     offenderManagerDetails: {
       allocated: '',
