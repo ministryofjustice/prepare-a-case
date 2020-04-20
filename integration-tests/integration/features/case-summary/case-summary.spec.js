@@ -67,13 +67,19 @@ And('I should see the offender previous order count', () => {
 })
 
 And('I should see link to the first previous order', ($string, $href) => {
-  cy.get('.govuk-link').contains(world.data.previousOrderTitle).should('exist')
-    .should('have.attr', 'href')
-    .and('include', `record/${world.data.previousOrderId}`)
+  cy.get('.qa-previous-order-1').within(() => {
+    cy.get('.govuk-link').contains(world.data.previousOrderTitle).should('exist')
+      .should('have.attr', 'href')
+      .and('include', `record/${world.data.previousOrderId}`)
+  })
 })
 
 And('I should see the previous order offence', () => {
-  cy.get('.govuk-hint').contains(world.data.previousOrderOffence)
+  cy.get('.qa-previous-order-1-offence').contains(world.data.previousOrderOffence)
+})
+
+And('I should see the previous order end date', () => {
+  cy.get('.qa-previous-order-1-end-date').contains(`Ended on ${moment(world.data.previousOrderEndDate, 'YYYY-MM-DD').format('D MMM YYYY')}`)
 })
 
 And('I should see the offender manager details', () => {

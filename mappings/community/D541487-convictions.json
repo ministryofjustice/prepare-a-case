@@ -170,10 +170,19 @@
           ],
           "sentence": {
             "description": "Adult Custody < 12m",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2019-01-13",
+            "terminationReason": "Auto Terminated",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 85,
@@ -230,10 +239,19 @@
           ],
           "sentence": {
             "description": "CJA - Indeterminate Public Prot.",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-12-03",
+            "terminationReason": "Auto Terminated",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 414,
@@ -310,10 +328,19 @@
           ],
           "sentence": {
             "description": "ORA Community Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-12-03",
+            "terminationReason": "Auto Terminated",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 753,
@@ -350,10 +377,19 @@
           ],
           "sentence": {
             "description": "ORA Suspended Sentence Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-12-03",
+            "terminationReason": "Auto Terminated",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 797,

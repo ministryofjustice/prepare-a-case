@@ -19,7 +19,10 @@ const previouslyKnownDefendant = {
     currentOrderId: '',
     previousOrderCount: 5,
     previousOrderTitle: 'CJA - Indeterminate Public Prot.',
+    previousOrderOffence: 'Noise offences - 82200',
     previousOrderId: '1531139839',
+    previousOrderStartDate: '2018-01-01',
+    previousOrderEndDate: '2019-07-12',
     offenderManager: 'Not active',
     offenderManagerDetails: {
       allocated: '',
