@@ -139,16 +139,32 @@ And('I should see the level 2 heading with the {string} order title', $type => {
   cy.get('h2').contains($type === 'current' ? world.data.currentOrderTitle : world.data.previousOrderTitle)
 })
 
-And('I should see the {string} order start and end dates', $type => {
-  cy.get('.qa-start-date').contains(moment($type === 'current' ? world.data.currentOrderStartDate : world.data.previousOrderStartDate).format('DD MMMM YYYY'))
-  cy.get('.qa-end-date').contains(moment($type === 'current' ? world.data.currentOrderEndDate : world.data.previousOrderEndDate).format('DD MMMM YYYY'))
+And('I should see the correct start, end and elapsed time headings', () => {
+  cy.get('.qa-start-title').contains('Started')
+  cy.get('.qa-end-title').contains('Ends')
+  cy.get('.qa-elapsed-title').contains('Time elapsed')
 })
 
-And('I should see the correctly calculated elapsed time for the {string} order', $type => {
-  const tmpEndDate = $type === 'current' ? world.data.currentOrderEndDate : world.data.previousOrderEndDate
-  const startDate = moment($type === 'current' ? world.data.currentOrderStartDate : world.data.previousOrderStartDate, 'YYYY-MM-DD')
+And('I should see the correct start, ended and reason headings', () => {
+  cy.get('.qa-start-title').contains('Started')
+  cy.get('.qa-end-title').contains('Ended')
+  cy.get('.qa-elapsed-title').contains('Reason')
+})
+
+And('I should see the {string} order start and end dates', $type => {
+  cy.get('.qa-start-date').contains(moment($type === 'current' ? world.data.currentOrderStartDate : world.data.previousOrderStartDate).format('D MMM YYYY'))
+  cy.get('.qa-end-date').contains(moment($type === 'current' ? world.data.currentOrderEndDate : world.data.previousOrderEndDate).format('D MMM YYYY'))
+})
+
+And('I should see the correctly calculated elapsed time for the current order', $type => {
+  const tmpEndDate = world.data.currentOrderEndDate
+  const startDate = moment(world.data.currentOrderStartDate, 'YYYY-MM-DD')
   const endDate = moment(tmpEndDate, 'YYYY-MM-DD').isAfter() ? moment() : moment(tmpEndDate, 'YYYY-MM-DD')
   cy.get('.qa-elapsed-time').contains(getMonthsAndDays(startDate, endDate))
+})
+
+And('I should see the termination date of the previous order and the reason for terminating', $type => {
+  cy.get('.qa-elapsed-time').contains(world.data.previousOrderTerminationReason)
 })
 
 And('I should see the row with the key {string}', $title => {

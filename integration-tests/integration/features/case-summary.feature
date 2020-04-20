@@ -13,7 +13,7 @@ Feature: Case summary
     When I click the defendant name link
     Then I should be on the "Case details" page
     And I should see the heading has the defendant name
-    # And There should be no a11y violations
+    And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with no probation record
     Given I am a registered user
@@ -86,7 +86,7 @@ Feature: Case summary
     And I should see the value with defendant "nationality"
 
     And I should see link "View CPS Pack (opens in Court Store)" with href "#"
-    # And There should be no a11y violations
+    And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with a current probation record
     Given I am a registered user
@@ -225,8 +225,9 @@ Feature: Case summary
       | Appointments to date | Complied | Failures to comply | Awaiting outcome |
     And I should see the body text "Last attendance:" and the defendant "currentOrderLastAttendance"
 
+    And I should see the correct start, end and elapsed time headings
     And I should see the "current" order start and end dates
-    And I should see the correctly calculated elapsed time for the "current" order
+    And I should see the correctly calculated elapsed time for the current order
 
     And I should see the appointment attendance information
     And There should be no a11y violations
@@ -244,7 +245,9 @@ Feature: Case summary
     And I should see the level 2 heading with the "previous" order title
 
     And I should see the body text with the defendant "previousOrderOffence"
-    And I should see the correctly calculated elapsed time for the "previous" order
+    And I should see the correct start, ended and reason headings
+    And I should see the "previous" order start and end dates
+    And I should see the termination date of the previous order and the reason for terminating
     And I should not see the heading level 2 with text "Appointment attendance"
     And There should be no a11y violations
 

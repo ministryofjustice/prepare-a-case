@@ -17,8 +17,7 @@
           "inBreach": true,
           "convictionDate": "2017-03-08",
           "referralDate": "2017-03-08",
-          "expectedEndDate": "2018-01-02",
-          "terminatedDate": "2018-01-02",
+          "endDate": "2018-01-02",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -63,10 +62,19 @@
           ],
           "sentence": {
             "description": "CJA - Std Determinate Custody",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-01-23",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": "903",
@@ -79,8 +87,7 @@
           "inBreach": false,
           "convictionDate": "2019-02-14",
           "referralDate": "2019-02-14",
-          "expectedEndDate": "2019-08-27",
-          "terminatedDate": "2019-08-27",
+          "endDate": "2019-08-27",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -105,10 +112,19 @@
           ],
           "sentence": {
             "description": "Adult Custody < 12m",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2019-08-27",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": "478",
@@ -121,8 +137,7 @@
           "inBreach": true,
           "convictionDate": "2017-02-21",
           "referralDate": "2017-02-21",
-          "expectedEndDate": "2017-08-09",
-          "terminatedDate": "2017-08-09",
+          "endDate": "2017-08-09",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -187,10 +202,19 @@
           ],
           "sentence": {
             "description": "CJA - Indeterminate Public Prot.",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2017-08-09",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 784,
@@ -203,8 +227,7 @@
           "inBreach": true,
           "convictionDate": "2019-02-13",
           "referralDate": "2019-02-13",
-          "expectedEndDate": "2019-09-04",
-          "terminatedDate": "2019-09-04",
+          "endDate": "2019-09-04",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -229,10 +252,19 @@
           ],
           "sentence": {
             "description": "ORA Community Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2019-09-04",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 289,
@@ -245,8 +277,7 @@
           "inBreach": true,
           "convictionDate": "2019-08-10",
           "referralDate": "2019-08-10",
-          "expectedEndDate": "2020-04-17",
-          "terminatedDate": "2019-09-16",
+          "endDate": "2020-04-17",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -340,8 +371,7 @@
           "inBreach": true,
           "convictionDate": "2017-02-12",
           "referralDate": "2017-02-12",
-          "expectedEndDate": "2017-12-14",
-          "terminatedDate": "2017-12-14",
+          "endDate": "2017-12-14",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -442,8 +472,7 @@
           "inBreach": true,
           "convictionDate": "2017-02-26",
           "referralDate": "2017-02-26",
-          "expectedEndDate": "2017-12-19",
-          "terminatedDate": "2017-12-19",
+          "endDate": "2017-12-19",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -468,10 +497,19 @@
           ],
           "sentence": {
             "description": "ORA Suspended Sentence Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2019-09-04",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 326,
@@ -484,8 +522,7 @@
           "inBreach": false,
           "convictionDate": "2019-05-19",
           "referralDate": "2019-05-19",
-          "expectedEndDate": "2020-05-25",
-          "terminatedDate": "2019-09-13",
+          "endDate": "2020-05-25",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -586,8 +623,7 @@
           "inBreach": false,
           "convictionDate": "2019-05-08",
           "referralDate": "2019-05-08",
-          "expectedEndDate": "2020-06-22",
-          "terminatedDate": "",
+          "endDate": "2020-06-22",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -688,8 +724,7 @@
           "inBreach": false,
           "convictionDate": "2017-02-21",
           "referralDate": "2017-02-21",
-          "expectedEndDate": "2017-12-25",
-          "terminatedDate": "2017-12-25",
+          "endDate": "2017-12-25",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -754,10 +789,19 @@
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2017-12-25",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 202,
@@ -770,8 +814,7 @@
           "inBreach": true,
           "convictionDate": "2019-03-03",
           "referralDate": "2019-03-03",
-          "expectedEndDate": "2020-07-01",
-          "terminatedDate": "",
+          "endDate": "2020-07-01",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -805,8 +848,7 @@
           "inBreach": false,
           "convictionDate": "2018-07-08",
           "referralDate": "2018-07-08",
-          "expectedEndDate": "2020-07-27",
-          "terminatedDate": "",
+          "endDate": "2020-07-27",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -907,8 +949,7 @@
           "inBreach": false,
           "convictionDate": "2018-02-25",
           "referralDate": "2018-02-25",
-          "expectedEndDate": "2018-08-04",
-          "terminatedDate": "2018-08-04",
+          "endDate": "2018-08-04",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -973,10 +1014,19 @@
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-08-04",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 943,
@@ -989,8 +1039,7 @@
           "inBreach": false,
           "convictionDate": "2017-02-22",
           "referralDate": "2017-02-22",
-          "expectedEndDate": "2017-11-18",
-          "terminatedDate": "2017-11-18",
+          "endDate": "2017-11-18",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -1031,8 +1080,7 @@
           "inBreach": true,
           "convictionDate": "2018-03-01",
           "referralDate": "2018-03-01",
-          "expectedEndDate": "2018-09-21",
-          "terminatedDate": "2018-09-21",
+          "endDate": "2018-09-21",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -1116,11 +1164,20 @@
             }
           ],
           "sentence": {
-            "description": "CJA - Std Determinate Custody",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "description": "ORA Adult Custody (Not PSS)",
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-09-21",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 925,
@@ -1133,8 +1190,7 @@
           "inBreach": false,
           "convictionDate": "2018-02-27",
           "referralDate": "2018-02-27",
-          "expectedEndDate": "2018-09-23",
-          "terminatedDate": "2018-09-23",
+          "endDate": "2018-09-23",
           "offences": [
             {
               "offenceId": "M2980486253",
@@ -1179,10 +1235,19 @@
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-09-23",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 184,

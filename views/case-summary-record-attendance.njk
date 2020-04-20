@@ -93,16 +93,16 @@
 
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
-                    <p class="govuk-hint govuk-!-margin-bottom-0">Started</p>
+                    <p class="govuk-hint govuk-!-margin-bottom-0 qa-start-title">Started</p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-start-date">{{ moment(currentOrder.convictionDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
                 </div>
                 <div class="govuk-grid-column-one-third">
-                    <p class="govuk-hint govuk-!-margin-bottom-0">{{ "Ends" if currentOrder.active else "Ended" }}</p>
-                    <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-end-date">{{ moment(currentOrder.expectedEndDate, 'YYYY-MM-DD').format('D MMM YYYY') if currentOrder.terminationDate else moment(currentOrder.expectedEndDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                    <p class="govuk-hint govuk-!-margin-bottom-0 qa-end-title">{{ "Ends" if currentOrder.active else "Ended" }}</p>
+                    <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-end-date">{{ moment(currentOrder.endDate, 'YYYY-MM-DD').format('D MMM YYYY') if currentOrder.active else moment(currentOrder.sentence.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
                 </div>
                 <div class="govuk-grid-column-one-third">
-                    <p class="govuk-hint govuk-!-margin-bottom-0">Time elapsed</p>
-                    <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-elapsed-time">{{ elapsedTime }}</p>
+                    <p class="govuk-hint govuk-!-margin-bottom-0 qa-elapsed-title">{{ "Time elapsed" if currentOrder.active else "Reason" }}</p>
+                    <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-elapsed-time">{{ elapsedTime if currentOrder.active else currentOrder.sentence.terminationReason }}</p>
                 </div>
             </div>
 
