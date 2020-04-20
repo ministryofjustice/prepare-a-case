@@ -456,10 +456,19 @@
           ],
           "sentence": {
             "description": "Life imprisonment (Adult)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-01-23",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 415,
@@ -607,10 +616,19 @@
           ],
           "sentence": {
             "description": "ORA Adult Custody (inc PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-01-23",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 697,
@@ -708,10 +726,19 @@
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-01-23",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 206,
@@ -933,10 +960,19 @@
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-01-23",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 275,
@@ -1063,11 +1099,20 @@
             }
           ],
           "sentence": {
-            "description": "Adult Custody < 12m",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "description": "ORA Adult Custody < 12m",
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-01-23",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "unpaidWork": {
+              "acceptableAbsences": 0,
+              "appointmentsToDate": 0,
+              "attended": 0,
+              "minutesCompleted": 0,
+              "minutesOffered": 0,
+              "unacceptableAbsences": 0
+            }
           },
           "latestCourtAppearanceOutcome": {
             "code": 180,
