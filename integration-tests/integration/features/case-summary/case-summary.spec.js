@@ -54,6 +54,14 @@ And('I should see the current order start date', () => {
   cy.get('.govuk-hint').contains(`Started on ${startDate}`)
 })
 
+And('I should see the requirements for the first current order', () => {
+  cy.get('.qa-current-requirements-0').within(() => {
+    world.data.currentOrderRequirements.forEach(($requirement, $index) => {
+      cy.get('li').eq($index).contains($requirement)
+    })
+  })
+})
+
 And('I should see the offender previous order count', () => {
   cy.get('h2').contains(`Previous orders (${world.data.previousOrderCount})`)
 })
