@@ -32,6 +32,15 @@ const currentDefendant = {
       'Court - Accredited Programme (ASRO)',
       'Court - Accredited Programme - Building Better Relationships (BBR)'
     ],
+    unpaidWork: {
+      status: '',
+      offered: 12,
+      completed: 2,
+      appointmentsToDate: 2,
+      attended: 2,
+      acceptableAbsences: 0,
+      unacceptableAbsences: 0
+    },
     previousOrderCount: 11,
     previousOrderTitle: 'CJA - Std Determinate Custody',
     previousOrderOffence: 'Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801',
