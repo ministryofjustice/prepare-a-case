@@ -622,6 +622,8 @@
             "terminationDate": "2018-01-23",
             "terminationReason": "ICMS Miscellaneous Event",
             "unpaidWork": {
+              "status": "Terminated",
+              "statusDate": "2018-01-23",
               "offered": 12,
               "completed": 2,
               "appointmentsToDate": 2,

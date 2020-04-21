@@ -83,7 +83,7 @@ And('I should see the previous order end date', () => {
 })
 
 And('I should see the unpaid work information', () => {
-  // cy.get('.qa-upw-status').contains(world.data.unpaidWork.status)
+  cy.get('.qa-upw-status').contains(world.data.unpaidWork.status)
   cy.get('.qa-upw-ordered').contains(world.data.unpaidWork.offered)
   cy.get('.qa-upw-worked').contains(world.data.unpaidWork.completed)
   cy.get('.qa-upw-appointments').contains(world.data.unpaidWork.appointmentsToDate)

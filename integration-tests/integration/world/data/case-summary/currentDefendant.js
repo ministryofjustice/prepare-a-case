@@ -33,7 +33,7 @@ const currentDefendant = {
       'Court - Accredited Programme - Building Better Relationships (BBR)'
     ],
     unpaidWork: {
-      status: '',
+      status: 'Terminated - 23 Jan 2018',
       offered: 12,
       completed: 2,
       appointmentsToDate: 2,
