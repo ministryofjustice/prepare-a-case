@@ -233,6 +233,7 @@ Feature: Case summary
     And I should see the correctly calculated elapsed time for the current order
 
     And I should see the appointment attendance information
+    And I should see the unpaid work information
     And There should be no a11y violations
 
   Scenario: View the attendance record section of the previous offender order
@@ -252,6 +253,7 @@ Feature: Case summary
     And I should see the "previous" order start and end dates
     And I should see the termination date of the previous order and the reason for terminating
     And I should not see the heading level 2 with text "Appointment attendance"
+    And I should not see the heading level 2 with text "Unpaid work"
     And There should be no a11y violations
 
   Scenario: View the case details of a defendant to see a list of current charges and the associated details/description
