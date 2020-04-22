@@ -99,6 +99,14 @@ And('I should see the offender manager details', () => {
   })
 })
 
+And('I should see the last pre-sentence report details', () => {
+  cy.get('.govuk-grid-column-one-third').within(() => {
+    cy.get('.govuk-heading-s').contains('Last pre-sentence report')
+    cy.get('.govuk-body').contains(world.data.preSentenceReportDetails.description)
+    cy.get('.govuk-hint').contains(`Delivered on ${world.data.preSentenceReportDetails.delivered}`)
+  })
+})
+
 And('I should see the {string} summary table', ($position, $data) => {
   $data.raw().forEach((row, index) => {
     row.forEach((text, index2) => {

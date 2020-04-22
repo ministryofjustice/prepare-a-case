@@ -208,6 +208,7 @@ Feature: Case summary
     And I should see the following level 3 headings
       | Requirements | Offender Manager |
     And I should see the offender manager details
+    And I should see the last pre-sentence report details
     And There should be no a11y violations
 
   Scenario: View the attendance record section of the current offender order
@@ -264,3 +265,4 @@ Feature: Case summary
     Then the accordion section should expand
     And I should see the body text with the defendant "offenceDetails"
     And I should see the caption text with the defendant "offenceCaption"
+
