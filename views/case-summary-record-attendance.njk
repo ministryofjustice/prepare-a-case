@@ -203,31 +203,34 @@
                         </div>
                     </dl>
 
-                    <details class="govuk-details" data-module="govuk-details">
-                        <summary class="govuk-details__summary">
-                              <span class="govuk-details__summary-text">View UPW attendance</span>
-                        </summary>
-                        <div class="govuk-details__text">
-                            <dl class="govuk-summary-list">
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">Appointments to date</dt>
-                                    <dd class="govuk-summary-list__value qa-upw-appointments">{{ currentOrder.sentence.unpaidWork.appointmentsToDate or '0' }}</dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">Attended</dt>
-                                    <dd class="govuk-summary-list__value qa-upw-attended">{{ currentOrder.sentence.unpaidWork.attended or '0' }}</dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">Acceptable absences </dt>
-                                    <dd class="govuk-summary-list__value qa-upw-acceptable">{{ currentOrder.sentence.unpaidWork.acceptableAbsences or '0' }}</dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">Failures to comply</dt>
-                                    <dd class="govuk-summary-list__value qa-upw-unacceptable">{{ currentOrder.sentence.unpaidWork.unacceptableAbsences or '0' }}</dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </details>
+                    {% if currentOrder.sentence.unpaidWork.appointmentsToDate %}
+                        <details class="govuk-details" data-module="govuk-details">
+                            <summary class="govuk-details__summary">
+                                  <span class="govuk-details__summary-text">View UPW attendance</span>
+                            </summary>
+                            <div class="govuk-details__text">
+                                <dl class="govuk-summary-list">
+                                    <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Appointments to date</dt>
+                                        <dd class="govuk-summary-list__value qa-upw-appointments">{{ currentOrder.sentence.unpaidWork.appointmentsToDate or '0' }}</dd>
+                                    </div>
+                                    <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Attended</dt>
+                                        <dd class="govuk-summary-list__value qa-upw-attended">{{ currentOrder.sentence.unpaidWork.attended or '0' }}</dd>
+                                    </div>
+                                    <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Acceptable absences </dt>
+                                        <dd class="govuk-summary-list__value qa-upw-acceptable">{{ currentOrder.sentence.unpaidWork.acceptableAbsences or '0' }}</dd>
+                                    </div>
+                                    <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">Failures to comply</dt>
+                                        <dd class="govuk-summary-list__value qa-upw-unacceptable">{{ currentOrder.sentence.unpaidWork.unacceptableAbsences or '0' }}</dd>
+                                    </div>
+                                </dl>
+                            </div>
+                        </details>
+                    {% endif %}
+
                 </div>
                 <div class="govuk-grid-column-one-third">&nbsp;</div>
             </div>

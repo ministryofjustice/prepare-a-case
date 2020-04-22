@@ -86,10 +86,18 @@ And('I should see the unpaid work information', () => {
   cy.get('.qa-upw-status').contains(world.data.unpaidWork.status)
   cy.get('.qa-upw-ordered').contains(world.data.unpaidWork.offered)
   cy.get('.qa-upw-worked').contains(world.data.unpaidWork.completed)
-  cy.get('.qa-upw-appointments').contains(world.data.unpaidWork.appointmentsToDate)
-  cy.get('.qa-upw-attended').contains(world.data.unpaidWork.attended)
-  cy.get('.qa-upw-acceptable').contains(world.data.unpaidWork.acceptableAbsences)
-  cy.get('.qa-upw-unacceptable').contains(world.data.unpaidWork.unacceptableAbsences)
+
+  if (world.data.unpaidWork.appointmentsToDate) {
+    cy.get('.qa-upw-appointments').contains(world.data.unpaidWork.appointmentsToDate)
+    cy.get('.qa-upw-attended').contains(world.data.unpaidWork.attended)
+    cy.get('.qa-upw-acceptable').contains(world.data.unpaidWork.acceptableAbsences)
+    cy.get('.qa-upw-unacceptable').contains(world.data.unpaidWork.unacceptableAbsences)
+  } else {
+    cy.get('.qa-upw-appointments').should('not.exist')
+    cy.get('.qa-upw-attended').should('not.exist')
+    cy.get('.qa-upw-acceptable').should('not.exist')
+    cy.get('.qa-upw-unacceptable').should('not.exist')
+  }
 })
 
 And('I should see the offender manager details', () => {
