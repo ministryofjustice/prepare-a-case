@@ -4,7 +4,7 @@ const { apiUrl } = require('../config/defaults')
 const getCaseList = async (courtCode, date, filters) => {
   const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
 
-  let filteredCases = res.data.cases
+  let filteredCases = res.data && res.data.cases ? res.data.cases : []
 
   function applyFilter (filterObj) {
     filteredCases = filteredCases.filter(courtCase => {
