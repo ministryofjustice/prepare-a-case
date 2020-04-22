@@ -10,3598 +10,1340 @@
     },
     "status": 200,
     "jsonBody": {
+      "crn": "D991494",
+      "offenderManagers": [
+        {
+          "forenames": "Temperance",
+          "surname": "Brennan",
+          "allocatedDate": "2019-09-30"
+        }
+      ],
       "convictions": [
         {
           "convictionId": 2363215335,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-01",
-          "referralDate": "2018-07-01",
+          "endDate": "2020-01-01",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": "08902",
-                "mainCategoryCode": "089",
-                "description": "(Adulteration etc of milk products - 08902)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food or drugs (Food Safety Act 1990)",
-                "mainCategoryAbbreviation": "Adulteration of food or drugs (Food Safety Act 19",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration etc of milk products"
-              },
-              "offenceDate": "2018-01-01T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1602846605,
-              "createdDatetime": "2018-05-01T00:00:00",
-              "lastUpdatedDatetime": "2018-05-01T00:00:00"
+              "description": "(Adulteration etc of milk products - 08902)"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": "09400",
-                "mainCategoryCode": "094",
-                "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)",
-                "mainCategoryAbbreviation": "Town and Country Planning Act 1990/Planning (List",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)"
-              },
-              "offenceDate": "2018-01-01T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1408277635,
-              "createdDatetime": "2018-05-01T00:00:00",
-              "lastUpdatedDatetime": "2018-05-01T00:00:00"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 7600,
-                "mainCategoryCode": 76,
-                "description": "Aiding suicide - 07600",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Aiding suicide",
-                "mainCategoryAbbreviation": "Aiding suicide",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Aiding suicide"
-              },
-              "offenceDate": "2018-01-01T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 975036720,
-              "createdDatetime": "2018-05-01T00:00:00",
-              "lastUpdatedDatetime": "2018-05-01T00:00:00"
+              "description": "Aiding suicide - 07600"
             }
           ],
           "sentence": {
             "description": "CJA - Std Determinate Custody",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-01-01",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": "277",
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 1981112234,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-02-09",
-          "referralDate": "2018-02-09",
+          "endDate": "2019-08-09",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": "03100",
-                "mainCategoryCode": "031",
-                "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Aggravated burglary in a building other than a dwelling (including attempts)",
-                "mainCategoryAbbreviation": "Aggravated burglary in a building other than a dw",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Aggravated burglary in a building other than a dwelling (including attempts)"
-              },
-              "offenceDate": "2017-08-09T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 555101389,
-              "createdDatetime": "2017-12-09T00:00:00",
-              "lastUpdatedDatetime": "2017-12-09T00:00:00"
+              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": "07600",
-                "mainCategoryCode": "076",
-                "description": "Aiding suicide - 07600",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Aiding suicide",
-                "mainCategoryAbbreviation": "Aiding suicide",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Aiding suicide"
-              },
-              "offenceDate": "2017-08-09T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2061375517,
-              "createdDatetime": "2017-12-09T00:00:00",
-              "lastUpdatedDatetime": "2017-12-09T00:00:00"
+              "description": "Aiding suicide - 07600"
             }
           ],
           "sentence": {
             "description": "Life imprisonment (Adult)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-08-09",
+            "terminationReason":  "ICMS Miscellaneous Event"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": "632",
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 1361422142,
           "active": true,
           "inBreach": true,
           "convictionDate": "2018-10-07",
-          "referralDate": "2018-10-07",
+          "endDate": "2020-04-07",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 4300,
-                "mainCategoryCode": 43,
-                "description": "Abstracting electricity - 04300",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Abstracting electricity",
-                "mainCategoryAbbreviation": "Abstracting electricity",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Abstracting electricity"
-              },
-              "offenceDate": "2018-04-07T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2370296811,
-              "createdDatetime": "2018-08-07T00:00:00",
-              "lastUpdatedDatetime": "2018-08-07T00:00:00"
+              "description": "Abstracting electricity - 04300"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 10500,
-                "mainCategoryCode": 105,
-                "description": "Common and other types of assault - 10500",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common and other types of assault"
-              },
-              "offenceDate": "2018-04-07T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 944228606,
-              "createdDatetime": "2018-08-07T00:00:00",
-              "lastUpdatedDatetime": "2018-08-07T00:00:00"
+              "description": "Common and other types of assault - 10500"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 807,
-                "mainCategoryCode": 8,
-                "description": "(Assault PC (Indictable/Either way) - 00807)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Malicious wounding and other like offences (misdemeanours)",
-                "mainCategoryAbbreviation": "Malicious wounding and other like offences (misde",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "*Assault PC (Indictable/Either way)"
-              },
-              "offenceDate": "2018-04-07T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 541732369,
-              "createdDatetime": "2018-08-07T00:00:00",
-              "lastUpdatedDatetime": "2018-08-07T00:00:00"
+              "description": "(Assault PC (Indictable/Either way) - 00807)"
             }
           ],
           "sentence": {
             "description": "ORA Community Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-04-07",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 957,
-            "description": "ORA Community Order"
-          }
+          "documents": [
+            {
+              "documentId": "1d842fce-ec2d-45dc-ac9a-748d3076ca6b",
+              "documentName": "shortFormatPreSentenceReport_04092019_121424_OMIC_A_X320741.pdf",
+              "author": "Andy Marke",
+              "type": "COURT_REPORT_DOCUMENT",
+              "extendedDescription": "Pre-Sentence Report - Fast requested by Sheffield Crown Court on 08/10/2018",
+              "createdAt": "2019-10-08T00:00:00",
+              "subType": {
+                "code": "CJF",
+                "description": "Pre-Sentence Report - Fast"
+              },
+              "reportDocumentDates": {
+                "requestedDate": "2018-10-08",
+                "requiredDate": "2019-10-08",
+                "completedDate": "2018-12-28T00:00:00"
+              }
+            }
+          ]
         },
         {
           "convictionId": 1459411525,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-06-12",
-          "referralDate": "2018-06-12",
+          "endDate": "2019-12-12",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 8303,
-                "mainCategoryCode": 83,
-                "description": "Acknowledging bail in false name - 08303",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Offences relating to bail (Category)",
-                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
-                "ogrsOffenceCategory": "Absconding or bail offences",
-                "subCategoryDescription": "Acknowledging bail in false name"
-              },
-              "offenceDate": "2017-12-12T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 859046247,
-              "createdDatetime": "2018-04-12T00:00:00",
-              "lastUpdatedDatetime": "2018-04-12T00:00:00"
+              "description": "Acknowledging bail in false name - 08303"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-12-12",
+            "terminationReason":  "ICMS Miscellaneous Event"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 60,
-            "description": "Final Review"
-          }
+          "documents": []
         },
         {
           "convictionId": 256441111,
-          "active": false,
+          "active": true,
           "inBreach": true,
           "convictionDate": "2018-11-12",
-          "referralDate": "2018-11-12",
+          "endDate": "2020-07-12",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 807,
-                "mainCategoryCode": 8,
-                "description": "(Assault PC (Indictable/Either way) - 00807)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Malicious wounding and other like offences (misdemeanours)",
-                "mainCategoryAbbreviation": "Malicious wounding and other like offences (misde",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "*Assault PC (Indictable/Either way)"
-              },
-              "offenceDate": "2018-05-12T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2489149821,
-              "createdDatetime": "2018-09-12T00:00:00",
-              "lastUpdatedDatetime": "2018-09-12T00:00:00"
+              "description": "(Assault PC (Indictable/Either way) - 00807)"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 3604,
-                "mainCategoryCode": 36,
-                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Kidnapping (Category)",
-                "mainCategoryAbbreviation": "Kidnapping (Category)",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982)"
-              },
-              "offenceDate": "2018-05-12T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2704436435,
-              "createdDatetime": "2018-09-12T00:00:00",
-              "lastUpdatedDatetime": "2018-09-12T00:00:00"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 12400,
-                "mainCategoryCode": 124,
-                "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles",
-                "mainCategoryAbbreviation": "Highways Acts - Other offences, other than those ",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles"
-              },
-              "offenceDate": "2018-05-12T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 764132813,
-              "createdDatetime": "2018-09-12T00:00:00",
-              "lastUpdatedDatetime": "2018-09-12T00:00:00"
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 1600,
-                "mainCategoryCode": 16,
-                "description": "(Buggery and attempted buggery - 01600)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Buggery and attempted buggery",
-                "mainCategoryAbbreviation": "Buggery and attempted buggery",
-                "ogrsOffenceCategory": "Sexual (not against child)",
-                "subCategoryDescription": "Buggery and attempted buggery"
-              },
-              "offenceDate": "2018-05-12T00:00:00",
-              "offenceCount": 4,
-              "mainOffence": false,
-              "offenderId": 2752954452,
-              "createdDatetime": "2018-09-12T00:00:00",
-              "lastUpdatedDatetime": "2018-09-12T00:00:00"
+              "description": "(Buggery and attempted buggery - 01600)"
             }
           ],
           "sentence": {
             "description": "CJA - Std Determinate Custody",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-07-12",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 461,
-            "description": "Warrant without Bail"
-          }
+          "documents": []
         },
         {
           "convictionId": 1404582543,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-01-03",
-          "referralDate": "2018-01-03",
+          "endDate": "2019-07-03",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 5601,
-                "mainCategoryCode": 56,
-                "description": "Arson endangering life - 05601",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Arson",
-                "mainCategoryAbbreviation": "Arson",
-                "ogrsOffenceCategory": "Criminal damage",
-                "subCategoryDescription": "Arson endangering life"
-              },
-              "offenceDate": "2017-07-03T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 67307487,
-              "createdDatetime": "2017-11-03T00:00:00",
-              "lastUpdatedDatetime": "2017-11-03T00:00:00"
+              "description": "Arson endangering life - 05601"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (inc PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-07-03",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 357,
-            "description": "CJA - Std Determinate Custody"
-          }
+          "documents": []
         },
         {
           "convictionId": 264594274,
-          "active": false,
+          "active": true,
           "inBreach": false,
           "convictionDate": "2018-12-30",
-          "referralDate": "2018-12-30",
+          "endDate": "2020-06-30",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 9400,
-                "mainCategoryCode": 94,
-                "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)",
-                "mainCategoryAbbreviation": "Town and Country Planning Act 1990/Planning (List",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)"
-              },
-              "offenceDate": "2018-06-30T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1618451776,
-              "createdDatetime": "2018-10-30T00:00:00",
-              "lastUpdatedDatetime": "2018-10-30T00:00:00"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 82200,
-                "mainCategoryCode": 822,
-                "description": "Noise offences - 82200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Noise offences",
-                "mainCategoryAbbreviation": "Noise offences",
-                "ogrsOffenceCategory": "Other motoring",
-                "subCategoryDescription": "Noise offences"
-              },
-              "offenceDate": "2018-06-30T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 482572857,
-              "createdDatetime": "2018-10-30T00:00:00",
-              "lastUpdatedDatetime": "2018-10-30T00:00:00"
+              "description": "Noise offences - 82200"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 4300,
-                "mainCategoryCode": 43,
-                "description": "Abstracting electricity - 04300",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Abstracting electricity",
-                "mainCategoryAbbreviation": "Abstracting electricity",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Abstracting electricity"
-              },
-              "offenceDate": "2018-06-30T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 1233607791,
-              "createdDatetime": "2018-10-30T00:00:00",
-              "lastUpdatedDatetime": "2018-10-30T00:00:00"
+              "description": "Abstracting electricity - 04300"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-06-30",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 5,
-            "description": "ORA Community Order"
-          }
+          "documents": []
         },
         {
           "convictionId": 1165680975,
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-02-21",
-          "referralDate": "2018-02-21",
+          "endDate": "2019-08-21",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 3604,
-                "mainCategoryCode": 36,
-                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Kidnapping (Category)",
-                "mainCategoryAbbreviation": "Kidnapping (Category)",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982)"
-              },
-              "offenceDate": "2017-08-21T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 661115801,
-              "createdDatetime": "2017-12-21T00:00:00",
-              "lastUpdatedDatetime": "2017-12-21T00:00:00"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 807,
-                "mainCategoryCode": 8,
-                "description": "(Assault PC (Indictable/Either way) - 00807)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Malicious wounding and other like offences (misdemeanours)",
-                "mainCategoryAbbreviation": "Malicious wounding and other like offences (misde",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "*Assault PC (Indictable/Either way)"
-              },
-              "offenceDate": "2017-08-21T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 415394326,
-              "createdDatetime": "2017-12-21T00:00:00",
-              "lastUpdatedDatetime": "2017-12-21T00:00:00"
+              "description": "(Assault PC (Indictable/Either way) - 00807)"
             }
           ],
           "sentence": {
             "description": "CJA - Std Determinate Custody",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-08-21",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 0,
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 2824833632,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-02-05",
-          "referralDate": "2018-02-05",
+          "endDate": "2019-08-05",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 3100,
-                "mainCategoryCode": 31,
-                "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Aggravated burglary in a building other than a dwelling (including attempts)",
-                "mainCategoryAbbreviation": "Aggravated burglary in a building other than a dw",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Aggravated burglary in a building other than a dwelling (including attempts)"
-              },
-              "offenceDate": "2017-08-05T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2547206902,
-              "createdDatetime": "2017-12-05T00:00:00",
-              "lastUpdatedDatetime": "2017-12-05T00:00:00"
+              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 10100,
-                "mainCategoryCode": 101,
-                "description": "Adulteration of food, drugs etc (Summary) - 10100",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food, drugs etc (Summary)",
-                "mainCategoryAbbreviation": "Adulteration of food, drugs etc (Summary)",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration of food, drugs etc (Summary)"
-              },
-              "offenceDate": "2017-08-05T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 847804600,
-              "createdDatetime": "2017-12-05T00:00:00",
-              "lastUpdatedDatetime": "2017-12-05T00:00:00"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 4200,
-                "mainCategoryCode": 42,
-                "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag",
-                "mainCategoryAbbreviation": "Stealing mail bags or postal packets or unlawfull",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag"
-              },
-              "offenceDate": "2017-08-05T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 910476064,
-              "createdDatetime": "2017-12-05T00:00:00",
-              "lastUpdatedDatetime": "2017-12-05T00:00:00"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
             }
           ],
           "sentence": {
             "description": "Life imprisonment (Adult)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-08-05",
+            "terminationReason":  "ICMS Miscellaneous Event"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 14,
-            "description": "Final Review"
-          }
+          "documents": []
         },
         {
           "convictionId": 906962802,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-09-30",
-          "referralDate": "2018-09-30",
+          "endDate": "2020-03-30",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 10100,
-                "mainCategoryCode": 101,
-                "description": "Adulteration of food, drugs etc (Summary) - 10100",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food, drugs etc (Summary)",
-                "mainCategoryAbbreviation": "Adulteration of food, drugs etc (Summary)",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration of food, drugs etc (Summary)"
-              },
-              "offenceDate": "2018-03-30T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 47217577,
-              "createdDatetime": "2018-07-30T00:00:00",
-              "lastUpdatedDatetime": "2018-07-30T00:00:00"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 8303,
-                "mainCategoryCode": 83,
-                "description": "Acknowledging bail in false name - 08303",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Offences relating to bail (Category)",
-                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
-                "ogrsOffenceCategory": "Absconding or bail offences",
-                "subCategoryDescription": "Acknowledging bail in false name"
-              },
-              "offenceDate": "2018-03-30T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1504316939,
-              "createdDatetime": "2018-07-30T00:00:00",
-              "lastUpdatedDatetime": "2018-07-30T00:00:00"
+              "description": "Acknowledging bail in false name - 08303"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (inc PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-03-30",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 727,
-            "description": "ORA Community Order"
-          }
+          "documents": []
         },
         {
           "convictionId": 2587424196,
-          "active": false,
+          "active": true,
           "inBreach": false,
           "convictionDate": "2018-11-13",
-          "referralDate": "2018-11-13",
+          "endDate": "2020-05-13",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 10501,
-                "mainCategoryCode": 105,
-                "description": "Common assault and battery - 10501",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common assault and battery"
-              },
-              "offenceDate": "2018-05-13T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2033725296,
-              "createdDatetime": "2018-09-13T00:00:00",
-              "lastUpdatedDatetime": "2018-09-13T00:00:00"
+              "description": "Common assault and battery - 10501"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 4200,
-                "mainCategoryCode": 42,
-                "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag",
-                "mainCategoryAbbreviation": "Stealing mail bags or postal packets or unlawfull",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag"
-              },
-              "offenceDate": "2018-05-13T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 336628196,
-              "createdDatetime": "2018-09-13T00:00:00",
-              "lastUpdatedDatetime": "2018-09-13T00:00:00"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 82200,
-                "mainCategoryCode": 822,
-                "description": "Noise offences - 82200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Noise offences",
-                "mainCategoryAbbreviation": "Noise offences",
-                "ogrsOffenceCategory": "Other motoring",
-                "subCategoryDescription": "Noise offences"
-              },
-              "offenceDate": "2018-05-13T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 1020376847,
-              "createdDatetime": "2018-09-13T00:00:00",
-              "lastUpdatedDatetime": "2018-09-13T00:00:00"
+              "description": "Noise offences - 82200"
             }
           ],
           "sentence": {
             "description": "CJA - Indeterminate Public Prot.",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-05-13",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 899,
-            "description": "ORA Community Order"
-          }
+          "documents": []
         },
         {
           "convictionId": 2454025773,
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-08-24",
-          "referralDate": "2018-08-24",
+          "endDate": "2020-02-24",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 3604,
-                "mainCategoryCode": 36,
-                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Kidnapping (Category)",
-                "mainCategoryAbbreviation": "Kidnapping (Category)",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982)"
-              },
-              "offenceDate": "2018-02-24T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2025476076,
-              "createdDatetime": "2018-06-24T00:00:00",
-              "lastUpdatedDatetime": "2018-06-24T00:00:00"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 3604,
-                "mainCategoryCode": 36,
-                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Kidnapping (Category)",
-                "mainCategoryAbbreviation": "Kidnapping (Category)",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982)"
-              },
-              "offenceDate": "2018-02-24T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 586031398,
-              "createdDatetime": "2018-06-24T00:00:00",
-              "lastUpdatedDatetime": "2018-06-24T00:00:00"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
             }
           ],
           "sentence": {
             "description": "Adult Custody < 12m",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-02-24",
+            "terminationReason":  "ICMS Miscellaneous Event"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 252,
-            "description": "ORA Community Order"
-          }
+          "documents": []
         },
         {
           "convictionId": 843443687,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-07-04",
-          "referralDate": "2018-07-04",
+          "endDate": "2020-01-04",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 6200,
-                "mainCategoryCode": 62,
-                "description": "High treason - 06200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "High treason",
-                "mainCategoryAbbreviation": "High treason",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "High treason"
-              },
-              "offenceDate": "2018-01-04T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1490636947,
-              "createdDatetime": "2018-05-04T00:00:00",
-              "lastUpdatedDatetime": "2018-05-04T00:00:00"
+              "description": "High treason - 06200"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 4200,
-                "mainCategoryCode": 42,
-                "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag",
-                "mainCategoryAbbreviation": "Stealing mail bags or postal packets or unlawfull",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag"
-              },
-              "offenceDate": "2018-01-04T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2528916992,
-              "createdDatetime": "2018-05-04T00:00:00",
-              "lastUpdatedDatetime": "2018-05-04T00:00:00"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
             }
           ],
           "sentence": {
             "description": "CJA - Std Determinate Custody",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-01-02",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 257,
-            "description": "CJA - Std Determinate Custody"
-          }
+          "documents": []
         },
         {
           "convictionId": 1969939257,
-          "active": false,
+          "active": true,
           "inBreach": true,
           "convictionDate": "2018-12-26",
-          "referralDate": "2018-12-26",
+          "endDate": "2020-06-26",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 9400,
-                "mainCategoryCode": 94,
-                "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)",
-                "mainCategoryAbbreviation": "Town and Country Planning Act 1990/Planning (List",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)"
-              },
-              "offenceDate": "2018-06-26T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 490945292,
-              "createdDatetime": "2018-10-26T00:00:00",
-              "lastUpdatedDatetime": "2018-10-26T00:00:00"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 4300,
-                "mainCategoryCode": 43,
-                "description": "Abstracting electricity - 04300",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Abstracting electricity",
-                "mainCategoryAbbreviation": "Abstracting electricity",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Abstracting electricity"
-              },
-              "offenceDate": "2018-06-26T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2218097182,
-              "createdDatetime": "2018-10-26T00:00:00",
-              "lastUpdatedDatetime": "2018-10-26T00:00:00"
+              "description": "Abstracting electricity - 04300"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 6200,
-                "mainCategoryCode": 62,
-                "description": "High treason - 06200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "High treason",
-                "mainCategoryAbbreviation": "High treason",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "High treason"
-              },
-              "offenceDate": "2018-06-26T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 2256236210,
-              "createdDatetime": "2018-10-26T00:00:00",
-              "lastUpdatedDatetime": "2018-10-26T00:00:00"
+              "description": "High treason - 06200"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-06-26",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 77,
-            "description": "CJA - Std Determinate Custody"
-          }
+          "documents": []
         },
         {
           "convictionId": 416762723,
           "active": true,
           "inBreach": true,
           "convictionDate": "2018-03-02",
-          "referralDate": "2018-03-02",
+          "endDate": "2019-09-02",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 82200,
-                "mainCategoryCode": 822,
-                "description": "Noise offences - 82200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Noise offences",
-                "mainCategoryAbbreviation": "Noise offences",
-                "ogrsOffenceCategory": "Other motoring",
-                "subCategoryDescription": "Noise offences"
-              },
-              "offenceDate": "2017-09-02T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2977220027,
-              "createdDatetime": "2018-01-02T00:00:00",
-              "lastUpdatedDatetime": "2018-01-02T00:00:00"
+              "description": "Noise offences - 82200"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 8303,
-                "mainCategoryCode": 83,
-                "description": "Acknowledging bail in false name - 08303",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Offences relating to bail (Category)",
-                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
-                "ogrsOffenceCategory": "Absconding or bail offences",
-                "subCategoryDescription": "Acknowledging bail in false name"
-              },
-              "offenceDate": "2017-09-02T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 877532886,
-              "createdDatetime": "2018-01-02T00:00:00",
-              "lastUpdatedDatetime": "2018-01-02T00:00:00"
+              "description": "Acknowledging bail in false name - 08303"
             }
           ],
           "sentence": {
             "description": "Adult Custody < 12m",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-09-02",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 136,
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 288380200,
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-08-13",
-          "referralDate": "2018-08-13",
+          "endDate": "2020-02-13",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 12400,
-                "mainCategoryCode": 124,
-                "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles",
-                "mainCategoryAbbreviation": "Highways Acts - Other offences, other than those ",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles"
-              },
-              "offenceDate": "2018-02-13T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 874862793,
-              "createdDatetime": "2018-06-13T00:00:00",
-              "lastUpdatedDatetime": "2018-06-13T00:00:00"
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 2801,
-                "mainCategoryCode": 28,
-                "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Burglary in a dwelling",
-                "mainCategoryAbbreviation": "Burglary in a dwelling",
-                "ogrsOffenceCategory": "Burglary (Domestic)",
-                "subCategoryDescription": "Burglary (dwelling) with intent to commit, or the commission of, an offence triable only on indictment"
-              },
-              "offenceDate": "2018-02-13T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1671700940,
-              "createdDatetime": "2018-06-13T00:00:00",
-              "lastUpdatedDatetime": "2018-06-13T00:00:00"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 8902,
-                "mainCategoryCode": 89,
-                "description": "(Adulteration etc of milk products - 08902)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food or drugs (Food Safety Act 1990)",
-                "mainCategoryAbbreviation": "Adulteration of food or drugs (Food Safety Act 19",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration etc of milk products"
-              },
-              "offenceDate": "2018-02-13T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 2954141557,
-              "createdDatetime": "2018-06-13T00:00:00",
-              "lastUpdatedDatetime": "2018-06-13T00:00:00"
+              "description": "(Adulteration etc of milk products - 08902)"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 10500,
-                "mainCategoryCode": 105,
-                "description": "Common and other types of assault - 10500",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common and other types of assault"
-              },
-              "offenceDate": "2018-02-13T00:00:00",
-              "offenceCount": 4,
-              "mainOffence": false,
-              "offenderId": 1155864003,
-              "createdDatetime": "2018-06-13T00:00:00",
-              "lastUpdatedDatetime": "2018-06-13T00:00:00"
+              "description": "Common and other types of assault - 10500"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-02-13",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 825,
-            "description": "Warrant without Bail"
-          }
+          "documents": []
         },
         {
           "convictionId": 2553497438,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-11-24",
-          "referralDate": "2018-11-24",
+          "endDate": "2020-05-24",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 1600,
-                "mainCategoryCode": 16,
-                "description": "(Buggery and attempted buggery - 01600)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Buggery and attempted buggery",
-                "mainCategoryAbbreviation": "Buggery and attempted buggery",
-                "ogrsOffenceCategory": "Sexual (not against child)",
-                "subCategoryDescription": "Buggery and attempted buggery"
-              },
-              "offenceDate": "2018-05-24T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1135480014,
-              "createdDatetime": "2018-09-24T00:00:00",
-              "lastUpdatedDatetime": "2018-09-24T00:00:00"
+              "description": "(Buggery and attempted buggery - 01600)"
             }
           ],
           "sentence": {
             "description": "ORA Community Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-05-24",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 696,
-            "description": "Final Review"
-          }
+          "documents": []
         },
         {
           "convictionId": 1008974058,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-01-24",
-          "referralDate": "2018-01-24",
+          "endDate": "2019-07-24",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 3604,
-                "mainCategoryCode": 36,
-                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Kidnapping (Category)",
-                "mainCategoryAbbreviation": "Kidnapping (Category)",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982)"
-              },
-              "offenceDate": "2017-07-24T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2791167013,
-              "createdDatetime": "2017-11-24T00:00:00",
-              "lastUpdatedDatetime": "2017-11-24T00:00:00"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 10500,
-                "mainCategoryCode": 105,
-                "description": "Common and other types of assault - 10500",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common and other types of assault"
-              },
-              "offenceDate": "2017-07-24T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2228794082,
-              "createdDatetime": "2017-11-24T00:00:00",
-              "lastUpdatedDatetime": "2017-11-24T00:00:00"
+              "description": "Common and other types of assault - 10500"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 1600,
-                "mainCategoryCode": 16,
-                "description": "(Buggery and attempted buggery - 01600)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Buggery and attempted buggery",
-                "mainCategoryAbbreviation": "Buggery and attempted buggery",
-                "ogrsOffenceCategory": "Sexual (not against child)",
-                "subCategoryDescription": "Buggery and attempted buggery"
-              },
-              "offenceDate": "2017-07-24T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 2027498001,
-              "createdDatetime": "2017-11-24T00:00:00",
-              "lastUpdatedDatetime": "2017-11-24T00:00:00"
+              "description": "(Buggery and attempted buggery - 01600)"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 2801,
-                "mainCategoryCode": 28,
-                "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Burglary in a dwelling",
-                "mainCategoryAbbreviation": "Burglary in a dwelling",
-                "ogrsOffenceCategory": "Burglary (Domestic)",
-                "subCategoryDescription": "Burglary (dwelling) with intent to commit, or the commission of, an offence triable only on indictment"
-              },
-              "offenceDate": "2017-07-24T00:00:00",
-              "offenceCount": 4,
-              "mainOffence": false,
-              "offenderId": 1575094148,
-              "createdDatetime": "2017-11-24T00:00:00",
-              "lastUpdatedDatetime": "2017-11-24T00:00:00"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
             }
           ],
           "sentence": {
             "description": "ORA Suspended Sentence Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-07-24",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 101,
-            "description": "CJA - Std Determinate Custody"
-          }
+          "documents": []
         },
         {
           "convictionId": 1249195987,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-05-07",
-          "referralDate": "2018-05-07",
+          "endDate": "2019-11-07",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 1600,
-                "mainCategoryCode": 16,
-                "description": "(Buggery and attempted buggery - 01600)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Buggery and attempted buggery",
-                "mainCategoryAbbreviation": "Buggery and attempted buggery",
-                "ogrsOffenceCategory": "Sexual (not against child)",
-                "subCategoryDescription": "Buggery and attempted buggery"
-              },
-              "offenceDate": "2017-11-07T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 87456705,
-              "createdDatetime": "2018-03-07T00:00:00",
-              "lastUpdatedDatetime": "2018-03-07T00:00:00"
+              "description": "(Buggery and attempted buggery - 01600)"
             }
           ],
           "sentence": {
             "description": "Adult Custody < 12m",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-11-07",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 573,
-            "description": "CJA - Std Determinate Custody"
-          }
+          "documents": []
         },
         {
           "convictionId": 2418316865,
           "active": true,
           "inBreach": true,
           "convictionDate": "2018-11-26",
-          "referralDate": "2018-11-26",
+          "endDate": "2020-05-26",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 8303,
-                "mainCategoryCode": 83,
-                "description": "Acknowledging bail in false name - 08303",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Offences relating to bail (Category)",
-                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
-                "ogrsOffenceCategory": "Absconding or bail offences",
-                "subCategoryDescription": "Acknowledging bail in false name"
-              },
-              "offenceDate": "2018-05-26T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 355757311,
-              "createdDatetime": "2018-09-26T00:00:00",
-              "lastUpdatedDatetime": "2018-09-26T00:00:00"
+              "description": "Acknowledging bail in false name - 08303"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 4300,
-                "mainCategoryCode": 43,
-                "description": "Abstracting electricity - 04300",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Abstracting electricity",
-                "mainCategoryAbbreviation": "Abstracting electricity",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Abstracting electricity"
-              },
-              "offenceDate": "2018-05-26T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2196097062,
-              "createdDatetime": "2018-09-26T00:00:00",
-              "lastUpdatedDatetime": "2018-09-26T00:00:00"
+              "description": "Abstracting electricity - 04300"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 10501,
-                "mainCategoryCode": 105,
-                "description": "Common assault and battery - 10501",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common assault and battery"
-              },
-              "offenceDate": "2018-05-26T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 651560820,
-              "createdDatetime": "2018-09-26T00:00:00",
-              "lastUpdatedDatetime": "2018-09-26T00:00:00"
+              "description": "Common assault and battery - 10501"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 10100,
-                "mainCategoryCode": 101,
-                "description": "Adulteration of food, drugs etc (Summary) - 10100",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food, drugs etc (Summary)",
-                "mainCategoryAbbreviation": "Adulteration of food, drugs etc (Summary)",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration of food, drugs etc (Summary)"
-              },
-              "offenceDate": "2018-05-26T00:00:00",
-              "offenceCount": 4,
-              "mainOffence": false,
-              "offenderId": 1749075616,
-              "createdDatetime": "2018-09-26T00:00:00",
-              "lastUpdatedDatetime": "2018-09-26T00:00:00"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100"
             }
           ],
           "sentence": {
             "description": "ORA Suspended Sentence Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-05-26",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 698,
-            "description": "Warrant without Bail"
-          }
+          "documents": []
         },
         {
           "convictionId": 1071363159,
-          "active": false,
+          "active": true,
           "inBreach": false,
           "convictionDate": "2018-12-06",
-          "referralDate": "2018-12-06",
+          "endDate": "2020-06-06",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 8303,
-                "mainCategoryCode": 83,
-                "description": "Acknowledging bail in false name - 08303",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Offences relating to bail (Category)",
-                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
-                "ogrsOffenceCategory": "Absconding or bail offences",
-                "subCategoryDescription": "Acknowledging bail in false name"
-              },
-              "offenceDate": "2018-06-06T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2476033497,
-              "createdDatetime": "2018-10-06T00:00:00",
-              "lastUpdatedDatetime": "2018-10-06T00:00:00"
+              "description": "Acknowledging bail in false name - 08303"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 10500,
-                "mainCategoryCode": 105,
-                "description": "Common and other types of assault - 10500",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common and other types of assault"
-              },
-              "offenceDate": "2018-06-06T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 628210319,
-              "createdDatetime": "2018-10-06T00:00:00",
-              "lastUpdatedDatetime": "2018-10-06T00:00:00"
+              "description": "Common and other types of assault - 10500"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 5601,
-                "mainCategoryCode": 56,
-                "description": "Arson endangering life - 05601",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Arson",
-                "mainCategoryAbbreviation": "Arson",
-                "ogrsOffenceCategory": "Criminal damage",
-                "subCategoryDescription": "Arson endangering life"
-              },
-              "offenceDate": "2018-06-06T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 1783498816,
-              "createdDatetime": "2018-10-06T00:00:00",
-              "lastUpdatedDatetime": "2018-10-06T00:00:00"
+              "description": "Arson endangering life - 05601"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 12400,
-                "mainCategoryCode": 124,
-                "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles",
-                "mainCategoryAbbreviation": "Highways Acts - Other offences, other than those ",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles"
-              },
-              "offenceDate": "2018-06-06T00:00:00",
-              "offenceCount": 4,
-              "mainOffence": false,
-              "offenderId": 2322696337,
-              "createdDatetime": "2018-10-06T00:00:00",
-              "lastUpdatedDatetime": "2018-10-06T00:00:00"
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
             }
           ],
           "sentence": {
             "description": "Adult Custody < 12m",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-06-06",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 137,
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 1589650139,
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-03-10",
-          "referralDate": "2018-03-10",
+          "endDate": "2019-09-10",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 18900,
-                "mainCategoryCode": 189,
-                "description": "Weights and Measures Acts - 18900",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Weights and Measures Acts",
-                "mainCategoryAbbreviation": "Weights and Measures Acts",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Weights and Measures Acts"
-              },
-              "offenceDate": "2017-09-10T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1457408652,
-              "createdDatetime": "2018-01-10T00:00:00",
-              "lastUpdatedDatetime": "2018-01-10T00:00:00"
+              "description": "Weights and Measures Acts - 18900"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 4200,
-                "mainCategoryCode": 42,
-                "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag",
-                "mainCategoryAbbreviation": "Stealing mail bags or postal packets or unlawfull",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag"
-              },
-              "offenceDate": "2017-09-10T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 279220352,
-              "createdDatetime": "2018-01-10T00:00:00",
-              "lastUpdatedDatetime": "2018-01-10T00:00:00"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
             }
           ],
           "sentence": {
             "description": "CJA - Std Determinate Custody",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-09-10",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 128,
-            "description": "Warrant without Bail"
-          }
+          "documents": []
         },
         {
           "convictionId": 2861798707,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-04-05",
-          "referralDate": "2018-04-05",
+          "endDate": "2019-10-05",
           "offences": [
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 9400,
-                "mainCategoryCode": 94,
-                "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)",
-                "mainCategoryAbbreviation": "Town and Country Planning Act 1990/Planning (List",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)"
-              },
-              "offenceDate": "2017-10-05T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2400724507,
-              "createdDatetime": "2018-02-05T00:00:00",
-              "lastUpdatedDatetime": "2018-02-05T00:00:00"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
             },
             {
-              "offenceId": "M2967974134",
-              "detail": {
-                "code": 9400,
-                "mainCategoryCode": 94,
-                "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)",
-                "mainCategoryAbbreviation": "Town and Country Planning Act 1990/Planning (List",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)"
-              },
-              "offenceDate": "2017-10-05T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1086025305,
-              "createdDatetime": "2018-02-05T00:00:00",
-              "lastUpdatedDatetime": "2018-02-05T00:00:00"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
             }
           ],
           "sentence": {
             "description": "CJA - Std Determinate Custody",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-10-05",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 640,
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 2779366286,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-23",
-          "referralDate": "2018-07-23",
+          "endDate": "2020-01-23",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": "12400",
-                "mainCategoryCode": "124",
-                "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles",
-                "mainCategoryAbbreviation": "Highways Acts - Other offences, other than those ",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles"
-              },
-              "offenceDate": "2018-01-23T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2377677428,
-              "createdDatetime": "2018-05-23T00:00:00",
-              "lastUpdatedDatetime": "2018-05-23T00:00:00"
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
             }
           ],
           "sentence": {
             "description": "Life imprisonment (Adult)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-01-23",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": "515",
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 1551689854,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-10-13",
-          "referralDate": "2018-10-13",
+          "endDate": "2020-01-13",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": "10500",
-                "mainCategoryCode": "105",
-                "description": "Common and other types of assault - 10500",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common and other types of assault"
-              },
-              "offenceDate": "2018-04-13T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 848880470,
-              "createdDatetime": "2018-08-13T00:00:00",
-              "lastUpdatedDatetime": "2018-08-13T00:00:00"
+              "description": "Common and other types of assault - 10500"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": "07600",
-                "mainCategoryCode": "076",
-                "description": "Aiding suicide - 07600",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Aiding suicide",
-                "mainCategoryAbbreviation": "Aiding suicide",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Aiding suicide"
-              },
-              "offenceDate": "2018-04-13T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2546471502,
-              "createdDatetime": "2018-08-13T00:00:00",
-              "lastUpdatedDatetime": "2018-08-13T00:00:00"
+              "description": "Aiding suicide - 07600"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (inc PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-01-13",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": "408",
-            "description": "ORA Community Order"
-          }
+          "documents": []
         },
         {
           "convictionId": 2960135439,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-04-18",
-          "referralDate": "2018-04-18",
+          "endDate": "2019-10-18",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 18900,
-                "mainCategoryCode": 189,
-                "description": "Weights and Measures Acts - 18900",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Weights and Measures Acts",
-                "mainCategoryAbbreviation": "Weights and Measures Acts",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Weights and Measures Acts"
-              },
-              "offenceDate": "2017-10-18T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 923167283,
-              "createdDatetime": "2018-02-18T00:00:00",
-              "lastUpdatedDatetime": "2018-02-18T00:00:00"
+              "description": "Weights and Measures Acts - 18900"
             }
           ],
           "sentence": {
             "description": "Adult Custody < 12m",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-10-13",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 289,
-            "description": "Warrant without Bail"
-          }
+          "documents": []
         },
         {
           "convictionId": 1113964589,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-03-20",
-          "referralDate": "2018-03-20",
+          "endDate": "2019-10-20",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 4300,
-                "mainCategoryCode": 43,
-                "description": "Abstracting electricity - 04300",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Abstracting electricity",
-                "mainCategoryAbbreviation": "Abstracting electricity",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Abstracting electricity"
-              },
-              "offenceDate": "2017-09-20T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 142568688,
-              "createdDatetime": "2018-01-20T00:00:00",
-              "lastUpdatedDatetime": "2018-01-20T00:00:00"
+              "description": "Abstracting electricity - 04300"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-10-20",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 330,
-            "description": "CJA - Std Determinate Custody"
-          }
+          "documents": []
         },
         {
           "convictionId": 229449705,
-          "active": false,
+          "active": null,
           "inBreach": true,
-          "convictionDate": "2018-07-08",
-          "referralDate": "2018-07-08",
+          "convictionDate": null,
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 7600,
-                "mainCategoryCode": 76,
-                "description": "Aiding suicide - 07600",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Aiding suicide",
-                "mainCategoryAbbreviation": "Aiding suicide",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Aiding suicide"
-              },
-              "offenceDate": "2018-01-08T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 465526201,
-              "createdDatetime": "2018-05-08T00:00:00",
-              "lastUpdatedDatetime": "2018-05-08T00:00:00"
+              "description": "Aiding suicide - 07600"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 8902,
-                "mainCategoryCode": 89,
-                "description": "(Adulteration etc of milk products - 08902)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food or drugs (Food Safety Act 1990)",
-                "mainCategoryAbbreviation": "Adulteration of food or drugs (Food Safety Act 19",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration etc of milk products"
-              },
-              "offenceDate": "2018-01-08T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2352763711,
-              "createdDatetime": "2018-05-08T00:00:00",
-              "lastUpdatedDatetime": "2018-05-08T00:00:00"
+              "description": "(Adulteration etc of milk products - 08902)"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 18900,
-                "mainCategoryCode": 189,
-                "description": "Weights and Measures Acts - 18900",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Weights and Measures Acts",
-                "mainCategoryAbbreviation": "Weights and Measures Acts",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Weights and Measures Acts"
-              },
-              "offenceDate": "2018-01-08T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 2647161160,
-              "createdDatetime": "2018-05-08T00:00:00",
-              "lastUpdatedDatetime": "2018-05-08T00:00:00"
+              "description": "Weights and Measures Acts - 18900"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 4300,
-                "mainCategoryCode": 43,
-                "description": "Abstracting electricity - 04300",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Abstracting electricity",
-                "mainCategoryAbbreviation": "Abstracting electricity",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Abstracting electricity"
-              },
-              "offenceDate": "2018-01-08T00:00:00",
-              "offenceCount": 4,
-              "mainOffence": false,
-              "offenderId": 959002039,
-              "createdDatetime": "2018-05-08T00:00:00",
-              "lastUpdatedDatetime": "2018-05-08T00:00:00"
+              "description": "Abstracting electricity - 04300"
             }
           ],
-          "latestCourtAppearanceOutcome": {
-            "code": 644,
-            "description": "Adjourned - Pre-Sentence Report"
-          }
+          "sentence": null,
+          "endDate": null,
+          "documents": []
         },
         {
           "convictionId": 2218517562,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-30",
-          "referralDate": "2018-07-30",
+          "endDate": "2020-01-30",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 18900,
-                "mainCategoryCode": 189,
-                "description": "Weights and Measures Acts - 18900",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Weights and Measures Acts",
-                "mainCategoryAbbreviation": "Weights and Measures Acts",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Weights and Measures Acts"
-              },
-              "offenceDate": "2018-01-30T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1709571477,
-              "createdDatetime": "2018-05-30T00:00:00",
-              "lastUpdatedDatetime": "2018-05-30T00:00:00"
+              "description": "Weights and Measures Acts - 18900"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 18900,
-                "mainCategoryCode": 189,
-                "description": "Weights and Measures Acts - 18900",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Weights and Measures Acts",
-                "mainCategoryAbbreviation": "Weights and Measures Acts",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Weights and Measures Acts"
-              },
-              "offenceDate": "2018-01-30T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1417124114,
-              "createdDatetime": "2018-05-30T00:00:00",
-              "lastUpdatedDatetime": "2018-05-30T00:00:00"
+              "description": "Weights and Measures Acts - 18900"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 7600,
-                "mainCategoryCode": 76,
-                "description": "Aiding suicide - 07600",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Aiding suicide",
-                "mainCategoryAbbreviation": "Aiding suicide",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Aiding suicide"
-              },
-              "offenceDate": "2018-01-30T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 2947236709,
-              "createdDatetime": "2018-05-30T00:00:00",
-              "lastUpdatedDatetime": "2018-05-30T00:00:00"
+              "description": "Aiding suicide - 07600"
             }
           ],
           "sentence": {
             "description": "CJA - Std Determinate Custody",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-01-30",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 852,
-            "description": "Final Review"
-          }
+          "documents": []
         },
         {
           "convictionId": 230390913,
           "active": false,
           "inBreach": false,
-          "convictionDate": "2018-10-24",
-          "referralDate": "2018-10-24",
+          "convictionDate": null,
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 1600,
-                "mainCategoryCode": 16,
-                "description": "(Buggery and attempted buggery - 01600)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Buggery and attempted buggery",
-                "mainCategoryAbbreviation": "Buggery and attempted buggery",
-                "ogrsOffenceCategory": "Sexual (not against child)",
-                "subCategoryDescription": "Buggery and attempted buggery"
-              },
-              "offenceDate": "2018-04-24T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2636128941,
-              "createdDatetime": "2018-08-24T00:00:00",
-              "lastUpdatedDatetime": "2018-08-24T00:00:00"
+              "description": "(Buggery and attempted buggery - 01600)"
             }
           ],
-          "latestCourtAppearanceOutcome": {
-            "code": 160,
-            "description": "Adjourned - Pre-Sentence Report"
-          }
+          "sentence": null,
+          "endDate": null,
+          "documents": []
         },
         {
           "convictionId": 609096345,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-01-11",
-          "referralDate": "2018-01-11",
+          "endDate": "2019-07-11",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 8303,
-                "mainCategoryCode": 83,
-                "description": "Acknowledging bail in false name - 08303",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Offences relating to bail (Category)",
-                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
-                "ogrsOffenceCategory": "Absconding or bail offences",
-                "subCategoryDescription": "Acknowledging bail in false name"
-              },
-              "offenceDate": "2017-07-11T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2629492601,
-              "createdDatetime": "2017-11-11T00:00:00",
-              "lastUpdatedDatetime": "2017-11-11T00:00:00"
+              "description": "Acknowledging bail in false name - 08303"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 9400,
-                "mainCategoryCode": 94,
-                "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)",
-                "mainCategoryAbbreviation": "Town and Country Planning Act 1990/Planning (List",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)"
-              },
-              "offenceDate": "2017-07-11T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1220062839,
-              "createdDatetime": "2017-11-11T00:00:00",
-              "lastUpdatedDatetime": "2017-11-11T00:00:00"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
             }
           ],
           "sentence": {
             "description": "CJA - Indeterminate Public Prot.",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-07-11",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 781,
-            "description": "CJA - Std Determinate Custody"
-          }
+          "documents": []
         },
         {
           "convictionId": 2183788732,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-01-14",
-          "referralDate": "2018-01-14",
+          "endDate": "2019-07-14",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 4300,
-                "mainCategoryCode": 43,
-                "description": "Abstracting electricity - 04300",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Abstracting electricity",
-                "mainCategoryAbbreviation": "Abstracting electricity",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Abstracting electricity"
-              },
-              "offenceDate": "2017-07-14T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1582621521,
-              "createdDatetime": "2017-11-14T00:00:00",
-              "lastUpdatedDatetime": "2017-11-14T00:00:00"
+              "description": "Abstracting electricity - 04300"
             }
           ],
           "sentence": {
             "description": "CJA - Indeterminate Public Prot.",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-07-14",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 2,
-            "description": "Warrant without Bail"
-          }
+          "documents": []
         },
         {
           "convictionId": 681889737,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-02-17",
-          "referralDate": "2018-02-17",
+          "endDate": "2019-08-17",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 18900,
-                "mainCategoryCode": 189,
-                "description": "Weights and Measures Acts - 18900",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Weights and Measures Acts",
-                "mainCategoryAbbreviation": "Weights and Measures Acts",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Weights and Measures Acts"
-              },
-              "offenceDate": "2017-08-17T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2524401614,
-              "createdDatetime": "2017-12-17T00:00:00",
-              "lastUpdatedDatetime": "2017-12-17T00:00:00"
+              "description": "Weights and Measures Acts - 18900"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 10501,
-                "mainCategoryCode": 105,
-                "description": "Common assault and battery - 10501",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common assault and battery"
-              },
-              "offenceDate": "2017-08-17T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2757460151,
-              "createdDatetime": "2017-12-17T00:00:00",
-              "lastUpdatedDatetime": "2017-12-17T00:00:00"
+              "description": "Common assault and battery - 10501"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-08-17",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 457,
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 376659493,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-02-09",
-          "referralDate": "2018-02-09",
+          "endDate": "2019-08-09",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 4200,
-                "mainCategoryCode": 42,
-                "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag",
-                "mainCategoryAbbreviation": "Stealing mail bags or postal packets or unlawfull",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag"
-              },
-              "offenceDate": "2017-08-09T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2305637775,
-              "createdDatetime": "2017-12-09T00:00:00",
-              "lastUpdatedDatetime": "2017-12-09T00:00:00"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 10501,
-                "mainCategoryCode": 105,
-                "description": "Common assault and battery - 10501",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common assault and battery"
-              },
-              "offenceDate": "2017-08-09T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1468340168,
-              "createdDatetime": "2017-12-09T00:00:00",
-              "lastUpdatedDatetime": "2017-12-09T00:00:00"
+              "description": "Common assault and battery - 10501"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 10501,
-                "mainCategoryCode": 105,
-                "description": "Common assault and battery - 10501",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common assault and battery"
-              },
-              "offenceDate": "2017-08-09T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 1601790832,
-              "createdDatetime": "2017-12-09T00:00:00",
-              "lastUpdatedDatetime": "2017-12-09T00:00:00"
+              "description": "Common assault and battery - 10501"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 8902,
-                "mainCategoryCode": 89,
-                "description": "(Adulteration etc of milk products - 08902)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food or drugs (Food Safety Act 1990)",
-                "mainCategoryAbbreviation": "Adulteration of food or drugs (Food Safety Act 19",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration etc of milk products"
-              },
-              "offenceDate": "2017-08-09T00:00:00",
-              "offenceCount": 4,
-              "mainOffence": false,
-              "offenderId": 56056188,
-              "createdDatetime": "2017-12-09T00:00:00",
-              "lastUpdatedDatetime": "2017-12-09T00:00:00"
+              "description": "(Adulteration etc of milk products - 08902)"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-08-09",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 481,
-            "description": "CJA - Std Determinate Custody"
-          }
+          "documents": []
         },
         {
           "convictionId": 2510228415,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-05-28",
-          "referralDate": "2018-05-28",
+          "endDate": "2019-11-28",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 9400,
-                "mainCategoryCode": 94,
-                "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)",
-                "mainCategoryAbbreviation": "Town and Country Planning Act 1990/Planning (List",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)"
-              },
-              "offenceDate": "2017-11-28T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2128273983,
-              "createdDatetime": "2018-03-28T00:00:00",
-              "lastUpdatedDatetime": "2018-03-28T00:00:00"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 18900,
-                "mainCategoryCode": 189,
-                "description": "Weights and Measures Acts - 18900",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Weights and Measures Acts",
-                "mainCategoryAbbreviation": "Weights and Measures Acts",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Weights and Measures Acts"
-              },
-              "offenceDate": "2017-11-28T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1926198170,
-              "createdDatetime": "2018-03-28T00:00:00",
-              "lastUpdatedDatetime": "2018-03-28T00:00:00"
+              "description": "Weights and Measures Acts - 18900"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 1600,
-                "mainCategoryCode": 16,
-                "description": "(Buggery and attempted buggery - 01600)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Buggery and attempted buggery",
-                "mainCategoryAbbreviation": "Buggery and attempted buggery",
-                "ogrsOffenceCategory": "Sexual (not against child)",
-                "subCategoryDescription": "Buggery and attempted buggery"
-              },
-              "offenceDate": "2017-11-28T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 236112921,
-              "createdDatetime": "2018-03-28T00:00:00",
-              "lastUpdatedDatetime": "2018-03-28T00:00:00"
+              "description": "(Buggery and attempted buggery - 01600)"
             }
           ],
           "sentence": {
             "description": "Adult Custody < 12m",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-11-28",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 363,
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 2564288208,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-08-06",
-          "referralDate": "2018-08-06",
+          "endDate": "2020-02-06",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 5601,
-                "mainCategoryCode": 56,
-                "description": "Arson endangering life - 05601",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Arson",
-                "mainCategoryAbbreviation": "Arson",
-                "ogrsOffenceCategory": "Criminal damage",
-                "subCategoryDescription": "Arson endangering life"
-              },
-              "offenceDate": "2018-02-06T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1462764852,
-              "createdDatetime": "2018-06-06T00:00:00",
-              "lastUpdatedDatetime": "2018-06-06T00:00:00"
+              "description": "Arson endangering life - 05601"
             }
           ],
           "sentence": {
             "description": "ORA Suspended Sentence Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-02-06",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 185,
-            "description": "Warrant without Bail"
-          }
+          "documents": []
         },
         {
           "convictionId": 1655732014,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-07-21",
-          "referralDate": "2018-07-21",
+          "endDate": "2020-01-21",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 3604,
-                "mainCategoryCode": 36,
-                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Kidnapping (Category)",
-                "mainCategoryAbbreviation": "Kidnapping (Category)",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982)"
-              },
-              "offenceDate": "2018-01-21T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 100313013,
-              "createdDatetime": "2018-05-21T00:00:00",
-              "lastUpdatedDatetime": "2018-05-21T00:00:00"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
             }
           ],
           "sentence": {
             "description": "Life imprisonment (Adult)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-01-21",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 593,
-            "description": "CJA - Std Determinate Custody"
-          }
+          "documents": []
         },
         {
           "convictionId": 1220004094,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-07",
-          "referralDate": "2018-07-07",
+          "endDate": "2020-01-07",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 18900,
-                "mainCategoryCode": 189,
-                "description": "Weights and Measures Acts - 18900",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Weights and Measures Acts",
-                "mainCategoryAbbreviation": "Weights and Measures Acts",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Weights and Measures Acts"
-              },
-              "offenceDate": "2018-01-07T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 197533877,
-              "createdDatetime": "2018-05-07T00:00:00",
-              "lastUpdatedDatetime": "2018-05-07T00:00:00"
+              "description": "Weights and Measures Acts - 18900"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 2801,
-                "mainCategoryCode": 28,
-                "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Burglary in a dwelling",
-                "mainCategoryAbbreviation": "Burglary in a dwelling",
-                "ogrsOffenceCategory": "Burglary (Domestic)",
-                "subCategoryDescription": "Burglary (dwelling) with intent to commit, or the commission of, an offence triable only on indictment"
-              },
-              "offenceDate": "2018-01-07T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2306031638,
-              "createdDatetime": "2018-05-07T00:00:00",
-              "lastUpdatedDatetime": "2018-05-07T00:00:00"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
             }
           ],
           "sentence": {
             "description": "ORA Community Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-01-07",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 316,
-            "description": "Warrant without Bail"
-          }
+          "documents": []
         },
         {
           "convictionId": 851372911,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-04-12",
-          "referralDate": "2018-04-12",
+          "endDate": "2019-10-12",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 6200,
-                "mainCategoryCode": 62,
-                "description": "High treason - 06200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "High treason",
-                "mainCategoryAbbreviation": "High treason",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "High treason"
-              },
-              "offenceDate": "2017-10-12T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1480026538,
-              "createdDatetime": "2018-02-12T00:00:00",
-              "lastUpdatedDatetime": "2018-02-12T00:00:00"
+              "description": "High treason - 06200"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 6200,
-                "mainCategoryCode": 62,
-                "description": "High treason - 06200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "High treason",
-                "mainCategoryAbbreviation": "High treason",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "High treason"
-              },
-              "offenceDate": "2017-10-12T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2375810805,
-              "createdDatetime": "2018-02-12T00:00:00",
-              "lastUpdatedDatetime": "2018-02-12T00:00:00"
+              "description": "High treason - 06200"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 1600,
-                "mainCategoryCode": 16,
-                "description": "(Buggery and attempted buggery - 01600)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Buggery and attempted buggery",
-                "mainCategoryAbbreviation": "Buggery and attempted buggery",
-                "ogrsOffenceCategory": "Sexual (not against child)",
-                "subCategoryDescription": "Buggery and attempted buggery"
-              },
-              "offenceDate": "2017-10-12T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 2260511475,
-              "createdDatetime": "2018-02-12T00:00:00",
-              "lastUpdatedDatetime": "2018-02-12T00:00:00"
+              "description": "(Buggery and attempted buggery - 01600)"
             }
           ],
           "sentence": {
             "description": "ORA Suspended Sentence Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-10-12",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 655,
-            "description": "Warrant without Bail"
-          }
+          "documents": []
         },
         {
           "convictionId": 530578644,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-05-31",
-          "referralDate": "2018-05-31",
+          "endDate": "2019-11-31",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 12400,
-                "mainCategoryCode": 124,
-                "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles",
-                "mainCategoryAbbreviation": "Highways Acts - Other offences, other than those ",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles"
-              },
-              "offenceDate": "2017-11-30T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2325091434,
-              "createdDatetime": "2018-03-31T00:00:00",
-              "lastUpdatedDatetime": "2018-03-31T00:00:00"
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 8303,
-                "mainCategoryCode": 83,
-                "description": "Acknowledging bail in false name - 08303",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Offences relating to bail (Category)",
-                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
-                "ogrsOffenceCategory": "Absconding or bail offences",
-                "subCategoryDescription": "Acknowledging bail in false name"
-              },
-              "offenceDate": "2017-11-30T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 89327704,
-              "createdDatetime": "2018-03-31T00:00:00",
-              "lastUpdatedDatetime": "2018-03-31T00:00:00"
+              "description": "Acknowledging bail in false name - 08303"
             }
           ],
           "sentence": {
             "description": "ORA Suspended Sentence Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-11-31",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 9,
-            "description": "Warrant without Bail"
-          }
+          "documents": []
         },
         {
           "convictionId": 240107674,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-08-31",
-          "referralDate": "2018-08-31",
+          "endDate": "2020-02-31",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 8902,
-                "mainCategoryCode": 89,
-                "description": "(Adulteration etc of milk products - 08902)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food or drugs (Food Safety Act 1990)",
-                "mainCategoryAbbreviation": "Adulteration of food or drugs (Food Safety Act 19",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration etc of milk products"
-              },
-              "offenceDate": "2018-02-28T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2397847794,
-              "createdDatetime": "2018-06-30T00:00:00",
-              "lastUpdatedDatetime": "2018-06-30T00:00:00"
+              "description": "(Adulteration etc of milk products - 08902)"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 7600,
-                "mainCategoryCode": 76,
-                "description": "Aiding suicide - 07600",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Aiding suicide",
-                "mainCategoryAbbreviation": "Aiding suicide",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Aiding suicide"
-              },
-              "offenceDate": "2018-02-28T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1518519485,
-              "createdDatetime": "2018-06-30T00:00:00",
-              "lastUpdatedDatetime": "2018-06-30T00:00:00"
+              "description": "Aiding suicide - 07600"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 10100,
-                "mainCategoryCode": 101,
-                "description": "Adulteration of food, drugs etc (Summary) - 10100",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food, drugs etc (Summary)",
-                "mainCategoryAbbreviation": "Adulteration of food, drugs etc (Summary)",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration of food, drugs etc (Summary)"
-              },
-              "offenceDate": "2018-02-28T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 2820133441,
-              "createdDatetime": "2018-06-30T00:00:00",
-              "lastUpdatedDatetime": "2018-06-30T00:00:00"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 2801,
-                "mainCategoryCode": 28,
-                "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Burglary in a dwelling",
-                "mainCategoryAbbreviation": "Burglary in a dwelling",
-                "ogrsOffenceCategory": "Burglary (Domestic)",
-                "subCategoryDescription": "Burglary (dwelling) with intent to commit, or the commission of, an offence triable only on indictment"
-              },
-              "offenceDate": "2018-02-28T00:00:00",
-              "offenceCount": 4,
-              "mainOffence": false,
-              "offenderId": 2995508052,
-              "createdDatetime": "2018-06-30T00:00:00",
-              "lastUpdatedDatetime": "2018-06-30T00:00:00"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (inc PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-11-31",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 934,
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 2507549983,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-11-05",
-          "referralDate": "2018-11-05",
+          "endDate": "2020-05-05",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 3604,
-                "mainCategoryCode": 36,
-                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Kidnapping (Category)",
-                "mainCategoryAbbreviation": "Kidnapping (Category)",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982)"
-              },
-              "offenceDate": "2018-05-05T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1073598259,
-              "createdDatetime": "2018-09-05T00:00:00",
-              "lastUpdatedDatetime": "2018-09-05T00:00:00"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 3100,
-                "mainCategoryCode": 31,
-                "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Aggravated burglary in a building other than a dwelling (including attempts)",
-                "mainCategoryAbbreviation": "Aggravated burglary in a building other than a dw",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Aggravated burglary in a building other than a dwelling (including attempts)"
-              },
-              "offenceDate": "2018-05-05T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1086516373,
-              "createdDatetime": "2018-09-05T00:00:00",
-              "lastUpdatedDatetime": "2018-09-05T00:00:00"
+              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (inc PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-05-05",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 343,
-            "description": "ORA Community Order"
-          }
+          "documents": []
         },
         {
           "convictionId": 1512759538,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-04-26",
-          "referralDate": "2018-04-26",
+          "endDate": "2019-10-26",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 10100,
-                "mainCategoryCode": 101,
-                "description": "Adulteration of food, drugs etc (Summary) - 10100",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food, drugs etc (Summary)",
-                "mainCategoryAbbreviation": "Adulteration of food, drugs etc (Summary)",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration of food, drugs etc (Summary)"
-              },
-              "offenceDate": "2017-10-26T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 779116432,
-              "createdDatetime": "2018-02-26T00:00:00",
-              "lastUpdatedDatetime": "2018-02-26T00:00:00"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 8303,
-                "mainCategoryCode": 83,
-                "description": "Acknowledging bail in false name - 08303",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Offences relating to bail (Category)",
-                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
-                "ogrsOffenceCategory": "Absconding or bail offences",
-                "subCategoryDescription": "Acknowledging bail in false name"
-              },
-              "offenceDate": "2017-10-26T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2967707015,
-              "createdDatetime": "2018-02-26T00:00:00",
-              "lastUpdatedDatetime": "2018-02-26T00:00:00"
+              "description": "Acknowledging bail in false name - 08303"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 10500,
-                "mainCategoryCode": 105,
-                "description": "Common and other types of assault - 10500",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common and other types of assault"
-              },
-              "offenceDate": "2017-10-26T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 2035672444,
-              "createdDatetime": "2018-02-26T00:00:00",
-              "lastUpdatedDatetime": "2018-02-26T00:00:00"
+              "description": "Common and other types of assault - 10500"
             }
           ],
           "sentence": {
             "description": "ORA Suspended Sentence Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-10-26",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 147,
-            "description": "Final Review"
-          }
+          "documents": []
         },
         {
           "convictionId": 1496056348,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-05-09",
-          "referralDate": "2018-05-09",
+          "endDate": "2019-11-09",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 10500,
-                "mainCategoryCode": 105,
-                "description": "Common and other types of assault - 10500",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Common and other types of assault",
-                "mainCategoryAbbreviation": "Common and other types of assault",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Common and other types of assault"
-              },
-              "offenceDate": "2017-11-09T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2182877744,
-              "createdDatetime": "2018-03-09T00:00:00",
-              "lastUpdatedDatetime": "2018-03-09T00:00:00"
+              "description": "Common and other types of assault - 10500"
             }
           ],
           "sentence": {
             "description": "CJA - Std Determinate Custody",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-11-09",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 727,
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 2972289229,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-06-21",
-          "referralDate": "2018-06-21",
+          "endDate": "2019-12-21",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 4200,
-                "mainCategoryCode": 42,
-                "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag",
-                "mainCategoryAbbreviation": "Stealing mail bags or postal packets or unlawfull",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag"
-              },
-              "offenceDate": "2017-12-21T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1885796452,
-              "createdDatetime": "2018-04-21T00:00:00",
-              "lastUpdatedDatetime": "2018-04-21T00:00:00"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 1600,
-                "mainCategoryCode": 16,
-                "description": "(Buggery and attempted buggery - 01600)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Buggery and attempted buggery",
-                "mainCategoryAbbreviation": "Buggery and attempted buggery",
-                "ogrsOffenceCategory": "Sexual (not against child)",
-                "subCategoryDescription": "Buggery and attempted buggery"
-              },
-              "offenceDate": "2017-12-21T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 781627676,
-              "createdDatetime": "2018-04-21T00:00:00",
-              "lastUpdatedDatetime": "2018-04-21T00:00:00"
+              "description": "(Buggery and attempted buggery - 01600)"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 1600,
-                "mainCategoryCode": 16,
-                "description": "(Buggery and attempted buggery - 01600)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Buggery and attempted buggery",
-                "mainCategoryAbbreviation": "Buggery and attempted buggery",
-                "ogrsOffenceCategory": "Sexual (not against child)",
-                "subCategoryDescription": "Buggery and attempted buggery"
-              },
-              "offenceDate": "2017-12-21T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 1847601459,
-              "createdDatetime": "2018-04-21T00:00:00",
-              "lastUpdatedDatetime": "2018-04-21T00:00:00"
+              "description": "(Buggery and attempted buggery - 01600)"
             }
           ],
-          "latestCourtAppearanceOutcome": {
-            "code": 627,
-            "description": "Adjourned - Pre-Sentence Report"
-          }
+          "documents": []
         },
         {
           "convictionId": 969368411,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-05-25",
-          "referralDate": "2018-05-25",
+          "endDate": "2019-11-25",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 1600,
-                "mainCategoryCode": 16,
-                "description": "(Buggery and attempted buggery - 01600)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Buggery and attempted buggery",
-                "mainCategoryAbbreviation": "Buggery and attempted buggery",
-                "ogrsOffenceCategory": "Sexual (not against child)",
-                "subCategoryDescription": "Buggery and attempted buggery"
-              },
-              "offenceDate": "2017-11-25T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2761346518,
-              "createdDatetime": "2018-03-25T00:00:00",
-              "lastUpdatedDatetime": "2018-03-25T00:00:00"
+              "description": "(Buggery and attempted buggery - 01600)"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 3604,
-                "mainCategoryCode": 36,
-                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Kidnapping (Category)",
-                "mainCategoryAbbreviation": "Kidnapping (Category)",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982)"
-              },
-              "offenceDate": "2017-11-25T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 384282472,
-              "createdDatetime": "2018-03-25T00:00:00",
-              "lastUpdatedDatetime": "2018-03-25T00:00:00"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 8303,
-                "mainCategoryCode": 83,
-                "description": "Acknowledging bail in false name - 08303",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Offences relating to bail (Category)",
-                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
-                "ogrsOffenceCategory": "Absconding or bail offences",
-                "subCategoryDescription": "Acknowledging bail in false name"
-              },
-              "offenceDate": "2017-11-25T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 248401977,
-              "createdDatetime": "2018-03-25T00:00:00",
-              "lastUpdatedDatetime": "2018-03-25T00:00:00"
+              "description": "Acknowledging bail in false name - 08303"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 807,
-                "mainCategoryCode": 8,
-                "description": "(Assault PC (Indictable/Either way) - 00807)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Malicious wounding and other like offences (misdemeanours)",
-                "mainCategoryAbbreviation": "Malicious wounding and other like offences (misde",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "*Assault PC (Indictable/Either way)"
-              },
-              "offenceDate": "2017-11-25T00:00:00",
-              "offenceCount": 4,
-              "mainOffence": false,
-              "offenderId": 210297956,
-              "createdDatetime": "2018-03-25T00:00:00",
-              "lastUpdatedDatetime": "2018-03-25T00:00:00"
+              "description": "(Assault PC (Indictable/Either way) - 00807)"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-11-25",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 21,
-            "description": "ORA Community Order"
-          }
+          "documents": []
         },
         {
           "convictionId": 1232639783,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-12-16",
-          "referralDate": "2018-12-16",
+          "endDate": "2020-06-16",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 4200,
-                "mainCategoryCode": 42,
-                "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag",
-                "mainCategoryAbbreviation": "Stealing mail bags or postal packets or unlawfull",
-                "ogrsOffenceCategory": "Theft (Non-motor)",
-                "subCategoryDescription": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag"
-              },
-              "offenceDate": "2018-06-16T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1172725584,
-              "createdDatetime": "2018-10-16T00:00:00",
-              "lastUpdatedDatetime": "2018-10-16T00:00:00"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 1600,
-                "mainCategoryCode": 16,
-                "description": "(Buggery and attempted buggery - 01600)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Buggery and attempted buggery",
-                "mainCategoryAbbreviation": "Buggery and attempted buggery",
-                "ogrsOffenceCategory": "Sexual (not against child)",
-                "subCategoryDescription": "Buggery and attempted buggery"
-              },
-              "offenceDate": "2018-06-16T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 371483174,
-              "createdDatetime": "2018-10-16T00:00:00",
-              "lastUpdatedDatetime": "2018-10-16T00:00:00"
+              "description": "(Buggery and attempted buggery - 01600)"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 6200,
-                "mainCategoryCode": 62,
-                "description": "High treason - 06200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "High treason",
-                "mainCategoryAbbreviation": "High treason",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "High treason"
-              },
-              "offenceDate": "2018-06-16T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 261060852,
-              "createdDatetime": "2018-10-16T00:00:00",
-              "lastUpdatedDatetime": "2018-10-16T00:00:00"
+              "description": "High treason - 06200"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 807,
-                "mainCategoryCode": 8,
-                "description": "(Assault PC (Indictable/Either way) - 00807)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Malicious wounding and other like offences (misdemeanours)",
-                "mainCategoryAbbreviation": "Malicious wounding and other like offences (misde",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "*Assault PC (Indictable/Either way)"
-              },
-              "offenceDate": "2018-06-16T00:00:00",
-              "offenceCount": 4,
-              "mainOffence": false,
-              "offenderId": 544817009,
-              "createdDatetime": "2018-10-16T00:00:00",
-              "lastUpdatedDatetime": "2018-10-16T00:00:00"
+              "description": "(Assault PC (Indictable/Either way) - 00807)"
             }
           ],
-          "latestCourtAppearanceOutcome": {
-            "code": 396,
-            "description": "Adjourned - Pre-Sentence Report"
-          }
+          "documents": []
         },
         {
           "convictionId": 2509311404,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-08-18",
-          "referralDate": "2018-08-18",
+          "endDate": "2020-02-18",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 10100,
-                "mainCategoryCode": 101,
-                "description": "Adulteration of food, drugs etc (Summary) - 10100",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food, drugs etc (Summary)",
-                "mainCategoryAbbreviation": "Adulteration of food, drugs etc (Summary)",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration of food, drugs etc (Summary)"
-              },
-              "offenceDate": "2018-02-18T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2067407283,
-              "createdDatetime": "2018-06-18T00:00:00",
-              "lastUpdatedDatetime": "2018-06-18T00:00:00"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100"
             }
           ],
           "sentence": {
             "description": "ORA Adult Custody (Not PSS)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-02-18",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 86,
-            "description": "ORA Community Order"
-          }
+          "documents": []
         },
         {
           "convictionId": 1545186426,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-06-17",
-          "referralDate": "2018-06-17",
+          "endDate": "2019-12-17",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 6200,
-                "mainCategoryCode": 62,
-                "description": "High treason - 06200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "High treason",
-                "mainCategoryAbbreviation": "High treason",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "High treason"
-              },
-              "offenceDate": "2017-12-17T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1774742064,
-              "createdDatetime": "2018-04-17T00:00:00",
-              "lastUpdatedDatetime": "2018-04-17T00:00:00"
+              "description": "High treason - 06200"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 18900,
-                "mainCategoryCode": 189,
-                "description": "Weights and Measures Acts - 18900",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Weights and Measures Acts",
-                "mainCategoryAbbreviation": "Weights and Measures Acts",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Weights and Measures Acts"
-              },
-              "offenceDate": "2017-12-17T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 575623508,
-              "createdDatetime": "2018-04-17T00:00:00",
-              "lastUpdatedDatetime": "2018-04-17T00:00:00"
+              "description": "Weights and Measures Acts - 18900"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 2801,
-                "mainCategoryCode": 28,
-                "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Burglary in a dwelling",
-                "mainCategoryAbbreviation": "Burglary in a dwelling",
-                "ogrsOffenceCategory": "Burglary (Domestic)",
-                "subCategoryDescription": "Burglary (dwelling) with intent to commit, or the commission of, an offence triable only on indictment"
-              },
-              "offenceDate": "2017-12-17T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 2931398523,
-              "createdDatetime": "2018-04-17T00:00:00",
-              "lastUpdatedDatetime": "2018-04-17T00:00:00"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
             }
           ],
           "sentence": {
             "description": "ORA Suspended Sentence Order",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-12-17",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 309,
-            "description": "Final Review"
-          }
+          "documents": []
         },
         {
           "convictionId": 310585673,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-09-10",
-          "referralDate": "2018-09-10",
+          "endDate": "2020-03-10",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 807,
-                "mainCategoryCode": 8,
-                "description": "(Assault PC (Indictable/Either way) - 00807)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Malicious wounding and other like offences (misdemeanours)",
-                "mainCategoryAbbreviation": "Malicious wounding and other like offences (misde",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "*Assault PC (Indictable/Either way)"
-              },
-              "offenceDate": "2018-03-10T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 2207244426,
-              "createdDatetime": "2018-07-10T00:00:00",
-              "lastUpdatedDatetime": "2018-07-10T00:00:00"
+              "description": "(Assault PC (Indictable/Either way) - 00807)"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 9400,
-                "mainCategoryCode": 94,
-                "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)",
-                "mainCategoryAbbreviation": "Town and Country Planning Act 1990/Planning (List",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act)"
-              },
-              "offenceDate": "2018-03-10T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1965489564,
-              "createdDatetime": "2018-07-10T00:00:00",
-              "lastUpdatedDatetime": "2018-07-10T00:00:00"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
             }
           ],
           "sentence": {
             "description": "CJA - Std Determinate Custody",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-03-10",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 645,
-            "description": "Adult Custody < 12m"
-          }
+          "documents": []
         },
         {
           "convictionId": 924440231,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-25",
-          "referralDate": "2018-07-25",
+          "endDate": "2020-01-25",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 5601,
-                "mainCategoryCode": 56,
-                "description": "Arson endangering life - 05601",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Arson",
-                "mainCategoryAbbreviation": "Arson",
-                "ogrsOffenceCategory": "Criminal damage",
-                "subCategoryDescription": "Arson endangering life"
-              },
-              "offenceDate": "2018-01-25T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1776771165,
-              "createdDatetime": "2018-05-25T00:00:00",
-              "lastUpdatedDatetime": "2018-05-25T00:00:00"
+              "description": "Arson endangering life - 05601"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 3604,
-                "mainCategoryCode": 36,
-                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Kidnapping (Category)",
-                "mainCategoryAbbreviation": "Kidnapping (Category)",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982)"
-              },
-              "offenceDate": "2018-01-25T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1202873838,
-              "createdDatetime": "2018-05-25T00:00:00",
-              "lastUpdatedDatetime": "2018-05-25T00:00:00"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
             }
           ],
           "sentence": {
             "description": "CJA - Indeterminate Public Prot.",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-01-25",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 799,
-            "description": "CJA - Std Determinate Custody"
-          }
+          "documents": []
         },
         {
           "convictionId": 2468509678,
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-05-18",
-          "referralDate": "2018-05-18",
+          "endDate": "2019-11-18",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 10100,
-                "mainCategoryCode": 101,
-                "description": "Adulteration of food, drugs etc (Summary) - 10100",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food, drugs etc (Summary)",
-                "mainCategoryAbbreviation": "Adulteration of food, drugs etc (Summary)",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration of food, drugs etc (Summary)"
-              },
-              "offenceDate": "2017-11-18T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1280838776,
-              "createdDatetime": "2018-03-18T00:00:00",
-              "lastUpdatedDatetime": "2018-03-18T00:00:00"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 18900,
-                "mainCategoryCode": 189,
-                "description": "Weights and Measures Acts - 18900",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Weights and Measures Acts",
-                "mainCategoryAbbreviation": "Weights and Measures Acts",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Weights and Measures Acts"
-              },
-              "offenceDate": "2017-11-18T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 2651624128,
-              "createdDatetime": "2018-03-18T00:00:00",
-              "lastUpdatedDatetime": "2018-03-18T00:00:00"
+              "description": "Weights and Measures Acts - 18900"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 12400,
-                "mainCategoryCode": 124,
-                "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles",
-                "mainCategoryAbbreviation": "Highways Acts - Other offences, other than those ",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Highways Acts - Other offences, other than those caused by vehicles"
-              },
-              "offenceDate": "2017-11-18T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 768012184,
-              "createdDatetime": "2018-03-18T00:00:00",
-              "lastUpdatedDatetime": "2018-03-18T00:00:00"
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
             }
           ],
           "sentence": {
             "description": "CJA - Indeterminate Public Prot.",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-11-18",
+            "terminationReason": "Auto Terminated"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 386,
-            "description": "CJA - Std Determinate Custody"
-          }
+          "documents": []
         },
         {
           "convictionId": 604360229,
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-01-08",
-          "referralDate": "2018-01-08",
+          "endDate": "2019-07-08",
           "offences": [
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 6200,
-                "mainCategoryCode": 62,
-                "description": "High treason - 06200",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "High treason",
-                "mainCategoryAbbreviation": "High treason",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "High treason"
-              },
-              "offenceDate": "2017-07-08T00:00:00",
-              "offenceCount": 1,
-              "mainOffence": true,
-              "offenderId": 1669333805,
-              "createdDatetime": "2017-11-08T00:00:00",
-              "lastUpdatedDatetime": "2017-11-08T00:00:00"
+              "description": "High treason - 06200"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 8303,
-                "mainCategoryCode": 83,
-                "description": "Acknowledging bail in false name - 08303",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Offences relating to bail (Category)",
-                "mainCategoryAbbreviation": "Offences relating to bail (Category)",
-                "ogrsOffenceCategory": "Absconding or bail offences",
-                "subCategoryDescription": "Acknowledging bail in false name"
-              },
-              "offenceDate": "2017-07-08T00:00:00",
-              "offenceCount": 2,
-              "mainOffence": false,
-              "offenderId": 1093728511,
-              "createdDatetime": "2017-11-08T00:00:00",
-              "lastUpdatedDatetime": "2017-11-08T00:00:00"
+              "description": "Acknowledging bail in false name - 08303"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 3100,
-                "mainCategoryCode": 31,
-                "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Aggravated burglary in a building other than a dwelling (including attempts)",
-                "mainCategoryAbbreviation": "Aggravated burglary in a building other than a dw",
-                "ogrsOffenceCategory": "Violence",
-                "subCategoryDescription": "Aggravated burglary in a building other than a dwelling (including attempts)"
-              },
-              "offenceDate": "2017-07-08T00:00:00",
-              "offenceCount": 3,
-              "mainOffence": false,
-              "offenderId": 2040455578,
-              "createdDatetime": "2017-11-08T00:00:00",
-              "lastUpdatedDatetime": "2017-11-08T00:00:00"
+              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
             },
             {
-              "offenceId": "M2129477866",
-              "detail": {
-                "code": 8902,
-                "mainCategoryCode": 89,
-                "description": "(Adulteration etc of milk products - 08902)",
-                "subCategoryCode": 2,
-                "form20Code": 12,
-                "mainCategoryDescription": "Adulteration of food or drugs (Food Safety Act 1990)",
-                "mainCategoryAbbreviation": "Adulteration of food or drugs (Food Safety Act 19",
-                "ogrsOffenceCategory": "Other offence",
-                "subCategoryDescription": "Adulteration etc of milk products"
-              },
-              "offenceDate": "2017-07-08T00:00:00",
-              "offenceCount": 4,
-              "mainOffence": false,
-              "offenderId": 575569904,
-              "createdDatetime": "2017-11-08T00:00:00",
-              "lastUpdatedDatetime": "2017-11-08T00:00:00"
+              "description": "(Adulteration etc of milk products - 08902)"
             }
           ],
           "sentence": {
             "description": "Life imprisonment (Adult)",
-            "originalLength": 18,
-            "originalLengthUnits": "Months",
-            "defaultLength": 18,
-            "lengthInDays": 547
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2019-07-08",
+            "terminationReason":  "ICMS Miscellaneous Event"
           },
-          "latestCourtAppearanceOutcome": {
-            "code": 179,
-            "description": "Warrant without Bail"
-          }
+          "documents": []
         }
       ]
     }
