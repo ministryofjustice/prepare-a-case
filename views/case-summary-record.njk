@@ -29,8 +29,8 @@
                 <h2 class="govuk-heading-m">Current orders ({{ activeOrders | length }})</h2>
                 {%- for order in activeOrders %}
                     <p class="govuk-body govuk-!-margin-bottom-0"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a></p>
-                    <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].detail.description }}</p>
-                    <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started on {{ params.moment(order.referralDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                    <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].description }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started on {{ params.moment(order.convictionDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
 
                     {% if order.requirements and order.requirements | length %}
                         <h3 class="govuk-heading-s">Requirements</h3>
@@ -60,7 +60,7 @@
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell govuk-!-width-two-thirds">
                                     <p class="govuk-body govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a></p>
-                                    <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].detail.description }}</p>
+                                    <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
                                 </td>
                                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third" style="vertical-align: bottom">
                                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">Ended on {{ params.moment(order.sentence.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
@@ -92,6 +92,13 @@
                 <p class="govuk-body">Not active</p>
             {% endif %}
 
+            {% for order in activeOrders %}
+            {% if order.documents[0] %}
+            <h3 class="govuk-heading-s">Last pre-sentence report</h3>
+                <p class="govuk-body govuk-!-margin-bottom-0">{{ order.documents[0].subType.description }}</p>
+                <p class="govuk-hint govuk-!-margin-top-1">Delivered on {{ params.moment(order.documents[0].reportDocumentDates.completedDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
 
