@@ -184,6 +184,7 @@ jobs:
       - snyk/scan:
           docker-image-name: 'mojdigitalstudio/prepare-a-case:$APP_VERSION'
           target-file: 'Dockerfile'
+          additional-arguments: "--fail-on=all"
           fail-on-issues: true
           monitor-on-build: << parameters.master >>
           organization: 'digital-probation-services'
@@ -207,6 +208,7 @@ jobs:
     steps:
       - checkout
       - snyk/scan:
+          additional-arguments: "--fail-on=all"
           fail-on-issues: true
           monitor-on-build: << parameters.master >>
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app'
@@ -221,6 +223,7 @@ jobs:
       - snyk/scan:
           docker-image-name: 'mojdigitalstudio/prepare-a-case:latest'
           target-file: 'Dockerfile'
+          additional-arguments: "--fail-on=all"
           fail-on-issues: true
           monitor-on-build: true
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-container'
