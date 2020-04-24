@@ -1,5 +1,17 @@
 version: 2.1
 commands:
+  set_app_version:
+    description: "Set app version string"
+    steps:
+      - run:
+          name: create app version string
+          command: |
+            VERSION=$(egrep buildNumber build-info.json | awk -F"\"" '{print $4}')
+            echo "Created version string: ${VERSION}"
+            echo "export VERSION=$VERSION" >> $BASH_ENV
+      - mem/remember:
+          env_var: APP_VERSION
+          value: "${VERSION}"
   setup:
     description: "Install tools and configure kubectl"
     steps:
@@ -28,6 +40,8 @@ commands:
         type: string
     steps:
       - setup
+      - mem/recall:
+          env_var: APP_VERSION
       - checkout:
           path: ~/git
       - attach_workspace:
@@ -35,7 +49,6 @@ commands:
       - deploy:
           name: Deploy to << parameters.env >>
           command: |
-            APP_VERSION=$(egrep buildNumber build-info.json | awk -F"\"" '{print $4}')
             helm upgrade prepare-a-case ~/git/helm_deploy/prepare-a-case/. \
               --install --wait --force --reset-values --timeout 360 \
               --tiller-namespace=${KUBE_ENV_NAMESPACE} \
@@ -57,8 +70,9 @@ executors:
     working_directory: ~/app
 
 orbs:
-  kubernetes: circleci/kubernetes@0.3.0
   helm: circleci/helm@0.1.2
+  kubernetes: circleci/kubernetes@0.3.0
+  mem: circleci/rememborb@0.0.1
   snyk: snyk/snyk@0.0.10
 
 jobs:
@@ -66,6 +80,7 @@ jobs:
     executor: builder
     steps:
       - checkout
+      - set_app_version
       - attach_workspace:
           at: ~/app
       - restore_cache:
@@ -153,6 +168,8 @@ jobs:
     executor: deployer
     steps:
       - checkout
+      - mem/recall:
+          env_var: APP_VERSION
       - attach_workspace:
           at: ~/app
       - setup_remote_docker:
@@ -160,7 +177,6 @@ jobs:
       - run:
           name: Build container and publish to docker hub
           command: |
-            APP_VERSION=$(egrep buildNumber build-info.json  | awk -F"\"" '{print $4}')
             docker build --rm=false . \
                --tag "mojdigitalstudio/prepare-a-case:$APP_VERSION" \
                --label "maintainer=info@digital.justice.gov.uk" \
@@ -206,10 +222,12 @@ jobs:
         default: false
     steps:
       - checkout
+      - mem/recall:
+          env_var: APP_VERSION
       - setup_remote_docker:
           docker_layer_caching: true
       - snyk/scan:
-          docker-image-name: 'mojdigitalstudio/prepare-a-case:latest'
+          docker-image-name: 'mojdigitalstudio/prepare-a-case:$APP_VERSION'
           target-file: 'Dockerfile'
           fail-on-issues: << parameters.fail-build >>
           monitor-on-build: << parameters.monitor >>
@@ -247,10 +265,6 @@ workflows:
       - image-scan
   build-test-and-deploy:
     jobs:
-      - image-scan:
-          monitor: false
-      - app-scan:
-          monitor: false
       - build:
           filters:
             tags:
@@ -266,13 +280,19 @@ workflows:
             - build
       - build_docker:
           requires:
-            - test
-          filters:
-            branches:
-              only: master
+            - build
+      - image-scan:
+          requires:
+            - build_docker
+          monitor: false
+      - app-scan:
+          monitor: false
       - deploy_dev:
           requires:
             - build_docker
+          filters:
+            branches:
+              only: master
       - request-preprod-approval:
           type: approval
           requires:
