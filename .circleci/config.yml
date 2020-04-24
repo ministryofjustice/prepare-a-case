@@ -158,6 +158,10 @@ jobs:
 
   build_docker:
     executor: deployer
+    parameters:
+      master:
+        type: boolean
+        default: false
     steps:
       - checkout
       - mem/recall:
@@ -167,7 +171,7 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
-          name: Build container and publish to docker hub
+          name: Build docker image
           command: |
             docker build --rm=false . \
                --tag "mojdigitalstudio/prepare-a-case:$APP_VERSION" \
@@ -177,38 +181,38 @@ jobs:
                --label "build.number=$CIRCLE_BUILD_NUM" \
                --label "build.url=$CIRCLE_BUILD_URL" \
                --label "build.gitref=$CIRCLE_SHA1"
-
-            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-              # publish to docker hub as the tag
-             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-             docker tag mojdigitalstudio/prepare-a-case:$APP_VERSION mojdigitalstudio/prepare-a-case:latest
-             docker push mojdigitalstudio/prepare-a-case:$APP_VERSION
-             docker push mojdigitalstudio/prepare-a-case:latest
-            fi
       - snyk/scan:
           docker-image-name: 'mojdigitalstudio/prepare-a-case:$APP_VERSION'
           target-file: 'Dockerfile'
-          fail-on-issues: false
-          monitor-on-build: false
+          fail-on-issues: true
+          monitor-on-build: << parameters.master >>
           organization: 'digital-probation-services'
+      - when:
+          condition: << parameters.master >>
+          steps:
+            - run:
+                name: Publish to docker hub
+                command: |
+                  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                  docker tag mojdigitalstudio/prepare-a-case:$APP_VERSION mojdigitalstudio/prepare-a-case:latest
+                  docker push mojdigitalstudio/prepare-a-case:$APP_VERSION
+                  docker push mojdigitalstudio/prepare-a-case:latest
 
   app_scan:
     executor: builder
     parameters:
-      monitor:
-        type: boolean
-      fail-build:
+      master:
         type: boolean
         default: false
     steps:
       - checkout
       - snyk/scan:
-          fail-on-issues: << parameters.fail-build >>
-          monitor-on-build: << parameters.monitor >>
+          fail-on-issues: true
+          monitor-on-build: << parameters.master >>
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app'
           organization: 'digital-probation-services'
 
-  image_scan_latest:
+  image_scan:
     executor: deployer
     steps:
       - checkout
@@ -217,7 +221,7 @@ jobs:
       - snyk/scan:
           docker-image-name: 'mojdigitalstudio/prepare-a-case:latest'
           target-file: 'Dockerfile'
-          fail-on-issues: false
+          fail-on-issues: true
           monitor-on-build: true
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-container'
           organization: 'digital-probation-services'
@@ -250,11 +254,21 @@ workflows:
                 - master
     jobs:
       - app_scan:
-          monitor: true
-      - image_scan_latest
+          master: true
+      - image_scan
 
   build-test-and-deploy:
     jobs:
+      - app_scan:
+          filters:
+            branches:
+              ignore: master
+      - app_scan:
+          name: app_scan_master
+          filters:
+            branches:
+              only: master
+          master: true
       - build:
           filters:
             tags:
@@ -271,11 +285,20 @@ workflows:
       - build_docker:
           requires:
             - build
-      - app_scan:
-          monitor: false
+          filters:
+            branches:
+              ignore: master
+      - build_docker:
+          name: build_docker_master
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+          master: true
       - deploy_dev:
           requires:
-            - build_docker
+            - build_docker_master
           filters:
             branches:
               only: master
