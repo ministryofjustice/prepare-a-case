@@ -16,7 +16,21 @@ const currentDefendantWithBreach = {
     offenceCaption: 'Contrary to section 1(1) and 7 of the Theft Act 1968.',
     currentOrderCount: 7,
     currentOrderTitle: 'ORA Community Order',
+    currentOrderOffence: 'Abstracting electricity - 04300',
+    currentOrderStartDate: '2018-10-07',
+    currentOrderEndDate: '2020-06-17',
     currentOrderId: '1361422142',
+    currentOrderLastAttendance: '10 Mar 2020 - Unpaid work (Attended - Complied)',
+    currentOrderAttendance: {
+      counts: [57, 25, 9, 7, 5, 4, 6, 2, 2, 2, 11, 3, 3, 3, 2, 5, 2, 1, 1, 1, 1],
+      headings: ['Appointments to date', 'Complied', 'Failures to comply', 'Awaiting outcome'],
+      types: ['Planned office visit', 'Unpaid work', 'Appointment with External Agency', 'IAPS / Accredited programme']
+    },
+    unpaidWork: {
+      status: 'Terminated - 1 Apr 2020',
+      offered: 32,
+      completed: 30
+    },
     previousOrderCount: 46,
     previousOrderTitle: 'CJA - Std Determinate Custody',
     previousOrderId: '2363215335',
