@@ -6,7 +6,8 @@ commands:
       - run:
           name: create app version string
           command: |
-            VERSION=$(egrep buildNumber build-info.json | awk -F"\"" '{print $4}')
+            DATE=$(date '+%Y-%m-%d')
+            VERSION=${DATE}.${CIRCLE_BUILD_NUM}
             echo "Created version string: ${VERSION}"
             echo "export VERSION=$VERSION" >> $BASH_ENV
       - mem/remember:
@@ -57,8 +58,6 @@ commands:
               --values ~/git/helm_deploy/values-<< parameters.env >>.yaml \
               --values - \
               --set image.tag="${APP_VERSION}"
-      - store_artifacts:
-          path: build-info.json
 executors:
   deployer:
     docker:
@@ -94,13 +93,6 @@ jobs:
           key: dependencies-cache-{{ checksum "package.json" }}
           paths:
             - ~/.cache
-      - run:
-          name: Record the Application Version
-          command: |
-            DATE=$(date '+%Y-%m-%d')
-            export BUILD_NUMBER=${DATE}.${CIRCLE_BUILD_NUM}
-            export GIT_REF="$CIRCLE_SHA1"
-            yarn record-build-info
       - persist_to_workspace:
           root: ~/app
           paths: .
@@ -194,32 +186,40 @@ jobs:
              docker push mojdigitalstudio/prepare-a-case:latest
             fi
 
-  app-scan:
+  app_scan_monitor:
     executor: builder
-    parameters:
-      monitor:
-        type: boolean
-        default: true
-      fail-build:
-        type: boolean
-        default: false
     steps:
       - checkout
       - snyk/scan:
-          fail-on-issues: << parameters.fail-build >>
-          monitor-on-build: << parameters.monitor >>
+          fail-on-issues: false
+          monitor-on-build: true
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app'
           organization: 'digital-probation-services'
 
-  image-scan:
+  app_scan_standalone:
+    executor: builder
+    steps:
+      - checkout
+      - snyk/scan:
+          fail-on-issues: false
+          monitor-on-build: false
+
+  image_scan_monitor:
     executor: deployer
-    parameters:
-      monitor:
-        type: boolean
-        default: true
-      fail-build:
-        type: boolean
-        default: false
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - snyk/scan:
+          docker-image-name: 'mojdigitalstudio/prepare-a-case:latest'
+          target-file: 'Dockerfile'
+          fail-on-issues: false
+          monitor-on-build: true
+          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-container'
+          organization: 'digital-probation-services'
+
+  image_scan_standalone:
+    executor: deployer
     steps:
       - checkout
       - mem/recall:
@@ -229,10 +229,8 @@ jobs:
       - snyk/scan:
           docker-image-name: 'mojdigitalstudio/prepare-a-case:$APP_VERSION'
           target-file: 'Dockerfile'
-          fail-on-issues: << parameters.fail-build >>
-          monitor-on-build: << parameters.monitor >>
-          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-container'
-          organization: 'digital-probation-services'
+          fail-on-issues: false
+          monitor-on-build: false
 
   deploy_dev:
     executor: deployer
@@ -261,8 +259,9 @@ workflows:
               only:
                 - master
     jobs:
-      - app-scan
-      - image-scan
+      - app_scan_monitor
+      - image_scan_monitor
+
   build-test-and-deploy:
     jobs:
       - build:
@@ -281,12 +280,10 @@ workflows:
       - build_docker:
           requires:
             - build
-      - image-scan:
+      - image_scan_standalone:
           requires:
             - build_docker
-          monitor: false
-      - app-scan:
-          monitor: false
+      - app_scan_standalone
       - deploy_dev:
           requires:
             - build_docker

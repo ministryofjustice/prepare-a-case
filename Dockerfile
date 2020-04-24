@@ -20,10 +20,6 @@ RUN yarn
 
 COPY . .
 
-RUN export BUILD_NUMBER=${BUILD_NUMBER} && \
-    export GIT_REF=${GIT_REF} && \
-    yarn record-build-info
-
 EXPOSE 3000
 ENV NODE_ENV='production'
 USER 2000
