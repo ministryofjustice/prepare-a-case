@@ -20,6 +20,16 @@
     {% endif %}
 {% endfor -%}
 
+{%- set probationDocuments = [] -%}
+{%- for order in communityData.convictions if communityData.convictions | length %}
+    {%- for document in order.documents if order.documents | length %}
+        {{ probationDocuments.push({
+            description: document.subType.description,
+            completedDate: document.reportDocumentDates.completedDate
+        }) }}
+    {% endfor -%}
+{% endfor -%}
+
 {% block caseContent %}
 
     <div class="govuk-grid-row">
@@ -92,13 +102,12 @@
                 <p class="govuk-body">Not active</p>
             {% endif %}
 
-            {% for order in activeOrders %}
-            {% if order.documents[0] %}
-            <h3 class="govuk-heading-s">Last pre-sentence report</h3>
-                <p class="govuk-body govuk-!-margin-bottom-0">{{ order.documents[0].subType.description }}</p>
-                <p class="govuk-hint govuk-!-margin-top-1">Delivered on {{ params.moment(order.documents[0].reportDocumentDates.completedDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+            {% if probationDocuments | length %}
+                {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
+                <h3 class="govuk-heading-s">Last pre-sentence report</h3>
+                <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
+                <p class="govuk-hint govuk-!-margin-top-1">Delivered on {{ params.moment(latestDocument.completedDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
             {% endif %}
-            {% endfor %}
         </div>
     </div>
 

@@ -214,7 +214,25 @@
             "terminationDate": "2018-01-23",
             "terminationReason": "ICMS Miscellaneous Event"
           },
-          "documents": []
+          "documents": [
+            {
+              "documentId": "66b66bd6-b1fd-4883-a23d-609c16284abc",
+              "documentName": "shortFormatPreSentenceReport_X320741_121424_OMIC_A_04092019.pdf",
+              "author": "John Jones",
+              "type": "COURT_REPORT_DOCUMENT",
+              "extendedDescription": "Pre-Sentence Report - Fast requested by Sheffield Crown Court on 01/01/2018",
+              "createdAt": "2019-09-04T00:00:00",
+              "subType": {
+                "code": "CJF",
+                "description": "Pre-Sentence Report - Fast"
+              },
+              "reportDocumentDates": {
+                "requestedDate": "2018-01-01",
+                "requiredDate": "2018-01-02",
+                "completedDate": "2018-01-02T00:00:00"
+              }
+            }
+          ]
         },
         {
           "convictionId": 1309234876,
@@ -248,17 +266,17 @@
             {
               "documentId": "1d842fce-ec2d-45dc-ac9a-748d3076ca6b",
               "documentName": "shortFormatPreSentenceReport_04092019_121424_OMIC_A_X320741.pdf",
-              "author": "Andy Marke",
+              "author": "John Smith",
               "type": "COURT_REPORT_DOCUMENT",
-              "extendedDescription": "Pre-Sentence Report - Fast requested by Sheffield Crown Court on 04/09/2018",
-              "createdAt": "2019-09-04T00:00:00",
+              "extendedDescription": "Pre-Sentence Report - Fast requested by Sheffield Crown Court on 27/02/2018",
+              "createdAt": "2018-02-28T00:00:00",
               "subType": {
                 "code": "CJF",
                 "description": "Pre-Sentence Report - Fast"
               },
               "reportDocumentDates": {
-                "requestedDate": "2018-09-04",
-                "requiredDate": "2019-09-04",
+                "requestedDate": "2018-02-27",
+                "requiredDate": "2018-02-28",
                 "completedDate": "2018-02-28T00:00:00"
               }
             }
