@@ -185,26 +185,30 @@ jobs:
              docker push mojdigitalstudio/prepare-a-case:$APP_VERSION
              docker push mojdigitalstudio/prepare-a-case:latest
             fi
+      - snyk/scan:
+          docker-image-name: 'mojdigitalstudio/prepare-a-case:$APP_VERSION'
+          target-file: 'Dockerfile'
+          fail-on-issues: false
+          monitor-on-build: false
+          organization: 'digital-probation-services'
 
-  app_scan_monitor:
+  app_scan:
     executor: builder
+    parameters:
+      monitor:
+        type: boolean
+      fail-build:
+        type: boolean
+        default: false
     steps:
       - checkout
       - snyk/scan:
-          fail-on-issues: false
-          monitor-on-build: true
+          fail-on-issues: << parameters.fail-build >>
+          monitor-on-build: << parameters.monitor >>
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app'
           organization: 'digital-probation-services'
 
-  app_scan_standalone:
-    executor: builder
-    steps:
-      - checkout
-      - snyk/scan:
-          fail-on-issues: false
-          monitor-on-build: false
-
-  image_scan_monitor:
+  image_scan_latest:
     executor: deployer
     steps:
       - checkout
@@ -217,20 +221,6 @@ jobs:
           monitor-on-build: true
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-container'
           organization: 'digital-probation-services'
-
-  image_scan_standalone:
-    executor: deployer
-    steps:
-      - checkout
-      - mem/recall:
-          env_var: APP_VERSION
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - snyk/scan:
-          docker-image-name: 'mojdigitalstudio/prepare-a-case:$APP_VERSION'
-          target-file: 'Dockerfile'
-          fail-on-issues: false
-          monitor-on-build: false
 
   deploy_dev:
     executor: deployer
@@ -259,8 +249,9 @@ workflows:
               only:
                 - master
     jobs:
-      - app_scan_monitor
-      - image_scan_monitor
+      - app_scan:
+          monitor: true
+      - image_scan_latest
 
   build-test-and-deploy:
     jobs:
@@ -280,10 +271,8 @@ workflows:
       - build_docker:
           requires:
             - build
-      - image_scan_standalone:
-          requires:
-            - build_docker
-      - app_scan_standalone
+      - app_scan:
+          monitor: false
       - deploy_dev:
           requires:
             - build_docker
