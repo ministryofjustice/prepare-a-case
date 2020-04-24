@@ -180,16 +180,30 @@ jobs:
 
   app-scan:
     executor: builder
+    parameters:
+      monitor:
+        type: boolean
+        default: true
+      fail-build:
+        type: boolean
+        default: false
     steps:
       - checkout
       - snyk/scan:
-          fail-on-issues: false
-          monitor-on-build: true
-          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}'
+          fail-on-issues: << parameters.fail-build >>
+          monitor-on-build: << parameters.monitor >>
+          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app'
           organization: 'digital-probation-services'
 
   image-scan:
     executor: deployer
+    parameters:
+      monitor:
+        type: boolean
+        default: true
+      fail-build:
+        type: boolean
+        default: false
     steps:
       - checkout
       - setup_remote_docker:
@@ -197,9 +211,9 @@ jobs:
       - snyk/scan:
           docker-image-name: 'mojdigitalstudio/prepare-a-case:latest'
           target-file: 'Dockerfile'
-          fail-on-issues: false
-          monitor-on-build: true
-          project: '${CIRCLE_PROJECT_REPONAME}/latest'
+          fail-on-issues: << parameters.fail-build >>
+          monitor-on-build: << parameters.monitor >>
+          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-container'
           organization: 'digital-probation-services'
 
   deploy_dev:
@@ -233,6 +247,10 @@ workflows:
       - image-scan
   build-test-and-deploy:
     jobs:
+      - image-scan:
+          monitor: false
+      - app-scan:
+          monitor: false
       - build:
           filters:
             tags:
