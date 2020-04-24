@@ -39,15 +39,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "offered": 12,
-              "completed": 2,
-              "appointmentsToDate": 2,
-              "attended": 2,
-              "acceptableAbsences": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -68,15 +60,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2019-08-27",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "offered": 12,
-              "completed": 2,
-              "appointmentsToDate": 2,
-              "attended": 2,
-              "acceptableAbsences": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -103,15 +87,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2017-08-09",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "offered": 12,
-              "completed": 2,
-              "appointmentsToDate": 2,
-              "attended": 2,
-              "acceptableAbsences": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -132,15 +108,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2019-09-04",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "offered": 12,
-              "completed": 2,
-              "appointmentsToDate": 2,
-              "attended": 2,
-              "acceptableAbsences": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -193,15 +161,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "acceptableAbsences": 0,
-              "appointmentsToDate": 0,
-              "attended": 0,
-              "minutesCompleted": 0,
-              "minutesOffered": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -222,15 +182,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2019-09-04",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "acceptableAbsences": 0,
-              "appointmentsToDate": 0,
-              "attended": 0,
-              "minutesCompleted": 0,
-              "minutesOffered": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -260,17 +212,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "status": "Terminated",
-              "statusDate": "2018-01-23",
-              "offered": 12,
-              "completed": 2,
-              "appointmentsToDate": 2,
-              "attended": 2,
-              "acceptableAbsences": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -300,15 +242,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "acceptableAbsences": 0,
-              "appointmentsToDate": 0,
-              "attended": 0,
-              "minutesCompleted": 0,
-              "minutesOffered": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": [
             {
@@ -353,15 +287,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2017-12-25",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "acceptableAbsences": 0,
-              "appointmentsToDate": 0,
-              "attended": 0,
-              "minutesCompleted": 0,
-              "minutesOffered": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -404,15 +330,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "acceptableAbsences": 0,
-              "appointmentsToDate": 0,
-              "attended": 0,
-              "minutesCompleted": 0,
-              "minutesOffered": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -439,15 +357,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2018-08-04",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "acceptableAbsences": 0,
-              "appointmentsToDate": 0,
-              "attended": 0,
-              "minutesCompleted": 0,
-              "minutesOffered": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -468,15 +378,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "acceptableAbsences": 0,
-              "appointmentsToDate": 0,
-              "attended": 0,
-              "minutesCompleted": 0,
-              "minutesOffered": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -506,15 +408,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2018-09-21",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "acceptableAbsences": 0,
-              "appointmentsToDate": 0,
-              "attended": 0,
-              "minutesCompleted": 0,
-              "minutesOffered": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         },
@@ -538,15 +432,7 @@
             "lengthInDays": 547,
             "lengthUnits": "Months",
             "terminationDate": "2018-09-23",
-            "terminationReason": "ICMS Miscellaneous Event",
-            "unpaidWork": {
-              "offered": 12,
-              "completed": 2,
-              "appointmentsToDate": 2,
-              "attended": 2,
-              "acceptableAbsences": 0,
-              "unacceptableAbsences": 0
-            }
+            "terminationReason": "ICMS Miscellaneous Event"
           },
           "documents": []
         }

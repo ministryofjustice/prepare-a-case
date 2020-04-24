@@ -184,26 +184,27 @@
             </div>
         {% endif %}
 
-        {% if currentOrder.sentence.unpaidWork %}
+        {%- set unpaidWork = communityData.attendanceDetails.unpaidWork -%}
+        {% if unpaidWork %}
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
                     <h2 class="govuk-heading-m govuk-!-margin-top-8">Unpaid work</h2>
                     <dl class="govuk-summary-list">
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Status</dt>
-                            <dd class="govuk-summary-list__value qa-upw-status">{{ currentOrder.sentence.unpaidWork.status }} {{ '- ' + moment(currentOrder.sentence.unpaidWork.statusDate, 'YYYY-MM-DD').format('D MMM YYYY') if currentOrder.sentence.unpaidWork.statusDate }}</dd>
+                            <dd class="govuk-summary-list__value qa-upw-status">{{ unpaidWork.status }} {{ '- ' + moment(unpaidWork.statusDate, 'YYYY-MM-DD').format('D MMM YYYY') if unpaidWork.statusDate }}</dd>
                         </div>
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Hours ordered</dt>
-                            <dd class="govuk-summary-list__value qa-upw-ordered">{{ currentOrder.sentence.unpaidWork.offered or '0' }}</dd>
+                            <dd class="govuk-summary-list__value qa-upw-ordered">{{ unpaidWork.offered or '0' }}</dd>
                         </div>
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Hours worked</dt>
-                            <dd class="govuk-summary-list__value qa-upw-worked">{{ currentOrder.sentence.unpaidWork.completed or '0' }}</dd>
+                            <dd class="govuk-summary-list__value qa-upw-worked">{{ unpaidWork.completed or '0' }}</dd>
                         </div>
                     </dl>
 
-                    {% if currentOrder.sentence.unpaidWork.appointmentsToDate %}
+                    {% if unpaidWork.appointmentsToDate %}
                         <details class="govuk-details" data-module="govuk-details">
                             <summary class="govuk-details__summary">
                                   <span class="govuk-details__summary-text">View UPW attendance</span>
@@ -212,19 +213,19 @@
                                 <dl class="govuk-summary-list">
                                     <div class="govuk-summary-list__row">
                                         <dt class="govuk-summary-list__key">Appointments to date</dt>
-                                        <dd class="govuk-summary-list__value qa-upw-appointments">{{ currentOrder.sentence.unpaidWork.appointmentsToDate or '0' }}</dd>
+                                        <dd class="govuk-summary-list__value qa-upw-appointments">{{ unpaidWork.appointmentsToDate or '0' }}</dd>
                                     </div>
                                     <div class="govuk-summary-list__row">
                                         <dt class="govuk-summary-list__key">Attended</dt>
-                                        <dd class="govuk-summary-list__value qa-upw-attended">{{ currentOrder.sentence.unpaidWork.attended or '0' }}</dd>
+                                        <dd class="govuk-summary-list__value qa-upw-attended">{{ unpaidWork.attended or '0' }}</dd>
                                     </div>
                                     <div class="govuk-summary-list__row">
                                         <dt class="govuk-summary-list__key">Acceptable absences </dt>
-                                        <dd class="govuk-summary-list__value qa-upw-acceptable">{{ currentOrder.sentence.unpaidWork.acceptableAbsences or '0' }}</dd>
+                                        <dd class="govuk-summary-list__value qa-upw-acceptable">{{ unpaidWork.acceptableAbsences or '0' }}</dd>
                                     </div>
                                     <div class="govuk-summary-list__row">
                                         <dt class="govuk-summary-list__key">Failures to comply</dt>
-                                        <dd class="govuk-summary-list__value qa-upw-unacceptable">{{ currentOrder.sentence.unpaidWork.unacceptableAbsences or '0' }}</dd>
+                                        <dd class="govuk-summary-list__value qa-upw-unacceptable">{{ unpaidWork.unacceptableAbsences or '0' }}</dd>
                                     </div>
                                 </dl>
                             </div>
