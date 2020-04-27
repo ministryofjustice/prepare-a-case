@@ -187,7 +187,7 @@ jobs:
                --label "build.url=$CIRCLE_BUILD_URL" \
                --label "build.gitref=$CIRCLE_SHA1"
       - snyk/scan:
-          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-docker'
+          project: '${CIRCLE_PROJECT_REPONAME}-docker/${CIRCLE_BRANCH}'
           docker-image-name: 'mojdigitalstudio/prepare-a-case:$APP_VERSION'
           target-file: 'Dockerfile'
           monitor-on-build: << parameters.master >>
@@ -212,7 +212,7 @@ jobs:
     steps:
       - checkout
       - snyk/scan:
-          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app'
+          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}'
           monitor-on-build: << parameters.master >>
           <<: *snyk_options
 
@@ -223,7 +223,7 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - snyk/scan:
-          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-docker'
+          project: '${CIRCLE_PROJECT_REPONAME}-docker/${CIRCLE_BRANCH}'
           docker-image-name: 'mojdigitalstudio/prepare-a-case:latest'
           target-file: 'Dockerfile'
           monitor-on-build: true
