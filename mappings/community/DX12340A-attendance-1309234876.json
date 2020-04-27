@@ -752,7 +752,17 @@
             "description": "Employment"
           }
         }
-      ]
+      ],
+      "unpaidWork": {
+        "status": "Terminated",
+        "statusDate": "2018-01-23",
+        "minutesOffered": 0,
+        "minutesCompleted": 0,
+        "appointmentsToDate": 0,
+        "attended": 0,
+        "acceptableAbsences": 0,
+        "unacceptableAbsences": 0
+      }
     }
   }
 }
