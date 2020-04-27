@@ -74,6 +74,11 @@ orbs:
   mem: circleci/rememborb@0.0.1
   snyk: snyk/snyk@0.0.10
 
+_snyk_options: &snyk_options
+  organization: "digital-probation-services"
+  severity-threshold: "high" # note: this does not affect snyk 'monitor' commands
+  fail-on-issues: true
+
 jobs:
   build:
     executor: builder
@@ -182,12 +187,11 @@ jobs:
                --label "build.url=$CIRCLE_BUILD_URL" \
                --label "build.gitref=$CIRCLE_SHA1"
       - snyk/scan:
+          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-docker'
           docker-image-name: 'mojdigitalstudio/prepare-a-case:$APP_VERSION'
           target-file: 'Dockerfile'
-          additional-arguments: "--fail-on=all"
-          fail-on-issues: true
           monitor-on-build: << parameters.master >>
-          organization: 'digital-probation-services'
+          <<: *snyk_options
       - when:
           condition: << parameters.master >>
           steps:
@@ -208,11 +212,9 @@ jobs:
     steps:
       - checkout
       - snyk/scan:
-          additional-arguments: "--fail-on=all"
-          fail-on-issues: true
-          monitor-on-build: << parameters.master >>
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-app'
-          organization: 'digital-probation-services'
+          monitor-on-build: << parameters.master >>
+          <<: *snyk_options
 
   image_scan:
     executor: deployer
@@ -221,13 +223,11 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - snyk/scan:
+          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-docker'
           docker-image-name: 'mojdigitalstudio/prepare-a-case:latest'
           target-file: 'Dockerfile'
-          additional-arguments: "--fail-on=all"
-          fail-on-issues: true
           monitor-on-build: true
-          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}-container'
-          organization: 'digital-probation-services'
+          <<: *snyk_options
 
   deploy_dev:
     executor: deployer
