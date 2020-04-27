@@ -58,6 +58,10 @@ const currentDefendant = {
       address5: 'West Yorkshire',
       postcode: 'LS7 4JP',
       telephone: '01890 547 292'
+    },
+    preSentenceReportDetails: {
+      description: 'Pre-Sentence Report - Fast',
+      delivered: '28 Feb 2018'
     }
   },
   dev: {
@@ -104,6 +108,10 @@ const currentDefendant = {
       address5: '',
       postcode: '',
       telephone: ''
+    },
+    preSentenceReportDetails: {
+      description: '',
+      delivered: ''
     }
   }
 }
