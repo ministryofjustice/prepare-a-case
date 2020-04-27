@@ -752,7 +752,17 @@
             "description": "Employment"
           }
         }
-      ]
+      ],
+      "unpaidWork": {
+        "status": "Terminated",
+        "statusDate": "2020-04-01",
+        "offered": 32,
+        "completed": 30,
+        "appointmentsToDate": 0,
+        "attended": 0,
+        "acceptableAbsences": 0,
+        "unacceptableAbsences": 0
+      }
     }
   }
 }
