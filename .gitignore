@@ -5,6 +5,7 @@ dist-*.tgz
 .env
 .eslintcache
 .java-version
+yarn.lock
 yarn-error.log
 test-results/
 coverage/
