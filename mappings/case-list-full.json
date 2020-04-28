@@ -4129,6 +4129,4346 @@
             "line5": null
           },
           "defendantDob": "20-02-1967"
+        },
+        {
+          "caseId": 337471,
+          "caseNo": 894418049,
+          "courtCode": "SHF",
+          "courtRoom": 3,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Birmingham attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Dillon Giles.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Sheffield attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Marquez Wade.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at London assaulted Alvarado Mccall by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Solis Valenzuela by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Dymi, Sheffield, stole ROBOTS to the value of £987.00, belonging to Blankenship Williams.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Eva Gillespie",
+          "defendantAddress": {
+            "line1": 41,
+            "line2": "Gotham Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Edinburgh",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "06-01-1958"
+        },
+        {
+          "caseId": 554191,
+          "caseNo": 248015613,
+          "courtCode": "SHF",
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at London attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Lester Lee.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Codax, Preston, stole ROBOTS to the value of £987.00, belonging to Hopper Macias.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Bangor stole NINTENDO SWITCH to the value of 300.00, belonging to Estes Vinson.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Leeds attempted to steal MOTORCYCLE to the value of 750.00, belonging to Hale Curtis.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Ethel Gonzalez",
+          "defendantAddress": {
+            "line1": 14,
+            "line2": "Carlton Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Manchester",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "24-06-1994"
+        },
+        {
+          "caseId": 205195,
+          "caseNo": 5773936719,
+          "courtCode": "SHF",
+          "courtRoom": 1,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Furnitech, Preston, stole COMPUTER to the value of £987.00, belonging to Berg Poole.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Aberdeen assaulted Conner Bullock by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Zenolux, Newcastle, stole ROBOTS to the value of £987.00, belonging to Manning Swanson.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Preston assaulted David Marshall by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Harmoney, Newcastle, stole COMPUTER to the value of £987.00, belonging to Bauer Thompson.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Toni Blackburn",
+          "defendantAddress": {
+            "line1": 63,
+            "line2": "Hegeman Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Liverpool",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "15-09-1969"
+        },
+        {
+          "caseId": 735621,
+          "caseNo": 3616293691,
+          "courtCode": "SHF",
+          "courtRoom": 7,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Edinburgh stole LAPTOP to the value of 300.00, belonging to Harper Mercado.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Aberdeen assaulted Spears Montgomery by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Haley Cleveland",
+          "defendantAddress": {
+            "line1": 81,
+            "line2": "Porter Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "23-01-1978"
+        },
+        {
+          "caseId": 46106,
+          "caseNo": 2086016320,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Glasgow stole LAPTOP to the value of 300.00, belonging to Everett Evans.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Turnling, Cardiff, stole ROBOTS to the value of £987.00, belonging to Sosa Floyd.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Riggs Frederick by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Cardiff assaulted Calhoun Barber by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Abbott White",
+          "defendantAddress": {
+            "line1": 55,
+            "line2": "Heath Place",
+            "postcode": "ad21 5dr",
+            "line3": "Birmingham",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "15-12-1964"
+        },
+        {
+          "caseId": 209119,
+          "caseNo": 7356768590,
+          "courtCode": "SHF",
+          "courtRoom": 10,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Glasgow stole XBOX ONE to the value of 300.00, belonging to Wilkerson Albert.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Glasgow assaulted Whitley Hewitt by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal MOTORCYCLE to the value of 750.00, belonging to Romero Oliver.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Glasgow assaulted Tyler Hampton by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Newcastle stole LAPTOP to the value of 300.00, belonging to Decker Schmidt.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Diana Roman",
+          "defendantAddress": {
+            "line1": 35,
+            "line2": "Bedell Lane",
+            "postcode": "ad21 5dr",
+            "line3": "Aberdeen",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "16-08-1978"
+        },
+        {
+          "caseId": 537940,
+          "caseNo": 6676480059,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Bangor assaulted Gillespie Roth by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Housedown, Preston, stole LAPTOP to the value of £987.00, belonging to Griffin Stout.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Young Love",
+          "defendantAddress": {
+            "line1": 4,
+            "line2": "Bushwick Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Aberdeen",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "24-07-1959"
+        },
+        {
+          "caseId": 20979,
+          "caseNo": 6892123542,
+          "courtCode": "SHF",
+          "courtRoom": 5,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal WASHING MACHINE to the value of 750.00, belonging to Brady Owen.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at London stole LAPTOP to the value of 300.00, belonging to Coffey Middleton.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Sheffield attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Vaughan Eaton.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at London attempted to steal MOTORCYCLE to the value of 750.00, belonging to Solomon Potts.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Liverpool assaulted Robertson Pratt by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Florence Hatfield",
+          "defendantAddress": {
+            "line1": 32,
+            "line2": "Miller Place",
+            "postcode": "ad21 5dr",
+            "line3": "Edinburgh",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "06-03-1982"
+        },
+        {
+          "caseId": 263340,
+          "caseNo": 823639735,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Everest, Newcastle, stole ROBOTS to the value of £987.00, belonging to Fleming Wise.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Esther Mcintosh",
+          "defendantAddress": {
+            "line1": 63,
+            "line2": "Willow Street",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "14-09-1980"
+        },
+        {
+          "caseId": 244760,
+          "caseNo": 2874037481,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Manchester stole NINTENDO SWITCH to the value of 300.00, belonging to Whitehead Garner.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Sheffield assaulted Dixon Schneider by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Glasgow assaulted Mosley Dillon by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Nina Sanchez",
+          "defendantAddress": {
+            "line1": 76,
+            "line2": "Ferry Place",
+            "postcode": "ad21 5dr",
+            "line3": "Glasgow",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "31-01-1967"
+        },
+        {
+          "caseId": 647612,
+          "caseNo": 9238249718,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Leeds assaulted Campbell Collins by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Aberdeen assaulted Mayer Long by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Aberdeen stole NINTENDO SWITCH to the value of 300.00, belonging to Garner Tillman.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Knapp Holden",
+          "defendantAddress": {
+            "line1": 29,
+            "line2": "Hemlock Street",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "30-01-1957"
+        },
+        {
+          "caseId": 863358,
+          "caseNo": 5926623578,
+          "courtCode": "SHF",
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Manufact, Bangor, stole ARTWORK to the value of £987.00, belonging to Townsend Crane.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Liverpool assaulted Wong Mccoy by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Rush Miranda",
+          "defendantAddress": {
+            "line1": 71,
+            "line2": "Livonia Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "01-10-1991"
+        },
+        {
+          "caseId": 868994,
+          "caseNo": 174454816,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2010-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Liverpool assaulted Mcdowell Hurst by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Atomica, Aberdeen, stole ROBOTS to the value of £987.00, belonging to Hill Wolfe.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Bangor attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Freeman Owens.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Leeds assaulted Bruce Franks by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Netropic, Aberdeen, stole LAPTOP to the value of £987.00, belonging to Merritt Warner.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Andrews Lawrence",
+          "defendantAddress": {
+            "line1": 47,
+            "line2": "Polar Street",
+            "postcode": "ad21 5dr",
+            "line3": "Sheffield",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "22-02-1974"
+        },
+        {
+          "caseId": 249721,
+          "caseNo": 3775957192,
+          "courtCode": "SHF",
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Glasgow stole XBOX ONE to the value of 300.00, belonging to Harding Michael.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Newcastle attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Bailey Vincent.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Sullivan Lynch",
+          "defendantAddress": {
+            "line1": 4,
+            "line2": "Ocean Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Sheffield",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "13-03-1953"
+        },
+        {
+          "caseId": 246059,
+          "caseNo": 9228923691,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2011-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Preston stole XBOX ONE to the value of 300.00, belonging to Pennington Strickland.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Aberdeen assaulted Case Crosby by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Preston attempted to steal WASHING MACHINE to the value of 750.00, belonging to Golden Abbott.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at London stole XBOX ONE to the value of 300.00, belonging to Hatfield Steele.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Juanita Lott",
+          "defendantAddress": {
+            "line1": 27,
+            "line2": "Miller Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "24-01-1974"
+        },
+        {
+          "caseId": 272723,
+          "caseNo": 2452179871,
+          "courtCode": "SHF",
+          "courtRoom": 10,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal MOTORCYCLE to the value of 750.00, belonging to Leonard Harper.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Preston attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Barker Martinez.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Glasgow assaulted Munoz Sims by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Cardiff stole LAPTOP to the value of 300.00, belonging to Wilson Wilkerson.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Sheffield assaulted Todd Kelly by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Crosby Baird",
+          "defendantAddress": {
+            "line1": 103,
+            "line2": "Bijou Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Preston",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "25-09-1984"
+        },
+        {
+          "caseId": 841373,
+          "caseNo": 6866541491,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Koffee, London, stole COMPUTER to the value of £987.00, belonging to Mullins Contreras.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Shaw Hebert",
+          "defendantAddress": {
+            "line1": 24,
+            "line2": "Duryea Place",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "02-01-1960"
+        },
+        {
+          "caseId": 538181,
+          "caseNo": 51845489,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Newcastle assaulted Sandoval Flynn by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Leeds attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Riddle Nunez.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Uneeq, Newcastle, stole COMPUTER to the value of £987.00, belonging to Schneider Peck.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Chelsea Olson",
+          "defendantAddress": {
+            "line1": 84,
+            "line2": "Ashland Place",
+            "postcode": "ad21 5dr",
+            "line3": "Glasgow",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "25-03-1963"
+        },
+        {
+          "caseId": 733543,
+          "caseNo": 9635496213,
+          "courtCode": "SHF",
+          "courtRoom": 1,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2013-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Cardiff stole PLAYSTATION 4 to the value of 300.00, belonging to Summers Snyder.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Liverpool stole PLAYSTATION 4 to the value of 300.00, belonging to Sharp Simon.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Nell Salazar",
+          "defendantAddress": {
+            "line1": 8,
+            "line2": "Monroe Street",
+            "postcode": "ad21 5dr",
+            "line3": "London",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "28-06-1957"
+        },
+        {
+          "caseId": 970081,
+          "caseNo": 9108457541,
+          "courtCode": "SHF",
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Manchester attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Walker James.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Zoid, Sheffield, stole ARTWORK to the value of £987.00, belonging to Velasquez Webster.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Bangor attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Baird Allen.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Liverpool stole PLAYSTATION 4 to the value of 300.00, belonging to Bowen Mckenzie.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Constance Bradford",
+          "defendantAddress": {
+            "line1": 7,
+            "line2": "Clifford Place",
+            "postcode": "ad21 5dr",
+            "line3": "Preston",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "22-05-1997"
+        },
+        {
+          "caseId": 866174,
+          "caseNo": 1446524656,
+          "courtCode": "SHF",
+          "courtRoom": 7,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Cardiff assaulted Dickson Gibbs by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Sheffield attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Kinney Henson.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Cardiff assaulted Hughes Bender by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Pacheco Burgess",
+          "defendantAddress": {
+            "line1": 100,
+            "line2": "Grattan Street",
+            "postcode": "ad21 5dr",
+            "line3": "Preston",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "14-04-1985"
+        },
+        {
+          "caseId": 947812,
+          "caseNo": 4058290552,
+          "courtCode": "SHF",
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Manchester attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Joyce Mills.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Craig Hahn",
+          "defendantAddress": {
+            "line1": 88,
+            "line2": "Kane Street",
+            "postcode": "ad21 5dr",
+            "line3": "Edinburgh",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "08-01-2000"
+        },
+        {
+          "caseId": 4351,
+          "caseNo": 3614304886,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Newcastle attempted to steal WASHING MACHINE to the value of 750.00, belonging to Medina Frazier.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Bangor assaulted Rice Mcfadden by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal WASHING MACHINE to the value of 750.00, belonging to Bernard Francis.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Fox Klein.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Hartman Bates by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Livingston Sherman",
+          "defendantAddress": {
+            "line1": 26,
+            "line2": "Hooper Street",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "26-12-1957"
+        },
+        {
+          "caseId": 889881,
+          "caseNo": 720997729,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2018-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Newcastle attempted to steal WASHING MACHINE to the value of 750.00, belonging to Foley Donaldson.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Birmingham assaulted Hubbard Collier by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Bangor stole PLAYSTATION 4 to the value of 300.00, belonging to Jacobs Hogan.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Elinor Morton",
+          "defendantAddress": {
+            "line1": 61,
+            "line2": "Prescott Place",
+            "postcode": "ad21 5dr",
+            "line3": "Sheffield",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "07-09-1988"
+        },
+        {
+          "caseId": 834654,
+          "caseNo": 5417756421,
+          "courtCode": "SHF",
+          "courtRoom": 1,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Glasgow assaulted Bennett Robertson by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Farley Saunders by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Sheffield stole LAPTOP to the value of 300.00, belonging to Cardenas Durham.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Cardiff stole XBOX ONE to the value of 300.00, belonging to Fisher Lewis.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Lydia Reynolds",
+          "defendantAddress": {
+            "line1": 57,
+            "line2": "Anthony Street",
+            "postcode": "ad21 5dr",
+            "line3": "Liverpool",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "05-06-1965"
+        },
+        {
+          "caseId": 863392,
+          "caseNo": 3581791976,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Zillacom, Aberdeen, stole LAPTOP to the value of £987.00, belonging to Mcbride Martin.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at London attempted to steal MOTORCYCLE to the value of 750.00, belonging to Mcpherson Jordan.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal WASHING MACHINE to the value of 750.00, belonging to Hurley Ward.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Hairport, London, stole ARTWORK to the value of £987.00, belonging to Cotton Campbell.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Kim Forbes",
+          "defendantAddress": {
+            "line1": 46,
+            "line2": "Columbia Place",
+            "postcode": "ad21 5dr",
+            "line3": "Edinburgh",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "16-05-1999"
+        },
+        {
+          "caseId": 217987,
+          "caseNo": 7485579831,
+          "courtCode": "SHF",
+          "courtRoom": 7,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at London assaulted Flynn Woodard by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at London stole XBOX ONE to the value of 300.00, belonging to Padilla Harmon.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Ruth Mccullough",
+          "defendantAddress": {
+            "line1": 58,
+            "line2": "Hendrickson Street",
+            "postcode": "ad21 5dr",
+            "line3": "Preston",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "09-11-1964"
+        },
+        {
+          "caseId": 786973,
+          "caseNo": 9039641907,
+          "courtCode": "SHF",
+          "courtRoom": 7,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Geekology, Birmingham, stole COMPUTER to the value of £987.00, belonging to Blackwell Lowery.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Mariana Parks",
+          "defendantAddress": {
+            "line1": 94,
+            "line2": "Chester Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "30-08-1960"
+        },
+        {
+          "caseId": 215047,
+          "caseNo": 8224051886,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Leeds stole LAPTOP to the value of 300.00, belonging to Ball Daniels.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Bangor attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Avery Hines.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Manchester stole LAPTOP to the value of 300.00, belonging to Vega Jenkins.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Valdez Maddox",
+          "defendantAddress": {
+            "line1": 2,
+            "line2": "Alton Place",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "23-11-1974"
+        },
+        {
+          "caseId": 324683,
+          "caseNo": 9518859484,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Burns Craig.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Cardiff assaulted Martin Gill by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Glasgow stole NINTENDO SWITCH to the value of 300.00, belonging to Richards Castillo.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Liverpool stole PLAYSTATION 4 to the value of 300.00, belonging to Dorsey Mueller.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Orbiflex, Bangor, stole LAPTOP to the value of £987.00, belonging to Bass Beard.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Kemp Ortega",
+          "defendantAddress": {
+            "line1": 70,
+            "line2": "Stryker Court",
+            "postcode": "ad21 5dr",
+            "line3": "Birmingham",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "13-02-1963"
+        },
+        {
+          "caseId": 968203,
+          "caseNo": 8475694471,
+          "courtCode": "SHF",
+          "courtRoom": 1,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Aberdeen stole PLAYSTATION 4 to the value of 300.00, belonging to Allen Molina.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Kirsten Greene",
+          "defendantAddress": {
+            "line1": 79,
+            "line2": "Woodpoint Road",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "08-01-1991"
+        },
+        {
+          "caseId": 316557,
+          "caseNo": 5136401644,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Liverpool stole NINTENDO SWITCH to the value of 300.00, belonging to Cain Boone.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at London attempted to steal MOTORCYCLE to the value of 750.00, belonging to Wooten Mclaughlin.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Kelley Richmond",
+          "defendantAddress": {
+            "line1": 41,
+            "line2": "Gates Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "London",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "04-05-1957"
+        },
+        {
+          "caseId": 275651,
+          "caseNo": 7639138598,
+          "courtCode": "SHF",
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Leeds stole NINTENDO SWITCH to the value of 300.00, belonging to Conrad Chambers.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Newcastle stole XBOX ONE to the value of 300.00, belonging to Pratt Ramos.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Jimmie Mays",
+          "defendantAddress": {
+            "line1": 82,
+            "line2": "Fayette Street",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "13-03-1962"
+        },
+        {
+          "caseId": 199520,
+          "caseNo": 3037988588,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Viagrand, Manchester, stole ARTWORK to the value of £987.00, belonging to Jenkins Wood.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Dyer Pugh",
+          "defendantAddress": {
+            "line1": 53,
+            "line2": "Moffat Street",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "21-12-1958"
+        },
+        {
+          "caseId": 211164,
+          "caseNo": 4772528592,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2011-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Preston stole LAPTOP to the value of 300.00, belonging to Santiago Hale.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Perry Galloway by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Louise Randall",
+          "defendantAddress": {
+            "line1": 89,
+            "line2": "Abbey Court",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "16-10-1994"
+        },
+        {
+          "caseId": 909400,
+          "caseNo": 9785597881,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Ramirez Curry.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Bangor assaulted Wiggins Nicholson by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Margie Carey",
+          "defendantAddress": {
+            "line1": 88,
+            "line2": "Holmes Lane",
+            "postcode": "ad21 5dr",
+            "line3": "Aberdeen",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "26-03-1960"
+        },
+        {
+          "caseId": 211120,
+          "caseNo": 1652889365,
+          "courtCode": "SHF",
+          "courtRoom": 7,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Leeds stole XBOX ONE to the value of 300.00, belonging to Grimes Berry.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Cardiff assaulted England Hubbard by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Vera Pena",
+          "defendantAddress": {
+            "line1": 41,
+            "line2": "Eastern Parkway",
+            "postcode": "ad21 5dr",
+            "line3": "Cardiff",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "26-04-1966"
+        },
+        {
+          "caseId": 734052,
+          "caseNo": 9351552182,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Aberdeen stole LAPTOP to the value of 300.00, belonging to Woods Humphrey.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Junipoor, Bangor, stole LAPTOP to the value of £987.00, belonging to Melendez Rosales.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Knox Rice",
+          "defendantAddress": {
+            "line1": 99,
+            "line2": "Kosciusko Street",
+            "postcode": "ad21 5dr",
+            "line3": "Manchester",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "16-06-1960"
+        },
+        {
+          "caseId": 744140,
+          "caseNo": 9184573478,
+          "courtCode": "SHF",
+          "courtRoom": 5,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Crustatia, Sheffield, stole LAPTOP to the value of £987.00, belonging to Lane Mcclain.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Edinburgh attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Hodge Newton.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Norton Kennedy",
+          "defendantAddress": {
+            "line1": 76,
+            "line2": "Milford Street",
+            "postcode": "ad21 5dr",
+            "line3": "Glasgow",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "18-11-1954"
+        },
+        {
+          "caseId": 87246,
+          "caseNo": 5036302000,
+          "courtCode": "SHF",
+          "courtRoom": 7,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Emtrac, Cardiff, stole LAPTOP to the value of £987.00, belonging to Hancock Riley.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Preston stole LAPTOP to the value of 300.00, belonging to Walter Potter.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Liverpool assaulted Miles Estrada by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Edinburgh stole LAPTOP to the value of 300.00, belonging to Rivas Hobbs.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Vinch, Glasgow, stole COMPUTER to the value of £987.00, belonging to Kramer Rocha.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Haley Hardin",
+          "defendantAddress": {
+            "line1": 39,
+            "line2": "Colonial Court",
+            "postcode": "ad21 5dr",
+            "line3": "Preston",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "26-04-1989"
+        },
+        {
+          "caseId": 207125,
+          "caseNo": 5630822864,
+          "courtCode": "SHF",
+          "courtRoom": 3,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Cardiff assaulted Lloyd Christian by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Boone Brady",
+          "defendantAddress": {
+            "line1": 11,
+            "line2": "Greene Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Birmingham",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "30-04-1989"
+        },
+        {
+          "caseId": 520997,
+          "caseNo": 404614546,
+          "courtCode": "SHF",
+          "courtRoom": 1,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Newcastle assaulted Sawyer Reed by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Sophie Salas",
+          "defendantAddress": {
+            "line1": 38,
+            "line2": "Raleigh Place",
+            "postcode": "ad21 5dr",
+            "line3": "Aberdeen",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "10-07-1972"
+        },
+        {
+          "caseId": 152512,
+          "caseNo": 3607076442,
+          "courtCode": "SHF",
+          "courtRoom": 7,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Accruex, Liverpool, stole COMPUTER to the value of £987.00, belonging to Petty Meyers.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Digigene, Aberdeen, stole ROBOTS to the value of £987.00, belonging to Chase Barron.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Preston stole LAPTOP to the value of 300.00, belonging to Mills Jarvis.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Obrien Newman.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Fowler Lynn",
+          "defendantAddress": {
+            "line1": 26,
+            "line2": "Montague Terrace",
+            "postcode": "ad21 5dr",
+            "line3": "Liverpool",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "11-09-1994"
+        },
+        {
+          "caseId": 17490,
+          "caseNo": 7001965716,
+          "courtCode": "SHF",
+          "courtRoom": 3,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2018-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Aberdeen assaulted Morrison Johnston by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Preston attempted to steal WASHING MACHINE to the value of 750.00, belonging to Reeves Foley.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Serrano Mathews by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Adams Nielsen by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Reva Pennington",
+          "defendantAddress": {
+            "line1": 44,
+            "line2": "Clark Street",
+            "postcode": "ad21 5dr",
+            "line3": "Glasgow",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "12-07-1965"
+        },
+        {
+          "caseId": 613939,
+          "caseNo": 8578055503,
+          "courtCode": "SHF",
+          "courtRoom": 10,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Preston assaulted Fuentes Trujillo by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Edinburgh attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Floyd Alvarado.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Horn Singleton.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Pate Richard",
+          "defendantAddress": {
+            "line1": 23,
+            "line2": "Frost Street",
+            "postcode": "ad21 5dr",
+            "line3": "Cardiff",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "15-01-1970"
+        },
+        {
+          "caseId": 306868,
+          "caseNo": 1410957783,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Birmingham assaulted Rhodes Barrett by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Bangor attempted to steal MOTORCYCLE to the value of 750.00, belonging to Oneill Gonzales.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Quility, Leeds, stole ROBOTS to the value of £987.00, belonging to Oliver Dickson.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Pivitol, Sheffield, stole ROBOTS to the value of £987.00, belonging to Downs Rosario.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Harrison Knight",
+          "defendantAddress": {
+            "line1": 88,
+            "line2": "Fleet Place",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "12-09-1989"
+        },
+        {
+          "caseId": 568225,
+          "caseNo": 2053630753,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Birmingham attempted to steal WASHING MACHINE to the value of 750.00, belonging to Pittman Wyatt.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Exoswitch, Sheffield, stole LAPTOP to the value of £987.00, belonging to Henson Morales.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Houston Cameron by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Birmingham stole PLAYSTATION 4 to the value of 300.00, belonging to Logan Mcgowan.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Simpson Solis",
+          "defendantAddress": {
+            "line1": 26,
+            "line2": "Alice Court",
+            "postcode": "ad21 5dr",
+            "line3": "Birmingham",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "16-05-1981"
+        },
+        {
+          "caseId": 448964,
+          "caseNo": 9791442914,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Birmingham stole XBOX ONE to the value of 300.00, belonging to Larson Lloyd.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Grainspot, Leeds, stole ROBOTS to the value of £987.00, belonging to Carey Powell.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Leeds stole LAPTOP to the value of 300.00, belonging to Mercer Pierce.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Acumentor, Sheffield, stole ARTWORK to the value of £987.00, belonging to Peters Koch.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Proflex, Edinburgh, stole COMPUTER to the value of £987.00, belonging to Mcmillan Nichols.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Bradley Fulton",
+          "defendantAddress": {
+            "line1": 60,
+            "line2": "Lefferts Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Sheffield",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "31-01-1994"
+        },
+        {
+          "caseId": 931207,
+          "caseNo": 660575640,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Glasgow assaulted Luna Huff by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at London stole NINTENDO SWITCH to the value of 300.00, belonging to Vang Slater.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Patel French by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Comdom, London, stole ARTWORK to the value of £987.00, belonging to Owen Russell.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Leeds attempted to steal WASHING MACHINE to the value of 750.00, belonging to Nolan Shaffer.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Ingrid Mclean",
+          "defendantAddress": {
+            "line1": 49,
+            "line2": "Stewart Street",
+            "postcode": "ad21 5dr",
+            "line3": "Liverpool",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "03-06-1958"
+        },
+        {
+          "caseId": 629904,
+          "caseNo": 4061799445,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Circum, Birmingham, stole LAPTOP to the value of £987.00, belonging to Velazquez Cash.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Andershun, Aberdeen, stole COMPUTER to the value of £987.00, belonging to Roach Donovan.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Rollins Moody by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Liverpool assaulted Davidson Rivas by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Adrian Lawson",
+          "defendantAddress": {
+            "line1": 39,
+            "line2": "Brigham Street",
+            "postcode": "ad21 5dr",
+            "line3": "Preston",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "06-09-1973"
+        },
+        {
+          "caseId": 716046,
+          "caseNo": 8615926616,
+          "courtCode": "SHF",
+          "courtRoom": 5,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Quilch, Liverpool, stole ROBOTS to the value of £987.00, belonging to Meyers Scott.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Bangor assaulted Terry Snider by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Newcastle stole PLAYSTATION 4 to the value of 300.00, belonging to Ramos Horne.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Oneal Perkins.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Hobbs Jimenez",
+          "defendantAddress": {
+            "line1": 94,
+            "line2": "Harway Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Liverpool",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "11-03-1956"
+        },
+        {
+          "caseId": 482121,
+          "caseNo": 5315462236,
+          "courtCode": "SHF",
+          "courtRoom": 3,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Edinburgh stole PLAYSTATION 4 to the value of 300.00, belonging to Taylor Carver.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Rosales Sweet by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Dionne Hutchinson",
+          "defendantAddress": {
+            "line1": 53,
+            "line2": "Pershing Loop",
+            "postcode": "ad21 5dr",
+            "line3": "London",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "18-05-1955"
+        },
+        {
+          "caseId": 250888,
+          "caseNo": 6696474013,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Aberdeen assaulted Finch Duffy by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Manchester attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Vance Hartman.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Edinburgh attempted to steal WASHING MACHINE to the value of 750.00, belonging to Burks Acosta.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Birmingham stole XBOX ONE to the value of 300.00, belonging to Mccall Deleon.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Sutton Cooke",
+          "defendantAddress": {
+            "line1": 69,
+            "line2": "Gerry Street",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "06-07-1963"
+        },
+        {
+          "caseId": 840232,
+          "caseNo": 1890168958,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at London stole LAPTOP to the value of 300.00, belonging to Mann Garrison.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Edinburgh attempted to steal WASHING MACHINE to the value of 750.00, belonging to Cannon Sanford.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Gibson Hernandez by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Karla Reese",
+          "defendantAddress": {
+            "line1": 82,
+            "line2": "Celeste Court",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "10-05-1970"
+        },
+        {
+          "caseId": 303342,
+          "caseNo": 2483476785,
+          "courtCode": "SHF",
+          "courtRoom": 1,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Digial, Liverpool, stole ARTWORK to the value of £987.00, belonging to Willis Knapp.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Rebekah Morse",
+          "defendantAddress": {
+            "line1": 64,
+            "line2": "Herzl Street",
+            "postcode": "ad21 5dr",
+            "line3": "Manchester",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "04-06-1970"
+        },
+        {
+          "caseId": 558216,
+          "caseNo": 8372630617,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Manchester attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Holland Gallegos.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Golistic, Sheffield, stole COMPUTER to the value of £987.00, belonging to Glass Shelton.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Hardin Noel by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Cardiff stole NINTENDO SWITCH to the value of 300.00, belonging to Hunter Jefferson.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Bangor attempted to steal MOTORCYCLE to the value of 750.00, belonging to Fitzgerald Mullins.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Duke Lester",
+          "defendantAddress": {
+            "line1": 75,
+            "line2": "Lawrence Street",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "21-10-1986"
+        },
+        {
+          "caseId": 727489,
+          "caseNo": 5411430220,
+          "courtCode": "SHF",
+          "courtRoom": 1,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Leeds assaulted Wilcox Alford by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Leeds assaulted Curry Hopper by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Sheffield assaulted Owens Riddle by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Concetta Stein",
+          "defendantAddress": {
+            "line1": 38,
+            "line2": "Louis Place",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "06-05-1959"
+        },
+        {
+          "caseId": 438647,
+          "caseNo": 6015685456,
+          "courtCode": "SHF",
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Barr Gilliam by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at London assaulted Cooley Henry by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Aeora, Newcastle, stole ROBOTS to the value of £987.00, belonging to Odonnell Boyer.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Edinburgh stole LAPTOP to the value of 300.00, belonging to Gregory Cardenas.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Cosmosis, Bangor, stole COMPUTER to the value of £987.00, belonging to Garza Oneal.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Banks Osborne",
+          "defendantAddress": {
+            "line1": 62,
+            "line2": "Manor Court",
+            "postcode": "ad21 5dr",
+            "line3": "Preston",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "01-07-1993"
+        },
+        {
+          "caseId": 214982,
+          "caseNo": 7257655358,
+          "courtCode": "SHF",
+          "courtRoom": 10,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Cemention, Cardiff, stole ROBOTS to the value of £987.00, belonging to Roth Aguirre.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Bovis, Liverpool, stole COMPUTER to the value of £987.00, belonging to Shepard Barnes.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Preston stole NINTENDO SWITCH to the value of 300.00, belonging to Bush Spence.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at London attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Moon Colon.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Rene Skinner",
+          "defendantAddress": {
+            "line1": 9,
+            "line2": "Seeley Street",
+            "postcode": "ad21 5dr",
+            "line3": "Preston",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "09-04-1954"
+        },
+        {
+          "caseId": 781692,
+          "caseNo": 7466729913,
+          "courtCode": "SHF",
+          "courtRoom": 7,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Newcastle stole LAPTOP to the value of 300.00, belonging to Hodges Barton.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Birmingham assaulted Odom Morrow by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Dogspa, Glasgow, stole ARTWORK to the value of £987.00, belonging to Moody Rodriquez.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Preston assaulted Pena Oneil by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Good Weiss",
+          "defendantAddress": {
+            "line1": 79,
+            "line2": "Bulwer Place",
+            "postcode": "ad21 5dr",
+            "line3": "Manchester",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "02-10-1953"
+        },
+        {
+          "caseId": 923052,
+          "caseNo": 6303737650,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Protodyne, London, stole ROBOTS to the value of £987.00, belonging to Kelly Houston.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Rodriguez Holcomb",
+          "defendantAddress": {
+            "line1": 32,
+            "line2": "Oakland Place",
+            "postcode": "ad21 5dr",
+            "line3": "Sheffield",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "20-02-1998"
+        },
+        {
+          "caseId": 749431,
+          "caseNo": 2219535816,
+          "courtCode": "SHF",
+          "courtRoom": 10,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal MOTORCYCLE to the value of 750.00, belonging to Nguyen Miles.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Newcastle assaulted Clemons Benton by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Jolene Schwartz",
+          "defendantAddress": {
+            "line1": 15,
+            "line2": "Montgomery Place",
+            "postcode": "ad21 5dr",
+            "line3": "Glasgow",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "27-12-1986"
+        },
+        {
+          "caseId": 858824,
+          "caseNo": 1283242691,
+          "courtCode": "SHF",
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Cardiff assaulted Leon Glover by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Newcastle stole LAPTOP to the value of 300.00, belonging to Wagner Foreman.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Cora Dotson",
+          "defendantAddress": {
+            "line1": 104,
+            "line2": "Amber Street",
+            "postcode": "ad21 5dr",
+            "line3": "Cardiff",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "26-01-1974"
+        },
+        {
+          "caseId": 285429,
+          "caseNo": 2053136038,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Comstruct, Manchester, stole ROBOTS to the value of £987.00, belonging to Powell May.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Hull Raymond.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Preston assaulted Valencia Wells by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Hoover Flowers",
+          "defendantAddress": {
+            "line1": 18,
+            "line2": "Grand Street",
+            "postcode": "ad21 5dr",
+            "line3": "Manchester",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "16-08-1993"
+        },
+        {
+          "caseId": 479150,
+          "caseNo": 2695572830,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Preston assaulted Wilder Cabrera by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Preston stole XBOX ONE to the value of 300.00, belonging to Bray Vasquez.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Glasgow assaulted Brock Davis by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Barry Oconnor by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Cherry Sheppard",
+          "defendantAddress": {
+            "line1": 31,
+            "line2": "Drew Street",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "31-05-1984"
+        },
+        {
+          "caseId": 575009,
+          "caseNo": 3598762079,
+          "courtCode": "SHF",
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Edinburgh stole XBOX ONE to the value of 300.00, belonging to Noble Harrington.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Minerva Velez",
+          "defendantAddress": {
+            "line1": 15,
+            "line2": "Clara Street",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "02-04-2000"
+        },
+        {
+          "caseId": 983294,
+          "caseNo": 1262645589,
+          "courtCode": "SHF",
+          "courtRoom": 5,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at London attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Humphrey Hart.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Weber Jacobs.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Middleton Weber.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Black Lyons",
+          "defendantAddress": {
+            "line1": 15,
+            "line2": "Putnam Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "05-11-1971"
+        },
+        {
+          "caseId": 571823,
+          "caseNo": 8455529421,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Preston assaulted Deleon Wooten by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Poole Fuller by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Sheffield stole XBOX ONE to the value of 300.00, belonging to Stephenson Fischer.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Manchester attempted to steal MOTORCYCLE to the value of 750.00, belonging to Gallagher Bartlett.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Nielsen Woods",
+          "defendantAddress": {
+            "line1": 26,
+            "line2": "Ludlam Place",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "11-09-1970"
+        },
+        {
+          "caseId": 221822,
+          "caseNo": 9805172534,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Birmingham assaulted Jacobson Hicks by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Vendblend, Manchester, stole ROBOTS to the value of £987.00, belonging to Richmond Ware.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Pearlesex, Glasgow, stole ARTWORK to the value of £987.00, belonging to Rowe Mcgee.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Portico, Birmingham, stole ROBOTS to the value of £987.00, belonging to Rich Jennings.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Spacewax, London, stole COMPUTER to the value of £987.00, belonging to Maldonado Watkins.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Alyssa Ramsey",
+          "defendantAddress": {
+            "line1": 93,
+            "line2": "Lacon Court",
+            "postcode": "ad21 5dr",
+            "line3": "Aberdeen",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "16-08-1962"
+        },
+        {
+          "caseId": 18100,
+          "caseNo": 2631421755,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Leeds stole XBOX ONE to the value of 300.00, belonging to Mcgee Mathis.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Manchester attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Ellison Frost.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Bangor attempted to steal MOTORCYCLE to the value of 750.00, belonging to Ashley Pickett.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Aberdeen stole XBOX ONE to the value of 300.00, belonging to Martinez Langley.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Claudette Dunn",
+          "defendantAddress": {
+            "line1": 54,
+            "line2": "Paerdegat Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "10-04-1962"
+        },
+        {
+          "caseId": 62737,
+          "caseNo": 6778977868,
+          "courtCode": "SHF",
+          "courtRoom": 5,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Preston assaulted Franklin Cohen by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Hayden Ayers.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Boilicon, Manchester, stole ROBOTS to the value of £987.00, belonging to Mcleod Britt.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at London stole LAPTOP to the value of 300.00, belonging to Hensley Harrison.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Leeds attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Mcdonald Cooley.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Maricela Trevino",
+          "defendantAddress": {
+            "line1": 52,
+            "line2": "Jardine Place",
+            "postcode": "ad21 5dr",
+            "line3": "Liverpool",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "08-02-1988"
+        },
+        {
+          "caseId": 308056,
+          "caseNo": 5376812272,
+          "courtCode": "SHF",
+          "courtRoom": 5,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Birmingham attempted to steal WASHING MACHINE to the value of 750.00, belonging to Gonzales Carroll.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Burnett Weeks",
+          "defendantAddress": {
+            "line1": 69,
+            "line2": "Stillwell Place",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "24-04-1994"
+        },
+        {
+          "caseId": 808062,
+          "caseNo": 9150613561,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Aberdeen attempted to steal WASHING MACHINE to the value of 750.00, belonging to Giles Hayes.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Nelson Wilkins",
+          "defendantAddress": {
+            "line1": 46,
+            "line2": "Hampton Place",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "23-06-1956"
+        },
+        {
+          "caseId": 200698,
+          "caseNo": 8748432110,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Glasgow assaulted Mendoza Everett by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Eargo, Aberdeen, stole LAPTOP to the value of £987.00, belonging to Long Patel.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal WASHING MACHINE to the value of 750.00, belonging to Jefferson Osborn.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Kathrine Hodge",
+          "defendantAddress": {
+            "line1": 62,
+            "line2": "Cypress Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Birmingham",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "02-11-1959"
+        },
+        {
+          "caseId": 422725,
+          "caseNo": 152703214,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Cinesanct, Cardiff, stole COMPUTER to the value of £987.00, belonging to Patrick Rose.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Geekular, London, stole LAPTOP to the value of £987.00, belonging to Christian Sweeney.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Moreganic, London, stole ARTWORK to the value of £987.00, belonging to Sloan Reid.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Jensen Rasmussen",
+          "defendantAddress": {
+            "line1": 70,
+            "line2": "Friel Place",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "13-01-1974"
+        },
+        {
+          "caseId": 777143,
+          "caseNo": 6163846426,
+          "courtCode": "SHF",
+          "courtRoom": 1,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Newcastle assaulted Snow Ellis by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Birmingham attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Browning Key.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Newcastle attempted to steal WASHING MACHINE to the value of 750.00, belonging to Hooper Wheeler.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Sheffield stole LAPTOP to the value of 300.00, belonging to Dean West.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Hays Matthews by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Robles Ryan",
+          "defendantAddress": {
+            "line1": 80,
+            "line2": "Poplar Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Newcastle",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "15-11-1995"
+        },
+        {
+          "caseId": 936693,
+          "caseNo": 6625816084,
+          "courtCode": "SHF",
+          "courtRoom": 3,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Guy Cain.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Endicil, London, stole ROBOTS to the value of £987.00, belonging to Silva Pearson.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Preston assaulted Hebert Barrera by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Bangor attempted to steal GAMES CONSOLES to the value of 750.00, belonging to May Hurley.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Bobbie Fisher",
+          "defendantAddress": {
+            "line1": 27,
+            "line2": "Tompkins Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Cardiff",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "04-01-1984"
+        },
+        {
+          "caseId": 83840,
+          "caseNo": 3313870321,
+          "courtCode": "SHF",
+          "courtRoom": 5,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2010-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Sulfax, London, stole ARTWORK to the value of £987.00, belonging to Hart Dean.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Birmingham assaulted Shaffer Farmer by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Quonk, Sheffield, stole ROBOTS to the value of £987.00, belonging to Shelton Hayden.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Luisa Ball",
+          "defendantAddress": {
+            "line1": 54,
+            "line2": "Kermit Place",
+            "postcode": "ad21 5dr",
+            "line3": "Manchester",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "27-02-1970"
+        },
+        {
+          "caseId": 977543,
+          "caseNo": 2583513692,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Honotron, Preston, stole ARTWORK to the value of £987.00, belonging to Acevedo Malone.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Techtrix, Edinburgh, stole ARTWORK to the value of £987.00, belonging to Cummings Kinney.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Rocha Kaufman",
+          "defendantAddress": {
+            "line1": 92,
+            "line2": "Losee Terrace",
+            "postcode": "ad21 5dr",
+            "line3": "Sheffield",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "17-05-1992"
+        },
+        {
+          "caseId": 339590,
+          "caseNo": 3312591110,
+          "courtCode": "SHF",
+          "courtRoom": 5,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Marvane, Preston, stole ROBOTS to the value of £987.00, belonging to Weeks Young.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Liverpool stole LAPTOP to the value of 300.00, belonging to Chan George.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Alison Robinson",
+          "defendantAddress": {
+            "line1": 25,
+            "line2": "Engert Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "14-10-1957"
+        },
+        {
+          "caseId": 948843,
+          "caseNo": 9172825906,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Cardiff stole PLAYSTATION 4 to the value of 300.00, belonging to Williams Gray.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Brandi Conway",
+          "defendantAddress": {
+            "line1": 40,
+            "line2": "Gaylord Drive",
+            "postcode": "ad21 5dr",
+            "line3": "Sheffield",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "09-08-1955"
+        },
+        {
+          "caseId": 810096,
+          "caseNo": 1936178738,
+          "courtCode": "SHF",
+          "courtRoom": 5,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Assistix, Birmingham, stole LAPTOP to the value of £987.00, belonging to Hall Burris.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Barron Mcmahon",
+          "defendantAddress": {
+            "line1": 76,
+            "line2": "Newport Street",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "19-02-1958"
+        },
+        {
+          "caseId": 160167,
+          "caseNo": 1979298466,
+          "courtCode": "SHF",
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Wilkins Vega.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Uplinx, Birmingham, stole ARTWORK to the value of £987.00, belonging to Pollard Figueroa.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Sheree Gutierrez",
+          "defendantAddress": {
+            "line1": 93,
+            "line2": "Eagle Street",
+            "postcode": "ad21 5dr",
+            "line3": "Manchester",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "25-07-1980"
+        },
+        {
+          "caseId": 667089,
+          "caseNo": 9777221542,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2010-01-12",
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Birmingham stole LAPTOP to the value of 300.00, belonging to Forbes Cherry.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Manchester assaulted Harris Sykes by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Kristin Lindsey",
+          "defendantAddress": {
+            "line1": 82,
+            "line2": "Mill Lane",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "05-12-2000"
+        },
+        {
+          "caseId": 602801,
+          "caseNo": 5339345737,
+          "courtCode": "SHF",
+          "courtRoom": 10,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Insuresys, Preston, stole COMPUTER to the value of £987.00, belonging to House Kent.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Branch Decker.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Manchester stole XBOX ONE to the value of 300.00, belonging to Sargent Cervantes.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Newcastle attempted to steal WASHING MACHINE to the value of 750.00, belonging to Navarro Hoffman.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Vurbo, Cardiff, stole ARTWORK to the value of £987.00, belonging to Melton Bolton.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Cook Duran",
+          "defendantAddress": {
+            "line1": 56,
+            "line2": "Dooley Street",
+            "postcode": "ad21 5dr",
+            "line3": "Edinburgh",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "18-11-1996"
+        },
+        {
+          "caseId": 373600,
+          "caseNo": 9875540114,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Bangor stole LAPTOP to the value of 300.00, belonging to Ortiz Williamson.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal WASHING MACHINE to the value of 750.00, belonging to Hunt Stokes.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Ayers Lindsay",
+          "defendantAddress": {
+            "line1": 95,
+            "line2": "Havens Place",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "28-11-1954"
+        },
+        {
+          "caseId": 633620,
+          "caseNo": 794270613,
+          "courtCode": "SHF",
+          "courtRoom": 7,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Aberdeen attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Hernandez Nieves.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Liverpool assaulted Bentley Carney by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Lee Simpson",
+          "defendantAddress": {
+            "line1": 15,
+            "line2": "Pineapple Street",
+            "postcode": "ad21 5dr",
+            "line3": "Aberdeen",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "20-08-1988"
+        },
+        {
+          "caseId": 341650,
+          "caseNo": 1717780334,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Bangor stole LAPTOP to the value of 300.00, belonging to Simon King.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at London attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Benton Kramer.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal MOTORCYCLE to the value of 750.00, belonging to Blackburn Dawson.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Pamela Stanton",
+          "defendantAddress": {
+            "line1": 99,
+            "line2": "Bridgewater Street",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "27-07-1975"
+        },
+        {
+          "caseId": 131765,
+          "caseNo": 8180923581,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Zolar, London, stole COMPUTER to the value of £987.00, belonging to Donovan Taylor.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal WASHING MACHINE to the value of 750.00, belonging to Sweeney Howe.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Porter Herrera",
+          "defendantAddress": {
+            "line1": 57,
+            "line2": "Wallabout Street",
+            "postcode": "ad21 5dr",
+            "line3": "Birmingham",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "10-02-1958"
+        },
+        {
+          "caseId": 529835,
+          "caseNo": 4989650366,
+          "courtCode": "SHF",
+          "courtRoom": 6,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate":"2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Aberdeen attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Tucker Franco.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Prismatic, Cardiff, stole ARTWORK to the value of £987.00, belonging to Rutledge Lambert.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Prosure, Newcastle, stole LAPTOP to the value of £987.00, belonging to Mathis Moss.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Leeds attempted to steal WASHING MACHINE to the value of 750.00, belonging to Santos Gallagher.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Aquasure, Manchester, stole COMPUTER to the value of £987.00, belonging to Burgess Nixon.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Natasha Blanchard",
+          "defendantAddress": {
+            "line1": 55,
+            "line2": "Kensington Street",
+            "postcode": "ad21 5dr",
+            "line3": "Birmingham",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "01-03-1959"
+        },
+        {
+          "caseId": 245438,
+          "caseNo": 4299708253,
+          "courtCode": "SHF",
+          "courtRoom": 5,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Birmingham assaulted Sherman Rivera by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Avit, London, stole COMPUTER to the value of £987.00, belonging to Potts Sexton.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Hopkins Ferrell by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at London attempted to steal WASHING MACHINE to the value of 750.00, belonging to Woodward Petty.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Weiss Terrell",
+          "defendantAddress": {
+            "line1": 11,
+            "line2": "Bliss Terrace",
+            "postcode": "ad21 5dr",
+            "line3": "Glasgow",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "16-08-1953"
+        },
+        {
+          "caseId": 567577,
+          "caseNo": 1534504210,
+          "courtCode": "SHF",
+          "courtRoom": 1,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Manchester attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Huber Hinton.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Newcastle assaulted Hammond Knowles by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Tubalum, Cardiff, stole LAPTOP to the value of £987.00, belonging to Greer Chaney.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Aberdeen attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Irwin Carter.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Exoteric, Leeds, stole ARTWORK to the value of £987.00, belonging to Short Nguyen.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Hickman Blair",
+          "defendantAddress": {
+            "line1": 84,
+            "line2": "Seagate Terrace",
+            "postcode": "ad21 5dr",
+            "line3": "Liverpool",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "19-02-1954"
+        },
+        {
+          "caseId": 63084,
+          "caseNo": 4431331699,
+          "courtCode": "SHF",
+          "courtRoom": 2,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal MOTORCYCLE to the value of 750.00, belonging to Washington Wallace.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Gomez Mckay",
+          "defendantAddress": {
+            "line1": 94,
+            "line2": "Claver Place",
+            "postcode": "ad21 5dr",
+            "line3": "Manchester",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "04-10-1987"
+        },
+        {
+          "caseId": 292673,
+          "caseNo": 1374192515,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2010-11-12",
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Preston attempted to steal MOTORCYCLE to the value of 750.00, belonging to Ayala Brock.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Sheffield assaulted Nieves Hensley by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Newcastle attempted to steal MOTORCYCLE to the value of 750.00, belonging to Beard Mcguire.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Ohmnet, Preston, stole ROBOTS to the value of £987.00, belonging to Pruitt Harding.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Weaver Hammond",
+          "defendantAddress": {
+            "line1": 77,
+            "line2": "Crown Street",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "05-07-1967"
+        },
+        {
+          "caseId": 24954,
+          "caseNo": 5990487475,
+          "courtCode": "SHF",
+          "courtRoom": 3,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Preston stole LAPTOP to the value of 300.00, belonging to Jones Grant.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at London stole LAPTOP to the value of 300.00, belonging to Soto Parrish.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Newcastle assaulted Walton Rogers by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Birmingham attempted to steal WASHING MACHINE to the value of 750.00, belonging to Flores Cole.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Leeds assaulted Talley Bird by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Frederick Good",
+          "defendantAddress": {
+            "line1": 74,
+            "line2": "Times Placez",
+            "postcode": "ad21 5dr",
+            "line3": "Aberdeen",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "29-09-1971"
+        },
+        {
+          "caseId": 424364,
+          "caseNo": 6834284,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Bangor stole XBOX ONE to the value of 300.00, belonging to Nash Gentry.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Bangor stole PLAYSTATION 4 to the value of 300.00, belonging to Atkins Frank.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Sheffield attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Stark Bradshaw.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Birmingham attempted to steal MOTORCYCLE to the value of 750.00, belonging to Mooney Montoya.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Carol Becker",
+          "defendantAddress": {
+            "line1": 97,
+            "line2": "Berriman Street",
+            "postcode": "ad21 5dr",
+            "line3": "Leeds",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "25-12-1961"
+        },
+        {
+          "caseId": 606827,
+          "caseNo": 9864616924,
+          "courtCode": "SHF",
+          "courtRoom": 7,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Zappix, London, stole COMPUTER to the value of £987.00, belonging to Montgomery Rivers.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Vargas Byrd.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Birmingham assaulted Collins Shannon by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at London assaulted Strickland Huber by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Leeds attempted to steal MOTORCYCLE to the value of 750.00, belonging to Frost Webb.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Yang Allison",
+          "defendantAddress": {
+            "line1": 94,
+            "line2": "Pierrepont Street",
+            "postcode": "ad21 5dr",
+            "line3": "London",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "09-12-1958"
+        },
+        {
+          "caseId": 74805,
+          "caseNo": 9499365066,
+          "courtCode": "SHF",
+          "courtRoom": 3,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at London assaulted Key Perry by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Metroz, Newcastle, stole COMPUTER to the value of £987.00, belonging to Graves Davidson.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Leeds assaulted Emerson Mcdowell by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Aberdeen stole LAPTOP to the value of 300.00, belonging to Fry Savage.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Zamora Rosa",
+          "defendantAddress": {
+            "line1": 11,
+            "line2": "Bragg Street",
+            "postcode": "ad21 5dr",
+            "line3": "Glasgow",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "15-10-1971"
+        },
+        {
+          "caseId": 326025,
+          "caseNo": 7227064792,
+          "courtCode": "SHF",
+          "courtRoom": 10,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Bangor attempted to steal MOTORCYCLE to the value of 750.00, belonging to Landry Mercer.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Zytrek, Sheffield, stole ROBOTS to the value of £987.00, belonging to Fitzpatrick Rollins.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Emoltra, Bangor, stole ARTWORK to the value of £987.00, belonging to Lamb Bell.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Mitroc, Leeds, stole LAPTOP to the value of £987.00, belonging to Bishop Winters.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Leeds attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Davis Dixon.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Janice Dorsey",
+          "defendantAddress": {
+            "line1": 26,
+            "line2": "Furman Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Aberdeen",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "15-01-1995"
+        },
+        {
+          "caseId": 334161,
+          "caseNo": 3493039165,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Deviltoe, Edinburgh, stole ARTWORK to the value of £987.00, belonging to Mcmahon Meadows.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at London stole XBOX ONE to the value of 300.00, belonging to Page Silva.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Lynch Tate",
+          "defendantAddress": {
+            "line1": 82,
+            "line2": "Dumont Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "30-07-1978"
+        },
+        {
+        "caseId": 403478,
+        "caseNo": 8618449819,
+        "courtCode": "SHF",
+        "courtRoom": 3,
+        "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+        "listNo": "3rd",
+        "probationStatus": "No record",
+        "session": "AFTERNOON",
+        "previouslyKnownTerminationDate": null,
+        "suspendedSentenceOrder": false,
+        "breach": true,
+        "offences": [
+          {
+            "offenceTitle": "Theft from a shop",
+            "offenceSummary": "On 05/09/2016 at Newcastle attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Bradshaw Richardson.",
+            "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+          }
+        ],
+        "defendantName": "Luisa Alston",
+        "defendantAddress": {
+          "line1": 12,
+          "line2": "Bassett Avenue",
+          "postcode": "ad21 5dr",
+          "line3": "Glasgow",
+          "line4": null,
+          "line5": null
+        },
+        "defendantDob": "27-09-1961"
+        },
+        {
+          "caseId": 39328,
+          "caseNo": 5935205489,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "Previously known",
+          "session": "AFTERNOON",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 01/01/2015 at Dogtown, Liverpool, stole LAPTOP to the value of £987.00, belonging to Langley Cleveland.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Dogtown, Liverpool, stole LAPTOP to the value of £987.00, belonging to Langley Cleveland.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Macdonald Ellison",
+          "defendantAddress": {
+            "line1": 77,
+            "line2": "Lincoln Place",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "15-07-1993"
+        },
+        {
+          "caseId": 763772,
+          "caseNo": 8027509592,
+          "courtCode": "SHF",
+          "courtRoom": 4,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "AFTERNOON",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Preston assaulted Holt Cote by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Sheffield assaulted Hyde Mcdonald by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at London assaulted Mccoy Greene by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at London stole NINTENDO SWITCH to the value of 300.00, belonging to Hull West.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Liverpool stole LAPTOP to the value of 300.00, belonging to Lopez Glenn.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Huff Walsh",
+          "defendantAddress": {
+            "line1": 101,
+            "line2": "Stuyvesant Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Preston",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "18-08-1989"
+        },
+        {
+          "caseId": 236714,
+          "caseNo": 9665797440,
+          "courtCode": "SHF",
+          "courtRoom": 9,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Virva, Aberdeen, stole LAPTOP to the value of £987.00, belonging to Wiley Stokes.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Glasgow stole PLAYSTATION 4 to the value of 300.00, belonging to Fitzgerald Chase.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Manchester attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Rodriguez Camacho.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            },
+            {
+              "offenceTitle": "Attempt theft from the person of another",
+              "offenceSummary": "On 05/09/2016 at Edinburgh attempted to steal MOTORCYCLE to the value of 750.00, belonging to Griffin Maxwell.",
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+            }
+          ],
+          "defendantName": "Rivers Molina",
+          "defendantAddress": {
+            "line1": 33,
+            "line2": "Glen Street",
+            "postcode": "ad21 5dr",
+            "line3": "Aberdeen",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "20-04-1986"
+        },
+        {
+          "caseId": 933557,
+          "caseNo": 649174512,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": true,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Stockpost, Liverpool, stole LAPTOP to the value of £987.00, belonging to Salinas Merrill.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Glasgow assaulted Hensley Murray by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Liverpool assaulted Santana Mcknight by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Uneeq, Edinburgh, stole LAPTOP to the value of £987.00, belonging to Riley Leonard.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Ontality, Edinburgh, stole LAPTOP to the value of £987.00, belonging to Battle Jennings.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Obrien Mccall",
+          "defendantAddress": {
+            "line1": 82,
+            "line2": "Harman Street",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "12-10-1974"
+        },
+        {
+          "caseId": 882850,
+          "caseNo": 2905576408,
+          "courtCode": "SHF",
+          "courtRoom": 8,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "Previously known",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": "2019-11-12",
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Cardiff assaulted Boyer Frost by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Newcastle stole NINTENDO SWITCH to the value of 300.00, belonging to Owen Middleton.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Cabrera Dixon by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantName": "Lloyd Humphrey",
+          "defendantAddress": {
+            "line1": 63,
+            "line2": "Coyle Street",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "29-08-1986"
+        },
+        {
+          "caseId": 888402,
+          "caseNo": 4002578961,
+          "courtCode": "SHF",
+          "courtRoom": 1,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Lumbrex, Birmingham, stole ARTWORK to the value of £987.00, belonging to Kane Conley.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Gink, Aberdeen, stole LAPTOP to the value of £987.00, belonging to Hodges Sandoval.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantName": "Janis Woods",
+          "defendantAddress": {
+            "line1": 102,
+            "line2": "Kimball Street",
+            "postcode": "ad21 5dr",
+            "line3": "Liverpool",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "16-01-1973"
         }
       ]
     }
