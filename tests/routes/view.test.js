@@ -11,6 +11,7 @@ jest.mock('../../services/community-service')
 
 let app
 let caseResponse = {}
+let communityResponse = {}
 
 describe('Routes', () => {
   jest.spyOn(healthcheck, 'health').mockImplementation(function (req, res, next) {
@@ -38,7 +39,7 @@ describe('Routes', () => {
   })
 
   jest.spyOn(communityService, 'getProbationRecord').mockImplementation(function () {
-    return {}
+    return communityResponse
   })
 
   jest.spyOn(communityService, 'getAttendanceDetails').mockImplementation(function () {
@@ -76,6 +77,12 @@ describe('Routes', () => {
     return response
   })
 
+  it('case list route should redirect when filtering case list', async () => {
+    return request(app).post('/cases/2020-01-01', {}).then(response => {
+      expect(response.statusCode).toEqual(302)
+    })
+  })
+
   it('case summary details route should call the case service to fetch case data', async () => {
     const response = await request(app).get('/case/8678951874/details')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '8678951874')
@@ -110,10 +117,34 @@ describe('Routes', () => {
       probationStatus: 'Current',
       crn: 'D985513'
     }
+    communityResponse = {
+      convictions: [{
+        convictionId: 1403337513,
+        active: true
+      }]
+    }
     const response = await request(app).get('/case/668911253/record/1403337513')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
     expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
     expect(communityService.getAttendanceDetails).toHaveBeenCalledWith('D985513', '1403337513')
+    return response
+  })
+
+  it('case summary attendance route should NOT call the case service to fetch attendance data if the order is inactive', async () => {
+    caseResponse = {
+      probationStatus: 'Current',
+      crn: 'D985513'
+    }
+    communityResponse = {
+      convictions: [{
+        convictionId: 1403337513,
+        active: false
+      }]
+    }
+    const response = await request(app).get('/case/668911253/record/1403337513')
+    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
+    expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
+    expect(communityService.getAttendanceDetails).not.toHaveBeenCalled()
     return response
   })
 

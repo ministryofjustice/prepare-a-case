@@ -70,10 +70,14 @@ router.get('/case/:caseNo/:section?/:detail?', health, defaults, async (req, res
             personalDetails
           }
         } else {
-          const attendanceDetails = await getAttendanceDetails(response.crn, params.detail)
-          communityResponse = {
-            ...communityResponse,
-            attendanceDetails
+          const { active } = communityResponse.convictions
+            .find(conviction => conviction.convictionId.toString() === params.detail.toString())
+          if (active) {
+            const attendanceDetails = await getAttendanceDetails(response.crn, params.detail)
+            communityResponse = {
+              ...communityResponse,
+              attendanceDetails
+            }
           }
         }
       }
