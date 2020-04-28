@@ -35,7 +35,7 @@
             {% if attended | string === "true" %}
                 {{ attendedAppointments.complied.push(attendance) if complied | string === "true" }}
                 {{ attendedAppointments.failed.push(attendance) if complied | string === "false" }}
-            {% elif attended | string === "false" %}
+                {% elif attended | string === "false" %}
                 {{ absentAppointments.complied.push(attendance) if complied | string === "true" }}
                 {{ absentAppointments.failed.push(attendance) if complied | string === "false" }}
             {% else %}
@@ -207,7 +207,7 @@
                     {% if unpaidWork.appointmentsToDate %}
                         <details class="govuk-details" data-module="govuk-details">
                             <summary class="govuk-details__summary">
-                                  <span class="govuk-details__summary-text">View UPW attendance</span>
+                                <span class="govuk-details__summary-text">View UPW attendance</span>
                             </summary>
                             <div class="govuk-details__text">
                                 <dl class="govuk-summary-list">

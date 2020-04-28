@@ -10,18 +10,37 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 493629,
+      "caseId": 951609,
       "caseNo": 5222601242,
       "courtCode": "SHF",
       "courtRoom": 9,
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-      "probationStatus": "Current",
-      "crn": "D991494",
+      "listNo": "1st",
       "pnc": "D/9874483AB",
-      "rosh": "High",
-      "data": "{\"inf\":\"POL01\",\"c_id\":493629,\"cseq\":9,\"h_id\":2313870,\"type\":\"C\",\"valid\":\"Y\",\"caseno\":5222601242,\"listno\":\"1st\",\"def_age\":24,\"def_dob\":\"06-06-1996\",\"def_sex\":\"M\",\"def_addr\":{\"line1\":99,\"line2\":\"Ralph Avenue\",\"pcode\":\"ad21 5dr\",\"pcode\":\"ad21 5dr\",\"line3\":\"London\"},\"def_name\":\"Olsen Alexander\",\"def_type\":\"P\",\"offences\":{\"offence\":[{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 01/01/2015 at Tetratrex, Leeds, stole ROBOTS to the value of £987.00, belonging to Young Bryant.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from a shop\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}]}}",
+      "crn": "D991494",
+      "probationStatus": "Current",
       "session": "MORNING",
-      "breach": true
+      "previouslyKnownTerminationDate": null,
+      "suspendedSentenceOrder": false,
+      "breach": true,
+      "offences": [
+        {
+          "offenceTitle": "Theft from a shop",
+          "offenceSummary": "On 01/01/2015 at Tetratrex, Leeds, stole ROBOTS to the value of £987.00, belonging to Young Bryant.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+        }
+      ],
+      "defendantSex": "M",
+      "defendantName": "Olsen Alexander",
+      "defendantAddress": {
+        "line1": 99,
+        "line2": "Ralph Avenue",
+        "postcode": "ad21 5dr",
+        "line3": "London",
+        "line4": null,
+        "line5": null
+      },
+      "defendantDob": "06-06-1996"
     }
   }
 }

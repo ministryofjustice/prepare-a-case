@@ -10,18 +10,52 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 957781,
+      "caseId": 71467,
       "caseNo": 7483843110,
       "courtCode": "SHF",
       "courtRoom": 2,
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-      "probationStatus": "No record",
-      "crn": "",
+      "listNo": "3rd",
       "pnc": "A/1234560BA",
-      "rosh": "",
-      "data": "{\"inf\":\"POL01\",\"c_id\":957781,\"cseq\":2,\"h_id\":9972904,\"type\":\"C\",\"valid\":\"N\",\"caseno\":7483843110,\"listno\":\"3rd\",\"def_age\":23,\"def_dob\":\"13-07-1997\",\"def_sex\":\"M\",\"def_addr\":{\"line1\":91,\"line2\":\"Barbey Street\",\"pcode\":\"ad21 5dr\",\"line3\":\"Sheffield\"},\"def_name\":\"Mann Carroll\",\"def_type\":\"P\",\"offences\":{\"offence\":[{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 01/01/2015 at Zogak, Cardiff, stole ROBOTS to the value of £987.00, belonging to Sutton Black.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from a shop\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 39 of the Criminal Justice Act 1988.\",\"sum\":\"On 01/01/2016 at Sheffield assaulted Winters Decker by beating him.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Assault by beating\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) of the Criminal Attempts Act 1981.\",\"sum\":\"On 05/09/2016 at Newcastle attempted to steal MOTORCYCLE to the value of 750.00, belonging to Martin Robles.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Attempt theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) of the Criminal Attempts Act 1981.\",\"sum\":\"On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Gomez Acevedo.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Attempt theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}]}}",
-      "session": "MORNING",
-      "breach": true
+      "probationStatus": "No record",
+      "session": "AFTERNOON",
+      "previouslyKnownTerminationDate": null,
+      "suspendedSentenceOrder": false,
+      "breach": true,
+      "offences": [
+        {
+          "offenceTitle": "Assault by beating",
+          "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Howe Williams by beating him.",
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+        },
+        {
+          "offenceTitle": "Theft from a shop",
+          "offenceSummary": "On 01/01/2015 at Zolarity, Leeds, stole LAPTOP to the value of £987.00, belonging to Powers Gould.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+        },
+        {
+          "offenceTitle": "Theft from a shop",
+          "offenceSummary": "On 01/01/2015 at Xixan, Sheffield, stole COMPUTER to the value of £987.00, belonging to Cote Ochoa.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+        },
+        {
+          "offenceTitle": "Assault by beating",
+          "offenceSummary": "On 01/01/2016 at Bangor assaulted Watkins Cummings by beating him.",
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+        }
+      ],
+      "defendantSex": "F",
+      "defendantName": "Mann Carroll",
+      "defendantAddress": {
+        "line1": 91,
+        "line2": "Barbey street",
+        "postcode": "ad21 5dr",
+        "line3": "Sheffield",
+        "line4": null,
+        "line5": null
+      },
+      "defendantDob": "08-04-1955"
+    }
     }
   }
 }

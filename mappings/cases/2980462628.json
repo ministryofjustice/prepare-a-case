@@ -1,0 +1,61 @@
+{
+  "id": "73d0aa46-f1de-4406-b5b8-17e4b140e50a",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z]*)/case/2980462628"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "caseId": 805611,
+      "caseNo": 2980462628,
+      "courtCode": "SHF",
+      "courtRoom": 3,
+      "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+      "listNo": "3rd",
+      "crn": "D541487",
+      "pnc": "A/1234560BA",
+      "probationStatus": "Previously known",
+      "session": "MORNING",
+      "previouslyKnownTerminationDate": "2010-01-01",
+      "suspendedSentenceOrder": true,
+      "breach": true,
+      "offences": [
+        {
+          "offenceTitle": "Assault by beating",
+          "offenceSummary": "On 01/01/2016 at Newcastle assaulted Mullen Rojas by beating him.",
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+        },
+        {
+          "offenceTitle": "Assault by beating",
+          "offenceSummary": "On 01/01/2016 at Newcastle assaulted Bradshaw Hoover by beating him.",
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+        },
+        {
+          "offenceTitle": "Theft from the person of another",
+          "offenceSummary": "On 24/03/2016 at Sheffield stole XBOX ONE to the value of 300.00, belonging to Colon Bowers.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+        },
+        {
+          "offenceTitle": "Theft from the person of another",
+          "offenceSummary": "On 24/03/2016 at Preston stole NINTENDO SWITCH to the value of 300.00, belonging to Bender Schmidt.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+        }
+      ],
+      "defendantSex": "F",
+      "defendantName": "Sara Ortega",
+      "defendantAddress": {
+        "line1": 25,
+        "line2": "Harman Street",
+        "postcode": "ba21 5dr",
+        "line3": "Bangor",
+        "line4": null,
+        "line5": null
+      },
+      "defendantDob": "05-09-1954"
+    }
+  }
+}

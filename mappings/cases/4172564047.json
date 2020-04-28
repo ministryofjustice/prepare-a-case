@@ -1,0 +1,65 @@
+{
+  "id": "73d0aa46-f1de-4406-b5b8-17e4b140e50a",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z]*)/case/4172564047"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "caseId": 838597,
+      "caseNo": 4172564047,
+      "courtCode": "SHF",
+      "courtRoom": 10,
+      "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+      "listNo": "3rd",
+      "pnc": "A/1234560BA",
+      "probationStatus": "No record",
+      "session": "MORNING",
+      "previouslyKnownTerminationDate": null,
+      "suspendedSentenceOrder": false,
+      "breach": false,
+      "offences": [
+        {
+          "offenceTitle": "Theft from a shop",
+          "offenceSummary": "On 01/01/2015 at Farmage, Edinburgh, stole ROBOTS to the value of £987.00, belonging to Franks Kinney.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+        },
+        {
+          "offenceTitle": "Attempt theft from the person of another",
+          "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal WASHING MACHINE to the value of 750.00, belonging to Mckee Mayer.",
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+        },
+        {
+          "offenceTitle": "Theft from the person of another",
+          "offenceSummary": "On 24/03/2016 at Manchester stole XBOX ONE to the value of 300.00, belonging to Marquez Bishop.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+        },
+        {
+          "offenceTitle": "Attempt theft from the person of another",
+          "offenceSummary": "On 05/09/2016 at Sheffield attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Murray Blackwell.",
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+        },
+        {
+          "offenceTitle": "Assault by beating",
+          "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Dickson Molina by beating him.",
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+        }
+      ],
+      "defendantSex": "F",
+      "defendantName": "Felicia Villarreal",
+      "defendantAddress": {
+        "line1": 37,
+        "line2": "Maple Avenue",
+        "postcode": "L1 5dr",
+        "line3": "London",
+        "line4": null,
+        "line5": null
+      },
+      "defendantDob": "13-08-1980"
+    }
+  }
+}
