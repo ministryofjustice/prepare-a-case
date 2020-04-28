@@ -145,8 +145,8 @@
       "unpaidWork": {
         "status": "Terminated",
         "statusDate": "2018-01-23",
-        "offered": 12,
-        "completed": 2,
+        "minutesOffered": 720,
+        "minutesCompleted": 120,
         "appointmentsToDate": 2,
         "attended": 2,
         "acceptableAbsences": 0,

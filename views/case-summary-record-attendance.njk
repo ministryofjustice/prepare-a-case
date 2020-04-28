@@ -35,7 +35,7 @@
             {% if attended | string === "true" %}
                 {{ attendedAppointments.complied.push(attendance) if complied | string === "true" }}
                 {{ attendedAppointments.failed.push(attendance) if complied | string === "false" }}
-            {% elif attended | string === "false" %}
+                {% elif attended | string === "false" %}
                 {{ absentAppointments.complied.push(attendance) if complied | string === "true" }}
                 {{ absentAppointments.failed.push(attendance) if complied | string === "false" }}
             {% else %}
@@ -196,18 +196,18 @@
                         </div>
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Hours ordered</dt>
-                            <dd class="govuk-summary-list__value qa-upw-ordered">{{ unpaidWork.offered or '0' }}</dd>
+                            <dd class="govuk-summary-list__value qa-upw-ordered">{{ unpaidWork.minutesOffered / 60 or '0' }}</dd>
                         </div>
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Hours worked</dt>
-                            <dd class="govuk-summary-list__value qa-upw-worked">{{ unpaidWork.completed or '0' }}</dd>
+                            <dd class="govuk-summary-list__value qa-upw-worked">{{ unpaidWork.minutesCompleted / 60 or '0' }}</dd>
                         </div>
                     </dl>
 
                     {% if unpaidWork.appointmentsToDate %}
                         <details class="govuk-details" data-module="govuk-details">
                             <summary class="govuk-details__summary">
-                                  <span class="govuk-details__summary-text">View UPW attendance</span>
+                                <span class="govuk-details__summary-text">View UPW attendance</span>
                             </summary>
                             <div class="govuk-details__text">
                                 <dl class="govuk-summary-list">

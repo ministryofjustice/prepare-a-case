@@ -4,8 +4,7 @@ Prepare a case is a service that allows probation staff to prepare court cases.
 
 ## Prerequisities
 Before you begin, ensure you have met the following requirements:
-* You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Erbium) >= v12.13.0
-* You have [Yarn](http://yarnpkg.com) installed
+* You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Erbium) >= v12.16.2
 
 For code quality the project adheres to [JavaScript Standard Style](https://standardjs.com/) which requires minimal configuration of your chosen IDE.
 
@@ -18,18 +17,18 @@ Integration tests use [Cypress](https://www.cypress.io) and employ [Gherkin](htt
 Install dependencies using 
 
 ```
-yarn
+npm i
 ```
 
 And then, to build the assets and start the app with
 ```
-env COURT_CASE_SERVICE_URL=http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk yarn start
+env COURT_CASE_SERVICE_URL=http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk npm run start
 ```
 
 Or to use alongside a local instance of *court-case-service* 
 
 ```
-env COURT_CASE_SERVICE_URL=http://127.0.0.1:8080 yarn start
+env COURT_CASE_SERVICE_URL=http://127.0.0.1:8080 npm run start
 ```
 
 ## For development, there are additional tasks:
@@ -45,7 +44,7 @@ java -jar wiremock-standalone-2.26.3.jar --global-response-templating --port 909
 
 And then, to build assets and start app with
 ```
-yarn nodemon ./bin/www
+npm run start:watch
 ```
 
 This will watch for changes in the application JavaScript and Nunjucks templates and automatically restart as required.
@@ -54,31 +53,31 @@ This will also ensure that the application does not restart due to changes to te
 
 ### Run linter
 ```
-yarn lint
+npm run lint
 ```
 
 ### Run unit tests
 ```
-yarn unit-test
+npm run unit-test
 ```
 
 ### Run integration tests
 For local running, start the application:
 
 ```
-yarn start
+npm run start
 ```
 
 Then run the integration tests:
 
 ```
-yarn int-test
+npm run int-test
 ```
 
 Or run the integration tests with the Cypress UI:
 
 ```
-yarn int-test:ui
+npm run int-test:ui
 ```
 
 ## Environment variables
