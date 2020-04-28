@@ -24,7 +24,6 @@
     "int-test": "npx cypress run",
     "int-test:ui": "npx cypress open",
     "lint": "npx standard",
-    "record-build-info": "node ./bin/build-info",
     "start": "node ./bin/www",
     "start:watch": "nodemon --exec npm run start --scripts-prepend-node-path",
     "unit-test": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage"

@@ -1,5 +1,18 @@
 version: 2.1
 commands:
+  set_app_version:
+    description: "Set app version string"
+    steps:
+      - run:
+          name: create app version string
+          command: |
+            DATE=$(date '+%Y-%m-%d')
+            VERSION=${DATE}.${CIRCLE_BUILD_NUM}
+            echo "Created version string: ${VERSION}"
+            echo "export VERSION=$VERSION" >> $BASH_ENV
+      - mem/remember:
+          env_var: APP_VERSION
+          value: "${VERSION}"
   setup:
     description: "Install tools and configure kubectl"
     steps:
@@ -28,6 +41,8 @@ commands:
         type: string
     steps:
       - setup
+      - mem/recall:
+          env_var: APP_VERSION
       - checkout:
           path: ~/git
       - attach_workspace:
@@ -35,7 +50,6 @@ commands:
       - deploy:
           name: Deploy to << parameters.env >>
           command: |
-            APP_VERSION=$(egrep buildNumber build-info.json | awk -F"\"" '{print $4}')
             helm upgrade prepare-a-case ~/git/helm_deploy/prepare-a-case/. \
               --install --wait --force --reset-values --timeout 360 \
               --tiller-namespace=${KUBE_ENV_NAMESPACE} \
@@ -44,8 +58,6 @@ commands:
               --values ~/git/helm_deploy/values-<< parameters.env >>.yaml \
               --values - \
               --set image.tag="${APP_VERSION}"
-      - store_artifacts:
-          path: build-info.json
 executors:
   deployer:
     docker:
@@ -57,15 +69,22 @@ executors:
     working_directory: ~/app
 
 orbs:
-  kubernetes: circleci/kubernetes@0.3.0
   helm: circleci/helm@0.1.2
+  kubernetes: circleci/kubernetes@0.3.0
+  mem: circleci/rememborb@0.0.1
   snyk: snyk/snyk@0.0.10
+
+_snyk_options: &snyk_options
+  organization: "digital-probation-services"
+  severity-threshold: "high" # note: this does not affect snyk 'monitor' commands
+  fail-on-issues: true
 
 jobs:
   build:
     executor: builder
     steps:
       - checkout
+      - set_app_version
       - attach_workspace:
           at: ~/app
       - restore_cache:
@@ -79,13 +98,6 @@ jobs:
           key: dependencies-cache-{{ checksum "package.json" }}
           paths:
             - ~/.cache
-      - run:
-          name: Record the Application Version
-          command: |
-            DATE=$(date '+%Y-%m-%d')
-            export BUILD_NUMBER=${DATE}.${CIRCLE_BUILD_NUM}
-            export GIT_REF="$CIRCLE_SHA1"
-            npm run record-build-info
       - persist_to_workspace:
           root: ~/app
           paths: .
@@ -151,16 +163,21 @@ jobs:
 
   build_docker:
     executor: deployer
+    parameters:
+      master:
+        type: boolean
+        default: false
     steps:
       - checkout
+      - mem/recall:
+          env_var: APP_VERSION
       - attach_workspace:
           at: ~/app
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
-          name: Build container and publish to docker hub
+          name: Build docker image
           command: |
-            APP_VERSION=$(egrep buildNumber build-info.json  | awk -F"\"" '{print $4}')
             docker build --rm=false . \
                --tag "mojdigitalstudio/prepare-a-case:$APP_VERSION" \
                --label "maintainer=info@digital.justice.gov.uk" \
@@ -169,38 +186,48 @@ jobs:
                --label "build.number=$CIRCLE_BUILD_NUM" \
                --label "build.url=$CIRCLE_BUILD_URL" \
                --label "build.gitref=$CIRCLE_SHA1"
+      - snyk/scan:
+          project: '${CIRCLE_PROJECT_REPONAME}-docker/${CIRCLE_BRANCH}'
+          docker-image-name: 'mojdigitalstudio/prepare-a-case:$APP_VERSION'
+          target-file: 'Dockerfile'
+          monitor-on-build: << parameters.master >>
+          <<: *snyk_options
+      - when:
+          condition: << parameters.master >>
+          steps:
+            - run:
+                name: Publish to docker hub
+                command: |
+                  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                  docker tag mojdigitalstudio/prepare-a-case:$APP_VERSION mojdigitalstudio/prepare-a-case:latest
+                  docker push mojdigitalstudio/prepare-a-case:$APP_VERSION
+                  docker push mojdigitalstudio/prepare-a-case:latest
 
-            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
-              # publish to docker hub as the tag
-             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-             docker tag mojdigitalstudio/prepare-a-case:$APP_VERSION mojdigitalstudio/prepare-a-case:latest
-             docker push mojdigitalstudio/prepare-a-case:$APP_VERSION
-             docker push mojdigitalstudio/prepare-a-case:latest
-            fi
-
-  app-scan:
+  app_scan:
     executor: builder
+    parameters:
+      master:
+        type: boolean
+        default: false
     steps:
       - checkout
       - snyk/scan:
-          fail-on-issues: false
-          monitor-on-build: true
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}'
-          organization: 'digital-probation-services'
+          monitor-on-build: << parameters.master >>
+          <<: *snyk_options
 
-  image-scan:
+  image_scan:
     executor: deployer
     steps:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
       - snyk/scan:
+          project: '${CIRCLE_PROJECT_REPONAME}-docker/${CIRCLE_BRANCH}'
           docker-image-name: 'mojdigitalstudio/prepare-a-case:latest'
           target-file: 'Dockerfile'
-          fail-on-issues: false
           monitor-on-build: true
-          project: '${CIRCLE_PROJECT_REPONAME}/latest'
-          organization: 'digital-probation-services'
+          <<: *snyk_options
 
   deploy_dev:
     executor: deployer
@@ -229,10 +256,22 @@ workflows:
               only:
                 - master
     jobs:
-      - app-scan
-      - image-scan
+      - app_scan:
+          master: true
+      - image_scan
+
   build-test-and-deploy:
     jobs:
+      - app_scan:
+          filters:
+            branches:
+              ignore: master
+      - app_scan:
+          name: app_scan_master
+          filters:
+            branches:
+              only: master
+          master: true
       - build:
           filters:
             tags:
@@ -248,13 +287,24 @@ workflows:
             - build
       - build_docker:
           requires:
-            - test
+            - build
+          filters:
+            branches:
+              ignore: master
+      - build_docker:
+          name: build_docker_master
+          requires:
+            - build
           filters:
             branches:
               only: master
+          master: true
       - deploy_dev:
           requires:
-            - build_docker
+            - build_docker_master
+          filters:
+            branches:
+              only: master
       - request-preprod-approval:
           type: approval
           requires:
