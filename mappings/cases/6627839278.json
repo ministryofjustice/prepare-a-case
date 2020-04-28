@@ -10,18 +10,48 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 475113,
+      "caseId": 282482,
       "caseNo": 6627839278,
       "courtCode": "SHF",
       "courtRoom": 8,
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-      "probationStatus": "Previously known",
+      "listNo": "2nd",
       "crn": "D541487",
       "pnc": "A/8404713BA",
-      "rosh": "",
-      "data": "{\"inf\":\"POL01\",\"c_id\":475113,\"cseq\":5,\"h_id\":3686856,\"type\":\"C\",\"valid\":\"Y\",\"caseno\":6627839278,\"listno\":\"2nd\",\"def_age\":62,\"def_dob\":\"13-10-1958\",\"def_sex\":\"M\",\"def_addr\":{\"line1\":49,\"line2\":\"Rochester Avenue\",\"pcode\":\"ad21 5dr\",\"line3\":\"Bangor\"},\"def_name\":\"Webb Mitchell\",\"def_type\":\"P\",\"nationality_1\":\"Polish\",\"offences\":{\"offence\":[{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 24/03/2016 at Edinburgh stole PLAYSTATION 4 to the value of 300.00, belonging to Dillard Everett.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 39 of the Criminal Justice Act 1988.\",\"sum\":\"On 01/01/2016 at Aberdeen assaulted Doyle Kaufman by beating him.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Assault by beating\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 39 of the Criminal Justice Act 1988.\",\"sum\":\"On 01/01/2016 at Leeds assaulted Hopper Munoz by beating him.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Assault by beating\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 39 of the Criminal Justice Act 1988.\",\"sum\":\"On 01/01/2016 at Birmingham assaulted Whitehead Dickerson by beating him.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Assault by beating\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 01/01/2015 at Waretel, Preston, stole ROBOTS to the value of £987.00, belonging to Harrison Mason.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from a shop\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}]}}",
+      "probationStatus": "Previously known",
       "session": "MORNING",
-      "breach": false
+      "previouslyKnownTerminationDate": "2010-01-01",
+      "suspendedSentenceOrder": true,
+      "breach": false,
+      "offences": [
+        {
+          "offenceTitle": "Attempt theft from the person of another",
+          "offenceSummary": "On 05/09/2016 at Sheffield attempted to steal WASHING MACHINE to the value of 750.00, belonging to Hopper May.",
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+        },
+        {
+          "offenceTitle": "Assault by beating",
+          "offenceSummary": "On 01/01/2016 at London assaulted Medina Brown by beating him.",
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+        },
+        {
+          "offenceTitle": "Attempt theft from the person of another",
+          "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Cleveland Pena.",
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+        }
+      ],
+      "defendantSex": "M",
+      "defendantName": "Webb Mitchell",
+      "defendantAddress": {
+        "line1": 49,
+        "line2": "Rochester Avenue",
+        "postcode": "ad21 5dr",
+        "line3": "Bangor",
+        "line4": null,
+        "line5": null
+      },
+      "defendantDob": "13-10-1958",
+      "nationality_1": "Polish"
     }
   }
 }

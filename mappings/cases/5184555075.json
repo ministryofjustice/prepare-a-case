@@ -1,0 +1,60 @@
+{
+  "id": "73d0aa46-f1de-4406-b5b8-17e4b140e50a",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z]*)/case/5184555075"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "caseId": 869769,
+      "caseNo": 5184555075,
+      "courtCode": "SHF",
+      "courtRoom": 3,
+      "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+      "listNo": "3rd",
+      "pnc": "A/1234560BA",
+      "probationStatus": "Previously known",
+      "session": "MORNING",
+      "previouslyKnownTerminationDate": "2016-01-01",
+      "suspendedSentenceOrder": true,
+      "breach": true,
+      "offences": [
+        {
+          "offenceTitle": "Theft from a shop",
+          "offenceSummary": "On 01/01/2015 at Zorromop, Glasgow, stole LAPTOP to the value of £987.00, belonging to Taylor Casey.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+        },
+        {
+          "offenceTitle": "Assault by beating",
+          "offenceSummary": "On 01/01/2016 at Glasgow assaulted Baker Davis by beating him.",
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+        },
+        {
+          "offenceTitle": "Assault by beating",
+          "offenceSummary": "On 01/01/2016 at Preston assaulted Franklin Clay by beating him.",
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+        },
+        {
+          "offenceTitle": "Attempt theft from the person of another",
+          "offenceSummary": "On 05/09/2016 at Edinburgh attempted to steal GAMES CONSOLES to the value of 750.00, belonging to York Wolf.",
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+        }
+      ],
+      "defendantSex": "M",
+      "defendantName": "Gutierrez Booth",
+      "defendantAddress": {
+        "line1": 94,
+        "line2": "Thatford Avenue",
+        "postcode": "L1 5dr",
+        "line3": "London",
+        "line4": null,
+        "line5": null
+      },
+      "defendantDob": "11-03-1955"
+    }
+  }
+}

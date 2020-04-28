@@ -10,18 +10,41 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 721983,
+      "caseId": 996758,
       "caseNo": 3597035492,
       "courtCode": "SHF",
       "courtRoom": 7,
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-      "probationStatus": "No record",
-      "crn": "",
+      "listNo": "3rd",
       "pnc": "A/1234560BA",
-      "rosh": "",
-      "data": "{\"inf\":\"POL01\",\"c_id\":721983,\"cseq\":3,\"h_id\":7451728,\"type\":\"C\",\"valid\":\"Y\",\"caseno\":3597035492,\"listno\":\"3rd\",\"def_age\":41,\"def_dob\":\"12-05-1979\",\"def_sex\":\"F\",\"def_addr\":{\"line1\":43,\"line2\":\"Hunterfly Place\",\"pcode\":\"ad21 5dr\",\"line3\":\"Birmingham\"},\"def_name\":\"Guadalupe Hess\",\"def_type\":\"P\",\"offences\":{\"offence\":[{\"as\":\"Contrary to section 1(1) of the Criminal Attempts Act 1981.\",\"sum\":\"On 05/09/2016 at Liverpool attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Weiss Madden.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Attempt theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"},{\"as\":\"Contrary to section 1(1) and 7 of the Theft Act 1968.\",\"sum\":\"On 24/03/2016 at Liverpool stole NINTENDO SWITCH to the value of 300.00, belonging to Whitfield Lawson.\",\"code\":\"TH68010\",\"oseq\":1,\"co_id\":1142407,\"title\":\"Theft from the person of another\",\"maxpen\":\"EW: 6M &/or Ultd Fine\"}]}}",
+      "probationStatus": "No record",
       "session": "MORNING",
-      "breach": false
+      "previouslyKnownTerminationDate": null,
+      "suspendedSentenceOrder": false,
+      "breach": false,
+      "offences": [
+        {
+          "offenceTitle": "Assault by beating",
+          "offenceSummary": "On 01/01/2016 at Glasgow assaulted Horne Parker by beating him.",
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+        },
+        {
+          "offenceTitle": "Attempt theft from the person of another",
+          "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Shaw Leon.",
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+        }
+      ],
+      "defendantSex": "M",
+      "defendantName": "Guadalupe Hess",
+      "defendantAddress": {
+        "line1": 43,
+        "line2": "Hunterfly Place",
+        "postcode": "ad21 5dr",
+        "line3": "Birmingham",
+        "line4": null,
+        "line5": null
+      },
+      "defendantDob": "18-02-1989"
     }
   }
 }

@@ -1,0 +1,46 @@
+{
+  "id": "73d0aa46-f1de-4406-b5b8-17e4b140e50a",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z]*)/case/2086970929"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "caseId": 642220,
+      "caseNo": 2086970929,
+      "courtCode": "SHF",
+      "courtRoom": 10,
+      "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+      "listNo": "1st",
+      "crn": "D991494",
+      "pnc": "A/1234560BA",
+      "probationStatus": "Previously known",
+      "session": "MORNING",
+      "previouslyKnownTerminationDate": "2013-01-01",
+      "suspendedSentenceOrder": false,
+      "breach": true,
+      "offences": [
+        {
+          "offenceTitle": "Theft from the person of another",
+          "offenceSummary": "On 24/03/2016 at Newcastle stole NINTENDO SWITCH to the value of 300.00, belonging to Wong Landry.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+        }
+      ],
+      "defendantSex": "F",
+      "defendantName": "Ruth Martin",
+      "defendantAddress": {
+        "line1": 72,
+        "line2": "Kathleen Court",
+        "postcode": "eh21 5dr",
+        "line3": "Edinburgh",
+        "line4": null,
+        "line5": null
+      },
+      "defendantDob": "09-05-1969"
+    }
+  }
+}
