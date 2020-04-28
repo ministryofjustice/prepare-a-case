@@ -1,7 +1,6 @@
 {% extends "partials/case-details.njk" %}
 
 {%- set communityData = data.communityData -%}
-{%- set caseData = data.caseData -%}
 
 {% block caseContent %}
 
@@ -16,34 +15,34 @@
 
             <h2 class="govuk-heading-m">Appearance</h2>
             <p class="govuk-body">Court {{ data.courtRoom }}, {{ data.session | lower }} session,
-                {{ params.moment(data.sessionStartTime).format('dddd Do MMMM') }} ({{ data.caseData.listno }}
+                {{ params.moment(data.sessionStartTime).format('dddd Do MMMM') }} ({{ data.listNo }}
                 listing).</p>
 
             <h2 class="govuk-heading-m govuk-!-margin-top-9">Offences</h2>
 
 
             {% set offences = [] %}
-            {% for offence in data.caseData.offences.offence %}
-                {{ offences.push(data.caseData.offences.offence) | length }}
+            {% for offence in data.offences %}
+                {{ offences.push(data.offences) | length }}
             {% endfor %}
             {% if offences | length < 2 %}
-                {% for offence in data.caseData.offences.offence %}
-                    <p class="govuk-body govuk-!-font-weight-bold">{{ offence.title }}</p>
-                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.sum }}</p>
-                    <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.as }}</p>
+                {% for offence in data.offences %}
+                    <p class="govuk-body govuk-!-font-weight-bold">{{ offence.offenceTitle }}</p>
+                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.offenceSummary }}</p>
+                    <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
                 {% endfor %}
                 {% elif offences | length > 1 %}
                 <div class="govuk-accordion" data-module="govuk-accordion">
-                    {% for offence in data.caseData.offences.offence %}
+                    {% for offence in data.offences %}
                         <div class="govuk-accordion__section ">
                             <div class="govuk-accordion__section-header">
                                 <h2 class="govuk-accordion__section-heading">
-                                    <span class="govuk-accordion__section-button govuk-!-font-size-19">{{ offence.title }}</span>
+                                    <span class="govuk-accordion__section-button govuk-!-font-size-19">{{ offence.offenceTitle }}</span>
                                 </h2>
                             </div>
                             <div class="govuk-accordion__section-content">
-                                <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.sum }}</p>
-                                <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.as }}</p>
+                                <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.offenceSummary }}</p>
+                                <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
                             </div>
                         </div>
                     {% endfor %}
@@ -61,7 +60,7 @@
                         Name
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        {{ caseData.def_name }}
+                        {{ data.defendantName }}
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -69,7 +68,7 @@
                         Gender
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        {% if caseData.def_sex === "F" %}Female{% elif caseData.def_sex === "M" %}Male{% else %}Unknown{% endif %}
+                        {% if data.defendantSex === "F" %}Female{% elif data.defendantSex === "M" %}Male{% else %}Unknown{% endif %}
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -77,8 +76,8 @@
                         Date of birth
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        {{ params.moment(caseData.def_dob, 'DD-MM-YYYY').format('D MMMM YYYY') }}
-                        ({{ params.moment().diff(params.moment(caseData.def_dob, 'DD-MM-YYYY'), 'years') }} years old)
+                        {{ params.moment(data.defendantDob, 'DD-MM-YYYY').format('D MMMM YYYY') }}
+                        ({{ params.moment().diff(params.moment(data.defendantDob, 'DD-MM-YYYY'), 'years') }} years old)
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -86,13 +85,13 @@
                         Address
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        {%- set address = caseData.def_addr -%}
+                        {%- set address = data.defendantAddress -%}
                         {% if address.line1 %}{{ address.line1 }}<br/>{% endif %}
                         {% if address.line2 %}{{ address.line2 }}<br/>{% endif %}
                         {% if address.line3 %}{{ address.line3 }}<br/>{% endif %}
                         {% if address.line4 %}{{ address.line4 }}<br/>{% endif %}
                         {% if address.line5 %}{{ address.line5 }}<br/>{% endif %}
-                        {% if address.pcode %}{{ address.pcode | upper }}{% endif %}
+                        {% if address.postcode %}{{ address.postcode | upper }}{% endif %}
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -100,7 +99,7 @@
                         Nationality
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        {{ caseData.nationality_1 or "Unknown" }}{{ " / " + caseData.nationality_2 if caseData.nationality_2 }}
+                        {{ data.nationality_1 or "Unknown" }}{{ " / " + data.nationality_2 if data.nationality_2 }}
                     </dd>
                 </div>
             </dl>

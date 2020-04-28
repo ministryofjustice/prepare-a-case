@@ -1,0 +1,46 @@
+{
+  "id": "73d0aa46-f1de-4406-b5b8-17e4b140e50a",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z]*)/case/5222601242"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "caseId": 951609,
+      "caseNo": 5222601242,
+      "courtCode": "SHF",
+      "courtRoom": 9,
+      "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+      "listNo": "1st",
+      "pnc": "D/9874483AB",
+      "crn": "D991494",
+      "probationStatus": "Current",
+      "session": "MORNING",
+      "previouslyKnownTerminationDate": null,
+      "suspendedSentenceOrder": false,
+      "breach": true,
+      "offences": [
+        {
+          "offenceTitle": "Theft from a shop",
+          "offenceSummary": "On 01/01/2015 at Tetratrex, Leeds, stole ROBOTS to the value of £987.00, belonging to Young Bryant.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+        }
+      ],
+      "defendantSex": "M",
+      "defendantName": "Olsen Alexander",
+      "defendantAddress": {
+        "line1": 99,
+        "line2": "Ralph Avenue",
+        "postcode": "ad21 5dr",
+        "line3": "London",
+        "line4": null,
+        "line5": null
+      },
+      "defendantDob": "06-06-1996"
+    }
+  }
+}
