@@ -4,7 +4,7 @@ const sessionFilteredList = {
       name: 'Kara Ayers'
     },
     filtered: {
-      name: 'Marcie Jordan'
+      name: 'Charlene Hammond'
     }
   },
   dev: {

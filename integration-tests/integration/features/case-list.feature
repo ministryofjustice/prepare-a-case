@@ -3,7 +3,7 @@ Feature: Case list
   As a registered user
   I want to see a case list view
 
-  Scenario: View the case list with data containing 207 cases for the given day
+  Scenario: View the case list with data containing 100 cases for the given day
     Given I am a registered user
     And I am viewing the "unfilteredPage1" case list
 
@@ -26,10 +26,10 @@ Feature: Case list
     And I should see pagination link "2" with href "?page=2"
     And I should see pagination link "3" with href "?page=3"
     And I should see pagination link "Next" with href "?page=2"
-    And I should see pagination text "Showing 1 to 20 of 207 results"
+    And I should see pagination text "Showing 1 to 20 of 100 results"
     And There should be no a11y violations
 
-  Scenario: View the case list with data containing 207 cases for the given day and navigate to page 2
+  Scenario: View the case list with data containing 100 cases for the given day and navigate to page 2
     Given I am a registered user
     And I am viewing the "unfilteredPage2" case list
 
@@ -55,10 +55,10 @@ Feature: Case list
     And I should see pagination link "4" with href "?page=4"
     And I should see pagination link "5" with href "?page=5"
     And I should see pagination link "Next" with href "?page=3"
-    And I should see pagination text "Showing 21 to 40 of 207 results"
+    And I should see pagination text "Showing 21 to 40 of 100 results"
     And There should be no a11y violations
 
-  Scenario: View the case list with data containing 207 cases for the given day and navigate to page 3
+  Scenario: View the case list with data containing 100 cases for the given day and navigate to page 3
     Given I am a registered user
     And I am viewing the "unfilteredPage3" case list
 
@@ -84,10 +84,10 @@ Feature: Case list
     And I should see pagination link "4" with href "?page=4"
     And I should see pagination link "5" with href "?page=5"
     And I should see pagination link "Next" with href "?page=4"
-    And I should see pagination text "Showing 41 to 60 of 207 results"
+    And I should see pagination text "Showing 41 to 60 of 100 results"
     And There should be no a11y violations
 
-  Scenario: View the case list with data containing 207 cases for the given day and navigate to page 5
+  Scenario: View the case list with data containing 100 cases for the given day and navigate to page 5
     Given I am a registered user
     And I am viewing the "unfilteredPage5" case list
 
@@ -106,52 +106,13 @@ Feature: Case list
 
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=4"
-    And I should not see pagination link "1"
-    And I should not see pagination link "2"
+    And I should see pagination link "1" with href "?page=1"
+    And I should see pagination link "2" with href "?page=2"
     And I should see pagination link "3" with href "?page=3"
     And I should see pagination link "4" with href "?page=4"
     And I should not see pagination link "5"
     And I should see pagination page "5" highlighted
-    And I should see pagination link "6" with href "?page=6"
-    And I should see pagination link "7" with href "?page=7"
-    And I should not see pagination link "8"
-    And I should not see pagination link "9"
-    And I should not see pagination link "10"
-    And I should not see pagination link "11"
-    And I should see pagination link "Next" with href "?page=6"
-    And I should see pagination text "Showing 81 to 100 of 207 results"
-    And There should be no a11y violations
-
-  Scenario: View the case list with data containing 207 cases for the given day and navigate to page 11
-    Given I am a registered user
-    And I am viewing the "unfilteredPage11" case list
-
-    When I navigate to the "cases" route
-    Then I should be on the "Cases" page
-    And I should see the heading "Cases"
-    And I click pagination link "5"
-    And I click pagination link "7"
-    And I click pagination link "9"
-    And I click pagination link "11"
-
-    Then I should see the caption with the relevant court
-    And I should see sub navigation with default dates
-    And I should see a timestamp of the most recent Libra data
-    And I should see the case list table with headings
-      | Defendant | Probation status | Offence | Listing | Session | Court |
-
-    And The defendant names should be links
-
-    And I should see pagination
-    And I should see pagination link "Previous" with href "?page=10"
-    And I should see pagination link "7" with href "?page=7"
-    And I should see pagination link "8" with href "?page=8"
-    And I should see pagination link "9" with href "?page=9"
-    And I should see pagination link "10" with href "?page=10"
-    And I should not see pagination link "11"
-    And I should see pagination page "11" highlighted
-    And I should not see pagination link "Next"
-    And I should see pagination text "Showing 201 to 207 of 207 results"
+    And I should see pagination text "Showing 81 to 100 of 100 results"
     And There should be no a11y violations
 
   Scenario: View the case list with data containing 5 cases for the given day
