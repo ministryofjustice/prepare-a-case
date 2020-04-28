@@ -65,7 +65,7 @@ executors:
     working_directory: ~/app
   builder:
     docker:
-      - image: circleci/node:12.16.1-browsers
+      - image: circleci/node:12.16.2-browsers
     working_directory: ~/app
 
 orbs:
@@ -93,7 +93,7 @@ jobs:
             - dependencies-cache
       - run:
           name: Install dependencies
-          command: yarn install --frozen-lockfile
+          command: npm ci
       - save_cache:
           key: dependencies-cache-{{ checksum "package.json" }}
           paths:
@@ -113,7 +113,7 @@ jobs:
       - run:
           name: Lint
           halt_build_on_fail: false
-          command: yarn lint
+          command: npm run lint
 
   test:
     executor: builder
@@ -125,7 +125,7 @@ jobs:
           key: dependencies-cache-{{ checksum "package.json" }}
       - run:
           name: Unit tests
-          command: yarn unit-test
+          command: npm run unit-test
       - store_test_results:
           path: test-results
       - store_artifacts:
@@ -145,7 +145,7 @@ jobs:
           background: true
       - run:
           name: Run the app
-          command: yarn start
+          command: npm run start
           background: true
       - run:
           name: Wait for node app to start
@@ -153,7 +153,7 @@ jobs:
       - run:
           name: Run integration tests
           halt_build_on_fail: false
-          command: yarn int-test
+          command: npm run int-test
       - store_test_results:
           path: test-results
       - store_artifacts:

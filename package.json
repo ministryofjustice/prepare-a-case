@@ -11,22 +11,22 @@
     "url": "https://github.com/ministryofjustice/prepare-a-case.git"
   },
   "engines": {
-    "node": ">=12.13.0 <13.0.0 || >=14.0.0",
+    "node": ">=12.16.2 <13.0.0 || >=14.0.0",
     "yarn": "^1.19.0"
   },
   "scripts": {
-    "precommit": "yarn lint && yarn unit-test && yarn int-test",
-    "pre-commit-lite": "yarn lint && yarn unit-test",
-    "pre-push": "yarn int-test",
+    "precommit": "npm run lint && npm run unit-test && npm run int-test",
+    "pre-commit-lite": "npm run lint && npm run unit-test",
+    "pre-push": "npm run int-test",
     "delete:reports": "rm ./test-results/cypress/* || true",
-    "preint-test": "yarn delete:reports",
-    "preint-test:dev": "yarn delete:reports",
-    "int-test": "cypress run",
-    "int-test:ui": "cypress open",
-    "lint": "standard",
+    "preint-test": "npm run delete:reports",
+    "preint-test:dev": "npm run delete:reports",
+    "int-test": "npx cypress run",
+    "int-test:ui": "npx cypress open",
+    "lint": "npx standard",
     "start": "node ./bin/www",
-    "start:watch": "nodemon --exec yarn start --scripts-prepend-node-path",
-    "unit-test": "NODE_ENV=test yarn jest --ci --reporters=default --reporters=jest-junit --collect-coverage"
+    "start:watch": "nodemon --exec npm run start --scripts-prepend-node-path",
+    "unit-test": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage"
   },
   "nodemonConfig": {
     "ignore": [
