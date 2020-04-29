@@ -43,6 +43,11 @@ router.get('/cases', (req, res) => {
   res.redirect(`/cases/${moment().format('YYYY-MM-DD')}`)
 })
 
+router.post('/case/:caseNo/record', async (req, res) => {
+  req.session.showAllPreviousOrders = req.params.caseNo
+  res.redirect(`/case/${req.params.caseNo}/record#previousOrders`)
+})
+
 router.get('/case/:caseNo/:section?/:detail?', health, defaults, async (req, res) => {
   let template
   let communityResponse = {}
@@ -69,6 +74,7 @@ router.get('/case/:caseNo/:section?/:detail?', health, defaults, async (req, res
             ...communityResponse,
             personalDetails
           }
+          templateValues.params.showAllPreviousOrders = req.session.showAllPreviousOrders
         } else {
           const { active } = communityResponse.convictions
             .find(conviction => conviction.convictionId.toString() === params.detail.toString())

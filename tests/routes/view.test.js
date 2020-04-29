@@ -100,6 +100,12 @@ describe('Routes', () => {
     return response
   })
 
+  it('case summary details route should redirect when viewing all previous orders', async () => {
+    return request(app).post('/case/8678951874/record', {}).then(response => {
+      expect(response.statusCode).toEqual(302)
+    })
+  })
+
   it('case summary probation record route should call the case service to fetch case data', async () => {
     caseResponse = {
       probationStatus: 'Current',

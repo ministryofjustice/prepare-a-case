@@ -74,6 +74,18 @@ And('I should see link to the first previous order', ($string, $href) => {
   })
 })
 
+And('I should see a limited number of previous orders', () => {
+  cy.get('#previousOrders').within(() => {
+    cy.get('tr').should('have.length', 5)
+  })
+})
+
+And('I should see all previous orders', () => {
+  cy.get('#previousOrders').within(() => {
+    cy.get('tr').should('have.length', world.data.previousOrderCount)
+  })
+})
+
 And('I should see the previous order offence', () => {
   cy.get('.qa-previous-order-1-offence').contains(world.data.previousOrderOffence)
 })

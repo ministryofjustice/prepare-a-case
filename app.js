@@ -26,6 +26,10 @@ env.addFilter('json', function (value) {
   return JSON.parse(value)
 })
 
+env.addFilter('limit', function (arr, limit) {
+  return arr.slice(0, limit)
+})
+
 app.set('view engine', 'njk')
 
 app.use(compression())

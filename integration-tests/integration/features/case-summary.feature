@@ -209,6 +209,9 @@ Feature: Case summary
       | Requirements | Offender Manager |
     And I should see the offender manager details
     And I should see the last pre-sentence report details
+    And I should see a limited number of previous orders
+    When I click the "Show all previous orders" button
+    Then I should see all previous orders
     And There should be no a11y violations
 
   Scenario: View the attendance record section of the current offender order with unpaid work appointments

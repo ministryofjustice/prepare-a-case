@@ -63,22 +63,32 @@
             {% endif %}
 
             {% if previousOrders | length %}
-                <h2 class="govuk-heading-m{% if activeOrders | length and previousOrders | length %} govuk-!-margin-top-8{% endif %}">Previous orders ({{ previousOrders | length }})</h2>
-                <table class="govuk-table">
-                    <tbody class="govuk-table__body">
-                        {%- for order in previousOrders %}
-                            <tr class="govuk-table__row">
-                                <td class="govuk-table__cell govuk-!-width-two-thirds">
-                                    <p class="govuk-body govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a></p>
-                                    <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
-                                </td>
-                                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third" style="vertical-align: bottom">
-                                    <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">Ended on {{ params.moment(order.sentence.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
-                                </td>
-                            </tr>
-                        {% endfor -%}
-                    </tbody>
-                </table>
+                {% if params.showAllPreviousOrders === params.caseNo %}
+                    {% set limitPreviousOrders = previousOrders | length %}
+                {% else %}
+                    {% set limitPreviousOrders = 5 %}
+                {% endif %}
+                <form name="previousOrders" id="previousOrders" method="post">
+                    <h2 class="govuk-heading-m{% if activeOrders | length and previousOrders | length %} govuk-!-margin-top-8{% endif %}">Previous orders ({{ previousOrders | length }})</h2>
+                    <table class="govuk-table govuk-!-margin-bottom-3">
+                        <tbody class="govuk-table__body">
+                            {%- for order in previousOrders | limit(limitPreviousOrders) %}
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell govuk-!-width-two-thirds">
+                                        <p class="govuk-body govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a></p>
+                                        <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
+                                    </td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third" style="vertical-align: bottom">
+                                        <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">Ended on {{ params.moment(order.sentence.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                                    </td>
+                                </tr>
+                            {% endfor -%}
+                        </tbody>
+                    </table>
+                    {% if previousOrders | length > limitPreviousOrders %}
+                        <button type="submit" class="govuk-button govuk-button--secondary">Show all previous orders</button>
+                    {% endif %}
+                </form>
             {% endif %}
 
         </div>
