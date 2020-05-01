@@ -12,11 +12,7 @@
 {%- set moment = params.moment -%}
 {%- set preciseDiff = params.preciseDiff -%}
 
-{% if currentOrder.active %}
-    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.convictionDate, 'YYYY-MM-DD'), moment()) -%}
-{% else %}
-    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.convictionDate, 'YYYY-MM-DD'), moment(currentOrder.terminatedDate, 'YYYY-MM-DD')) -%}
-{% endif %}
+{%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.convictionDate, 'YYYY-MM-DD'), moment()) -%}
 
 {% if currentOrder.active %}
     {# Group appointments by attended/absent and complied/failed #}
@@ -86,7 +82,7 @@
 
     <h2 class="govuk-heading-l govuk-!-margin-0">{{ currentOrder.sentence.description }}</h2>
 
-    <div class="govuk-grid-row govuk-!-margin-top-4">
+    <div class="govuk-grid-row govuk-!-margin-top-4 govuk-!-margin-bottom-8">
         <div class="govuk-grid-column-two-thirds">
 
             <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ currentOrder.offences[0].description }}</p>
@@ -107,12 +103,37 @@
             </div>
 
         </div>
-        <div class="govuk-grid-column-one-third">&nbsp;</div>
     </div>
+
+    {% if currentOrder.breaches | length %}
+        <h2 class="govuk-heading-m">Breaches</h2>
+        <div class="govuk-grid-row  govuk-!-margin-bottom-6">
+            <div class="govuk-grid-column-two-thirds">
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Breach</th>
+                        <th scope="col" class="govuk-table__header">Started</th>
+                        <th scope="col" class="govuk-table__header">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body qa-breaches">
+                    {% for breach in currentOrder.breaches %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell"><a href="#" class="govuk-link govuk-link--no-visited-state">{{ breach.description }}</a></td>
+                            <td class="govuk-table__cell">{{ params.moment(breach.started, 'YYYY-MM-DD').format('D MMM YYYY') }}</td>
+                            <td class="govuk-table__cell">{{ breach.status }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
 
     {% if currentOrder.active %}
 
-        <h2 class="govuk-heading-m govuk-!-margin-top-8">Appointment attendance</h2>
+        <h2 class="govuk-heading-m">Appointment attendance</h2>
 
         {% if attendances.length %}
             {% set sortedAttendances = attendances | sort(true, false, 'attendanceDate') %}
@@ -233,7 +254,6 @@
                     {% endif %}
 
                 </div>
-                <div class="govuk-grid-column-one-third">&nbsp;</div>
             </div>
         {% endif %}
 

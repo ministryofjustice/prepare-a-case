@@ -26,6 +26,15 @@ const currentDefendantWithBreach = {
       headings: ['Appointments to date', 'Complied', 'Failures to comply', 'Awaiting outcome'],
       types: ['Planned office visit', 'Unpaid work', 'Appointment with External Agency', 'IAPS / Accredited programme']
     },
+    breaches: [{
+      description: 'Community Order/SSO Breach',
+      started: '30 Dec 2014',
+      status: 'In progress'
+    }, {
+      description: 'Community Order/SSO Breach',
+      started: '26 Nov 2013',
+      status: 'Completed - Amended & Continued'
+    }],
     unpaidWork: {
       status: 'Terminated - 1 Apr 2020',
       offered: 32,

@@ -24,6 +24,7 @@ const getProbationRecord = async crn => {
   if (res.data && res.data.convictions) {
     const enrichedConvictions = await getRequirements(res.data.convictions, crn)
     return {
+      ...res.data,
       convictions: enrichedConvictions
     }
   }
