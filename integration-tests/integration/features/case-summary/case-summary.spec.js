@@ -43,6 +43,10 @@ And('I should see link to the first current order', () => {
   cy.get('.govuk-link').contains(world.data.currentOrderTitle).should('exist')
     .should('have.attr', 'href')
     .and('include', `record/${world.data.currentOrderId}`)
+
+  if (world.data.currentOrderBreach) {
+    cy.get('.moj-badge.moj-badge--black.pac-badge').contains('Breach').should('exist')
+  }
 })
 
 And('I should see the current order offence', () => {
