@@ -248,6 +248,7 @@ Feature: Case summary
     Then I should be on the "Probation record" page
     And I should see the heading has the defendant name
 
+    And I should see link to the first current order
     When I click the first "current" order link
     Then I should be on the "Order details" page
     And I should see the level 2 heading with the "current" order title
