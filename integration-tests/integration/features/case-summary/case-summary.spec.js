@@ -6,6 +6,7 @@ import { getMonthsAndDays } from '../../../../routes/middleware/defaults'
 import World from '../../world/World'
 
 const world = new World('caseSummary')
+const displayDateFormat = 'D MMM YYYY'
 
 And('I am looking at a not known defendant', () => {
   world.scenario = 'notKnownDefendant'
@@ -95,7 +96,7 @@ And('I should see the previous order offence', () => {
 })
 
 And('I should see the previous order end date', () => {
-  cy.get('.qa-previous-order-1-end-date').contains(`Ended on ${moment(world.data.previousOrderEndDate, 'YYYY-MM-DD').format('D MMM YYYY')}`)
+  cy.get('.qa-previous-order-1-end-date').contains(`Ended on ${moment(world.data.previousOrderEndDate, 'YYYY-MM-DD').format(displayDateFormat)}`)
 })
 
 And('I should see the unpaid work information', () => {
@@ -200,8 +201,8 @@ And('I should see the correct start, ended and reason headings', () => {
 })
 
 And('I should see the {string} order start and end dates', $type => {
-  cy.get('.qa-start-date').contains(moment($type === 'current' ? world.data.currentOrderStartDate : world.data.previousOrderStartDate).format('D MMM YYYY'))
-  cy.get('.qa-end-date').contains(moment($type === 'current' ? world.data.currentOrderEndDate : world.data.previousOrderEndDate).format('D MMM YYYY'))
+  cy.get('.qa-start-date').contains(moment($type === 'current' ? world.data.currentOrderStartDate : world.data.previousOrderStartDate).format(displayDateFormat))
+  cy.get('.qa-end-date').contains(moment($type === 'current' ? world.data.currentOrderEndDate : world.data.previousOrderEndDate).format(displayDateFormat))
 })
 
 And('I should see the correctly calculated elapsed time for the current order', $type => {
@@ -258,6 +259,24 @@ And('I should see the appointment attendance information', () => {
   })
   world.data.currentOrderAttendance.types.forEach($text => {
     cy.get('.govuk-body').contains($text)
+  })
+})
+
+And('I should see the conviction breach details', () => {
+  const keys = ['Order', 'Sentenced at', 'Breach incident', 'Breach started', 'Provider', 'Team', 'Officer', 'Status']
+  const breachDetails = world.data.breachDetails
+  cy.get('.govuk-summary-list').within(() => {
+    keys.forEach(($key, $index) => {
+      cy.get('dt').eq($index).contains($key)
+    })
+    cy.get('dd').eq(0).contains(breachDetails.conviction)
+    cy.get('dd').eq(1).contains(breachDetails.court)
+    cy.get('dd').eq(2).contains(breachDetails.incidentDate)
+    cy.get('dd').eq(3).contains(breachDetails.started)
+    cy.get('dd').eq(4).contains(breachDetails.provider)
+    cy.get('dd').eq(5).contains(breachDetails.team)
+    cy.get('dd').eq(6).contains(breachDetails.officer)
+    cy.get('dd').eq(7).contains(breachDetails.status)
   })
 })
 

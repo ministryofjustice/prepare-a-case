@@ -1,5 +1,6 @@
 {% extends "partials/case-details.njk" %}
 
+{%- set moment = params.moment -%}
 {%- set communityData = data.communityData -%}
 {%- set activeOrders = [] -%}
 {%- set previousOrders = [] -%}
@@ -43,7 +44,7 @@
                         {% if order.inBreach %}<span class="moj-badge moj-badge--black pac-badge govuk-!-margin-left-1">Breach</span>{% endif %}
                     </p>
                     <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].description }}</p>
-                    <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started on {{ params.moment(order.convictionDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started on {{ moment(order.convictionDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
 
                     {% if order.requirements and order.requirements | length %}
                         <h3 class="govuk-heading-s">Requirements</h3>
@@ -82,7 +83,7 @@
                                         <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
                                     </td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third" style="vertical-align: bottom">
-                                        <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">Ended on {{ params.moment(order.sentence.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                                        <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">Ended on {{ moment(order.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
                                     </td>
                                 </tr>
                             {% endfor -%}
@@ -101,7 +102,7 @@
 
             {% if offenderManager.active %}
                 <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.staff.forenames }} {{ offenderManager.staff.surname }}</p>
-                <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ params.moment(offenderManager.fromDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.fromDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
 
                 <p class="govuk-body govuk-!-margin-top-0">{{ offenderManager.probationArea.description }}<br/>
                 {{ offenderManager.address.buildingName }}<br/>
@@ -119,7 +120,7 @@
                 {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
                 <h3 class="govuk-heading-s">Last pre-sentence report</h3>
                 <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
-                <p class="govuk-hint govuk-!-margin-top-1">Delivered on {{ params.moment(latestDocument.completedDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                <p class="govuk-hint govuk-!-margin-top-1">Delivered on {{ moment(latestDocument.completedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
             {% endif %}
         </div>
     </div>

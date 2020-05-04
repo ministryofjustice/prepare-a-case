@@ -268,6 +268,12 @@ Feature: Case summary
     And I should see the level 2 heading "Appointment attendance"
     And I should see the appointment attendance information
     And I should see the unpaid work information
+
+    When  I click the "Community Order/SSO Breach" link
+    Then I should be on the "Breach details" page
+    And I should see the level 2 heading "Community Order / SSO Breach"
+    And I should see the conviction breach details
+
     And There should be no a11y violations
 
   Scenario: View the attendance record section of the previous offender order
