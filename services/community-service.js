@@ -9,7 +9,7 @@ const getPersonalDetails = async crn => {
 const getRequirements = async (convictions, crn) => {
   return Promise.all(
     convictions.map(async conviction => {
-      if (conviction.active && conviction.sentence) {
+      if (conviction.sentence) {
         const res = await request(`${apiUrl}/offender/${crn}/convictions/${conviction.convictionId}/requirements`)
         return { ...conviction, ...res.data }
       } else {

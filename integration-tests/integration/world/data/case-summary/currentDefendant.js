@@ -44,7 +44,7 @@ const currentDefendant = {
     previousOrderCount: 11,
     previousOrderTitle: 'CJA - Std Determinate Custody',
     previousOrderOffence: 'Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801',
-    previousOrderId: '2788607022',
+    previousOrderId: '636401162',
     previousOrderStartDate: '2017-03-08',
     previousOrderEndDate: '2018-01-23',
     previousOrderTerminationReason: 'ICMS Miscellaneous Event',
