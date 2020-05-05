@@ -42,6 +42,12 @@ And('I should see the following level 3 headings', $data => {
   })
 })
 
+And('I should see the following table headings', $data => {
+  $data.raw()[0].forEach((text, index) => {
+    cy.get('.govuk-table__header').eq(index).contains(text)
+  })
+})
+
 And('I should not see the heading level {int} with text {string}', ($level, $text) => {
   cy.get(`h${$level}`).contains($text).should('not.exist')
 })

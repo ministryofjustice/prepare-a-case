@@ -301,3 +301,36 @@ Feature: Case summary
     And I should see the body text with the defendant "offenceDetails"
     And I should see the caption text with the defendant "offenceCaption"
 
+    Scenario: View the requirements section of a current order
+      Given I am a registered user
+      And I am looking at a current defendant
+
+      When I navigate to the probation record route
+      Then I should be on the "Probation record" page
+      And I should see the heading has the defendant name
+
+      When I click the first "current" order link
+      Then I should be on the "Order details" page
+      And I should see the level 2 heading with the "current" order title
+      And I should see the level 2 heading "Requirements"
+      And I should see the following table headings
+        | Requirement | Length |
+
+    Scenario: View the requirements section of a previous order
+      Given I am a registered user
+      And I am looking at a current defendant
+
+      When I navigate to the probation record route
+      Then I should be on the "Probation record" page
+      And I should see the heading has the defendant name
+
+      When I click the first "previous" order link
+      Then I should be on the "Order details" page
+      And I should see the level 2 heading with the "previous" order title
+      And I should see the level 2 heading "Requirements"
+      And I should see the following table headings
+        | Requirement | Length | Ended | Reason |
+
+
+
+
