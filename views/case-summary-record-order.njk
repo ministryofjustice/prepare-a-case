@@ -2,7 +2,26 @@
 {% extends "./partials/case-details.njk" %}
 
 {%- set moment = params.moment -%}
+{% set activeRequirementTableData = {
+    head: [
+        { text: "Requirement" },
+        { text: "Length" }
+    ],
+    rows: []
+} %}
+
+{% set inactiveRequirementTableData = {
+    head: [
+        { text: "Requirement" },
+        { text: "Length" },
+        { text: "Ended" },
+        { text: "Reason" }
+    ],
+    rows: []
+} %}
+
 {%- set communityData = data.communityData -%}
+
 {%- set currentOrder = {} -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
     {% if order.convictionId | string === params.detail | string %}
@@ -11,6 +30,19 @@
 {% endfor -%}
 
 {%- set preciseDiff = params.preciseDiff -%}
+
+{%- for requirement in currentOrder.requirements %}
+    {{ activeRequirementTableData.rows.push([
+        { text: requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description + ' (' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')', classes: 'govuk-!-width-one-half'},
+        { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else '- ', classes: 'govuk-!-width-one-half' }
+    ]) }}
+    {{ inactiveRequirementTableData.rows.push([
+        { text: requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description + ' (' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')', classes: 'govuk-!-width-one-quarter'},
+        { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else '- ', classes: 'govuk-!-width-one-quarter' },
+        { text: moment(requirement.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) if requirement.terminationDate, classes: 'govuk-!-width-one-quarter' },
+        { text: requirement.terminationReason.description if requirement.terminationReason.description, classes: 'govuk-!-width-one-quarter' }
+    ]) }}
+{% endfor -%}
 
 {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.convictionDate, 'YYYY-MM-DD'), moment()) -%}
 
@@ -82,7 +114,7 @@
 
     <h2 class="govuk-heading-l govuk-!-margin-0">{{ currentOrder.sentence.description }}</h2>
 
-    <div class="govuk-grid-row govuk-!-margin-top-4 govuk-!-margin-bottom-8">
+    <div class="govuk-grid-row govuk-!-margin-top-4">
         <div class="govuk-grid-column-two-thirds">
 
             <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ currentOrder.offences[0].description }}</p>
@@ -102,12 +134,23 @@
                 </div>
             </div>
 
+            {% if currentOrder.requirements | length %}
+                <h2 class="govuk-heading-m govuk-!-margin-top-8">Requirements</h2>
+
+                {%- from "govuk/components/table/macro.njk" import govukTable -%}
+                {% if currentOrder.active %}
+                    {{ govukTable(activeRequirementTableData) }}
+                {% else %}
+                    {{ govukTable(inactiveRequirementTableData) }}
+                {% endif %}
+            {% endif %}
+
         </div>
     </div>
 
     {% if currentOrder.breaches | length %}
-        <h2 class="govuk-heading-m">Breaches</h2>
-        <div class="govuk-grid-row  govuk-!-margin-bottom-6">
+        <h2 class="govuk-heading-m govuk-!-margin-top-8">Breaches</h2>
+        <div class="govuk-grid-row govuk-!-margin-bottom-6">
             <div class="govuk-grid-column-two-thirds">
                 <table class="govuk-table">
                     <thead class="govuk-table__head">
@@ -133,7 +176,7 @@
 
     {% if currentOrder.active %}
 
-        <h2 class="govuk-heading-m">Appointment attendance</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-top-8">Appointment attendance</h2>
 
         {% if attendances.length %}
             {% set sortedAttendances = attendances | sort(true, false, 'attendanceDate') %}
@@ -156,16 +199,24 @@
                 <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Complied</h3>
             </div>
             <div class="govuk-grid-column-three-quarters">
-                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0"><span class="govuk-heading-m app-dashboard-count">{{ attendedAppointments.complied.flat(Infinity) | length }}</span>Attendances</p>
+                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0"><span
+                            class="govuk-heading-m app-dashboard-count">{{ attendedAppointments.complied.flat(Infinity) | length }}</span>Attendances
+                </p>
 
                 {% for complied in attendedComplied | sort(true, false, 'count') %}
-                    <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">{{ complied.count }}</span>{{ complied.description }}</p>
+                    <p class="govuk-body govuk-!-margin-0"><span
+                                class="govuk-body app-dashboard-count">{{ complied.count }}</span>{{ complied.description }}
+                    </p>
                 {% endfor %}
 
-                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 govuk-!-margin-top-2"><span class="govuk-heading-m app-dashboard-count">{{ absentAppointments.complied.flat(Infinity) | length }}</span>Absences</p>
+                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 govuk-!-margin-top-2"><span
+                            class="govuk-heading-m app-dashboard-count">{{ absentAppointments.complied.flat(Infinity) | length }}</span>Absences
+                </p>
 
                 {% for complied in absentComplied | sort(true, false, 'count') %}
-                    <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">{{ complied.count }}</span>{{ complied.description }}</p>
+                    <p class="govuk-body govuk-!-margin-0"><span
+                                class="govuk-body app-dashboard-count">{{ complied.count }}</span>{{ complied.description }}
+                    </p>
                 {% endfor %}
 
             </div>
@@ -178,16 +229,24 @@
                 <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Failures to comply</h3>
             </div>
             <div class="govuk-grid-column-three-quarters">
-                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0"><span class="govuk-heading-m app-dashboard-count">{{ attendedAppointments.failed.flat(Infinity) | length }}</span>Attendances</p>
+                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0"><span
+                            class="govuk-heading-m app-dashboard-count">{{ attendedAppointments.failed.flat(Infinity) | length }}</span>Attendances
+                </p>
 
                 {% for failed in attendedFailed | sort(true, false, 'count') %}
-                    <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">{{ failed.count }}</span>{{ failed.description }}</p>
+                    <p class="govuk-body govuk-!-margin-0"><span
+                                class="govuk-body app-dashboard-count">{{ failed.count }}</span>{{ failed.description }}
+                    </p>
                 {% endfor %}
 
-                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 govuk-!-margin-top-2"><span class="govuk-heading-m app-dashboard-count">{{ absentAppointments.failed.flat(Infinity) | length }}</span>Absences</p>
+                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 govuk-!-margin-top-2"><span
+                            class="govuk-heading-m app-dashboard-count">{{ absentAppointments.failed.flat(Infinity) | length }}</span>Absences
+                </p>
 
                 {% for failed in absentFailed | sort(true, false, 'count') %}
-                    <p class="govuk-body govuk-!-margin-0"><span class="govuk-body app-dashboard-count">{{ failed.count }}</span>{{ failed.description }}</p>
+                    <p class="govuk-body govuk-!-margin-0"><span
+                                class="govuk-body app-dashboard-count">{{ failed.count }}</span>{{ failed.description }}
+                    </p>
                 {% endfor %}
             </div>
         </div>
@@ -200,7 +259,8 @@
                     <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Awaiting outcome</h3>
                 </div>
                 <div class="govuk-grid-column-three-quarters">
-                    <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0"><span class="govuk-heading-m app-dashboard-count">{{ awaitingOutcome | length }}</span></p>
+                    <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0"><span
+                                class="govuk-heading-m app-dashboard-count">{{ awaitingOutcome | length }}</span></p>
                 </div>
             </div>
         {% endif %}
@@ -241,7 +301,7 @@
                                         <dd class="govuk-summary-list__value qa-upw-attended">{{ unpaidWork.attended or '0' }}</dd>
                                     </div>
                                     <div class="govuk-summary-list__row">
-                                        <dt class="govuk-summary-list__key">Acceptable absences </dt>
+                                        <dt class="govuk-summary-list__key">Acceptable absences</dt>
                                         <dd class="govuk-summary-list__value qa-upw-acceptable">{{ unpaidWork.acceptableAbsences or '0' }}</dd>
                                     </div>
                                     <div class="govuk-summary-list__row">
@@ -251,6 +311,7 @@
                                 </dl>
                             </div>
                         </details>
+
                     {% endif %}
 
                 </div>
