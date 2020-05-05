@@ -15,6 +15,7 @@ const currentDefendantWithBreach = {
     offenceDetails: 'On 01/01/2015 at Tetratrex, Leeds, stole ROBOTS to the value of £987.00, belonging to Young Bryant.',
     offenceCaption: 'Contrary to section 1(1) and 7 of the Theft Act 1968.',
     currentOrderCount: 7,
+    currentOrderBreach: true,
     currentOrderTitle: 'ORA Community Order',
     currentOrderOffence: 'Abstracting electricity - 04300',
     currentOrderStartDate: '2018-10-07',
