@@ -39,7 +39,7 @@
     {{ inactiveRequirementTableData.rows.push([
         { text: requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description + ' (' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')', classes: 'govuk-!-width-one-quarter'},
         { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else '- ', classes: 'govuk-!-width-one-quarter' },
-        { text: moment(requirement.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) if requirement.terminationDate, classes: 'govuk-!-width-one-quarter' },
+        { text: moment(requirement.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') if requirement.terminationDate, classes: 'govuk-!-width-one-quarter' },
         { text: requirement.terminationReason.description if requirement.terminationReason.description, classes: 'govuk-!-width-one-quarter' }
     ]) }}
 {% endfor -%}
