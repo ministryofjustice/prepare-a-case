@@ -17,8 +17,8 @@ function getMonthsAndDays (startTime, endTime) {
   return ['months', 'days'].map(interval => {
     const diff = endTime.diff(startTime, interval)
     startTime.add(diff, interval)
-    return diff + ' ' + (diff === 1 ? interval.substring(0, interval.length - 1) : interval)
-  }).join(', ')
+    return diff ? `${diff} ${(diff === 1 ? interval.substring(0, interval.length - 1) : interval)}` : null
+  }).filter(item => !!item).join(', ')
 }
 
 const defaults = (req, res, next) => {

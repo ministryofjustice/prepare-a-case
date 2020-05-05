@@ -237,6 +237,18 @@ And('I should see court room, session and the correct listing', () => {
   cy.get('.govuk-body').contains(`Court ${world.data.court}, ${world.data.session} session, ${date} (${world.data.listing} listing).`)
 })
 
+And('I should see order breach information', () => {
+  cy.get('.qa-breaches').within(() => {
+    world.data.breaches.forEach(($item, $index) => {
+      cy.get('tr').eq($index).within(() => {
+        cy.get('td').eq(0).contains($item.description)
+        cy.get('td').eq(1).contains($item.started)
+        cy.get('td').eq(2).contains($item.status)
+      })
+    })
+  })
+})
+
 And('I should see the appointment attendance information', () => {
   world.data.currentOrderAttendance.counts.forEach(($text, $index) => {
     cy.get('.app-dashboard-count').eq($index).contains($text)

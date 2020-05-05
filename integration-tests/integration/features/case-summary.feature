@@ -240,7 +240,7 @@ Feature: Case summary
     And I should see the unpaid work information
     And There should be no a11y violations
 
-  Scenario: View the attendance record section of the current offender order without unpaid work appointments
+  Scenario: View the attendance record section of the current offender order in breach without unpaid work appointments
     Given I am a registered user
     And I am looking at a current defendant with breach
 
@@ -252,7 +252,6 @@ Feature: Case summary
     When I click the first "current" order link
     Then I should be on the "Order details" page
     And I should see the level 2 heading with the "current" order title
-    And I should see the level 2 heading "Appointment attendance"
 
     And I should see the body text with the defendant "currentOrderOffence"
     And I should see the following level 3 headings
@@ -263,6 +262,10 @@ Feature: Case summary
     And I should see the "current" order start and end dates
     And I should see the correctly calculated elapsed time for the current order
 
+    And I should see the level 2 heading "Breaches"
+    And I should see order breach information
+
+    And I should see the level 2 heading "Appointment attendance"
     And I should see the appointment attendance information
     And I should see the unpaid work information
     And There should be no a11y violations

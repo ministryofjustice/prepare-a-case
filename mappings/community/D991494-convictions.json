@@ -87,6 +87,20 @@
               "description": "(Assault PC (Indictable/Either way) - 00807)"
             }
           ],
+          "breaches": [
+            {
+              "breachId": 12345,
+              "description": "Community Order/SSO Breach",
+              "started": "2014-12-30",
+              "status": "In progress"
+            },
+            {
+              "breachId": 98765,
+              "description": "Community Order/SSO Breach",
+              "started": "2013-11-26",
+              "status": "Completed - Amended & Continued"
+            }
+          ],
           "sentence": {
             "description": "ORA Community Order",
             "length": 18,
