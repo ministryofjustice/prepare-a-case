@@ -43,6 +43,10 @@ And('I should see link to the first current order', () => {
   cy.get('.govuk-link').contains(world.data.currentOrderTitle).should('exist')
     .should('have.attr', 'href')
     .and('include', `record/${world.data.currentOrderId}`)
+
+  if (world.data.currentOrderBreach) {
+    cy.get('.moj-badge.moj-badge--black.pac-badge').contains('Breach').should('exist')
+  }
 })
 
 And('I should see the current order offence', () => {
@@ -231,6 +235,18 @@ And('I should see a straight line divide', () => {
 And('I should see court room, session and the correct listing', () => {
   const date = moment().format('dddd Do MMMM')
   cy.get('.govuk-body').contains(`Court ${world.data.court}, ${world.data.session} session, ${date} (${world.data.listing} listing).`)
+})
+
+And('I should see order breach information', () => {
+  cy.get('.qa-breaches').within(() => {
+    world.data.breaches.forEach(($item, $index) => {
+      cy.get('tr').eq($index).within(() => {
+        cy.get('td').eq(0).contains($item.description)
+        cy.get('td').eq(1).contains($item.started)
+        cy.get('td').eq(2).contains($item.status)
+      })
+    })
+  })
 })
 
 And('I should see the appointment attendance information', () => {

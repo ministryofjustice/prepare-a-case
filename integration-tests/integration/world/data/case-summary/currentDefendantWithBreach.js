@@ -15,6 +15,7 @@ const currentDefendantWithBreach = {
     offenceDetails: 'On 01/01/2015 at Tetratrex, Leeds, stole ROBOTS to the value of £987.00, belonging to Young Bryant.',
     offenceCaption: 'Contrary to section 1(1) and 7 of the Theft Act 1968.',
     currentOrderCount: 7,
+    currentOrderBreach: true,
     currentOrderTitle: 'ORA Community Order',
     currentOrderOffence: 'Abstracting electricity - 04300',
     currentOrderStartDate: '2018-10-07',
@@ -26,6 +27,15 @@ const currentDefendantWithBreach = {
       headings: ['Appointments to date', 'Complied', 'Failures to comply', 'Awaiting outcome'],
       types: ['Planned office visit', 'Unpaid work', 'Appointment with External Agency', 'IAPS / Accredited programme']
     },
+    breaches: [{
+      description: 'Community Order/SSO Breach',
+      started: '30 Dec 2014',
+      status: 'In progress'
+    }, {
+      description: 'Community Order/SSO Breach',
+      started: '26 Nov 2013',
+      status: 'Completed - Amended & Continued'
+    }],
     unpaidWork: {
       status: 'Terminated - 1 Apr 2020',
       offered: 32,
