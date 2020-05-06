@@ -48,6 +48,12 @@ describe('Routes', () => {
     }
   })
 
+  jest.spyOn(communityService, 'getBreachDetails').mockImplementation(function () {
+    return {
+      conviction: {}
+    }
+  })
+
   beforeEach(() => {
     app = require('../../app')
   })
@@ -151,6 +157,29 @@ describe('Routes', () => {
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
     expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
     expect(communityService.getAttendanceDetails).not.toHaveBeenCalled()
+    return response
+  })
+
+  it('case summary breach details route should call the case service to fetch breach data', async () => {
+    caseResponse = {
+      probationStatus: 'Current',
+      crn: 'D985513'
+    }
+    communityResponse = {
+      convictions: [{
+        convictionId: 1403337513,
+        breaches: [
+          {
+            breachId: 12345
+          }
+        ]
+      }]
+    }
+
+    const response = await request(app).get('/case/668911253/record/1403337513/breach/12345')
+    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
+    expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
+    expect(communityService.getBreachDetails).toHaveBeenCalledWith('D985513', '12345')
     return response
   })
 

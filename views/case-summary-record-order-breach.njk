@@ -1,0 +1,60 @@
+{%- set hideSubnav = true -%}
+{% extends "./partials/case-details.njk" %}
+
+{%- set moment = params.moment -%}
+
+{% block caseContent %}
+
+    {%- set breach = data.communityData -%}
+
+    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
+    {{ govukBackLink({
+        classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-7',
+        text: "Back",
+        href: '/case/' + params.caseNo + '/record/' + params.detail
+    }) }}
+
+    <h2 class="govuk-heading-l govuk-!-margin-0">{{ breach.description }}</h2>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <dl class="govuk-summary-list govuk-!-margin-top-8">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Order</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.conviction.description }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Sentenced at</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.court }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Breach incident</dt>
+                    <dd class="govuk-summary-list__value">{{ moment(breach.incidentDate, 'YYYY-MM-DD').format(displayDateFormat) }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Breach started</dt>
+                    <dd class="govuk-summary-list__value">{{ moment(breach.started, 'YYYY-MM-DD').format(displayDateFormat) }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Provider</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.provider }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Team</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.team }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Officer</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.officer }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Status</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.status }}</dd>
+                </div>
+            </dl>
+
+        </div>
+    </div>
+
+{% endblock %}

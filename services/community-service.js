@@ -36,8 +36,14 @@ const getAttendanceDetails = async (crn, orderId) => {
   return res.data
 }
 
+const getBreachDetails = async (crn, breachId) => {
+  const res = await request(`${apiUrl}/offender/${crn}/breaches/${breachId}`)
+  return res.data
+}
+
 module.exports = {
   getPersonalDetails,
   getProbationRecord,
-  getAttendanceDetails
+  getAttendanceDetails,
+  getBreachDetails
 }
