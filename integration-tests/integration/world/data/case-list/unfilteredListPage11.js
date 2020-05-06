@@ -5,7 +5,7 @@ const unfilteredListPage11 = {
       {
         defendant: 'Luisa Alston',
         probationStatus: 'No record',
-        breach: true,
+        breach: false,
         offence: 'Theft from a shop',
         listing: '3rd',
         session: 'Afternoon',

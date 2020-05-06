@@ -5,8 +5,8 @@ const unfilteredListPage1 = {
       {
         defendant: 'Kara Ayers',
         probationStatus: 'No record',
-        breach: true,
-        sso: true,
+        breach: false,
+        sso: false,
         offence: '*Assault by beating',
         listing: '1st',
         session: 'Morning',
@@ -15,7 +15,7 @@ const unfilteredListPage1 = {
       {
         defendant: 'Mann Carroll',
         probationStatus: 'No record',
-        breach: true,
+        breach: false,
         offence: '*Assault by beating',
         listing: '3rd',
         session: 'Morning',
