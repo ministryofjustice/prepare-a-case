@@ -1,7 +1,7 @@
 const express = require('express')
 const moment = require('moment')
 const { getCaseList, getCase } = require('../services/case-service')
-const { getPersonalDetails, getProbationRecord, getAttendanceDetails } = require('../services/community-service')
+const { getPersonalDetails, getProbationRecord, getAttendanceDetails, getBreachDetails } = require('../services/community-service')
 const router = express.Router()
 
 const { health } = require('./middleware/healthcheck')
@@ -48,12 +48,10 @@ router.post('/case/:caseNo/record', async (req, res) => {
   res.redirect(`/case/${req.params.caseNo}/record#previousOrders`)
 })
 
-router.get('/case/:caseNo/:section?/:detail?', health, defaults, async (req, res) => {
-  let template
-  let communityResponse = {}
+async function getCaseAndTemplateValues (req) {
   const params = req.params
   const response = await getCase(params.courtCode, params.caseNo)
-  const templateValues = {
+  return {
     healthy: req.healthy,
     params: {
       ...params
@@ -62,43 +60,77 @@ router.get('/case/:caseNo/:section?/:detail?', health, defaults, async (req, res
       ...response
     }
   }
-  switch (params.section) {
-    case 'record':
-      templateValues.title = params.detail ? 'Order details' : 'Probation record'
-      template = !params.detail ? 'case-summary-record' : 'case-summary-record-attendance'
-      if (response && response.crn) {
-        communityResponse = await getProbationRecord(response.crn)
-        if (!params.detail) {
-          const personalDetails = await getPersonalDetails(response.crn)
-          communityResponse = {
-            ...communityResponse,
-            personalDetails
-          }
-          templateValues.params.showAllPreviousOrders = req.session.showAllPreviousOrders
-        } else {
-          const { active } = communityResponse.convictions
-            .find(conviction => conviction.convictionId.toString() === params.detail.toString())
-          if (active) {
-            const attendanceDetails = await getAttendanceDetails(response.crn, params.detail)
-            communityResponse = {
-              ...communityResponse,
-              attendanceDetails
-            }
-          }
-        }
-      }
-      break
-    case 'risk':
-      templateValues.title = 'Risk registers'
-      template = 'case-summary-risk'
-      break
-    default:
-      templateValues.title = 'Case details'
-      template = 'case-summary'
+}
+
+router.get('/case/:caseNo/details', health, defaults, async (req, res) => {
+  const templateValues = await getCaseAndTemplateValues(req)
+  templateValues.title = 'Case details'
+
+  res.render('case-summary', templateValues)
+})
+
+router.get('/case/:caseNo/record', health, defaults, async (req, res) => {
+  const templateValues = await getCaseAndTemplateValues(req)
+  templateValues.title = 'Probation record'
+
+  const crn = templateValues.data.crn
+  const communityResponse = await getProbationRecord(crn)
+  const personalDetails = await getPersonalDetails(crn)
+  templateValues.params.showAllPreviousOrders = req.session.showAllPreviousOrders
+  templateValues.data.communityData = {
+    ...communityResponse,
+    personalDetails
   }
-  templateValues.data.caseData = response && response.data ? JSON.parse(response.data) : {}
+  res.render('case-summary-record', templateValues)
+})
+
+router.get('/case/:caseNo/record/:detail?', health, defaults, async (req, res) => {
+  const templateValues = await getCaseAndTemplateValues(req)
+  templateValues.title = 'Order details'
+
+  const params = req.params
+  const crn = templateValues.data.crn
+
+  let communityResponse = await getProbationRecord(crn)
+
+  const { active } = communityResponse.convictions
+    .find(conviction => conviction.convictionId.toString() === params.detail.toString())
+  if (active) {
+    const attendanceDetails = await getAttendanceDetails(crn, params.detail)
+    communityResponse = {
+      ...communityResponse,
+      attendanceDetails
+    }
+  }
   templateValues.data.communityData = communityResponse || {}
-  res.render(template, templateValues)
+  res.render('case-summary-record-order', templateValues)
+})
+
+router.get('/case/:caseNo/record/:detail/breach/:breachId', health, defaults, async (req, res) => {
+  const templateValues = await getCaseAndTemplateValues(req)
+  templateValues.title = 'Breach details'
+
+  const params = req.params
+  const crn = templateValues.data.crn
+  const communityResponse = await getProbationRecord(crn)
+
+  const breachData = communityResponse.convictions
+    .find(conviction => conviction.convictionId.toString() === params.detail.toString())
+    .breaches.find(breach => breach.breachId.toString() === params.breachId.toString())
+
+  const breachDetails = await getBreachDetails(crn, params.breachId)
+  templateValues.data.communityData = {
+    ...breachData,
+    ...breachDetails
+  }
+  res.render('case-summary-record-order-breach', templateValues)
+})
+
+router.get('/case/:caseNo/risk', health, defaults, async (req, res) => {
+  const templateValues = await getCaseAndTemplateValues(req)
+  templateValues.title = 'Risk registers'
+
+  res.render('case-summary-risk', templateValues)
 })
 
 module.exports = router

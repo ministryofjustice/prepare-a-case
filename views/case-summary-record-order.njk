@@ -1,6 +1,7 @@
 {%- set hideSubnav = true -%}
 {% extends "./partials/case-details.njk" %}
 
+{%- set moment = params.moment -%}
 {% set activeRequirementTableData = {
     head: [
         { text: "Requirement" },
@@ -23,13 +24,11 @@
 
 {%- set currentOrder = {} -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
-
     {% if order.convictionId | string === params.detail | string %}
         {%- set currentOrder = order -%}
     {% endif %}
 {% endfor -%}
 
-{%- set moment = params.moment -%}
 {%- set preciseDiff = params.preciseDiff -%}
 
 {%- for requirement in currentOrder.requirements %}
@@ -123,11 +122,11 @@
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-start-title">Started</p>
-                    <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-start-date">{{ moment(currentOrder.convictionDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                    <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-start-date">{{ moment(currentOrder.convictionDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
                 </div>
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-end-title">{{ "Ends" if currentOrder.active else "Ended" }}</p>
-                    <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-end-date">{{ moment(currentOrder.endDate, 'YYYY-MM-DD').format('D MMM YYYY') if currentOrder.active else moment(currentOrder.sentence.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+                    <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-end-date">{{ moment(currentOrder.endDate, 'YYYY-MM-DD').format(displayDateFormat) if currentOrder.active else moment(currentOrder.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
                 </div>
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-elapsed-title">{{ "Time elapsed" if currentOrder.active else "Reason" }}</p>
@@ -164,8 +163,8 @@
                     <tbody class="govuk-table__body qa-breaches">
                     {% for breach in currentOrder.breaches %}
                         <tr class="govuk-table__row">
-                            <td class="govuk-table__cell"><a href="#" class="govuk-link govuk-link--no-visited-state">{{ breach.description }}</a></td>
-                            <td class="govuk-table__cell">{{ params.moment(breach.started, 'YYYY-MM-DD').format('D MMM YYYY') }}</td>
+                            <td class="govuk-table__cell"><a href="{{ currentOrder.convictionId }}/breach/{{ breach.breachId }}" class="govuk-link govuk-link--no-visited-state">{{ breach.description }}</a></td>
+                            <td class="govuk-table__cell">{{ moment(breach.started, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
                             <td class="govuk-table__cell">{{ breach.status }}</td>
                         </tr>
                     {% endfor %}
@@ -181,11 +180,7 @@
 
         {% if attendances.length %}
             {% set sortedAttendances = attendances | sort(true, false, 'attendanceDate') %}
-            <p class="govuk-body">Last
-                attendance: {{ params.moment(sortedAttendances[0].attendanceDate, 'YYYY-MM-DD').format('D MMM YYYY') }}
-                - {{ sortedAttendances[0].contact.description }}
-                ({{ "Attended" if sortedAttendances[0].attended else "Absent" }}
-                - {{ "Complied" if sortedAttendances[0].complied else "Failed to comply" }})</p>
+            <p class="govuk-body">Last attendance: {{ moment(sortedAttendances[0].attendanceDate, 'YYYY-MM-DD').format(displayDateFormat) }} - {{ sortedAttendances[0].contact.description }} ({{ "Attended" if sortedAttendances[0].attended else "Absent" }} - {{ "Complied" if sortedAttendances[0].complied else "Failed to comply" }})</p>
         {% endif %}
 
         <div class="govuk-grid-row">
@@ -278,7 +273,7 @@
                     <dl class="govuk-summary-list">
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Status</dt>
-                            <dd class="govuk-summary-list__value qa-upw-status">{{ unpaidWork.status }} {{ '- ' + moment(unpaidWork.statusDate, 'YYYY-MM-DD').format('D MMM YYYY') if unpaidWork.statusDate }}</dd>
+                            <dd class="govuk-summary-list__value qa-upw-status">{{ unpaidWork.status }} {{ '- ' + moment(unpaidWork.statusDate, 'YYYY-MM-DD').format(displayDateFormat) if unpaidWork.statusDate }}</dd>
                         </div>
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Hours ordered</dt>

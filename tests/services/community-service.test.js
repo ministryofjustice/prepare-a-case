@@ -2,7 +2,7 @@
 const moxios = require('moxios')
 const { apiUrl } = require('../../config/defaults')
 
-const { getPersonalDetails, getProbationRecord, getAttendanceDetails } = require('../../services/community-service')
+const { getPersonalDetails, getProbationRecord, getAttendanceDetails, getBreachDetails } = require('../../services/community-service')
 
 describe('Community service', () => {
   beforeEach(() => {
@@ -50,6 +50,19 @@ describe('Community service', () => {
 
     const response = await getAttendanceDetails('D123456', '12345678')
     expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/convictions/12345678`)
+    return response
+  })
+
+  it('should call the API to request breach details data', async () => {
+    moxios.stubRequest(`${apiUrl}/offender/D123456/breaches/12345`, {
+      status: 200,
+      response: {
+        conviction: {}
+      }
+    })
+
+    const response = await getBreachDetails('D123456', '12345')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/breaches/12345`)
     return response
   })
 
