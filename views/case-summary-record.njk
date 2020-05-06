@@ -122,11 +122,7 @@
                 <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
                 <p class="govuk-hint govuk-!-margin-top-1">Delivered on {{ moment(latestDocument.completedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
             {% endif %}
-            {% if communityData.assessment | length %}
-                <h3 class="govuk-heading-s govuk-!-margin-top-6">Last OASys assessment</h3>
-                <p class="govuk-body govuk-!-margin-bottom-0">OASys Assessment {{ communityData.assessment.type  | capitalize | replace("_", " ") }}</p>
-                <p class="govuk-hint govuk-!-margin-top-1">Completed on {{ params.moment(communityData.assessment.completed, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
-            {% endif %}
+            
             {% if communityData.assessment | length %}
                 <h3 class="govuk-heading-s govuk-!-margin-top-6">Last OASys assessment</h3>
                 <p class="govuk-body govuk-!-margin-bottom-0">OASys Assessment {{ communityData.assessment.type  | capitalize | replace("_", " ") }}</p>
