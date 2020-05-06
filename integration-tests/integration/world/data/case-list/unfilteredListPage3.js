@@ -13,7 +13,7 @@ const unfilteredListPage3 = {
       {
         defendant: 'Perry Delacruz',
         probationStatus: 'No record',
-        breach: true,
+        breach: false,
         offence: '*Attempt theft from the person of another',
         listing: '1st',
         session: 'Morning',
