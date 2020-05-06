@@ -454,7 +454,11 @@
           },
           "documents": []
         }
-      ]
+      ],
+      "assessment": {
+        "type": "LAYER_3",
+        "completed": "2018-06-20T23:00:09"
+      }
     }
   }
 }

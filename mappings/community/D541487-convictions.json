@@ -163,7 +163,11 @@
           },
           "documents": []
         }
-      ]
+      ],
+      "assessment": {
+        "type": "LAYER_3",
+        "completed": "2019-04-04T23:00:09"
+      }
     }
   }
 }
