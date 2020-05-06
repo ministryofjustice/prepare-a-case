@@ -209,6 +209,7 @@ Feature: Case summary
       | Requirements | Offender Manager |
     And I should see the offender manager details
     And I should see the last pre-sentence report details
+    And I should see the last OASys assessment details
     And I should see a limited number of previous orders
     When I click the "Show all previous orders" button
     Then I should see all previous orders

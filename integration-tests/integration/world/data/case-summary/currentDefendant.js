@@ -62,6 +62,10 @@ const currentDefendant = {
     preSentenceReportDetails: {
       description: 'Pre-Sentence Report - Fast',
       delivered: '28 Feb 2018'
+    },
+    oasysAssessmentDetails: {
+      type: 'Layer 3',
+      completed: '20 Jun 2018'
     }
   },
   dev: {
@@ -112,6 +116,10 @@ const currentDefendant = {
     preSentenceReportDetails: {
       description: '',
       delivered: ''
+    },
+    oasysAssessmentDetails: {
+      type: '',
+      completed: ''
     }
   }
 }

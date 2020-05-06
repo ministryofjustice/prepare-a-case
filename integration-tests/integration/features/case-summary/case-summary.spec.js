@@ -142,6 +142,14 @@ And('I should see the last pre-sentence report details', () => {
   })
 })
 
+And('I should see the last OASys assessment details', () => {
+  cy.get('.govuk-grid-column-one-third').within(() => {
+    cy.get('.govuk-heading-s').contains('Last OASys assessment')
+    cy.get('.govuk-body').contains(`OASys Assessment ${world.data.oasysAssessmentDetails.type}`)
+    cy.get('.govuk-hint').contains(`Completed on ${world.data.oasysAssessmentDetails.completed}`)
+  })
+})
+
 And('I should see the {string} summary table', ($position, $data) => {
   $data.raw().forEach((row, index) => {
     row.forEach((text, index2) => {
