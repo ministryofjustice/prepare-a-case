@@ -1,6 +1,24 @@
 {%- set hideSubnav = true -%}
 {% extends "./partials/case-details.njk" %}
 
+{% set activeRequirementTableData = {
+    head: [
+        { text: "Requirement" },
+        { text: "Length" }
+    ],
+    rows: []
+} %}
+
+{% set inactiveRequirementTableData = {
+    head: [
+        { text: "Requirement" },
+        { text: "Length" },
+        { text: "Ended" },
+        { text: "Reason" }
+    ],
+    rows: []
+} %}
+
 {%- set communityData = data.communityData -%}
 
 {%- set currentOrder = {} -%}
@@ -13,6 +31,19 @@
 
 {%- set moment = params.moment -%}
 {%- set preciseDiff = params.preciseDiff -%}
+
+{%- for requirement in currentOrder.requirements %}
+    {{ activeRequirementTableData.rows.push([
+        { text: requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description + ' (' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')', classes: 'govuk-table__cell'},
+        { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else '- ', classes: 'govuk-table__cell' }
+    ]) }}
+    {{ inactiveRequirementTableData.rows.push([
+        { text: requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description + ' (' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')', classes: 'govuk-table__cell govuk-!-width-one-half'},
+        { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else '- ', classes: 'govuk-table__cell govuk-!-width-one-quarter' },
+        { text: moment(requirement.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') if requirement.terminationDate, classes: 'govuk-table__cell govuk-!-width-one-quarter' },
+        { text: requirement.terminationReason.description if requirement.terminationReason.description, classes: 'govuk-table__cell govuk-!-width-one-quarter' }
+    ]) }}
+{% endfor -%}
 
 {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.convictionDate, 'YYYY-MM-DD'), moment()) -%}
 
@@ -109,43 +140,9 @@
 
                 {%- from "govuk/components/table/macro.njk" import govukTable -%}
                 {% if currentOrder.active %}
-                    <table class="govuk-table">
-                        <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <th scope="col" class="govuk-table__header">Requirement</th>
-                            <th scope="col" class="govuk-table__header">Length</th>
-                        </tr>
-                        </thead>
-                        <tbody class="govuk-table__body">
-                        {% for requirement in currentOrder.requirements %}
-                            <tr class="govuk-table__row">
-                                <td class="govuk-table__cell">{{ requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description + ' (' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')' }}</td>
-                                <td class="govuk-table__cell">{{ requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else '- ' }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                    {{ govukTable(activeRequirementTableData) }}
                 {% else %}
-                    <table class="govuk-table">
-                        <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <th scope="col" class="govuk-table__header">Requirement</th>
-                            <th scope="col" class="govuk-table__header">Length</th>
-                            <th scope="col" class="govuk-table__header">Ended</th>
-                            <th scope="col" class="govuk-table__header">Reason</th>
-                        </tr>
-                        </thead>
-                        <tbody class="govuk-table__body">
-                        {% for requirement in currentOrder.requirements %}
-                            <tr class="govuk-table__row">
-                                <td class="govuk-table__cell govuk-!-width-one-half">{{ requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description + ' (' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')' }}</td>
-                                <td class="govuk-table__cell govuk-!-width-one-quarter">{{ requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else '- ' }}</td>
-                                <td class="govuk-table__cell govuk-!-width-one-quarter">{{ moment(requirement.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY')  }}</td>
-                                <td class="govuk-table__cell govuk-!-width-one-quarter">{{ requirement.terminationReason.description }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                    {{ govukTable(inactiveRequirementTableData) }}
                 {% endif %}
             {% endif %}
 
