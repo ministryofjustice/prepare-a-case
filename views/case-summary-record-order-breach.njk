@@ -7,17 +7,36 @@
 
     {%- set breach = data.communityData -%}
 
+    {%- set prosecutionStatus = 'not ready' -%}
+    {% if 'Warrant' in breach.status or 'Summons' in breach.status %}
+        {%- set prosecutionStatus = 'ready' -%}
+    {% elseif 'Proven' in breach.status or 'Withdrawn' in breach.status or 'Completed' in breach.status %}
+        {%- set prosecutionStatus = '' -%}
+    {% endif %}
+
     {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
     {{ govukBackLink({
         classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-7',
         text: "Back",
         href: '/case/' + params.caseNo + '/record/' + params.detail
     }) }}
-
-    <h2 class="govuk-heading-l govuk-!-margin-0">{{ breach.description }}</h2>
-
+    
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+
+            {% if prosecutionStatus %}
+                {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+                {% set bannerHtml %}
+                    <h2 class="govuk-heading-m">This breach is {{ prosecutionStatus }} to prosecute</h2>
+                {% endset %}
+
+                {{ mojBanner({
+                    type: 'information',
+                    html: bannerHtml
+                }) }}
+            {% endif %}
+
+            <h2 class="govuk-heading-l govuk-!-margin-0">{{ breach.description }}</h2>
 
             <dl class="govuk-summary-list govuk-!-margin-top-8">
                 <div class="govuk-summary-list__row">

@@ -270,6 +270,17 @@ And('I should see the appointment attendance information', () => {
   })
 })
 
+And('I should see the breach banner', () => {
+  const status = world.data.breachDetails.status || ''
+  if (status.includes('Warrant') || status.includes('Summons')) {
+    cy.get('.moj-banner__message').contains('This breach is ready to prosecute')
+  } else if (status.includes('Proven') || status.includes('Withdrawn') || status.includes('Completed')) {
+    cy.get('.moj-banner__message').should('not.exist')
+  } else {
+    cy.get('.moj-banner__message').contains('This breach is not ready to prosecute')
+  }
+})
+
 And('I should see the conviction breach details', () => {
   const keys = ['Order', 'Sentenced at', 'Breach incident', 'Breach started', 'Provider', 'Team', 'Officer', 'Status']
   const breachDetails = world.data.breachDetails

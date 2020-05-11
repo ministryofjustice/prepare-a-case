@@ -33,6 +33,10 @@ const currentDefendantWithBreach = {
       status: 'In progress'
     }, {
       description: 'Community Order/SSO Breach',
+      started: '26 Dec 2014',
+      status: 'Breach Summons Issued'
+    }, {
+      description: 'Community Order/SSO Breach',
       started: '26 Nov 2013',
       status: 'Completed - Amended & Continued'
     }],
