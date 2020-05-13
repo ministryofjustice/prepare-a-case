@@ -272,6 +272,7 @@ Feature: Case summary
 
     When  I click the "Community Order/SSO Breach" link
     Then I should be on the "Breach details" page
+    And I should see the breach banner
     And I should see the level 2 heading "Community Order/SSO Breach"
     And I should see the conviction breach details
 

@@ -95,6 +95,12 @@
               "status": "In progress"
             },
             {
+              "breachId": 54321,
+              "description": "Community Order/SSO Breach",
+              "started": "2014-12-26",
+              "status": "Breach Summons Issued"
+            },
+            {
               "breachId": 98765,
               "description": "Community Order/SSO Breach",
               "started": "2013-11-26",
