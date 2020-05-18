@@ -31,7 +31,7 @@
 {{ breach.push(data.breach) if data.breach }}
 {% endif %}
 
-{% set dob = [moment(data.defendantDob, 'DD-MM-YYYY').format('Do MMMM YYYY')] %}
+{% set dob = [moment(data.defendantDob, 'YYYY-MM-DD').format('Do MMMM YYYY')] %}
 {% set probationStatus = [] %}
 {{ probationStatus.push(data.probationStatus) if data.probationStatus }}
 
