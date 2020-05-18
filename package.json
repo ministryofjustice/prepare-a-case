@@ -67,7 +67,7 @@
     "stepDefinitions": "integration-tests/integration/"
   },
   "dependencies": {
-    "@ministryofjustice/frontend": "0.0.17-alpha",
+    "@ministryofjustice/frontend": "0.0.18-alpha",
     "axios": "0.19.2",
     "compression": "1.7.4",
     "cookie-parser": "1.4.5",
@@ -90,8 +90,8 @@
     "jest-junit": "10.0.0",
     "moxios": "0.4.0",
     "node-sass-middleware": "0.11.0",
-    "nodemon": "2.0.3",
-    "standard": "14.3.3",
+    "nodemon": "2.0.4",
+    "standard": "14.3.4",
     "supertest": "4.0.2"
   }
 }
