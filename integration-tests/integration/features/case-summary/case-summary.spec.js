@@ -258,6 +258,10 @@ And('I should see order breach information', () => {
   })
 })
 
+When('I click the first charge accordion button', () => {
+  cy.get('.govuk-accordion__section-button').eq(0).click()
+})
+
 And('I should see the appointment attendance information', () => {
   world.data.currentOrderAttendance.counts.forEach(($text, $index) => {
     cy.get('.app-dashboard-count').eq($index).contains($text)
@@ -268,6 +272,18 @@ And('I should see the appointment attendance information', () => {
   world.data.currentOrderAttendance.types.forEach($text => {
     cy.get('.govuk-body').contains($text)
   })
+})
+
+When('I click the first breach link', () => {
+  cy.get('.govuk-link').contains(world.data.breaches[0].description).click()
+})
+
+When('I click the second breach link', () => {
+  cy.get('.govuk-link').contains(world.data.breaches[1].description).click()
+})
+
+Then('I should see the correct breach heading', () => {
+  cy.get('h2').contains(world.data.breaches[0].description).should('exist')
 })
 
 And('I should see the breach banner', () => {
@@ -297,6 +313,16 @@ And('I should see the conviction breach details', () => {
     cy.get('dd').eq(6).contains(breachDetails.officer)
     cy.get('dd').eq(7).contains(breachDetails.status)
   })
+})
+
+And('I should see the breach document attachments', () => {
+  cy.get('.govuk-table__header').eq(0).contains('File')
+  cy.get('.govuk-table__header').eq(1).contains('Added by')
+  cy.get('.govuk-table__header').eq(2).contains('Date added')
+
+  cy.get('.govuk-table__cell').eq(0).contains(world.data.breachDetails.attachments.file)
+  cy.get('.govuk-table__cell').eq(1).contains(world.data.breachDetails.attachments.addedBy)
+  cy.get('.govuk-table__cell').eq(2).contains(world.data.breachDetails.attachments.dateAdded)
 })
 
 And('If the total number of charges is greater than one', () => {

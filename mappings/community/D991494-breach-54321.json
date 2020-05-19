@@ -19,7 +19,8 @@
       "provider": "NPS North East",
       "team": "Enforcement hub - Sheffield and Rotherham",
       "officer": "Unallocated",
-      "status": "Breach Summons Issued"
+      "status": "Breach Summons Issued",
+      "documents": []
     }
   }
 }
