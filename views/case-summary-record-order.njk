@@ -163,7 +163,7 @@
                     <tbody class="govuk-table__body qa-breaches">
                     {% for breach in currentOrder.breaches %}
                         <tr class="govuk-table__row">
-                            <td class="govuk-table__cell"><a href="{{ currentOrder.convictionId }}/breach/{{ breach.breachId }}" class="govuk-link govuk-link--no-visited-state">{{ breach.description }}</a></td>
+                            <td class="govuk-table__cell"><a href="{{ currentOrder.convictionId }}/breach/{{ breach.breachId }}" class="qa-breach-link-{{ loop.index }} govuk-link govuk-link--no-visited-state">{{ breach.description }}</a></td>
                             <td class="govuk-table__cell">{{ moment(breach.started, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
                             <td class="govuk-table__cell">{{ breach.status }}</td>
                         </tr>

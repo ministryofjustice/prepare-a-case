@@ -274,12 +274,8 @@ And('I should see the appointment attendance information', () => {
   })
 })
 
-When('I click the first breach link', () => {
-  cy.get('.govuk-link').contains(world.data.breaches[0].description).click()
-})
-
-When('I click the second breach link', () => {
-  cy.get('.govuk-link').contains(world.data.breaches[1].description).click()
+When('I click breach link {int}', $num => {
+  cy.get(`.qa-breach-link-${$num}`).click()
 })
 
 Then('I should see the correct breach heading', () => {

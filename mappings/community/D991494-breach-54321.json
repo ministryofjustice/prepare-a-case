@@ -20,7 +20,20 @@
       "team": "Enforcement hub - Sheffield and Rotherham",
       "officer": "Unallocated",
       "status": "Breach Summons Issued",
-      "documents": []
+      "documents": [
+        {
+          "documentId": 12346,
+          "fileName": "NAT NPS Breach Report CO SSO_D991494.doc",
+          "addedBy": "Claire Smith",
+          "dateAdded": "2020-03-14"
+        },
+        {
+          "documentId": 12346,
+          "fileName": "NAT NPS Breach Report CO SSO_HOUGHTON_R_D991494.doc",
+          "addedBy": "Bilbo Baggins",
+          "dateAdded": "2020-02-25"
+        }
+      ]
     }
   }
 }

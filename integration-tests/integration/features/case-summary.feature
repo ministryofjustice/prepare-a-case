@@ -270,7 +270,7 @@ Feature: Case summary
     And I should see the appointment attendance information
     And I should see the unpaid work information
 
-    When I click the first breach link
+    When I click breach link 1
     Then I should be on the "Breach details" page
     And I should see the breach banner
     And I should see the correct breach heading
@@ -279,7 +279,7 @@ Feature: Case summary
     And I should see the conviction breach details
 
     When I click the "Back" link
-    And I click the second breach link
+    And I click breach link 2
     Then I should be on the "Breach details" page
     And I should see the level 3 heading "Attachments"
     And I should see the breach document attachments
