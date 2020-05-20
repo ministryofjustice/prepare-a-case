@@ -7,11 +7,6 @@
 
     {%- set breach = data.communityData -%}
 
-    {%- set documentsTableData = {
-        head: [ { text: 'File' }, { text: 'Added by' }, { text: 'Date added' } ],
-        rows: []
-    } -%}
-
     {%- set prosecutionStatus = 'not ready' -%}
     {% if 'Warrant' in breach.status or 'Summons' in breach.status %}
         {%- set prosecutionStatus = 'ready' -%}
@@ -80,17 +75,24 @@
 
             <h3 class="govuk-heading-m govuk-!-margin-top-8">Attachments</h3>
             {% if breach.documents | length %}
-                <!--
-                {%- for document in breach.documents -%}
-                    {{ documentsTableData.rows.push([
-                        { text: document.fileName },
-                        { text: document.addedBy },
-                        { text: moment(document.dateAdded, 'YYYY-MM-DD').format(displayDateFormat) }
-                    ]) }}
-                {%- endfor -%}
-                -->
-                {% from "govuk/components/table/macro.njk" import govukTable %}
-                {{ govukTable(documentsTableData) }}
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">File</th>
+                        <th scope="col" class="govuk-table__header">Added by</th>
+                        <th scope="col" class="govuk-table__header">Date added</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                    {%- for document in breach.documents -%}
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="/attachments/{{ data.crn }}/documents/{{ document.documentId }}/{{ document.fileName }}" class="govuk-link govuk-link--no-visited-state">{{ document.fileName }}</a></td>
+                        <td class="govuk-table__cell">{{ document.addedBy }}</td>
+                        <td class="govuk-table__cell">{{ moment(document.dateAdded, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
+                    </tr>
+                    {%- endfor -%}
+                    </tbody>
+                </table>
             {% else %}
                 <p class="govuk-body">No attachments have been added.</p>
             {% endif %}
