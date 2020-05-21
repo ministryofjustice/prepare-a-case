@@ -316,7 +316,11 @@ And('I should see the breach document attachments', () => {
   cy.get('.govuk-table__header').eq(1).contains('Added by')
   cy.get('.govuk-table__header').eq(2).contains('Date added')
 
-  cy.get('.govuk-table__cell').eq(0).contains(world.data.breachDetails.attachments.file)
+  cy.get('.govuk-table__cell').within(() => {
+    cy.get('a').contains(world.data.breachDetails.attachments.file).should('exist')
+      .should('have.attr', 'href')
+      .and('include', `/attachments/${world.data.crn}/documents/${world.data.breachDetails.attachments.documentId}/${world.data.breachDetails.attachments.file}`)
+  })
   cy.get('.govuk-table__cell').eq(1).contains(world.data.breachDetails.attachments.addedBy)
   cy.get('.govuk-table__cell').eq(2).contains(world.data.breachDetails.attachments.dateAdded)
 })
