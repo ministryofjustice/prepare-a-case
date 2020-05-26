@@ -183,7 +183,7 @@ describe('Routes', () => {
     const response = await request(app).get('/case/668911253/record/1403337513/breach/12345')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
     expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
-    expect(communityService.getBreachDetails).toHaveBeenCalledWith('D985513', '12345')
+    expect(communityService.getBreachDetails).toHaveBeenCalledWith('D985513', '1403337513', '12345')
     return response
   })
 

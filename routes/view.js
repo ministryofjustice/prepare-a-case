@@ -106,7 +106,7 @@ router.get('/case/:caseNo/record/:detail?', health, defaults, async (req, res) =
   res.render('case-summary-record-order', templateValues)
 })
 
-router.get('/case/:caseNo/record/:detail/breach/:breachId', health, defaults, async (req, res) => {
+router.get('/case/:caseNo/record/:convictionId/breach/:breachId', health, defaults, async (req, res) => {
   const templateValues = await getCaseAndTemplateValues(req)
   templateValues.title = 'Breach details'
 
@@ -115,10 +115,10 @@ router.get('/case/:caseNo/record/:detail/breach/:breachId', health, defaults, as
   const communityResponse = await getProbationRecord(crn)
 
   const breachData = communityResponse.convictions
-    .find(conviction => conviction.convictionId.toString() === params.detail.toString())
+    .find(conviction => conviction.convictionId.toString() === params.convictionId.toString())
     .breaches.find(breach => breach.breachId.toString() === params.breachId.toString())
 
-  const breachDetails = await getBreachDetails(crn, params.breachId)
+  const breachDetails = await getBreachDetails(crn, params.convictionId, params.breachId)
   templateValues.data.communityData = {
     ...breachData,
     ...breachDetails

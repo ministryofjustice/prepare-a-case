@@ -2,7 +2,7 @@
   "id": "6a0c8a0e-d731-4d54-8096-8a570777c4bf",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/D991494/breaches/54321"
+    "urlPathPattern": "/offender/D991494/convictions/1361422142/breaches/54321"
   },
   "response": {
     "headers": {
