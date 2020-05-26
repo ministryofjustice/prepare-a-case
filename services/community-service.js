@@ -36,8 +36,8 @@ const getAttendanceDetails = async (crn, orderId) => {
   return res.data
 }
 
-const getBreachDetails = async (crn, breachId) => {
-  const res = await request(`${apiUrl}/offender/${crn}/breaches/${breachId}`)
+const getBreachDetails = async (crn, convictionId, breachId) => {
+  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/breaches/${breachId}`)
   return res.data
 }
 
