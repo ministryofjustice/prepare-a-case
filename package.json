@@ -94,6 +94,7 @@
     "standard": "14.3.4",
     "supertest": "4.0.2",
     "swagger-client": "^3.10.4",
+    "swagger-diff": "^0.6.0",
     "swagger-model-validator": "^3.0.18"
   }
 }
