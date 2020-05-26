@@ -26,7 +26,8 @@
     "lint": "npx standard",
     "start": "node ./bin/www",
     "start:watch": "nodemon --exec npm run start --scripts-prepend-node-path",
-    "unit-test": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage --detectOpenHandles --forceExit"
+    "unit-test": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage --detectOpenHandles --forceExit",
+    "swagger-spec": "./scripts/swagger_spec.js"
   },
   "nodemonConfig": {
     "ignore": [
