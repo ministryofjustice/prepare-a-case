@@ -21,14 +21,19 @@ const getRequirements = async (convictions, crn) => {
 
 const getProbationRecord = async crn => {
   const res = await request(`${apiUrl}/offender/${crn}/probation-record`)
-  if (res.data && res.data.convictions) {
-    const enrichedConvictions = await getRequirements(res.data.convictions, crn)
+  return res.data
+}
+
+const getProbationRecordWithRequirements = async crn => {
+  const responseData = await getProbationRecord(crn)
+  if (responseData.convictions) {
+    const enrichedConvictions = await getRequirements(responseData.convictions, crn)
     return {
-      ...res.data,
+      ...responseData,
       convictions: enrichedConvictions
     }
   }
-  return res.data
+  return responseData
 }
 
 const getAttendanceDetails = async (crn, orderId) => {
@@ -44,6 +49,7 @@ const getBreachDetails = async (crn, breachId) => {
 module.exports = {
   getPersonalDetails,
   getProbationRecord,
+  getProbationRecordWithRequirements,
   getAttendanceDetails,
   getBreachDetails
 }
