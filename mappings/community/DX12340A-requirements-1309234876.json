@@ -1,0 +1,59 @@
+{
+  "id": "f674503f-e226-4b1b-83e9-d250d5004189",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/DX12340A/convictions/1309234876/requirements"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "requirements": [
+        {
+          "requirementId": 7925250000,
+          "startDate": "2015-07-01",
+          "commencementDate": "2015-06-29",
+          "terminationDate": "2017-12-25",
+          "active": false,
+          "adRequirementTypeMainCategory": {
+            "code": "7",
+            "description": "Rehabilitation Activity Requirement"
+          },
+          "adRequirementTypeSubCategory": {
+            "code": "P12",
+            "description": "RAR"
+          },
+          "terminationReason": {
+            "code": "74",
+            "description": "Expired (normal)"
+          },
+          "length": 20,
+          "lengthUnit": "Days"
+        },
+        {
+          "requirementId": 7092525000,
+          "startDate": "2015-07-01",
+          "commencementDate": "2015-06-29",
+          "terminationDate": "2017-12-25",
+          "active": false,
+          "adRequirementTypeMainCategory": {
+            "code": "7",
+            "description": "Court - Accredited Programme - Building Better Relationships"
+          },
+          "adRequirementTypeSubCategory": {
+            "code": "P12",
+            "description": "BBR"
+          },
+          "terminationReason": {
+            "code": "74",
+            "description": "Expired (normal)"
+          },
+          "length": 20,
+          "lengthUnit": "Days"
+        }
+      ]
+    }
+  }
+}

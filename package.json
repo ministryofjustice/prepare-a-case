@@ -11,7 +11,7 @@
     "url": "https://github.com/ministryofjustice/prepare-a-case.git"
   },
   "engines": {
-    "node": ">=12.16.2 <13.0.0 || >=14.0.0",
+    "node": ">=12.17.0 <13.0.0 || >=14.3.0",
     "yarn": "^1.19.0"
   },
   "scripts": {
@@ -67,7 +67,7 @@
     "stepDefinitions": "integration-tests/integration/"
   },
   "dependencies": {
-    "@ministryofjustice/frontend": "0.0.18-alpha",
+    "@ministryofjustice/frontend": "0.0.19-alpha",
     "axios": "0.19.2",
     "compression": "1.7.4",
     "cookie-parser": "1.4.5",
@@ -76,15 +76,15 @@
     "express-session": "1.17.1",
     "govuk-frontend": "3.6.0",
     "memorystore": "1.6.2",
-    "moment": "2.25.3",
+    "moment": "2.26.0",
     "morgan": "1.10.0",
     "nunjucks": "3.2.1"
   },
   "devDependencies": {
     "cucumber": "6.0.5",
-    "cypress": "4.5.0",
+    "cypress": "4.7.0",
     "cypress-axe": "0.8.1",
-    "cypress-cucumber-preprocessor": "2.3.1",
+    "cypress-cucumber-preprocessor": "2.4.0",
     "cypress-intellij-reporter": "0.0.4",
     "jest": "26.0.1",
     "jest-junit": "10.0.0",

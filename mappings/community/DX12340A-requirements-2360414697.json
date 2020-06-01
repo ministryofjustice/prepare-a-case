@@ -1,0 +1,83 @@
+{
+  "id": "80cd54d5-ca72-49fc-ac7b-eda0b93a9a08",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/DX12340A/convictions/2360414697/requirements"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "requirements": [
+        {
+          "requirementId": 2500083652,
+          "startDate": "2017-06-01",
+          "terminationDate": "2017-12-01",
+          "expectedStartDate": "2017-06-01",
+          "expectedEndDate": "2017-12-01",
+          "active": true,
+          "requirementTypeSubCategory": {
+            "code": "W01",
+            "description": "Regular"
+          },
+          "requirementTypeMainCategory": {
+            "code": "W",
+            "description": "Unpaid Work"
+          },
+          "terminationReason": {
+            "code": "74",
+            "description": "Hours Completed Outside 12 months (UPW only)"
+          },
+          "length": 60,
+          "lengthUnit": "Hours"
+        },
+        {
+          "requirementId": 7925250000,
+          "startDate": "2015-07-01",
+          "commencementDate": "2015-06-29",
+          "active": true,
+          "adRequirementTypeMainCategory": {
+            "code": "7",
+            "description": "Rehabilitation Activity Requirement"
+          },
+          "adRequirementTypeSubCategory": {
+            "code": "P12",
+            "description": "RAR"
+          },
+          "length": 20,
+          "lengthUnit": "Days"
+        },
+        {
+          "requirementId": 2500007925,
+          "startDate": "2015-07-01",
+          "commencementDate": "2015-06-29",
+          "active": true,
+          "adRequirementTypeMainCategory": {
+            "code": "7",
+            "description": "Court - Accredited Programme"
+          },
+          "adRequirementTypeSubCategory": {
+            "code": "P12",
+            "description": "ASRO"
+          }
+        },
+        {
+          "requirementId": 7092525000,
+          "startDate": "2015-07-01",
+          "commencementDate": "2015-06-29",
+          "active": true,
+          "adRequirementTypeMainCategory": {
+            "code": "7",
+            "description": "Court - Accredited Programme - Building Better Relationships"
+          },
+          "adRequirementTypeSubCategory": {
+            "code": "P12",
+            "description": "BBR"
+          }
+        }
+      ]
+    }
+  }
+}

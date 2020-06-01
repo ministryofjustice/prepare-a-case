@@ -206,7 +206,7 @@ Feature: Case summary
     And I should see the previous order end date
 
     And I should see the following level 3 headings
-      | Requirements | Offender Manager |
+      | Requirements | Requirements | Requirements | Offender Manager |
     And I should see the offender manager details
     And I should see the last pre-sentence report details
     And I should see the last OASys assessment details
@@ -239,6 +239,28 @@ Feature: Case summary
 
     And I should see the appointment attendance information
     And I should see the unpaid work information
+    And There should be no a11y violations
+
+  Scenario: View the current offender order who is currently on license
+    Given I am a registered user
+    And I am looking at a current defendant
+
+    When I navigate to the current order which is currently on license
+    Then I should be on the "Order details" page
+
+    And I should see the correct license header details
+
+    And There should be no a11y violations
+
+  Scenario: View the current offender order who is currently on Post Sentence Supervision
+    Given I am a registered user
+    And I am looking at a current defendant
+
+    When I navigate to the current order which is currently on PSS
+    Then I should be on the "Order details" page
+
+    And I should see the correct PSS header details
+
     And There should be no a11y violations
 
   Scenario: View the attendance record section of the current offender order in breach without unpaid work appointments

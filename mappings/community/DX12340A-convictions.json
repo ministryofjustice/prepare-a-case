@@ -238,11 +238,11 @@
           "convictionId": 1309234876,
           "active": true,
           "inBreach": false,
-          "convictionDate": "2019-05-08",
-          "endDate": "2020-06-22",
+          "convictionDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+          "endDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",
           "offences": [
             {
-              "description": "Aiding suicide - 07600"
+              "description": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200"
             },
             {
               "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
@@ -255,12 +255,24 @@
             }
           ],
           "sentence": {
-            "description": "ORA Adult Custody (Not PSS)",
-            "length": 18,
-            "lengthInDays": 547,
+            "description": "ORA Adult Custody (inc PSS)",
+            "length": 12,
+            "lengthInDays": 365,
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
-            "terminationReason": "ICMS Miscellaneous Event"
+            "terminationReason": "ICMS Miscellaneous Event",
+            "currentOrderHeaderDetail" : {
+              "custodialTypeCode" : "P",
+              "custodialTypeDescription": "ORA Adult Custody (inc PSS)",
+              "mainOffenceDescription": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
+              "status": "On license",
+              "disposalDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+              "actualReleaseDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+              "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",
+              "pssEndDate": "{{now offset='12 months' format='yyyy-MM-dd'}}",
+              "length": 12,
+              "lengthUnit": "Months"
+            }
           },
           "documents": [
             {
@@ -326,11 +338,11 @@
           "convictionId": 2360414697,
           "active": true,
           "inBreach": false,
-          "convictionDate": "2018-07-08",
-          "endDate": "2020-07-27",
+          "convictionDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+          "endDate": "{{now format='yyyy-MM-dd'}}",
           "offences": [
             {
-              "description": "Acknowledging bail in false name - 08303"
+              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
             },
             {
               "description": "Abstracting electricity - 04300"
@@ -343,12 +355,24 @@
             }
           ],
           "sentence": {
-            "description": "ORA Adult Custody (Not PSS)",
+            "description": "ORA Adult Custody (inc PSS)",
             "length": 18,
             "lengthInDays": 547,
             "lengthUnits": "Months",
-            "terminationDate": "2018-01-23",
-            "terminationReason": "ICMS Miscellaneous Event"
+            "terminationDate": "{{now offset='5 months' format='yyyy-MM-dd'}}",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "currentOrderHeaderDetail" : {
+              "custodialTypeCode" : "P",
+              "custodialTypeDescription": "ORA Adult Custody (inc PSS)",
+              "mainOffenceDescription": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
+              "status": "Post Sentence Supervision",
+              "disposalDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+              "actualReleaseDate": "{{now format='yyyy-MM-dd'}}",
+              "licenceExpiryDate": "{{now format='yyyy-MM-dd'}}",
+              "pssEndDate": "{{now offset='5 months' format='yyyy-MM-dd'}}",
+              "length": 11,
+              "lengthUnit": "Months"
+            }
           },
           "documents": []
         },

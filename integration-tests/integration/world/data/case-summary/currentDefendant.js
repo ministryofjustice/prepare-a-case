@@ -66,6 +66,18 @@ const currentDefendant = {
     oasysAssessmentDetails: {
       type: 'Layer 3',
       completed: '20 Jun 2018'
+    },
+    onLicense: {
+      orderId: '1309234876',
+      status: 'On license',
+      start: '-6 months',
+      end: '6 months'
+    },
+    onPss: {
+      orderId: '2360414697',
+      status: 'Post Sentence Supervision',
+      start: 'today',
+      end: '5 months'
     }
   },
   dev: {
