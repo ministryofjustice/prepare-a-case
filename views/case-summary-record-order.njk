@@ -44,7 +44,11 @@
     ]) }}
 {% endfor -%}
 
-{%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.convictionDate, 'YYYY-MM-DD'), moment()) -%}
+{%- if moment(currentOrder.endDate, 'YYYY-MM-DD').isAfter() -%}
+    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.convictionDate, 'YYYY-MM-DD'), moment()) -%}
+{%- else -%}
+    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.convictionDate, 'YYYY-MM-DD'), moment(currentOrder.endDate, 'YYYY-MM-DD')) -%}
+{%- endif -%}
 
 {% if currentOrder.active %}
     {# Group appointments by attended/absent and complied/failed #}
