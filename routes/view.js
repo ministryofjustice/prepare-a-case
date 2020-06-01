@@ -1,7 +1,7 @@
 const express = require('express')
 const moment = require('moment')
 const { getCaseList, getCase } = require('../services/case-service')
-const { getPersonalDetails, getProbationRecord, getAttendanceDetails, getBreachDetails } = require('../services/community-service')
+const { getPersonalDetails, getProbationRecord, getProbationRecordWithRequirements, getAttendanceDetails, getBreachDetails } = require('../services/community-service')
 const router = express.Router()
 
 const { health } = require('./middleware/healthcheck')
@@ -74,7 +74,7 @@ router.get('/case/:caseNo/record', health, defaults, async (req, res) => {
   templateValues.title = 'Probation record'
 
   const crn = templateValues.data.crn
-  const communityResponse = await getProbationRecord(crn)
+  const communityResponse = await getProbationRecordWithRequirements(crn)
   const personalDetails = await getPersonalDetails(crn)
   templateValues.params.showAllPreviousOrders = req.session.showAllPreviousOrders
   templateValues.data.communityData = {
@@ -91,7 +91,7 @@ router.get('/case/:caseNo/record/:detail?', health, defaults, async (req, res) =
   const params = req.params
   const crn = templateValues.data.crn
 
-  let communityResponse = await getProbationRecord(crn)
+  let communityResponse = await getProbationRecordWithRequirements(crn)
 
   const { active } = communityResponse.convictions
     .find(conviction => conviction.convictionId.toString() === params.detail.toString())
@@ -106,7 +106,7 @@ router.get('/case/:caseNo/record/:detail?', health, defaults, async (req, res) =
   res.render('case-summary-record-order', templateValues)
 })
 
-router.get('/case/:caseNo/record/:detail/breach/:breachId', health, defaults, async (req, res) => {
+router.get('/case/:caseNo/record/:convictionId/breach/:breachId', health, defaults, async (req, res) => {
   const templateValues = await getCaseAndTemplateValues(req)
   templateValues.title = 'Breach details'
 
@@ -115,10 +115,10 @@ router.get('/case/:caseNo/record/:detail/breach/:breachId', health, defaults, as
   const communityResponse = await getProbationRecord(crn)
 
   const breachData = communityResponse.convictions
-    .find(conviction => conviction.convictionId.toString() === params.detail.toString())
+    .find(conviction => conviction.convictionId.toString() === params.convictionId.toString())
     .breaches.find(breach => breach.breachId.toString() === params.breachId.toString())
 
-  const breachDetails = await getBreachDetails(crn, params.breachId)
+  const breachDetails = await getBreachDetails(crn, params.convictionId, params.breachId)
   templateValues.data.communityData = {
     ...breachData,
     ...breachDetails

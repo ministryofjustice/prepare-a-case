@@ -42,6 +42,10 @@ describe('Routes', () => {
     return communityResponse
   })
 
+  jest.spyOn(communityService, 'getProbationRecordWithRequirements').mockImplementation(function () {
+    return communityResponse
+  })
+
   jest.spyOn(communityService, 'getAttendanceDetails').mockImplementation(function () {
     return {
       attendances: []
@@ -119,7 +123,7 @@ describe('Routes', () => {
     }
     const response = await request(app).get('/case/8678951874/record')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '8678951874')
-    expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
+    expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
     expect(communityService.getPersonalDetails).toHaveBeenCalledWith('D985513')
     return response
   })
@@ -137,7 +141,7 @@ describe('Routes', () => {
     }
     const response = await request(app).get('/case/668911253/record/1403337513')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
-    expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
+    expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
     expect(communityService.getAttendanceDetails).toHaveBeenCalledWith('D985513', '1403337513')
     return response
   })
@@ -155,7 +159,7 @@ describe('Routes', () => {
     }
     const response = await request(app).get('/case/668911253/record/1403337513')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
-    expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
+    expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
     expect(communityService.getAttendanceDetails).not.toHaveBeenCalled()
     return response
   })
@@ -179,7 +183,7 @@ describe('Routes', () => {
     const response = await request(app).get('/case/668911253/record/1403337513/breach/12345')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
     expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
-    expect(communityService.getBreachDetails).toHaveBeenCalledWith('D985513', '12345')
+    expect(communityService.getBreachDetails).toHaveBeenCalledWith('D985513', '1403337513', '12345')
     return response
   })
 
