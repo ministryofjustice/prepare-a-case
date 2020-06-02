@@ -48,7 +48,13 @@ const currentDefendantWithBreach = {
       provider: 'NPS North East',
       team: 'Enforcement hub - Sheffield and Rotherham',
       officer: 'Unallocated',
-      status: 'Breach initiated'
+      status: 'Breach initiated',
+      attachments: {
+        documentId: 12346,
+        file: 'NAT NPS Breach Report CO SSO_D991494.doc',
+        addedBy: 'Claire Smith',
+        dateAdded: '14 Mar 2020'
+      }
     },
     unpaidWork: {
       status: 'Terminated - 1 Apr 2020',

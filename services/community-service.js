@@ -46,10 +46,16 @@ const getBreachDetails = async (crn, convictionId, breachId) => {
   return res.data
 }
 
+const getAttachment = async (crn, documentId) => {
+  const res = await request(`${apiUrl}/offender/${crn}/documents/${documentId}`)
+  return res.data
+}
+
 module.exports = {
   getPersonalDetails,
   getProbationRecord,
   getProbationRecordWithRequirements,
   getAttendanceDetails,
-  getBreachDetails
+  getBreachDetails,
+  getAttachment
 }

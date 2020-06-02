@@ -1,0 +1,11 @@
+{
+  "id": "fcc0b854-d127-4548-8efa-c09f0812c50d",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/([A-Z0-9]*)/documents/([A-Z0-9]*)"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "sample_word_doc.doc"
+  }
+}

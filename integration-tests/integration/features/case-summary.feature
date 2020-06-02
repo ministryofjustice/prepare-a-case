@@ -292,11 +292,19 @@ Feature: Case summary
     And I should see the appointment attendance information
     And I should see the unpaid work information
 
-    When  I click the "Community Order/SSO Breach" link
+    When I click breach link 1
     Then I should be on the "Breach details" page
     And I should see the breach banner
-    And I should see the level 2 heading "Community Order/SSO Breach"
+    And I should see the correct breach heading
+    And I should see the level 3 heading "Attachments"
+    And I should see the body text "No attachments have been added."
     And I should see the conviction breach details
+
+    When I click the "Back" link
+    And I click breach link 2
+    Then I should be on the "Breach details" page
+    And I should see the level 3 heading "Attachments"
+    And I should see the breach document attachments
 
     And There should be no a11y violations
 
@@ -322,11 +330,12 @@ Feature: Case summary
 
   Scenario: View the case details of a defendant to see a list of current charges and the associated details/description
     Given I am a registered user
+    And I am looking at a current defendant
     When I navigate to the case details route
     Then I should see the level 2 heading "Offences"
     And If the total number of charges is greater than one
     Then I should see a list of charges in an accordion component
-    And I click the "Attempt theft from the person of another" button
+    And I click the first charge accordion button
     Then the accordion section should expand
     And I should see the body text with the defendant "offenceDetails"
     And I should see the caption text with the defendant "offenceCaption"

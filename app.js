@@ -6,8 +6,9 @@ const logger = require('morgan')
 const nunjucks = require('nunjucks')
 const sassMiddleware = require('node-sass-middleware')
 const session = require('express-session')
-const viewRouter = require('./routes/view')
+const attachmentsRouter = require('./routes/attachments')
 const apiRouter = require('./routes/api')
+const viewRouter = require('./routes/view')
 const MemoryStore = require('memorystore')(session)
 const sessionExpiry = 12 * 60 * 60 * 1000 // 12hrs
 const app = express()
@@ -60,6 +61,7 @@ app.use('/moj', express.static(path.join(__dirname, '/node_modules/@ministryofju
 app.use('/govuk', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk')))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', viewRouter)
+app.use('/attachments', attachmentsRouter)
 app.use('/ping', apiRouter)
 
 module.exports = app
