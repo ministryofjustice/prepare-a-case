@@ -15,6 +15,9 @@
   "reporterOptions": {
     "mochaFile": "test-results/cypress/results-[hash].xml"
   },
+  "env": {
+    "TAGS": "not @ignore"
+  },
   "videoUploadOnPasses": false,
   "taskTimeout": 60000
 }

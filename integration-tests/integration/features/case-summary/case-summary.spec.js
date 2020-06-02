@@ -33,7 +33,35 @@ When('I navigate to the probation record route', () => {
 })
 
 When('I click the first {string} order link', $type => {
-  cy.get('.govuk-link').contains($type === 'current' ? world.data.currentOrderTitle : world.data.previousOrderTitle).click()
+  cy.get('.govuk-link').contains($type === 'current' ? world.data.currentOrderTitle : world.data.previousOrderTitle).eq(0).click()
+})
+
+When('I navigate to the current order which is currently on license', $type => {
+  cy.visit(`case/${world.data.caseNo}/record/${world.data.onLicense.orderId}`)
+})
+
+And('I should see the correct license header details', () => {
+  cy.get('.qa-start-title').contains('Status')
+  cy.get('.qa-end-title').contains('License started')
+  cy.get('.qa-elapsed-title').contains('License ends')
+
+  cy.get('.qa-start-date').contains(world.data.onLicense.status)
+  cy.get('.qa-end-date').contains(moment().add(-6, 'months').format(displayDateFormat))
+  cy.get('.qa-elapsed-time').contains(moment().add(6, 'months').format(displayDateFormat))
+})
+
+When('I navigate to the current order which is currently on PSS', $type => {
+  cy.visit(`case/${world.data.caseNo}/record/${world.data.onPss.orderId}`)
+})
+
+And('I should see the correct PSS header details', () => {
+  cy.get('.qa-start-title').contains('Status')
+  cy.get('.qa-end-title').contains('PSS started')
+  cy.get('.qa-elapsed-title').contains('PSS ends')
+
+  cy.get('.qa-start-date').contains(world.data.onPss.status)
+  cy.get('.qa-end-date').contains(moment().format(displayDateFormat))
+  cy.get('.qa-elapsed-time').contains(moment().add(5, 'months').format(displayDateFormat))
 })
 
 Then('I should see the offender current order count', () => {

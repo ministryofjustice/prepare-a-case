@@ -11,7 +11,7 @@
     "url": "https://github.com/ministryofjustice/prepare-a-case.git"
   },
   "engines": {
-    "node": ">=12.16.2 <13.0.0 || >=14.0.0",
+    "node": ">=12.17.0 <13.0.0 || >=14.3.0",
     "yarn": "^1.19.0"
   },
   "scripts": {
@@ -82,9 +82,9 @@
   },
   "devDependencies": {
     "cucumber": "6.0.5",
-    "cypress": "4.6.0",
+    "cypress": "4.7.0",
     "cypress-axe": "0.8.1",
-    "cypress-cucumber-preprocessor": "2.3.1",
+    "cypress-cucumber-preprocessor": "2.4.0",
     "cypress-intellij-reporter": "0.0.4",
     "jest": "26.0.1",
     "jest-junit": "10.0.0",
