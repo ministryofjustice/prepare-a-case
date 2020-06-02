@@ -20,7 +20,7 @@
         text: "Back",
         href: '/case/' + params.caseNo + '/record/' + params.convictionId
     }) }}
-    
+
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
@@ -72,6 +72,30 @@
                     <dd class="govuk-summary-list__value">{{ breach.status }}</dd>
                 </div>
             </dl>
+
+            <h3 class="govuk-heading-m govuk-!-margin-top-8">Attachments</h3>
+            {% if breach.documents | length %}
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">File</th>
+                        <th scope="col" class="govuk-table__header">Added by</th>
+                        <th scope="col" class="govuk-table__header">Date added</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                    {%- for document in breach.documents -%}
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="/attachments/{{ data.crn }}/documents/{{ document.documentId }}/{{ document.fileName }}" class="govuk-link govuk-link--no-visited-state">{{ document.fileName }}</a></td>
+                        <td class="govuk-table__cell">{{ document.addedBy }}</td>
+                        <td class="govuk-table__cell">{{ moment(document.dateAdded, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
+                    </tr>
+                    {%- endfor -%}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="govuk-body">No attachments have been added.</p>
+            {% endif %}
 
         </div>
     </div>

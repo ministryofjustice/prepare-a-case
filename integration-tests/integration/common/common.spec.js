@@ -30,6 +30,10 @@ And('I should see the level 2 heading {string}', $title => {
   cy.get('h2').contains($title)
 })
 
+And('I should see the level 3 heading {string}', $title => {
+  cy.get('h3').contains($title)
+})
+
 And('I should see the following level 2 headings', $data => {
   $data.raw()[0].forEach((text, index) => {
     cy.get('h2').eq(index).contains(text)
@@ -102,7 +106,7 @@ When('I click the sub navigation with {string} text', $string => {
 })
 
 When('I click the {string} link', $string => {
-  cy.get('.govuk-link').contains($string).click()
+  cy.get($string === 'Back' ? '.govuk-back-link' : '.govuk-link').contains($string).click()
 })
 
 And('I click the {string} button', $string => {
