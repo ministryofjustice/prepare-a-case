@@ -67,7 +67,7 @@
     "stepDefinitions": "integration-tests/integration/"
   },
   "dependencies": {
-    "@ministryofjustice/frontend": "0.0.18-alpha",
+    "@ministryofjustice/frontend": "0.0.19-alpha",
     "axios": "0.19.2",
     "compression": "1.7.4",
     "cookie-parser": "1.4.5",
@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "cucumber": "6.0.5",
-    "cypress": "4.5.0",
+    "cypress": "4.6.0",
     "cypress-axe": "0.8.1",
     "cypress-cucumber-preprocessor": "2.3.1",
     "cypress-intellij-reporter": "0.0.4",

@@ -49,6 +49,8 @@
 }
 
 .pac-filter-button {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
   display: inline-block;
   border: 1px solid black;
   @include govuk-font(19);
