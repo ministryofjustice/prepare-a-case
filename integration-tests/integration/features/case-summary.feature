@@ -241,14 +241,14 @@ Feature: Case summary
     And I should see the unpaid work information
     And There should be no a11y violations
 
-  Scenario: View the current offender order who is currently on license
+  Scenario: View the current offender order who is currently on licence
     Given I am a registered user
     And I am looking at a current defendant
 
-    When I navigate to the current order which is currently on license
+    When I navigate to the current order which is currently on licence
     Then I should be on the "Order details" page
 
-    And I should see the correct license header details
+    And I should see the correct licence header details
 
     And There should be no a11y violations
 

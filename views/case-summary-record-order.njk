@@ -31,7 +31,7 @@
 
 {% if currentOrder.sentence.currentOrderHeaderDetail.custodialTypeCode %}
     {%- set custodialOrder = currentOrder.sentence.currentOrderHeaderDetail -%}
-    {%- set isOnLicense = moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').isAfter() -%}
+    {%- set isOnLicence = moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').isAfter() -%}
 {% endif %}
 
 {%- set preciseDiff = params.preciseDiff -%}
@@ -135,7 +135,7 @@
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-start-title">{{ "Status" if custodialOrder else "Started" }}</p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-start-date">
                         {%- if custodialOrder -%}
-                            {{  custodialOrder.status }}
+                            {{  "On licence" if custodialOrder.custodialTypeCode === "B" else "On post-sentence supervision (PSS)" }}
                         {% else %}
                             {{ moment(currentOrder.convictionDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% endif %}
@@ -144,14 +144,14 @@
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-end-title">
                         {% if custodialOrder %}
-                            {{ "License started" if isOnLicense else "PSS started" }}
+                            {{ "Licence started" if isOnLicence else "PSS started" }}
                         {% else %}
                             {{ "Ends" if currentOrder.active else "Ended" }}
                         {% endif %}
                     </p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-end-date">
                         {% if custodialOrder %}
-                            {{ moment(custodialOrder.disposalDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicense else moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                            {{ moment(custodialOrder.disposalDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicence else moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% else %}
                             {{ moment(currentOrder.endDate, 'YYYY-MM-DD').format(displayDateFormat) if currentOrder.active else moment(currentOrder.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% endif %}
@@ -160,14 +160,14 @@
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-elapsed-title">
                         {% if custodialOrder %}
-                            {{ "License ends" if isOnLicense else "PSS ends" }}
+                            {{ "Licence ends" if isOnLicence else "PSS ends" }}
                         {% else %}
                             {{ "Time elapsed" if currentOrder.active else "Reason" }}
                         {% endif %}
                     </p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-elapsed-time">
                         {% if custodialOrder %}
-                            {{ moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicense else moment(custodialOrder.pssEndDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                            {{ moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicence else moment(custodialOrder.pssEndDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% else %}
                             {{ elapsedTime if currentOrder.active else currentOrder.sentence.terminationReason }}
                         {% endif %}
