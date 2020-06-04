@@ -1,4 +1,4 @@
-FROM node:12.17-buster-slim
+FROM node:12.18-buster-slim
 
 MAINTAINER MoJ Digital, Probation in Court <probation-in-court-team@digital.justice.gov.uk>
 
