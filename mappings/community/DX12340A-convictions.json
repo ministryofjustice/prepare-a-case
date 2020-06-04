@@ -207,7 +207,7 @@
             }
           ],
           "sentence": {
-            "description": "ORA Adult Custody (inc PSS)",
+            "description": "ORA Community Order",
             "length": 18,
             "lengthInDays": 547,
             "lengthUnits": "Months",
@@ -262,10 +262,10 @@
             "terminationDate": "2018-01-23",
             "terminationReason": "ICMS Miscellaneous Event",
             "currentOrderHeaderDetail" : {
-              "custodialTypeCode" : "P",
+              "custodialTypeCode" : "B",
               "custodialTypeDescription": "ORA Adult Custody (inc PSS)",
               "mainOffenceDescription": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
-              "status": "On license",
+              "status": "Released - On Licence",
               "disposalDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
               "actualReleaseDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
               "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",

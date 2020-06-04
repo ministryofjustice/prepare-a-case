@@ -15,7 +15,7 @@ const currentDefendant = {
     offenceDetails: 'On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Clemons Barron.',
     offenceCaption: 'Contrary to section 1(1) of the Criminal Attempts Act 1981.',
     currentOrderCount: 3,
-    currentOrderTitle: 'ORA Adult Custody (inc PSS)',
+    currentOrderTitle: 'ORA Community Order',
     currentOrderOffence: 'Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200',
     currentOrderStartDate: '2019-05-19',
     currentOrderEndDate: '2020-05-25',
@@ -67,15 +67,15 @@ const currentDefendant = {
       type: 'Layer 3',
       completed: '20 Jun 2018'
     },
-    onLicense: {
+    onLicence: {
       orderId: '1309234876',
-      status: 'On license',
+      status: 'On licence',
       start: '-6 months',
       end: '6 months'
     },
     onPss: {
       orderId: '2360414697',
-      status: 'Post Sentence Supervision',
+      status: 'On post-sentence supervision (PSS)',
       start: 'today',
       end: '5 months'
     }
