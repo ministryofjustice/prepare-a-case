@@ -76,8 +76,8 @@
     "govuk-frontend": "3.7.0",
     "memorystore": "1.6.2",
     "moment": "2.26.0",
-    "node-sass-middleware": "0.11.0",
     "morgan": "1.10.0",
+    "node-sass-middleware": "0.11.0",
     "nunjucks": "3.2.1"
   },
   "devDependencies": {
