@@ -8,14 +8,16 @@ RUN ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && echo "$TZ" > /etc/timezo
 RUN mkdir -p /app
 WORKDIR /app
 
-COPY package*.json yarn*.lock ./
+COPY package*.json package-lock*.json ./
 
-RUN yarn
+RUN npm ci --only=production
 
 COPY . .
+
+RUN npm rebuild node-sass
 
 EXPOSE 3000
 ENV NODE_ENV='production'
 USER 2000
 
-CMD [ "yarn", "start" ]
+CMD [ "npm", "run", "start" ]
