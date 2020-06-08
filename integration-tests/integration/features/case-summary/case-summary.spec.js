@@ -36,16 +36,16 @@ When('I click the first {string} order link', $type => {
   cy.get('.govuk-link').contains($type === 'current' ? world.data.currentOrderTitle : world.data.previousOrderTitle).eq(0).click()
 })
 
-When('I navigate to the current order which is currently on license', $type => {
-  cy.visit(`case/${world.data.caseNo}/record/${world.data.onLicense.orderId}`)
+When('I navigate to the current order which is currently on licence', $type => {
+  cy.visit(`case/${world.data.caseNo}/record/${world.data.onLicence.orderId}`)
 })
 
-And('I should see the correct license header details', () => {
+And('I should see the correct licence header details', () => {
   cy.get('.qa-start-title').contains('Status')
-  cy.get('.qa-end-title').contains('License started')
-  cy.get('.qa-elapsed-title').contains('License ends')
+  cy.get('.qa-end-title').contains('Licence started')
+  cy.get('.qa-elapsed-title').contains('Licence ends')
 
-  cy.get('.qa-start-date').contains(world.data.onLicense.status)
+  cy.get('.qa-start-date').contains(world.data.onLicence.status)
   cy.get('.qa-end-date').contains(moment().add(-6, 'months').format(displayDateFormat))
   cy.get('.qa-elapsed-time').contains(moment().add(6, 'months').format(displayDateFormat))
 })
