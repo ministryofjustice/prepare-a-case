@@ -25,7 +25,9 @@
     "lint": "npx standard",
     "start": "node ./bin/www",
     "start:watch": "nodemon --exec npm run start --scripts-prepend-node-path",
-    "unit-test": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage --detectOpenHandles --forceExit"
+    "unit-test": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage --detectOpenHandles --forceExit",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "nodemonConfig": {
     "ignore": [
@@ -78,7 +80,8 @@
     "moment": "2.26.0",
     "morgan": "1.10.0",
     "node-sass-middleware": "0.11.0",
-    "nunjucks": "3.2.1"
+    "nunjucks": "3.2.1",
+    "snyk": "^1.336.0"
   },
   "devDependencies": {
     "cucumber": "6.0.5",
@@ -92,5 +95,6 @@
     "nodemon": "2.0.4",
     "standard": "14.3.4",
     "supertest": "4.0.2"
-  }
+  },
+  "snyk": true
 }
