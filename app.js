@@ -6,10 +6,12 @@ const logger = require('morgan')
 const nunjucks = require('nunjucks')
 const sassMiddleware = require('node-sass-middleware')
 const session = require('express-session')
+const helmet = require('helmet')
 const attachmentsRouter = require('./routes/attachments')
 const apiRouter = require('./routes/api')
 const viewRouter = require('./routes/view')
 const MemoryStore = require('memorystore')(session)
+const hstsMaxAge = 604800 // @TODO: PIC-454 - Change to 31536000 (1 year) once confident that HSTS is working
 const sessionExpiry = 12 * 60 * 60 * 1000 // 12hrs
 const app = express()
 
@@ -32,6 +34,12 @@ env.addFilter('limit', function (arr, limit) {
 })
 
 app.set('view engine', 'njk')
+
+app.use(helmet({
+  hsts: {
+    maxAge: hstsMaxAge
+  }
+}))
 
 app.use(compression())
 app.use(session({
