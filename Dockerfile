@@ -10,11 +10,12 @@ WORKDIR /app
 
 COPY package*.json package-lock*.json ./
 
-RUN npm ci --only=production
+RUN npm i
 
 COPY . .
 
-RUN npm rebuild node-sass
+RUN npm run css-build
+RUN npm ci --only=production
 
 EXPOSE 3000
 ENV NODE_ENV='production'

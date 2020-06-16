@@ -4,7 +4,6 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const nunjucks = require('nunjucks')
-const sassMiddleware = require('node-sass-middleware')
 const session = require('express-session')
 const helmet = require('helmet')
 const attachmentsRouter = require('./routes/attachments')
@@ -55,12 +54,6 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  outputStyle: 'compressed',
-  sourceMap: true
-}))
 app.use('/assets', [
   express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')),
   express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets'))
