@@ -1,4 +1,4 @@
-FROM node:12.18-buster-slim
+FROM node:12.18.0-alpine3.12
 
 MAINTAINER MoJ Digital, Probation in Court <probation-in-court-team@digital.justice.gov.uk>
 
@@ -10,11 +10,12 @@ WORKDIR /app
 
 COPY package*.json package-lock*.json ./
 
-RUN npm ci --only=production
+RUN npm i
 
 COPY . .
 
-RUN npm rebuild node-sass
+RUN npm run css-build
+RUN npm ci --only=production
 
 EXPOSE 3000
 ENV NODE_ENV='production'

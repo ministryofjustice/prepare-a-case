@@ -23,8 +23,9 @@
     "int-test": "npx cypress run",
     "int-test:ui": "npx cypress open",
     "lint": "npx standard",
+    "css-build": "sh ./bin/build-css",
     "start": "node ./bin/www",
-    "start:watch": "nodemon --exec npm run start --scripts-prepend-node-path",
+    "start:watch": "npm run css-build && nodemon --exec npm run start --scripts-prepend-node-path",
     "unit-test": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage --detectOpenHandles --forceExit"
   },
   "nodemonConfig": {
@@ -74,21 +75,22 @@
     "express": "4.17.1",
     "express-session": "1.17.1",
     "govuk-frontend": "3.7.0",
+    "helmet": "3.23.0",
     "memorystore": "1.6.2",
     "moment": "2.26.0",
     "morgan": "1.10.0",
-    "node-sass-middleware": "0.11.0",
     "nunjucks": "3.2.1"
   },
   "devDependencies": {
     "cucumber": "6.0.5",
-    "cypress": "4.7.0",
+    "cypress": "4.8.0",
     "cypress-axe": "0.8.1",
-    "cypress-cucumber-preprocessor": "2.4.0",
+    "cypress-cucumber-preprocessor": "2.5.0",
     "cypress-intellij-reporter": "0.0.4",
     "jest": "26.0.1",
     "jest-junit": "10.0.0",
     "moxios": "0.4.0",
+    "node-sass": "4.14.1",
     "nodemon": "2.0.4",
     "standard": "14.3.4",
     "supertest": "4.0.2"
