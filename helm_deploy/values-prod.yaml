@@ -13,7 +13,7 @@ ingress:
   enabled: true
   enable_whitelist: true
   hosts:
-    - host: prepareacase-probation.service.justice.gov.uk
+    - host: prepare-case-probation.service.justice.gov.uk
       cert_secret: prepare-a-case-cert
   path: /
 
