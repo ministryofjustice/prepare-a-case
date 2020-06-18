@@ -164,7 +164,7 @@ jobs:
   build_docker:
     executor: deployer
     parameters:
-      master:
+      main:
         type: boolean
         default: false
     steps:
@@ -190,10 +190,10 @@ jobs:
           project: '${CIRCLE_PROJECT_REPONAME}-docker/${CIRCLE_BRANCH}'
           docker-image-name: 'mojdigitalstudio/prepare-a-case:$APP_VERSION'
           target-file: 'Dockerfile'
-          monitor-on-build: << parameters.master >>
+          monitor-on-build: << parameters.main >>
           <<: *snyk_options
       - when:
-          condition: << parameters.master >>
+          condition: << parameters.main >>
           steps:
             - run:
                 name: Publish to docker hub
@@ -206,14 +206,14 @@ jobs:
   app_scan:
     executor: builder
     parameters:
-      master:
+      main:
         type: boolean
         default: false
     steps:
       - checkout
       - snyk/scan:
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}'
-          monitor-on-build: << parameters.master >>
+          monitor-on-build: << parameters.main >>
           <<: *snyk_options
 
   image_scan:
@@ -254,7 +254,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
     jobs:
       - app_scan:
           master: true
@@ -265,12 +265,12 @@ workflows:
       - app_scan:
           filters:
             branches:
-              ignore: master
+              ignore: main
       - app_scan:
-          name: app_scan_master
+          name: app_scan_main
           filters:
             branches:
-              only: master
+              only: main
           master: true
       - build:
           filters:
@@ -290,21 +290,21 @@ workflows:
             - build
           filters:
             branches:
-              ignore: master
+              ignore: main
       - build_docker:
-          name: build_docker_master
+          name: build_docker_main
           requires:
             - build
           filters:
             branches:
-              only: master
+              only: main
           master: true
       - deploy_dev:
           requires:
-            - build_docker_master
+            - build_docker_main
           filters:
             branches:
-              only: master
+              only: main
       - request-preprod-approval:
           type: approval
           requires:
