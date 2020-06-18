@@ -257,7 +257,7 @@ workflows:
                 - main
     jobs:
       - app_scan:
-          master: true
+          main: true
       - image_scan
 
   build-test-and-deploy:
@@ -271,7 +271,7 @@ workflows:
           filters:
             branches:
               only: main
-          master: true
+          main: true
       - build:
           filters:
             tags:
@@ -298,7 +298,7 @@ workflows:
           filters:
             branches:
               only: main
-          master: true
+          main: true
       - deploy_dev:
           requires:
             - build_docker_main
