@@ -20,7 +20,7 @@
       ],
       "convictions": [
         {
-          "convictionId": 636401162,
+          "convictionId": "636401162",
           "active": false,
           "inBreach": true,
           "convictionDate": "2017-03-08",
@@ -44,7 +44,7 @@
           "documents": []
         },
         {
-          "convictionId": 7925250000,
+          "convictionId": "7925250000",
           "active": false,
           "inBreach": false,
           "convictionDate": "2019-02-14",
@@ -65,7 +65,7 @@
           "documents": []
         },
         {
-          "convictionId": 1475462502,
+          "convictionId": "1475462502",
           "active": false,
           "inBreach": true,
           "convictionDate": "2017-02-21",
@@ -92,7 +92,7 @@
           "documents": []
         },
         {
-          "convictionId": 1906091609,
+          "convictionId": "1906091609",
           "active": false,
           "inBreach": true,
           "convictionDate": "2019-02-13",
@@ -113,7 +113,7 @@
           "documents": []
         },
         {
-          "convictionId": 1490163794,
+          "convictionId": "1490163794",
           "active": true,
           "inBreach": true,
           "convictionDate": null,
@@ -136,7 +136,7 @@
           "documents": []
         },
         {
-          "convictionId": 943466740,
+          "convictionId": "943466740",
           "active": false,
           "inBreach": true,
           "convictionDate": "2017-02-12",
@@ -166,7 +166,7 @@
           "documents": []
         },
         {
-          "convictionId": 1081636758,
+          "convictionId": "1081636758",
           "active": false,
           "inBreach": true,
           "convictionDate": "2017-02-26",
@@ -187,7 +187,7 @@
           "documents": []
         },
         {
-          "convictionId": 1403337513,
+          "convictionId": "1403337513",
           "active": true,
           "inBreach": false,
           "convictionDate": "2019-05-19",
@@ -235,7 +235,7 @@
           ]
         },
         {
-          "convictionId": 1309234876,
+          "convictionId": "1309234876",
           "active": true,
           "inBreach": false,
           "convictionDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
@@ -295,7 +295,7 @@
           ]
         },
         {
-          "convictionId": 636401231,
+          "convictionId": "636401231",
           "active": false,
           "inBreach": false,
           "convictionDate": "2017-02-21",
@@ -322,7 +322,7 @@
           "documents": []
         },
         {
-          "convictionId": 1355637968,
+          "convictionId": "1355637968",
           "active": true,
           "inBreach": true,
           "convictionDate": "2019-03-03",
@@ -335,7 +335,7 @@
           "documents": []
         },
         {
-          "convictionId": 2360414697,
+          "convictionId": "2360414697",
           "active": true,
           "inBreach": false,
           "convictionDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
@@ -377,7 +377,7 @@
           "documents": []
         },
         {
-          "convictionId": 1999409258,
+          "convictionId": "1999409258",
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-02-25",
@@ -404,7 +404,7 @@
           "documents": []
         },
         {
-          "convictionId": 2319221210,
+          "convictionId": "2319221210",
           "active": false,
           "inBreach": false,
           "convictionDate": "2017-02-22",
@@ -425,7 +425,7 @@
           "documents": []
         },
         {
-          "convictionId": 754151578,
+          "convictionId": "754151578",
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-03-01",
@@ -455,7 +455,7 @@
           "documents": []
         },
         {
-          "convictionId": 901046255,
+          "convictionId": "901046255",
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-02-27",
