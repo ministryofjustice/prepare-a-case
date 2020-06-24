@@ -10,10 +10,10 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 951609,
-      "caseNo": 668911253,
+      "caseId": "951609",
+      "caseNo": "668911253",
       "courtCode": "SHF",
-      "courtRoom": 6,
+      "courtRoom": "6",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "2nd",
       "pnc": "A/1234560BA",
@@ -48,7 +48,7 @@
       "defendantSex": "F",
       "defendantName": "Lenore Marquez",
       "defendantAddress": {
-        "line1": 38,
+        "line1": "38",
         "line2": "Clarendon Road",
         "postcode": "ad21 5dr",
         "line3": "Glasgow",

@@ -14,8 +14,8 @@
     "node": ">=12.18.0 <13.0.0 || >=14.4.0"
   },
   "scripts": {
-    "precommit": "npm run lint && npm run unit-test && npm run int-test",
-    "pre-commit-lite": "npm run lint && npm run unit-test",
+    "precommit": "npm run lint && npm run unit-test && npm run mock-validation-test && npm run int-test",
+    "pre-commit-lite": "npm run lint && npm run unit-test && npm run mock-validation-test",
     "pre-push": "snyk test --fail-on=upgradable --org=digital-probation-services && npm run int-test",
     "delete:reports": "rm ./test-results/cypress/* || true",
     "preint-test": "npm run delete:reports",
@@ -26,7 +26,8 @@
     "css-build": "sh ./bin/build-css",
     "start": "node ./bin/www",
     "start:watch": "npm run css-build && nodemon --exec npm run start --scripts-prepend-node-path",
-    "unit-test": "NODE_ENV=test npx jest --ci --reporters=default --reporters=jest-junit --collect-coverage --detectOpenHandles --forceExit"
+    "unit-test": "NODE_ENV=test npx jest --config=tests/jest.config.js --ci --detectOpenHandles --forceExit",
+    "mock-validation-test": "NODE_ENV=test npx jest --config=mock_validation/jest.config.js --ci"
   },
   "nodemonConfig": {
     "ignore": [
@@ -42,14 +43,6 @@
       "/integration-tests/config",
       "/integration-tests/plugins",
       "/integration-tests/support"
-    ]
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "verbose": true,
-    "clearMocks": true,
-    "testMatch": [
-      "<rootDir>/(tests)/**/?(*.)(spec|test).{js,jsx,mjs}"
     ]
   },
   "jest-junit": {
@@ -71,13 +64,13 @@
     "axios": "0.19.2",
     "compression": "1.7.4",
     "cookie-parser": "1.4.5",
-    "debug": "4.2.0",
+    "debug": "4.1.1",
     "express": "4.17.1",
     "express-session": "1.17.1",
     "govuk-frontend": "3.7.0",
-    "helmet": "3.23.0",
+    "helmet": "3.23.1",
     "memorystore": "1.6.2",
-    "moment": "2.26.0",
+    "moment": "2.27.0",
     "morgan": "1.10.0",
     "nunjucks": "3.2.1"
   },
@@ -88,11 +81,13 @@
     "cypress-cucumber-preprocessor": "2.5.0",
     "cypress-intellij-reporter": "0.0.4",
     "jest": "26.0.1",
-    "jest-junit": "10.0.0",
+    "jest-junit": "11.0.0",
     "moxios": "0.4.0",
     "node-sass": "4.14.1",
     "nodemon": "2.0.4",
     "standard": "14.3.4",
-    "supertest": "4.0.2"
+    "supertest": "4.0.2",
+    "swagger-client": "3.10.8",
+    "swagger-model-validator": "3.0.19"
   }
 }
