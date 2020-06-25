@@ -2,7 +2,7 @@
 import moment from 'moment'
 import 'cypress-axe'
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
-import { getMonthsAndDays } from '../../../../routes/middleware/defaults'
+import { getMonthsAndDays } from '../../../../server/routes/middleware/defaults'
 import World from '../../world/World'
 
 const world = new World('caseSummary')

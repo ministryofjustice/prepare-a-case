@@ -1,6 +1,6 @@
 /* global describe, beforeEach, afterEach, it, expect, jest */
 const moment = require('moment')
-const { defaults, getPath, getMonthsAndDays } = require('../../../routes/middleware/defaults')
+const { defaults, getPath, getMonthsAndDays } = require('../../../server/routes/middleware/defaults')
 
 const reqObj = {
   params: {}

@@ -1,0 +1,134 @@
+{% extends "partials/case-details.njk" %}
+
+{%- set moment = params.moment -%}
+{%- set communityData = data.communityData -%}
+{%- set activeOrders = [] -%}
+{%- set previousOrders = [] -%}
+{%- for order in communityData.convictions if communityData.convictions | length %}
+    {% if order.sentence %}
+        {% if order.active %}
+                {{ activeOrders.push(order) }}
+        {% else %}
+            {{ previousOrders.push(order) }}
+        {% endif %}
+    {% endif %}
+{% endfor -%}
+
+{%- set offenderManager = {} -%}
+{%- for manager in communityData.personalDetails.offenderManagers if communityData.personalDetails.offenderManagers | length %}
+    {% if manager.active %}
+        {%- set offenderManager = manager -%}
+    {% endif %}
+{% endfor -%}
+
+{%- set probationDocuments = [] -%}
+{%- for order in communityData.convictions if communityData.convictions | length %}
+    {%- for document in order.documents if order.documents | length %}
+        {{ probationDocuments.push({
+            description: document.subType.description,
+            completedDate: document.reportDocumentDates.completedDate
+        }) }}
+    {% endfor -%}
+{% endfor -%}
+
+{% block caseContent %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if activeOrders | length %}
+                <h2 class="govuk-heading-m">Current orders ({{ activeOrders | length }})</h2>
+                {%- for order in activeOrders %}
+                    <p class="govuk-body govuk-!-margin-bottom-0">
+                        <a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a>
+                        {% if order.inBreach %}<span class="moj-badge moj-badge--black pac-badge govuk-!-margin-left-1">Breach</span>{% endif %}
+                    </p>
+                    <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].description }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started on {{ moment(order.convictionDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+
+                    {% if order.requirements and order.requirements | length %}
+                        <h3 class="govuk-heading-s">Requirements</h3>
+
+                        <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
+                        {%- for requirement in order.requirements %}
+                            <li>
+                                {{ requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description }}
+                                {{ '(' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')' }}
+                                {{ '- ' + requirement.length if requirement.length }}
+                                {{ requirement.lengthUnit if requirement.lengthUnit }}
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible" />
+
+                {% endfor -%}
+            {% endif %}
+
+            {% if previousOrders | length %}
+                {% if params.showAllPreviousOrders === params.caseNo %}
+                    {% set limitPreviousOrders = previousOrders | length %}
+                {% else %}
+                    {% set limitPreviousOrders = 5 %}
+                {% endif %}
+                <form name="previousOrders" id="previousOrders" method="post">
+                    <h2 class="govuk-heading-m{% if activeOrders | length and previousOrders | length %} govuk-!-margin-top-8{% endif %}">Previous orders ({{ previousOrders | length }})</h2>
+                    <table class="govuk-table govuk-!-margin-bottom-3">
+                        <tbody class="govuk-table__body">
+                            {%- for order in previousOrders | limit(limitPreviousOrders) %}
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell govuk-!-width-two-thirds">
+                                        <p class="govuk-body govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a></p>
+                                        <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
+                                    </td>
+                                    <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third" style="vertical-align: bottom">
+                                        <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">Ended on {{ moment(order.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                                    </td>
+                                </tr>
+                            {% endfor -%}
+                        </tbody>
+                    </table>
+                    {% if previousOrders | length > limitPreviousOrders %}
+                        <button type="submit" class="govuk-button govuk-button--secondary">Show all previous orders</button>
+                    {% endif %}
+                </form>
+            {% endif %}
+
+        </div>
+        <div class="govuk-grid-column-one-third">
+
+            <h3 class="govuk-heading-s">Offender Manager</h3>
+
+            {% if offenderManager.active %}
+                <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.staff.forenames }} {{ offenderManager.staff.surname }}</p>
+                <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.fromDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+
+                <p class="govuk-body govuk-!-margin-top-0">{{ offenderManager.probationArea.description }}<br/>
+                {{ offenderManager.address.buildingName }}<br/>
+                {{ offenderManager.address.addressNumber }} {{ offenderManager.address.streetName }}<br/>
+                {{ offenderManager.address.town }}<br/>
+                {{ offenderManager.address.county }}<br/>
+                {{ offenderManager.address.postcode }}</p>
+
+                <p class="govuk-body">Telephone: {{ offenderManager.team.telephone }}</p>
+            {% else %}
+                <p class="govuk-body">Not active</p>
+            {% endif %}
+
+            {% if probationDocuments | length %}
+                {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
+                <h3 class="govuk-heading-s">Last pre-sentence report</h3>
+                <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
+                <p class="govuk-hint govuk-!-margin-top-1">Delivered on {{ moment(latestDocument.completedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+            {% endif %}
+
+            {% if communityData.assessment | length %}
+                <h3 class="govuk-heading-s govuk-!-margin-top-6">Last OASys assessment</h3>
+                <p class="govuk-body govuk-!-margin-bottom-0">OASys Assessment {{ communityData.assessment.type  | capitalize | replace("_", " ") }}</p>
+                <p class="govuk-hint govuk-!-margin-top-1">Completed on {{ params.moment(communityData.assessment.completed, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

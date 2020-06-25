@@ -2,7 +2,7 @@
 const moxios = require('moxios')
 const { apiUrl } = require('../../config/defaults')
 
-const { getCaseList, getCase } = require('../../services/case-service')
+const { getCaseList, getCase } = require('../../server/services/case-service')
 
 describe('Case service', () => {
   beforeEach(() => {
