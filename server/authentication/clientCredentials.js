@@ -1,10 +1,10 @@
 const config = require('../../config')
 
 module.exports = {
-  generateOauthClientToken,
+  generateOauthClientToken
 }
 
-function generateOauthClientToken(
+function generateOauthClientToken (
   clientId = config.apis.oauth2.apiClientId,
   clientSecret = config.apis.oauth2.apiClientSecret
 ) {

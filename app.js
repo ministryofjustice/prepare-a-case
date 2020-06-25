@@ -26,7 +26,7 @@ const config = require('./config')
 
 const { authenticationMiddleware } = auth
 
-module.exports = function createApp ({ signInService}) {
+module.exports = function createApp ({ signInService }) {
   const app = express()
 
   auth.init(signInService)

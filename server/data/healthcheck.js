@@ -10,10 +10,10 @@ const config = require('../../config')
 const agentOptions = {
   maxSockets: config.apis.oauth2.agent.maxSockets,
   maxFreeSockets: config.apis.oauth2.agent.maxFreeSockets,
-  freeSocketTimeout: config.apis.oauth2.agent.freeSocketTimeout,
+  freeSocketTimeout: config.apis.oauth2.agent.freeSocketTimeout
 }
 
-function serviceCheckFactory(name, url) {
+function serviceCheckFactory (name, url) {
   const keepaliveAgent = url.startsWith('https') ? new HttpsAgent(agentOptions) : new Agent(agentOptions)
 
   return () =>
@@ -27,7 +27,7 @@ function serviceCheckFactory(name, url) {
         })
         .timeout({
           response: 1000,
-          deadline: 1500,
+          deadline: 1500
         })
         .end((error, result) => {
           if (error) {
@@ -43,5 +43,5 @@ function serviceCheckFactory(name, url) {
 }
 
 module.exports = {
-  serviceCheckFactory,
+  serviceCheckFactory
 }

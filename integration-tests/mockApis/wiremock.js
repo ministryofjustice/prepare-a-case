@@ -11,5 +11,5 @@ const resetStubs = () => Promise.all([superagent.delete(`${url}/mappings`), supe
 module.exports = {
   stubFor,
   getRequests,
-  resetStubs,
+  resetStubs
 }

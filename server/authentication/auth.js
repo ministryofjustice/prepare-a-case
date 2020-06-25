@@ -3,7 +3,7 @@ const { Strategy } = require('passport-oauth2')
 const config = require('../../config')
 const { generateOauthClientToken } = require('./clientCredentials')
 
-function authenticationMiddleware() {
+function authenticationMiddleware () {
   return (req, res, next) => {
     if (req.isAuthenticated()) {
       return next()
@@ -24,7 +24,7 @@ passport.deserializeUser((user, done) => {
   done(null, user)
 })
 
-function init(signInService) {
+function init (signInService) {
   const strategy = new Strategy(
     {
       authorizationURL: `${config.apis.oauth2.externalUrl}/oauth/authorize`,
@@ -33,11 +33,11 @@ function init(signInService) {
       clientSecret: config.apis.oauth2.apiClientSecret,
       callbackURL: `${config.domain}/login/callback`,
       state: true,
-      customHeaders: { Authorization: generateOauthClientToken() },
+      customHeaders: { Authorization: generateOauthClientToken() }
     },
     (accessToken, refreshToken, params, profile, done) => {
       const user = signInService.getUser(accessToken, refreshToken, params.expires_in, params.user_name)
-console.log(`USER: ${JSON.stringify(user)}`)
+      console.log(`USER: ${JSON.stringify(user)}`)
       return done(null, user)
     }
   )

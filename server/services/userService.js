@@ -1,7 +1,7 @@
 const logger = require('../../log')
 
-module.exports = function createUserService(authClientBuilder) {
-  async function getUser(context) {
+module.exports = function createUserService (authClientBuilder) {
+  async function getUser (context) {
     try {
       const authClient = authClientBuilder(context.token)
 
@@ -17,7 +17,7 @@ module.exports = function createUserService(authClientBuilder) {
       return {
         ...user,
         displayName: nameForDisplay,
-        roles,
+        roles
       }
     } catch (error) {
       logger.error('Error during getUser: ', error.stack)
@@ -25,7 +25,7 @@ module.exports = function createUserService(authClientBuilder) {
     }
   }
 
-  async function getEmails(token, usernames) {
+  async function getEmails (token, usernames) {
     try {
       const client = authClientBuilder(token)
       const requests = usernames.map(username => client.getEmail(username))
@@ -39,7 +39,7 @@ module.exports = function createUserService(authClientBuilder) {
         exist,
         missing,
         notVerified,
-        success: missing.length === 0 && notVerified.length === 0,
+        success: missing.length === 0 && notVerified.length === 0
       }
     } catch (error) {
       logger.error('Error during getEmails: ', error.stack)
@@ -47,7 +47,7 @@ module.exports = function createUserService(authClientBuilder) {
     }
   }
 
-  async function getUserDetails(context) {
+  async function getUserDetails (context) {
     const authClient = authClientBuilder(context.token)
     let user = null
 
@@ -57,7 +57,7 @@ module.exports = function createUserService(authClientBuilder) {
     return user
   }
 
-  async function getUserRoles(context) {
+  async function getUserRoles (context) {
     const authClient = authClientBuilder(context.token)
     const roles = await authClient.getUserRoles()
     return roles
@@ -67,6 +67,6 @@ module.exports = function createUserService(authClientBuilder) {
     getUser,
     getEmails,
     getUserDetails,
-    getUserRoles,
+    getUserRoles
   }
 }

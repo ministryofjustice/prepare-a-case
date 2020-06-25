@@ -1,11 +1,14 @@
+/* eslint-disable */
+
 const serviceCreator = require('../../server/services/userService')
 
 const context = { username: 'test', token: 'token-1' }
 
 const authClient = {
+  // eslint-disable-next-line no-undef
   getUser: jest.fn(),
   getUserRoles: jest.fn(),
-  getEmail: jest.fn(),
+  getEmail: jest.fn()
 }
 
 const authClientBuilder = jest.fn()
@@ -29,7 +32,7 @@ describe('Auth users - getUser()', () => {
       authSource: 'auth',
       displayName: 'Sam Smith',
       exists: true,
-      verified: true,
+      verified: true
     }
     authClient.getUser.mockReturnValue(authUser)
 
@@ -41,7 +44,7 @@ describe('Auth users - getUser()', () => {
     expect(result).toEqual({
       ...authUser,
       displayName: 'Sam Smith',
-      roles: [{ roleCode: 'GLOBAL_SEARCH' }, { roleCode: 'PATHFINDER_OM' }],
+      roles: [{ roleCode: 'GLOBAL_SEARCH' }, { roleCode: 'PATHFINDER_OM' }]
     })
 
     expect(authClientBuilder).toBeCalledWith(context.token)
@@ -63,18 +66,18 @@ describe('Email addresses', () => {
           email: 'an@email.com',
           exists: true,
           username: 'Bob',
-          verified: true,
+          verified: true
         },
         {
           email: 'an@email.com',
           exists: true,
           username: 'June',
-          verified: true,
-        },
+          verified: true
+        }
       ],
       missing: [],
       notVerified: [],
-      success: true,
+      success: true
     })
   })
 
@@ -92,12 +95,12 @@ describe('Email addresses', () => {
           email: 'an@email.com',
           exists: true,
           username: 'Bob',
-          verified: true,
-        },
+          verified: true
+        }
       ],
       missing: [{ exists: false, username: 'June', verified: true }],
       notVerified: [],
-      success: false,
+      success: false
     })
   })
 
@@ -115,12 +118,12 @@ describe('Email addresses', () => {
           email: 'an@email.com',
           exists: true,
           username: 'Bob',
-          verified: true,
-        },
+          verified: true
+        }
       ],
       missing: [],
       notVerified: [{ exists: true, username: 'June', verified: false }],
-      success: false,
+      success: false
     })
   })
 

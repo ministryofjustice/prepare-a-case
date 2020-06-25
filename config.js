@@ -36,7 +36,7 @@ module.exports = {
         url: get('SERVICE_ENDPOINT_URL', 'http://localhost:8080', requiredInProduction),
         timeout: {
           response: get('SERVICE_ENDPOINT_TIMEOUT_RESPONSE', 10000),
-          deadline: get('SERVICE_ENDPOINT_TIMEOUT_DEADLINE', 10000),
+          deadline: get('SERVICE_ENDPOINT_TIMEOUT_DEADLINE', 10000)
         }
       },
       apiClientId: get('API_CLIENT_ID', 'prepare-a-case-for-court'),

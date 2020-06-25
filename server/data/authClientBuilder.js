@@ -7,14 +7,14 @@ const config = require('../../config')
 
 const timeoutSpec = {
   response: config.apis.oauth2.timeout.response,
-  deadline: config.apis.oauth2.timeout.deadline,
+  deadline: config.apis.oauth2.timeout.deadline
 }
 const apiUrl = config.apis.oauth2.url
 
 const agentOptions = {
   maxSockets: config.apis.oauth2.agent.maxSockets,
   maxFreeSockets: config.apis.oauth2.agent.maxFreeSockets,
-  freeSocketTimeout: config.apis.oauth2.agent.freeSocketTimeout,
+  freeSocketTimeout: config.apis.oauth2.agent.freeSocketTimeout
 }
 
 const keepaliveAgent = apiUrl.startsWith('https') ? new HttpsAgent(agentOptions) : new Agent(agentOptions)
@@ -23,25 +23,25 @@ module.exports = token => {
   const userGet = userGetBuilder(token)
 
   return {
-    async getEmail(username) {
+    async getEmail (username) {
       const path = `${apiUrl}/api/user/${username}/email`
       const { status, body } = await userGet({ path, raw: true })
       return { ...body, username, exists: status !== 404, verified: status === 200 }
     },
-    async getUserRoles() {
+    async getUserRoles () {
       const path = `${apiUrl}/api/user/me/roles`
       const { status, body } = await userGet({ path, raw: true })
       logger.info('AUTH - /api/user/me/roles - status: ', status)
       return body
     },
-    async getUser() {
+    async getUser () {
       const path = `${apiUrl}/api/user/me`
       const { status, body } = await userGet({ path, raw: true })
       return { ...body, displayName: body.name, exists: status !== 404, verified: status === 200 }
-    },
+    }
   }
 }
-function userGetBuilder(token) {
+function userGetBuilder (token) {
   return async ({ path = null, query = '', headers = {}, responseType = '', raw = false } = {}) => {
     logger.info(`Get using user credentials: calling oauth: ${path} ${query}`)
     try {

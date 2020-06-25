@@ -6,7 +6,7 @@ const asyncMiddleware = require('./asyncMiddleware')
 const CreateHomeRoutes = require('./home')
 
 // eslint-disable-next-line no-unused-vars
-module.exports = function Index({ authenticationMiddleware }) {
+module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
 
   router.use(authenticationMiddleware())

@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+/* global describe, beforeEach, afterEach, it, expect, jest, test */
 const nock = require('nock')
 const config = require('../../config')
 const signInService = require('../../server/authentication/signInService')
@@ -26,7 +28,7 @@ describe('signInService', () => {
         token: 'type token',
         refreshToken: 'refresh',
         username: 'un',
-        refreshTime: in15Mins,
+        refreshTime: in15Mins
       }
 
       return expect(service.getUser('type token', 'refresh', '1200', 'un')).toEqual(expectedOutput)
@@ -55,7 +57,7 @@ describe('signInService', () => {
       expect(output).toEqual({
         refreshTime: in15Mins,
         refreshToken: 'REFRESH_TOKEN-2',
-        token: 'NEW_ACCESS_TOKEN-1',
+        token: 'NEW_ACCESS_TOKEN-1'
       })
     })
   })

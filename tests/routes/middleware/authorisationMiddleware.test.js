@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+/* global describe, beforeEach, afterEach, it, expect, jest, test */
 const jwt = require('jsonwebtoken')
 
 const authorisationMiddleware = require('../../../server/routes/middleware/authorisationMiddleware')
@@ -9,7 +11,7 @@ const createToken = authorities => {
     auth_source: 'nomis',
     ...authorities,
     jti: '83b50a10-cca6-41db-985f-e87efb303ddb',
-    client_id: 'prepare-a-case-for-court',
+    client_id: 'prepare-a-case-for-court'
   }
 
   const token = jwt.sign(payload, 'secret', { expiresIn: '1h' })
@@ -24,9 +26,9 @@ describe('authorisationMiddleware', () => {
     const createResWithToken = authorities => ({
       locals: {
         user: {
-          token: createToken(authorities),
-        },
-      },
+          token: createToken(authorities)
+        }
+      }
     })
 
     test('Should have a user', () => {

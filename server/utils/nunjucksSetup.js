@@ -16,7 +16,7 @@ module.exports = (app, path) => {
     const item = array.find(error => error.href === `#${formFieldId}`)
     if (item) {
       return {
-        text: item.text,
+        text: item.text
       }
     }
     return null
@@ -48,5 +48,4 @@ module.exports = (app, path) => {
   njkEnv.addFilter('isArray', value => {
     return Array.isArray(value)
   })
-
 }
