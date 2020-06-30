@@ -130,7 +130,7 @@
               "reportDocumentDates": {
                 "requestedDate": "2018-10-08",
                 "requiredDate": "2019-10-08",
-                "completedDate": "2018-12-28T00:00:00"
+                "completedDate": "{{now offset='-5 days' format='yyyy-MM-dd'}}T00:00:00"
               }
             }
           ]

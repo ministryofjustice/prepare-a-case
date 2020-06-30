@@ -183,6 +183,7 @@ Feature: Case summary
     And I should see link to the first previous order
     And I should see the previous order offence
     And I should see the previous order end date
+    And I should see the last pre-sentence report details
     And There should be no a11y violations
 
   Scenario: View the probation record section of the case summary for a current offender
@@ -270,6 +271,8 @@ Feature: Case summary
     When I navigate to the probation record route
     Then I should be on the "Probation record" page
     And I should see the heading has the defendant name
+
+    And I should see the last pre-sentence report details
 
     And I should see link to the first current order
     When I click the first "current" order link

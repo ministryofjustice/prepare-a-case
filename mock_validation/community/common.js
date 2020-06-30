@@ -17,6 +17,12 @@ function testConvictionsValidation (validator, mapping) {
       if ($conviction.sentence && $conviction.sentence.terminationDate) {
         $conviction.sentence.terminationDate = $conviction.sentence.terminationDate.replace('{{now offset=\'5 months\' format=\'yyyy-MM-dd\'}}', moment().add(5, 'months').format('YYYY-MM-DD'))
       }
+      if ($conviction.documents && $conviction.documents.length) {
+        $conviction.documents.forEach($document => {
+          $document.reportDocumentDates.completedDate = $document.reportDocumentDates.completedDate.replace('{{now offset=\'-1 months\' format=\'yyyy-MM-dd\'}}', moment().add(-1, 'months').format('YYYY-MM-DD'))
+          $document.reportDocumentDates.completedDate = $document.reportDocumentDates.completedDate.replace('{{now offset=\'-5 days\' format=\'yyyy-MM-dd\'}}', moment().add(-5, 'days').format('YYYY-MM-DD'))
+        })
+      }
     })
   }
 

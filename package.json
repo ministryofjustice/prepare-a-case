@@ -68,7 +68,7 @@
     "express": "4.17.1",
     "express-session": "1.17.1",
     "govuk-frontend": "3.7.0",
-    "helmet": "3.23.1",
+    "helmet": "3.23.3",
     "memorystore": "1.6.2",
     "moment": "2.27.0",
     "morgan": "1.10.0",
@@ -76,18 +76,18 @@
   },
   "devDependencies": {
     "cucumber": "6.0.5",
-    "cypress": "4.8.0",
+    "cypress": "4.9.0",
     "cypress-axe": "0.8.1",
     "cypress-cucumber-preprocessor": "2.5.0",
     "cypress-intellij-reporter": "0.0.4",
-    "jest": "26.0.1",
-    "jest-junit": "11.0.0",
+    "jest": "26.1.0",
+    "jest-junit": "11.0.1",
     "moxios": "0.4.0",
     "node-sass": "4.14.1",
     "nodemon": "2.0.4",
     "standard": "14.3.4",
     "supertest": "4.0.2",
-    "swagger-client": "3.10.8",
+    "swagger-client": "3.10.9",
     "swagger-model-validator": "3.0.19"
   }
 }
