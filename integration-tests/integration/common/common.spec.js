@@ -1,10 +1,14 @@
 /* global cy */
-import { And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
+import { Before, And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import 'cypress-axe'
 
-Given('I am a registered user', () => {
+Before(() => {
   cy.task('stubLogin')
   cy.login()
+})
+
+Given('I am an authenticated user', () => {
+  cy.get('#loginForm').should('not.exist')
 })
 
 When('I open the application', () => {
@@ -55,6 +59,10 @@ And('I should see the following table headings', $data => {
 
 And('I should type in my username', () => {
   cy.get('#username').type('katie.cawthorne')
+})
+
+And('I should logout', () => {
+  cy.get('.moj-header__navigation-link').click()
 })
 
 And('I should type in my password', () => {

@@ -37,7 +37,6 @@ function init (signInService) {
     },
     (accessToken, refreshToken, params, profile, done) => {
       const user = signInService.getUser(accessToken, refreshToken, params.expires_in, params.user_name)
-      console.log(`USER: ${JSON.stringify(user)}`)
       return done(null, user)
     }
   )

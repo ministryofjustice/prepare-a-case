@@ -21,18 +21,18 @@ Integration tests use [Cypress](https://www.cypress.io) and employ [Gherkin](htt
 Install dependencies using 
 
 ```
-npm i
+`npm i`
 ```
 
 And then, to build the assets and start the app with
 ```
-env COURT_CASE_SERVICE_URL=http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk npm run start
+`env COURT_CASE_SERVICE_URL=http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk npm run start`
 ```
 
 Or to use alongside a local instance of *court-case-service* 
 
 ```
-env COURT_CASE_SERVICE_URL=http://127.0.0.1:8080 npm run start
+`env COURT_CASE_SERVICE_URL=http://127.0.0.1:8080 npm run start`
 ```
 
 ## For development, there are additional tasks:
@@ -43,12 +43,12 @@ If unspecified, the app will use your local court-case-service app but you can a
  
 Start the standalone WireMock server
 ```
-java -jar wiremock-standalone-2.26.3.jar --global-response-templating --port 9091
+`java -jar wiremock-standalone-2.26.3.jar --global-response-templating --port 9091`
 ```
 
 And then, to build assets and start app with
 ```
-npm run start:watch
+`npm run start:watch`
 ```
 
 This will watch for changes in the application JavaScript and Nunjucks templates and automatically restart as required.
@@ -57,31 +57,32 @@ This will also ensure that the application does not restart due to changes to te
 
 ### Run linter
 ```
-npm run lint
+`npm run lint`
 ```
 
 ### Run unit tests
 ```
-npm run unit-test
+`npm run unit-test`
 ```
 
 ### Run integration tests
 For local running, start the application:
 
 ```
-npm run start
+`npm run start-feature` (or `npm run start-feature:dev` to run with nodemon)
+
 ```
 
 Then run the integration tests:
 
 ```
-npm run int-test
+`npm run int-test`
 ```
 
 Or run the integration tests with the Cypress UI:
 
 ```
-npm run int-test:ui
+`npm run int-test:ui`
 ```
 
 ## Environment variables

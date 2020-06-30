@@ -7,8 +7,7 @@ const createToken = () => {
     scope: ['read', 'write'],
     auth_source: 'delius',
     authorities: [
-      'ROLE_PREPARE_A_CASE',
-      'ROLE_PROBATION'
+      'ROLE_PREPARE_A_CASE'
     ],
     jti: '83b50a10-cca6-41db-985f-e87efb303ddb',
     client_id: 'prepare-a-case-for-court'
@@ -47,7 +46,7 @@ const redirect = () =>
       status: 200,
       headers: {
         'Content-Type': 'text/html',
-        Location: 'http://localhost:3000/login/callback?code=codexxxx&state=stateyyyy'
+        Location: 'http://localhost:3007/login/callback?code=codexxxx&state=stateyyyy'
       },
       body: '<html><body>Login page<h1>Sign in</h1></body></html>'
     }
@@ -78,7 +77,7 @@ const token = () =>
       status: 200,
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
-        Location: 'http://localhost:3000/login/callback?code=codexxxx&state=stateyyyy'
+        Location: 'http://localhost:3007/login/callback?code=codexxxx&state=stateyyyy'
       },
       jsonBody: {
         access_token: createToken(),

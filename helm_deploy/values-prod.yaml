@@ -20,6 +20,9 @@ ingress:
 env:
   COURT_CASE_SERVICE_URL: http://court-case-service-prod.apps.live-1.cloud-platform.service.justice.gov.uk
   CASES_PER_PAGE: 20
+  NOMIS_AUTH_URL: https://gateway.prod.nomis-api.service.hmpps.dsd.io/auth
+  EXIT_LOCATION_URL: https://prepare-case-probation.apps.live-1.cloud-platform.service.justice.gov.uk
+  SERVICE_ENDPOINT_URL: https://prepare-case-probation.apps.live-1.cloud-platform.service.justice.gov.uk
 
 whitelist:
   office: "217.33.148.210/32"
