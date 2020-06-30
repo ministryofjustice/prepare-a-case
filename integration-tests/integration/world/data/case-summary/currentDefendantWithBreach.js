@@ -74,6 +74,10 @@ const currentDefendantWithBreach = {
       address5: 'Gwynedd',
       postcode: 'LL6 3CV',
       telephone: '01895 540 370'
+    },
+    preSentenceReportDetails: {
+      description: 'Pre-Sentence Report - Fast',
+      delivered: 'Delivered less than 1 month ago'
     }
   },
   dev: {

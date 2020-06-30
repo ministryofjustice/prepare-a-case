@@ -33,6 +33,10 @@ const previouslyKnownDefendant = {
       address5: '',
       postcode: '',
       telephone: ''
+    },
+    preSentenceReportDetails: {
+      description: 'Pre-Sentence Report - Fast',
+      delivered: 'Delivered 1 month ago'
     }
   },
   dev: {
