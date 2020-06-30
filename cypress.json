@@ -19,5 +19,5 @@
     "TAGS": "not @ignore"
   },
   "videoUploadOnPasses": false,
-  "taskTimeout": 60000,
+  "taskTimeout": 60000
 }
