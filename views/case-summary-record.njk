@@ -132,7 +132,7 @@
                     {% else %}
                         {{ monthsOld }} months
                     {% endif %}
-                    ago</p>
+                    ago ({{ moment(latestDocument.completedDate, 'YYYY-MM-DD').format(displayDateFormat) }})</p>
             {% endif %}
 
             {% if communityData.assessment | length %}
