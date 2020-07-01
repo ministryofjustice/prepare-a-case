@@ -20,7 +20,7 @@ const currentDefendant = {
     currentOrderStartDate: '2019-05-19',
     currentOrderEndDate: '2020-05-25',
     currentOrderId: '1403337513',
-    currentOrderLastAttendance: '4 Mar 2020 - Planned office visit (Attended - Complied)',
+    currentOrderLastAttendance: '4 Mar 2020 - Planned office visit (Acceptable)',
     currentOrderAttendance: {
       counts: [10, 6, 2, 2, 1, 1, 0, 1, 1, 2, 2, 1],
       headings: ['Appointments to date', 'Complied', 'Failures to comply', 'Awaiting outcome'],
