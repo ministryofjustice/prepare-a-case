@@ -23,7 +23,7 @@ const currentDefendantWithBreach = {
     currentOrderStartDate: '2018-10-07',
     currentOrderEndDate: '2020-06-17',
     currentOrderId: '1361422142',
-    currentOrderLastAttendance: '10 Mar 2020 - Unpaid work (Attended - Complied)',
+    currentOrderLastAttendance: '10 Mar 2020 - Unpaid work (Acceptable)',
     currentOrderAttendance: {
       counts: [57, 25, 9, 7, 5, 4, 6, 2, 2, 2, 11, 3, 3, 3, 2, 5, 2, 1, 1, 1, 1],
       headings: ['Appointments to date', 'Complied', 'Failures to comply', 'Awaiting outcome'],
