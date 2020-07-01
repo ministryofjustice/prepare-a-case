@@ -166,7 +166,7 @@ And('I should see the last pre-sentence report details', () => {
   cy.get('.govuk-grid-column-one-third').within(() => {
     cy.get('.govuk-heading-s').contains('Last pre-sentence report')
     cy.get('.govuk-body').contains(world.data.preSentenceReportDetails.description)
-    cy.get('.govuk-hint').contains(`Delivered on ${world.data.preSentenceReportDetails.delivered}`)
+    cy.get('.govuk-hint').contains(world.data.preSentenceReportDetails.delivered)
   })
 })
 

@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 const previouslyKnownDefendant = {
   local: {
     caseNo: 6627839278,
@@ -33,6 +35,10 @@ const previouslyKnownDefendant = {
       address5: '',
       postcode: '',
       telephone: ''
+    },
+    preSentenceReportDetails: {
+      description: 'Pre-Sentence Report - Fast',
+      delivered: `Delivered 1 month ago (${moment().add(-1, 'months').format('D MMM YYYY')})`
     }
   },
   dev: {

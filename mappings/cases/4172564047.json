@@ -10,10 +10,10 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 838597,
-      "caseNo": 4172564047,
+      "caseId": "838597",
+      "caseNo": "4172564047",
       "courtCode": "SHF",
-      "courtRoom": 10,
+      "courtRoom": "10",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "3rd",
       "pnc": "A/1234560BA",
@@ -52,7 +52,7 @@
       "defendantSex": "F",
       "defendantName": "Felicia Villarreal",
       "defendantAddress": {
-        "line1": 37,
+        "line1": "37",
         "line2": "Maple Avenue",
         "postcode": "L1 5dr",
         "line3": "London",

@@ -10,10 +10,10 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 951609,
-      "caseNo": 5222601242,
+      "caseId": "951609",
+      "caseNo": "5222601242",
       "courtCode": "SHF",
-      "courtRoom": 9,
+      "courtRoom": "9",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "1st",
       "pnc": "D/9874483AB",
@@ -33,7 +33,7 @@
       "defendantSex": "M",
       "defendantName": "Olsen Alexander",
       "defendantAddress": {
-        "line1": 99,
+        "line1": "99",
         "line2": "Ralph Avenue",
         "postcode": "ad21 5dr",
         "line3": "London",

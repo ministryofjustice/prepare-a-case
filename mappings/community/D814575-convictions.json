@@ -20,7 +20,7 @@
       ],
       "convictions": [
         {
-          "convictionId": 241412130,
+          "convictionId": "241412130",
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-06",
@@ -47,7 +47,7 @@
           "documents": []
         },
         {
-          "convictionId": 864007527,
+          "convictionId": "864007527",
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-01-24",

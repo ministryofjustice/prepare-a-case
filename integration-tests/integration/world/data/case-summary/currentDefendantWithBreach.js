@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 const currentDefendantWithBreach = {
   local: {
     caseNo: 5222601242,
@@ -74,39 +76,10 @@ const currentDefendantWithBreach = {
       address5: 'Gwynedd',
       postcode: 'LL6 3CV',
       telephone: '01895 540 370'
-    }
-  },
-  dev: {
-    caseNo: 0,
-    court: '0',
-    session: '',
-    listing: '',
-    pnc: '',
-    crn: '',
-    name: '',
-    dateOfBirth: '',
-    gender: '',
-    address: '',
-    nationality: '',
-    offence: '',
-    offenceDetails: '',
-    offenceCaption: '',
-    currentOrderCount: 0,
-    currentOrderTitle: '',
-    currentOrderId: '',
-    previousOrderCount: 0,
-    previousOrderTitle: '',
-    previousOrderId: '',
-    offenderManager: '',
-    offenderManagerDetails: {
-      allocated: '',
-      address1: '',
-      address2: '',
-      address3: '',
-      address4: '',
-      address5: '',
-      postcode: '',
-      telephone: ''
+    },
+    preSentenceReportDetails: {
+      description: 'Pre-Sentence Report - Fast',
+      delivered: `Delivered less than 1 month ago (${moment().add(-5, 'days').format('D MMM YYYY')})`
     }
   }
 }

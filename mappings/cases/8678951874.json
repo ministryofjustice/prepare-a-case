@@ -10,10 +10,10 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 957781,
-      "caseNo": 8678951874,
+      "caseId": "957781",
+      "caseNo": "8678951874",
       "courtCode": "SHF",
-      "courtRoom": 10,
+      "courtRoom": "10",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "1st",
       "pnc": "A/1234560BA",
@@ -47,7 +47,7 @@
       "defendantSex": "F",
       "defendantName": "Kara Ayers",
       "defendantAddress": {
-        "line1": 22,
+        "line1": "22",
         "line2": "Waldorf Court",
         "postcode": "ad21 5dr",
         "line3": "Cardiff",

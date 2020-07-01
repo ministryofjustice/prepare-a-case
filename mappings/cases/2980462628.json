@@ -10,10 +10,10 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 805611,
-      "caseNo": 2980462628,
+      "caseId": "805611",
+      "caseNo": "2980462628",
       "courtCode": "SHF",
-      "courtRoom": 3,
+      "courtRoom": "3",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "3rd",
       "crn": "D541487",
@@ -48,7 +48,7 @@
       "defendantSex": "F",
       "defendantName": "Sara Ortega",
       "defendantAddress": {
-        "line1": 25,
+        "line1": "25",
         "line2": "Harman Street",
         "postcode": "ba21 5dr",
         "line3": "Bangor",
