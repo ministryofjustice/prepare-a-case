@@ -221,7 +221,7 @@
 
         {% if attendances.length %}
             {% set sortedAttendances = attendances | sort(true, false, 'attendanceDate') %}
-            <p class="govuk-body">Last attendance: {{ moment(sortedAttendances[0].attendanceDate, 'YYYY-MM-DD').format(displayDateFormat) }} - {{ sortedAttendances[0].contact.description }} ({{ "Attended" if sortedAttendances[0].attended else "Absent" }} - {{ "Complied" if sortedAttendances[0].complied else "Failed to comply" }})</p>
+            <p class="govuk-body"><span class="govuk-!-font-weight-bold">Last attended</span> {{ moment(sortedAttendances[0].attendanceDate, 'YYYY-MM-DD').format(displayDateFormat) }} - {{ sortedAttendances[0].contact.description }} ({{ "Attended" if sortedAttendances[0].attended else "Absent" }} - {{ "Complied" if sortedAttendances[0].complied else "Failed to comply" }})</p>
         {% endif %}
 
         <div class="govuk-grid-row">
