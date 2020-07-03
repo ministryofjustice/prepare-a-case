@@ -1,8 +1,9 @@
 const { request } = require('./utils/request')
 const config = require('../../config')
+const apiUrl = config.apis.courtCaseService.url
 
 const getPersonalDetails = async crn => {
-  const res = await request(`${config.apis.courtCaseService.url}/offender/${crn}/personal`)
+  const res = await request(`${apiUrl}/offender/${crn}/personal`)
   return res.data
 }
 
@@ -10,7 +11,7 @@ const getRequirements = async (convictions, crn) => {
   return Promise.all(
     convictions.map(async conviction => {
       if (conviction.sentence) {
-        const res = await request(`${config.apis.courtCaseService.url}/offender/${crn}/convictions/${conviction.convictionId}/requirements`)
+        const res = await request(`${apiUrl}/offender/${crn}/convictions/${conviction.convictionId}/requirements`)
         return { ...conviction, ...res.data }
       } else {
         return conviction
@@ -20,7 +21,7 @@ const getRequirements = async (convictions, crn) => {
 }
 
 const getProbationRecord = async crn => {
-  const res = await request(`${config.apis.courtCaseService.url}/offender/${crn}/probation-record`)
+  const res = await request(`${apiUrl}/offender/${crn}/probation-record`)
   return res.data
 }
 
@@ -37,17 +38,17 @@ const getProbationRecordWithRequirements = async crn => {
 }
 
 const getAttendanceDetails = async (crn, orderId) => {
-  const res = await request(`${config.apis.courtCaseService.url}/offender/${crn}/convictions/${orderId}`)
+  const res = await request(`${apiUrl}/offender/${crn}/convictions/${orderId}`)
   return res.data
 }
 
 const getBreachDetails = async (crn, convictionId, breachId) => {
-  const res = await request(`${config.apis.courtCaseService.url}/offender/${crn}/convictions/${convictionId}/breaches/${breachId}`)
+  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/breaches/${breachId}`)
   return res.data
 }
 
 const getAttachment = async (crn, documentId) => {
-  const res = await request(`${config.apis.courtCaseService.url}/offender/${crn}/documents/${documentId}`)
+  const res = await request(`${apiUrl}/offender/${crn}/documents/${documentId}`)
   return res.data
 }
 
