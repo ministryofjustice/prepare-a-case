@@ -16,10 +16,13 @@ const requiredInProduction = { requireInProduction: true }
 
 module.exports = {
   session: {
-    secret: get('SESSION_SECRET', 'app-insecure-default-session'),
-    expiryMinutes: get('WEB_SESSION_TIMEOUT_IN_MINUTES', '120', true)
+    secret: get('SESSION_SECRET', 'prepare-a-case-insecure-default-session'),
+    expiry: get('WEB_SESSION_TIMEOUT_IN_MINUTES', 12 * 60 * 60 * 1000)
   },
   apis: {
+    courtCaseService: {
+      url: get('COURT_CASE_SERVICE_URL', 'http://127.0.0.1:9091', requiredInProduction)
+    },
     oauth2: {
       url: get('NOMIS_AUTH_URL', 'http://localhost:9090/auth'),
       externalUrl: get('', get('NOMIS_AUTH_URL', 'http://localhost:9090/auth')),

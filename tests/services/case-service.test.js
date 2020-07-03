@@ -1,8 +1,10 @@
 /* global describe, beforeEach, afterEach, it, expect, jest */
 const moxios = require('moxios')
-const { apiUrl } = require('../../config/defaults')
+const config = require('../../config')
 
 const { getCaseList, getCase } = require('../../server/services/case-service')
+
+const apiUrl = config.apis.courtCaseService.url
 
 describe('Case service', () => {
   beforeEach(() => {

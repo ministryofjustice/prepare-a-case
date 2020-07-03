@@ -1,5 +1,6 @@
 const { request } = require('./utils/request')
-const { apiUrl } = require('../../config/defaults')
+const config = require('../../config')
+const apiUrl = config.apis.courtCaseService.url
 
 const getCaseList = async (courtCode, date, filters) => {
   const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)

@@ -1,3 +1,4 @@
+const config = require('./config')
 const express = require('express')
 const compression = require('compression')
 const cookieParser = require('cookie-parser')
@@ -12,7 +13,7 @@ const helmet = require('helmet')
 const path = require('path')
 const MemoryStore = require('memorystore')(session)
 const hstsMaxAge = 604800 // @TODO: PIC-454 - Change to 31536000 (1 year) once confident that HSTS is working
-const sessionExpiry = 12 * 60 * 60 * 1000 // 12hrs
+const sessionExpiry = config.session.expiry
 const passport = require('passport')
 const createRouter = require('./server/routes')
 const createAttachmentsRouter = require('./server/routes/attachments')
@@ -21,8 +22,6 @@ const logger = require('./log.js')
 const auth = require('./server/authentication/auth')
 const authorisationMiddleware = require('./server/routes/middleware/authorisationMiddleware')
 const errorHandler = require('./server/errorHandler')
-
-const config = require('./config')
 
 const { authenticationMiddleware } = auth
 
@@ -63,7 +62,7 @@ module.exports = function createApp ({ signInService }) {
     store: new MemoryStore({
       checkPeriod: sessionExpiry
     }),
-    secret: process.env.SESSION_SECRET || 'prepare-a-case',
+    secret: config.session.secret,
     resave: true,
     saveUninitialized: true
   }))
