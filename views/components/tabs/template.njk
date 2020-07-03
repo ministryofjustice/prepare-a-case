@@ -1,0 +1,15 @@
+<div class="govuk-!-margin-bottom-5">
+    <span class="govuk-body-s pac-last-updated">{{ params.status }}</span>
+    <h2 class="govuk-tabs__title">Case lists</h2>
+    <ul class="govuk-tabs__list" role="tablist">
+
+        {% for item in params.items %}
+        <li class="govuk-tabs__list-item{% if item.current %} govuk-tabs__list-item--selected{% endif %}" role="presentation">
+            <{% if item.current %}span{% else%}a href="{{ item.link }}"{% endif%} class="govuk-tabs__tab" id="tab_{{ item.id }}" role="tab" aria-selected="true">
+                {{ item.title }}
+            </{% if item.current %}span{% else%}a{% endif%}>
+        </li>
+        {% endfor %}
+
+    </ul>
+</div>
