@@ -66,7 +66,6 @@ describe('Community service', () => {
     })
 
     const response = await getProbationRecordWithRequirements('D123456')
-    // console.log('HERE:', response)
     expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/convictions/12345/requirements`)
     return response
   })
