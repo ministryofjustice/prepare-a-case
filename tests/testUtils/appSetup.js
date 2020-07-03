@@ -26,10 +26,6 @@ module.exports = route => {
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use('/', route)
-  // eslint-disable-next-line no-unused-vars
-  app.use((error, req, res, next) => {
-    // eslint-disable-next-line no-console
-    console.log(error)
-  })
+  app.use(error => console.log(error))
   return app
 }

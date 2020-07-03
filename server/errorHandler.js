@@ -2,8 +2,7 @@ const logger = require('../log.js')
 
 const production = process.env.NODE_ENV === 'production'
 
-// eslint-disable-next-line no-unused-vars
-module.exports = (error, req, res, next) => {
+module.exports = (error, req, res) => {
   logger.error(error)
 
   res.locals.error = error

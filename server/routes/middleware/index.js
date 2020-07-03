@@ -5,7 +5,6 @@ const asyncMiddleware = require('./asyncMiddleware')
 
 const CreateHomeRoutes = require('./home')
 
-// eslint-disable-next-line no-unused-vars
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
 
@@ -21,11 +20,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   const home = CreateHomeRoutes()
-
-  // eslint-disable-next-line no-unused-vars
   const get = (path, handler) => router.get(path, asyncMiddleware(handler))
-  // eslint-disable-next-line no-unused-vars
-  const post = (path, handler) => router.post(path, asyncMiddleware(handler))
 
   get('/', home.index)
 

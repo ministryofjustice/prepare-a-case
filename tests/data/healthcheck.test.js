@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-/* global describe, beforeEach, afterEach, it, expect, jest, test */
+/* global describe, beforeEach, afterEach, it, expect */
 const nock = require('nock')
 const { serviceCheckFactory } = require('../../server/data/healthcheck')
 

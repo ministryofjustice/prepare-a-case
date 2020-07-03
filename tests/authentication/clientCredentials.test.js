@@ -1,6 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-/* global describe, beforeEach, afterEach, it, expect, jest, test */
-
+/* global describe, it, expect */
 const { generateOauthClientToken } = require('../../server/authentication/clientCredentials')
 
 describe('generateOauthClientToken', () => {

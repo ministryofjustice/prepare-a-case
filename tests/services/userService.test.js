@@ -1,11 +1,9 @@
-/* eslint-disable */
-
+/* global describe, beforeEach, afterEach, it, expect, jest */
 const serviceCreator = require('../../server/services/userService')
 
 const context = { username: 'test', token: 'token-1' }
 
 const authClient = {
-  // eslint-disable-next-line no-undef
   getUser: jest.fn(),
   getUserRoles: jest.fn(),
   getEmail: jest.fn()

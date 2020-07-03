@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 /* global describe, beforeEach, afterEach, it, expect, jest, test */
 const nock = require('nock')
 const config = require('../../config')

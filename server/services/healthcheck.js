@@ -1,5 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-/* global describe, beforeEach, afterEach, it, expect, jest */
 const { serviceCheckFactory } = require('../data/healthcheck')
 
 const service = (name, url) => {
@@ -41,8 +39,6 @@ function addAppInfo (result) {
 
 function getBuild () {
   try {
-    // @ts-ignore
-    // eslint-disable-next-line import/no-unresolved,global-require
     return require('../../build-info.json')
   } catch (ex) {
     return null

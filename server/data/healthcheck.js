@@ -1,8 +1,5 @@
-/* eslint-disable prefer-promise-reject-errors */
 const superagent = require('superagent')
-/** @type {any} */
 const Agent = require('agentkeepalive')
-/** @type {any} */
 const { HttpsAgent } = require('agentkeepalive')
 const logger = require('../../log.js')
 const config = require('../../config')

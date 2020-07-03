@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-/* global describe, beforeEach, afterEach, it, expect, jest, test */
+/* global describe, expect, jest, test */
 const jwt = require('jsonwebtoken')
 
 const authorisationMiddleware = require('../../../server/routes/middleware/authorisationMiddleware')
