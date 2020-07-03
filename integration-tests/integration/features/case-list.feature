@@ -1,14 +1,15 @@
 Feature: Case list
   In order to view the list of cases sitting on the day in court
-  As a registered user
+  As an authenticated user
   I want to see a case list view
 
   Scenario: View the case list with data containing 207 cases for the given day
-    Given I am a registered user
+    When I navigate to the "cases" route
+    Given I am an authenticated user
+    Then I should be on the "Cases" page
     And I am viewing the "unfilteredPage1" case list
 
-    When I navigate to the "cases" route
-    Then I should be on the "Cases" page
+
     And I should see the heading "Cases"
 
     And I should see the caption with the relevant court
@@ -30,7 +31,7 @@ Feature: Case list
     And There should be no a11y violations
 
   Scenario: View the case list with data containing 207 cases for the given day and navigate to page 2
-    Given I am a registered user
+    Given I am an authenticated user
     And I am viewing the "unfilteredPage2" case list
 
     When I navigate to the "cases" route
@@ -59,7 +60,7 @@ Feature: Case list
     And There should be no a11y violations
 
   Scenario: View the case list with data containing 207 cases for the given day and navigate to page 3
-    Given I am a registered user
+    Given I am an authenticated user
     And I am viewing the "unfilteredPage3" case list
 
     When I navigate to the "cases" route
@@ -88,7 +89,7 @@ Feature: Case list
     And There should be no a11y violations
 
   Scenario: View the case list with data containing 207 cases for the given day and navigate to page 5
-    Given I am a registered user
+    Given I am an authenticated user
     And I am viewing the "unfilteredPage5" case list
 
     When I navigate to the "cases" route
@@ -123,7 +124,7 @@ Feature: Case list
     And There should be no a11y violations
 
   Scenario: View the case list with data containing 207 cases for the given day and navigate to page 11
-    Given I am a registered user
+    Given I am an authenticated user
     And I am viewing the "unfilteredPage11" case list
 
     When I navigate to the "cases" route
@@ -155,7 +156,7 @@ Feature: Case list
     And There should be no a11y violations
 
   Scenario: View the case list with data containing 5 cases for the given day
-    Given I am a registered user
+    Given I am an authenticated user
     And I am viewing the "unfilteredShort" case list
 
     When I navigate to the court list for the chosen day
@@ -172,7 +173,7 @@ Feature: Case list
     And There should be no a11y violations
 
   Scenario: View the case list with no data for the given day
-    Given I am a registered user
+    Given I am an authenticated user
     And I am viewing the "empty" case list
 
     When I navigate to the court list for the chosen day
@@ -186,7 +187,7 @@ Feature: Case list
     And There should be no a11y violations
 
   Scenario: A user wants to filter the list to show only Current offenders and quickly clear that selection
-    Given I am a registered user
+    Given I am an authenticated user
     And I am viewing the "probationStatusFiltered" case list
 
     When I view the court list
@@ -202,7 +203,7 @@ Feature: Case list
     And There should be no a11y violations
 
   Scenario: A user wants to filter the list to show only court room 1 and quickly clear that selection
-    Given I am a registered user
+    Given I am an authenticated user
     And I am viewing the "courtroomFiltered" case list
 
     When I view the court list
@@ -218,7 +219,7 @@ Feature: Case list
     And There should be no a11y violations
 
   Scenario: A user wants to filter the list to show only the afternoon session and quickly clear that selection
-    Given I am a registered user
+    Given I am an authenticated user
     And I am viewing the "sessionFiltered" case list
 
     When I view the court list
@@ -234,7 +235,7 @@ Feature: Case list
     And There should be no a11y violations
 
   Scenario: A user wants to filter the list to show only Current offenders in courtroom 1 during the afternoon session and quickly clear the selections
-    Given I am a registered user
+    Given I am an authenticated user
     And I am viewing the "fullFiltered" case list
 
     When I view the court list

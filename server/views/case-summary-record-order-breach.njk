@@ -1,0 +1,103 @@
+{%- set hideSubnav = true -%}
+{% extends "partials/case-details.njk" %}
+
+{%- set moment = params.moment -%}
+
+{% block caseContent %}
+
+    {%- set breach = data.communityData -%}
+
+    {%- set prosecutionStatus = 'not ready' -%}
+    {% if 'Warrant' in breach.status or 'Summons' in breach.status %}
+        {%- set prosecutionStatus = 'ready' -%}
+    {% elseif 'Proven' in breach.status or 'Withdrawn' in breach.status or 'Completed' in breach.status %}
+        {%- set prosecutionStatus = '' -%}
+    {% endif %}
+
+    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
+    {{ govukBackLink({
+        classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-7',
+        text: "Back",
+        href: '/case/' + params.caseNo + '/record/' + params.convictionId
+    }) }}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if prosecutionStatus %}
+                {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+                {% set bannerHtml %}
+                    <h2 class="govuk-heading-m">This breach is {{ prosecutionStatus }} to prosecute</h2>
+                {% endset %}
+
+                {{ mojBanner({
+                    type: 'information',
+                    html: bannerHtml
+                }) }}
+            {% endif %}
+
+            <h2 class="govuk-heading-l govuk-!-margin-0">{{ breach.description }}</h2>
+
+            <dl class="govuk-summary-list govuk-!-margin-top-8">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Order</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.conviction.description }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Sentenced at</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.court }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Breach incident</dt>
+                    <dd class="govuk-summary-list__value">{{ moment(breach.incidentDate, 'YYYY-MM-DD').format(displayDateFormat) }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Breach started</dt>
+                    <dd class="govuk-summary-list__value">{{ moment(breach.started, 'YYYY-MM-DD').format(displayDateFormat) }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Provider</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.provider }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Team</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.team }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Officer</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.officer }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Status</dt>
+                    <dd class="govuk-summary-list__value">{{ breach.status }}</dd>
+                </div>
+            </dl>
+
+            <h3 class="govuk-heading-m govuk-!-margin-top-8">Attachments</h3>
+            {% if breach.documents | length %}
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">File</th>
+                        <th scope="col" class="govuk-table__header">Added by</th>
+                        <th scope="col" class="govuk-table__header">Date added</th>
+                    </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                    {%- for document in breach.documents -%}
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a href="/attachments/{{ data.crn }}/documents/{{ document.documentId }}/{{ document.fileName }}" class="govuk-link govuk-link--no-visited-state">{{ document.fileName }}</a></td>
+                        <td class="govuk-table__cell">{{ document.addedBy }}</td>
+                        <td class="govuk-table__cell">{{ moment(document.dateAdded, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
+                    </tr>
+                    {%- endfor -%}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="govuk-body">No attachments have been added.</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

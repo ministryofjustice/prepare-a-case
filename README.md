@@ -43,12 +43,12 @@ If unspecified, the app will use your local court-case-service app but you can a
  
 Start the standalone WireMock server
 ```
-java -jar wiremock-standalone-2.26.3.jar --global-response-templating --port 9091
+java -jar wiremock-standalone-2.27.0.jar --global-response-templating --port 9091
 ```
 
 And then, to build assets and start app with
 ```
-npm run start:watch
+`npm run start:watch
 ```
 
 This will watch for changes in the application JavaScript and Nunjucks templates and automatically restart as required.
@@ -69,7 +69,7 @@ npm run unit-test
 For local running, start the application:
 
 ```
-npm run start
+npm run start-feature` (or `npm run start-feature:dev` to run with nodemon
 ```
 
 Then run the integration tests:
@@ -89,9 +89,9 @@ npm run int-test:ui
 ### Court case service
 Default:  http://127.0.0.1:9091
 
-Specify the court-case-service URL with ```COURT_CASE_SERVICE_URL```
+Specify the court-case-service URL with `COURT_CASE_SERVICE_URL`
 
 ### Cases per page
 Default: 20
 
-Specify the number of cases to display, per page with ```CASES_PER_PAGE```
+Specify the number of cases to display, per page with `CASES_PER_PAGE`
