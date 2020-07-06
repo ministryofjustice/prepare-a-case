@@ -25,11 +25,8 @@ env:
   - name: NOMIS_AUTH_URL
     value: {{ .Values.env.NOMIS_AUTH_URL | quote }}
 
-  - name: NOMIS_OAUTH_PUBLIC_KEY
-    value: {{ .Values.env.NOMIS_OAUTH_PUBLIC_KEY | quote }}
-
   - name: INGRESS_URL
-    value: 'https://{{ .Values.ingress.host }}'
+    value: "https://{{ .Values.ingress.host }}"
 
   - name: EXIT_LOCATION_URL
     value: {{ .Values.env.EXIT_LOCATION_URL | quote }}
@@ -39,8 +36,10 @@ env:
 
   - name: SERVER_PORT
     value: "{{ .Values.image.port }}"
+
   - name: COURT_CASE_SERVICE_URL
     value: {{ .Values.env.COURT_CASE_SERVICE_URL | quote }}
+
   - name: CASES_PER_PAGE
     value: {{ .Values.env.CASES_PER_PAGE | quote }}
 {{- end -}}
