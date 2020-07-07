@@ -1,5 +1,5 @@
 {%- set displayDateFormat = 'D MMM YYYY' -%}
-{%- set userName = user.username | capitalize -%}
+{%- set userName = user.username.replace('.', ' ') | title -%}
 <!DOCTYPE html>
 <html lang="en" class="govuk-template no-js">
 <head>
@@ -47,15 +47,17 @@
       text: mainTitle,
       href: '/'
     },
-      navigation: {
-          label: 'Account navigation',
-          items: [{
-              text: userName
-          }, {
-              text: 'Sign out',
-              href: '/logout'
-          }]
-      }
+    navigation: {
+      label: 'Account navigation',
+      items: [{
+          text: userName,
+          href: '/',
+          active: true
+      }, {
+          text: 'Sign out',
+          href: '/logout'
+      }]
+    }
   }) }}
 {% endblock %}
 

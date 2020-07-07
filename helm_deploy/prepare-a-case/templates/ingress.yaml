@@ -44,5 +44,4 @@ spec:
             backend:
               serviceName: {{ $fullName }}
               servicePort: http
-  {{- end }}
 {{- end }}
