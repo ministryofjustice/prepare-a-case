@@ -51,9 +51,10 @@ module.exports = function createApp ({ signInService }) {
   app.set('view engine', 'njk')
 
   app.use(helmet({
-    hsts: {
-      maxAge: hstsMaxAge
-    }
+    hsts: false
+  }))
+  app.use(helmet.hsts({
+    maxAge: hstsMaxAge
   }))
 
   app.use(compression())
