@@ -1,10 +1,10 @@
 Feature: Case summary
   In order to view the of summary of a case sitting on the day in court
-  As a registered user
+  As an authenticated user
   I want to see a case summary view
 
   Scenario: View the case summary for the given defendant by clicking the link on the case list page
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a not known defendant
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
@@ -16,7 +16,7 @@ Feature: Case summary
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with no probation record
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a not known defendant
 
     When I navigate to the case details route
@@ -52,7 +52,7 @@ Feature: Case summary
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with an existing probation record
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a previously known defendant
 
     When I navigate to the case details route
@@ -89,7 +89,7 @@ Feature: Case summary
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with a current probation record
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a current defendant
 
     When I navigate to the case details route
@@ -126,7 +126,7 @@ Feature: Case summary
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant in breach of a current order
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a current defendant with breach
 
     When I navigate to the case details route
@@ -165,7 +165,7 @@ Feature: Case summary
     And There should be no a11y violations
 
   Scenario: View the probation record section of the case summary for a previously known offender
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a previously known defendant
 
     When I navigate to the "cases" route
@@ -183,10 +183,11 @@ Feature: Case summary
     And I should see link to the first previous order
     And I should see the previous order offence
     And I should see the previous order end date
+    And I should see the last pre-sentence report details
     And There should be no a11y violations
 
   Scenario: View the probation record section of the case summary for a current offender
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a current defendant
 
     When I navigate to the "cases" route
@@ -216,7 +217,7 @@ Feature: Case summary
     And There should be no a11y violations
 
   Scenario: View the attendance record section of the current offender order with unpaid work appointments
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a current defendant
 
     When I navigate to the probation record route
@@ -231,7 +232,7 @@ Feature: Case summary
     And I should see the body text with the defendant "currentOrderOffence"
     And I should see the following level 3 headings
       | Appointments to date | Complied | Failures to comply | Awaiting outcome |
-    And I should see the body text "Last attendance:" and the defendant "currentOrderLastAttendance"
+    And I should see the body text "Last attended" and the defendant "currentOrderLastAttendance"
 
     And I should see the correct start, end and elapsed time headings
     And I should see the "current" order start and end dates
@@ -242,7 +243,7 @@ Feature: Case summary
     And There should be no a11y violations
 
   Scenario: View the current offender order who is currently on licence
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a current defendant
 
     When I navigate to the current order which is currently on licence
@@ -253,7 +254,7 @@ Feature: Case summary
     And There should be no a11y violations
 
   Scenario: View the current offender order who is currently on Post Sentence Supervision
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a current defendant
 
     When I navigate to the current order which is currently on PSS
@@ -264,12 +265,14 @@ Feature: Case summary
     And There should be no a11y violations
 
   Scenario: View the attendance record section of the current offender order in breach without unpaid work appointments
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a current defendant with breach
 
     When I navigate to the probation record route
     Then I should be on the "Probation record" page
     And I should see the heading has the defendant name
+
+    And I should see the last pre-sentence report details
 
     And I should see link to the first current order
     When I click the first "current" order link
@@ -279,7 +282,7 @@ Feature: Case summary
     And I should see the body text with the defendant "currentOrderOffence"
     And I should see the following level 3 headings
       | Appointments to date | Complied | Failures to comply | Awaiting outcome |
-    And I should see the body text "Last attendance:" and the defendant "currentOrderLastAttendance"
+    And I should see the body text "Last attended" and the defendant "currentOrderLastAttendance"
 
     And I should see the correct start, end and elapsed time headings
     And I should see the "current" order start and end dates
@@ -309,7 +312,7 @@ Feature: Case summary
     And There should be no a11y violations
 
   Scenario: View the attendance record section of the previous offender order
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a current defendant
 
     When I navigate to the probation record route
@@ -329,7 +332,7 @@ Feature: Case summary
     And There should be no a11y violations
 
   Scenario: View the case details of a defendant to see a list of current charges and the associated details/description
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a current defendant
     When I navigate to the case details route
     Then I should see the level 2 heading "Offences"
@@ -341,7 +344,7 @@ Feature: Case summary
     And I should see the caption text with the defendant "offenceCaption"
 
   Scenario: View the requirements section of a current order
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a current defendant
 
     When I navigate to the probation record route
@@ -356,7 +359,7 @@ Feature: Case summary
       | Requirement | Length |
 
   Scenario: View the requirements section of a previous order
-    Given I am a registered user
+    Given I am an authenticated user
     And I am looking at a current defendant
 
     When I navigate to the probation record route

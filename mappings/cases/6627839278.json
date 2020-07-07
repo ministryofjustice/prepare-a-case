@@ -10,10 +10,10 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 282482,
-      "caseNo": 6627839278,
+      "caseId": "282482",
+      "caseNo": "6627839278",
       "courtCode": "SHF",
-      "courtRoom": 8,
+      "courtRoom": "8",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "2nd",
       "crn": "D541487",
@@ -43,7 +43,7 @@
       "defendantSex": "M",
       "defendantName": "Webb Mitchell",
       "defendantAddress": {
-        "line1": 49,
+        "line1": "49",
         "line2": "Rochester Avenue",
         "postcode": "ad21 5dr",
         "line3": "Bangor",

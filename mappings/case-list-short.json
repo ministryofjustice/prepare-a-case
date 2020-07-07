@@ -18,10 +18,10 @@
       "lastUpdated": "{{now format='yyyy-MM-dd'}}T08:30:00",
       "cases": [
         {
-          "caseId": 58407,
-          "caseNo": 1474726180,
+          "caseId": "58407",
+          "caseNo": "1474726180",
           "courtCode": "SHF",
-          "courtRoom": 1,
+          "courtRoom": "1",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/8404713BA",
@@ -50,10 +50,10 @@
           "defendantDob": "1971-11-17"
         },
         {
-          "caseId": 54017,
-          "caseNo": 4071719588,
+          "caseId": "54017",
+          "caseNo": "4071719588",
           "courtCode": "SHF",
-          "courtRoom": 1,
+          "courtRoom": "1",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/8404713BA",
@@ -87,10 +87,10 @@
           "defendantDob": "1985-07-13"
         },
         {
-          "caseId": 495183,
-          "caseNo": 1674533419,
+          "caseId": "495183",
+          "caseNo": "1674533419",
           "courtCode": "SHF",
-          "courtRoom": 7,
+          "courtRoom": "7",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/8404713BA",
@@ -119,10 +119,10 @@
           "defendantDob": "1970-04-06"
         },
         {
-          "caseId": 282799,
-          "caseNo": 1625017313,
+          "caseId": "282799",
+          "caseNo": "1625017313",
           "courtCode": "SHF",
-          "courtRoom": 1,
+          "courtRoom": "1",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/8404713BA",
@@ -156,10 +156,10 @@
           "defendantDob": "1955-04-08"
         },
         {
-          "caseId": 494987,
-          "caseNo": 8170180452,
+          "caseId": "494987",
+          "caseNo": "8170180452",
           "courtCode": "SHF",
-          "courtRoom": 8,
+          "courtRoom": "8",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/8404713BA",
@@ -184,7 +184,7 @@
           "defendantName": "Shelton Lamb",
           "defendantAddress": {
             "line1": "56",
-              "line2": "Henderson Walk",
+            "line2": "Henderson Walk",
             "postcode": "ad21 5dr",
             "line3": "Aberdeen",
             "line4": null,

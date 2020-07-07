@@ -1,5 +1,5 @@
 /* global describe, beforeEach, afterEach, it, expect, jest */
-const { filters } = require('../../../routes/middleware/filters')
+const { filters } = require('../../../server/routes/middleware/filters')
 
 const mockNext = jest.fn()
 const reqObj = {

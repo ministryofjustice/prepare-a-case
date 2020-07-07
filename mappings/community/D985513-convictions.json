@@ -20,7 +20,7 @@
       ],
       "convictions": [
         {
-          "convictionId": 1679300004,
+          "convictionId": "1679300004",
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-11-23",

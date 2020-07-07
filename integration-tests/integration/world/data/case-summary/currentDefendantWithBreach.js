@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 const currentDefendantWithBreach = {
   local: {
     caseNo: 5222601242,
@@ -21,7 +23,7 @@ const currentDefendantWithBreach = {
     currentOrderStartDate: '2018-10-07',
     currentOrderEndDate: '2020-06-17',
     currentOrderId: '1361422142',
-    currentOrderLastAttendance: '10 Mar 2020 - Unpaid work (Attended - Complied)',
+    currentOrderLastAttendance: '10 Mar 2020 - Unpaid work (Acceptable)',
     currentOrderAttendance: {
       counts: [57, 25, 9, 7, 5, 4, 6, 2, 2, 2, 11, 3, 3, 3, 2, 5, 2, 1, 1, 1, 1],
       headings: ['Appointments to date', 'Complied', 'Failures to comply', 'Awaiting outcome'],
@@ -74,39 +76,10 @@ const currentDefendantWithBreach = {
       address5: 'Gwynedd',
       postcode: 'LL6 3CV',
       telephone: '01895 540 370'
-    }
-  },
-  dev: {
-    caseNo: 0,
-    court: '0',
-    session: '',
-    listing: '',
-    pnc: '',
-    crn: '',
-    name: '',
-    dateOfBirth: '',
-    gender: '',
-    address: '',
-    nationality: '',
-    offence: '',
-    offenceDetails: '',
-    offenceCaption: '',
-    currentOrderCount: 0,
-    currentOrderTitle: '',
-    currentOrderId: '',
-    previousOrderCount: 0,
-    previousOrderTitle: '',
-    previousOrderId: '',
-    offenderManager: '',
-    offenderManagerDetails: {
-      allocated: '',
-      address1: '',
-      address2: '',
-      address3: '',
-      address4: '',
-      address5: '',
-      postcode: '',
-      telephone: ''
+    },
+    preSentenceReportDetails: {
+      description: 'Pre-Sentence Report - Fast',
+      delivered: `Delivered less than 1 month ago (${moment().add(-5, 'days').format('D MMM YYYY')})`
     }
   }
 }

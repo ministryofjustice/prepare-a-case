@@ -10,10 +10,10 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 996758,
-      "caseNo": 3597035492,
+      "caseId": "996758",
+      "caseNo": "3597035492",
       "courtCode": "SHF",
-      "courtRoom": 7,
+      "courtRoom": "7",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "3rd",
       "pnc": "A/1234560BA",
@@ -37,7 +37,7 @@
       "defendantSex": "M",
       "defendantName": "Guadalupe Hess",
       "defendantAddress": {
-        "line1": 43,
+        "line1": "43",
         "line2": "Hunterfly Place",
         "postcode": "ad21 5dr",
         "line3": "Birmingham",

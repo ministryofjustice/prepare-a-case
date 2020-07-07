@@ -10,10 +10,10 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 71467,
-      "caseNo": 7483843110,
+      "caseId": "71467",
+      "caseNo": "7483843110",
       "courtCode": "SHF",
-      "courtRoom": 2,
+      "courtRoom": "2",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "3rd",
       "pnc": "A/1234560BA",
@@ -47,7 +47,7 @@
       "defendantSex": "F",
       "defendantName": "Mann Carroll",
       "defendantAddress": {
-        "line1": 91,
+        "line1": "91",
         "line2": "Barbey street",
         "postcode": "ad21 5dr",
         "line3": "Sheffield",
@@ -55,7 +55,6 @@
         "line5": null
       },
       "defendantDob": "1955-04-08"
-    }
     }
   }
 }

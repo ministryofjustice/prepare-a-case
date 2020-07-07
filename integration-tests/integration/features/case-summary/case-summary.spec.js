@@ -2,7 +2,7 @@
 import moment from 'moment'
 import 'cypress-axe'
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
-import { getMonthsAndDays } from '../../../../routes/middleware/defaults'
+import { getMonthsAndDays } from '../../../../server/routes/middleware/defaults'
 import World from '../../world/World'
 
 const world = new World('caseSummary')
@@ -166,7 +166,7 @@ And('I should see the last pre-sentence report details', () => {
   cy.get('.govuk-grid-column-one-third').within(() => {
     cy.get('.govuk-heading-s').contains('Last pre-sentence report')
     cy.get('.govuk-body').contains(world.data.preSentenceReportDetails.description)
-    cy.get('.govuk-hint').contains(`Delivered on ${world.data.preSentenceReportDetails.delivered}`)
+    cy.get('.govuk-hint').contains(world.data.preSentenceReportDetails.delivered)
   })
 })
 

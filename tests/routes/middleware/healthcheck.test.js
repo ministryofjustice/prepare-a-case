@@ -1,6 +1,6 @@
 /* global describe, beforeEach, afterEach, it, expect, jest */
 const axios = require('axios')
-const { health } = require('../../../routes/middleware/healthcheck')
+const { health } = require('../../../server/routes/middleware/healthcheck')
 
 const mockNext = jest.fn()
 const resolveObj = { status: 200 }
@@ -76,7 +76,7 @@ describe('Health check middleware', () => {
   describe('Health check should use environment variables for court-case-service URL', () => {
     it('should GET from localhost if no env var is set', async () => {
       await health(reqObj, {}, mockNext)
-      expect(axiosSpy).toBeCalledWith('http://localhost:8082/ping')
+      expect(axiosSpy).toBeCalledWith('http://localhost:8080/ping')
     })
 
     it('should GET from the URL supplied as env var', async () => {

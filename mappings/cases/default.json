@@ -10,10 +10,10 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": 538737,
-      "caseNo": 7986902512,
+      "caseId": "538737",
+      "caseNo": "7986902512",
       "courtCode": "SHF",
-      "courtRoom": 6,
+      "courtRoom": "6",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "1st",
       "pnc": "A/1234560BA",
@@ -47,7 +47,7 @@
       "defendantSex": "M",
       "defendantName": "Webb Mitchell",
       "defendantAddress": {
-        "line1": 44,
+        "line1": "44",
         "line2": "Apollo Street",
         "postcode": "ad21 5dr",
         "line3": "Glasgow",
@@ -55,7 +55,6 @@
         "line5": null
       },
       "defendantDob": "06-04-1970"
-    }
     }
   }
 }
