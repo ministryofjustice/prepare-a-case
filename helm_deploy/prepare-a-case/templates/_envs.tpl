@@ -28,12 +28,6 @@ env:
   - name: INGRESS_URL
     value: 'https://{{ .Values.ingress.host }}'
 
-  - name: EXIT_LOCATION_URL
-    value: {{ .Values.env.EXIT_LOCATION_URL | quote }}
-
-  - name: SERVICE_ENDPOINT_URL
-    value: {{ .Values.env.SERVICE_ENDPOINT_URL | quote }}
-
   - name: SERVER_PORT
     value: {{ .Values.image.port | quote }}
 

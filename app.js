@@ -136,7 +136,7 @@ module.exports = function createApp ({ signInService }) {
     next()
   })
 
-  const authLogoutUrl = `${config.apis.oauth2.externalUrl}/logout?client_id=${config.apis.oauth2.apiClientId}&redirect_uri=${config.domain}`
+  const authLogoutUrl = `${config.apis.oauth2.url}/logout?client_id=${config.apis.oauth2.apiClientId}&redirect_uri=${config.domain}`
 
   app.get('/autherror', (req, res) => {
     res.status(401)

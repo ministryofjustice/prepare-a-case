@@ -27,7 +27,7 @@ passport.deserializeUser((user, done) => {
 function init (signInService) {
   const strategy = new Strategy(
     {
-      authorizationURL: `${config.apis.oauth2.externalUrl}/oauth/authorize`,
+      authorizationURL: `${config.apis.oauth2.url}/oauth/authorize`,
       tokenURL: `${config.apis.oauth2.url}/oauth/token`,
       clientID: config.apis.oauth2.apiClientId,
       clientSecret: config.apis.oauth2.apiClientSecret,
