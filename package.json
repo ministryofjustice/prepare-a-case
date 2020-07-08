@@ -92,9 +92,9 @@
   },
   "devDependencies": {
     "cucumber": "6.0.5",
-    "cypress": "4.9.0",
+    "cypress": "4.10.0",
     "cypress-axe": "0.8.1",
-    "cypress-cucumber-preprocessor": "2.5.1",
+    "cypress-cucumber-preprocessor": "2.5.3",
     "cypress-intellij-reporter": "0.0.4",
     "jest": "26.1.0",
     "jest-junit": "11.0.1",
@@ -103,7 +103,7 @@
     "nodemon": "2.0.4",
     "standard": "14.3.4",
     "supertest": "4.0.2",
-    "swagger-client": "3.10.9",
+    "swagger-client": "3.10.11",
     "swagger-model-validator": "3.0.19"
   }
 }
