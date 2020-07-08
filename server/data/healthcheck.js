@@ -28,7 +28,7 @@ function serviceCheckFactory (name, url) {
         })
         .end((error, result) => {
           if (error) {
-            logger.error(error.stack, `Error calling ${name}`)
+            logger.error(error.stack, `Error calling ${name} with url ${url}`)
             reject(error)
           } else if (result.status === 200) {
             resolve('OK')
