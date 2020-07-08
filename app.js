@@ -89,7 +89,7 @@ module.exports = function createApp ({ signInService }) {
 
   app.use(addTemplateVariables)
 
-  const healthcheck = healthcheckFactory(config.apis.oauth2.url, config.apis.oauth2.service.url)
+  const healthcheck = healthcheckFactory(config.apis.oauth2.url, config.apis.courtCaseService.url)
 
   app.get('/health', (req, res, next) => {
     healthcheck((err, result) => {
