@@ -7,19 +7,19 @@ env:
   - name: API_CLIENT_ID
     valueFrom:
       secretKeyRef:
-        name: {{ template "app.name" . }}
+        name: prepare-a-case
         key: API_CLIENT_ID
 
   - name: API_CLIENT_SECRET
     valueFrom:
       secretKeyRef:
-        name: {{ template "app.name" . }}
+        name: prepare-a-case
         key: API_CLIENT_SECRET
 
   - name: SESSION_SECRET
     valueFrom:
       secretKeyRef:
-        name: {{ template "app.name" . }}
+        name: prepare-a-case
         key: SESSION_SECRET
 
   - name: NOMIS_AUTH_URL
