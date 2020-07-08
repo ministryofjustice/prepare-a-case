@@ -9,6 +9,7 @@ const log = require('bunyan-request-logger')({
   name: 'Prepare a Case',
   serializers: loggingSerialiser
 })
+const helmet = require('helmet')
 const path = require('path')
 const MemoryStore = require('memorystore')(session)
 const sessionExpiry = config.session.expiry * 60 * 1000
@@ -48,6 +49,7 @@ module.exports = function createApp ({ signInService }) {
 
   app.set('view engine', 'njk')
 
+  app.use(helmet())
   app.use(compression())
   app.use(session({
     cookie: { maxAge: sessionExpiry },
