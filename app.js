@@ -9,10 +9,8 @@ const log = require('bunyan-request-logger')({
   name: 'Prepare a Case',
   serializers: loggingSerialiser
 })
-const helmet = require('helmet')
 const path = require('path')
 const MemoryStore = require('memorystore')(session)
-const hstsMaxAge = 604800 // @TODO: PIC-454 - Change to 31536000 (1 year) once confident that HSTS is working
 const sessionExpiry = config.session.expiry * 60 * 1000
 const passport = require('passport')
 const createRouter = require('./server/routes')
@@ -49,13 +47,6 @@ module.exports = function createApp ({ signInService }) {
   })
 
   app.set('view engine', 'njk')
-
-  app.use(helmet({
-    hsts: false
-  }))
-  app.use(helmet.hsts({
-    maxAge: hstsMaxAge
-  }))
 
   app.use(compression())
   app.use(session({
