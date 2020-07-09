@@ -62,15 +62,13 @@
 {% endblock %}
 
 {% block navigation %}
+  {%- set currentCourtHtml %}
+      <span class="govuk-body govuk-!-font-size-16 govuk-!-font-weight-bold">{{ params.courtName }}</span>
+  {% endset -%}
   {%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
   {{ mojPrimaryNavigation({
     label: 'Primary navigation',
     items: [
-      {
-        text: 'Dashboard',
-        href: '/',
-        active: title === 'Dashboard'
-      },
       {
         text: 'Cases',
         href: '/cases',
@@ -82,7 +80,8 @@
           title === 'Order details' or
           title === 'Breach details'
       }
-    ]
+    ],
+    searchHtml: currentCourtHtml
   }) }}
 {% endblock %}
 

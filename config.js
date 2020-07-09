@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const production = process.env.NODE_ENV === 'production'
+const port = process.env.PORT || 3000
 
 function get (name, fallback, options = {}) {
   if (process.env[name]) {
@@ -15,6 +16,12 @@ function get (name, fallback, options = {}) {
 const requiredInProduction = { requireInProduction: true }
 
 module.exports = {
+  settings: {
+    courtCode: get('COURT_CODE', 'SHF', requiredInProduction),
+    courtName: get('COURT_NAME', 'Sheffield Magistrates\' Court', requiredInProduction),
+    casesPerPage: get('CASES_PER_PAGE', 20),
+    casesTotalDays: get('CASES_TOTAL_DAYS', 3)
+  },
   session: {
     secret: get('SESSION_SECRET', 'prepare-a-case-insecure-default-session'),
     expiry: get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)
@@ -39,6 +46,6 @@ module.exports = {
       role: get('ROLE', 'ROLE_PREPARE_A_CASE')
     }
   },
-  domain: `${get('INGRESS_URL', 'http://localhost:3000')}`,
+  domain: `${get('INGRESS_URL', `http://localhost:${port}`)}`,
   https: production
 }
