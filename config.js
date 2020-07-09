@@ -28,10 +28,10 @@ module.exports = {
   },
   apis: {
     courtCaseService: {
-      url: get('COURT_CASE_SERVICE_URL', 'http://127.0.0.1:9091', requiredInProduction)
+      url: get('COURT_CASE_SERVICE_URL', 'http://localhost:9091', requiredInProduction)
     },
     oauth2: {
-      url: get('NOMIS_AUTH_URL', 'http://127.0.0.1:9091/auth'),
+      url: get('NOMIS_AUTH_URL', 'http://localhost:9091/auth'),
       timeout: {
         response: get('AUTH_ENDPOINT_TIMEOUT_RESPONSE', 10000),
         deadline: get('AUTH_ENDPOINT_TIMEOUT_DEADLINE', 10000)
@@ -46,6 +46,6 @@ module.exports = {
       role: get('ROLE', 'ROLE_PREPARE_A_CASE')
     }
   },
-  domain: `${get('INGRESS_URL', `http://127.0.0.1:${port}`)}`,
+  domain: `${get('INGRESS_URL', `http://localhost:${port}`)}`,
   https: production
 }
