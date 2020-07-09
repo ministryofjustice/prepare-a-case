@@ -15,13 +15,12 @@ When('I navigate to the court list for the chosen day', () => {
 })
 
 And('I should see the caption with the relevant court', () => {
-  cy.get('.govuk-caption-xl').contains(world.data.court)
+  cy.get('.qa-court-name').contains(world.data.court)
 })
 
 And('I should see sub navigation with default dates', () => {
-  cy.get('.moj-sub-navigation__link').eq(0).contains(moment().format(dateFormat))
-  cy.get('.moj-sub-navigation__link').eq(1).contains(moment().add(1, 'days').format(dateFormat))
-  cy.get('.moj-sub-navigation__link').eq(2).contains(moment().add(2, 'days').format(dateFormat))
+  cy.get('.qa-case-list-day').eq(0).contains('Today')
+  cy.get('.pac-pagination-link---text').eq(0).contains('Next day')
 })
 
 And('I should see the case list table with headings', $data => {

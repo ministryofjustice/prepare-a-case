@@ -84,6 +84,8 @@ Or run the integration tests with the Cypress UI:
 npm run int-test:ui
 ```
 
+**N.B.** If your tests fail at `cy.task('getLoginUrl').then(cy.visit)` try restarting your standalone WireMock server
+
 ## Environment variables
 
 ### Court case service

@@ -63,7 +63,7 @@
 
 {% block navigation %}
   {%- set currentCourtHtml %}
-      <span class="govuk-body govuk-!-font-size-16 govuk-!-font-weight-bold">{{ params.courtName }}</span>
+      <span class="qa-court-name govuk-body govuk-!-font-size-16 govuk-!-font-weight-bold">{{ params.courtName }}</span>
   {% endset -%}
   {%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
   {{ mojPrimaryNavigation({
