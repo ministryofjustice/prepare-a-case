@@ -14,9 +14,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('dashboard', { title: 'Dashboard', healthy: req.healthy })
   })
 
-  router.get('/cases/:date', health, defaults, filters, async (req, res) => {
+  router.get('/cases/:date/:subsection?', health, defaults, filters, async (req, res) => {
     const params = req.params
-    const response = await getCaseList(params.courtCode, params.date, req.params.filters)
+    const response = await getCaseList(params.courtCode, params.date, req.params.filters, params.subsection)
     const totalCount = (response && response.cases && response.cases.length) || 0
     const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * params.limit
     const endCount = Math.min(startCount + parseInt(params.limit, 10), totalCount)
@@ -29,7 +29,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
         to: endCount,
         total: totalCount,
         lastUpdated: response ? response.lastUpdated : '',
-        ...params
+        ...params,
+        subsection: params.subsection || ''
       },
       data: (response && response.cases && response.cases.slice(startCount, endCount)) || []
     }
