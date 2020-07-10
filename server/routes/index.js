@@ -40,9 +40,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-list', templateValues)
   })
 
-  router.post('/cases/:date', health, defaults, async (req, res) => {
+  router.post('/cases/:date/:subsection?', health, defaults, async (req, res) => {
     req.session.selectedFilters = req.body
-    res.redirect(`/cases/${req.params.date}`)
+    res.redirect(`/cases/${req.params.date}${req.params.subsection ? '/' + req.params.subsection : ''}`)
   })
 
   router.get('/cases', (req, res) => {
