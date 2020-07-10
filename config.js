@@ -17,8 +17,8 @@ const requiredInProduction = { requireInProduction: true }
 
 module.exports = {
   settings: {
-    courtCode: get('COURT_CODE', 'SHF', requiredInProduction),
-    courtName: get('COURT_NAME', 'Sheffield Magistrates\' Court', requiredInProduction),
+    courtCode: get('COURT_CODE', 'SHF'),
+    courtName: get('COURT_NAME', 'Sheffield Magistrates\' Court'),
     casesPerPage: get('CASES_PER_PAGE', 20),
     casesTotalDays: get('CASES_TOTAL_DAYS', 3)
   },
