@@ -3,6 +3,7 @@ import moment from 'moment'
 const previouslyKnownDefendant = {
   local: {
     caseNo: 6627839278,
+    courtName: 'Sheffield Magistrates\' Court',
     court: '8',
     session: 'morning',
     listing: '2nd',
@@ -39,34 +40,6 @@ const previouslyKnownDefendant = {
     preSentenceReportDetails: {
       description: 'Pre-Sentence Report - Fast',
       delivered: `Delivered 1 month ago (${moment().add(-1, 'months').format('D MMM YYYY')})`
-    }
-  },
-  dev: {
-    caseNo: 1585562016194,
-    name: 'Mr Ureet JMBALERNAEU',
-    dateOfBirth: '1998-01-01',
-    gender: 'Male',
-    address: '',
-    nationality: '',
-    offence: '',
-    offenceDetails: '',
-    offenceCaption: '',
-    currentOrderCount: 0,
-    currentOrderTitle: '',
-    currentOrderId: '',
-    previousOrderCount: 0,
-    previousOrderTitle: '',
-    previousOrderId: '',
-    offenderManager: '',
-    offenderManagerDetails: {
-      allocated: '',
-      address1: '',
-      address2: '',
-      address3: '',
-      address4: '',
-      address5: '',
-      postcode: '',
-      telephone: ''
     }
   }
 }

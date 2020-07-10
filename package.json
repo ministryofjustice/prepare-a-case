@@ -17,8 +17,8 @@
     "precommit": "npm run lint && npm run unit-test && npm run mock-validation-test && npm run int-test",
     "pre-commit-lite": "npm run lint && npm run unit-test && npm run mock-validation-test",
     "pre-push": "snyk test --fail-on=upgradable --org=digital-probation-services && npm run int-test",
-    "start-feature": "PORT=3007 NOMIS_AUTH_URL=http://localhost:9091/auth SERVICE_ENDPOINT_URL=http://localhost:8080 NODE_ENV=development node $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
-    "start-feature:dev": "PORT=3007 NOMIS_AUTH_URL=http://localhost:9091/auth SERVICE_ENDPOINT_URL=http://localhost:9091/service NODE_ENV=development nodemon $NODE_DEBUG_OPTION server.js | bunyan -o short",
+    "start-feature": "PORT=3007 NODE_ENV=development node $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
+    "start-feature:dev": "PORT=3007 NODE_ENV=development nodemon $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
     "delete:reports": "rm ./test-results/cypress/* || true",
     "preint-test": "npm run delete:reports",
     "preint-test:dev": "npm run delete:reports",
@@ -26,8 +26,8 @@
     "int-test:ui": "npx cypress open",
     "lint": "npx standard",
     "css-build": "sh ./bin/build-css",
-    "start": "node ./bin/www",
-    "start:watch": "npm run css-build && nodemon --exec npm run start --scripts-prepend-node-path",
+    "start": "npm run css-build && node ./bin/www",
+    "start:watch": "nodemon --exec npm run start --scripts-prepend-node-path",
     "unit-test": "NODE_ENV=test npx jest --config=tests/jest.config.js --ci --detectOpenHandles --forceExit",
     "mock-validation-test": "NODE_ENV=test npx jest --config=mock_validation/jest.config.js --ci"
   },
@@ -38,7 +38,7 @@
       "integration-tests/*"
     ],
     "delay": 1000,
-    "ext": "js,html,njk"
+    "ext": "js,html,njk,scss"
   },
   "standard": {
     "ignore": [

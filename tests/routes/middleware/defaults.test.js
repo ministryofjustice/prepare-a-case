@@ -1,34 +1,16 @@
-/* global describe, beforeEach, afterEach, it, expect, jest */
+/* global describe, it, expect, jest */
 const moment = require('moment')
-const { defaults, getPath, getMonthsAndDays } = require('../../../server/routes/middleware/defaults')
+const { defaults, getPath, getMonthsAndDays, addBusinessDays } = require('../../../server/routes/middleware/defaults')
 
 const reqObj = {
   params: {}
 }
 const mockNext = jest.fn()
-const oldEnv = process.env
 
 describe('Default values middleware', () => {
-  beforeEach(() => {
-    process.env = {}
-  })
-
-  afterEach(() => {
-    process.env = { ...oldEnv }
-  })
-
   it('should return default values', async () => {
     await defaults(reqObj, {}, mockNext)
     expect(reqObj.params.limit).toEqual(20)
-    expect(reqObj.params.courtCode).toEqual('SHF')
-    expect(reqObj.params.courtName).toEqual('Sheffield Magistrates\' Court')
-  })
-
-  it('should change apiUrl and limit if env vars are set', async () => {
-    process.env.CASES_PER_PAGE = 5
-
-    await defaults(reqObj, {}, mockNext)
-    expect(reqObj.params.limit).toEqual(5)
     expect(reqObj.params.courtCode).toEqual('SHF')
     expect(reqObj.params.courtName).toEqual('Sheffield Magistrates\' Court')
   })
@@ -44,6 +26,32 @@ describe('Default values middleware', () => {
       const startDate = moment('2020-01-01', 'YYYY-MM-DD')
       const endDate = moment('2020-03-03', 'YYYY-MM-DD')
       expect(getMonthsAndDays(startDate, endDate)).toEqual('2 months, 2 days')
+    })
+  })
+
+  describe('addBusinessDays method', () => {
+    it('should add days to the given date', () => {
+      const startDate = moment('2020-01-01', 'YYYY-MM-DD')
+      const endDate = moment('2020-01-02', 'YYYY-MM-DD')
+      expect(addBusinessDays(startDate, 1).format('YYYY-MM-DD')).toEqual(endDate.format('YYYY-MM-DD'))
+    })
+
+    it('should minus days from the given date', () => {
+      const startDate = moment('2020-01-02', 'YYYY-MM-DD')
+      const endDate = moment('2020-01-01', 'YYYY-MM-DD')
+      expect(addBusinessDays(startDate, -1).format('YYYY-MM-DD')).toEqual(endDate.format('YYYY-MM-DD'))
+    })
+
+    it('should skip weekend days from the calculation when adding days', () => {
+      const startDate = moment('2020-07-10', 'YYYY-MM-DD') // Friday
+      const endDate = moment('2020-07-13', 'YYYY-MM-DD') // Monday
+      expect(addBusinessDays(startDate, 1).format('YYYY-MM-DD')).toEqual(endDate.format('YYYY-MM-DD'))
+    })
+
+    it('should skip weekend days from the calculation when removing days', () => {
+      const startDate = moment('2020-07-13', 'YYYY-MM-DD') // Monday
+      const endDate = moment('2020-07-10', 'YYYY-MM-DD') // Friday
+      expect(addBusinessDays(startDate, -1).format('YYYY-MM-DD')).toEqual(endDate.format('YYYY-MM-DD'))
     })
   })
 

@@ -1,6 +1,7 @@
 const currentDefendant = {
   local: {
     caseNo: 668911253,
+    courtName: 'Sheffield Magistrates\' Court',
     court: '6',
     session: 'morning',
     listing: '2nd',
@@ -78,60 +79,6 @@ const currentDefendant = {
       status: 'On post-sentence supervision (PSS)',
       start: 'today',
       end: '5 months'
-    }
-  },
-  dev: {
-    caseNo: 1600028955,
-    court: '1',
-    session: '',
-    listing: '1st',
-    pnc: '',
-    crn: 'X340906',
-    name: 'Mr Joe JMBBLOGGS',
-    dateOfBirth: '1999-01-01',
-    gender: 'Male',
-    address: '32 Scotland St Sheffield S3 7BS',
-    nationality: 'Unknown',
-    offence: 'Theft from a shop',
-    offenceDetails: 'On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.',
-    offenceCaption: 'Contrary to section 1(1) and 7 of the Theft Act 1968.',
-    currentOrderCount: 1,
-    currentOrderTitle: 'ORA Community Order',
-    currentOrderOffence: '',
-    currentOrderStartDate: '2019-10-01',
-    currentOrderEndDate: '2020-05-25',
-    currentOrderId: '2500311413',
-    currentOrderLastAttendance: '',
-    currentOrderAttendance: {
-      counts: [],
-      headings: [],
-      types: []
-    },
-    previousOrderCount: 0,
-    previousOrderTitle: '',
-    previousOrderOffence: '',
-    previousOrderId: '',
-    previousOrderStartDate: '',
-    previousOrderEndDate: '',
-    previousOrderTerminationReason: '',
-    offenderManager: '',
-    offenderManagerDetails: {
-      allocated: '',
-      address1: '',
-      address2: '',
-      address3: '',
-      address4: '',
-      address5: '',
-      postcode: '',
-      telephone: ''
-    },
-    preSentenceReportDetails: {
-      description: '',
-      delivered: ''
-    },
-    oasysAssessmentDetails: {
-      type: '',
-      completed: ''
     }
   }
 }

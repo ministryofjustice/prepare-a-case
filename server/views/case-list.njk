@@ -84,14 +84,12 @@
 {% extends "partials/layout.njk" %}
 
 {% block content %}
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">
-        <span class="govuk-caption-xl">{{ params.courtName }}</span>
-        {{ title }}
-    </h1>
 
     {% set dateFormat = 'dddd D MMM' %}
+    {% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
     {% set today = moment().format('YYYY-MM-DD') %}
     {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
+<<<<<<< HEAD
     {% set dayAfter = moment().add(2, 'days').format('YYYY-MM-DD') %}
 
     <!--
@@ -142,6 +140,42 @@
         }],
         status: lastUpdated + ' | Next scheduled update: Tomorrow at 9:00am'
     }) }}
+=======
+    {% set withinDateRange = currentDate.isBetween(moment(), params.addBusinessDays(moment(), params.totalDays - 1), 'day', '[)') %}
+    {% set lastUpdated = moment(params.lastUpdated).format('[Last updated] ' + dateFormat + ' [at] hh:mm') %}
+
+    <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-0">
+        <span class="govuk-caption-xl">Cases</span>
+        {% if params.date === today %}
+            Today
+        {% elseif params.date === tomorrow %}
+            Tomorrow
+        {% else %}
+            {{ currentDate.format(dateFormat) }}
+        {% endif %}
+    </h1>
+
+    <p class="govuk-!-margin-bottom-7">
+    {% if currentDate.isAfter(moment()) %}
+        <a class="pac-pagination-link govuk-!-margin-right-5" href="/cases/{{ params.addBusinessDays(currentDate, -1).format('YYYY-MM-DD') }}">
+            <svg class="pac-pagination-link--icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                <path fill="currentColor" d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+            </svg>
+            <span class="pac-pagination-link---text">Previous day</span>
+        </a>
+    {% endif %}
+    {% if withinDateRange %}
+        <a class="pac-pagination-link" href="/cases/{{ params.addBusinessDays(currentDate, 1).format('YYYY-MM-DD') }}">
+            <span class="pac-pagination-link---text">Next day</span>
+            <svg class="pac-pagination-link--icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                <path fill="currentColor" d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+            </svg>
+        </a>
+    {% endif %}
+    </p>
+
+    <span class="govuk-caption-m pac-last-updated">{{ lastUpdated }}</span>
+>>>>>>> PIC-579-Different-Days
 
     {%- from "components/filter/macro.njk" import pacFilter -%}
     {{ pacFilter({

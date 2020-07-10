@@ -1,4 +1,5 @@
 const moment = require('moment')
+const { settings } = require('../../../config')
 
 // Method to allow Nunjucks groupby filter to group by nested Object value
 function getPath (path) {
@@ -21,18 +22,36 @@ function getMonthsAndDays (startTime, endTime) {
   }).filter(item => !!item).join(', ')
 }
 
+// Method to add/remove days to moment date excluding weekends
+function addBusinessDays (originalDate, daysToAdd) {
+  const isMinus = daysToAdd < 0
+  const newDate = originalDate.clone()
+  const Sunday = 0
+  const Saturday = 6
+  let daysRemaining = daysToAdd
+  while (isMinus ? daysRemaining < 0 : daysRemaining > 0) {
+    newDate.add(isMinus ? -1 : 1, 'days')
+    if (newDate.day() !== Sunday && newDate.day() !== Saturday) {
+      isMinus ? daysRemaining++ : daysRemaining--
+    }
+  }
+  return newDate
+}
+
 const defaults = (req, res, next) => {
-  req.params.limit = process.env.CASES_PER_PAGE || 20
+  req.params.limit = settings.casesPerPage
   req.params.moment = moment
   req.params.getMonthsAndDays = getMonthsAndDays
+  req.params.addBusinessDays = addBusinessDays
   req.params.getPath = getPath
-  req.params.courtCode = 'SHF'
-  req.params.courtName = 'Sheffield Magistrates\' Court'
+  req.params.courtCode = settings.courtCode
+  req.params.courtName = settings.courtName
   next()
 }
 
 module.exports = {
   defaults,
   getPath,
-  getMonthsAndDays
+  getMonthsAndDays,
+  addBusinessDays
 }

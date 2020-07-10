@@ -3,6 +3,7 @@ import moment from 'moment'
 const currentDefendantWithBreach = {
   local: {
     caseNo: 5222601242,
+    courtName: 'Sheffield Magistrates\' Court',
     court: '9',
     session: 'morning',
     listing: '1st',

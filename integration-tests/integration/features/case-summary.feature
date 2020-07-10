@@ -9,7 +9,7 @@ Feature: Case summary
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
-    And I should see the caption "Sheffield Magistrates' Court"
+    And I should see the caption with the relevant court
     When I click the defendant name link
     Then I should be on the "Case details" page
     And I should see the heading has the defendant name
@@ -171,7 +171,7 @@ Feature: Case summary
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
-    And I should see the caption "Sheffield Magistrates' Court"
+    And I should see the caption with the relevant court
     When I click the defendant name link
     Then I should be on the "Case details" page
     And I should see the heading has the defendant name

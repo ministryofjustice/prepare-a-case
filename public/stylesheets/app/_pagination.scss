@@ -1,0 +1,14 @@
+.pac-pagination-link {
+  @extend .govuk-link;
+  @extend .govuk-link--no-visited-state;
+  @extend .govuk-\!-font-size-19;
+  text-decoration: none;
+}
+
+.pac-pagination-link--icon {
+  margin: 0 10px;
+}
+
+.pac-pagination-link--text {
+  margin-top: 0;
+}

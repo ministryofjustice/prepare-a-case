@@ -4,11 +4,11 @@ Feature: Case list
   I want to see a case list view
 
   Scenario: View the case list with data containing 207 cases for the given day
+    Given I am an authenticated user
     When I navigate to the "cases" route
     Given I am an authenticated user
     Then I should be on the "Cases" page
     And I am viewing the "unfilteredPage1" case list
-
 
     And I should see the heading "Cases"
 

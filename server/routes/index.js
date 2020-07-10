@@ -1,5 +1,6 @@
 const express = require('express')
 const moment = require('moment')
+const { settings } = require('../../config')
 const { getCaseList, getCase } = require('../services/case-service')
 const { getPersonalDetails, getProbationRecord, getProbationRecordWithRequirements, getAttendanceDetails, getBreachDetails } = require('../services/community-service')
 
@@ -10,8 +11,9 @@ const { filters } = require('./middleware/filters')
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
   router.use(authenticationMiddleware())
+
   router.get('/', health, (req, res) => {
-    res.render('dashboard', { title: 'Dashboard', healthy: req.healthy })
+    res.redirect(`/cases/${moment().format('YYYY-MM-DD')}`)
   })
 
   router.get('/cases/:date/:subsection?', health, defaults, filters, async (req, res) => {
@@ -29,6 +31,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         to: endCount,
         total: totalCount,
         lastUpdated: response ? response.lastUpdated : '',
+        totalDays: settings.casesTotalDays,
         ...params,
         subsection: params.subsection || ''
       },
