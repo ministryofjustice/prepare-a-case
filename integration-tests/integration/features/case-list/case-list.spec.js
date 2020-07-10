@@ -80,7 +80,7 @@ And('The defendant names should be links', () => {
 
 And('I should see a timestamp of the most recent Libra data', () => {
   const formattedDate = moment().format(dateFormat)
-  cy.get('.pac-last-updated').contains(`Last updated ${formattedDate} at 08:30`)
+  cy.get('.pac-last-updated').contains(`List updated: ${formattedDate} at 08:30 | Next scheduled update: Tomorrow at 9:00am`)
 })
 
 And('I should see pagination text {string}', $string => {
