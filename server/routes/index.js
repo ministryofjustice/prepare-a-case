@@ -13,7 +13,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.use(authenticationMiddleware())
 
   router.get('/', health, (req, res) => {
-    res.redirect(`/cases/${moment().format('YYYY-MM-DD')}`)
+    res.redirect('/cases')
+  })
+
+  router.get('/cases', (req, res) => {
+    res.redirect(`/cases/${moment().format('YYYY-MM-DD')}${req.session.currentView ? '/' + req.session.currentView : ''}`)
   })
 
   router.get('/cases/:date/:subsection?', health, defaults, filters, async (req, res) => {
@@ -37,16 +41,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
       },
       data: (response && response.cases && response.cases.slice(startCount, endCount)) || []
     }
+    req.session.currentView = params.subsection
     res.render('case-list', templateValues)
   })
 
   router.post('/cases/:date/:subsection?', health, defaults, async (req, res) => {
     req.session.selectedFilters = req.body
     res.redirect(`/cases/${req.params.date}${req.params.subsection ? '/' + req.params.subsection : ''}`)
-  })
-
-  router.get('/cases', (req, res) => {
-    res.redirect(`/cases/${moment().format('YYYY-MM-DD')}`)
   })
 
   router.post('/case/:caseNo/record', async (req, res) => {

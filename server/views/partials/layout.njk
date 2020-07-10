@@ -1,5 +1,7 @@
 {%- set displayDateFormat = 'D MMM YYYY' -%}
-{%- set userName = user.username.replace('.', ' ') | title -%}
+{% if user and user.username %}
+    {%- set userName = user.username.replace('.', ' ') | title -%}
+{% endif %}
 <!DOCTYPE html>
 <html lang="en" class="govuk-template no-js">
 <head>

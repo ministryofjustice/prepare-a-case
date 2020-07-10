@@ -1,13 +1,9 @@
 {% extends "partials/layout.njk" %}
 
-{% set pageTitle = message %}
+{% set title = "Error" %}
 
 {% block content %}
-
-  <main class="app-container">
-    <h1>{{ message }}</h1>
-    <h2>{{ error.status }}</h2>
-    <pre>{{ error.stack }}</pre>
-  </main>
-
+  <h1 class="govuk-heading-l">{{ message }}</h1>
+  <h2 class="govuk-heading-m">{{ error.status }}</h2>
+  <pre>{{ error.stack }}</pre>
 {% endblock %}
