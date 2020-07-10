@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+  oauth-server:
+    image: quay.io/hmpps/hmpps-auth:latest
+    container_name: oauth-server
+    ports:
+      - "9090:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/auth/health"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev

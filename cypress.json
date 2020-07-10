@@ -1,7 +1,7 @@
 {
   "nodeVersion": "system",
   "chromeWebSecurity": false,
-  "baseUrl": "http://localhost:3000",
+  "baseUrl": "http://localhost:3007",
   "fixturesFolder": "integration-tests/fixtures",
   "testFiles": "features/**/*.feature",
   "ignoreTestFiles": ["*.js", "*.md"],

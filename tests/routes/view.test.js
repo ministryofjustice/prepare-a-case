@@ -1,13 +1,25 @@
 /* global describe, beforeEach, afterEach, it, expect, jest */
 const request = require('supertest')
-const caseService = require('../../services/case-service')
-const communityService = require('../../services/community-service')
+const caseService = require('../../server/services/case-service')
+const communityService = require('../../server/services/community-service')
+const appSetup = require('../testUtils/appSetup')
+const { authenticationMiddleware } = require('../testUtils/mockAuthentication')
 
-const defaults = require('../../routes/middleware/defaults')
-const healthcheck = require('../../routes/middleware/healthcheck')
+let roles
+// This needs mocking early, before 'requiring' jwt-decode
+jest.doMock('jwt-decode', () => jest.fn(() => ({ authorities: roles })))
 
-jest.mock('../../services/case-service')
-jest.mock('../../services/community-service')
+const createRouter = require('../../server/routes/index')
+
+const defaults = require('../../server/routes/middleware/defaults')
+const healthcheck = require('../../server/routes/middleware/healthcheck')
+
+const viewRoute = createRouter({
+  authenticationMiddleware
+})
+
+jest.mock('../../server/services/case-service')
+jest.mock('../../server/services/community-service')
 
 let app
 let caseResponse = {}
@@ -60,6 +72,7 @@ describe('Routes', () => {
 
   beforeEach(() => {
     app = require('../../app')
+    app = appSetup(viewRoute)
   })
 
   afterEach(() => {
@@ -70,7 +83,6 @@ describe('Routes', () => {
   it('default route should return status 200', () => {
     return request(app).get('/').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(healthcheck.health).toHaveBeenCalled()
     })
   })
 
@@ -174,7 +186,16 @@ describe('Routes', () => {
         convictionId: 1403337513,
         breaches: [
           {
-            breachId: 12345
+            breachId: 12345,
+            description: 'Community Order/SSO Breach',
+            started: '2014-12-30',
+            status: 'In progress'
+          },
+          {
+            breachId: 54321,
+            description: 'Community Order/SSO Breach',
+            started: '2014-12-26',
+            status: 'Breach Summons Issued'
           }
         ]
       }]
