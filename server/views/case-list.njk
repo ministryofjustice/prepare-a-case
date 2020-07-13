@@ -132,6 +132,7 @@
 
     {% if tableData.rows | length %}
         {% block table %}
+                <span class="govuk-heading-m">{{ params.total }} Cases</span>
             {%- from "govuk/components/table/macro.njk" import govukTable -%}
             {{ govukTable(tableData) }}
         {% endblock %}
