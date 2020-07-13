@@ -80,9 +80,9 @@ describe('Routes', () => {
     caseResponse = {}
   })
 
-  it('default route should return status 200', () => {
+  it('default route should return status 302 as it should redirect to case list', () => {
     return request(app).get('/').then(response => {
-      expect(response.statusCode).toEqual(200)
+      expect(response.statusCode).toEqual(302)
     })
   })
 
