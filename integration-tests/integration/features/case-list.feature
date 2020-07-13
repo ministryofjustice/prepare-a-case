@@ -6,7 +6,6 @@ Feature: Case list
   Scenario: View the case list with data containing 207 cases for the given day
     Given I am an authenticated user
     When I navigate to the "cases" route
-    Given I am an authenticated user
     Then I should be on the "Cases" page
     And I am viewing the "unfilteredPage1" case list
 
@@ -20,6 +19,7 @@ Feature: Case list
 
     And The defendant names should be links
 
+    And I should see a count of "207" cases
     And I should see pagination
     And I should not see pagination link "Previous"
     And I should not see pagination link "1"
@@ -47,6 +47,7 @@ Feature: Case list
 
     And The defendant names should be links
 
+    And I should see a count of "207" cases
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=1"
     And I should see pagination link "1" with href "?page=1"
@@ -105,6 +106,7 @@ Feature: Case list
 
     And The defendant names should be links
 
+    And I should see a count of "207" cases
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=4"
     And I should not see pagination link "1"
@@ -143,6 +145,7 @@ Feature: Case list
 
     And The defendant names should be links
 
+    And I should see a count of "207" cases
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=10"
     And I should see pagination link "7" with href "?page=7"
@@ -169,6 +172,7 @@ Feature: Case list
 
     And The defendant names should be links
 
+    And I should see a count of "5" cases
     And I should not see pagination
     And There should be no a11y violations
 
