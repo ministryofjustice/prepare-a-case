@@ -103,6 +103,10 @@ And('I should see pagination page {string} highlighted', $string => {
   cy.get('.moj-pagination__item--active').contains($string).should('exist')
 })
 
+And('I should see a count of {string} cases', $string => {
+  cy.get('.govuk-heading-m').contains($string).should('exist')
+})
+
 And('I should not see pagination link {string}', $string => {
   cy.get('.moj-pagination__link').contains($string).should('not.exist')
 })
