@@ -1,10 +1,8 @@
 /* global cy */
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
-import moment from 'moment'
 import World from '../../world/World'
 
 const world = new World('caseList')
-const dateFormat = 'dddd D MMM'
 
 And('I am viewing the {string} case list', $string => {
   world.scenario = $string
@@ -86,7 +84,7 @@ And('I should see a tab with text {string}', $string => {
 })
 
 And('I should see a timestamp of the most recent Libra data', () => {
-  cy.get('.pac-last-updated').contains(`List updated: Today at 08:30 | Next scheduled update: Tomorrow at 9:00am`)
+  cy.get('.pac-last-updated').contains('List updated: Today at 08:30 | Next scheduled update: Tomorrow at 9:00am')
 })
 
 And('I should see pagination text {string}', $string => {
