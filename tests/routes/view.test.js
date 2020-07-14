@@ -95,19 +95,19 @@ describe('Routes', () => {
 
   it('case list route should call the case service to fetch case list data', async () => {
     const response = await request(app).get('/cases/2020-01-01')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01', expect.any(Array), undefined)
+    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01', expect.any(Array))
     return response
   })
 
   it('case list route should call the case service to fetch recently added case list data', async () => {
     const response = await request(app).get('/cases/2020-01-01/added')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01', expect.any(Array), 'added')
+    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01', expect.any(Array))
     return response
   })
 
   it('case list route should call the case service to fetch recently removed case list data', async () => {
     const response = await request(app).get('/cases/2020-01-01/removed')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01', expect.any(Array), 'removed')
+    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01', expect.any(Array))
     return response
   })
 

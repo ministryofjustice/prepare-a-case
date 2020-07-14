@@ -6,9 +6,6 @@ const courtroomFilteredList = {
     filtered: {
       name: 'Sharpe Trujillo'
     }
-  },
-  dev: {
-
   }
 }
 

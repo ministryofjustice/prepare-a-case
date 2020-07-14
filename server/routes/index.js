@@ -22,10 +22,25 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/cases/:date/:subsection?', health, defaults, filters, async (req, res) => {
     const params = req.params
-    const response = await getCaseList(params.courtCode, params.date, req.params.filters, params.subsection)
-    const totalCount = (response && response.cases && response.cases.length) || 0
+    const response = await getCaseList(params.courtCode, params.date, req.params.filters)
+    const allCases = []
+    const addedCases = []
+    const removedCases = []
+    if (response.cases) {
+      response.cases.forEach($case => {
+        if ($case.createdToday) {
+          allCases.push($case)
+          addedCases.push($case)
+        } else if ($case.removed) {
+          removedCases.push($case)
+        } else {
+          allCases.push($case)
+        }
+      })
+    }
+    const listOfCases = params.subsection === 'added' ? addedCases : params.subsection === 'removed' ? removedCases : allCases
     const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * params.limit
-    const endCount = Math.min(startCount + parseInt(params.limit, 10), totalCount)
+    const endCount = Math.min(startCount + parseInt(params.limit, 10), listOfCases.length)
     const templateValues = {
       title: 'Cases',
       healthy: req.healthy,
@@ -33,13 +48,15 @@ module.exports = function Index ({ authenticationMiddleware }) {
         page: parseInt(req.query.page, 10) || 1,
         from: startCount,
         to: endCount,
-        total: totalCount,
+        total: listOfCases.length,
+        addedCount: addedCases.length,
+        removedCount: removedCases.length,
         lastUpdated: response ? response.lastUpdated : '',
         totalDays: settings.casesTotalDays,
         ...params,
         subsection: params.subsection || ''
       },
-      data: (response && response.cases && response.cases.slice(startCount, endCount)) || []
+      data: listOfCases.slice(startCount, endCount) || []
     }
     req.session.currentView = params.subsection
     res.render('case-list', templateValues)

@@ -12,12 +12,16 @@
     rows: []
 } %}
 
+{%- if params.subsection === 'removed' %}
+    {{ tableData.head.push({ text: "Libra case number", format: "numeric" }) }}
+{% endif -%}
+
 {% for item in data %}
 
     {% set offences = [] %}
     {% if item.offences | length === 1 %}
         {% for offence in item.offences %}
-            {{ offences.push(offence.offenceTitle |  escape) }}
+            {{ offences.push(offence.offenceTitle | escape) }}
         {% endfor %}
         {% elif item.offences | length %}
         {{ offences.push('<ol class="govuk-list govuk-list--number govuk-!-margin-bottom-0">') }}
@@ -26,14 +30,18 @@
         {% endfor %}
         {{ offences.push('</ol>') }}
     {% endif %}
-    {{ tableData.rows.push([
-        { text: ('<a href="/case/' + item.caseNo + '/details" class="pac-defendant-link govuk-link govuk-link--no-visited-state">' + item.defendantName | escape + '</a>') | safe },
-        { text: ('<div>' + ('<span class="moj-badge moj-badge--black pac-badge">Breach</span>' | safe if item.breach) + ('<span class="moj-badge moj-badge--black pac-badge" style="">Sso</span>' | safe if item.suspendedSentenceOrder) + '</div>'+ item.probationStatus + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate).format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate)) | safe },
-        { text: offences | join('') | safe },
-        { text: item.listNo },
-        { text: item.session | capitalize },
-        { text: item.courtRoom, format: "numeric" }
-    ]) }}
+    {%- set tableRow = [
+            { text: ('<a href="/case/' + item.caseNo + '/details" class="pac-defendant-link govuk-link govuk-link--no-visited-state">' + item.defendantName | escape + '</a>') | safe },
+            { text: ('<div>' + ('<span class="moj-badge moj-badge--black pac-badge">Breach</span>' | safe if item.breach) + ('<span class="moj-badge moj-badge--black pac-badge" style="">Sso</span>' | safe if item.suspendedSentenceOrder) + '</div>'+ item.probationStatus + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate).format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate)) | safe },
+            { text: offences | join('') | safe },
+            { text: item.listNo },
+            { text: item.session | capitalize },
+            { text: item.courtRoom, format: "numeric" }
+    ] -%}
+    {%- if params.subsection === 'removed' %}
+        {{ tableRow.push({ text: item.caseNo, format: "numeric" }) }}
+    {% endif -%}
+    {{ tableData.rows.push(tableRow) }}
 
 {% endfor %}
 
@@ -122,19 +130,26 @@
     </p>
 
     {%- from "components/tabs/macro.njk" import pacTabs -%}
-    {% set lastUpdated = moment(params.lastUpdated).format('[List updated:] ' + dateFormat + ' [at] hh:mm') %}
+    {% if moment(params.lastUpdated).format('YYYY-MM-DD') === today %}
+        {% set lastUpdated = moment(params.lastUpdated).format('[List updated: Today at] hh:mm') %}
+    {% else %}
+        {% set lastUpdated = moment(params.lastUpdated).format('[List updated:] ' + dateFormat + ' [at] hh:mm') %}
+    {% endif %}
+
     {% set listTabs = [{
         title: 'Case list',
         link: '/cases/' + today,
         current: params.subsection === ''
     },{
-        title: 'Recently added (0)',
+        title: 'Recently added',
         link: '/cases/' + today + '/added',
-        current: params.subsection === 'added'
+        current: params.subsection === 'added',
+        count: params.addedCount
     }, {
-        title: 'Removed cases (0)',
+        title: 'Removed cases',
         link: '/cases/' + today + '/removed',
-        current: params.subsection === 'removed'
+        current: params.subsection === 'removed',
+        count: params.removedCount
     }] %}
 
     {%- if params.date !== today %}
@@ -154,7 +169,7 @@
 
     {% if tableData.rows | length %}
         {% block table %}
-                <span class="govuk-heading-m">{{ params.total }} Cases</span>
+            <span class="govuk-heading-m">{{ params.total }} case{{ 's' if params.total > 1 }} {% if params.subsection !== "" %} {% if params.subsection === "added" %}added to {% else %}removed from {% endif%} today's case list at {{ moment(params.lastUpdated).format('hh:mma') }}{% endif %}</span>
             {%- from "govuk/components/table/macro.njk" import govukTable -%}
             {{ govukTable(tableData) }}
         {% endblock %}

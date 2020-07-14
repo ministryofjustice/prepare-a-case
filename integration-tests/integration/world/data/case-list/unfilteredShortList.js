@@ -49,11 +49,6 @@ const unfilteredShortList = {
         court: '8'
       }
     ]
-  },
-  dev: {
-    route: 'cases/2020-01-02',
-    court: 'Sheffield Magistrates\' Court',
-    list: []
   }
 }
 

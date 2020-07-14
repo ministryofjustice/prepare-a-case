@@ -30,10 +30,6 @@ const unfilteredListPage1 = {
         court: '7'
       }
     ]
-  },
-  dev: {
-    court: 'Sheffield Magistrates\' Court',
-    list: []
   }
 }
 
