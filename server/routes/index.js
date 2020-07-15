@@ -22,25 +22,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/cases/:date/:subsection?', health, defaults, filters, async (req, res) => {
     const params = req.params
-    const response = await getCaseList(params.courtCode, params.date, req.params.filters)
-    const allCases = []
-    const addedCases = []
-    const removedCases = []
-    if (response.cases) {
-      response.cases.forEach($case => {
-        if ($case.createdToday) {
-          allCases.push($case)
-          addedCases.push($case)
-        } else if ($case.removed) {
-          removedCases.push($case)
-        } else {
-          allCases.push($case)
-        }
-      })
-    }
-    const listOfCases = params.subsection === 'added' ? addedCases : params.subsection === 'removed' ? removedCases : allCases
+    const response = await getCaseList(params.courtCode, params.date, params.filters, params.subsection)
+    const caseCount = response.cases.length
     const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * params.limit
-    const endCount = Math.min(startCount + parseInt(params.limit, 10), listOfCases.length)
+    const endCount = Math.min(startCount + parseInt(params.limit, 10), caseCount)
     const templateValues = {
       title: 'Cases',
       healthy: req.healthy,
@@ -48,15 +33,15 @@ module.exports = function Index ({ authenticationMiddleware }) {
         page: parseInt(req.query.page, 10) || 1,
         from: startCount,
         to: endCount,
-        total: listOfCases.length,
-        addedCount: addedCases.length,
-        removedCount: removedCases.length,
+        caseCount: caseCount,
+        addedCount: response.addedCount,
+        removedCount: response.removedCount,
         lastUpdated: response ? response.lastUpdated : '',
         totalDays: settings.casesTotalDays,
         ...params,
         subsection: params.subsection || ''
       },
-      data: listOfCases.slice(startCount, endCount) || []
+      data: response.cases.slice(startCount, endCount) || []
     }
     req.session.currentView = params.subsection
     res.render('case-list', templateValues)
