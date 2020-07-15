@@ -132,6 +132,9 @@
     {%- from "components/tabs/macro.njk" import pacTabs -%}
 
     {% set nextUpdate = currentDate.format('[Next scheduled update:] '+ dateFormat + ' [at 9:00am]') %}
+    {% if params.date === tomorrow %}
+        {% set nextUpdate = 'Next scheduled update: Tomorrow at 9:00am' %}
+    {% endif %}
 
     {% if moment(params.lastUpdated).format('YYYY-MM-DD') === today %}
         {% set lastUpdated = moment(params.lastUpdated).format('[List updated: Today at] hh:mma') %}

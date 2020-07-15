@@ -15,7 +15,7 @@
     },
     "status": 200,
     "jsonBody": {
-      "lastUpdated": "{{now offset='-1 days' format='yyyy-MM-dd'}}T08:30:00",
+      "lastUpdated": "{{now format='yyyy-MM-dd'}}T08:30:00",
       "cases": [
         {
           "caseId": "957781",
