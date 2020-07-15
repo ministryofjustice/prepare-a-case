@@ -33,6 +33,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         page: parseInt(req.query.page, 10) || 1,
         from: startCount,
         to: endCount,
+        totalCount: response.totalCount,
         caseCount: caseCount,
         addedCount: response.addedCount,
         removedCount: response.removedCount,

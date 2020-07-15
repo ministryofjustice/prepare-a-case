@@ -44,6 +44,7 @@ const getCaseList = async (courtCode, date, filters, subsection) => {
 
   return {
     ...res.data,
+    totalCount: allCases.length,
     addedCount: addedCases.length,
     removedCount: removedCases.length,
     cases: filteredCases
