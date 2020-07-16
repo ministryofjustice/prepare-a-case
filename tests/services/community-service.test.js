@@ -2,7 +2,7 @@
 const moxios = require('moxios')
 const config = require('../../config')
 
-const { getPersonalDetails, getProbationRecord, getProbationRecordWithRequirements, getAttendanceDetails, getBreachDetails } = require('../../server/services/community-service')
+const { getSentenceDetails, getProbationRecord, getProbationRecordWithRequirements, getAttendanceDetails, getBreachDetails } = require('../../server/services/community-service')
 
 const apiUrl = config.apis.courtCaseService.url
 
@@ -14,17 +14,6 @@ describe('Community service', () => {
   afterEach(() => {
     moxios.uninstall()
     jest.clearAllMocks()
-  })
-
-  it('should call the API to request offender personal details data', async () => {
-    moxios.stubRequest(`${apiUrl}/offender/D123456/personal`, {
-      status: 200,
-      response: {}
-    })
-
-    const response = await getPersonalDetails('D123456')
-    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/personal`)
-    return response
   })
 
   it('should call the API to request offender conviction details data', async () => {
@@ -71,15 +60,15 @@ describe('Community service', () => {
   })
 
   it('should call the API to request attendance details data', async () => {
-    moxios.stubRequest(`${apiUrl}/offender/D123456/convictions/12345678`, {
+    moxios.stubRequest(`${apiUrl}/offender/D123456/sentences/12345678`, {
       status: 200,
       response: {
         attendances: []
       }
     })
 
-    const response = await getAttendanceDetails('D123456', '12345678')
-    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/convictions/12345678`)
+    const response = await getSentenceDetails('D123456', '12345678')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/sentences/12345678`)
     return response
   })
 

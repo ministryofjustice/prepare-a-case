@@ -46,10 +46,6 @@ describe('Routes', () => {
     return caseResponse
   })
 
-  jest.spyOn(communityService, 'getPersonalDetails').mockImplementation(function () {
-    return {}
-  })
-
   jest.spyOn(communityService, 'getProbationRecord').mockImplementation(function () {
     return communityResponse
   })
@@ -58,7 +54,7 @@ describe('Routes', () => {
     return communityResponse
   })
 
-  jest.spyOn(communityService, 'getAttendanceDetails').mockImplementation(function () {
+  jest.spyOn(communityService, 'getSentenceDetails').mockImplementation(function () {
     return {
       attendances: []
     }
@@ -123,17 +119,6 @@ describe('Routes', () => {
     return response
   })
 
-  it('case summary personal details route should call the case service to fetch case data and NOT call the community service if the defendant is not known to probation', async () => {
-    caseResponse = {
-      probationStatus: 'Not known',
-      crn: ''
-    }
-    const response = await request(app).get('/case/8678951874/details')
-    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '8678951874')
-    expect(communityService.getPersonalDetails).not.toHaveBeenCalled()
-    return response
-  })
-
   it('case summary details route should redirect when viewing all previous orders', async () => {
     return request(app).post('/case/8678951874/record', {}).then(response => {
       expect(response.statusCode).toEqual(302)
@@ -148,7 +133,6 @@ describe('Routes', () => {
     const response = await request(app).get('/case/8678951874/record')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '8678951874')
     expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
-    expect(communityService.getPersonalDetails).toHaveBeenCalledWith('D985513')
     return response
   })
 
@@ -166,7 +150,7 @@ describe('Routes', () => {
     const response = await request(app).get('/case/668911253/record/1403337513')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
     expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
-    expect(communityService.getAttendanceDetails).toHaveBeenCalledWith('D985513', '1403337513')
+    expect(communityService.getSentenceDetails).toHaveBeenCalledWith('D985513', '1403337513')
     return response
   })
 
@@ -184,7 +168,7 @@ describe('Routes', () => {
     const response = await request(app).get('/case/668911253/record/1403337513')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
     expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
-    expect(communityService.getAttendanceDetails).not.toHaveBeenCalled()
+    expect(communityService.getSentenceDetails).not.toHaveBeenCalled()
     return response
   })
 
