@@ -103,7 +103,7 @@
     "nodemon": "2.0.4",
     "standard": "14.3.4",
     "supertest": "4.0.2",
-    "swagger-client": "3.10.11",
+    "swagger-client": "3.10.12",
     "swagger-model-validator": "3.0.19"
   }
 }

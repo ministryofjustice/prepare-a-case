@@ -130,10 +130,26 @@
     </p>
 
     {%- from "components/tabs/macro.njk" import pacTabs -%}
+
+    {% set nextUpdate = currentDate.format('[Next scheduled update:] '+ dateFormat + ' [at 9:00am]') %}
+    {% if params.date === tomorrow %}
+        {% set nextUpdate = 'Next scheduled update: Tomorrow at 9:00am' %}
+    {% endif %}
+
     {% if moment(params.lastUpdated).format('YYYY-MM-DD') === today %}
-        {% set lastUpdated = moment(params.lastUpdated).format('[List updated: Today at] hh:mm') %}
+        {% set lastUpdated = moment(params.lastUpdated).format('[List updated: Today at] hh:mma') %}
+        {% if params.date === today %}
+            {% set nextUpdate = 'No further updates scheduled today' %}
+        {% endif %}
     {% else %}
-        {% set lastUpdated = moment(params.lastUpdated).format('[List updated:] ' + dateFormat + ' [at] hh:mm') %}
+        {% if moment().add(-1, 'days').format('YYYY-MM-DD') === moment(params.lastUpdated).format('YYYY-MM-DD') %}
+            {% set lastUpdated = moment(params.lastUpdated).format('[List updated: Yesterday at] hh:mma') %}
+        {% else %}
+            {% set lastUpdated = moment(params.lastUpdated).format('[List updated:] ' + dateFormat + ' [at] hh:mma') %}
+        {% endif %}
+        {% if params.date === today %}
+            {% set nextUpdate = 'Next scheduled update: Today at 9:00am' %}
+        {% endif %}
     {% endif %}
 
     {% set listTabs = [{
@@ -156,9 +172,15 @@
         {% set listTabs = [listTabs | first] %}
     {% endif -%}
 
+    {% if params.totalCount %}
+        {% set status = lastUpdated + ' | ' + nextUpdate %}
+    {% else %}
+        {% set status = "" %}
+    {% endif %}
+
     {{ pacTabs({
         items: listTabs,
-        status: lastUpdated + ' | Next scheduled update: Tomorrow at 9:00am'
+        status: status
     }) }}
 
     {%- from "components/filter/macro.njk" import pacFilter -%}

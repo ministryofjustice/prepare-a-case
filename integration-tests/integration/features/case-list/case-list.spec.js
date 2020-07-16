@@ -84,7 +84,7 @@ And('I should see a tab with text {string}', $string => {
 })
 
 And('I should see a timestamp of the most recent Libra data', () => {
-  cy.get('.pac-last-updated').contains('List updated: Today at 08:30 | Next scheduled update: Tomorrow at 9:00am')
+  cy.get('.pac-last-updated').contains('List updated: Today at 08:30am | No further updates scheduled today')
 })
 
 And('I should see pagination text {string}', $string => {
