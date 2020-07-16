@@ -51,14 +51,7 @@ const currentDefendant = {
     previousOrderTerminationReason: 'ICMS Miscellaneous Event',
     offenderManager: 'Mcmahon Buchanan',
     offenderManagerDetails: {
-      allocated: '12 Aug 2017',
-      address1: 'NPS West Yorkshire',
-      address2: 'Ecolight Towers',
-      address3: '71 Ocean Parkway',
-      address4: 'Leeds',
-      address5: 'West Yorkshire',
-      postcode: 'LS7 4JP',
-      telephone: '01890 547 292'
+      allocated: '12 Aug 2017'
     },
     preSentenceReportDetails: {
       description: 'Pre-Sentence Report - Fast',

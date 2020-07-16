@@ -26,17 +26,6 @@ const previouslyKnownDefendant = {
     previousOrderId: '1531139839',
     previousOrderStartDate: '2018-01-01',
     previousOrderEndDate: '2019-07-12',
-    offenderManager: 'Not active',
-    offenderManagerDetails: {
-      allocated: '',
-      address1: '',
-      address2: '',
-      address3: '',
-      address4: '',
-      address5: '',
-      postcode: '',
-      telephone: ''
-    },
     preSentenceReportDetails: {
       description: 'Pre-Sentence Report - Fast',
       delivered: `Delivered 1 month ago (${moment().add(-1, 'months').format('D MMM YYYY')})`
