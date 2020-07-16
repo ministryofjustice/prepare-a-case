@@ -2,7 +2,7 @@
 const moxios = require('moxios')
 const config = require('../../config')
 
-const { getSentenceDetails, getProbationRecord, getProbationRecordWithRequirements, getAttendanceDetails, getBreachDetails } = require('../../server/services/community-service')
+const { getSentenceDetails, getProbationRecord, getProbationRecordWithRequirements, getBreachDetails } = require('../../server/services/community-service')
 
 const apiUrl = config.apis.courtCaseService.url
 
