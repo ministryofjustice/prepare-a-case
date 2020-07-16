@@ -137,7 +137,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/case/:caseNo/risk', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Risk registers'
+    templateValues.title = 'Risk register'
 
     res.render('case-summary-risk', templateValues)
   })
