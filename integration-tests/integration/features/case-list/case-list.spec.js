@@ -1,10 +1,8 @@
 /* global cy */
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
-import moment from 'moment'
 import World from '../../world/World'
 
 const world = new World('caseList')
-const dateFormat = 'dddd D MMM'
 
 And('I am viewing the {string} case list', $string => {
   world.scenario = $string
@@ -69,6 +67,9 @@ And('I should see the case list table with headings', $data => {
     cellCheck($index, 3, $item.listing)
     cellCheck($index, 4, $item.session)
     cellCheck($index, 5, $item.court)
+    if ($item.caseNo) {
+      cellCheck($index, 6, $item.caseNo)
+    }
   })
 })
 
@@ -78,9 +79,12 @@ And('The defendant names should be links', () => {
   })
 })
 
+And('I should see a tab with text {string}', $string => {
+  cy.get('.govuk-tabs__tab').contains($string)
+})
+
 And('I should see a timestamp of the most recent Libra data', () => {
-  const formattedDate = moment().format(dateFormat)
-  cy.get('.pac-last-updated').contains(`Last updated ${formattedDate} at 08:30`)
+  cy.get('.pac-last-updated').contains('List updated: Today at 08:30 | Next scheduled update: Tomorrow at 9:00am')
 })
 
 And('I should see pagination text {string}', $string => {
@@ -104,6 +108,10 @@ And('I should see pagination page {string} highlighted', $string => {
 })
 
 And('I should see a count of {string} cases', $string => {
+  cy.get('.govuk-heading-m').contains($string).should('exist')
+})
+
+And('I should see medium heading with text {string}', $string => {
   cy.get('.govuk-heading-m').contains($string).should('exist')
 })
 

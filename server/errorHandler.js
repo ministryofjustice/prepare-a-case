@@ -10,6 +10,5 @@ module.exports = (error, req, res) => {
   res.locals.message = production ? 'Something went wrong. The error has been logged. Please try again' : error.message
 
   res.status(error.status || 500)
-
   res.render('error')
 }

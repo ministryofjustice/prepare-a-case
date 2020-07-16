@@ -286,6 +286,7 @@
           "caseNo": "2980462628",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "createdToday": true,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -8350,6 +8351,7 @@
           "caseNo": "649174512",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "createdToday": true,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -8400,6 +8402,7 @@
           "caseNo": "2905576408",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "createdToday": true,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -8440,6 +8443,7 @@
           "caseNo": "4002578961",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "createdToday": true,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "No record",
@@ -8469,6 +8473,55 @@
             "line5": null
           },
           "defendantDob": "1973-01-16"
+        },
+        {
+          "caseId": "645645",
+          "caseNo": "7483843114",
+          "courtCode": "SHF",
+          "courtRoom": "1",
+          "removed": true,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "crn": "D541445",
+          "pnc": "A/1234576BA",
+          "probationStatus": "No record",
+          "session": "AFTERNOON",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Howe Williams by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Zolarity, Leeds, stole LAPTOP to the value of £987.00, belonging to Powers Gould.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Xixan, Sheffield, stole COMPUTER to the value of £987.00, belonging to Cote Ochoa.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Bangor assaulted Watkins Cummings by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantSex": "M",
+          "defendantName": "Geoff McTaggart",
+          "defendantAddress": {
+            "line1": "91",
+            "line2": "Barbey street",
+            "postcode": "ad21 5dr",
+            "line3": "Sheffield",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "1955-04-08"
         }
       ]
     }

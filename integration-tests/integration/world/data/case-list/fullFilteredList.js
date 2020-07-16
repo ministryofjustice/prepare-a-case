@@ -6,9 +6,6 @@ const fullFilteredList = {
     filtered: {
       name: 'Porter Salas'
     }
-  },
-  dev: {
-
   }
 }
 

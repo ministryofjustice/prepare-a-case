@@ -6,9 +6,6 @@ const sessionFilteredList = {
     filtered: {
       name: 'Charlene Hammond'
     }
-  },
-  dev: {
-
   }
 }
 

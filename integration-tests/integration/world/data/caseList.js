@@ -9,6 +9,8 @@ import { probationStatusFilteredList } from './case-list/probationStatusFiltered
 import { courtroomFilteredList } from './case-list/courtroomFilteredList'
 import { sessionFilteredList } from './case-list/sessionFilteredList'
 import { fullFilteredList } from './case-list/fullFilteredList'
+import { addedCasesList } from './case-list/addedCasesList'
+import { removedCasesList } from './case-list/removedCasesList'
 
 const caseListTestData = {
   caseList: {
@@ -22,7 +24,9 @@ const caseListTestData = {
     probationStatusFiltered: { ...probationStatusFilteredList },
     courtroomFiltered: { ...courtroomFilteredList },
     sessionFiltered: { ...sessionFilteredList },
-    fullFiltered: { ...fullFilteredList }
+    fullFiltered: { ...fullFilteredList },
+    addedCasesList: { ...addedCasesList },
+    removedCasesList: { ...removedCasesList }
   }
 }
 

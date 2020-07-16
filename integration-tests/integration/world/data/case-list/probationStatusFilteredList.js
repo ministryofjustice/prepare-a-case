@@ -6,9 +6,6 @@ const probationStatusFilteredList = {
     filtered: {
       name: 'Lenore Marquez'
     }
-  },
-  dev: {
-
   }
 }
 

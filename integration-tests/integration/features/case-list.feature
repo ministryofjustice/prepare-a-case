@@ -19,6 +19,9 @@ Feature: Case list
 
     And The defendant names should be links
 
+    And I should see a tab with text "Case list"
+    And I should see a tab with text "Recently added (4)"
+    And I should see a tab with text "Removed cases (1)"
     And I should see a count of "207" cases
     And I should see pagination
     And I should not see pagination link "Previous"
@@ -157,6 +160,38 @@ Feature: Case list
     And I should not see pagination link "Next"
     And I should see pagination text "Showing 201 to 207 of 207 results"
     And There should be no a11y violations
+
+  Scenario: View the recently added cases on the case list
+    Given I am an authenticated user
+    When I navigate to the "cases" route
+    And I am viewing the "addedCasesList" case list
+    Then I should be on the "Cases" page
+    When I click the "Recently added (4)" link
+    And I should see medium heading with text "4 cases added to today's case list at 08:30am"
+    And I should see the case list table with headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+    And I should not see pagination
+    And There should be no a11y violations
+
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+    And I should see a count of "4" cases
+
+  Scenario: View the removed cases on the case list
+    Given I am an authenticated user
+    When I navigate to the "cases" route
+    And I am viewing the "removedCasesList" case list
+    Then I should be on the "Cases" page
+    When I click the "Removed cases (1)" link
+    And I should see medium heading with text "1 case removed from today's case list at 08:30am"
+    And I should see the case list table with headings
+      | Defendant | Probation status | Offence | Listing | Session | Court | Libra case number |
+    And I should not see pagination
+    And There should be no a11y violations
+
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+    And I should see a count of "1" cases
 
   Scenario: View the case list with data containing 5 cases for the given day
     Given I am an authenticated user

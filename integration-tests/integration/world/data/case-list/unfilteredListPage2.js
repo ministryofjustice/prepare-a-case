@@ -27,10 +27,6 @@ const unfilteredListPage2 = {
         court: '4'
       }
     ]
-  },
-  dev: {
-    court: 'Sheffield Magistrates\' Court',
-    list: []
   }
 }
 

@@ -13,15 +13,19 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.use(authenticationMiddleware())
 
   router.get('/', health, (req, res) => {
-    res.redirect(`/cases/${moment().format('YYYY-MM-DD')}`)
+    res.redirect('/cases')
   })
 
-  router.get('/cases/:date', health, defaults, filters, async (req, res) => {
+  router.get('/cases', (req, res) => {
+    res.redirect(`/cases/${moment().format('YYYY-MM-DD')}${req.session.currentView ? '/' + req.session.currentView : ''}`)
+  })
+
+  router.get('/cases/:date/:subsection?', health, defaults, filters, async (req, res) => {
     const params = req.params
-    const response = await getCaseList(params.courtCode, params.date, req.params.filters)
-    const totalCount = (response && response.cases && response.cases.length) || 0
+    const response = await getCaseList(params.courtCode, params.date, params.filters, params.subsection)
+    const caseCount = response.cases.length
     const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * params.limit
-    const endCount = Math.min(startCount + parseInt(params.limit, 10), totalCount)
+    const endCount = Math.min(startCount + parseInt(params.limit, 10), caseCount)
     const templateValues = {
       title: 'Cases',
       healthy: req.healthy,
@@ -29,23 +33,23 @@ module.exports = function Index ({ authenticationMiddleware }) {
         page: parseInt(req.query.page, 10) || 1,
         from: startCount,
         to: endCount,
-        total: totalCount,
+        caseCount: caseCount,
+        addedCount: response.addedCount,
+        removedCount: response.removedCount,
         lastUpdated: response ? response.lastUpdated : '',
         totalDays: settings.casesTotalDays,
-        ...params
+        ...params,
+        subsection: params.subsection || ''
       },
-      data: (response && response.cases && response.cases.slice(startCount, endCount)) || []
+      data: response.cases.slice(startCount, endCount) || []
     }
+    req.session.currentView = params.subsection
     res.render('case-list', templateValues)
   })
 
-  router.post('/cases/:date', health, defaults, async (req, res) => {
+  router.post('/cases/:date/:subsection?', health, defaults, async (req, res) => {
     req.session.selectedFilters = req.body
-    res.redirect(`/cases/${req.params.date}`)
-  })
-
-  router.get('/cases', (req, res) => {
-    res.redirect(`/cases/${moment().format('YYYY-MM-DD')}`)
+    res.redirect(`/cases/${req.params.date}${req.params.subsection ? '/' + req.params.subsection : ''}`)
   })
 
   router.post('/case/:caseNo/record', async (req, res) => {

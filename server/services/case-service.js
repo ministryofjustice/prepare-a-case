@@ -2,10 +2,25 @@ const { request } = require('./utils/request')
 const config = require('../../config')
 const apiUrl = config.apis.courtCaseService.url
 
-const getCaseList = async (courtCode, date, filters) => {
+const getCaseList = async (courtCode, date, filters, subsection) => {
   const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
+  const allCases = []
+  const addedCases = []
+  const removedCases = []
+  if (res.data.cases) {
+    res.data.cases.forEach($case => {
+      if ($case.createdToday) {
+        allCases.push($case)
+        addedCases.push($case)
+      } else if ($case.removed) {
+        removedCases.push($case)
+      } else {
+        allCases.push($case)
+      }
+    })
+  }
 
-  let filteredCases = res.data && res.data.cases ? res.data.cases : []
+  let filteredCases = subsection === 'added' ? addedCases : subsection === 'removed' ? removedCases : allCases
 
   function applyFilter (filterObj) {
     filteredCases = filteredCases.filter(courtCase => {
@@ -29,6 +44,8 @@ const getCaseList = async (courtCode, date, filters) => {
 
   return {
     ...res.data,
+    addedCount: addedCases.length,
+    removedCount: removedCases.length,
     cases: filteredCases
   }
 }
