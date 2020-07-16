@@ -1,6 +1,8 @@
 // 'pac' prefix used for custom styles to prevent collisions
 .pac-last-updated {
-  @include govuk-media-query($from: tablet) {
+  display: block;
+  @media screen and (min-width: 1100px) {
+    display: inline-block;
     top: 12px;
     float: right;
     position: relative;
