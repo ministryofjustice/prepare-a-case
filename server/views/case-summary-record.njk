@@ -14,12 +14,7 @@
     {% endif %}
 {% endfor -%}
 
-{%- set offenderManager = {} -%}
-{%- for manager in communityData.personalDetails.offenderManagers if communityData.personalDetails.offenderManagers | length %}
-    {% if manager.active %}
-        {%- set offenderManager = manager -%}
-    {% endif %}
-{% endfor -%}
+{%- set offenderManager = communityData.offenderManagers | first -%}
 
 {%- set probationDocuments = [] -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
@@ -98,23 +93,15 @@
         </div>
         <div class="govuk-grid-column-one-third">
 
-            <h3 class="govuk-heading-s">Offender Manager</h3>
-
-            {% if offenderManager.active %}
-                <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.staff.forenames }} {{ offenderManager.staff.surname }}</p>
-                <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.fromDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
-
-                <p class="govuk-body govuk-!-margin-top-0">{{ offenderManager.probationArea.description }}<br/>
-                {{ offenderManager.address.buildingName }}<br/>
-                {{ offenderManager.address.addressNumber }} {{ offenderManager.address.streetName }}<br/>
-                {{ offenderManager.address.town }}<br/>
-                {{ offenderManager.address.county }}<br/>
-                {{ offenderManager.address.postcode }}</p>
-
-                <p class="govuk-body">Telephone: {{ offenderManager.team.telephone }}</p>
-            {% else %}
-                <p class="govuk-body">Not active</p>
-            {% endif %}
+            <div class="govuk-!-margin-bottom-6">
+                <h3 class="govuk-heading-s">Offender Manager</h3>
+                {% if offenderManager.allocatedDate %}
+                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.forenames }} {{ offenderManager.surname }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                {% else %}
+                    <p class="govuk-body">Not active</p>
+                {% endif %}
+            </div>
 
             {% if probationDocuments | length %}
                 {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}

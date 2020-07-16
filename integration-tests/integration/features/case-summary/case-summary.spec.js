@@ -152,16 +152,9 @@ And('I should see the unpaid work information', () => {
 And('I should see the offender manager details', () => {
   const offenderManager = world.data.offenderManager
   cy.get('.govuk-grid-column-one-third').within(() => {
-    cy.get('.govuk-body').contains(offenderManager)
-    if (offenderManager !== 'Not active') {
+    if (offenderManager) {
+      cy.get('.govuk-body').contains(offenderManager)
       cy.get('.govuk-hint').contains(`Allocated on ${world.data.offenderManagerDetails.allocated}`)
-      cy.get('.govuk-body').contains(world.data.offenderManagerDetails.address1)
-      cy.get('.govuk-body').contains(world.data.offenderManagerDetails.address2)
-      cy.get('.govuk-body').contains(world.data.offenderManagerDetails.address3)
-      cy.get('.govuk-body').contains(world.data.offenderManagerDetails.address4)
-      cy.get('.govuk-body').contains(world.data.offenderManagerDetails.address5)
-      cy.get('.govuk-body').contains(world.data.offenderManagerDetails.postcode)
-      cy.get('.govuk-body').contains(`Telephone: ${world.data.offenderManagerDetails.telephone}`)
     }
   })
 })

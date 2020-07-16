@@ -69,14 +69,7 @@ const currentDefendantWithBreach = {
     previousOrderId: '636401162',
     offenderManager: 'Dotson Avila',
     offenderManagerDetails: {
-      allocated: 'Allocated on 11 Aug 2016',
-      address1: 'NPS Gwynedd',
-      address2: 'Deepends Buildings',
-      address3: '31 Montana Place',
-      address4: 'Bangor',
-      address5: 'Gwynedd',
-      postcode: 'LL6 3CV',
-      telephone: '01895 540 370'
+      allocated: 'Allocated on 11 Aug 2016'
     },
     preSentenceReportDetails: {
       description: 'Pre-Sentence Report - Fast',

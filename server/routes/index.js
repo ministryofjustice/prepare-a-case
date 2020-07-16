@@ -2,7 +2,7 @@ const express = require('express')
 const moment = require('moment')
 const { settings } = require('../../config')
 const { getCaseList, getCase } = require('../services/case-service')
-const { getPersonalDetails, getProbationRecord, getProbationRecordWithRequirements, getAttendanceDetails, getBreachDetails } = require('../services/community-service')
+const { getProbationRecord, getProbationRecordWithRequirements, getSentenceDetails, getBreachDetails } = require('../services/community-service')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
@@ -85,12 +85,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
     const crn = templateValues.data.crn
     const communityResponse = await getProbationRecordWithRequirements(crn)
-    const personalDetails = await getPersonalDetails(crn)
     templateValues.params.showAllPreviousOrders = req.session.showAllPreviousOrders
     templateValues.data.communityData = {
-      ...communityResponse,
-      personalDetails
+      ...communityResponse
     }
+    console.info('communityData:', templateValues.data.communityData.offenderManagers)
     res.render('case-summary-record', templateValues)
   })
 
@@ -106,10 +105,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const { active } = communityResponse.convictions
       .find(conviction => conviction.convictionId.toString() === params.detail.toString())
     if (active) {
-      const attendanceDetails = await getAttendanceDetails(crn, params.detail)
+      const sentenceDetails = await getSentenceDetails(crn, params.detail)
       communityResponse = {
         ...communityResponse,
-        attendanceDetails
+        sentenceDetails
       }
     }
     templateValues.data.communityData = communityResponse || {}
@@ -138,7 +137,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/case/:caseNo/risk', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Risk registers'
+    templateValues.title = 'Risk register'
 
     res.render('case-summary-risk', templateValues)
   })

@@ -57,7 +57,7 @@
 
 {% if currentOrder.active %}
     {# Group appointments by attended/absent and complied/failed #}
-    {%- set attendances = communityData.attendanceDetails.attendances or [] -%}
+    {%- set attendances = communityData.sentenceDetails.attendances or [] -%}
     {%- set attendedAppointments = {
         complied: [],
         failed: []
@@ -306,7 +306,7 @@
             </div>
         {% endif %}
 
-        {%- set unpaidWork = communityData.attendanceDetails.unpaidWork -%}
+        {%- set unpaidWork = communityData.sentenceDetails.unpaidWork -%}
         {% if unpaidWork %}
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">

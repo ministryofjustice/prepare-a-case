@@ -2,11 +2,6 @@ const { request } = require('./utils/request')
 const config = require('../../config')
 const apiUrl = config.apis.courtCaseService.url
 
-const getPersonalDetails = async crn => {
-  const res = await request(`${apiUrl}/offender/${crn}/personal`)
-  return res.data
-}
-
 const getRequirements = async (convictions, crn) => {
   return Promise.all(
     convictions.map(async conviction => {
@@ -37,8 +32,8 @@ const getProbationRecordWithRequirements = async crn => {
   return responseData
 }
 
-const getAttendanceDetails = async (crn, orderId) => {
-  const res = await request(`${apiUrl}/offender/${crn}/convictions/${orderId}`)
+const getSentenceDetails = async (crn, orderId) => {
+  const res = await request(`${apiUrl}/offender/${crn}/sentences/${orderId}`)
   return res.data
 }
 
@@ -53,10 +48,9 @@ const getAttachment = async (crn, documentId) => {
 }
 
 module.exports = {
-  getPersonalDetails,
   getProbationRecord,
   getProbationRecordWithRequirements,
-  getAttendanceDetails,
+  getSentenceDetails,
   getBreachDetails,
   getAttachment
 }

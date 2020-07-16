@@ -58,7 +58,7 @@ Feature: Case summary
     When I navigate to the case details route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
-      | Case details | Probation record | Risk registers |
+      | Case details | Probation record | Risk register |
     And I should see the heading has the defendant name
     And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "CRN:" and the defendant "crn"
@@ -95,7 +95,7 @@ Feature: Case summary
     When I navigate to the case details route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
-      | Case details | Probation record | Risk registers |
+      | Case details | Probation record | Risk register |
     And I should see the heading has the defendant name
     And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "CRN:" and the defendant "crn"
@@ -132,7 +132,7 @@ Feature: Case summary
     When I navigate to the case details route
     Then I should be on the "Case details" page
     And I should see sub navigation with the following links
-      | Case details | Probation record | Risk registers |
+      | Case details | Probation record | Risk register |
     And I should see the heading has the defendant name
     And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "CRN:" and the defendant "crn"
