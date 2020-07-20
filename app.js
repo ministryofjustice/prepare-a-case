@@ -128,6 +128,7 @@ module.exports = function createApp ({ signInService, userService }) {
         Authorization: `Bearer ${req.user.token}`
       }
     }
+    service.reset()
     service.register({
       onRequest (config) {
         config.headers = {
