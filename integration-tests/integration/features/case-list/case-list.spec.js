@@ -123,6 +123,10 @@ And('I should not see pagination', () => {
   cy.get('.moj-pagination').should('not.exist')
 })
 
+And('I should not see filters', () => {
+  cy.get('.pac-filter-card').should('not.exist')
+})
+
 And('I click pagination link {string}', $string => {
   cy.get('.moj-pagination__link').contains($string).click()
 })
