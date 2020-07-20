@@ -19,12 +19,13 @@ const createAttachmentsRouter = require('./server/routes/attachments')
 const healthcheckFactory = require('./server/services/healthcheck')
 const logger = require('./log.js')
 const auth = require('./server/authentication/auth')
+const populateCurrentUser = require('./server/routes/middleware/populateCurrentUser')
 const authorisationMiddleware = require('./server/routes/middleware/authorisationMiddleware')
 const errorHandler = require('./server/errorHandler')
 
 const { authenticationMiddleware } = auth
 
-module.exports = function createApp ({ signInService }) {
+module.exports = function createApp ({ signInService, userService }) {
   const app = express()
 
   auth.init(signInService)
@@ -155,6 +156,9 @@ module.exports = function createApp ({ signInService }) {
     }
     res.redirect(authLogoutUrl)
   })
+
+  const currentUserInContext = populateCurrentUser(userService)
+  app.use(currentUserInContext)
 
   app.use(authorisationMiddleware)
 
