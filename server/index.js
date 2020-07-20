@@ -7,7 +7,7 @@ const authClientBuilder = require('./data/authClientBuilder')
 const createSignInService = require('./authentication/signInService')
 const createUserService = require('./services/userService')
 
-const eventPublisher = require('./services/eventPublisher')(appInsightsClient)
+require('./services/eventPublisher')(appInsightsClient)
 
 const userService = createUserService(authClientBuilder)
 
