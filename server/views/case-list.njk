@@ -183,11 +183,13 @@
         status: status
     }) }}
 
-    {%- from "components/filter/macro.njk" import pacFilter -%}
-    {{ pacFilter({
-        formName: 'listFilterForm',
-        filters: params.filters
-    }) }}
+    {% if params.subsection === '' %}
+        {%- from "components/filter/macro.njk" import pacFilter -%}
+        {{ pacFilter({
+            formName: 'listFilterForm',
+            filters: params.filters
+        }) }}
+    {% endif %}
 
     {% if tableData.rows | length %}
         {% block table %}

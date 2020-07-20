@@ -171,6 +171,7 @@ Feature: Case list
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
     And I should not see pagination
+    And I should not see filters
     And There should be no a11y violations
 
     When I navigate to the "cases" route
@@ -187,6 +188,7 @@ Feature: Case list
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court | Libra case number |
     And I should not see pagination
+    And I should not see filters
     And There should be no a11y violations
 
     When I navigate to the "cases" route
