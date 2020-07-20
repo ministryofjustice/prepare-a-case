@@ -7,7 +7,6 @@ const authClientBuilder = require('./data/authClientBuilder')
 const createSignInService = require('./authentication/signInService')
 const createUserService = require('./services/userService')
 
-// eslint-disable-next-line no-unused-vars
 const eventPublisher = require('./services/eventPublisher')(appInsightsClient)
 
 const userService = createUserService(authClientBuilder)
