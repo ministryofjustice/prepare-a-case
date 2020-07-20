@@ -7,7 +7,7 @@ const getCaseList = async (courtCode, date, filters, subsection) => {
   const allCases = []
   const addedCases = []
   const removedCases = []
-  if (res.data.cases) {
+  if (res.data && res.data.cases) {
     res.data.cases.forEach($case => {
       if ($case.createdToday) {
         allCases.push($case)
