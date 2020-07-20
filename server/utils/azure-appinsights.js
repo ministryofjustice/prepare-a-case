@@ -10,7 +10,6 @@ const defaultName = () => {
 
 module.exports = (name = defaultName()) => {
   if (process.env.APPINSIGHTS_INSTRUMENTATIONKEY) {
-    // eslint-disable-next-line no-console
     console.log('Enabling azure application insights')
     appInsights
       .setup()

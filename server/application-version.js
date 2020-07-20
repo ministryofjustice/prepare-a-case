@@ -1,4 +1,3 @@
-// eslint-disable import/no-unresolved,global-require
 const fs = require('fs')
 
 const packageData = JSON.parse(fs.readFileSync('./package.json').toString())
