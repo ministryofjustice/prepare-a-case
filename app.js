@@ -1,3 +1,5 @@
+const axios = require('axios')
+const { Service } = require('axios-middleware')
 const config = require('./config')
 const express = require('express')
 const compression = require('compression')
@@ -26,6 +28,7 @@ const errorHandler = require('./server/errorHandler')
 const { authenticationMiddleware } = auth
 
 module.exports = function createApp ({ signInService, userService }) {
+  const service = new Service(axios)
   const app = express()
 
   auth.init(signInService)
@@ -101,6 +104,7 @@ module.exports = function createApp ({ signInService, userService }) {
 
   // JWT token refresh
   app.use(async (req, res, next) => {
+    let axiosHeaders = {}
     if (req.user && req.originalUrl !== '/logout') {
       const timeToRefresh = new Date() > req.user.refreshTime
       if (timeToRefresh) {
@@ -120,7 +124,19 @@ module.exports = function createApp ({ signInService, userService }) {
           return res.redirect('/logout')
         }
       }
+      axiosHeaders = {
+        Authorization: `Bearer ${req.user.token}`
+      }
     }
+    service.register({
+      onRequest (config) {
+        config.headers = {
+          ...config.headers,
+          ...axiosHeaders
+        }
+        return config
+      }
+    })
     return next()
   })
 
