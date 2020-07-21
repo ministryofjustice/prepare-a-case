@@ -45,8 +45,16 @@ function testRequirementsValidation (validator, mapping) {
   expect(isValid).toBe(true)
 }
 
+function testSentenceValidation (validator, mapping) {
+  const responseBody = mapping.response.jsonBody
+  const definition = validator.swagger.definitions.SentenceResponse
+  const isValid = validate(validator, responseBody, definition)
+  expect(isValid).toBe(true)
+}
+
 module.exports = {
   testConvictionsValidation,
   testBreachValidation,
-  testRequirementsValidation
+  testRequirementsValidation,
+  testSentenceValidation
 }

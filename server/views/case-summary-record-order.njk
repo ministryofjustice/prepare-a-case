@@ -86,25 +86,25 @@
     {%- set absentComplied = [] -%}
     {%- set attendedFailed = [] -%}
     {%- set absentFailed = [] -%}
-    {% for description, complied in attendedAppointments.complied.flat(Infinity) | groupby(params.getPath("contact.description")) %}
+    {% for description, complied in attendedAppointments.complied.flat(Infinity) | groupby(params.getPath("contactType.description")) %}
         {{ attendedComplied.push({
             count: complied.length,
             description: description
         }) }}
     {% endfor %}
-    {% for description, complied in absentAppointments.complied.flat(Infinity) | groupby(params.getPath("outcome.description")) %}
+    {% for description, complied in absentAppointments.complied.flat(Infinity) | groupby(params.getPath("outcome")) %}
         {{ absentComplied.push({
             count: complied.length,
             description: description
         }) }}
     {% endfor %}
-    {% for description, failed in attendedAppointments.failed.flat(Infinity) | groupby(params.getPath("contact.description")) %}
+    {% for description, failed in attendedAppointments.failed.flat(Infinity) | groupby(params.getPath("contactType.description")) %}
         {{ attendedFailed.push({
             count: failed.length,
             description: description
         }) }}
     {% endfor %}
-    {% for description, failed in absentAppointments.failed.flat(Infinity) | groupby(params.getPath("contact.description")) %}
+    {% for description, failed in absentAppointments.failed.flat(Infinity) | groupby(params.getPath("contactType.description")) %}
         {{ absentFailed.push({
             count: failed.length,
             description: description
@@ -221,7 +221,7 @@
 
         {% if attendances.length %}
             {% set sortedAttendances = attendances | sort(true, false, 'attendanceDate') %}
-            <p class="govuk-body"><span class="govuk-!-font-weight-bold">Last attended</span> {{ moment(sortedAttendances[0].attendanceDate, 'YYYY-MM-DD').format(displayDateFormat) }} - {{ sortedAttendances[0].contact.description }} ({{ "Acceptable" if sortedAttendances[0].complied else "Unacceptable" }})</p>
+            <p class="govuk-body"><span class="govuk-!-font-weight-bold">Last attended</span> {{ moment(sortedAttendances[0].attendanceDate, 'YYYY-MM-DD').format(displayDateFormat) }} - {{ sortedAttendances[0].contactType.description }} ({{ "Acceptable" if sortedAttendances[0].complied else "Unacceptable" }})</p>
         {% endif %}
 
         <div class="govuk-grid-row">
@@ -246,7 +246,7 @@
 
                 {% for complied in attendedComplied | sort(true, false, 'count') %}
                     <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body app-dashboard-count">{{ complied.count }}</span>{{ complied.description }}
+                                class="govuk-body app-dashboard-count">{{ complied.count }}</span> {{ complied.description }}
                     </p>
                 {% endfor %}
 
@@ -256,7 +256,7 @@
 
                 {% for complied in absentComplied | sort(true, false, 'count') %}
                     <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body app-dashboard-count">{{ complied.count }}</span>{{ complied.description }}
+                                class="govuk-body app-dashboard-count">{{ complied.count }}</span> {{ complied.description }}
                     </p>
                 {% endfor %}
 
@@ -276,7 +276,7 @@
 
                 {% for failed in attendedFailed | sort(true, false, 'count') %}
                     <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body app-dashboard-count">{{ failed.count }}</span>{{ failed.description }}
+                                class="govuk-body app-dashboard-count">{{ failed.count }}</span> {{ failed.description }}
                     </p>
                 {% endfor %}
 
@@ -286,7 +286,7 @@
 
                 {% for failed in absentFailed | sort(true, false, 'count') %}
                     <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body app-dashboard-count">{{ failed.count }}</span>{{ failed.description }}
+                                class="govuk-body app-dashboard-count">{{ failed.count }}</span> {{ failed.description }}
                     </p>
                 {% endfor %}
             </div>

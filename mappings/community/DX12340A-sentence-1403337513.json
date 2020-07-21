@@ -16,130 +16,110 @@
           "attended": false,
           "complied": false,
           "attendanceDate": "2018-03-06",
-          "contact": {
+          "contactType": {
             "description": "Planned office visit",
-            "code": 899407
+            "code": "899407"
           },
-          "outcome": {
-            "description": "Employment"
-          }
+          "outcome": "Employment"
         },
         {
           "contactId": 964445,
-          "attended": "",
-          "complied": "",
-          "attendanceDate": "",
-          "contact": {
+          "attended": false,
+          "complied": false,
+          "attendanceDate": "2018-03-06",
+          "contactType": {
             "description": "Planned office visit",
-            "code": 985513
+            "code": "985513"
           },
-          "outcome": {
-            "description": ""
-          }
+          "outcome": ""
         },
         {
           "contactId": 928547,
           "attended": true,
           "complied": true,
           "attendanceDate": "2020-03-04",
-          "contact": {
+          "contactType": {
             "description": "Planned office visit",
-            "code": 947482
+            "code": "947482"
           },
-          "outcome": {
-            "description": "Professional judgement decision"
-          }
+          "outcome": "Professional judgement decision"
         },
         {
           "contactId": 868600,
           "attended": true,
           "complied": true,
           "attendanceDate": "2019-10-09",
-          "contact": {
+          "contactType": {
             "description": "Unpaid work",
-            "code": 878549
+            "code": "878549"
           },
-          "outcome": {
-            "description": "Medical"
-          }
+          "outcome": "Medical"
         },
         {
           "contactId": 826480,
           "attended": false,
           "complied": false,
           "attendanceDate": "2018-11-08",
-          "contact": {
+          "contactType": {
             "description": "Planned office visit",
-            "code": 913536
+            "code": "913536"
           },
-          "outcome": {
-            "description": "Professional judgement decision"
-          }
+          "outcome": "Professional judgement decision"
         },
         {
           "contactId": 881479,
           "attended": true,
           "complied": true,
           "attendanceDate": "2018-07-22",
-          "contact": {
+          "contactType": {
             "description": "Planned office visit",
-            "code": 950459
+            "code": "950459"
           },
-          "outcome": {
-            "description": "Professional judgement decision"
-          }
+          "outcome": "Professional judgement decision"
         },
         {
           "contactId": 874408,
           "attended": true,
           "complied": false,
           "attendanceDate": "2018-10-30",
-          "contact": {
+          "contactType": {
             "description": "IAPS / Accredited programme",
-            "code": 911596
+            "code": "911596"
           },
-          "outcome": {
-            "description": "Rescheduled"
-          }
+          "outcome": "Rescheduled"
         },
         {
           "contactId": 996547,
           "attended": true,
           "complied": true,
           "attendanceDate": "2018-06-06",
-          "contact": {
+          "contactType": {
             "description": "Appointment with External Agency",
-            "code": 809554
+            "code": "809554"
           },
-          "outcome": {
-            "description": "Medical"
-          }
+          "outcome": "Medical"
         },
         {
           "contactId": 932430,
           "attended": true,
           "complied": true,
           "attendanceDate": "2018-12-14",
-          "contact": {
+          "contactType": {
             "description": "IAPS / Accredited programme",
-            "code": 848483
+            "code": "848483"
           },
-          "outcome": {
-            "description": "Rescheduled"
-          }
+          "outcome": "Rescheduled"
         },
         {
           "contactId": 993407,
           "attended": true,
           "complied": true,
           "attendanceDate": "2018-08-17",
-          "contact": {
+          "contactType": {
             "description": "Unpaid work",
-            "code": 917402
+            "code": "917402"
           },
-          "outcome": {
-            "description": "Professional judgement decision"
-          }
+          "outcome": "Professional judgement decision"
         }
       ],
       "unpaidWork": {

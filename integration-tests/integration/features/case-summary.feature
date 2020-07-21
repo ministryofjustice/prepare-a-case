@@ -231,7 +231,7 @@ Feature: Case summary
 
     And I should see the body text with the defendant "currentOrderOffence"
     And I should see the following level 3 headings
-      | Appointments to date | Complied | Failures to comply | Awaiting outcome |
+      | Appointments to date | Complied | Failures to comply |
     And I should see the body text "Last attended" and the defendant "currentOrderLastAttendance"
 
     And I should see the correct start, end and elapsed time headings
@@ -281,7 +281,7 @@ Feature: Case summary
 
     And I should see the body text with the defendant "currentOrderOffence"
     And I should see the following level 3 headings
-      | Appointments to date | Complied | Failures to comply | Awaiting outcome |
+      | Appointments to date | Complied | Failures to comply |
     And I should see the body text "Last attended" and the defendant "currentOrderLastAttendance"
 
     And I should see the correct start, end and elapsed time headings
