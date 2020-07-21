@@ -28,7 +28,7 @@ whitelist:
   cloudplatform-live1-1: "35.178.209.113/32"
   cloudplatform-live1-2: "3.8.51.207/32"
   cloudplatform-live1-3: "35.177.252.54/32"
-# @FIXME: settings for Pen Test (PIC-589), remove once completed
+  # @FIXME: settings for Pen Test (PIC-589), remove once completed
   pen-test-1: "31.221.110.80/29"
   pen-test-2: "195.95.131.0/24"
   pen-test-3: "5.148.69.20"
