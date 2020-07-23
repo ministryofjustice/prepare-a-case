@@ -19,11 +19,13 @@ RUN npm i
 
 COPY . .
 
-RUN npm ci --only=production
-    npm run css-build && \
+RUN npm run css-build && \
     export BUILD_NUMBER=${BUILD_NUMBER} && \
     export GIT_REF=${GIT_REF} && \
     npm run record-build-info
+
+RUN npm ci --only=production
+
 
 
 EXPOSE 3000
