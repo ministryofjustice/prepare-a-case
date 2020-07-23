@@ -22,7 +22,7 @@ const getProbationRecord = async crn => {
 
 const getProbationRecordWithRequirements = async crn => {
   const responseData = await getProbationRecord(crn)
-  if (responseData.convictions) {
+  if (responseData && responseData.convictions) {
     const enrichedConvictions = await getRequirements(responseData.convictions, crn)
     return {
       ...responseData,

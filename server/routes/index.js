@@ -89,7 +89,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.data.communityData = {
       ...communityResponse
     }
-    console.info('communityData:', templateValues.data.communityData.offenderManagers)
     res.render('case-summary-record', templateValues)
   })
 
