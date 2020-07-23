@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { axiosError } = require('axios-error')
+const axiosError = require('axios-error')
 
 const fileRequest = async url => {
   let response = {}
