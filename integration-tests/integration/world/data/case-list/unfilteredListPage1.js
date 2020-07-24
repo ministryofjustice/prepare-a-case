@@ -23,7 +23,7 @@ const unfilteredListPage1 = {
       },
       {
         defendant: 'Guadalupe Hess',
-        probationStatus: 'No record',
+        numberOfPossibleMatches: 3,
         offence: '*Attempt theft from the person of another',
         listing: '3rd',
         session: 'Morning',

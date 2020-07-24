@@ -7,8 +7,12 @@ const getCaseList = async (courtCode, date, filters, subsection) => {
   const allCases = []
   const addedCases = []
   const removedCases = []
+  let unmatchedRecords = 0
   if (res.data && res.data.cases) {
     res.data.cases.forEach($case => {
+      if ($case.numberOfPossibleMatches > 0) {
+        unmatchedRecords++
+      }
       if ($case.createdToday) {
         allCases.push($case)
         addedCases.push($case)
@@ -47,6 +51,7 @@ const getCaseList = async (courtCode, date, filters, subsection) => {
     totalCount: allCases.length,
     addedCount: addedCases.length,
     removedCount: removedCases.length,
+    unmatchedRecords: unmatchedRecords,
     cases: filteredCases
   }
 }
