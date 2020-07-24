@@ -16,8 +16,6 @@
     {{ tableData.head.push({ text: "Libra case number", format: "numeric" }) }}
 {% endif -%}
 
-{%- set unmatchedRecords = 0 -%}
-
 {% for item in data %}
 
     {% set offences = [] %}
