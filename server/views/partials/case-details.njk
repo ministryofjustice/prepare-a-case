@@ -8,7 +8,7 @@
     active: title === 'Case details'
 }] %}
 
-{% if data.probationStatus !== 'No record' %}
+{% if data.probationStatus === 'Current' or data.probationStatus === 'Previously known' %}
     {{ subNavItems.push({
         text: 'Probation record',
         href: '/case/' + data.caseNo + '/record',
@@ -45,6 +45,7 @@
         pnc: pnc,
         dob: dob,
         probationStatus: probationStatus,
+        numberOfPossibleMatches: data.numberOfPossibleMatches,
         breach: breach
     }) }}
 

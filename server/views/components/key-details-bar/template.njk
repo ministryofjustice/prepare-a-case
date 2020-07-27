@@ -5,15 +5,18 @@
       {% if params.crn | length %}
         <span class="govuk-body pac-key-details-bar__divider"><strong>CRN: </strong>{{ params.crn }}</span>
       {% endif %}
-      {% if params.pnc %}
+      {% if params.pnc and not params.numberOfPossibleMatches %}
         <span class="govuk-body pac-key-details-bar__divider"><strong>PNC: </strong>{{ params.pnc }}</span>
+      {% endif %}
+      {% if params.numberOfPossibleMatches %}
+        <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong> Possible nDelius record</span>
       {% endif %}
     </div>
     <div class="pac-key-details-bar__bottom-block">
-      {% if params.probationStatus %}
+      {% if params.probationStatus and not params.numberOfPossibleMatches %}
         <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong>{{ params.probationStatus }}{% if params.breach  %} (Breach){% endif %}</span>
       {% endif %}
-      {% if params.dob %}
+      {% if params.dob and not params.numberOfPossibleMatches %}
         <span class="govuk-body pac-key-details-bar__divider"><strong>Date of birth: </strong>{{ params.dob }}</span>
       {% endif %}
     </div>

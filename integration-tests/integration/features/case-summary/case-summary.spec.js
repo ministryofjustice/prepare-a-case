@@ -8,6 +8,10 @@ import World from '../../world/World'
 const world = new World('caseSummary')
 const displayDateFormat = 'D MMM YYYY'
 
+And('I am looking at a not matched defendant', () => {
+  world.scenario = 'notMatchedDefendant'
+})
+
 And('I am looking at a not known defendant', () => {
   world.scenario = 'notKnownDefendant'
 })

@@ -2,8 +2,22 @@
 
 {%- set moment = params.moment -%}
 {%- set communityData = data.communityData -%}
+{% set bannerHtml %}
+    <h2 class="govuk-heading-m">{{ data.numberOfPossibleMatches }} possible nDelius records found for {{ data.defendantName }}.
+    <a href="#" class="govuk-link govuk-link--no-visited-state">Review records</a>
+    </h2>
+{% endset %}
 
 {% block caseContent %}
+
+    {% if data.numberOfPossibleMatches > 0 %}
+        {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+        {{ mojBanner({
+            classes: 'govuk-!-display-inline-block',
+            type: 'information',
+            html: bannerHtml
+        }) }}
+    {% endif %}
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
