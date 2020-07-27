@@ -37,6 +37,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         caseCount: caseCount,
         addedCount: response.addedCount,
         removedCount: response.removedCount,
+        unmatchedRecords: response.unmatchedRecords,
         lastUpdated: response ? response.lastUpdated : '',
         totalDays: settings.casesTotalDays,
         ...params,

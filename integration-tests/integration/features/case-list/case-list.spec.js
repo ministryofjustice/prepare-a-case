@@ -21,6 +21,17 @@ And('I should see sub navigation with default dates', () => {
   cy.get('.pac-pagination-link---text').eq(0).contains('Next day')
 })
 
+And('I should see that {int} defendants have possible nDelius records', $int => {
+  cy.get('.pac-inset-text').within(() => {
+    cy.get('.govuk-link').contains('Review defendants with possible nDelius records').should('exist')
+    cy.get('.govuk-body').contains(`${$int} defendants partially match existing records and need review.`).should('exist')
+  })
+})
+
+And('I should not see that any defendants have possible nDelius records', () => {
+  cy.get('.pac-inset-text').should('not.exist')
+})
+
 And('I should see the case list table with headings', $data => {
   function cellCheck ($row, $col, $text) {
     cy.get('.govuk-table__body > .govuk-table__row').eq($row).within(() => {
@@ -53,9 +64,14 @@ And('I should see the case list table with headings', $data => {
 
   world.data.list.forEach(($item, $index) => {
     cellCheck($index, 0, $item.defendant)
-    cellCheck($index, 1, $item.probationStatus)
+    if ($item.probationStatus) {
+      cellCheck($index, 1, $item.probationStatus)
+    }
     if ($item.terminationDate) {
       cellCheck($index, 1, $item.terminationDate)
+    }
+    if ($item.numberOfPossibleMatches > 0) {
+      flagCheck($index, 1, 'Possible nDelius Record')
     }
     if ($item.breach) {
       flagCheck($index, 1, 'Breach')

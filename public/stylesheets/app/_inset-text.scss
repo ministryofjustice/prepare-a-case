@@ -1,0 +1,10 @@
+.pac-inset-text {
+  margin: 0;
+  display: inline-block;
+  padding-right: 30px;
+  background-color: govuk-colour("light-grey");
+
+  &--important {
+    border-left-color: govuk-colour("red");
+  }
+}

@@ -14,6 +14,7 @@ Feature: Case list
     And I should see the caption with the relevant court
     And I should see sub navigation with default dates
     And I should see a timestamp of the most recent Libra data
+    And I should see that 2 defendants have possible nDelius records
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
@@ -45,6 +46,7 @@ Feature: Case list
     Then I should see the caption with the relevant court
     And I should see sub navigation with default dates
     And I should see a timestamp of the most recent Libra data
+    And I should see that 2 defendants have possible nDelius records
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
@@ -75,6 +77,7 @@ Feature: Case list
     Then I should see the caption with the relevant court
     And I should see sub navigation with default dates
     And I should see a timestamp of the most recent Libra data
+    And I should see that 2 defendants have possible nDelius records
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
@@ -104,6 +107,7 @@ Feature: Case list
     Then I should see the caption with the relevant court
     And I should see sub navigation with default dates
     And I should see a timestamp of the most recent Libra data
+    And I should see that 2 defendants have possible nDelius records
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
@@ -143,6 +147,7 @@ Feature: Case list
     Then I should see the caption with the relevant court
     And I should see sub navigation with default dates
     And I should see a timestamp of the most recent Libra data
+    And I should see that 2 defendants have possible nDelius records
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
@@ -167,6 +172,7 @@ Feature: Case list
     And I am viewing the "addedCasesList" case list
     Then I should be on the "Cases" page
     When I click the "Recently added (4)" link
+    And I should see that 2 defendants have possible nDelius records
     And I should see medium heading with text "4 cases added to today's case list at 08:30am"
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
@@ -184,6 +190,7 @@ Feature: Case list
     And I am viewing the "removedCasesList" case list
     Then I should be on the "Cases" page
     When I click the "Removed cases (1)" link
+    And I should see that 2 defendants have possible nDelius records
     And I should see medium heading with text "1 case removed from today's case list at 08:30am"
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court | Libra case number |
@@ -204,6 +211,7 @@ Feature: Case list
     And I should see the heading "Cases"
 
     And I should see the caption with the relevant court
+    And I should not see that any defendants have possible nDelius records
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
