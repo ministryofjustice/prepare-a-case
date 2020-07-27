@@ -15,6 +15,38 @@ Feature: Case summary
     And I should see the heading has the defendant name
     And There should be no a11y violations
 
+  Scenario: View the case summary for the given defendant that has not been matched with an existing nDelius record
+    Given I am an authenticated user
+    And I am looking at a not matched defendant
+
+    When I navigate to the case details route
+    Then I should be on the "Case details" page
+    And I should see sub navigation with the following links
+      | Case details |
+    And I should see the heading has the defendant name
+    And I should see the body text "Probation status: Possible nDelius record"
+    And I should see a straight line divide
+    And I should see the following level 2 headings
+      | possible nDelius records found | Appearance | Offences |
+    And I should see the following level 3 headings
+      | CPS pack |
+
+    And I should see court room, session and the correct listing
+    Then I should see a list of charges in an accordion component
+
+    And I should see a summary list
+    And I should see the row with the key "Name"
+    And I should see the value with defendant "name"
+    Then I should see the row with the key "Gender"
+    And I should see the value with defendant "gender"
+    Then I should see the row with the key "Date of birth"
+    And I should see the value with defendant "dateOfBirth"
+    Then I should see the row with the key "Address"
+    And I should see the value with defendant "address"
+
+    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
+    And There should be no a11y violations
+
   Scenario: View the case summary for the given defendant with no probation record
     Given I am an authenticated user
     And I am looking at a not known defendant
