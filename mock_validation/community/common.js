@@ -1,6 +1,7 @@
 /* global expect */
 const moment = require('moment')
 const { validate } = require('../utils/validator')
+const { _ } = require('lodash')
 
 function testConvictionsValidation (validator, mapping) {
   const responseBody = mapping.response.jsonBody
@@ -26,28 +27,59 @@ function testConvictionsValidation (validator, mapping) {
     })
   }
 
-  const definition = validator.swagger.definitions['Probation Record']
+  const definition = getDefinition(mapping.request.urlPathPattern, validator.swagger.paths)
   const isValid = validate(validator, responseBody, definition)
   expect(isValid).toBe(true)
 }
 
+
+function isWildcard (actual) {
+  const matches = actual.match(/^{.*}$/)
+  return matches && matches.length !== 0
+}
+
+function pathsMatch (actual, toMatch) {
+  return actual === toMatch || isWildcard(toMatch)
+}
+
+function matchesPath (path) {
+  return (actualPath) => {
+    if (_.split(path, '/').length !== _.split(actualPath,'/').length){
+      return false
+    }
+
+    return _.every(_.zip(path.split('/'), actualPath.split('/'))
+      // [ ["foo", "spam"], ["{bar}", "eggs"], ["{baz}", "ham"]]
+      .map((zipped) => pathsMatch(zipped[0], zipped[1])))
+
+  }
+
+}
+
+const getDefinition = (pathToMatch, paths) => {
+  const filteredDefinitions = _.filter(Object.keys(paths), matchesPath(pathToMatch))
+  console.log(`Matches for ${pathToMatch}: `, filteredDefinitions)
+  expect(filteredDefinitions.length).toBe(1)
+  return paths[filteredDefinitions[0]]
+}
+
 function testBreachValidation (validator, mapping) {
   const responseBody = mapping.response.jsonBody
-  const definition = validator.swagger.definitions.BreachResponse
+  const definition = getDefinition(mapping.request.urlPathPattern, validator.swagger.paths)
   const isValid = validate(validator, responseBody, definition)
   expect(isValid).toBe(true)
 }
 
 function testRequirementsValidation (validator, mapping) {
   const responseBody = mapping.response.jsonBody
-  const definition = validator.swagger.definitions['Lists of Requirements']
+  const definition = getDefinition(mapping.request.urlPathPattern, validator.swagger.paths)
   const isValid = validate(validator, responseBody, definition)
   expect(isValid).toBe(true)
 }
 
 function testSentenceValidation (validator, mapping) {
   const responseBody = mapping.response.jsonBody
-  const definition = validator.swagger.definitions.SentenceResponse
+  const definition = getDefinition(mapping.request.urlPathPattern, validator.swagger.paths)
   const isValid = validate(validator, responseBody, definition)
   expect(isValid).toBe(true)
 }
