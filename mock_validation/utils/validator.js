@@ -6,8 +6,9 @@ async function getValidator () {
   let response
   try {
     response = await new SwaggerClient(`${swaggerUrl}/v2/api-docs`)
-  } catch {
-    throw new Error('Error fetching Swagger docs from ' + swaggerUrl)
+  } catch (error) {
+    console.error('Error fetching Swagger docs from ' + swaggerUrl, error)
+    throw error
   }
   return new Validator(response.spec)
 }
