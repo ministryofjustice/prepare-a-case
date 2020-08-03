@@ -32,7 +32,6 @@ function testConvictionsValidation (validator, mapping) {
   expect(isValid).toBe(true)
 }
 
-
 function isWildcard (actual) {
   const matches = actual.match(/^{.*}$/)
   return matches && matches.length !== 0
@@ -44,16 +43,14 @@ function pathsMatch (actual, toMatch) {
 
 function matchesPath (path) {
   return (actualPath) => {
-    if (_.split(path, '/').length !== _.split(actualPath,'/').length){
+    if (_.split(path, '/').length !== _.split(actualPath, '/').length) {
       return false
     }
 
     return _.every(_.zip(path.split('/'), actualPath.split('/'))
       // [ ["foo", "spam"], ["{bar}", "eggs"], ["{baz}", "ham"]]
       .map((zipped) => pathsMatch(zipped[0], zipped[1])))
-
   }
-
 }
 
 const getDefinition = (pathToMatch, paths) => {

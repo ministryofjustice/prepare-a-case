@@ -131,6 +131,20 @@ jobs:
       - store_artifacts:
           path: coverage
 
+  mock-validation-test:
+    executor: builder
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/app
+      - restore_cache:
+          key: dependencies-cache-{{ checksum "package.json" }}
+      - run:
+          name: Unit tests
+          command: env COURT_CASE_SERVICE_URL=https://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk npm run mock-validation-test
+      - store_test_results:
+          path: mock-validation-test-results
+
   integration_test:
     executor: builder
     steps:
@@ -282,6 +296,9 @@ workflows:
           requires:
             - build
       - test:
+          requires:
+            - build
+      - mock-validation-test:
           requires:
             - build
       - integration_test:
