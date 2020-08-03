@@ -9,3 +9,13 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:8080/auth/health"]
     environment:
       - SPRING_PROFILES_ACTIVE=dev
+
+  court-case-service:
+    image: docker.io/mojdigitalstudio/court-case-service:latest
+    container_name: court-case-service
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/auth/health"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
