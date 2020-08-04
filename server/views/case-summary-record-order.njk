@@ -24,7 +24,7 @@
 
 {%- set currentOrder = {} -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
-    {% if order.convictionId | string === params.detail | string %}
+    {% if order.convictionId | string === params.convictionId | string %}
         {%- set currentOrder = order -%}
     {% endif %}
 {% endfor -%}

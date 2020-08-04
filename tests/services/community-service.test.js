@@ -60,15 +60,15 @@ describe('Community service', () => {
   })
 
   it('should call the API to request attendance details data', async () => {
-    moxios.stubRequest(`${apiUrl}/offender/D123456/sentences/12345678`, {
+    moxios.stubRequest(`${apiUrl}/offender/D123456/convictions/12345678/sentences/987654321`, {
       status: 200,
       response: {
         attendances: []
       }
     })
 
-    const response = await getSentenceDetails('D123456', '12345678')
-    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/sentences/12345678`)
+    const response = await getSentenceDetails('D123456', '12345678', '987654321')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/convictions/12345678/sentences/987654321`)
     return response
   })
 

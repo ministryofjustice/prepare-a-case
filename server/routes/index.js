@@ -93,7 +93,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary-record', templateValues)
   })
 
-  router.get('/case/:caseNo/record/:detail?', health, defaults, async (req, res) => {
+  router.get('/case/:caseNo/record/:convictionId?', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Order details'
 
@@ -102,10 +102,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
     let communityResponse = await getProbationRecordWithRequirements(crn)
 
-    const { active } = communityResponse.convictions
-      .find(conviction => conviction.convictionId.toString() === params.detail.toString())
+    const { active, sentence } = communityResponse.convictions
+      .find(conviction => conviction.convictionId.toString() === params.convictionId.toString())
     if (active) {
-      const sentenceDetails = await getSentenceDetails(crn, params.detail)
+      const sentenceDetails = await getSentenceDetails(crn, params.convictionId, sentence.sentenceId)
       communityResponse = {
         ...communityResponse,
         sentenceDetails

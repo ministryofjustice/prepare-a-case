@@ -144,13 +144,16 @@ describe('Routes', () => {
     communityResponse = {
       convictions: [{
         convictionId: 1403337513,
-        active: true
+        active: true,
+        sentence: {
+          sentenceId: '12345678'
+        }
       }]
     }
     const response = await request(app).get('/case/668911253/record/1403337513')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '668911253')
     expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
-    expect(communityService.getSentenceDetails).toHaveBeenCalledWith('D985513', '1403337513')
+    expect(communityService.getSentenceDetails).toHaveBeenCalledWith('D985513', '1403337513', '12345678')
     return response
   })
 
