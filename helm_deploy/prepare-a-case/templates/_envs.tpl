@@ -42,4 +42,7 @@ env:
 
   - name: CASES_PER_PAGE
     value: {{ .Values.env.CASES_PER_PAGE | quote }}
+
+  - name: COURT_CODE
+    value: {{ .Values.env.COURT_CODE | quote }}
 {{- end -}}
