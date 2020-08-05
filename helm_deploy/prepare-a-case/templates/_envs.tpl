@@ -45,4 +45,7 @@ env:
 
   - name: COURT_CODE
     value: {{ .Values.env.COURT_CODE | quote }}
+
+  - name: COURT_NAME
+    value: {{ .Values.env.COURT_NAME | quote }}
 {{- end -}}

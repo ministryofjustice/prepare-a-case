@@ -21,6 +21,7 @@ env:
   CASES_PER_PAGE: 20
   NOMIS_AUTH_URL: https://gateway.prod.nomis-api.service.hmpps.dsd.io/auth
   COURT_CODE: B10JQ00
+  COURT_NAME: "North Tyneside Magistrates' Court"
 
 whitelist:
   office: "217.33.148.210/32"
