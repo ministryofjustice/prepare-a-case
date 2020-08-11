@@ -1,0 +1,56 @@
+{% extends "partials/layout.njk" %}
+
+{% set tableData = {
+    head: [
+        { text: "Defendant" },
+        { text: "nDelius records found" },
+        { text: "Action" }
+    ],
+    rows: []
+} %}
+
+{% for item in data %}
+    {% if item.numberOfPossibleMatches %}
+        {%- set tableRow = [
+            { text: item.defendantName | escape },
+            { text: item.numberOfPossibleMatches | escape },
+            { text: ('<a href="/match/defendant/' + (item.caseNo | escape) + '" class="pac-defendant-link govuk-link govuk-link--no-visited-state">Review records</a>') | safe }
+        ] -%}
+        {{ tableData.rows.push(tableRow) }}
+    {% endif %}
+{% endfor %}
+
+{% block backlink %}
+
+    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
+    {{ govukBackLink({
+        text: "Back to cases",
+        href: '/cases/' + params.date
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="govuk-heading-l">Defendants with possible nDelius records</h1>
+
+    {% if tableData.rows | length %}
+        <p class="govuk-heading-m">{{ tableData.rows | length }} defendants partially match with existing records.</p>
+        <p class="govuk-body">Review and confirm the correct record for each defendant.</p>
+    {% else %}
+        <p class="govuk-heading-m">All defendants have been matched with existing records.</p>
+    {% endif %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if tableData.rows | length %}
+                {%- from "govuk/components/table/macro.njk" import govukTable -%}
+                {{ govukTable(tableData) }}
+            {% endif %}
+
+        </div>
+        <div class="govuk-grid-column-one-third">&nbsp;</div>
+    </div>
+
+{% endblock %}

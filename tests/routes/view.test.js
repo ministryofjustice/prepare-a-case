@@ -213,4 +213,10 @@ describe('Routes', () => {
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '8678951874')
     return response
   })
+
+  it('bulk matching route should call the case service to fetch case data', async () => {
+    const response = await request(app).get('/match/bulk/2020-01-01')
+    expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01')
+    return response
+  })
 })
