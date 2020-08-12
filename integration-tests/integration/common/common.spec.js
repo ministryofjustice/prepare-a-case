@@ -1,6 +1,7 @@
 /* global cy */
 import { Before, And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import 'cypress-axe'
+import moment from 'moment'
 
 Before(() => {
   cy.task('stubLogin')
@@ -19,12 +20,20 @@ When('I navigate to the {string} route', $route => {
   cy.visit(`${$route}`)
 })
 
+When('I navigate to the {string} route for today', $route => {
+  cy.visit(`${$route}${moment().format('YYYY-MM-DD')}`)
+})
+
 When('I view the court list', () => {
   cy.visit('cases')
 })
 
 Then('I should be on the {string} page', $title => {
   cy.get('title').contains(`${$title} - `)
+})
+
+And('I should see the medium heading {string}', $string => {
+  cy.get('.govuk-heading-m').contains($string)
 })
 
 And('I should see the heading {string}', $title => {

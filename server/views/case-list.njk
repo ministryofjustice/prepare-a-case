@@ -133,7 +133,7 @@
         {%- from "components/inset-text/macro.njk" import insetText -%}
         {{ insetText({
             linkText: "Review defendants with possible nDelius records",
-            link: "/cases/" + params.date + "/match-records",
+            link: "/match/bulk/" + params.date,
             text: params.unmatchedRecords + " defendants partially match existing records and need review."
         }) }}
     {% endif %}

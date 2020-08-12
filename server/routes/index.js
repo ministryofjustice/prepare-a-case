@@ -141,5 +141,21 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
     res.render('case-summary-risk', templateValues)
   })
+
+  router.get('/match/bulk/:date', health, defaults, async (req, res) => {
+    const params = req.params
+    const response = await getCaseList(params.courtCode, params.date)
+    const templateValues = {
+      title: 'Match defendant records',
+      params: {
+        ...params
+      },
+      data: response.cases
+    }
+    req.session.matchType = 'bulk'
+    req.session.matchDate = params.date
+    res.render('match-records', templateValues)
+  })
+
   return router
 }
