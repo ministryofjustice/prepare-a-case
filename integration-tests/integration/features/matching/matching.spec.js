@@ -25,11 +25,35 @@ And('I should see the match defendants table with headings', $data => {
     })
   })
 
-  console.log('DATA:', world.data)
-
   world.data.list.forEach(($item, $index) => {
     cellCheck($index, 0, $item.defendant)
     cellCheck($index, 1, $item.possibleMatches)
     cellCheck($index, 2, 'Review records', `/match/defendant/${$item.caseId}`)
+  })
+})
+
+And('I should see the defendant record options', $data => {
+  function cellCheck ($index, $row, $title, $text) {
+    cy.get('fieldset').within(() => {
+      cy.get('table').eq($index).within(() => {
+        cy.get('.govuk-table__body > .govuk-table__row').eq($row).within(() => {
+          cy.get('.govuk-table__header').eq(0).contains($title)
+          cy.get('.govuk-table__cell').eq(0).should('exist')
+          if ($text !== '') {
+            cy.get('.govuk-table__cell').eq(0).contains($text)
+          }
+        })
+      })
+    })
+  }
+
+  world.data.list.forEach(($item, $index) => {
+    cellCheck($index, 0, 'Name', $item.name)
+    cellCheck($index, 1, 'DOB', $item.dob)
+    cellCheck($index, 2, 'Address', $item.address)
+    cellCheck($index, 3, 'CRN', $item.crn)
+    cellCheck($index, 4, 'PNC', $item.pnc)
+    cellCheck($index, 5, 'Probation status', $item.probationStatus)
+    cellCheck($index, 6, 'Most recent event', $item.mostRecentEvent)
   })
 })

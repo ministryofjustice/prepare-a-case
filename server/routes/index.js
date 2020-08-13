@@ -1,7 +1,7 @@
 const express = require('express')
 const moment = require('moment')
 const { settings } = require('../../config')
-const { getCaseList, getCase } = require('../services/case-service')
+const { getCaseList, getCase, getMatchDetails } = require('../services/case-service')
 const { getProbationRecord, getProbationRecordWithRequirements, getSentenceDetails, getBreachDetails } = require('../services/community-service')
 
 const { health } = require('./middleware/healthcheck')
@@ -76,7 +76,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/case/:caseNo/details', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Case details'
-
+    templateValues.session = {
+      ...req.session
+    }
+    req.session.confirmedMatchName = undefined
+    req.session.matchName = undefined
+    req.session.matchType = 'defendant'
+    req.session.matchDate = undefined
     res.render('case-summary', templateValues)
   })
 
@@ -146,15 +152,54 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const params = req.params
     const response = await getCaseList(params.courtCode, params.date)
     const templateValues = {
-      title: 'Match defendant records',
+      title: 'Defendants with possible nDelius records',
+      session: {
+        ...req.session
+      },
       params: {
         ...params
       },
       data: response.cases
     }
+    req.session.confirmedMatchName = undefined
+    req.session.matchName = undefined
     req.session.matchType = 'bulk'
     req.session.matchDate = params.date
     res.render('match-records', templateValues)
+  })
+
+  router.get('/match/defendant/:caseNo', health, defaults, async (req, res) => {
+    const templateValues = await getCaseAndTemplateValues(req)
+    templateValues.title = 'Review possible nDelius records'
+    const response = await getMatchDetails(req.params.courtCode, req.params.caseNo)
+    templateValues.session = {
+      ...req.session
+    }
+    templateValues.data = {
+      ...templateValues.data,
+      matchData: response && response.offenderMatchDetails
+    }
+    req.session.confirmedMatchName = undefined
+    req.session.matchName = templateValues.data.defendantName
+    req.session.formError = false
+    res.render('match-defendant', templateValues)
+  })
+
+  router.post('/match/defendant/:caseNo', health, defaults, async (req, res) => {
+    if (!req.body.crn) {
+      req.session.confirmedMatchName = undefined
+      req.session.formError = true
+      res.redirect('/match/defendant/' + req.params.caseNo)
+    } else {
+      req.session.confirmedMatchName = req.session.matchName
+      let redirectUrl
+      if (req.session.matchType === 'bulk') {
+        redirectUrl = '/match/bulk/' + req.session.matchDate
+      } else {
+        redirectUrl = '/case/' + req.params.caseNo + '/details'
+      }
+      res.redirect(redirectUrl)
+    }
   })
 
   return router

@@ -119,7 +119,7 @@ describe('Routes', () => {
     return response
   })
 
-  it('case summary details route should redirect when viewing all previous orders', async () => {
+  it('case summary details route should redirect when viewing all previous orders', () => {
     return request(app).post('/case/8678951874/record', {}).then(response => {
       expect(response.statusCode).toEqual(302)
     })
@@ -218,5 +218,24 @@ describe('Routes', () => {
     const response = await request(app).get('/match/bulk/2020-01-01')
     expect(caseService.getCaseList).toHaveBeenCalledWith('SHF', '2020-01-01')
     return response
+  })
+
+  it('defendant match selection screen should call the casae service to fetch case data and match details data', async () => {
+    const response = await request(app).get('/match/defendant/3597035492')
+    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '3597035492')
+    expect(caseService.getMatchDetails).toHaveBeenCalledWith('SHF', '3597035492')
+    return response
+  })
+
+  it('defendant match selection route should redirect when form error', () => {
+    return request(app).post('/match/defendant/3597035492', {}).then(response => {
+      expect(response.statusCode).toEqual(302)
+    })
+  })
+
+  it('defendant match selection route should redirect when submitting confirmation', () => {
+    return request(app).post('/match/defendant/3597035492', { crn: 'V178657' }).then(response => {
+      expect(response.statusCode).toEqual(302)
+    })
   })
 })

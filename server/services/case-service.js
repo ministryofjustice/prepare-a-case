@@ -61,7 +61,13 @@ const getCase = async (courtCode, caseNo) => {
   return res.data
 }
 
+const getMatchDetails = async (courtCode, caseNo) => {
+  const res = await request(`${apiUrl}/court/${courtCode}/case/${caseNo}/matchesDetail`)
+  return res.data
+}
+
 module.exports = {
+  getMatchDetails,
   getCaseList,
   getCase
 }
