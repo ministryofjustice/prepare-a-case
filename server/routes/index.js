@@ -46,6 +46,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       data: response.cases.slice(startCount, endCount) || []
     }
     req.session.currentView = params.subsection
+    req.session.caseListDate = params.date
     res.render('case-list', templateValues)
   })
 
@@ -62,8 +63,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
   async function getCaseAndTemplateValues (req) {
     const params = req.params
     const response = await getCase(params.courtCode, params.caseNo)
+    const caseListDate = req.session.caseListDate
     return {
       healthy: req.healthy,
+      caseListDate,
       params: {
         ...params
       },
@@ -73,9 +76,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
   }
 
-  router.get('/case/:caseNo/details', health, defaults, async (req, res) => {
+  router.get('/case/:caseNo/summary', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Case details'
+    templateValues.title = 'Case summary'
     templateValues.session = {
       ...req.session
     }

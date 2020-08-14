@@ -32,8 +32,12 @@ And('I am looking at a current defendant with breach', () => {
   world.scenario = 'currentDefendantWithBreach'
 })
 
-When('I navigate to the case details route', () => {
-  cy.visit(`case/${world.data.caseNo}/details`)
+And('I should see Back to cases link with href of case list date', () => {
+  cy.get('.govuk-back-link').contains('Back to cases').should('exist').should('have.attr', 'href').and('include', `${moment().format('YYYY-MM-DD')}`)
+})
+
+When('I navigate to the case summary route', () => {
+  cy.visit(`case/${world.data.caseNo}/summary`)
 })
 
 When('I navigate to the probation record route', () => {

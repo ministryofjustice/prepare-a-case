@@ -112,6 +112,8 @@
     {% endfor %}
 {% endif %}
 
+{% block backlink %}{% endblock %}
+
 {% block caseContent %}
 
     {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}

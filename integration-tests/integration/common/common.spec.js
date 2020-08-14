@@ -66,16 +66,8 @@ And('I should see the following table headings', $data => {
   })
 })
 
-And('I should type in my username', () => {
-  cy.get('#username').type('katie.cawthorne')
-})
-
 And('I should logout', () => {
   cy.get('.moj-header__navigation-link').click()
-})
-
-And('I should type in my password', () => {
-  cy.get('#password').type('Hulksmash14')
 })
 
 And('I should not see the heading level {int} with text {string}', ($level, $text) => {

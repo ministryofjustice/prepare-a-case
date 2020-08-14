@@ -11,7 +11,7 @@ Feature: Case summary
     And I should see the heading "Cases"
     And I should see the caption with the relevant court
     When I click the defendant name link
-    Then I should be on the "Case details" page
+    Then I should be on the "Case summary" page
     And I should see the heading has the defendant name
     And There should be no a11y violations
 
@@ -19,10 +19,11 @@ Feature: Case summary
     Given I am an authenticated user
     And I am looking at a not matched defendant
 
-    When I navigate to the case details route
-    Then I should be on the "Case details" page
+    When I navigate to the case summary route
+    Then I should be on the "Case summary" page
+    And I should see Back to cases link with href of case list date
     And I should see sub navigation with the following links
-      | Case details |
+      | Case summary |
     And I should see the heading has the defendant name
     And I should see the body text "Probation status: Possible nDelius record"
     And I should see a straight line divide
@@ -51,10 +52,11 @@ Feature: Case summary
     Given I am an authenticated user
     And I am looking at a not known defendant
 
-    When I navigate to the case details route
-    Then I should be on the "Case details" page
+    When I navigate to the case summary route
+    Then I should be on the "Case summary" page
+    And I should see Back to cases link with href of case list date
     And I should see sub navigation with the following links
-      | Case details |
+      | Case summary |
     And I should see the heading has the defendant name
     And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "PNC:" and the defendant "pnc"
@@ -87,10 +89,11 @@ Feature: Case summary
     Given I am an authenticated user
     And I am looking at a previously known defendant
 
-    When I navigate to the case details route
-    Then I should be on the "Case details" page
+    When I navigate to the case summary route
+    Then I should be on the "Case summary" page
+    And I should see Back to cases link with href of case list date
     And I should see sub navigation with the following links
-      | Case details | Probation record | Risk register |
+      | Case summary | Probation record | Risk register |
     And I should see the heading has the defendant name
     And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "CRN:" and the defendant "crn"
@@ -124,10 +127,11 @@ Feature: Case summary
     Given I am an authenticated user
     And I am looking at a current defendant
 
-    When I navigate to the case details route
-    Then I should be on the "Case details" page
+    When I navigate to the case summary route
+    Then I should be on the "Case summary" page
+    And I should see Back to cases link with href of case list date
     And I should see sub navigation with the following links
-      | Case details | Probation record | Risk register |
+      | Case summary | Probation record | Risk register |
     And I should see the heading has the defendant name
     And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "CRN:" and the defendant "crn"
@@ -161,10 +165,11 @@ Feature: Case summary
     Given I am an authenticated user
     And I am looking at a current defendant with breach
 
-    When I navigate to the case details route
-    Then I should be on the "Case details" page
+    When I navigate to the case summary route
+    Then I should be on the "Case summary" page
+    And I should see Back to cases link with href of case list date
     And I should see sub navigation with the following links
-      | Case details | Probation record | Risk register |
+      | Case summary | Probation record | Risk register |
     And I should see the heading has the defendant name
     And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "CRN:" and the defendant "crn"
@@ -205,7 +210,8 @@ Feature: Case summary
     And I should see the heading "Cases"
     And I should see the caption with the relevant court
     When I click the defendant name link
-    Then I should be on the "Case details" page
+    Then I should be on the "Case summary" page
+    And I should see Back to cases link with href of case list date
     And I should see the heading has the defendant name
     When I click the sub navigation with "Probation record" text
     Then I should see the offender previous order count
@@ -363,10 +369,10 @@ Feature: Case summary
     And I should not see the heading level 2 with text "Unpaid work"
     And There should be no a11y violations
 
-  Scenario: View the case details of a defendant to see a list of current charges and the associated details/description
+  Scenario: View the case details of a defendant to see a list of current charges and the associated summary/description
     Given I am an authenticated user
     And I am looking at a current defendant
-    When I navigate to the case details route
+    When I navigate to the case summary route
     Then I should see the level 2 heading "Offences"
     And If the total number of charges is greater than one
     Then I should see a list of charges in an accordion component
