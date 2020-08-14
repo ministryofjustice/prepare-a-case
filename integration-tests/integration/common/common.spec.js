@@ -138,3 +138,21 @@ When('I click the {string} link', $string => {
 And('I click the {string} button', $string => {
   cy.get('button').contains($string).click()
 })
+
+And('I should see the legend {string}', $string => {
+  cy.get('legend').contains($string)
+})
+
+And('I should see radio buttons with the following IDs', $data => {
+  $data.raw()[0].forEach((id, index) => {
+    cy.get('input[type=radio]').eq(index).should('exist').should('have.attr', 'id').and('include', id)
+  })
+})
+
+And('I should see the error message {string}', $string => {
+  cy.get('.govuk-error-summary').should('exist')
+  cy.get('.govuk-error-summary').within(() => {
+    cy.get('.govuk-error-summary__list').contains($string)
+  })
+  cy.get('.govuk-error-message').contains($string)
+})
