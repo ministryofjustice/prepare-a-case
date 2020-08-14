@@ -4,13 +4,26 @@
 {%- set communityData = data.communityData -%}
 {% set bannerHtml %}
     <h2 class="govuk-heading-m">{{ data.numberOfPossibleMatches }} possible nDelius records found for {{ data.defendantName }}.
-    <a href="#" class="govuk-link govuk-link--no-visited-state">Review records</a>
+    <a href="/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review records</a>
     </h2>
 {% endset %}
 
 {% block caseContent %}
 
-    {% if data.numberOfPossibleMatches > 0 %}
+    {% if session.confirmedMatchName %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+        {{ mojBanner({
+            type: 'success',
+            text: 'You have successfully confirmed a record for ' + session.confirmedMatchName,
+            iconFallbackText: 'Success'
+        }) }}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if data.numberOfPossibleMatches > 0 and not session.confirmedMatchName %}
         {%- from "moj/components/banner/macro.njk" import mojBanner -%}
         {{ mojBanner({
             classes: 'govuk-!-display-inline-block',
