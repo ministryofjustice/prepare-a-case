@@ -51,6 +51,16 @@
 
 {% endblock %}
 
+{% block backlink %}
+
+    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
+    {{ govukBackLink({
+        text: "Back to cases",
+        href: '/cases/' + caseListDate
+    }) }}
+
+{% endblock %}
+
 {% block content %}
 
     {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}

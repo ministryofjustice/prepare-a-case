@@ -8,16 +8,6 @@
     </h2>
 {% endset %}
 
-{% block backlink %}
-
-    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
-    {{ govukBackLink({
-        text: "Back to cases",
-        href: '/cases/' + caseListDate
-    }) }}
-
-{% endblock %}
-
 {% block caseContent %}
 
     {% if data.numberOfPossibleMatches > 0 %}
