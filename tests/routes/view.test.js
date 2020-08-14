@@ -114,7 +114,7 @@ describe('Routes', () => {
   })
 
   it('case summary details route should call the case service to fetch case data', async () => {
-    const response = await request(app).get('/case/8678951874/details')
+    const response = await request(app).get('/case/8678951874/summary')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '8678951874')
     return response
   })

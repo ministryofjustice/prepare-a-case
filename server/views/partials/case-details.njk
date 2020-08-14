@@ -3,9 +3,9 @@
 {%- set moment = params.moment -%}
 
 {% set subNavItems = [{
-    text: 'Case details',
-    href: '/case/' + data.caseNo + '/details',
-    active: title === 'Case details'
+    text: 'Case summary',
+    href: '/case/' + data.caseNo + '/summary',
+    active: title === 'Case summary'
 }] %}
 
 {% if data.probationStatus === 'Current' or data.probationStatus === 'Previously known' %}
