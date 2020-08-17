@@ -10,20 +10,13 @@
 
 {% block caseContent %}
 
-    {% if session.confirmedMatchName %}
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-        {%- from "moj/components/banner/macro.njk" import mojBanner -%}
-        {{ mojBanner({
-            type: 'success',
-            text: 'You have successfully confirmed a record for ' + session.confirmedMatchName,
-            iconFallbackText: 'Success'
-        }) }}
-        </div>
-    </div>
-    {% endif %}
+    {%- from "components/match-confirmation/macro.njk" import pacMatchConfirmation -%}
+    {{ pacMatchConfirmation({
+        matchName: session.confirmedMatch.name,
+        probationStatus: session.confirmedMatch.probationStatus
+    }) }}
 
-    {% if data.numberOfPossibleMatches > 0 and not session.confirmedMatchName %}
+    {% if data.numberOfPossibleMatches > 0 and not session.confirmedMatch.name %}
         {%- from "moj/components/banner/macro.njk" import mojBanner -%}
         {{ mojBanner({
             classes: 'govuk-!-display-inline-block',

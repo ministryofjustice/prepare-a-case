@@ -154,11 +154,11 @@
         </div>
 
         {% from "govuk/components/details/macro.njk" import govukDetails %}
+        {%- set detailsText = "<p class=\"govuk-body\">If the defendant is unknown to probation, you must <a href=\"/match/defendant/" + params.caseNo + "/nomatch\" class=\"govuk-link govuk-link--no-visited-state\">confirm they have no record</a>.</p><p class=\"govuk-body\">If they have an nDelius record, you can <a href=\"#\" class=\"govuk-link govuk-link--no-visited-state\">link it to them with a case reference number</a>.</p>" -%}
         {{ govukDetails({
             classes: "govuk-!-margin-top-6",
             summaryText: "Can't see the correct record?",
-            text: "<p class=\"govuk-body\">If the defendant is unknown to probation, you must <a href=\"#\" class=\"govuk-link govuk-link--no-visited-state\">confirm they have no record</a>.</p>
-            <p class=\"govuk-body\">If they have an nDelius record, you can <a href=\"#\" class=\"govuk-link govuk-link--no-visited-state\">link it to them with a case reference number</a>.</p>" | safe
+            text: detailsText | safe
         }) }}
 
         <button type="submit" class="govuk-button">Confirm record</button>
