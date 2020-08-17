@@ -12,6 +12,17 @@ const request = async url => {
   return response
 }
 
+const update = async (url, data) => {
+  let response = {}
+  try {
+    response = await axios.put(url, data)
+  } catch (e) {
+    axiosError(e)
+  }
+  return response
+}
+
 module.exports = {
-  request
+  request,
+  update
 }

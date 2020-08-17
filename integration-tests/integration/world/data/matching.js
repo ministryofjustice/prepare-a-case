@@ -1,9 +1,11 @@
 import bulkList from './matching/bulkList'
-import defendantRecords from './matching/defendantRecords'
+import defendantOneRecords from './matching/defendantOneRecords'
+import defendantTwoRecords from './matching/defendantTwoRecords'
 
 module.exports = {
   matching: {
     bulkList: { ...bulkList },
-    defendantRecords: { ...defendantRecords }
+    defendantOneRecords: { ...defendantOneRecords },
+    defendantTwoRecords: { ...defendantTwoRecords }
   }
 }

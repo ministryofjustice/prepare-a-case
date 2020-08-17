@@ -66,6 +66,12 @@ describe('Routes', () => {
     }
   })
 
+  jest.spyOn(caseService, 'updateCase').mockImplementation(function () {
+    return {
+      status: 201
+    }
+  })
+
   beforeEach(() => {
     app = require('../../app')
     app = appSetup(viewRoute)
@@ -220,7 +226,7 @@ describe('Routes', () => {
     return response
   })
 
-  it('defendant match selection screen should call the casae service to fetch case data and match details data', async () => {
+  it('defendant match selection screen should call the case service to fetch case data and match details data', async () => {
     const response = await request(app).get('/match/defendant/3597035492')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '3597035492')
     expect(caseService.getMatchDetails).toHaveBeenCalledWith('SHF', '3597035492')
