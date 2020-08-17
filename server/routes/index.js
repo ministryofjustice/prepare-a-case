@@ -1,7 +1,7 @@
 const express = require('express')
 const moment = require('moment')
 const { settings } = require('../../config')
-const { getCaseList, getCase, getMatchDetails } = require('../services/case-service')
+const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const { getProbationRecord, getProbationRecordWithRequirements, getSentenceDetails, getBreachDetails } = require('../services/community-service')
 
 const { health } = require('./middleware/healthcheck')
@@ -185,24 +185,40 @@ module.exports = function Index ({ authenticationMiddleware }) {
     req.session.confirmedMatchName = undefined
     req.session.matchName = templateValues.data.defendantName
     req.session.formError = false
+    req.session.serverError = false
     res.render('match-defendant', templateValues)
   })
 
-  router.post('/match/defendant/:caseNo', health, defaults, async (req, res) => {
+  async function updateCaseDetails (courtCode, caseNo, crn) {
+    const caseResponse = await getCase(courtCode, caseNo)
+    const matchResponse = await getMatchDetails(courtCode, caseNo)
+    const selectedMatch = matchResponse.offenderMatchDetails.filter($item => $item.matchIdentifiers.crn === crn)[0]
+    return await updateCase(courtCode, caseNo, {
+      ...caseResponse,
+      pnc: selectedMatch.matchIdentifiers.pnc,
+      crn: selectedMatch.matchIdentifiers.crn,
+      cro: selectedMatch.matchIdentifiers.cro,
+      probationStatus: selectedMatch.probationStatus
+    })
+  }
+
+  router.post('/match/defendant/:caseNo', defaults, async (req, res) => {
+    let redirectUrl = '/'
     if (!req.body.crn) {
       req.session.confirmedMatchName = undefined
       req.session.formError = true
-      res.redirect('/match/defendant/' + req.params.caseNo)
+      redirectUrl = '/match/defendant/' + req.params.caseNo
     } else {
-      req.session.confirmedMatchName = req.session.matchName
-      let redirectUrl
-      if (req.session.matchType === 'bulk') {
-        redirectUrl = '/match/bulk/' + req.session.matchDate
+      const response = await updateCaseDetails(req.params.courtCode, req.params.caseNo, req.body.crn)
+      if (response.status === 201) {
+        req.session.confirmedMatchName = req.session.matchName
+        redirectUrl = req.session.matchType === 'bulk' ? '/match/bulk/' + req.session.matchDate : '/case/' + req.params.caseNo + '/summary'
       } else {
-        redirectUrl = '/case/' + req.params.caseNo + '/details'
+        req.session.serverError = true
+        redirectUrl = '/match/defendant/' + req.params.caseNo
       }
-      res.redirect(redirectUrl)
     }
+    res.redirect(redirectUrl)
   })
 
   return router

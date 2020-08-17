@@ -18,6 +18,19 @@
 
 {% block content %}
 
+    {% if session.serverError %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+            {{ mojBanner({
+                type: 'warning',
+                text: 'Something went wrong - try again.',
+                iconFallbackText: 'Warning'
+            }) }}
+        </div>
+    </div>
+    {% endif %}
+
     {% if session.formError %}
         {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
         {{ govukErrorSummary({

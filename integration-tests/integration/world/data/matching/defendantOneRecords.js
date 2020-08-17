@@ -1,5 +1,6 @@
 module.exports = {
   local: {
+    defendantName: 'Guadalupe Hess',
     list: [
       {
         name: 'Guadalupe Hess',

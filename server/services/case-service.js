@@ -1,4 +1,4 @@
-const { request } = require('./utils/request')
+const { request, update } = require('./utils/request')
 const config = require('../../config')
 const apiUrl = config.apis.courtCaseService.url
 
@@ -61,6 +61,10 @@ const getCase = async (courtCode, caseNo) => {
   return res.data
 }
 
+const updateCase = async (courtCode, caseNo, caseData) => {
+  return await update(`${apiUrl}/court/${courtCode}/case/${caseNo}`, caseData)
+}
+
 const getMatchDetails = async (courtCode, caseNo) => {
   const res = await request(`${apiUrl}/court/${courtCode}/case/${caseNo}/matchesDetail`)
   return res.data
@@ -69,5 +73,6 @@ const getMatchDetails = async (courtCode, caseNo) => {
 module.exports = {
   getMatchDetails,
   getCaseList,
-  getCase
+  getCase,
+  updateCase
 }

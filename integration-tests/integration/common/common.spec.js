@@ -141,6 +141,10 @@ And('I should see radio buttons with the following IDs', $data => {
   })
 })
 
+And('I click the element with id {string}', $id => {
+  cy.get(`#${$id}`).click()
+})
+
 And('I should see the error message {string}', $string => {
   cy.get('.govuk-error-summary').should('exist')
   cy.get('.govuk-error-summary').within(() => {

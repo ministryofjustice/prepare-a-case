@@ -57,3 +57,11 @@ And('I should see the defendant record options', $data => {
     cellCheck($index, 6, 'Most recent event', $item.mostRecentEvent)
   })
 })
+
+And('I should see the match confirmation banner message', () => {
+  cy.get('.moj-banner__message').contains(`You have successfully confirmed a record for ${world.data.defendantName}`)
+})
+
+And('I should see the match error banner message', () => {
+  cy.get('.moj-banner__message').contains('Something went wrong - try again.')
+})
