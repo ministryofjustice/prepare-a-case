@@ -52,7 +52,9 @@ module.exports = function createApp ({ signInService, userService }) {
 
   app.set('view engine', 'njk')
 
-  app.use(helmet())
+  app.use(helmet({
+    contentSecurityPolicy: false
+  }))
   app.use(compression())
   app.use(session({
     cookie: { maxAge: sessionExpiry },
