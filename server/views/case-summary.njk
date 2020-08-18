@@ -8,8 +8,7 @@
     </h2>
 {% endset %}
 
-{% block caseContent %}
-
+{% block message %}
     {%- from "components/match-confirmation/macro.njk" import pacMatchConfirmation -%}
     {{ pacMatchConfirmation({
         matchName: session.confirmedMatch.name,
@@ -24,6 +23,9 @@
             html: bannerHtml
         }) }}
     {% endif %}
+{% endblock %}
+
+{% block caseContent %}
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">

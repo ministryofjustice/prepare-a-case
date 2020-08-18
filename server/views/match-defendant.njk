@@ -55,7 +55,7 @@
 
     <form name="matchDefendant" id="matchDefendant" method="post">
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-half govuk-!-padding-right-9">
+            <div class="govuk-grid-column-one-half pac-!-grid-column-45 govuk-!-padding-right-9">
 
                 <h3 class="govuk-heading-m govuk-!-margin-top-2">Defendant details</h3>
 
@@ -79,7 +79,7 @@
                 </div>
 
             </div>
-            <div class="govuk-grid-column-one-half pac-!-border-left govuk-!-padding-left-9">
+            <div class="govuk-grid-column-one-half pac-!-grid-column-55 pac-!-border-left govuk-!-padding-left-9">
 
                 <div class="govuk-form-group {{ "govuk-form-group--error" if session.formError }} govuk-!-margin-bottom-0">
 
@@ -103,7 +103,7 @@
                         {% for item in data.matchData %}
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="defendant-{{ loop.index }}" name="crn" type="radio" value="{{ item.matchIdentifiers.crn }}">
-                            <label class="govuk-label govuk-radios__label" for="defendant-{{ loop.index }}">
+                            <label class="govuk-label govuk-radios__label govuk-!-padding-top-0" for="defendant-{{ loop.index }}">
 
                                 <div class="pac-inset-block">
                                     <table class="govuk-table pac-table--no-borders govuk-!-margin-0">
