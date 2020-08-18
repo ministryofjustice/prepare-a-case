@@ -30,15 +30,13 @@
 
 {% endblock %}
 
-{% block message %}
+{% block content %}
+
     {%- from "components/match-confirmation/macro.njk" import pacMatchConfirmation -%}
     {{ pacMatchConfirmation({
         matchName: session.confirmedMatch.name,
         probationStatus: session.confirmedMatch.probationStatus
     }) }}
-{% endblock %}
-
-{% block content %}
 
     <h1 class="govuk-heading-l">Defendants with possible nDelius records</h1>
 
