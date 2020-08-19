@@ -29,7 +29,7 @@ Feature: Matching defendants to nDelius records
     And I should see the body text "Compare details and confirm the correct record for the defendant."
     And I should see the following table headings
       | Name | DOB | Address |
-    And I am using the "defendantRecords" match data
+    And I am using the "defendantOneRecords" match data
     And I should see the defendant record options
     And I should see radio buttons with the following IDs
       | defendant-1 | defendant-2 | defendant-3 |
@@ -43,3 +43,62 @@ Feature: Matching defendants to nDelius records
     Then I should be on the "Review possible nDelius records" page
     When I click the "Confirm record" button
     Then I should see the error message "Select an nDelius record"
+
+  Scenario: Confirm defendant record match from bulk match list
+    Given I am an authenticated user
+    When I navigate to the "/match/bulk/" route for today
+    And I am using the "bulkList" match data
+    Then I should be on the "Defendants with possible nDelius records" page
+    When I click the "Review records" link
+    Then I should be on the "Review possible nDelius records" page
+    And I am using the "defendantOneRecords" match data
+    And I should see the defendant record options
+    And I click the element with id "defendant-1"
+    And I click the "Confirm record" button
+    Then I should be on the "Defendants with possible nDelius records" page
+    And I should see the match confirmation banner message
+
+  Scenario: Confirm defendant record match from case summary
+    Given I am an authenticated user
+    When I navigate to the "match/defendant/3597035492" route
+    And I am using the "defendantOneRecords" match data
+    And I should see the defendant record options
+    And I click the element with id "defendant-1"
+    And I click the "Confirm record" button
+    Then I should be on the "Case summary" page
+    And I should see the match confirmation banner message
+
+  Scenario: Confirm no existing defendant record match from bulk list
+    Given I am an authenticated user
+    When I navigate to the "/match/bulk/" route for today
+    And I am using the "bulkList" match data
+    Then I should be on the "Defendants with possible nDelius records" page
+    When I click the "Review records" link
+    Then I should be on the "Review possible nDelius records" page
+    And I am using the "defendantOneRecords" match data
+    And I should see the defendant record options
+    And I click the element with id "defendant-1"
+    And I click the "Can't see the correct record?" summary link
+    And I click the "confirm they have no record" link
+    Then I should be on the "Defendants with possible nDelius records" page
+    And I should see the no record match confirmation banner message
+
+  Scenario: Confirm no existing defendant record match from case summary
+    Given I am an authenticated user
+    When I navigate to the "match/defendant/3597035492" route
+    And I am using the "defendantOneRecords" match data
+    And I should see the defendant record options
+    And I click the "Can't see the correct record?" summary link
+    And I click the "confirm they have no record" link
+    Then I should be on the "Case summary" page
+    And I should see the no record match confirmation banner message
+
+  Scenario: Attempt to confirm match but encounter a server error
+    Given I am an authenticated user
+    When I navigate to the "match/defendant/4172564047" route
+    And I am using the "defendantTwoRecords" match data
+    And I should see the defendant record options
+    And I click the element with id "defendant-1"
+    And I click the "Confirm record" button
+    Then I should be on the "Review possible nDelius records" page
+    And I should see the match error banner message

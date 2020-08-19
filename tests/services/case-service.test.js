@@ -2,7 +2,7 @@
 const moxios = require('moxios')
 const config = require('../../config')
 
-const { getCaseList, getCase, getMatchDetails } = require('../../server/services/case-service')
+const { getCaseList, getCase, getMatchDetails, updateCase } = require('../../server/services/case-service')
 
 const apiUrl = config.apis.courtCaseService.url
 
@@ -134,6 +134,17 @@ describe('Case service', () => {
     })
 
     const response = await getMatchDetails('SHF', '3597035492')
+    expect(moxios.requests.mostRecent().url).toBe(endpoint)
+    return response
+  })
+
+  it('should call the API to update case details data', async () => {
+    const endpoint = `${apiUrl}/court/SHF/case/3597035492`
+    moxios.stubRequest(endpoint, {
+      status: 201
+    })
+
+    const response = await updateCase('SHF', '3597035492', {})
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
     return response
   })
