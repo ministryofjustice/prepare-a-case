@@ -111,6 +111,7 @@
 
     function configureFilterButtons () {
       var filterButtons = document.getElementsByClassName('pac-filter-button')
+      var main = document.getElementsByClassName('govuk-main-wrapper')
 
       function toggleFilter (e) {
         e.stopPropagation()
@@ -130,6 +131,10 @@
       Array.prototype.forEach.call(filterButtons, function(element) {
         element.addEventListener('click', toggleFilter)
       })
+
+      Array.prototype.forEach.call(main, function(element) {
+        element.addEventListener('click', toggleFilter)
+      })
     }
 
     function configureClearTags () {
@@ -145,6 +150,7 @@
         element.addEventListener('click', clearFilter)
       })
     }
+
 
     function configureCheckboxes () {
       function checkboxClick (e) {

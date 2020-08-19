@@ -2,13 +2,14 @@
 
 {%- set moment = params.moment -%}
 
-{% set subNavItems = [{
-    text: 'Case summary',
-    href: '/case/' + data.caseNo + '/summary',
-    active: title === 'Case summary'
-}] %}
+{% set subNavItems = [] %}
 
 {% if data.probationStatus === 'Current' or data.probationStatus === 'Previously known' %}
+    {{ subNavItems.push({
+        text: 'Case summary',
+        href: '/case/' + data.caseNo + '/summary',
+        active: title === 'Case summary'
+    }) }}
     {{ subNavItems.push({
         text: 'Probation record',
         href: '/case/' + data.caseNo + '/record',
@@ -43,7 +44,6 @@
         title: data.defendantName,
         crn: crn,
         pnc: pnc,
-        dob: dob,
         probationStatus: probationStatus,
         numberOfPossibleMatches: data.numberOfPossibleMatches,
         breach: breach

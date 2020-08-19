@@ -249,7 +249,7 @@
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/8404713BA",
-          "probationStatus": "No record",
+          "probationStatus": "Previously known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,

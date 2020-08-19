@@ -9,3 +9,14 @@
     @include govuk-clearfix;
   }
 }
+
+.pac-last-updated-stamp {
+  border-right: 1px solid #626a6e;
+  margin: 0 10px 0 0;
+  padding: 0 10px 0 0;
+  display: inline-block;
+}
+
+.pac-next-update-stamp {
+  display: inline-block;
+}
