@@ -59,7 +59,11 @@ And('I should see the defendant record options', $data => {
 })
 
 And('I should see the match confirmation banner message', () => {
-  cy.get('.moj-banner__message').contains(`You have successfully confirmed a record for ${world.data.defendantName}`)
+  cy.get('.moj-banner__message').contains(`You have successfully confirmed a record for ${world.data.defendantName}.`)
+})
+
+And('I should see the no record match confirmation banner message', () => {
+  cy.get('.moj-banner__message').contains(`You have successfully confirmed ${world.data.defendantName} has no nDelius record.`)
 })
 
 And('I should see the match error banner message', () => {

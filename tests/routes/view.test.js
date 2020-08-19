@@ -244,4 +244,14 @@ describe('Routes', () => {
       expect(response.statusCode).toEqual(302)
     })
   })
+
+  it('defendant confirm no match route should update the case data and redirect', async () => {
+    const response = await request(app).get('/match/defendant/3597035492/nomatch')
+    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '3597035492')
+    expect(caseService.getMatchDetails).not.toHaveBeenCalled()
+    expect(caseService.updateCase).toHaveBeenCalledWith('SHF', '3597035492', expect.any(Object))
+    expect(response.header.location).toEqual('/case/3597035492/summary')
+    expect(response.statusCode).toEqual(302)
+    return response
+  })
 })

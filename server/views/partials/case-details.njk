@@ -63,6 +63,8 @@
 
 {% block content %}
 
+    {% block message %}{% endblock %}
+
     {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
     {{ mojSubNavigation({
         label: 'Sub navigation',
