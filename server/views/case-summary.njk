@@ -38,7 +38,7 @@
 
             <h2 class="govuk-heading-m">Appearance</h2>
             <p class="govuk-body">Court {{ data.courtRoom }}, {{ data.session | lower }} session,
-                {{ moment(data.sessionStartTime).format('dddd Do MMMM') }} ({{ data.listNo }}
+                {{ moment(data.sessionStartTime).format('dddd D MMMM') }} ({{ data.listNo }}
                 listing).</p>
 
             <h2 class="govuk-heading-m govuk-!-margin-top-9">Offences</h2>
@@ -73,7 +73,7 @@
 
 
             <h2 class="govuk-heading-m govuk-!-margin-top-9">
-                Personal details from police
+                Defendant details
             </h2>
 
             <dl class="govuk-summary-list govuk-summary-list--no-border">
@@ -104,6 +104,14 @@
                 </div>
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
+                        Nationality
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                        {{ data.nationality_1 or "Unknown" }}{{ " / " + data.nationality_2 if data.nationality_2 }}
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
                         Address
                     </dt>
                     <dd class="govuk-summary-list__value">
@@ -116,24 +124,10 @@
                         {% if address.postcode %}{{ address.postcode | upper }}{% endif %}
                     </dd>
                 </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Nationality
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{ data.nationality_1 or "Unknown" }}{{ " / " + data.nationality_2 if data.nationality_2 }}
-                    </dd>
-                </div>
             </dl>
 
         </div>
-        <div class="govuk-grid-column-one-third">
-
-            <h3 class="govuk-heading-s">CPS pack</h3>
-            <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">View CPS Pack (opens in
-                    Court Store)</a></p>
-
-        </div>
+        <div class="govuk-grid-column-one-third"></div>
     </div>
 
 {% endblock %}

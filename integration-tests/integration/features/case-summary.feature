@@ -22,15 +22,11 @@ Feature: Case summary
     When I navigate to the case summary route
     Then I should be on the "Case summary" page
     And I should see Back to cases link with href of case list date
-    And I should see sub navigation with the following links
-      | Case summary |
     And I should see the heading has the defendant name
     And I should see the body text "Probation status: Possible nDelius record"
     And I should see a straight line divide
     And I should see the following level 2 headings
       | possible nDelius records found | Appearance | Offences |
-    And I should see the following level 3 headings
-      | CPS pack |
 
     And I should see court room, session and the correct listing
     Then I should see a list of charges in an accordion component
@@ -42,10 +38,11 @@ Feature: Case summary
     And I should see the value with defendant "gender"
     Then I should see the row with the key "Date of birth"
     And I should see the value with defendant "dateOfBirth"
+    Then I should see the row with the key "Nationality"
+    And I should see the value with defendant "nationality"
     Then I should see the row with the key "Address"
     And I should see the value with defendant "address"
 
-    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with no probation record
@@ -55,17 +52,11 @@ Feature: Case summary
     When I navigate to the case summary route
     Then I should be on the "Case summary" page
     And I should see Back to cases link with href of case list date
-    And I should see sub navigation with the following links
-      | Case summary |
     And I should see the heading has the defendant name
-    And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
-    And I should see the body text "PNC:" and the defendant "pnc"
     Then I should see the body text "Probation status: No record"
     And I should see a straight line divide
     And I should see the following level 2 headings
       | Appearance | Offences |
-    And I should see the following level 3 headings
-      | CPS pack |
 
     And I should see court room, session and the correct listing
     Then I should see a list of charges in an accordion component
@@ -77,12 +68,11 @@ Feature: Case summary
     And I should see the value with defendant "gender"
     Then I should see the row with the key "Date of birth"
     And I should see the value with defendant "dateOfBirth"
-    Then I should see the row with the key "Address"
-    And I should see the value with defendant "address"
     Then I should see the row with the key "Nationality"
     And I should see the value with defendant "nationality"
+    Then I should see the row with the key "Address"
+    And I should see the value with defendant "address"
 
-    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with an existing probation record
@@ -95,15 +85,12 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
     And I should see the heading has the defendant name
-    And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "CRN:" and the defendant "crn"
     And I should see the body text "PNC:" and the defendant "pnc"
     Then I should see the body text "Probation status: Previously known"
     And I should see a straight line divide
     And I should see the following level 2 headings
       | Appearance | Offences |
-    And I should see the following level 3 headings
-      | CPS pack |
 
     And I should see court room, session and the correct listing
     Then I should see a list of charges in an accordion component
@@ -115,12 +102,11 @@ Feature: Case summary
     And I should see the value with defendant "gender"
     Then I should see the row with the key "Date of birth"
     And I should see the value with defendant "dateOfBirth"
-    Then I should see the row with the key "Address"
-    And I should see the value with defendant "address"
     Then I should see the row with the key "Nationality"
     And I should see the value with defendant "nationality"
+    Then I should see the row with the key "Address"
+    And I should see the value with defendant "address"
 
-    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with a current probation record
@@ -133,15 +119,12 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
     And I should see the heading has the defendant name
-    And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "CRN:" and the defendant "crn"
     And I should see the body text "PNC:" and the defendant "pnc"
     And I should see the body text "Probation status: Current"
     And I should see a straight line divide
     And I should see the following level 2 headings
       | Appearance | Offences |
-    And I should see the following level 3 headings
-      | CPS pack |
 
     And I should see court room, session and the correct listing
     Then I should see a list of charges in an accordion component
@@ -153,12 +136,11 @@ Feature: Case summary
     And I should see the value with defendant "gender"
     Then I should see the row with the key "Date of birth"
     And I should see the value with defendant "dateOfBirth"
-    Then I should see the row with the key "Address"
-    And I should see the value with defendant "address"
     Then I should see the row with the key "Nationality"
     And I should see the value with defendant "nationality"
+    Then I should see the row with the key "Address"
+    And I should see the value with defendant "address"
 
-    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant in breach of a current order
@@ -171,15 +153,12 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
     And I should see the heading has the defendant name
-    And I should see the body text "Date of birth:" and the defendant "dateOfBirth"
     And I should see the body text "CRN:" and the defendant "crn"
     And I should see the body text "PNC:" and the defendant "pnc"
     And I should see the body text "Probation status: Current (Breach)"
     And I should see a straight line divide
     And I should see the following level 2 headings
       | Appearance | Offences |
-    And I should see the following level 3 headings
-      | CPS pack |
 
     And I should see court room, session and the correct listing
     And I should see the body text with the defendant "offence" in bold
@@ -193,12 +172,11 @@ Feature: Case summary
     And I should see the value with defendant "gender"
     Then I should see the row with the key "Date of birth"
     And I should see the value with defendant "dateOfBirth"
-    Then I should see the row with the key "Address"
-    And I should see the value with defendant "address"
     Then I should see the row with the key "Nationality"
     And I should see the value with defendant "nationality"
+    Then I should see the row with the key "Address"
+    And I should see the value with defendant "address"
 
-    And I should see link "View CPS Pack (opens in Court Store)" with href "#"
     And There should be no a11y violations
 
   Scenario: View the probation record section of the case summary for a previously known offender

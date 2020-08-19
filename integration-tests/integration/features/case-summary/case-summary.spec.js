@@ -275,7 +275,7 @@ And('I should see a straight line divide', () => {
 })
 
 And('I should see court room, session and the correct listing', () => {
-  const date = moment().format('dddd Do MMMM')
+  const date = moment().format('dddd D MMMM')
   cy.get('.govuk-body').contains(`Court ${world.data.court}, ${world.data.session} session, ${date} (${world.data.listing} listing).`)
 })
 

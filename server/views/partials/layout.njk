@@ -39,28 +39,7 @@
 <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
 {% block header %}
-  {%- from "moj/components/header/macro.njk" import mojHeader -%}
-  {{ mojHeader({
-    organisationLabel: {
-      text: 'HMPPS',
-      href: '/'
-    },
-    serviceLabel: {
-      text: mainTitle,
-      href: '/'
-    },
-    navigation: {
-      label: 'Account navigation',
-      items: [{
-          text: user.displayName,
-          href: '/',
-          active: true
-      }, {
-          text: 'Sign out',
-          href: '/logout'
-      }]
-    }
-  }) }}
+    {% include "./header.html" %}
 {% endblock %}
 
 {% block navigation %}
@@ -74,13 +53,7 @@
       {
         text: 'Cases',
         href: '/cases',
-        active: title === 'Cases' or
-          title === 'Case details' or
-          title === 'Personal details' or
-          title === 'Probation record' or
-          title === 'Risk registers' or
-          title === 'Order details' or
-          title === 'Breach details'
+        active: title === 'Cases'
       }
     ],
     searchHtml: currentCourtHtml

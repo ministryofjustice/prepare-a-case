@@ -18,7 +18,7 @@ And('I should see the caption with the relevant court', () => {
 
 And('I should see sub navigation with default dates', () => {
   cy.get('.qa-case-list-day').eq(0).contains('Today')
-  cy.get('.pac-pagination-link---text').eq(0).contains('Next day')
+  cy.get('.pac-pagination-link--text').eq(0).contains('Next day')
 })
 
 And('I should see that {int} defendants have possible nDelius records', $int => {
@@ -100,7 +100,8 @@ And('I should see a tab with text {string}', $string => {
 })
 
 And('I should see a timestamp of the most recent Libra data', () => {
-  cy.get('.pac-last-updated').contains('List updated: Today at 08:30am | No further updates scheduled today')
+  cy.get('.pac-last-updated-stamp').contains('List updated: Today at 08:30am')
+  cy.get('.pac-next-update-stamp').contains('No further updates scheduled today')
 })
 
 And('I should see pagination text {string}', $string => {

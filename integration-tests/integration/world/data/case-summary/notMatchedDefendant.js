@@ -10,7 +10,7 @@ module.exports = {
     dateOfBirth: '1989-02-18',
     gender: 'Male',
     address: '43 Hunterfly Place Birmingham AD21 5DR',
-    nationality: 'Spanish',
+    nationality: 'Unknown',
     offence: 'Assault by beating',
     offenceDetails: 'On 01/01/2016 at Glasgow assaulted Horne Parker by beating him.',
     offenceCaption: 'Contrary to section 39 of the Criminal Justice Act 1988.'
