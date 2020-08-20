@@ -124,36 +124,6 @@ Feature: Matching defendants to nDelius records
     Then I should be on the "Link an nDelius record to the defendant" page
     Then I should see the error message "Enter the CRN in the correct format"
 
-  Scenario: Manually match defendant to probation record from bulk match list
-    Given I am an authenticated user
-    When I navigate to the "/match/bulk/" route for today
-    And I am using the "bulkList" match data
-    Then I should be on the "Defendants with possible nDelius records" page
-    When I click the "Review records" link
-    Then I should be on the "Review possible nDelius records" page
-    And I am using the "defendantOneRecords" match data
-    And I should see the defendant record options
-    And I click the "Can't see the correct record?" summary link
-    And I click the "link it to them with a case reference number" link
-    Then I should be on the "Link an nDelius record to the defendant" page
-    When I enter "A123456" into text input with id "crn"
-    And I click the "Find record" button
-    Then I should be on the "Defendants with possible nDelius records" page
-    And I should see the match confirmation banner message
-
-  Scenario: Manually match defendant to probation record from case summary
-    Given I am an authenticated user
-    When I navigate to the "match/defendant/3597035492" route
-    And I am using the "defendantOneRecords" match data
-    And I should see the defendant record options
-    And I click the "Can't see the correct record?" summary link
-    And I click the "link it to them with a case reference number" link
-    Then I should be on the "Link an nDelius record to the defendant" page
-    When I enter "A123456" into text input with id "crn"
-    And I click the "Find record" button
-    Then I should be on the "Case summary" page
-    And I should see the match confirmation banner message
-
   Scenario: Confirm no existing defendant record match from case summary
     Given I am an authenticated user
     When I navigate to the "match/defendant/3597035492" route
