@@ -30,6 +30,6 @@ exports.productionErrors = (error, req, res, next) => {
   res.status(error.status || 500)
   res.render('error', {
     status: error.status,
-    maintenanceDate: moment().add(1, 'days').format("dddd D MMMM")
-})
+    maintenanceDate: moment().add(1, 'days').format('dddd D MMMM')
+  })
 }
