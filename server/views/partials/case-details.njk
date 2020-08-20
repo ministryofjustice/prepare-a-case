@@ -4,7 +4,12 @@
 
 {% set subNavItems = [] %}
 
-{% if data.probationStatus === 'Current' or data.probationStatus === 'Previously known' %}
+{% if data.crn %}
+    {{ subNavItems.push({
+        text: 'Case summary',
+        href: '/case/' + data.caseNo + '/summary',
+        active: title === 'Case summary'
+    }) }}
     {{ subNavItems.push({
         text: 'Case summary',
         href: '/case/' + data.caseNo + '/summary',
@@ -15,11 +20,13 @@
         href: '/case/' + data.caseNo + '/record',
         active: title === 'Probation record'
     }) }}
+    {#
     {{ subNavItems.push({
         text: 'Risk register',
         href: '/case/' + data.caseNo + '/risk',
         active: title === 'Risk register'
     }) }}
+    #}
 {% endif %}
 {% set crn = [] %}
 {{ crn.push(data.crn) if data.crn }}
@@ -62,6 +69,8 @@
 {% endblock %}
 
 {% block content %}
+
+    {% block message %}{% endblock %}
 
     {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
     {{ mojSubNavigation({

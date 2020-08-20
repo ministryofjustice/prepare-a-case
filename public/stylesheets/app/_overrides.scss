@@ -5,11 +5,24 @@
 .govuk-table.pac-table--no-borders {
   th, td {
     border: 0;
+    padding: 5px 20px;
   }
 }
 
 .pac-\!-border-left {
   border-left: 2px solid govuk-colour("mid-grey");
+}
+
+.pac-\!-grid-column-45 {
+  width: 45%;
+}
+
+.pac-header-tag {
+  margin-top: -3px;
+}
+
+.pac-\!-grid-column-55 {
+  width: 55%;
 }
 
 body.js-enabled {

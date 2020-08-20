@@ -1,0 +1,18 @@
+{% if params.matchName %}
+    {% if params.probationStatus === 'No record' %}
+        {%- set messageText = 'You have successfully confirmed ' + params.matchName + ' has no nDelius record.' -%}
+    {% else %}
+        {%- set messageText = 'You have successfully confirmed a record for ' + params.matchName + '.' -%}
+    {% endif %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+            {{ mojBanner({
+                type: 'success',
+                text: messageText,
+                iconFallbackText: 'Success'
+            }) }}
+        </div>
+    </div>
+{% endif %}

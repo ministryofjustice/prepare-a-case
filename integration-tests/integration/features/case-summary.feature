@@ -83,7 +83,7 @@ Feature: Case summary
     Then I should be on the "Case summary" page
     And I should see Back to cases link with href of case list date
     And I should see sub navigation with the following links
-      | Case summary | Probation record | Risk register |
+      | Case summary | Probation record |
     And I should see the heading has the defendant name
     And I should see the body text "CRN:" and the defendant "crn"
     And I should see the body text "PNC:" and the defendant "pnc"
@@ -117,7 +117,7 @@ Feature: Case summary
     Then I should be on the "Case summary" page
     And I should see Back to cases link with href of case list date
     And I should see sub navigation with the following links
-      | Case summary | Probation record | Risk register |
+      | Case summary | Probation record |
     And I should see the heading has the defendant name
     And I should see the body text "CRN:" and the defendant "crn"
     And I should see the body text "PNC:" and the defendant "pnc"
@@ -151,7 +151,7 @@ Feature: Case summary
     Then I should be on the "Case summary" page
     And I should see Back to cases link with href of case list date
     And I should see sub navigation with the following links
-      | Case summary | Probation record | Risk register |
+      | Case summary | Probation record |
     And I should see the heading has the defendant name
     And I should see the body text "CRN:" and the defendant "crn"
     And I should see the body text "PNC:" and the defendant "pnc"

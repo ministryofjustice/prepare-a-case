@@ -32,18 +32,11 @@
 
 {% block content %}
 
-    {% if session.confirmedMatchName %}
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-                {%- from "moj/components/banner/macro.njk" import mojBanner -%}
-                {{ mojBanner({
-                    type: 'success',
-                    text: 'You have successfully confirmed a record for ' + session.confirmedMatchName,
-                    iconFallbackText: 'Success'
-                }) }}
-            </div>
-        </div>
-    {% endif %}
+    {%- from "components/match-confirmation/macro.njk" import pacMatchConfirmation -%}
+    {{ pacMatchConfirmation({
+        matchName: session.confirmedMatch.name,
+        probationStatus: session.confirmedMatch.probationStatus
+    }) }}
 
     <h1 class="govuk-heading-l">Defendants with possible nDelius records</h1>
 

@@ -66,6 +66,12 @@ describe('Routes', () => {
     }
   })
 
+  jest.spyOn(caseService, 'updateCase').mockImplementation(function () {
+    return {
+      status: 201
+    }
+  })
+
   beforeEach(() => {
     app = require('../../app')
     app = appSetup(viewRoute)
@@ -220,7 +226,7 @@ describe('Routes', () => {
     return response
   })
 
-  it('defendant match selection screen should call the casae service to fetch case data and match details data', async () => {
+  it('defendant match selection screen should call the case service to fetch case data and match details data', async () => {
     const response = await request(app).get('/match/defendant/3597035492')
     expect(caseService.getCase).toHaveBeenCalledWith('SHF', '3597035492')
     expect(caseService.getMatchDetails).toHaveBeenCalledWith('SHF', '3597035492')
@@ -237,5 +243,15 @@ describe('Routes', () => {
     return request(app).post('/match/defendant/3597035492', { crn: 'V178657' }).then(response => {
       expect(response.statusCode).toEqual(302)
     })
+  })
+
+  it('defendant confirm no match route should update the case data and redirect', async () => {
+    const response = await request(app).get('/match/defendant/3597035492/nomatch')
+    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '3597035492')
+    expect(caseService.getMatchDetails).not.toHaveBeenCalled()
+    expect(caseService.updateCase).toHaveBeenCalledWith('SHF', '3597035492', expect.any(Object))
+    expect(response.header.location).toEqual('/case/3597035492/summary')
+    expect(response.statusCode).toEqual(302)
+    return response
   })
 })

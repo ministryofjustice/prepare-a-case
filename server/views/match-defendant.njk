@@ -18,6 +18,19 @@
 
 {% block content %}
 
+    {% if session.serverError %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+            {{ mojBanner({
+                type: 'warning',
+                text: 'Something went wrong - try again.',
+                iconFallbackText: 'Warning'
+            }) }}
+        </div>
+    </div>
+    {% endif %}
+
     {% if session.formError %}
         {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
         {{ govukErrorSummary({
@@ -42,9 +55,9 @@
 
     <form name="matchDefendant" id="matchDefendant" method="post">
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-half govuk-!-padding-right-9">
+            <div class="govuk-grid-column-one-half pac-!-grid-column-45 govuk-!-padding-right-9">
 
-                <h3 class="govuk-heading-m govuk-!-margin-top-2">Defendant details</h3>
+                <h3 class="govuk-heading-m">Defendant details</h3>
 
                 <div class="pac-inset-block">
                     <table class="govuk-table pac-table--no-borders govuk-!-margin-0">
@@ -66,7 +79,7 @@
                 </div>
 
             </div>
-            <div class="govuk-grid-column-one-half pac-!-border-left govuk-!-padding-left-9">
+            <div class="govuk-grid-column-one-half pac-!-grid-column-55 pac-!-border-left govuk-!-padding-left-9">
 
                 <div class="govuk-form-group {{ "govuk-form-group--error" if session.formError }} govuk-!-margin-bottom-0">
 
@@ -74,7 +87,7 @@
                     {% call govukFieldset({
                         legend: {
                             text: data.matchData | length + " nDelius records found",
-                            classes: "govuk-fieldset__legend--m",
+                            classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4",
                             isPageHeading: false
                         }
                     }) %}
@@ -90,7 +103,7 @@
                         {% for item in data.matchData %}
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="defendant-{{ loop.index }}" name="crn" type="radio" value="{{ item.matchIdentifiers.crn }}">
-                            <label class="govuk-label govuk-radios__label" for="defendant-{{ loop.index }}">
+                            <label class="govuk-label govuk-radios__label govuk-!-padding-top-0" for="defendant-{{ loop.index }}">
 
                                 <div class="pac-inset-block">
                                     <table class="govuk-table pac-table--no-borders govuk-!-margin-0">
@@ -141,11 +154,11 @@
         </div>
 
         {% from "govuk/components/details/macro.njk" import govukDetails %}
+        {%- set detailsText = "<p class=\"govuk-body\">If the defendant is unknown to probation, you must <a href=\"/match/defendant/" + params.caseNo + "/nomatch\" class=\"govuk-link govuk-link--no-visited-state\">confirm they have no record</a>.</p><p class=\"govuk-body\">If they have an nDelius record, you can <a href=\"#\" class=\"govuk-link govuk-link--no-visited-state\">link it to them with a case reference number</a>.</p>" -%}
         {{ govukDetails({
             classes: "govuk-!-margin-top-6",
             summaryText: "Can't see the correct record?",
-            text: "<p class=\"govuk-body\">If the defendant is unknown to probation, you must <a href=\"#\" class=\"govuk-link govuk-link--no-visited-state\">confirm they have no record</a>.</p>
-            <p class=\"govuk-body\">If they have an nDelius record, you can <a href=\"#\" class=\"govuk-link govuk-link--no-visited-state\">link it to them with a case reference number</a>.</p>" | safe
+            text: detailsText | safe
         }) }}
 
         <button type="submit" class="govuk-button">Confirm record</button>
