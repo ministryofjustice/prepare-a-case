@@ -177,11 +177,13 @@ module.exports = function createApp ({ signInService, userService }) {
     })
   )
 
-  app.use((req, res, next) => {
-    next(new Error('Not found'))
-  })
+  app.use(errorHandler.notFound)
 
-  app.use(errorHandler)
+  if (process.env.NODE_ENV === 'development') {
+    app.use(errorHandler.developmentErrors)
+  }
+
+  app.use(errorHandler.productionErrors)
 
   return app
 }

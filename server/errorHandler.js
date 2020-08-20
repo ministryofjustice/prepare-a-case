@@ -1,14 +1,35 @@
 const logger = require('../log.js')
 
-const production = process.env.NODE_ENV === 'production'
+const moment = require('moment')
 
-module.exports = (error, req, res) => {
+exports.notFound = (req, res, next) => {
+  const error = new Error('Not Found')
+  error.status = 404
+  next(error)
+}
+
+exports.developmentErrors = (error, req, res, next) => {
   logger.error(error)
-
-  res.locals.error = error
-  res.locals.stack = production ? null : error.stack
-  res.locals.message = production ? 'Something went wrong. The error has been logged. Please try again' : error.message
-
+  error.stack = error.stack || ''
+  const errorDetails = {
+    message: error.message,
+    status: error.status,
+    stack: error.stack
+  }
   res.status(error.status || 500)
-  res.render('error')
+  res.format({
+    'text/html': () => {
+      res.render('error', errorDetails)
+    },
+    'application/json': () => res.json(errorDetails) // Ajax call, send JSON back
+  })
+}
+
+exports.productionErrors = (error, req, res, next) => {
+  logger.error(error)
+  res.status(error.status || 500)
+  res.render('error', {
+    status: error.status,
+    maintenanceDate: moment().add(1, 'days').format("dddd D MMMM")
+})
 }
