@@ -254,4 +254,16 @@ describe('Routes', () => {
     expect(response.statusCode).toEqual(302)
     return response
   })
+
+  it('defendant manual match route should call the case service for case data', async () => {
+    const response = await request(app).get('/match/defendant/3597035492/manual')
+    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '3597035492')
+    return response
+  })
+
+  it('defendant manual match route should redirect when submitting a valid CRN', () => {
+    return request(app).post('/match/defendant/3597035492/manual', { crn: 'V178657' }).then(response => {
+      expect(response.statusCode).toEqual(302)
+    })
+  })
 })

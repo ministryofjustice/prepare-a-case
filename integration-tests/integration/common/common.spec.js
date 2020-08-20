@@ -156,3 +156,19 @@ And('I should see the error message {string}', $string => {
   })
   cy.get('.govuk-error-message').contains($string)
 })
+
+And('I should see the text input label {string}', $string => {
+  cy.get('label').contains($string).should('exist')
+})
+
+And('I should see the text input with id {string}', $id => {
+  cy.get('input[type=text]').should('exist').should('have.attr', 'id').and('include', $id)
+})
+
+And('I should see the text input hint {string}', $string => {
+  cy.get('.govuk-hint').contains($string).should('exist')
+})
+
+And('I enter {string} into text input with id {string}', ($string, $id) => {
+  cy.get(`#${$id}`).type($string)
+})

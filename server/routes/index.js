@@ -248,5 +248,40 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(redirectUrl)
   })
 
+  router.get('/match/defendant/:caseNo/manual', health, defaults, async (req, res) => {
+    const templateValues = await getCaseAndTemplateValues(req)
+    templateValues.title = 'Link an nDelius record to the defendant'
+    templateValues.session = {
+      ...req.session
+    }
+    res.render('match-manual', templateValues)
+  })
+
+  router.post('/match/defendant/:caseNo/manual', defaults, async (req, res) => {
+    let redirectUrl = '/'
+    req.session.serverError = false
+    req.session.formError = false
+    req.session.formInvalid = false
+    req.session.confirmedMatch = undefined
+    if (!req.body.crn) {
+      req.session.formError = true
+      redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
+    } else if (!req.body.crn.match(/[A-Za-z][0-9]{6}/)) {
+      req.session.formError = true
+      req.session.formInvalid = true
+      redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
+    } else {
+      // @TODO: We need to get the offender record from nDelius and update the case details with this data
+      // @TODO: Handle server error and set req.session.serverError as true.
+      // @FIXME: Fix this with response data
+      req.session.confirmedMatch = {
+        name: req.session.matchName,
+        probationStatus: 'Current'
+      }
+      redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
+    }
+    res.redirect(redirectUrl)
+  })
+
   return router
 }

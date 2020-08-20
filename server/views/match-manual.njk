@@ -1,0 +1,90 @@
+{% extends "partials/layout.njk" %}
+
+{% block content %}
+
+    {% if session.serverError %}
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-three-quarters">
+                {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+                {{ mojBanner({
+                    type: 'warning',
+                    text: 'Something went wrong - try again.',
+                    iconFallbackText: 'Warning'
+                }) }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if session.formError %}
+        {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+        {%- set errorText = "You must enter a case reference number" -%}
+        {% if session.formInvalid %}
+            {%- set errorText = "Enter the CRN in the correct format" -%}
+        {% endif %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: [
+                {
+                    text: errorText,
+                    href: "#crn"
+                }
+            ]
+        }) }}
+    {% endif %}
+
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <p class="govuk-body">Use a case reference number (CRN) to link to an existing nDelius record to the defendant.</p>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <h2 class="govuk-heading-m govuk-!-margin-top-4">Defendant details</h2>
+
+            <table class="govuk-table govuk-!-margin-bottom-8">
+                <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Name</th>
+                    <td class="govuk-table__cell">{{ data.defendantName }}</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Date of birth</th>
+                    <td class="govuk-table__cell">{{ params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY') }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h3 class="govuk-heading-m">Enter the CRN of the existing record</h3>
+
+            <form name="matchDefendant" id="matchDefendant" method="post" novalidate>
+                {% from "govuk/components/input/macro.njk" import govukInput %}
+                {% if session.formError %}
+                    {%- set errorMessage = {
+                        text: "You must enter a case reference number"
+                    } -%}
+                    {% if session.formInvalid %}
+                        {%- set errorMessage = {
+                            text: "Enter the CRN in the correct format"
+                        } -%}
+                    {% endif %}
+                {% endif %}
+                {{ govukInput({
+                    label: { text: "Case reference number (CRN)" },
+                    hint: { text: "For example, A123456" },
+                    classes: "govuk-input--width-10",
+                    id: "crn",
+                    name: "crn",
+                    pattern: "[A-Za-z][0-9]{6}",
+                    errorMessage: errorMessage
+                }) }}
+
+                <button type="submit" class="govuk-button">Find record</button>
+
+                <p class="govuk-body"><a href="" class="govuk-link govuk-link--no-visited-state">Cancel</a></p>
+            </form>
+
+        </div>
+        <div class="govuk-grid-column-one-third">&nbsp;</div>
+    </div>
+
+{% endblock %}
