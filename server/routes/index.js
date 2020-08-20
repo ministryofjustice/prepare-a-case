@@ -271,14 +271,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
       req.session.formInvalid = true
       redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
     } else {
-      // @TODO: We need to get the offender record from nDelius and update the case details with this data
-      // @TODO: Handle server error and set req.session.serverError as true.
-      // @FIXME: Fix this with response data
-      req.session.confirmedMatch = {
-        name: req.session.matchName,
-        probationStatus: 'Current'
-      }
-      redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
+      // @TODO: Redirect to new route to check record data - see PIC-618
+      redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
     }
     res.redirect(redirectUrl)
   })
