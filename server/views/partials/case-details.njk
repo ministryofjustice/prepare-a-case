@@ -4,7 +4,7 @@
 
 {% set subNavItems = [] %}
 
-{% if data.probationStatus === 'Current' or data.probationStatus === 'Previously known' %}
+{% if data.crn %}
     {{ subNavItems.push({
         text: 'Case summary',
         href: '/case/' + data.caseNo + '/summary',
