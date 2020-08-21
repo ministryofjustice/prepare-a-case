@@ -17,7 +17,7 @@ When('I open the application', () => {
 })
 
 When('I navigate to the {string} route', $route => {
-  cy.visit(`${$route}`)
+  cy.visit(`${$route}`, { failOnStatusCode: false })
 })
 
 When('I navigate to the {string} route for today', $route => {
