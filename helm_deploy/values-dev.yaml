@@ -10,10 +10,10 @@ image:
   port: 3000
 
 ingress:
+  controller: court-probation-dev
   enabled: true
   enable_whitelist: true
   host: prepare-a-case-dev.apps.live-1.cloud-platform.service.justice.gov.uk
-  cert_secret: prepare-a-case-cert
   path: /
 
 env:
