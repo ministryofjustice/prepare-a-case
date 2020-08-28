@@ -10,6 +10,7 @@ image:
   port: 3000
 
 ingress:
+  controller: nginx
   enabled: true
   enable_whitelist: true
   host: prepare-case-probation.service.justice.gov.uk
