@@ -96,7 +96,7 @@ Feature: Matching defendants to nDelius records
     And I click the "link it to them with a case reference number" link
     Then I should be on the "Link an nDelius record to the defendant" page
     And I should see the body text "Use a case reference number (CRN) to link to an existing nDelius record to the defendant."
-    And I should not see the heading level 2 with text "EDefendant details"
+    And I should see the level 2 heading "Defendant details"
     And I should see the following table headings
       | Name | Date of birth |
     And I should see the level 3 heading "Enter the CRN of the existing record"
