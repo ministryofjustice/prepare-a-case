@@ -106,10 +106,6 @@ module.exports = function createApp ({ signInService, userService }) {
   app.use(async (req, res, next) => {
     let axiosHeaders = {}
     if (req.user && req.originalUrl !== '/logout') {
-      const timeToRefresh = new Date() > req.user.refreshTime
-      if (timeToRefresh) {
-        res.redirect('/logout')
-      }
       axiosHeaders = {
         Authorization: `Bearer ${req.user.token}`
       }
