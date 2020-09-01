@@ -26,7 +26,7 @@ npm i
 
 And then, to build the assets and start the app with (substituting in a valid client secret for the dev environment)
 ```
-env API_CLIENT_SECRET={client-secret} COURT_CASE_SERVICE_URL=http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk NOMIS_AUTH_URL=https://gateway.t3.nomis-api.hmpps.dsd.io/auth npm run start
+env API_CLIENT_SECRET={client-secret} COURT_CASE_SERVICE_URL=http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk NOMIS_AUTH_URL=https://sign-in-dev.hmpps.service.justice.gov.uk/auth npm run start
 ```
 
 Or to use alongside a local instance of *court-case-service* 
