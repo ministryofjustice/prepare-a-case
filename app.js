@@ -81,6 +81,12 @@ module.exports = function createApp ({ signInService, userService }) {
 
   app.use(log.requestLogger())
 
+  app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store')
+    res.setHeader('Pragma', 'no-cache')
+    next()
+  })
+
   function addTemplateVariables (req, res, next) {
     res.locals.user = req.user
     next()
