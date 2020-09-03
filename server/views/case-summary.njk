@@ -1,6 +1,7 @@
 {% extends "partials/case-details.njk" %}
 
 {%- set moment = params.moment -%}
+{%- set courtRoom = data.courtRoom - 0 -%}
 {%- set communityData = data.communityData -%}
 {% set bannerHtml %}
     <h2 class="govuk-heading-m">{{ data.numberOfPossibleMatches }} possible nDelius records found for {{ data.defendantName }}.
@@ -37,7 +38,7 @@
         <div class="govuk-grid-column-two-thirds">
 
             <h2 class="govuk-heading-m">Appearance</h2>
-            <p class="govuk-body">Court {{ data.courtRoom }}, {{ data.session | lower }} session,
+            <p class="govuk-body">Court {{ courtRoom }}, {{ data.session | lower }} session,
                 {{ moment(data.sessionStartTime).format('dddd D MMMM') }} ({{ data.listNo }}
                 listing).</p>
 

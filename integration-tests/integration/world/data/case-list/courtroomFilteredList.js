@@ -4,7 +4,7 @@ const courtroomFilteredList = {
       name: 'Kara Ayers'
     },
     filtered: {
-      name: 'Sharpe Trujillo'
+      name: 'Jo Greer'
     }
   }
 }
