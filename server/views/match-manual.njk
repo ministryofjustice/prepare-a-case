@@ -44,8 +44,8 @@
             <table class="govuk-table govuk-!-margin-bottom-8">
                 <tbody class="govuk-table__body">
                 <tr class="govuk-table__row">
-                    <th scope="row" class="govuk-table__header">Name</th>
-                    <td class="govuk-table__cell">{{ data.defendantName }}</td>
+                    <th scope="row" class="govuk-table__header govuk-!-width-one-half">Name</th>
+                    <td class="govuk-table__cell govuk-!-width-one-half">{{ data.defendantName }}</td>
                 </tr>
                 <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Date of birth</th>
@@ -54,34 +54,73 @@
                 </tbody>
             </table>
 
-            <h3 class="govuk-heading-m">Enter the CRN of the existing record</h3>
-
-            <form name="matchDefendant" id="matchDefendant" method="post" novalidate>
-                {% from "govuk/components/input/macro.njk" import govukInput %}
-                {% if session.formError %}
-                    {%- set errorMessage = {
-                        text: "You must enter a case reference number"
-                    } -%}
-                    {% if session.formInvalid %}
+            {% if not params.crn %}
+                <form name="matchDefendant" id="matchDefendant" method="post" novalidate>
+                    <h3 class="govuk-heading-m">Enter the CRN of the existing record</h3>
+                    {% from "govuk/components/input/macro.njk" import govukInput %}
+                    {% if session.formError %}
                         {%- set errorMessage = {
-                            text: "Enter the CRN in the correct format"
+                            text: "You must enter a case reference number"
                         } -%}
+                        {% if session.formInvalid %}
+                            {%- set errorMessage = {
+                                text: "Enter the CRN in the correct format"
+                            } -%}
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-                {{ govukInput({
-                    label: { text: "Case reference number (CRN)" },
-                    hint: { text: "For example, A123456" },
-                    classes: "govuk-input--width-10",
-                    id: "crn",
-                    name: "crn",
-                    pattern: "[A-Za-z][0-9]{6}",
-                    errorMessage: errorMessage
-                }) }}
+                    {{ govukInput({
+                        label: { text: "Case reference number (CRN)" },
+                        hint: { text: "For example, A123456" },
+                        classes: "govuk-input--width-10",
+                        id: "crn",
+                        name: "crn",
+                        pattern: "[A-Za-z][0-9]{6}",
+                        errorMessage: errorMessage
+                    }) }}
 
-                <button type="submit" class="govuk-button">Find record</button>
+                    <button type="submit" class="govuk-button">Find record</button>
 
-                <p class="govuk-body"><a href="" class="govuk-link govuk-link--no-visited-state">Cancel</a></p>
-            </form>
+                    <p class="govuk-body"><a href="" class="govuk-link govuk-link--no-visited-state">Cancel</a></p>
+                </form>
+            {% else %}
+                <form name="matchDefendant" id="matchDefendant" action="/match/defendant/{{ params.caseNo }}/confirm" method="post" novalidate>
+
+                    <h3 class="govuk-heading-m">nDelius record found</h3>
+
+                    <table class="govuk-table govuk-!-margin-bottom-8">
+                        <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header govuk-!-width-one-half">Name</th>
+                            <td class="govuk-table__cell govuk-!-width-one-half">{{ details.forename }} {{ details.surname }}</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Date of birth</th>
+                            <td class="govuk-table__cell">{{ params.moment(details.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') }}</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">CRN</th>
+                            <td class="govuk-table__cell">{{ details.otherIds.crn }}</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">PNC</th>
+                            <td class="govuk-table__cell">{{ details.otherIds.pncNumber }}</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Probation status</th>
+                            <td class="govuk-table__cell">{{ details.probationStatus }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <input type="hidden" id="crn" name="crn" value="{{ params.crn }}"/>
+                    <button type="submit" class="govuk-button">Link record to defendant</button>
+
+                    <p class="govuk-body">If this isn't the record you're looking for you can
+                        <a href="/match/defendant/{{ params.caseNo }}/manual"
+                           class="govuk-link govuk-link--no-visited-state">Search again</a>.
+                    </p>
+                </form>
+            {% endif %}
 
         </div>
         <div class="govuk-grid-column-one-third">&nbsp;</div>

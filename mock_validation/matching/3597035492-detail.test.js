@@ -2,9 +2,9 @@
 const { getValidator } = require('../utils/validator')
 const { testGeneralValidation } = require('../common')
 
-const mapping = require('../../mappings/community/DX12340A-requirements-2360414697.json')
+const mapping = require('../../mappings/matching/3597035492-detail.json')
 
-describe('Validate requirements mock with CRN DX12340A and conviction id 2360414697', () => {
+describe('Validate default requirements mock', () => {
   let validator
 
   beforeAll(async () => {
@@ -12,6 +12,6 @@ describe('Validate requirements mock with CRN DX12340A and conviction id 2360414
   })
 
   it('should validate against the swagger doc', () => {
-    testGeneralValidation(validator, mapping)
+    testGeneralValidation(validator, mapping, validator.swagger.definitions.OffenderDetail)
   })
 })

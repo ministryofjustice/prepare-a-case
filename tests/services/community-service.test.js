@@ -2,7 +2,7 @@
 const moxios = require('moxios')
 const config = require('../../config')
 
-const { getSentenceDetails, getProbationRecord, getProbationRecordWithRequirements, getBreachDetails } = require('../../server/services/community-service')
+const { getDetails, getSentenceDetails, getProbationRecord, getProbationRecordWithRequirements, getBreachDetails } = require('../../server/services/community-service')
 
 const apiUrl = config.apis.courtCaseService.url
 
@@ -82,6 +82,18 @@ describe('Community service', () => {
 
     const response = await getBreachDetails('D123456', '12345678', '12345')
     expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/convictions/12345678/breaches/12345`)
+    return response
+  })
+
+  it('should call the API to request offender details data', async () => {
+    const detailsApiUrl = `${apiUrl}/offender/D123456/detail`
+    moxios.stubRequest(detailsApiUrl, {
+      status: 200,
+      response: {}
+    })
+
+    const response = await getDetails('D123456')
+    expect(moxios.requests.mostRecent().url).toBe(detailsApiUrl)
     return response
   })
 

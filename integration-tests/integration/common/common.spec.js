@@ -66,6 +66,14 @@ And('I should see the following table headings', $data => {
   })
 })
 
+And('I should see the following table {int} headings', ($index, $data) => {
+  cy.get('.govuk-table').eq($index - 1).within(() => {
+    $data.raw()[0].forEach((text, index) => {
+      cy.get('.govuk-table__header').eq(index).contains(text)
+    })
+  })
+})
+
 And('I should logout', () => {
   cy.get('.moj-header__navigation-link').click()
 })

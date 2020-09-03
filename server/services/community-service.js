@@ -47,7 +47,13 @@ const getAttachment = async (crn, documentId) => {
   return res.data
 }
 
+const getDetails = async crn => {
+  const res = await request(`${apiUrl}/offender/${crn}/detail`)
+  return res.data
+}
+
 module.exports = {
+  getDetails,
   getProbationRecord,
   getProbationRecordWithRequirements,
   getSentenceDetails,

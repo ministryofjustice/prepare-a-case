@@ -2,7 +2,7 @@ const express = require('express')
 const moment = require('moment')
 const { settings } = require('../../config')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
-const { getProbationRecord, getProbationRecordWithRequirements, getSentenceDetails, getBreachDetails } = require('../services/community-service')
+const { getDetails, getProbationRecord, getProbationRecordWithRequirements, getSentenceDetails, getBreachDetails } = require('../services/community-service')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
@@ -271,8 +271,37 @@ module.exports = function Index ({ authenticationMiddleware }) {
       req.session.formInvalid = true
       redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
     } else {
-      // @TODO: Redirect to new route to check record data - see PIC-618
-      redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
+      redirectUrl = `/match/defendant/${req.params.caseNo}/confirm/${req.body.crn}`
+    }
+    res.redirect(redirectUrl)
+  })
+
+  router.get('/match/defendant/:caseNo/confirm/:crn', health, defaults, async (req, res) => {
+    const templateValues = await getCaseAndTemplateValues(req)
+    const detailResponse = await getDetails(req.params.crn)
+    templateValues.title = 'Link an nDelius record to the defendant'
+    templateValues.details = {
+      ...detailResponse
+    }
+    templateValues.session = {
+      ...req.session
+    }
+    res.render('match-manual', templateValues)
+  })
+
+  router.post('/match/defendant/:caseNo/confirm', defaults, async (req, res) => {
+    req.session.serverError = false
+    let redirectUrl = '/'
+    const response = await updateCaseDetails(req.params.courtCode, req.params.caseNo, req.body.crn)
+    if (response.status === 201) {
+      req.session.confirmedMatch = {
+        name: req.session.matchName,
+        probationStatus: response.data.probationStatus
+      }
+      redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
+    } else {
+      req.session.serverError = true
+      redirectUrl = `/match/defendant/${req.params.caseNo}/confirm`
     }
     res.redirect(redirectUrl)
   })

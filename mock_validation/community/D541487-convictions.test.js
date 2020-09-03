@@ -1,6 +1,6 @@
 /* global beforeAll, describe, it */
 const { getValidator } = require('../utils/validator')
-const { testConvictionsValidation } = require('./common')
+const { testGeneralValidation } = require('../common')
 
 const mapping = require('../../mappings/community/D541487-convictions.json')
 
@@ -12,6 +12,6 @@ describe('Validate convictions mock with CRN D541487', () => {
   })
 
   it('should validate against the swagger doc', () => {
-    testConvictionsValidation(validator, mapping)
+    testGeneralValidation(validator, mapping)
   })
 })

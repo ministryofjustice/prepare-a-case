@@ -1,6 +1,6 @@
 /* global beforeAll, describe, it */
 const { getValidator } = require('../utils/validator')
-const { testBreachValidation } = require('./common')
+const { testGeneralValidation } = require('../common')
 
 const mapping = require('../../mappings/community/D991494-breach-12345.json')
 
@@ -12,6 +12,6 @@ describe('Validate breach mock with CRN D991494 and breach id 12345', () => {
   })
 
   it('should validate against the swagger doc', () => {
-    testBreachValidation(validator, mapping)
+    testGeneralValidation(validator, mapping)
   })
 })

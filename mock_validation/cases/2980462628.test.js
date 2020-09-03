@@ -1,6 +1,6 @@
 /* global beforeAll, describe, it */
 const { getValidator } = require('../utils/validator')
-const { testCourtCaseValidation } = require('./common')
+const { testGeneralValidation } = require('../common')
 
 const mapping = require('../../mappings/cases/2980462628.json')
 
@@ -12,6 +12,6 @@ describe('Validate court case mock for case 2980462628', () => {
   })
 
   it('validate case mock', () => {
-    testCourtCaseValidation(validator, mapping)
+    testGeneralValidation(validator, mapping, validator.swagger.definitions.CourtCaseResponse)
   })
 })

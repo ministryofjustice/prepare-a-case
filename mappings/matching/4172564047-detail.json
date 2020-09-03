@@ -1,0 +1,26 @@
+{
+  "id": "8f01aebb-b27e-4082-a5fb-8675fc772424",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/V178657/detail"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "otherIds": {
+        "crn": "V178657",
+        "pncNumber": "A/1234560BA",
+        "croNumber": "CRO654321"
+      },
+      "title": "Miss",
+      "forename": "Felicia",
+      "middleNames": null,
+      "surname": "Villarreal",
+      "dateOfBirth": "1971-08-26",
+      "probationStatus": "Current"
+    }
+  }
+}
