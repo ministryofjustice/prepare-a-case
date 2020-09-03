@@ -8,7 +8,7 @@ const filters = (req, res, next) => {
       value: 'Current'
     }, {
       label: 'Previously known',
-      value: 'Previously known'
+      value: 'Previously Known'
     }, {
       label: 'No record',
       value: 'No record'
