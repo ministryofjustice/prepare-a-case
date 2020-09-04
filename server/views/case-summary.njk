@@ -13,7 +13,7 @@
     {%- from "components/match-confirmation/macro.njk" import pacMatchConfirmation -%}
     {{ pacMatchConfirmation({
         matchName: session.confirmedMatch.name,
-        probationStatus: session.confirmedMatch.probationStatus
+        matchType: session.confirmedMatch.matchType
     }) }}
 
     {% if data.numberOfPossibleMatches > 0 and not session.confirmedMatch.name %}
