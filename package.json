@@ -96,7 +96,7 @@
   },
   "devDependencies": {
     "cucumber": "6.0.5",
-    "cypress": "5.0.0",
+    "cypress": "5.1.0",
     "cypress-axe": "0.8.1",
     "cypress-cucumber-preprocessor": "2.5.5",
     "jest": "26.4.2",
