@@ -54,6 +54,10 @@ describe('Routes', () => {
     return communityResponse
   })
 
+  jest.spyOn(communityService, 'getDetails').mockImplementation(function () {
+    return communityResponse
+  })
+
   jest.spyOn(communityService, 'getSentenceDetails').mockImplementation(function () {
     return {
       attendances: []
@@ -68,7 +72,10 @@ describe('Routes', () => {
 
   jest.spyOn(caseService, 'updateCase').mockImplementation(function () {
     return {
-      status: 201
+      status: 201,
+      data: {
+        probationStatus: 'Current'
+      }
     }
   })
 
@@ -263,6 +270,22 @@ describe('Routes', () => {
 
   it('defendant manual match route should redirect when submitting a valid CRN', () => {
     return request(app).post('/match/defendant/3597035492/manual', { crn: 'V178657' }).then(response => {
+      expect(response.statusCode).toEqual(302)
+    })
+  })
+
+  it('defendant manual match confirmation route should call the case service for case data', async () => {
+    const response = await request(app).get('/match/defendant/3597035492/confirm/C178657')
+    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '3597035492')
+    expect(communityService.getDetails).toHaveBeenCalledWith('C178657')
+    return response
+  })
+
+  it('defendant manual match confirm submission route should call case-service methods and redirect', () => {
+    return request(app).post('/match/defendant/3597035492/confirm', { crn: 'V178657' }).then(response => {
+      expect(caseService.getCase).toHaveBeenCalledWith('SHF', '3597035492')
+      expect(caseService.updateCase).toHaveBeenCalledWith('SHF', '3597035492', expect.any(Object))
+      expect(response.header.location).toEqual('/case/3597035492/summary')
       expect(response.statusCode).toEqual(302)
     })
   })
