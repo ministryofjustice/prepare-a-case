@@ -33,7 +33,7 @@
           },
           "probationStatus": "Current",
           "mostRecentEvent": {
-            "date": "2017-11-27",
+            "startDate": "2017-11-27",
             "text": "CJA Standard Determinate Custody",
             "length": "6",
             "lengthUnits": "Months"
@@ -59,7 +59,7 @@
           },
           "probationStatus": "Previously known",
           "mostRecentEvent": {
-            "date": "2017-11-27",
+            "startDate": "2017-11-27",
             "text": "CJA Standard Determinate Custody",
             "length": "12",
             "lengthUnits": "Months"
@@ -85,7 +85,7 @@
           },
           "probationStatus": "Previously known",
           "mostRecentEvent": {
-            "date": "2015-01-13",
+            "startDate": "2015-01-13",
             "text": "CJA Standard Determinate Custody",
             "length": "6",
             "lengthUnits": "Months"

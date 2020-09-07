@@ -297,6 +297,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       req.session.confirmedMatch = {
         name: req.session.matchName,
         matchType: 'linked'
+        probationStatus: response.data.probationStatus
       }
       redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
     } else {
