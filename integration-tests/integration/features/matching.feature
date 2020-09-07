@@ -198,69 +198,6 @@ Feature: Matching defendants to nDelius records
     And I should see the level 3 heading "Enter the CRN of the existing record"
     And There should be no a11y violations
 
-  Scenario: Manually match a defendant from the bulk list
-    Given I am an authenticated user
-    When I navigate to the "/match/bulk/" route for today
-    And I am using the "bulkList" match data
-    Then I should be on the "Defendants with possible nDelius records" page
-    When I click the "Review records" link
-    Then I should be on the "Review possible nDelius records" page
-    And I am using the "defendantOneRecords" match data
-    And I click the element with id "defendant-1"
-    And I click the "Can't see the correct record?" summary link
-    And I click the "link it to them with a case reference number" link
-    Then I should be on the "Link an nDelius record to the defendant" page
-    When I enter "C178657" into text input with id "crn"
-    And I click the "Find record" button
-    Then I should be on the "Link an nDelius record to the defendant" page
-    And I should see the body text "Use a case reference number (CRN) to link to an existing nDelius record to the defendant."
-    And I should see the level 2 heading "Defendant details"
-    And I should see the following table headings
-      | Name | Date of birth |
-    And I should see the level 3 heading "nDelius record found"
-    And I should see the following table 2 headings
-      | Name | Date of birth | CRN | PNC | Probation status |
-    When I click the "Link record to defendant" button
-    Then I should be on the "Defendants with possible nDelius records" page
-    And I should see the match confirmation banner message
-
-  Scenario: Manually match a defendant from the case list
-    Given I am an authenticated user
-    When I navigate to the "match/defendant/3597035492" route
-    And I am using the "defendantOneRecords" match data
-    And I should see the defendant record options
-    And I click the element with id "defendant-1"
-    And I click the "Can't see the correct record?" summary link
-    And I click the "link it to them with a case reference number" link
-    Then I should be on the "Link an nDelius record to the defendant" page
-    When I enter "C178657" into text input with id "crn"
-    And I click the "Find record" button
-    Then I should be on the "Link an nDelius record to the defendant" page
-    And I should see the body text "Use a case reference number (CRN) to link to an existing nDelius record to the defendant."
-    And I should see the level 2 heading "Defendant details"
-    And I should see the following table headings
-      | Name | Date of birth |
-    And I should see the level 3 heading "nDelius record found"
-    And I should see the following table 2 headings
-      | Name | Date of birth | CRN | PNC | Probation status |
-    When I click the "Link record to defendant" button
-    Then I should be on the "Case summary" page
-    And I should see the match confirmation banner message
-
-  Scenario: Manually match a defendant and choose to search again
-    Given I am an authenticated user
-    And I am using the "defendantOneRecords" match data
-    When I navigate to the "/match/defendant/3597035492/confirm/C178657" route
-    Then I should be on the "Link an nDelius record to the defendant" page
-    And I should see the body text "Use a case reference number (CRN) to link to an existing nDelius record to the defendant."
-    And I should see the level 2 heading "Defendant details"
-    And I should see the following table headings
-      | Name | Date of birth |
-    And I should see the level 3 heading "nDelius record found"
-    When I click the "Search again" link
-    Then I should be on the "Link an nDelius record to the defendant" page
-    And I should see the level 3 heading "Enter the CRN of the existing record"
-
   Scenario: Confirm no existing defendant record match from case summary
     Given I am an authenticated user
     When I navigate to the "match/defendant/3597035492" route
