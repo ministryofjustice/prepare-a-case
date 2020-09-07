@@ -258,7 +258,7 @@ Feature: Case list
     When I view the court list
     Then I should see the first defendant on the "unfiltered" list
     When I click the "Courtroom" filter button
-    And I select the "1" filter
+    And I select the "01" filter
     And I click the "Apply filters" button
     Then I should not see the defendant on the "unfiltered" list
     And I should see the first defendant on the "filtered" list
@@ -292,7 +292,7 @@ Feature: Case list
     When I click the "Probation status" filter button
     And I select the "Current" filter
     And I click the "Courtroom" filter button
-    And I select the "1" filter
+    And I select the "01" filter
     And I click the "Session" filter button
     And I select the "AFTERNOON" filter
     And I click the "Apply filters" button

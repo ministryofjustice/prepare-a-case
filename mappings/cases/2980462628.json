@@ -13,7 +13,7 @@
       "caseId": "805611",
       "caseNo": "2980462628",
       "courtCode": "SHF",
-      "courtRoom": "3",
+      "courtRoom": "03",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "3rd",
       "crn": "D541487",
