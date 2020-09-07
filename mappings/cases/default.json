@@ -13,7 +13,7 @@
       "caseId": "538737",
       "caseNo": "7986902512",
       "courtCode": "SHF",
-      "courtRoom": "6",
+      "courtRoom": "06",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "1st",
       "pnc": "A/1234560BA",
