@@ -35,7 +35,7 @@
     {%- from "components/match-confirmation/macro.njk" import pacMatchConfirmation -%}
     {{ pacMatchConfirmation({
         matchName: session.confirmedMatch.name,
-        probationStatus: session.confirmedMatch.probationStatus
+        matchType: session.confirmedMatch.matchType
     }) }}
 
     <h1 class="govuk-heading-l">Defendants with possible nDelius records</h1>
