@@ -1,6 +1,8 @@
 {% if params.matchName %}
-    {% if params.probationStatus === 'No record' %}
+    {% if params.matchType === 'No record' %}
         {%- set messageText = 'You have successfully confirmed ' + params.matchName + ' has no nDelius record.' -%}
+    {% elseif params.matchType === 'linked' %}
+        {%- set messageText = 'You have successfully linked an nDelius record to ' + params.matchName + '.' -%}
     {% else %}
         {%- set messageText = 'You have successfully confirmed a record for ' + params.matchName + '.' -%}
     {% endif %}

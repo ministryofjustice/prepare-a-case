@@ -74,7 +74,7 @@ describe('Case service', () => {
       label: 'Courtroom',
       items: [{
         label: '1',
-        value: '1',
+        value: '01',
         checked: true
       }]
     }]
@@ -83,9 +83,9 @@ describe('Case service', () => {
       status: 200,
       response: {
         cases: [{
-          courtRoom: '1'
+          courtRoom: '01'
         }, {
-          courtRoom: '2'
+          courtRoom: '02'
         }]
       }
     })

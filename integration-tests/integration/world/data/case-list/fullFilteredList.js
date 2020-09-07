@@ -4,7 +4,7 @@ const fullFilteredList = {
       name: 'Kara Ayers'
     },
     filtered: {
-      name: 'Porter Salas'
+      name: 'Felicia Villarreal'
     }
   }
 }
