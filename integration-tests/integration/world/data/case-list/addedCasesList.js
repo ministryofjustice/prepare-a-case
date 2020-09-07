@@ -5,8 +5,8 @@ const addedCasesList = {
       {
         defendant: 'Sara Ortega',
         probationStatus: 'Previously known',
-        breach: true,
-        sso: true,
+        breach: false,
+        sso: false,
         offence: '*Assault by beating',
         listing: '3rd',
         session: 'Morning',
@@ -16,7 +16,7 @@ const addedCasesList = {
         defendant: 'Obrien Mccall',
         probationStatus: 'No record',
         breach: false,
-        sso: true,
+        sso: false,
         offence: '*Theft from a shop',
         listing: '2nd',
         session: 'Morning',
@@ -25,6 +25,8 @@ const addedCasesList = {
       {
         defendant: 'Lloyd Humphrey',
         probationStatus: 'Previously known',
+        breach: false,
+        sso: false,
         offence: '*Assault by beating',
         listing: '1st',
         session: 'Morning',
@@ -33,6 +35,8 @@ const addedCasesList = {
       {
         defendant: 'Janis Woods',
         probationStatus: 'No record',
+        breach: false,
+        sso: false,
         offence: '*Theft from a shop',
         listing: '3rd',
         session: 'Morning',
