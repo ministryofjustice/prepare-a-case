@@ -221,7 +221,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       if (response.status === 201) {
         req.session.confirmedMatch = {
           name: req.session.matchName,
-          probationStatus: response.data.probationStatus
+          matchType: 'Known'
         }
         redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
       } else {
@@ -238,7 +238,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     if (response.status === 201) {
       req.session.confirmedMatch = {
         name: req.session.matchName,
-        probationStatus: 'No record'
+        matchType: 'No record'
       }
       redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
     } else {
@@ -296,6 +296,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     if (response.status === 201) {
       req.session.confirmedMatch = {
         name: req.session.matchName,
+        matchType: 'linked',
         probationStatus: response.data.probationStatus
       }
       redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
