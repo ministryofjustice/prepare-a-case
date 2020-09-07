@@ -40,7 +40,9 @@
         "line4": null,
         "line5": null
       },
-      "defendantDob": "1996-06-06"
+      "defendantDob": "1996-06-06",
+      "nationality1": "British",
+      "nationality2": "Swedish"
     }
   }
 }

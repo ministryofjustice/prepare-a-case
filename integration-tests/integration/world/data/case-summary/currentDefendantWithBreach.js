@@ -13,7 +13,7 @@ const currentDefendantWithBreach = {
     dateOfBirth: '1996-06-06',
     gender: 'Male',
     address: '99 Ralph Avenue London AD21 5DR',
-    nationality: 'Unknown',
+    nationality: 'British / Swedish',
     offence: 'Theft from a shop',
     offenceDetails: 'On 01/01/2015 at Tetratrex, Leeds, stole ROBOTS to the value of £987.00, belonging to Young Bryant.',
     offenceCaption: 'Contrary to section 1(1) and 7 of the Theft Act 1968.',
