@@ -11,7 +11,7 @@ const currentDefendant = {
     dateOfBirth: '1979-08-18',
     gender: 'Female',
     address: '38 Clarendon Road Glasgow AD21 5DR',
-    nationality: 'Unknown',
+    nationality: 'British',
     offence: 'Attempt theft from the person of another',
     offenceDetails: 'On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Clemons Barron.',
     offenceCaption: 'Contrary to section 1(1) of the Criminal Attempts Act 1981.',
