@@ -316,5 +316,23 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(redirectUrl)
   })
 
+  router.get('/match/defendant/:caseNo/unlink/:crn', health, defaults, async (req, res) => {
+    const templateValues = await getCaseAndTemplateValues(req)
+    const detailResponse = await getDetails(req.params.crn)
+    templateValues.title = 'Unlink nDelius record from the defendant'
+    templateValues.hideSubnav = true
+    templateValues.backText = 'Back'
+    templateValues.backLink = `/case/${req.params.caseNo}/summary`
+    templateValues.hideUnlinkButton = true
+    templateValues.params = {
+      ...templateValues.params
+    }
+    templateValues.details = {
+      ...detailResponse
+    }
+    req.session.matchName = templateValues.data.defendantName
+    res.render('match-unlink', templateValues)
+  })
+
   return router
 }

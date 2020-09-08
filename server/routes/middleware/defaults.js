@@ -39,13 +39,16 @@ function addBusinessDays (originalDate, daysToAdd) {
 }
 
 const defaults = (req, res, next) => {
-  req.params.limit = settings.casesPerPage
-  req.params.moment = moment
-  req.params.getMonthsAndDays = getMonthsAndDays
-  req.params.addBusinessDays = addBusinessDays
-  req.params.getPath = getPath
-  req.params.courtCode = settings.courtCode
-  req.params.courtName = settings.courtName
+  req.params = {
+    ...req.params,
+    limit: settings.casesPerPage,
+    moment: moment,
+    getMonthsAndDays: getMonthsAndDays,
+    addBusinessDays: addBusinessDays,
+    getPath: getPath,
+    courtCode: settings.courtCode,
+    courtName: settings.courtName
+  }
   next()
 }
 

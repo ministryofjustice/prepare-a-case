@@ -289,4 +289,11 @@ describe('Routes', () => {
       expect(response.statusCode).toEqual(302)
     })
   })
+
+  it('defendant unlink route should call case-service and community-service methods', async () => {
+    const response = await request(app).get('/match/defendant/2608860141/unlink/D541487')
+    expect(caseService.getCase).toHaveBeenCalledWith('SHF', '2608860141')
+    expect(communityService.getDetails).toHaveBeenCalledWith('D541487')
+    return response
+  })
 })
