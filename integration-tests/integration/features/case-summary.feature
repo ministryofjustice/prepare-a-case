@@ -107,7 +107,7 @@ Feature: Case summary
     And I should see the value with defendant "nationality"
     Then I should see the row with the key "Address"
     And I should see the value with defendant "address"
-    And I should not see a button with the label "Link nDelius record"
+    And I should see a button with the label "Unlink nDelius record"
 
     And There should be no a11y violations
 
@@ -142,7 +142,7 @@ Feature: Case summary
     And I should see the value with defendant "nationality"
     Then I should see the row with the key "Address"
     And I should see the value with defendant "address"
-    And I should not see a button with the label "Link nDelius record"
+    And I should see a button with the label "Unlink nDelius record"
 
     And There should be no a11y violations
 
@@ -179,6 +179,7 @@ Feature: Case summary
     And I should see the value with defendant "nationality"
     Then I should see the row with the key "Address"
     And I should see the value with defendant "address"
+    And I should see a button with the label "Unlink nDelius record"
 
     And There should be no a11y violations
 
@@ -203,6 +204,7 @@ Feature: Case summary
     And I should see the previous order offence
     And I should see the previous order end date
     And I should see the last pre-sentence report details
+
     And There should be no a11y violations
 
   Scenario: View the probation record section of the case summary for a current offender
