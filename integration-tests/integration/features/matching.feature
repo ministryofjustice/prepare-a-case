@@ -254,7 +254,7 @@ Feature: Matching defendants to nDelius records
     Then I should be on the "Unlink nDelius record from the defendant" page
     When I click the "Unlink record from defendant" button
     Then I should be on the "Case summary" page
-    And I should see the no record match confirmation banner message
+    And I should see the match unlinked banner message
     And There should be no a11y violations
 
   Scenario: Visit the unlink nDelius record from the defendant page and click the back button
