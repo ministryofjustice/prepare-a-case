@@ -10,7 +10,7 @@ const getCaseList = async (courtCode, date, filters, subsection) => {
   let unmatchedRecords = 0
   if (res.data && res.data.cases) {
     res.data.cases.forEach($case => {
-      if ($case.numberOfPossibleMatches > 0) {
+      if ($case.numberOfPossibleMatches && !$case.crn) {
         unmatchedRecords++
       }
       if ($case.createdToday) {

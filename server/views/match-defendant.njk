@@ -68,7 +68,7 @@
                         </tr>
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">DOB</th>
-                            <td class="govuk-table__cell">{{ params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY') }}</td>
+                            <td class="govuk-table__cell">{{ params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY') if data.defendantDob }}</td>
                         </tr>
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">Address</th>
@@ -114,7 +114,7 @@
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">DOB</th>
-                                            <td class="govuk-table__cell">{{ params.moment(item.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') }}</td>
+                                            <td class="govuk-table__cell">{{ params.moment(item.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') if item.dateOfBirth }}</td>
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">Address</th>
@@ -134,7 +134,7 @@
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">Most recent event</th>
-                                            <td class="govuk-table__cell">{{ params.moment(item.mostRecentEvent.startDate, 'YYYY-MM-DD').format('D MMMM YYYY') }}{{ " - " + item.mostRecentEvent.text if item.mostRecentEvent.text }} {{ "(" + item.mostRecentEvent.length + " " + item.mostRecentEvent.lengthUnits + ")" if item.mostRecentEvent.length }}</td>
+                                            <td class="govuk-table__cell">{{ params.moment(item.mostRecentEvent.startDate, 'YYYY-MM-DD').format('D MMMM YYYY') if item.mostRecentEvent.startDate }}{{ " - " + item.mostRecentEvent.text if item.mostRecentEvent.text }} {{ "(" + item.mostRecentEvent.length + " " + item.mostRecentEvent.lengthUnits + ")" if item.mostRecentEvent.length }}</td>
                                         </tr>
                                         </tbody>
                                     </table>

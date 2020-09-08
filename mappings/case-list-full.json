@@ -28,7 +28,7 @@
           "probationStatus": "No record",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
-          "suspendedSentenceOrder": true,
+          "suspendedSentenceOrder": false,
           "breach": false,
           "offences": [
             {
@@ -119,7 +119,7 @@
           "courtRoom": "07",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
-          "crn": "D985513",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "",
           "numberOfPossibleMatches": 3,
@@ -162,8 +162,8 @@
           "probationStatus": "Previously Known",
           "session": "AFTERNOON",
           "previouslyKnownTerminationDate": "2010-01-01",
-          "suspendedSentenceOrder": true,
-          "breach": true,
+          "suspendedSentenceOrder": false,
+          "breach": false,
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -195,8 +195,9 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
-          "probationStatus": "Current",
+          "probationStatus": "",
           "numberOfPossibleMatches": 2,
           "session": "AFTERNOON",
           "previouslyKnownTerminationDate": null,
@@ -252,7 +253,7 @@
           "probationStatus": "Previously Known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
-          "suspendedSentenceOrder": true,
+          "suspendedSentenceOrder": false,
           "breach": false,
           "offences": [
             {
@@ -295,8 +296,8 @@
           "probationStatus": "Previously Known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
-          "suspendedSentenceOrder": true,
-          "breach": true,
+          "suspendedSentenceOrder": false,
+          "breach": false,
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -343,7 +344,7 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2013-01-01",
           "suspendedSentenceOrder": false,
-          "breach": true,
+          "breach": false,
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -374,8 +375,8 @@
           "probationStatus": "Previously Known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2016-01-01",
-          "suspendedSentenceOrder": true,
-          "breach": true,
+          "suspendedSentenceOrder": false,
+          "breach": false,
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -538,7 +539,7 @@
           "probationStatus": "Previously Known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
-          "suspendedSentenceOrder": true,
+          "suspendedSentenceOrder": false,
           "breach": false,
           "offences": [
             {
@@ -642,7 +643,7 @@
           "probationStatus": "Previously Known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
-          "suspendedSentenceOrder": true,
+          "suspendedSentenceOrder": false,
           "breach": false,
           "offences": [
             {
@@ -8359,7 +8360,7 @@
           "probationStatus": "No record",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
-          "suspendedSentenceOrder": true,
+          "suspendedSentenceOrder": false,
           "breach": false,
           "offences": [
             {
@@ -8410,7 +8411,7 @@
           "probationStatus": "Previously Known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
-          "suspendedSentenceOrder": true,
+          "suspendedSentenceOrder": false,
           "breach": false,
           "offences": [
             {

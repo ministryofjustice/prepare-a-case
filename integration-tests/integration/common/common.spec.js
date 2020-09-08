@@ -143,9 +143,9 @@ And('I should see a button with the label {string}', $string => {
   cy.get('button').contains($string).should('exist')
 })
 
-// And('I should not see a button with the label {string}', $string => {
-//   cy.get('button').contains($string).should('not.exist')
-// })
+And('I should not see a button with the label {string}', $string => {
+  cy.get('button').contains($string).should('not.exist')
+})
 
 And('I should see the legend {string}', $string => {
   cy.get('legend').contains($string)
