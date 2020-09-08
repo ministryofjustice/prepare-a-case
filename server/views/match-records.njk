@@ -10,7 +10,7 @@
 } %}
 
 {% for item in data %}
-    {% if item.numberOfPossibleMatches %}
+    {% if item.numberOfPossibleMatches and not item.crn %}
         {%- set tableRow = [
             { text: item.defendantName | escape },
             { text: item.numberOfPossibleMatches | escape },
