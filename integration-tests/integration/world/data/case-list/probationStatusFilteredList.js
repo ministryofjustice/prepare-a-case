@@ -4,7 +4,7 @@ const probationStatusFilteredList = {
       name: 'Kara Ayers'
     },
     filtered: {
-      name: 'Felicia Villarreal'
+      name: 'Lenore Marquez'
     }
   }
 }

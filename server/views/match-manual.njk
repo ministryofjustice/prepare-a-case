@@ -21,6 +21,9 @@
         {% if session.formInvalid %}
             {%- set errorText = "Enter the CRN in the correct format" -%}
         {% endif %}
+        {% if session.crnInvalid %}
+            {%- set errorText = "No records match the CRN provided" -%}
+        {% endif %}
         {{ govukErrorSummary({
             titleText: "There is a problem",
             errorList: [
@@ -60,13 +63,8 @@
                     {% from "govuk/components/input/macro.njk" import govukInput %}
                     {% if session.formError %}
                         {%- set errorMessage = {
-                            text: "You must enter a case reference number"
+                            text: errorText
                         } -%}
-                        {% if session.formInvalid %}
-                            {%- set errorMessage = {
-                                text: "Enter the CRN in the correct format"
-                            } -%}
-                        {% endif %}
                     {% endif %}
                     {{ govukInput({
                         label: { text: "Case reference number (CRN)" },

@@ -262,6 +262,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     req.session.serverError = false
     req.session.formError = false
     req.session.formInvalid = false
+    req.session.crnInvalid = false
     req.session.confirmedMatch = undefined
     if (!req.body.crn) {
       req.session.formError = true
@@ -271,7 +272,15 @@ module.exports = function Index ({ authenticationMiddleware }) {
       req.session.formInvalid = true
       redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
     } else {
-      redirectUrl = `/match/defendant/${req.params.caseNo}/confirm/${req.body.crn}`
+      const detailResponse = await getDetails(req.body.crn)
+      console.info('DETAILS:', detailResponse)
+      if (!detailResponse) {
+        req.session.formError = true
+        req.session.crnInvalid = true
+        redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
+      } else {
+        redirectUrl = `/match/defendant/${req.params.caseNo}/confirm/${req.body.crn}`
+      }
     }
     res.redirect(redirectUrl)
   })
