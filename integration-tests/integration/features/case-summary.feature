@@ -72,7 +72,8 @@ Feature: Case summary
     And I should see the value with defendant "nationality"
     Then I should see the row with the key "Address"
     And I should see the value with defendant "address"
-
+    And I should see a button with the label "Link nDelius record"
+    
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with an existing probation record
@@ -106,6 +107,7 @@ Feature: Case summary
     And I should see the value with defendant "nationality"
     Then I should see the row with the key "Address"
     And I should see the value with defendant "address"
+    And I should not see a button with the label "Link nDelius record"
 
     And There should be no a11y violations
 
@@ -140,6 +142,7 @@ Feature: Case summary
     And I should see the value with defendant "nationality"
     Then I should see the row with the key "Address"
     And I should see the value with defendant "address"
+    And I should not see a button with the label "Link nDelius record"
 
     And There should be no a11y violations
 

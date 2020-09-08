@@ -42,6 +42,7 @@
 
     {%- from "components/key-details-bar/macro.njk" import pacKeyDetailsBar -%}
     {{ pacKeyDetailsBar({
+        caseNo: params.caseNo,
         accTitle: "Defendant: ",
         title: data.defendantName,
         crn: crn,

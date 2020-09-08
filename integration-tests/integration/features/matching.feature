@@ -237,3 +237,10 @@ Feature: Matching defendants to nDelius records
     Then I should be on the "Review possible nDelius records" page
     And I should see the match error banner message
     And There should be no a11y violations
+
+  Scenario: Link an nDelius record to a not known defendant from case-summary
+    Given I am an authenticated user
+    When I navigate to the "/case/7483843110/summary" route
+    And I click the "Link nDelius record" button
+    Then I should be on the "Link an nDelius record to the defendant" page
+    And There should be no a11y violations
