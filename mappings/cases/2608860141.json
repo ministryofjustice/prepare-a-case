@@ -21,8 +21,8 @@
       "probationStatus": "Previously known",
       "session": "MORNING",
       "previouslyKnownTerminationDate": "2010-01-01",
-      "suspendedSentenceOrder": true,
-      "breach": true,
+      "suspendedSentenceOrder": false,
+      "breach": false,
       "offences": [
         {
           "offenceTitle": "Theft from the person of another",

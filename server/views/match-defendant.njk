@@ -3,7 +3,7 @@
 {% if session.matchType === 'bulk' %}
     {%- set backUrl = '/match/' + session.matchType + '/' + session.matchDate -%}
 {% else %}
-    {%- set backUrl = '/case/' + data.caseNo + '/details' -%}
+    {%- set backUrl = '/case/' + data.caseNo + '/summary' -%}
 {% endif %}
 
 {% block backlink %}

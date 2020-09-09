@@ -22,7 +22,7 @@
       "session": "MORNING",
       "previouslyKnownTerminationDate": "2013-01-01",
       "suspendedSentenceOrder": false,
-      "breach": true,
+      "breach": false,
       "offences": [
         {
           "offenceTitle": "Theft from the person of another",
