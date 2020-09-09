@@ -1,14 +1,19 @@
 <section class="pac-key-details-bar" aria-label="Key details">
-    <div class="pac-key-details-bar__key-details">
-        {% if params.probationStatus == 'No record' %}
-            <div class="pac-key-details-bar__right-block">
-                <form method="get" action="/match/defendant/{{ params.caseNo }}/manual">
-                    <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button" type="submit">
-                        Link nDelius record
-                    </button>
-                </form>
-            </div>
-        {% endif %}
+  <div class="pac-key-details-bar__key-details">
+    
+    {% if params.probationStatus == 'No record' %}
+      <div class="pac-key-details-bar__right-block">
+        <form method="get" action="/match/defendant/{{ params.caseNo }}/manual">
+          <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button" type="submit">Link nDelius record</button>
+        </form>
+      </div>
+    {% elif params.crn | length %}
+      <div class="pac-key-details-bar__right-block">
+        <form method="get" action="/match/defendant/{{ params.caseNo }}/manual">
+          <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button" type="submit">Unlink nDelius record</button>
+        </form>
+      </div>
+    {% endif %}
 
         <div class="pac-key-details-bar__top-block">
             <h1 class="pac-key-details-bar__name govuk-!-margin-right-6">{% if params.accTitle %}<span class="govuk-visually-hidden">{{ params.accTitle }}</span>{% endif %}{{ params.title }}</h1>

@@ -89,6 +89,26 @@ Feature: Matching defendants to nDelius records
     And I should see the no record match confirmation banner message
     And There should be no a11y violations
 
+  Scenario: Click the back button on matching screen when starting the journey at case summary
+    Given I am an authenticated user
+    When I navigate to the "match/defendant/3597035492" route
+    And I am using the "defendantOneRecords" match data
+    Then I should be on the "Review possible nDelius records" page
+    When I click the "Back" link
+    Then I should be on the "Case summary" page
+    And There should be no a11y violations
+
+  Scenario: Click the back button on matching screen when starting the journey at match from bulk list
+    Given I am an authenticated user
+    When I navigate to the "/match/bulk/" route for today
+    And I am using the "bulkList" match data
+    Then I should be on the "Defendants with possible nDelius records" page
+    When I click the "Review records" link
+    Then I should be on the "Review possible nDelius records" page
+    When I click the "Back" link
+    Then I should be on the "Defendants with possible nDelius records" page
+    And There should be no a11y violations
+
   Scenario: Manually match a defendant and submit without entering a CRN
     Given I am an authenticated user
     When I navigate to the "/match/bulk/" route for today
@@ -236,6 +256,12 @@ Feature: Matching defendants to nDelius records
     And I click the "Confirm record" button
     Then I should be on the "Review possible nDelius records" page
     And I should see the match error banner message
+
+  Scenario: Link an nDelius record to a not known defendant from case-summary
+    Given I am an authenticated user
+    When I navigate to the "/case/7483843110/summary" route
+    And I click the "Link nDelius record" button
+    Then I should be on the "Link an nDelius record to the defendant" page
     And There should be no a11y violations
 
   Scenario: Link an nDelius record to a not known defendant from case-summary
