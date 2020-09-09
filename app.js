@@ -6,11 +6,6 @@ const compression = require('compression')
 const cookieParser = require('cookie-parser')
 const nunjucks = require('nunjucks')
 const session = require('express-session')
-const loggingSerialiser = require('./server/loggingSerialiser')
-const log = require('bunyan-request-logger')({
-  name: 'Prepare a Case',
-  serializers: loggingSerialiser
-})
 const helmet = require('helmet')
 const path = require('path')
 const MemoryStore = require('memorystore')(session)
@@ -23,6 +18,7 @@ const auth = require('./server/authentication/auth')
 const populateCurrentUser = require('./server/routes/middleware/populateCurrentUser')
 const authorisationMiddleware = require('./server/routes/middleware/authorisationMiddleware')
 const errorHandler = require('./server/errorHandler')
+const log = require('./log')
 
 const { authenticationMiddleware } = auth
 
@@ -79,11 +75,30 @@ module.exports = function createApp ({ signInService, userService }) {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  app.use(log.requestLogger())
-
   app.use((req, res, next) => {
     res.setHeader('Cache-Control', 'no-cache, no-store')
     res.setHeader('Pragma', 'no-cache')
+    req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
+    const startTime = new Date()
+    log.info({
+      req: {
+        url: req.url,
+        method: req.method,
+        protocol: req.protocol,
+        requestId: req.requestId
+      }
+    })
+    res.on('finish', function () {
+      res.responseTime = new Date() - startTime
+      res.requestId = req.requestId
+      log.info({
+        res: {
+          statusCode: res.statusCode,
+          requestId: res.requestId,
+          responseTime: res.responseTime
+        }
+      })
+    })
     next()
   })
 
@@ -131,13 +146,6 @@ module.exports = function createApp ({ signInService, userService }) {
       }
     })
     return next()
-  })
-
-  // Update a value in the cookie so that the set-cookie will be sent.
-  // Only changes every minute so that it's not sent with every request.
-  app.use((req, res, next) => {
-    req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
-    next()
   })
 
   const authLogoutUrl = `${config.apis.oauth2.url}/logout?client_id=${config.apis.oauth2.apiClientId}&redirect_uri=${config.domain}`
