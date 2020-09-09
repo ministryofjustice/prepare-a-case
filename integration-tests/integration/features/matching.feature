@@ -270,3 +270,25 @@ Feature: Matching defendants to nDelius records
     And I click the "Link nDelius record" button
     Then I should be on the "Link an nDelius record to the defendant" page
     And There should be no a11y violations
+
+  Scenario: Unlink nDelius record from the defendant
+    Given I am an authenticated user
+    When I navigate to the "/case/2608860141/summary" route
+    And I am using the "unlinkRecord" match data
+    Then I should be on the "Case summary" page
+    When I click the "Unlink nDelius record" button
+    Then I should be on the "Unlink nDelius record from the defendant" page
+    When I click the "Unlink record from defendant" button
+    Then I should be on the "Case summary" page
+    And I should see the no record match confirmation banner message
+    And There should be no a11y violations
+
+  Scenario: Visit the unlink nDelius record from the defendant page and click the back button
+    Given I am an authenticated user
+    When I navigate to the "/case/2608860141/summary" route
+    Then I should be on the "Case summary" page
+    When I click the "Unlink nDelius record" button
+    Then I should be on the "Unlink nDelius record from the defendant" page
+    When I click the "Back" link
+    Then I should be on the "Case summary" page
+    And There should be no a11y violations

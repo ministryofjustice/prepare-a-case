@@ -7,9 +7,9 @@
           <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button" type="submit">Link nDelius record</button>
         </form>
       </div>
-    {% elif params.crn | length %}
+    {% elif params.crn | length and not params.hideUnlinkButton %}
       <div class="pac-key-details-bar__right-block">
-        <form method="get" action="/match/defendant/{{ params.caseNo }}/manual">
+        <form method="get" action="/match/defendant/{{ params.caseNo }}/unlink/{{ params.crn }}">
           <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button" type="submit">Unlink nDelius record</button>
         </form>
       </div>
