@@ -1,0 +1,13 @@
+{
+  "id": "c4d7338c-b503-44c3-a4af-505d557fab09",
+  "request": {
+    "method": "PUT",
+    "urlPathPattern": "/court/([A-Z]*)/case/8678951874"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 201
+  }
+}

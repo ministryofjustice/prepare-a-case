@@ -232,13 +232,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(redirectUrl)
   })
 
-  router.get('/match/defendant/:caseNo/nomatch', defaults, async (req, res) => {
+  router.get('/match/defendant/:caseNo/nomatch/:unlink?', defaults, async (req, res) => {
     let redirectUrl = '/'
     const response = await updateCaseDetails(req.params.courtCode, req.params.caseNo, undefined)
     if (response.status === 201) {
       req.session.confirmedMatch = {
         name: req.session.matchName,
-        matchType: 'No record'
+        matchType: req.params.unlink ? 'unlinked' : 'No record'
       }
       redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
     } else {
@@ -273,7 +273,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
       redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
     } else {
       const detailResponse = await getDetails(req.body.crn)
-      console.info('DETAILS:', detailResponse)
       if (!detailResponse) {
         req.session.formError = true
         req.session.crnInvalid = true

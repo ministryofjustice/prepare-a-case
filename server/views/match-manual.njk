@@ -44,18 +44,16 @@
 
             <h2 class="govuk-heading-m govuk-!-margin-top-4">Defendant details</h2>
 
-            <table class="govuk-table govuk-!-margin-bottom-8">
-                <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                    <th scope="row" class="govuk-table__header govuk-!-width-one-half">Name</th>
-                    <td class="govuk-table__cell govuk-!-width-one-half">{{ data.defendantName }}</td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <th scope="row" class="govuk-table__header">Date of birth</th>
-                    <td class="govuk-table__cell">{{ params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY') }}</td>
-                </tr>
-                </tbody>
-            </table>
+            <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Name</dt>
+                    <dd class="govuk-summary-list__value">{{ data.defendantName }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Date of birth</dt>
+                    <dd class="govuk-summary-list__value">{{ params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY') }}</dd>
+                </div>
+            </dl>
 
             {% if not params.crn %}
                 <form name="matchDefendant" id="matchDefendant" method="post" novalidate>
@@ -85,37 +83,35 @@
 
                     <h3 class="govuk-heading-m">nDelius record found</h3>
 
-                    <table class="govuk-table govuk-!-margin-bottom-8">
-                        <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header govuk-!-width-one-half">Name</th>
-                            <td class="govuk-table__cell govuk-!-width-one-half">{{ details.forename }} {{ details.surname }}</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Date of birth</th>
-                            <td class="govuk-table__cell">{{ params.moment(details.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') }}</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">CRN</th>
-                            <td class="govuk-table__cell">{{ details.otherIds.crn }}</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">PNC</th>
-                            <td class="govuk-table__cell">{{ details.otherIds.pncNumber }}</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Probation status</th>
-                            <td class="govuk-table__cell">{{ details.probationStatus }}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Name</dt>
+                            <dd class="govuk-summary-list__value">{{ details.forename }} {{ details.surname }}</dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Date of birth</dt>
+                            <dd class="govuk-summary-list__value">{{ params.moment(details.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') }}</dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">CRN</dt>
+                            <dd class="govuk-summary-list__value">{{ details.otherIds.crn }}</dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">PNC</dt>
+                            <dd class="govuk-summary-list__value">{{ details.otherIds.pncNumber }}</dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Probation status</dt>
+                            <dd class="govuk-summary-list__value">{{ details.probationStatus }}</dd>
+                        </div>
+                    </dl>
 
                     <input type="hidden" id="crn" name="crn" value="{{ params.crn }}"/>
                     <button type="submit" class="govuk-button">Link record to defendant</button>
 
                     <p class="govuk-body">If this isn't the record you're looking for you can
                         <a href="/match/defendant/{{ params.caseNo }}/manual"
-                           class="govuk-link govuk-link--no-visited-state">Search again</a>.
+                           class="govuk-link govuk-link--no-visited-state">search again</a>.
                     </p>
                 </form>
             {% endif %}

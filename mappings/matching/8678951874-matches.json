@@ -1,0 +1,45 @@
+{
+  "id": "4b627224-8eb5-44c3-a53a-f9ff5d3d775d",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z]*)/case/8678951874/matchesDetail"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "offenderMatchDetails": [
+        {
+          "title": "Miss.",
+          "forename": "Kara",
+          "middleNames": [
+            "Consuela"
+          ],
+          "surname": "Ayers",
+          "dateOfBirth": "1980-10-31",
+          "address": {
+            "addressNumber": "20 Main Street",
+            "buildingName": "Shangri La",
+            "town": "Leicester",
+            "county": "Leicestershire",
+            "postcode": "LE2 1BG"
+          },
+          "matchIdentifiers": {
+            "crn": "A123456",
+            "pnc": "A/1234560BA",
+            "cro": null
+          },
+          "probationStatus": "Previously Known",
+          "mostRecentEvent": {
+            "startDate": "2017-11-27",
+            "text": "CJA Standard Determinate Custody",
+            "length": "6",
+            "lengthUnits": "Months"
+          }
+        }
+      ]
+    }
+  }
+}
