@@ -55,9 +55,9 @@
                     <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
                 {% endfor %}
                 {% elif offences | length > 1 %}
-                <div class="govuk-accordion" data-module="govuk-accordion">
+                <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{ params.caseNo }}">
                     {% for offence in data.offences %}
-                        <div class="govuk-accordion__section ">
+                        <div class="govuk-accordion__section">
                             <div class="govuk-accordion__section-header">
                                 <h2 class="govuk-accordion__section-heading">
                                     <span class="govuk-accordion__section-button govuk-!-font-size-19">{{ offence.offenceTitle }}</span>

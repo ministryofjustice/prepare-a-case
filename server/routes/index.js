@@ -232,13 +232,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(redirectUrl)
   })
 
-  router.get('/match/defendant/:caseNo/nomatch', defaults, async (req, res) => {
+  router.get('/match/defendant/:caseNo/nomatch/:unlink?', defaults, async (req, res) => {
     let redirectUrl = '/'
     const response = await updateCaseDetails(req.params.courtCode, req.params.caseNo, undefined)
     if (response.status === 201) {
       req.session.confirmedMatch = {
         name: req.session.matchName,
-        matchType: 'No record'
+        matchType: req.params.unlink ? 'unlinked' : 'No record'
       }
       redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
     } else {
@@ -273,7 +273,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
       redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
     } else {
       const detailResponse = await getDetails(req.body.crn)
-      console.info('DETAILS:', detailResponse)
       if (!detailResponse) {
         req.session.formError = true
         req.session.crnInvalid = true
@@ -314,6 +313,24 @@ module.exports = function Index ({ authenticationMiddleware }) {
       redirectUrl = `/match/defendant/${req.params.caseNo}/confirm`
     }
     res.redirect(redirectUrl)
+  })
+
+  router.get('/match/defendant/:caseNo/unlink/:crn', health, defaults, async (req, res) => {
+    const templateValues = await getCaseAndTemplateValues(req)
+    const detailResponse = await getDetails(req.params.crn)
+    templateValues.title = 'Unlink nDelius record from the defendant'
+    templateValues.hideSubnav = true
+    templateValues.backText = 'Back'
+    templateValues.backLink = `/case/${req.params.caseNo}/summary`
+    templateValues.hideUnlinkButton = true
+    templateValues.params = {
+      ...templateValues.params
+    }
+    templateValues.details = {
+      ...detailResponse
+    }
+    req.session.matchName = templateValues.data.defendantName
+    res.render('match-unlink', templateValues)
   })
 
   return router

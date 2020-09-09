@@ -89,6 +89,26 @@ Feature: Matching defendants to nDelius records
     And I should see the no record match confirmation banner message
     And There should be no a11y violations
 
+  Scenario: Click the back button on matching screen when starting the journey at case summary
+    Given I am an authenticated user
+    When I navigate to the "match/defendant/3597035492" route
+    And I am using the "defendantOneRecords" match data
+    Then I should be on the "Review possible nDelius records" page
+    When I click the "Back" link
+    Then I should be on the "Case summary" page
+    And There should be no a11y violations
+
+  Scenario: Click the back button on matching screen when starting the journey at match from bulk list
+    Given I am an authenticated user
+    When I navigate to the "/match/bulk/" route for today
+    And I am using the "bulkList" match data
+    Then I should be on the "Defendants with possible nDelius records" page
+    When I click the "Review records" link
+    Then I should be on the "Review possible nDelius records" page
+    When I click the "Back" link
+    Then I should be on the "Defendants with possible nDelius records" page
+    And There should be no a11y violations
+
   Scenario: Manually match a defendant and submit without entering a CRN
     Given I am an authenticated user
     When I navigate to the "/match/bulk/" route for today
@@ -103,7 +123,7 @@ Feature: Matching defendants to nDelius records
     Then I should be on the "Link an nDelius record to the defendant" page
     And I should see the body text "Use a case reference number (CRN) to link to an existing nDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
-    And I should see the following table headings
+    And I should see the following summary list 1 with keys
       | Name | Date of birth |
     And I should see the level 3 heading "Enter the CRN of the existing record"
     And I should see the text input label "Case reference number (CRN)"
@@ -144,7 +164,7 @@ Feature: Matching defendants to nDelius records
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
     Then I should be on the "Link an nDelius record to the defendant" page
-    When I enter "A123456" into text input with id "crn"
+    When I enter "B654321" into text input with id "crn"
     And I click the "Find record" button
     Then I should be on the "Link an nDelius record to the defendant" page
     Then I should see the error message "No records match the CRN provided"
@@ -167,10 +187,10 @@ Feature: Matching defendants to nDelius records
     Then I should be on the "Link an nDelius record to the defendant" page
     And I should see the body text "Use a case reference number (CRN) to link to an existing nDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
-    And I should see the following table headings
+    And I should see the following summary list 1 with keys
       | Name | Date of birth |
     And I should see the level 3 heading "nDelius record found"
-    And I should see the following table 2 headings
+    And I should see the following summary list 2 with keys
       | Name | Date of birth | CRN | PNC | Probation status |
     When I click the "Link record to defendant" button
     Then I should be on the "Defendants with possible nDelius records" page
@@ -191,10 +211,10 @@ Feature: Matching defendants to nDelius records
     Then I should be on the "Link an nDelius record to the defendant" page
     And I should see the body text "Use a case reference number (CRN) to link to an existing nDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
-    And I should see the following table headings
+    And I should see the following summary list 1 with keys
       | Name | Date of birth |
     And I should see the level 3 heading "nDelius record found"
-    And I should see the following table 2 headings
+    And I should see the following summary list 2 with keys
       | Name | Date of birth | CRN | PNC | Probation status |
     When I click the "Link record to defendant" button
     Then I should be on the "Case summary" page
@@ -208,10 +228,10 @@ Feature: Matching defendants to nDelius records
     Then I should be on the "Link an nDelius record to the defendant" page
     And I should see the body text "Use a case reference number (CRN) to link to an existing nDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
-    And I should see the following table headings
+    And I should see the following summary list 1 with keys
       | Name | Date of birth |
     And I should see the level 3 heading "nDelius record found"
-    When I click the "Search again" link
+    When I click the "search again" link
     Then I should be on the "Link an nDelius record to the defendant" page
     And I should see the level 3 heading "Enter the CRN of the existing record"
     And There should be no a11y violations
@@ -236,6 +256,12 @@ Feature: Matching defendants to nDelius records
     And I click the "Confirm record" button
     Then I should be on the "Review possible nDelius records" page
     And I should see the match error banner message
+
+  Scenario: Link an nDelius record to a not known defendant from case-summary
+    Given I am an authenticated user
+    When I navigate to the "/case/7483843110/summary" route
+    And I click the "Link nDelius record" button
+    Then I should be on the "Link an nDelius record to the defendant" page
     And There should be no a11y violations
 
   Scenario: Link an nDelius record to a not known defendant from case-summary
@@ -243,4 +269,26 @@ Feature: Matching defendants to nDelius records
     When I navigate to the "/case/7483843110/summary" route
     And I click the "Link nDelius record" button
     Then I should be on the "Link an nDelius record to the defendant" page
+    And There should be no a11y violations
+
+  Scenario: Unlink nDelius record from the defendant
+    Given I am an authenticated user
+    When I navigate to the "/case/2608860141/summary" route
+    And I am using the "unlinkRecord" match data
+    Then I should be on the "Case summary" page
+    When I click the "Unlink nDelius record" button
+    Then I should be on the "Unlink nDelius record from the defendant" page
+    When I click the "Unlink record from defendant" button
+    Then I should be on the "Case summary" page
+    And I should see the match unlinked banner message
+    And There should be no a11y violations
+
+  Scenario: Visit the unlink nDelius record from the defendant page and click the back button
+    Given I am an authenticated user
+    When I navigate to the "/case/2608860141/summary" route
+    Then I should be on the "Case summary" page
+    When I click the "Unlink nDelius record" button
+    Then I should be on the "Unlink nDelius record from the defendant" page
+    When I click the "Back" link
+    Then I should be on the "Case summary" page
     And There should be no a11y violations

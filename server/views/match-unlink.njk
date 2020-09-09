@@ -1,0 +1,45 @@
+{% extends "partials/case-details.njk" %}
+
+{% block caseContent %}
+<h1 class="govuk-heading-l">{{ title }}</h1>
+
+<p class="govuk-body">Unlink an nDelius record if the defendant is unknown to probation or has been linked to the wrong record.</p>
+<p class="govuk-body">Once unlinked you can link a different nDelius record to the defendant using a case reference number.</p>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-4">Linked nDelius record</h2>
+
+        <form method="get" action="/match/defendant/{{ params.caseNo }}/nomatch/unlink" novalidate>
+            <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Name</dt>
+                    <dd class="govuk-summary-list__value">{{ details.forename }} {{ details.surname }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Date of birth</dt>
+                    <dd class="govuk-summary-list__value">{{ params.moment(details.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">CRN</dt>
+                    <dd class="govuk-summary-list__value">{{ details.otherIds.crn }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">PNC</dt>
+                    <dd class="govuk-summary-list__value">{{ details.otherIds.pncNumber }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Probation status</dt>
+                    <dd class="govuk-summary-list__value">{{ details.probationStatus }}</dd>
+                </div>
+            </dl>
+
+            <button class="govuk-button">Unlink record from defendant</button>
+            <p class="govuk-body"><a href="{{ backLink }}" class="govuk-link govuk-link--no-visited-state">Cancel</a></p>
+        </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">&nbsp;</div>
+</div>
+{% endblock %}
