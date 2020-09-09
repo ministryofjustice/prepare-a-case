@@ -90,16 +90,39 @@
     } %}
 {% endif %}
 
+{% set dateFormat = 'dddd D MMMM' %}
+{% set timeStampDateFormat = 'ddd D MMM' %}
+{% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
+{% set today = moment().format('YYYY-MM-DD') %}
+{% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
+{% set withinDateRange = currentDate.isBetween(moment(), params.addBusinessDays(moment(), params.totalDays - 1), 'day', '[)') %}
+
+{%- set listTabs = [{
+    title: 'Case list',
+    link: '/cases/' + today,
+    current: params.subsection === ''
+}] -%}
+
+{% if params.addedCount > 0 %}
+    {{ listTabs.push({
+        title: 'Recently added',
+        link: '/cases/' + today + '/added',
+        current: params.subsection === 'added',
+        count: params.addedCount
+    }) }}
+{% endif %}
+{% if params.removedCount > 0 %}
+    {{ listTabs.push({
+        title: 'Removed cases',
+        link: '/cases/' + today + '/removed',
+        current: params.subsection === 'removed',
+        count: params.removedCount
+    }) }}
+{% endif %}
+
 {% extends "partials/layout.njk" %}
 
 {% block content %}
-
-    {% set dateFormat = 'dddd D MMMM' %}
-    {% set timeStampDateFormat = 'ddd D MMM' %}
-    {% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
-    {% set today = moment().format('YYYY-MM-DD') %}
-    {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
-    {% set withinDateRange = currentDate.isBetween(moment(), params.addBusinessDays(moment(), params.totalDays - 1), 'day', '[)') %}
 
     <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-0">
         <span class="govuk-caption-xl">Cases</span>
@@ -162,22 +185,6 @@
             {% set nextUpdate = 'Next scheduled update: Today at 9:00am' %}
         {% endif %}
     {% endif %}
-
-    {% set listTabs = [{
-        title: 'Case list',
-        link: '/cases/' + today,
-        current: params.subsection === ''
-    },{
-        title: 'Recently added',
-        link: '/cases/' + today + '/added',
-        current: params.subsection === 'added',
-        count: params.addedCount
-    }, {
-        title: 'Removed cases',
-        link: '/cases/' + today + '/removed',
-        current: params.subsection === 'removed',
-        count: params.removedCount
-    }] %}
 
     {%- if params.date !== today %}
         {% set listTabs = [listTabs | first] %}
