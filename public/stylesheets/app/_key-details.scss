@@ -2,8 +2,9 @@
   background-color: $govuk-brand-colour;
   
   &__right-block{
-    float: right;
-    @include govuk-clearfix();
+    position: absolute;
+    right: 0;
+    top: 32px;
   }
 
   &__top-block, &__bottom-block {
@@ -18,6 +19,7 @@
   }
 
   &__key-details {
+    position: relative;
     @include moj-width-container;
     margin: 0 auto;
     padding: 20px 0;

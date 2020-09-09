@@ -173,6 +173,14 @@ And('I should see the error message {string}', $string => {
   cy.get('.govuk-error-message').contains($string)
 })
 
+And('I should see the following summary list {int} with keys', ($int, $data) => {
+  cy.get('.govuk-summary-list').eq($int - 1).within(() => {
+    $data.raw()[0].forEach((text, index) => {
+      cy.get('.govuk-summary-list__key').eq(index).contains(text)
+    })
+  })
+})
+
 And('I should see the text input label {string}', $string => {
   cy.get('label').contains($string).should('exist')
 })
