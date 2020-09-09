@@ -15,22 +15,22 @@
       </div>
     {% endif %}
 
-    <div class="pac-key-details-bar__top-block">
-      <h1 class="pac-key-details-bar__name govuk-!-margin-right-6">{% if params.accTitle %}<span class="govuk-visually-hidden">{{ params.accTitle }}</span>{% endif %}{{ params.title }}</h1>
-      {% if params.crn | length %}
-        <span class="govuk-body pac-key-details-bar__divider"><strong>CRN: </strong>{{ params.crn }}</span>
-      {% endif %}
-      {% if params.pnc and not params.numberOfPossibleMatches and not (params.probationStatus == 'No record') %}
-        <span class="govuk-body pac-key-details-bar__divider"><strong>PNC: </strong>{{ params.pnc }}</span>
-      {% endif %}
-      {% if params.numberOfPossibleMatches %}
-        <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong> Possible nDelius record</span>
-      {% endif %}
+        <div class="pac-key-details-bar__top-block">
+            <h1 class="pac-key-details-bar__name govuk-!-margin-right-6">{% if params.accTitle %}<span class="govuk-visually-hidden">{{ params.accTitle }}</span>{% endif %}{{ params.title }}</h1>
+            {% if params.crn | length %}
+                <span class="govuk-body pac-key-details-bar__divider"><strong>CRN: </strong>{{ params.crn }}</span>
+            {% endif %}
+            {% if params.pnc | length %}
+                <span class="govuk-body pac-key-details-bar__divider"><strong>PNC: </strong>{{ params.pnc }}</span>
+            {% endif %}
+            {% if params.numberOfPossibleMatches and not params.crn | length %}
+                <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong> Possible nDelius record</span>
+            {% endif %}
+        </div>
+        <div class="pac-key-details-bar__bottom-block">
+            {% if params.probationStatus | length %}
+                <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong>{{ params.probationStatus }}{% if params.breach %} (Breach){% endif %}</span>
+            {% endif %}
+        </div>
     </div>
-    <div class="pac-key-details-bar__bottom-block">
-      {% if params.probationStatus and not params.numberOfPossibleMatches %}
-        <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong>{{ params.probationStatus }}{% if params.breach  %} (Breach){% endif %}</span>
-      {% endif %}
-    </div>
-  </div>
 </section>
