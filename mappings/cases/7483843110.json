@@ -21,7 +21,7 @@
       "session": "AFTERNOON",
       "previouslyKnownTerminationDate": null,
       "suspendedSentenceOrder": false,
-      "breach": true,
+      "breach": false,
       "offences": [
         {
           "offenceTitle": "Assault by beating",
