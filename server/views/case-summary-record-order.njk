@@ -139,7 +139,7 @@
                         {%- if custodialOrder -%}
                             {{  "On licence" if custodialOrder.custodialTypeCode === "B" else "On post-sentence supervision (PSS)" }}
                         {% else %}
-                            {{ moment(currentOrder.convictionDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                            {{ moment(currentOrder.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% endif %}
                     </p>
                 </div>

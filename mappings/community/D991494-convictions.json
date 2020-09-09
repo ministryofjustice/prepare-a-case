@@ -43,7 +43,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-01-01",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-07-01"
           },
           "documents": []
         },
@@ -68,7 +69,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-08-09",
-            "terminationReason":  "ICMS Miscellaneous Event"
+            "terminationReason":  "ICMS Miscellaneous Event",
+            "startDate": "2018-02-09"
           },
           "documents": []
         },
@@ -116,7 +118,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-04-07",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate":  "2018-10-07"
           },
           "documents": [
             {
@@ -156,7 +159,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-12-12",
-            "terminationReason":  "ICMS Miscellaneous Event"
+            "terminationReason":  "ICMS Miscellaneous Event",
+            "startDate": "2018-06-12"
           },
           "documents": []
         },
@@ -187,7 +191,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-07-12",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-11-12"
           },
           "documents": []
         },
@@ -209,7 +214,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-07-03",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-01-03"
           },
           "documents": []
         },
@@ -237,7 +243,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-06-30",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-12-30"
           },
           "documents": []
         },
@@ -262,7 +269,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-08-21",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-02-21"
           },
           "documents": []
         },
@@ -290,7 +298,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-08-05",
-            "terminationReason":  "ICMS Miscellaneous Event"
+            "terminationReason":  "ICMS Miscellaneous Event",
+            "startDate": "2018-02-05"
           },
           "documents": []
         },
@@ -315,7 +324,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-03-30",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-09-30"
           },
           "documents": []
         },
@@ -343,7 +353,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-05-13",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-11-13"
           },
           "documents": []
         },
@@ -368,7 +379,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-02-24",
-            "terminationReason":  "ICMS Miscellaneous Event"
+            "terminationReason":  "ICMS Miscellaneous Event",
+            "startDate": "2018-08-24"
           },
           "documents": []
         },
@@ -392,7 +404,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-01-02",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-07-04"
           },
           "documents": []
         },
@@ -420,7 +433,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-06-26",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-12-26"
           },
           "documents": []
         },
@@ -445,7 +459,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-09-02",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-03-02"
           },
           "documents": []
         },
@@ -476,7 +491,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-02-13",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-08-13"
           },
           "documents": []
         },
@@ -498,7 +514,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-05-24",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-11-24"
           },
           "documents": []
         },
@@ -529,7 +546,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-07-24",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-01-24"
           },
           "documents": []
         },
@@ -551,7 +569,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-11-07",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-05-07"
           },
           "documents": []
         },
@@ -582,7 +601,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-05-26",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-11-26"
           },
           "documents": []
         },
@@ -613,7 +633,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-06-06",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-12-06"
           },
           "documents": []
         },
@@ -638,7 +659,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-09-10",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-03-10"
           },
           "documents": []
         },
@@ -663,7 +685,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-10-05",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-04-05"
           },
           "documents": []
         },
@@ -685,7 +708,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-01-23",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-07-23"
           },
           "documents": []
         },
@@ -710,7 +734,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-01-13",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-10-13"
           },
           "documents": []
         },
@@ -732,7 +757,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-10-13",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-04-18"
           },
           "documents": []
         },
@@ -754,7 +780,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-10-20",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-03-20"
           },
           "documents": []
         },
@@ -805,7 +832,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-01-30",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-07-30"
           },
           "documents": []
         },
@@ -844,7 +872,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-07-11",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-01-11"
           },
           "documents": []
         },
@@ -866,7 +895,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-07-14",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-01-14"
           },
           "documents": []
         },
@@ -891,7 +921,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-08-17",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-02-17"
           },
           "documents": []
         },
@@ -922,7 +953,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-08-09",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-02-09"
           },
           "documents": []
         },
@@ -950,7 +982,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-11-28",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-05-28"
           },
           "documents": []
         },
@@ -972,7 +1005,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-02-06",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-08-06"
           },
           "documents": []
         },
@@ -994,7 +1028,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-01-21",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-07-21"
           },
           "documents": []
         },
@@ -1019,7 +1054,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-01-07",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-07-07"
           },
           "documents": []
         },
@@ -1047,7 +1083,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-10-12",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-04-12"
           },
           "documents": []
         },
@@ -1072,7 +1109,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-11-31",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-05-31"
           },
           "documents": []
         },
@@ -1103,7 +1141,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-11-31",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-08-31"
           },
           "documents": []
         },
@@ -1128,7 +1167,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-05-05",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-11-05"
           },
           "documents": []
         },
@@ -1156,7 +1196,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-10-26",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-04-26"
           },
           "documents": []
         },
@@ -1178,7 +1219,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-11-09",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-05-09"
           },
           "documents": []
         },
@@ -1228,7 +1270,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-11-25",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-05-25"
           },
           "documents": []
         },
@@ -1272,7 +1315,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-02-18",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-08-18"
           },
           "documents": []
         },
@@ -1300,7 +1344,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-12-17",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-06-17"
           },
           "documents": []
         },
@@ -1325,7 +1370,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-03-10",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-09-10"
           },
           "documents": []
         },
@@ -1350,7 +1396,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-01-25",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-07-25"
           },
           "documents": []
         },
@@ -1378,7 +1425,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-11-18",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-05-18"
           },
           "documents": []
         },
@@ -1408,7 +1456,8 @@
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-07-08",
-            "terminationReason":  "ICMS Miscellaneous Event"
+            "terminationReason":  "ICMS Miscellaneous Event",
+            "startDate":  "2018-01-08"
           },
           "documents": []
         }

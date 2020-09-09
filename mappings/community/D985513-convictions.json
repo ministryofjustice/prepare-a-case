@@ -34,12 +34,14 @@
               }
           ],
           "sentence": {
+            "sentenceId": "123123141",
             "description": "CJA - Std Determinate Custody",
             "length": 18,
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-05-23",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-11-23"
           },
           "documents": [
             {
