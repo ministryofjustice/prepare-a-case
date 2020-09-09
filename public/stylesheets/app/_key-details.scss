@@ -13,6 +13,11 @@
     }
   }
 
+  &__bottom-block{
+    padding-top: 10px;
+    margin-top: 6px;
+  }
+
   &__key-details {
     @include moj-width-container;
     margin: 0 auto;
