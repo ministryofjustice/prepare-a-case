@@ -1,6 +1,6 @@
 .pac-key-details-bar {
   background-color: $govuk-brand-colour;
-  
+
   &__right-block{
     float: right;
     @include govuk-clearfix();
@@ -11,10 +11,6 @@
     h1, .govuk-body {
       color: govuk-colour("white");
     }
-  }
-
-  &__bottom-block {
-    margin-top: 10px;
   }
 
   &__key-details {
