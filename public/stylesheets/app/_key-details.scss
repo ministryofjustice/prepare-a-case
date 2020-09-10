@@ -1,6 +1,6 @@
 .pac-key-details-bar {
   background-color: $govuk-brand-colour;
-  
+
   &__right-block{
     position: absolute;
     right: 0;
@@ -14,8 +14,9 @@
     }
   }
 
-  &__bottom-block {
-    margin-top: 10px;
+  &__bottom-block{
+    padding-top: 10px;
+    margin-top: 6px;
   }
 
   &__key-details {

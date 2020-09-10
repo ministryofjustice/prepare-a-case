@@ -30,10 +30,11 @@
                 <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong> Possible nDelius record</span>
             {% endif %}
         </div>
+        {% if params.probationStatus | length %}
         <div class="pac-key-details-bar__bottom-block">
-            {% if params.probationStatus | length %}
                 <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong>{{ params.probationStatus }}{% if params.breach %} (Breach){% endif %}</span>
-            {% endif %}
         </div>
+        {% endif %}
+        
     </div>
 </section>

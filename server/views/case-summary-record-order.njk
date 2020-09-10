@@ -112,16 +112,15 @@
     {% endfor %}
 {% endif %}
 
-{% block backlink %}{% endblock %}
-
-{% block caseContent %}
-
+{% block backlink %}
     {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
     {{ govukBackLink({
-        classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-7',
         text: "Back to probation record",
         href: '/case/' + data.caseNo + '/record'
     }) }}
+{% endblock %}
+
+{% block caseContent %}
 
     <h2 class="govuk-heading-l govuk-!-margin-0">{{ currentOrder.sentence.description }}</h2>
 
