@@ -18,7 +18,7 @@
     "pre-commit-lite": "npm run lint && npm run unit-test && npm run mock-validation-test",
     "pre-push": "snyk test --fail-on=upgradable --org=digital-probation-services && npm run int-test",
     "start-feature": "PORT=3007 NODE_ENV=development node $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
-    "start-feature:dev": "PORT=3007 NODE_ENV=development nodemon $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
+    "start-feature:dev": "PORT=3007 NOMIS_AUTH_URL=http://localhost:9091/auth NODE_ENV=development nodemon $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
     "delete:reports": "rm ./test-results/cypress/* || true",
     "preint-test": "npm run delete:reports",
     "preint-test:dev": "npm run delete:reports",
