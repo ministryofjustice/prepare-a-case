@@ -18,7 +18,7 @@ const currentDefendant = {
     currentOrderCount: 3,
     currentOrderTitle: 'ORA Community Order',
     currentOrderOffence: 'Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200',
-    currentOrderStartDate: '2019-05-19',
+    currentOrderStartDate: '2019-05-20',
     currentOrderEndDate: '2020-05-25',
     currentOrderId: '1403337513',
     currentOrderLastAttendance: '4 Mar 2020 - Planned office visit (Acceptable)',

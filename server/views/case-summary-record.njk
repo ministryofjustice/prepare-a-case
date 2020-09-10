@@ -7,7 +7,7 @@
 {%- for order in communityData.convictions if communityData.convictions | length %}
     {% if order.sentence %}
         {% if order.active %}
-                {{ activeOrders.push(order) }}
+            {{ activeOrders.push(order) }}
         {% else %}
             {{ previousOrders.push(order) }}
         {% endif %}
@@ -39,7 +39,7 @@
                         {% if order.inBreach %}<span class="moj-badge moj-badge--black pac-badge govuk-!-margin-left-1">Breach</span>{% endif %}
                     </p>
                     <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].description }}</p>
-                    <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started on {{ moment(order.convictionDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started on {{ moment(order.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
 
                     {% if order.requirements and order.requirements | length %}
                         <h3 class="govuk-heading-s">Requirements</h3>
