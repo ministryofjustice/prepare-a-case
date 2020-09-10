@@ -50,9 +50,9 @@
 {% endfor -%}
 
 {%- if moment(currentOrder.endDate, 'YYYY-MM-DD').isAfter() -%}
-    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.convictionDate, 'YYYY-MM-DD'), moment()) -%}
+    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.sentence.startDate, 'YYYY-MM-DD'), moment()) -%}
 {%- else -%}
-    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.convictionDate, 'YYYY-MM-DD'), moment(currentOrder.endDate, 'YYYY-MM-DD')) -%}
+    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.sentence.startDate, 'YYYY-MM-DD'), moment(currentOrder.endDate, 'YYYY-MM-DD')) -%}
 {%- endif -%}
 
 {% if currentOrder.active %}
