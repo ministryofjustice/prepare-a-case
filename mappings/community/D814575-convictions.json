@@ -37,12 +37,14 @@
             }
           ],
           "sentence": {
+            "sentenceId": "123123141",
             "description": "CJA - Indeterminate Public Prot.",
             "length": 18,
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2020-01-06",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-07-06"
           },
           "documents": []
         },
@@ -67,12 +69,14 @@
             }
           ],
           "sentence": {
+            "sentenceId": "123123142",
             "description": "ORA Suspended Sentence Order",
             "length": 18,
             "lengthUnits": "Months",
             "lengthInDays": 547,
             "terminationDate": "2019-07-24",
-            "terminationReason": "Auto Terminated"
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-01-24"
           },
           "documents": []
         }
