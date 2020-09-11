@@ -42,7 +42,7 @@
                     <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started on {{ moment(order.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
 
                     {% if order.requirements and order.requirements | length %}
-                        <h3 class="govuk-heading-s">Requirements</h3>
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requirements</h3>
 
                         <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
                         {%- for requirement in order.requirements %}
