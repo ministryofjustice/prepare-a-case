@@ -99,16 +99,6 @@
         </div>
         <div class="govuk-grid-column-one-third">
 
-            <div class="govuk-!-margin-bottom-6">
-                <h3 class="govuk-heading-s">Offender Manager</h3>
-                {% if offenderManager.allocatedDate %}
-                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.forenames }} {{ offenderManager.surname }}</p>
-                    <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
-                {% else %}
-                    <p class="govuk-body">Not active</p>
-                {% endif %}
-            </div>
-
             {% if probationDocuments | length %}
                 {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
                 {% set monthsOld = moment().diff(moment(latestDocument.completedDate, 'YYYY-MM-DD'), 'months') %}
