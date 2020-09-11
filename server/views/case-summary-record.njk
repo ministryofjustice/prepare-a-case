@@ -42,7 +42,7 @@
                     <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started on {{ moment(order.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
 
                     {% if order.requirements and order.requirements | length %}
-                        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Requirements</h3>
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Requirements</h3>
 
                         <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
                         {%- for requirement in order.requirements %}
@@ -75,7 +75,7 @@
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell govuk-!-width-two-thirds">
                                         <p class="govuk-body govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a></p>
-                                        <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
+                                        <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
                                     </td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third" style="vertical-align: bottom">
                                         <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">Ended on {{ moment(order.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
