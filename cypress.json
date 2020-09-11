@@ -4,7 +4,10 @@
   "baseUrl": "http://localhost:3007",
   "fixturesFolder": "integration-tests/fixtures",
   "testFiles": "features/**/*.feature",
-  "ignoreTestFiles": ["*.js", "*.md"],
+  "ignoreTestFiles": [
+    "*.js",
+    "*.md"
+  ],
   "integrationFolder": "integration-tests/integration",
   "pluginsFile": "integration-tests/plugins/index.js",
   "trashAssetsBeforeRuns": true,
@@ -19,5 +22,6 @@
     "TAGS": "not @ignore"
   },
   "videoUploadOnPasses": false,
-  "taskTimeout": 60000
+  "taskTimeout": 60000,
+  "projectId": "2ew2jc"
 }
