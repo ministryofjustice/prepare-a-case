@@ -24,7 +24,7 @@ const currentDefendant = {
     currentOrderLastAttendance: '4 Mar 2020 - Planned office visit (Acceptable)',
     currentOrderAttendance: {
       counts: [10, 6, 2, 2, 1, 1, 0, 1, 1, 3, 3],
-      headings: ['Appointments to date', 'Complied', 'Failures to comply'],
+      headings: ['Appointments to date', 'Acceptable', 'Unacceptable'],
       types: ['Planned office visit', 'Unpaid work', 'Appointment with External Agency', 'IAPS / Accredited programme']
     },
     currentOrderRequirements: [

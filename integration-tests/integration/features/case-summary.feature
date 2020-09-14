@@ -73,7 +73,7 @@ Feature: Case summary
     Then I should see the row with the key "Address"
     And I should see the value with defendant "address"
     And I should see a button with the label "Link nDelius record"
-    
+
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with an existing probation record
@@ -252,7 +252,7 @@ Feature: Case summary
 
     And I should see the body text with the defendant "currentOrderOffence"
     And I should see the following level 3 headings
-      | Appointments to date | Complied | Failures to comply |
+      | Appointments to date | Acceptable | Unacceptable |
     And I should see the body text "Last attended" and the defendant "currentOrderLastAttendance"
 
     And I should see the correct start, end and elapsed time headings
@@ -302,7 +302,7 @@ Feature: Case summary
 
     And I should see the body text with the defendant "currentOrderOffence"
     And I should see the following level 3 headings
-      | Appointments to date | Complied | Failures to comply |
+      | Appointments to date | Acceptable | Unacceptable |
     And I should see the body text "Last attended" and the defendant "currentOrderLastAttendance"
 
     And I should see the correct start, end and elapsed time headings
