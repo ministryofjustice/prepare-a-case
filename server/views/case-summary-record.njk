@@ -14,7 +14,7 @@
     {% endif %}
 {% endfor -%}
 
-{%- set offenderManager = communityData.offenderManagers | first -%}
+{#{%- set offenderManager = communityData.offenderManagers | first -%}#}
 
 {%- set probationDocuments = [] -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
@@ -97,7 +97,7 @@
             {% endif %}
 
         </div>
-        <div class="govuk-grid-column-one-third">
+        <div class="govuk-grid-column-one-third govuk-!-padding-left-9 govuk-!-padding-top-9">
 
             {% if probationDocuments | length %}
                 {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
