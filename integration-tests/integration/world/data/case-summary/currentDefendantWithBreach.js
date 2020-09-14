@@ -27,7 +27,7 @@ const currentDefendantWithBreach = {
     currentOrderLastAttendance: '10 Mar 2020 - Unpaid work (Acceptable)',
     currentOrderAttendance: {
       counts: [57, 25, 9, 7, 5, 4, 6, 2, 2, 2, 11, 3, 3, 3, 2, 15, 5, 4, 3, 3],
-      headings: ['Appointments to date', 'Complied', 'Failures to comply'],
+      headings: ['Appointments to date', 'Acceptable', 'Unacceptable'],
       types: ['Planned office visit', 'Unpaid work', 'Appointment with External Agency', 'IAPS / Accredited programme']
     },
     breaches: [{
