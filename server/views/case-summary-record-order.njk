@@ -230,7 +230,7 @@
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Appointments to date</h3>
             </div>
             <div class="govuk-grid-column-three-quarters">
-                <p class="govuk-heading-m app-dashboard-count govuk-!-margin-bottom-0">{{ attendances | length }}</p>
+                <p class="govuk-heading-m govuk-!-margin-right-2 govuk-!-margin-bottom-0 app-dashboard-count">{{ attendances | length }}</p>
             </div>
         </div>
 
@@ -238,26 +238,26 @@
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-quarter">
-                <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Complied</h3>
+                <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Acceptable</h3>
             </div>
             <div class="govuk-grid-column-three-quarters">
                 <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0"><span
-                            class="govuk-heading-m app-dashboard-count">{{ attendedAppointments.complied.flat(Infinity) | length }}</span>Attendances
+                            class="govuk-heading-m govuk-!-margin-right-2 govuk-!-display-inline-block govuk-!-margin-right-2 govuk-!-margin-bottom-1 app-dashboard-count">{{ attendedAppointments.complied.flat(Infinity) | length }}</span>Attendances
                 </p>
 
                 {% for complied in attendedComplied | sort(true, false, 'count') %}
                     <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body app-dashboard-count">{{ complied.count }}</span> {{ complied.description }}
+                                class="govuk-body govuk-!-margin-right-2 app-dashboard-count">{{ complied.count }}</span> {{ complied.description }}
                     </p>
                 {% endfor %}
 
                 <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 govuk-!-margin-top-2"><span
-                            class="govuk-heading-m app-dashboard-count">{{ absentAppointments.complied.flat(Infinity) | length }}</span>Absences
+                            class="govuk-heading-m govuk-!-margin-right-2 govuk-!-display-inline-block govuk-!-margin-right-2 govuk-!-margin-bottom-1 app-dashboard-count">{{ absentAppointments.complied.flat(Infinity) | length }}</span>Absences
                 </p>
 
                 {% for complied in absentComplied | sort(true, false, 'count') %}
                     <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body app-dashboard-count">{{ complied.count }}</span> {{ complied.description }}
+                                class="govuk-body govuk-!-margin-right-2 app-dashboard-count">{{ complied.count }}</span> {{ complied.description }}
                     </p>
                 {% endfor %}
 
@@ -268,26 +268,26 @@
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-quarter">
-                <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Failures to comply</h3>
+                <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Unacceptable</h3>
             </div>
             <div class="govuk-grid-column-three-quarters">
                 <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0"><span
-                            class="govuk-heading-m app-dashboard-count">{{ attendedAppointments.failed.flat(Infinity) | length }}</span>Attendances
+                            class="govuk-heading-m  govuk-!-margin-right-1 govuk-!-display-inline-block govuk-!-margin-right-2 govuk-!-margin-bottom-1 app-dashboard-count">{{ attendedAppointments.failed.flat(Infinity) | length }}</span>Attendances
                 </p>
 
                 {% for failed in attendedFailed | sort(true, false, 'count') %}
                     <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body app-dashboard-count">{{ failed.count }}</span> {{ failed.description }}
+                                class="govuk-body govuk-!-margin-right-2 app-dashboard-count">{{ failed.count }}</span> {{ failed.description }}
                     </p>
                 {% endfor %}
 
                 <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0 govuk-!-margin-top-2"><span
-                            class="govuk-heading-m app-dashboard-count">{{ absentAppointments.failed.flat(Infinity) | length }}</span>Absences
+                            class="govuk-heading-m govuk-!-margin-right-1 govuk-!-display-inline-block govuk-!-margin-right-2 govuk-!-margin-bottom-1 app-dashboard-count">{{ absentAppointments.failed.flat(Infinity) | length }}</span>Absences
                 </p>
 
                 {% for failed in absentFailed | sort(true, false, 'count') %}
                     <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body app-dashboard-count">{{ failed.count }}</span> {{ failed.description }}
+                                class="govuk-body govuk-!-margin-right-2 app-dashboard-count">{{ failed.count }}</span> {{ failed.description }}
                     </p>
                 {% endfor %}
             </div>
@@ -302,7 +302,7 @@
                 </div>
                 <div class="govuk-grid-column-three-quarters">
                     <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-0"><span
-                                class="govuk-heading-m app-dashboard-count">{{ awaitingOutcome | length }}</span></p>
+                                class="govuk-heading-m govuk-!-margin-right-2 app-dashboard-count">{{ awaitingOutcome | length }}</span></p>
                 </div>
             </div>
         {% endif %}
