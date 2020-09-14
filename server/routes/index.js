@@ -191,18 +191,16 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   async function updateCaseDetails (courtCode, caseNo, crn) {
     const caseResponse = await getCase(courtCode, caseNo)
-    let matchResponse
-    let selectedMatch
+    let offenderDetail
     if (crn) {
-      matchResponse = await getMatchDetails(courtCode, caseNo)
-      selectedMatch = matchResponse.offenderMatchDetails.filter($item => $item.matchIdentifiers.crn === crn)[0]
+      offenderDetail = await getDetails(crn)
     }
     return await updateCase(courtCode, caseNo, {
       ...caseResponse,
-      pnc: crn ? selectedMatch.matchIdentifiers.pnc : caseResponse.pnc,
-      crn: crn ? selectedMatch.matchIdentifiers.crn : null,
-      cro: crn ? selectedMatch.matchIdentifiers.cro : null,
-      probationStatus: crn ? selectedMatch.probationStatus : 'No record'
+      pnc: crn ? offenderDetail.otherIds.pnc : caseResponse.pnc,
+      crn: crn ? offenderDetail.otherIds.crn : null,
+      cro: crn ? offenderDetail.otherIds.cro : null,
+      probationStatus: crn ? offenderDetail.probationStatus : 'No record'
     })
   }
 
