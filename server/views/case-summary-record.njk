@@ -56,7 +56,7 @@
                                 {{ requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description }}
                                 {{ '(' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')' }}
                                 {{ '- ' + requirement.length if requirement.length }}
-                                {{ requirement.lengthUnit if requirement.lengthUnit }}
+                                {{ requirement.lengthUnit if requirement.lengthUnit and requirement.length }}
                             </li>
                         {% endfor %}
                         </ul>
