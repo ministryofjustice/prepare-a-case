@@ -54,7 +54,7 @@
                         {%- for requirement in order.requirements %}
                             <li>
                                 {{ requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description }}
-                                {% if requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description === 'Rehabilitation Activity Requirement (RAR)' %}
+                                {% if (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) == 'Rehabilitation Activity Requirement (RAR)' %}
                                     {{ '- ' + requirement.length if requirement.length }}
                                     {{ requirement.lengthUnit if requirement.lengthUnit and requirement.length }}
                                 {% else %}
