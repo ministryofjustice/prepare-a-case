@@ -269,7 +269,7 @@
                 Absences </span></p>
                 {% for complied in absentComplied | sort(true, false, 'count') %}
                     <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body- pac-dashboard-count">{{ complied.count }}</span>{{ complied.description }}
+                                class="govuk-body pac-dashboard-count">{{ complied.count }}</span>{{ complied.description }}
                     </p>
                 {% endfor %}
             </div>
@@ -299,7 +299,7 @@
                 Absences </span></p>
                 {% for failed in absentFailed | sort(true, false, 'count') %}
                     <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body- pac-dashboard-count">{{ failed.count }}</span>{{ failed.description }}
+                                class="govuk-body pac-dashboard-count">{{ failed.count }}</span>{{ failed.description }}
                     </p>
                 {% endfor %}
             </div>
