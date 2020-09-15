@@ -107,8 +107,7 @@
           "contactType": {
             "description": "IAPS / Accredited programme",
             "code": "886418"
-          },
-          "outcome": ""
+          }
         },
         {
           "contactId": 884447,
@@ -118,8 +117,7 @@
           "contactType": {
             "description": "Appointment with External Agency",
             "code": "930416"
-          },
-          "outcome": ""
+          }
         },
         {
           "contactId": 965401,
@@ -162,8 +160,7 @@
           "contactType": {
             "description": "Planned office visit",
             "code": "859493"
-          },
-          "outcome": ""
+          }
         },
         {
           "contactId": 851489,
@@ -184,8 +181,7 @@
           "contactType": {
             "description": "Unpaid work",
             "code": "948478"
-          },
-          "outcome": ""
+          }
         },
         {
           "contactId": 995576,
@@ -206,8 +202,7 @@
           "contactType": {
             "description": "IAPS / Accredited programme",
             "code": "802554"
-          },
-          "outcome": ""
+          }
         },
         {
           "contactId": 970451,
@@ -316,8 +311,7 @@
           "contactType": {
             "description": "Unpaid work",
             "code": "833428"
-          },
-          "outcome": ""
+          }
         },
         {
           "contactId": 814403,
@@ -459,8 +453,7 @@
           "contactType": {
             "description": "IAPS / Accredited programme",
             "code": "927578"
-          },
-          "outcome": ""
+          }
         },
         {
           "contactId": 828513,
@@ -525,8 +518,7 @@
           "contactType": {
             "description": "IAPS / Accredited programme",
             "code": "975510"
-          },
-          "outcome": ""
+          }
         },
         {
           "contactId": 904439,
@@ -536,8 +528,7 @@
           "contactType": {
             "description": "Unpaid work",
             "code": "958501"
-          },
-          "outcome": ""
+          }
         },
         {
           "contactId": 834497,
@@ -602,8 +593,7 @@
           "contactType": {
             "description": "Planned office visit",
             "code": "948420"
-          },
-          "outcome": ""
+          }
         },
         {
           "contactId": 952573,

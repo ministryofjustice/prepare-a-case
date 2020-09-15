@@ -67,18 +67,18 @@
         failed: []
     } -%}
     {%- set awaitingOutcome = [] -%}
-    {% for attended, attendances in attendances | groupby("attended") %}
-        {% for complied, attendance in attendances | groupby("complied") %}
-            {% if attended | string === "true" %}
-                {{ attendedAppointments.complied.push(attendance) if complied | string === "true" }}
-                {{ attendedAppointments.failed.push(attendance) if complied | string === "false" }}
-                {% elif attended | string === "false" %}
-                {{ absentAppointments.complied.push(attendance) if complied | string === "true" }}
-                {{ absentAppointments.failed.push(attendance) if complied | string === "false" }}
-            {% else %}
-                {{ awaitingOutcome.push(attendance) }}
-            {% endif %}
-        {% endfor %}
+    {% for attendance in attendances %}
+        {% if attendance.attended | string === "true" and attendance.complied | string === "true" %}
+            {{ attendedAppointments.complied.push(attendance) }}
+        {% elif attendance.attended | string === "true" and attendance.complied | string === "false" %}
+            {{ attendedAppointments.failed.push(attendance) }}
+        {% elif attendance.attended | string === "false" and attendance.complied | string === "true" %}
+            {{ absentAppointments.complied.push(attendance) }}
+        {% elif attendance.attended | string === "false" and attendance.complied | string === "false" and attendance.outcome %}
+            {{ absentAppointments.failed.push(attendance) }}
+        {% else %}
+            {{ awaitingOutcome.push(attendance) }}
+        {% endif %}
     {% endfor %}
 
     {# Create simplified appointments for sorting and display #}
