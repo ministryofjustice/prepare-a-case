@@ -41,7 +41,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
         lastUpdated: response ? response.lastUpdated : '',
         totalDays: settings.casesTotalDays,
         ...params,
-        subsection: params.subsection || ''
+        subsection: params.subsection || '',
+        filtersApplied: req.session.selectedFilters && Object.keys(req.session.selectedFilters).length
       },
       data: response.cases.slice(startCount, endCount) || []
     }
@@ -262,6 +263,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     req.session.formInvalid = false
     req.session.crnInvalid = false
     req.session.confirmedMatch = undefined
+    req.session.matchName = undefined
     if (!req.body.crn) {
       req.session.formError = true
       redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
@@ -292,6 +294,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.session = {
       ...req.session
     }
+    req.session.matchName = templateValues.data.defendantName
     res.render('match-manual', templateValues)
   })
 
