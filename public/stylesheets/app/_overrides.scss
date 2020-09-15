@@ -25,6 +25,10 @@
   width: 55%;
 }
 
+.pac-\!-grid-column-18 {
+  width: 18%;
+}
+
 body.js-enabled {
   .moj-js-hidden {
     @include govuk-visually-hidden;
