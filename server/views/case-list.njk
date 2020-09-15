@@ -216,7 +216,7 @@
             {{ govukTable(tableData) }}
         {% endblock %}
     {% else %}
-        <p class="govuk-body">No case data available for this day.</p>
+        <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "No case data available for this day." }}</p>
     {% endif %}
 
     {% if totalPages > 1 %}

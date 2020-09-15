@@ -304,3 +304,19 @@ Feature: Case list
     When I click the "Clear all" link
     Then I should see the first defendant on the "unfiltered" list
     And There should be no a11y violations
+
+  Scenario: Display no matching cases message when no cases are returned due to applied filters
+    Given I am an authenticated user
+    And I am viewing the "fullFiltered" case list
+
+    When I view the court list
+    Then I should see the first defendant on the "unfiltered" list
+    When I click the "Probation status" filter button
+    And I select the "Current" filter
+    And I click the "Courtroom" filter button
+    And I select the "06" filter
+    And I click the "Session" filter button
+    And I select the "AFTERNOON" filter
+    And I click the "Apply filters" button
+    Then I should see the body text "There are no matching cases."
+    And There should be no a11y violations
