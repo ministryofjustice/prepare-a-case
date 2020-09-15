@@ -262,6 +262,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     req.session.formInvalid = false
     req.session.crnInvalid = false
     req.session.confirmedMatch = undefined
+    req.session.matchName = undefined
     if (!req.body.crn) {
       req.session.formError = true
       redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
@@ -292,6 +293,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.session = {
       ...req.session
     }
+    req.session.matchName = templateValues.data.defendantName
     res.render('match-manual', templateValues)
   })
 
