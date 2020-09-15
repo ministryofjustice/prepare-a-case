@@ -297,7 +297,7 @@ When('I click the first charge accordion button', () => {
 
 And('I should see the appointment attendance information', () => {
   world.data.currentOrderAttendance.counts.forEach(($text, $index) => {
-    cy.get('.app-dashboard-count').eq($index).contains($text)
+    cy.get('.pac-dashboard-count').eq($index).contains($text)
   })
   world.data.currentOrderAttendance.headings.forEach($text => {
     cy.get('h3').contains($text)
