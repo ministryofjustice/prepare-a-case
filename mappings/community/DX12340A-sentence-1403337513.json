@@ -30,8 +30,7 @@
           "contactType": {
             "description": "Planned office visit",
             "code": "985513"
-          },
-          "outcome": ""
+          }
         },
         {
           "contactId": 928547,

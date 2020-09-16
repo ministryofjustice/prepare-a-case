@@ -242,12 +242,12 @@ Feature: Case summary
     When I click the first "current" order link
     Then I should be on the "Order details" page
     And I should see the level 2 heading with the "current" order title
-    And I should see the level 2 heading "Appointment attendance"
+    And I should see the level 2 heading "Attendance"
 
     And I should see the body text with the defendant "currentOrderOffence"
     And I should see the following level 3 headings
       | Appointments to date | Acceptable | Unacceptable |
-    And I should see the body text "Last attended" and the defendant "currentOrderLastAttendance"
+    And I should see the body text "Last attended:" and the defendant "currentOrderLastAttendance"
 
     And I should see the correct start, end and elapsed time headings
     And I should see the "current" order start and end dates
@@ -297,7 +297,7 @@ Feature: Case summary
     And I should see the body text with the defendant "currentOrderOffence"
     And I should see the following level 3 headings
       | Appointments to date | Acceptable | Unacceptable |
-    And I should see the body text "Last attended" and the defendant "currentOrderLastAttendance"
+    And I should see the body text "Last attended:" and the defendant "currentOrderLastAttendance"
 
     And I should see the correct start, end and elapsed time headings
     And I should see the "current" order start and end dates
@@ -306,7 +306,7 @@ Feature: Case summary
     And I should see the level 2 heading "Breaches"
     And I should see order breach information
 
-    And I should see the level 2 heading "Appointment attendance"
+    And I should see the level 2 heading "Attendance"
     And I should see the appointment attendance information
     And I should see the unpaid work information
 
