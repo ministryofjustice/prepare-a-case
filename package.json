@@ -11,7 +11,7 @@
     "url": "https://github.com/ministryofjustice/prepare-a-case.git"
   },
   "engines": {
-    "node": ">=12.18.3 <13.0.0 || >=14.9.0"
+    "node": ">=12.18.4 <13.0.0 || >=14.11.0"
   },
   "scripts": {
     "precommit": "npm run lint && npm run unit-test && npm run mock-validation-test && npm run int-test",
