@@ -53,8 +53,9 @@
                         <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
                         {%- for requirement in order.requirements %}
                             <li>
+                                {% set RAR = "Rehabilitation Activity Requirement (RAR)" %}
                                 {{ requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description }}
-                                {% if not (requirement.requirementTypeSubCategory.description !== "Rehabilitation Activity Requirement (RAR)") or (requirement.adRequirementTypeSubCategory.description !== "Rehabilitation Activity Requirement (RAR)") %}
+                                {% if not (requirement.requirementTypeSubCategory.description !== RAR) or (requirement.adRequirementTypeSubCategory.description !== RAR) %}
                                     {{ '(' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')' }}
                                 {% endif %}
                                 {{ '- ' + requirement.length if requirement.length }}
@@ -100,7 +101,19 @@
             {% endif %}
 
         </div>
+
         <div class="govuk-grid-column-one-third govuk-!-padding-left-9 govuk-!-padding-top-9">
+            <div class="govuk-!-margin-bottom-6">
+                <h3 class="govuk-heading-s">Offender Manager</h3>
+{#                {% for current in probationStatus %}#}
+                {% if offenderManager.allocatedDate %}
+                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.forenames }} {{ offenderManager.surname }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                {% else %}
+                    <p class="govuk-body">Not active</p>
+                {% endif %}
+{#                {% endfor %}#}
+            </div>
 
             {% if probationDocuments | length %}
                 {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
