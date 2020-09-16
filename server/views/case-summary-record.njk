@@ -38,7 +38,7 @@
             </div>
 
             {% if activeOrders | length %}
-                <h2 class="govuk-heading-m">Current orders <span class="heading-count-order">({{ activeOrders | length }})</span></h2>
+                <h2 class="govuk-heading-m">Current orders <span class="pac-heading-count-order">({{ activeOrders | length }})</span></h2>
                 {%- for order in activeOrders %}
                     <p class="govuk-body govuk-!-margin-bottom-0">
                         <a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + ' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' }}</a>
@@ -79,7 +79,7 @@
                     {% set limitPreviousOrders = 5 %}
                 {% endif %}
                 <form name="previousOrders" id="previousOrders" method="post">
-                    <h2 class="govuk-heading-m{% if activeOrders | length and previousOrders | length %} govuk-!-margin-top-8{% endif %}">Previous orders <span class="heading-count-order">({{ previousOrders | length }})</span></h2>
+                    <h2 class="govuk-heading-m{% if activeOrders | length and previousOrders | length %} govuk-!-margin-top-8{% endif %}">Previous orders <span class="pac-heading-count-order">({{ previousOrders | length }})</span></h2>
                     <table class="govuk-table govuk-!-margin-bottom-3">
                         <tbody class="govuk-table__body">
                             {%- for order in previousOrders | limit(limitPreviousOrders) %}
