@@ -4,11 +4,11 @@ Prepare a case is a service that allows probation staff to prepare court cases.
 
 ## Prerequisities
 Before you begin, ensure you have met the following requirements:
-* You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Erbium) >= v12.18.3
+* You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Erbium) >= v12.18.4
 
 Or
 
-* You have Node.js (Fermium) >= v14.9.0
+* You have Node.js (Fermium) >= v14.11.0
 
 For code quality the project adheres to [JavaScript Standard Style](https://standardjs.com/) which requires minimal configuration of your chosen IDE.
 
@@ -43,7 +43,7 @@ If unspecified, the app will use your local court-case-service app but you can a
  
 Start the standalone WireMock server
 ```
-java -jar wiremock-standalone-2.27.0.jar --global-response-templating --port 9091
+java -jar wiremock-standalone-2.27.2.jar --global-response-templating --port 9091
 ```
 
 And then, to build assets and start app with
