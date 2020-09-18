@@ -31,26 +31,36 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <h1 class="govuk-heading-l">Probation record</h1>
+                </div>
+            </div>
+
             {% if activeOrders | length %}
-                <h2 class="govuk-heading-m">Current orders ({{ activeOrders | length }})</h2>
+                <h2 class="govuk-heading-m">Current orders <span class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ activeOrders | length }})</span></h2>
                 {%- for order in activeOrders %}
                     <p class="govuk-body govuk-!-margin-bottom-0">
-                        <a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a>
+                        <a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + ' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' }}</a>
                         {% if order.inBreach %}<span class="moj-badge moj-badge--black pac-badge govuk-!-margin-left-1">Breach</span>{% endif %}
                     </p>
                     <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].description }}</p>
                     <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started on {{ moment(order.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
 
                     {% if order.requirements and order.requirements | length %}
-                        <h3 class="govuk-heading-s">Requirements</h3>
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Requirements</h3>
 
                         <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
                         {%- for requirement in order.requirements %}
                             <li>
+                                {% set RAR = "Rehabilitation Activity Requirement (RAR)" %}
                                 {{ requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description }}
-                                {{ '(' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')' }}
+                                {% if not (requirement.requirementTypeSubCategory.description !== RAR) or (requirement.adRequirementTypeSubCategory.description !== RAR) %}
+                                    {{ '(' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')' }}
+                                {% endif %}
                                 {{ '- ' + requirement.length if requirement.length }}
-                                {{ requirement.lengthUnit if requirement.lengthUnit }}
+                                {{ requirement.lengthUnit if requirement.lengthUnit and requirement.length }}
+
                             </li>
                         {% endfor %}
                         </ul>
@@ -68,14 +78,14 @@
                     {% set limitPreviousOrders = 5 %}
                 {% endif %}
                 <form name="previousOrders" id="previousOrders" method="post">
-                    <h2 class="govuk-heading-m{% if activeOrders | length and previousOrders | length %} govuk-!-margin-top-8{% endif %}">Previous orders ({{ previousOrders | length }})</h2>
+                    <h2 class="govuk-heading-m{% if activeOrders | length and previousOrders | length %} govuk-!-margin-top-8{% endif %}">Previous orders <span class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ previousOrders | length }})</span></h2>
                     <table class="govuk-table govuk-!-margin-bottom-3">
                         <tbody class="govuk-table__body">
                             {%- for order in previousOrders | limit(limitPreviousOrders) %}
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell govuk-!-width-two-thirds">
-                                        <p class="govuk-body govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description }}</a></p>
-                                        <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
+                                        <p class="govuk-body govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + ' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')'}}</a></p>
+                                        <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
                                     </td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third" style="vertical-align: bottom">
                                         <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">Ended on {{ moment(order.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
@@ -91,14 +101,16 @@
             {% endif %}
 
         </div>
-        <div class="govuk-grid-column-one-third">
 
+        <div class="govuk-grid-column-one-third govuk-!-padding-left-9 govuk-!-padding-top-9">
             <div class="govuk-!-margin-bottom-6">
                 <h3 class="govuk-heading-s">Offender Manager</h3>
-                {% if offenderManager.allocatedDate %}
-                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.forenames }} {{ offenderManager.surname }}</p>
-                    <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
-                {% else %}
+                {% if data.probationStatus === "Current" %}
+                    {% if offenderManager.allocatedDate %}
+                        <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.forenames }} {{ offenderManager.surname }}</p>
+                         <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                {% endif %}
+                    {% else %}
                     <p class="govuk-body">Not active</p>
                 {% endif %}
             </div>

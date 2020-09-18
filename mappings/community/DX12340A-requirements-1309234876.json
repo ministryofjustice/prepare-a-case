@@ -19,11 +19,11 @@
           "active": false,
           "adRequirementTypeMainCategory": {
             "code": "7",
-            "description": "Rehabilitation Activity Requirement"
+            "description": "Rehabilitation Activity Requirement (RAR)"
           },
           "adRequirementTypeSubCategory": {
             "code": "P12",
-            "description": "RAR"
+            "description": "Rehabilitation Activity Requirement (RAR)"
           },
           "terminationReason": {
             "code": "74",

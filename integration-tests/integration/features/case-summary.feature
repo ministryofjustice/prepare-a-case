@@ -198,13 +198,8 @@ Feature: Case summary
     When I click the sub navigation with "Probation record" text
     Then I should see the offender previous order count
     And I should see the following level 3 headings
-      | Offender Manager |
+      | Offender Manager | Last pre-sentence report | Last OASys assessment |
     And I should see the offender manager details
-    And I should see link to the first previous order
-    And I should see the previous order offence
-    And I should see the previous order end date
-    And I should see the last pre-sentence report details
-
     And There should be no a11y violations
 
   Scenario: View the probation record section of the case summary for a current offender
@@ -228,7 +223,7 @@ Feature: Case summary
     And I should see the previous order end date
 
     And I should see the following level 3 headings
-      | Requirements | Requirements | Requirements | Offender Manager |
+      | Requirements | Requirements | Requirements | Offender Manager | Last pre-sentence report | Last OASys assessment |
     And I should see the offender manager details
     And I should see the last pre-sentence report details
     And I should see the last OASys assessment details
