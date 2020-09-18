@@ -17,12 +17,12 @@
 
     {% if session.formError %}
         {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-        {%- set errorText = "You must enter a case reference number" -%}
+        {%- set errorText = "Enter a case reference number" -%}
         {% if session.formInvalid %}
-            {%- set errorText = "Enter the CRN in the correct format" -%}
+            {%- set errorText = "CRN must be in the correct format" -%}
         {% endif %}
         {% if session.crnInvalid %}
-            {%- set errorText = "No records match the CRN provided" -%}
+            {%- set errorText = "No records match the CRN" -%}
         {% endif %}
         {{ govukErrorSummary({
             titleText: "There is a problem",

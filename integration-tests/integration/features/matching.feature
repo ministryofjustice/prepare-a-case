@@ -131,7 +131,7 @@ Feature: Matching defendants to nDelius records
     And I should see the text input hint "For example, A123456"
     When I click the "Find record" button
     Then I should be on the "Link an nDelius record to the defendant" page
-    Then I should see the error message "You must enter a case reference number"
+    Then I should see the error message "Enter a case reference number"
     And There should be no a11y violations
 
   Scenario: Manually match a defendant and submit with an invalid CRN
@@ -149,7 +149,7 @@ Feature: Matching defendants to nDelius records
     When I enter "INVALID" into text input with id "crn"
     And I click the "Find record" button
     Then I should be on the "Link an nDelius record to the defendant" page
-    Then I should see the error message "Enter the CRN in the correct format"
+    Then I should see the error message "CRN must be in the correct format"
     And There should be no a11y violations
 
   Scenario: Manually match a defendant and submit with a valid but incorrect CRN
@@ -167,7 +167,7 @@ Feature: Matching defendants to nDelius records
     When I enter "B654321" into text input with id "crn"
     And I click the "Find record" button
     Then I should be on the "Link an nDelius record to the defendant" page
-    Then I should see the error message "No records match the CRN provided"
+    Then I should see the error message "No records match the CRN"
     And There should be no a11y violations
 
   Scenario: Manually match a defendant from the bulk list
