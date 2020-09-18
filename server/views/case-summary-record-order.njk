@@ -128,7 +128,7 @@
 
 {% block caseContent %}
 
-    <h2 class="govuk-heading-l govuk-!-margin-0">{{ currentOrder.sentence.description }}</h2>
+    <h2 class="govuk-heading-l govuk-!-margin-0" style="color: #912b88">{{ currentOrder.sentence.description + ' (' + currentOrder.sentence.length + ' ' + currentOrder.sentence.lengthUnits + ')' }}</h2>
 
     <div class="govuk-grid-row govuk-!-margin-top-4">
         <div class="govuk-grid-column-two-thirds">
@@ -183,7 +183,7 @@
             </div>
 
             {% if currentOrder.requirements | length %}
-                <h2 class="govuk-heading-m govuk-!-margin-top-8">Requirements</h2>
+                <h2 class="govuk-heading-m govuk-!-margin-top-8" style="color: #ffdd00">Requirements</h2>
 
                 {%- from "govuk/components/table/macro.njk" import govukTable -%}
                 {% if currentOrder.active %}
@@ -227,7 +227,7 @@
 
     {% if currentOrder.active %}
 
-        <h2 class="govuk-heading-m govuk-!-margin-top-8">Attendance</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-top-8" style="color: aqua">Attendance</h2>
 
         {% if attendances.length %}
             {% set sortedAttendances = attendances | sort(true, false, 'attendanceDate') %}
