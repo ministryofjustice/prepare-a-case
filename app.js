@@ -47,17 +47,16 @@ module.exports = function createApp ({ signInService, userService }) {
   })
 
   env.addFilter('markMatches', (matchString, sourceString) => {
-    const filteredArr = []
     const sourceSplit = sourceString.split(' ').map(item => {
       return item.replace(',', '').toLowerCase()
     })
-    matchString.split(' ').forEach(item => {
+    const filteredArr = matchString.split(' ').map(item => {
       let hasComma = false
       if (item.indexOf(',') !== -1) {
         item = item.replace(',', '')
         hasComma = true
       }
-      filteredArr.push((sourceSplit.includes(item.toLowerCase()) ? `<mark>${item}</mark>` : item) + (hasComma ? ',' : ''))
+      return (sourceSplit.includes(item.toLowerCase()) ? `<mark>${item}</mark>` : item) + (hasComma ? ',' : '')
     })
     return filteredArr.join(' ')
   })
