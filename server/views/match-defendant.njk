@@ -72,7 +72,16 @@
                         </tr>
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">Address</th>
-                            <td class="govuk-table__cell">{{ data.defendantAddress.line1 }} {{ data.defendantAddress.line2 + "," if data.defendantAddress.line2 }} {{ data.defendantAddress.line3 + "," if data.defendantAddress.line3 }} {{ data.defendantAddress.line4 + "," if data.defendantAddress.line4 }} {{ data.defendantAddress.line5 + "," if data.defendantAddress.line5 }} {{ data.defendantAddress.postcode | upper }}</td>
+                            <td class="govuk-table__cell">
+                                {% set dataAddress = data.defendantAddress.line1 + ' '
+                                    + (data.defendantAddress.line2 + ", " if data.defendantAddress.line2)
+                                    + (data.defendantAddress.line3 + ", " if data.defendantAddress.line3)
+                                    + (data.defendantAddress.line4 + ", " if data.defendantAddress.line4)
+                                    + (data.defendantAddress.line5 + ", " if data.defendantAddress.line5)
+                                    + data.defendantAddress.postcode | upper
+                                %}
+                                {{ dataAddress }}
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -110,15 +119,28 @@
                                         <tbody class="govuk-table__body">
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header" style="width: 40%;">Name</th>
-                                            <td class="govuk-table__cell">{{ item.forename }} {{ item.surname }}</td>
+                                            <td class="govuk-table__cell">
+                                                {% set matchName = item.forename + ' ' + item.surname %}
+                                                {{ matchName | markMatches(data.defendantName) | safe }}
+                                            </td>
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">DOB</th>
-                                            <td class="govuk-table__cell">{{ params.moment(item.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') if item.dateOfBirth }}</td>
+                                            <td class="govuk-table__cell">
+                                                {{ params.moment(item.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') | markMatches(params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY')) | safe if item.dateOfBirth }}
+                                            </td>
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">Address</th>
-                                            <td class="govuk-table__cell"><span class="highlight">{{ item.address.addressNumber }} {{ item.address.buildingName + "," if item.address.buildingName }} {{ item.address.town + "," if item.address.town }} {{ item.address.county + "," if item.address.county }} {{ item.address.postcode | upper }}</span></td>
+                                            <td class="govuk-table__cell"><span class="highlight">
+                                                    {% set itemAddress = (item.address.addressNumber + ' ' if item.address.addressNumber)
+                                                        + (item.address.buildingName + ", " if item.address.buildingName)
+                                                        + (item.address.town + ", " if item.address.town)
+                                                        + (item.address.county + ", " if item.address.county)
+                                                        + item.address.postcode | upper
+                                                    %}
+                                                    {{ itemAddress | markMatches(dataAddress) | safe }}</span>
+                                            </td>
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">CRN</th>
