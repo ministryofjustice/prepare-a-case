@@ -46,6 +46,21 @@ module.exports = function createApp ({ signInService, userService }) {
     return arr.slice(0, limit)
   })
 
+  env.addFilter('markMatches', (matchString, sourceString) => {
+    const sourceSplit = sourceString.split(' ').map(item => {
+      return item.replace(',', '').toLowerCase()
+    })
+    const filteredArr = matchString.split(' ').map(item => {
+      let hasComma = false
+      if (item.indexOf(',') !== -1) {
+        item = item.replace(',', '')
+        hasComma = true
+      }
+      return (sourceSplit.includes(item.toLowerCase()) ? `<mark>${item}</mark>` : item) + (hasComma ? ',' : '')
+    })
+    return filteredArr.join(' ')
+  })
+
   app.set('view engine', 'njk')
 
   app.use(helmet({
