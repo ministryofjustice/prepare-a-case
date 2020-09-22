@@ -214,6 +214,8 @@ Feature: Case summary
     Then I should see the offender current order count
     And I should see link to the first current order
     And I should see the requirements for the first current order
+    And I should see the licence conditions for the second current order
+    And I should see the pss requirements for the third current order
     And I should see the current order offence
     And I should see the current order start date
 
@@ -223,7 +225,7 @@ Feature: Case summary
     And I should see the previous order end date
 
     And I should see the following level 3 headings
-      | Requirements | Requirements | Requirements | Offender Manager | Last pre-sentence report | Last OASys assessment |
+      | Requirements | Licence conditions | PSS requirements | Offender Manager | Last pre-sentence report | Last OASys assessment |
     And I should see the offender manager details
     And I should see the last pre-sentence report details
     And I should see the last OASys assessment details

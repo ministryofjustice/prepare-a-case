@@ -33,6 +33,16 @@ const currentDefendant = {
       'Court - Accredited Programme (ASRO)',
       'Court - Accredited Programme - Building Better Relationships (BBR)'
     ],
+    currentPssRequirements: [
+      'Standard 7 conditions',
+      'Specified Activity - ETE - High intensity',
+      'Curfew Arrangement'
+    ],
+    currentLicenceConditions: [
+      'Alcohol',
+      'Curfew Arrangement',
+      'Participate or co-op with Programme or Activities'
+    ],
     unpaidWork: {
       status: 'Terminated - 23 Jan 2018',
       offered: 12,
