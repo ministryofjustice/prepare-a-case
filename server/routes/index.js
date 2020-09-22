@@ -12,6 +12,14 @@ module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
   router.use(authenticationMiddleware())
 
+  router.get('*', (req, res, next) => {
+    req.previousUrl = `${req.session.previousUrl || '/'}`
+    if (req.session.previousUrl !== req.originalUrl) {
+      req.session.previousUrl = req.originalUrl
+    }
+    next()
+  })
+
   router.get('/', health, (req, res) => {
     res.redirect('/cases')
   })
@@ -67,6 +75,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const caseListDate = req.session.caseListDate
     return {
       healthy: req.healthy,
+      backLink: req.previousUrl,
       caseListDate,
       params: {
         ...params
@@ -322,7 +331,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Unlink nDelius record from the defendant'
     templateValues.hideSubnav = true
     templateValues.backText = 'Back'
-    templateValues.backLink = `/case/${req.params.caseNo}/summary`
     templateValues.hideUnlinkButton = true
     templateValues.params = {
       ...templateValues.params
