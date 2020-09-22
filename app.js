@@ -139,13 +139,29 @@ module.exports = function createApp ({ signInService, userService }) {
     })
   })
 
+  // JWT token refresh
   app.use(async (req, res, next) => {
     let axiosHeaders = {}
     if (req.user && req.originalUrl !== '/logout') {
       const timeToRefresh = new Date() > req.user.refreshTime
       if (timeToRefresh) {
-        return res.redirect('/logout')
+        try {
+          const newToken = await signInService.getRefreshedToken(req.user)
+          req.user.token = newToken.token
+          req.user.refreshToken = newToken.refreshToken
+          log.info(`existing refreshTime in the past by ${new Date().getTime() - req.user.refreshTime}`)
+          log.info(
+            `updating time by ${newToken.refreshTime - req.user.refreshTime} from ${req.user.refreshTime} to ${
+              newToken.refreshTime
+            }`
+          )
+          req.user.refreshTime = newToken.refreshTime
+        } catch (error) {
+          log.error(`Token refresh error: ${req.user.username}`, error.stack)
+          return res.redirect('/logout')
+        }
       }
+
       axiosHeaders = {
         Authorization: `Bearer ${req.user.token}`
       }
