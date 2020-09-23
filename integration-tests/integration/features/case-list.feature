@@ -318,5 +318,6 @@ Feature: Case list
     And I click the "Session" filter button
     And I select the "AFTERNOON" filter
     And I click the "Apply filters" button
+    Then I should see the text "0 cases" within element with class "govuk-heading-m"
     Then I should see the body text "There are no matching cases."
     And There should be no a11y violations
