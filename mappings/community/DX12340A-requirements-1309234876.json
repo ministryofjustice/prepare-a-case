@@ -40,37 +40,6 @@
             "description": "Participate or co-op with Programme or Activities"
           }
         }
-      ],
-      "licenceConditions": [
-        {
-          "startDate": "2020-02-01",
-          "commencementDate": "2020-05-14",
-          "terminationDate": "2020-05-21",
-          "createdDateTime": "2020-05-21T15:54:24",
-          "active": false,
-          "licenceConditionTypeMainCat": {
-            "code": "NLC10",
-            "description": "Alcohol"
-          }
-        },
-        {
-          "startDate": "2020-02-01",
-          "createdDateTime": "2020-04-22T09:09:20",
-          "active": true,
-          "licenceConditionTypeMainCat": {
-            "code": "NLC7",
-            "description": "Curfew Arrangement"
-          }
-        },
-        {
-          "startDate": "2020-02-01",
-          "createdDateTime": "2020-04-22T09:09:20",
-          "active": true,
-          "licenceConditionTypeMainCat": {
-            "code": "NLC4",
-            "description": "Participate or co-op with Programme or Activities"
-          }
-        }
       ]
     }
   }

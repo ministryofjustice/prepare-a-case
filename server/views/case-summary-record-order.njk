@@ -183,11 +183,7 @@
             </div>
 
             {% if currentOrder.licenceConditions | length %}
-                {% if custodialOrder.custodialTypeCode === "B" %}
-                    <h2 class="govuk-heading-m govuk-!-margin-top-8">Licence conditions</h2>
-                {% else %}
-                    <h2 class="govuk-heading-m govuk-!-margin-top-8">Post-sentence supervision requirements</h2>
-                {% endif %}
+                <h2 class="govuk-heading-m govuk-!-margin-top-8">{{"Licence conditions" if custodialOrder.custodialTypeCode === "B" else "Post-sentence supervision requirements"}}</h2>
                 <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
                     {%- for licenceConditions in currentOrder.licenceConditions %}
                         <li>
