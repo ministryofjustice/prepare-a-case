@@ -10,48 +10,35 @@
     },
     "status": 200,
     "jsonBody": {
-      "requirements": [
+      "licenceConditions": [
         {
-          "requirementId": 7925250000,
-          "startDate": "2015-07-01",
-          "commencementDate": "2015-06-29",
-          "terminationDate": "2017-12-25",
+          "startDate": "2020-02-01",
+          "commencementDate": "2020-05-14",
+          "terminationDate": "2020-05-21",
+          "createdDateTime": "2020-05-21T15:54:24",
           "active": false,
-          "adRequirementTypeMainCategory": {
-            "code": "7",
-            "description": "Rehabilitation Activity Requirement (RAR)"
-          },
-          "adRequirementTypeSubCategory": {
-            "code": "P12",
-            "description": "Rehabilitation Activity Requirement (RAR)"
-          },
-          "terminationReason": {
-            "code": "74",
-            "description": "Expired (normal)"
-          },
-          "length": 20,
-          "lengthUnit": "Days"
+          "licenceConditionTypeMainCat": {
+            "code": "NLC10",
+            "description": "Alcohol"
+          }
         },
         {
-          "requirementId": 7092525000,
-          "startDate": "2015-07-01",
-          "commencementDate": "2015-06-29",
-          "terminationDate": "2017-12-25",
-          "active": false,
-          "adRequirementTypeMainCategory": {
-            "code": "7",
-            "description": "Court - Accredited Programme - Building Better Relationships"
-          },
-          "adRequirementTypeSubCategory": {
-            "code": "P12",
-            "description": "BBR"
-          },
-          "terminationReason": {
-            "code": "74",
-            "description": "Expired (normal)"
-          },
-          "length": 20,
-          "lengthUnit": "Days"
+          "startDate": "2020-02-01",
+          "createdDateTime": "2020-04-22T09:09:20",
+          "active": true,
+          "licenceConditionTypeMainCat": {
+            "code": "NLC7",
+            "description": "Curfew Arrangement"
+          }
+        },
+        {
+          "startDate": "2020-02-01",
+          "createdDateTime": "2020-04-22T09:09:20",
+          "active": true,
+          "licenceConditionTypeMainCat": {
+            "code": "NLC4",
+            "description": "Participate or co-op with Programme or Activities"
+          }
         }
       ],
       "licenceConditions": [

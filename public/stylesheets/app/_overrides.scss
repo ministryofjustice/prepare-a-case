@@ -34,3 +34,9 @@ body.js-enabled {
     @include govuk-visually-hidden;
   }
 }
+
+mark {
+  border-bottom: 2px solid #ffbf47;
+  background-color: #fff2d3;
+  padding: 0;
+}

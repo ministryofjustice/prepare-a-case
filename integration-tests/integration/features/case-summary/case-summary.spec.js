@@ -107,6 +107,22 @@ And('I should see the requirements for the first current order', () => {
   })
 })
 
+And('I should see the licence conditions for the second current order', () => {
+  cy.get('.qa-current-licence-conditions-1').within(() => {
+    world.data.currentLicenceConditions.forEach(($requirement, $index) => {
+      cy.get('li').eq($index).contains($requirement)
+    })
+  })
+})
+
+And('I should see the pss requirements for the third current order', () => {
+  cy.get('.qa-current-pss-requirements-2').within(() => {
+    world.data.currentPssRequirements.forEach(($requirement, $index) => {
+      cy.get('li').eq($index).contains($requirement)
+    })
+  })
+})
+
 And('I should see the offender previous order count', () => {
   cy.get('h2').contains(`Previous orders (${world.data.previousOrderCount})`)
 })

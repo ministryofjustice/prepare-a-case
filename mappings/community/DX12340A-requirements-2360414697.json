@@ -10,72 +10,34 @@
     },
     "status": 200,
     "jsonBody": {
-      "requirements": [
+      "pssRequirements": [
         {
-          "requirementId": 2500083652,
-          "startDate": "2017-06-01",
-          "terminationDate": "2017-12-01",
-          "expectedStartDate": "2017-06-01",
-          "expectedEndDate": "2017-12-01",
-          "active": true,
-          "requirementTypeSubCategory": {
-            "code": "W01",
-            "description": "Regular"
+          "pssRequirementId": 634,
+          "type": {
+            "code": "S04",
+            "description": "Standard 7 conditions"
           },
-          "requirementTypeMainCategory": {
-            "code": "W",
-            "description": "Unpaid Work"
-          },
-          "terminationReason": {
-            "code": "74",
-            "description": "Hours Completed Outside 12 months (UPW only)"
-          },
-          "length": 60,
-          "lengthUnit": "Hours"
+          "active": true
         },
         {
-          "requirementId": 7925250000,
-          "startDate": "2015-07-01",
-          "commencementDate": "2015-06-29",
-          "active": true,
-          "adRequirementTypeMainCategory": {
-            "code": "7",
-            "description": "Rehabilitation Activity Requirement (RAR)"
+          "pssRequirementId": 635,
+          "type": {
+            "code": "S05",
+            "description": "Specified Activity"
           },
-          "adRequirementTypeSubCategory": {
-            "code": "P12",
-            "description": "Rehabilitation Activity Requirement (RAR)"
+          "subType": {
+            "code": "102",
+            "description": "ETE - High intensity"
           },
-          "length": 20,
-          "lengthUnit": "Days"
+          "active": true
         },
         {
-          "requirementId": 2500007925,
-          "startDate": "2015-07-01",
-          "commencementDate": "2015-06-29",
-          "active": true,
-          "adRequirementTypeMainCategory": {
-            "code": "7",
-            "description": "Court - Accredited Programme"
+          "pssRequirementId": 635,
+          "type": {
+            "code": "S08",
+            "description": "Curfew Arrangement"
           },
-          "adRequirementTypeSubCategory": {
-            "code": "P12",
-            "description": "ASRO"
-          }
-        },
-        {
-          "requirementId": 7092525000,
-          "startDate": "2015-07-01",
-          "commencementDate": "2015-06-29",
-          "active": true,
-          "adRequirementTypeMainCategory": {
-            "code": "7",
-            "description": "Court - Accredited Programme - Building Better Relationships"
-          },
-          "adRequirementTypeSubCategory": {
-            "code": "P12",
-            "description": "BBR"
-          }
+          "active": true
         }
       ],
       "licenceConditions": [

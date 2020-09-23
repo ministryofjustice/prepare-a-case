@@ -77,3 +77,9 @@ And('I should see the no record match confirmation banner message', () => {
 And('I should see the match error banner message', () => {
   cy.get('.moj-banner__message').contains('Something went wrong - try again.')
 })
+
+And('I should see the following matched text', $data => {
+  $data.raw().flat().forEach((text, index) => {
+    cy.get('mark').eq(index).contains(text)
+  })
+})
