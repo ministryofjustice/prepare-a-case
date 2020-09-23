@@ -128,7 +128,7 @@
 
 {% block caseContent %}
 
-    <h2 class="govuk-heading-l govuk-!-margin-0">{{ currentOrder.sentence.description }}</h2>
+    <h2 class="govuk-heading-l govuk-!-margin-0">{{ currentOrder.sentence.description + (' (' + currentOrder.sentence.length + ' ' + currentOrder.sentence.lengthUnits + ')' if currentOrder.sentence.length)}}</h2>
 
     <div class="govuk-grid-row govuk-!-margin-top-4">
         <div class="govuk-grid-column-two-thirds">
