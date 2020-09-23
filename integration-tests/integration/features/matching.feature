@@ -93,7 +93,8 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Click the back button on matching screen when starting the journey at case summary
     Given I am an authenticated user
-    When I navigate to the "match/defendant/3597035492" route
+    When I navigate to the "case/3597035492/summary" route
+    Then I navigate to the "match/defendant/3597035492" route
     And I am using the "defendantOneRecords" match data
     Then I should be on the "Review possible nDelius records" page
     When I click the "Back" link
