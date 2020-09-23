@@ -391,26 +391,29 @@ Feature: Case summary
     And I should see the following table headings
       | Requirement | Length | Ended | Reason |
 
-  Scenario: View the probation record to see the licence or home detention curfew conditions requirements attached to a current custodial order
-  Given I am a registered user
-  When I navigate to a probation record
-  And I navigate to the “Current orders” heading
-  And I click on the “Order” link
-  Then I am directed to the Order summary page
-  Then I should see the level 2 heading  Licence conditions
-  Then I should see a bulleted list
-  And I should see the following body text "Curfew Arrangement"
-  And I should see the following body text "Participate or co-op with Programme or Activities"
-  And I should not see post-sentence supervision requirements
+  Scenario Outline: View the probation record to see the licence or home detention curfew conditions requirements attached to a current custodial order
+    Given I am an authenticated user
+    And I am looking at a current defendant
+    When I navigate to the probation record route
+    And I navigate to the “Current orders” heading
+    And I click on the “Order” link
+    Then I am directed to the Order summary page
+    Then I should see the level 2 heading Licence conditions
+    Then I should see a bulleted list
+    And I should see the following body text "Curfew Arrangement"
+    And I should see the following body text "Participate or co-op with Programme or Activities"
+    And I should not see post-sentence supervision requirements
 
   Scenario: View the probation record to see the post-sentence supervision requirements attached to a current custodial order.
-  Given I am a registered user
-  When I navigate to a probation record
-  And I navigate to the “Current orders” heading
-  And I click on the “Order” link
-  Then I am directed to the Order summary page
-  Then I should see the level 3 heading  Post-sentence supervision requirements
-  Then I should see a bulleted list
-  And I should see the following body text "Curfew Arrangement"
-  And I should see the following body text "Participate or co-op with Programme or Activities"
-  And I should not see post-sentence supervision requirements
+    Given I am an authenticated user
+    And I am looking at a current defendant
+    When I navigate to the probation record route
+    And I should see the heading has the defendant name
+    And I navigate to the “Current orders” heading
+    And I click on the “Order” link
+    Then I am directed to the Order summary page
+    Then I should see the level 3 heading Post-sentence supervision requirements
+    Then I should see a bulleted list
+    And I should see the following body text "Curfew Arrangement"
+    And I should see the following body text "Participate or co-op with Programme or Activities"
+    And I should not see post-sentence supervision requirements
