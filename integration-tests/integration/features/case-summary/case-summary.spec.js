@@ -53,7 +53,7 @@ When('I navigate to the current order which is currently on licence', $type => {
 })
 
 And('I should see the correct licence header details', () => {
-  cy.get('.qa-start-title').contains('Status')
+  cy.get('.qa-start-title').contains('Post-release status')
   cy.get('.qa-end-title').contains('Licence started')
   cy.get('.qa-elapsed-title').contains('Licence ends')
 
@@ -67,7 +67,7 @@ When('I navigate to the current order which is currently on PSS', $type => {
 })
 
 And('I should see the correct PSS header details', () => {
-  cy.get('.qa-start-title').contains('Status')
+  cy.get('.qa-start-title').contains('Post-release status')
   cy.get('.qa-end-title').contains('PSS started')
   cy.get('.qa-elapsed-title').contains('PSS ends')
 
@@ -102,6 +102,22 @@ And('I should see the current order start date', () => {
 And('I should see the requirements for the first current order', () => {
   cy.get('.qa-current-requirements-0').within(() => {
     world.data.currentOrderRequirements.forEach(($requirement, $index) => {
+      cy.get('li').eq($index).contains($requirement)
+    })
+  })
+})
+
+And('I should see the licence conditions for the second current order', () => {
+  cy.get('.qa-current-licence-conditions-1').within(() => {
+    world.data.currentLicenceConditions.forEach(($requirement, $index) => {
+      cy.get('li').eq($index).contains($requirement)
+    })
+  })
+})
+
+And('I should see the pss requirements for the third current order', () => {
+  cy.get('.qa-current-pss-requirements-2').within(() => {
+    world.data.currentPssRequirements.forEach(($requirement, $index) => {
       cy.get('li').eq($index).contains($requirement)
     })
   })
