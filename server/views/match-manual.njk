@@ -71,7 +71,8 @@
                         id: "crn",
                         name: "crn",
                         pattern: "[A-Za-z][0-9]{6}",
-                        errorMessage: errorMessage
+                        errorMessage: errorMessage,
+                        value: session.crn
                     }) }}
 
                     <button type="submit" class="govuk-button">Find record</button>
@@ -121,3 +122,4 @@
     </div>
 
 {% endblock %}
+
