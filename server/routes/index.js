@@ -274,6 +274,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     } else {
       const detailResponse = await getDetails(req.body.crn)
       if (!detailResponse) {
+        req.session.crn = req.body.crn
         req.session.formError = true
         req.session.crnInvalid = true
         redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
