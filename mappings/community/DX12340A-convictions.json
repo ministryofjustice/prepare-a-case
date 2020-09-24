@@ -438,7 +438,7 @@
           ],
           "sentence": {
             "sentenceId": "123123132",
-            "description": "ORA Adult Custody < 12m",
+            "description": "Fine",
             "length": 18,
             "lengthInDays": 547,
             "lengthUnits": "Months",
@@ -496,7 +496,10 @@
           ],
           "sentence": {
             "sentenceId": "123123134",
-            "description": "Fine",
+            "description": "ORA Adult Custody (Not PSS)",
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
             "terminationDate": "2018-09-23",
             "terminationReason": "ICMS Miscellaneous Event",
             "startDate": "2018-02-27"
