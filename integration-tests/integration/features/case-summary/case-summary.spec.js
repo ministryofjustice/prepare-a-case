@@ -53,7 +53,7 @@ When('I navigate to the current order which is currently on licence', $type => {
 })
 
 And('I should see the correct licence header details', () => {
-  cy.get('.qa-start-title').contains('Status')
+  cy.get('.qa-start-title').contains('Post-release status')
   cy.get('.qa-end-title').contains('Licence started')
   cy.get('.qa-elapsed-title').contains('Licence ends')
 
@@ -67,7 +67,7 @@ When('I navigate to the current order which is currently on PSS', $type => {
 })
 
 And('I should see the correct PSS header details', () => {
-  cy.get('.qa-start-title').contains('Status')
+  cy.get('.qa-start-title').contains('Post-release status')
   cy.get('.qa-end-title').contains('PSS started')
   cy.get('.qa-elapsed-title').contains('PSS ends')
 

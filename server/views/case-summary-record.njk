@@ -41,7 +41,7 @@
                 <h2 class="govuk-heading-m">Current orders <span class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ activeOrders | length }})</span></h2>
                 {%- for order in activeOrders %}
                     <p class="govuk-body govuk-!-margin-bottom-0">
-                        <a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + ' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' }}</a>
+                        <a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + (' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' if order.sentence.length)}}</a>
                         {% if order.inBreach %}<span class="moj-badge moj-badge--black pac-badge govuk-!-margin-left-1">Breach</span>{% endif %}
                     </p>
                     <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].description }}</p>
@@ -112,7 +112,7 @@
                             {%- for order in previousOrders | limit(limitPreviousOrders) %}
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell govuk-!-width-two-thirds">
-                                        <p class="govuk-body govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + ' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')'}}</a></p>
+                                        <p class="govuk-body govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}"><a href="record/{{ order.convictionId }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + (' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' if order.sentence.length )}}</a></p>
                                         <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
                                     </td>
                                     <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third" style="vertical-align: bottom">
