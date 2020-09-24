@@ -88,9 +88,9 @@
                     <tbody class="govuk-table__body">
                     {%- for document in breach.documents -%}
                     <tr class="govuk-table__row">
-                        <td class="govuk-table__cell"><a href="/attachments/{{ data.crn }}/documents/{{ document.documentId }}/{{ document.fileName }}" class="govuk-link govuk-link--no-visited-state">{{ document.fileName }}</a></td>
-                        <td class="govuk-table__cell">{{ document.addedBy }}</td>
-                        <td class="govuk-table__cell">{{ moment(document.dateAdded, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
+                        <td class="govuk-table__cell"><a href="/attachments/{{ data.crn }}/documents/{{ document.documentId }}/{{ document.documentName }}" class="govuk-link govuk-link--no-visited-state">{{ document.documentName }}</a></td>
+                        <td class="govuk-table__cell">{{ document.author }}</td>
+                        <td class="govuk-table__cell">{{ moment(document.createdAt).format(displayDateFormat) }}</td>
                     </tr>
                     {%- endfor -%}
                     </tbody>
