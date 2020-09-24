@@ -75,17 +75,17 @@
     "cookie-parser": "1.4.5",
     "cookie-session": "1.4.0",
     "csurf": "1.11.0",
-    "debug": "4.1.1",
+    "debug": "4.2.0",
     "dotenv": "8.2.0",
     "express": "4.17.1",
     "express-request-id": "1.4.1",
     "express-session": "1.17.1",
-    "govuk-frontend": "3.9.0",
+    "govuk-frontend": "3.9.1",
     "helmet": "4.1.1",
     "jsonwebtoken": "8.5.1",
     "jwt-decode": "2.2.0",
     "memorystore": "1.6.2",
-    "moment": "2.28.0",
+    "moment": "2.29.0",
     "morgan": "1.10.0",
     "nock": "13.0.4",
     "nunjucks": "3.2.2",
@@ -95,7 +95,7 @@
   },
   "devDependencies": {
     "cucumber": "6.0.5",
-    "cypress": "5.1.0",
+    "cypress": "5.2.0",
     "cypress-axe": "0.8.1",
     "cypress-cucumber-preprocessor": "2.5.5",
     "jest": "26.4.2",
@@ -105,7 +105,7 @@
     "nodemon": "2.0.4",
     "standard": "14.3.4",
     "supertest": "4.0.2",
-    "swagger-client": "3.10.13",
+    "swagger-client": "3.11.0",
     "swagger-model-validator": "3.0.19"
   }
 }
