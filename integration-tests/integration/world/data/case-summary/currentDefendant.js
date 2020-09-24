@@ -16,7 +16,7 @@ const currentDefendant = {
     offenceDetails: 'On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Clemons Barron.',
     offenceCaption: 'Contrary to section 1(1) of the Criminal Attempts Act 1981.',
     currentOrderCount: 3,
-    currentOrderTitle: 'ORA Community Order',
+    currentOrderTitle: 'ORA Community Order (18 Months)',
     currentOrderOffence: 'Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200',
     currentOrderStartDate: '2019-05-20',
     currentOrderEndDate: '2020-05-25',
