@@ -52,16 +52,9 @@
 
                         <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
                         {%- for requirement in order.requirements %}
-                            <li>
-                                {% set RAR = "Rehabilitation Activity Requirement (RAR)" %}
-                                {{ requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description }}
-                                {% if not (requirement.requirementTypeSubCategory.description !== RAR) or (requirement.adRequirementTypeSubCategory.description !== RAR) %}
-                                    {{ '(' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')' }}
-                                {% endif %}
-                                {{ '- ' + requirement.length if requirement.length }}
-                                {{ requirement.lengthUnit if requirement.lengthUnit and requirement.length }}
-
-                            </li>
+                            {% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
+                            {% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
+                            <li>{{ category }} {{ "(" + subCategory + ")" if category !== subCategory }}</li>
                         {% endfor %}
                         </ul>
                     {% endif %}
@@ -132,21 +125,19 @@
 
         <div class="govuk-grid-column-one-third govuk-!-padding-left-9 govuk-!-padding-top-9">
             <div class="govuk-!-margin-bottom-6">
-                <h3 class="govuk-heading-s">Offender Manager</h3>
+
                 {% if data.probationStatus === "Current" %}
+                    <h3 class="govuk-heading-s">Offender Manager</h3>
                     {% if offenderManager.allocatedDate %}
                         <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.forenames }} {{ offenderManager.surname }}</p>
-                         <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                        <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                    {% endif %}
                 {% endif %}
-                    {% else %}
-                    <p class="govuk-body">Not active</p>
-                {% endif %}
-            </div>
 
             {% if probationDocuments | length %}
                 {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
                 {% set monthsOld = moment().diff(moment(latestDocument.completedDate, 'YYYY-MM-DD'), 'months') %}
-                <h3 class="govuk-heading-s">Last pre-sentence report</h3>
+                <h3 class="govuk-heading-s govuk-!-margin-top-6">Last pre-sentence report</h3>
                 <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
                 <p class="govuk-hint govuk-!-margin-top-1">
                     Delivered
