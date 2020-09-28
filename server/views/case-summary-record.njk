@@ -52,16 +52,9 @@
 
                         <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
                         {%- for requirement in order.requirements %}
-                            <li>
-                                {% set RAR = "Rehabilitation Activity Requirement (RAR)" %}
-                                {{ requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description }}
-                                {% if not (requirement.requirementTypeSubCategory.description !== RAR) or (requirement.adRequirementTypeSubCategory.description !== RAR) %}
-                                    {{ '(' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')' }}
-                                {% endif %}
-                                {{ '- ' + requirement.length if requirement.length }}
-                                {{ requirement.lengthUnit if requirement.lengthUnit and requirement.length }}
-
-                            </li>
+                            {% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
+                            {% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
+                            <li>{{ category }} {{ "(" + subCategory + ")" if category !== subCategory }}</li>
                         {% endfor %}
                         </ul>
                     {% endif %}

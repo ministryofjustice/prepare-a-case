@@ -36,13 +36,11 @@
 
 {%- set preciseDiff = params.preciseDiff -%}
 
-{% set RAR = "Rehabilitation Activity Requirement (RAR)" %}
+{% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
+{% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
 {%- for requirement in currentOrder.requirements %}
-    {% if (requirement.requirementTypeSubCategory.description === RAR) or (requirement.adRequirementTypeSubCategory.description === RAR) %}
-        {% set subCategory = "" %}
-    {% else %}
-        {% set subCategory = ' (' + (requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description) + ')' %}
-    {% endif %}
+    {{ category }} {{ "(" + subCategory + ")" if category !== subCategory }}
+
     {{ activeRequirementTableData.rows.push([
         { text: requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description + subCategory, classes: 'govuk-table__cell'},
         { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else 'Unavailable ', classes: 'govuk-table__cell' }
