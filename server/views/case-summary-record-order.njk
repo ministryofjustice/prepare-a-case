@@ -36,17 +36,17 @@
 
 {%- set preciseDiff = params.preciseDiff -%}
 
-{% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
-{% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
+
 {%- for requirement in currentOrder.requirements %}
-    {{ category }} {{ "(" + subCategory + ")" if category !== subCategory }}
+    {% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
+    {% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
 
     {{ activeRequirementTableData.rows.push([
-        { text: requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description + subCategory, classes: 'govuk-table__cell'},
+        { text: category + " (" + subCategory + ")" if category !== subCategory else category, classes: 'govuk-table__cell' },
         { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else 'Unavailable ', classes: 'govuk-table__cell' }
     ]) }}
     {{ inactiveRequirementTableData.rows.push([
-        { text: requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description + subCategory, classes: 'govuk-table__cell govuk-!-width-one-half'},
+        { text: category + " (" + subCategory + ")" if category !== subCategory else category, classes: 'govuk-table__cell govuk-!-width-one-half'},
         { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else 'Unavailable ', classes: 'govuk-table__cell govuk-!-width-one-quarter' },
         { text: moment(requirement.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') if requirement.terminationDate, classes: 'govuk-table__cell govuk-!-width-one-quarter' },
         { text: requirement.terminationReason.description if requirement.terminationReason.description, classes: 'govuk-table__cell govuk-!-width-one-quarter' }
