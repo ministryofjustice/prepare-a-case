@@ -32,7 +32,7 @@
         </div>
         {% if params.probationStatus | length %}
         <div class="pac-key-details-bar__bottom-block">
-                <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong>{{ params.probationStatus }}{% if params.breach %} (Breach){% endif %}</span>
+                <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong>{{ params.probationStatus | string | capitalize }}{% if params.breach %} (Breach){% endif %}</span>
         </div>
         {% endif %}
         

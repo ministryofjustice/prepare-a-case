@@ -152,7 +152,7 @@
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">Probation status</th>
-                                            <td class="govuk-table__cell">{{ item.probationStatus }}</td>
+                                            <td class="govuk-table__cell">{{ item.probationStatus | string | capitalize }}</td>
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">Most recent event</th>
