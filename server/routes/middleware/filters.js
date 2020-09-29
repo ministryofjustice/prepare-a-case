@@ -33,7 +33,7 @@ const filters = (req, res, next) => {
   const selectedFilters = req.session.selectedFilters
 
   /* @TODO: Get the courtroom numbers/names for the given court, Sheffield has 8 */
-  for (let step = 1; step <= 6; step++) {
+  for (let step = 1; step <= req.params.courtRooms; step++) {
     caseListFilters[1].items.push({ label: step.toString(), value: '0' + step.toString() })
   }
 

@@ -1,0 +1,40 @@
+{% extends "partials/layout.njk" %}
+
+{% block navigation %}{% endblock %}
+
+{% block content %}
+
+    <form method="post" name="selectCourt" novalidate>
+
+    <h1 class="govuk-heading-l">Select court</h1>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+            idPrefix: "court-code",
+            name: "courtCode",
+            fieldset: {
+                legend: {
+                    text: "Select the court"
+                }
+            },
+            items: [
+                {
+                    value: "SHF",
+                    text: "Sheffield Magistrates' Court",
+                    checked: params.courtCode === 'SHF'
+                },
+                {
+                    value: "B10JQ00",
+                    text: "North Tyneside Magistrates' Court",
+                    checked: params.courtCode === 'B10JQ00'
+                }
+            ]
+        }) }}
+
+        <button class="govuk-button">Continue</button>
+
+    </form>
+
+{% endblock %}
+

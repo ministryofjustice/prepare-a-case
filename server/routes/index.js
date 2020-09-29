@@ -1,6 +1,7 @@
 const express = require('express')
 const moment = require('moment')
 const { settings } = require('../../config')
+const courtRequiredRoutes = require('../utils/court-required-routes')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const { getDetails, getProbationRecord, getProbationRecordWithRequirements, getSentenceDetails, getBreachDetails } = require('../services/community-service')
 
@@ -12,8 +13,24 @@ module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
   router.use(authenticationMiddleware())
 
+  router.get('*', (req, res, next) => {
+    if (!courtRequiredRoutes(req.originalUrl) && !req.cookies.court) {
+      return res.redirect('/select-court')
+    }
+    return next()
+  })
+
   router.get('/', health, (req, res) => {
-    res.redirect('/cases')
+    res.redirect(req.params.courtCode ? '/cases' : '/select-court')
+  })
+
+  router.post('/select-court', (req, res) => {
+    res.cookie('court', req.body.courtCode).send()
+    res.redirect(`/cases/${moment().format('YYYY-MM-DD')}`)
+  })
+
+  router.get('/select-court', defaults, (req, res) => {
+    res.render('select-court', { title: 'Select court', params: req.params })
   })
 
   router.get('/cases', (req, res) => {
@@ -30,6 +47,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       title: 'Cases',
       healthy: req.healthy,
       params: {
+        ...params,
         page: parseInt(req.query.page, 10) || 1,
         from: startCount,
         to: endCount,
@@ -40,7 +58,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
         unmatchedRecords: response.unmatchedRecords,
         lastUpdated: response ? response.lastUpdated : '',
         totalDays: settings.casesTotalDays,
-        ...params,
         subsection: params.subsection || '',
         filtersApplied: req.session.selectedFilters && Object.keys(req.session.selectedFilters).length
       },
