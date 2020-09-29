@@ -1,4 +1,5 @@
 # Prepare a case
+[![CircleCI](https://circleci.com/gh/ministryofjustice/prepare-a-case.svg?style=svg)](https://circleci.com/gh/ministryofjustice/prepare-a-case)
 
 Prepare a case is a service that allows probation staff to prepare court cases. 
 
