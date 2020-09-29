@@ -26,7 +26,7 @@
             {% if params.pnc | length %}
                 <span class="govuk-body pac-key-details-bar__divider"><strong>PNC: </strong>{{ params.pnc }}</span>
             {% endif %}
-            {% if params.numberOfPossibleMatches and not params.crn | length %}
+            {% if params.numberOfPossibleMatches > 1 and not params.crn | length %}
                 <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong> Possible nDelius record</span>
             {% endif %}
         </div>
