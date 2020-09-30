@@ -67,7 +67,7 @@
                         <ul class="govuk-list govuk-list--bullet qa-current-pss-requirements-{{ loop.index0 }}">
                             {%- for pssRequirement in order.pssRequirements %}
                                 <li>
-                                    {{ pssRequirement.type.description  + (' - ' + pssRequirement.subType.description if pssRequirement.subType | length)}}
+                                    {{ pssRequirement.description  + (' - ' + pssRequirement.subTypeDescription if pssRequirement.subTypeDescription | length)}}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -81,7 +81,7 @@
                         <ul class="govuk-list govuk-list--bullet qa-current-licence-conditions-{{ loop.index0 }}">
                             {%- for licenceCondition in order.licenceConditions %}
                                 <li>
-                                    {{ licenceCondition.licenceConditionTypeMainCat.description }}
+                                    {{ licenceCondition.description }}
                                 </li>
                             {% endfor %}
                         </ul>

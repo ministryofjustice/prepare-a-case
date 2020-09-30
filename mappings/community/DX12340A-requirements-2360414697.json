@@ -12,63 +12,25 @@
     "jsonBody": {
       "pssRequirements": [
         {
-          "pssRequirementId": 634,
-          "type": {
-            "code": "S04",
-            "description": "Standard 7 conditions"
-          },
-          "active": true
+          "description": "Standard 7 conditions"
         },
         {
-          "pssRequirementId": 635,
-          "type": {
-            "code": "S05",
-            "description": "Specified Activity"
-          },
-          "subType": {
-            "code": "102",
-            "description": "ETE - High intensity"
-          },
-          "active": true
+          "description": "Specified Activity",
+          "subTypeDescription": "ETE - High intensity"
         },
         {
-          "pssRequirementId": 635,
-          "type": {
-            "code": "S08",
-            "description": "Curfew Arrangement"
-          },
-          "active": true
+          "description": "Curfew Arrangement"
         }
       ],
       "licenceConditions": [
         {
-          "startDate": "2020-02-01",
-          "commencementDate": "2020-05-14",
-          "terminationDate": "2020-05-21",
-          "createdDateTime": "2020-05-21T15:54:24",
-          "active": false,
-          "licenceConditionTypeMainCat": {
-            "code": "NLC10",
-            "description": "Alcohol"
-          }
+          "description": "Alcohol"
         },
         {
-          "startDate": "2020-02-01",
-          "createdDateTime": "2020-04-22T09:09:20",
-          "active": true,
-          "licenceConditionTypeMainCat": {
-            "code": "NLC7",
-            "description": "Curfew Arrangement"
-          }
+          "description": "Curfew Arrangement"
         },
         {
-          "startDate": "2020-02-01",
-          "createdDateTime": "2020-04-22T09:09:20",
-          "active": true,
-          "licenceConditionTypeMainCat": {
-            "code": "NLC4",
-            "description": "Participate or co-op with Programme or Activities"
-          }
+          "description": "Participate or co-op with Programme or Activities"
         }
       ]
     }
