@@ -54,7 +54,10 @@
                         {%- for requirement in order.requirements %}
                             {% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
                             {% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
-                            <li>{{ category }} {{ "(" + subCategory + ")" if category !== subCategory }}</li>
+                            <li>
+                                {{ category }} {{ "(" + subCategory + ")" if category !== subCategory }}
+                                {{ ' - ' + requirement.length + ' ' + requirement.lengthUnit if requirement.length > 0 }}
+                            </li>
                         {% endfor %}
                         </ul>
                     {% endif %}
