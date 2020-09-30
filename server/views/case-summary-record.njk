@@ -68,9 +68,9 @@
 
                         <h3 class="govuk-heading-s govuk-!-margin-bottom-2">PSS requirements</h3>
                         <ul class="govuk-list govuk-list--bullet qa-current-pss-requirements-{{ loop.index0 }}">
-                            {%- for pssRequirement in order.pssRequirements %}
+                            {%- for requirement in order.pssRequirements %}
                                 <li>
-                                    {{ pssRequirement.description  + (' - ' + pssRequirement.subTypeDescription if pssRequirement.subTypeDescription | length)}}
+                                    {{ requirement.description  + (' - ' + requirement.subTypeDescription if requirement.subTypeDescription | length)}}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -82,9 +82,9 @@
 
                         <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Licence conditions</h3>
                         <ul class="govuk-list govuk-list--bullet qa-current-licence-conditions-{{ loop.index0 }}">
-                            {%- for licenceCondition in order.licenceConditions %}
+                            {%- for condition in order.licenceConditions %}
                                 <li>
-                                    {{ licenceCondition.description }}
+                                    {{ condition.description }}
                                 </li>
                             {% endfor %}
                         </ul>
