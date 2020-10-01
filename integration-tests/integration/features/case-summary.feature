@@ -224,7 +224,7 @@ Feature: Case summary
     And I should see the previous order end date
 
     And I should see the following level 3 headings
-      | Requirements | Post-release status | Licence conditions | Post-release status | PSS requirements | Post-release status | Licence conditions | Offender Manager | Last pre-sentence report | Last OASys assessment |
+      | Requirements | Post-release status | Licence conditions | Post-release status | Licence conditions | Post-release status | PSS requirements | Offender Manager | Last pre-sentence report | Last OASys assessment |
     And I should see the offender manager details
     And I should see the last pre-sentence report details
     And I should see the last OASys assessment details
