@@ -8,31 +8,8 @@
 
     <h1 class="govuk-heading-l">Select court</h1>
 
-        {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-        {{ govukRadios({
-            idPrefix: "court-code",
-            name: "courtCode",
-            fieldset: {
-                legend: {
-                    text: "Select the court"
-                }
-            },
-            items: [
-                {
-                    value: "B14LO00",
-                    text: "Sheffield Magistrates' Court",
-                    checked: params.courtCode === 'B14LO00'
-                },
-                {
-                    value: "B10JQ00",
-                    text: "North Tyneside Magistrates' Court",
-                    checked: params.courtCode === 'B10JQ00'
-                }
-            ]
-        }) }}
-
-        <button class="govuk-button">Continue</button>
+        <p class="govuk-body-l govuk-!-margin-bottom-2"><a href="/select-court/B14LO00" class="govuk-link govuk-link--no-visited-state">Sheffield Magistrates' Court</a></p>
+        <p class="govuk-body-l govuk-!-margin-bottom-2"><a href="/select-court/B10JQ00" class="govuk-link govuk-link--no-visited-state">North Tyneside Magistrates' Court</a></p>
 
     </form>
 

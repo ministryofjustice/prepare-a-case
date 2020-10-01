@@ -42,17 +42,14 @@ function courtLookup (courtCode) {
   const courtData = {}
   switch (courtCode) {
     case 'B14LO00':
-      courtData.code = courtCode
       courtData.name = 'Sheffield Magistrates\' Court'
       courtData.rooms = 10
       break;
     case 'B10JQ00':
-      courtData.code = courtCode
       courtData.name = 'North Tyneside Magistrates\' Court'
       courtData.rooms = 6
       break
     default:
-      courtData.code = courtCode
       courtData.name = ''
       courtData.rooms = 0
   }
@@ -60,9 +57,7 @@ function courtLookup (courtCode) {
 }
 
 const defaults = (req, res, next) => {
-
-  const courtData = courtLookup(req.cookies.court)
-
+  const courtData = courtLookup(req.params.courtCode)
   req.params = {
     ...req.params,
     limit: settings.casesPerPage,
@@ -70,7 +65,6 @@ const defaults = (req, res, next) => {
     getMonthsAndDays: getMonthsAndDays,
     addBusinessDays: addBusinessDays,
     getPath: getPath,
-    courtCode: courtData.code,
     courtName: courtData.name,
     courtRooms: courtData.rooms
   }

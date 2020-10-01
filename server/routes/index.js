@@ -1,7 +1,6 @@
 const express = require('express')
 const moment = require('moment')
 const { settings } = require('../../config')
-const courtRequiredRoutes = require('../utils/court-required-routes')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const { getDetails, getProbationRecord, getProbationRecordWithRequirements, getSentenceDetails, getBreachDetails } = require('../services/community-service')
 
@@ -14,23 +13,23 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.use(authenticationMiddleware())
 
   router.get('/', health, (req, res) => {
-    res.redirect(req.params.courtCode ? '/cases' : '/select-court')
+    res.redirect(req.cookies.court ? `/${req.cookies.court}/cases` : '/select-court')
   })
 
-  router.post('/select-court', (req, res) => {
-    res.cookie('court', req.body.courtCode).send()
-    res.redirect(`/cases/${moment().format('YYYY-MM-DD')}`)
+  router.get('/select-court/:selectedCourt?', (req, res) => {
+    if (req.params.selectedCourt) {
+      res.cookie('court', req.params.selectedCourt).send()
+      res.redirect(`/${req.params.selectedCourt}/cases/${moment().format('YYYY-MM-DD')}`)
+    } else {
+      res.render('select-court', { title: 'Select court', params: { courtCode: req.cookies.court }})
+    }
   })
 
-  router.get('/select-court', defaults, (req, res) => {
-    res.render('select-court', { title: 'Select court', params: req.params })
+  router.get('/:courtCode/cases', (req, res) => {
+    res.redirect(`/${req.params.courtCode}/cases/${moment().format('YYYY-MM-DD')}${req.session.currentView ? '/' + req.session.currentView : ''}`)
   })
 
-  router.get('/cases', (req, res) => {
-    res.redirect(`/cases/${moment().format('YYYY-MM-DD')}${req.session.currentView ? '/' + req.session.currentView : ''}`)
-  })
-
-  router.get('/cases/:date/:subsection?', health, defaults, filters, async (req, res) => {
+  router.get('/:courtCode/cases/:date/:subsection?', health, defaults, filters, async (req, res) => {
     const params = req.params
     const response = await getCaseList(params.courtCode, params.date, params.filters, params.subsection)
     const caseCount = response.cases.length
@@ -61,14 +60,14 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-list', templateValues)
   })
 
-  router.post('/cases/:date/:subsection?', health, defaults, async (req, res) => {
+  router.post('/:courtCode/cases/:date/:subsection?', health, defaults, async (req, res) => {
     req.session.selectedFilters = req.body
-    res.redirect(`/cases/${req.params.date}${req.params.subsection ? '/' + req.params.subsection : ''}`)
+    res.redirect(`/${req.params.courtCode}/cases/${req.params.date}${req.params.subsection ? '/' + req.params.subsection : ''}`)
   })
 
-  router.post('/case/:caseNo/record', async (req, res) => {
+  router.post('/:courtCode/case/:caseNo/record', async (req, res) => {
     req.session.showAllPreviousOrders = req.params.caseNo
-    res.redirect(`/case/${req.params.caseNo}/record#previousOrders`)
+    res.redirect(`/${req.params.courtCode}/case/${req.params.caseNo}/record#previousOrders`)
   })
 
   async function getCaseAndTemplateValues (req) {
@@ -87,7 +86,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
   }
 
-  router.get('/case/:caseNo/summary', health, defaults, async (req, res) => {
+  router.get('/:courtCode/case/:caseNo/summary', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Case summary'
     templateValues.session = {
@@ -100,7 +99,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary', templateValues)
   })
 
-  router.get('/case/:caseNo/record', health, defaults, async (req, res) => {
+  router.get('/:courtCode/case/:caseNo/record', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Probation record'
 
@@ -113,7 +112,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary-record', templateValues)
   })
 
-  router.get('/case/:caseNo/record/:convictionId?', health, defaults, async (req, res) => {
+  router.get('/:courtCode/case/:caseNo/record/:convictionId?', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Order details'
 
@@ -135,7 +134,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary-record-order', templateValues)
   })
 
-  router.get('/case/:caseNo/record/:convictionId/breach/:breachId', health, defaults, async (req, res) => {
+  router.get('/:courtCode/case/:caseNo/record/:convictionId/breach/:breachId', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Breach details'
 
@@ -155,14 +154,14 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary-record-order-breach', templateValues)
   })
 
-  router.get('/case/:caseNo/risk', health, defaults, async (req, res) => {
+  router.get('/:courtCode/case/:caseNo/risk', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Risk register'
 
     res.render('case-summary-risk', templateValues)
   })
 
-  router.get('/match/bulk/:date', health, defaults, async (req, res) => {
+  router.get('/:courtCode/match/bulk/:date', health, defaults, async (req, res) => {
     const params = req.params
     const response = await getCaseList(params.courtCode, params.date)
     const templateValues = {
@@ -182,7 +181,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-records', templateValues)
   })
 
-  router.get('/match/defendant/:caseNo', health, defaults, async (req, res) => {
+  router.get('/:courtCode/match/defendant/:caseNo', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Review possible nDelius records'
     const response = await getMatchDetails(req.params.courtCode, req.params.caseNo)
@@ -219,12 +218,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
     return $matchType === 'bulk' ? '/match/bulk/' + $matchDate : '/case/' + $caseNo + '/summary'
   }
 
-  router.post('/match/defendant/:caseNo', defaults, async (req, res) => {
+  router.post('/:courtCode/match/defendant/:caseNo', defaults, async (req, res) => {
     let redirectUrl = '/'
     if (!req.body.crn) {
       req.session.confirmedMatch = undefined
       req.session.formError = true
-      redirectUrl = '/match/defendant/' + req.params.caseNo
+      redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}`
     } else {
       const response = await updateCaseDetails(req.params.courtCode, req.params.caseNo, req.body.crn)
       if (response.status === 201) {
@@ -232,16 +231,16 @@ module.exports = function Index ({ authenticationMiddleware }) {
           name: req.session.matchName,
           matchType: 'Known'
         }
-        redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
+        redirectUrl = `/${req.params.courtCode}${getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)}`
       } else {
         req.session.serverError = true
-        redirectUrl = '/match/defendant/' + req.params.caseNo
+        redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}`
       }
     }
     res.redirect(redirectUrl)
   })
 
-  router.get('/match/defendant/:caseNo/nomatch/:unlink?', defaults, async (req, res) => {
+  router.get('/:courtCode/match/defendant/:caseNo/nomatch/:unlink?', defaults, async (req, res) => {
     let redirectUrl = '/'
     const response = await updateCaseDetails(req.params.courtCode, req.params.caseNo, undefined)
     if (response.status === 201) {
@@ -252,12 +251,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
       redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
     } else {
       req.session.serverError = true
-      redirectUrl = '/match/defendant/' + req.params.caseNo
+      redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}`
     }
     res.redirect(redirectUrl)
   })
 
-  router.get('/match/defendant/:caseNo/manual', health, defaults, async (req, res) => {
+  router.get('/:courtCode/match/defendant/:caseNo/manual', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Link an nDelius record to the defendant'
     templateValues.session = {
@@ -266,7 +265,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-manual', templateValues)
   })
 
-  router.post('/match/defendant/:caseNo/manual', defaults, async (req, res) => {
+  router.post('/:courtCode/match/defendant/:caseNo/manual', defaults, async (req, res) => {
     let redirectUrl = '/'
     req.session.serverError = false
     req.session.formError = false
@@ -276,26 +275,26 @@ module.exports = function Index ({ authenticationMiddleware }) {
     req.session.matchName = undefined
     if (!req.body.crn) {
       req.session.formError = true
-      redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
+      redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/manual`
     } else if (!req.body.crn.match(/[A-Za-z][0-9]{6}/)) {
       req.session.formError = true
       req.session.formInvalid = true
-      redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
+      redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/manual`
     } else {
       const detailResponse = await getDetails(req.body.crn)
       if (!detailResponse) {
         req.session.crn = req.body.crn
         req.session.formError = true
         req.session.crnInvalid = true
-        redirectUrl = `/match/defendant/${req.params.caseNo}/manual`
+        redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/manual`
       } else {
-        redirectUrl = `/match/defendant/${req.params.caseNo}/confirm/${req.body.crn}`
+        redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/confirm/${req.body.crn}`
       }
     }
     res.redirect(redirectUrl)
   })
 
-  router.get('/match/defendant/:caseNo/confirm/:crn', health, defaults, async (req, res) => {
+  router.get('/:courtCode/match/defendant/:caseNo/confirm/:crn', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     const detailResponse = await getDetails(req.params.crn)
     templateValues.title = 'Link an nDelius record to the defendant'
@@ -309,7 +308,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-manual', templateValues)
   })
 
-  router.post('/match/defendant/:caseNo/confirm', defaults, async (req, res) => {
+  router.post('/:courtCode/match/defendant/:caseNo/confirm', defaults, async (req, res) => {
     req.session.serverError = false
     let redirectUrl = '/'
     const response = await updateCaseDetails(req.params.courtCode, req.params.caseNo, req.body.crn)
@@ -322,12 +321,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
       redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
     } else {
       req.session.serverError = true
-      redirectUrl = `/match/defendant/${req.params.caseNo}/confirm`
+      redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/confirm`
     }
     res.redirect(redirectUrl)
   })
 
-  router.get('/match/defendant/:caseNo/unlink/:crn', health, defaults, async (req, res) => {
+  router.get('/:courtCode/match/defendant/:caseNo/unlink/:crn', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     const detailResponse = await getDetails(req.params.crn)
     templateValues.title = 'Unlink nDelius record from the defendant'
