@@ -41,7 +41,7 @@ function addBusinessDays (originalDate, daysToAdd) {
 function courtLookup (courtCode) {
   const courtData = {}
   switch (courtCode) {
-    case 'SHF':
+    case 'B14LO00':
       courtData.code = courtCode
       courtData.name = 'Sheffield Magistrates\' Court'
       courtData.rooms = 10
