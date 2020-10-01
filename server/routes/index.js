@@ -13,13 +13,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
   router.use(authenticationMiddleware())
 
-  router.get('*', (req, res, next) => {
-    if (!courtRequiredRoutes(req.originalUrl) && !req.cookies.court) {
-      return res.redirect('/select-court')
-    }
-    return next()
-  })
-
   router.get('/', health, (req, res) => {
     res.redirect(req.params.courtCode ? '/cases' : '/select-court')
   })
