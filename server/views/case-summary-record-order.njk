@@ -46,10 +46,10 @@
         { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else 'Unavailable ', classes: 'govuk-table__cell' }
     ]) }}
     {{ inactiveRequirementTableData.rows.push([
-        { text: category + " (" + subCategory + ")" if category !== subCategory else category, classes: 'govuk-table__cell govuk-!-width-one-half'},
-        { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else 'Unavailable ', classes: 'govuk-table__cell govuk-!-width-one-quarter' },
-        { text: moment(requirement.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') if requirement.terminationDate, classes: 'govuk-table__cell govuk-!-width-one-quarter' },
-        { text: requirement.terminationReason.description if requirement.terminationReason.description, classes: 'govuk-table__cell govuk-!-width-one-quarter' }
+        { text: category + " (" + subCategory + ")" if category !== subCategory else category, classes: 'govuk-table__cell'},
+        { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else 'Unavailable ', classes: 'govuk-table__cell' },
+        { text: moment(requirement.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') if requirement.terminationDate, classes: 'govuk-table__cell' },
+        { text: requirement.terminationReason.description if requirement.terminationReason.description, classes: 'govuk-table__cell' }
     ]) }}
 {% endfor -%}
 
