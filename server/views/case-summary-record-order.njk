@@ -180,7 +180,6 @@
                 </div>
             </div>
 
-            {% if custodialOrder.custodialTypeCode === "B" %}
                 {% if currentOrder.licenceConditions | length %}
                     <h2 class="govuk-heading-m govuk-!-margin-top-8">Licence conditions</h2>
                     <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
@@ -192,7 +191,7 @@
                     </ul>
                     <a href="" class=" govuk-body-m govuk-link govuk-link--no-visited-state">View licence conditions details</a>
                 {% endif %}
-            {% else %}
+
                 {% if currentOrder.pssRequirements | length %}
                     <h2 class="govuk-heading-m govuk-!-margin-top-8">Post-sentence supervision requirements</h2>
                     <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
@@ -203,7 +202,6 @@
                         {% endfor %}
                     </ul>
                 {% endif %}
-            {% endif %}
 
             {% if currentOrder.requirements | length %}
                 <h2 class="govuk-heading-m govuk-!-margin-top-8">Requirements</h2>
