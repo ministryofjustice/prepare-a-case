@@ -2,7 +2,13 @@ const express = require('express')
 const moment = require('moment')
 const { settings } = require('../../config')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
-const { getDetails, getProbationRecord, getProbationRecordWithRequirements, getSentenceDetails, getBreachDetails } = require('../services/community-service')
+const {
+  getDetails,
+  getProbationRecord,
+  getProbationRecordWithRequirements,
+  getSentenceDetails,
+  getBreachDetails
+} = require('../services/community-service')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
@@ -13,7 +19,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.use(authenticationMiddleware())
 
   router.get('/', health, (req, res) => {
-    res.redirect(req.cookies.court ? `/${req.cookies.court}/cases` : '/select-court')
+    res.redirect(req.cookies && req.cookies.court ? `/${req.cookies.court}/cases` : '/select-court')
   })
 
   router.get('/select-court/:selectedCourt?', (req, res) => {
@@ -21,7 +27,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       res.cookie('court', req.params.selectedCourt).send()
       res.redirect(`/${req.params.selectedCourt}/cases/${moment().format('YYYY-MM-DD')}`)
     } else {
-      res.render('select-court', { title: 'Select court', params: { courtCode: req.cookies.court }})
+      res.render('select-court', { title: 'Select court', params: { courtCode: req.cookies.court } })
     }
   })
 
@@ -73,7 +79,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   async function getCaseAndTemplateValues (req) {
     const params = req.params
     const response = await getCase(params.courtCode, params.caseNo)
-    const caseListDate = req.session.caseListDate
+    const caseListDate = req.session.caseListDate || moment().format('YYYY-MM-DD')
     return {
       healthy: req.healthy,
       caseListDate,
@@ -248,7 +254,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         name: req.session.matchName,
         matchType: req.params.unlink ? 'unlinked' : 'No record'
       }
-      redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
+      redirectUrl = `/${req.params.courtCode}${getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)}`
     } else {
       req.session.serverError = true
       redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}`
@@ -318,7 +324,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         matchType: 'linked',
         probationStatus: response.data.probationStatus
       }
-      redirectUrl = getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)
+      redirectUrl = `/${req.params.courtCode}${getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)}`
     } else {
       req.session.serverError = true
       redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/confirm`
@@ -332,7 +338,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Unlink nDelius record from the defendant'
     templateValues.hideSubnav = true
     templateValues.backText = 'Back'
-    templateValues.backLink = `/case/${req.params.caseNo}/summary`
+    templateValues.backLink = `/${req.params.courtCode}/case/${req.params.caseNo}/summary`
     templateValues.hideUnlinkButton = true
     templateValues.params = {
       ...templateValues.params

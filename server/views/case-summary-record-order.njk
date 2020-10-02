@@ -120,7 +120,7 @@
     {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
     {{ govukBackLink({
         text: "Back to probation record",
-        href: '/case/' + data.caseNo + '/record'
+        href: '/' + params.courtCode + '/case/' + data.caseNo + '/record'
     }) }}
 {% endblock %}
 

@@ -44,7 +44,7 @@ function courtLookup (courtCode) {
     case 'B14LO00':
       courtData.name = 'Sheffield Magistrates\' Court'
       courtData.rooms = 10
-      break;
+      break
     case 'B10JQ00':
       courtData.name = 'North Tyneside Magistrates\' Court'
       courtData.rooms = 6

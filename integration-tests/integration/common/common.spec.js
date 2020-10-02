@@ -17,15 +17,15 @@ When('I open the application', () => {
 })
 
 When('I navigate to the {string} route', $route => {
-  cy.visit(`${$route}`, { failOnStatusCode: false })
+  cy.visit(`/B14LO00/${$route}`, { failOnStatusCode: false })
 })
 
 When('I navigate to the {string} route for today', $route => {
-  cy.visit(`${$route}${moment().format('YYYY-MM-DD')}`)
+  cy.visit(`/B14LO00/${$route}${moment().format('YYYY-MM-DD')}`)
 })
 
 When('I view the court list', () => {
-  cy.visit('cases')
+  cy.visit('/B14LO00/cases')
 })
 
 Then('I should be on the {string} page', $title => {

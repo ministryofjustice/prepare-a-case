@@ -20,7 +20,7 @@
     {{ govukBackLink({
         classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-7',
         text: "Back",
-        href: '/case/' + params.caseNo + '/record/' + params.convictionId
+        href: '/' + params.courtCode + '/case/' + params.caseNo + '/record/' + params.convictionId
     }) }}
 
     <div class="govuk-grid-row">
@@ -88,7 +88,7 @@
                     <tbody class="govuk-table__body">
                     {%- for document in breach.documents -%}
                     <tr class="govuk-table__row">
-                        <td class="govuk-table__cell"><a href="/attachments/{{ data.crn }}/documents/{{ document.documentId }}/{{ document.documentName }}" class="govuk-link govuk-link--no-visited-state">{{ document.documentName }}</a></td>
+                        <td class="govuk-table__cell"><a href="/{{ params.courtCode }}/attachments/{{ data.crn }}/documents/{{ document.documentId }}/{{ document.documentName }}" class="govuk-link govuk-link--no-visited-state">{{ document.documentName }}</a></td>
                         <td class="govuk-table__cell">{{ document.author }}</td>
                         <td class="govuk-table__cell">{{ moment(document.createdAt).format(displayDateFormat) }}</td>
                     </tr>

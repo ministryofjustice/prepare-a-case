@@ -7,18 +7,18 @@
 {% if data.crn %}
     {{ subNavItems.push({
         text: 'Case summary',
-        href: '/case/' + data.caseNo + '/summary',
+        href: '/' + params.courtCode + '/case/' + data.caseNo + '/summary',
         active: title === 'Case summary'
     }) }}
     {{ subNavItems.push({
         text: 'Probation record',
-        href: '/case/' + data.caseNo + '/record',
+        href: '/' + params.courtCode + '/case/' + data.caseNo + '/record',
         active: title === 'Probation record'
     }) }}
     {#
     {{ subNavItems.push({
         text: 'Risk register',
-        href: '/case/' + data.caseNo + '/risk',
+        href: '/' + params.courtCode + '/case/' + data.caseNo + '/risk',
         active: title === 'Risk register'
     }) }}
     #}
@@ -42,6 +42,7 @@
 
     {%- from "components/key-details-bar/macro.njk" import pacKeyDetailsBar -%}
     {{ pacKeyDetailsBar({
+        courtCode: params.courtCode,
         caseNo: params.caseNo,
         accTitle: "Defendant: ",
         title: data.defendantName,
@@ -60,7 +61,7 @@
     {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
     {{ govukBackLink({
         text: backText or "Back to cases",
-        href: backLink or '/cases/' + caseListDate
+        href: backLink or '/' + params.courtCode + '/cases/' + caseListDate
     }) }}
 
 {% endblock %}
