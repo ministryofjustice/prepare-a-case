@@ -43,7 +43,7 @@ function courtLookup (courtCode) {
   switch (courtCode) {
     case 'B14LO00':
       courtData.name = 'Sheffield Magistrates\' Court'
-      courtData.rooms = 10
+      courtData.rooms = 20
       break
     case 'B10JQ00':
       courtData.name = 'North Tyneside Magistrates\' Court'
