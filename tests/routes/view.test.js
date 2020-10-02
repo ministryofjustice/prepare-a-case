@@ -32,7 +32,7 @@ describe('Routes', () => {
 
   jest.spyOn(defaults, 'defaults').mockImplementation(function (req, res, next) {
     req.params.courtCode = 'B14LO00'
-    req.params.courtName = 'Sheffield Magistrates\' Court',
+    req.params.courtName = 'Sheffield Magistrates\' Court'
     req.params.courtRooms = 10
     return next()
   })
