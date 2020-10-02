@@ -17,7 +17,7 @@
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "3rd",
       "pnc": "A/1234560BA",
-      "probationStatus": "",
+      "probationStatus": "No record",
       "numberOfPossibleMatches": 2,
       "session": "MORNING",
       "previouslyKnownTerminationDate": null,

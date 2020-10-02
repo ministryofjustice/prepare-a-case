@@ -46,10 +46,10 @@
         { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else 'Unavailable ', classes: 'govuk-table__cell' }
     ]) }}
     {{ inactiveRequirementTableData.rows.push([
-        { text: category + " (" + subCategory + ")" if category !== subCategory else category, classes: 'govuk-table__cell govuk-!-width-one-half'},
-        { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else 'Unavailable ', classes: 'govuk-table__cell govuk-!-width-one-quarter' },
-        { text: moment(requirement.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') if requirement.terminationDate, classes: 'govuk-table__cell govuk-!-width-one-quarter' },
-        { text: requirement.terminationReason.description if requirement.terminationReason.description, classes: 'govuk-table__cell govuk-!-width-one-quarter' }
+        { text: category + " (" + subCategory + ")" if category !== subCategory else category, classes: 'govuk-table__cell'},
+        { text: requirement.length + ' ' + (requirement.lengthUnit) if requirement.length else 'Unavailable ', classes: 'govuk-table__cell' },
+        { text: moment(requirement.terminationDate, 'YYYY-MM-DD').format('D MMM YYYY') if requirement.terminationDate, classes: 'govuk-table__cell' },
+        { text: requirement.terminationReason.description if requirement.terminationReason.description, classes: 'govuk-table__cell' }
     ]) }}
 {% endfor -%}
 
@@ -180,17 +180,28 @@
                 </div>
             </div>
 
-            {% if currentOrder.licenceConditions | length %}
-                <h2 class="govuk-heading-m govuk-!-margin-top-8">{{"Licence conditions" if custodialOrder.custodialTypeCode === "B" else "Post-sentence supervision requirements"}}</h2>
-                <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
-                    {%- for licenceConditions in currentOrder.licenceConditions %}
-                        <li>
-                            {{ licenceConditions.licenceConditionTypeMainCat.description }}
-                        </li>
-                    {% endfor %}
-                </ul>
-                <a href="" class=" govuk-body-m govuk-link govuk-link--no-visited-state">View licence conditions details</a>
-            {% endif %}
+                {% if currentOrder.licenceConditions | length %}
+                    <h2 class="govuk-heading-m govuk-!-margin-top-8">Licence conditions</h2>
+                    <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
+                        {%- for licenceConditions in currentOrder.licenceConditions %}
+                            <li>
+                                {{ licenceConditions.description }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <a href="" class=" govuk-body-m govuk-link govuk-link--no-visited-state">View licence conditions details</a>
+                {% endif %}
+
+                {% if currentOrder.pssRequirements | length %}
+                    <h2 class="govuk-heading-m govuk-!-margin-top-8">Post-sentence supervision requirements</h2>
+                    <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
+                        {%- for pssRequirement in currentOrder.pssRequirements %}
+                            <li>
+                                {{ pssRequirement.description  + (' - ' + pssRequirement.subTypeDescription if pssRequirement.subTypeDescription | length) }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
 
             {% if currentOrder.requirements | length %}
                 <h2 class="govuk-heading-m govuk-!-margin-top-8">Requirements</h2>
