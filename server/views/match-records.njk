@@ -14,7 +14,7 @@
         {%- set tableRow = [
             { text: item.defendantName | escape },
             { text: item.numberOfPossibleMatches | escape },
-            { text: ('<a href="/match/defendant/' + (item.caseNo | escape) + '" class="pac-defendant-link govuk-link govuk-link--no-visited-state">Review records</a>') | safe }
+            { text: ('<a href="/' + params.courtCode +'/match/defendant/' + (item.caseNo | escape) + '" class="pac-defendant-link govuk-link govuk-link--no-visited-state">Review records</a>') | safe }
         ] -%}
         {{ tableData.rows.push(tableRow) }}
     {% endif %}
@@ -25,7 +25,7 @@
     {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
     {{ govukBackLink({
         text: "Back to cases",
-        href: '/cases/' + params.date
+        href: '/' + params.courtCode + '/cases/' + params.date
     }) }}
 
 {% endblock %}

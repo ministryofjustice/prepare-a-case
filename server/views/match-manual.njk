@@ -77,10 +77,10 @@
 
                     <button type="submit" class="govuk-button">Find record</button>
 
-                    <p class="govuk-body"><a href="/match/defendant/{{ params.caseNo }}" class="govuk-link govuk-link--no-visited-state">Cancel</a></p>
+                    <p class="govuk-body"><a href="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}" class="govuk-link govuk-link--no-visited-state">Cancel</a></p>
                 </form>
             {% else %}
-                <form name="matchDefendant" id="matchDefendant" action="/match/defendant/{{ params.caseNo }}/confirm" method="post" novalidate>
+                <form name="matchDefendant" id="matchDefendant" action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/confirm" method="post" novalidate>
 
                     <h3 class="govuk-heading-m">nDelius record found</h3>
 
@@ -111,7 +111,7 @@
                     <button type="submit" class="govuk-button">Link record to defendant</button>
 
                     <p class="govuk-body">If this isn't the record you're looking for you can
-                        <a href="/match/defendant/{{ params.caseNo }}/manual"
+                        <a href="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/manual"
                            class="govuk-link govuk-link--no-visited-state">search again</a>.
                     </p>
                 </form>

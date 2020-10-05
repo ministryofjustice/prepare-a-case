@@ -38,7 +38,26 @@ function addBusinessDays (originalDate, daysToAdd) {
   return newDate
 }
 
+function courtLookup (courtCode) {
+  const courtData = {}
+  switch (courtCode) {
+    case 'B14LO00':
+      courtData.name = 'Sheffield Magistrates\' Court'
+      courtData.rooms = 20
+      break
+    case 'B10JQ00':
+      courtData.name = 'North Tyneside Magistrates\' Court'
+      courtData.rooms = 6
+      break
+    default:
+      courtData.name = ''
+      courtData.rooms = 0
+  }
+  return courtData
+}
+
 const defaults = (req, res, next) => {
+  const courtData = courtLookup(req.params.courtCode)
   req.params = {
     ...req.params,
     limit: settings.casesPerPage,
@@ -46,8 +65,8 @@ const defaults = (req, res, next) => {
     getMonthsAndDays: getMonthsAndDays,
     addBusinessDays: addBusinessDays,
     getPath: getPath,
-    courtCode: settings.courtCode,
-    courtName: settings.courtName
+    courtName: courtData.name,
+    courtRooms: courtData.rooms
   }
   next()
 }

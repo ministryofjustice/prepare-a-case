@@ -5,7 +5,7 @@
 {%- set communityData = data.communityData -%}
 {% set bannerHtml %}
     <h2 class="govuk-heading-m">{{ data.numberOfPossibleMatches }} possible nDelius records found for {{ data.defendantName }}.
-    <a href="/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review records</a>
+    <a href="/{{ params.courtCode }}/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review records</a>
     </h2>
 {% endset %}
 

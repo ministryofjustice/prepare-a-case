@@ -11,8 +11,9 @@ describe('Default values middleware', () => {
   it('should return default values', async () => {
     await defaults(reqObj, {}, mockNext)
     expect(reqObj.params.limit).toEqual(20)
-    expect(reqObj.params.courtCode).toEqual('SHF')
-    expect(reqObj.params.courtName).toEqual('Sheffield Magistrates\' Court')
+    expect(reqObj.params.courtCode).toEqual(undefined)
+    expect(reqObj.params.courtName).toEqual('')
+    expect(reqObj.params.courtRooms).toEqual(0)
   })
 
   describe('getMonthsAndDays method', () => {

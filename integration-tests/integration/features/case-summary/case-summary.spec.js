@@ -37,11 +37,11 @@ And('I should see Back to cases link with href of case list date', () => {
 })
 
 When('I navigate to the case summary route', () => {
-  cy.visit(`case/${world.data.caseNo}/summary`)
+  cy.visit(`/B14LO00/case/${world.data.caseNo}/summary`)
 })
 
 When('I navigate to the probation record route', () => {
-  cy.visit(`case/${world.data.caseNo}/record`)
+  cy.visit(`/B14LO00/case/${world.data.caseNo}/record`)
 })
 
 When('I click the first {string} order link', $type => {
@@ -49,7 +49,7 @@ When('I click the first {string} order link', $type => {
 })
 
 When('I navigate to the current order which is currently on licence', $type => {
-  cy.visit(`case/${world.data.caseNo}/record/${world.data.onLicence.orderId}`)
+  cy.visit(`/B14LO00/case/${world.data.caseNo}/record/${world.data.onLicence.orderId}`)
 })
 
 And('I should see the correct licence header details', () => {
@@ -63,7 +63,7 @@ And('I should see the correct licence header details', () => {
 })
 
 When('I navigate to the current order which is currently on PSS', $type => {
-  cy.visit(`case/${world.data.caseNo}/record/${world.data.onPss.orderId}`)
+  cy.visit(`/B14LO00/case/${world.data.caseNo}/record/${world.data.onPss.orderId}`)
 })
 
 And('I should see the correct PSS header details', () => {

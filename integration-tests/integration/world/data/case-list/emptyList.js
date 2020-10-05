@@ -1,6 +1,6 @@
 const emptyList = {
   local: {
-    route: 'cases/2020-01-01',
+    route: '/B14LO00/cases/2020-01-01',
     court: 'Sheffield Magistrates\' Court',
     list: []
   }
