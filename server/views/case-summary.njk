@@ -16,7 +16,7 @@
         matchType: session.confirmedMatch.matchType
     }) }}
 
-    {% if data.numberOfPossibleMatches > 1 and not data.crn %}
+    {% if data.numberOfPossibleMatches >= 1 and not data.crn %}
         {%- from "moj/components/banner/macro.njk" import mojBanner -%}
         {{ mojBanner({
             classes: 'govuk-!-display-inline-block',
