@@ -218,7 +218,7 @@ module.exports = function createApp ({ signInService, userService }) {
   )
 
   app.use(
-    '/attachments',
+    '/:courtCode/attachments',
     createAttachmentsRouter({
       authenticationMiddleware
     })
