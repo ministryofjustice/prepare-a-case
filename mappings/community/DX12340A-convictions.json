@@ -13,9 +13,17 @@
       "crn": "DX12340A",
       "offenderManagers": [
         {
-          "forenames": "Mcmahon",
-          "surname": "Buchanan",
-          "allocatedDate": "2017-08-12"
+          "trustOfficer": {
+            "forenames": "Angel",
+            "surname": "Extravaganza"
+          },
+          "allocatedDate": "2017-05-22",
+          "team": {
+            "description": "OMU A",
+            "telephone": "0114 22278787",
+            "district": "N04 Division"
+          },
+          "provider": "NPS Midlands"
         }
       ],
       "convictions": [

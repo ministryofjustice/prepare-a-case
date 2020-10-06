@@ -139,18 +139,23 @@
         <div class="govuk-!-margin-bottom-6">
 
             {% if data.probationStatus === "Current" %}
-                <h3 class="govuk-heading-s">Offender Manager</h3>
+                <h2 class="govuk-heading-m">Offender Manager</h2>
                 {% if offenderManager.allocatedDate %}
-                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.forenames }} {{ offenderManager.surname }}</p>
-                    <p class="govuk-hint govuk-!-margin-top-1">Allocated
-                        on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.trustOfficer.forenames }} {{ offenderManager.trustOfficer.surname }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                    <p class="govuk-body govuk-!-margin-bottom-0">Provider: {{ offenderManager.provider }}</p>
+                    <p class="govuk-body govuk-!-margin-bottom-0">LDU: {{ offenderManager.team.district }}</p>
+                    <p class="govuk-body govuk-!-margin-bottom-3">Team: {{ offenderManager.team.description }}</p>
+                    {%  if offenderManager.team.telephone !== '' %}
+                        <p class="govuk-body govuk-!-margin-bottom-0">Team telephone: {{ offenderManager.team.telephone }}</p>
+                    {% endif %}
                 {% endif %}
             {% endif %}
 
             {% if probationDocuments | length %}
                 {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
                 {% set monthsOld = moment().diff(moment(latestDocument.completedDate, 'YYYY-MM-DD'), 'months') %}
-                <h3 class="govuk-heading-s govuk-!-margin-top-6">Last pre-sentence report</h3>
+                <h2 class="govuk-heading-m govuk-!-margin-top-6">Last pre-sentence report</h2>
                 <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
                 <p class="govuk-hint govuk-!-margin-top-1">
                     Delivered
@@ -167,7 +172,7 @@
             {% endif %}
 
             {% if communityData.assessment | length %}
-                <h3 class="govuk-heading-s govuk-!-margin-top-6">Last OASys assessment</h3>
+                <h2 class="govuk-heading-m govuk-!-margin-top-6">Last OASys assessment</h2>
                 <p class="govuk-body govuk-!-margin-bottom-0">OASys
                     Assessment {{ communityData.assessment.type | capitalize | replace("_", " ") }}</p>
                 <p class="govuk-hint govuk-!-margin-top-1">Completed
