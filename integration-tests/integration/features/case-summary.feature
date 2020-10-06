@@ -197,8 +197,8 @@ Feature: Case summary
     And I should see the heading has the defendant name
     When I click the sub navigation with "Probation record" text
     Then I should see the offender previous order count
-    And I should see the following level 3 headings
-      | Last pre-sentence report | Last OASys assessment |
+    And I should see the following level 2 headings
+      | Previous orders | Last pre-sentence report | Last OASys assessment |
     And I should see the last pre-sentence report details
     And There should be no a11y violations
 
@@ -223,11 +223,15 @@ Feature: Case summary
     And I should see the previous order offence
     And I should see the previous order end date
 
-    And I should see the following level 3 headings
-      | Requirements | Post-release status | Licence conditions | Post-release status | Licence conditions | Post-release status | PSS requirements | Offender Manager | Last pre-sentence report | Last OASys assessment |
+    And I should see the following level 2 headings
+      | Current orders | Previous orders | Offender Manager | Last pre-sentence report | Last OASys assessment |
     And I should see the offender manager details
     And I should see the last pre-sentence report details
     And I should see the last OASys assessment details
+
+    And I should see the following level 3 headings
+      | Requirements | Post-release status | Licence conditions | Post-release status | Licence conditions | Post-release status | PSS requirements |
+
     And I should see a limited number of previous orders
     When I click the "Show all previous orders" button
     Then I should see all previous orders

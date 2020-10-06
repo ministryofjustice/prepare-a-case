@@ -13,11 +13,11 @@
       "crn": "DX12340A",
       "offenderManagers": [
         {
-          "trustOfficer": {
-            "forenames": "Angel",
-            "surname": "Extravaganza"
-          },
-          "allocatedDate": "2017-05-22",
+          "staff": {
+          "forenames": "Angel",
+          "surname": "Extravaganza"
+        },
+          "allocatedDate": "2017-08-12",
           "team": {
             "description": "OMU A",
             "telephone": "0114 22278787",
