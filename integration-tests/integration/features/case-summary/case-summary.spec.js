@@ -185,7 +185,7 @@ And('I should see the offender manager details', () => {
 
 And('I should see the last pre-sentence report details', () => {
   cy.get('.govuk-grid-column-one-third').within(() => {
-    cy.get('.govuk-heading-s').contains('Last pre-sentence report')
+    cy.get('.govuk-heading-m').contains('Last pre-sentence report')
     cy.get('.govuk-body').contains(world.data.preSentenceReportDetails.description)
     cy.get('.govuk-hint').contains(world.data.preSentenceReportDetails.delivered)
   })
@@ -193,7 +193,7 @@ And('I should see the last pre-sentence report details', () => {
 
 And('I should see the last OASys assessment details', () => {
   cy.get('.govuk-grid-column-one-third').within(() => {
-    cy.get('.govuk-heading-s').contains('Last OASys assessment')
+    cy.get('.govuk-heading-m').contains('Last OASys assessment')
     cy.get('.govuk-body').contains(`OASys Assessment ${world.data.oasysAssessmentDetails.type}`)
     cy.get('.govuk-hint').contains(`Completed on ${world.data.oasysAssessmentDetails.completed}`)
   })
