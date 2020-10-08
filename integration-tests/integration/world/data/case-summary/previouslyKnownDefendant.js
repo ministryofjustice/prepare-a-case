@@ -29,7 +29,9 @@ const previouslyKnownDefendant = {
     preSentenceReportDetails: {
       description: 'Pre-Sentence Report - Fast',
       delivered: `Delivered 1 month ago (${moment().add(-1, 'months').format('D MMM YYYY')})`
-    }
+    },
+    activeCount: 'Active (1)',
+    inactiveCount: 'Inactive (1)'
   }
 }
 

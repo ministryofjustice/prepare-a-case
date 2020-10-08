@@ -52,11 +52,17 @@ const getDetails = async crn => {
   return res.data
 }
 
+const getRiskDetails = async crn => {
+  const res = await request(`${apiUrl}/offender/${crn}/registrations`)
+  return res.data
+}
+
 module.exports = {
   getDetails,
   getProbationRecord,
   getProbationRecordWithRequirements,
   getSentenceDetails,
   getBreachDetails,
-  getAttachment
+  getAttachment,
+  getRiskDetails
 }

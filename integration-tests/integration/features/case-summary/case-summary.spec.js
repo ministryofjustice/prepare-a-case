@@ -217,6 +217,26 @@ Then('I click the defendant name link', () => {
   cy.get('.govuk-link').contains(world.data.name).click()
 })
 
+Then('I click the active risk tab', () => {
+  cy.get('.pac-active').contains('Active').click()
+})
+
+Then('I click the inactive risk tab', () => {
+  cy.get('.pac-inactive').contains('Inactive').click()
+})
+
+Then('I should see the risk register table', () => {
+  cy.get('.govuk-tabs').should('exist')
+})
+
+Then('I should see the active registration count', () => {
+  cy.get('.govuk-tabs__tab').contains(world.data.activeCount)
+})
+
+Then('I should see the inactive registration count', () => {
+  cy.get('.govuk-tabs__tab').contains(world.data.inactiveCount)
+})
+
 Then('I should see the heading has the defendant name', () => {
   cy.get('h1').contains(world.data.name)
 })

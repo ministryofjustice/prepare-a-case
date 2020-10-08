@@ -82,7 +82,9 @@ const currentDefendant = {
       status: 'On post-sentence supervision (PSS)',
       start: 'today',
       end: '5 months'
-    }
+    },
+    activeCount: 'Active (0)',
+    inactiveCount: 'Inactive (0)'
   }
 }
 
