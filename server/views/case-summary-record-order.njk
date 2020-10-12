@@ -78,7 +78,7 @@
             {{ attendedAppointments.failed.push(attendance) }}
         {% elif attendance.attended | string === "false" and attendance.complied | string === "true" %}
             {{ absentAppointments.complied.push(attendance) }}
-        {% elif attendance.attended | string === "false" and attendance.complied | string === "false" and attendance.outcome | string === "IAPS deleted record" %}
+        {% elif attendance.attended | string === "false" and attendance.complied | string === "false" and attendance.outcome === "IAPS deleted record" %}
             {{ awaitingOutcome.push(attendance) }}
         {% else %}
             {{ absentAppointments.failed.push(attendance) }}
