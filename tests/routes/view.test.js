@@ -71,6 +71,12 @@ describe('Routes', () => {
     }
   })
 
+  jest.spyOn(communityService, 'getRiskDetails').mockImplementation(function () {
+    return {
+      registrations: {}
+    }
+  })
+
   jest.spyOn(caseService, 'updateCase').mockImplementation(function () {
     return {
       status: 201,
@@ -221,10 +227,14 @@ describe('Routes', () => {
     return response
   })
 
-  // @TODO: Implement tests when completing this section of work and delete this TODO
-  it('case summary risk registers route should call the case service to fetch case data', async () => {
-    const response = await request(app).get('/B14LO00/case/8678951874/risk')
-    expect(caseService.getCase).toHaveBeenCalledWith('B14LO00', '8678951874')
+  it('case summary risk registers route should call the case service to fetch risk data', async () => {
+    caseResponse = {
+      crn: 'D985513'
+    }
+
+    const response = await request(app).get('/B14LO00/case/2608860141/risk')
+    expect(caseService.getCase).toHaveBeenCalledWith('B14LO00', '2608860141')
+    expect(communityService.getRiskDetails).toHaveBeenCalledWith('D985513')
     return response
   })
 

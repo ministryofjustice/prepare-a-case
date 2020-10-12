@@ -7,7 +7,8 @@ const {
   getProbationRecord,
   getProbationRecordWithRequirements,
   getSentenceDetails,
-  getBreachDetails
+  getBreachDetails,
+  getRiskDetails
 } = require('../services/community-service')
 
 const { health } = require('./middleware/healthcheck')
@@ -163,6 +164,17 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/:courtCode/case/:caseNo/risk', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Risk register'
+
+    const crn = templateValues.data.crn
+    const riskResponse = await getRiskDetails(crn)
+
+    templateValues.data.riskData = {
+      ...riskResponse
+    }
+
+    templateValues.params = {
+      ...templateValues.params
+    }
 
     res.render('case-summary-risk', templateValues)
   })
