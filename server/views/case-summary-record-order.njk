@@ -332,7 +332,7 @@
             </div>
         </div>
 
-        {% if awaitingOutcome.length %}
+        {% if awaitingOutcome.length | sort(false, false, 'IAPS deleted record') %}
             <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-width-two-thirds">
 
             <div class="govuk-grid-row">
