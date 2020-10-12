@@ -228,8 +228,13 @@ describe('Routes', () => {
   })
 
   it('case summary risk registers route should call the case service to fetch risk data', async () => {
+    caseResponse = {
+      crn: 'D985513'
+    }
+
     const response = await request(app).get('/B14LO00/case/2608860141/risk')
-    expect(communityService.getRiskDetails).toHaveBeenCalledWith('2608860141')
+    expect(caseService.getCase).toHaveBeenCalledWith('B14LO00', '2608860141')
+    expect(communityService.getRiskDetails).toHaveBeenCalledWith('D985513')
     return response
   })
 
