@@ -1,15 +1,102 @@
 {% extends "partials/case-details.njk" %}
 
+{%- set riskData = data.riskData -%}
+{%- set activeRisks = [] -%}
+{%- set inactiveRisks = [] -%}
+{%- for risk in riskData.registrations if riskData.registrations | length %}
+    {% if risk.active %}
+        {{ activeRisks.push(risk) }}
+    {% endif %}
+    {% if risk.active == false %}
+        {{ inactiveRisks.push(risk) }}
+    {% endif %}
+{% endfor -%}
+
 
 {% block caseContent %}
 
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-grid-column-full">
 
-            <h2 class="govuk-heading-m">Risk register</h2>
+            <h2 class="govuk-heading-l govuk-!-margin-bottom-7">Risk register</h2>
+
+
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+                    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab pac-active" href="#active">
+                            Active ({{ activeRisks | length }})
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab pac-inactive" href="#inactive">
+                            Inactive ({{ inactiveRisks | length }})
+                        </a>
+                    </li>
+                </ul>
+                <div class="govuk-tabs__panel" id="active">
+                    <h2 class="govuk-heading-m">Active registrations</h2>
+                    {% if not activeRisks | length %}
+                        <div class="govuk-body">There are no active registrations.</div>
+                    {% else %}
+                        <table class="govuk-table">
+                            <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Type</th>
+                                <th scope="col" class="govuk-table__header">Registered</th>
+                                <th scope="col" class="govuk-table__header">Next review</th>
+                                <th scope="col" class="govuk-table__header">Notes</th>
+                            </tr>
+                            </thead>
+                            {%- for risk in activeRisks %}
+                                <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell govuk-!-font-weight-bold">{{ risk.type }}</td>
+                                    <td class="govuk-table__cell">{{ risk.startDate }}</td>
+                                    <td class="govuk-table__cell">{{ risk.nextReviewDate }}</td>
+                                    <td class="govuk-table__cell">{{ risk.notes or '-' }}</td>
+                                </tr>
+                                </tbody>
+                            {% endfor -%}
+                        </table>
+                    {% endif %}
+                </div>
+                <div class="govuk-tabs__panel" id="inactive">
+                    <h2 class="govuk-heading-m">Inactive registrations</h2>
+                    {% if not inactiveRisks | length %}
+                        <div class="govuk-body">There are no inactive registrations.</div>
+                    {% else %}
+                        <table class="govuk-table">
+                            <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Type</th>
+                                <th scope="col" class="govuk-table__header">Registered</th>
+                                <th scope="col" class="govuk-table__header">End date</th>
+                                <th scope="col" class="govuk-table__header">Notes</th>
+                            </tr>
+                            </thead>
+                            {%- for risk in inactiveRisks %}
+                                <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell govuk-!-font-weight-bold">{{ risk.type }}</td>
+                                    <td class="govuk-table__cell">{{ risk.startDate }}</td>
+                                    <td class="govuk-table__cell">{{ risk.endDate }}</td>
+                                    <td class="govuk-table__cell">{{ risk.notes }}</td>
+                                </tr>
+                                </tbody>
+                            {% endfor -%}
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+
 
         </div>
-        <div class="govuk-grid-column-one-third">&nbsp;</div>
     </div>
+
+
+
+
+
 
 {% endblock %}

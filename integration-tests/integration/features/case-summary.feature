@@ -393,3 +393,45 @@ Feature: Case summary
     And I should see the level 2 heading "Requirements"
     And I should see the following table headings
       | Requirement | Length | Ended | Reason |
+
+  Scenario: View the risk register section of the case summary for a previously known offender with risks
+    Given I am an authenticated user
+    And I am looking at a previously known defendant
+
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+
+    When I click the defendant name link
+    And I click the sub navigation with "Risk register" text
+    Then I should see the risk register table
+    And I should see the active registration count
+    And I should see the inactive registration count
+    Then I click the active risk tab
+    And I should see the level 2 heading 'Active registrations'
+    And I should see the following table headings
+      | Type | Registered | Next review | Notes |
+    Then I click the inactive risk tab
+    And I should see the level 2 heading 'Inactive registrations'
+    And I should see the following table headings
+      | Type | Registered | Next review | Notes |
+
+    And There should be no a11y violations
+
+  Scenario: View the risk register section of the case summary for a current offender with no risks
+    Given I am an authenticated user
+    And I am looking at a current defendant with breach
+
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+
+    When I click the defendant name link
+    And I click the sub navigation with "Risk register" text
+    Then I should see the risk register table
+    And I should see the active registration count
+    And I should see the inactive registration count
+    Then I click the active risk tab
+    And I should see the body text "There are no active registrations"
+    Then I click the inactive risk tab
+    And I should see the body text "There are no inactive registrations"
+
+    And There should be no a11y violations

@@ -15,13 +15,13 @@
         href: '/' + params.courtCode + '/case/' + data.caseNo + '/record',
         active: title === 'Probation record'
     }) }}
-    {#
+
     {{ subNavItems.push({
         text: 'Risk register',
         href: '/' + params.courtCode + '/case/' + data.caseNo + '/risk',
         active: title === 'Risk register'
     }) }}
-    #}
+
 {% endif %}
 {% set crn = [] %}
 {{ crn.push(data.crn) if data.crn }}
