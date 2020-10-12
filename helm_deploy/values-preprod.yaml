@@ -10,7 +10,6 @@ image:
   port: 3000
 
 ingress:
-  controller: court-probation-preprod
   enabled: true
   enable_whitelist: true
   host: prepare-a-case-preprod.apps.live-1.cloud-platform.service.justice.gov.uk
