@@ -415,7 +415,7 @@ Feature: Case summary
 
   Scenario: View the risk register section of the case summary for a current offender with no risks
     Given I am an authenticated user
-    And I am looking at a current defendant
+    And I am looking at a current defendant with breach
 
     When I navigate to the "cases" route
     Then I should be on the "Cases" page

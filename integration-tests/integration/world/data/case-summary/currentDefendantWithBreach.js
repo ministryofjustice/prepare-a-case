@@ -74,7 +74,9 @@ const currentDefendantWithBreach = {
     preSentenceReportDetails: {
       description: 'Pre-Sentence Report - Fast',
       delivered: `Delivered less than 1 month ago (${moment().add(-5, 'days').format('D MMM YYYY')})`
-    }
+    },
+    activeCount: 'Active (0)',
+    inactiveCount: 'Inactive (0)'
   }
 }
 
