@@ -9,8 +9,7 @@
       "Content-Type": "application/json"
     },
     "status": 200,
-    "jsonBody": {
-      "registrations": [
+    "jsonBody": [
         {
           "type": "Warrant",
           "startDate": "2019-06-20",
@@ -26,7 +25,7 @@
           "endDate": "2021-01-01",
           "active": true
         }
-      ]
-    }
+
+    ]
   }
 }

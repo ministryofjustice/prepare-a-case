@@ -9,8 +9,7 @@
       "Content-Type": "application/json"
     },
     "status": 200,
-    "jsonBody": {
-      "registrations": [
+    "jsonBody": [
         {
           "type": "MAPPA",
           "startDate": "2020-09-30",
@@ -50,6 +49,5 @@
           "active": true
         }
       ]
-    }
   }
 }
