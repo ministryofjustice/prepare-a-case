@@ -160,7 +160,7 @@
         {{ insetText({
             linkText: "Review defendants with possible nDelius records",
             link: '/' + params.courtCode + "/match/bulk/" + params.date,
-            text: params.unmatchedRecords + " defendants partially match existing records and need review."
+            text: params.unmatchedRecords + (' defendants' if params.unmatchedRecords > 1 else ' defendant') + " partially matches existing records and needs review."
         }) }}
     {% endif %}
 

@@ -24,7 +24,7 @@ And('I should see sub navigation with default dates', () => {
 And('I should see that {int} defendants have possible nDelius records', $int => {
   cy.get('.pac-inset-text').within(() => {
     cy.get('.govuk-link').contains('Review defendants with possible nDelius records').should('exist')
-    cy.get('.govuk-body').contains(`${$int} defendants partially match existing records and need review.`).should('exist')
+    cy.get('.govuk-body').contains(`${$int} defendants partially matches existing records and needs review.`).should('exist')
   })
 })
 
