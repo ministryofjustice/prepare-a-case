@@ -3,7 +3,7 @@
 {%- set riskData = data.riskData -%}
 {%- set activeRisks = [] -%}
 {%- set inactiveRisks = [] -%}
-{%- for risk in riskData.registrations if riskData.registrations | length %}
+{%- for risk in riskData  if riskData %}
     {% if risk.active %}
         {{ activeRisks.push(risk) }}
     {% endif %}
@@ -19,7 +19,6 @@
         <div class="govuk-grid-column-full">
 
             <h2 class="govuk-heading-l govuk-!-margin-bottom-7">Risk register</h2>
-
 
             <div class="govuk-tabs" data-module="govuk-tabs">
                 <ul class="govuk-tabs__list">
