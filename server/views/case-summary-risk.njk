@@ -1,7 +1,6 @@
 {% extends "partials/case-details.njk" %}
 
 {%- set riskData = data.riskData -%}
-{%- set items = data.items -%}
 {%- set activeRisks = [] -%}
 {%- set inactiveRisks = [] -%}
 {%- for risk in riskData  if riskData %}

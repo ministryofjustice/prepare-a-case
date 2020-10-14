@@ -166,7 +166,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Risk register'
 
     const crn = templateValues.data.crn
+    
     templateValues.data.riskData = await getRiskDetails(crn)
+
+    const riskResponse = await getRiskDetails(crn)
 
     templateValues.params = {
       ...templateValues.params

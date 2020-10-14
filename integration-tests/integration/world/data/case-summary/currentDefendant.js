@@ -59,7 +59,7 @@ const currentDefendant = {
     previousOrderStartDate: '2017-03-08',
     previousOrderEndDate: '2018-01-23',
     previousOrderTerminationReason: 'ICMS Miscellaneous Event',
-    offenderManager: 'Mcmahon Buchanan',
+    offenderManager: 'Angel Extravaganza',
     offenderManagerDetails: {
       allocated: '12 Aug 2017'
     },

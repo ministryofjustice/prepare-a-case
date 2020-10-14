@@ -44,7 +44,7 @@ const getBreachDetails = async (crn, convictionId, breachId) => {
 
 const getAttachment = async (crn, documentId) => {
   const res = await request(`${apiUrl}/offender/${crn}/documents/${documentId}`)
-  return res.data
+  return res
 }
 
 const getDetails = async crn => {
