@@ -4,9 +4,11 @@
 {%- set courtRoom = data.courtRoom - 0 -%}
 {%- set communityData = data.communityData -%}
 {% set bannerHtml %}
-    <h2 class="govuk-heading-m">{{ data.numberOfPossibleMatches }} possible nDelius records found for {{ data.defendantName }}.
-    <a href="/{{ params.courtCode }}/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review records</a>
-    </h2>
+{% set recordCount = 'record' if data.numberOfPossibleMatches === 1 else 'records' %}
+        <h2 class="govuk-heading-m">
+            {{ data.numberOfPossibleMatches }} possible nDelius {{ recordCount }} found for {{ data.defendantName }}.
+            <a href="/{{ params.courtCode }}/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>
+        </h2>
 {% endset %}
 
 {% block message %}
