@@ -53,7 +53,7 @@
                                     <td class="govuk-table__cell govuk-!-font-weight-bold">{{ risk.type }}</td>
                                     <td class="govuk-table__cell">{{ risk.startDate }}</td>
                                     <td class="govuk-table__cell">{{ risk.nextReviewDate }}</td>
-                                    <td class="govuk-table__cell">{{ risk.notes or '-' }}</td>
+                                    <td class="govuk-table__cell">{{ (risk.notes if risk.notes | length) or '-'}}</td>
                                 </tr>
                                 </tbody>
                             {% endfor -%}

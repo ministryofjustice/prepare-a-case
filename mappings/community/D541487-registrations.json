@@ -15,6 +15,7 @@
           "startDate": "2020-09-30",
           "nextReviewDate":  "2020-12-30",
           "endDate": "2021-01-01",
+          "notes": [],
           "active": true
         },
         {
@@ -38,6 +39,7 @@
           "startDate": "2020-09-30",
           "nextReviewDate":  "2020-12-30",
           "endDate": "2021-01-01",
+          "notes": [],
           "active": true
         },
         {
