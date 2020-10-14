@@ -146,7 +146,7 @@
                     <p class="govuk-body govuk-!-margin-bottom-0">Provider: {{ offenderManager.provider }}</p>
                     <p class="govuk-body govuk-!-margin-bottom-0">LDU: {{ offenderManager.team.district }}</p>
                     <p class="govuk-body govuk-!-margin-bottom-3">Team: {{ offenderManager.team.description }}</p>
-                    {%  if offenderManager.team.telephone !== '' %}
+                    {%  if offenderManager.team.telephone %}
                         <p class="govuk-body govuk-!-margin-bottom-0">Team telephone: {{ offenderManager.team.telephone }}</p>
                     {% endif %}
                 {% endif %}

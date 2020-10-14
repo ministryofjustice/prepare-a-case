@@ -1,0 +1,63 @@
+{
+  "id": "f77083e7-34a3-42bb-801c-6f4ceebb174c",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/E654321/probation-record"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "crn": "E654321",
+      "offenderManagers": [
+        {
+          "staff": {
+            "forenames": "Angel",
+            "surname": "Extravaganza"
+          },
+          "allocatedDate": "2017-08-12",
+          "team": {
+            "description": "OMU A",
+            "telephone": "0114 22278787",
+            "district": "N04 Division"
+          },
+          "provider": "NPS Midlands"
+        }
+      ],
+      "convictions": [
+        {
+          "convictionId": "345464567",
+          "active": true,
+          "inBreach": true,
+          "convictionDate": "2017-03-08",
+          "endDate": "2018-09-08",
+          "offences": [
+            {
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+            },
+            {
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+            }
+          ],
+          "sentence": {
+            "sentenceId": "99483532",
+            "description": "CJA - Std Determinate Custody",
+            "length": 18,
+            "lengthInDays": 547,
+            "lengthUnits": "Months",
+            "terminationDate": "2018-01-23",
+            "terminationReason": "ICMS Miscellaneous Event",
+            "startDate": "2017-03-08"
+          },
+          "documents": []
+        }
+      ],
+      "assessment": {
+        "type": "LAYER_3",
+        "completed": "2018-06-20T23:00:09"
+      }
+    }
+  }
+}
