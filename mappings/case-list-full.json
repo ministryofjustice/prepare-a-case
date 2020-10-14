@@ -498,12 +498,12 @@
           "courtRoom": "06",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
-          "pnc": "A/1234560BA",
-          "probationStatus": "Previously known",
+          "pnc": "A/987930B",
+          "probationStatus": "Current",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2013-01-01",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",

@@ -78,10 +78,10 @@
             {{ attendedAppointments.failed.push(attendance) }}
         {% elif attendance.attended | string === "false" and attendance.complied | string === "true" %}
             {{ absentAppointments.complied.push(attendance) }}
-        {% elif attendance.attended | string === "false" and attendance.complied | string === "false" and attendance.outcome %}
-            {{ absentAppointments.failed.push(attendance) }}
-        {% else %}
+        {% elif attendance.attended | string === "false" and attendance.complied | string === "false" and attendance.outcome === "IAPS deleted record" %}
             {{ awaitingOutcome.push(attendance) }}
+        {% else %}
+            {{ absentAppointments.failed.push(attendance) }}
         {% endif %}
     {% endfor %}
 
@@ -332,7 +332,7 @@
             </div>
         </div>
 
-        {% if awaitingOutcome.length %}
+        {% if awaitingOutcome.length | sort(false, false, 'IAPS deleted record') %}
             <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-width-two-thirds">
 
             <div class="govuk-grid-row">
