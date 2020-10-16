@@ -44,8 +44,8 @@ const currentDefendantWithBreach = {
       status: 'Completed - Amended & Continued'
     }],
     breachDetails: {
-      conviction: 'ORA Community Order (12 Months)',
-      court: 'Harrogate Magistrates\' Court',
+      order: 'ORA Community Order (12 Months)',
+      sentencingCourtName: 'Harrogate Magistrates\' Court',
       incidentDate: '19 Feb 2020',
       started: '22 May 2020',
       provider: 'NPS North East',
