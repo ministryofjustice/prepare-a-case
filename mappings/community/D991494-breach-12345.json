@@ -10,10 +10,8 @@
     },
     "status": 200,
     "jsonBody": {
-      "conviction": {
-        "description": "ORA Community Order (12 Months)"
-      },
-      "court": "Harrogate Magistrates' Court",
+      "order": "ORA Community Order (12 Months)",
+      "sentencingCourtName": "Harrogate Magistrates' Court",
       "incidentDate": "2020-02-19",
       "started": "2020-05-22",
       "provider": "NPS North East",

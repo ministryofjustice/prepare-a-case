@@ -369,8 +369,8 @@ And('I should see the conviction breach details', () => {
     keys.forEach(($key, $index) => {
       cy.get('dt').eq($index).contains($key)
     })
-    cy.get('dd').eq(0).contains(breachDetails.conviction)
-    cy.get('dd').eq(1).contains(breachDetails.court)
+    cy.get('dd').eq(0).contains(breachDetails.order)
+    cy.get('dd').eq(1).contains(breachDetails.sentencingCourtName)
     cy.get('dd').eq(2).contains(breachDetails.incidentDate)
     cy.get('dd').eq(3).contains(breachDetails.started)
     cy.get('dd').eq(4).contains(breachDetails.provider)
