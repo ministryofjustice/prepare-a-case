@@ -63,6 +63,7 @@
     {# Group appointments by attended/absent and complied/failed #}
     {%- set attendances = communityData.sentenceDetails.attendances or [] -%}
     {%- set attendedAppointments = {
+        all: [],
         complied: [],
         failed: []
     } -%}
@@ -72,13 +73,16 @@
     } -%}
     {%- set awaitingOutcome = [] -%}
     {% for attendance in attendances %}
-        {% if attendance.attended | string === "true" and attendance.complied | string === "true" %}
-            {{ attendedAppointments.complied.push(attendance) }}
-        {% elif attendance.attended | string === "true" and attendance.complied | string === "false" %}
-            {{ attendedAppointments.failed.push(attendance) }}
-        {% elif attendance.attended | string === "false" and attendance.complied | string === "true" %}
+        {% if attendance.attended | string === "true" %}
+            {{ attendedAppointments.all.push(attendance) }}
+            {% if attendance.complied | string === "true" %}
+                {{ attendedAppointments.complied.push(attendance) }}
+            {% else %}
+                {{ attendedAppointments.failed.push(attendance) }}
+            {% endif %}
+        {% elif attendance.complied | string === "true" %}
             {{ absentAppointments.complied.push(attendance) }}
-        {% elif attendance.attended | string === "false" and attendance.complied | string === "false" and attendance.outcome === "IAPS deleted record" %}
+        {% elif attendance.outcome === "IAPS deleted record" %}
             {{ awaitingOutcome.push(attendance) }}
         {% else %}
             {{ absentAppointments.failed.push(attendance) }}
@@ -250,12 +254,12 @@
 
         <h2 class="govuk-heading-m govuk-!-margin-top-8">Attendance</h2>
 
-        {% if attendances.length %}
-            {% set sortedAttendances = attendances | sort(true, false, 'attendanceDate') %}
+        {% if attendedAppointments.all | length %}
+            {% set lastAttendance = attendedAppointments.all | sort(true, false, 'attendanceDate') | first %}
             <p class="govuk-body"><span
-                        class="govuk-!-font-weight-bold">Last attended:</span> {{ moment(sortedAttendances[0].attendanceDate, 'YYYY-MM-DD').format(displayDateFormat) }}
-                - {{ sortedAttendances[0].contactType.description }}
-                ({{ "Acceptable" if sortedAttendances[0].complied else "Unacceptable" }})</p>
+                        class="govuk-!-font-weight-bold">Last attended:</span> {{ moment(lastAttendance.attendanceDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                - {{ lastAttendance.contactType.description }}
+                ({{ "Acceptable" if lastAttendance.complied else "Unacceptable" }})</p>
         {% endif %}
 
         <div class="govuk-!-padding-top-2">
