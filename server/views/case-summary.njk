@@ -5,10 +5,10 @@
 {%- set communityData = data.communityData -%}
 {% set bannerHtml %}
 {% set recordCount = 'record' if data.numberOfPossibleMatches === 1 else 'records' %}
-        <h2 class="govuk-heading-m">
-            {{ data.numberOfPossibleMatches }} possible nDelius {{ recordCount }} found for {{ data.defendantName }}.
-            <a href="/{{ params.courtCode }}/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>
-        </h2>
+    <h2 class="govuk-heading-m">
+        {{ data.numberOfPossibleMatches }} possible nDelius {{ recordCount }} found for {{ data.defendantName }}.
+        <a href="/{{ params.courtCode }}/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>
+    </h2>
 {% endset %}
 
 {% block message %}
@@ -18,7 +18,7 @@
         matchType: session.confirmedMatch.matchType
     }) }}
 
-    {% if data.numberOfPossibleMatches >= 1 and not data.crn %}
+    {% if data.probationStatus | string | lower === "possible ndelius record" %}
         {%- from "moj/components/banner/macro.njk" import mojBanner -%}
         {{ mojBanner({
             classes: 'govuk-!-display-inline-block',
