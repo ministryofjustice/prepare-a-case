@@ -20,7 +20,7 @@
 
     {% set offences = [] %}
     {% set courtRoom = item.courtRoom - 0 %}
-    {% set notMatched = not item.crn | length and item.numberOfPossibleMatches >= 1 %}
+    {% set notMatched = item.probationStatus | string | lower == "possible ndelius record" %}
     {% if item.offences | length === 1 %}
         {% for offence in item.offences %}
             {{ offences.push(offence.offenceTitle | escape) }}

@@ -8,7 +8,7 @@
                             data-module="govuk-button" type="submit">Link nDelius record
                     </button>
                 </form>
-                {% elif params.crn | length and not params.hideUnlinkButton %}
+            {% elif params.crn | length and not params.hideUnlinkButton %}
                 <form method="get" action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/unlink/{{ params.crn }}">
                     <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
                             data-module="govuk-button" type="submit">Unlink nDelius record
@@ -26,13 +26,13 @@
             {% if params.pnc | length %}
                 <span class="govuk-body pac-key-details-bar__divider"><strong>PNC: </strong>{{ params.pnc }}</span>
             {% endif %}
-            {% if params.numberOfPossibleMatches > 1 and not params.crn | length %}
+            {% if params.probationStatus | string | lower == "possible ndelius record" %}
                 <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong> Possible nDelius record</span>
             {% endif %}
         </div>
-        {% if params.probationStatus | length %}
+        {% if params.probationStatus | string | lower !== "possible ndelius record" %}
         <div class="pac-key-details-bar__bottom-block">
-                <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong>{{ params.probationStatus | string | capitalize }}{% if params.breach %} (Breach){% endif %}</span>
+            <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong>{{ params.probationStatus | string | capitalize }}{% if params.breach %} (Breach){% endif %}</span>
         </div>
         {% endif %}
         
