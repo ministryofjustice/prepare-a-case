@@ -40,7 +40,7 @@ const getCaseList = async (courtCode, date, filters, subsection) => {
     })
   }
 
-  if (filters && filteredCases) {
+  if (filters && filteredCases && !subsection) {
     filters.forEach(filterObj => {
       applyFilter(filterObj)
     })
