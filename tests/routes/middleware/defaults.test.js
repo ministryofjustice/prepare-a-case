@@ -43,15 +43,15 @@ describe('Default values middleware', () => {
       expect(addBusinessDays(startDate, -1).format('YYYY-MM-DD')).toEqual(endDate.format('YYYY-MM-DD'))
     })
 
-    it('should skip weekend days from the calculation when adding days', () => {
-      const startDate = moment('2020-07-10', 'YYYY-MM-DD') // Friday
+    it('should skip Sundays from the calculation when adding days', () => {
+      const startDate = moment('2020-07-11', 'YYYY-MM-DD') // Saturday
       const endDate = moment('2020-07-13', 'YYYY-MM-DD') // Monday
       expect(addBusinessDays(startDate, 1).format('YYYY-MM-DD')).toEqual(endDate.format('YYYY-MM-DD'))
     })
 
-    it('should skip weekend days from the calculation when removing days', () => {
+    it('should skip Sundays from the calculation when removing days', () => {
       const startDate = moment('2020-07-13', 'YYYY-MM-DD') // Monday
-      const endDate = moment('2020-07-10', 'YYYY-MM-DD') // Friday
+      const endDate = moment('2020-07-11', 'YYYY-MM-DD') // Saturday
       expect(addBusinessDays(startDate, -1).format('YYYY-MM-DD')).toEqual(endDate.format('YYYY-MM-DD'))
     })
   })

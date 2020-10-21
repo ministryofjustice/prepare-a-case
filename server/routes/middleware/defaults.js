@@ -26,12 +26,10 @@ function getMonthsAndDays (startTime, endTime) {
 function addBusinessDays (originalDate, daysToAdd) {
   const isMinus = daysToAdd < 0
   const newDate = originalDate.clone()
-  const Sunday = 0
-  const Saturday = 6
   let daysRemaining = daysToAdd
   while (isMinus ? daysRemaining < 0 : daysRemaining > 0) {
     newDate.add(isMinus ? -1 : 1, 'days')
-    if (newDate.day() !== Sunday && newDate.day() !== Saturday) {
+    if (!settings.excludedDays.split(',').includes(newDate.day().toString())) {
       isMinus ? daysRemaining++ : daysRemaining--
     }
   }
