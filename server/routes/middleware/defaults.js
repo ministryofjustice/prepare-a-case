@@ -29,7 +29,7 @@ function addBusinessDays (originalDate, daysToAdd) {
   let daysRemaining = daysToAdd
   while (isMinus ? daysRemaining < 0 : daysRemaining > 0) {
     newDate.add(isMinus ? -1 : 1, 'days')
-    if (!settings.excludedDays.split(',').includes(newDate.day().toString())) {
+    if (!settings.casesExcludedDays.split(',').includes(newDate.day().toString())) {
       isMinus ? daysRemaining++ : daysRemaining--
     }
   }

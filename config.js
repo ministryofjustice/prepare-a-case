@@ -19,7 +19,7 @@ module.exports = {
   settings: {
     casesPerPage: get('CASES_PER_PAGE', 20),
     casesTotalDays: get('CASES_TOTAL_DAYS', 7),
-    excludedDays: get('CASES_EXCLUDED_DAYS', '0') // Coma delimited String of days to exclude, incremental from 0 (Sunday)
+    casesExcludedDays: get('CASES_EXCLUDED_DAYS', '0') // Coma delimited String of days to exclude, incremental from 0 (Sunday)
   },
   session: {
     secret: get('SESSION_SECRET', 'prepare-a-case-insecure-default-session'),
