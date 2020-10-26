@@ -21,10 +21,10 @@ And('I should see sub navigation with default dates', () => {
   cy.get('.pac-pagination-link--text').eq(0).contains('Next day')
 })
 
-And('I should see that {int} defendants have possible nDelius records', $int => {
+And('I should see that {int} defendant have possible nDelius records', ($int, $string) => {
   cy.get('.pac-inset-text').within(() => {
-    cy.get('.govuk-link').contains('Review defendants with possible nDelius records').should('exist')
-    cy.get('.govuk-body').contains(`${$int} defendants partially matches existing records and needs review.`).should('exist')
+    cy.get('.govuk-link').contains(`Review ${$string} with possible nDelius ${$string}`).should('exist')
+    cy.get('.govuk-body').contains(`${$int} ${$string} partially ${$string} existing ${$string} and ${$string} review.`).should('exist')
   })
 })
 
