@@ -64,6 +64,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
     req.session.currentView = params.subsection
     req.session.caseListDate = params.date
+    // req.session.previousPage = params.page
     res.render('case-list', templateValues)
   })
 
@@ -81,9 +82,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const params = req.params
     const response = await getCase(params.courtCode, params.caseNo)
     const caseListDate = req.session.caseListDate || moment().format('YYYY-MM-DD')
+    // const previousPage = req.session.page
     return {
       healthy: req.healthy,
       caseListDate,
+      // previousPage,
       params: {
         ...params
       },
