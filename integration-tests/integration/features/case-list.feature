@@ -14,7 +14,7 @@ Feature: Case list
     And I should see the caption with the relevant court
     And I should see sub navigation with default dates
     And I should see a timestamp of the most recent Libra data
-
+    And I should see that 2 defendants have possible nDelius records
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
@@ -46,7 +46,7 @@ Feature: Case list
     Then I should see the caption with the relevant court
     And I should see sub navigation with default dates
     And I should see a timestamp of the most recent Libra data
-
+    And I should see that 2 defendants have possible nDelius records
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
@@ -77,7 +77,7 @@ Feature: Case list
     Then I should see the caption with the relevant court
     And I should see sub navigation with default dates
     And I should see a timestamp of the most recent Libra data
-
+    And I should see that 2 defendants have possible nDelius records
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
@@ -107,7 +107,7 @@ Feature: Case list
     Then I should see the caption with the relevant court
     And I should see sub navigation with default dates
     And I should see a timestamp of the most recent Libra data
-
+    And I should see that 2 defendants have possible nDelius records
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
@@ -147,7 +147,7 @@ Feature: Case list
     Then I should see the caption with the relevant court
     And I should see sub navigation with default dates
     And I should see a timestamp of the most recent Libra data
-
+    And I should see that 2 defendants have possible nDelius records
     And I should see the case list table with headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
