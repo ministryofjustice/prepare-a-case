@@ -157,14 +157,14 @@
 
     {% if params.unmatchedRecords > 0 %}
         {%- from "components/inset-text/macro.njk" import insetText -%}
-        {% set defendantCount = 'defendant' if params.unmatchedRecords <= 1 else 'defendants' %}
-        {% set recordCount = 'record' if params.unmatchedRecords <= 1 else 'records' %}
-        {% set matchCount = 'matches' if params.unmatchedRecords <= 1 else 'match' %}
-        {% set needCount = 'needs' if params.unmatchedRecords <= 1 else 'need' %}
+        {% set defendantPluralised = 'defendant' if params.unmatchedRecords <= 1 else 'defendants' %}
+        {% set recordPluralised = 'record' if params.unmatchedRecords <= 1 else 'records' %}
+        {% set matchPluralised = 'matches' if params.unmatchedRecords <= 1 else 'match' %}
+        {% set needPluralised = 'needs' if params.unmatchedRecords <= 1 else 'need' %}
         {{ insetText({
-            linkText: "Review " + defendantCount + " with possible nDelius " + recordCount,
+            linkText: "Review " + defendantPluralised + " with possible nDelius " + recordPluralised,
             link: '/' + params.courtCode + "/match/bulk/" + params.date,
-            text: params.unmatchedRecords + " " + defendantCount + " partially " + matchCount + " existing records and " + needCount + " review."
+            text: params.unmatchedRecords + " " + defendantPluralised + " partially " + matchPluralised + " existing records and " + needPluralised + " review."
         }) }}
     {% endif %}
 
