@@ -13,6 +13,7 @@ Feature: Case summary
     When I click the defendant name link
     Then I should be on the "Case summary" page
     And I should see the heading has the defendant name
+    And I should see Back to cases link with href of case list date and page
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant that has not been matched with an existing nDelius record
@@ -193,7 +194,7 @@ Feature: Case summary
     And I should see the caption with the relevant court
     When I click the defendant name link
     Then I should be on the "Case summary" page
-    And I should see Back to cases link with href of case list date
+    And I should see Back to cases link with href of case list date and page
     And I should see the heading has the defendant name
     When I click the sub navigation with "Probation record" text
     Then I should see the offender previous order count
