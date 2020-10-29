@@ -36,6 +36,15 @@ And('I should see Back to cases link with href of case list date', () => {
   cy.get('.govuk-back-link').contains('Back to cases').should('exist').should('have.attr', 'href').and('include', `${moment().format('YYYY-MM-DD')}`)
 })
 
+And('I should see Back to cases link with href of case list date and page', () => {
+  cy.get('.govuk-back-link')
+    .contains('Back to cases')
+    .should('exist')
+    .should('have.attr', 'href')
+    .and('include', `${moment().format('YYYY-MM-DD')}`)
+    .and('include', 'page=1')
+})
+
 When('I navigate to the case summary route', () => {
   cy.visit(`/B14LO00/case/${world.data.caseNo}/summary`)
 })
