@@ -363,7 +363,7 @@ And('I should see the breach banner', () => {
 })
 
 And('I should see the conviction breach details', () => {
-  const keys = ['Order', 'Sentenced at', 'Breach incident', 'Breach started', 'Provider', 'Team', 'Officer', 'Status']
+  const keys = ['Order', 'Sentenced at', 'Breach incident', 'Provider', 'Team', 'Officer', 'Status', 'Status date']
   const breachDetails = world.data.breachDetails
   cy.get('.govuk-summary-list').within(() => {
     keys.forEach(($key, $index) => {
@@ -372,11 +372,11 @@ And('I should see the conviction breach details', () => {
     cy.get('dd').eq(0).contains(breachDetails.order)
     cy.get('dd').eq(1).contains(breachDetails.sentencingCourtName)
     cy.get('dd').eq(2).contains(breachDetails.incidentDate)
-    cy.get('dd').eq(3).contains(breachDetails.started)
-    cy.get('dd').eq(4).contains(breachDetails.provider)
-    cy.get('dd').eq(5).contains(breachDetails.team)
-    cy.get('dd').eq(6).contains(breachDetails.officer)
-    cy.get('dd').eq(7).contains(breachDetails.status)
+    cy.get('dd').eq(3).contains(breachDetails.provider)
+    cy.get('dd').eq(4).contains(breachDetails.team)
+    cy.get('dd').eq(5).contains(breachDetails.officer)
+    cy.get('dd').eq(6).contains(breachDetails.status)
+    cy.get('dd').eq(7).contains(breachDetails.started)
   })
 })
 
