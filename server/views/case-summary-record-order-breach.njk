@@ -54,10 +54,6 @@
                     <dd class="govuk-summary-list__value">{{ moment(breach.incidentDate, 'YYYY-MM-DD').format(displayDateFormat) }}</dd>
                 </div>
                 <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">Breach started</dt>
-                    <dd class="govuk-summary-list__value">{{ moment(breach.started, 'YYYY-MM-DD').format(displayDateFormat) }}</dd>
-                </div>
-                <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">Provider</dt>
                     <dd class="govuk-summary-list__value">{{ breach.provider }}</dd>
                 </div>
@@ -72,6 +68,10 @@
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">Status</dt>
                     <dd class="govuk-summary-list__value">{{ breach.status }}</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Status date</dt>
+                    <dd class="govuk-summary-list__value">{{ moment(breach.started, 'YYYY-MM-DD').format(displayDateFormat) }}</dd>
                 </div>
             </dl>
 
