@@ -376,7 +376,7 @@ And('I should see the conviction breach details', () => {
     cy.get('dd').eq(4).contains(breachDetails.team)
     cy.get('dd').eq(5).contains(breachDetails.officer)
     cy.get('dd').eq(6).contains(breachDetails.status)
-    cy.get('dd').eq(7).contains(breachDetails.started)
+    cy.get('dd').eq(7).contains(breachDetails.statusDate)
   })
 })
 
