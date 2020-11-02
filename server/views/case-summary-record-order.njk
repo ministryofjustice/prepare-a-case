@@ -21,6 +21,7 @@
 } %}
 
 {%- set communityData = data.communityData -%}
+{%- set breachData = data.communityData.breach %}
 
 {%- set currentOrder = {} -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
@@ -221,16 +222,17 @@
         </div>
     </div>
 
+    {% set breachData = [] %}
     {% if currentOrder.breaches | length %}
-        <h2 class="govuk-heading-m govuk-!-margin-top-8">Breaches</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-top-8" style="background-color: chartreuse">Breaches</h2>
         <div class="govuk-grid-row govuk-!-margin-bottom-6">
             <div class="govuk-grid-column-two-thirds">
                 <table class="govuk-table">
                     <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
                         <th scope="col" class="govuk-table__header">Breach</th>
-                        <th scope="col" class="govuk-table__header">Started</th>
-                        <th scope="col" class="govuk-table__header">Status</th>
+                        <th scope="col" class="govuk-table__header" style="background-color: #ffdd00">Status</th>
+                        <th scope="col" class="govuk-table__header">Status date</th>
                     </tr>
                     </thead>
                     <tbody class="govuk-table__body qa-breaches">
@@ -240,8 +242,12 @@
                                         href="{{ currentOrder.convictionId }}/breach/{{ breach.breachId }}"
                                         class="qa-breach-link-{{ loop.index }} govuk-link govuk-link--no-visited-state">{{ breach.description }}</a>
                             </td>
-                            <td class="govuk-table__cell">{{ moment(breach.started, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
-                            <td class="govuk-table__cell">{{ breach.status }}</td>
+                            <td class="govuk-table__cell" style="color: #008800">{{ breach.status }}</td>
+                            {% for breachInfo in data.breachData %}
+                                {{ breachData.push(data.breachData) | length }}
+                            <td class="govuk-table__cell" style="color: #C21F39">{{ breachInfo }}</td>
+                            {% endfor %}
+{#                            <td class="govuk-table__cell">{{ moment(breach.started, 'YYYY-MM-DD').format(displayDateFormat) }}</td>#}
                         </tr>
                     {% endfor %}
                     </tbody>
