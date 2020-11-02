@@ -59,8 +59,8 @@
                             {% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
                             {% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
                             <li>
-                                {{ category }} {{ "(" + subCategory + ")" if category !== subCategory }}
-                                {{ ' - ' + requirement.length + ' ' + requirement.lengthUnit if requirement.length > 0 }}
+                                {{ category  | replace("-", "–")}} {{ " – " + subCategory if category !== subCategory }}
+                                {{ ' – ' + requirement.length + ' ' + requirement.lengthUnit if requirement.length > 0 }}
                             </li>
                         {% endfor %}
                     </ul>
@@ -85,7 +85,7 @@
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-2">PSS requirements</h3>
                     <ul class="govuk-list govuk-list--bullet qa-current-pss-requirements-{{ loop.index0 }}">
                         {%- for pssRequirement in order.pssRequirements %}
-                            <li>{{ pssRequirement.description  + (' - ' + pssRequirement.subTypeDescription if pssRequirement.subTypeDescription | length) }}</li>
+                            <li>{{ pssRequirement.description  + (' – ' + pssRequirement.subTypeDescription  | replace("-", "–") if pssRequirement.subTypeDescription | length) }}</li>
                         {% endfor %}
                     </ul>
                 {% endif %}
