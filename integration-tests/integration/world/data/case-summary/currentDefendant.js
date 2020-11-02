@@ -28,14 +28,14 @@ const currentDefendant = {
       types: ['Planned office visit', 'Unpaid work', 'Appointment with External Agency', 'IAPS / Accredited programme']
     },
     currentOrderRequirements: [
-      'Unpaid Work (Regular) - 60 Hours',
-      'Rehabilitation Activity Requirement (RAR) - 20 Days',
-      'Court - Accredited Programme (ASRO)',
-      'Court - Accredited Programme - Building Better Relationships (BBR)'
+      'Unpaid Work (Regular) – 60 Hours',
+      'Rehabilitation Activity Requirement (RAR) – 20 Days',
+      'Court – Accredited Programme – ASRO',
+      'Court – Accredited Programme – Building Better Relationships – BBR'
     ],
     currentPssRequirements: [
       'Standard 7 conditions',
-      'Specified Activity - ETE - High intensity',
+      'Specified Activity – ETE – High intensity',
       'Curfew Arrangement'
     ],
     currentLicenceConditions: [
