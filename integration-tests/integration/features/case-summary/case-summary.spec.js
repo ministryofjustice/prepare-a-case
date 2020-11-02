@@ -329,8 +329,8 @@ And('I should see order breach information', () => {
     world.data.breaches.forEach(($item, $index) => {
       cy.get('tr').eq($index).within(() => {
         cy.get('td').eq(0).contains($item.description)
-        cy.get('td').eq(1).contains($item.started)
-        cy.get('td').eq(2).contains($item.status)
+        cy.get('td').eq(1).contains($item.status)
+        cy.get('td').eq(2).contains($item.statusDate)
       })
     })
   })
