@@ -94,6 +94,7 @@
     "superagent": "6.1.0"
   },
   "devDependencies": {
+    "axe-core": "4.0.2",
     "cucumber": "6.0.5",
     "cypress": "5.5.0",
     "cypress-axe": "0.9.1",
