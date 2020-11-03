@@ -32,7 +32,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2017-03-08",
-          "endDate": "2018-09-08",
           "offences": [
             {
               "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
@@ -49,7 +48,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2017-03-08"
+            "startDate": "2017-03-08",
+            "endDate": "2018-09-08"
           },
           "documents": []
         },
@@ -58,7 +58,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2019-02-14",
-          "endDate": "2019-08-27",
           "offences": [
             {
               "description": "Arson endangering life - 05601"
@@ -72,7 +71,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2019-08-27",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2019-02-14"
+            "startDate": "2019-02-14",
+            "endDate": "2019-08-27"
           },
           "documents": []
         },
@@ -81,7 +81,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2017-02-21",
-          "endDate": "2017-08-09",
           "offences": [
             {
               "description": "Common and other types of assault - 10500"
@@ -101,7 +100,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2017-08-09",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2017-02-21"
+            "startDate": "2017-02-21",
+            "endDate": "2017-08-09"
           },
           "documents": []
         },
@@ -110,7 +110,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2019-02-13",
-          "endDate": "2019-09-04",
           "offences": [
             {
               "description": "(Assault PC (Indictable/Either way) - 00807)"
@@ -124,7 +123,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2019-09-04",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2019-02-13"
+            "startDate": "2019-02-13",
+            "endDate": "2019-09-04"
           },
           "documents": []
         },
@@ -148,7 +148,6 @@
             }
           ],
           "sentence": null,
-          "endDate": null,
           "documents": []
         },
         {
@@ -156,7 +155,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2017-02-12",
-          "endDate": "2017-12-14",
           "offences": [
             {
               "description": "High treason - 06200"
@@ -179,7 +177,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2017-02-12"
+            "startDate": "2017-02-12",
+            "endDate": "2017-12-14"
           },
           "documents": []
         },
@@ -188,7 +187,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2019-05-19",
-          "endDate": "2017-12-19",
           "offences": [
             {
               "description": "Aiding suicide - 07600"
@@ -202,7 +200,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2019-09-04",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2019-05-19"
+            "startDate": "2019-05-19",
+            "endDate": "2017-12-19"
           },
           "documents": []
         },
@@ -211,7 +210,6 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2019-05-19",
-          "endDate": "2020-05-25",
           "offences": [
             {
               "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
@@ -234,7 +232,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2019-05-20"
+            "startDate": "2019-05-20",
+            "endDate": "2020-05-25"
           },
           "documents": [
             {
@@ -261,7 +260,6 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
-          "endDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",
           "offences": [
             {
               "description": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200"
@@ -296,7 +294,8 @@
               "length": 12,
               "lengthUnit": "Months"
             },
-            "startDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}"
+            "startDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+            "endDate": "{{now offset='6 months' format='yyyy-MM-dd'}}"
           },
           "documents": [
             {
@@ -323,7 +322,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2017-02-21",
-          "endDate": "2017-12-25",
           "offences": [
             {
               "description": "Aiding suicide - 07600"
@@ -343,7 +341,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2017-12-25",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2017-02-21"
+            "startDate": "2017-02-21",
+            "endDate": "2017-12-25"
           },
           "documents": []
         },
@@ -365,7 +364,6 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
-          "endDate": "{{now format='yyyy-MM-dd'}}",
           "offences": [
             {
               "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
@@ -400,7 +398,8 @@
               "length": 11,
               "lengthUnit": "Months"
             },
-            "startDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}"
+            "startDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+            "endDate": "2020-07-01"
           },
           "documents": []
         },
@@ -409,7 +408,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-02-25",
-          "endDate": "2018-08-04",
           "offences": [
             {
               "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
@@ -429,7 +427,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2018-08-04",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2018-02-25"
+            "startDate": "2018-02-25",
+            "endDate": "2018-08-04"
           },
           "documents": []
         },
@@ -438,7 +437,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2017-02-22",
-          "endDate": "2017-11-18",
           "offences": [
             {
               "description": "Arson endangering life - 05601"
@@ -452,7 +450,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2017-02-22"
+            "startDate": "2017-02-22",
+            "endDate": "2017-11-18"
           },
           "documents": []
         },
@@ -461,7 +460,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-03-01",
-          "endDate": "2018-09-21",
           "offences": [
             {
               "description": "Acknowledging bail in false name - 08303"
@@ -484,7 +482,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2018-09-21",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2018-03-01"
+            "startDate": "2018-03-01",
+            "endDate": "2018-09-21"
           },
           "documents": []
         },
@@ -493,7 +492,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-02-27",
-          "endDate": "2018-09-23",
           "offences": [
             {
               "description": "Common and other types of assault - 10500"
@@ -507,7 +505,8 @@
             "description": "Fine",
             "terminationDate": "2018-09-23",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2018-02-27"
+            "startDate": "2018-02-27",
+            "endDate": "2018-09-23"
           },
           "documents": []
         }

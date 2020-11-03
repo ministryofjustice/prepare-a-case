@@ -32,7 +32,6 @@
           "active": true,
           "inBreach": true,
           "convictionDate": "2017-03-08",
-          "endDate": "2018-09-08",
           "offences": [
             {
               "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
@@ -49,7 +48,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2018-01-23",
             "terminationReason": "ICMS Miscellaneous Event",
-            "startDate": "2017-03-08"
+            "startDate": "2017-03-08",
+            "endDate": "2018-09-08"
           },
           "documents": []
         }

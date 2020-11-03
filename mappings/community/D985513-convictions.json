@@ -24,7 +24,6 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-11-23",
-          "endDate": "2020-05-23",
           "offences": [
             {
                 "description": "Acknowledging bail in false name - 08303"
@@ -41,7 +40,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-05-23",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-11-23"
+            "startDate": "2018-11-23",
+            "endDate": "2020-05-23"
           },
           "documents": [
             {

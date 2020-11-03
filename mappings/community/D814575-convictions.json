@@ -24,7 +24,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-06",
-          "endDate": "2020-01-06",
           "offences": [
             {
               "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
@@ -44,7 +43,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-01-06",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-07-06"
+            "startDate": "2018-07-06",
+            "endDate": "2020-01-06"
           },
           "documents": []
         },
@@ -53,7 +53,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-01-24",
-          "endDate": "2019-07-24",
           "offences": [
             {
               "description": "Weights and Measures Acts - 18900"
@@ -76,7 +75,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-07-24",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-01-24"
+            "startDate": "2018-01-24",
+            "endDate": "2019-07-24"
           },
           "documents": []
         }
