@@ -24,7 +24,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-01",
-          "endDate": "2020-01-01",
           "offences": [
             {
               "description": "(Adulteration etc of milk products - 08902)"
@@ -44,7 +43,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-01-01",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-07-01"
+            "startDate": "2018-07-01",
+            "endDate": "2020-01-01"
           },
           "documents": []
         },
@@ -53,7 +53,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-02-09",
-          "endDate": "2019-08-09",
           "offences": [
             {
               "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
@@ -70,7 +69,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-08-09",
             "terminationReason":  "ICMS Miscellaneous Event",
-            "startDate": "2018-02-09"
+            "startDate": "2018-02-09",
+            "endDate": "2019-08-09"
           },
           "documents": []
         },
@@ -79,7 +79,6 @@
           "active": true,
           "inBreach": true,
           "convictionDate": "2018-10-07",
-          "endDate": "2020-06-17",
           "offences": [
             {
               "description": "Abstracting electricity - 04300"
@@ -119,7 +118,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-04-07",
             "terminationReason": "Auto Terminated",
-            "startDate":  "2018-10-07"
+            "startDate":  "2018-10-07",
+            "endDate": "2020-06-17"
           },
           "documents": [
             {
@@ -146,7 +146,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-06-12",
-          "endDate": "2019-12-12",
           "offences": [
             {
               "description": "Acknowledging bail in false name - 08303"
@@ -160,7 +159,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-12-12",
             "terminationReason":  "ICMS Miscellaneous Event",
-            "startDate": "2018-06-12"
+            "startDate": "2018-06-12",
+            "endDate": "2019-12-12"
           },
           "documents": []
         },
@@ -169,7 +169,6 @@
           "active": true,
           "inBreach": true,
           "convictionDate": "2018-11-12",
-          "endDate": "2020-07-12",
           "offences": [
             {
               "description": "(Assault PC (Indictable/Either way) - 00807)"
@@ -192,7 +191,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-07-12",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-11-12"
+            "startDate": "2018-11-12",
+            "endDate": "2020-07-12"
           },
           "documents": []
         },
@@ -201,7 +201,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-01-03",
-          "endDate": "2019-07-03",
           "offences": [
             {
               "description": "Arson endangering life - 05601"
@@ -215,7 +214,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-07-03",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-01-03"
+            "startDate": "2018-01-03",
+            "endDate": "2019-07-03"
           },
           "documents": []
         },
@@ -224,7 +224,6 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-12-30",
-          "endDate": "2020-06-30",
           "offences": [
             {
               "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
@@ -244,7 +243,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-06-30",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-12-30"
+            "startDate": "2018-12-30",
+            "endDate": "2020-06-30"
           },
           "documents": []
         },
@@ -253,7 +253,6 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-02-21",
-          "endDate": "2019-08-21",
           "offences": [
             {
               "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
@@ -270,7 +269,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-08-21",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-02-21"
+            "startDate": "2018-02-21",
+            "endDate": "2019-08-21"
           },
           "documents": []
         },
@@ -279,7 +279,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-02-05",
-          "endDate": "2019-08-05",
           "offences": [
             {
               "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
@@ -299,7 +298,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-08-05",
             "terminationReason":  "ICMS Miscellaneous Event",
-            "startDate": "2018-02-05"
+            "startDate": "2018-02-05",
+            "endDate": "2019-08-05"
           },
           "documents": []
         },
@@ -308,7 +308,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-09-30",
-          "endDate": "2020-03-30",
           "offences": [
             {
               "description": "Adulteration of food, drugs etc (Summary) - 10100"
@@ -325,7 +324,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-03-30",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-09-30"
+            "startDate": "2018-09-30",
+            "endDate": "2020-03-30"
           },
           "documents": []
         },
@@ -334,7 +334,6 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-11-13",
-          "endDate": "2020-05-13",
           "offences": [
             {
               "description": "Common assault and battery - 10501"
@@ -354,7 +353,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-05-13",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-11-13"
+            "startDate": "2018-11-13",
+            "endDate": "2020-05-13"
           },
           "documents": []
         },
@@ -363,7 +363,6 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-08-24",
-          "endDate": "2020-02-24",
           "offences": [
             {
               "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
@@ -380,7 +379,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-02-24",
             "terminationReason":  "ICMS Miscellaneous Event",
-            "startDate": "2018-08-24"
+            "startDate": "2018-08-24",
+            "endDate": "2020-02-24"
           },
           "documents": []
         },
@@ -389,7 +389,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-07-04",
-          "endDate": "2020-01-04",
           "offences": [
             {
               "description": "High treason - 06200"
@@ -405,7 +404,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-01-02",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-07-04"
+            "startDate": "2018-07-04",
+            "endDate": "2020-01-04"
           },
           "documents": []
         },
@@ -414,7 +414,6 @@
           "active": true,
           "inBreach": true,
           "convictionDate": "2018-12-26",
-          "endDate": "2020-06-26",
           "offences": [
             {
               "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
@@ -434,7 +433,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-06-26",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-12-26"
+            "startDate": "2018-12-26",
+            "endDate": "2020-06-26"
           },
           "documents": []
         },
@@ -443,7 +443,6 @@
           "active": true,
           "inBreach": true,
           "convictionDate": "2018-03-02",
-          "endDate": "2019-09-02",
           "offences": [
             {
               "description": "Noise offences - 82200"
@@ -460,7 +459,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-09-02",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-03-02"
+            "startDate": "2018-03-02",
+            "endDate": "2019-09-02"
           },
           "documents": []
         },
@@ -469,7 +469,6 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-08-13",
-          "endDate": "2020-02-13",
           "offences": [
             {
               "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
@@ -492,7 +491,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-02-13",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-08-13"
+            "startDate": "2018-08-13",
+            "endDate": "2020-02-13"
           },
           "documents": []
         },
@@ -501,7 +501,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-11-24",
-          "endDate": "2020-05-24",
           "offences": [
             {
               "description": "(Buggery and attempted buggery - 01600)"
@@ -515,7 +514,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-05-24",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-11-24"
+            "startDate": "2018-11-24",
+            "endDate": "2020-05-24"
           },
           "documents": []
         },
@@ -524,7 +524,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-01-24",
-          "endDate": "2019-07-24",
           "offences": [
             {
               "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
@@ -547,7 +546,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-07-24",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-01-24"
+            "startDate": "2018-01-24",
+            "endDate": "2019-07-24"
           },
           "documents": []
         },
@@ -556,7 +556,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-05-07",
-          "endDate": "2019-11-07",
           "offences": [
             {
               "description": "(Buggery and attempted buggery - 01600)"
@@ -570,7 +569,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-11-07",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-05-07"
+            "startDate": "2018-05-07",
+            "endDate": "2019-11-07"
           },
           "documents": []
         },
@@ -579,7 +579,6 @@
           "active": true,
           "inBreach": true,
           "convictionDate": "2018-11-26",
-          "endDate": "2020-05-26",
           "offences": [
             {
               "description": "Acknowledging bail in false name - 08303"
@@ -602,7 +601,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-05-26",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-11-26"
+            "startDate": "2018-11-26",
+            "endDate": "2020-05-26"
           },
           "documents": []
         },
@@ -611,7 +611,6 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-12-06",
-          "endDate": "2020-06-06",
           "offences": [
             {
               "description": "Acknowledging bail in false name - 08303"
@@ -634,7 +633,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-06-06",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-12-06"
+            "startDate": "2018-12-06",
+            "endDate": "2020-06-06"
           },
           "documents": []
         },
@@ -643,7 +643,6 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-03-10",
-          "endDate": "2019-09-10",
           "offences": [
             {
               "description": "Weights and Measures Acts - 18900"
@@ -660,7 +659,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-09-10",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-03-10"
+            "startDate": "2018-03-10",
+            "endDate": "2019-09-10"
           },
           "documents": []
         },
@@ -669,7 +669,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-04-05",
-          "endDate": "2019-10-05",
           "offences": [
             {
               "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
@@ -686,7 +685,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-10-05",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-04-05"
+            "startDate": "2018-04-05",
+            "endDate": "2019-10-05"
           },
           "documents": []
         },
@@ -695,7 +695,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-23",
-          "endDate": "2020-01-23",
           "offences": [
             {
               "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
@@ -709,7 +708,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-01-23",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-07-23"
+            "startDate": "2018-07-23",
+            "endDate": "2020-01-23"
           },
           "documents": []
         },
@@ -718,7 +718,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-10-13",
-          "endDate": "2020-01-13",
           "offences": [
             {
               "description": "Common and other types of assault - 10500"
@@ -735,7 +734,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-01-13",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-10-13"
+            "startDate": "2018-10-13",
+            "endDate": "2020-01-13"
           },
           "documents": []
         },
@@ -744,7 +744,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-04-18",
-          "endDate": "2019-10-18",
           "offences": [
             {
               "description": "Weights and Measures Acts - 18900"
@@ -758,7 +757,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-10-13",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-04-18"
+            "startDate": "2018-04-18",
+            "endDate": "2019-10-18"
           },
           "documents": []
         },
@@ -767,7 +767,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-03-20",
-          "endDate": "2019-10-20",
           "offences": [
             {
               "description": "Abstracting electricity - 04300"
@@ -781,7 +780,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-10-20",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-03-20"
+            "startDate": "2018-03-20",
+            "endDate": "2019-10-20"
           },
           "documents": []
         },
@@ -813,7 +813,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-30",
-          "endDate": "2020-01-30",
           "offences": [
             {
               "description": "Weights and Measures Acts - 18900"
@@ -833,7 +832,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-01-30",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-07-30"
+            "startDate": "2018-07-30",
+            "endDate": "2020-01-30"
           },
           "documents": []
         },
@@ -848,7 +848,6 @@
             }
           ],
           "sentence": null,
-          "endDate": null,
           "documents": []
         },
         {
@@ -856,7 +855,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-01-11",
-          "endDate": "2019-07-11",
           "offences": [
             {
               "description": "Acknowledging bail in false name - 08303"
@@ -873,7 +871,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-07-11",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-01-11"
+            "startDate": "2018-01-11",
+            "endDate": "2019-07-11"
           },
           "documents": []
         },
@@ -882,7 +881,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-01-14",
-          "endDate": "2019-07-14",
           "offences": [
             {
               "description": "Abstracting electricity - 04300"
@@ -896,7 +894,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-07-14",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-01-14"
+            "startDate": "2018-01-14",
+            "endDate": "2019-07-14"
           },
           "documents": []
         },
@@ -905,7 +904,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-02-17",
-          "endDate": "2019-08-17",
           "offences": [
             {
               "description": "Weights and Measures Acts - 18900"
@@ -922,7 +920,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-08-17",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-02-17"
+            "startDate": "2018-02-17",
+            "endDate": "2019-08-17"
           },
           "documents": []
         },
@@ -931,7 +930,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-02-09",
-          "endDate": "2019-08-09",
           "offences": [
             {
               "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
@@ -954,7 +952,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-08-09",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-02-09"
+            "startDate": "2018-02-09",
+            "endDate": "2019-08-09"
           },
           "documents": []
         },
@@ -963,7 +962,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-05-28",
-          "endDate": "2019-11-28",
           "offences": [
             {
               "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
@@ -983,7 +981,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-11-28",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-05-28"
+            "startDate": "2018-05-28",
+            "endDate": "2019-11-28"
           },
           "documents": []
         },
@@ -992,7 +991,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-08-06",
-          "endDate": "2020-02-06",
           "offences": [
             {
               "description": "Arson endangering life - 05601"
@@ -1006,7 +1004,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-02-06",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-08-06"
+            "startDate": "2018-08-06",
+            "endDate": "2020-02-06"
           },
           "documents": []
         },
@@ -1015,7 +1014,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-07-21",
-          "endDate": "2020-01-21",
           "offences": [
             {
               "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
@@ -1029,7 +1027,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-01-21",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-07-21"
+            "startDate": "2018-07-21",
+            "endDate": "2020-01-21"
           },
           "documents": []
         },
@@ -1038,7 +1037,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-07",
-          "endDate": "2020-01-07",
           "offences": [
             {
               "description": "Weights and Measures Acts - 18900"
@@ -1055,7 +1053,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-01-07",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-07-07"
+            "startDate": "2018-07-07",
+            "endDate": "2020-01-07"
           },
           "documents": []
         },
@@ -1064,7 +1063,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-04-12",
-          "endDate": "2019-10-12",
           "offences": [
             {
               "description": "High treason - 06200"
@@ -1084,7 +1082,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-10-12",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-04-12"
+            "startDate": "2018-04-12",
+            "endDate": "2019-10-12"
           },
           "documents": []
         },
@@ -1093,7 +1092,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-05-31",
-          "endDate": "2019-11-31",
           "offences": [
             {
               "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
@@ -1110,7 +1108,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-11-31",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-05-31"
+            "startDate": "2018-05-31",
+            "endDate": "2019-11-31"
           },
           "documents": []
         },
@@ -1119,7 +1118,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-08-31",
-          "endDate": "2020-02-31",
           "offences": [
             {
               "description": "(Adulteration etc of milk products - 08902)"
@@ -1142,7 +1140,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-11-31",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-08-31"
+            "startDate": "2018-08-31",
+            "endDate": "2020-02-31"
           },
           "documents": []
         },
@@ -1151,7 +1150,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-11-05",
-          "endDate": "2020-05-05",
           "offences": [
             {
               "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
@@ -1168,7 +1166,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-05-05",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-11-05"
+            "startDate": "2018-11-05",
+            "endDate": "2020-05-05"
           },
           "documents": []
         },
@@ -1177,7 +1176,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-04-26",
-          "endDate": "2019-10-26",
           "offences": [
             {
               "description": "Adulteration of food, drugs etc (Summary) - 10100"
@@ -1197,7 +1195,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-10-26",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-04-26"
+            "startDate": "2018-04-26",
+            "endDate": "2019-10-26"
           },
           "documents": []
         },
@@ -1206,7 +1205,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-05-09",
-          "endDate": "2019-11-09",
           "offences": [
             {
               "description": "Common and other types of assault - 10500"
@@ -1220,7 +1218,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-11-09",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-05-09"
+            "startDate": "2018-05-09",
+            "endDate": "2019-11-09"
           },
           "documents": []
         },
@@ -1229,7 +1228,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-06-21",
-          "endDate": "2019-12-21",
           "offences": [
             {
               "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
@@ -1248,7 +1246,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-05-25",
-          "endDate": "2019-11-25",
           "offences": [
             {
               "description": "(Buggery and attempted buggery - 01600)"
@@ -1271,7 +1268,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-11-25",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-05-25"
+            "startDate": "2018-05-25",
+            "endDate": "2019-11-25"
           },
           "documents": []
         },
@@ -1280,7 +1278,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-12-16",
-          "endDate": "2020-06-16",
           "offences": [
             {
               "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
@@ -1302,7 +1299,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-08-18",
-          "endDate": "2020-02-18",
           "offences": [
             {
               "description": "Adulteration of food, drugs etc (Summary) - 10100"
@@ -1316,7 +1312,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-02-18",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-08-18"
+            "startDate": "2018-08-18",
+            "endDate": "2020-02-18"
           },
           "documents": []
         },
@@ -1325,7 +1322,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-06-17",
-          "endDate": "2019-12-17",
           "offences": [
             {
               "description": "High treason - 06200"
@@ -1345,7 +1341,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-12-17",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-06-17"
+            "startDate": "2018-06-17",
+            "endDate": "2019-12-17"
           },
           "documents": []
         },
@@ -1354,7 +1351,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-09-10",
-          "endDate": "2020-03-10",
           "offences": [
             {
               "description": "(Assault PC (Indictable/Either way) - 00807)"
@@ -1371,7 +1367,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-03-10",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-09-10"
+            "startDate": "2018-09-10",
+            "endDate": "2020-03-10"
           },
           "documents": []
         },
@@ -1380,7 +1377,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-07-25",
-          "endDate": "2020-01-25",
           "offences": [
             {
               "description": "Arson endangering life - 05601"
@@ -1397,7 +1393,8 @@
             "lengthInDays": 547,
             "terminationDate": "2020-01-25",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-07-25"
+            "startDate": "2018-07-25",
+            "endDate": "2020-01-25"
           },
           "documents": []
         },
@@ -1406,7 +1403,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-05-18",
-          "endDate": "2019-11-18",
           "offences": [
             {
               "description": "Adulteration of food, drugs etc (Summary) - 10100"
@@ -1426,7 +1422,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-11-18",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-05-18"
+            "startDate": "2018-05-18",
+            "endDate": "2019-11-18"
           },
           "documents": []
         },
@@ -1435,7 +1432,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-01-08",
-          "endDate": "2019-07-08",
           "offences": [
             {
               "description": "High treason - 06200"
@@ -1457,7 +1453,8 @@
             "lengthInDays": 547,
             "terminationDate": "2019-07-08",
             "terminationReason":  "ICMS Miscellaneous Event",
-            "startDate":  "2018-01-08"
+            "startDate":  "2018-01-08",
+            "endDate": "2019-07-08"
           },
           "documents": []
         }

@@ -24,7 +24,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-01-06",
-          "endDate": "2019-07-12",
           "offences": [
             {
               "description": "Noise offences - 82200"
@@ -47,7 +46,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2019-07-12",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-01-06"
+            "startDate": "2018-01-06",
+            "endDate": "2019-07-12"
           },
           "documents": []
         },
@@ -56,7 +56,6 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-09-23",
-          "endDate": "2019-01-13",
           "offences": [
             {
               "description": "(Adulteration etc of milk products - 08902)"
@@ -73,7 +72,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2019-01-13",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-09-23"
+            "startDate": "2018-09-23",
+            "endDate": "2019-01-13"
           },
           "documents": [
             {
@@ -100,7 +100,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-12-24",
-          "endDate": "2018-12-03",
           "offences": [
             {
               "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
@@ -117,7 +116,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2018-12-03",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-12-24"
+            "startDate": "2018-12-24",
+            "endDate": "2018-12-03"
           },
           "documents": []
         },
@@ -126,7 +126,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-08-13",
-          "endDate": "2018-12-03",
           "offences": [
             {
               "description": "(Buggery and attempted buggery - 01600)"
@@ -146,7 +145,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2018-12-03",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-08-13"
+            "startDate": "2018-08-13",
+            "endDate": "2018-12-03"
           },
           "documents": []
         },
@@ -155,7 +155,6 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-11-14",
-          "endDate": "2018-12-03",
           "offences": [
             {
                 "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
@@ -169,7 +168,8 @@
             "lengthUnits": "Months",
             "terminationDate": "2018-12-03",
             "terminationReason": "Auto Terminated",
-            "startDate": "2018-11-14"
+            "startDate": "2018-11-14",
+            "endDate": "2018-12-03"
           },
           "documents": []
         }

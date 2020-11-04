@@ -53,10 +53,10 @@
     ]) }}
 {% endfor -%}
 
-{%- if moment(currentOrder.endDate, 'YYYY-MM-DD').isAfter() -%}
+{%- if moment(currentOrder.sentence.endDate, 'YYYY-MM-DD').isAfter() -%}
     {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.sentence.startDate, 'YYYY-MM-DD'), moment()) -%}
 {%- else -%}
-    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.sentence.startDate, 'YYYY-MM-DD'), moment(currentOrder.endDate, 'YYYY-MM-DD')) -%}
+    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.sentence.startDate, 'YYYY-MM-DD'), moment(currentOrder.sentence.endDate, 'YYYY-MM-DD')) -%}
 {%- endif -%}
 
 {% if currentOrder.active %}
@@ -162,7 +162,7 @@
                         {% if custodialOrder %}
                             {{ moment(custodialOrder.disposalDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicence else moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% else %}
-                            {{ moment(currentOrder.endDate, 'YYYY-MM-DD').format(displayDateFormat) if currentOrder.active else moment(currentOrder.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                            {{ moment(currentOrder.sentence.endDate, 'YYYY-MM-DD').format(displayDateFormat) if currentOrder.active else moment(currentOrder.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% endif %}
                     </p>
                 </div>
