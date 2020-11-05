@@ -44,7 +44,7 @@
         }) }}
     {% endif %}
 
-    <h1 class="govuk-caption-l govuk-!-margin-top-0">{{ data.defendantName }}</h1>
+    <h1 class="govuk-caption-l govuk-!-margin-top-0">{{ data.defendantName | properCase }}</h1>
     <h2 class="govuk-heading-l">Review possible nDelius records</h2>
     <p class="govuk-body">Compare details and confirm the correct record for the defendant.</p>
 
@@ -64,7 +64,7 @@
                         <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">Name</th>
-                            <td class="govuk-table__cell">{{ data.defendantName }}</td>
+                            <td class="govuk-table__cell">{{ data.defendantName | properCase }}</td>
                         </tr>
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">DOB</th>

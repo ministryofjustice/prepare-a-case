@@ -13,7 +13,7 @@ const addedCasesList = {
         court: '3'
       },
       {
-        defendant: 'Obrien Mccall',
+        defendant: 'Obrien McCall',
         probationStatus: 'No record',
         breach: false,
         sso: false,

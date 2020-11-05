@@ -12,7 +12,7 @@
 {% for item in data %}
     {% if item.probationStatus | string | lower == "possible ndelius record" %}
         {%- set tableRow = [
-            { text: item.defendantName | escape },
+            { text: item.defendantName | escape |  properCase },
             { text: item.numberOfPossibleMatches | escape },
             { text: ('<a href="/' + params.courtCode + '/match/defendant/' + (item.caseNo | escape) + '" class="pac-defendant-link govuk-link govuk-link--no-visited-state">Review records</a>') | safe }
         ] -%}
