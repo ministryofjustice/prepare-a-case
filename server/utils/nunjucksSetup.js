@@ -20,12 +20,12 @@ module.exports = (app, path) => {
   })
 
   env.addFilter('properCase', (name) => {
-    return ('' + name.replace(/[^\s\-']+[\s\-']*/g, (word) => {
+    return (name.replace(/[^\s\-']+[\s\-']*/g, (word) => {
       return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()
     }).replace(/\b(Van|De|Der|Da|Von)\b/g, (nobiliaryParticle) => {
       return nobiliaryParticle.toLowerCase()
     }).replace(/Mc(.)/g, (match, letter3) => {
-      return 'Mc' + letter3.toUpperCase()
+      return `Mc${letter3.toUpperCase()}`
     }))
   })
 
