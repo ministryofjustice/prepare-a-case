@@ -6,6 +6,9 @@
   },
   "response": {
     "status": 200,
-    "bodyFileName": "sample_word_doc.doc"
+    "bodyFileName": "sample_pdf.pdf",
+    "headers": {
+      "Content-Type": "application/pdf"
+    }
   }
 }

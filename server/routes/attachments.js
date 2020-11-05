@@ -8,9 +8,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/:crn/documents/:documentId/:documentName', async (req, res) => {
     const file = await getAttachment(req.params.crn, req.params.documentId)
-    res.setHeader('Content-disposition', file.headers['Content-disposition'])
-    res.setHeader('Content-type', file.headers['Content-type'])
-    res.send(file.data)
+    res.attachment(req.params.documentName)
+    file.data.pipe(res)
   })
   return router
 }
