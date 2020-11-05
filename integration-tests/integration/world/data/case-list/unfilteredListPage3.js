@@ -3,7 +3,7 @@ const unfilteredListPage3 = {
     court: 'Sheffield Magistrates\' Court',
     list: [
       {
-        defendant: 'Amanda Mckay',
+        defendant: 'Amanda McKay',
         probationStatus: 'Current',
         offence: '*Theft from the person of another',
         listing: '3rd',

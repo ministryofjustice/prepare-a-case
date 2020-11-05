@@ -13,7 +13,7 @@ const unfilteredShortList = {
         court: '1'
       },
       {
-        defendant: 'Cornelia Mccoy',
+        defendant: 'Cornelia McCoy',
         probationStatus: 'Previously known',
         breach: true,
         sso: true,

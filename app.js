@@ -19,6 +19,7 @@ const populateCurrentUser = require('./server/routes/middleware/populateCurrentU
 const authorisationMiddleware = require('./server/routes/middleware/authorisationMiddleware')
 const errorHandler = require('./server/errorHandler')
 const log = require('./log')
+const nunjucksSetup = require('./server/utils/nunjucksSetup')
 
 const { authenticationMiddleware } = auth
 
@@ -28,38 +29,7 @@ module.exports = function createApp ({ signInService, userService }) {
 
   auth.init(signInService)
 
-  const env = nunjucks.configure([
-    path.join(__dirname, '/node_modules/govuk-frontend/'),
-    path.join(__dirname, '/node_modules/@ministryofjustice/frontend/'),
-    path.join(__dirname, '/server/views')
-  ], {
-    autoescape: true,
-    express: app,
-    watch: process.env.WATCH_TEMPLATES
-  })
-
-  env.addFilter('json', function (value) {
-    return JSON.parse(value)
-  })
-
-  env.addFilter('limit', function (arr, limit) {
-    return arr.slice(0, limit)
-  })
-
-  env.addFilter('markMatches', (matchString, sourceString) => {
-    const sourceSplit = sourceString.split(' ').map(item => {
-      return item.replace(',', '').toLowerCase()
-    })
-    const filteredArr = matchString.split(' ').map(item => {
-      let hasComma = false
-      if (item.indexOf(',') !== -1) {
-        item = item.replace(',', '')
-        hasComma = true
-      }
-      return (sourceSplit.includes(item.toLowerCase()) ? `<mark>${item}</mark>` : item) + (hasComma ? ',' : '')
-    })
-    return filteredArr.join(' ')
-  })
+  nunjucksSetup(app, path)
 
   app.set('view engine', 'njk')
 
