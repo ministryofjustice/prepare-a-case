@@ -54,7 +54,7 @@ const currentDefendantWithBreach = {
       status: 'Breach initiated',
       attachments: {
         documentId: 12346,
-        file: 'NAT NPS Breach Report CO SSO_D991494.doc',
+        file: 'NAT NPS Breach Report CO SSO_D991494.pdf',
         addedBy: 'Claire Smith',
         dateAdded: '14 Mar 2020'
       }
