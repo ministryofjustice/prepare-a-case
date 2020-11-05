@@ -21,7 +21,6 @@
 } %}
 
 {%- set communityData = data.communityData -%}
-{%- set breachData = data.communityData.breach %}
 
 {%- set currentOrder = {} -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
@@ -222,7 +221,6 @@
         </div>
     </div>
 
-    {% set breachData = [] %}
     {% if currentOrder.breaches | length %}
         <h2 class="govuk-heading-m govuk-!-margin-top-8">Breaches</h2>
         <div class="govuk-grid-row govuk-!-margin-bottom-6">
