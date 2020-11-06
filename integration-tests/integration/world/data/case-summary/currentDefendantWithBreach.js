@@ -32,22 +32,22 @@ const currentDefendantWithBreach = {
     },
     breaches: [{
       description: 'Community Order/SSO Breach',
-      started: '30 Dec 2014',
+      statusDate: '30 Dec 2014',
       status: 'In progress'
     }, {
       description: 'Community Order/SSO Breach',
-      started: '26 Dec 2014',
+      statusDate: '26 Dec 2014',
       status: 'Breach Summons Issued'
     }, {
       description: 'Community Order/SSO Breach',
-      started: '26 Nov 2013',
+      statusDate: '26 Nov 2013',
       status: 'Completed - Amended & Continued'
     }],
     breachDetails: {
       order: 'ORA Community Order (12 Months)',
       sentencingCourtName: 'Harrogate Magistrates\' Court',
       incidentDate: '19 Feb 2020',
-      started: '22 May 2020',
+      statusDate: '22 May 2020',
       provider: 'NPS North East',
       team: 'Enforcement hub - Sheffield and Rotherham',
       officer: 'Unallocated',
