@@ -12,6 +12,18 @@ const request = async url => {
   return response
 }
 
+const requestFile = async url => {
+  let response
+  try {
+    response = await axios.get(url, {
+      responseType: 'stream'
+    })
+  } catch (e) {
+    axiosError(e)
+  }
+  return response
+}
+
 const update = async (url, data) => {
   let response = {}
   try {
@@ -24,5 +36,6 @@ const update = async (url, data) => {
 
 module.exports = {
   request,
+  requestFile,
   update
 }

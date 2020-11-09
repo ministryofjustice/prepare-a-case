@@ -1,4 +1,4 @@
-const { request } = require('./utils/request')
+const { request, requestFile } = require('./utils/request')
 const config = require('../../config')
 const apiUrl = config.apis.courtCaseService.url
 
@@ -43,7 +43,7 @@ const getBreachDetails = async (crn, convictionId, breachId) => {
 }
 
 const getAttachment = async (crn, documentId) => {
-  const res = await request(`${apiUrl}/offender/${crn}/documents/${documentId}`)
+  const res = await requestFile(`${apiUrl}/offender/${crn}/documents/${documentId}`)
   return res
 }
 
