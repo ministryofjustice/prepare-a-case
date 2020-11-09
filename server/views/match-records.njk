@@ -10,7 +10,7 @@
 } %}
 
 {% for item in data %}
-    {% if item.probationStatus | string | lower == "possible ndelius record" %}
+    {% if (item.probationStatus | string | lower == "possible ndelius record") and (item.numberOfPossibleMatches | int > 0) %}
         {%- set tableRow = [
             { text: item.defendantName | escape |  properCase },
             { text: item.numberOfPossibleMatches | escape },
