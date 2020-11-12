@@ -321,6 +321,8 @@ Feature: Case summary
     Then I should be on the "Breach details" page
     And I should see the breach banner
     And I should see the correct breach heading
+    And I should see the level 3 heading "Notes"
+    And I should see the body text "Paragraph 1: Some information. Paragraph 2: And some more."
     And I should see the level 3 heading "Attachments"
     And I should see the body text "No attachments have been added."
     And I should see the conviction breach details
@@ -328,6 +330,8 @@ Feature: Case summary
     When I click the "Back" link
     And I click breach link 2
     Then I should be on the "Breach details" page
+    And I should see the level 3 heading "Notes"
+    And I should see the body text "No notes have been added."
     And I should see the level 3 heading "Attachments"
     And I should see the breach document attachments
 
