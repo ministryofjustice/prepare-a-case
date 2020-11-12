@@ -75,6 +75,13 @@
                 </div>
             </dl>
 
+            <h3 class="govuk-heading-m govuk-!-margin-top-8">Notes</h3>
+            {% if breach.notes | length %}
+                <p class="govuk-body">{{ breach.notes }}</p>
+            {% else %}
+                <p class="govuk-body">No notes have been added.</p>
+            {% endif %}
+
             <h3 class="govuk-heading-m govuk-!-margin-top-8">Attachments</h3>
             {% if breach.documents | length %}
                 <table class="govuk-table">
