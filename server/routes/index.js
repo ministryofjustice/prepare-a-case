@@ -1,5 +1,5 @@
 const express = require('express')
-const moment = require('moment')
+const getBaseDateString = require('../utils/getBaseDateString')
 const { settings } = require('../../config')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
@@ -26,14 +26,14 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/select-court/:selectedCourt?', (req, res) => {
     if (req.params.selectedCourt) {
       res.cookie('court', req.params.selectedCourt).send()
-      res.redirect(`/${req.params.selectedCourt}/cases/${moment().format('YYYY-MM-DD')}`)
+      res.redirect(`/${req.params.selectedCourt}/cases/${getBaseDateString()}`)
     } else {
       res.render('select-court', { title: 'Select court', params: { courtCode: req.cookies.court } })
     }
   })
 
   router.get('/:courtCode/cases', (req, res) => {
-    res.redirect(`/${req.params.courtCode}/cases/${moment().format('YYYY-MM-DD')}${req.session.currentView ? '/' + req.session.currentView : ''}`)
+    res.redirect(`/${req.params.courtCode}/cases/${getBaseDateString()}${req.session.currentView ? '/' + req.session.currentView : ''}`)
   })
 
   router.get('/:courtCode/cases/:date/:subsection?', health, defaults, filters, async (req, res) => {
@@ -77,10 +77,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     req.session.showAllPreviousOrders = req.params.caseNo
     res.redirect(`/${req.params.courtCode}/case/${req.params.caseNo}/record#previousOrders`)
   })
+
   async function getCaseAndTemplateValues (req) {
     const params = req.params
     const response = await getCase(params.courtCode, params.caseNo)
-    const caseListDate = req.session.caseListDate || moment().format('YYYY-MM-DD')
+    const caseListDate = req.session.caseListDate || getBaseDateString()
     return {
       backLink: req.session.backLink,
       healthy: req.healthy,

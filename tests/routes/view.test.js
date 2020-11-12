@@ -1,5 +1,6 @@
 /* global describe, beforeEach, afterEach, it, expect, jest */
 const request = require('supertest')
+const mockDate = require('mockdate')
 const caseService = require('../../server/services/case-service')
 const communityService = require('../../server/services/community-service')
 const appSetup = require('../testUtils/appSetup')
@@ -102,10 +103,23 @@ describe('Routes', () => {
     })
   })
 
-  it('case list route should redirect to corrected route', () => {
+  it('case list route should redirect to corrected route when viewing case list on Sunday', () => {
+    mockDate.set('2020-11-15')
     return request(app).get('/B14LO00/cases').then(response => {
       expect(response.statusCode).toEqual(302)
+      expect(response.headers.location).toBe('/B14LO00/cases/2020-11-16')
       expect(healthcheck.health).not.toHaveBeenCalled()
+      mockDate.reset()
+    })
+  })
+
+  it('case list route should redirect to corrected route', () => {
+    mockDate.set('2020-11-12')
+    return request(app).get('/B14LO00/cases').then(response => {
+      expect(response.statusCode).toEqual(302)
+      expect(response.headers.location).toBe('/B14LO00/cases/2020-11-12')
+      expect(healthcheck.health).not.toHaveBeenCalled()
+      mockDate.reset()
     })
   })
 
