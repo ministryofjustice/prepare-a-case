@@ -41,7 +41,6 @@ describe('Case service', () => {
   })
 
   it('should filter the case list by probation status', async () => {
-
     const filtersObj = { probationStatus: 'Current' }
 
     moxios.stubRequest(`${apiUrl}/court/SHF/cases?date=2020-01-01`, {
@@ -62,7 +61,6 @@ describe('Case service', () => {
   })
 
   it('should filter the case list by court room', async () => {
-
     const filtersObj = { courtRoom: '01' }
 
     moxios.stubRequest(`${apiUrl}/court/SHF/cases?date=2020-01-01`, {
@@ -85,7 +83,6 @@ describe('Case service', () => {
   })
 
   it('should filter the case list by session', async () => {
-
     const filtersObj = { session: 'MORNING' }
 
     moxios.stubRequest(`${apiUrl}/court/SHF/cases?date=2020-01-01`, {
