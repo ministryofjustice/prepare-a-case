@@ -1,5 +1,6 @@
 const express = require('express')
 const getBaseDateString = require('../utils/getBaseDateString')
+const getCaseListFilters = require('../utils/getCaseListFilters')
 const { settings } = require('../../config')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
@@ -36,7 +37,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(`/${req.params.courtCode}/cases/${getBaseDateString()}${req.session.currentView ? '/' + req.session.currentView : ''}`)
   })
 
-  router.get('/:courtCode/cases/:date/:subsection?', health, defaults, filters, async (req, res) => {
+  router.get('/:courtCode/cases/:date/:subsection?', health, defaults, async (req, res) => {
     const params = req.params
     const response = await getCaseList(params.courtCode, params.date, params.filters, params.subsection)
     const caseCount = response.cases.length
@@ -47,6 +48,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       healthy: req.healthy,
       params: {
         ...params,
+        filters: getCaseListFilters(response.cases, req.session.selectedFilters),
         page: parseInt(req.query.page, 10) || 1,
         from: startCount,
         to: endCount,
