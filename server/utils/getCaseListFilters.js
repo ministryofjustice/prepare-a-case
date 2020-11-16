@@ -1,13 +1,13 @@
 module.exports = (caseListData, selectedFilters) => {
   const probationStatuses = [...new Set(caseListData.map(item => item.probationStatus))]
     .map(item => {
-      return { label: item.toString(), value: item.toString() }
+      return item && { label: item.toString(), value: item.toString() }
     })
 
   const courtRooms = [...new Set(caseListData.map(item => parseInt(item.courtRoom, 10)))]
     .sort((a, b) => a - b)
     .map(item => {
-      return { label: item.toString(), value: ('0' + item.toString()).slice(-2) }
+      return item && { label: item.toString(), value: ('0' + item.toString()).slice(-2) }
     })
 
   const caseListFilters = [{
@@ -42,13 +42,15 @@ module.exports = (caseListData, selectedFilters) => {
   // Flag selected filters
   caseListFilters.forEach(item => {
     item.items.forEach(obj => {
-      Object.keys(obj).forEach(() => {
-        if (selectedFilters && selectedFilters[item.id]) {
-          selectedFilters[item.id].forEach(selection => {
-            obj.checked = obj.checked || obj.value === selection
-          })
-        }
-      })
+      if (obj) {
+        Object.keys(obj).forEach(() => {
+          if (selectedFilters && selectedFilters[item.id]) {
+            selectedFilters[item.id].forEach(selection => {
+              obj.checked = obj.checked || obj.value === selection
+            })
+          }
+        })
+      }
     })
   })
 

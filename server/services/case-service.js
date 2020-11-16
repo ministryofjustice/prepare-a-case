@@ -12,7 +12,7 @@ const getCaseList = async (courtCode, date, selectedFilters, subsection) => {
   let unmatchedRecords = 0
   if (res.data && res.data.cases) {
     res.data.cases.forEach($case => {
-      if ($case.probationStatus.toLowerCase() === 'possible ndelius matches') {
+      if ($case.probationStatus.toLowerCase() === 'possible ndelius record' && $case.numberOfPossibleMatches > 0) {
         unmatchedRecords++
       }
       if ($case.createdToday) {
