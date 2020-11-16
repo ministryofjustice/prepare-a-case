@@ -1,16 +1,18 @@
 const { request, update } = require('./utils/request')
+const getCaseListFilters = require('../utils/getCaseListFilters')
 const config = require('../../config')
 const apiUrl = config.apis.courtCaseService.url
 
-const getCaseList = async (courtCode, date, filters, subsection) => {
+const getCaseList = async (courtCode, date, selectedFilters, subsection) => {
   const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
+  const filters = getCaseListFilters(res.data.cases, selectedFilters)
   const allCases = []
   const addedCases = []
   const removedCases = []
   let unmatchedRecords = 0
   if (res.data && res.data.cases) {
     res.data.cases.forEach($case => {
-      if ($case.numberOfPossibleMatches && !$case.crn) {
+      if ($case.probationStatus.toLowerCase() === 'possible ndelius matches') {
         unmatchedRecords++
       }
       if ($case.createdToday) {
@@ -52,6 +54,7 @@ const getCaseList = async (courtCode, date, filters, subsection) => {
     addedCount: addedCases.length,
     removedCount: removedCases.length,
     unmatchedRecords: unmatchedRecords,
+    filters: filters,
     cases: filteredCases
   }
 }

@@ -1,6 +1,5 @@
 const express = require('express')
 const getBaseDateString = require('../utils/getBaseDateString')
-const getCaseListFilters = require('../utils/getCaseListFilters')
 const { settings } = require('../../config')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
@@ -38,7 +37,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/:courtCode/cases/:date/:subsection?', health, defaults, async (req, res) => {
     const params = req.params
-    const response = await getCaseList(params.courtCode, params.date, params.filters, params.subsection)
+    const response = await getCaseList(params.courtCode, params.date, req.session.selectedFilters, params.subsection)
     const caseCount = response.cases.length
     const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * params.limit
     const endCount = Math.min(startCount + parseInt(params.limit, 10), caseCount)
@@ -47,7 +46,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       healthy: req.healthy,
       params: {
         ...params,
-        filters: getCaseListFilters(response.cases, req.session.selectedFilters),
+        filters: response.filters,
         page: parseInt(req.query.page, 10) || 1,
         from: startCount,
         to: endCount,
