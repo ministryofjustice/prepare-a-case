@@ -14,7 +14,6 @@ const {
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
-const { filters } = require('./middleware/filters')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()

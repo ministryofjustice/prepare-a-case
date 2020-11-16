@@ -1,12 +1,11 @@
 module.exports = (caseListData, selectedFilters) => {
-
   const probationStatuses = [...new Set(caseListData.map(item => item.probationStatus))]
     .map(item => {
       return { label: item.toString(), value: item.toString() }
     })
 
   const courtRooms = [...new Set(caseListData.map(item => parseInt(item.courtRoom, 10)))]
-    .sort((a, b) => a -b)
+    .sort((a, b) => a - b)
     .map(item => {
       return { label: item.toString(), value: ('0' + item.toString()).slice(-2) }
     })
@@ -14,11 +13,11 @@ module.exports = (caseListData, selectedFilters) => {
   const caseListFilters = [{
     id: 'probationStatus',
     label: 'Probation status',
-    items: probationStatuses
+    items: probationStatuses || []
   }, {
     id: 'courtRoom',
     label: 'Courtroom',
-    items: courtRooms
+    items: courtRooms || []
   }, {
     id: 'session',
     label: 'Session',
