@@ -1,8 +1,12 @@
 module.exports = (caseListData, selectedFilters) => {
-  const probationStatuses = [...new Set(caseListData.map(item => item.probationStatus))]
-    .map(item => {
-      return item && { label: item.toString(), value: item.toString() }
-    })
+  const availableProbationStatuses = [...new Set(caseListData.map(item => item.probationStatus))]
+  const probationStatuses = []
+  const statusOrder = ['Current', 'Previously known', 'Possible nDelius record', 'No record']
+  statusOrder.forEach(status => {
+    if (availableProbationStatuses.includes(status)) {
+      probationStatuses.push({ label: status, value: status })
+    }
+  })
 
   const courtRooms = [...new Set(caseListData.map(item => parseInt(item.courtRoom, 10)))]
     .sort((a, b) => a - b)
@@ -10,25 +14,18 @@ module.exports = (caseListData, selectedFilters) => {
       return item && { label: item.toString(), value: ('0' + item.toString()).slice(-2) }
     })
 
-  const caseListFilters = [{
-    id: 'probationStatus',
-    label: 'Probation status',
-    items: probationStatuses || []
-  }, {
-    id: 'courtRoom',
-    label: 'Courtroom',
-    items: courtRooms || []
-  }, {
-    id: 'session',
-    label: 'Session',
-    items: [{
-      value: 'MORNING',
-      label: 'Morning'
-    }, {
-      value: 'AFTERNOON',
-      label: 'Afternoon'
-    }]
-  }]
+  const availableSessions = [...new Set(caseListData.map(item => item.session))]
+  const sessions = []
+  const sessionOrder = ['MORNING', 'AFTERNOON']
+  sessionOrder.forEach(session => {
+    if (availableSessions.includes(session)) {
+      sessions.push({ label: session[0] + session.toLowerCase().slice(1), value: session })
+    }
+  })
+
+  const caseListFilters = [{ id: 'probationStatus', label: 'Probation status', items: probationStatuses },
+    { id: 'courtRoom', label: 'Courtroom', items: courtRooms },
+    { id: 'session', label: 'Session', items: sessions }]
 
   // Ensure selected filters are type Array
   if (selectedFilters) {
