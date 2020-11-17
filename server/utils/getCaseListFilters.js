@@ -1,7 +1,7 @@
 module.exports = (caseListData, selectedFilters) => {
   const availableProbationStatuses = [...new Set(caseListData.map(item => item.probationStatus))]
   const probationStatuses = []
-  const statusOrder = ['Current', 'Previously known', 'Possible nDelius record', 'No record']
+  const statusOrder = ['Current', 'Previously known', 'No record']
   statusOrder.forEach(status => {
     if (availableProbationStatuses.includes(status)) {
       probationStatuses.push({ label: status, value: status })
