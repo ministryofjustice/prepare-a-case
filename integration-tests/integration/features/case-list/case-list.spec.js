@@ -1,32 +1,21 @@
 /* global cy */
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
-import World from '../../world/World'
 
-const world = new World('caseList')
-
-And('I am viewing the {string} case list', $string => {
-  world.scenario = $string
+And('I should see the caption with the court name {string}', $string => {
+  cy.get('.qa-court-name').contains($string)
 })
 
-When('I navigate to the court list for the chosen day', () => {
-  cy.visit(world.data.route)
+And('I should see the current day as {string}', $string => {
+  cy.get('.qa-case-list-day').eq(0).contains($string)
 })
 
-And('I should see the caption with the relevant court', () => {
-  cy.get('.qa-court-name').contains(world.data.court)
+And('I should see day navigation with {string}', $string => {
+  cy.get('.pac-pagination-link--text').eq(0).contains($string)
 })
 
-And('I should see sub navigation with default dates', () => {
-  cy.get('.qa-case-list-day').eq(0).contains('Today')
-  cy.get('.pac-pagination-link--text').eq(0).contains('Next day')
-})
-
-And('I should see that {int} {string} have possible nDelius {string}', (num, defendant, record) => {
-  const need = num === 1 ? 'needs' : 'need'
-  const match = num === 1 ? 'matches' : 'match'
+And('I should see the matching inset text {string}', $string => {
   cy.get('.pac-inset-text').within(() => {
-    cy.get('.govuk-link').contains(`Review ${defendant} with possible nDelius ${record}`).should('exist')
-    cy.get('.govuk-body').contains(`${num} ${defendant} partially ${match} existing ${record} and ${need} review.`).should('exist')
+    cy.get('.govuk-body').contains($string).should('exist')
   })
 })
 
@@ -34,76 +23,16 @@ And('I should not see that any defendants have possible nDelius records', () => 
   cy.get('.pac-inset-text').should('not.exist')
 })
 
-And('I should see the case list table with headings', $data => {
-  function cellCheck ($row, $col, $text) {
-    cy.get('.govuk-table__body > .govuk-table__row').eq($row).within(() => {
-      if ($text.indexOf('*') === 0) {
-        cy.get('.govuk-table__cell').eq($col).within(() => {
-          cy.get('li').contains($text.substring(1))
-        })
-      } else {
-        cy.get('.govuk-table__cell').eq($col).contains($text)
-        cy.get('.govuk-table__cell').eq($col).within(() => {
-          cy.get('li').should('not.exist')
-        })
-      }
-    })
-  }
-
-  function flagCheck ($row, $col, $flag) {
-    cy.get('.govuk-table__body > .govuk-table__row').eq($row).within(() => {
-      cy.get('.govuk-table__cell').eq($col).within(() => {
-        cy.get('.pac-badge').contains($flag).should('exist')
-      })
-    })
-  }
-
-  $data.raw().flat().forEach((text, index) => {
-    cy.get('.govuk-table__head > .govuk-table__row').within(() => {
-      cy.get('.govuk-table__header').eq(index).contains(text)
-    })
-  })
-
-  world.data.list.forEach(($item, $index) => {
-    cellCheck($index, 0, $item.defendant)
-    if ($item.probationStatus) {
-      cellCheck($index, 1, $item.probationStatus)
-    }
-    if ($item.terminationDate) {
-      cellCheck($index, 1, $item.terminationDate)
-    }
-    if ($item.numberOfPossibleMatches > 0) {
-      flagCheck($index, 1, 'Possible nDelius Record')
-    }
-    if ($item.breach) {
-      flagCheck($index, 1, 'Breach')
-    }
-    if ($item.sso) {
-      flagCheck($index, 1, 'Sso')
-    }
-    cellCheck($index, 2, $item.offence)
-    cellCheck($index, 3, $item.listing)
-    cellCheck($index, 4, $item.session)
-    cellCheck($index, 5, $item.court)
-    if ($item.caseNo) {
-      cellCheck($index, 6, $item.caseNo)
-    }
-  })
-})
-
-And('The defendant names should be links', () => {
-  world.data.list.forEach(({ defendant }, $index) => {
-    cy.get('.pac-defendant-link').eq($index).contains(defendant)
-  })
-})
-
 And('I should see a tab with text {string}', $string => {
   cy.get('.govuk-tabs__tab').contains($string)
 })
 
-And('I should see a timestamp of the most recent Libra data', () => {
-  cy.get('.pac-last-updated-stamp').contains('List updated: Today at 08:30am')
-  cy.get('.pac-next-update-stamp').contains('No further updates scheduled today')
+And('I should see the last updated as {string}', $string => {
+  cy.get('.pac-last-updated-stamp').contains($string)
+})
+
+And('I should see the next update as {string}', $string => {
+  cy.get('.pac-next-update-stamp').contains($string)
 })
 
 And('I should see pagination text {string}', $string => {

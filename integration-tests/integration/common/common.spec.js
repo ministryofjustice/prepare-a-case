@@ -21,11 +21,7 @@ When('I navigate to the {string} route', $route => {
 })
 
 When('I navigate to the {string} route for today', $route => {
-  cy.visit(`/B14LO00/${$route}${moment().format('YYYY-MM-DD')}`)
-})
-
-When('I view the court list', () => {
-  cy.visit('/B14LO00/cases')
+  cy.visit(`/B14LO00/${$route}/${moment().format('YYYY-MM-DD')}`)
 })
 
 Then('I should be on the {string} page', $title => {
@@ -62,7 +58,9 @@ And('I should see the following level 3 headings', $data => {
 
 And('I should see the following table headings', $data => {
   $data.raw()[0].forEach((text, index) => {
-    cy.get('.govuk-table__header').eq(index).contains(text)
+    cy.get('.govuk-table__head > .govuk-table__row').within(() => {
+      cy.get('.govuk-table__header').eq(index).contains(text)
+    })
   })
 })
 
@@ -70,6 +68,16 @@ And('I should see the following table {int} headings', ($index, $data) => {
   cy.get('.govuk-table').eq($index - 1).within(() => {
     $data.raw()[0].forEach((text, index) => {
       cy.get('.govuk-table__header').eq(index).contains(text)
+    })
+  })
+})
+
+And('I should see the following table rows', $data => {
+  $data.raw().forEach((row, index) => {
+    cy.get('.govuk-table__body > .govuk-table__row').eq(index).within(() => {
+      row.forEach((text, colIndex) => {
+        cy.get('.govuk-table__cell').eq(colIndex).contains(text)
+      })
     })
   })
 })

@@ -5,25 +5,37 @@ Feature: Case list
 
   Scenario: View the case list with data containing 207 cases for the given day
     Given I am an authenticated user
-    When I navigate to the "cases" route
+    When I navigate to the "cases" route for today
     Then I should be on the "Cases" page
-    And I am viewing the "unfilteredPage1" case list
 
     And I should see the heading "Cases"
 
-    And I should see the caption with the relevant court
-    And I should see sub navigation with default dates
-    And I should see a timestamp of the most recent Libra data
-    And I should see that 2 "defendants" have possible nDelius "records"
-    And I should see the case list table with headings
-      | Defendant | Probation status | Offence | Listing | Session | Court |
+    And I should see the caption with the court name "Sheffield Magistrates' Court"
+    And I should see the current day as "Today"
+    And I should see day navigation with "Next day"
 
-    And The defendant names should be links
+    And I should see link "Review defendants with possible nDelius records" with href "/B14LO00/match/bulk/"
+    And I should see the matching inset text "2 defendants partially match existing records and need review"
 
     And I should see a tab with text "Case list"
     And I should see a tab with text "Recently added (4)"
     And I should see a tab with text "Removed cases (1)"
+
+    And I should see the last updated as "List updated: Today at 08:30am"
+    And I should see the next update as "No further updates scheduled today"
+
     And I should see a count of "207" cases
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers     | No record               | Attempt theft from the person of another | 1st | Morning | 10 |
+      | Mann Carroll   | No record               | Assault by beating                       | 3rd | Morning | 2  |
+
+    And I should see link "Kara Ayers" with href "/B14LO00/case/8678951874/summary"
+    And I should see link "Mann Carroll" with href "/B14LO00/case/7483843110/summary"
+
     And I should see pagination
     And I should not see pagination link "Previous"
     And I should not see pagination link "1"
