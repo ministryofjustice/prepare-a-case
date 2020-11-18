@@ -1,5 +1,5 @@
 /* global cy */
-import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
+import { And, When } from 'cypress-cucumber-preprocessor/steps'
 
 And('I should see the caption with the court name {string}', $string => {
   cy.get('.qa-court-name').contains($string)
@@ -55,8 +55,8 @@ And('I should see pagination page {string} highlighted', $string => {
   cy.get('.moj-pagination__item--active').contains($string).should('exist')
 })
 
-And('I should see a count of {string} cases', $string => {
-  cy.get('.govuk-heading-m').contains($string).should('exist')
+And('I should see a count of {string}', $string => {
+  cy.get('.govuk-heading-m').contains(`${$string}`).should('exist')
 })
 
 And('I should see medium heading with text {string}', $string => {
@@ -77,40 +77,6 @@ And('I should not see filters', () => {
 
 And('I click pagination link {string}', $string => {
   cy.get('.moj-pagination__link').contains($string).click()
-})
-
-And('I should see the first defendant on the {string} list', $type => {
-  cy.get('.govuk-table__body > .govuk-table__row').eq(0).within(() => {
-    cy.get('.govuk-table__cell').eq(0).contains(world.data[$type].name)
-  })
-})
-
-And('I should only see a list of current defendants', $type => {
-  cy.get('.govuk-table__body > .govuk-table__row').each($el => {
-    cy.wrap($el).within(() => {
-      cy.get('.govuk-table__cell').eq(1).contains('Current')
-    })
-  })
-})
-
-And('I should only see a list of cases in court room 1', $type => {
-  cy.get('.govuk-table__body > .govuk-table__row').each($el => {
-    cy.wrap($el).within(() => {
-      cy.get('.govuk-table__cell').eq(5).contains('1')
-    })
-  })
-})
-
-And('I should only see a list of cases in the afternoon session', $type => {
-  cy.get('.govuk-table__body > .govuk-table__row').each($el => {
-    cy.wrap($el).within(() => {
-      cy.get('.govuk-table__cell').eq(4).contains('Afternoon')
-    })
-  })
-})
-
-Then('I should not see the defendant on the {string} list', $type => {
-  cy.get('.govuk-table__body').contains('td', world.data[$type].name).should('not.exist')
 })
 
 When('I click the {string} filter button', $string => {

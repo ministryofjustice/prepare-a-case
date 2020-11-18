@@ -24,14 +24,14 @@ Feature: Case list
     And I should see the last updated as "List updated: Today at 08:30am"
     And I should see the next update as "No further updates scheduled today"
 
-    And I should see a count of "207" cases
+    And I should see a count of "207 cases"
 
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
     And I should see the following table rows
-      | Kara Ayers     | No record               | Attempt theft from the person of another | 1st | Morning | 10 |
-      | Mann Carroll   | No record               | Assault by beating                       | 3rd | Morning | 2  |
+      | Kara Ayers   | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+      | Mann Carroll | No record | Assault by beating                       | 3rd | Morning | 2  |
 
     And I should see link "Kara Ayers" with href "/B14LO00/case/8678951874/summary"
     And I should see link "Mann Carroll" with href "/B14LO00/case/7483843110/summary"
@@ -48,23 +48,40 @@ Feature: Case list
 
   Scenario: View the case list with data containing 207 cases for the given day and navigate to page 2
     Given I am an authenticated user
-    And I am viewing the "unfilteredPage2" case list
+    When I navigate to the "cases" route for today
 
-    When I navigate to the "cases" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
-    And I click pagination link "2"
 
-    Then I should see the caption with the relevant court
-    And I should see sub navigation with default dates
-    And I should see a timestamp of the most recent Libra data
-    And I should see that 2 "defendants" have possible nDelius "records"
-    And I should see the case list table with headings
+    # Repeat some tests to ensure UI is consistent on subsequent pages
+    And I should see the caption with the court name "Sheffield Magistrates' Court"
+    And I should see the current day as "Today"
+    And I should see day navigation with "Next day"
+
+    And I should see link "Review defendants with possible nDelius records" with href "/B14LO00/match/bulk/"
+    And I should see the matching inset text "2 defendants partially match existing records and need review"
+
+    And I should see a tab with text "Case list"
+    And I should see a tab with text "Recently added (4)"
+    And I should see a tab with text "Removed cases (1)"
+
+    And I should see the last updated as "List updated: Today at 08:30am"
+    And I should see the next update as "No further updates scheduled today"
+
+    And I should see a count of "207 cases"
+
+    When I click pagination link "2"
+
+    Then I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
-    And The defendant names should be links
+    And I should see the following table rows
+      | Robert Hardin | No record | Attempt theft from the person of another | 3rd | Morning | 3 |
+      | Vance Landry  | No record | Theft from the person of another         | 3rd | Morning | 3 |
 
-    And I should see a count of "207" cases
+    And I should see link "Robert Hardin" with href "/B14LO00/case/3698624753/summary"
+    And I should see link "Vance Landry" with href "/B14LO00/case/8339335977/summary"
+
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=1"
     And I should see pagination link "1" with href "?page=1"
@@ -79,21 +96,22 @@ Feature: Case list
 
   Scenario: View the case list with data containing 207 cases for the given day and navigate to page 3
     Given I am an authenticated user
-    And I am viewing the "unfilteredPage3" case list
+    When I navigate to the "cases" route for today
 
-    When I navigate to the "cases" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
-    And I click pagination link "3"
 
-    Then I should see the caption with the relevant court
-    And I should see sub navigation with default dates
-    And I should see a timestamp of the most recent Libra data
-    And I should see that 2 "defendants" have possible nDelius "records"
-    And I should see the case list table with headings
+    When I click pagination link "3"
+
+    Then I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
-    And The defendant names should be links
+    And I should see the following table rows
+      | Amanda McKay   | Current   | Theft from the person of another         | 3rd | Morning | 1 |
+      | Perry Delacruz | No record | Attempt theft from the person of another | 1st | Morning | 1 |
+
+    And I should see link "Amanda McKay" with href "/B14LO00/case/7259057874/summary"
+    And I should see link "Perry Delacruz" with href "/B14LO00/case/4956910657/summary"
 
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=2"
@@ -109,23 +127,23 @@ Feature: Case list
 
   Scenario: View the case list with data containing 207 cases for the given day and navigate to page 5
     Given I am an authenticated user
-    And I am viewing the "unfilteredPage5" case list
+    When I navigate to the "cases" route for today
 
-    When I navigate to the "cases" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
-    And I click pagination link "5"
 
-    Then I should see the caption with the relevant court
-    And I should see sub navigation with default dates
-    And I should see a timestamp of the most recent Libra data
-    And I should see that 2 "defendants" have possible nDelius "records"
-    And I should see the case list table with headings
+    When I click pagination link "5"
+
+    Then I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
-    And The defendant names should be links
+    And I should see the following table rows
+      | Leticia Santana | Previously known | Assault by beating                       | 3rd | Morning | 8 |
+      | Maribel Camacho | Previously known | Attempt theft from the person of another | 1st | Morning | 6 |
 
-    And I should see a count of "207" cases
+    And I should see link "Leticia Santana" with href "/B14LO00/case/198802204/summary"
+    And I should see link "Maribel Camacho" with href "/B14LO00/case/5622691303/summary"
+
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=4"
     And I should not see pagination link "1"
@@ -146,26 +164,26 @@ Feature: Case list
 
   Scenario: View the case list with data containing 207 cases for the given day and navigate to page 11
     Given I am an authenticated user
-    And I am viewing the "unfilteredPage11" case list
+    When I navigate to the "cases" route for today
 
-    When I navigate to the "cases" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
-    And I click pagination link "5"
+
+    When I click pagination link "5"
     And I click pagination link "7"
     And I click pagination link "9"
     And I click pagination link "11"
 
-    Then I should see the caption with the relevant court
-    And I should see sub navigation with default dates
-    And I should see a timestamp of the most recent Libra data
-    And I should see that 2 "defendants" have possible nDelius "records"
-    And I should see the case list table with headings
+    Then I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
-    And The defendant names should be links
+    And I should see the following table rows
+      | Luisa Alston      | No record        | Theft from a shop                | 3rd | Afternoon | 3 |
+      | Macdonald Ellison | Previously known | Theft from the person of another | 3rd | Afternoon | 4 |
 
-    And I should see a count of "207" cases
+    And I should see link "Luisa Alston" with href "/B14LO00/case/8618449819/summary"
+    And I should see link "Macdonald Ellison" with href "/B14LO00/case/5935205489/summary"
+
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=10"
     And I should see pagination link "7" with href "?page=7"
@@ -180,68 +198,95 @@ Feature: Case list
 
   Scenario: View the recently added cases on the case list
     Given I am an authenticated user
-    When I navigate to the "cases" route
-    And I am viewing the "addedCasesList" case list
+    When I navigate to the "cases" route for today
     Then I should be on the "Cases" page
+
     When I click the "Recently added (4)" link
 
-    And I should see medium heading with text "4 cases added to today's case list at 08:30am"
-    And I should see the case list table with headings
+    Then I should see medium heading with text "4 cases added to today's case list at 08:30am"
+
+    And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Sara Ortega   | Previously known | Assault by beating | 3rd | Morning | 3 |
+      | Obrien McCall | No record        | Theft from a shop  | 2nd | Morning | 8 |
+
+    And I should see link "Sara Ortega" with href "/B14LO00/case/2980462628/summary"
+    And I should see link "Obrien McCall" with href "/B14LO00/case/649174512/summary"
+
     And I should not see pagination
     And I should not see filters
     And There should be no a11y violations
 
+    # Test state held in session
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
-    And I should see a count of "4" cases
+    And I should see medium heading with text "4 cases added to today's case list at 08:30am"
 
   Scenario: View the removed cases on the case list
     Given I am an authenticated user
-    When I navigate to the "cases" route
-    And I am viewing the "removedCasesList" case list
+    When I navigate to the "cases" route for today
     Then I should be on the "Cases" page
+
     When I click the "Removed cases (1)" link
 
-    And I should see medium heading with text "1 case removed from today's case list at 08:30am"
-    And I should see the case list table with headings
+    Then I should see medium heading with text "1 case removed from today's case list at 08:30am"
+
+    And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court | Libra case number |
+
+    And I should see the following table rows
+      | Geoff McTaggart | No record | Assault by beating | 3rd | Afternoon | 1 | 7483843114 |
+
+    And I should see link "Geoff McTaggart" with href "/B14LO00/case/7483843114/summary"
+
     And I should not see pagination
     And I should not see filters
     And There should be no a11y violations
 
+    # Test state held in session
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
-    And I should see a count of "1" cases
+    And I should see medium heading with text "1 case removed from today's case list at 08:30am"
 
   Scenario: View the case list with data containing 5 cases for the given day
     Given I am an authenticated user
-    And I am viewing the "unfilteredShort" case list
 
-    When I navigate to the court list for the chosen day
+    When I navigate to the "cases/2020-01-02" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
+    And I should see the current day as "Thursday 2 January"
 
-    And I should see the caption with the relevant court
+    And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should not see that any defendants have possible nDelius records
-    And I should see the case list table with headings
+
+    And I should see a count of "5 cases"
+
+    And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
-    And The defendant names should be links
+    And I should see the following table rows
+      | Gill Arnold    | Current          | Theft from the person of another | 3rd | Morning | 1 |
+      | Cornelia McCoy | Previously known | Assault by beating               | 2nd | Morning | 1 |
 
-    And I should see a count of "5" cases
+    And I should see link "Gill Arnold" with href "/B14LO00/case/1474726180/summary"
+    And I should see link "Cornelia McCoy" with href "/B14LO00/case/4071719588/summary"
+
     And I should not see pagination
     And There should be no a11y violations
 
   Scenario: View the case list with no data for the given day
     Given I am an authenticated user
-    And I am viewing the "empty" case list
 
-    When I navigate to the court list for the chosen day
-
+    When I navigate to the "cases/2020-01-01" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
-    And I should see the caption with the relevant court
+    And I should see the current day as "Wednesday 1 January"
+
+    And I should see the caption with the court name "Sheffield Magistrates' Court"
+    And I should not see that any defendants have possible nDelius records
+
     And I should not see the table list
     And I should see the body text "No case data available for this day."
     And I should not see pagination
@@ -249,58 +294,128 @@ Feature: Case list
 
   Scenario: A user wants to filter the list to show only Current offenders and quickly clear that selection
     Given I am an authenticated user
-    And I am viewing the "probationStatusFiltered" case list
+    When I navigate to the "cases" route for today
+    Then I should be on the "Cases" page
 
-    When I view the court list
-    Then I should see the first defendant on the "unfiltered" list
+    And I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
     When I click the "Probation status" filter button
     And I select the "Current" filter
     And I click the "Apply filters" button
-    Then I should not see the defendant on the "unfiltered" list
-    And I should see the first defendant on the "filtered" list
-    And I should only see a list of current defendants
+
+    Then I should see a count of "66 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Lenore Marquez | Current | Attempt theft from the person of another | 2nd | Morning | 6 |
+
     When I click the clear "Current" filter tag
-    Then I should see the first defendant on the "unfiltered" list
+
+    Then I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
     And There should be no a11y violations
 
   Scenario: A user wants to filter the list to show only court room 1 and quickly clear that selection
     Given I am an authenticated user
-    And I am viewing the "courtroomFiltered" case list
+    When I navigate to the "cases" route for today
+    Then I should be on the "Cases" page
 
-    When I view the court list
-    Then I should see the first defendant on the "unfiltered" list
+    And I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
     When I click the "Courtroom" filter button
     And I select the "01" filter
     And I click the "Apply filters" button
-    Then I should not see the defendant on the "unfiltered" list
-    And I should see the first defendant on the "filtered" list
-    And I should only see a list of cases in court room 1
+
+    Then I should see a count of "22 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Ruth Martin | Previously known | Theft from the person of another | 1st | Morning | 1 |
+
     When I click the clear "1" filter tag
-    Then I should see the first defendant on the "unfiltered" list
+
+    Then I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
     And There should be no a11y violations
 
   Scenario: A user wants to filter the list to show only the afternoon session and quickly clear that selection
     Given I am an authenticated user
-    And I am viewing the "sessionFiltered" case list
+    When I navigate to the "cases" route for today
+    Then I should be on the "Cases" page
 
-    When I view the court list
-    Then I should see the first defendant on the "unfiltered" list
+    And I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
     When I click the "Session" filter button
     And I select the "AFTERNOON" filter
     And I click the "Apply filters" button
-    Then I should not see the defendant on the "unfiltered" list
-    And I should see the first defendant on the "filtered" list
-    And I should only see a list of cases in the afternoon session
+
+    Then I should see a count of "6 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Charlene Hammond | Previously known | Theft from the person of another | 3rd | Afternoon | 10 |
+
     When I click the clear "Afternoon" filter tag
-    Then I should see the first defendant on the "unfiltered" list
+
+    Then I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
     And There should be no a11y violations
 
   Scenario: A user wants to filter the list to show only Current offenders in courtroom 1 during the afternoon session and quickly clear the selections
     Given I am an authenticated user
-    And I am viewing the "fullFiltered" case list
+    When I navigate to the "cases" route for today
+    Then I should be on the "Cases" page
 
-    When I view the court list
-    Then I should see the first defendant on the "unfiltered" list
+    And I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
     When I click the "Probation status" filter button
     And I select the "Current" filter
     And I click the "Courtroom" filter button
@@ -308,21 +423,40 @@ Feature: Case list
     And I click the "Session" filter button
     And I select the "AFTERNOON" filter
     And I click the "Apply filters" button
-    Then I should not see the defendant on the "unfiltered" list
-    And I should see the first defendant on the "filtered" list
-    And I should only see a list of current defendants
-    And I should only see a list of cases in court room 1
-    And I should only see a list of cases in the afternoon session
+
+    Then I should see a count of "1 case"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Porter Salas | Current | Theft from the person of another | 2nd | Afternoon | 1 |
+
     When I click the "Clear all" link
-    Then I should see the first defendant on the "unfiltered" list
+
+    Then I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
     And There should be no a11y violations
 
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
-    And I am viewing the "fullFiltered" case list
+    When I navigate to the "cases" route for today
+    Then I should be on the "Cases" page
 
-    When I view the court list
-    Then I should see the first defendant on the "unfiltered" list
+    And I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
     When I click the "Probation status" filter button
     And I select the "Current" filter
     And I click the "Courtroom" filter button
@@ -330,6 +464,7 @@ Feature: Case list
     And I click the "Session" filter button
     And I select the "AFTERNOON" filter
     And I click the "Apply filters" button
-    Then I should see the text "0 cases" within element with class "govuk-heading-m"
+
+    And I should see a count of "0 cases"
     Then I should see the body text "There are no matching cases."
     And There should be no a11y violations
