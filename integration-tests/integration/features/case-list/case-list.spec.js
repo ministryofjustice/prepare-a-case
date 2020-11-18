@@ -1,10 +1,6 @@
 /* global cy */
 import { And, When } from 'cypress-cucumber-preprocessor/steps'
 
-And('I should see the caption with the court name {string}', $string => {
-  cy.get('.qa-court-name').contains($string)
-})
-
 And('I should see the current day as {string}', $string => {
   cy.get('.qa-case-list-day').eq(0).contains($string)
 })
