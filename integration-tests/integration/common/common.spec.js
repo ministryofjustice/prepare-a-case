@@ -62,9 +62,7 @@ And('I should see the following level 3 headings', $data => {
 
 And('I should see the following table headings', $data => {
   $data.raw()[0].forEach((text, index) => {
-    cy.get('.govuk-table__head > .govuk-table__row').within(() => {
-      cy.get('.govuk-table__header').eq(index).contains(text)
-    })
+    cy.get('.govuk-table__header').eq(index).contains(text)
   })
 })
 

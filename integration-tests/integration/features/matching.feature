@@ -5,7 +5,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: View the list of defendants with possible probation record matches for a given day in court
     Given I am an authenticated user
-    When I navigate to the "match/bulk/" route for today
+    When I navigate to the "match/bulk" route for today
     And I am using the "bulkList" match data
     Then I should be on the "Defendants with possible nDelius records" page
     And I should see the heading "Defendants with possible nDelius records"
@@ -17,7 +17,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: View the list of possible nDelius records
     Given I am an authenticated user
-    When I navigate to the "match/bulk/" route for today
+    When I navigate to the "match/bulk" route for today
     And I am using the "bulkList" match data
     Then I should be on the "Defendants with possible nDelius records" page
     And I should see the heading "Defendants with possible nDelius records"
@@ -40,7 +40,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Display an error message if the user does not select a radio button when confirming a match
     Given I am an authenticated user
-    When I navigate to the "match/bulk/" route for today
+    When I navigate to the "match/bulk" route for today
     And I am using the "bulkList" match data
     Then I should be on the "Defendants with possible nDelius records" page
     When I click the "Review records" link
@@ -51,7 +51,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Confirm defendant record match from bulk match list
     Given I am an authenticated user
-    When I navigate to the "match/bulk/" route for today
+    When I navigate to the "match/bulk" route for today
     And I am using the "bulkList" match data
     Then I should be on the "Defendants with possible nDelius records" page
     When I click the "Review records" link
@@ -77,7 +77,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Confirm no existing defendant record match from bulk list
     Given I am an authenticated user
-    When I navigate to the "match/bulk/" route for today
+    When I navigate to the "match/bulk" route for today
     And I am using the "bulkList" match data
     Then I should be on the "Defendants with possible nDelius records" page
     When I click the "Review records" link
@@ -102,7 +102,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Click the back button on matching screen when starting the journey at match from bulk list
     Given I am an authenticated user
-    When I navigate to the "match/bulk/" route for today
+    When I navigate to the "match/bulk" route for today
     And I am using the "bulkList" match data
     Then I should be on the "Defendants with possible nDelius records" page
     When I click the "Review records" link
@@ -113,7 +113,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Manually match a defendant and submit without entering a CRN
     Given I am an authenticated user
-    When I navigate to the "match/bulk/" route for today
+    When I navigate to the "match/bulk" route for today
     And I am using the "bulkList" match data
     Then I should be on the "Defendants with possible nDelius records" page
     When I click the "Review records" link
@@ -138,7 +138,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Manually match a defendant and submit with an invalid CRN
     Given I am an authenticated user
-    When I navigate to the "match/bulk/" route for today
+    When I navigate to the "match/bulk" route for today
     And I am using the "bulkList" match data
     Then I should be on the "Defendants with possible nDelius records" page
     When I click the "Review records" link
@@ -156,7 +156,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Manually match a defendant and submit with a valid but incorrect CRN
     Given I am an authenticated user
-    When I navigate to the "match/bulk/" route for today
+    When I navigate to the "match/bulk" route for today
     And I am using the "bulkList" match data
     Then I should be on the "Defendants with possible nDelius records" page
     When I click the "Review records" link
@@ -174,7 +174,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Manually match a defendant from the bulk list
     Given I am an authenticated user
-    When I navigate to the "match/bulk/" route for today
+    When I navigate to the "match/bulk" route for today
     And I am using the "bulkList" match data
     Then I should be on the "Defendants with possible nDelius records" page
     When I click the "Review records" link
