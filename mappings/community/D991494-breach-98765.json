@@ -18,7 +18,7 @@
       "team": "Enforcement hub - Sheffield and Rotherham",
       "officer": "Unallocated",
       "status": "Completed - Amended & Continued",
-      "notes": "Paragraph 1: Some information.\nParagraph 2: And some more.",
+      "notes": "Paragraph 1: Some information.\nParagraph 2: And some more.\nParagraph 3: And another\n\nParagraph 4: And another",
       "documents": [
         {
           "documentId": "98765",
