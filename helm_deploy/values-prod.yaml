@@ -32,3 +32,4 @@ whitelist:
   cloudplatform-live1-3: "35.177.252.54/32"
   ark-internet-1: "194.33.192.0/25"
   ark-internet-2: "194.33.196.0/25"
+  moj-official-aws-prod: "51.149.250.0/24"
