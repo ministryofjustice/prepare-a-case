@@ -24,10 +24,6 @@ And('I am looking at a current defendant', () => {
   world.scenario = 'currentDefendant'
 })
 
-And('I should see the caption with the relevant court', () => {
-  cy.get('.qa-court-name').contains(world.data.courtName)
-})
-
 And('I am looking at a current defendant with breach', () => {
   world.scenario = 'currentDefendantWithBreach'
 })
