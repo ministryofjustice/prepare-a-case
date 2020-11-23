@@ -3,7 +3,7 @@ module.exports = {
     defendantName: 'Felicia Villarreal',
     list: [
       {
-        name: 'Felicia Villarreal',
+        name: 'Felicia Consuela Villarreal',
         dob: '26 August 1971',
         address: '20 Main Street Shangri La, Leicester, Leicestershire, LE2 1BG',
         crn: 'V178657',
@@ -12,7 +12,7 @@ module.exports = {
         mostRecentEvent: '27 November 2017 - CJA Standard Determinate Custody (6 Months)'
       },
       {
-        name: 'Felecia Vilareel',
+        name: 'Felecia Conswela Vilareel',
         dob: '26 August 1969',
         address: 'Dunroamin, Leicestershire, LE2 3NA',
         crn: 'C178657',
