@@ -3,7 +3,7 @@ module.exports = {
     defendantName: 'Guadalupe Hess',
     list: [
       {
-        name: 'Guadalupe Hess',
+        name: 'Guadalupe Flowerlupe Paratroop Hess',
         dob: '18 February 1989',
         address: '43 Hunterfly Place, Birmingham, Birmingham, AD21 5DR',
         crn: 'V178657',
@@ -12,7 +12,7 @@ module.exports = {
         mostRecentEvent: '27 November 2017 - CJA Standard Determinate Custody (6 Months)'
       },
       {
-        name: 'Guadalupe Hess',
+        name: 'Guadalupe Paul Hess',
         dob: '18 February 1989',
         address: 'Dunroamin, Leicestershire, LE2 3NA',
         crn: 'C178657',
@@ -21,7 +21,7 @@ module.exports = {
         mostRecentEvent: '27 November 2017 - CJA Standard Determinate Custody (12 Months)'
       },
       {
-        name: 'Guadalupe Hess',
+        name: 'Guadalupe Flowerlupe Hess',
         dob: '18 February 1998',
         address: 'Dunroamin, Leicestershire, LE2 3NA',
         crn: 'B123456',

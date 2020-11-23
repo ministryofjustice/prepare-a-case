@@ -16,6 +16,11 @@
 
 {% endblock %}
 
+{% set defendantName = (data.name.forename1 +
+    (' ' + data.name.forename2 if data.name.forename2) +
+    (' ' + data.name.forename3 if data.name.forename3) +
+    ' ' + data.name.surname) if data.name else data.defendantName %}
+
 {% block content %}
 
     {% if session.serverError %}
@@ -64,7 +69,7 @@
                         <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">Name</th>
-                            <td class="govuk-table__cell">{{ data.defendantName | properCase }}</td>
+                            <td class="govuk-table__cell">{{ defendantName | properCase }}</td>
                         </tr>
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">DOB</th>
@@ -120,8 +125,8 @@
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header" style="width: 40%;">Name</th>
                                             <td class="govuk-table__cell">
-                                                {% set matchName = item.forename + ' ' + item.surname %}
-                                                {{ matchName | markMatches(data.defendantName) | safe }}
+                                                {% set matchName = item.forename + ' ' + (item.middleNames | join(' ') + ' ' if item.middleNames) + item.surname %}
+                                                {{ matchName | markMatches(defendantName) | safe }}
                                             </td>
                                         </tr>
                                         <tr class="govuk-table__row">

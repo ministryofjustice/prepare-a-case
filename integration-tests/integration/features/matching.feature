@@ -29,7 +29,7 @@ Feature: Matching defendants to nDelius records
     And I should see the legend "3 nDelius records found"
     And I should see the body text "Compare details and confirm the correct record for the defendant."
     And I should see the following matched text
-      | Guadalupe | Hess | 18 | February | 1989 | 43 | Hunterfly | Place | Birmingham | Birmingham | AD21 | 5DR |
+      | Guadalupe | Flowerlupe | Paratroop | Hess | 18 | February | 1989 | 43 | Hunterfly | Place | Birmingham | Birmingham | AD21 | 5DR |
     And I should see the following table headings
       | Name | DOB | Address |
     And I am using the "defendantOneRecords" match data
