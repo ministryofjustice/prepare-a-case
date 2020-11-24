@@ -3,9 +3,9 @@ import moment from 'moment'
 import 'cypress-axe'
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import { getMonthsAndDays } from '../../../../server/routes/middleware/defaults'
-import World from '../../world/World'
+// import World from '../../world/World'
 
-const world = new World('caseSummary')
+// const world = new World('caseSummary')
 const displayDateFormat = 'D MMM YYYY'
 
 And('I am looking at a not matched defendant', () => {
