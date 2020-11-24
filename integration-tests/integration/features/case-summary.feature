@@ -8,7 +8,7 @@ Feature: Case summary
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
-    And I should see the caption with the relevant court
+    And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the defendant name "Kara Ayers" link
     Then I should be on the "Case summary" page
     And I should see the heading has the defendant name "Kara Ayers"
@@ -183,7 +183,7 @@ Feature: Case summary
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
-    And I should see the caption with the relevant court
+    And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the defendant name "Webb Mitchell" link
     Then I should be on the "Case summary" page
     And I should see Back to cases link with href of case list date and page
