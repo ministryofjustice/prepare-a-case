@@ -1,11 +1,9 @@
 /* global Cypress */
-const { caseListTestData } = require('./data/caseList')
 const matchingData = require('./data/matching')
 
 export default class World {
   constructor (section) {
     this.testData = {
-      ...caseListTestData,
       ...matchingData
     }
     this.section = section || ''

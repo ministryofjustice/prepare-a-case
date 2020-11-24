@@ -6,8 +6,24 @@ import { getMonthsAndDays } from '../../../../server/routes/middleware/defaults'
 
 const displayDateFormat = 'D MMM YYYY'
 
-And('I should see the caption with the relevant court', () => {
-  cy.get('.qa-court-name').contains('Sheffield Magistrates\' Court')
+And('I am looking at a not matched defendant', () => {
+  world.scenario = 'notMatchedDefendant'
+})
+
+And('I am looking at a not known defendant', () => {
+  world.scenario = 'notKnownDefendant'
+})
+
+And('I am looking at a previously known defendant', () => {
+  world.scenario = 'previouslyKnownDefendant'
+})
+
+And('I am looking at a current defendant', () => {
+  world.scenario = 'currentDefendant'
+})
+
+And('I am looking at a current defendant with breach', () => {
+  world.scenario = 'currentDefendantWithBreach'
 })
 
 And('I should see Back to cases link with href of case list date', () => {

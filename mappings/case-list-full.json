@@ -192,7 +192,7 @@
           "caseId": "838597",
           "caseNo": "4172564047",
           "courtCode": "SHF",
-          "courtRoom": "01",
+          "courtRoom": "02",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "crn": null,
