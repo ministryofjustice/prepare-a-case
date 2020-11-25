@@ -1,4 +1,4 @@
-FROM node:12.18.4-alpine3.12
+FROM node:14.15.1-alpine3.12
 
 MAINTAINER MoJ Digital, Probation in Court <probation-in-court-team@digital.justice.gov.uk>
 ARG BUILD_NUMBER
@@ -10,6 +10,7 @@ RUN ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && echo "$TZ" > /etc/timezo
 ENV BUILD_NUMBER ${BUILD_NUMBER:-1_0_0}
 ENV GIT_REF ${GIT_REF:-dummy}
 
+RUN apk add g++ make python3
 RUN mkdir -p /app
 WORKDIR /app
 
