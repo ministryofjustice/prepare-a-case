@@ -4,7 +4,7 @@ const { caseSummaryTestData } = require('./data/caseSummary')
 export default class World {
   constructor (section) {
     this.testData = {
-      ...caseSummaryTestData,
+      ...caseSummaryTestData
     }
     this.section = section || ''
     this.scenario = ''
