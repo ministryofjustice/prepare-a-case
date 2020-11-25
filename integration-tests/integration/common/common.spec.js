@@ -88,6 +88,20 @@ And('I should see the following table rows', $data => {
   })
 })
 
+And('I should see the following table {int} rows', ($int, $data) => {
+  cy.get('.govuk-table').eq($int - 1).within(() => {
+    $data.raw().forEach((row, index) => {
+      cy.get('.govuk-table__body > .govuk-table__row').eq(index).within(() => {
+        row.forEach((text, colIndex) => {
+          if (text !== '') {
+            cy.get('.govuk-table__cell').eq(colIndex).contains(text)
+          }
+        })
+      })
+    })
+  })
+})
+
 And('I should logout', () => {
   cy.get('.moj-header__navigation-link').click()
 })
@@ -131,6 +145,10 @@ And('I should see the caption text {string}', $text => {
   cy.get('.govuk-caption-m').contains($text)
 })
 
+And('I should see link {string} in position {int} with href {string}', ($string, $int, $href) => {
+  cy.get('.govuk-link').eq($int - 1).contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+})
+
 And('I should see link {string} with href {string}', ($string, $href) => {
   cy.get('.govuk-link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
 })
@@ -163,6 +181,10 @@ And('I should not see a button with the label {string}', $string => {
 
 And('I should see the legend {string}', $string => {
   cy.get('legend').contains($string)
+})
+
+And('I should see the inset text {string}', $string => {
+  cy.get('.govuk-inset-text').contains($string)
 })
 
 And('I should see radio buttons with the following IDs', $data => {
