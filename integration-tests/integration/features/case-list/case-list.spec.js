@@ -55,10 +55,6 @@ And('I should see a count of {string}', $string => {
   cy.get('.govuk-heading-m').contains(`${$string}`).should('exist')
 })
 
-And('I should see medium heading with text {string}', $string => {
-  cy.get('.govuk-heading-m').contains($string).should('exist')
-})
-
 And('I should not see pagination link {string}', $string => {
   cy.get('.moj-pagination__link').contains($string).should('not.exist')
 })

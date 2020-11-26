@@ -10,7 +10,7 @@ Feature: Matching defendants to nDelius records
 
     And I should see the heading "Defendants with possible nDelius records"
 
-    And I should see the medium heading "2 defendants partially match with existing records."
+    And I should see medium heading with text "2 defendants partially match with existing records."
     And I should see the body text "Review and confirm the correct record for each defendant."
 
     And I should see the following table headings
