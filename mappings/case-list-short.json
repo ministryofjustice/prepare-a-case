@@ -2,7 +2,7 @@
   "id": "b70d8fbb-c11a-42b6-b623-b7c6bed53b26",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/court/([A-Z0-9]{7})/cases",
+    "urlPathPattern": "/court/([A-Z0-9]{5})/cases",
     "queryParameters": {
       "date": {
         "matches": "2020-01-02"

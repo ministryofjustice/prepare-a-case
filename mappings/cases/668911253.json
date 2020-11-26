@@ -2,7 +2,7 @@
   "id": "063b0555-688f-4a9f-b32d-7ac8b892554e",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/court/([A-Z0-9]{7})/case/668911253"
+    "urlPathPattern": "/court/([A-Z0-9]{5})/case/668911253"
   },
   "response": {
     "headers": {
