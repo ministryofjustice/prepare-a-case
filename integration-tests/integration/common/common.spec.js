@@ -3,6 +3,30 @@ import { Before, And, Given, Then, When } from 'cypress-cucumber-preprocessor/st
 import 'cypress-axe'
 import moment from 'moment'
 
+const displayDateFormat = 'D MMM YYYY'
+
+function correctDates ($string) {
+  if ($string.includes('$TODAY')) {
+    $string = $string.replace('$TODAY', moment().format('YYYY-MM-DD'))
+  }
+  if ($string.includes('$LONG_TODAY')) {
+    $string = $string.replace('$LONG_TODAY', moment().format('dddd D MMMM'))
+  }
+  if ($string.includes('$SIX_MONTHS_AGO')) {
+    $string = $string.replace('$SIX_MONTHS_AGO', moment().add(-6, 'months').format(displayDateFormat))
+  }
+  if ($string.includes('$SIX_MONTHS_TIME')) {
+    $string = $string.replace('$SIX_MONTHS_TIME', moment().add(6, 'months').format(displayDateFormat))
+  }
+  if ($string.includes('$FIVE_MONTHS_TIME')) {
+    $string = $string.replace('$FIVE_MONTHS_TIME', moment().add(5, 'months').format(displayDateFormat))
+  }
+  if ($string.includes('$END_TODAY')) {
+    $string = $string.replace('$END_TODAY', moment().format(displayDateFormat))
+  }
+  return $string
+}
+
 Before(() => {
   cy.task('stubLogin')
   cy.login()
@@ -28,16 +52,12 @@ And('I should see the caption with the court name {string}', $string => {
   cy.get('.qa-court-name').contains($string)
 })
 
-When('I view the court list', () => {
-  cy.visit('/B14LO00/cases')
-})
-
 Then('I should be on the {string} page', $title => {
   cy.get('title').contains(`${$title} - `)
 })
 
-And('I should see the medium heading {string}', $string => {
-  cy.get('.govuk-heading-m').contains($string)
+And('I should see medium heading with text {string}', $string => {
+  cy.get('.govuk-heading-m').contains($string).should('exist')
 })
 
 And('I should see the heading {string}', $title => {
@@ -120,11 +140,11 @@ And('There should be no a11y violations', () => {
 })
 
 And('I should see the body text {string}', $text => {
-  cy.get('.govuk-body').contains($text)
+  cy.get('.govuk-body').contains(correctDates($text))
 })
 
 And('I should see the text {string} within element with class {string}', ($text, $class) => {
-  cy.get(`.${$class}`).contains($text)
+  cy.get(`.${$class}`).contains(correctDates($text))
 })
 
 And('I should see the following elements with {string} class text', ($class, $data) => {
@@ -151,6 +171,10 @@ And('I should see link {string} in position {int} with href {string}', ($string,
 
 And('I should see link {string} with href {string}', ($string, $href) => {
   cy.get('.govuk-link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+})
+
+And('I should see back link {string} with href {string}', ($string, $href) => {
+  cy.get('.govuk-back-link').contains($string).should('exist').should('have.attr', 'href').and('include', correctDates($href))
 })
 
 And('I should see sub navigation with the following links', $data => {
