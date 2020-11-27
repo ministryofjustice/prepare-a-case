@@ -19,8 +19,8 @@ Feature: Matching defendants to nDelius records
       | Guadalupe Hess     | 3 | Review records |
       | Felicia Villarreal | 2 | Review records |
 
-    And I should see link "Review records" in position 1 with href "/B14LO00/match/defendant/3597035492"
-    And I should see link "Review records" in position 2 with href "/B14LO00/match/defendant/4172564047"
+    And I should see link "Review records" in position 1 with href "match/defendant/3597035492"
+    And I should see link "Review records" in position 2 with href "match/defendant/4172564047"
 
     And There should be no a11y violations
 
