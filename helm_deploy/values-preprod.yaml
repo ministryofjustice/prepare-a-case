@@ -19,8 +19,6 @@ env:
   COURT_CASE_SERVICE_URL: https://court-case-service-preprod.apps.live-1.cloud-platform.service.justice.gov.uk
   CASES_PER_PAGE: 20
   NOMIS_AUTH_URL: https://sign-in-preprod.hmpps.service.justice.gov.uk/auth
-  COURT_CODE: B10JQ00
-  COURT_NAME: "North Tyneside Magistrates' Court"
 
 whitelist:
   office: "217.33.148.210/32"
