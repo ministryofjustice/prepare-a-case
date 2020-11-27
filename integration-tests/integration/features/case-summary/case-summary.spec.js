@@ -3,348 +3,58 @@ import moment from 'moment'
 import 'cypress-axe'
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import { getMonthsAndDays } from '../../../../server/routes/middleware/defaults'
-import World from '../../world/World'
 
-const world = new World('caseSummary')
-const displayDateFormat = 'D MMM YYYY'
-
-And('I am looking at a not matched defendant', () => {
-  world.scenario = 'notMatchedDefendant'
+And('I should see the breach badge', () => {
+  cy.get('.moj-badge.moj-badge--black.pac-badge').contains('Breach').should('exist')
 })
 
-And('I am looking at a not known defendant', () => {
-  world.scenario = 'notKnownDefendant'
-})
-
-And('I am looking at a previously known defendant', () => {
-  world.scenario = 'previouslyKnownDefendant'
-})
-
-And('I am looking at a current defendant', () => {
-  world.scenario = 'currentDefendant'
-})
-
-And('I am looking at a current defendant with breach', () => {
-  world.scenario = 'currentDefendantWithBreach'
-})
-
-And('I should see Back to cases link with href of case list date', () => {
-  cy.get('.govuk-back-link').contains('Back to cases').should('exist').should('have.attr', 'href').and('include', `${moment().format('YYYY-MM-DD')}`)
-})
-
-And('I should see Back to cases link with href of case list date and page', () => {
-  cy.get('.govuk-back-link')
-    .contains('Back to cases')
-    .should('exist')
-    .should('have.attr', 'href')
-    .and('include', `${moment().format('YYYY-MM-DD')}`)
-    .and('include', 'page=1')
-})
-
-When('I navigate to the case summary route', () => {
-  cy.visit(`/B14LO/case/${world.data.caseNo}/summary`)
-})
-
-When('I navigate to the probation record route', () => {
-  cy.visit(`/B14LO/case/${world.data.caseNo}/record`)
-})
-
-When('I click the first {string} order link', $type => {
-  cy.get('.govuk-link').contains($type === 'current' ? world.data.currentOrderTitle : world.data.previousOrderTitle).eq(0).click()
-})
-
-When('I navigate to the current order which is currently on licence', $type => {
-  cy.visit(`/B14LO/case/${world.data.caseNo}/record/${world.data.onLicence.orderId}`)
-})
-
-And('I should see the correct licence header details', () => {
-  cy.get('.qa-start-title').contains('Post-release status')
-  cy.get('.qa-end-title').contains('Licence started')
-  cy.get('.qa-elapsed-title').contains('Licence ends')
-
-  cy.get('.qa-start-date').contains(world.data.onLicence.status)
-  cy.get('.qa-end-date').contains(moment().add(-6, 'months').format(displayDateFormat))
-  cy.get('.qa-elapsed-time').contains(moment().add(6, 'months').format(displayDateFormat))
-})
-
-When('I navigate to the current order which is currently on PSS', $type => {
-  cy.visit(`/B14LO/case/${world.data.caseNo}/record/${world.data.onPss.orderId}`)
-})
-
-And('I should see the correct PSS header details', () => {
-  cy.get('.qa-start-title').contains('Post-release status')
-  cy.get('.qa-end-title').contains('PSS started')
-  cy.get('.qa-elapsed-title').contains('PSS ends')
-
-  cy.get('.qa-start-date').contains(world.data.onPss.status)
-  cy.get('.qa-end-date').contains(moment().format(displayDateFormat))
-  cy.get('.qa-elapsed-time').contains(moment().add(5, 'months').format(displayDateFormat))
-})
-
-Then('I should see the offender current order count', () => {
-  cy.get('h2').contains(`Current orders (${world.data.currentOrderCount})`)
-})
-
-And('I should see link to the first current order', () => {
-  cy.get('.govuk-link').contains(world.data.currentOrderTitle).should('exist')
-    .should('have.attr', 'href')
-    .and('include', `record/${world.data.currentOrderId}`)
-
-  if (world.data.currentOrderBreach) {
-    cy.get('.moj-badge.moj-badge--black.pac-badge').contains('Breach').should('exist')
-  }
-})
-
-And('I should see the current order offence', () => {
-  cy.get('.govuk-body').contains(world.data.currentOrderOffence)
-})
-
-And('I should see the current order start date', () => {
-  const startDate = moment(world.data.currentOrderStartDate).format('DD MMMM YYYY')
-  cy.get('.govuk-hint').contains(`Started on ${startDate}`)
-})
-
-And('I should see the requirements for the first current order', () => {
-  cy.get('.qa-current-requirements-0').within(() => {
-    world.data.currentOrderRequirements.forEach(($requirement, $index) => {
-      cy.get('li').eq($index).contains($requirement)
-    })
-  })
-})
-
-And('I should see the licence conditions for the second current order', () => {
-  cy.get('.qa-current-licence-conditions-1').within(() => {
-    world.data.currentLicenceConditions.forEach(($requirement, $index) => {
-      cy.get('li').eq($index).contains($requirement)
-    })
-  })
-})
-
-And('I should see the pss requirements for the third current order', () => {
-  cy.get('.qa-current-pss-requirements-2').within(() => {
-    world.data.currentPssRequirements.forEach(($requirement, $index) => {
-      cy.get('li').eq($index).contains($requirement)
-    })
-  })
-})
-
-And('I should see the offender previous order count', () => {
-  cy.get('h2').contains(`Previous orders (${world.data.previousOrderCount})`)
-})
-
-And('I should see link to the first previous order', ($string, $href) => {
-  cy.get('.qa-previous-order-1').within(() => {
-    cy.get('.govuk-link').contains(world.data.previousOrderTitle).should('exist')
-      .should('have.attr', 'href')
-      .and('include', `record/${world.data.previousOrderId}`)
-  })
-})
-
-And('I should see a limited number of previous orders', () => {
+And('I should see {int} previous orders', $int => {
   cy.get('#previousOrders').within(() => {
-    cy.get('tr').should('have.length', 5)
+    cy.get('tr').should('have.length', $int)
   })
 })
 
-And('I should see all previous orders', () => {
-  cy.get('#previousOrders').within(() => {
-    cy.get('tr').should('have.length', world.data.previousOrderCount)
-  })
-})
-
-And('I should see the previous order offence', () => {
-  cy.get('.qa-previous-order-1-offence').contains(world.data.previousOrderOffence)
-})
-
-And('I should see the previous order end date', () => {
-  cy.get('.qa-previous-order-1-end-date').contains(`Ended on ${moment(world.data.previousOrderEndDate, 'YYYY-MM-DD').format(displayDateFormat)}`)
-})
-
-And('I should see the unpaid work information', () => {
-  cy.get('.qa-upw-status').contains(world.data.unpaidWork.status)
-  cy.get('.qa-upw-ordered').contains(world.data.unpaidWork.offered)
-  cy.get('.qa-upw-worked').contains(world.data.unpaidWork.completed)
-
-  if (world.data.unpaidWork.appointmentsToDate) {
-    cy.get('.qa-upw-appointments').contains(world.data.unpaidWork.appointmentsToDate)
-    cy.get('.qa-upw-attended').contains(world.data.unpaidWork.attended)
-    cy.get('.qa-upw-acceptable').contains(world.data.unpaidWork.acceptableAbsences)
-    cy.get('.qa-upw-unacceptable').contains(world.data.unpaidWork.unacceptableAbsences)
-  } else {
-    cy.get('.qa-upw-appointments').should('not.exist')
-    cy.get('.qa-upw-attended').should('not.exist')
-    cy.get('.qa-upw-acceptable').should('not.exist')
-    cy.get('.qa-upw-unacceptable').should('not.exist')
-  }
-})
-
-And('I should see the offender manager details', () => {
-  const offenderManager = world.data.offenderManager
-  cy.get('.govuk-grid-column-one-third').within(() => {
-    if (offenderManager) {
-      cy.get('.govuk-body').contains(offenderManager)
-      cy.get('.govuk-hint').contains(`Allocated on ${world.data.offenderManagerDetails.allocated}`)
-    }
-  })
-})
-
-And('I should see the last pre-sentence report details', () => {
-  cy.get('.govuk-grid-column-one-third').within(() => {
-    cy.get('.govuk-heading-m').contains('Last pre-sentence report')
-    cy.get('.govuk-body').contains(world.data.preSentenceReportDetails.description)
-    cy.get('.govuk-hint').contains(world.data.preSentenceReportDetails.delivered)
-  })
-})
-
-And('I should see the last OASys assessment details', () => {
-  cy.get('.govuk-grid-column-one-third').within(() => {
-    cy.get('.govuk-heading-m').contains('Last OASys assessment')
-    cy.get('.govuk-body').contains(`OASys Assessment ${world.data.oasysAssessmentDetails.type}`)
-    cy.get('.govuk-hint').contains(`Completed on ${world.data.oasysAssessmentDetails.completed}`)
-  })
-})
-
-And('I should see the {string} summary table', ($position, $data) => {
-  $data.raw().forEach((row, index) => {
-    row.forEach((text, index2) => {
-      cy.get(`${$position === 'first' ? '.govuk-table' : '.govuk-table ~ .govuk-table'} > .govuk-table__body > .govuk-table__row`).within(() => {
-        cy.get(index2 % 2 === 0 ? '.govuk-table__header' : '.govuk-table__cell').eq(index).contains(text)
-      })
+And('I should see the following summary list', $data => {
+  cy.get('.govuk-summary-list').within(() => {
+    $data.raw().forEach((text, index) => {
+      cy.get(index % 2 === 0 ? '.govuk-summary-list__key' : '.govuk-summary-list__value').eq(index).contains(text[index % 2])
     })
   })
 })
 
-Then('I should see a summary list', ($data) => {
-  cy.get('.govuk-summary-list').should('exist')
+Then('I should see the following risk register tabs', $data => {
+  cy.get('.govuk-tabs').within(() => {
+    $data.raw().flat().forEach((text, index) => {
+      cy.get('.govuk-tabs__tab').eq(index).contains(text).should('exist')
+    })
+  })
 })
 
-Then('I click the defendant name link', () => {
-  cy.get('.govuk-link').contains(world.data.name).click()
+When('I click the {string} risk tab', $string => {
+  cy.get('.govuk-tabs').within(() => {
+    cy.get('.govuk-tabs__tab').contains($string).click()
+  })
 })
 
-Then('I click the active risk tab', () => {
-  cy.get('.pac-active').contains('Active').click()
+And('I should see the caption text {string}', $key => {
+  cy.get('.govuk-caption-m').contains($key)
 })
 
-Then('I click the inactive risk tab', () => {
-  cy.get('.pac-inactive').contains('Inactive').click()
-})
-
-Then('I should see the risk register table', () => {
-  cy.get('.govuk-tabs').should('exist')
-})
-
-Then('I should see the active registration count', () => {
-  cy.get('.govuk-tabs__tab').contains(world.data.activeCount)
-})
-
-Then('I should see the inactive registration count', () => {
-  cy.get('.govuk-tabs__tab').contains(world.data.inactiveCount)
-})
-
-Then('I should see the heading has the defendant name', () => {
-  cy.get('h1').contains(world.data.name)
-})
-
-And('I should see the body text {string} and the defendant {string}', ($label, $key) => {
-  let dataPoint = world.data[$key]
-  if ($key === 'dateOfBirth') {
-    dataPoint = moment(world.data[$key], 'YYYY-MM-DD').format('Do MMMM YYYY')
-  }
-  cy.get('.govuk-body').contains(`${$label} ${dataPoint}`)
-})
-
-And('I should see the body text with the defendant {string} in bold', $key => {
-  cy.get('.govuk-body').contains(world.data[$key]).should('exist').should('have.attr', 'class').and('include', 'govuk-!-font-weight-bold')
-})
-
-And('I should see the body text with the defendant {string}', $key => {
-  cy.get('.govuk-body').contains(world.data[$key])
-})
-
-And('I should see the caption text with the defendant {string}', $key => {
-  cy.get('.govuk-caption-m').contains(world.data[$key])
-})
-
-And('I should see the level 2 heading with the {string} order title', $type => {
-  cy.get('h2').contains($type === 'current' ? world.data.currentOrderTitle : world.data.previousOrderTitle)
-})
-
-And('I should see the correct start, end and elapsed time headings', () => {
-  cy.get('.qa-start-title').contains('Started')
-  cy.get('.qa-end-title').contains('Ends')
-  cy.get('.qa-elapsed-title').contains('Time elapsed')
-})
-
-And('I should see the correct start, ended and reason headings', () => {
-  cy.get('.qa-start-title').contains('Started')
-  cy.get('.qa-end-title').contains('Ended')
-  cy.get('.qa-elapsed-title').contains('Reason')
-})
-
-And('I should see the {string} order start and end dates', $type => {
-  cy.get('.qa-start-date').contains(moment($type === 'current' ? world.data.currentOrderStartDate : world.data.previousOrderStartDate).format(displayDateFormat))
-  cy.get('.qa-end-date').contains(moment($type === 'current' ? world.data.currentOrderEndDate : world.data.previousOrderEndDate).format(displayDateFormat))
-})
-
-And('I should see the correctly calculated elapsed time for the current order', $type => {
-  const tmpEndDate = world.data.currentOrderEndDate
-  const startDate = moment(world.data.currentOrderStartDate, 'YYYY-MM-DD')
-  const endDate = moment(tmpEndDate, 'YYYY-MM-DD').isAfter() ? moment() : moment(tmpEndDate, 'YYYY-MM-DD')
-  cy.get('.qa-elapsed-time').contains(getMonthsAndDays(startDate, endDate))
-})
-
-And('I should see the termination date of the previous order and the reason for terminating', $type => {
-  cy.get('.qa-elapsed-time').contains(world.data.previousOrderTerminationReason)
-})
-
-And('I should see the row with the key {string}', $title => {
-  cy.get('.govuk-summary-list__key').contains($title)
-})
-
-And('I should see the value with defendant {string}', $key => {
-  let dataPoint = world.data[$key]
-  if ($key === 'dateOfBirth') {
-    const age = moment().diff(moment(world.data[$key], 'YYYY-MM-DD'), 'years')
-    dataPoint = `${moment(world.data[$key], 'YYYY-MM-DD').format('D MMMM YYYY')} (${age} years old)`
-  }
-  cy.get('.govuk-summary-list__value').contains(dataPoint)
+And('I should see the correctly calculated elapsed time between {string} and {string}', ($start, $end) => {
+  cy.get('.qa-elapsed-time').contains(getMonthsAndDays(moment($start, 'YYYY-MM-DD'), moment($end, 'YYYY-MM-DD').isAfter() ? moment() : moment($end, 'YYYY-MM-DD')))
 })
 
 And('I should see a straight line divide', () => {
   cy.get('.pac-key-details-bar__divider').should('exist')
 })
 
-And('I should see court room, session and the correct listing', () => {
-  const date = moment().format('dddd D MMMM')
-  cy.get('.govuk-body').contains(`Court ${world.data.court}, ${world.data.session} session, ${date} (${world.data.listing} listing).`)
+When('I click the accordion {int} section button', $int => {
+  cy.get('.govuk-accordion__section-button').eq($int - 1).click()
 })
 
-And('I should see order breach information', () => {
-  cy.get('.qa-breaches').within(() => {
-    world.data.breaches.forEach(($item, $index) => {
-      cy.get('tr').eq($index).within(() => {
-        cy.get('td').eq(0).contains($item.description)
-        cy.get('td').eq(1).contains($item.status)
-        cy.get('td').eq(2).contains($item.statusDate)
-      })
-    })
-  })
-})
-
-When('I click the first charge accordion button', () => {
-  cy.get('.govuk-accordion__section-button').eq(0).click()
-})
-
-And('I should see the appointment attendance information', () => {
-  world.data.currentOrderAttendance.counts.forEach(($text, $index) => {
-    cy.get('.pac-dashboard-count').eq($index).contains($text)
-  })
-  world.data.currentOrderAttendance.headings.forEach($text => {
-    cy.get('h3').contains($text)
-  })
-  world.data.currentOrderAttendance.types.forEach($text => {
-    cy.get('.govuk-body').contains($text)
+And('I should see the following attendance counts', $data => {
+  $data.raw().flat().forEach((count, index) => {
+    cy.get('.pac-dashboard-count').eq(index).contains(count)
   })
 })
 
@@ -352,51 +62,12 @@ When('I click breach link {int}', $num => {
   cy.get(`.qa-breach-link-${$num}`).click()
 })
 
-Then('I should see the correct breach heading', () => {
-  cy.get('h2').contains(world.data.breaches[0].description).should('exist')
+And('I should see the breach banner with text {string}', $text => {
+  cy.get('.moj-banner__message').contains($text)
 })
 
-And('I should see the breach banner', () => {
-  const status = world.data.breachDetails.status || ''
-  if (status.includes('Warrant') || status.includes('Summons')) {
-    cy.get('.moj-banner__message').contains('This breach is ready to prosecute')
-  } else if (status.includes('Proven') || status.includes('Withdrawn') || status.includes('Completed')) {
-    cy.get('.moj-banner__message').should('not.exist')
-  } else {
-    cy.get('.moj-banner__message').contains('This breach is not ready to prosecute')
-  }
-})
-
-And('I should see the conviction breach details', () => {
-  const keys = ['Order', 'Sentenced at', 'Breach incident', 'Provider', 'Team', 'Officer', 'Status', 'Status date']
-  const breachDetails = world.data.breachDetails
-  cy.get('.govuk-summary-list').within(() => {
-    keys.forEach(($key, $index) => {
-      cy.get('dt').eq($index).contains($key)
-    })
-    cy.get('dd').eq(0).contains(breachDetails.order)
-    cy.get('dd').eq(1).contains(breachDetails.sentencingCourtName)
-    cy.get('dd').eq(2).contains(breachDetails.incidentDate)
-    cy.get('dd').eq(3).contains(breachDetails.provider)
-    cy.get('dd').eq(4).contains(breachDetails.team)
-    cy.get('dd').eq(5).contains(breachDetails.officer)
-    cy.get('dd').eq(6).contains(breachDetails.status)
-    cy.get('dd').eq(7).contains(breachDetails.statusDate)
-  })
-})
-
-And('I should see the breach document attachments', () => {
-  cy.get('.govuk-table__header').eq(0).contains('File')
-  cy.get('.govuk-table__header').eq(1).contains('Added by')
-  cy.get('.govuk-table__header').eq(2).contains('Date added')
-
-  cy.get('.govuk-table__cell').within(() => {
-    cy.get('a').contains(world.data.breachDetails.attachments.file).should('exist')
-      .should('have.attr', 'href')
-      .and('include', `/attachments/${world.data.crn}/documents/${world.data.breachDetails.attachments.documentId}/${world.data.breachDetails.attachments.file}`)
-  })
-  cy.get('.govuk-table__cell').eq(1).contains(world.data.breachDetails.attachments.addedBy)
-  cy.get('.govuk-table__cell').eq(2).contains(world.data.breachDetails.attachments.dateAdded)
+And('I should not see the breach banner message', () => {
+  cy.get('.moj-banner__message').should('not.exist')
 })
 
 And('If the total number of charges is greater than one', () => {
@@ -404,21 +75,13 @@ And('If the total number of charges is greater than one', () => {
 })
 
 Then('I should see the following list of charges in an accordion component', $data => {
-  $data.raw()[0].forEach((text, index) => {
-    cy.get('.govuk-accordion__section-button').eq(index).contains(text)
+  cy.get('.govuk-accordion').within(() => {
+    $data.raw().flat().forEach((text, index) => {
+      cy.get('.govuk-accordion__section-button').eq(index).contains(text)
+    })
   })
 })
 
-Then('I should see a list of charges in an accordion component', () => {
-  cy.get('.govuk-accordion').should('exist')
-})
-
-Then('the accordion section should expand', () => {
-  cy.get('.govuk-accordion__section-content').should('exist')
-})
-
-And('I should see the following body text', $data => {
-  $data.raw()[0].forEach((text, index) => {
-    cy.get('.govuk-accordion__section-content').eq(index).contains(world.data.court)
-  })
+Then('The accordion section {int} should expand', $int => {
+  cy.get('.govuk-accordion__section-content').eq($int - 1).should('exist')
 })
