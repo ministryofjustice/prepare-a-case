@@ -130,9 +130,9 @@
     <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-0">
         <span class="govuk-caption-xl">Cases</span>
         {% if params.date === today %}
-        {{ moment(params.date).format('dddd D MMMM') }} <span class="pac-key-details-bar__parenthesisInfo"> {{ '(Today)' }}</span>
+            {{ currentDate.format(dateFormat) }} <span class="pac-secondary-text">(Today)</span>
         {% elseif params.date === tomorrow and not isSunday %}
-            {{ moment(params.date).format('dddd D MMMM') }} <span class="pac-key-details-bar__parenthesisInfo"> {{ '(Tomorrow)' }}</span>
+            {{ currentDate.format(dateFormat) }} <span class="pac-secondary-text">(Tomorrow)</span>
         {% else %}
             {{ currentDate.format(dateFormat) }}
         {% endif %}
