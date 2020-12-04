@@ -95,6 +95,7 @@
 {% set dateFormat = 'dddd D MMMM' %}
 {% set timeStampDateFormat = 'ddd D MMM' %}
 {% set useTodayDate = moment() if not isSunday else moment().add(1, 'days') %}
+{% set useTomorrowDate = moment().add(3, 'days') if not isSunday else 'tomorrow.add' %}
 {% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
 {% set today = moment().format('YYYY-MM-DD') %}
 {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
@@ -127,7 +128,7 @@
 
 {% block content %}
 
-    <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-0">
+    <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-0" style="background-color: #6e3619">
         <span class="govuk-caption-xl">Cases</span>
         {% if params.date === today %}
             {{ currentDate.format(dateFormat) }} <span class="pac-secondary-text">(Today)</span>
@@ -138,24 +139,68 @@
         {% endif %}
     </h1>
 
-    <p class="govuk-!-margin-bottom-7">
+    <ol class="govuk-!-margin-bottom-7" style="background-color: #cec850">
+        {%-set dayNumFormat = 'ddd DD' -%}
+        <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: aqua"> {{ useTodayDate.format(dayNumFormat) }}</a>
+        <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: aquamarine">{{ useTomorrowDate.format(dayNumFormat) }}</a>
+        <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: aqua">{{ useTomorrowDate.format(dayNumFormat) }}</a>
+        <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: aquamarine">{{ currentDate.format(dayNumFormat, -1) }}</a>
+        <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: aqua">{{ currentDate.format(dayNumFormat) }}</a>
+        <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: aquamarine">{{ currentDate.format(dayNumFormat, -1) }}</a>
+        <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: aqua">{{ currentDate.format(dayNumFormat) }}</a>
+    </ol>
+    <p class="govuk-!-margin-bottom-7" style="background-color: #b3a5b8">
+        {%  set displayCalendar = params.addBusinessDays(currentDate).format('YYYY-MM-DD') %}
+        {% for eachDay in diplayCalendar %}
+            {{ eachDay }}
+        {% endfor %}
+{#        {% if currentDate %}#}
+{#            <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: #F6C6CE" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(currentDate).format('YYYY-MM-DD') }}">#}
+{#                <span class="pac-pagination-link--text">{{ currentDate.format(formatDate) }}</span>#}
+{#            </a>#}
+{#        {% endif %}#}
         {% if currentDate.isAfter(useTodayDate) %}
-            <a class="pac-pagination-link govuk-!-margin-right-5" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(currentDate, -1).format('YYYY-MM-DD') }}">
+            <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: #ffdd00" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(currentDate, -1).format('YYYY-MM-DD') }}">
                 <svg class="pac-pagination-link--icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
                     <path fill="currentColor" d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
                 </svg>
-                <span class="pac-pagination-link--text">Previous day</span>
+                <span class="pac-pagination-link--text">{{ currentDate.format(dayNumFormat) }}</span>
             </a>
         {% endif %}
         {% if withinDateRange %}
-            <a class="pac-pagination-link" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(currentDate, 1).format('YYYY-MM-DD') }}">
-                <span class="pac-pagination-link--next pac-pagination-link--text">Next day</span>
+            <a class="pac-pagination-link" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(currentDate, 1).format(dayNumFormat) }}">
+                <span class="pac-pagination-link--next pac-pagination-link--text">{{ currentDate.format(dayNumFormat) }}</span>
                 <svg class="pac-pagination-link--icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
                     <path fill="currentColor" d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
                 </svg>
             </a>
         {% endif %}
     </p>
+
+{#    <p class="govuk-!-margin-bottom-7">#}
+{#        {% if currentDate !== useTodayDate %}#}
+{#            <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: #C21F39" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(currentDate, -1).format('YYYY-MM-DD') }}">#}
+{#                {%-set formatDate = 'ddd' + '/n' + 'DD' %}#}
+{#                <span class="pac-pagination-link--text">{{ currentDate.format(formatDate) }}</span>#}
+{#            </a>#}
+{#        {% endif %}#}
+{#        {% if currentDate.isAfter(useTodayDate) %}#}
+{#            <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: #ffdd00" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(currentDate, -1).format('YYYY-MM-DD') }}">#}
+{#                <svg class="pac-pagination-link--icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">#}
+{#                    <path fill="currentColor" d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>#}
+{#                </svg>#}
+{#                <span class="pac-pagination-link--text">{{ currentDate.format('DD-MM') }}</span>#}
+{#            </a>#}
+{#        {% endif %}#}
+{#        {% if withinDateRange %}#}
+{#            <a class="pac-pagination-link" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(currentDate, 1).format('YYYY-MM-DD') }}">#}
+{#                <span class="pac-pagination-link--next pac-pagination-link--text">Next day</span>#}
+{#                <svg class="pac-pagination-link--icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">#}
+{#                    <path fill="currentColor" d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>#}
+{#                </svg>#}
+{#            </a>#}
+{#        {% endif %}#}
+{#    </p>#}
 
     {% if params.unmatchedRecords > 0 %}
         {%- from "components/inset-text/macro.njk" import insetText -%}
