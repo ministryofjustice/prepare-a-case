@@ -6,7 +6,7 @@
 {% set bannerHtml %}
 {% set recordCount = 'record' if data.numberOfPossibleMatches === 1 else 'records' %}
     <h2 class="govuk-heading-m">
-        {{ data.numberOfPossibleMatches }} possible nDelius {{ recordCount }} found for {{ data.defendantName | properCase }}.
+        {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found for {{ data.defendantName | properCase }}.
         <a href="/{{ params.courtCode }}/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>
     </h2>
 {% endset %}
