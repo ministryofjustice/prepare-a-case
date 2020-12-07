@@ -42,7 +42,7 @@
             titleText: "There is a problem",
             errorList: [
                 {
-                    text: "Select an nDelius record",
+                    text: "Select an NDelius record",
                     href: "#defendant-1"
                 }
             ]
@@ -50,7 +50,7 @@
     {% endif %}
 
     <h1 class="govuk-caption-l govuk-!-margin-top-0">{{ data.defendantName | properCase }}</h1>
-    <h2 class="govuk-heading-l">Review possible nDelius records</h2>
+    <h2 class="govuk-heading-l">Review possible NDelius records</h2>
     <p class="govuk-body">Compare details and confirm the correct record for the defendant.</p>
 
     {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
@@ -100,7 +100,7 @@
                     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
                     {% call govukFieldset({
                         legend: {
-                            text: data.matchData | length + " nDelius records found",
+                            text: data.matchData | length + " NDelius records found",
                             classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4",
                             isPageHeading: false
                         }
@@ -108,7 +108,7 @@
 
                     {% if session.formError %}
                         <span id="changed-name-error" class="govuk-error-message">
-                            <span class="govuk-visually-hidden">Error:</span> Select an nDelius record
+                            <span class="govuk-visually-hidden">Error:</span> Select an NDelius record
                         </span>
                     {% endif %}
 
@@ -181,7 +181,7 @@
         </div>
 
         {% from "govuk/components/details/macro.njk" import govukDetails %}
-        {%- set detailsText = "<p class=\"govuk-body\">If the defendant is unknown to probation, you must <a href=\"/" + params.courtCode + "/match/defendant/" + params.caseNo + "/nomatch\" class=\"govuk-link govuk-link--no-visited-state\">confirm they have no record</a>.</p><p class=\"govuk-body\">If they have an nDelius record, you can <a href=\"/" + params.courtCode + "/match/defendant/" + params.caseNo + "/manual\" class=\"govuk-link govuk-link--no-visited-state\">link it to them with a case reference number</a>.</p>" -%}
+        {%- set detailsText = "<p class=\"govuk-body\">If the defendant is unknown to probation, you must <a href=\"/" + params.courtCode + "/match/defendant/" + params.caseNo + "/nomatch\" class=\"govuk-link govuk-link--no-visited-state\">confirm they have no record</a>.</p><p class=\"govuk-body\">If they have an NDelius record, you can <a href=\"/" + params.courtCode + "/match/defendant/" + params.caseNo + "/manual\" class=\"govuk-link govuk-link--no-visited-state\">link it to them with a case reference number</a>.</p>" -%}
         {{ govukDetails({
             classes: "govuk-!-margin-top-6",
             summaryText: "Can't see the correct record?",

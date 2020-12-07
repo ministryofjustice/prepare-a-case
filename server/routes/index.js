@@ -182,7 +182,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const params = req.params
     const response = await getCaseList(params.courtCode, params.date)
     const templateValues = {
-      title: 'Defendants with possible nDelius records',
+      title: 'Defendants with possible NDelius records',
       session: {
         ...req.session
       },
@@ -200,7 +200,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/:courtCode/match/defendant/:caseNo', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Review possible nDelius records'
+    templateValues.title = 'Review possible NDelius records'
     const response = await getMatchDetails(req.params.courtCode, req.params.caseNo)
     templateValues.session = {
       ...req.session
@@ -275,7 +275,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/:courtCode/match/defendant/:caseNo/manual', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Link an nDelius record to the defendant'
+    templateValues.title = 'Link an NDelius record to the defendant'
     templateValues.session = {
       ...req.session
     }
@@ -314,7 +314,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/:courtCode/match/defendant/:caseNo/confirm/:crn', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     const detailResponse = await getDetails(req.params.crn)
-    templateValues.title = 'Link an nDelius record to the defendant'
+    templateValues.title = 'Link an NDelius record to the defendant'
     templateValues.details = {
       ...detailResponse
     }
@@ -346,7 +346,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/:courtCode/match/defendant/:caseNo/unlink/:crn', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     const detailResponse = await getDetails(req.params.crn)
-    templateValues.title = 'Unlink nDelius record from the defendant'
+    templateValues.title = 'Unlink NDelius record from the defendant'
     templateValues.hideSubnav = true
     templateValues.backText = 'Back'
     templateValues.backLink = `/${req.params.courtCode}/case/${req.params.caseNo}/summary`
