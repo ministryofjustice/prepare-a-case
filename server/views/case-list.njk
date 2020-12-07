@@ -1,7 +1,9 @@
 {%- set moment = params.moment -%}
 
 {% block javascripts %}
-  <script type="text/javascript" src="/javascripts/filter-component.min.js"/>
+    {% if params.subsection === '' %}
+        <script type="text/javascript" src="/javascripts/filter-component.min.js"/>
+    {% endif %}
 {% endblock %}
 
 {% set tableData = {
