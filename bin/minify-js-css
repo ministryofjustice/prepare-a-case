@@ -1,0 +1,7 @@
+#!/bin/bash
+
+rm ./public/**/*.min.*
+
+for f in ./public/**/*.{js,css}; do
+  minify "$f" >"${f%.*}.min.${f##*.}"
+done
