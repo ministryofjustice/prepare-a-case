@@ -144,6 +144,12 @@ jobs:
           command: java -jar wiremock-standalone-2.27.2.jar --global-response-templating --port 9091
           background: true
       - run:
+          name: Build css
+          command: npm run css-build
+      - run:
+          name: Minify js and css
+          command: npm run minify-js-css
+      - run:
           name: Run the app
           command: npm run start-feature
           background: true
