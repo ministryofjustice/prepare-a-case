@@ -3,13 +3,13 @@
 {% block caseContent %}
 <h1 class="govuk-heading-l">{{ title }}</h1>
 
-<p class="govuk-body">Unlink an nDelius record if the defendant is unknown to probation or has been linked to the wrong record.</p>
+<p class="govuk-body">Unlink an NDelius record if the defendant is unknown to probation or has been linked to the wrong record.</p>
 <p class="govuk-body">Once unlinked you can link a different nDelius record to the defendant using a case reference number.</p>
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        <h2 class="govuk-heading-m govuk-!-margin-top-4">Linked nDelius record</h2>
+        <h2 class="govuk-heading-m govuk-!-margin-top-4">Linked NDelius record</h2>
 
         <form method="get" action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/nomatch/unlink" novalidate>
             <dl class="govuk-summary-list">
