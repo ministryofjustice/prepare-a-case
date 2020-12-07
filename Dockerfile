@@ -26,7 +26,8 @@ RUN npm run css-build && \
     export GIT_REF=${GIT_REF} && \
     npm run record-build-info
 
-RUN npm ci --only=production
+RUN rm -rf node_modules && \
+    npm ci --only=production
 
 EXPOSE 3000
 ENV NODE_ENV='production'

@@ -1,7 +1,16 @@
 #!/bin/bash
 
-for file in public/**/*.{js,css}; do
-  if [[ $file != *.min.* ]]; then
-    minify "$file" >"${file%.*}.min.${file##*.}"
+function minifyFile {
+  if [[ $1 != *.min.* ]]; then
+    echo "Minify: $1"
+    minify "$1" >"${1%.*}.min.${1##*.}"
   fi
+}
+
+for js in "$(pwd)"/public/javascripts/*.js; do
+  minifyFile "$js"
+done
+
+for css in "$(pwd)"/public/stylesheets/*.css; do
+  minifyFile "$css"
 done
