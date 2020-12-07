@@ -5,13 +5,13 @@
             {% if params.probationStatus == 'No record' %}
                 <form method="get" action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/manual">
                     <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
-                            data-module="govuk-button" type="submit">Link nDelius record
+                            data-module="govuk-button" type="submit">Link NDelius record
                     </button>
                 </form>
             {% elif params.crn | length and not params.hideUnlinkButton %}
                 <form method="get" action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/unlink/{{ params.crn }}">
                     <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0"
-                            data-module="govuk-button" type="submit">Unlink nDelius record
+                            data-module="govuk-button" type="submit">Unlink NDelius record
                     </button>
                 </form>
             {% endif %}
@@ -27,7 +27,7 @@
                 <span class="govuk-body pac-key-details-bar__divider"><strong>PNC: </strong>{{ params.pnc }}</span>
             {% endif %}
             {% if params.probationStatus | string | lower == "possible ndelius record" %}
-                <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong> Possible nDelius record</span>
+                <span class="govuk-body pac-key-details-bar__divider"><strong>Probation status: </strong> Possible NDelius record</span>
             {% endif %}
         </div>
         {% if params.probationStatus | string | lower !== "possible ndelius record" %}

@@ -3,7 +3,7 @@
 {% set tableData = {
     head: [
         { text: "Defendant" },
-        { text: "nDelius records found" },
+        { text: "NDelius records found" },
         { text: "Action" }
     ],
     rows: []
@@ -38,7 +38,7 @@
         matchType: session.confirmedMatch.matchType
     }) }}
 
-    <h1 class="govuk-heading-l">Defendants with possible nDelius records</h1>
+    <h1 class="govuk-heading-l">Defendants with possible NDelius records</h1>
 
     {% if tableData.rows | length %}
         <p class="govuk-heading-m">{{ tableData.rows | length }} defendants partially match with existing records.</p>
