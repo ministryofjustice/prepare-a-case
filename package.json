@@ -45,6 +45,7 @@
   },
   "standard": {
     "ignore": [
+      "/public/**/*.js",
       "/integration-tests/config",
       "/integration-tests/plugins",
       "/integration-tests/support"
