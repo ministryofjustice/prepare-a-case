@@ -15,7 +15,7 @@ And('I should see the matching inset text {string}', $string => {
   })
 })
 
-And('I should not see that any defendants have possible nDelius records', () => {
+And('I should not see that any defendants have possible NDelius records', () => {
   cy.get('.pac-inset-text').should('not.exist')
 })
 

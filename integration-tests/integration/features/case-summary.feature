@@ -15,17 +15,17 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/cases/$TODAY?page=1"
     And There should be no a11y violations
 
-  Scenario: View the case summary for the given defendant that has not been matched with an existing nDelius record
+  Scenario: View the case summary for the given defendant that has not been matched with an existing NDelius record
     Given I am an authenticated user
 
     When I navigate to the "case/3597035492/summary" route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/cases/$TODAY"
     And I should see the heading "Guadalupe Hess"
-    And I should see the body text "Probation status: Possible nDelius record"
+    And I should see the body text "Probation status: Possible NDelius record"
     And I should see a straight line divide
     And I should see the following level 2 headings
-      | possible nDelius records found | Appearance | Offences |
+      | possible NDelius records found | Appearance | Offences |
 
     And I should see the body text "Court 7, morning session, $LONG_TODAY (3rd listing)."
     Then I should see the following list of charges in an accordion component
@@ -67,7 +67,7 @@ Feature: Case summary
       | Nationality   | Unknown                           |
       | Address       | 22 Waldorf Court Cardiff AD21 5DR |
 
-    And I should see a button with the label "Link nDelius record"
+    And I should see a button with the label "Link NDelius record"
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with an existing probation record
@@ -99,7 +99,7 @@ Feature: Case summary
       | Nationality   | Polish                              |
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
 
-    And I should see a button with the label "Unlink nDelius record"
+    And I should see a button with the label "Unlink NDelius record"
 
     And There should be no a11y violations
 
@@ -133,7 +133,7 @@ Feature: Case summary
       | Nationality   | British                            |
       | Address       | 38 Clarendon Road Glasgow AD21 5DR |
 
-    And I should see a button with the label "Unlink nDelius record"
+    And I should see a button with the label "Unlink NDelius record"
 
     And There should be no a11y violations
 
@@ -165,7 +165,7 @@ Feature: Case summary
       | Nationality   | British / Swedish               |
       | Address       | 99 Ralph Avenue London AD21 5DR |
 
-    And I should see a button with the label "Unlink nDelius record"
+    And I should see a button with the label "Unlink NDelius record"
 
     And There should be no a11y violations
 
