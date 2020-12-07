@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for file in ./public/**/*.{js,css}; do
+for file in public/**/*.{js,css}; do
   if [[ $file != *.min.* ]]; then
     minify "$file" >"${file%.*}.min.${file##*.}"
   fi
