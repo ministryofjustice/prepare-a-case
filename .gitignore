@@ -9,7 +9,6 @@ yarn.lock
 yarn-error.log
 test-results/
 coverage/
-/public/**/*.min.*
 public/stylesheets/*.css
 public/stylesheets/*.css.map
 build-info.json
