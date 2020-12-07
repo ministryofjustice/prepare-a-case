@@ -94,6 +94,12 @@ jobs:
       - run:
           name: Install dependencies
           command: npm ci
+      - run:
+          name: Build css
+          command: npm run css-build
+      - run:
+          name: Minify js and css
+          command: npm run minify-js-css
       - save_cache:
           key: dependencies-cache-{{ checksum "package.json" }}
           paths:
@@ -143,12 +149,6 @@ jobs:
           name: Run wiremock
           command: java -jar wiremock-standalone-2.27.2.jar --global-response-templating --port 9091
           background: true
-      - run:
-          name: Build css
-          command: npm run css-build
-      - run:
-          name: Minify js and css
-          command: npm run minify-js-css
       - run:
           name: Run the app
           command: npm run start-feature
