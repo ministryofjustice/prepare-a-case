@@ -25,7 +25,7 @@
         <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/govuk-apple-touch-icon-152x152.png">
         <link rel="apple-touch-icon" href="/assets/images/govuk-apple-touch-icon.png">
 
-        <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
+        <link type="text/css" rel="stylesheet" href="/stylesheets/style.min.css"/>
 
         <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
     {% endblock %}
@@ -76,6 +76,8 @@
   {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
   {{ govukFooter({}) }}
 {% endblock %}
+
+{% block javascripts %}{% endblock %}
 
 {% block bodyEnd %}
   <script src="/moj/all.js"></script>

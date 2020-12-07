@@ -1,5 +1,11 @@
 {%- set moment = params.moment -%}
 
+{% block javascripts %}
+    {% if params.subsection === '' %}
+        <script type="text/javascript" src="/javascripts/filter-component.min.js"/>
+    {% endif %}
+{% endblock %}
+
 {% set tableData = {
     head: [
         { text: "Defendant" },
@@ -211,7 +217,6 @@
     {% if params.subsection === '' %}
         {%- from "components/filter/macro.njk" import pacFilter -%}
         {{ pacFilter({
-            formName: 'listFilterForm',
             filters: params.filters
         }) }}
     {% endif %}
