@@ -5,10 +5,12 @@ dist-*.tgz
 .env
 .eslintcache
 .java-version
+process.yml
 yarn.lock
 yarn-error.log
 test-results/
 coverage/
+public/**/*.min.*
 public/stylesheets/*.css
 public/stylesheets/*.css.map
 build-info.json
