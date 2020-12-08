@@ -25,8 +25,8 @@
     "int-test": "npx cypress run",
     "int-test:ui": "npx cypress open",
     "lint": "npx standard",
-    "css-build": "sh ./bin/build-css",
-    "minify-js-css": "sh ./bin/minify-js-css",
+    "css-build": "bash ./bin/build-css",
+    "minify-js-css": "bash ./bin/minify-js-css",
     "start": "npm run css-build && npm run minify-js-css && node ./bin/www",
     "start:watch": "nodemon --exec npm run start --scripts-prepend-node-path",
     "unit-test": "NODE_ENV=test npx jest --config=./tests/jest.config.js --ci --detectOpenHandles --forceExit",
@@ -97,9 +97,9 @@
     "superagent": "6.1.0"
   },
   "devDependencies": {
-    "axe-core": "4.0.2",
+    "axe-core": "4.1.1",
     "cucumber": "6.0.5",
-    "cypress": "6.0.1",
+    "cypress": "6.1.0",
     "cypress-axe": "0.9.1",
     "cypress-cucumber-preprocessor": "4.0.0",
     "jest": "26.6.3",

@@ -97,6 +97,9 @@ jobs:
       - run:
           name: Build css
           command: npm run css-build
+      - run:
+          name: Minify js and css
+          command: npm run minify-js-css
       - save_cache:
           key: dependencies-cache-{{ checksum "package.json" }}
           paths:
