@@ -163,6 +163,18 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary-record-order-breach', templateValues)
   })
 
+  router.get('/:courtCode/case/:caseNo/record/:convictionId/licence-details', health, defaults, async (req, res) => {
+    const templateValues = await getCaseAndTemplateValues(req)
+    templateValues.title = 'Licence conditions details'
+
+    const crn = templateValues.data.crn
+
+    const communityResponse = await getProbationRecordWithRequirements(crn)
+
+    templateValues.data.communityData = communityResponse || {}
+    res.render('case-summary-record-order-licence', templateValues)
+  })
+
   router.get('/:courtCode/case/:caseNo/risk', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Risk register'
