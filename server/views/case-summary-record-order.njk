@@ -407,4 +407,9 @@
 
     {% endif %}
 
+    {% if communityData.sentenceDetails.links.deliusContactList %}
+        <h2 class="govuk-heading-m govuk-!-margin-top-8">Contact list</h2>
+        <p class="govuk-body"><a href="{{ communityData.sentenceDetails.links.deliusContactList }}" target="_blank" class="govuk-link govuk-link--no-visited-state">View contact list (opens in NDelius)</a></p>
+    {% endif %}
+
 {% endblock %}
