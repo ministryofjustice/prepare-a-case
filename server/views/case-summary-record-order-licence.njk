@@ -1,0 +1,68 @@
+{%- set hideSubnav = true -%}
+{% extends "partials/case-details.njk" %}
+
+{%- set moment = params.moment -%}
+
+{%- set communityData = data.communityData -%}
+
+{%- set currentOrder = {} -%}
+{%- for order in communityData.convictions if communityData.convictions | length %}
+    {% if order.convictionId | string === params.convictionId | string %}
+        {%- set currentOrder = order -%}
+    {% endif %}
+{% endfor -%}
+
+{% block backlink %}
+    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
+    {{ govukBackLink({
+        text: "Back to probation record",
+        href: '/' + params.courtCode + '/case/' + data.caseNo + '/record'
+    }) }}
+{% endblock %}
+
+{% block caseContent %}
+
+    <h2 class="govuk-heading-l govuk-!-margin-0">Licence conditions details</h2>
+
+    <div class="govuk-grid-row govuk-!-margin-top-6">
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if currentOrder.licenceConditions | length %}
+                {%- for licenceConditions in currentOrder.licenceConditions %}
+                    <h3 class="govuk-heading-m">
+                        {{ licenceConditions.description }}
+                    </h3>
+                    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Licence condition subtype
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ licenceConditions.subTypeDescription }}
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Start date
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ moment(licenceConditions.startDate, 'YYYY-MM-DD').format('D MMMM YYYY') }}
+                            </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                Notes
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ (licenceConditions.notes if licenceConditions.notes | length) or '-' }}
+                            </dd>
+                        </div>
+                    </dl>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+    </div>
+
+
+{% endblock %}
