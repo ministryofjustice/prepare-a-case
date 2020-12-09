@@ -10,6 +10,9 @@
     },
     "status": 200,
     "jsonBody": {
+      "links": {
+        "deliusContactList": "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=1403337513&eventId=123123127"
+      },
       "attendances": [
         {
           "contactId": 867430,

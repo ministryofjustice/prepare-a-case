@@ -288,6 +288,9 @@ Feature: Case summary
     And I should see the text "$SIX_MONTHS_AGO" within element with class "qa-end-date"
     And I should see the text "$SIX_MONTHS_TIME" within element with class "qa-elapsed-time"
 
+    And I should see the level 2 heading "Contact list"
+    And I should see link "View contact list (opens in NDelius)" with href "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=1309234876&eventId=123123128"
+
     And There should be no a11y violations
 
   Scenario: View the current offender order who is currently on Post Sentence Supervision
@@ -302,6 +305,9 @@ Feature: Case summary
     And I should see the text "On post-sentence supervision (PSS)" within element with class "qa-start-date"
     And I should see the text "$END_TODAY" within element with class "qa-end-date"
     And I should see the text "$FIVE_MONTHS_TIME" within element with class "qa-elapsed-time"
+
+    And I should see the level 2 heading "Contact list"
+    And I should see link "View contact list (opens in NDelius)" with href "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=2360414697&eventId=123123130"
 
     And There should be no a11y violations
 
