@@ -321,4 +321,20 @@ describe('Routes', () => {
     expect(communityService.getDetails).toHaveBeenCalledWith('D541487')
     return response
   })
+
+  it('licence details route should call the case service to fetch licence details data', async () => {
+    caseResponse = {
+      probationStatus: 'Current',
+      crn: 'D985513'
+    }
+    communityResponse = {
+      convictions: [{
+        convictionId: 1403337513
+      }]
+    }
+    const response = await request(app).get('/B14LO/case/668911253/record/1403337513/licence-details')
+    expect(caseService.getCase).toHaveBeenCalledWith('B14LO', '668911253')
+    expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
+    return response
+  })
 })

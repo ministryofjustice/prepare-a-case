@@ -290,6 +290,25 @@ Feature: Case summary
 
     And There should be no a11y violations
 
+  Scenario: View the licence conditions details for a current offender
+    Given I am an authenticated user
+
+    When I navigate to the "case/668911253/record/1309234876" route
+    Then I should be on the "Order details" page
+
+    And I should see link "View licence conditions details" with href "/record/1309234876/licence-details"
+    When I navigate to the "case/668911253/record/1309234876/licence-details" route
+    Then I should be on the "Licence conditions details" page
+    And I should see the text "Alcohol" within element with class "govuk-heading-m"
+    And I should see the following summary list 3 with keys
+      | Licence condition subtype | Start date | Notes |
+
+    And I should see the text "Confine yourself to remain at [CURFEW ADDRESS] initially from [START OF CURFEW HOURS] until [END OF CURFEW HOURS] each day, and, thereafter, for such a period as may be reasonably notified to you by your supervising officer; & comply with such arrangements as may be reasonably put in place & notified to you by your supervising officer so as to allow for your whereabouts & your compliance with your curfew reqt.be monitored[WHETHER BY ELECT. MEANS INVOLVING YOUR WEARING AN ELECT. TAG OR OTHERWISE]" within element with class "govuk-summary-list__value"
+    And I should see the text "6 January 2018" within element with class "govuk-summary-list__value"
+    And I should see the text "This is an example of licence condition notes" within element with class "govuk-summary-list__value"
+
+    And There should be no a11y violations
+
   Scenario: View the current offender order who is currently on Post Sentence Supervision
     Given I am an authenticated user
 
