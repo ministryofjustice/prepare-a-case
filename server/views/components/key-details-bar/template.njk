@@ -6,7 +6,8 @@
             <div class="pac-key-details-bar-flex">
                 <div class="pac-key-details-bar-flex__child">
                     <h1 class="pac-key-details-bar__name govuk-!-margin-right-4">{% if params.accTitle %}<span
-                                class="govuk-visually-hidden">{{ params.accTitle }}</span>{% endif %}{{ params.title }}</h1>
+                                class="govuk-visually-hidden">{{ params.accTitle }}</span>{% endif %}{{ params.title }}
+                    </h1>
                 </div>
                 {% if params.crn | length %}
                     <div class="pac-key-details-bar-flex__child">
@@ -34,22 +35,24 @@
 
         </div>
 
-        <div class="pac-key-details-bar-flex__child pac-key-details-bar-flex__child__right">
-            {% if params.probationStatus == 'No record' %}
+        {% if params.probationStatus == 'No record' %}
+            <div class="pac-key-details-bar-flex__child pac-key-details-bar-flex__child__right govuk-!-margin-right-0">
                 <form method="get" action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/manual">
                     <button class="govuk-button govuk-button--secondary pac-key-details-bar__button"
                             data-module="govuk-button" type="submit">Link NDelius record
                     </button>
                 </form>
-            {% elif params.crn | length and not params.hideUnlinkButton %}
+            </div>
+        {% elif params.crn | length and not params.hideUnlinkButton %}
+            <div class="pac-key-details-bar-flex__child pac-key-details-bar-flex__child__right govuk-!-margin-right-0">
                 <form method="get"
                       action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/unlink/{{ params.crn }}">
                     <button class="govuk-button govuk-button--secondary pac-key-details-bar__button"
                             data-module="govuk-button" type="submit">Unlink NDelius record
                     </button>
                 </form>
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
 
     </div>
 </section>

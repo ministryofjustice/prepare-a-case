@@ -36,13 +36,11 @@
       flex-basis: auto;
 
       @include govuk-media-query($from: desktop) {
-        &:not(:last-child) {
-          margin: 0 15px 0 0;
-        }
+        margin: 0 15px 0 0;
       }
 
       @include govuk-media-query($until: desktop) {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         flex-basis: 100%;
       }
 
