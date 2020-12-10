@@ -23,7 +23,6 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/cases/$TODAY"
     And I should see the heading "Guadalupe Hess"
     And I should see the body text "Probation status: Possible NDelius record"
-    And I should see a straight line divide
     And I should see the following level 2 headings
       | possible NDelius records found | Appearance | Offences |
 
@@ -49,7 +48,6 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/cases/$TODAY"
     And I should see the heading "Kara Ayers"
     Then I should see the body text "Probation status: No record"
-    And I should see a straight line divide
     And I should see the following level 2 headings
       | Appearance | Offences |
 
