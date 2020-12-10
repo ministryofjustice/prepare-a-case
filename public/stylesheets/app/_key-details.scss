@@ -6,16 +6,17 @@
   }
 
   .pac-probation-status {
-    margin-top: 15px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     @include govuk-media-query($until: desktop) {
-      margin-top: 0;
+      margin: 0;
     }
   }
 
   &__button {
-    margin: 15px 0;
+    margin: 10px 0;
     @include govuk-media-query($until: desktop) {
-      margin: 15px 0 0 0;
+      margin: 10px 0 0 0;
     }
   }
 
