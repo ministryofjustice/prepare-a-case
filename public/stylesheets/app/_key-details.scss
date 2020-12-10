@@ -1,43 +1,8 @@
-.pac-display-flex {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-
-  &__child {
-    flex: 0 1 auto;
-    align-self: flex-end;
-    text-align: left;
-    flex-basis: auto;
-
-    &:not(:last-child) {
-      margin: 0 20px 0 0;
-    }
-
-    &__right {
-      flex: 1;
-      align-self: center;
-      text-align: right;
-      min-width: 210px;
-
-      @media(max-width: 780px) {
-        text-align: left;
-      }
-    }
-
-    @media(max-width: 780px) {
-      display: block;
-      margin: 5px 0;
-      width: 100%;
-    }
-  }
-}
-
 .pac-key-details-bar {
   background-color: $govuk-brand-colour;
 
-  &__bottom-block {
-    padding-top: 10px;
-    margin-top: 6px;
+  h1, .govuk-body {
+    color: govuk-colour("white");
   }
 
   &__key-details {
@@ -45,49 +10,42 @@
     padding: 20px 0;
   }
 
-  h1, .govuk-body {
-    color: govuk-colour("white");
-  }
+  &-flex {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-end;
+    justify-content: space-between;
 
-  &__status {
-    @include govuk-font(16);
-    font-weight: 700;
-    line-height: 1.25;
-    padding: 5px 8px;
-    color: $govuk-brand-colour;
-    background-color: govuk-colour("white");
-    letter-spacing: 1px;
-    text-decoration: none;
-    text-transform: uppercase;
-    float: right;
-    margin: 5px 0 0;
+    &__child {
+      flex: 0 1 auto;
+      text-align: left;
+      flex-basis: auto;
 
-    @media(max-width: 670px) {
-      @include govuk-font(14);
-      float: left;
-      clear: both;
-      margin-top: 5px;
+      @media(max-width: 670px) {
+        margin-bottom: 5px;
+        flex-basis: 100%;
+      }
+
+      &__right {
+        justify-self: flex-end;
+        align-self: center;
+      }
     }
   }
 
   &__name {
     @include govuk-font(27);
     font-weight: 700;
-    line-height: 1.11111;
-    margin: 0 10px 0 0;
-    margin-inline-start: 0;
-    display: inline-block;
-    @media(max-width: 670px) {
-      @include govuk-font(27);
-      line-height: 1.04167;
-      float: left;
-      margin: 0 5px 0 0;
-    }
+    margin: 0;
   }
 
-  &__divider:not(:last-child) {
+  &__divider {
     border-right: 1px solid rgba(255, 255, 255, 0.3);
     margin: 0 15px 0 0;
     padding: 0 15px 0 0;
+
+    @media(max-width: 670px) {
+      border: 0;
+    }
   }
 }
