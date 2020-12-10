@@ -5,6 +5,20 @@
     color: govuk-colour("white");
   }
 
+  .pac-probation-status {
+    margin-top: 15px;
+    @include govuk-media-query($until: desktop) {
+      margin-top: 0;
+    }
+  }
+
+  &__button {
+    margin: 15px 0;
+    @include govuk-media-query($until: desktop) {
+      margin: 15px 0 0 0;
+    }
+  }
+
   &__key-details {
     @include moj-width-container;
     padding: 20px 0;
@@ -18,10 +32,15 @@
 
     &__child {
       flex: 0 1 auto;
-      text-align: left;
       flex-basis: auto;
 
-      @media(max-width: 670px) {
+      @include govuk-media-query($from: desktop) {
+        &:not(:last-child) {
+          margin: 0 15px 0 0;
+        }
+      }
+
+      @include govuk-media-query($until: desktop) {
         margin-bottom: 5px;
         flex-basis: 100%;
       }
@@ -34,17 +53,19 @@
   }
 
   &__name {
-    @include govuk-font(27);
-    font-weight: 700;
+    @include govuk-font(27, bold);
     margin: 0;
+
+    @include govuk-media-query($until: tablet) {
+      @include govuk-font(36, bold);
+    }
   }
 
   &__divider {
     border-right: 1px solid rgba(255, 255, 255, 0.3);
-    margin: 0 15px 0 0;
     padding: 0 15px 0 0;
 
-    @media(max-width: 670px) {
+    @include govuk-media-query($until: desktop) {
       border: 0;
     }
   }
