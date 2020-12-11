@@ -1,4 +1,6 @@
-<div class="govuk-inset-text pac-inset-text pac-inset-text--important govuk-!-margin-bottom-8">
-    <a href="{{ params.link }}" class="govuk-link govuk-link--no-visited-state govuk-!-font-size-24 govuk-!-font-weight-bold">{{ params.linkText }}</a>
-    <p class="govuk-body govuk-!-margin-top-1">{{ params.text }}</p>
+<div class="govuk-inset-text pac-inset-text pac-inset-text--important govuk-!-margin-bottom-8" role="dialog"
+     aria-labelledby="insetTextDialogTitle" aria-describedby="insetTextDialogDesc">
+    <a href="{{ params.link }}" id="insetTextDialogTitle"
+       class="govuk-link govuk-link--no-visited-state govuk-!-font-size-24 govuk-!-font-weight-bold">{{ params.linkText }}</a>
+    <p class="govuk-body govuk-!-margin-top-1" id="insetTextDialogDesc">{{ params.text }}</p>
 </div>
