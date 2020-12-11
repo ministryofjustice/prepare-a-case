@@ -6,7 +6,7 @@
 {% set bannerHtml %}
 {% set recordCount = 'record' if data.numberOfPossibleMatches === 1 else 'records' %}
     <div role="dialog" aria-labelledby="bannerDialogTitle" aria-describedby="bannerDialogDesc">
-        <span id="bannerDialogTitle" hidden>Defendant partially matches existing records and needs review.</span>
+        <span id="bannerDialogTitle" class="govuk-visually-hidden" hidden>Defendant partially matches existing records and needs review.</span>
         <h2 class="govuk-heading-m" id="bannerDialogDesc">
             {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found for {{ data.defendantName | properCase }}.
             <a href="/{{ params.courtCode }}/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>
