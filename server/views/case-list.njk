@@ -104,8 +104,6 @@
 {% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
 {% set today = moment().format('YYYY-MM-DD') %}
 {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
-{% set withinDateRange = currentDate.isBetween(moment(), params.addBusinessDays(moment(), params.totalDays - 1), 'day', '[)') %}
-{% set useTodayDateWithinDateRange = useTodayDate.isBetween(moment(useTodayDate), params.addBusinessDays(useTodayDate, params.totalDays - 1), 'day', '[)') %}
 
 {%- set listTabs = [{
     title: 'Case list',
@@ -145,13 +143,65 @@
         {% endif %}
     </h1>
 
-        <p class="govuk-!-margin-bottom-7">
-            {% for daysInWeek in range(0, params.totalDays) %}
-                <a class="pac-pagination-link govuk-!-margin-right-5" style="background-color: #e6ff00" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(useTodayDate, daysInWeek).format('YYYY-MM-DD') }}">
-                    <span class="pac-pagination-link--text">{{ params.addBusinessDays(useTodayDate, daysInWeek).format('ddd D') }}</span>
-                </a>
-            {% endfor %}
-        </p>
+{#            <div class="govuk-!-margin-bottom-7 div-p-container">#}
+{#                {% for eachDay in range(0, params.totalDays) %}#}
+{#                {% set dayWord = params.addBusinessDays(useTodayDate, eachDay).format('ddd') %}#}
+{#                {% set dayNumber = params.addBusinessDays(useTodayDate, eachDay).format('D') %}#}
+
+{#                    <p class="pac-pagination-link p-a-container govuk-!-margin-right-5" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(useTodayDate, eachDay).format('YYYY-MM-DD') }}">#}
+{#                        {% set dayWord = params.addBusinessDays(useTodayDate, eachDay).format('ddd') %}#}
+{#                        {% set dayNumber = params.addBusinessDays(useTodayDate, eachDay).format('D') %}#}
+{#                        <a class="pac-pagination-link--text a-span-container">#}
+{#                           {% if eachDay === 0 %}#}
+{#                             <span class="pac-pagination-link--text govuk-focused-text">{{ dayWord }}</span>#}
+{#                             <span class="pac-pagination-link--text govuk-focused-text govuk-!-font-weight-bold">{{ dayNumber }}</span>#}
+{#                           {% endif %}#}
+{#                        </a>#}
+
+{#                        <a class="pac-pagination-link--text a-span-container">#}
+{#                            {% if eachDay > 0 %}#}
+{#                            <span class="pac-pagination-link--text">{{ dayWord }}</span>#}
+{#                            <span class="pac-pagination-link--text govuk-!-font-weight-bold">{{ dayNumber }}</span>#}
+{#                            {% endif %}#}
+{#                        </a>#}
+{#                        {% endfor %}#}
+{#                    </p>#}
+{#            </div>#}
+
+    <p class="govuk-!-margin-bottom-7">
+        {% for eachDay in range(0, params.totalDays) %}
+            {%- set dayWord = params.addBusinessDays(useTodayDate, eachDay).format('ddd') -%}
+            {%- set dayNumber = params.addBusinessDays(useTodayDate, eachDay).format('D') -%}
+{#if each day === 0 for starting or click > blue#}
+            {% if eachDay === 0 %}
+            <a class="pac-pagination-link govuk-!-margin-right-5 govuk-focused-text a-container" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(useTodayDate, eachDay).format('YYYY-MM-DD') }}">
+                <span class="pac-pagination-link--text">{{ dayWord }}</span>
+                <span class="pac-pagination-link--text govuk-!-font-weight-bold">{{ dayNumber }}</span>
+            </a>
+            {% endif %}
+
+            {% if eachDay > 0 %}
+            <a class="pac-pagination-link govuk-!-margin-right-5 govuk-focused-text a-container" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(useTodayDate, eachDay).format('YYYY-MM-DD') }}">
+                <span class="pac-pagination-link--text">{{ dayWord }}</span>
+                <span class="pac-pagination-link--text govuk-!-font-weight-bold">{{ dayNumber }}</span>
+            </a>
+            {% endif %}
+        {% endfor %}
+    </p>
+
+{#        <p class="govuk-!-margin-bottom-7">#}
+{#            {% for eachDay in range(0, params.totalDays) %}#}
+{#                <a class="pac-pagination-link govuk-!-margin-right-5" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(useTodayDate, eachDay).format('YYYY-MM-DD') }}">#}
+{#                    {%- set dayWord = params.addBusinessDays(useTodayDate, eachDay).format('ddd') -%}#}
+{#                    {%- set dayNumber = params.addBusinessDays(useTodayDate, eachDay).format('D') -%}#}
+{#                    {%- set everyDayAndNumber = params.addBusinessDays(useTodayDate, eachDay).format('ddd D') -%}#}
+{#                    <span class="pac-pagination-link--text govuk-focused-text" style="background-color: #F6C6CE">{{ dayWord }}</span>#}
+{#                    <span class="pac-pagination-link--text govuk-focused-text govuk-!-font-weight-bold" style="background-color: #3d2375">{{ dayNumber }}</span>#}
+{#                    <span class="pac-pagination-link--text govuk-focused-text" style="background-color: #F6C6CE">{% if eachDay === 0 %}{{ dayWord }} <br/> {{ dayNumber }} {% endif %}</span>#}
+{#                    <span class="pac-pagination-link--text govuk-focused-text" style="background-color: #008800">{% if eachDay > 0 %}{{ dayWord }} <br/> {{ dayNumber }} {% endif %}</span>#}
+{#                </a>#}
+{#            {% endfor %}#}
+{#        </p>#}
 
     {% if params.unmatchedRecords > 0 %}
         {%- from "components/inset-text/macro.njk" import insetText -%}

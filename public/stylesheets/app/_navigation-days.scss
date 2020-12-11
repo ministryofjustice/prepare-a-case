@@ -1,0 +1,49 @@
+.moj-sub-navigation__link {
+  @extend .govuk-link--no-visited-state;
+}
+
+//.pac-day-nav {
+//  display: flex;
+//  flex-direction: row;
+//}
+//
+//.pac-nav-item {
+//  display: flex;
+//  text-align: center;
+//}
+//
+//.pac-nav-item-text {
+//  display: flex;
+//}
+//
+//.pac-day-nav-item-text:active {
+//  background-color: govuk-colour("light-grey");
+//}
+//
+//.today-day{
+//  background-color: govuk-colour("blue");
+//  color: govuk-colour("white");
+//}
+
+.p-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.a-container:hover{
+  background-color: govuk-colour("light-grey");
+}
+.a-container:active{
+  background-color: govuk-colour("blue");
+  color: govuk-colour("white");
+}
+.span-container{
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+}
+//
+//.span-container-today::before{
+//    content: "\a";
+//    white-space: pre;
+//}
