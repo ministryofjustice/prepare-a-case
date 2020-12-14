@@ -1,84 +1,71 @@
 .pac-key-details-bar {
   background-color: $govuk-brand-colour;
 
-  &__right-block{
-    position: absolute;
-    right: 0;
-    top: 32px;
+  h1, .govuk-body {
+    color: govuk-colour("white");
   }
 
-  &__top-block, &__bottom-block {
-    @extend .govuk-clearfix;
-    h1, .govuk-body {
-      color: govuk-colour("white");
+  .pac-probation-status {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    @include govuk-media-query($until: desktop) {
+      margin: 0;
     }
   }
 
-  &__bottom-block{
-    padding-top: 10px;
-    margin-top: 6px;
+  &__button {
+    margin: 10px 0;
+    @include govuk-media-query($until: desktop) {
+      margin: 10px 0 0 0;
+    }
   }
 
   &__key-details {
-    position: relative;
     @include moj-width-container;
-    margin: 0 auto;
     padding: 20px 0;
-    @media(max-width: 670px) {
-      padding: 20px 15px;
-    }
   }
 
-  &__status {
-    @include govuk-font(16);
-    font-weight: 700;
-    line-height: 1.25;
-    padding: 5px 8px;
-    color: $govuk-brand-colour;
-    background-color: govuk-colour("white");
-    letter-spacing: 1px;
-    text-decoration: none;
-    text-transform: uppercase;
-    float: right;
-    margin: 5px 0 0;
+  &-flex {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-end;
+    justify-content: space-between;
 
-    @media(max-width: 670px) {
-      @include govuk-font(14);
-      float: left;
-      clear: both;
-      margin-top: 5px;
-    }
-  }
+    &__child {
+      flex: 0 1 auto;
+      flex-basis: auto;
 
-  &__nino {
-    @include govuk-font(19);
-    line-height: 1;
-    margin-top: 12px;
-    @media(max-width: 670px) {
-      @include govuk-font(16);
-      float: left;
-      margin: 5px 0 0 0;
+      @include govuk-media-query($from: desktop) {
+        margin: 0 15px 0 0;
+      }
+
+      @include govuk-media-query($until: desktop) {
+        margin-bottom: 10px;
+        flex-basis: 100%;
+      }
+
+      &__right {
+        justify-self: flex-end;
+        align-self: center;
+      }
     }
   }
 
   &__name {
-    @include govuk-font(27);
-    font-weight: 700;
-    line-height: 1.11111;
-    margin: 0 10px 0 0;
-    margin-inline-start: 0;
-    display: inline-block;
-    @media(max-width: 670px) {
-      @include govuk-font(27);
-      line-height: 1.04167;
-      float: left;
-      margin: 0 5px 0 0;
+    @include govuk-font(27, bold);
+    margin: 0;
+
+    @include govuk-media-query($until: tablet) {
+      @include govuk-font(36, bold);
     }
   }
 
-  &__divider:not(:last-child) {
+  &__divider {
     border-right: 1px solid rgba(255, 255, 255, 0.3);
-    margin: 0 15px 0 0;
     padding: 0 15px 0 0;
+
+    @include govuk-media-query($until: desktop) {
+      border: 0;
+    }
   }
 }
