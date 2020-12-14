@@ -143,12 +143,13 @@
         {% endif %}
     </h1>
 
-{%- from "components/days-navigation/macro.njk" import pacDaysNavigation -%}
+    {%- from "components/days-navigation/macro.njk" import pacDaysNavigation -%}
+    {% set totalDays = (params.totalDays - 1) if isSunday else params.totalDays %}
     {{ pacDaysNavigation({
-        moment: moment,
+        addBusinessDays: params.addBusinessDays,
         totalDays: totalDays,
         startDate: useTodayDate,
-        courtCode: courtCode
+        currentDate: currentDate
     }) }}
 
     {% if params.unmatchedRecords > 0 %}
