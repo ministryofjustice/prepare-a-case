@@ -194,12 +194,6 @@ jobs:
                --label "build.gitref=$CIRCLE_SHA1" \
                --build-arg BUILD_NUMBER=$APP_VERSION \
                --build-arg GIT_REF=$CIRCLE_SHA1 \
-      - snyk/scan:
-          project: '${CIRCLE_PROJECT_REPONAME}-docker/${CIRCLE_BRANCH}'
-          docker-image-name: 'mojdigitalstudio/prepare-a-case:$APP_VERSION'
-          target-file: 'Dockerfile'
-          monitor-on-build: << parameters.main >>
-          <<: *snyk_options
       - when:
           condition: << parameters.main >>
           steps:
@@ -308,6 +302,12 @@ workflows:
               only: main
           main: true
       - deploy_dev:
+          requires:
+            - build_docker_main
+          filters:
+            branches:
+              only: main
+      - image_scan:
           requires:
             - build_docker_main
           filters:
