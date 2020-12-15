@@ -1,10 +1,12 @@
-<p class="govuk-!-margin-bottom-7">
+<p class="govuk-!-margin-bottom-7 nav-bar">
     {% for days in range(0, params.totalDays) %}
         {%- set thisDate = params.addBusinessDays(params.startDate, days) -%}
         {%- set isCurrentDate = params.currentDate.isSame(thisDate.format('yyyy-MM-DD')) -%}
-        <{{ "span" if isCurrentDate else "a" }} class="pac-pagination-link govuk-!-margin-right-5 govuk-focused-text a-container" href="{{ thisDate.format('yyyy-MM-DD') }}">
-            <span class="pac-pagination-link--text">{{ thisDate.format('ddd') }}</span>
+        <{{ "span" if isCurrentDate else "a" }} class="pac-pagination-link govuk-!-margin-right-5 govuk-focused-text day-element" href="{{ thisDate.format('yyyy-MM-DD') }}">
+
+            <span class="pac-pagination-link--text">{{ thisDate.format('ddd') }} </span>
             <span class="pac-pagination-link--text govuk-!-font-weight-bold">{{ thisDate.format('D') }}</span>
+
         </{{ "span" if isCurrentDate else "a" }}>
     {% endfor %}
 </p>
