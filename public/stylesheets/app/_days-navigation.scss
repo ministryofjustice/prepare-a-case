@@ -8,7 +8,7 @@
     text-align: center;
     @extend .govuk-body;
     @extend .govuk-\!-font-size-19;
-    padding: 15px;
+    padding: 6px 15px;
     background-color: govuk-colour("blue");
     color: govuk-colour("white");
 
@@ -19,7 +19,7 @@
       background-color: govuk-colour("white");
 
       &:hover {
-        background-color: #f3f2f1;
+        background-color: govuk-colour("light-grey");
       }
     }
   }
