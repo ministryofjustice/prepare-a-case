@@ -127,7 +127,7 @@
                                             <th scope="row" class="govuk-table__header" style="width: 40%;">Name</th>
                                             <td class="govuk-table__cell">
                                                 {% set matchName = item.forename + ' ' + (item.middleNames | join(' ') + ' ' if item.middleNames) + item.surname %}
-                                                {{ matchName | markMatches(defendantName) | safe }}
+                                                {{ matchName | properCase | markMatches(defendantName) | safe }}
                                             </td>
                                         </tr>
                                         <tr class="govuk-table__row">
