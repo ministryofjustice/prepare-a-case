@@ -16,10 +16,14 @@
       @extend .govuk-link;
       @extend .govuk-link--no-visited-state;
       text-decoration: none;
-      background-color: govuk-colour("white");
+      background-color: transparent;
 
       &:hover {
         background-color: govuk-colour("light-grey");
+      }
+
+      &:active {
+        background-color: govuk-colour("yellow");
       }
     }
   }
