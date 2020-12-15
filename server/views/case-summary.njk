@@ -5,10 +5,13 @@
 {%- set communityData = data.communityData -%}
 {% set bannerHtml %}
 {% set recordCount = 'record' if data.numberOfPossibleMatches === 1 else 'records' %}
-    <h2 class="govuk-heading-m">
-        {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found for {{ data.defendantName | properCase }}.
-        <a href="/{{ params.courtCode }}/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>
-    </h2>
+    <div role="dialog" aria-labelledby="bannerDialogTitle" aria-describedby="bannerDialogDesc">
+        <span id="bannerDialogTitle" class="govuk-visually-hidden" hidden>Defendant partially matches existing records and needs review.</span>
+        <h2 class="govuk-heading-m" id="bannerDialogDesc">
+            {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found for {{ data.defendantName | properCase }}.
+            <a href="/{{ params.courtCode }}/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>
+        </h2>
+    </div>
 {% endset %}
 
 {% block message %}
@@ -65,7 +68,7 @@
                                     <span class="govuk-accordion__section-button govuk-!-font-size-19">{{ offence.offenceTitle }}</span>
                                 </h2>
                             </div>
-                            <div class="govuk-accordion__section-content">
+                            <div class="govuk-accordion__section-content" id="accordion-{{ params.caseNo }}-content-{{ loop.index }}">
                                 <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.offenceSummary }}</p>
                                 <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
                             </div>

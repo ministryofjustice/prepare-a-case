@@ -23,7 +23,6 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/cases/$TODAY"
     And I should see the heading "Guadalupe Hess"
     And I should see the body text "Probation status: Possible NDelius record"
-    And I should see a straight line divide
     And I should see the following level 2 headings
       | possible NDelius records found | Appearance | Offences |
 
@@ -49,7 +48,6 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/cases/$TODAY"
     And I should see the heading "Kara Ayers"
     Then I should see the body text "Probation status: No record"
-    And I should see a straight line divide
     And I should see the following level 2 headings
       | Appearance | Offences |
 
@@ -288,6 +286,28 @@ Feature: Case summary
     And I should see the text "$SIX_MONTHS_AGO" within element with class "qa-end-date"
     And I should see the text "$SIX_MONTHS_TIME" within element with class "qa-elapsed-time"
 
+    And I should see the level 2 heading "Contact list"
+    And I should see link "View contact list (opens in NDelius)" with href "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=1309234876&eventId=123123128"
+
+    And There should be no a11y violations
+
+  Scenario: View the licence conditions details for a current offender
+    Given I am an authenticated user
+
+    When I navigate to the "case/668911253/record/1309234876" route
+    Then I should be on the "Order details" page
+
+    And I should see link "View licence conditions details" with href "/record/1309234876/licence-details"
+    When I navigate to the "case/668911253/record/1309234876/licence-details" route
+    Then I should be on the "Licence conditions details" page
+    And I should see the text "Alcohol" within element with class "govuk-heading-m"
+    And I should see the following summary list 3 with keys
+      | Licence condition subtype | Start date | Notes |
+
+    And I should see the text "Confine yourself to remain at [CURFEW ADDRESS] initially from [START OF CURFEW HOURS] until [END OF CURFEW HOURS] each day, and, thereafter, for such a period as may be reasonably notified to you by your supervising officer; & comply with such arrangements as may be reasonably put in place & notified to you by your supervising officer so as to allow for your whereabouts & your compliance with your curfew reqt.be monitored[WHETHER BY ELECT. MEANS INVOLVING YOUR WEARING AN ELECT. TAG OR OTHERWISE]" within element with class "govuk-summary-list__value"
+    And I should see the text "6 January 2018" within element with class "govuk-summary-list__value"
+    And I should see the text "This is an example of licence condition notes" within element with class "govuk-summary-list__value"
+
     And There should be no a11y violations
 
   Scenario: View the current offender order who is currently on Post Sentence Supervision
@@ -302,6 +322,9 @@ Feature: Case summary
     And I should see the text "On post-sentence supervision (PSS)" within element with class "qa-start-date"
     And I should see the text "$END_TODAY" within element with class "qa-end-date"
     And I should see the text "$FIVE_MONTHS_TIME" within element with class "qa-elapsed-time"
+
+    And I should see the level 2 heading "Contact list"
+    And I should see link "View contact list (opens in NDelius)" with href "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=2360414697&eventId=123123130"
 
     And There should be no a11y violations
 

@@ -1,8 +1,8 @@
 // 'pac' prefix used for custom styles to prevent collisions
 .pac-phase-tag {
-  float: right;
-  margin-top:7px;
-  margin-left: 5px;
+  position: relative;
+  top: 3px;
+  margin-left: 2px;
 }
 
 .pac-sign-out-link {

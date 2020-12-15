@@ -44,7 +44,9 @@
 
 {% block navigation %}
   {%- set currentCourtHtml %}
+  <aside>
       <span class="qa-court-name govuk-body govuk-!-font-size-16 govuk-!-font-weight-bold">{{ params.courtName }}</span>
+  </aside>
   {% endset -%}
   {%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
   {{ mojPrimaryNavigation({
@@ -62,9 +64,9 @@
 
 {% block keydetails %}{% endblock %}
 
-<div class="govuk-width-container">
+<nav class="govuk-width-container" aria-label="Backwards navigation">
     {% block backlink %}{% endblock %}
-</div>
+</nav>
 
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content" role="main">

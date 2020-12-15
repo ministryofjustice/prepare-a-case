@@ -33,8 +33,20 @@ module.exports = function createApp ({ signInService, userService }) {
   app.set('view engine', 'njk')
 
   app.use(helmet({
-    contentSecurityPolicy: false
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ['\'self\''],
+        objectSrc: ['\'none\''],
+        scriptSrc: [
+          '\'self\'',
+          '\'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA=\'',
+          '\'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ=\''
+        ],
+        upgradeInsecureRequests: []
+      }
+    }
   }))
+
   app.use(compression())
   app.use(session({
     cookie: { maxAge: sessionExpiry },
