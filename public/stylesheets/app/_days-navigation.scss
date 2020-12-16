@@ -8,7 +8,8 @@
     text-align: center;
     @extend .govuk-body;
     @extend .govuk-\!-font-size-19;
-    padding: 6px 15px;
+    padding: 10px 0;
+    min-width: 68px;
     background-color: govuk-colour("blue");
     color: govuk-colour("white");
 
