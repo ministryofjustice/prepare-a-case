@@ -29,6 +29,11 @@ module.exports = (app, path) => {
     }))
   })
 
+  env.addFilter('removeTitle', (name) => {
+    const pattern = /\b(?:Mr *|Miss *|Mrs *|Ms *|Dr )\b/i
+    return name.replace(pattern, '')
+  })
+
   env.addFilter('markMatches', (matchString, sourceString) => {
     const sourceSplit = sourceString.split(' ').map(item => {
       return item.replace(',', '').toLowerCase()
