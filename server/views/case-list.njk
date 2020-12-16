@@ -104,7 +104,7 @@
 {% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
 {% set today = moment().format('YYYY-MM-DD') %}
 {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
-{% set withinDateRange = currentDate.isBetween(moment(), params.addBusinessDays(moment(), params.totalDays - 1), 'day', '[)') %}
+{% set withinDateRange = currentDate.isBetween(moment(), params.addBusinessDays(moment(), params.totalDays - 1), 'day', '[]') %}
 
 {%- set listTabs = [{
     title: 'Case list',
@@ -133,7 +133,7 @@
 
 {% block content %}
 
-    <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-0">
+    <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-6">
         <span class="govuk-caption-xl">Cases</span>
         {% if params.date === today %}
             {{ currentDate.format(dateFormat) }} <span class="pac-secondary-text">(Today)</span>
@@ -144,24 +144,16 @@
         {% endif %}
     </h1>
 
-    <p class="govuk-!-margin-bottom-7">
-        {% if currentDate.isAfter(useTodayDate) %}
-            <a class="pac-pagination-link govuk-!-margin-right-5" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(currentDate, -1).format('YYYY-MM-DD') }}">
-                <svg class="pac-pagination-link--icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
-                    <path fill="currentColor" d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
-                </svg>
-                <span class="pac-pagination-link--text">Previous day</span>
-            </a>
-        {% endif %}
-        {% if withinDateRange %}
-            <a class="pac-pagination-link" href="/{{ params.courtCode }}/cases/{{ params.addBusinessDays(currentDate, 1).format('YYYY-MM-DD') }}">
-                <span class="pac-pagination-link--next pac-pagination-link--text">Next day</span>
-                <svg class="pac-pagination-link--icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
-                    <path fill="currentColor" d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
-                </svg>
-            </a>
-        {% endif %}
-    </p>
+    {% if withinDateRange %}
+        {%- from "components/days-navigation/macro.njk" import pacDaysNavigation -%}
+        {% set totalDays = (params.totalDays - 1) if isSunday else params.totalDays %}
+        {{ pacDaysNavigation({
+            addBusinessDays: params.addBusinessDays,
+            totalDays: totalDays,
+            startDate: useTodayDate,
+            currentDate: currentDate
+        }) }}
+    {% endif %}
 
     {% if params.unmatchedRecords > 0 %}
         {%- from "components/inset-text/macro.njk" import insetText -%}
