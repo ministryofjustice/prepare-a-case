@@ -104,6 +104,7 @@
 {% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
 {% set today = moment().format('YYYY-MM-DD') %}
 {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
+{% set withinDateRange = currentDate.isBetween(moment(), params.addBusinessDays(moment(), params.totalDays - 1), 'day', '[]') %}
 
 {%- set listTabs = [{
     title: 'Case list',
@@ -132,7 +133,7 @@
 
 {% block content %}
 
-    <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-0">
+    <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-6">
         <span class="govuk-caption-xl">Cases</span>
         {% if params.date === today %}
             {{ currentDate.format(dateFormat) }} <span class="pac-secondary-text">(Today)</span>
@@ -143,14 +144,16 @@
         {% endif %}
     </h1>
 
-    {%- from "components/days-navigation/macro.njk" import pacDaysNavigation -%}
-    {% set totalDays = (params.totalDays - 1) if isSunday else params.totalDays %}
-    {{ pacDaysNavigation({
-        addBusinessDays: params.addBusinessDays,
-        totalDays: totalDays,
-        startDate: useTodayDate,
-        currentDate: currentDate
-    }) }}
+    {% if withinDateRange %}
+        {%- from "components/days-navigation/macro.njk" import pacDaysNavigation -%}
+        {% set totalDays = (params.totalDays - 1) if isSunday else params.totalDays %}
+        {{ pacDaysNavigation({
+            addBusinessDays: params.addBusinessDays,
+            totalDays: totalDays,
+            startDate: useTodayDate,
+            currentDate: currentDate
+        }) }}
+    {% endif %}
 
     {% if params.unmatchedRecords > 0 %}
         {%- from "components/inset-text/macro.njk" import insetText -%}
