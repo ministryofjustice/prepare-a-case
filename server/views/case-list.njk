@@ -1,7 +1,8 @@
 {%- set moment = params.moment -%}
+{%- set displayFilters = params.subsection === '' and (params.caseCount or params.filtersApplied) -%}
 
 {% block javascripts %}
-    {% if params.subsection === '' %}
+    {% if displayFilters %}
         <script type="text/javascript" src="/javascripts/filter-component.min.js"/>
     {% endif %}
 {% endblock %}
@@ -206,7 +207,7 @@
         status: status
     }) }}
 
-    {% if params.subsection === '' %}
+    {% if displayFilters %}
         {%- from "components/filter/macro.njk" import pacFilter -%}
         {{ pacFilter({
             filters: params.filters

@@ -287,6 +287,7 @@ Feature: Case list
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should not see that any defendants have possible NDelius records
 
+    And I should not see filters
     And I should not see the table list
     And I should see the body text "No case data available for this day."
     And I should not see pagination
