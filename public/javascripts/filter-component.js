@@ -22,6 +22,7 @@
       var current = !$el.active && $el.dataset['controls']
       var filterSections = document.getElementsByClassName('pac-filter-selection')
       Array.prototype.forEach.call(filterButtons, function (element, index) {
+        element.setAttribute('aria-expanded', current === element.dataset['controls'])
         current === element.dataset['controls'] ? element.classList.add('pac-filter-button--open') : element.classList.remove('pac-filter-button--open')
         current === filterSections[index].id ? filterSections[index].classList.remove('moj-js-hidden') : filterSections[index].classList.add('moj-js-hidden')
         if (!$el.active) {
