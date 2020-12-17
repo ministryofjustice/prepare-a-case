@@ -335,21 +335,22 @@
                 {% endfor %}
             </div>
         </div>
+        {% if awaitingOutcome.length > 0 %}
+            {% if awaitingOutcome.length | sort(false, false, 'IAPS deleted record') %}
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-width-two-thirds">
 
-        {% if awaitingOutcome.length | sort(false, false, 'IAPS deleted record') %}
-            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-width-two-thirds">
-
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-third pac-!-grid-column-18">
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-2"><span
-                                class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
-                Awaiting outcome</span></h3>
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-third pac-!-grid-column-18">
+                        <h3 class="govuk-heading-m govuk-!-margin-bottom-2"><span
+                                    class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                    Awaiting outcome</span></h3>
+                    </div>
+                    <div class="govuk-grid-column-two-thirds">
+                        <p class="govuk-heading-m govuk-!-margin-bottom-1 pac-dashboard-count">{{ awaitingOutcome | length }}
+                        </p>
+                    </div>
                 </div>
-                <div class="govuk-grid-column-two-thirds">
-                    <p class="govuk-heading-m govuk-!-margin-bottom-1 pac-dashboard-count">{{ awaitingOutcome | length }}
-                    </p>
-                </div>
-            </div>
+            {% endif %}
         {% endif %}
 
         {%- set unpaidWork = communityData.sentenceDetails.unpaidWork -%}

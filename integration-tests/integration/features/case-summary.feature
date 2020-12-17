@@ -256,9 +256,9 @@ Feature: Case summary
     And I should see the correctly calculated elapsed time between "2019-05-20" and "2020-05-25"
 
     And I should see the following level 3 headings
-      | Appointments to date | Acceptable | Unacceptable | Awaiting outcome |
+      | Appointments to date | Acceptable | Unacceptable |
     And I should see the following attendance counts
-      | 10 | 6 | 2 | 2 | 1 | 1 | 0 | 1 | 1 | 3 | 3 | 0 |
+      | 10 | 6 | 2 | 2 | 1 | 1 | 0 | 1 | 1 | 3 | 3 |
     And I should see the body text "Planned office visit"
     And I should see the body text "Unpaid work"
     And I should see the body text "Appointment with External Agency"
@@ -374,9 +374,9 @@ Feature: Case summary
     And I should see the level 2 heading "Attendance"
 
     And I should see the following level 3 headings
-      | Appointments to date | Acceptable | Unacceptable | Awaiting outcome |
+      | Appointments to date | Acceptable | Unacceptable |
     And I should see the following attendance counts
-      | 57 | 25 | 9 | 7 | 5 | 4 | 6 | 2 | 2 | 2 | 11 | 3 | 3 | 3 | 2 | 15 | 5 | 4 | 3 | 3 | 0 |
+      | 57 | 25 | 9 | 7 | 5 | 4 | 6 | 2 | 2 | 2 | 11 | 3 | 3 | 3 | 2 | 15 | 5 | 4 | 3 | 3 |
     And I should see the body text "Planned office visit"
     And I should see the body text "Unpaid work"
     And I should see the body text "Appointment with External Agency"

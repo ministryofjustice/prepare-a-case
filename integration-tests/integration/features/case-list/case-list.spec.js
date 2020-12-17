@@ -5,8 +5,8 @@ And('I should see the current day as {string}', $string => {
   cy.get('.qa-case-list-day').eq(0).contains($string)
 })
 
-And('I should see day navigation with {string}', $string => {
-  cy.get('.pac-pagination-link--text').eq(0).contains($string)
+And('I should see 7 days navigation bar', () => {
+  cy.get('.pac-days-navigation').should('exist')
 })
 
 And('I should see the matching inset text {string}', $string => {

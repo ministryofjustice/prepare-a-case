@@ -1,0 +1,31 @@
+.pac-days-navigation {
+  display: flex;
+  flex-direction: row;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    @extend .govuk-body;
+    @extend .govuk-\!-font-size-19;
+    padding: 10px 0;
+    min-width: 68px;
+    background-color: govuk-colour("blue");
+    color: govuk-colour("white");
+
+    &__link {
+      @extend .govuk-link;
+      @extend .govuk-link--no-visited-state;
+      text-decoration: none;
+      background-color: transparent;
+
+      &:hover {
+        background-color: govuk-colour("light-grey");
+      }
+
+      &:active {
+        background-color: govuk-colour("yellow");
+      }
+    }
+  }
+}
