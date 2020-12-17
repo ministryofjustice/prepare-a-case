@@ -30,7 +30,7 @@ module.exports = (app, path) => {
   })
 
   env.addFilter('removeTitle', (name) => {
-    const pattern = /\b(?:Mr *|Miss *|Mrs *|Ms *|Dr )\b/i
+    const pattern = /\b(?:Mr *|Miss *|Mrs *|Ms *|Dr *|01 )\b/i
     return name.replace(pattern, '')
   })
 
