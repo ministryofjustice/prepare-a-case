@@ -18,6 +18,15 @@ module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
   router.use(authenticationMiddleware())
 
+  router.use((req, res, next) => {
+    if (req.path.substr(-1) === '/' && req.path.length > 1) {
+      const query = req.url.slice(req.path.length)
+      res.redirect(301, req.path.slice(0, -1) + query)
+    } else {
+      next()
+    }
+  })
+
   router.get('/', health, (req, res) => {
     res.redirect(req.cookies && req.cookies.court ? `/${req.cookies.court}/cases` : '/select-court')
   })

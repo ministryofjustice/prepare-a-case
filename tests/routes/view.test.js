@@ -103,6 +103,13 @@ describe('Routes', () => {
     })
   })
 
+  it('should remove trailing slash from route (and preserve any querystring) in order to permit the use of relative links', () => {
+    return request(app).get('/B14LO/cases/2020-11-12/?page=1').then(response => {
+      expect(response.statusCode).toEqual(301)
+      expect(response.headers.location).toBe('/B14LO/cases/2020-11-12?page=1')
+    })
+  })
+
   it('case list route should redirect to corrected route when viewing case list on Sunday', () => {
     mockDate.set('2020-11-15')
     return request(app).get('/B14LO/cases').then(response => {
