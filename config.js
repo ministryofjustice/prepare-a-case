@@ -19,7 +19,20 @@ module.exports = {
   settings: {
     casesPerPage: get('CASES_PER_PAGE', 20),
     casesTotalDays: get('CASES_TOTAL_DAYS', 7),
-    casesExcludedDays: get('CASES_EXCLUDED_DAYS', '0') // Coma delimited String of days to exclude, incremental from 0 (Sunday)
+    casesExcludedDays: get('CASES_EXCLUDED_DAYS', '0'), // Coma delimited String of days to exclude, incremental from 0 (Sunday)
+    availableCourts: [
+      { code: 'B14AV', name: 'Barnsley Magistrates\' Court' },
+      { code: 'B16BG', name: 'Beverley Magistrates\' Court' },
+      { code: 'B20BL', name: 'Birmingham Magistrates\' Court' },
+      { code: 'B62DC', name: 'Cardiff Magistrates\' Court' },
+      { code: 'B14ET', name: 'Doncaster Magistrates\' Court' },
+      { code: 'B01GU', name: 'Highbury Corner Magistrates\' Court' },
+      { code: 'B16HE', name: 'Hull Magistrates\' Court' },
+      { code: 'B10BD', name: 'Mid and South East Northumberland Magistrates\' Court (aka Bedlington)' },
+      { code: 'B10JJ', name: 'Newcastle Magistrates\' Court' },
+      { code: 'B10JQ', name: 'North Tyneside Magistrates\' Court' },
+      { code: 'B14LO', name: 'Sheffield Magistrates\' Court' }
+    ]
   },
   session: {
     secret: get('SESSION_SECRET', 'prepare-a-case-insecure-default-session'),

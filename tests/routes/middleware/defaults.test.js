@@ -3,7 +3,9 @@ const moment = require('moment')
 const { defaults, getPath, getMonthsAndDays, addBusinessDays } = require('../../../server/routes/middleware/defaults')
 
 const reqObj = {
-  params: {}
+  params: {
+    courtCode: 'B14AV'
+  }
 }
 const mockNext = jest.fn()
 
@@ -11,9 +13,8 @@ describe('Default values middleware', () => {
   it('should return default values', async () => {
     await defaults(reqObj, {}, mockNext)
     expect(reqObj.params.limit).toEqual(20)
-    expect(reqObj.params.courtCode).toEqual(undefined)
-    expect(reqObj.params.courtName).toEqual('')
-    expect(reqObj.params.courtRooms).toEqual(0)
+    expect(reqObj.params.courtCode).toEqual('B14AV')
+    expect(reqObj.params.courtName).toEqual('Barnsley Magistrates\' Court')
   })
 
   describe('getMonthsAndDays method', () => {

@@ -27,7 +27,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       res.cookie('court', req.params.selectedCourt).send()
       res.redirect(`/${req.params.selectedCourt}/cases/${getBaseDateString()}`)
     } else {
-      res.render('select-court', { title: 'Select court', params: { courtCode: req.cookies.court } })
+      res.render('select-court', { title: 'Select court', params: { availableCourts: settings.availableCourts, courtCode: req.cookies.court } })
     }
   })
 
