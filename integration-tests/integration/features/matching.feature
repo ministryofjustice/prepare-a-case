@@ -357,7 +357,7 @@ Feature: Matching defendants to nDelius records
     When I click the "Unlink record from defendant" button
 
     Then I should be on the "Case summary" page
-    And I should see the match confirmation banner message "SuccessYou have successfully unlinked an NDelius record from Charlene Hammond."
+    And I should see the match confirmation banner message "You have successfully unlinked an NDelius record from Charlene Hammond."
 
     And There should be no a11y violations
 

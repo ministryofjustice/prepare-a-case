@@ -1,12 +1,13 @@
 {% if params.matchName %}
+    {% set matchName = params.matchName | properCase | removeTitle %}
     {% if params.matchType === 'No record' %}
-        {%- set messageText = 'You have successfully confirmed ' + params.matchName + ' has no NDelius record.' -%}
+        {%- set messageText = 'You have successfully confirmed ' + matchName + ' has no NDelius record.' -%}
     {% elif params.matchType === 'linked' %}
-        {%- set messageText = 'You have successfully linked an NDelius record to ' + params.matchName + '.' -%}
+        {%- set messageText = 'You have successfully linked an NDelius record to ' + matchName + '.' -%}
     {% elif params.matchType === 'unlinked' %}
-        {%- set messageText = 'You have successfully unlinked an NDelius record from ' + params.matchName + '.' -%}
+        {%- set messageText = 'You have successfully unlinked an NDelius record from ' + matchName + '.' -%}
     {% else %}
-        {%- set messageText = 'You have successfully confirmed a record for ' + params.matchName + '.' -%}
+        {%- set messageText = 'You have successfully confirmed a record for ' + matchName + '.' -%}
     {% endif %}
 
     <div class="govuk-grid-row">

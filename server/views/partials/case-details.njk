@@ -45,7 +45,7 @@
         courtCode: params.courtCode,
         caseNo: params.caseNo,
         accTitle: "Defendant: ",
-        title: data.defendantName | properCase,
+        title: data.defendantName | properCase | removeTitle,
         crn: crn,
         pnc: pnc,
         probationStatus: probationStatus,
