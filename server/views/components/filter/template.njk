@@ -18,7 +18,8 @@
                 <button id="button-{{ filter.id }}" type="button"
                         class="pac-filter-button{% if hasSelected %} pac-filter-button--selected{% endif %}"
                         data-controls="filter-{{ filter.id }}-selection"
-                        aria-controls="filter-{{ filter.id }}-selection">{{ filter.label }}
+                        aria-controls="filter-{{ filter.id }}-selection"
+                        aria-expanded="false">{{ filter.label }}
                 </button>
 
                 <div id="filter-{{ filter.id }}-selection" class="pac-filter-selection moj-js-hidden">
