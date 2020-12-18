@@ -15,7 +15,7 @@ Feature: Select court
     And I should see link "Doncaster Magistrates' Court" with href "/select-court/B14ET"
     And I should see link "Highbury Corner Magistrates' Court" with href "/select-court/B01GU"
     And I should see link "Hull Magistrates' Court" with href "/select-court/B16HE"
-    And I should see link "Mid and South East Northumberland Magistrates' Court (aka Bedlington)" with href "/select-court/B10BD"
+    And I should see link "Mid and South East Northumberland Magistrates' Court" with href "/select-court/B10BD"
     And I should see link "Newcastle Magistrates' Court" with href "/select-court/B10JJ"
     And I should see link "North Tyneside Magistrates' Court" with href "/select-court/B10JQ"
     And I should see link "Sheffield Magistrates' Court" with href "/select-court/B14LO"

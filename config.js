@@ -28,7 +28,7 @@ module.exports = {
       { code: 'B14ET', name: 'Doncaster Magistrates\' Court' },
       { code: 'B01GU', name: 'Highbury Corner Magistrates\' Court' },
       { code: 'B16HE', name: 'Hull Magistrates\' Court' },
-      { code: 'B10BD', name: 'Mid and South East Northumberland Magistrates\' Court (aka Bedlington)' },
+      { code: 'B10BD', name: 'Mid and South East Northumberland Magistrates\' Court' },
       { code: 'B10JJ', name: 'Newcastle Magistrates\' Court' },
       { code: 'B10JQ', name: 'North Tyneside Magistrates\' Court' },
       { code: 'B14LO', name: 'Sheffield Magistrates\' Court' }
