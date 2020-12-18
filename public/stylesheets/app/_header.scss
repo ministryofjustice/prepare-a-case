@@ -1,8 +1,13 @@
 // 'pac' prefix used for custom styles to prevent collisions
+
+.pac-beta-wrap{
+  display: flex;
+  align-items: baseline;
+}
+
 .pac-phase-tag {
   position: relative;
-  top: 3px;
-  margin-left: 2px;
+  margin-left: 7px;
 }
 
 .pac-sign-out-link {
