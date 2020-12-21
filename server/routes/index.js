@@ -245,9 +245,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
     return await updateCase(courtCode, caseNo, {
       ...caseResponse,
-      pnc: crn ? offenderDetail.otherIds.pnc : caseResponse.pnc,
+      pnc: crn ? offenderDetail.otherIds.pncNumber : caseResponse.pnc,
       crn: crn ? offenderDetail.otherIds.crn : null,
-      cro: crn ? offenderDetail.otherIds.cro : null,
+      cro: crn ? offenderDetail.otherIds.croNumber : null,
       probationStatus: crn ? offenderDetail.probationStatus : 'No record'
     })
   }
