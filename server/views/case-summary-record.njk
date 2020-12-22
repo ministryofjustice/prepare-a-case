@@ -141,12 +141,12 @@
             {% if data.probationStatus === "Current" %}
                 <h2 class="govuk-heading-m">Offender Manager</h2>
                 {% if offenderManager.allocatedDate %}
-                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.staff.forenames }} {{ offenderManager.staff.surname }}</p>
+                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.staff.forenames | capitalize }} {{ offenderManager.staff.surname | capitalize }}</p>
                     <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
                     <p class="govuk-body govuk-!-margin-bottom-0">Provider: {{ offenderManager.provider }}</p>
                     <p class="govuk-body govuk-!-margin-bottom-0">LDU: {{ offenderManager.team.district }}</p>
                     <p class="govuk-body govuk-!-margin-bottom-3">Team: {{ offenderManager.team.description }}</p>
-                    {%  if offenderManager.team.telephone %}
+                    {% if offenderManager.team.telephone %}
                         <p class="govuk-body govuk-!-margin-bottom-0">Team telephone: {{ offenderManager.team.telephone }}</p>
                     {% endif %}
                 {% endif %}
