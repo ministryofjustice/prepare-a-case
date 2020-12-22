@@ -43,13 +43,13 @@ Feature: Matching defendants to nDelius records
     And I should see the legend "3 NDelius records found"
 
     And I should see the following table headings
-      | Name | DOB | Address |
+      | Name | Date of birth | Address |
     And I should see the following table rows
       | Guadalupe Paratroop Flowerlupe Hess      |
       | 18 February 1989                         |
       | 43 Hunterfly Place, Birmingham, AD21 5DR |
     And I should see the following table 2 headings
-      | Name | DOB | Address | CRN | PNC | Probation status | Most recent event |
+      | Name | Date of birth | Address | CRN | PNC | Probation status | Most recent event |
     And I should see the following table 2 rows
       | Guadalupe Flowerlupe Paratroop Hess                            |
       | 18 February 1989                                               |
