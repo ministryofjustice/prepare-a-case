@@ -72,7 +72,7 @@
                             <td class="govuk-table__cell">{{ defendantName | properCase | removeTitle }}</td>
                         </tr>
                         <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">DOB</th>
+                            <th scope="row" class="govuk-table__header">Date of birth</th>
                             <td class="govuk-table__cell">{{ params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY') if data.defendantDob }}</td>
                         </tr>
                         <tr class="govuk-table__row">
@@ -131,7 +131,7 @@
                                             </td>
                                         </tr>
                                         <tr class="govuk-table__row">
-                                            <th scope="row" class="govuk-table__header">DOB</th>
+                                            <th scope="row" class="govuk-table__header">Date of birth</th>
                                             <td class="govuk-table__cell">
                                                 {{ params.moment(item.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') | markMatches(params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY')) | safe if item.dateOfBirth }}
                                             </td>
