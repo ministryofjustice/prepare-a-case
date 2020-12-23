@@ -3,11 +3,13 @@
 {% block navigation %}{% endblock %}
 
 {% block content %}
+
     <form method="post" name="selectCourt" novalidate>
-        <h1 class="govuk-heading-l">Select a court</h1>
+        <h1 class="govuk-heading-l">Select a magistrates' court</h1>
         {% for court in params.availableCourts %}
+            {% set courtShortName = court.name | replace("Magistrates' Court", "") %}
             <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-bottom-2">
-                <a href="/select-court/{{ court.code }}" class="govuk-link govuk-link--no-visited-state">{{ court.name }}</a>
+                <a href="/select-court/{{ court.code }}" class="govuk-link govuk-link--no-visited-state">{{ courtShortName }}</a>
             </p>
         {% endfor %}
     </form>
