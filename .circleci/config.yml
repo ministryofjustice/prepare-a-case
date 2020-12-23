@@ -18,7 +18,7 @@ commands:
     steps:
       - kubernetes/install
       - helm/install-helm-client:
-          version: v2.13.1
+          version: v3.2.4
       - run:
           name: Setup kubectl
           command: |
@@ -51,8 +51,7 @@ commands:
           name: Deploy to << parameters.env >>
           command: |
             helm upgrade prepare-a-case ~/git/helm_deploy/prepare-a-case/. \
-              --install --wait --force --reset-values --timeout 360 \
-              --tiller-namespace=${KUBE_ENV_NAMESPACE} \
+              --install --wait --reset-values --timeout 360s \
               --namespace=${KUBE_ENV_NAMESPACE} \
               --description="${APP_VERSION} - ${CIRCLE_BUILD_URL}" \
               --values ~/git/helm_deploy/values-<< parameters.env >>.yaml \
@@ -69,7 +68,7 @@ executors:
     working_directory: ~/app
 
 orbs:
-  helm: circleci/helm@0.1.2
+  helm: circleci/helm@1.1.2
   kubernetes: circleci/kubernetes@0.3.0
   mem: circleci/rememborb@0.0.1
   snyk: snyk/snyk@0.0.10
