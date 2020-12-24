@@ -302,7 +302,7 @@ Feature: Case summary
     Then I should be on the "Licence conditions details" page
     And I should see the text "Alcohol" within element with class "govuk-heading-m"
     And I should see the following summary list 3 with keys
-      | Licence condition subtype | Start date | Notes |
+      | Condition | Start date | Notes |
 
     And I should see the text "Confine yourself to remain at [CURFEW ADDRESS] initially from [START OF CURFEW HOURS] until [END OF CURFEW HOURS] each day, and, thereafter, for such a period as may be reasonably notified to you by your supervising officer; & comply with such arrangements as may be reasonably put in place & notified to you by your supervising officer so as to allow for your whereabouts & your compliance with your curfew reqt.be monitored[WHETHER BY ELECT. MEANS INVOLVING YOUR WEARING AN ELECT. TAG OR OTHERWISE]" within element with class "govuk-summary-list__value"
     And I should see the text "6 January 2018" within element with class "govuk-summary-list__value"
