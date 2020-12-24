@@ -13,9 +13,17 @@
       "crn": "D991494",
       "offenderManagers": [
         {
-          "forenames": "Temperance",
-          "surname": "Brennan",
-          "allocatedDate": "2019-09-30"
+          "staff": {
+            "forenames": "Temperance",
+            "surname": "Brennan"
+          },
+          "allocatedDate": "2019-09-30",
+          "team": {
+            "description": "OMU A",
+            "telephone": "0114 22278787",
+            "district": "N04 Division"
+          },
+          "provider": "NPS Midlands"
         }
       ],
       "convictions": [
