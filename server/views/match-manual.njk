@@ -35,6 +35,11 @@
         }) }}
     {% endif %}
 
+    {% set defendantFullName = (data.name.forename1 +
+        (' ' + data.name.forename2 if data.name.forename2) +
+        (' ' + data.name.forename3 if data.name.forename3) +
+        ' ' + data.name.surname) if data.name else data.defendantName %}
+
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
     <p class="govuk-body">Use a case reference number (CRN) to link to an existing NDelius record to the defendant.</p>
@@ -47,7 +52,7 @@
             <dl class="govuk-summary-list">
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">Name</dt>
-                    <dd class="govuk-summary-list__value">{{ data.defendantName | properCase | removeTitle }}</dd>
+                    <dd class="govuk-summary-list__value">{{ defendantFullName | properCase | removeTitle }}</dd>
                 </div>
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">Date of birth</dt>
