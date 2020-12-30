@@ -44,13 +44,12 @@
         }) }}
     {% endif %}
 
-    {% set defendantName = (data.name.forename1 + ' ' + data.name.surname) if data.name else data.defendantName %}
     {% set defendantFullName = (data.name.forename1 +
         (' ' + data.name.forename2 if data.name.forename2) +
         (' ' + data.name.forename3 if data.name.forename3) +
         ' ' + data.name.surname) if data.name else data.defendantName %}
 
-    <h1 class="govuk-caption-l govuk-!-margin-top-0">{{ defendantName | properCase | removeTitle }}</h1>
+    <h1 class="govuk-caption-l govuk-!-margin-top-0">{{ defendantFullName | properCase | removeTitle }}</h1>
     <h2 class="govuk-heading-l">Review possible NDelius records</h2>
     <p class="govuk-body">Compare details and confirm the correct record for the defendant.</p>
 
