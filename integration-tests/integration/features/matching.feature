@@ -34,7 +34,7 @@ Feature: Matching defendants to nDelius records
     When I click the "Review records" link
     Then I should be on the "Review possible NDelius records" page
 
-    And I should see the heading "Guadalupe Hess"
+    And I should see the heading "Guadalupe Paratroop Flowerlupe Hess"
     And I should see the level 2 heading "Review possible NDelius records"
     And I should see the body text "Compare details and confirm the correct record for the defendant."
     And I should see the inset text "Details that match the defendant are highlighted."
