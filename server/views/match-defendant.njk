@@ -16,11 +16,6 @@
 
 {% endblock %}
 
-{% set defendantName = (data.name.forename1 +
-    (' ' + data.name.forename2 if data.name.forename2) +
-    (' ' + data.name.forename3 if data.name.forename3) +
-    ' ' + data.name.surname) if data.name else data.defendantName %}
-
 {% block content %}
 
     {% if session.serverError %}
@@ -49,7 +44,12 @@
         }) }}
     {% endif %}
 
-    <h1 class="govuk-caption-l govuk-!-margin-top-0">{{ data.defendantName | properCase | removeTitle }}</h1>
+    {% set defendantFullName = (data.name.forename1 +
+        (' ' + data.name.forename2 if data.name.forename2) +
+        (' ' + data.name.forename3 if data.name.forename3) +
+        ' ' + data.name.surname) if data.name else data.defendantName %}
+
+    <h1 class="govuk-caption-l govuk-!-margin-top-0">{{ defendantFullName | properCase | removeTitle }}</h1>
     <h2 class="govuk-heading-l">Review possible NDelius records</h2>
     <p class="govuk-body">Compare details and confirm the correct record for the defendant.</p>
 
@@ -69,7 +69,7 @@
                         <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">Name</th>
-                            <td class="govuk-table__cell">{{ defendantName | properCase | removeTitle }}</td>
+                            <td class="govuk-table__cell">{{ defendantFullName | properCase | removeTitle }}</td>
                         </tr>
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">Date of birth</th>
@@ -127,7 +127,7 @@
                                             <th scope="row" class="govuk-table__header" style="width: 40%;">Name</th>
                                             <td class="govuk-table__cell">
                                                 {% set matchName = item.forename + ' ' + (item.middleNames | join(' ') + ' ' if item.middleNames) + item.surname %}
-                                                {{ matchName | properCase | removeTitle | markMatches(defendantName) | safe }}
+                                                {{ matchName | properCase | removeTitle | markMatches(defendantFullName) | safe }}
                                             </td>
                                         </tr>
                                         <tr class="govuk-table__row">

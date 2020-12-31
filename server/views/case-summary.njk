@@ -3,12 +3,13 @@
 {%- set moment = params.moment -%}
 {%- set courtRoom = data.courtRoom - 0 -%}
 {%- set communityData = data.communityData -%}
+{% set defendantFullName = (data.name.forename1 + ' ' + data.name.surname) if data.name else data.defendantName %}
 {% set bannerHtml %}
 {% set recordCount = 'record' if data.numberOfPossibleMatches === 1 else 'records' %}
     <div role="dialog" aria-labelledby="bannerDialogTitle" aria-describedby="bannerDialogDesc">
         <span id="bannerDialogTitle" class="govuk-visually-hidden" hidden>Defendant partially matches existing records and needs review.</span>
         <h2 class="govuk-heading-m" id="bannerDialogDesc">
-            {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found for {{ data.defendantName | properCase | removeTitle }}.
+            {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found for {{ defendantFullName | properCase | removeTitle }}.
             <a href="/{{ params.courtCode }}/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>
         </h2>
     </div>
@@ -87,7 +88,7 @@
                         Name
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        {{ data.defendantName | properCase | removeTitle }}
+                        {{ defendantFullName | properCase | removeTitle }}
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">

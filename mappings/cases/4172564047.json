@@ -51,7 +51,14 @@
         }
       ],
       "defendantSex": "F",
-      "defendantName": "Felicia Villarreal",
+      "defendantName": "Miss Felicia VilLAReal",
+      "name": {
+        "title": "Miss",
+        "forename1": "FELIcia",
+        "forename2": "BloB",
+        "forename3": "PopOp",
+        "surname": "VillaReal"
+      },
       "defendantAddress": {
         "line1": "37",
         "line2": "Maple Avenue",
