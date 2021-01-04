@@ -122,7 +122,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Probation record'
 
     const crn = templateValues.data.crn
-    const communityResponse = await getProbationRecordWithRequirements(crn)
+    const communityResponse = await getProbationRecordWithRequirements(crn, true)
     templateValues.params.showAllPreviousOrders = req.session.showAllPreviousOrders
     templateValues.data.communityData = {
       ...communityResponse

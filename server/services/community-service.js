@@ -2,10 +2,10 @@ const { request, requestFile } = require('./utils/request')
 const config = require('../../config')
 const apiUrl = config.apis.courtCaseService.url
 
-const getRequirements = async (convictions, crn) => {
+const getRequirements = async (convictions, crn, activeOnly) => {
   return Promise.all(
     convictions.map(async conviction => {
-      if (conviction.sentence) {
+      if (conviction.sentence && (!activeOnly || activeOnly && conviction.active)) {
         const res = await request(`${apiUrl}/offender/${crn}/convictions/${conviction.convictionId}/requirements`)
         return { ...conviction, ...res.data }
       } else {
@@ -20,10 +20,10 @@ const getProbationRecord = async crn => {
   return res.data
 }
 
-const getProbationRecordWithRequirements = async crn => {
+const getProbationRecordWithRequirements = async (crn, activeOnly = false) => {
   const responseData = await getProbationRecord(crn)
   if (responseData && responseData.convictions) {
-    const enrichedConvictions = await getRequirements(responseData.convictions, crn)
+    const enrichedConvictions = await getRequirements(responseData.convictions, crn, activeOnly)
     return {
       ...responseData,
       convictions: enrichedConvictions

@@ -173,7 +173,7 @@ describe('Routes', () => {
     }
     const response = await request(app).get('/B14LO/case/8678951874/record')
     expect(caseService.getCase).toHaveBeenCalledWith('B14LO', '8678951874')
-    expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
+    expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513', true)
     return response
   })
 
