@@ -5,7 +5,7 @@ const apiUrl = config.apis.courtCaseService.url
 const getRequirements = async (convictions, crn, activeOnly) => {
   return Promise.all(
     convictions.map(async conviction => {
-      if (conviction.sentence && (!activeOnly || activeOnly && conviction.active)) {
+      if (conviction.sentence && (!activeOnly || (activeOnly && conviction.active))) {
         const res = await request(`${apiUrl}/offender/${crn}/convictions/${conviction.convictionId}/requirements`)
         return { ...conviction, ...res.data }
       } else {
