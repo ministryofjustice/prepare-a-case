@@ -82,7 +82,7 @@
             {% endif %}
         {% elif attendance.complied | string === "true" %}
             {{ absentAppointments.complied.push(attendance) }}
-        {% elif attendance.outcome === "IAPS deleted record" %}
+        {% elif not attendance.outcome or attendance.outcome | lower === "iaps deleted record" %}
             {{ awaitingOutcome.push(attendance) }}
         {% else %}
             {{ absentAppointments.failed.push(attendance) }}
