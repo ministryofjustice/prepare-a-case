@@ -110,7 +110,8 @@
           "contactType": {
             "description": "IAPS / Accredited programme",
             "code": "886418"
-          }
+          },
+          "outcome": "IAPS deleted record"
         },
         {
           "contactId": 884447,
