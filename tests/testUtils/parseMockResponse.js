@@ -1,38 +1,6 @@
-/* global expect */
 const moment = require('moment')
-const { validate } = require('./utils/validator')
 
-function testGeneralValidation (validator, mapping, definition = undefined) {
-  const responseBody = configureResponseBody(mapping.response.jsonBody)
-  if (!definition) {
-    definition = findDefinition(mapping.request.urlPathPattern, validator.swagger.paths)
-  }
-  const isValid = validate(validator, responseBody, definition)
-  expect(isValid).toBe(true)
-}
-
-function findDefinition (pathToMatch, paths) {
-  const filteredDefinitions = Object.keys(paths).filter(matchesPath(pathToMatch))
-  expect(filteredDefinitions.length).toBe(1)
-  return paths[filteredDefinitions[0]]
-}
-
-function matchesPath (path) {
-  return (actualPath) => {
-    const pathSegments = path.split('/')
-    const actualPathSegments = actualPath.split('/')
-    if (pathSegments.length !== actualPathSegments.length) {
-      return false
-    }
-
-    return pathSegments.every((segment, index) => {
-      const actualSegment = actualPathSegments[index]
-      return segment === actualSegment || isWildcard(actualSegment)
-    })
-  }
-}
-
-function configureResponseBody ($json) {
+function parseMockResponse ($json) {
   if ($json.sessionStartTime) {
     $json.sessionStartTime = $json.sessionStartTime.replace('{{now format=\'yyyy-MM-dd\'}}', moment().format('YYYY-MM-DD'))
   }
@@ -59,14 +27,6 @@ function configureResponseBody ($json) {
   return $json
 }
 
-function isWildcard (actual) {
-  const matches = actual.match(/^{.*}$/)
-  return matches && matches.length !== 0
-}
-
 module.exports = {
-  findDefinition,
-  matchesPath,
-  isWildcard,
-  testGeneralValidation
+  parseMockResponse
 }
