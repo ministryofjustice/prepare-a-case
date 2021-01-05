@@ -114,6 +114,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     req.session.matchName = undefined
     req.session.matchType = 'defendant'
     req.session.matchDate = undefined
+    req.session.backLink = req.path
     res.render('case-summary', templateValues)
   })
 
@@ -234,6 +235,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     req.session.matchName = templateValues.data.defendantName
     req.session.formError = false
     req.session.serverError = false
+    req.session.backLink = req.path
     res.render('match-defendant', templateValues)
   })
 
