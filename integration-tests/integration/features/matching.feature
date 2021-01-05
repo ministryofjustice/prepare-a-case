@@ -243,6 +243,7 @@ Feature: Matching defendants to nDelius records
     And I click the "link it to them with a case reference number" link
 
     Then I should be on the "Link an NDelius record to the defendant" page
+    And I should see link "Cancel" with href "/B14LO/match/defendant/3597035492"
     When I enter "C178657" into text input with id "crn"
     And I click the "Find record" button
 
@@ -270,6 +271,7 @@ Feature: Matching defendants to nDelius records
     And I click the "link it to them with a case reference number" link
 
     Then I should be on the "Link an NDelius record to the defendant" page
+    And I should see link "Cancel" with href "/B14LO/match/defendant/3597035492"
     When I enter "C178657" into text input with id "crn"
     And I click the "Find record" button
 
@@ -334,6 +336,7 @@ Feature: Matching defendants to nDelius records
 
     And I click the "Link NDelius record" button
     Then I should be on the "Link an NDelius record to the defendant" page
+    And I should see link "Cancel" with href "/B14LO/case/7483843110/summary"
 
     And There should be no a11y violations
 
