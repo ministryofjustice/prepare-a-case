@@ -166,6 +166,19 @@ jobs:
       - store_artifacts:
           path: integration-tests/screenshots
 
+  generate_pacts:
+    executor: builder
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/app
+      - restore_cache:
+          key: dependencies-cache-{{ checksum "package.json" }}
+      - run:
+          name: Generate pact files
+          halt_build_on_fail: false
+          command: npm run pact-test
+
   build_docker:
     executor: deployer
     parameters:
@@ -284,6 +297,9 @@ workflows:
           requires:
             - build
       - integration_test:
+          requires:
+            - build
+      - generate_pacts:
           requires:
             - build
       - build_docker:
