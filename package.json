@@ -30,7 +30,7 @@
     "start": "npm run css-build && npm run minify-js-css && node ./bin/www",
     "start:watch": "nodemon --exec npm run start --scripts-prepend-node-path",
     "unit-test": "npx jest --config=./tests/jest.config.js --ci --detectOpenHandles --forceExit",
-    "pact-test": "npx jest --config=./tests/jest.pact.config.js --ci",
+    "pact-test": "rm -rf pact && npx jest --config=./tests/jest.pact.config.js --ci",
     "record-build-info": "node ./bin/record-build-info"
   },
   "config": {
