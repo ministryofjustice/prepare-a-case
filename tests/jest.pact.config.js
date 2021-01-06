@@ -1,8 +1,12 @@
 module.exports = {
   testEnvironment: 'node',
   verbose: true,
-  rootDir: './',
+  rootDir: '../',
   testMatch: [
-    '/**/?(*.)(spec|test).pact.{js,jsx,mjs}'
+    '**/*.test.pact.(ts|js)'
+  ],
+  watchPathIgnorePatterns: [
+    'pact/logs/*',
+    'pact/pacts/*'
   ]
 }

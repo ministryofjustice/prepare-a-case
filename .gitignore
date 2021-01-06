@@ -1,4 +1,4 @@
-pact/
+/pact
 dist/
 node_modules/
 dist-*.tgz
