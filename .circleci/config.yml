@@ -166,7 +166,7 @@ jobs:
       - store_artifacts:
           path: integration-tests/screenshots
 
-  generate_pacts:
+  pact:
     executor: builder
     steps:
       - checkout
@@ -178,6 +178,8 @@ jobs:
           name: Generate pact files
           halt_build_on_fail: false
           command: npm run pact-test
+      - store_artifacts:
+          path: 'pact/pacts'
 
   build_docker:
     executor: deployer
@@ -299,7 +301,7 @@ workflows:
       - integration_test:
           requires:
             - build
-      - generate_pacts:
+      - pact:
           requires:
             - build
       - build_docker:

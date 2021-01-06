@@ -1,4 +1,4 @@
-/* global describe, beforeEach, it, expect */
+/* global describe, it, expect */
 const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
 

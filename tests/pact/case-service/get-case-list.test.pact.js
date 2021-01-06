@@ -1,4 +1,4 @@
-/* global describe, beforeEach, it, expect */
+/* global describe, it, expect */
 const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
 const moment = require('moment')
@@ -7,7 +7,7 @@ const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { request } = require('../../../server/services/utils/request')
 const caseListMock = require('../../../mappings/case-list-full.json')
 
-pactWith({ consumer: 'Prepare a case', provider: 'Court case service'}, provider => {
+pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
   describe('GET /court/{courtCode}/cases?date={YYYY-MM-DD}', () => {
     const courtCode = 'B14LO'
     const apiUrl = `/court/${courtCode}/cases`
