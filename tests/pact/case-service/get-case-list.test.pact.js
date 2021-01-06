@@ -19,7 +19,7 @@ pactWith({ consumer: 'prepare_a_case/services/case_service', provider: 'get_case
         method: 'GET',
         path: apiUrl,
         query: {
-          "date": today,
+          date: today
         },
         headers: {
           Accept: 'application/json, text/plain, */*'
