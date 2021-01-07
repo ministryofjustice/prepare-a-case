@@ -35,6 +35,17 @@
 
         </div>
 
+        {% if params.showPresentenceAssessmentButton %}
+          <div class="pac-key-details-bar-flex__child pac-key-details-bar-flex__child__right govuk-!-margin-right-0">
+              <form method="post" action="/{{ params.courtCode }}/case/{{ params.caseNo }}/assessment">
+                  <button class="govuk-button govuk-button--secondary pac-key-details-bar__button"
+                          data-module="govuk-button" type="submit">Complete Pre-Sentence Assessment
+                  </button>
+              </form>
+          </div>
+        {% endif %}
+
+
         {% if params.probationStatus == 'No record' %}
             <div class="pac-key-details-bar-flex__child pac-key-details-bar-flex__child__right govuk-!-margin-right-0">
                 <form method="get" action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/manual">

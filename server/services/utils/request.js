@@ -34,8 +34,24 @@ const update = async (url, data) => {
   return response
 }
 
+const send = async (url, data, tokens) => {
+  const config = { }
+  if (tokens) {
+    config.headers = { Authorization: `bearer ${tokens}` }
+  }
+
+  let response = {}
+  try {
+    response = await axios.post(url, data, config)
+  } catch (e) {
+    axiosError(e)
+  }
+  return response
+}
+
 module.exports = {
   request,
   requestFile,
-  update
+  update,
+  send
 }

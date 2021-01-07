@@ -43,6 +43,10 @@ module.exports = {
       apiClientId: get('API_CLIENT_ID', 'prepare-a-case-for-court'),
       apiClientSecret: get('API_CLIENT_SECRET', 'clientsecret'),
       role: get('ROLE', 'ROLE_PREPARE_A_CASE')
+    },
+    assessRisksAndNeedsService: {
+      url: get('ARN_SERVICE_URL', 'http://localhost:3001/psr-from-court'),
+      enable: get('ARN_SERVICE_ENABLE', false)
     }
   },
   domain: `${get('INGRESS_URL', `http://localhost:${port}`)}`,

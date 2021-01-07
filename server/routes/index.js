@@ -10,6 +10,10 @@ const {
   getBreachDetails,
   getRiskDetails
 } = require('../services/community-service')
+const {
+  startPresentenceAssessment,
+  presentenceAssessmentEnabled
+} = require('../services/assess-risks-and-needs-service')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
@@ -98,6 +102,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/:courtCode/case/:caseNo/summary', health, defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Case summary'
+    templateValues.showPresentenceAssessmentButton = presentenceAssessmentEnabled
     templateValues.session = {
       ...req.session
     }
@@ -371,6 +376,20 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
     req.session.matchName = templateValues.data.defendantName
     res.render('match-unlink', templateValues)
+  })
+
+  router.post('/:courtCode/case/:caseNo/assessment', health, defaults, async (req, res) => {
+    const { courtCode, caseNo, tokens } = req.params
+    const response = await startPresentenceAssessment(courtCode, caseNo, tokens)
+
+    let redirectUrl = '/'
+    if (response.status === 200) {
+      redirectUrl = response.request.res.responseUrl
+    } else {
+      req.session.serverError = true
+      redirectUrl = `/${req.params.courtCode}/case/${req.params.caseNo}/summary`
+    }
+    res.redirect(redirectUrl)
   })
 
   return router
