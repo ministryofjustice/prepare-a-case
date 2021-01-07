@@ -180,6 +180,13 @@ jobs:
           command: npm run pact-test
       - store_artifacts:
           path: 'pact/pacts'
+      - run:
+          name: Upload pact files to broker
+          command: |
+            npx pact-broker publish pact/pacts \
+              --broker-base-url $PACT_BROKER_BASE_URL \
+              --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH \
+              -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD
 
   build_docker:
     executor: deployer
