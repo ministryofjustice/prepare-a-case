@@ -21,7 +21,7 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
           method: 'GET',
           path: apiUrl,
           headers: {
-            Accept: 'application/json, text/plain, */*'
+            Accept: 'application/json'
           }
         },
         willRespondWith: {

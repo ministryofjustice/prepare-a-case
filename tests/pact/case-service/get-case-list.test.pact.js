@@ -25,7 +25,7 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
             date: today
           },
           headers: {
-            Accept: 'application/json, text/plain, */*'
+            Accept: 'application/json'
           }
         },
         willRespondWith: {

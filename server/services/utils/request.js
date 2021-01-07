@@ -4,7 +4,7 @@ const axiosError = require('./axios-error')
 const request = async url => {
   let response = {}
   try {
-    response = await axios.get(url)
+    response = await axios.get(url, { headers: { Accept: 'application/json' } })
   } catch (e) {
     axiosError(e)
     // Silent as issue should be caught by health middleware and the user should be suitably notified
@@ -27,7 +27,7 @@ const requestFile = async url => {
 const update = async (url, data) => {
   let response = {}
   try {
-    response = await axios.put(url, data)
+    response = await axios.put(url, data, { headers: { Accept: 'application/json' } })
   } catch (e) {
     axiosError(e)
   }
