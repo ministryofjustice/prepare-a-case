@@ -14,8 +14,8 @@
     "node": ">=14.15.1 <15.0.0"
   },
   "scripts": {
-    "precommit": "npm run lint && npm run unit-test && npm run mock-validation-test && npm run int-test",
-    "pre-commit-lite": "npm run lint && npm run unit-test && npm run mock-validation-test",
+    "precommit": "npm run lint && npm run unit-test && npm run int-test",
+    "pre-commit-lite": "npm run lint && npm run unit-test",
     "pre-push": "snyk test --fail-on=upgradable --org=digital-probation-services && npm run int-test",
     "start-feature": "PORT=3007 NODE_ENV=development node $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
     "start-feature:dev": "PORT=3007 NOMIS_AUTH_URL=http://localhost:9091/auth NODE_ENV=development nodemon $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
@@ -29,9 +29,12 @@
     "minify-js-css": "bash ./bin/minify-js-css",
     "start": "npm run css-build && npm run minify-js-css && node ./bin/www",
     "start:watch": "nodemon --exec npm run start --scripts-prepend-node-path",
-    "unit-test": "NODE_ENV=test npx jest --config=./tests/jest.config.js --ci --detectOpenHandles --forceExit",
-    "mock-validation-test": "NODE_ENV=test npx jest --config=mock_validation/jest.config.js --ci",
+    "unit-test": "npx jest --config=./tests/jest.config.js --ci --detectOpenHandles --forceExit",
+    "pact-test": "rm -rf pact && npx jest --config=./tests/jest.pact.config.js --ci",
     "record-build-info": "node ./bin/record-build-info"
+  },
+  "config": {
+    "pact_do_not_track": true
   },
   "nodemonConfig": {
     "ignore": [
@@ -97,6 +100,7 @@
     "superagent": "6.1.0"
   },
   "devDependencies": {
+    "@pact-foundation/pact": "9.13.2",
     "axe-core": "4.1.1",
     "cucumber": "6.0.5",
     "cypress": "6.2.0",
@@ -104,14 +108,13 @@
     "cypress-cucumber-preprocessor": "4.0.0",
     "jest": "26.6.3",
     "jest-junit": "12.0.0",
+    "jest-pact": "0.8.1",
     "minify": "6.0.1",
     "mockdate": "3.0.2",
     "moxios": "0.4.0",
     "node-sass": "5.0.0",
     "nodemon": "2.0.6",
     "standard": "16.0.3",
-    "supertest": "6.0.1",
-    "swagger-client": "3.12.1",
-    "swagger-model-validator": "3.0.20"
+    "supertest": "6.0.1"
   }
 }

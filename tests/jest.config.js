@@ -19,7 +19,6 @@ module.exports = {
   ],
   testMatch: [
     '/**/?(*.)(spec|test).{js,jsx,mjs}',
-    '!/**/mock_validation/**',
     '!/**/integration/**'
   ]
 }

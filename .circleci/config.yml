@@ -166,6 +166,30 @@ jobs:
       - store_artifacts:
           path: integration-tests/screenshots
 
+  pact:
+    executor: builder
+    steps:
+      - checkout
+      - mem/recall:
+          env_var: APP_VERSION
+      - attach_workspace:
+          at: ~/app
+      - restore_cache:
+          key: dependencies-cache-{{ checksum "package.json" }}
+      - run:
+          name: Generate pact files
+          halt_build_on_fail: false
+          command: npm run pact-test
+      - store_artifacts:
+          path: 'pact/pacts'
+      - run:
+          name: Upload pact files to broker
+          command: |
+            npx pact-broker publish pact/pacts \
+              --broker-base-url $PACT_BROKER_BASE_URL \
+              --consumer-app-version $APP_VERSION --tag $CIRCLE_BRANCH \
+              -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD
+
   build_docker:
     executor: deployer
     parameters:
@@ -284,6 +308,9 @@ workflows:
           requires:
             - build
       - integration_test:
+          requires:
+            - build
+      - pact:
           requires:
             - build
       - build_docker:
