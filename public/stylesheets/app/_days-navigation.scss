@@ -10,6 +10,9 @@
     @extend .govuk-\!-font-size-19;
     padding: 10px 0;
     min-width: 68px;
+    @include govuk-media-query($until: tablet){
+      min-width: 50px;
+    }
     background-color: govuk-colour("blue");
     color: govuk-colour("white");
 
