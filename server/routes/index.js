@@ -73,7 +73,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
     req.session.currentView = params.subsection
     req.session.caseListDate = params.date
-    req.session.backLink = `/${params.courtCode}/cases/${params.date}?page=${templateValues.params.page}`
+    req.session.currentCaseListViewLink = `${req.path}?page=${templateValues.params.page}`
+    req.session.backLink = req.session.currentCaseListViewLink
     res.render('case-list', templateValues)
   })
 
@@ -92,6 +93,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const response = await getCase(params.courtCode, params.caseNo)
     const caseListDate = req.session.caseListDate || getBaseDateString()
     return {
+      currentCaseListViewLink: req.session.currentCaseListViewLink,
       backLink: req.session.backLink,
       healthy: req.healthy,
       caseListDate,
