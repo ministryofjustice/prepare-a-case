@@ -1,5 +1,15 @@
 {% extends "partials/case-details.njk" %}
 
+{% block backlink %}
+
+    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
+    {{ govukBackLink({
+        text: backText or "Back to cases",
+        href: backLink or '/' + params.courtCode + '/cases'
+    }) }}
+
+{% endblock %}
+
 {% block caseContent %}
 <h1 class="govuk-heading-l">{{ title }}</h1>
 
