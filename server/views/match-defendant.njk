@@ -88,6 +88,10 @@
                                 {{ dataAddress }}
                             </td>
                         </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">PNC</th>
+                            <td class="govuk-table__cell">{{ data.pnc or 'Unavailable'}}</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -154,7 +158,7 @@
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">PNC</th>
-                                            <td class="govuk-table__cell">{{ item.matchIdentifiers.pnc }}</td>
+                                            <td class="govuk-table__cell">{{ item.matchIdentifiers.pnc or 'Unavailable' }}</td>
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">Probation status</th>
