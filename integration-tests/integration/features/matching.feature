@@ -43,11 +43,12 @@ Feature: Matching defendants to nDelius records
     And I should see the legend "3 NDelius records found"
 
     And I should see the following table headings
-      | Name | Date of birth | Address |
+      | Name | Date of birth | Address | PNC |
     And I should see the following table rows
       | Guadalupe Paratroop Flowerlupe Hess      |
       | 18 February 1989                         |
       | 43 Hunterfly Place, Birmingham, AD21 5DR |
+      | Unavailable                              |
     And I should see the following table 2 headings
       | Name | Date of birth | Address | CRN | PNC | Probation status | Most recent event |
     And I should see the following table 2 rows
@@ -55,7 +56,7 @@ Feature: Matching defendants to nDelius records
       | 18 February 1989                                               |
       | 43 Hunterfly Place, Birmingham, Birmingham, AD21 5DR           |
       | V178657                                                        |
-      |                                                                |
+      | D/9874483AB                                                            |
       | Current                                                        |
       | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
     And I should see the following table 3 rows
@@ -63,7 +64,7 @@ Feature: Matching defendants to nDelius records
       | 18 February 1989                                                |
       | Dunroamin, Leicestershire, LE2 3NA                              |
       | C178657                                                         |
-      |                                                                 |
+      | Unavailable                                                                |
       | Previously known                                                |
       | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
     And I should see the following table 4 rows
@@ -71,7 +72,7 @@ Feature: Matching defendants to nDelius records
       | 18 February 1998                                              |
       | Dunroamin, Leicestershire, LE2 3NA                            |
       | B123456                                                       |
-      |                                                               |
+      | Unavailable                                                              |
       | Previously known                                              |
       | 13 January 2015 - CJA Standard Determinate Custody (6 Months) |
     And I should see radio buttons with the following IDs
