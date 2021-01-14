@@ -64,7 +64,7 @@ executors:
     working_directory: ~/app
   builder:
     docker:
-      - image: circleci/node:14.15.3-browsers
+      - image: circleci/node:14.15.4-browsers
     working_directory: ~/app
 
 orbs:
