@@ -256,3 +256,11 @@ And('I should see the text input hint {string}', $string => {
 And('I enter {string} into text input with id {string}', ($string, $id) => {
   cy.get(`#${$id}`).type($string)
 })
+
+And('I should not see the key details banner', () => {
+  cy.get('.pac-key-details-bar').should('not.exist')
+})
+
+And('I should see the key details banner', () => {
+  cy.get('.pac-key-details-bar').should('exist')
+})

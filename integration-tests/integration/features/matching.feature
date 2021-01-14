@@ -34,6 +34,8 @@ Feature: Matching defendants to nDelius records
     When I click the "Review records" link
     Then I should be on the "Review possible NDelius records" page
 
+    And I should not see the key details banner
+
     And I should see the heading "Guadalupe Paratroop Flowerlupe Hess"
     And I should see the level 2 heading "Review possible NDelius records"
     And I should see the body text "Compare details and confirm the correct record for the defendant."
@@ -143,6 +145,7 @@ Feature: Matching defendants to nDelius records
     When I navigate to the "match/defendant/3597035492" route
 
     Then I should be on the "Review possible NDelius records" page
+    And I should see the key details banner
     When I click the "Back" link
     Then I should be on the "Case summary" page
 
