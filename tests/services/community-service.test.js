@@ -2,7 +2,13 @@
 const moxios = require('moxios')
 const config = require('../../config')
 
-const { getDetails, getSentenceDetails, getProbationRecord, getProbationRecordWithRequirements, getBreachDetails } = require('../../server/services/community-service')
+const {
+  getDetails,
+  getSentenceDetails,
+  getProbationRecord,
+  getProbationRecordWithRequirements,
+  getBreachDetails
+} = require('../../server/services/community-service')
 
 const apiUrl = config.apis.courtCaseService.url
 
@@ -28,6 +34,24 @@ describe('Community service', () => {
 
     const response = await getProbationRecord('D123456')
     expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/probation-record`)
+    return response
+  })
+
+  it('should call the api for probation record and handle an unauthorised response', async () => {
+    moxios.stubRequest(`${apiUrl}/offender/F378109/probation-record`, {
+      status: 403,
+      response: {
+        developerMessage: 'This is the developer message returned',
+        errorCode: 0,
+        moreInfo: 'This is the more info returned',
+        userMessage: 'User message'
+      }
+    })
+
+    const response = await getProbationRecord('F378109')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/F378109/probation-record`)
+    expect(response.status).toBe(403)
+    expect(response.data.userMessage).toBe('User message')
     return response
   })
 
