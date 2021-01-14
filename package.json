@@ -11,7 +11,7 @@
     "url": "https://github.com/ministryofjustice/prepare-a-case.git"
   },
   "engines": {
-    "node": ">=14.15.1 <15.0.0"
+    "node": ">=14.15.4 <15.0.0"
   },
   "scripts": {
     "precommit": "npm run lint && npm run unit-test && npm run int-test",
@@ -69,7 +69,7 @@
     "stepDefinitions": "integration-tests/integration/"
   },
   "dependencies": {
-    "@ministryofjustice/frontend": "0.1.0",
+    "@ministryofjustice/frontend": "0.2.0",
     "agentkeepalive": "4.1.3",
     "applicationinsights": "1.8.8",
     "applicationinsights-native-metrics": "0.0.5",
