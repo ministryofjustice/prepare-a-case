@@ -1,8 +1,8 @@
+{% extends "partials/layout.njk" %}
+
 {% if session.matchType === 'bulk' %}
-    {% extends "partials/layout.njk" %}
     {%- set backUrl = '/' + params.courtCode + '/match/' + session.matchType + '/' + session.matchDate -%}
 {% else %}
-    {% extends "partials/case-details.njk" %}
     {%- set backUrl = '/' + params.courtCode + '/case/' + data.caseNo + '/summary' -%}
 {% endif %}
 
