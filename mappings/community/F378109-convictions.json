@@ -1,0 +1,19 @@
+{
+  "id": "ae1fd3cc-9f25-4521-af9e-73c48e28d56b",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/F378109/probation-record"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 403,
+    "jsonBody": {
+      "developerMessage": "This is the developer message returned",
+      "errorCode": 0,
+      "moreInfo": "This is the more info returned",
+      "userMessage": "You cannot view probation information for this defendant due to restrictions on your NDelius account."
+    }
+  }
+}

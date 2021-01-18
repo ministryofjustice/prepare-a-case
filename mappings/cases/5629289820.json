@@ -1,0 +1,52 @@
+{
+  "id": "2bacb15c-6daa-4a07-9f3f-0516f10aea17",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z0-9]{5})/case/5629289820"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "caseId": "5629289820",
+      "caseNo": "5629289820",
+      "courtCode": "SHF",
+      "courtRoom": "06",
+      "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+      "listNo": "3rd",
+      "pnc": "A/8973642",
+      "crn": "F378109",
+      "probationStatus": "Previously Known",
+      "session": "MORNING",
+      "previouslyKnownTerminationDate": null,
+      "suspendedSentenceOrder": false,
+      "breach": false,
+      "offences": [
+        {
+          "offenceTitle": "Attempt theft from the person of another",
+          "offenceSummary": "On 05/09/2016 at Aberdeen attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Howard Ashley.",
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+        },
+        {
+          "offenceTitle": "Attempt theft from the person of another",
+          "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Conner Powell.",
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+        }
+      ],
+      "defendantSex": "F",
+      "defendantName": "Latoya Kirkland",
+      "defendantAddress": {
+        "line1": "38",
+        "line2": "Woddlands Road",
+        "postcode": "M21 6SB",
+        "line3": "Manchester",
+        "line4": null,
+        "line5": null
+      },
+      "defendantDob": "1986-07-11",
+      "nationality1": "British"
+    }
+  }
+}

@@ -4,7 +4,6 @@
     {% extends "partials/case-details.njk" %}
 {% endif %}
 
-
 {% block content %}
 
     {% if session.serverError %}
@@ -113,7 +112,7 @@
                         </div>
                         <div class="govuk-summary-list__row">
                             <dt class="govuk-summary-list__key">Probation status</dt>
-                            <dd class="govuk-summary-list__value">{{ details.probationStatus | string | capitalize }}</dd>
+                            <dd class="govuk-summary-list__value">{{ details.probationStatus | string | capitalize if details.probationStatus }}</dd>
                         </div>
                     </dl>
 

@@ -14,7 +14,8 @@
     {% endif %}
 {% endfor -%}
 
-{%- set offenderManager = communityData.offenderManagers | first -%}
+{% set defendantFullName = (data.name.forename1 + ' ' + data.name.surname) if data.name else data.defendantName %}
+{%- set offenderManager = communityData.offenderManagers | first if communityData.offenderManagers -%}
 
 {%- set probationDocuments = [] -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
@@ -33,9 +34,16 @@
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-                <h1 class="govuk-heading-l">Probation record</h1>
+                <h1 class="govuk-heading-l">
+                    {{ "You are restricted from viewing this record" if communityData.status === 403 else "Probation record" }}
+                </h1>
             </div>
         </div>
+
+        {% if communityData.status === 403 %}
+            <p class="govuk-body">{{ communityData.data.userMessage }}</p>
+            <p class="govuk-body">If you think you should be able to view this case, contact your line manager.</p>
+        {% endif %}
 
         {% if activeOrders | length %}
             <h2 class="govuk-heading-m">Current orders <span

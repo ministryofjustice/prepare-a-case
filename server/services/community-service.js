@@ -17,7 +17,7 @@ const getRequirements = async (convictions, crn, activeOnly) => {
 
 const getProbationRecord = async crn => {
   const res = await request(`${apiUrl}/offender/${crn}/probation-record`)
-  return res.data
+  return res.status >= 400 ? res : res.data
 }
 
 const getProbationRecordWithRequirements = async (crn, activeOnly = false) => {
@@ -49,7 +49,7 @@ const getAttachment = async (crn, documentId) => {
 
 const getDetails = async crn => {
   const res = await request(`${apiUrl}/offender/${crn}/detail`)
-  return res.data
+  return res.status >= 400 ? res : res.data
 }
 
 const getRiskDetails = async crn => {
