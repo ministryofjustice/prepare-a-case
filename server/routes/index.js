@@ -307,6 +307,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.data = {
       ...templateValues.data
     }
+
+    templateValues.data.manualMatch = true
+
     res.render('match-manual', templateValues)
   })
 
