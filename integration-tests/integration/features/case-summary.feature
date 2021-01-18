@@ -230,6 +230,25 @@ Feature: Case summary
     Then I should see 11 previous orders
     And There should be no a11y violations
 
+  Scenario: View the probation record section of the case summary when the user has restricted access marker
+    Given I am an authenticated user
+
+    When I navigate to the "cases" route
+    Then I should be on the "Cases" page
+    And I should see the heading "Cases"
+    And I should see the caption with the court name "Sheffield Magistrates' Court"
+    When I click the "Latoya Kirkland" link
+    Then I should be on the "Case summary" page
+    And I should see back link "Back to cases" with href "/cases/$TODAY?page=1"
+    And I should see the heading "Latoya Kirkland"
+    When I click the sub navigation with "Probation record" text
+    Then I should see the heading "You are restricted from viewing this record"
+
+    And I should see the body text "You cannot view probation information for this defendant due to restrictions on your NDelius account."
+    And I should see the body text "If you think you should be able to view this case, contact your line manager."
+
+    And There should be no a11y violations
+
   Scenario: View the attendance record section of the current offender order with unpaid work appointments
     Given I am an authenticated user
 

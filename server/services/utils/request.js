@@ -7,7 +7,7 @@ const request = async url => {
     response = await axios.get(url, { headers: { Accept: 'application/json' } })
   } catch (e) {
     axiosError(e)
-    // Silent as issue should be caught by health middleware and the user should be suitably notified
+    return e.response
   }
   return response
 }
