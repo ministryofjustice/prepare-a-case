@@ -304,6 +304,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.session = {
       ...req.session
     }
+    templateValues.data = {
+      ...templateValues.data
+    }
     res.render('match-manual', templateValues)
   })
 

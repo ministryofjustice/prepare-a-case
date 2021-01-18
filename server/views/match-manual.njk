@@ -1,4 +1,8 @@
-{% extends "partials/layout.njk" %}
+{% if session.matchType === 'bulk' %}
+    {% extends "partials/layout.njk" %}
+{% else %}
+    {% extends "partials/case-details.njk" %}
+{% endif %}
 
 {% block content %}
 
