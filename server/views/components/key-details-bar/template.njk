@@ -35,6 +35,7 @@
 
         </div>
 
+        {% if not params.manualMatch %}
         {% if params.probationStatus == 'No record' %}
             <div class="pac-key-details-bar-flex__child pac-key-details-bar-flex__child__right govuk-!-margin-right-0">
                 <form method="get" action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/manual">
@@ -52,6 +53,7 @@
                     </button>
                 </form>
             </div>
+        {% endif %}
         {% endif %}
 
     </div>
