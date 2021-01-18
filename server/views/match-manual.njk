@@ -4,6 +4,20 @@
     {% extends "partials/case-details.njk" %}
 {% endif %}
 
+{% if not params.crn %}
+    {% set useBackLink = backLink or '/' + params.courtCode + '/cases/' + (caseListDate if caseListDate else "") %}
+{% else %}
+    {% set useBackLink = '/' + params.courtCode + '/match/defendant/' + params.caseNo + '/manual' %}
+{% endif %}
+
+{% block backlink %}
+    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
+    {{ govukBackLink({
+        text: "Back",
+        href: useBackLink
+    }) }}
+{% endblock %}
+
 {% block content %}
 
     {% if session.serverError %}
@@ -86,7 +100,7 @@
 
                     <button type="submit" class="govuk-button">Find record</button>
 
-                    <p class="govuk-body"><a href="{{ backLink if backLink else "/" }}" class="govuk-link govuk-link--no-visited-state">Cancel</a></p>
+                    <p class="govuk-body"><a href="{{ useBackLink }}" class="govuk-link govuk-link--no-visited-state">Cancel</a></p>
                 </form>
             {% else %}
                 <form name="matchDefendant" id="matchDefendant" action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/confirm" method="post" novalidate>
@@ -120,7 +134,7 @@
                     <button type="submit" class="govuk-button">Link record to defendant</button>
 
                     <p class="govuk-body">If this isn't the record you're looking for, you can
-                        <a href="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/manual"
+                        <a href="{{ useBackLink }}"
                            class="govuk-link govuk-link--no-visited-state">search again</a>.
                     </p>
                 </form>

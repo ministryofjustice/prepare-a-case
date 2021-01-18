@@ -279,6 +279,7 @@ Feature: Matching defendants to nDelius records
     And I click the "Find record" button
 
     Then I should be on the "Link an NDelius record to the defendant" page
+    And I should see back link "Back" with href "/B14LO/match/defendant/3597035492"
     And I should see the body text "Use a case reference number (CRN) to link to an existing NDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
     And I should see the following summary list 1 with keys
@@ -339,6 +340,7 @@ Feature: Matching defendants to nDelius records
 
     And I click the "Link NDelius record" button
     Then I should be on the "Link an NDelius record to the defendant" page
+    And I should see back link "Back" with href "/B14LO/case/7483843110/summary"
     And I should see link "Cancel" with href "/B14LO/case/7483843110/summary"
 
     And There should be no a11y violations
