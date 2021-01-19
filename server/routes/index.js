@@ -28,20 +28,21 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/', health, (req, res) => {
-    res.redirect(req.cookies && req.cookies.court ? `/${req.cookies.court}/cases` : '/select-court')
+    res.redirect(302, req.cookies && req.cookies.court ? `/${req.cookies.court}/cases` : '/select-court')
   })
 
   router.get('/select-court/:selectedCourt?', (req, res) => {
     if (req.params.selectedCourt) {
-      res.cookie('court', req.params.selectedCourt).send()
-      res.redirect(`/${req.params.selectedCourt}/cases/${getBaseDateString()}`)
+      res.status(201)
+        .cookie('court', req.params.selectedCourt).send()
+        .redirect(302, `/${req.params.selectedCourt}/cases/${getBaseDateString()}`)
     } else {
       res.render('select-court', { title: 'Select court', params: { availableCourts: settings.availableCourts, courtCode: req.cookies.court } })
     }
   })
 
   router.get('/:courtCode/cases', (req, res) => {
-    res.redirect(`/${req.params.courtCode}/cases/${getBaseDateString()}${req.session.currentView ? '/' + req.session.currentView : ''}`)
+    res.redirect(302, `/${req.params.courtCode}/cases/${getBaseDateString()}${req.session.currentView ? '/' + req.session.currentView : ''}`)
   })
 
   router.get('/:courtCode/cases/:date/:subsection?', health, defaults, async (req, res) => {
@@ -80,12 +81,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.post('/:courtCode/cases/:date/:subsection?', health, defaults, async (req, res) => {
     req.session.selectedFilters = req.body
-    res.redirect(`/${req.params.courtCode}/cases/${req.params.date}${req.params.subsection ? '/' + req.params.subsection : ''}`)
+    res.redirect(302, `/${req.params.courtCode}/cases/${req.params.date}${req.params.subsection ? '/' + req.params.subsection : ''}`)
   })
 
   router.post('/:courtCode/case/:caseNo/record', async (req, res) => {
     req.session.showAllPreviousOrders = req.params.caseNo
-    res.redirect(`/${req.params.courtCode}/case/${req.params.caseNo}/record#previousOrders`)
+    res.redirect(302, `/${req.params.courtCode}/case/${req.params.caseNo}/record#previousOrders`)
   })
 
   async function getCaseAndTemplateValues (req) {
@@ -279,7 +280,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}`
       }
     }
-    res.redirect(redirectUrl)
+    res.redirect(302, redirectUrl)
   })
 
   router.get('/:courtCode/match/defendant/:caseNo/nomatch/:unlink?', defaults, async (req, res) => {
@@ -295,7 +296,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       req.session.serverError = true
       redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}`
     }
-    res.redirect(redirectUrl)
+    res.redirect(302, redirectUrl)
   })
 
   router.get('/:courtCode/match/defendant/:caseNo/manual', health, defaults, async (req, res) => {
@@ -339,7 +340,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/confirm/${req.body.crn}`
       }
     }
-    res.redirect(redirectUrl)
+    res.redirect(302, redirectUrl)
   })
 
   router.get('/:courtCode/match/defendant/:caseNo/confirm/:crn', health, defaults, async (req, res) => {
@@ -371,7 +372,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       req.session.serverError = true
       redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/confirm`
     }
-    res.redirect(redirectUrl)
+    res.redirect(302, redirectUrl)
   })
 
   router.get('/:courtCode/match/defendant/:caseNo/unlink/:crn', health, defaults, async (req, res) => {
