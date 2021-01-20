@@ -31,11 +31,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, req.cookies && req.cookies.court ? `/${req.cookies.court}/cases` : '/select-court')
   })
 
-  router.get('/select-court/:selectedCourt?', (req, res) => {
-    if (req.params.selectedCourt) {
+  router.get('/select-court/:courtCode?', (req, res) => {
+    const courtCode = req.params.courtCode
+    if (courtCode) {
       res.status(201)
-        .cookie('court', req.params.selectedCourt).send()
-        .redirect(302, `/${req.params.selectedCourt}/cases/${getBaseDateString()}`)
+        .cookie('court', courtCode)
+        .redirect(302, `/${courtCode}/cases/${getBaseDateString()}`)
     } else {
       res.render('select-court', { title: 'Select court', params: { availableCourts: settings.availableCourts, courtCode: req.cookies.court } })
     }
