@@ -19,46 +19,52 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.use(authenticationMiddleware())
 
   router.use((req, res, next) => {
-    if (req.path.substr(-1) === '/' && req.path.length > 1) {
-      const query = req.url.slice(req.path.length)
-      res.redirect(301, req.path.slice(0, -1) + query)
+    const { path, url } = req
+    if (path.substr(-1) === '/' && path.length > 1) {
+      const query = url.slice(path.length)
+      res.redirect(301, path.slice(0, -1) + query)
     } else {
       next()
     }
   })
 
   router.get('/', health, (req, res) => {
-    res.redirect(302, req.cookies && req.cookies.court ? `/${req.cookies.court}/cases` : '/select-court')
+    const { cookies } = req
+    res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/select-court')
   })
 
   router.get('/select-court/:courtCode?', (req, res) => {
-    const courtCode = req.params.courtCode
+    const { params: { courtCode }, cookies } = req
     if (courtCode) {
       res.status(201)
         .cookie('court', courtCode)
         .redirect(302, `/${courtCode}/cases/${getBaseDateString()}`)
     } else {
-      res.render('select-court', { title: 'Select court', params: { availableCourts: settings.availableCourts, courtCode: req.cookies.court } })
+      res.render('select-court', {
+        title: 'Select court',
+        params: { availableCourts: settings.availableCourts, courtCode: cookies.court }
+      })
     }
   })
 
   router.get('/:courtCode/cases', (req, res) => {
-    res.redirect(302, `/${req.params.courtCode}/cases/${getBaseDateString()}${req.session.currentView ? '/' + req.session.currentView : ''}`)
+    const { params: { courtCode }, session } = req
+    res.redirect(302, `/${courtCode}/cases/${getBaseDateString()}${session.currentView ? '/' + session.currentView : ''}`)
   })
 
   router.get('/:courtCode/cases/:date/:subsection?', health, defaults, async (req, res) => {
-    const params = req.params
-    const response = await getCaseList(params.courtCode, params.date, req.session.selectedFilters, params.subsection)
+    const { params: { courtCode, date, limit, subsection }, query: { page }, session, path, params, healthy } = req
+    const response = await getCaseList(courtCode, date, session.selectedFilters, subsection)
     const caseCount = response.cases.length
-    const startCount = ((parseInt(req.query.page, 10) - 1) || 0) * params.limit
-    const endCount = Math.min(startCount + parseInt(params.limit, 10), caseCount)
+    const startCount = ((parseInt(page, 10) - 1) || 0) * limit
+    const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
     const templateValues = {
       title: 'Cases',
-      healthy: req.healthy,
+      healthy: healthy,
       params: {
         ...params,
         filters: response.filters,
-        page: parseInt(req.query.page, 10) || 1,
+        page: parseInt(page, 10) || 1,
         from: startCount,
         to: endCount,
         totalCount: response.totalCount,
@@ -68,36 +74,38 @@ module.exports = function Index ({ authenticationMiddleware }) {
         unmatchedRecords: response.unmatchedRecords,
         lastUpdated: response ? response.lastUpdated : '',
         totalDays: settings.casesTotalDays,
-        subsection: params.subsection || '',
-        filtersApplied: req.session.selectedFilters && Object.keys(req.session.selectedFilters).length
+        subsection: subsection || '',
+        filtersApplied: session.selectedFilters && Object.keys(session.selectedFilters).length
       },
       data: response.cases.slice(startCount, endCount) || []
     }
-    req.session.currentView = params.subsection
-    req.session.caseListDate = params.date
-    req.session.currentCaseListViewLink = `${req.path}?page=${templateValues.params.page}`
-    req.session.backLink = req.session.currentCaseListViewLink
+    session.currentView = subsection
+    session.caseListDate = date
+    session.currentCaseListViewLink = `${path}?page=${templateValues.params.page}`
+    session.backLink = session.currentCaseListViewLink
     res.render('case-list', templateValues)
   })
 
   router.post('/:courtCode/cases/:date/:subsection?', health, defaults, async (req, res) => {
-    req.session.selectedFilters = req.body
-    res.redirect(302, `/${req.params.courtCode}/cases/${req.params.date}${req.params.subsection ? '/' + req.params.subsection : ''}`)
+    const { params: { courtCode, date, subsection }, session, body } = req
+    session.selectedFilters = body
+    res.redirect(302, `/${courtCode}/cases/${date}${subsection ? '/' + subsection : ''}`)
   })
 
   router.post('/:courtCode/case/:caseNo/record', async (req, res) => {
-    req.session.showAllPreviousOrders = req.params.caseNo
-    res.redirect(302, `/${req.params.courtCode}/case/${req.params.caseNo}/record#previousOrders`)
+    const { params: { courtCode, caseNo }, session } = req
+    session.showAllPreviousOrders = caseNo
+    res.redirect(302, `/${courtCode}/case/${caseNo}/record#previousOrders`)
   })
 
   async function getCaseAndTemplateValues (req) {
-    const params = req.params
-    const response = await getCase(params.courtCode, params.caseNo)
-    const caseListDate = req.session.caseListDate || getBaseDateString()
+    const { params: { courtCode, caseNo }, session, healthy, params } = req
+    const response = await getCase(courtCode, caseNo)
+    const caseListDate = session.caseListDate || getBaseDateString()
     return {
-      currentCaseListViewLink: req.session.currentCaseListViewLink,
-      backLink: req.session.backLink,
-      healthy: req.healthy,
+      currentCaseListViewLink: session.currentCaseListViewLink,
+      backLink: session.backLink,
+      healthy: healthy,
       caseListDate,
       params: {
         ...params
@@ -109,26 +117,28 @@ module.exports = function Index ({ authenticationMiddleware }) {
   }
 
   router.get('/:courtCode/case/:caseNo/summary', health, defaults, async (req, res) => {
+    const { session, path } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Case summary'
     templateValues.session = {
-      ...req.session
+      ...session
     }
-    req.session.confirmedMatch = undefined
-    req.session.matchName = undefined
-    req.session.matchType = 'defendant'
-    req.session.matchDate = undefined
-    req.session.backLink = req.path
+    session.confirmedMatch = undefined
+    session.matchName = undefined
+    session.matchType = 'defendant'
+    session.matchDate = undefined
+    session.backLink = path
     res.render('case-summary', templateValues)
   })
 
   router.get('/:courtCode/case/:caseNo/record', health, defaults, async (req, res) => {
+    const { session } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Probation record'
 
     const crn = templateValues.data.crn
     const communityResponse = await getProbationRecordWithRequirements(crn, true)
-    templateValues.params.showAllPreviousOrders = req.session.showAllPreviousOrders
+    templateValues.params.showAllPreviousOrders = session.showAllPreviousOrders
     templateValues.data.communityData = {
       ...communityResponse
     }
@@ -136,18 +146,17 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/:courtCode/case/:caseNo/record/:convictionId?', health, defaults, async (req, res) => {
+    const { params: { convictionId } } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Order details'
 
-    const params = req.params
-    const crn = templateValues.data.crn
-
+    const { data: { crn } } = templateValues
     let communityResponse = await getProbationRecordWithRequirements(crn)
 
     const { active, sentence } = communityResponse.convictions
-      .find(conviction => conviction.convictionId.toString() === params.convictionId.toString())
+      .find(conviction => conviction.convictionId.toString() === convictionId.toString())
     if (active) {
-      const sentenceDetails = await getSentenceDetails(crn, params.convictionId, sentence.sentenceId)
+      const sentenceDetails = await getSentenceDetails(crn, convictionId, sentence.sentenceId)
       communityResponse = {
         ...communityResponse,
         sentenceDetails
@@ -161,15 +170,15 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Breach details'
 
-    const params = req.params
-    const crn = templateValues.data.crn
+    const { params: { convictionId, breachId } } = req
+    const { data: { crn } } = templateValues
     const communityResponse = await getProbationRecord(crn)
 
     const breachData = communityResponse.convictions
-      .find(conviction => conviction.convictionId.toString() === params.convictionId.toString())
-      .breaches.find(breach => breach.breachId.toString() === params.breachId.toString())
+      .find(conviction => conviction.convictionId.toString() === convictionId.toString())
+      .breaches.find(breach => breach.breachId.toString() === breachId.toString())
 
-    const breachDetails = await getBreachDetails(crn, params.convictionId, params.breachId)
+    const breachDetails = await getBreachDetails(crn, convictionId, breachId)
     templateValues.data.communityData = {
       ...breachData,
       ...breachDetails
@@ -181,8 +190,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Licence conditions details'
 
-    const crn = templateValues.data.crn
-
+    const { data: { crn } } = templateValues
     const communityResponse = await getProbationRecordWithRequirements(crn)
 
     templateValues.data.communityData = communityResponse || {}
@@ -193,7 +201,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Risk register'
 
-    const crn = templateValues.data.crn
+    const { data: { crn } } = templateValues
 
     templateValues.data.riskData = await getRiskDetails(crn)
 
@@ -205,41 +213,42 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/:courtCode/match/bulk/:date', health, defaults, async (req, res) => {
-    const params = req.params
-    const response = await getCaseList(params.courtCode, params.date)
+    const { params: { courtCode, date }, session, params } = req
+    const response = await getCaseList(courtCode, date)
     const templateValues = {
       title: 'Defendants with possible NDelius records',
       session: {
-        ...req.session
+        ...session
       },
       params: {
         ...params
       },
       data: response.cases
     }
-    req.session.confirmedMatch = undefined
-    req.session.matchName = undefined
-    req.session.matchType = 'bulk'
-    req.session.matchDate = params.date
+    session.confirmedMatch = undefined
+    session.matchName = undefined
+    session.matchType = 'bulk'
+    session.matchDate = date
     res.render('match-records', templateValues)
   })
 
   router.get('/:courtCode/match/defendant/:caseNo', health, defaults, async (req, res) => {
+    const { params: { courtCode, caseNo }, session, path } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Review possible NDelius records'
-    const response = await getMatchDetails(req.params.courtCode, req.params.caseNo)
+    const response = await getMatchDetails(courtCode, caseNo)
     templateValues.session = {
-      ...req.session
+      ...session
     }
     templateValues.data = {
       ...templateValues.data,
       matchData: response && response.offenderMatchDetails
     }
-    req.session.confirmedMatch = undefined
-    req.session.matchName = templateValues.data.defendantName
-    req.session.formError = false
-    req.session.serverError = false
-    req.session.backLink = req.path
+    session.confirmedMatch = undefined
+    session.matchName = templateValues.data.defendantName
+    session.formError = false
+    session.serverError = false
+    session.backLink = path
     res.render('match-defendant', templateValues)
   })
 
@@ -263,48 +272,51 @@ module.exports = function Index ({ authenticationMiddleware }) {
   }
 
   router.post('/:courtCode/match/defendant/:caseNo', defaults, async (req, res) => {
+    const { params: { courtCode, caseNo }, body: { crn }, session } = req
     let redirectUrl = '/'
-    if (!req.body.crn) {
-      req.session.confirmedMatch = undefined
-      req.session.formError = true
-      redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}`
+    if (!crn) {
+      session.confirmedMatch = undefined
+      session.formError = true
+      redirectUrl = `/${courtCode}/match/defendant/${caseNo}`
     } else {
-      const response = await updateCaseDetails(req.params.courtCode, req.params.caseNo, req.body.crn)
+      const response = await updateCaseDetails(courtCode, caseNo, crn)
       if (response.status === 201) {
-        req.session.confirmedMatch = {
-          name: req.session.matchName,
+        session.confirmedMatch = {
+          name: session.matchName,
           matchType: 'Known'
         }
-        redirectUrl = `/${req.params.courtCode}${getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)}`
+        redirectUrl = `/${courtCode}${getMatchedUrl(session.matchType, session.matchDate, caseNo)}`
       } else {
-        req.session.serverError = true
-        redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}`
+        session.serverError = true
+        redirectUrl = `/${courtCode}/match/defendant/${caseNo}`
       }
     }
     res.redirect(302, redirectUrl)
   })
 
   router.get('/:courtCode/match/defendant/:caseNo/nomatch/:unlink?', defaults, async (req, res) => {
+    const { params: { courtCode, caseNo, unlink }, session } = req
     let redirectUrl = '/'
-    const response = await updateCaseDetails(req.params.courtCode, req.params.caseNo, undefined)
+    const response = await updateCaseDetails(courtCode, caseNo, undefined)
     if (response.status === 201) {
-      req.session.confirmedMatch = {
-        name: req.session.matchName,
-        matchType: req.params.unlink ? 'unlinked' : 'No record'
+      session.confirmedMatch = {
+        name: session.matchName,
+        matchType: unlink ? 'unlinked' : 'No record'
       }
-      redirectUrl = `/${req.params.courtCode}${getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)}`
+      redirectUrl = `/${courtCode}${getMatchedUrl(session.matchType, session.matchDate, caseNo)}`
     } else {
       req.session.serverError = true
-      redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}`
+      redirectUrl = `/${courtCode}/match/defendant/${caseNo}`
     }
     res.redirect(302, redirectUrl)
   })
 
   router.get('/:courtCode/match/defendant/:caseNo/manual', health, defaults, async (req, res) => {
+    const { session } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Link an NDelius record to the defendant'
     templateValues.session = {
-      ...req.session
+      ...session
     }
     templateValues.data = {
       ...templateValues.data
@@ -316,35 +328,37 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.post('/:courtCode/match/defendant/:caseNo/manual', defaults, async (req, res) => {
+    const { params: { courtCode, caseNo }, body: { crn }, session } = req
     let redirectUrl = '/'
-    req.session.serverError = false
-    req.session.formError = false
-    req.session.formInvalid = false
-    req.session.crnInvalid = false
-    req.session.confirmedMatch = undefined
-    req.session.matchName = undefined
-    if (!req.body.crn) {
-      req.session.formError = true
-      redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/manual`
+    session.serverError = false
+    session.formError = false
+    session.formInvalid = false
+    session.crnInvalid = false
+    session.confirmedMatch = undefined
+    session.matchName = undefined
+    if (!crn) {
+      session.formError = true
+      redirectUrl = `/${courtCode}/match/defendant/${caseNo}/manual`
     } else if (!req.body.crn.match(/[A-Za-z][0-9]{6}/)) {
-      req.session.formError = true
-      req.session.formInvalid = true
-      redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/manual`
+      session.formError = true
+      session.formInvalid = true
+      redirectUrl = `/${courtCode}/match/defendant/${caseNo}/manual`
     } else {
-      const detailResponse = await getDetails(req.body.crn)
+      const detailResponse = await getDetails(crn)
       if (detailResponse.status >= 400) {
-        req.session.crn = req.body.crn
-        req.session.formError = true
-        req.session.crnInvalid = true
-        redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/manual`
+        session.crn = req.body.crn
+        session.formError = true
+        session.crnInvalid = true
+        redirectUrl = `/${courtCode}/match/defendant/${caseNo}/manual`
       } else {
-        redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/confirm/${req.body.crn}`
+        redirectUrl = `/${courtCode}/match/defendant/${caseNo}/confirm/${crn}`
       }
     }
     res.redirect(302, redirectUrl)
   })
 
   router.get('/:courtCode/match/defendant/:caseNo/confirm/:crn', health, defaults, async (req, res) => {
+    const { session } = req
     const templateValues = await getCaseAndTemplateValues(req)
     const detailResponse = await getDetails(req.params.crn)
     templateValues.title = 'Link an NDelius record to the defendant'
@@ -352,37 +366,39 @@ module.exports = function Index ({ authenticationMiddleware }) {
       ...detailResponse
     }
     templateValues.session = {
-      ...req.session
+      ...session
     }
-    req.session.matchName = templateValues.data.defendantName
+    session.matchName = templateValues.data.defendantName
     res.render('match-manual', templateValues)
   })
 
   router.post('/:courtCode/match/defendant/:caseNo/confirm', defaults, async (req, res) => {
-    req.session.serverError = false
+    const { params: { courtCode, caseNo }, body: { crn }, session } = req
+    session.serverError = false
     let redirectUrl = '/'
-    const response = await updateCaseDetails(req.params.courtCode, req.params.caseNo, req.body.crn)
+    const response = await updateCaseDetails(courtCode, caseNo, crn)
     if (response.status === 201) {
-      req.session.confirmedMatch = {
-        name: req.session.matchName,
+      session.confirmedMatch = {
+        name: session.matchName,
         matchType: 'linked',
         probationStatus: response.data.probationStatus
       }
-      redirectUrl = `/${req.params.courtCode}${getMatchedUrl(req.session.matchType, req.session.matchDate, req.params.caseNo)}`
+      redirectUrl = `/${courtCode}${getMatchedUrl(session.matchType, session.matchDate, caseNo)}`
     } else {
-      req.session.serverError = true
-      redirectUrl = `/${req.params.courtCode}/match/defendant/${req.params.caseNo}/confirm`
+      session.serverError = true
+      redirectUrl = `/${courtCode}/match/defendant/${caseNo}/confirm`
     }
     res.redirect(302, redirectUrl)
   })
 
   router.get('/:courtCode/match/defendant/:caseNo/unlink/:crn', health, defaults, async (req, res) => {
+    const { params: { courtCode, caseNo, crn }, session } = req
     const templateValues = await getCaseAndTemplateValues(req)
-    const detailResponse = await getDetails(req.params.crn)
+    const detailResponse = await getDetails(crn)
     templateValues.title = 'Unlink NDelius record from the defendant'
     templateValues.hideSubnav = true
     templateValues.backText = 'Back'
-    templateValues.backLink = `/${req.params.courtCode}/case/${req.params.caseNo}/summary`
+    templateValues.backLink = `/${courtCode}/case/${caseNo}/summary`
     templateValues.hideUnlinkButton = true
     templateValues.params = {
       ...templateValues.params
@@ -390,7 +406,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.details = {
       ...detailResponse
     }
-    req.session.matchName = templateValues.data.defendantName
+    session.matchName = templateValues.data.defendantName
     res.render('match-unlink', templateValues)
   })
 
