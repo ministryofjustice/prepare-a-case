@@ -28,13 +28,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
   })
 
-  router.get('/', health, (req, res) => {
+  router.get('/', (req, res) => {
     const { cookies } = req
     res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/select-court')
   })
 
-  router.get('/select-court/:courtCode?', (req, res) => {
-    const { params: { courtCode }, cookies } = req
+  router.get('/select-court/:courtCode?', health, (req, res) => {
+    const { params: { courtCode }, params } = req
     if (courtCode) {
       res.status(201)
         .cookie('court', courtCode)
@@ -42,7 +42,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     } else {
       res.render('select-court', {
         title: 'Select court',
-        params: { availableCourts: settings.availableCourts, courtCode: cookies.court }
+        params: {
+          ...params,
+          availableCourts: settings.availableCourts
+        }
       })
     }
   })
@@ -86,7 +89,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-list', templateValues)
   })
 
-  router.post('/:courtCode/cases/:date/:subsection?', health, defaults, async (req, res) => {
+  router.post('/:courtCode/cases/:date/:subsection?', defaults, async (req, res) => {
     const { params: { courtCode, date, subsection }, session, body } = req
     session.selectedFilters = body
     res.redirect(302, `/${courtCode}/cases/${date}${subsection ? '/' + subsection : ''}`)
