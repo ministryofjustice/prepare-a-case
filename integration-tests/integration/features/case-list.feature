@@ -289,7 +289,7 @@ Feature: Case list
 
     And I should not see filters
     And I should not see the table list
-    And I should see the body text "No case data available for this day."
+    And I should see the body text "No case list information available."
     And I should not see pagination
     And There should be no a11y violations
 
