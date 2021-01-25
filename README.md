@@ -5,7 +5,7 @@ Prepare a case is a service that allows probation staff to prepare court cases.
 
 ## Prerequisities
 Before you begin, ensure you have met the following requirements:
-* You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Fermium) >= v14.15.1
+* You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Fermium) >= v14.15.4
 
 For code quality the project adheres to [JavaScript Standard Style](https://standardjs.com/) which requires minimal configuration of your chosen IDE.
 
