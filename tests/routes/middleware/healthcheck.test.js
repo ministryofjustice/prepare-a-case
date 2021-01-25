@@ -4,8 +4,11 @@ const { health } = require('../../../server/routes/middleware/healthcheck')
 
 const mockNext = jest.fn()
 const resObj = {
-  status: 200, render: jest.fn(() => {
-    return { end: jest.fn() }
+  status: 200,
+  render: jest.fn(() => {
+    return {
+      end: jest.fn()
+    }
   })
 }
 const reqObj = {}
