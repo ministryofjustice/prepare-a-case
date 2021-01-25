@@ -19,6 +19,7 @@ const viewRoute = createRouter({
   authenticationMiddleware
 })
 
+jest.mock('../../server/routes/middleware/healthcheck')
 jest.mock('../../server/services/case-service')
 jest.mock('../../server/services/community-service')
 
@@ -115,7 +116,6 @@ describe('Routes', () => {
     return request(app).get('/B14LO/cases').then(response => {
       expect(response.statusCode).toEqual(302)
       expect(response.headers.location).toBe('/B14LO/cases/2020-11-16')
-      expect(healthcheck.health).not.toHaveBeenCalled()
       mockDate.reset()
     })
   })
@@ -125,7 +125,6 @@ describe('Routes', () => {
     return request(app).get('/B14LO/cases').then(response => {
       expect(response.statusCode).toEqual(302)
       expect(response.headers.location).toBe('/B14LO/cases/2020-11-12')
-      expect(healthcheck.health).not.toHaveBeenCalled()
       mockDate.reset()
     })
   })
