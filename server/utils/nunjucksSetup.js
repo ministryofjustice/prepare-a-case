@@ -12,14 +12,17 @@ module.exports = (app, path) => {
   })
 
   env.addFilter('json', function (value) {
-    return JSON.parse(value)
+    return value ? JSON.parse(value) : ''
   })
 
   env.addFilter('limit', (arr, limit) => {
-    return arr.slice(0, limit)
+    return arr ? arr.slice(0, limit) : []
   })
 
   env.addFilter('properCase', (name) => {
+    if (!name) {
+      return ''
+    }
     return (name.replace(/[^\s\-']+[\s\-']*/g, (word) => {
       return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()
     }).replace(/\b(Van|De|Der|Da|Von)\b/g, (nobiliaryParticle) => {
@@ -31,7 +34,7 @@ module.exports = (app, path) => {
 
   env.addFilter('removeTitle', (name) => {
     const pattern = /\b(?:Mr *|Miss *|Mrs *|Ms *|Dr *|01 )\b/i
-    return name.replace(pattern, '')
+    return name ? name.replace(pattern, '') : ''
   })
 
   env.addFilter('markMatches', (matchString, sourceString) => {

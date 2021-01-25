@@ -24,7 +24,7 @@
             <div class="pac-key-details-bar-flex">
                 <div class="pac-key-details-bar-flex__child pac-probation-status">
                     <span class="govuk-body"><strong>Probation status: </strong>
-                        {% if params.probationStatus | string | lower !== "possible ndelius record" %}
+                        {% if params.probationStatus | string | lower !== "possible ndelius record" if params.probationStatus %}
                             {{ params.probationStatus | string | capitalize }}{% if params.breach %} (Breach){% endif %}
                         {% else %}
                             Possible NDelius record

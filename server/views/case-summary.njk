@@ -22,7 +22,7 @@
         matchType: session.confirmedMatch.matchType
     }) }}
 
-    {% if data.probationStatus | string | lower === "possible ndelius record" %}
+    {% if data.probationStatus and data.probationStatus | string | lower === "possible ndelius record" %}
         {%- from "moj/components/banner/macro.njk" import mojBanner -%}
         {{ mojBanner({
             classes: 'govuk-!-display-inline-block',
