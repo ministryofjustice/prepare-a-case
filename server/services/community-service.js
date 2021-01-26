@@ -16,7 +16,7 @@ const getRequirements = async (convictions, crn, activeOnly) => {
 }
 
 const getProbationRecord = async crn => {
-  const res = await request(`${apiUrl}/offender/${crn}/probation-record`)
+  const res = await request(`${apiUrl}/offender/${crn}/probation-record`) || { data: {} }
   return res.status >= 400 ? res : res.data
 }
 
@@ -33,27 +33,27 @@ const getProbationRecordWithRequirements = async (crn, activeOnly = false) => {
 }
 
 const getSentenceDetails = async (crn, convictionId, sentenceId) => {
-  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/sentences/${sentenceId}`)
+  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/sentences/${sentenceId}`) || { data: {} }
   return res.data
 }
 
 const getBreachDetails = async (crn, convictionId, breachId) => {
-  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/breaches/${breachId}`)
+  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/breaches/${breachId}`) || { data: {} }
   return res.data
 }
 
 const getAttachment = async (crn, documentId) => {
-  const res = await requestFile(`${apiUrl}/offender/${crn}/documents/${documentId}`)
+  const res = await requestFile(`${apiUrl}/offender/${crn}/documents/${documentId}`) || {}
   return res
 }
 
 const getDetails = async crn => {
-  const res = await request(`${apiUrl}/offender/${crn}/detail`)
+  const res = await request(`${apiUrl}/offender/${crn}/detail`) || {}
   return res.status >= 400 ? res : res.data
 }
 
 const getRiskDetails = async crn => {
-  const res = await request(`${apiUrl}/offender/${crn}/registrations`)
+  const res = await request(`${apiUrl}/offender/${crn}/registrations`) || { data: {} }
   return res.data
 }
 

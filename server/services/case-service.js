@@ -4,7 +4,7 @@ const config = require('../../config')
 const apiUrl = config.apis.courtCaseService.url
 
 const getCaseList = async (courtCode, date, selectedFilters, subsection) => {
-  const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
+  const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`) || { data: { cases: [] } }
   const filters = getCaseListFilters(res.data.cases, selectedFilters)
   const allCases = []
   const addedCases = []
@@ -60,7 +60,7 @@ const getCaseList = async (courtCode, date, selectedFilters, subsection) => {
 }
 
 const getCase = async (courtCode, caseNo) => {
-  const res = await request(`${apiUrl}/court/${courtCode}/case/${caseNo}`)
+  const res = await request(`${apiUrl}/court/${courtCode}/case/${caseNo}`) || { data: {} }
   return res.data
 }
 
@@ -69,7 +69,7 @@ const updateCase = async (courtCode, caseNo, caseData) => {
 }
 
 const getMatchDetails = async (courtCode, caseNo) => {
-  const res = await request(`${apiUrl}/court/${courtCode}/case/${caseNo}/matchesDetail`)
+  const res = await request(`${apiUrl}/court/${courtCode}/case/${caseNo}/matchesDetail`) || { data: {} }
   return res.data
 }
 

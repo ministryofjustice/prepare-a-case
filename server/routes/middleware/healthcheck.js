@@ -1,13 +1,21 @@
 const axios = require('axios')
+const config = require('../../../config')
+const apiUrl = config.apis.courtCaseService.url
 
 const health = async (req, res, next) => {
+  function unhealthy () {
+    res.render('error', { status: 500 }).end()
+  }
+
   try {
-    const response = await axios.get(`${process.env.COURT_CASE_SERVICE_URL || 'http://localhost:8080'}/ping`)
-    req.healthy = response && response.status === 200
-    next()
+    const response = await axios.get(`${apiUrl}/ping`)
+    if (response && response.status < 400) {
+      next()
+    } else {
+      unhealthy()
+    }
   } catch (e) {
-    req.healthy = false
-    next()
+    unhealthy()
   }
 }
 

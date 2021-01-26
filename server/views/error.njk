@@ -2,26 +2,22 @@
 
 {% set title = "Error" %}
 
+{% block navigation %}{% endblock %}
+
 {% block content %}
   {% if status === 404  %}
-    <h1 class="govuk-heading-l">
-      Page not found
-    </h1>
+    <h1 class="govuk-heading-l">Page not found</h1>
     <p class="govuk-body">If you entered a web address, check it is correct.</p>
     <p class="govuk-body">You can <a class="govuk-link" href="/">go to the home page</a> to find the information you need.</p>
   {% endif %}
 
   {% if status === 500  %}
-    <h1 class="govuk-heading-l">
-      Sorry, there is a problem with the service
-    </h1>
+    <h1 class="govuk-heading-l">Sorry, there is a problem with the service</h1>
     <p class="govuk-body">Please try again later.</p>
   {% endif %}
 
   {% if status === 503  %}
-    <h1 class="govuk-heading-l">
-      Sorry, the service is unavailable
-    </h1>
+    <h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
     <p class="govuk-body">You'll be able to use the service on {{ maintenanceDate }}.</p>
   {% endif %}
 
