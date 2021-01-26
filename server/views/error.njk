@@ -1,10 +1,21 @@
 {% extends "partials/layout.njk" %}
 
-{% set title = "Error" %}
-
 {% block navigation %}{% endblock %}
 
+{% if status === 401  %}
+  {% set title = "Authorisation Error" %}
+{% elseif status === 404 %}
+  {% set title = "Page not found" %}
+{% else %}
+  {% set title = "Error" %}
+{% endif %}
+
 {% block content %}
+  {% if status === 401  %}
+    <h1 class="govuk-heading-l">Authorisation Error</h1>
+    <p class="govuk-body">You are not authorised to use this application.</p>
+  {% endif %}
+
   {% if status === 404  %}
     <h1 class="govuk-heading-l">Page not found</h1>
     <p class="govuk-body">If you entered a web address, check it is correct.</p>
@@ -21,7 +32,12 @@
     <p class="govuk-body">You'll be able to use the service on {{ maintenanceDate }}.</p>
   {% endif %}
 
-  <p class="govuk-body">{{ message }}</p>
-  <p class="govuk-body">{{ stack }}</p>
+  {% if message and message | length %}
+    <p class="govuk-body">{{ message }}</p>
+  {% endif %}
+
+  {% if stack and stack | length %}
+    <p class="govuk-body">{{ stack }}</p>
+  {% endif %}
 
 {% endblock %}
