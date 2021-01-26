@@ -164,7 +164,8 @@ module.exports = function createApp ({ signInService, userService }) {
 
   app.get('/autherror', (req, res) => {
     res.status(401)
-    return res.render('autherror', {
+    return res.render('error', {
+      status: 401,
       authURL: authLogoutUrl
     })
   })
