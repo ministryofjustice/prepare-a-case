@@ -115,6 +115,6 @@
     "node-sass": "5.0.0",
     "nodemon": "2.0.7",
     "standard": "16.0.3",
-    "supertest": "6.1.2"
+    "supertest": "6.1.3"
   }
 }
