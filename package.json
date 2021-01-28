@@ -100,7 +100,7 @@
     "superagent": "6.1.0"
   },
   "devDependencies": {
-    "@pact-foundation/pact": "9.14.0",
+    "@pact-foundation/pact": "9.14.2",
     "axe-core": "4.1.1",
     "cucumber": "6.0.5",
     "cypress": "6.3.0",
