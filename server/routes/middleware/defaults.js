@@ -39,7 +39,7 @@ function addBusinessDays (originalDate, daysToAdd) {
 function courtLookup (courtCode) {
   const courtLookup = settings.availableCourts.find(court => court.code === courtCode)
   return {
-    name: courtLookup && courtLookup.name || ''
+    name: (courtLookup && courtLookup.name) || ''
   }
 }
 
