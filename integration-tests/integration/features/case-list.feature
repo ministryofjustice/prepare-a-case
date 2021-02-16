@@ -21,7 +21,7 @@ Feature: Case list
     And I should see a tab with text "Recently added (4)"
     And I should see a tab with text "Removed cases (1)"
 
-    And I should see the last updated as "List updated: Today at 08:30am"
+#    And I should see the last updated as "List updated: Today at 08:30am"
     And I should see the next update as "No further updates scheduled today"
 
     And I should see a count of "207 cases"
@@ -65,7 +65,7 @@ Feature: Case list
     And I should see a tab with text "Recently added (4)"
     And I should see a tab with text "Removed cases (1)"
 
-    And I should see the last updated as "List updated: Today at 08:30am"
+#    And I should see the last updated as "List updated: Today at 08:30am"
     And I should see the next update as "No further updates scheduled today"
 
     And I should see a count of "207 cases"
@@ -203,7 +203,8 @@ Feature: Case list
 
     When I click the "Recently added (4)" link
 
-    Then I should see medium heading with text "4 cases added to today's case list at 08:30am"
+    Then I should see medium heading with text "4 cases added to today's case list."
+#    Then I should see medium heading with text "4 cases added to today's case list at 08:30am"
 
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
@@ -222,7 +223,8 @@ Feature: Case list
     # Test state held in session
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
-    And I should see medium heading with text "4 cases added to today's case list at 08:30am"
+    #    And I should see medium heading with text "4 cases added to today's case list at 08:30am"
+    And I should see medium heading with text "4 cases added to today's case list."
 
   Scenario: View the removed cases on the case list
     Given I am an authenticated user
@@ -231,7 +233,8 @@ Feature: Case list
 
     When I click the "Removed cases (1)" link
 
-    Then I should see medium heading with text "1 case removed from today's case list at 08:30am"
+    Then I should see medium heading with text "1 case removed from today's case list."
+#    Then I should see medium heading with text "1 case removed from today's case list at 08:30am"
 
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court | Libra case number |
@@ -248,7 +251,8 @@ Feature: Case list
     # Test state held in session
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
-    And I should see medium heading with text "1 case removed from today's case list at 08:30am"
+    #    And I should see medium heading with text "1 case removed from today's case list at 08:30am"
+    And I should see medium heading with text "1 case removed from today's case list."
 
   Scenario: View the case list with data containing 5 cases for the given day
     Given I am an authenticated user
