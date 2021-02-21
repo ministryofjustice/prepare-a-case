@@ -93,7 +93,7 @@
     "memorystore": "1.6.4",
     "moment": "2.29.1",
     "morgan": "1.10.0",
-    "nock": "13.0.6",
+    "nock": "13.0.7",
     "nunjucks": "3.2.2",
     "passport": "0.4.1",
     "passport-oauth2": "1.5.0",
