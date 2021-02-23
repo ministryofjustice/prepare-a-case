@@ -13,19 +13,20 @@ module.exports = caseListDate => {
   const now = moment()
   const requestedDate = moment(caseListDate)
   const snapshotTimes = config.settings.snapshotTimes.split(',')
+  const baseFormat = 'YYYY-MM-DD'
 
   if (requestedDate.isBefore(now, 'day')) {
-    return moment(`${requestedDate.format('YYYY-MM-DD')} ${snapshotTimes.pop()}`)
+    return moment(`${requestedDate.format(baseFormat)} ${snapshotTimes.pop()}`)
   }
 
   let currentTestTime, latestSnapshot
 
   snapshotTimes.forEach(snapshotTime => {
-    currentTestTime = moment(`${now.format('YYYY-MM-DD')} ${snapshotTime}`)
+    currentTestTime = moment(`${now.format(baseFormat)} ${snapshotTime}`)
     if (now.isSameOrAfter(currentTestTime, 'minute')) {
       latestSnapshot = currentTestTime
     }
   })
 
-  return latestSnapshot || moment(`${now.format('YYYY-MM-DD')} ${snapshotTimes.shift()}`)
+  return latestSnapshot
 }
