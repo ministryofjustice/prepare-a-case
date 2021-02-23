@@ -19,12 +19,12 @@ module.exports = caseListDate => {
     return moment(`${requestedDate.format(baseFormat)} ${snapshotTimes.pop()}`)
   }
 
-  let currentTestTime, latestSnapshot
+  let snapshot, latestSnapshot
 
   snapshotTimes.forEach(snapshotTime => {
-    currentTestTime = moment(`${now.format(baseFormat)} ${snapshotTime}`)
-    if (now.isSameOrAfter(currentTestTime, 'minute')) {
-      latestSnapshot = currentTestTime
+    snapshot = moment(`${now.format(baseFormat)} ${snapshotTime}`)
+    if (now.isSameOrAfter(snapshot, 'minute')) {
+      latestSnapshot = snapshot
     }
   })
 
