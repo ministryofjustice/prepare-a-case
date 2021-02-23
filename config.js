@@ -20,6 +20,7 @@ module.exports = {
     casesPerPage: get('CASES_PER_PAGE', 20),
     casesTotalDays: get('CASES_TOTAL_DAYS', 7),
     casesExcludedDays: get('CASES_EXCLUDED_DAYS', '0'), // Coma delimited String of days to exclude, incremental from 0 (Sunday)
+    snapshotTimes: get('CASE_SNAPSHOT_TIMES', '00:00,08:45,09:45'), // Coma delimited string of snapshot times, earliest - latest
     availableCourts: [
       { code: 'B14AV', name: 'Barnsley Magistrates\' Court' },
       { code: 'B16BG', name: 'Beverley Magistrates\' Court' },
