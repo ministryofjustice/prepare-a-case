@@ -1,10 +1,12 @@
 const { request, update } = require('./utils/request')
 const getCaseListFilters = require('../utils/getCaseListFilters')
+const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
 const apiUrl = config.apis.courtCaseService.url
 
 const getCaseList = async (courtCode, date, selectedFilters, subsection) => {
-  const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`) || { data: { cases: [] } }
+  const latestSnapshot = getLatestSnapshot(date).format('YYYY-MM-DDTHH:mm:00.000')
+  const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}&createdBefore=${latestSnapshot}`) || { data: { cases: [] } }
   const filters = getCaseListFilters(res.data.cases, selectedFilters)
   const allCases = []
   const addedCases = []
