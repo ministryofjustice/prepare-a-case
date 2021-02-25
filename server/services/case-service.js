@@ -57,7 +57,8 @@ const getCaseList = async (courtCode, date, selectedFilters, subsection) => {
     removedCount: removedCases.length,
     unmatchedRecords: unmatchedRecords,
     filters: filters,
-    cases: filteredCases
+    cases: filteredCases,
+    snapshot: latestSnapshot
   }
 }
 

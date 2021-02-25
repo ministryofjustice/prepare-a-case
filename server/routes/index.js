@@ -78,7 +78,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
         lastUpdated: response ? response.lastUpdated : '',
         totalDays: settings.casesTotalDays,
         subsection: subsection || '',
-        filtersApplied: session.selectedFilters && Object.keys(session.selectedFilters).length
+        filtersApplied: session.selectedFilters && Object.keys(session.selectedFilters).length,
+        snapshot: response.snapshot
       },
       data: response.cases.slice(startCount, endCount) || []
     }

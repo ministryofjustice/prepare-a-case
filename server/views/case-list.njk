@@ -105,6 +105,8 @@
 {% set useTodayDate = moment() if not isSunday else moment().add(1, 'days') %}
 {% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
 {% set today = moment().format('YYYY-MM-DD') %}
+{% set snapshot = moment(params.snapshot).format('YYYY-MM-DD') %}
+{% set lastestSnapshotTime = moment(params.snapshot).format('hh:mm') %}
 {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
 {% set withinDateRange = currentDate.isBetween(moment(), params.addBusinessDays(moment(), params.totalDays - 1), 'day', '[]') %}
 
@@ -173,24 +175,24 @@
 
     {%- from "components/tabs/macro.njk" import pacTabs -%}
 
-    {% set nextUpdate = currentDate.format('[Next scheduled update:] '+ timeStampDateFormat + ' [at 9:00am]') %}
-    {% if params.date === tomorrow %}
-        {% set nextUpdate = 'Next scheduled update: Tomorrow at 9:00am' %}
-    {% endif %}
-
-    {% if moment(params.lastUpdated).format('YYYY-MM-DD') === today %}
-        {% set lastUpdated = moment(params.lastUpdated).format('[List updated: Today at] hh:mma') %}
-        {% if params.date === today %}
-            {% set nextUpdate = 'No further updates scheduled today' %}
-        {% endif %}
-    {% else %}
-        {% if moment().add(-1, 'days').format('YYYY-MM-DD') === moment(params.lastUpdated).format('YYYY-MM-DD') %}
-            {% set lastUpdated = moment(params.lastUpdated).format('[List updated: Yesterday at] hh:mma') %}
+    {% if moment(params.date).format('YYYY-MM-DD') === today %}
+        {% set lastUpdated = moment(params.snapshot).format('[List updated: Today at] hh:mma') %}
+        {% if lastestSnapshotTime === "09:45"%}
+            {% set nextUpdate = 'No further updates scheduled' %}
+        {% elseif lastestSnapshotTime === "08:45"%}
+            {% set nextUpdate = 'Next scheduled update: Today at 09:45am' %}
         {% else %}
-            {% set lastUpdated = moment(params.lastUpdated).format('[List updated:] ' + timeStampDateFormat + ' [at] hh:mma') %}
+            {% set nextUpdate = 'Next scheduled update: Today at 08:45am' %}
         {% endif %}
-        {% if params.date === today %}
-            {% set nextUpdate = 'Next scheduled update: Today at 9:00am' %}
+    {% elseif moment(params.date).isBefore(today) %}
+            {% set lastUpdated = '' %}
+            {% set nextUpdate = '' %}
+    {% else %}
+        {% set lastUpdated = moment(params.snapshot).format('[List created:] ' + timeStampDateFormat + ' [at] hh:mma') %}
+        {% if moment(params.date).isBetween(moment('00:00:01', 'HH:mm:ss'), moment('08:44:59', 'HH:mm:ss'))%}
+            {% set nextUpdate = moment(params.date).format('[Next scheduled update:] ' + timeStampDateFormat + ' [at 08:45am]') %}
+        {% else %}
+            {% set nextUpdate = moment(params.date).format('[Next scheduled update:] ' + timeStampDateFormat + ' [at 12:00am]') %}
         {% endif %}
     {% endif %}
 
@@ -199,8 +201,8 @@
     {% endif -%}
 
     {% if params.totalCount %}
-{#        {% set status = ("<p class=\"govuk-body-s govuk-!-margin-bottom-1 pac-last-updated-stamp\">" + (lastUpdated | escape) + "</p>" + "<p class=\"govuk-body-s govuk-!-margin-bottom-0 pac-next-update-stamp\">" + (nextUpdate | escape) + "</p>") | safe %}#}
-        {% set status = ("<p class=\"govuk-body-s govuk-!-margin-bottom-0 pac-next-update-stamp\">" + (nextUpdate | escape) + "</p>") | safe %}
+        {% set status = ("<p class=\"govuk-body-s govuk-!-margin-bottom-1 pac-last-updated-stamp\">" + (lastUpdated | escape) + "</p>" + "<p class=\"govuk-body-s govuk-!-margin-bottom-0 pac-next-update-stamp\">" + (nextUpdate | escape) + "</p>") | safe %}
+{#        {% set status = ("<p class=\"govuk-body-s govuk-!-margin-bottom-0 pac-next-update-stamp\">" + (nextUpdate | escape) + "</p>") | safe %}#}
     {% else %}
         {% set status = "" %}
     {% endif %}
