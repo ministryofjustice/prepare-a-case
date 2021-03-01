@@ -21,8 +21,8 @@ Feature: Case list
     And I should see a tab with text "Recently added (4)"
     And I should see a tab with text "Removed cases (1)"
 
-#    And I should see the last updated as "List updated: Today at 08:30am"
-    And I should see the next update as "No further updates scheduled today"
+#    And I should see the last updated as "List updated: Today at 09:45am"
+#    And I should see the next update as "No further updates scheduled"
 
     And I should see a count of "207 cases"
 
@@ -65,8 +65,8 @@ Feature: Case list
     And I should see a tab with text "Recently added (4)"
     And I should see a tab with text "Removed cases (1)"
 
-#    And I should see the last updated as "List updated: Today at 08:30am"
-    And I should see the next update as "No further updates scheduled today"
+#    And I should see the last updated as "List updated: Today at 09:45am"
+#    And I should see the next update as "No further updates scheduled"
 
     And I should see a count of "207 cases"
 
