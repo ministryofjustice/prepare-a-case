@@ -105,7 +105,6 @@
 {% set useTodayDate = moment() if not isSunday else moment().add(1, 'days') %}
 {% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
 {% set today = moment().format('YYYY-MM-DD') %}
-{% set snapshot = moment(params.snapshot).format('YYYY-MM-DD') %}
 {% set lastestSnapshotTime = moment(params.snapshot).format('hh:mm') %}
 {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
 {% set withinDateRange = currentDate.isBetween(moment(), params.addBusinessDays(moment(), params.totalDays - 1), 'day', '[]') %}
