@@ -265,8 +265,8 @@ Feature: Case summary
       | Appointments to date | Acceptable | Unacceptable |
     And I should see the body text "Last attended: 4 Mar 2020 - Planned office visit (Acceptable)"
 
-    And I should see the text "Started" within element with class "qa-start-title"
-    And I should see the text "Ends" within element with class "qa-end-title"
+    And I should see the text "Order started" within element with class "qa-start-title"
+    And I should see the text "Order ends" within element with class "qa-end-title"
     And I should see the text "Time elapsed" within element with class "qa-elapsed-title"
 
     And I should see the text "20 May 2019" within element with class "qa-start-date"
@@ -369,8 +369,8 @@ Feature: Case summary
       | Appointments to date | Acceptable | Unacceptable |
     And I should see the body text "Last attended: 10 Mar 2020 - Unpaid work (Acceptable)"
 
-    And I should see the text "Started" within element with class "qa-start-title"
-    And I should see the text "Ends" within element with class "qa-end-title"
+    And I should see the text "Order started" within element with class "qa-start-title"
+    And I should see the text "Order ends" within element with class "qa-end-title"
     And I should see the text "Time elapsed" within element with class "qa-elapsed-title"
 
     And I should see the text "7 Oct 2018" within element with class "qa-start-date"
@@ -460,8 +460,8 @@ Feature: Case summary
 
     And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
 
-    And I should see the text "Started" within element with class "qa-start-title"
-    And I should see the text "Ended" within element with class "qa-end-title"
+    And I should see the text "Order started" within element with class "qa-start-title"
+    And I should see the text "Order ended" within element with class "qa-end-title"
     And I should see the text "Reason" within element with class "qa-elapsed-title"
 
     And I should see the text "8 Mar 2017" within element with class "qa-start-date"

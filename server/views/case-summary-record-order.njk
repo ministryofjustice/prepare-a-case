@@ -141,7 +141,7 @@
 
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
-                    <p class="govuk-hint govuk-!-margin-bottom-0 qa-start-title">{{ "Post-release status" if custodialOrder else "Started" }}</p>
+                    <p class="govuk-hint govuk-!-margin-bottom-0 qa-start-title">{{ "Post-release status" if custodialOrder else "Order started" }}</p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-start-date">
                         {%- if custodialOrder -%}
                             {{ "On licence" if custodialOrder.custodialTypeCode === "B" else "On post-sentence supervision (PSS)" }}
@@ -155,7 +155,7 @@
                         {% if custodialOrder %}
                             {{ "Licence started" if isOnLicence else "PSS started" }}
                         {% else %}
-                            {{ "Ends" if currentOrder.active else "Ended" }}
+                            {{ "Order ends" if currentOrder.active else "Order ended" }}
                         {% endif %}
                     </p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-end-date">
