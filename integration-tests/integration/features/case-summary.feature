@@ -223,7 +223,7 @@ Feature: Case summary
     And I should see the hint text "Completed on 20 Jun 2018"
 
     And I should see the following level 3 headings
-      | Requirements | Post-release status | Licence conditions | Post-release status | Licence conditions | Post-release status | PSS requirements |
+      | Requirements | Status | Licence conditions | Status | Licence conditions | Status | PSS requirements |
 
     And I should see 5 previous orders
     When I click the "Show all previous orders" button
