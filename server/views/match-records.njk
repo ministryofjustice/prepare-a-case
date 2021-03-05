@@ -40,8 +40,7 @@
     <h1 class="govuk-heading-l">Defendants with possible NDelius records</h1>
 
     {% if tableData.rows | length %}
-        {% set oneDefendant = 'defendant' if tableData.rows === 1 else 'defendants' %}
-        <p class="govuk-heading-m">{{ tableData.rows | length }} {{ oneDefendant }} partially match with existing records.</p>
+        <p class="govuk-heading-m">{{ tableData.rows | length }} {{ 'defendant' if tableData.rows | length === 1 else 'defendants' }} partially match with existing records.</p>
         <p class="govuk-body">Review and confirm the correct record for each defendant.</p>
     {% else %}
         <p class="govuk-heading-m">All defendants have been matched with existing records.</p>
