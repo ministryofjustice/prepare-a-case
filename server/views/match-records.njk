@@ -37,11 +37,10 @@
         matchName: session.confirmedMatch.name,
         matchType: session.confirmedMatch.matchType
     }) }}
-
     <h1 class="govuk-heading-l">Defendants with possible NDelius records</h1>
 
     {% if tableData.rows | length %}
-        <p class="govuk-heading-m">{{ tableData.rows | length }} defendants partially match with existing records.</p>
+        <p class="govuk-heading-m">{{ tableData.rows | length }} {{ 'defendant' if tableData.rows | length === 1 else 'defendants' }} partially match with existing records.</p>
         <p class="govuk-body">Review and confirm the correct record for each defendant.</p>
     {% else %}
         <p class="govuk-heading-m">There are no defendants left to review.</p>
