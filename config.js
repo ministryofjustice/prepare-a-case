@@ -22,17 +22,19 @@ module.exports = {
     casesExcludedDays: get('CASES_EXCLUDED_DAYS', '0'), // Coma delimited String of days to exclude, incremental from 0 (Sunday)
     snapshotTimes: get('CASE_SNAPSHOT_TIMES', '00:00,08:45,09:45'), // Coma delimited string of snapshot times, earliest - latest
     availableCourts: [
-      { code: 'B14AV', name: 'Barnsley Magistrates\' Court' },
-      { code: 'B16BG', name: 'Beverley Magistrates\' Court' },
-      { code: 'B20BL', name: 'Birmingham Magistrates\' Court' },
-      { code: 'B62DC', name: 'Cardiff Magistrates\' Court' },
-      { code: 'B14ET', name: 'Doncaster Magistrates\' Court' },
-      { code: 'B01GU', name: 'Highbury Corner Magistrates\' Court' },
-      { code: 'B16HE', name: 'Hull Magistrates\' Court' },
-      { code: 'B10BD', name: 'Mid and South East Northumberland Magistrates\' Court' },
-      { code: 'B10JJ', name: 'Newcastle Magistrates\' Court' },
-      { code: 'B10JQ', name: 'North Tyneside Magistrates\' Court' },
-      { code: 'B14LO', name: 'Sheffield Magistrates\' Court' }
+      { code: 'B44BA', name: 'Basingstoke Magistrates\' Court', shortName: 'Basingstoke' },
+      { code: 'B14AV', name: 'Barnsley Magistrates\' Court', shortName: 'Barnsley' },
+      { code: 'B16BG', name: 'Beverley Magistrates\' Court', shortName: 'Beverley' },
+      { code: 'B20BL', name: 'Birmingham Magistrates\' Court', shortName: 'Birmingham' },
+      { code: 'B62DC', name: 'Cardiff Magistrates\' Court', shortName: 'Cardiff' },
+      { code: 'B14ET', name: 'Doncaster Magistrates\' Court', shortName: 'Doncaster' },
+      { code: 'B01GU', name: 'Highbury Corner Magistrates\' Court', shortName: 'Highbury Corner' },
+      { code: 'B16HE', name: 'Hull Magistrates\' Court', shortName: 'Hull' },
+      { code: 'B40IM', name: 'Luton and South Bedfordshire Magistrates\' Court', shortName: 'Luton and South Bedfordshire' },
+      { code: 'B10BD', name: 'Mid and South East Northumberland Magistrates\' Court', shortName: 'Mid and South East Northumberland' },
+      { code: 'B10JJ', name: 'Newcastle Magistrates\' Court', shortName: 'Newcastle' },
+      { code: 'B10JQ', name: 'North Tyneside Magistrates\' Court', shortName: 'North Tyneside' },
+      { code: 'B14LO', name: 'Sheffield Magistrates\' Court', shortName: 'Sheffield' }
     ]
   },
   session: {
