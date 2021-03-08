@@ -22,8 +22,8 @@ module.exports = {
     casesExcludedDays: get('CASES_EXCLUDED_DAYS', '0'), // Coma delimited String of days to exclude, incremental from 0 (Sunday)
     snapshotTimes: get('CASE_SNAPSHOT_TIMES', '00:00,08:45,09:45'), // Coma delimited string of snapshot times, earliest - latest
     availableCourts: [
-      { code: 'B44BA', name: 'Basingstoke Magistrates\' Court', shortName: 'Basingstoke' },
       { code: 'B14AV', name: 'Barnsley Magistrates\' Court', shortName: 'Barnsley' },
+      { code: 'B44BA', name: 'Basingstoke Magistrates\' Court', shortName: 'Basingstoke' },
       { code: 'B16BG', name: 'Beverley Magistrates\' Court', shortName: 'Beverley' },
       { code: 'B20BL', name: 'Birmingham Magistrates\' Court', shortName: 'Birmingham' },
       { code: 'B62DC', name: 'Cardiff Magistrates\' Court', shortName: 'Cardiff' },
