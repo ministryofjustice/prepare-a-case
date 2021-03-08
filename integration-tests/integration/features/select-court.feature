@@ -8,6 +8,7 @@ Feature: Select court
     When I open the application
     Then I should see the heading "Select a magistrates' court"
 
+    And I should see link "Basingstoke" with href "/select-court/B44BA"
     And I should see link "Barnsley" with href "/select-court/B14AV"
     And I should see link "Beverley" with href "/select-court/B16BG"
     And I should see link "Birmingham" with href "/select-court/B20BL"
@@ -15,6 +16,7 @@ Feature: Select court
     And I should see link "Doncaster" with href "/select-court/B14ET"
     And I should see link "Highbury Corner" with href "/select-court/B01GU"
     And I should see link "Hull" with href "/select-court/B16HE"
+    And I should see link "Luton and South Bedfordshire" with href "/select-court/B40IM"
     And I should see link "Mid and South East Northumberland" with href "/select-court/B10BD"
     And I should see link "Newcastle" with href "/select-court/B10JJ"
     And I should see link "North Tyneside" with href "/select-court/B10JQ"
