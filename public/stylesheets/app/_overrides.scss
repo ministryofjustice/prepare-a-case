@@ -29,8 +29,14 @@
   width: 18%;
 }
 
-.pac-inline-header-banner{
+.pac-inline-header-banner {
   line-height: 0.25;
+}
+
+.pac-hide--mobile {
+  @include govuk-media-query($until: tablet) {
+    display: none;
+  }
 }
 
 body.js-enabled {
