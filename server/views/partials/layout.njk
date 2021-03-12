@@ -87,7 +87,16 @@
 
 {% block footer %}
   {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
-  {{ govukFooter({}) }}
+  {{ govukFooter({
+    meta: {
+      items: [
+        {
+          href: "/user-guide",
+          text: "User guide"
+        }
+      ]
+    }
+  }) }}
 {% endblock %}
 
 {% block javascripts %}{% endblock %}

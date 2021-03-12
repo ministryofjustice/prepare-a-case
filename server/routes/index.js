@@ -34,6 +34,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/select-court')
   })
 
+  router.get('/user-guide', (req, res) => {
+    res.render('user-guide')
+  })
+
   router.get('/select-court/:courtCode?', (req, res) => {
     const { params: { courtCode }, params } = req
     if (courtCode) {
