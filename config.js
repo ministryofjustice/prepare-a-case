@@ -38,8 +38,7 @@ module.exports = {
     ]
   },
   session: {
-    secret: get('SESSION_SECRET', 'prepare-a-case-insecure-default-session'),
-    expiry: get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)
+    secret: get('SESSION_SECRET', 'prepare-a-case-insecure-default-session', requiredInProduction)
   },
   apis: {
     courtCaseService: {
