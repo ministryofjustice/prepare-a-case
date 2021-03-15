@@ -50,7 +50,7 @@ module.exports = function createApp ({ signInService, userService }) {
     cookieSession({
       name: 'session',
       keys: [config.session.secret],
-      maxAge: 60 * 60 * 1000,
+      maxAge: 120 * 60 * 1000,
       secure: config.https,
       httpOnly: true,
       signed: true,
@@ -182,7 +182,6 @@ module.exports = function createApp ({ signInService, userService }) {
   app.use('/logout', (req, res) => {
     if (req.user) {
       req.logout()
-      req.session.destroy()
     }
     res.redirect(authLogoutUrl)
   })
