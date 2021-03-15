@@ -48,6 +48,10 @@ When('I navigate to the {string} route for today', $route => {
   cy.visit(`/B14LO/${$route}/${moment().format('YYYY-MM-DD')}`)
 })
 
+When('I navigate to the {string} base route', $route => {
+  cy.visit($route)
+})
+
 And('I should see the caption with the court name {string}', $string => {
   cy.get('.qa-court-name').contains($string)
 })
@@ -173,6 +177,14 @@ And('I should see link {string} with href {string}', ($string, $href) => {
   cy.get('.govuk-link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
 })
 
+And('Link with text {string} should not be visible', ($string, $href) => {
+  cy.get('.govuk-link').contains($string).should('not.be.visible')
+})
+
+And('I should see footer link {string} with href {string}', ($string, $href) => {
+  cy.get('.govuk-footer__link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+})
+
 And('I should see back link {string} with href {string}', ($string, $href) => {
   cy.get('.govuk-back-link').contains($string).should('exist').should('have.attr', 'href').and('include', correctDates($href))
 })
@@ -181,6 +193,10 @@ And('I should see sub navigation with the following links', $data => {
   $data.raw()[0].forEach((text, index) => {
     cy.get('.moj-sub-navigation__link').eq(index).contains(text)
   })
+})
+
+When('I switch to mobile view', () => {
+  cy.viewport('iphone-x')
 })
 
 When('I click the sub navigation with {string} text', $string => {

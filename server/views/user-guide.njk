@@ -1,0 +1,359 @@
+{% extends "partials/layout.njk" %}
+
+{% set title = "User guide" %}
+
+{% block navigation %}{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <nav class="govuk-grid-column-one-quarter pac-hide--mobile" aria-label="Side navigation">
+
+      <h4 class="govuk-caption-l govuk-!-margin-top-0 govuk-!-margin-bottom-4">In this guide</h4>
+
+      <p class="govuk-body">
+        <a href="#ug-overview" class="govuk-link govuk-link--no-visited-state">Overview</a>
+      </p>
+
+      <p class="govuk-body">
+        <a href="#ug-getting-started" class="govuk-link govuk-link--no-visited-state">Getting started</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-signing-in" class="govuk-link govuk-link--no-visited-state">Signing in</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-selecting-a-court" class="govuk-link govuk-link--no-visited-state">Selecting a court</a>
+      </p>
+
+      <p class="govuk-body">
+        <a href="#ug-viewing-a-case-list" class="govuk-link govuk-link--no-visited-state">Viewing a case list</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-what-you-can-see-on-the-case-list" class="govuk-link govuk-link--no-visited-state">What you can see
+          on the case list</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-applying-filters-to-a-case-list" class="govuk-link govuk-link--no-visited-state">Applying filters
+          to a case list</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-viewing-case-lists-on-other-days" class="govuk-link govuk-link--no-visited-state">Viewing case
+          lists on other days</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-updates-to-a-case-list" class="govuk-link govuk-link--no-visited-state">Updates to a case list</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-recently-added-cases" class="govuk-link govuk-link--no-visited-state">Recently added cases</a>
+      </p>
+
+      <p class="govuk-body">
+        <a href="#ug-viewing-a-case" class="govuk-link govuk-link--no-visited-state">Viewing a case</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-key-details" class="govuk-link govuk-link--no-visited-state">Key details</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-case-summary" class="govuk-link govuk-link--no-visited-state">Case summary</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-probation-record" class="govuk-link govuk-link--no-visited-state">Probation record</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-risk-register" class="govuk-link govuk-link--no-visited-state">Risk register</a>
+      </p>
+
+      <p class="govuk-body">
+        <a href="#ug-viewing-an-order" class="govuk-link govuk-link--no-visited-state">Viewing an order</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-community-orders" class="govuk-link govuk-link--no-visited-state">Community orders</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-custodial-orders" class="govuk-link govuk-link--no-visited-state">Custodial orders</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-breach" class="govuk-link govuk-link--no-visited-state">Breach</a>
+      </p>
+
+      <p class="govuk-body">
+        <a href="#ug-defendants-with-possible-ndelius-records" class="govuk-link govuk-link--no-visited-state">Defendants
+          with possible NDelius records</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-reviewing-possible-records" class="govuk-link govuk-link--no-visited-state">Reviewing possible
+          records</a>
+      </p>
+
+      <p class="govuk-body">
+        <a href="#ug-linking-and-unlinking-ndelius-records" class="govuk-link govuk-link--no-visited-state">Linking and
+          unlinking NDelius records</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-link-a-record-to-a-defendant" class="govuk-link govuk-link--no-visited-state">Link a record to a
+          defendant</a>
+      </p>
+      <p class="govuk-body-s govuk-!-margin-left-4">
+        <a href="#ug-unlink-a-record-from-a-defendant" class="govuk-link govuk-link--no-visited-state">Unlink a record
+          from a defendant</a>
+      </p>
+
+    </nav>
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l">User guide</h1>
+
+      <h2 class="govuk-heading-m" id="ug-overview">Overview</h2>
+
+      <p class="govuk-body">Prepare a case for sentence is a digital service that helps probation practitioners and
+        court administrators prepare for cases in magistrates’ courts.</p>
+
+      <p class="govuk-body">The service gives an overview of defendants appearing in a court, including:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>their probation status</li>
+        <li>their probation record including information on current and previous orders</li>
+        <li>risk information</li>
+      </ul>
+
+      <p class="govuk-body">By providing this information in a more accessible format, staff can prepare for court more
+        effectively and provide better advice with less effort.</p>
+
+      <h2 class="govuk-heading-m" id="ug-getting-started">Getting started</h2>
+
+      <h3 class="govuk-heading-s" id="ug-signing-in">Signing in</h3>
+      <p class="govuk-body">To sign in to the service, go to
+        <a class="govuk-link govuk-link--no-visited-state"
+           href="https://prepare-case-probation.service.justice.gov.uk">https://prepare-case-probation.service.justice.gov.uk</a>
+      </p>
+      <p class="govuk-body">Log in with your NDelius username and password.</p>
+
+      <h3 class="govuk-heading-s" id="ug-selecting-a-court">Selecting a court</h3>
+      <p class="govuk-body">When you sign in to the service, you will see a list of courts you can view.</p>
+      <p class="govuk-body">Select a court to see case lists in that court.</p>
+      <p class="govuk-body">If you need to view a different court, click 'Change Court' at the top of the page to return
+        to the list of courts.</p>
+
+      <h2 class="govuk-heading-m" id="ug-viewing-a-case-list">Viewing a case list</h2>
+
+      <p class="govuk-body">The case list will show all cases due to be heard in a court on a particular day.</p>
+
+      <h3 class="govuk-heading-s" id="ug-what-you-can-see-on-the-case-list">What you can see on the case list</h3>
+      <p class="govuk-body">For each case you can see:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>defendant's name</li>
+        <li>their probation status</li>
+        <li>the offence they are appearing for</li>
+        <li>case listing number, courtroom and session</li>
+      </ul>
+
+      <p class="govuk-body">Defendants can have one of three probation statuses:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><strong class="govuk-!-font-weight-bold">Current</strong> - the defendant has a probation record and an
+          order that they are currently subject to
+        </li>
+        <li><strong class="govuk-!-font-weight-bold">Previously known</strong> - the defendant has a probation record
+          but are not supervised by probation currently
+        </li>
+        <li><strong class="govuk-!-font-weight-bold">No record</strong> - no probation record could be found that
+          matches the name, date of birth or PNC number of the defendant
+        </li>
+      </ul>
+
+      <p class="govuk-body">If a defendant has a 'Possible NDelius record', you need to review the details of the
+        possible record and confirm their probation status.</p>
+
+      <h3 class="govuk-heading-s" id="ug-applying-filters-to-a-case-list">Applying filters to a case list</h3>
+      <p class="govuk-body">You can filter a case list by probation status, courtroom and session. You can apply
+        multiple filters to a case list.</p>
+      <p class="govuk-body">When filters are applied, the case list will only display cases that match the selected
+        filters.</p>
+      <p class="govuk-body">You can remove filters individually or all at once by selecting 'Clear all'.</p>
+
+      <h3 class="govuk-heading-s" id="ug-viewing-case-lists-on-other-days">Viewing case lists on other days</h3>
+      <p class="govuk-body">You will always see the case list for 'Today' when you sign in and select a court to
+        view.</p>
+      <p class="govuk-body">The service allows you to see 7 working days ahead and displays these dates above the case
+        list. Select a date to jump to the case list for that day.</p>
+
+      <h3 class="govuk-heading-s" id="ug-updates-to-a-case-list">Updates to a case list</h3>
+      <p class="govuk-body">A case list appears 7 days in advance of the cases being heard and is updated with new cases
+        3 times over the course of a week.</p>
+      <p class="govuk-body">The first update is received 48 hours before the cases are due to be heard.</p>
+      <p class="govuk-body">The second update is received on the day of the case list at 8:45am. The third update is
+        received at 9:45am.</p>
+      <p class="govuk-body">You can see when a case list was last updated by looking at the time above the case list. It
+        will also show when the list will next be updated.</p>
+
+      <p class="govuk-body"><strong class="govuk-!-font-weight-bold">Example</strong></p>
+
+      <p class="govuk-body">Wednesday 6 June: Case list for Wednesday 13 June appears in the service.</p>
+      <p class="govuk-body">Update 1 - Monday 11 June at 12:00am: Case list for Wednesday 13 June updates with 6 new
+        cases.</p>
+      <p class="govuk-body">Update 2 - Wednesday 13 June at 8:45am: Case list updates with 10 new cases.</p>
+      <p class="govuk-body">Update 3 - Wednesday 13 June at 9:45am: Case list updates and no cases have been added</p>
+
+      <h3 class="govuk-heading-s" id="ug-recently-added-cases">Recently added cases</h3>
+      <p class="govuk-body">When viewing the case list for 'Today' after 8:45am or 9:45am, a 'Recently added' tab will
+        appear on the case list.</p>
+      <p class="govuk-body">This tab will display any cases that have been added to the list that morning i.e remand or
+        other overnight cases.</p>
+      <p class="govuk-body">These cases also appear on the full case list.</p>
+
+      <h2 class="govuk-heading-m" id="ug-viewing-a-case">Viewing a case</h2>
+      <p class="govuk-body">To view more information about a case, click the defendant's name on the case list.</p>
+
+      <h3 class="govuk-heading-s" id="ug-key-details">Key details</h3>
+      <p class="govuk-body">On each case you will see the defendant's name, PNC number, their probation status and a
+        case reference number (CRN) if they have an NDelius record.</p>
+      <p class="govuk-body">Depending on whether the defendant has a probation record or not, there will also be the
+        option to link or unlink an NDelius record.</p>
+
+      <h3 class="govuk-heading-s" id="ug-case-summary">Case summary</h3>
+      <p class="govuk-body">The case summary includes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>details of when and where the case will be heard</li>
+        <li>the offence and a brief summary</li>
+        <li>the defendant's personal details - name, gender, date of birth, address and nationality</li>
+      </ul>
+
+      <p class="govuk-body">If a defendant has no probation record, you will only see the case summary information.</p>
+
+      <h3 class="govuk-heading-s" id="ug-probation-record">Probation record</h3>
+      <p class="govuk-body">If the defendant has a record, you can see information about:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>current orders - type and length of order, offence committed, requirements, custodial status and licence or
+          PSS conditions
+        </li>
+        <li>previous orders - type and length of order, offence committed</li>
+        <li>offender manager information - name, where they work and contact details</li>
+        <li>date and type of last PSR and OASys assessment</li>
+      </ul>
+
+      <h3 class="govuk-heading-s" id="ug-risk-register">Risk register</h3>
+      <p class="govuk-body">If the defendant has a probation record, the risk register shows:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>active risks - type of risk, when it was registered and next review date</li>
+        <li>inactive risks - type of risk, when it was registered and expired</li>
+      </ul>
+
+      <h2 class="govuk-heading-m" id="ug-viewing-an-order">Viewing an order</h2>
+
+      <p class="govuk-body">Click an order on the probation record to view more information about it including:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>when the order started and ends</li>
+        <li>summary of attendance including number of appointments to date and a breakdown of whether attendances and
+          absences were recorded as acceptable or unacceptable
+        </li>
+        <li>a link to the NDelius contacts related to that order</li>
+      </ul>
+
+      <p class="govuk-body">You will see different information depending on whether it is a community or custodial
+        order.</p>
+
+      <h3 class="govuk-heading-s" id="ug-community-orders">Community orders</h3>
+      <p class="govuk-body">You can also see:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>requirements including the type and length</li>
+        <li>a summary of unpaid work progress if they have an unpaid work requirement</li>
+      </ul>
+
+      <h3 class="govuk-heading-s" id="ug-custodial-orders">Custodial orders</h3>
+      <p class="govuk-body">You can also see:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>their custodial status - in custody, on licence or on post sentence supervision (PSS)</li>
+        <li>post-release dates including when home detention curfew, licence and PSS periods start and end</li>
+        <li>licence or PSS conditions they are subject to</li>
+      </ul>
+
+      <h3 class="govuk-heading-s" id="ug-breach">Breach</h3>
+      <p class="govuk-body">When breach proceedings are in progress against a defendant, a breach badge will display on
+        the case list above their probation status.</p>
+
+      <p class="govuk-body">You can find out which order the defendant is currently in breach of by going to their
+        probation record on the case.</p>
+
+      <p class="govuk-body">The order summary for the breached order will show:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the current status of the breach</li>
+        <li>if it is ready to prosecute</li>
+        <li>any notes or documents associated with the breach</li>
+      </ul>
+
+      <h2 class="govuk-heading-m" id="ug-defendants-with-possible-ndelius-records">Defendants with possible NDelius
+        records</h2>
+
+      <p class="govuk-body">Some defendants may have 'Possible NDelius record' as their probation status on a case
+        list.</p>
+
+      <p class="govuk-body">This happens when the service has either found multiple records that match the defendant's
+        details or one record that partially matches the defendant.</p>
+
+      <p class="govuk-body">You need to review the records that have been found and select the correct record to confirm
+        the defendant's probation status.</p>
+
+      <h3 class="govuk-heading-s" id="ug-reviewing-possible-records">Reviewing possible records</h3>
+      <p class="govuk-body">There are two ways to review possible records for a defendant. You can either go to the case
+        of the defendant or use the 'Review defendants with possible records' link above the case list.</p>
+
+      <p class="govuk-body">When you 'Review records' you will be able to see and compare the defendant's details from
+        Libra (name, date of birth, address and PNC) to the details of the possible NDelius records.</p>
+
+      <p class="govuk-body">Check if any of the records match the defendant. If a record matches the defendant, select
+        it and 'Confirm record'.</p>
+
+      <h4 class="govuk-body govuk-!-font-weight-bold">Duplicate records</h4>
+
+      <p class="govuk-body">If the defendant has duplicate NDelius records, you should select 1 of the records to link
+        to that defendant for the case and follow your existing processes for flagging duplicate records to the IT
+        team.</p>
+
+      <p class="govuk-body">If none of the possible records are the defendant</p>
+
+      <p class="govuk-body">If none of the possible records match the defendant , click 'Can't see the correct record?'
+        to either confirm the defendant does not have a probation record or to link them to a different record using an
+        NDelius case reference number.</p>
+
+      <h2 class="govuk-heading-m" id="ug-linking-and-unlinking-ndelius-records">Linking and unlinking NDelius
+        records</h2>
+
+      <h3 class="govuk-heading-s" id="ug-link-a-record-to-a-defendant">Link a record to a defendant</h3>
+      <p class="govuk-body">If a defendant displays as 'No record' but you are aware they are known to probation, you
+        can link an NDelius record to them with a case reference number (CRN).</p>
+
+      <p class="govuk-body">To link a record you need to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>go to the case and 'Link NDelius record'</li>
+        <li>enter the case reference number of the NDelius record</li>
+        <li>'Find record' to see details of the record</li>
+        <li>check the details are correct and then 'Link record to defendant'</li>
+      </ul>
+
+      <p class="govuk-body">When you link a record to a defendant, the case will update to show the defendant's new
+        probation status, record and risk register.</p>
+
+      <h3 class="govuk-heading-s" id="ug-unlink-a-record-from-a-defendant">Unlink a record from a defendant</h3>
+      <p class="govuk-body">If a defendant has been linked to the wrong NDelius record, you can unlink the record.</p>
+
+      <p class="govuk-body">To unlink a record you need to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>go to the case and 'Unlink NDelius record'</li>
+        <li>check the details of the linked record and then 'Unlink record from defendant'</li>
+      </ul>
+
+      <p class="govuk-body">When you unlink a record from a defendant, the case will update to show the defendant as 'No
+        record' and give you the option to link a different record.</p>
+
+    </div>
+  </div>
+{% endblock %}
