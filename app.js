@@ -4,11 +4,9 @@ const config = require('./config')
 const express = require('express')
 const compression = require('compression')
 const cookieParser = require('cookie-parser')
-const session = require('express-session')
+const cookieSession = require('cookie-session')
 const helmet = require('helmet')
 const path = require('path')
-const MemoryStore = require('memorystore')(session)
-const sessionExpiry = config.session.expiry * 60 * 1000
 const passport = require('passport')
 const createRouter = require('./server/routes')
 const createAttachmentsRouter = require('./server/routes/attachments')
@@ -48,15 +46,18 @@ module.exports = function createApp ({ signInService, userService }) {
   }))
 
   app.use(compression())
-  app.use(session({
-    cookie: { maxAge: sessionExpiry },
-    store: new MemoryStore({
-      checkPeriod: sessionExpiry
-    }),
-    secret: config.session.secret,
-    resave: true,
-    saveUninitialized: true
-  }))
+  app.use(
+    cookieSession({
+      name: 'session',
+      keys: [config.session.secret],
+      maxAge: 120 * 60 * 1000, // 2 hours
+      secure: config.https,
+      httpOnly: true,
+      signed: true,
+      overwrite: true,
+      sameSite: 'lax'
+    }))
+
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
   app.use(cookieParser())
@@ -182,7 +183,6 @@ module.exports = function createApp ({ signInService, userService }) {
   app.use('/logout', (req, res) => {
     if (req.user) {
       req.logout()
-      req.session.destroy()
     }
     res.redirect(authLogoutUrl)
   })
