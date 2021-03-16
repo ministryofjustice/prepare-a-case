@@ -174,7 +174,7 @@ Feature: Case summary
     Then I should be on the "Cases" page
     And I should see the heading "Cases"
     And I should see the caption with the court name "Sheffield Magistrates' Court"
-    When I click the "Webb Mitchell" link
+    When I click the "Webster Michel" link
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/cases/$TODAY?page=1"
     And I should see the heading "Webb Mitchell"
@@ -522,7 +522,7 @@ Feature: Case summary
     When I navigate to the "cases" route
     Then I should be on the "Cases" page
 
-    When I click the "Webb Mitchell" link
+    When I click the "Webster Michel" link
     And I click the sub navigation with "Risk register" text
     Then I should see the following risk register tabs
       | Active (4) | Inactive (1) |
