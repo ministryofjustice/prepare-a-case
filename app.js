@@ -45,11 +45,11 @@ module.exports = function createApp ({ signInService, userService }) {
     }
   }))
 
-  app.use(cookieParser())
+  app.use(compression())
   app.use(
     cookieSession({
       name: 'session',
-      secret: config.session.secret,
+      keys: [config.session.secret],
       maxAge: 120 * 60 * 1000, // 2 hours
       secure: config.https,
       httpOnly: true,
@@ -60,7 +60,7 @@ module.exports = function createApp ({ signInService, userService }) {
 
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
-  app.use(compression())
+  app.use(cookieParser())
   app.use('/assets', [
     express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')),
     express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets'))
@@ -159,13 +159,6 @@ module.exports = function createApp ({ signInService, userService }) {
       }
     })
     return next()
-  })
-
-  // Update a value in the cookie so that the set-cookie will be sent.
-  // Only changes every minute so that it's not sent with every request.
-  app.use((req, res, next) => {
-    req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
-    next()
   })
 
   const authLogoutUrl = `${config.apis.oauth2.url}/logout?client_id=${config.apis.oauth2.apiClientId}&redirect_uri=${config.domain}`
