@@ -273,7 +273,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       pnc: crn ? offenderDetail.otherIds.pncNumber : caseResponse.pnc,
       crn: crn ? offenderDetail.otherIds.crn : null,
       cro: crn ? offenderDetail.otherIds.croNumber : null,
-      probationStatus: crn ? offenderDetail.probationStatus : 'No record'
+      probationStatus: crn ? offenderDetail.probationStatus : null
     })
   }
 
