@@ -4,7 +4,9 @@ const config = require('./config')
 const express = require('express')
 const compression = require('compression')
 const cookieParser = require('cookie-parser')
-const cookieSession = require('cookie-session')
+const session = require('express-session')
+const MemoryStore = require('memorystore')(session)
+const sessionExpiry = config.session.expiry * 60 * 1000
 const helmet = require('helmet')
 const path = require('path')
 const passport = require('passport')
@@ -45,22 +47,20 @@ module.exports = function createApp ({ signInService, userService }) {
     }
   }))
 
-  app.use(cookieParser())
-  app.use(
-    cookieSession({
-      name: 'session',
-      secret: config.session.secret,
-      maxAge: 120 * 60 * 1000, // 2 hours
-      secure: config.https,
-      httpOnly: true,
-      signed: true,
-      overwrite: true,
-      sameSite: 'lax'
-    }))
+  app.use(compression())
+  app.use(session({
+    cookie: { maxAge: sessionExpiry },
+    store: new MemoryStore({
+      checkPeriod: sessionExpiry
+    }),
+    secret: config.session.secret,
+    resave: true,
+    saveUninitialized: true
+  }))
 
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
-  app.use(compression())
+  app.use(cookieParser())
   app.use('/assets', [
     express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')),
     express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets'))
