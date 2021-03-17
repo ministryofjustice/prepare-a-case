@@ -31,24 +31,29 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/', (req, res) => {
     const { cookies } = req
-    res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/onboarding')
+    res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/edit-courts')
   })
 
   router.get('/user-guide', (req, res) => {
     res.render('user-guide')
   })
 
-  router.get('/onboarding/:save?', (req, res) => {
+  router.get('/edit-courts/:save?', (req, res) => {
     const { params: { save }, query: { remove }, session } = req
+    let formError = false
     if (save) {
-      // @TODO: Check and save the user preferences
-      return res.redirect(302, '/select-court')
+      if (session.courts && session.courts.length) {
+        return res.redirect(302, '/select-court')
+      } else {
+        formError = true
+      }
     }
     if (remove && session.courts && session.courts.includes(remove)) {
       session.courts.splice(session.courts.indexOf(remove), 1)
       return res.redirect(req.path)
     }
-    res.render('onboarding', {
+    res.render('edit-courts', {
+      formError: formError,
       title: 'Which courts do you work in?',
       params: {
         availableCourts: settings.availableCourts,
@@ -57,10 +62,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     })
   })
 
-  router.post('/onboarding', (req, res) => {
+  router.post('/edit-courts', (req, res) => {
     const { session, body: { court } } = req
     session.courts = session.courts || []
-    if (!session.courts.includes(court)) {
+    if (court && !session.courts.includes(court)) {
       session.courts.push(court)
     }
     res.redirect(req.path)

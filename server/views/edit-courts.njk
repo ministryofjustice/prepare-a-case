@@ -12,7 +12,20 @@
 {%- endfor -%}
 
 {% block content %}
-  <form method="post" name="selectCourt" novalidate>
+  <form method="post" name="selectCourt" action="/edit-courts" novalidate>
+
+    {% if formError %}
+      {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "You must add a court",
+            href: "#pac-select-court-error"
+          }
+        ]
+      }) }}
+    {% endif %}
 
     <h1 class="govuk-heading-l">Which courts do you work in?</h1>
     <p class="govuk-body">Add and save the courts you work in to view case lists for those courts.</p>
@@ -49,23 +62,21 @@
           label: 'Add court',
           hint: 'Type in the name of the court',
           instruction: 'Select a court',
-          options: courtOptions
+          options: courtOptions,
+          error: formError,
+          errorMessage: 'You must add a court'
         }) }}
 
         <button type="submit" class="govuk-button govuk-button--secondary govuk-!-margin-top-4 govuk-!-margin-bottom-0">
           Add
         </button>
 
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+
+        <p class="govuk-body"><a href="/edit-courts/save" class="govuk-button">Save and continue</a></p>
+
       </div>
     </div>
-
-    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
-
-<<<<<<< HEAD
-    <p class="govuk-body"><a href="/onboarding/save" class="govuk-button">Save and continue</a></p>
-=======
-    <p class="govuk-body"><a href="" class="govuk-button">Save and continue</a></p>
->>>>>>> f63feea5a09d68ec931a9b8ea43169ab1936428a
 
   </form>
 
