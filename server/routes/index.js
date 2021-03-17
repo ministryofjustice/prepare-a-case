@@ -1,6 +1,7 @@
 const express = require('express')
 const getBaseDateString = require('../utils/getBaseDateString')
 const { settings } = require('../../config')
+const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
   getDetails,
@@ -31,19 +32,38 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/', (req, res) => {
     const { cookies } = req
-    res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/edit-courts')
+    res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/my-courts/setup')
   })
 
   router.get('/user-guide', (req, res) => {
     res.render('user-guide')
   })
 
-  router.get('/edit-courts/:action?', (req, res) => {
-    const { params: { action }, query: { remove }, session } = req
-    let formError = action && action === "error"
-    if (action && action === 'save') {
+  router.get('/my-courts', async (req, res) => {
+    const { session } = req
+    const userSelectedCourts = await getUserSelectedCourts()
+    session.courts = userSelectedCourts.courts && userSelectedCourts.courts.split(',')
+
+    res.render('view-courts', {
+      params: {
+        availableCourts: settings.availableCourts,
+        chosenCourts: session.courts
+      }
+    })
+  })
+
+  router.get('/my-courts/:state', async (req, res) => {
+    const { params: { state }, query: { error, remove, save }, session } = req
+    let formError = error
+    let serverError = false
+    if (save) {
       if (session.courts && session.courts.length) {
-        return res.redirect(302, '/select-court')
+        const updatedCourts = await updateSelectedCourts(session.courts)
+        if (updatedCourts.status >= 400) {
+          serverError = true
+        } else {
+          return res.redirect(302, '/my-courts')
+        }
       } else {
         formError = true
       }
@@ -54,7 +74,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
     res.render('edit-courts', {
       formError: formError,
-      title: 'Which courts do you work in?',
+      serverError: serverError,
+      state: state,
       params: {
         availableCourts: settings.availableCourts,
         chosenCourts: session.courts
@@ -62,10 +83,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     })
   })
 
-  router.post('/edit-courts', (req, res) => {
-    const { session, body: { court } } = req
+  router.post('/my-courts/:state', (req, res) => {
+    const { params: { state }, session, body: { court } } = req
     if (!court) {
-      return res.redirect(302, '/edit-courts/error')
+      return res.redirect(302, `/my-courts/${state}?error=true`)
     }
     session.courts = session.courts || []
     if (court && !session.courts.includes(court)) {

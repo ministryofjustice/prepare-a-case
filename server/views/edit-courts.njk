@@ -1,7 +1,10 @@
-{%- set hideCourtLink = true -%}
+{%- set isOnboarding = state !== "edit" -%}
+{%- set hideCourtLink = isOnboarding -%}
 {% extends "partials/layout.njk" %}
 
 {% block navigation %}{% endblock %}
+
+{% set title = "Which courts do you work in?" if isOnboarding else "Edit my courts" %}
 
 {%- set courtOptions = [] -%}
 {%- for court in params.availableCourts -%}
@@ -12,7 +15,20 @@
 {%- endfor -%}
 
 {% block content %}
-  <form method="post" name="selectCourt" action="/edit-courts" novalidate>
+  <form method="post" name="selectCourt" novalidate>
+
+    {% if serverError %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+          {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+          {{ mojBanner({
+            type: 'warning',
+            text: 'Something went wrong - try again.',
+            iconFallbackText: 'Warning'
+          }) }}
+        </div>
+      </div>
+    {% endif %}
 
     {% if formError %}
       {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
@@ -27,8 +43,12 @@
       }) }}
     {% endif %}
 
-    <h1 class="govuk-heading-l">Which courts do you work in?</h1>
-    <p class="govuk-body">Add and save the courts you work in to view case lists for those courts.</p>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+    {% if isOnboarding %}
+      <p class="govuk-body">Add and save the courts you work in to view case lists for those courts.</p>
+    {% else %}
+      <p class="govuk-body">Add or remove courts from your list.</p>
+    {% endif %}
 
     {% if params.chosenCourts | length %}
       <table class="govuk-table pac-!-grid-column--max-700">
@@ -73,7 +93,7 @@
 
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
 
-        <p class="govuk-body"><a href="/edit-courts/save" class="govuk-button">Save and continue</a></p>
+        <p class="govuk-body"><a href="?save=true" class="govuk-button">Save and continue</a></p>
 
       </div>
     </div>

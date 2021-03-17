@@ -42,6 +42,9 @@ module.exports = {
     expiry: get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)
   },
   apis: {
+    userPreferenceService: {
+      url: get('USER_PREFERENCE_SERVICE_URL', 'http://localhost:9091/preferences', requiredInProduction)
+    },
     courtCaseService: {
       url: get('COURT_CASE_SERVICE_URL', 'http://localhost:9091', requiredInProduction)
     },

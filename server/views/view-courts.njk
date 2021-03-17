@@ -1,0 +1,41 @@
+{% extends "partials/layout.njk" %}
+
+{% block navigation %}{% endblock %}
+
+{% set title = "My courts" %}
+
+{%- set courtOptions = [] -%}
+{%- for court in params.availableCourts -%}
+  {{ courtOptions.push({
+    value: court.code,
+    text: court.name
+  }) }}
+{%- endfor -%}
+
+{% block content %}
+
+  <h1 class="govuk-heading-l">{{ title }}</h1>
+
+  <p class="govuk-body"><a href="/my-courts/edit" class="govuk-link govuk-link--no-visited-state">Edit my courts</a></p>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+
+  <p class="govuk-body">Select a court to view the case list.</p>
+
+  <nav aria-label="Court selection" class="govuk-!-margin-bottom-8">
+
+    {% if params.chosenCourts | length %}
+      {%- for court in params.availableCourts -%}
+        {%- for chosen in params.chosenCourts -%}
+          {% if chosen === court.code %}
+            <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-bottom-2">
+              <a href="/{{ court.code }}/cases" class="govuk-link govuk-link--no-visited-state">{{ court.name }}</a>
+            </p>
+          {% endif %}
+        {%- endfor -%}
+      {%- endfor -%}
+    {% endif %}
+
+  </nav>
+
+{% endblock %}
