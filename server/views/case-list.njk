@@ -39,7 +39,7 @@
         {% endfor %}
         {{ offences.push('</ol>') }}
     {% endif %}
-    {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if item.name else item.defendantName %}
+    {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
     {%- set tableRow = [
             { text: ('<a href="/' + params.courtCode + '/case/' + item.caseNo + '/summary" class="pac-defendant-link govuk-link govuk-link--no-visited-state">' + defendantFullName | escape | properCase | removeTitle + '</a>') | safe },
             { text: ('<div>' + ('<span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span>' | safe if notMatched ) + ('<span class="moj-badge moj-badge--black pac-badge">Breach</span>' | safe if item.breach) + ('<span class="moj-badge moj-badge--black pac-badge">Sso</span>' | safe if item.suspendedSentenceOrder) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched) + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate)) | safe },

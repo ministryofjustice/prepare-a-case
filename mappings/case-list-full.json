@@ -234,10 +234,7 @@
           "defendantName": "MISS FELICIA Villarreality",
           "name": {
             "title": "Miss",
-            "forename1": "FELIcia",
-            "forename2": "BloB",
-            "forename3": "PopOp",
-            "surname": "VillaRealet"
+            "surname": "VidaLoca"
           },
           "defendantAddress": {
             "line1": "37",
@@ -281,6 +278,11 @@
           ],
           "defendantSex": "M",
           "defendantName": "MR Webb Mitchell",
+          "name": {
+            "title": "Mister",
+           "forename1": "Webb",
+            "surname": "Mitchell"
+          },
           "defendantAddress": {
             "line1": "49",
             "line2": "Rochester Avenue",
