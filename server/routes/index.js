@@ -31,11 +31,39 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/', (req, res) => {
     const { cookies } = req
-    res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/select-court')
+    res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/onboarding')
   })
 
   router.get('/user-guide', (req, res) => {
     res.render('user-guide')
+  })
+
+  router.get('/onboarding/:save?', (req, res) => {
+    const { params: { save }, query: { remove }, session } = req
+    if (save) {
+      // @TODO: Check and save the user preferences
+      return res.redirect(302, '/select-court')
+    }
+    if (remove && session.courts && session.courts.includes(remove)) {
+      session.courts.splice(session.courts.indexOf(remove), 1)
+      return res.redirect(req.path)
+    }
+    res.render('onboarding', {
+      title: 'Which courts do you work in?',
+      params: {
+        availableCourts: settings.availableCourts,
+        chosenCourts: session.courts
+      }
+    })
+  })
+
+  router.post('/onboarding', (req, res) => {
+    const { session, body: { court } } = req
+    session.courts = session.courts || []
+    if (!session.courts.includes(court)) {
+      session.courts.push(court)
+    }
+    res.redirect(req.path)
   })
 
   router.get('/select-court/:courtCode?', (req, res) => {

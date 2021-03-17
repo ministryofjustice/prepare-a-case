@@ -43,6 +43,11 @@
   }
 }
 
+.autocomplete__option {
+  @extend .govuk-body;
+  margin: 0;
+}
+
 body.js-enabled {
   .moj-js-hidden {
     @include govuk-visually-hidden;
