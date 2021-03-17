@@ -38,10 +38,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('user-guide')
   })
 
-  router.get('/edit-courts/:save?', (req, res) => {
-    const { params: { save }, query: { remove }, session } = req
-    let formError = false
-    if (save) {
+  router.get('/edit-courts/:action?', (req, res) => {
+    const { params: { action }, query: { remove }, session } = req
+    let formError = action && action === "error"
+    if (action && action === 'save') {
       if (session.courts && session.courts.length) {
         return res.redirect(302, '/select-court')
       } else {
@@ -64,6 +64,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.post('/edit-courts', (req, res) => {
     const { session, body: { court } } = req
+    if (!court) {
+      return res.redirect(302, '/edit-courts/error')
+    }
     session.courts = session.courts || []
     if (court && !session.courts.includes(court)) {
       session.courts.push(court)
