@@ -61,6 +61,10 @@ describe('Routes', () => {
     return communityResponse
   })
 
+  jest.spyOn(communityService, 'getProbationStatusDetails').mockImplementation(function () {
+    return communityResponse
+  })
+
   jest.spyOn(communityService, 'getSentenceDetails').mockImplementation(function () {
     return {
       attendances: []

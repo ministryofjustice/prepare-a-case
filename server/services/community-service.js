@@ -43,12 +43,16 @@ const getBreachDetails = async (crn, convictionId, breachId) => {
 }
 
 const getAttachment = async (crn, documentId) => {
-  const res = await requestFile(`${apiUrl}/offender/${crn}/documents/${documentId}`) || {}
-  return res
+  return await requestFile(`${apiUrl}/offender/${crn}/documents/${documentId}`) || {}
 }
 
 const getDetails = async crn => {
   const res = await request(`${apiUrl}/offender/${crn}/detail`) || {}
+  return res.status >= 400 ? res : res.data
+}
+
+const getProbationStatusDetails = async crn => {
+  const res = await request(`${apiUrl}/offender/${crn}/probation-status-detail`) || {}
   return res.status >= 400 ? res : res.data
 }
 
@@ -61,6 +65,7 @@ module.exports = {
   getDetails,
   getProbationRecord,
   getProbationRecordWithRequirements,
+  getProbationStatusDetails,
   getSentenceDetails,
   getBreachDetails,
   getAttachment,

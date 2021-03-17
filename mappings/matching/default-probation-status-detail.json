@@ -1,0 +1,19 @@
+{
+  "id": "ab4c24a9-59ac-4908-a155-ffee3355e723",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/(?!C178657)([A-Za-z][0-9]{6})/probation-status-detail"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "status": "CURRENT",
+      "inBreach": true,
+      "preSentenceActivity": true,
+      "previouslyKnownTerminationDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}"
+    }
+  }
+}
