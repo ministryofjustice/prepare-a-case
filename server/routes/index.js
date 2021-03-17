@@ -38,6 +38,30 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('user-guide')
   })
 
+  router.get('/onboarding', (req, res) => {
+    const { session, query: { remove } } = req
+    if (remove && session.courts && session.courts.includes(remove)) {
+      session.courts.splice(session.courts.indexOf(remove), 1)
+      return res.redirect(req.path)
+    }
+    res.render('onboarding', {
+      title: 'Which courts do you work in?',
+      params: {
+        availableCourts: settings.availableCourts,
+        chosenCourts: session.courts
+      }
+    })
+  })
+
+  router.post('/onboarding', (req, res) => {
+    const { session, body: { court } } = req
+    session.courts = session.courts || []
+    if (!session.courts.includes(court)) {
+      session.courts.push(court)
+    }
+    res.redirect(req.path)
+  })
+
   router.get('/select-court/:courtCode?', (req, res) => {
     const { params: { courtCode }, params } = req
     if (courtCode) {

@@ -70,6 +70,7 @@
   },
   "dependencies": {
     "@ministryofjustice/frontend": "0.2.1",
+    "accessible-autocomplete": "^2.0.3",
     "agentkeepalive": "4.1.4",
     "applicationinsights": "1.8.10",
     "applicationinsights-native-metrics": "0.0.6",
