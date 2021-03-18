@@ -95,21 +95,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(req.path)
   })
 
-  router.get('/select-court/:courtCode?', (req, res) => {
-    const { params: { courtCode }, params } = req
-    if (courtCode) {
-      res.status(201)
-        .cookie('court', courtCode)
-        .redirect(302, `/${courtCode}/cases/${getBaseDateString()}`)
-    } else {
-      res.render('select-court', {
-        title: 'Select court',
-        params: {
-          ...params,
-          availableCourts: settings.availableCourts
-        }
-      })
-    }
+  router.get('/select-court/:courtCode', (req, res) => {
+    const { params: { courtCode } } = req
+
+    res.status(201)
+      .cookie('court', courtCode)
+      .redirect(302, `/${courtCode}/cases/${getBaseDateString()}`)
   })
 
   router.get('/:courtCode/cases', (req, res) => {

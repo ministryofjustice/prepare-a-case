@@ -8,7 +8,7 @@ const getUserSelectedCourts = async () => {
 }
 
 const updateSelectedCourts = async courts => {
-  return await update(`${apiUrl}/courts`, courts.join(','))
+  return await update(`${apiUrl}/courts`, { courts: courts })
 }
 
 module.exports = {

@@ -93,7 +93,12 @@
 
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
 
-        <p class="govuk-body"><a href="?save=true" class="govuk-button">Save and continue</a></p>
+        <p class="govuk-body">
+          <a href="?save=true" class="govuk-button">Save {{ "list" if not isOnboarding }} and continue</a>
+          {% if not isOnboarding %}
+            <a href="/my-courts" class="govuk-link govuk-link--no-visited-state govuk-!-margin-left-6">Cancel</a>
+          {% endif %}
+        </p>
 
       </div>
     </div>

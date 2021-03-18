@@ -29,7 +29,7 @@
         {%- for chosen in params.chosenCourts -%}
           {% if chosen === court.code %}
             <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-bottom-2">
-              <a href="/{{ court.code }}/cases" class="govuk-link govuk-link--no-visited-state">{{ court.name }}</a>
+              <a href="/select-court/{{ court.code }}" class="govuk-link govuk-link--no-visited-state">{{ court.name }}</a>
             </p>
           {% endif %}
         {%- endfor -%}
