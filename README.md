@@ -63,10 +63,19 @@ npm run unit-test
 ```
 
 ### Run integration tests
-For local running, start the application:
+For local running, start redis instance by:
+
+`docker-compose -f docker-compose.test.yml up`
+
+Start the standalone WireMock server
+```
+java -jar wiremock-standalone-2.27.2.jar --global-response-templating --port 9091
+```
+
+Then run the server in test mode by:
 
 ```
-npm run start-feature` (or `npm run start-feature:dev` to run with nodemon
+npm run start-feature` (or `npm run start-feature:dev` to run with nodemon)
 ```
 
 Then run the integration tests:
@@ -94,3 +103,7 @@ Specify the court-case-service URL with `COURT_CASE_SERVICE_URL`
 Default: 20
 
 Specify the number of cases to display, per page with `CASES_PER_PAGE`
+
+## Dependencies
+* `hmpps-auth` - for authentication
+* `redis` - session store and token caching
