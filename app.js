@@ -41,7 +41,7 @@ module.exports = function createApp ({ signInService, userService }) {
           '\'self\'',
           '\'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA=\'',
           '\'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ=\'',
-          '\'sha256-Ex+PXm59nVbu/S+FH/u8FLio5zO5YfFPo0/jH0uw19k=\''
+          `'nonce-${config.nonce}'`
         ],
         upgradeInsecureRequests: []
       }
