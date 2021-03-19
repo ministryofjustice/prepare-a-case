@@ -19,3 +19,11 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:8080/auth/health"]
     environment:
       - SPRING_PROFILES_ACTIVE=dev
+
+  prepare-a-case-redis:
+    image: 'bitnami/redis:5.0'
+    container_name: prepare-a-case-redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '6379:6379'
