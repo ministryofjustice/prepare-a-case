@@ -5,8 +5,8 @@ const express = require('express')
 const compression = require('compression')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
-const MemoryStore = require('memorystore')(session)
-const sessionExpiry = config.session.expiry * 60 * 1000
+const redis = require('redis')
+const RedisStore = require('connect-redis')(session)
 const helmet = require('helmet')
 const path = require('path')
 const passport = require('passport')
@@ -48,16 +48,23 @@ module.exports = function createApp ({ signInService, userService }) {
     }
   }))
 
-  app.use(compression())
-  app.use(session({
-    cookie: { maxAge: sessionExpiry },
-    store: new MemoryStore({
-      checkPeriod: sessionExpiry
-    }),
-    secret: config.session.secret,
-    resave: true,
-    saveUninitialized: true
-  }))
+  const client = redis.createClient({
+    port: config.redis.port,
+    password: config.redis.password,
+    host: config.redis.host,
+    tls: config.redis.tls_enabled === 'true' ? {} : false
+  })
+
+  app.use(
+    session({
+      store: new RedisStore({ client }),
+      cookie: { secure: config.https, sameSite: 'lax', maxAge: config.session.expiry * 60 * 1000 },
+      secret: config.session.secret,
+      resave: false, // redis implements touch so shouldn't need this
+      saveUninitialized: false,
+      rolling: true
+    })
+  )
 
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
@@ -99,6 +106,8 @@ module.exports = function createApp ({ signInService, userService }) {
     })
     next()
   })
+
+  app.use(compression())
 
   function addTemplateVariables (req, res, next) {
     res.locals.user = req.user
@@ -191,6 +200,7 @@ module.exports = function createApp ({ signInService, userService }) {
   app.use('/logout', (req, res) => {
     if (req.user) {
       req.logout()
+      req.session.destroy()
     }
     res.redirect(authLogoutUrl)
   })
