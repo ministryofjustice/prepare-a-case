@@ -37,6 +37,12 @@ module.exports = {
       { code: 'B14LO', name: 'Sheffield Magistrates\' Court', shortName: 'Sheffield' }
     ]
   },
+  redis: {
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT || 6379,
+    password: process.env.REDIS_PASSWORD,
+    tls_enabled: get('REDIS_TLS_ENABLED', 'false')
+  },
   session: {
     secret: get('SESSION_SECRET', 'prepare-a-case-insecure-default-session', requiredInProduction),
     expiry: get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)

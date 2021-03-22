@@ -42,4 +42,21 @@ env:
 
   - name: CASES_PER_PAGE
     value: {{ .Values.env.CASES_PER_PAGE | quote }}
+
+  - name: REDIS_HOST
+    valueFrom:
+      secretKeyRef:
+        name: pac-elasticache-redis
+        key: primary_endpoint_address
+
+  - name: REDIS_AUTH_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: pac-elasticache-redis
+        key: auth_token
+
+  - name: REDIS_TLS_ENABLED
+    value: {{ .Values.env.REDIS_TLS_ENABLED }}
+    value: "true"
+
 {{- end -}}

@@ -7,6 +7,7 @@ const {
   getDetails,
   getProbationRecord,
   getProbationRecordWithRequirements,
+  getProbationStatusDetails,
   getSentenceDetails,
   getBreachDetails,
   getRiskDetails
@@ -313,15 +314,19 @@ module.exports = function Index ({ authenticationMiddleware }) {
   async function updateCaseDetails (courtCode, caseNo, crn) {
     const caseResponse = await getCase(courtCode, caseNo)
     let offenderDetail
+    let probationStatusDetails
     if (crn) {
       offenderDetail = await getDetails(crn)
+      probationStatusDetails = await getProbationStatusDetails(crn)
     }
     return await updateCase(courtCode, caseNo, {
       ...caseResponse,
       pnc: crn ? offenderDetail.otherIds.pncNumber : caseResponse.pnc,
       crn: crn ? offenderDetail.otherIds.crn : null,
       cro: crn ? offenderDetail.otherIds.croNumber : null,
-      probationStatus: crn ? offenderDetail.probationStatus : null
+      probationStatus: crn ? probationStatusDetails.status : null,
+      breach: crn ? probationStatusDetails.inBreach : null,
+      preSentenceActivity: crn ? probationStatusDetails.preSentenceActivity : null
     })
   }
 
@@ -416,12 +421,14 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/:courtCode/match/defendant/:caseNo/confirm/:crn', defaults, async (req, res) => {
-    const { session } = req
+    const { params: { crn }, session } = req
     const templateValues = await getCaseAndTemplateValues(req)
-    const detailResponse = await getDetails(req.params.crn)
+    const detailResponse = await getDetails(crn)
+    const probationStatusDetails = await getProbationStatusDetails(crn)
     templateValues.title = 'Link an NDelius record to the defendant'
     templateValues.details = {
-      ...detailResponse
+      ...detailResponse,
+      probationStatus: probationStatusDetails.status
     }
     templateValues.session = {
       ...session
