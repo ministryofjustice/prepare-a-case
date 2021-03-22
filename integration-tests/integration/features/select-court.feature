@@ -76,4 +76,7 @@ Feature: Select court
     Then I should be on the "Edit my courts" page
     When I click the "My courts" header navigation link
     Then I should be on the "My courts" page
+    When I click the "Sheffield Magistrates' Court" link
+    Then I should be on the "Cases" page
+    And I should see the caption with the court name "Sheffield Magistrates' Court"
     And There should be no a11y violations
