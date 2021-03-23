@@ -80,8 +80,6 @@ module.exports = function createApp ({ signInService, userService }) {
   app.use(passport.session())
 
   app.use((req, res, next) => {
-    res.setHeader('Cache-Control', 'no-cache, no-store')
-    res.setHeader('Pragma', 'no-cache')
     req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
     const startTime = new Date()
     log.info({
