@@ -15,7 +15,6 @@ ingress:
   enable_whitelist: true
   host: prepare-a-case-preprod.apps.live-1.cloud-platform.service.justice.gov.uk
   path: /
-  cert_secret: court-probation-preprod-cert-secret
 
 env:
   COURT_CASE_SERVICE_URL: https://court-case-service-preprod.apps.live-1.cloud-platform.service.justice.gov.uk
