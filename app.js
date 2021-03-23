@@ -194,16 +194,9 @@ module.exports = function createApp ({ signInService, userService }) {
   app.get('/login', passport.authenticate('oauth2'))
 
   app.get('/login/callback', (req, res, next) =>
-    passport.authenticate('oauth2', (err, user, info) => {
-      log.warn(`Error: ${JSON.stringify(err)}`)
-      log.info(`User: ${JSON.stringify(user)}`)
-      log.info(`Info: ${JSON.stringify(info)}`)
-      if (err) { return next(err) }
-      if (!user) { return res.redirect('/login') }
-      req.logIn(user, (err) => {
-        if (err) { return res.redirect('/autherror') }
-        return res.redirect('/')
-      })
+    passport.authenticate('oauth2', {
+      successReturnToOrRedirect: req.session.returnTo || '/',
+      failureRedirect: '/autherror'
     })(req, res, next)
   )
 
