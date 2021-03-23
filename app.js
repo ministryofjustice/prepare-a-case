@@ -30,6 +30,10 @@ module.exports = function createApp ({ signInService, userService }) {
 
   nunjucksSetup(app, path)
 
+  // Configure Express for running behind proxies
+  // https://expressjs.com/en/guide/behind-proxies.html
+  app.set('trust proxy', true)
+
   app.set('view engine', 'njk')
 
   app.use(helmet({
