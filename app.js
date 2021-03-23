@@ -30,6 +30,10 @@ module.exports = function createApp ({ signInService, userService }) {
 
   nunjucksSetup(app, path)
 
+  // Configure Express for running behind proxies
+  // https://expressjs.com/en/guide/behind-proxies.html
+  app.set('trust proxy', true)
+
   app.set('view engine', 'njk')
 
   app.use(helmet({
@@ -190,14 +194,14 @@ module.exports = function createApp ({ signInService, userService }) {
   app.get('/login', passport.authenticate('oauth2'))
 
   app.get('/login/callback', (req, res, next) =>
-    passport.authenticate('oauth2', function (err, user, info) {
+    passport.authenticate('oauth2', (err, user, info) => {
       log.warn(`Error: ${JSON.stringify(err)}`)
       log.info(`User: ${JSON.stringify(user)}`)
       log.info(`Info: ${JSON.stringify(info)}`)
       if (err) { return next(err) }
       if (!user) { return res.redirect('/login') }
-      req.logIn(user, function (err) {
-        if (err) { return next(err) }
+      req.logIn(user, (err) => {
+        if (err) { return res.redirect('/autherror') }
         return res.redirect('/')
       })
     })(req, res, next)
