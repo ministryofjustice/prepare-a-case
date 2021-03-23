@@ -80,6 +80,8 @@ module.exports = function createApp ({ signInService, userService }) {
   app.use(passport.session())
 
   app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store')
+    res.setHeader('Pragma', 'no-cache')
     req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
     const startTime = new Date()
     log.info({
@@ -188,9 +190,16 @@ module.exports = function createApp ({ signInService, userService }) {
   app.get('/login', passport.authenticate('oauth2'))
 
   app.get('/login/callback', (req, res, next) =>
-    passport.authenticate('oauth2', {
-      successReturnToOrRedirect: req.session.returnTo || '/',
-      failureRedirect: '/autherror'
+    passport.authenticate('oauth2', function (err, user, info) {
+      log.warn(`Error: ${JSON.stringify(err)}`)
+      log.info(`User: ${JSON.stringify(user)}`)
+      log.info(`Info: ${JSON.stringify(info)}`)
+      if (err) { return next(err) }
+      if (!user) { return res.redirect('/login') }
+      req.logIn(user, function (err) {
+        if (err) { return next(err) }
+        return res.redirect('/')
+      })
     })(req, res, next)
   )
 
