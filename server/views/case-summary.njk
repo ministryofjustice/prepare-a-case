@@ -3,9 +3,10 @@
 {%- set moment = params.moment -%}
 {%- set courtRoom = data.courtRoom - 0 -%}
 {%- set communityData = data.communityData -%}
-{% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
+{% set defendantFullName = (data.name.forename1 + ' ' + data.name.surname) if (data.name.forename1 and data.name.surname) else data.defendantName %}
+
 {% set bannerHtml %}
-{% set recordCount = 'record' if data.numberOfPossibleMatches === 1 else 'records' %}
+    {% set recordCount = 'record' if data.numberOfPossibleMatches === 1 else 'records' %}
     <div role="dialog" aria-labelledby="bannerDialogTitle" aria-describedby="bannerDialogDesc">
         <span id="bannerDialogTitle" class="govuk-visually-hidden" hidden>Defendant partially matches existing records and needs review.</span>
         <h2 class="govuk-heading-m" id="bannerDialogDesc">

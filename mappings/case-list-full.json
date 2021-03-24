@@ -140,7 +140,12 @@
             }
           ],
           "defendantSex": "M",
-          "defendantName": "Mr Guadalupe HESS",
+          "defendantName": "",
+          "name": {
+            "title": "Mr",
+            "forename1": "Guadalupe",
+            "surname": "HESS"
+          },
           "defendantAddress": {
             "line1": "43",
             "line2": "Hunterfly Place",
