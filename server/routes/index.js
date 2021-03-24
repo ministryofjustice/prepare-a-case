@@ -36,7 +36,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/user-guide', (req, res) => {
-    res.render('user-guide', { params: { nonce: nonce }})
+    res.render('user-guide', { params: { nonce: nonce } })
   })
 
   router.get('/select-court/:courtCode?', (req, res) => {
