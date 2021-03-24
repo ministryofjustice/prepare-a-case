@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+const crypto = require('crypto')
+
 const production = process.env.NODE_ENV === 'production'
 const port = process.env.PORT || 3000
 
@@ -68,5 +70,6 @@ module.exports = {
     }
   },
   domain: `${get('INGRESS_URL', `http://localhost:${port}`)}`,
-  https: production
+  https: production,
+  nonce: crypto.randomBytes(16).toString('base64')
 }

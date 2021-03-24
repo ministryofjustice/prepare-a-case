@@ -1,5 +1,5 @@
 const moment = require('moment')
-const { settings } = require('../../../config')
+const { settings, nonce } = require('../../../config')
 
 // Method to allow Nunjucks groupby filter to group by nested Object value
 function getPath (path) {
@@ -52,7 +52,8 @@ const defaults = (req, res, next) => {
     getMonthsAndDays: getMonthsAndDays,
     addBusinessDays: addBusinessDays,
     getPath: getPath,
-    courtName: courtData.name
+    courtName: courtData.name,
+    nonce: nonce
   }
   next()
 }
