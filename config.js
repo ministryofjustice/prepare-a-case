@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+const crypto = require('crypto')
+
 const production = process.env.NODE_ENV === 'production'
 const port = process.env.PORT || 3000
 
@@ -40,7 +42,7 @@ module.exports = {
   redis: {
     host: process.env.REDIS_HOST,
     port: process.env.REDIS_PORT || 6379,
-    password: process.env.REDIS_PASSWORD,
+    password: process.env.REDIS_AUTH_TOKEN,
     tls_enabled: get('REDIS_TLS_ENABLED', 'false')
   },
   session: {
@@ -71,5 +73,6 @@ module.exports = {
     }
   },
   domain: `${get('INGRESS_URL', `http://localhost:${port}`)}`,
-  https: production
+  https: production,
+  nonce: crypto.randomBytes(16).toString('base64')
 }

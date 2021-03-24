@@ -1,6 +1,6 @@
 const express = require('express')
 const getBaseDateString = require('../utils/getBaseDateString')
-const { settings } = require('../../config')
+const { settings, nonce } = require('../../config')
 const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
@@ -37,7 +37,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/user-guide', (req, res) => {
-    res.render('user-guide')
+    res.render('user-guide', { params: { nonce: nonce } })
   })
 
   router.get('/my-courts', async (req, res) => {
@@ -48,7 +48,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('view-courts', {
       params: {
         availableCourts: settings.availableCourts,
-        chosenCourts: session.courts
+        chosenCourts: session.courts,
+        nonce: nonce
       }
     })
   })
@@ -79,7 +80,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
       state: state,
       params: {
         availableCourts: settings.availableCourts,
-        chosenCourts: session.courts
+        chosenCourts: session.courts,
+        nonce: nonce
       }
     })
   })
