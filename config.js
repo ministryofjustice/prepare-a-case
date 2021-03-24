@@ -51,7 +51,7 @@ module.exports = {
   },
   apis: {
     userPreferenceService: {
-      url: get('USER_PREFERENCE_SERVICE_URL', 'http://localhost:9091/preferences', requiredInProduction)
+      url: get('USER_PREFERENCE_SERVICE_URL', 'http://localhost:9091', requiredInProduction)
     },
     courtCaseService: {
       url: get('COURT_CASE_SERVICE_URL', 'http://localhost:9091', requiredInProduction)
