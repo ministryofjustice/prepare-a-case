@@ -1,6 +1,6 @@
 const express = require('express')
 const getBaseDateString = require('../utils/getBaseDateString')
-const { settings } = require('../../config')
+const { settings, nonce } = require('../../config')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
   getDetails,
@@ -36,7 +36,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/user-guide', (req, res) => {
-    res.render('user-guide')
+    res.render('user-guide', { params: { nonce: nonce }})
   })
 
   router.get('/select-court/:courtCode?', (req, res) => {
@@ -50,7 +50,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
         title: 'Select court',
         params: {
           ...params,
-          availableCourts: settings.availableCourts
+          availableCourts: settings.availableCourts,
+          nonce: nonce
         }
       })
     }
