@@ -1,8 +1,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-minReplicaCount: 1
-maxReplicaCount: 2
+minReplicaCount: 2
+maxReplicaCount: 4
 
 image:
   repository: docker.io/mojdigitalstudio/prepare-a-case
