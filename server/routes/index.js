@@ -43,7 +43,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/my-courts', async (req, res) => {
     const { session } = req
     const userSelectedCourts = await getUserSelectedCourts(res.locals.user.userId)
-    console.info('COURTS FISH ONE TIME:', userSelectedCourts)
     session.courts = userSelectedCourts.items
     res.render('view-courts', {
       params: {
@@ -61,7 +60,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
     if (save) {
       if (session.courts && session.courts.length) {
         const updatedCourts = await updateSelectedCourts(res.locals.user.userId, session.courts)
-        console.info('UPDATED COURTS FISH:', updatedCourts)
         if (updatedCourts.status >= 400) {
           serverError = true
         } else {
