@@ -21,6 +21,7 @@ env:
   CASES_PER_PAGE: 20
   NOMIS_AUTH_URL: https://sign-in-dev.hmpps.service.justice.gov.uk/auth
   USER_PREFERENCE_SERVICE_URL: https://hmpps-user-preferences-dev.hmpps.service.justice.gov.uk
+  CASE_SNAPSHOT_TIMES: "00:00,08:45,09:45,10:15,10:45,11:15,11:45,12:15,12:45,13:15,13:45,14:15,14:45,15:15,15:45,16:15,16:45,17:15,17:45"
 
 whitelist:
   office: "217.33.148.210/32"
