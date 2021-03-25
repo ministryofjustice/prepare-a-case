@@ -6,31 +6,77 @@ Feature: Select court
   Scenario: View the page with a list of available courts
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Select a magistrates' court"
-
-    And I should see link "Basingstoke" with href "/select-court/B44BA"
-    And I should see link "Barnsley" with href "/select-court/B14AV"
-    And I should see link "Beverley" with href "/select-court/B16BG"
-    And I should see link "Birmingham" with href "/select-court/B20BL"
-    And I should see link "Cardiff" with href "/select-court/B62DC"
-    And I should see link "Doncaster" with href "/select-court/B14ET"
-    And I should see link "Highbury Corner" with href "/select-court/B01GU"
-    And I should see link "Hull" with href "/select-court/B16HE"
-    And I should see link "Luton and South Bedfordshire" with href "/select-court/B40IM"
-    And I should see link "Mid and South East Northumberland" with href "/select-court/B10BD"
-    And I should see link "Newcastle" with href "/select-court/B10JJ"
-    And I should see link "North Tyneside" with href "/select-court/B10JQ"
-    And I should see link "Sheffield" with href "/select-court/B14LO"
-
+    Then I should see the heading "Which courts do you work in?"
+    And I should see the body text "Add and save the courts you work in to view case lists for those courts."
     And There should be no a11y violations
 
-  Scenario: Select a court from the list of available courts
+  Scenario: Click the Add button without selecting a court
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Select a magistrates' court"
+    Then I should see the heading "Which courts do you work in?"
+    And I click the "Add" button
+    Then I should see the error message "You must add a court"
+    And There should be no a11y violations
 
-    When I click the "Barnsley" link
+  Scenario: Click the Save and continue button without selecting a court
+    Given I am an authenticated user
+    When I open the application
+    Then I should see the heading "Which courts do you work in?"
+    And I click the "Save and continue" button
+    Then I should see the error message "You must add a court"
+    And There should be no a11y violations
+
+  Scenario: Select a court from the list of available courts using the autocomplete component
+    Given I am an authenticated user
+    When I open the application
+    Then I should see the heading "Which courts do you work in?"
+    When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
+    And I click the "Add" button
+    Then I should see the text "Sheffield Magistrates' Court" in a table cell
+    And I should see link "Remove" with href "?remove=B14LO"
+    When I click the "Save and continue" button
+    Then I should be on the "My courts" page
+    Then I should see link "Edit my courts" with href "/my-courts/edit"
+    And I should see link "Sheffield Magistrates' Court" with href "/select-court/B14LO"
+    And There should be no a11y violations
+
+  Scenario: Edit my selected courts
+    Given I am an authenticated user
+    When I open the application
+    Then I should see the heading "Which courts do you work in?"
+    When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
+    And I click the "Add" button
+    When I click the "Save and continue" button
+    Then I should be on the "My courts" page
+    Then I should see link "Edit my courts" with href "/my-courts/edit"
+    And I should see link "Sheffield Magistrates' Court" with href "/select-court/B14LO"
+    When I click the "Edit my courts" link
+    Then I should be on the "Edit my courts" page
+    And I should see the body text "Add or remove courts from your list."
+    Then I should see the text "Sheffield Magistrates' Court" in a table cell
+    And I should see link "Remove" with href "?remove=B14LO"
+    And I should see link "Cancel" with href "/my-courts"
+    When I click the "Remove" link
+    Then I should not see the "Remove" link
+    When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
+    And I click the "Add" button
+    And I click the "Save list and continue" button
+    Then I should be on the "My courts" page
+    And There should be no a11y violations
+
+  Scenario: View my court selection
+    Given I am an authenticated user
+    When I open the application
+    Then I should see the heading "Which courts do you work in?"
+    When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
+    And I click the "Add" button
+    When I click the "Save and continue" button
+    Then I should be on the "My courts" page
+    Then I click the "Edit my courts" link
+    Then I should be on the "Edit my courts" page
+    When I click the "My courts" header navigation link
+    Then I should be on the "My courts" page
+    When I click the "Sheffield Magistrates' Court" link
     Then I should be on the "Cases" page
-    And I should see the caption with the court name "Barnsley Magistrates' Court"
-
+    And I should see the caption with the court name "Sheffield Magistrates' Court"
     And There should be no a11y violations

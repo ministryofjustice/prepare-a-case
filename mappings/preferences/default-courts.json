@@ -1,0 +1,18 @@
+{
+  "id": "a9a953b9-ca70-49a2-b722-e52a0bcef1df",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/users/(.*)/preferences/courts"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "items": [
+        "B14LO"
+      ]
+    }
+  }
+}

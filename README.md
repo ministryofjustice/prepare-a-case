@@ -104,6 +104,11 @@ Default: 20
 
 Specify the number of cases to display, per page with `CASES_PER_PAGE`
 
+### HMPPS User Preferences service
+Default:  http://127.0.0.1:9091
+
+Specify the hmpps-user-preferences URL with `USER_PREFERENCE_SERVICE_URL`
+
 ## Dependencies
 * `hmpps-auth` - for authentication
 * `redis` - session store and token caching

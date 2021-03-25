@@ -21,6 +21,7 @@ env:
   COURT_CASE_SERVICE_URL: https://court-case-service.apps.live-1.cloud-platform.service.justice.gov.uk
   CASES_PER_PAGE: 20
   NOMIS_AUTH_URL: https://sign-in.hmpps.service.justice.gov.uk/auth
+  USER_PREFERENCE_SERVICE_URL: https://hmpps-user-preferences.hmpps.service.justice.gov.uk
   CASE_SNAPSHOT_TIMES: "00:00,08:45,09:45"
 
 whitelist:
