@@ -3,7 +3,7 @@ const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
 
 const { request } = require('../../../server/services/utils/request')
-const defendantDetailsMock = require('../../../mappings/matching/2608860141-detail.json')
+const defendantDetailsMock = require('../../../mappings/matching/detail-pact.json')
 
 pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
   describe('GET /offender/{crn}/detail', () => {

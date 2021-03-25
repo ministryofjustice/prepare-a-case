@@ -5,7 +5,7 @@ const moment = require('moment')
 
 const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { request } = require('../../../server/services/utils/request')
-const caseListMock = require('../../../mappings/case-list-full.json')
+const caseListMock = require('../../../mappings/case-list-pact.json')
 
 pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
   describe('GET /court/{courtCode}/cases?date={YYYY-MM-DD}', () => {

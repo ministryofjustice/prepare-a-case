@@ -15,15 +15,14 @@
     },
     "status": 200,
     "jsonBody": {
-      "lastUpdated": "{{now format='yyyy-MM-dd'}}T08:30:00",
       "cases": [
         {
-          "caseId": "957781",
           "caseNo": "8678951874",
           "courtCode": "SHF",
           "courtRoom": "10",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
@@ -65,7 +64,6 @@
           "defendantDob": "1980-10-31"
         },
         {
-          "caseId": "71467",
           "caseNo": "7483843110",
           "courtCode": "SHF",
           "courtRoom": "02",
@@ -113,7 +111,6 @@
           "defendantDob": "1955-04-08"
         },
         {
-          "caseId": "996758",
           "caseNo": "3597035492",
           "courtCode": "SHF",
           "courtRoom": "07",
@@ -157,12 +154,12 @@
           "defendantDob": "1989-02-18"
         },
         {
-          "caseId": "458832",
           "caseNo": "2608860141",
           "courtCode": "SHF",
           "courtRoom": "10",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": "D541487",
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "AFTERNOON",
@@ -194,7 +191,6 @@
           "defendantDob": "1980-09-13"
         },
         {
-          "caseId": "838597",
           "caseNo": "4172564047",
           "courtCode": "SHF",
           "courtRoom": "02",
@@ -252,7 +248,6 @@
           "defendantDob": "1980-08-13"
         },
         {
-          "caseId": "282482",
           "caseNo": "6627839278",
           "courtCode": "SHF",
           "courtRoom": "08",
@@ -299,7 +294,6 @@
           "defendantDob": "1958-10-13"
         },
         {
-          "caseId": "805611",
           "caseNo": "2980462628",
           "courtCode": "SHF",
           "courtRoom": "03",
@@ -347,7 +341,6 @@
           "defendantDob": "1954-09-05"
         },
         {
-          "caseId": "642220",
           "caseNo": "2086970929",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -379,7 +372,6 @@
           "defendantDob": "1969-05-09"
         },
         {
-          "caseId": "869769",
           "caseNo": "5184555075",
           "courtCode": "SHF",
           "courtRoom": "03",
@@ -426,7 +418,6 @@
           "defendantDob": "1955-03-11"
         },
         {
-          "caseId": "951609",
           "caseNo": "668911253",
           "courtCode": "SHF",
           "courtRoom": "06",
@@ -474,7 +465,6 @@
           "defendantDob": "1979-10-18"
         },
         {
-          "caseId": "301541",
           "caseNo": "5222601242",
           "courtCode": "SHF",
           "courtRoom": "02",
@@ -506,7 +496,6 @@
           "defendantDob": "1996-06-06"
         },
         {
-          "caseId": "587530",
           "caseNo": "351196424",
           "courtCode": "SHF",
           "courtRoom": "06",
@@ -543,7 +532,6 @@
           "defendantDob": "1975-07-29"
         },
         {
-          "caseId": "476895",
           "caseNo": "5629289820",
           "courtCode": "SHF",
           "courtRoom": "07",
@@ -595,7 +583,6 @@
           "defendantDob": "1984-06-03"
         },
         {
-          "caseId": "48932",
           "caseNo": "8261371444",
           "courtCode": "SHF",
           "courtRoom": "06",
@@ -647,7 +634,6 @@
           "defendantDob": "1991-02-21"
         },
         {
-          "caseId": "231672",
           "caseNo": "3309574846",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -679,7 +665,6 @@
           "defendantDob": "1967-02-20"
         },
         {
-          "caseId": "248065",
           "caseNo": "7371647721",
           "courtCode": "SHF",
           "courtRoom": "03",
@@ -711,7 +696,6 @@
           "defendantDob": "1974-04-03"
         },
         {
-          "caseId": "582179",
           "caseNo": "3088646104",
           "courtCode": "SHF",
           "courtRoom": "03",
@@ -748,7 +732,6 @@
           "defendantDob": "1955-03-02"
         },
         {
-          "caseId": "315338",
           "caseNo": "9653229318",
           "courtCode": "SHF",
           "courtRoom": "07",
@@ -800,7 +783,6 @@
           "defendantDob": "1955-08-08"
         },
         {
-          "caseId": "594478",
           "caseNo": "7280404347",
           "courtCode": "SHF",
           "courtRoom": "04",
@@ -852,7 +834,6 @@
           "defendantDob": "1976-01-07"
         },
         {
-          "caseId": "355219",
           "caseNo": "5598023616",
           "courtCode": "SHF",
           "courtRoom": "07",
@@ -894,7 +875,6 @@
           "defendantDob": "1964-03-23"
         },
         {
-          "caseId": "404970",
           "caseNo": "3698624753",
           "courtCode": "SHF",
           "courtRoom": "03",
@@ -946,7 +926,6 @@
           "defendantDob": "1971-11-17"
         },
         {
-          "caseId": "207596",
           "caseNo": "8339335977",
           "courtCode": "SHF",
           "courtRoom": "03",
@@ -978,7 +957,6 @@
           "defendantDob": "1950-08-06"
         },
         {
-          "caseId": "604539",
           "caseNo": "2983229866",
           "courtCode": "SHF",
           "courtRoom": "04",
@@ -1025,7 +1003,6 @@
           "defendantDob": "1978-07-25"
         },
         {
-          "caseId": "268206",
           "caseNo": "4402332051",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -1062,7 +1039,6 @@
           "defendantDob": "1982-10-17"
         },
         {
-          "caseId": "789126",
           "caseNo": "7585720780",
           "courtCode": "SHF",
           "courtRoom": "02",
@@ -1109,7 +1085,6 @@
           "defendantDob": "2000-12-06"
         },
         {
-          "caseId": "535924",
           "caseNo": "2758750028",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -1156,7 +1131,6 @@
           "defendantDob": "1998-08-16"
         },
         {
-          "caseId": "277617",
           "caseNo": "3102438446",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -1188,7 +1162,6 @@
           "defendantDob": "1974-12-06"
         },
         {
-          "caseId": "710334",
           "caseNo": "1417244235",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -1235,7 +1208,6 @@
           "defendantDob": "1988-06-26"
         },
         {
-          "caseId": "685072",
           "caseNo": "6943688098",
           "courtCode": "SHF",
           "courtRoom": "07",
@@ -1272,7 +1244,6 @@
           "defendantDob": "2000-12-14"
         },
         {
-          "caseId": "385266",
           "caseNo": "9525642908",
           "courtCode": "SHF",
           "courtRoom": "06",
@@ -1324,7 +1295,6 @@
           "defendantDob": "1970-03-12"
         },
         {
-          "caseId": "788567",
           "caseNo": "9126958226",
           "courtCode": "SHF",
           "courtRoom": "02",
@@ -1371,7 +1341,6 @@
           "defendantDob": "1985-03-03"
         },
         {
-          "caseId": "562674",
           "caseNo": "7655708931",
           "courtCode": "SHF",
           "courtRoom": "08",
@@ -1403,7 +1372,6 @@
           "defendantDob": "1961-10-11"
         },
         {
-          "caseId": "455465",
           "caseNo": "3354325220",
           "courtCode": "SHF",
           "courtRoom": "04",
@@ -1435,7 +1403,6 @@
           "defendantDob": "1993-04-05"
         },
         {
-          "caseId": "657433",
           "caseNo": "3029798842",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -1467,7 +1434,6 @@
           "defendantDob": "1958-07-03"
         },
         {
-          "caseId": "993100",
           "caseNo": "558447708",
           "courtCode": "SHF",
           "courtRoom": "08",
@@ -1514,7 +1480,6 @@
           "defendantDob": "1960-09-09"
         },
         {
-          "caseId": "564223",
           "caseNo": "5034497843",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -1551,7 +1516,6 @@
           "defendantDob": "1961-02-24"
         },
         {
-          "caseId": "277875",
           "caseNo": "2328973855",
           "courtCode": "SHF",
           "courtRoom": "08",
@@ -1588,7 +1552,6 @@
           "defendantDob": "1963-01-19"
         },
         {
-          "caseId": "809909",
           "caseNo": "2772284571",
           "courtCode": "SHF",
           "courtRoom": "07",
@@ -1620,7 +1583,6 @@
           "defendantDob": "1987-01-07"
         },
         {
-          "caseId": "440087",
           "caseNo": "5444906139",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -1667,7 +1629,6 @@
           "defendantDob": "1954-03-10"
         },
         {
-          "caseId": "593490",
           "caseNo": "2406215248",
           "courtCode": "SHF",
           "courtRoom": "02",
@@ -1699,7 +1660,6 @@
           "defendantDob": "1984-01-20"
         },
         {
-          "caseId": "211441",
           "caseNo": "7259057874",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -1746,7 +1706,6 @@
           "defendantDob": "1970-04-05"
         },
         {
-          "caseId": "884122",
           "caseNo": "4956910657",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -1783,7 +1742,6 @@
           "defendantDob": "1965-04-07"
         },
         {
-          "caseId": "426357",
           "caseNo": "265607027",
           "courtCode": "SHF",
           "courtRoom": "03",
@@ -1820,7 +1778,6 @@
           "defendantDob": "1959-07-28"
         },
         {
-          "caseId": "658899",
           "caseNo": "6686526703",
           "courtCode": "SHF",
           "courtRoom": "09",
@@ -1867,7 +1824,6 @@
           "defendantDob": "1981-10-08"
         },
         {
-          "caseId": "51133",
           "caseNo": "1539203777",
           "courtCode": "SHF",
           "courtRoom": "04",
@@ -1909,7 +1865,6 @@
           "defendantDob": "1958-10-08"
         },
         {
-          "caseId": "243977",
           "caseNo": "6883870890",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -1941,7 +1896,6 @@
           "defendantDob": "1957-07-07"
         },
         {
-          "caseId": "314960",
           "caseNo": "8262759938",
           "courtCode": "SHF",
           "courtRoom": "04",
@@ -1983,7 +1937,6 @@
           "defendantDob": "1966-02-24"
         },
         {
-          "caseId": "649462",
           "caseNo": "9488302247",
           "courtCode": "SHF",
           "courtRoom": "09",
@@ -2030,7 +1983,6 @@
           "defendantDob": "1956-05-12"
         },
         {
-          "caseId": "130734",
           "caseNo": "2078815306",
           "courtCode": "SHF",
           "courtRoom": "06",
@@ -2082,7 +2034,6 @@
           "defendantDob": "1994-03-23"
         },
         {
-          "caseId": "69360",
           "caseNo": "4130530005",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -2124,7 +2075,6 @@
           "defendantDob": "1979-01-17"
         },
         {
-          "caseId": "381089",
           "caseNo": "5148210295",
           "courtCode": "SHF",
           "courtRoom": "05",
@@ -2156,7 +2106,6 @@
           "defendantDob": "1991-01-19"
         },
         {
-          "caseId": "125613",
           "caseNo": "7415746830",
           "courtCode": "SHF",
           "courtRoom": "07",
@@ -2188,7 +2137,6 @@
           "defendantDob": "1985-11-03"
         },
         {
-          "caseId": "355441",
           "caseNo": "4236467764",
           "courtCode": "SHF",
           "courtRoom": "07",
@@ -2235,7 +2183,6 @@
           "defendantDob": "1985-03-25"
         },
         {
-          "caseId": "525930",
           "caseNo": "9012154264",
           "courtCode": "SHF",
           "courtRoom": "03",
@@ -2287,7 +2234,6 @@
           "defendantDob": "1984-05-12"
         },
         {
-          "caseId": "432409",
           "caseNo": "7084484031",
           "courtCode": "SHF",
           "courtRoom": "04",
@@ -2329,7 +2275,6 @@
           "defendantDob": "2000-05-17"
         },
         {
-          "caseId": "88068",
           "caseNo": "2045948461",
           "courtCode": "SHF",
           "courtRoom": "07",
@@ -2371,7 +2316,6 @@
           "defendantDob": "1967-07-07"
         },
         {
-          "caseId": "341839",
           "caseNo": "3982940184",
           "courtCode": "SHF",
           "courtRoom": "03",
@@ -2413,7 +2357,6 @@
           "defendantDob": "1976-06-10"
         },
         {
-          "caseId": "485467",
           "caseNo": "9745829061",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -2450,7 +2393,6 @@
           "defendantDob": "1985-11-07"
         },
         {
-          "caseId": "170606",
           "caseNo": "2052912480",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -2502,7 +2444,6 @@
           "defendantDob": "1957-08-12"
         },
         {
-          "caseId": "197533",
           "caseNo": "3062690674",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -2534,7 +2475,6 @@
           "defendantDob": "1989-09-08"
         },
         {
-          "caseId": "107272",
           "caseNo": "797019417",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -2576,7 +2516,6 @@
           "defendantDob": "1989-08-07"
         },
         {
-          "caseId": "970331",
           "caseNo": "8415930732",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -2608,7 +2547,6 @@
           "defendantDob": "1958-09-19"
         },
         {
-          "caseId": "611217",
           "caseNo": "6225971136",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -2645,7 +2583,6 @@
           "defendantDob": "1955-09-02"
         },
         {
-          "caseId": "477160",
           "caseNo": "1210360926",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -2692,7 +2629,6 @@
           "defendantDob": "1984-02-10"
         },
         {
-          "caseId": "997536",
           "caseNo": "205991662",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -2739,7 +2675,6 @@
           "defendantDob": "1982-01-10"
         },
         {
-          "caseId": "837007",
           "caseNo": "2942078342",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -2791,7 +2726,6 @@
           "defendantDob": "1955-11-12"
         },
         {
-          "caseId": "897487",
           "caseNo": "3668549685",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -2828,7 +2762,6 @@
           "defendantDob": "1986-11-12"
         },
         {
-          "caseId": "844864",
           "caseNo": "2596103090",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -2865,7 +2798,6 @@
           "defendantDob": "1995-05-07"
         },
         {
-          "caseId": "188517",
           "caseNo": "3795331015",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -2907,7 +2839,6 @@
           "defendantDob": "1998-12-13"
         },
         {
-          "caseId": "524907",
           "caseNo": "7241004582",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -2944,7 +2875,6 @@
           "defendantDob": "1979-01-16"
         },
         {
-          "caseId": "672738",
           "caseNo": "7699786867",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -2986,7 +2916,6 @@
           "defendantDob": "1969-10-21"
         },
         {
-          "caseId": "12691",
           "caseNo": "7394831105",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -3033,7 +2962,6 @@
           "defendantDob": "1964-01-19"
         },
         {
-          "caseId": "621735",
           "caseNo": "7811316666",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -3075,7 +3003,6 @@
           "defendantDob": "1956-03-02"
         },
         {
-          "caseId": "128988",
           "caseNo": "7027607672",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -3112,7 +3039,6 @@
           "defendantDob": "1989-10-06"
         },
         {
-          "caseId": "261818",
           "caseNo": "7073533893",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -3159,7 +3085,6 @@
           "defendantDob": "1960-09-26"
         },
         {
-          "caseId": "95066",
           "caseNo": "4037857588",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -3201,7 +3126,6 @@
           "defendantDob": "1962-03-13"
         },
         {
-          "caseId": "830140",
           "caseNo": "4270697569",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -3248,7 +3172,6 @@
           "defendantDob": "1966-04-13"
         },
         {
-          "caseId": "621859",
           "caseNo": "3552330760",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -3280,7 +3203,6 @@
           "defendantDob": "1990-12-29"
         },
         {
-          "caseId": "196353",
           "caseNo": "3374825657",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -3332,7 +3254,6 @@
           "defendantDob": "2000-09-19"
         },
         {
-          "caseId": "480206",
           "caseNo": "1059778165",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -3379,7 +3300,6 @@
           "defendantDob": "1995-03-15"
         },
         {
-          "caseId": "761724",
           "caseNo": "198802204",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -3421,7 +3341,6 @@
           "defendantDob": "1992-06-27"
         },
         {
-          "caseId": "229549",
           "caseNo": "5622691303",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -3458,7 +3377,6 @@
           "defendantDob": "1966-03-31"
         },
         {
-          "caseId": "737883",
           "caseNo": "197285501",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -3490,7 +3408,6 @@
           "defendantDob": "1969-08-29"
         },
         {
-          "caseId": "811375",
           "caseNo": "6257916793",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -3527,7 +3444,6 @@
           "defendantDob": "1957-08-27"
         },
         {
-          "caseId": "949762",
           "caseNo": "5850516869",
           "courtCode": "SHF",
           "courtRoom": "3",
@@ -3564,7 +3480,6 @@
           "defendantDob": "1991-03-11"
         },
         {
-          "caseId": "584496",
           "caseNo": "473494470",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -3596,7 +3511,6 @@
           "defendantDob": "1986-01-29"
         },
         {
-          "caseId": "93141",
           "caseNo": "1025623794",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -3633,7 +3547,6 @@
           "defendantDob": "1985-04-13"
         },
         {
-          "caseId": "383489",
           "caseNo": "3662381191",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -3670,7 +3583,6 @@
           "defendantDob": "1982-02-18"
         },
         {
-          "caseId": "719529",
           "caseNo": "9713472868",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -3707,7 +3619,6 @@
           "defendantDob": "1991-06-02"
         },
         {
-          "caseId": "894522",
           "caseNo": "7147014888",
           "courtCode": "SHF",
           "courtRoom": "3",
@@ -3749,7 +3660,6 @@
           "defendantDob": "1991-11-02"
         },
         {
-          "caseId": "470110",
           "caseNo": "2910211505",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -3781,7 +3691,6 @@
           "defendantDob": "1955-03-22"
         },
         {
-          "caseId": "520282",
           "caseNo": "7624419506",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -3818,7 +3727,6 @@
           "defendantDob": "1965-08-31"
         },
         {
-          "caseId": "534506",
           "caseNo": "5214715895",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -3865,7 +3773,6 @@
           "defendantDob": "1979-08-29"
         },
         {
-          "caseId": "671817",
           "caseNo": "8787952378",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -3902,7 +3809,6 @@
           "defendantDob": "1957-10-19"
         },
         {
-          "caseId": "664838",
           "caseNo": "790656181",
           "courtCode": "SHF",
           "courtRoom": "3",
@@ -3934,7 +3840,6 @@
           "defendantDob": "1953-03-08"
         },
         {
-          "caseId": "491781",
           "caseNo": "3132958636",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -3981,7 +3886,6 @@
           "defendantDob": "2000-02-10"
         },
         {
-          "caseId": "760366",
           "caseNo": "2541866345",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -4018,7 +3922,6 @@
           "defendantDob": "1973-08-06"
         },
         {
-          "caseId": "766291",
           "caseNo": "7674368825",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -4055,7 +3958,6 @@
           "defendantDob": "1975-01-07"
         },
         {
-          "caseId": "656492",
           "caseNo": "5455143269",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -4107,7 +4009,6 @@
           "defendantDob": "1977-01-22"
         },
         {
-          "caseId": "598680",
           "caseNo": "1031595437",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -4149,7 +4050,6 @@
           "defendantDob": "1967-02-20"
         },
         {
-          "caseId": "337471",
           "caseNo": "894418049",
           "courtCode": "SHF",
           "courtRoom": "3",
@@ -4199,7 +4099,6 @@
           "defendantDob": "1958-01-06"
         },
         {
-          "caseId": "554191",
           "caseNo": "248015613",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -4244,7 +4143,6 @@
           "defendantDob": "1994-06-24"
         },
         {
-          "caseId": "205195",
           "caseNo": "5773936719",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -4294,7 +4192,6 @@
           "defendantDob": "1969-09-15"
         },
         {
-          "caseId": "735621",
           "caseNo": "3616293691",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -4329,7 +4226,6 @@
           "defendantDob": "1978-01-23"
         },
         {
-          "caseId": "46106",
           "caseNo": "2086016320",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -4374,7 +4270,6 @@
           "defendantDob": "1964-12-15"
         },
         {
-          "caseId": "209119",
           "caseNo": "7356768590",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -4424,7 +4319,6 @@
           "defendantDob": "1978-08-16"
         },
         {
-          "caseId": "537940",
           "caseNo": "6676480059",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -4459,7 +4353,6 @@
           "defendantDob": "1959-07-24"
         },
         {
-          "caseId": "20979",
           "caseNo": "6892123542",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -4509,7 +4402,6 @@
           "defendantDob": "1982-03-06"
         },
         {
-          "caseId": "263340",
           "caseNo": "823639735",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -4539,7 +4431,6 @@
           "defendantDob": "1980-09-14"
         },
         {
-          "caseId": "244760",
           "caseNo": "2874037481",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -4579,7 +4470,6 @@
           "defendantDob": "1967-01-31"
         },
         {
-          "caseId": "647612",
           "caseNo": "9238249718",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -4619,7 +4509,6 @@
           "defendantDob": "1957-01-31"
         },
         {
-          "caseId": "863358",
           "caseNo": "5926623578",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -4654,7 +4543,6 @@
           "defendantDob": "1991-10-01"
         },
         {
-          "caseId": "868994",
           "caseNo": "174454816",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -4704,7 +4592,6 @@
           "defendantDob": "1974-02-22"
         },
         {
-          "caseId": "249721",
           "caseNo": "3775957192",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -4739,7 +4626,6 @@
           "defendantDob": "1953-03-13"
         },
         {
-          "caseId": "246059",
           "caseNo": "9228923691",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -4784,7 +4670,6 @@
           "defendantDob": "1974-01-24"
         },
         {
-          "caseId": "272723",
           "caseNo": "2452179871",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -4834,7 +4719,6 @@
           "defendantDob": "1984-09-25"
         },
         {
-          "caseId": "841373",
           "caseNo": "6866541491",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -4864,7 +4748,6 @@
           "defendantDob": "1960-01-02"
         },
         {
-          "caseId": "538181",
           "caseNo": "51845489",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -4904,7 +4787,6 @@
           "defendantDob": "1963-03-25"
         },
         {
-          "caseId": "733543",
           "caseNo": "9635496213",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -4939,7 +4821,6 @@
           "defendantDob": "1957-06-28"
         },
         {
-          "caseId": "970081",
           "caseNo": "9108457541",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -4984,7 +4865,6 @@
           "defendantDob": "1997-05-22"
         },
         {
-          "caseId": "866174",
           "caseNo": "1446524656",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -5024,7 +4904,6 @@
           "defendantDob": "1985-04-14"
         },
         {
-          "caseId": "947812",
           "caseNo": "4058290552",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -5054,7 +4933,6 @@
           "defendantDob": "2000-01-08"
         },
         {
-          "caseId": "4351",
           "caseNo": "3614304886",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -5104,7 +4982,6 @@
           "defendantDob": "1957-12-26"
         },
         {
-          "caseId": "889881",
           "caseNo": "720997729",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -5144,7 +5021,6 @@
           "defendantDob": "1988-09-07"
         },
         {
-          "caseId": "834654",
           "caseNo": "5417756421",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -5189,7 +5065,6 @@
           "defendantDob": "1965-06-05"
         },
         {
-          "caseId": "863392",
           "caseNo": "3581791976",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -5234,7 +5109,6 @@
           "defendantDob": "1999-05-16"
         },
         {
-          "caseId": "217987",
           "caseNo": "7485579831",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -5269,7 +5143,6 @@
           "defendantDob": "1964-11-09"
         },
         {
-          "caseId": "786973",
           "caseNo": "9039641907",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -5299,7 +5172,6 @@
           "defendantDob": "1960-08-30"
         },
         {
-          "caseId": "215047",
           "caseNo": "8224051886",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -5339,7 +5211,6 @@
           "defendantDob": "1974-11-23"
         },
         {
-          "caseId": "324683",
           "caseNo": "9518859484",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -5389,7 +5260,6 @@
           "defendantDob": "1963-02-13"
         },
         {
-          "caseId": "968203",
           "caseNo": "8475694471",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -5419,7 +5289,6 @@
           "defendantDob": "1991-01-08"
         },
         {
-          "caseId": "316557",
           "caseNo": "5136401644",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -5454,7 +5323,6 @@
           "defendantDob": "1957-05-04"
         },
         {
-          "caseId": "275651",
           "caseNo": "7639138598",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -5489,7 +5357,6 @@
           "defendantDob": "1962-03-13"
         },
         {
-          "caseId": "199520",
           "caseNo": "3037988588",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -5519,7 +5386,6 @@
           "defendantDob": "1958-12-21"
         },
         {
-          "caseId": "211164",
           "caseNo": "4772528592",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -5554,7 +5420,6 @@
           "defendantDob": "1994-10-16"
         },
         {
-          "caseId": "909400",
           "caseNo": "9785597881",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -5589,7 +5454,6 @@
           "defendantDob": "1960-03-26"
         },
         {
-          "caseId": "211120",
           "caseNo": "1652889365",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -5624,7 +5488,6 @@
           "defendantDob": "1966-04-26"
         },
         {
-          "caseId": "734052",
           "caseNo": "9351552182",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -5659,7 +5522,6 @@
           "defendantDob": "1960-06-16"
         },
         {
-          "caseId": "744140",
           "caseNo": "9184573478",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -5694,7 +5556,6 @@
           "defendantDob": "1954-11-18"
         },
         {
-          "caseId": "87246",
           "caseNo": "5036302000",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -5744,7 +5605,6 @@
           "defendantDob": "1989-04-26"
         },
         {
-          "caseId": "207125",
           "caseNo": "5630822864",
           "courtCode": "SHF",
           "courtRoom": "3",
@@ -5774,7 +5634,6 @@
           "defendantDob": "1989-04-30"
         },
         {
-          "caseId": "520997",
           "caseNo": "404614546",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -5804,7 +5663,6 @@
           "defendantDob": "1972-07-10"
         },
         {
-          "caseId": "152512",
           "caseNo": "3607076442",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -5849,7 +5707,6 @@
           "defendantDob": "1994-09-11"
         },
         {
-          "caseId": "17490",
           "caseNo": "7001965716",
           "courtCode": "SHF",
           "courtRoom": "3",
@@ -5894,7 +5751,6 @@
           "defendantDob": "1965-07-12"
         },
         {
-          "caseId": "613939",
           "caseNo": "8578055503",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -5934,7 +5790,6 @@
           "defendantDob": "1970-01-15"
         },
         {
-          "caseId": "306868",
           "caseNo": "1410957783",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -5979,7 +5834,6 @@
           "defendantDob": "1989-09-12"
         },
         {
-          "caseId": "568225",
           "caseNo": "2053630753",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -6024,7 +5878,6 @@
           "defendantDob": "1981-05-16"
         },
         {
-          "caseId": "448964",
           "caseNo": "9791442914",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -6074,7 +5927,6 @@
           "defendantDob": "1994-01-31"
         },
         {
-          "caseId": "931207",
           "caseNo": "660575640",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -6124,7 +5976,6 @@
           "defendantDob": "1958-06-03"
         },
         {
-          "caseId": "629904",
           "caseNo": "4061799445",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -6169,7 +6020,6 @@
           "defendantDob": "1973-09-06"
         },
         {
-          "caseId": "716046",
           "caseNo": "8615926616",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -6214,7 +6064,6 @@
           "defendantDob": "1956-03-11"
         },
         {
-          "caseId": "482121",
           "caseNo": "5315462236",
           "courtCode": "SHF",
           "courtRoom": "3",
@@ -6249,7 +6098,6 @@
           "defendantDob": "1955-05-18"
         },
         {
-          "caseId": "250888",
           "caseNo": "6696474013",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -6294,7 +6142,6 @@
           "defendantDob": "1963-07-06"
         },
         {
-          "caseId": "840232",
           "caseNo": "1890168958",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -6334,7 +6181,6 @@
           "defendantDob": "1970-05-10"
         },
         {
-          "caseId": "303342",
           "caseNo": "2483476785",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -6364,7 +6210,6 @@
           "defendantDob": "1970-06-04"
         },
         {
-          "caseId": "558216",
           "caseNo": "8372630617",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -6414,7 +6259,6 @@
           "defendantDob": "1986-10-21"
         },
         {
-          "caseId": "727489",
           "caseNo": "5411430220",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -6454,7 +6298,6 @@
           "defendantDob": "1959-05-06"
         },
         {
-          "caseId": "438647",
           "caseNo": "6015685456",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -6504,7 +6347,6 @@
           "defendantDob": "1993-07-01"
         },
         {
-          "caseId": "214982",
           "caseNo": "7257655358",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -6549,7 +6391,6 @@
           "defendantDob": "1954-04-09"
         },
         {
-          "caseId": "781692",
           "caseNo": "7466729913",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -6594,7 +6435,6 @@
           "defendantDob": "1953-10-02"
         },
         {
-          "caseId": "923052",
           "caseNo": "6303737650",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -6624,7 +6464,6 @@
           "defendantDob": "1998-02-20"
         },
         {
-          "caseId": "749431",
           "caseNo": "2219535816",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -6659,7 +6498,6 @@
           "defendantDob": "1986-12-27"
         },
         {
-          "caseId": "858824",
           "caseNo": "1283242691",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -6694,7 +6532,6 @@
           "defendantDob": "1974-01-26"
         },
         {
-          "caseId": "285429",
           "caseNo": "2053136038",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -6734,7 +6571,6 @@
           "defendantDob": "1993-08-16"
         },
         {
-          "caseId": "479150",
           "caseNo": "2695572830",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -6779,7 +6615,6 @@
           "defendantDob": "1984-05-31"
         },
         {
-          "caseId": "575009",
           "caseNo": "3598762079",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -6809,7 +6644,6 @@
           "defendantDob": "2000-04-02"
         },
         {
-          "caseId": "983294",
           "caseNo": "1262645589",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -6849,7 +6683,6 @@
           "defendantDob": "1971-11-05"
         },
         {
-          "caseId": "571823",
           "caseNo": "8455529421",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -6894,7 +6727,6 @@
           "defendantDob": "1970-09-11"
         },
         {
-          "caseId": "221822",
           "caseNo": "9805172534",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -6944,7 +6776,6 @@
           "defendantDob": "1962-08-16"
         },
         {
-          "caseId": "18100",
           "caseNo": "2631421755",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -6989,7 +6820,6 @@
           "defendantDob": "1962-04-10"
         },
         {
-          "caseId": "62737",
           "caseNo": "6778977868",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -7039,7 +6869,6 @@
           "defendantDob": "1988-02-08"
         },
         {
-          "caseId": "308056",
           "caseNo": "5376812272",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -7069,7 +6898,6 @@
           "defendantDob": "1994-04-24"
         },
         {
-          "caseId": "808062",
           "caseNo": "9150613561",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -7099,7 +6927,6 @@
           "defendantDob": "1956-06-23"
         },
         {
-          "caseId": "200698",
           "caseNo": "8748432110",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -7139,7 +6966,6 @@
           "defendantDob": "1959-11-02"
         },
         {
-          "caseId": "422725",
           "caseNo": "152703214",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -7179,7 +7005,6 @@
           "defendantDob": "1974-01-13"
         },
         {
-          "caseId": "777143",
           "caseNo": "6163846426",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -7229,7 +7054,6 @@
           "defendantDob": "1995-11-15"
         },
         {
-          "caseId": "936693",
           "caseNo": "6625816084",
           "courtCode": "SHF",
           "courtRoom": "3",
@@ -7274,7 +7098,6 @@
           "defendantDob": "1984-01-04"
         },
         {
-          "caseId": "83840",
           "caseNo": "3313870321",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -7314,7 +7137,6 @@
           "defendantDob": "1970-02-27"
         },
         {
-          "caseId": "977543",
           "caseNo": "2583513692",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -7349,7 +7171,6 @@
           "defendantDob": "1992-05-17"
         },
         {
-          "caseId": "339590",
           "caseNo": "3312591110",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -7384,7 +7205,6 @@
           "defendantDob": "1957-10-14"
         },
         {
-          "caseId": "948843",
           "caseNo": "9172825906",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -7414,7 +7234,6 @@
           "defendantDob": "1955-08-09"
         },
         {
-          "caseId": "810096",
           "caseNo": "1936178738",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -7444,7 +7263,6 @@
           "defendantDob": "1958-02-19"
         },
         {
-          "caseId": "160167",
           "caseNo": "1979298466",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -7479,7 +7297,6 @@
           "defendantDob": "1980-07-25"
         },
         {
-          "caseId": "667089",
           "caseNo": "9777221542",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -7514,7 +7331,6 @@
           "defendantDob": "2000-12-05"
         },
         {
-          "caseId": "602801",
           "caseNo": "5339345737",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -7564,7 +7380,6 @@
           "defendantDob": "1996-11-18"
         },
         {
-          "caseId": "373600",
           "caseNo": "9875540114",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -7599,7 +7414,6 @@
           "defendantDob": "1954-11-28"
         },
         {
-          "caseId": "633620",
           "caseNo": "794270613",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -7634,7 +7448,6 @@
           "defendantDob": "1988-08-20"
         },
         {
-          "caseId": "341650",
           "caseNo": "1717780334",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -7674,7 +7487,6 @@
           "defendantDob": "1975-07-20"
         },
         {
-          "caseId": "131765",
           "caseNo": "8180923581",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -7709,7 +7521,6 @@
           "defendantDob": "1958-02-10"
         },
         {
-          "caseId": "529835",
           "caseNo": "4989650366",
           "courtCode": "SHF",
           "courtRoom": "6",
@@ -7759,7 +7570,6 @@
           "defendantDob": "1959-03-01"
         },
         {
-          "caseId": "245438",
           "caseNo": "4299708253",
           "courtCode": "SHF",
           "courtRoom": "5",
@@ -7804,7 +7614,6 @@
           "defendantDob": "1953-08-16"
         },
         {
-          "caseId": "567577",
           "caseNo": "1534504210",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -7854,7 +7663,6 @@
           "defendantDob": "1954-02-19"
         },
         {
-          "caseId": "63084",
           "caseNo": "4431331699",
           "courtCode": "SHF",
           "courtRoom": "2",
@@ -7884,7 +7692,6 @@
           "defendantDob": "1987-10-04"
         },
         {
-          "caseId": "292673",
           "caseNo": "1374192515",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -7929,7 +7736,6 @@
           "defendantDob": "1967-07-05"
         },
         {
-          "caseId": "24954",
           "caseNo": "5990487475",
           "courtCode": "SHF",
           "courtRoom": "3",
@@ -7979,7 +7785,6 @@
           "defendantDob": "1971-09-29"
         },
         {
-          "caseId": "424364",
           "caseNo": "6834284",
           "courtCode": "SHF",
           "courtRoom": "4",
@@ -8024,7 +7829,6 @@
           "defendantDob": "1961-12-25"
         },
         {
-          "caseId": "606827",
           "caseNo": "9864616924",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -8074,7 +7878,6 @@
           "defendantDob": "1958-12-09"
         },
         {
-          "caseId": "74805",
           "caseNo": "9499365066",
           "courtCode": "SHF",
           "courtRoom": "3",
@@ -8119,7 +7922,6 @@
           "defendantDob": "1971-10-15"
         },
         {
-          "caseId": "326025",
           "caseNo": "7227064792",
           "courtCode": "SHF",
           "courtRoom": "01",
@@ -8169,7 +7971,6 @@
           "defendantDob": "1995-01-15"
         },
         {
-          "caseId": "334161",
           "caseNo": "3493039165",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -8204,7 +8005,6 @@
           "defendantDob": "1978-07-30"
         },
         {
-          "caseId": "403478",
           "caseNo": "8618449819",
           "courtCode": "SHF",
           "courtRoom": "03",
@@ -8234,7 +8034,6 @@
           "defendantDob": "1961-09-27"
         },
         {
-          "caseId": "39328",
           "caseNo": "5935205489",
           "courtCode": "SHF",
           "courtRoom": "04",
@@ -8269,7 +8068,6 @@
           "defendantDob": "1993-07-15"
         },
         {
-          "caseId": "763772",
           "caseNo": "8027509592",
           "courtCode": "SHF",
           "courtRoom": "04",
@@ -8319,7 +8117,6 @@
           "defendantDob": "1989-08-18"
         },
         {
-          "caseId": "236714",
           "caseNo": "9665797440",
           "courtCode": "SHF",
           "courtRoom": "9",
@@ -8365,7 +8162,6 @@
           "defendantDob": "1986-04-20"
         },
         {
-          "caseId": "933557",
           "caseNo": "649174512",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -8416,7 +8212,6 @@
           "defendantDob": "1974-10-12"
         },
         {
-          "caseId": "882850",
           "caseNo": "2905576408",
           "courtCode": "SHF",
           "courtRoom": "8",
@@ -8457,7 +8252,6 @@
           "defendantDob": "1986-08-29"
         },
         {
-          "caseId": "888402",
           "caseNo": "4002578961",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -8493,7 +8287,6 @@
           "defendantDob": "1973-01-16"
         },
         {
-          "caseId": "645645",
           "caseNo": "7483843114",
           "courtCode": "SHF",
           "courtRoom": "01",

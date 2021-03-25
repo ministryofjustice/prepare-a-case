@@ -3,13 +3,14 @@ const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
 
 const { request } = require('../../../server/services/utils/request')
-const probationStatusDetailsMock = require('../../../mappings/matching/3597035492-probation-status-detail.json')
+const { parseMockResponse } = require('../../testUtils/parseMockResponse')
+const probationStatusDetailsMock = require('../../../mappings/matching/probation-status-detail-pact.json')
 
 pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
   describe('GET /offender/{crn}/detail', () => {
-    const crn = 'C178657'
+    const crn = 'D991494'
     const apiUrl = `/offender/${crn}/probation-status-detail`
-    const mockData = probationStatusDetailsMock.response.jsonBody
+    const mockData = parseMockResponse(probationStatusDetailsMock.response.jsonBody)
 
     it('returns the defendant probation status details', async () => {
       await provider.addInteraction({
