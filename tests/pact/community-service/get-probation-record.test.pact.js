@@ -4,7 +4,7 @@ const { Matchers } = require('@pact-foundation/pact')
 
 const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { request } = require('../../../server/services/utils/request')
-const probationRecordMock = require('../../../mappings/community/DX12340A-convictions.json')
+const probationRecordMock = require('../../../mappings/community/convictions/DX12340A-convictions.json')
 
 pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
   describe('GET /offender/{crn}/probation-record', () => {

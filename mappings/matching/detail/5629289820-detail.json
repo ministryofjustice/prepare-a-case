@@ -13,11 +13,12 @@
       "otherIds": {
         "crn": "F378109",
         "pncNumber": "A/8973642",
-        "croNumber": "CRO765432"
+        "croNumber": "CRO765432",
+        "offenderId": 198765
       },
       "title": "Miss",
       "forename": "Latoya",
-      "middleNames": null,
+      "middleNames": [],
       "surname": "Kirkland",
       "dateOfBirth": "1986-07-11",
       "probationStatus": "Previously Known"

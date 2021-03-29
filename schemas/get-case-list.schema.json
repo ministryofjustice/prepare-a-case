@@ -55,7 +55,7 @@
           "nationality2": "Polish",
           "createdToday": true,
           "removed": false,
-          "numberOfPossibleMatches": 0,
+          "numberOfPossibleMatches": 1,
           "probationStatusActual": "NOT_SENTENCED"
         },
         {
@@ -185,7 +185,7 @@
             "nationality2": "Polish",
             "createdToday": true,
             "removed": false,
-            "numberOfPossibleMatches": 0,
+            "numberOfPossibleMatches": 1,
             "probationStatusActual": "NOT_SENTENCED"
           },
           {
@@ -232,7 +232,6 @@
           }
         ]
       ],
-      "additionalItems": true,
       "items": {
         "$id": "#/properties/cases/items",
         "anyOf": [
@@ -288,7 +287,7 @@
                 "nationality2": "Polish",
                 "createdToday": true,
                 "removed": false,
-                "numberOfPossibleMatches": 0,
+                "numberOfPossibleMatches": 1,
                 "probationStatusActual": "NOT_SENTENCED"
               }
             ],
@@ -467,7 +466,6 @@
                     }
                   ]
                 ],
-                "additionalItems": true,
                 "items": {
                   "$id": "#/properties/cases/items/anyOf/0/properties/offences/items",
                   "anyOf": [
@@ -789,7 +787,7 @@
                 "description": "An explanation about the purpose of this instance.",
                 "default": 0,
                 "examples": [
-                  0
+                  1
                 ]
               },
               "probationStatusActual": {
@@ -1006,7 +1004,6 @@
                     }
                   ]
                 ],
-                "additionalItems": true,
                 "items": {
                   "$id": "#/properties/cases/items/anyOf/1/properties/offences/items",
                   "anyOf": [
@@ -1441,7 +1438,6 @@
                 "examples": [
                   []
                 ],
-                "additionalItems": true,
                 "items": {
                   "$id": "#/properties/cases/items/anyOf/2/properties/offences/items"
                 }

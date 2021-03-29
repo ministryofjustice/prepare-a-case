@@ -1,8 +1,8 @@
 {
-  "id": "b3e38b25-2bf3-422c-bc84-822ea3a5bf15",
+  "id": "682e7f40-6ed9-4556-9c86-3425c8802af3",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/A123456/detail"
+    "urlPathPattern": "/offender/D541487/detail"
   },
   "response": {
     "headers": {
@@ -11,15 +11,16 @@
     "status": 200,
     "jsonBody": {
       "otherIds": {
-        "crn": "A123456",
+        "crn": "D541487",
         "pncNumber": "A/1234560BA",
-        "croNumber": "CRO654321"
+        "croNumber": "CRO123456",
+        "offenderId": 198765
       },
       "title": "Miss",
-      "forename": "Kara",
-      "middleNames": null,
-      "surname": "Ayers",
-      "dateOfBirth": "1980-10-31",
+      "forename": "Charlene",
+      "middleNames": [],
+      "surname": "Hammond",
+      "dateOfBirth": "1980-09-13",
       "probationStatus": "Previously Known"
     }
   }

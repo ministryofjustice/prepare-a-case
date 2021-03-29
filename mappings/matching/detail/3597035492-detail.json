@@ -13,11 +13,15 @@
       "otherIds": {
         "crn": "C178657",
         "pncNumber": "A/654321AB",
-        "croNumber": "CRO123456"
+        "croNumber": "CRO123456",
+        "offenderId": 198765
       },
       "title": "Mr",
       "forename": "Guadalupe",
-      "middleNames": null,
+      "middleNames": [
+        "Bob",
+        "Geoff"
+      ],
       "surname": "Hess",
       "dateOfBirth": "1989-02-18",
       "probationStatus": "Previously known"

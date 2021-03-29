@@ -13,11 +13,12 @@
       "otherIds": {
         "crn": "V178657",
         "pncNumber": "A/1234560BA",
-        "croNumber": "CRO654321"
+        "croNumber": "CRO654321",
+        "offenderId": 198765
       },
       "title": "Miss",
       "forename": "Felicia",
-      "middleNames": null,
+      "middleNames": [],
       "surname": "Villarreal",
       "dateOfBirth": "1971-08-26",
       "probationStatus": "Current"

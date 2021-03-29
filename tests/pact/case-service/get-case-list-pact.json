@@ -1,0 +1,134 @@
+{
+  "id": "ab4c24a9-59ac-4908-a155-ffee3355e723",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z0-9]{5})/cases",
+    "queryParameters": {
+      "date": {
+        "matches": "(?!2020-01-01|2020-01-02)(\\d{4})-(\\d{2})-(\\d{2})"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "cases": [{
+        "caseNo": "16000",
+        "crn": "C16000",
+        "pnc": "A/160000BA",
+        "listNo": "3rd",
+        "courtCode": "B10JQ",
+        "courtRoom": "1",
+        "sessionStartTime": "2020-02-29T09:00:00",
+        "session": "MORNING",
+        "probationStatus": "No record",
+        "previouslyKnownTerminationDate": "2010-01-01",
+        "suspendedSentenceOrder": true,
+        "breach": true,
+        "preSentenceActivity": true,
+        "offences": [{
+          "offenceTitle": "Offence Title 16000",
+          "offenceSummary": "Offence Summary 16000",
+          "act": "Offence ACT 16000",
+          "sequenceNumber": 1
+        }],
+        "defendantName": "Mr Johnny BALL",
+        "name": {
+          "title": "Mr",
+          "forename1": "Johnny",
+          "forename2": "John",
+          "forename3": "Jon",
+          "surname": "BALL"
+        },
+        "defendantAddress": {
+          "line1": "27",
+          "line2": "Elm Place",
+          "line3": "Bangor",
+          "line4": "line4",
+          "line5": "line5",
+          "postcode": "ad21 5dr"
+        },
+        "defendantDob": "1958-10-10",
+        "defendantSex": "M",
+        "defendantType": "PERSON",
+        "nationality1": "British",
+        "nationality2": "Polish",
+        "createdToday": true,
+        "removed": false,
+        "numberOfPossibleMatches": 1,
+        "probationStatusActual": "NOT_SENTENCED"
+      },
+        {
+          "caseNo": "16001",
+          "crn": "D16000",
+          "pnc": "D/160000BA",
+          "listNo": "1st",
+          "courtCode": "B10JQ",
+          "courtRoom": "1",
+          "sessionStartTime": "2020-02-29T14:00:00",
+          "session": "AFTERNOON",
+          "probationStatus": "No record",
+          "suspendedSentenceOrder": false,
+          "preSentenceActivity": false,
+          "offences": [{
+            "offenceTitle": "Offence Title 16001",
+            "offenceSummary": "Offence Summary 16001",
+            "act": "Offence ACT 16001",
+            "sequenceNumber": 1
+          }],
+          "defendantName": "Mr Brian CANT",
+          "name": {
+            "title": "Mr",
+            "forename1": "Brian",
+            "forename2": "Bryan",
+            "forename3": "Eric",
+            "surname": "CANT"
+          },
+          "defendantAddress": {
+            "line1": "26",
+            "line2": "Elms Road",
+            "line3": "Leicester",
+            "postcode": "LE2 3LU"
+          },
+          "defendantDob": "1939-10-10",
+          "defendantSex": "M",
+          "defendantType": "PERSON",
+          "nationality1": "British",
+          "createdToday": true,
+          "removed": false,
+          "numberOfPossibleMatches": 0
+        },
+        {
+          "caseNo": "16002",
+          "listNo": "1st",
+          "courtCode": "B10JQ",
+          "courtRoom": "10",
+          "sessionStartTime": "2020-02-29T14:00:00",
+          "session": "AFTERNOON",
+          "probationStatus": "No record",
+          "preSentenceActivity": false,
+          "offences": [
+
+          ],
+          "defendantName": "ACME MOTORS LTD",
+          "name": {
+            "surname": "ACME MOTORS LTD"
+          },
+          "defendantAddress": {
+            "line1": "Freemans Common",
+            "line2": "Someplace",
+            "line3": "Leicester",
+            "postcode": "XX1 1XX"
+          },
+          "defendantType": "ORGANISATION",
+          "createdToday": true,
+          "removed": false,
+          "numberOfPossibleMatches": 0
+        }
+      ]
+    }
+  }
+}

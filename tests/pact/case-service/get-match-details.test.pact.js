@@ -4,7 +4,7 @@ const { Matchers } = require('@pact-foundation/pact')
 
 const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { request } = require('../../../server/services/utils/request')
-const matchesMock = require('../../../mappings/matching/3597035492-matches.json')
+const matchesMock = require('../../../mappings/matching/matches/3597035492-matches.json')
 
 pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
   describe('GET /court/{courtCode}/case/{caseNo}/matchesDetail', () => {
