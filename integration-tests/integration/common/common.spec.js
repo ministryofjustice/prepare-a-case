@@ -207,16 +207,20 @@ When('I click the {string} link', $string => {
   cy.get($string === 'Back' ? '.govuk-back-link' : '.govuk-link').contains($string).click()
 })
 
+When('I click the {string} header navigation link', $string => {
+  cy.get('.moj-header__navigation-link').contains($string).click()
+})
+
 And('I click the {string} button', $string => {
-  cy.get('button').contains($string).click()
+  cy.get('.govuk-button').contains($string).click()
 })
 
 And('I should see a button with the label {string}', $string => {
-  cy.get('button').contains($string).should('exist')
+  cy.get('.govuk-button').contains($string).should('exist')
 })
 
 And('I should not see a button with the label {string}', $string => {
-  cy.get('button').contains($string).should('not.exist')
+  cy.get('.govuk-button').contains($string).should('not.exist')
 })
 
 And('I should see the legend {string}', $string => {
@@ -261,6 +265,10 @@ And('I should see the text input label {string}', $string => {
   cy.get('label').contains($string).should('exist')
 })
 
+And('I should see the text {string} in a table cell', $string => {
+  cy.get('.govuk-table__cell').contains($string).should('exist')
+})
+
 And('I should see the text input with id {string}', $id => {
   cy.get('input[type=text]').should('exist').should('have.attr', 'id').and('include', $id)
 })
@@ -277,6 +285,14 @@ And('I should not see the key details banner', () => {
   cy.get('.pac-key-details-bar').should('not.exist')
 })
 
+And('I should not see the {string} link', $string => {
+  cy.get('.govuk-link').contains($string).should('not.exist')
+})
+
 And('I should see the key details banner', () => {
   cy.get('.pac-key-details-bar').should('exist')
+})
+
+When('I enter the text {string} into the {string} input and press ENTER', ($text, $id) => {
+  cy.get(`#${$id}`).type($text).type('{enter}').blur()
 })

@@ -128,7 +128,7 @@
                                     <table class="govuk-table pac-table--no-borders govuk-!-margin-0">
                                         <tbody class="govuk-table__body">
                                         <tr class="govuk-table__row">
-                                            <th scope="row" class="govuk-table__header" style="width: 40%;">Name</th>
+                                            <th scope="row" class="govuk-table__header pac-width-40">Name</th>
                                             <td class="govuk-table__cell">
                                                 {% set matchName = item.forename + ' ' + (item.middleNames | join(' ') + ' ' if item.middleNames) + item.surname %}
                                                 {{ matchName | properCase | removeTitle | markMatches(defendantFullName) | safe }}

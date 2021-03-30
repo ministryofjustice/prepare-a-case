@@ -59,4 +59,11 @@ env:
     value: {{ .Values.env.REDIS_TLS_ENABLED }}
     value: "true"
 
+  - name: CASE_SNAPSHOT_TIMES
+    value: {{ .Values.env.CASE_SNAPSHOT_TIMES | quote }}
+
+  - name: USER_PREFERENCE_SERVICE_URL
+    value: {{ .Values.env.USER_PREFERENCE_SERVICE_URL | quote }}
+
+
 {{- end -}}

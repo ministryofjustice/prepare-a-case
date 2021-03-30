@@ -1,6 +1,7 @@
 const express = require('express')
 const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, nonce } = require('../../config')
+const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
   getDetails,
@@ -32,29 +33,76 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/', (req, res) => {
     const { cookies } = req
-    res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/select-court')
+    res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/my-courts/setup')
   })
 
   router.get('/user-guide', (req, res) => {
     res.render('user-guide', { params: { nonce: nonce } })
   })
 
-  router.get('/select-court/:courtCode?', (req, res) => {
-    const { params: { courtCode }, params } = req
-    if (courtCode) {
-      res.status(201)
-        .cookie('court', courtCode)
-        .redirect(302, `/${courtCode}/cases/${getBaseDateString()}`)
-    } else {
-      res.render('select-court', {
-        title: 'Select court',
-        params: {
-          ...params,
-          availableCourts: settings.availableCourts,
-          nonce: nonce
+  router.get('/my-courts', async (req, res) => {
+    const { session } = req
+    const userSelectedCourts = await getUserSelectedCourts(res.locals.user.userId)
+    session.courts = userSelectedCourts.items
+    res.render('view-courts', {
+      params: {
+        availableCourts: settings.availableCourts,
+        chosenCourts: session.courts,
+        nonce: nonce
+      }
+    })
+  })
+
+  router.get('/my-courts/:state', async (req, res) => {
+    const { params: { state }, query: { error, remove, save }, session } = req
+    let formError = error
+    let serverError = false
+    if (save) {
+      if (session.courts && session.courts.length) {
+        const updatedCourts = await updateSelectedCourts(res.locals.user.userId, session.courts)
+        if (updatedCourts.status >= 400) {
+          serverError = true
+        } else {
+          return res.redirect(302, '/my-courts')
         }
-      })
+      } else {
+        formError = true
+      }
     }
+    if (remove && session.courts && session.courts.includes(remove)) {
+      session.courts.splice(session.courts.indexOf(remove), 1)
+      return res.redirect(req.path)
+    }
+    res.render('edit-courts', {
+      formError: formError,
+      serverError: serverError,
+      state: state,
+      params: {
+        availableCourts: settings.availableCourts,
+        chosenCourts: session.courts,
+        nonce: nonce
+      }
+    })
+  })
+
+  router.post('/my-courts/:state', (req, res) => {
+    const { params: { state }, session, body: { court } } = req
+    if (!court) {
+      return res.redirect(302, `/my-courts/${state}?error=true`)
+    }
+    session.courts = session.courts || []
+    if (court && !session.courts.includes(court)) {
+      session.courts.push(court)
+    }
+    res.redirect(req.path)
+  })
+
+  router.get('/select-court/:courtCode', (req, res) => {
+    const { params: { courtCode } } = req
+
+    res.status(201)
+      .cookie('court', courtCode)
+      .redirect(302, `/${courtCode}/cases/${getBaseDateString()}`)
   })
 
   router.get('/:courtCode/cases', (req, res) => {

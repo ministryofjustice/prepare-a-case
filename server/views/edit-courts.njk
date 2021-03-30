@@ -1,0 +1,115 @@
+{%- set isOnboarding = state !== "edit" -%}
+{%- set hideCourtLink = isOnboarding -%}
+{% extends "partials/layout.njk" %}
+
+{% block navigation %}{% endblock %}
+
+{% set title = "Which courts do you work in?" if isOnboarding else "Edit my courts" %}
+
+{%- set courtOptions = [] -%}
+{%- for court in params.availableCourts -%}
+  {{ courtOptions.push({
+    value: court.code,
+    text: court.name
+  }) }}
+{%- endfor -%}
+
+{% block content %}
+  <form method="post" name="selectCourt" novalidate>
+
+    {% if serverError %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+          {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+          {{ mojBanner({
+            type: 'warning',
+            text: 'Something went wrong - try again.',
+            iconFallbackText: 'Warning'
+          }) }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if formError %}
+      {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "You must add a court",
+            href: "#pac-select-court-error"
+          }
+        ]
+      }) }}
+    {% endif %}
+
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+    {% if isOnboarding %}
+      <p class="govuk-body">Add and save the courts you work in to view case lists for those courts.</p>
+    {% else %}
+      <p class="govuk-body">Add or remove courts from your list.</p>
+    {% endif %}
+
+    {% if params.chosenCourts | length %}
+      <table class="govuk-table pac-!-grid-column--max-700">
+        <tbody class="govuk-table__body">
+        {%- for court in params.availableCourts -%}
+          {%- for chosen in params.chosenCourts -%}
+            {% if chosen === court.code %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                  <span class="govuk-!-font-weight-bold">{{ court.name }}</span>
+                </td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <a href="?remove={{ court.code }}" class="govuk-link govuk-link--no-visited-state">Remove</a>
+                </td>
+              </tr>
+            {% endif %}
+          {%- endfor -%}
+        {%- endfor -%}
+        </tbody>
+      </table>
+
+    {% endif %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds pac-!-grid-column--max-700">
+
+        {%- from "components/accessible-autocomplete/macro.njk" import pacAccessibleAutocomplete -%}
+        {{ pacAccessibleAutocomplete({
+          id: 'pac-select-court',
+          name: 'court',
+          label: 'Add court',
+          hint: 'Type in the name of the court',
+          instruction: 'Select a court',
+          options: courtOptions,
+          error: formError,
+          errorMessage: 'You must add a court'
+        }) }}
+
+        <button type="submit" class="govuk-button govuk-button--secondary govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+          Add
+        </button>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+
+        <p class="govuk-body">
+          <a href="?save=true" class="govuk-button">Save {{ "list" if not isOnboarding }} and continue</a>
+          {% if not isOnboarding %}
+            <a href="/my-courts" class="govuk-link govuk-link--no-visited-state govuk-!-margin-left-6">Cancel</a>
+          {% endif %}
+        </p>
+
+      </div>
+    </div>
+
+  </form>
+
+  <script>
+    accessibleAutocomplete.enhanceSelectElement({
+      defaultValue: '',
+      selectElement: document.querySelector('#pac-select-court')
+    })
+  </script>
+
+{% endblock %}

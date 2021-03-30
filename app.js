@@ -45,6 +45,8 @@ module.exports = function createApp ({ signInService, userService }) {
           '\'self\'',
           '\'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA=\'',
           '\'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ=\'',
+          '\'sha256-Ex+PXm59nVbu/S+FH/u8FLio5zO5YfFPo0/jH0uw19k=\'',
+          '\'sha256-QIG/FBh5vORMkpviiAyUOvMgp6XvwQIEagSXO2FUmyo=\'',
           `'nonce-${config.nonce}'`
         ],
         upgradeInsecureRequests: []
@@ -75,7 +77,8 @@ module.exports = function createApp ({ signInService, userService }) {
   app.use(cookieParser())
   app.use('/assets', [
     express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')),
-    express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets'))
+    express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets')),
+    express.static(path.join(__dirname, '/node_modules/accessible-autocomplete/dist'))
   ])
   app.use('/moj', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj')))
   app.use('/govuk', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk')))
