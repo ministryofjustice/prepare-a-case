@@ -3,7 +3,11 @@ const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
 
 const { request } = require('../../../server/services/utils/request')
+const { parseMockResponse } = require('../../testUtils/parseMockResponse')
+const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
 const sentenceMock = require('../../../mappings/community/sentence/DX12340A-sentence-1309234876.json')
+const pactResponseMock = require('./get-sentence-details-pact.json')
+const schema = require('../../../schemas/get-sentence.schema.json')
 
 pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
   describe('GET /offender/{crn}/convictions/{convictionId}/sentences/{sentenceId}', () => {
@@ -11,7 +15,11 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
     const convictionId = '1309234876'
     const sentenceId = '123123128'
     const apiUrl = `/offender/${crn}/convictions/${convictionId}/sentences/${sentenceId}`
-    const mockData = sentenceMock.response.jsonBody
+    const parsedMockData = parseMockResponse(pactResponseMock.response.jsonBody)
+
+    it('should validate the JSON schema against the provided sample data', () => {
+      validateSchema(parsedMockData, schema)
+    })
 
     it('returns the conviction sentence details', async () => {
       await provider.addInteraction({
@@ -25,14 +33,14 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
           }
         },
         willRespondWith: {
-          status: sentenceMock.response.status,
-          headers: sentenceMock.response.headers,
-          body: Matchers.like(mockData)
+          status: pactResponseMock.response.status,
+          headers: pactResponseMock.response.headers,
+          body: Matchers.like(parsedMockData)
         }
       })
 
       const response = await request(`${provider.mockService.baseUrl}${apiUrl}`)
-      expect(response.data).toEqual(mockData)
+      expect(response.data).toEqual(parsedMockData)
       return response
     })
   })

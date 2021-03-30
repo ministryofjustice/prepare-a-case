@@ -4,7 +4,7 @@ const { Matchers } = require('@pact-foundation/pact')
 const moment = require('moment')
 
 const { parseMockResponse } = require('../../testUtils/parseMockResponse')
-const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
+const { validateSchema } = require('../../testUtils/schemaValidation')
 const { request } = require('../../../server/services/utils/request')
 const pactResponseMock = require('./get-case-list-pact.json')
 const schema = require('../../../schemas/get-case-list.schema.json')

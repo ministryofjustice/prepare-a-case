@@ -2,16 +2,20 @@
 const fs = require('fs')
 const path = require('path')
 const Ajv = require('ajv').default
+const ajvErrors = require('ajv-errors')
 
 const { parseMockResponse } = require('./parseMockResponse')
 
 function validateMocks (mockFilesPath, schema) {
   fs.readdir(path.join(mockFilesPath), (err, filenames) => {
+    if (err) {
+      return
+    }
     filenames.forEach(filename => {
       const wireMockFile = require(path.join(`${mockFilesPath}/${filename}`))
       const parsedMock = parseMockResponse(wireMockFile.response.jsonBody)
       const ajv = new Ajv({ allErrors: true })
-      require('ajv-errors')(ajv)
+      ajvErrors(ajv)
       const validateSchema = ajv.compile(schema)
       if (validateSchema.errors) {
         console.info(validateSchema.errors)

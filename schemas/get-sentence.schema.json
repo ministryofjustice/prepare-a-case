@@ -1,0 +1,530 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {
+    "attendances": []
+  },
+  "examples": [
+    {
+      "attendances": [
+        {
+          "contactId": 1325,
+          "attendanceDate": "2019-08-24",
+          "attended": true,
+          "complied": true,
+          "outcome": "Description of outcome",
+          "contactType": {
+            "description": "Description of contact type",
+            "code": "DSC01"
+          }
+        },
+        {
+          "contactId": 8888888,
+          "attendanceDate": "2020-02-29",
+          "attended": false,
+          "complied": false,
+          "outcome": "8888888 Description of outcome",
+          "contactType": {
+            "description": "8888888 Description of contact type",
+            "code": "DSC02"
+          }
+        }
+      ],
+      "unpaidWork": {
+        "minutesOffered": 3600,
+        "minutesCompleted": 360,
+        "appointmentsToDate": 5,
+        "attended": 2,
+        "acceptableAbsences": 1,
+        "unacceptableAbsences": 1,
+        "status": "Being worked"
+      },
+      "currentOrderHeaderDetail": {
+        "sentenceId": 2500298861,
+        "sentenceDescription": "CJA - Intermediate Public Prot.",
+        "custodialType": {
+          "code": "P",
+          "description": "Post Sentence Supervision"
+        },
+        "mainOffenceDescription": "Common assault and battery - 10501",
+        "sentenceDate": "2018-12-03",
+        "actualReleaseDate": "2019-07-03",
+        "licenceExpiryDate": "2019-11-03",
+        "pssEndDate": "2020-06-03",
+        "length": 11,
+        "lengthUnits": "Months"
+      },
+      "links": {
+        "deliusContactList": "https://ndelius.test.probation.service.justice.gov.uk/NDelius-war/delius/JSP/deeplink.jsp?component=ContactList&offenderId=2500343964&eventId=2500295343"
+      }
+    }
+  ],
+  "required": [
+    "attendances",
+    "unpaidWork",
+    "currentOrderHeaderDetail",
+    "links"
+  ],
+  "properties": {
+    "attendances": {
+      "$id": "#/properties/attendances",
+      "type": "array",
+      "title": "The attendances schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        [
+          {
+            "contactId": 1325,
+            "attendanceDate": "2019-08-24",
+            "attended": true,
+            "complied": true,
+            "outcome": "Description of outcome",
+            "contactType": {
+              "description": "Description of contact type",
+              "code": "DSC01"
+            }
+          },
+          {
+            "contactId": 8888888,
+            "attendanceDate": "2020-02-29",
+            "attended": false,
+            "complied": false,
+            "outcome": "8888888 Description of outcome",
+            "contactType": {
+              "description": "8888888 Description of contact type",
+              "code": "DSC02"
+            }
+          }
+        ]
+      ],
+      "items": {
+        "$id": "#/properties/attendances/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/attendances/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "contactId": 1325,
+                "attendanceDate": "2019-08-24",
+                "attended": true,
+                "complied": true,
+                "outcome": "Description of outcome",
+                "contactType": {
+                  "description": "Description of contact type",
+                  "code": "DSC01"
+                }
+              }
+            ],
+            "required": [
+              "contactId",
+              "attendanceDate",
+              "attended",
+              "complied",
+              "outcome",
+              "contactType"
+            ],
+            "properties": {
+              "contactId": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/contactId",
+                "type": "integer",
+                "title": "The contactId schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  1325
+                ]
+              },
+              "attendanceDate": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/attendanceDate",
+                "type": "string",
+                "title": "The attendanceDate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "2019-08-24"
+                ]
+              },
+              "attended": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/attended",
+                "type": "boolean",
+                "title": "The attended schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "complied": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/complied",
+                "type": "boolean",
+                "title": "The complied schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "outcome": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/outcome",
+                "type": "string",
+                "title": "The outcome schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Description of outcome"
+                ]
+              },
+              "contactType": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/contactType",
+                "type": "object",
+                "title": "The contactType schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "description": "Description of contact type",
+                    "code": "DSC01"
+                  }
+                ],
+                "required": [
+                  "description",
+                  "code"
+                ],
+                "properties": {
+                  "description": {
+                    "$id": "#/properties/attendances/items/anyOf/0/properties/contactType/properties/description",
+                    "type": "string",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Description of contact type"
+                    ]
+                  },
+                  "code": {
+                    "$id": "#/properties/attendances/items/anyOf/0/properties/contactType/properties/code",
+                    "type": "string",
+                    "title": "The code schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "DSC01"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    },
+    "unpaidWork": {
+      "$id": "#/properties/unpaidWork",
+      "type": "object",
+      "title": "The unpaidWork schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "minutesOffered": 3600,
+          "minutesCompleted": 360,
+          "appointmentsToDate": 5,
+          "attended": 2,
+          "acceptableAbsences": 1,
+          "unacceptableAbsences": 1,
+          "status": "Being worked"
+        }
+      ],
+      "required": [
+        "minutesOffered",
+        "minutesCompleted",
+        "appointmentsToDate",
+        "attended",
+        "acceptableAbsences",
+        "unacceptableAbsences",
+        "status"
+      ],
+      "properties": {
+        "minutesOffered": {
+          "$id": "#/properties/unpaidWork/properties/minutesOffered",
+          "type": "integer",
+          "title": "The minutesOffered schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            3600
+          ]
+        },
+        "minutesCompleted": {
+          "$id": "#/properties/unpaidWork/properties/minutesCompleted",
+          "type": "integer",
+          "title": "The minutesCompleted schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            360
+          ]
+        },
+        "appointmentsToDate": {
+          "$id": "#/properties/unpaidWork/properties/appointmentsToDate",
+          "type": "integer",
+          "title": "The appointmentsToDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            5
+          ]
+        },
+        "attended": {
+          "$id": "#/properties/unpaidWork/properties/attended",
+          "type": "integer",
+          "title": "The attended schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            2
+          ]
+        },
+        "acceptableAbsences": {
+          "$id": "#/properties/unpaidWork/properties/acceptableAbsences",
+          "type": "integer",
+          "title": "The acceptableAbsences schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            1
+          ]
+        },
+        "unacceptableAbsences": {
+          "$id": "#/properties/unpaidWork/properties/unacceptableAbsences",
+          "type": "integer",
+          "title": "The unacceptableAbsences schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            1
+          ]
+        },
+        "status": {
+          "$id": "#/properties/unpaidWork/properties/status",
+          "type": "string",
+          "title": "The status schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "Being worked"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "currentOrderHeaderDetail": {
+      "$id": "#/properties/currentOrderHeaderDetail",
+      "type": "object",
+      "title": "The currentOrderHeaderDetail schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "sentenceId": 2500298861,
+          "sentenceDescription": "CJA - Intermediate Public Prot.",
+          "custodialType": {
+            "code": "P",
+            "description": "Post Sentence Supervision"
+          },
+          "mainOffenceDescription": "Common assault and battery - 10501",
+          "sentenceDate": "2018-12-03",
+          "actualReleaseDate": "2019-07-03",
+          "licenceExpiryDate": "2019-11-03",
+          "pssEndDate": "2020-06-03",
+          "length": 11,
+          "lengthUnits": "Months"
+        }
+      ],
+      "required": [
+        "sentenceId",
+        "sentenceDescription",
+        "custodialType",
+        "mainOffenceDescription",
+        "sentenceDate",
+        "actualReleaseDate",
+        "licenceExpiryDate",
+        "pssEndDate",
+        "length",
+        "lengthUnits"
+      ],
+      "properties": {
+        "sentenceId": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/sentenceId",
+          "type": "integer",
+          "title": "The sentenceId schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            2500298861
+          ]
+        },
+        "sentenceDescription": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/sentenceDescription",
+          "type": "string",
+          "title": "The sentenceDescription schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "CJA - Intermediate Public Prot."
+          ]
+        },
+        "custodialType": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/custodialType",
+          "type": "object",
+          "title": "The custodialType schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "code": "P",
+              "description": "Post Sentence Supervision"
+            }
+          ],
+          "required": [
+            "code",
+            "description"
+          ],
+          "properties": {
+            "code": {
+              "$id": "#/properties/currentOrderHeaderDetail/properties/custodialType/properties/code",
+              "type": "string",
+              "title": "The code schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "P"
+              ]
+            },
+            "description": {
+              "$id": "#/properties/currentOrderHeaderDetail/properties/custodialType/properties/description",
+              "type": "string",
+              "title": "The description schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "Post Sentence Supervision"
+              ]
+            }
+          },
+          "additionalProperties": true
+        },
+        "mainOffenceDescription": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/mainOffenceDescription",
+          "type": "string",
+          "title": "The mainOffenceDescription schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "Common assault and battery - 10501"
+          ]
+        },
+        "sentenceDate": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/sentenceDate",
+          "type": "string",
+          "title": "The sentenceDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "2018-12-03"
+          ]
+        },
+        "actualReleaseDate": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/actualReleaseDate",
+          "type": "string",
+          "title": "The actualReleaseDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "2019-07-03"
+          ]
+        },
+        "licenceExpiryDate": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/licenceExpiryDate",
+          "type": "string",
+          "title": "The licenceExpiryDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "2019-11-03"
+          ]
+        },
+        "pssEndDate": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/pssEndDate",
+          "type": "string",
+          "title": "The pssEndDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "2020-06-03"
+          ]
+        },
+        "length": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/length",
+          "type": "integer",
+          "title": "The length schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            11
+          ]
+        },
+        "lengthUnits": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/lengthUnits",
+          "type": "string",
+          "title": "The lengthUnits schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "Months"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "links": {
+      "$id": "#/properties/links",
+      "type": "object",
+      "title": "The links schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "deliusContactList": "https://ndelius.test.probation.service.justice.gov.uk/NDelius-war/delius/JSP/deeplink.jsp?component=ContactList&offenderId=2500343964&eventId=2500295343"
+        }
+      ],
+      "required": [
+        "deliusContactList"
+      ],
+      "properties": {
+        "deliusContactList": {
+          "$id": "#/properties/links/properties/deliusContactList",
+          "type": "string",
+          "title": "The deliusContactList schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "https://ndelius.test.probation.service.justice.gov.uk/NDelius-war/delius/JSP/deeplink.jsp?component=ContactList&offenderId=2500343964&eventId=2500295343"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
