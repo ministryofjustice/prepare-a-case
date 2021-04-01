@@ -1,4 +1,6 @@
 const nunjucks = require('nunjucks')
+const config = require('../../config')
+
 const { googleAnalytics: { googleAnalytics } } = config
 
 module.exports = (app, path) => {
