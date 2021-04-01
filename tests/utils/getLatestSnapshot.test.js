@@ -21,8 +21,12 @@ describe('Get latest snapshot', () => {
 
     snapshotTimes.forEach(snapshotTime => {
       it(`should return the correct snapshot at ${snapshotTime}`, () => {
-        jest.spyOn(Date, 'now').mockImplementation(() => {
-          return new Date(`${todayString}T${snapshotTime}:01.000Z`)
+        jest.spyOn(Date, 'now').mockImplementationOnce(() => {
+          const mockedDate = new Date()
+          const splitTime = snapshotTime.split(':')
+          mockedDate.setHours(parseInt(splitTime[0], 10))
+          mockedDate.setMinutes(parseInt(splitTime[1], 10))
+          return mockedDate.valueOf()
         })
 
         expect(getLatestSnapshot(todayString).format('YYYY-MM-DDTHH:mm'))
