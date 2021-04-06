@@ -136,6 +136,11 @@
 
 {% block content %}
 
+    {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+    {{ govukNotificationBanner({
+        html: "<span class='govuk-notification-banner__heading'>Some case lists over the next week are missing. We are working with HMCTS to resolve this problem.</span>"
+    }) }}
+
     <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-6">
         <span class="govuk-caption-xl">Cases</span>
         {% if params.date === today %}
@@ -201,7 +206,6 @@
 
     {% if params.totalCount %}
         {% set status = ("<p class=\"govuk-body-s govuk-!-margin-bottom-1 pac-last-updated-stamp\">" + (lastUpdated | escape) + "</p>" + "<p class=\"govuk-body-s govuk-!-margin-bottom-0 pac-next-update-stamp\">" + (nextUpdate | escape) + "</p>") | safe %}
-{#        {% set status = ("<p class=\"govuk-body-s govuk-!-margin-bottom-0 pac-next-update-stamp\">" + (nextUpdate | escape) + "</p>") | safe %}#}
     {% else %}
         {% set status = "" %}
     {% endif %}
@@ -221,7 +225,6 @@
     {% if tableData.rows | length %}
         {% block table %}
             <span class="govuk-heading-m">{{ params.caseCount }} case{{ 's' if params.caseCount > 1 }} {% if params.subsection !== "" %} {% if params.subsection === "added" %}added to {% else %}removed from {% endif%} today's case list.{% endif %}</span>
-{#            <span class="govuk-heading-m">{{ params.caseCount }} case{{ 's' if params.caseCount > 1 }} {% if params.subsection !== "" %} {% if params.subsection === "added" %}added to {% else %}removed from {% endif%} today's case list at {{ moment(params.lastUpdated).format('hh:mma') }}{% endif %}</span>#}
             {%- from "govuk/components/table/macro.njk" import govukTable -%}
             {{ govukTable(tableData) }}
         {% endblock %}
