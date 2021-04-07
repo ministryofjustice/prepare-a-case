@@ -1,7 +1,5 @@
 const nunjucks = require('nunjucks')
-const config = require('../../config')
-
-const { googleAnalytics: { googleAnalytics } } = config
+const { googleAnalyticsKey } = require('../../config')
 
 module.exports = (app, path) => {
   const env = nunjucks.configure([
@@ -55,5 +53,5 @@ module.exports = (app, path) => {
     return filteredArr.join(' ')
   })
 
-  env.addGlobal('googleAnalyticsKey', googleAnalytics)
+  env.addGlobal('googleAnalyticsKey', googleAnalyticsKey)
 }
