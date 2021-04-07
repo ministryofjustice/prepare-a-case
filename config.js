@@ -69,7 +69,7 @@ module.exports = {
       { code: 'B01CE', name: 'Willesden Magistrates\' Court' },
       { code: 'B20OQ', name: 'Wolverhampton Magistrates\' Court' },
       { code: 'B22OS', name: 'Worcester Justice Centre' },
-      { code: 'B47OV', name: 'Worthing Magistrates\' Court' },
+      { code: 'B47OV', name: 'Worthing Magistrates\' Court' }
     ]
   },
   redis: {
