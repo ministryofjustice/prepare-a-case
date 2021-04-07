@@ -34,3 +34,11 @@ whitelist:
   ark-internet-1: "194.33.192.0/25"
   ark-internet-2: "194.33.196.0/25"
   moj-official-aws-prod: "51.149.250.0/24"
+
+resources:
+  cpu:
+    limit: 1000m
+    request: 50m
+  memory:
+    limit: 500Mi
+    request: 100Mi
