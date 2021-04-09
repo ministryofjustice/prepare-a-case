@@ -136,10 +136,12 @@
 
 {% block content %}
 
-    {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-    {{ govukNotificationBanner({
-        html: "<span class='govuk-notification-banner__heading'>Some case lists over the next week are missing. We are working with HMCTS to resolve this problem.</span>"
-    }) }}
+    {% if params.notification and params.notification | length %}
+        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+        {{ govukNotificationBanner({
+            html: "<span class='govuk-notification-banner__heading'>" + params.notification + "</span>"
+        }) }}
+    {% endif %}
 
     <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-6">
         <span class="govuk-caption-xl">Cases</span>
