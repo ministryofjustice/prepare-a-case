@@ -120,7 +120,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       title: 'Cases',
       params: {
         ...params,
-        notification: notification || "",
+        notification: notification || '',
         filters: response.filters,
         page: parseInt(page, 10) || 1,
         from: startCount,
