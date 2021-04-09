@@ -1,6 +1,6 @@
 const express = require('express')
 const getBaseDateString = require('../utils/getBaseDateString')
-const { settings, nonce } = require('../../config')
+const { settings, nonce, notification } = require('../../config')
 const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
@@ -120,6 +120,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       title: 'Cases',
       params: {
         ...params,
+        notification: notification || '',
         filters: response.filters,
         page: parseInt(page, 10) || 1,
         from: startCount,
