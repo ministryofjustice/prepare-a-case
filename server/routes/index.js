@@ -33,7 +33,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/', (req, res) => {
     const { cookies } = req
-    res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/my-courts/setup')
+    // @FIXME: Cookie check and removal to be removed at a later date
+    if (cookies && cookies.court) {
+      res.clearCookie('court')
+    }
+    res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : '/my-courts/setup')
   })
 
   router.get('/user-guide', (req, res) => {
@@ -101,7 +105,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const { params: { courtCode } } = req
 
     res.status(201)
-      .cookie('court', courtCode)
+      .cookie('currentCourt', courtCode)
       .redirect(302, `/${courtCode}/cases/${getBaseDateString()}`)
   })
 
