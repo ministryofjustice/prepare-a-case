@@ -1,0 +1,42 @@
+{
+  "id": "097e8104-9c2d-11eb-a8b3-0242ac130003",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D814575/convictions/241412130"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+          "convictionId": "241412130",
+          "active": false,
+          "inBreach": true,
+          "convictionDate": "2018-07-06",
+          "offences": [
+            {
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
+            },
+            {
+              "description": "High treason - 06200"
+            },
+            {
+              "description": "Common assault and battery - 10501"
+            }
+          ],
+          "sentence": {
+            "sentenceId": "123123141",
+            "description": "CJA - Indeterminate Public Prot.",
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-01-06",
+            "terminationReason": "Auto Terminated",
+            "startDate": "2018-07-06",
+            "endDate": "2020-01-06"
+          },
+          "documents": []
+        }
+  }
+}

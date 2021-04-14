@@ -1,0 +1,76 @@
+{
+  "id": "d5441214-9c2c-11eb-a8b3-0242ac130003",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/DX12340A/convictions/1309234876"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+
+      "convictionId": "1309234876",
+      "active": true,
+      "inBreach": false,
+      "convictionDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+      "offences": [
+        {
+          "description": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200"
+        },
+        {
+          "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
+        },
+        {
+          "description": "Aiding suicide - 07600"
+        },
+        {
+          "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
+        }
+      ],
+      "sentence": {
+        "sentenceId": "123123128",
+        "description": "ORA Adult Custody (inc PSS)",
+        "length": 12,
+        "lengthInDays": 365,
+        "lengthUnits": "Months",
+        "terminationDate": "2018-01-23",
+        "terminationReason": "ICMS Miscellaneous Event",
+        "currentOrderHeaderDetail" : {
+          "custodialTypeCode" : "B",
+          "custodialTypeDescription": "ORA Adult Custody (inc PSS)",
+          "mainOffenceDescription": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
+          "status": "Released - On Licence",
+          "disposalDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+          "actualReleaseDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+          "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",
+          "pssEndDate": "{{now offset='12 months' format='yyyy-MM-dd'}}",
+          "length": 12,
+          "lengthUnit": "Months"
+        },
+        "startDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+        "endDate": "{{now offset='6 months' format='yyyy-MM-dd'}}"
+      },
+      "documents": [
+        {
+          "documentId": "1d842fce-ec2d-45dc-ac9a-748d3076ca6b",
+          "documentName": "shortFormatPreSentenceReport_04092019_121424_OMIC_A_X320741.pdf",
+          "author": "John Smith",
+          "type": "COURT_REPORT_DOCUMENT",
+          "extendedDescription": "Pre-Sentence Report - Fast requested by Sheffield Crown Court on 27/02/2018",
+          "createdAt": "2018-02-28T00:00:00",
+          "subType": {
+            "code": "CJF",
+            "description": "Pre-Sentence Report - Fast"
+          },
+          "reportDocumentDates": {
+            "requestedDate": "2018-02-27",
+            "requiredDate": "2018-02-28",
+            "completedDate": "2018-02-28T00:00:00"
+          }
+        }
+      ]
+    }
+  }
+}

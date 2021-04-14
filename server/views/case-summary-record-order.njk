@@ -22,22 +22,14 @@
 
 {%- set communityData = data.communityData -%}
 
-{%- set currentOrder = {} -%}
-{%- for order in communityData.convictions if communityData.convictions | length %}
-    {% if order.convictionId | string === params.convictionId | string %}
-        {%- set currentOrder = order -%}
-    {% endif %}
-{% endfor -%}
-
-{% if currentOrder.sentence.currentOrderHeaderDetail.custodialTypeCode %}
-    {%- set custodialOrder = currentOrder.sentence.currentOrderHeaderDetail -%}
+{% if communityData.sentence.currentOrderHeaderDetail.custodialTypeCode %}
+    {%- set custodialOrder = communityData.sentence.currentOrderHeaderDetail -%}
     {%- set isOnLicence = moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').isAfter() -%}
 {% endif %}
 
 {%- set preciseDiff = params.preciseDiff -%}
 
-
-{%- for requirement in currentOrder.requirements %}
+{%- for requirement in communityData.conviction.requirements %}
     {% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
     {% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
 
@@ -53,13 +45,13 @@
     ]) }}
 {% endfor -%}
 
-{%- if moment(currentOrder.sentence.endDate, 'YYYY-MM-DD').isAfter() -%}
-    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.sentence.startDate, 'YYYY-MM-DD'), moment()) -%}
+{%- if moment(communityData.sentence.endDate, 'YYYY-MM-DD').isAfter() -%}
+    {%- set elapsedTime = params.getMonthsAndDays(moment(communityData.sentence.startDate, 'YYYY-MM-DD'), moment()) -%}
 {%- else -%}
-    {%- set elapsedTime = params.getMonthsAndDays(moment(currentOrder.sentence.startDate, 'YYYY-MM-DD'), moment(currentOrder.sentence.endDate, 'YYYY-MM-DD')) -%}
+    {%- set elapsedTime = params.getMonthsAndDays(moment(communityData.sentence.startDate, 'YYYY-MM-DD'), moment(communityData.sentence.endDate, 'YYYY-MM-DD')) -%}
 {%- endif -%}
 
-{% if currentOrder.active %}
+{% if communityData.active %}
     {# Group appointments by attended/absent and complied/failed #}
     {%- set attendances = communityData.sentenceDetails.attendances or [] -%}
     {%- set attendedAppointments = {
@@ -130,13 +122,13 @@
 
 {% block caseContent %}
 
-    <h2 class="govuk-heading-l govuk-!-margin-0">{{ currentOrder.sentence.description + (' (' + currentOrder.sentence.length + ' ' + currentOrder.sentence.lengthUnits + ')' if currentOrder.sentence.length)}}</h2>
+    <h2 class="govuk-heading-l govuk-!-margin-0">{{ communityData.sentence.description + (' (' + communityData.sentence.length + ' ' + communityData.sentence.lengthUnits + ')' if communityData.sentence.length)}}</h2>
 
     <div class="govuk-grid-row govuk-!-margin-top-6">
         <div class="govuk-grid-column-two-thirds">
 
             <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">
-                {{ currentOrder.offences[0].description }}
+                {{ communityData.offences[0].description }}
             </p>
 
             <div class="govuk-grid-row">
@@ -146,7 +138,7 @@
                         {%- if custodialOrder -%}
                             {{ "On licence" if custodialOrder.custodialTypeCode === "B" else "On post-sentence supervision (PSS)" }}
                         {% else %}
-                            {{ moment(currentOrder.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                            {{ moment(communityData.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% endif %}
                     </p>
                 </div>
@@ -162,7 +154,7 @@
                         {% if custodialOrder %}
                             {{ moment(custodialOrder.disposalDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicence else moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% else %}
-                            {{ moment(currentOrder.sentence.endDate, 'YYYY-MM-DD').format(displayDateFormat) if currentOrder.active else moment(currentOrder.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                            {{ moment(communityData.sentence.endDate, 'YYYY-MM-DD').format(displayDateFormat) if communityData.active else moment(communityData.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% endif %}
                     </p>
                 </div>
@@ -171,35 +163,35 @@
                         {% if custodialOrder %}
                             {{ "Licence ends" if isOnLicence else "PSS ends" }}
                         {% else %}
-                            {{ "Time elapsed" if currentOrder.active else "Reason" }}
+                            {{ "Time elapsed" if communityData.active else "Reason" }}
                         {% endif %}
                     </p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-elapsed-time">
                         {% if custodialOrder %}
                             {{ moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicence else moment(custodialOrder.pssEndDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% else %}
-                            {{ elapsedTime if currentOrder.active else currentOrder.sentence.terminationReason }}
+                            {{ elapsedTime if communityData.active else communityData.sentence.terminationReason }}
                         {% endif %}
                     </p>
                 </div>
             </div>
 
-                {% if currentOrder.licenceConditions | length %}
+                {% if communityData.conviction.licenceConditions | length %}
                     <h2 class="govuk-heading-m govuk-!-margin-top-8">Licence conditions</h2>
                     <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
-                        {%- for licenceConditions in currentOrder.licenceConditions %}
+                        {%- for licenceConditions in communityData.conviction.licenceConditions %}
                             <li>
                                 {{ licenceConditions.description }}
                             </li>
                         {% endfor %}
                     </ul>
-                    <a href="/{{ params.courtCode }}/case/{{ data.caseNo }}/record/{{ currentOrder.convictionId }}/licence-details" class=" govuk-body-m govuk-link govuk-link--no-visited-state">View licence conditions details</a>
+                    <a href="/{{ params.courtCode }}/case/{{ data.caseNo }}/record/{{ communityData.convictionId }}/licence-details" class=" govuk-body-m govuk-link govuk-link--no-visited-state">View licence conditions details</a>
                 {% endif %}
 
-                {% if currentOrder.pssRequirements | length %}
+                {% if communityData.pssRequirements | length %}
                     <h2 class="govuk-heading-m govuk-!-margin-top-8">Post-sentence supervision requirements</h2>
                     <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
-                        {%- for pssRequirement in currentOrder.pssRequirements %}
+                        {%- for pssRequirement in communityData.pssRequirements %}
                             <li>
                                 {{ pssRequirement.description  + (' - ' + pssRequirement.subTypeDescription if pssRequirement.subTypeDescription | length) }}
                             </li>
@@ -207,11 +199,11 @@
                     </ul>
                 {% endif %}
 
-            {% if currentOrder.requirements | length %}
+            {% if communityData.conviction.requirements | length %}
                 <h2 class="govuk-heading-m govuk-!-margin-top-8">Requirements</h2>
 
                 {%- from "govuk/components/table/macro.njk" import govukTable -%}
-                {% if currentOrder.active %}
+                {% if communityData.active %}
                     {{ govukTable(activeRequirementTableData) }}
                 {% else %}
                     {{ govukTable(inactiveRequirementTableData) }}
@@ -221,7 +213,7 @@
         </div>
     </div>
 
-    {% if currentOrder.breaches | length %}
+    {% if communityData.breaches | length %}
         <h2 class="govuk-heading-m govuk-!-margin-top-8">Breaches</h2>
         <div class="govuk-grid-row govuk-!-margin-bottom-6">
             <div class="govuk-grid-column-two-thirds">
@@ -234,10 +226,10 @@
                     </tr>
                     </thead>
                     <tbody class="govuk-table__body qa-breaches">
-                    {% for breach in currentOrder.breaches %}
+                    {% for breach in communityData.breaches %}
                         <tr class="govuk-table__row">
                             <td class="govuk-table__cell"><a
-                                        href="{{ currentOrder.convictionId }}/breach/{{ breach.breachId }}"
+                                        href="{{ communityData.convictionId }}/breach/{{ breach.breachId }}"
                                         class="qa-breach-link-{{ loop.index }} govuk-link govuk-link--no-visited-state">{{ breach.description }}</a>
                             </td>
                             <td class="govuk-table__cell">{{ breach.status }}</td>
@@ -250,7 +242,7 @@
         </div>
     {% endif %}
 
-    {% if currentOrder.active %}
+    {% if communityData.active %}
 
         <h2 class="govuk-heading-m govuk-!-margin-top-8">Attendance</h2>
 

@@ -7,6 +7,7 @@ const {
   getDetails,
   getProbationRecord,
   getProbationRecordWithRequirements,
+  getConvictionWithRequirements,
   getProbationStatusDetails,
   getSentenceDetails,
   getBreachDetails,
@@ -217,11 +218,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Order details'
 
     const { data: { crn } } = templateValues
-    let communityResponse = await getProbationRecordWithRequirements(crn)
+    let communityResponse = await getConvictionWithRequirements(crn, convictionId)
 
-    if (communityResponse.convictions) {
-      const { active, sentence } = communityResponse.convictions
-        .find(conviction => conviction.convictionId.toString() === convictionId.toString())
+    if (communityResponse) {
+      const { active, sentence } = communityResponse
       if (active) {
         const sentenceDetails = await getSentenceDetails(crn, convictionId, sentence.sentenceId)
         communityResponse = {
