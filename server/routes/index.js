@@ -44,6 +44,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('user-guide', { params: { nonce: nonce } })
   })
 
+  router.get('/accessibility-statement', (req, res) => {
+    res.render('accessibility-statement', { params: { nonce: nonce } })
+  })
+
   router.get('/my-courts', async (req, res) => {
     const { session } = req
     const userSelectedCourts = await getUserSelectedCourts(res.locals.user.userId)
