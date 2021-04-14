@@ -15,9 +15,31 @@ const getRequirements = async (convictions, crn, activeOnly) => {
   )
 }
 
+const getRequirementsForSingleConviction = async (convictionId, crn) => {
+  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/requirements`)
+  return res.data
+}
+
+const getConviction = async (crn, convictionId) => {
+  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}`) || { data: {} }
+  return res.data
+}
+
 const getProbationRecord = async crn => {
   const res = await request(`${apiUrl}/offender/${crn}/probation-record`) || { data: {} }
   return res.status >= 400 ? res : res.data
+}
+
+const getConvictionWithRequirements = async (crn, convictionId) => {
+  const responseData = await getConviction(crn, convictionId)
+  if (responseData) {
+    const enrichedConviction = await getRequirementsForSingleConviction(convictionId, crn)
+    return {
+      ...responseData,
+      conviction: enrichedConviction
+    }
+  }
+  return responseData
 }
 
 const getProbationRecordWithRequirements = async (crn, activeOnly = false) => {
@@ -64,10 +86,13 @@ const getRiskDetails = async crn => {
 module.exports = {
   getDetails,
   getProbationRecord,
+  getConvictionWithRequirements,
   getProbationRecordWithRequirements,
   getProbationStatusDetails,
   getSentenceDetails,
   getBreachDetails,
   getAttachment,
-  getRiskDetails
+  getRiskDetails,
+  getConviction,
+  getRequirementsForSingleConviction
 }

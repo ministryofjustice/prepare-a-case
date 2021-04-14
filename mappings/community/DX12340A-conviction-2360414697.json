@@ -1,0 +1,57 @@
+{
+  "id": "c589c1de-9c2c-11eb-a8b3-0242ac130003",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/DX12340A/convictions/2360414697"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "convictionId": "2360414697",
+      "active": true,
+      "inBreach": false,
+      "convictionDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+      "offences": [
+        {
+          "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
+        },
+        {
+          "description": "Abstracting electricity - 04300"
+        },
+        {
+          "description": "(Adulteration etc of milk products - 08902)"
+        },
+        {
+          "description": "Common assault and battery - 10501"
+        }
+      ],
+      "sentence": {
+        "sentenceId": "123123130",
+        "description": "ORA Adult Custody (inc PSS)",
+        "length": 18,
+        "lengthInDays": 547,
+        "lengthUnits": "Months",
+        "terminationDate": "{{now offset='5 months' format='yyyy-MM-dd'}}",
+        "terminationReason": "ICMS Miscellaneous Event",
+        "currentOrderHeaderDetail" : {
+          "custodialTypeCode" : "P",
+          "custodialTypeDescription": "ORA Adult Custody (inc PSS)",
+          "mainOffenceDescription": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
+          "status": "Post Sentence Supervision",
+          "disposalDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+          "actualReleaseDate": "{{now format='yyyy-MM-dd'}}",
+          "licenceExpiryDate": "{{now format='yyyy-MM-dd'}}",
+          "pssEndDate": "{{now offset='5 months' format='yyyy-MM-dd'}}",
+          "length": 11,
+          "lengthUnit": "Months"
+        },
+        "startDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+        "endDate": "2020-07-01"
+      },
+      "documents": []
+    }
+  }
+}
