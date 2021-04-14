@@ -1,7 +1,7 @@
-Feature: User guide
-  In order to understand how to use the Prepare a case for sentence service
+Feature: Accessibility statement
+  In order to understand how to use the accessibility features of Prepare a case for sentence service
   As an authenticated user
-  I want to be able to access a user guide within the service
+  I want to be able to access a accessibility statement within the service
 
   Scenario: View the accessibility statement page
     Given I am an authenticated user
