@@ -6,7 +6,7 @@
 <html lang="en" class="govuk-template no-js">
 <head>
 
-  {% set mainTitle = "Prepare a case for sentence" %}
+    {% set mainTitle = "Prepare a case for sentence" %}
 
     {% block head %}
         <meta charset="utf-8"/>
@@ -32,12 +32,21 @@
         <script src="/assets/accessible-autocomplete.min.js"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script nonce='{{ params.nonce }}'>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');
-            n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','{{ googleAnalyticsKey }}');</script>
+        <script nonce='{{ params.nonce }}'>(function (w, d, s, l, i) {
+            w[l] = w[l] || []
+            w[l].push({
+              'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+            })
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''
+            j.async = true
+            j.src =
+              'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+            var n = d.querySelector('[nonce]')
+            n && j.setAttribute('nonce', n.nonce || n.getAttribute('nonce'))
+            f.parentNode.insertBefore(j, f)
+          })(window, document, 'script', 'dataLayer', '{{ googleAnalyticsKey }}')</script>
 
     {% endblock %}
 </head>
@@ -54,23 +63,23 @@
 {% endblock %}
 
 {% block navigation %}
-  {%- set currentCourtHtml %}
-  <aside>
-      <span class="qa-court-name govuk-body govuk-!-font-size-16 govuk-!-font-weight-bold">{{ params.courtName }}</span>
-  </aside>
-  {% endset -%}
-  {%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
-  {{ mojPrimaryNavigation({
-    label: 'Primary navigation',
-    items: [
-      {
-        text: 'Cases',
-        href: '/' + params.courtCode + '/cases',
-        active: title === 'Cases'
-      }
-    ],
-    searchHtml: currentCourtHtml
-  }) }}
+    {%- set currentCourtHtml %}
+        <aside>
+            <span class="qa-court-name govuk-body govuk-!-font-size-16 govuk-!-font-weight-bold">{{ params.courtName }}</span>
+        </aside>
+    {% endset -%}
+    {%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
+    {{ mojPrimaryNavigation({
+        label: 'Primary navigation',
+        items: [
+            {
+                text: 'Cases',
+                href: '/' + params.courtCode + '/cases',
+                active: title === 'Cases'
+            }
+        ],
+        searchHtml: currentCourtHtml
+    }) }}
 {% endblock %}
 
 {% block keydetails %}{% endblock %}
@@ -80,35 +89,39 @@
 </nav>
 
 <div class="govuk-width-container">
-  <main class="govuk-main-wrapper" id="main-content" role="main">
-    {% block content %}{% endblock %}
-  </main>
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+        {% block content %}{% endblock %}
+    </main>
 </div>
 
 {% block footer %}
-  {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
-  {{ govukFooter({
-    meta: {
-      items: [
-        {
-          href: "/user-guide",
-          text: "User guide"
-        },
-        {
-          href: "/accessibility-statement",
-          text: "Accessibility statement"
+    {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
+    {{ govukFooter({
+        meta: {
+            items: [
+                {
+                    href: "/user-guide",
+                    text: "User guide"
+                },
+                {
+                    href: "/accessibility-statement",
+                    text: "Accessibility statement"
+                },
+                {
+                    href: "/cookies-policy",
+                    text: "Cookies policy"
+                }
+            ]
         }
-      ]
-    }
-  }) }}
+    }) }}
 {% endblock %}
 
 {% block javascripts %}{% endblock %}
 
 {% block bodyEnd %}
-  <script src="/moj/all.js"></script>
-  <script src="/govuk/all.js"></script>
-  <script>window.GOVUKFrontend.initAll()</script>
+    <script src="/moj/all.js"></script>
+    <script src="/govuk/all.js"></script>
+    <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}
 
 </body>
