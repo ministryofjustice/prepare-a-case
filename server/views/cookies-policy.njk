@@ -26,35 +26,42 @@
 
             <h2 class="govuk-heading-m">Essential cookies</h2>
             <p class="govuk-body">Essential cookies keep your information secure while you use Prepare a case for
-                sentence. We
-                do not need to ask permission to use them.</p>
-            <table>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Purpose</th>
-                    <th>Expires</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>court</td>
-                    <td>Used to remember the court you last looked at</td>
-                    <td>Does not expire</td>
-                </tr>
-                <tr>
-                    <td>connect.sid</td>
-                    <td>Keeps you logged into the service</td>
-                    <td>2 hours</td>
-                </tr>
-                <tr>
-                    <td>[cookie policy]</td>
-                    <td>Saves your cookie consent settings]</td>
-                    <td>[1 year]</td>
-                </tr>
-                </tbody>
-            </table>
-
+                sentence. We do not need to ask permission to use them.</p>
+            {% from "govuk/components/table/macro.njk" import govukTable %}
+            {{ govukTable({
+                firstCellIsHeader: true,
+                head: [
+                    {
+                        text: "Name",
+                        classes: 'app-custom-class'
+                    },
+                    {
+                        text: "Purpose",
+                        classes: 'app-custom-class'
+                    },
+                    {
+                        text: "Expires",
+                        classes: 'app-custom-class'
+                    }
+                ],
+                rows: [
+                    [
+                        { text: "court" },
+                        { text: "Used to remember the court you last looked at" },
+                        { text: "Does not expire" }
+                    ],
+                    [
+                        { text: "connect.sid" },
+                        { text: "Keeps you logged into the service" },
+                        { text: "2 hours" }
+                    ],
+                    [
+                        { text: "[cookie policy]" },
+                        { text: "[Saves your cookie consent settings]" },
+                        { text: "[1 year]" }
+                    ]
+                ]
+            }) }}
 
             <h2 class="govuk-heading-m">Analytics cookies (optional)</h2>
             <p class="govuk-body">With your permission, we use Google Analytics to collect data about how you use
@@ -67,34 +74,37 @@
                 <li>the device and browser you are using to view the service</li>
                 <li>any errors you see while using the service</li>
             </ul>
+            {% from "govuk/components/table/macro.njk" import govukTable %}
 
-            <table>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Purpose</th>
-                    <th>Expires</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>_ga</td>
-                    <td>Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people
-                        use the
-                        service.
-                    </td>
-                    <td>2 years</td>
-                </tr>
-                <tr>
-                    <td>_gid</td>
-                    <td>Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people
-                        use the
-                        service.
-                    </td>
-                    <td>24 hours</td>
-                </tr>
-                </tbody>
-            </table>
+            {{ govukTable({
+                firstCellIsHeader: true,
+                head: [
+                    {
+                        text: "Name",
+                        classes: 'app-custom-class'
+                    },
+                    {
+                        text: "Purpose",
+                        classes: 'app-custom-class'
+                    },
+                    {
+                        text: "Expires",
+                        classes: 'app-custom-class'
+                    }
+                ],
+                rows: [
+                    [
+                        { text: "_ga" },
+                        { text: "Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service." },
+                        { text: "2 years" }
+                    ],
+                    [
+                        { text: "_gid" },
+                        { text: "Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service." },
+                        { text: "24 hours" }
+                    ]
+                ]
+            }) }}
 
             {% from "govuk/components/radios/macro.njk" import govukRadios %}
             {% from "govuk/components/button/macro.njk" import govukButton %}
