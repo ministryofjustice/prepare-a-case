@@ -1,0 +1,119 @@
+{%- set hideCourtLink = true -%}
+{% extends "partials/layout.njk" %}
+
+{% set title = "Cookies policy" %}
+
+{% block navigation %}{% endblock %}
+
+{% block content %}
+    <h1 class="govuk-heading-l">Cookies</h1>
+    <p class="govuk-body">Cookies are small files saved on your phone, tablet or computer when you visit a website.</p>
+    <p class="govuk-body">We use cookies to make Prepare a case for sentence work and collect information about how you
+        use our service.</p>
+
+
+    <h2 class="govuk-heading-m">Essential cookies</h2>
+    <p class="govuk-body">Essential cookies keep your information secure while you use Prepare a case for sentence. We
+        do not need to ask permission to use them.</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Purpose</th>
+            <th>Expires</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>court</td>
+            <td>Used to remember the court you last looked at</td>
+            <td>Does not expire</td>
+        </tr>
+        <tr>
+            <td>connect.sid</td>
+            <td>Keeps you logged into the service</td>
+            <td>2 hours</td>
+        </tr>
+        <tr>
+            <td>[cookie policy]</td>
+            <td>Saves your cookie consent settings]</td>
+            <td>[1 year]</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <h2 class="govuk-heading-m">Analytics cookies (optional)</h2>
+    <p class="govuk-body">With your permission, we use Google Analytics to collect data about how you use Prepare a case
+        for sentence. This information helps us to improve our service.</p>
+    <p class="govuk-body">Google is not allowed to use or share our analytics data with anyone.</p>
+    <p class="govuk-body">Google Analytics stores anonymised information about:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>the pages you visit on Prepare a case for sentence and how long you spend on them</li>
+        <li>the device and browser you are using to view the service</li>
+        <li>any errors you see while using the service</li>
+    </ul>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Purpose</th>
+            <th>Expires</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>_ga</td>
+            <td>Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the
+                service.
+            </td>
+            <td>2 years</td>
+        </tr>
+        <tr>
+            <td>_gid</td>
+            <td>Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the
+                service.
+            </td>
+            <td>24 hours</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l">Change your cookie settings</h2>
+            <form action="/form-handler" method="post" novalidate>
+                {{ govukRadios({
+                    idPrefix: "analytics-cookies",
+                    name: "analytics-cookies",
+                    fieldset: {
+                        legend: {
+                            text: "Do you want to accept analytics cookies?",
+                            classes: "govuk-fieldset__legend--s"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes"
+                        },
+                        {
+                            value: "no",
+                            text: "No",
+                            checked: true
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    text: "Save cookie settings"
+                }) }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
