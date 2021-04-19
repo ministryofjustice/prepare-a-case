@@ -125,8 +125,7 @@
                                 </p>
                                 <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
                             </td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third"
-                                style="vertical-align: bottom">
+                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third pac-!-valign-bottom">
                                 <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">
                                     Ended
                                     on {{ moment(order.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
