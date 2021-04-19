@@ -5,8 +5,8 @@
         <ul class="govuk-tabs__list">
 
             {% for item in params.items %}
-            <li class="govuk-tabs__list-item{% if item.current %} govuk-tabs__list-item--selected{% endif %}" role="presentation">
-                <a href="{{ item.link }}" class="govuk-link govuk-link--no-visited-state govuk-tabs__tab" id="tab_{{ loop.index }}" aria-label="{{ item.a11yTitle }}{{ ' (' + item.count + ')' if item.count >= 0 }}"{% if item.current %} aria-current="location"{% endif %}>
+            <li class="govuk-tabs__list-item{% if item.current %} govuk-tabs__list-item--selected{% endif %}">
+                <a href="{{ item.link }}" class="govuk-link govuk-link--no-visited-state govuk-tabs__tab" aria-label="{{ item.a11yTitle }}{{ ' (' + item.count + ')' if item.count >= 0 }}"{% if item.current %} aria-current="location"{% endif %}>
                     {{ item.title }} {{ '(' + item.count + ')' if item.count >= 0 }}
                 </a>
             </li>
