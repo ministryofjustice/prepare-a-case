@@ -124,6 +124,12 @@ describe('Routes', () => {
     })
   })
 
+  it('should route to the cookies policy page', () => {
+    return request(app).get('/cookies-policy').then(response => {
+      expect(response.statusCode).toEqual(200)
+    })
+  })
+
   it('should remove trailing slash from route (and preserve any querystring) in order to permit the use of relative links', () => {
     return request(app).get('/B14LO/cases/2020-11-12/?page=1').then(response => {
       expect(response.statusCode).toEqual(301)

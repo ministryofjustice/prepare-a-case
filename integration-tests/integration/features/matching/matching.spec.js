@@ -9,4 +9,8 @@ And('I should see the following matched text', $data => {
   $data.raw().flat().forEach((text, index) => {
     cy.get('mark').eq(index).contains(text)
   })
+
+And('I should see the success banner message {string}', $string => {
+  cy.get('.govuk-notification-banner__heading').contains($string)
+  })
 })

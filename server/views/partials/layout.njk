@@ -31,6 +31,7 @@
 
         <script src="/assets/accessible-autocomplete.min.js"></script>
 
+{#      if(cookieBanner === 'yes'){ return gtag.js } else { nothing }#}
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script nonce='{{ params.nonce }}'>(function (w, d, s, l, i) {
             w[l] = w[l] || []
