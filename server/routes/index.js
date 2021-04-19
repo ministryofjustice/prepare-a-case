@@ -49,6 +49,17 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('accessibility-statement', { params: { nonce: nonce } })
   })
 
+  router.post('/cookie-preference', (req, res) => {
+    console.log('req.body', req.body.cookies)
+    if (req.body.cookies) {
+      if (req.body.cookies === 'reject') {
+        // DO SOMETHING HERE
+      }
+      res.cookie('analyticsCookies', req.body.cookies)
+        .redirect(302, '/')
+    }
+  })
+
   router.get('/my-courts', async (req, res) => {
     const { session } = req
     const userSelectedCourts = await getUserSelectedCourts(res.locals.user.userId)
