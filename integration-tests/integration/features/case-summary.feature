@@ -210,7 +210,7 @@ Feature: Case summary
     And I should see the text "Ended on 23 Jan 2018" within element with class "qa-previous-order-1-end-date"
 
     And I should see the following level 2 headings
-      | Current orders | Previous orders | Offender Manager | Last pre-sentence report | Last OASys assessment |
+      | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
     And I should see the body text "Angel Extravaganza"
     And I should see the hint text "Allocated on 12 Aug 2017"
 
