@@ -210,7 +210,7 @@ Feature: Case summary
     And I should see the text "Ended on 23 Jan 2018" within element with class "qa-previous-order-1-end-date"
 
     And I should see the following level 2 headings
-      | Current orders | Previous orders | Offender Manager | Last pre-sentence report | Last OASys assessment |
+      | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
     And I should see the body text "Angel Extravaganza"
     And I should see the hint text "Allocated on 12 Aug 2017"
 
@@ -266,7 +266,7 @@ Feature: Case summary
     And I should see the body text "Last attended: 4 Mar 2020 - Planned office visit (Acceptable)"
 
     And I should see the text "Order started" within element with class "qa-start-title"
-    And I should see the text "Order ends" within element with class "qa-end-title"
+    And I should see the text "Order ended" within element with class "qa-end-title"
     And I should see the text "Time elapsed" within element with class "qa-elapsed-title"
 
     And I should see the text "20 May 2019" within element with class "qa-start-date"
@@ -370,7 +370,7 @@ Feature: Case summary
     And I should see the body text "Last attended: 10 Mar 2020 - Unpaid work (Acceptable)"
 
     And I should see the text "Order started" within element with class "qa-start-title"
-    And I should see the text "Order ends" within element with class "qa-end-title"
+    And I should see the text "Order ended" within element with class "qa-end-title"
     And I should see the text "Time elapsed" within element with class "qa-elapsed-title"
 
     And I should see the text "7 Oct 2018" within element with class "qa-start-date"

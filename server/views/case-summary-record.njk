@@ -147,7 +147,7 @@
         <div class="govuk-!-margin-bottom-6">
 
             {% if data.probationStatus === "Current" %}
-                <h2 class="govuk-heading-m">Offender Manager</h2>
+                <h2 class="govuk-heading-m">Offender manager</h2>
                 {% if offenderManager.allocatedDate %}
                     <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.staff.forenames | properCase }} {{ offenderManager.staff.surname | properCase }}</p>
                     <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>

@@ -1,12 +1,13 @@
 const express = require('express')
 const getBaseDateString = require('../utils/getBaseDateString')
-const { settings, nonce } = require('../../config')
+const { settings, nonce, notification } = require('../../config')
 const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
   getDetails,
   getProbationRecord,
   getProbationRecordWithRequirements,
+  getConvictionWithRequirements,
   getProbationStatusDetails,
   getSentenceDetails,
   getBreachDetails,
@@ -33,11 +34,19 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/', (req, res) => {
     const { cookies } = req
-    res.redirect(302, cookies && cookies.court ? `/${cookies.court}/cases` : '/my-courts/setup')
+    // @FIXME: Cookie check and removal to be removed at a later date
+    if (cookies && cookies.court) {
+      res.clearCookie('court')
+    }
+    res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : '/my-courts/setup')
   })
 
   router.get('/user-guide', (req, res) => {
     res.render('user-guide', { params: { nonce: nonce } })
+  })
+
+  router.get('/accessibility-statement', (req, res) => {
+    res.render('accessibility-statement', { params: { nonce: nonce } })
   })
 
   router.get('/my-courts', async (req, res) => {
@@ -101,7 +110,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const { params: { courtCode } } = req
 
     res.status(201)
-      .cookie('court', courtCode)
+      .cookie('currentCourt', courtCode)
       .redirect(302, `/${courtCode}/cases/${getBaseDateString()}`)
   })
 
@@ -120,6 +129,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       title: 'Cases',
       params: {
         ...params,
+        notification: notification || '',
         filters: response.filters,
         page: parseInt(page, 10) || 1,
         from: startCount,
@@ -208,11 +218,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Order details'
 
     const { data: { crn } } = templateValues
-    let communityResponse = await getProbationRecordWithRequirements(crn)
+    let communityResponse = await getConvictionWithRequirements(crn, convictionId)
 
-    if (communityResponse.convictions) {
-      const { active, sentence } = communityResponse.convictions
-        .find(conviction => conviction.convictionId.toString() === convictionId.toString())
+    if (communityResponse) {
+      const { active, sentence } = communityResponse
       if (active) {
         const sentenceDetails = await getSentenceDetails(crn, convictionId, sentence.sentenceId)
         communityResponse = {

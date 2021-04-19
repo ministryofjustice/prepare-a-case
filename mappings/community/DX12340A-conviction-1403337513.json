@@ -1,0 +1,63 @@
+{
+  "id": "ce0a5bde-9c2c-11eb-a8b3-0242ac130003",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/DX12340A/convictions/1403337513"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "convictionId": "1403337513",
+      "active": true,
+      "inBreach": false,
+      "convictionDate": "2019-05-19",
+      "offences": [
+        {
+          "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
+        },
+        {
+          "description": "Common and other types of assault - 10500"
+        },
+        {
+          "description": "(Adulteration etc of milk products - 08902)"
+        },
+        {
+          "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+        }
+      ],
+      "sentence": {
+        "sentenceId": "123123127",
+        "description": "ORA Community Order",
+        "length": 18,
+        "lengthInDays": 547,
+        "lengthUnits": "Months",
+        "terminationDate": "2018-01-23",
+        "terminationReason": "ICMS Miscellaneous Event",
+        "startDate": "2019-05-20",
+        "endDate": "2020-05-25"
+      },
+      "documents": [
+        {
+          "documentId": "66b66bd6-b1fd-4883-a23d-609c16284abc",
+          "documentName": "shortFormatPreSentenceReport_X320741_121424_OMIC_A_04092019.pdf",
+          "author": "John Jones",
+          "type": "COURT_REPORT_DOCUMENT",
+          "extendedDescription": "Pre-Sentence Report - Fast requested by Sheffield Crown Court on 01/01/2018",
+          "createdAt": "2019-09-04T00:00:00",
+          "subType": {
+            "code": "CJF",
+            "description": "Pre-Sentence Report - Fast"
+          },
+          "reportDocumentDates": {
+            "requestedDate": "2018-01-01",
+            "requiredDate": "2018-01-02",
+            "completedDate": "2018-01-02T00:00:00"
+          }
+        }
+      ]
+    }
+  }
+}
