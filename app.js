@@ -49,7 +49,8 @@ module.exports = function createApp ({ signInService, userService }) {
           '\'sha256-QIG/FBh5vORMkpviiAyUOvMgp6XvwQIEagSXO2FUmyo=\'',
           `'nonce-${config.nonce}'`
         ],
-        upgradeInsecureRequests: []
+        upgradeInsecureRequests: [],
+        connectSrc: ["'self'", 'www.google-analytics.com']
       }
     }
   }))
