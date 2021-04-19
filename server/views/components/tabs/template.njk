@@ -1,13 +1,13 @@
 <div class="govuk-!-margin-bottom-5">
     <span class="govuk-body-s pac-last-updated">{{ params.status }}</span>
     <h2 class="govuk-tabs__title">Case lists</h2>
-    <ul class="govuk-tabs__list" role="tablist">
+    <ul class="govuk-tabs__list" role="tablist" aria-label="Case list selection">
 
         {% for item in params.items %}
         <li class="govuk-tabs__list-item{% if item.current %} govuk-tabs__list-item--selected{% endif %}" role="presentation">
-            <{% if item.current %}span{% else%}a href="{{ item.link }}"{% endif%} class="govuk-link govuk-link--no-visited-state govuk-tabs__tab" id="tab_{{ loop.index }}" role="tab" aria-selected="true">
+            <a href="{{ item.link }}" class="govuk-link govuk-link--no-visited-state govuk-tabs__tab" id="tab_{{ loop.index }}" role="tab" aria-selected="{{ true if item.current else "false" }}" aria-controls="case-list">
                 {{ item.title }} {{ '(' + item.count + ')' if item.count >= 0 }}
-            </{% if item.current %}span{% else%}a{% endif%}>
+            </a>
         </li>
         {% endfor %}
 

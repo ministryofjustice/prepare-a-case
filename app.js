@@ -50,7 +50,7 @@ module.exports = function createApp ({ signInService, userService }) {
           `'nonce-${config.nonce}'`
         ],
         upgradeInsecureRequests: [],
-        connectSrc: ["'self'", 'www.google-analytics.com']
+        connectSrc: ['\'self\'', 'www.google-analytics.com']
       }
     }
   }))

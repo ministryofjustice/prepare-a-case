@@ -108,6 +108,13 @@
 {% set lastestSnapshotTime = moment(params.snapshot).format('hh:mm') %}
 {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
 {% set withinDateRange = currentDate.isBetween(moment(), params.addBusinessDays(moment(), params.totalDays - 1), 'day', '[]') %}
+{% set currentTab = 1 %}
+
+{% if params.subsection === 'added' %}
+    {% set currentTab = 2 %}
+{% elseif params.subsection === 'removed' %}
+    {% set currentTab = 3 %}
+{% endif %}
 
 {%- set listTabs = [{
     title: 'Case list',
@@ -214,7 +221,8 @@
 
     {{ pacTabs({
         items: listTabs,
-        status: status
+        status: status,
+        controls: "case-list"
     }) }}
 
     {% if displayFilters %}
@@ -223,6 +231,8 @@
             filters: params.filters
         }) }}
     {% endif %}
+
+    <div id="case-list" aria-labelledby="tab_{{ currentTab }}">
 
     {% if tableData.rows | length %}
         {% block table %}
@@ -236,6 +246,8 @@
         {% endif %}
         <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "No case list information available." }}</p>
     {% endif %}
+
+    </div>
 
     {% if totalPages > 1 %}
         {% block pagination %}
