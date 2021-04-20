@@ -15,7 +15,9 @@
         {
           "staff": {
             "forenames": "Temperance",
-            "surname": "Brennan"
+            "surname": "Brennan",
+            "telephone": "01154223456",
+            "email": "d@none.com"
           },
           "allocatedDate": "2019-09-30",
           "team": {

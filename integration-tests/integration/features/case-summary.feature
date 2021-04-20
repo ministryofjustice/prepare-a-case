@@ -213,6 +213,12 @@ Feature: Case summary
       | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
     And I should see the body text "Angel Extravaganza"
     And I should see the hint text "Allocated on 12 Aug 2017"
+    And I should see the body text "Email: d@none.com"
+    And I should see the body text "Phone: 01154223456"
+    And I should see the body text "Provider: NPS Midlands"
+    And I should see the body text "LDU: N04 Division"
+    And I should see the body text "Team: OMU A"
+    And I should see the body text "Team phone: 0114 22278787"
 
     And I should see medium heading with text "Last pre-sentence report"
     And I should see the body text "Pre-Sentence Report - Fast"
