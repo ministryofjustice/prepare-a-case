@@ -30,7 +30,7 @@
         <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
 
         <script src="/assets/accessible-autocomplete.min.js"></script>
-
+{% if analyticsCookies === 'accept' %}
 {#        <!-- Global site tag (gtag.js) - Google Analytics -->#}
         <script nonce='{{ params.nonce }}'>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -38,7 +38,7 @@
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');
             n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','{{ googleAnalyticsKey }}');</script>
-
+{% endif %}
     {% endblock %}
 </head>
 <body class="govuk-template__body">
@@ -50,7 +50,7 @@
 <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
 {% block bodyStart %}
-    {% if not params.analyticsCookies %}
+    {% if not analyticsCookies %}
     {% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
 
     {% set html %}

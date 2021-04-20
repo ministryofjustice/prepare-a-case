@@ -49,6 +49,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('accessibility-statement', { params: { nonce: nonce } })
   })
 
+  router.use((req, res, next) => {
+    res.locals.analyticsCookies = req.cookies && req.cookies.analyticsCookies
+    next()
+  })
+
   router.post('/cookie-preference', (req, res) => {
     console.log('req.body', req.body.cookies)
     if (req.body.cookies) {
