@@ -13,9 +13,18 @@
       "crn": "D985513",
       "offenderManagers": [
         {
-          "forenames": "Temperance",
-          "surname": "Brennan",
-          "allocatedDate": "2019-09-30"
+          "staff": {
+            "forenames": "Temperance",
+            "surname": "Brennan",
+            "telephone": "01154223456"
+          },
+          "allocatedDate": "2019-09-30",
+          "team": {
+            "description": "Unallocated Team(N07)",
+            "localDeliveryUnit": "N07 Division",
+            "district": "N07 Division"
+          },
+          "provider": "NPS London"
         }
       ],
       "convictions": [
