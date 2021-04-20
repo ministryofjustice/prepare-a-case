@@ -6,7 +6,7 @@ Feature: Case list
   Scenario: View the case list with data containing 207 cases for the given day
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
 
     And I should see the heading "Cases"
 
@@ -50,7 +50,7 @@ Feature: Case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
 
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
     And I should see the heading "Cases"
 
     # Repeat some tests to ensure UI is consistent on subsequent pages
@@ -98,7 +98,7 @@ Feature: Case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
 
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
     And I should see the heading "Cases"
 
     When I click pagination link "3"
@@ -129,7 +129,7 @@ Feature: Case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
 
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
     And I should see the heading "Cases"
 
     When I click pagination link "5"
@@ -166,7 +166,7 @@ Feature: Case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
 
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
     And I should see the heading "Cases"
 
     When I click pagination link "5"
@@ -199,12 +199,12 @@ Feature: Case list
   Scenario: View the recently added cases on the case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
 
     When I click the "Recently added (4)" link
+    Then I should be on the "Recently added cases" page
 
     Then I should see medium heading with text "4 cases added to today's case list."
-#    Then I should see medium heading with text "4 cases added to today's case list at 08:30am"
 
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
@@ -222,19 +222,18 @@ Feature: Case list
 
     # Test state held in session
     When I navigate to the "cases" route
-    Then I should be on the "Cases" page
-    #    And I should see medium heading with text "4 cases added to today's case list at 08:30am"
+    Then I should be on the "Recently added cases" page
     And I should see medium heading with text "4 cases added to today's case list."
 
   Scenario: View the removed cases on the case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
 
     When I click the "Removed cases (1)" link
+    Then I should be on the "Removed cases" page
 
     Then I should see medium heading with text "1 case removed from today's case list."
-#    Then I should see medium heading with text "1 case removed from today's case list at 08:30am"
 
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court | Libra case number |
@@ -250,15 +249,14 @@ Feature: Case list
 
     # Test state held in session
     When I navigate to the "cases" route
-    Then I should be on the "Cases" page
-    #    And I should see medium heading with text "1 case removed from today's case list at 08:30am"
+    Then I should be on the "Removed cases" page
     And I should see medium heading with text "1 case removed from today's case list."
 
   Scenario: View the case list with data containing 5 cases for the given day
     Given I am an authenticated user
 
     When I navigate to the "cases/2020-01-02" route
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
     And I should see the heading "Cases"
     And I should see the current day as "Thursday 2 January"
 
@@ -284,7 +282,7 @@ Feature: Case list
     Given I am an authenticated user
 
     When I navigate to the "cases/2020-01-01" route
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
     And I should see the heading "Cases"
     And I should see the current day as "Wednesday 1 January"
 
@@ -300,7 +298,7 @@ Feature: Case list
   Scenario: A user wants to filter the list to show only Current offenders and quickly clear that selection
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
 
     And I should see a count of "207 cases"
 
@@ -337,7 +335,7 @@ Feature: Case list
   Scenario: A user wants to filter the list to show only court room 1 and quickly clear that selection
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
 
     And I should see a count of "207 cases"
 
@@ -374,7 +372,7 @@ Feature: Case list
   Scenario: A user wants to filter the list to show only the afternoon session and quickly clear that selection
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
 
     And I should see a count of "207 cases"
 
@@ -411,7 +409,7 @@ Feature: Case list
   Scenario: A user wants to filter the list to show only Current offenders in courtroom 1 during the afternoon session and quickly clear the selections
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
 
     And I should see a count of "207 cases"
 
@@ -452,7 +450,7 @@ Feature: Case list
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Case list" page
 
     And I should see a count of "207 cases"
 

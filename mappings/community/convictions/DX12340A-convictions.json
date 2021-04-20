@@ -14,8 +14,10 @@
       "offenderManagers": [
         {
           "staff": {
-          "forenames": "ANGEL",
-          "surname": "extravaganza"
+            "forenames": "ANGEL",
+            "surname": "extravaganza",
+            "telephone": "01154223456",
+            "email": "d@none.com"
         },
           "allocatedDate": "2017-08-12",
           "team": {
