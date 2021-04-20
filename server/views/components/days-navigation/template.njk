@@ -2,7 +2,7 @@
     {% for days in range(0, params.totalDays) %}
         {%- set thisDate = params.addBusinessDays(params.startDate, days) -%}
         {%- set isCurrentDate = params.currentDate.isSame(thisDate.format('yyyy-MM-DD')) -%}
-        <{{ "span" if isCurrentDate else "a" }} class="pac-days-navigation-item{{ " pac-days-navigation-item__link" if not isCurrentDate }}"{% if not isCurrentDate %} href="{{ params.baseUrl + '/' + thisDate.format('yyyy-MM-DD') }}"{% endif %}>
+        <{{ "span" if isCurrentDate else "a" }} class="pac-days-navigation-item{{ " pac-days-navigation-item__link" if not isCurrentDate }}"{% if not isCurrentDate %} href="{{ params.baseUrl + '/' + thisDate.format('yyyy-MM-DD') }}"{% else %} aria-current="date"{% endif %} aria-label="View case list for {{ thisDate.format('dddd Do') }}">
 
             <span>{{ thisDate.format('ddd') }} </span>
             <span class="govuk-!-font-size-24 govuk-!-font-weight-bold">{{ thisDate.format('D') }}</span>
