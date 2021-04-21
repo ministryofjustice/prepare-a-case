@@ -45,7 +45,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/accessibility-statement', (req, res) => {
-    res.render('accessibility-statement', { params: { nonce: nonce } })
+    const { session } = req
+    res.render('accessibility-statement', { params: { nonce: nonce, backLink: session.backLink } })
   })
 
   router.get('/my-courts', async (req, res) => {
