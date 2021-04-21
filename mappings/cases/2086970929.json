@@ -27,7 +27,8 @@
         {
           "offenceTitle": "Theft from the person of another",
           "offenceSummary": "On 24/03/2016 at Newcastle stole NINTENDO SWITCH to the value of 300.00, belonging to Wong Landry.",
-          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 1
         }
       ],
       "defendantSex": "F",
@@ -36,11 +37,13 @@
         "line1": "72",
         "line2": "Kathleen Court",
         "postcode": "eh21 5dr",
-        "line3": "Edinburgh",
-        "line4": null,
-        "line5": null
+        "line3": "Edinburgh"
       },
-      "defendantDob": "1969-09-05"
+      "defendantDob": "1969-09-05",
+      "nationality1": "",
+      "createdToday": true,
+      "removed": false,
+      "numberOfPossibleMatches": 0
     }
   }
 }

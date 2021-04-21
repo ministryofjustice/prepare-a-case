@@ -18,7 +18,7 @@
       "pnc": "A/1234560BA",
       "probationStatus": "No record",
       "session": "AFTERNOON",
-      "previouslyKnownTerminationDate": null,
+      "previouslyKnownTerminationDate": "",
       "suspendedSentenceOrder": false,
       "breach": false,
       "preSentenceActivity": false,
@@ -26,22 +26,26 @@
         {
           "offenceTitle": "Assault by beating",
           "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Howe Williams by beating him.",
-          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
+          "sequenceNumber": 1
         },
         {
           "offenceTitle": "Theft from a shop",
           "offenceSummary": "On 01/01/2015 at Zolarity, Leeds, stole LAPTOP to the value of £987.00, belonging to Powers Gould.",
-          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 2
         },
         {
           "offenceTitle": "Theft from a shop",
           "offenceSummary": "On 01/01/2015 at Xixan, Sheffield, stole COMPUTER to the value of £987.00, belonging to Cote Ochoa.",
-          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 3
         },
         {
           "offenceTitle": "Assault by beating",
           "offenceSummary": "On 01/01/2016 at Bangor assaulted Watkins Cummings by beating him.",
-          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
+          "sequenceNumber": 4
         }
       ],
       "defendantSex": "F",
@@ -50,11 +54,13 @@
         "line1": "91",
         "line2": "Barbey street",
         "postcode": "ad21 5dr",
-        "line3": "Sheffield",
-        "line4": null,
-        "line5": null
+        "line3": "Sheffield"
       },
-      "defendantDob": "1955-04-08"
+      "defendantDob": "1955-04-08",
+      "nationality1": "",
+      "createdToday": true,
+      "removed": false,
+      "numberOfPossibleMatches": 0
     }
   }
 }

@@ -18,11 +18,6 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
       validateSchema(parsedMockData, schema)
     })
 
-    it('should validate the WireMock mocks against the JSON schema', () => {
-      const mockPath = process.env.INIT_CWD + '/mappings/matching/probation-status-detail'
-      validateMocks(mockPath, schema)
-    })
-
     it('returns the defendant probation status details', async () => {
       await provider.addInteraction({
         state: 'an offender record exists',
@@ -44,6 +39,11 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
       const response = await request(`${provider.mockService.baseUrl}${apiUrl}`)
       expect(response.data).toEqual(parsedMockData)
       return response
+    })
+
+    it('should validate the WireMock mocks against the JSON schema', () => {
+      const mockPath = process.env.INIT_CWD + '/mappings/matching/probation-status-detail'
+      validateMocks(mockPath, schema)
     })
   })
 })

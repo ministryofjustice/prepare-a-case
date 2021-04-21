@@ -5,7 +5,6 @@ const { Matchers } = require('@pact-foundation/pact')
 const { request } = require('../../../server/services/utils/request')
 const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
-const sentenceMock = require('../../../mappings/community/sentence/DX12340A-sentence-1309234876.json')
 const pactResponseMock = require('./get-sentence-details.test.pact.json')
 const schema = require('../../../schemas/get-sentence.schema.json')
 
@@ -42,6 +41,11 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
       const response = await request(`${provider.mockService.baseUrl}${apiUrl}`)
       expect(response.data).toEqual(parsedMockData)
       return response
+    })
+
+    it('should validate the WireMock mocks against the JSON schema', () => {
+      const mockPath = process.env.INIT_CWD + '/mappings/community/sentence'
+      validateMocks(mockPath, schema)
     })
   })
 })

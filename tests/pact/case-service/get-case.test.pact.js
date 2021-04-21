@@ -1,4 +1,4 @@
-/* global describe, beforeEach, it, expect */
+/* global describe, it, expect */
 const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
 
@@ -45,6 +45,5 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
     it('should validate the WireMock mocks against the JSON schema', () => {
       validateMocks(process.env.INIT_CWD + '/mappings/cases', schema)
     })
-
   })
 })

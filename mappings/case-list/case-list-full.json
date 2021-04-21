@@ -29,6 +29,7 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -57,9 +58,7 @@
             "line1": "91",
             "line2": "Barbey Street",
             "postcode": "ad21 5dr",
-            "line3": "Sheffield",
-            "line4": null,
-            "line5": null
+            "line3": "Sheffield"
           },
           "defendantDob": "1980-10-31"
         },
@@ -76,6 +75,7 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -104,9 +104,7 @@
             "line1": "91",
             "line2": "Barbey street",
             "postcode": "ad21 5dr",
-            "line3": "Sheffield",
-            "line4": null,
-            "line5": null
+            "line3": "Sheffield"
           },
           "defendantDob": "1955-04-08"
         },
@@ -124,6 +122,7 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -147,9 +146,7 @@
             "line1": "43",
             "line2": "Hunterfly Place",
             "postcode": "ad21 5dr",
-            "line3": "Birmingham",
-            "line4": null,
-            "line5": null
+            "line3": "Birmingham"
           },
           "defendantDob": "1989-02-18"
         },
@@ -166,6 +163,7 @@
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -184,9 +182,7 @@
             "line1": "70",
             "line2": "Guider Avenue",
             "postcode": "ad21 5dr",
-            "line3": "Leeds",
-            "line4": null,
-            "line5": null
+            "line3": "Leeds"
           },
           "defendantDob": "1980-09-13"
         },
@@ -204,6 +200,7 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -241,9 +238,7 @@
             "line1": "37",
             "line2": "Maple Avenue",
             "postcode": "ad21 5dr",
-            "line3": "London",
-            "line4": null,
-            "line5": null
+            "line3": "London"
           },
           "defendantDob": "1980-08-13"
         },
@@ -253,12 +248,14 @@
           "courtRoom": "08",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "A/8404713BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -287,9 +284,7 @@
             "line1": "49",
             "line2": "Rochester Avenue",
             "postcode": "ad21 5dr",
-            "line3": "Bangor",
-            "line4": null,
-            "line5": null
+            "line3": "Bangor"
           },
           "defendantDob": "1958-10-13"
         },
@@ -300,12 +295,14 @@
           "createdToday": true,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -334,9 +331,7 @@
             "line1": "25",
             "line2": "Harman Street",
             "postcode": "ad21 5dr",
-            "line3": "Bangor",
-            "line4": null,
-            "line5": null
+            "line3": "Bangor"
           },
           "defendantDob": "1954-09-05"
         },
@@ -346,12 +341,14 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2013-01-01",
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -365,9 +362,7 @@
             "line1": "72",
             "line2": "Kathleen Court",
             "postcode": "ad21 5dr",
-            "line3": "Edinburgh",
-            "line4": null,
-            "line5": null
+            "line3": "Edinburgh"
           },
           "defendantDob": "1969-05-09"
         },
@@ -377,12 +372,14 @@
           "courtRoom": "03",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2016-01-01",
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -411,9 +408,7 @@
             "line1": "94",
             "line2": "Thatford Avenue",
             "postcode": "ad21 5dr",
-            "line3": "London",
-            "line4": null,
-            "line5": null
+            "line3": "London"
           },
           "defendantDob": "1955-03-11"
         },
@@ -430,6 +425,7 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -458,9 +454,7 @@
             "line1": "96",
             "line2": "Schweikerts Walk",
             "postcode": "ad21 5dr",
-            "line3": "Cardiff",
-            "line4": null,
-            "line5": null
+            "line3": "Cardiff"
           },
           "defendantDob": "1979-10-18"
         },
@@ -470,12 +464,14 @@
           "courtRoom": "02",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "D/9874483AB",
           "probationStatus": "Current",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -489,9 +485,7 @@
             "line1": "98",
             "line2": "Micieli Place",
             "postcode": "ad21 5dr",
-            "line3": "Liverpool",
-            "line4": null,
-            "line5": null
+            "line3": "Liverpool"
           },
           "defendantDob": "1996-06-06"
         },
@@ -501,12 +495,14 @@
           "courtRoom": "06",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "A/987930B",
           "probationStatus": "Current",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2013-01-01",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -525,9 +521,7 @@
             "line1": "40",
             "line2": "Lawrence Avenue",
             "postcode": "ad21 5dr",
-            "line3": "Newcastle",
-            "line4": null,
-            "line5": null
+            "line3": "Newcastle"
           },
           "defendantDob": "1975-07-29"
         },
@@ -537,12 +531,14 @@
           "courtRoom": "07",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -576,9 +572,7 @@
             "line1": "35",
             "line2": "Cook Street",
             "postcode": "ad21 5dr",
-            "line3": "Newcastle",
-            "line4": null,
-            "line5": null
+            "line3": "Newcastle"
           },
           "defendantDob": "1984-06-03"
         },
@@ -588,12 +582,14 @@
           "courtRoom": "06",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -627,9 +623,7 @@
             "line1": "77",
             "line2": "Elton Street",
             "postcode": "ad21 5dr",
-            "line3": "Liverpool",
-            "line4": null,
-            "line5": null
+            "line3": "Liverpool"
           },
           "defendantDob": "1991-02-21"
         },
@@ -639,12 +633,14 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -658,9 +654,7 @@
             "line1": "42",
             "line2": "Terrace Place",
             "postcode": "ad21 5dr",
-            "line3": "Edinburgh",
-            "line4": null,
-            "line5": null
+            "line3": "Edinburgh"
           },
           "defendantDob": "1967-02-20"
         },
@@ -670,12 +664,14 @@
           "courtRoom": "03",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -689,9 +685,7 @@
             "line1": "12",
             "line2": "Beard Street",
             "postcode": "ad21 5dr",
-            "line3": "Cardiff",
-            "line4": null,
-            "line5": null
+            "line3": "Cardiff"
           },
           "defendantDob": "1974-04-03"
         },
@@ -701,12 +695,14 @@
           "courtRoom": "03",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -725,9 +721,7 @@
             "line1": "67",
             "line2": "Portland Avenue",
             "postcode": "ad21 5dr",
-            "line3": "Aberdeen",
-            "line4": null,
-            "line5": null
+            "line3": "Aberdeen"
           },
           "defendantDob": "1955-03-02"
         },
@@ -737,12 +731,14 @@
           "courtRoom": "07",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2015-01-01",
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -776,9 +772,7 @@
             "line1": "89",
             "line2": "Wythe Avenue",
             "postcode": "ad21 5dr",
-            "line3": "Manchester",
-            "line4": null,
-            "line5": null
+            "line3": "Manchester"
           },
           "defendantDob": "1955-08-08"
         },
@@ -788,12 +782,14 @@
           "courtRoom": "04",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -827,9 +823,7 @@
             "line1": "105",
             "line2": "Winthrop Street",
             "postcode": "ad21 5dr",
-            "line3": "Birmingham",
-            "line4": null,
-            "line5": null
+            "line3": "Birmingham"
           },
           "defendantDob": "1976-01-07"
         },
@@ -839,12 +833,14 @@
           "courtRoom": "07",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2013-01-01",
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -868,9 +864,7 @@
             "line1": "28",
             "line2": "Amherst Street",
             "postcode": "ad21 5dr",
-            "line3": "Manchester",
-            "line4": null,
-            "line5": null
+            "line3": "Manchester"
           },
           "defendantDob": "1964-03-23"
         },
@@ -880,12 +874,14 @@
           "courtRoom": "03",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -931,12 +927,14 @@
           "courtRoom": "03",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -962,12 +960,14 @@
           "courtRoom": "04",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -1008,12 +1008,14 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -1032,9 +1034,7 @@
             "line1": "40",
             "line2": "Jamaica Avenue",
             "postcode": "ad21 5dr",
-            "line3": "Aberdeen",
-            "line4": null,
-            "line5": null
+            "line3": "Aberdeen"
           },
           "defendantDob": "1982-10-17"
         },
@@ -1044,12 +1044,14 @@
           "courtRoom": "02",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -1090,12 +1092,14 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -1136,6 +1140,7 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
@@ -1167,6 +1172,7 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
@@ -1213,6 +1219,7 @@
           "courtRoom": "07",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
@@ -1249,6 +1256,7 @@
           "courtRoom": "06",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
@@ -1300,6 +1308,7 @@
           "courtRoom": "02",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
@@ -1346,6 +1355,7 @@
           "courtRoom": "08",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
@@ -1377,6 +1387,7 @@
           "courtRoom": "04",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
@@ -1408,6 +1419,7 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
@@ -1439,6 +1451,7 @@
           "courtRoom": "08",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
@@ -1485,6 +1498,7 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
@@ -1521,6 +1535,7 @@
           "courtRoom": "08",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
@@ -1557,6 +1572,7 @@
           "courtRoom": "07",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
@@ -1588,6 +1604,7 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
@@ -1634,6 +1651,7 @@
           "courtRoom": "02",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
@@ -1665,6 +1683,7 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
@@ -1711,6 +1730,7 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
@@ -1747,6 +1767,7 @@
           "courtRoom": "03",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
@@ -1783,6 +1804,7 @@
           "courtRoom": "09",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
@@ -1829,6 +1851,7 @@
           "courtRoom": "04",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Current",
           "session": "MORNING",
@@ -1870,6 +1893,7 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
@@ -1901,6 +1925,7 @@
           "courtRoom": "04",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
@@ -1942,6 +1967,7 @@
           "courtRoom": "09",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "No record",
           "session": "MORNING",
@@ -1988,6 +2014,7 @@
           "courtRoom": "06",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
@@ -2039,6 +2066,7 @@
           "courtRoom": "01",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
+          "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
           "session": "MORNING",
@@ -2078,6 +2106,7 @@
           "caseNo": "5148210295",
           "courtCode": "SHF",
           "courtRoom": "05",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -2109,6 +2138,7 @@
           "caseNo": "7415746830",
           "courtCode": "SHF",
           "courtRoom": "07",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -2140,6 +2170,7 @@
           "caseNo": "4236467764",
           "courtCode": "SHF",
           "courtRoom": "07",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -2186,6 +2217,7 @@
           "caseNo": "9012154264",
           "courtCode": "SHF",
           "courtRoom": "03",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -2237,6 +2269,7 @@
           "caseNo": "7084484031",
           "courtCode": "SHF",
           "courtRoom": "04",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -2278,6 +2311,7 @@
           "caseNo": "2045948461",
           "courtCode": "SHF",
           "courtRoom": "07",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -2319,6 +2353,7 @@
           "caseNo": "3982940184",
           "courtCode": "SHF",
           "courtRoom": "03",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -2360,6 +2395,7 @@
           "caseNo": "9745829061",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -2396,6 +2432,7 @@
           "caseNo": "2052912480",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -2447,6 +2484,7 @@
           "caseNo": "3062690674",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -2478,6 +2516,7 @@
           "caseNo": "797019417",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -2519,6 +2558,7 @@
           "caseNo": "8415930732",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -2550,6 +2590,7 @@
           "caseNo": "6225971136",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -2586,6 +2627,7 @@
           "caseNo": "1210360926",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -2632,6 +2674,7 @@
           "caseNo": "205991662",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -2678,6 +2721,7 @@
           "caseNo": "2942078342",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -2729,6 +2773,7 @@
           "caseNo": "3668549685",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -2765,6 +2810,7 @@
           "caseNo": "2596103090",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -2801,6 +2847,7 @@
           "caseNo": "3795331015",
           "courtCode": "SHF",
           "courtRoom": "01",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -2842,6 +2889,7 @@
           "caseNo": "7241004582",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -2878,6 +2926,7 @@
           "caseNo": "7699786867",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -2919,6 +2968,7 @@
           "caseNo": "7394831105",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -2965,6 +3015,7 @@
           "caseNo": "7811316666",
           "courtCode": "SHF",
           "courtRoom": "01",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -3006,6 +3057,7 @@
           "caseNo": "7027607672",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -3042,6 +3094,7 @@
           "caseNo": "7073533893",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -3088,6 +3141,7 @@
           "caseNo": "4037857588",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -3129,6 +3183,7 @@
           "caseNo": "4270697569",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -3175,6 +3230,7 @@
           "caseNo": "3552330760",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -3206,6 +3262,7 @@
           "caseNo": "3374825657",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -3257,6 +3314,7 @@
           "caseNo": "1059778165",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -3303,6 +3361,7 @@
           "caseNo": "198802204",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -3344,6 +3403,7 @@
           "caseNo": "5622691303",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -3380,6 +3440,7 @@
           "caseNo": "197285501",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -3411,6 +3472,7 @@
           "caseNo": "6257916793",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -3447,6 +3509,7 @@
           "caseNo": "5850516869",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -3483,6 +3546,7 @@
           "caseNo": "473494470",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -3514,6 +3578,7 @@
           "caseNo": "1025623794",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -3550,6 +3615,7 @@
           "caseNo": "3662381191",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -3586,6 +3652,7 @@
           "caseNo": "9713472868",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -3622,6 +3689,7 @@
           "caseNo": "7147014888",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -3663,6 +3731,7 @@
           "caseNo": "2910211505",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -3694,6 +3763,7 @@
           "caseNo": "7624419506",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -3730,6 +3800,7 @@
           "caseNo": "5214715895",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -3776,6 +3847,7 @@
           "caseNo": "8787952378",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -3812,6 +3884,7 @@
           "caseNo": "790656181",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -3843,6 +3916,7 @@
           "caseNo": "3132958636",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -3889,6 +3963,7 @@
           "caseNo": "2541866345",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "pnc": "A/1234560BA",
@@ -3925,6 +4000,7 @@
           "caseNo": "7674368825",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -3961,6 +4037,7 @@
           "caseNo": "5455143269",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "pnc": "A/1234560BA",
@@ -4012,6 +4089,7 @@
           "caseNo": "1031595437",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "pnc": "A/1234560BA",
@@ -4053,6 +4131,8 @@
           "caseNo": "894418049",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "No record",
@@ -4087,6 +4167,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Eva Gillespie",
           "defendantAddress": {
             "line1": "41",
@@ -4102,6 +4183,8 @@
           "caseNo": "248015613",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -4131,6 +4214,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Ethel Gonzalez",
           "defendantAddress": {
             "line1": "14",
@@ -4146,6 +4230,8 @@
           "caseNo": "5773936719",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -4180,6 +4266,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Toni Blackburn",
           "defendantAddress": {
             "line1": "63",
@@ -4195,6 +4282,8 @@
           "caseNo": "3616293691",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Previously known",
@@ -4214,6 +4303,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Haley Cleveland",
           "defendantAddress": {
             "line1": "81",
@@ -4229,6 +4319,8 @@
           "caseNo": "2086016320",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "No record",
@@ -4258,6 +4350,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Abbott White",
           "defendantAddress": {
             "line1": "55",
@@ -4273,6 +4366,8 @@
           "caseNo": "7356768590",
           "courtCode": "SHF",
           "courtRoom": "01",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "No record",
@@ -4307,6 +4402,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Diana Roman",
           "defendantAddress": {
             "line1": "35",
@@ -4322,6 +4418,8 @@
           "caseNo": "6676480059",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -4341,6 +4439,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Young Love",
           "defendantAddress": {
             "line1": "4",
@@ -4356,6 +4455,8 @@
           "caseNo": "6892123542",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -4390,6 +4491,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Florence Hatfield",
           "defendantAddress": {
             "line1": "32",
@@ -4405,6 +4507,8 @@
           "caseNo": "823639735",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -4419,6 +4523,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Esther Mcintosh",
           "defendantAddress": {
             "line1": "63",
@@ -4434,6 +4539,8 @@
           "caseNo": "2874037481",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "No record",
@@ -4458,6 +4565,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Nina Sanchez",
           "defendantAddress": {
             "line1": "76",
@@ -4473,6 +4581,8 @@
           "caseNo": "9238249718",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "No record",
@@ -4497,6 +4607,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Knapp Holden",
           "defendantAddress": {
             "line1": "29",
@@ -4512,6 +4623,8 @@
           "caseNo": "5926623578",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -4531,6 +4644,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Rush Miranda",
           "defendantAddress": {
             "line1": "71",
@@ -4546,6 +4660,8 @@
           "caseNo": "174454816",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Previously known",
@@ -4580,6 +4696,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Andrews Lawrence",
           "defendantAddress": {
             "line1": "47",
@@ -4595,6 +4712,8 @@
           "caseNo": "3775957192",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -4614,6 +4733,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Sullivan Lynch",
           "defendantAddress": {
             "line1": "4",
@@ -4629,6 +4749,8 @@
           "caseNo": "9228923691",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -4658,6 +4780,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Juanita Lott",
           "defendantAddress": {
             "line1": "27",
@@ -4673,6 +4796,8 @@
           "caseNo": "2452179871",
           "courtCode": "SHF",
           "courtRoom": "01",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -4707,6 +4832,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Crosby Baird",
           "defendantAddress": {
             "line1": "103",
@@ -4722,6 +4848,8 @@
           "caseNo": "6866541491",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -4736,6 +4864,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Shaw Hebert",
           "defendantAddress": {
             "line1": "24",
@@ -4751,6 +4880,8 @@
           "caseNo": "51845489",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -4775,6 +4906,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Chelsea Olson",
           "defendantAddress": {
             "line1": "84",
@@ -4790,6 +4922,8 @@
           "caseNo": "9635496213",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -4809,6 +4943,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Nell Salazar",
           "defendantAddress": {
             "line1": "8",
@@ -4824,6 +4959,8 @@
           "caseNo": "9108457541",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "No record",
@@ -4853,6 +4990,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Constance Bradford",
           "defendantAddress": {
             "line1": "7",
@@ -4868,6 +5006,8 @@
           "caseNo": "1446524656",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -4892,6 +5032,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Pacheco Burgess",
           "defendantAddress": {
             "line1": "100",
@@ -4907,6 +5048,8 @@
           "caseNo": "4058290552",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -4921,6 +5064,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Craig Hahn",
           "defendantAddress": {
             "line1": "88",
@@ -4936,6 +5080,8 @@
           "caseNo": "3614304886",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -4970,6 +5116,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Livingston Sherman",
           "defendantAddress": {
             "line1": "26",
@@ -4985,6 +5132,8 @@
           "caseNo": "720997729",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -5009,6 +5158,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Elinor Morton",
           "defendantAddress": {
             "line1": "61",
@@ -5024,6 +5174,8 @@
           "caseNo": "5417756421",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -5053,6 +5205,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Lydia Reynolds",
           "defendantAddress": {
             "line1": "57",
@@ -5068,6 +5221,8 @@
           "caseNo": "3581791976",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -5097,6 +5252,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Kim Forbes",
           "defendantAddress": {
             "line1": "46",
@@ -5112,6 +5268,8 @@
           "caseNo": "7485579831",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -5131,6 +5289,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Ruth Mccullough",
           "defendantAddress": {
             "line1": "58",
@@ -5146,6 +5305,8 @@
           "caseNo": "9039641907",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "No record",
@@ -5160,6 +5321,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Mariana Parks",
           "defendantAddress": {
             "line1": "94",
@@ -5175,6 +5337,8 @@
           "caseNo": "8224051886",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -5199,6 +5363,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Valdez Maddox",
           "defendantAddress": {
             "line1": "2",
@@ -5214,6 +5379,8 @@
           "caseNo": "9518859484",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -5248,6 +5415,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Kemp Ortega",
           "defendantAddress": {
             "line1": "70",
@@ -5263,6 +5431,8 @@
           "caseNo": "8475694471",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -5277,6 +5447,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Kirsten Greene",
           "defendantAddress": {
             "line1": "79",
@@ -5292,6 +5463,8 @@
           "caseNo": "5136401644",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -5311,6 +5484,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Kelley Richmond",
           "defendantAddress": {
             "line1": "41",
@@ -5326,6 +5500,8 @@
           "caseNo": "7639138598",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -5345,6 +5521,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Jimmie Mays",
           "defendantAddress": {
             "line1": "82",
@@ -5360,6 +5537,8 @@
           "caseNo": "3037988588",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -5374,6 +5553,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Dyer Pugh",
           "defendantAddress": {
             "line1": "53",
@@ -5389,6 +5569,8 @@
           "caseNo": "4772528592",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -5408,6 +5590,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Louise Randall",
           "defendantAddress": {
             "line1": "89",
@@ -5423,6 +5606,8 @@
           "caseNo": "9785597881",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Current",
@@ -5442,6 +5627,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Margie Carey",
           "defendantAddress": {
             "line1": "88",
@@ -5457,6 +5643,8 @@
           "caseNo": "1652889365",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -5476,6 +5664,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Vera Pena",
           "defendantAddress": {
             "line1": "41",
@@ -5491,6 +5680,8 @@
           "caseNo": "9351552182",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -5510,6 +5701,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Knox Rice",
           "defendantAddress": {
             "line1": "99",
@@ -5525,6 +5717,8 @@
           "caseNo": "9184573478",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "No record",
@@ -5544,6 +5738,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Norton Kennedy",
           "defendantAddress": {
             "line1": "76",
@@ -5559,6 +5754,8 @@
           "caseNo": "5036302000",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "No record",
@@ -5593,6 +5790,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Haley Hardin",
           "defendantAddress": {
             "line1": "39",
@@ -5608,6 +5806,8 @@
           "caseNo": "5630822864",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -5622,6 +5822,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Boone Brady",
           "defendantAddress": {
             "line1": "11",
@@ -5637,6 +5838,8 @@
           "caseNo": "404614546",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -5651,6 +5854,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Sophie Salas",
           "defendantAddress": {
             "line1": "38",
@@ -5666,6 +5870,8 @@
           "caseNo": "3607076442",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Current",
@@ -5695,6 +5901,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Fowler Lynn",
           "defendantAddress": {
             "line1": "26",
@@ -5710,6 +5917,8 @@
           "caseNo": "7001965716",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -5739,6 +5948,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Reva Pennington",
           "defendantAddress": {
             "line1": "44",
@@ -5754,6 +5964,8 @@
           "caseNo": "8578055503",
           "courtCode": "SHF",
           "courtRoom": "01",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -5778,6 +5990,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Pate Richard",
           "defendantAddress": {
             "line1": "23",
@@ -5793,6 +6006,8 @@
           "caseNo": "1410957783",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Current",
@@ -5822,6 +6037,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Harrison Knight",
           "defendantAddress": {
             "line1": "88",
@@ -5837,6 +6053,8 @@
           "caseNo": "2053630753",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -5866,6 +6084,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Simpson Solis",
           "defendantAddress": {
             "line1": "26",
@@ -5881,6 +6100,8 @@
           "caseNo": "9791442914",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -5915,6 +6136,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Bradley Fulton",
           "defendantAddress": {
             "line1": "60",
@@ -5930,6 +6152,8 @@
           "caseNo": "660575640",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -5964,6 +6188,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Ingrid Mclean",
           "defendantAddress": {
             "line1": "49",
@@ -5979,6 +6204,8 @@
           "caseNo": "4061799445",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -6008,6 +6235,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Adrian Lawson",
           "defendantAddress": {
             "line1": "39",
@@ -6023,6 +6251,8 @@
           "caseNo": "8615926616",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "No record",
@@ -6052,6 +6282,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Hobbs Jimenez",
           "defendantAddress": {
             "line1": "94",
@@ -6067,6 +6298,8 @@
           "caseNo": "5315462236",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "No record",
@@ -6086,6 +6319,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Dionne Hutchinson",
           "defendantAddress": {
             "line1": "53",
@@ -6101,6 +6335,8 @@
           "caseNo": "6696474013",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -6130,6 +6366,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Sutton Cooke",
           "defendantAddress": {
             "line1": "69",
@@ -6145,6 +6382,8 @@
           "caseNo": "1890168958",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -6169,6 +6408,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Karla Reese",
           "defendantAddress": {
             "line1": "82",
@@ -6184,6 +6424,8 @@
           "caseNo": "2483476785",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -6198,6 +6440,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Rebekah Morse",
           "defendantAddress": {
             "line1": "64",
@@ -6213,6 +6456,8 @@
           "caseNo": "8372630617",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -6247,6 +6492,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Duke Lester",
           "defendantAddress": {
             "line1": "75",
@@ -6262,6 +6508,8 @@
           "caseNo": "5411430220",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "No record",
@@ -6286,6 +6534,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Concetta Stein",
           "defendantAddress": {
             "line1": "38",
@@ -6301,6 +6550,8 @@
           "caseNo": "6015685456",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Current",
@@ -6335,6 +6586,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Banks Osborne",
           "defendantAddress": {
             "line1": "62",
@@ -6350,6 +6602,8 @@
           "caseNo": "7257655358",
           "courtCode": "SHF",
           "courtRoom": "01",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -6379,6 +6633,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Rene Skinner",
           "defendantAddress": {
             "line1": "9",
@@ -6394,6 +6649,8 @@
           "caseNo": "7466729913",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -6423,6 +6680,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Good Weiss",
           "defendantAddress": {
             "line1": "79",
@@ -6438,6 +6696,8 @@
           "caseNo": "6303737650",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -6452,6 +6712,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Rodriguez Holcomb",
           "defendantAddress": {
             "line1": "32",
@@ -6467,6 +6728,8 @@
           "caseNo": "2219535816",
           "courtCode": "SHF",
           "courtRoom": "01",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Current",
@@ -6486,6 +6749,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Jolene Schwartz",
           "defendantAddress": {
             "line1": "15",
@@ -6501,6 +6765,8 @@
           "caseNo": "1283242691",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -6520,6 +6786,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Cora Dotson",
           "defendantAddress": {
             "line1": "104",
@@ -6535,6 +6802,8 @@
           "caseNo": "2053136038",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "No record",
@@ -6559,6 +6828,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Hoover Flowers",
           "defendantAddress": {
             "line1": "18",
@@ -6574,6 +6844,8 @@
           "caseNo": "2695572830",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "No record",
@@ -6603,6 +6875,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Cherry Sheppard",
           "defendantAddress": {
             "line1": "31",
@@ -6618,6 +6891,8 @@
           "caseNo": "3598762079",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -6632,6 +6907,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Minerva Velez",
           "defendantAddress": {
             "line1": "15",
@@ -6647,6 +6923,8 @@
           "caseNo": "1262645589",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -6671,6 +6949,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Black Lyons",
           "defendantAddress": {
             "line1": "15",
@@ -6686,6 +6965,8 @@
           "caseNo": "8455529421",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -6715,6 +6996,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Nielsen Woods",
           "defendantAddress": {
             "line1": "26",
@@ -6730,6 +7012,8 @@
           "caseNo": "9805172534",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "No record",
@@ -6764,6 +7048,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Alyssa Ramsey",
           "defendantAddress": {
             "line1": "93",
@@ -6779,6 +7064,8 @@
           "caseNo": "2631421755",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -6808,6 +7095,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Claudette Dunn",
           "defendantAddress": {
             "line1": "54",
@@ -6823,6 +7111,8 @@
           "caseNo": "6778977868",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -6857,6 +7147,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Maricela Trevino",
           "defendantAddress": {
             "line1": "52",
@@ -6872,6 +7163,8 @@
           "caseNo": "5376812272",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -6886,6 +7179,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Burnett Weeks",
           "defendantAddress": {
             "line1": "69",
@@ -6901,6 +7195,8 @@
           "caseNo": "9150613561",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Previously known",
@@ -6915,6 +7211,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Nelson Wilkins",
           "defendantAddress": {
             "line1": "46",
@@ -6930,6 +7227,8 @@
           "caseNo": "8748432110",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Current",
@@ -6954,6 +7253,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Kathrine Hodge",
           "defendantAddress": {
             "line1": "62",
@@ -6969,6 +7269,8 @@
           "caseNo": "152703214",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -6993,6 +7295,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Jensen Rasmussen",
           "defendantAddress": {
             "line1": "70",
@@ -7008,6 +7311,8 @@
           "caseNo": "6163846426",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -7042,6 +7347,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Robles Ryan",
           "defendantAddress": {
             "line1": "80",
@@ -7057,6 +7363,8 @@
           "caseNo": "6625816084",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Previously known",
@@ -7086,6 +7394,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Bobbie Fisher",
           "defendantAddress": {
             "line1": "27",
@@ -7101,6 +7410,8 @@
           "caseNo": "3313870321",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -7125,6 +7436,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Luisa Ball",
           "defendantAddress": {
             "line1": "54",
@@ -7140,6 +7452,8 @@
           "caseNo": "2583513692",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -7159,6 +7473,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Rocha Kaufman",
           "defendantAddress": {
             "line1": "92",
@@ -7174,6 +7489,8 @@
           "caseNo": "3312591110",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Previously known",
@@ -7193,6 +7510,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Alison Robinson",
           "defendantAddress": {
             "line1": "25",
@@ -7208,6 +7526,8 @@
           "caseNo": "9172825906",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -7222,6 +7542,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Brandi Conway",
           "defendantAddress": {
             "line1": "40",
@@ -7237,6 +7558,8 @@
           "caseNo": "1936178738",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -7251,6 +7574,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Barron Mcmahon",
           "defendantAddress": {
             "line1": "76",
@@ -7266,6 +7590,8 @@
           "caseNo": "1979298466",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -7285,6 +7611,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Sheree Gutierrez",
           "defendantAddress": {
             "line1": "93",
@@ -7300,6 +7627,8 @@
           "caseNo": "9777221542",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Previously known",
@@ -7319,6 +7648,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Kristin Lindsey",
           "defendantAddress": {
             "line1": "82",
@@ -7334,6 +7664,8 @@
           "caseNo": "5339345737",
           "courtCode": "SHF",
           "courtRoom": "01",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "No record",
@@ -7368,6 +7700,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Cook Duran",
           "defendantAddress": {
             "line1": "56",
@@ -7383,6 +7716,8 @@
           "caseNo": "9875540114",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -7402,6 +7737,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Ayers Lindsay",
           "defendantAddress": {
             "line1": "95",
@@ -7417,6 +7753,8 @@
           "caseNo": "794270613",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "No record",
@@ -7436,6 +7774,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Lee Simpson",
           "defendantAddress": {
             "line1": "15",
@@ -7451,6 +7790,8 @@
           "caseNo": "1717780334",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -7475,6 +7816,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Pamela Stanton",
           "defendantAddress": {
             "line1": "99",
@@ -7490,6 +7832,8 @@
           "caseNo": "8180923581",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -7509,6 +7853,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Porter Herrera",
           "defendantAddress": {
             "line1": "57",
@@ -7524,6 +7869,8 @@
           "caseNo": "4989650366",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Previously known",
@@ -7558,6 +7905,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Natasha Blanchard",
           "defendantAddress": {
             "line1": "55",
@@ -7573,6 +7921,8 @@
           "caseNo": "4299708253",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Current",
@@ -7602,6 +7952,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Weiss Terrell",
           "defendantAddress": {
             "line1": "11",
@@ -7617,6 +7968,8 @@
           "caseNo": "1534504210",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -7651,6 +8004,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Hickman Blair",
           "defendantAddress": {
             "line1": "84",
@@ -7666,6 +8020,8 @@
           "caseNo": "4431331699",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -7680,6 +8036,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Gomez Mckay",
           "defendantAddress": {
             "line1": "94",
@@ -7695,6 +8052,8 @@
           "caseNo": "1374192515",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Previously known",
@@ -7724,6 +8083,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Weaver Hammond",
           "defendantAddress": {
             "line1": "77",
@@ -7739,6 +8099,8 @@
           "caseNo": "5990487475",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Current",
@@ -7773,6 +8135,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Frederick Good",
           "defendantAddress": {
             "line1": "74",
@@ -7788,6 +8151,8 @@
           "caseNo": "6834284",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "Current",
@@ -7817,6 +8182,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Carol Becker",
           "defendantAddress": {
             "line1": "97",
@@ -7832,6 +8198,8 @@
           "caseNo": "9864616924",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -7866,6 +8234,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Yang Allison",
           "defendantAddress": {
             "line1": "94",
@@ -7881,6 +8250,8 @@
           "caseNo": "9499365066",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "No record",
@@ -7910,6 +8281,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Zamora Rosa",
           "defendantAddress": {
             "line1": "11",
@@ -7925,6 +8297,8 @@
           "caseNo": "7227064792",
           "courtCode": "SHF",
           "courtRoom": "01",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "Previously known",
@@ -7959,6 +8333,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Janice Dorsey",
           "defendantAddress": {
             "line1": "26",
@@ -7974,6 +8349,8 @@
           "caseNo": "3493039165",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "No record",
@@ -7993,6 +8370,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Lynch Tate",
           "defendantAddress": {
             "line1": "82",
@@ -8008,6 +8386,8 @@
           "caseNo": "8618449819",
           "courtCode": "SHF",
           "courtRoom": "03",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "probationStatus": "No record",
@@ -8022,6 +8402,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Luisa Alston",
           "defendantAddress": {
             "line1": "12",
@@ -8039,6 +8420,8 @@
           "courtRoom": "04",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
+          "pnc": null,
           "probationStatus": "Previously known",
           "session": "AFTERNOON",
           "previouslyKnownTerminationDate": "2019-11-12",
@@ -8056,6 +8439,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Macdonald Ellison",
           "defendantAddress": {
             "line1": "77",
@@ -8071,6 +8455,8 @@
           "caseNo": "8027509592",
           "courtCode": "SHF",
           "courtRoom": "04",
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "No record",
@@ -8105,6 +8491,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Huff Walsh",
           "defendantAddress": {
             "line1": "101",
@@ -8122,6 +8509,8 @@
           "courtRoom": "9",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
+          "crn": null,
+          "pnc": null,
           "probationStatus": "Possible nDelius record",
           "numberOfPossibleMatches": 0,
           "session": "MORNING",
@@ -8150,6 +8539,7 @@
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Rivers Molina",
           "defendantAddress": {
             "line1": "33",
@@ -8166,6 +8556,8 @@
           "courtCode": "SHF",
           "courtRoom": "8",
           "createdToday": true,
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "2nd",
           "probationStatus": "No record",
@@ -8200,6 +8592,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Obrien Mccall",
           "defendantAddress": {
             "line1": "82",
@@ -8216,6 +8609,8 @@
           "courtCode": "SHF",
           "courtRoom": "8",
           "createdToday": true,
+          "crn": null,
+          "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "probationStatus": "Previously known",
@@ -8240,6 +8635,7 @@
               "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             }
           ],
+          "defendantSex": "M",
           "defendantName": "Lloyd Humphrey",
           "defendantAddress": {
             "line1": "63",
@@ -8258,6 +8654,8 @@
           "createdToday": true,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
+          "crn": null,
+          "pnc": null,
           "probationStatus": "No record",
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
@@ -8275,6 +8673,7 @@
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
+          "defendantSex": "F",
           "defendantName": "Janis Woods",
           "defendantAddress": {
             "line1": "102",

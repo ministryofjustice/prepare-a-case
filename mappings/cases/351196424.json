@@ -19,7 +19,7 @@
       "crn": "E654321",
       "probationStatus": "Current",
       "session": "MORNING",
-      "previouslyKnownTerminationDate": null,
+      "previouslyKnownTerminationDate": "",
       "suspendedSentenceOrder": false,
       "breach": true,
       "preSentenceActivity": false,
@@ -27,22 +27,26 @@
         {
           "offenceTitle": "Attempt theft from the person of another",
           "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Clemons Barron.",
-          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 1
         },
         {
           "offenceTitle": "Theft from the person of another",
           "offenceSummary": "On 24/03/2016 at Leeds stole PLAYSTATION 4 to the value of 300.00, belonging to Hull Obrien.",
-          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 2
         },
         {
           "offenceTitle": "Attempt theft from the person of another",
           "offenceSummary": "On 05/09/2016 at Aberdeen attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Howard Ashley.",
-          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 3
         },
         {
           "offenceTitle": "Attempt theft from the person of another",
           "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Conner Powell.",
-          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 4
         }
       ],
       "defendantSex": "M",
@@ -51,12 +55,13 @@
         "line1": "38",
         "line2": "Clarendon Road",
         "postcode": "ad21 5dr",
-        "line3": "Glasgow",
-        "line4": null,
-        "line5": null
+        "line3": "Glasgow"
       },
       "defendantDob": "1979-08-18",
-      "nationality1": "British"
+      "nationality1": "British",
+      "createdToday": true,
+      "removed": false,
+      "numberOfPossibleMatches": 0
     }
   }
 }

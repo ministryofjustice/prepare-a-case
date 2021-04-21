@@ -35,7 +35,7 @@
           "mostRecentEvent": {
             "startDate": "2017-11-27",
             "text": "CJA Standard Determinate Custody",
-            "length": "6",
+            "length": 6,
             "lengthUnits": "Months"
           }
         }

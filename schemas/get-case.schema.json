@@ -5,58 +5,6 @@
   "title": "The root schema",
   "description": "The root schema comprises the entire JSON document.",
   "default": {},
-  "examples": [
-    {
-      "caseNo": "1600028913",
-      "pnc": "A/1234560BA",
-      "listNo": "3rd",
-      "courtCode": "B10JQ",
-      "courtRoom": "1",
-      "sessionStartTime": "2019-12-14T09:00:00",
-      "session": "MORNING",
-      "probationStatus": "Possible nDelius record",
-      "previouslyKnownTerminationDate": "2010-01-01",
-      "suspendedSentenceOrder": true,
-      "breach": true,
-      "preSentenceActivity": true,
-      "offences": [
-        {
-          "offenceTitle": "Theft from a shop",
-          "offenceSummary": "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.",
-          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-          "sequenceNumber": 1
-        },
-        {
-          "offenceTitle": "Theft from a different shop",
-          "offenceSummary": "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.",
-          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-          "sequenceNumber": 2
-        }
-      ],
-      "defendantName": "Mr Johnny BALL",
-      "name": {
-        "title": "Mr",
-        "forename1": "Johnny",
-        "forename2": "John",
-        "forename3": "Jon",
-        "surname": "BALL"
-      },
-      "defendantAddress": {
-        "line1": "27",
-        "line2": "Elm Place",
-        "line3": "Bangor",
-        "postcode": "ad21 5dr"
-      },
-      "defendantDob": "1958-10-10",
-      "defendantSex": "M",
-      "defendantType": "PERSON",
-      "nationality1": "British",
-      "nationality2": "Polish",
-      "createdToday": true,
-      "removed": false,
-      "numberOfPossibleMatches": 3
-    }
-  ],
   "required": [
     "caseNo",
     "pnc",
@@ -75,9 +23,7 @@
     "defendantAddress",
     "defendantDob",
     "defendantSex",
-    "defendantType",
     "nationality1",
-    "nationality2",
     "createdToday",
     "removed",
     "numberOfPossibleMatches"
@@ -88,120 +34,84 @@
       "type": "string",
       "title": "The caseNo schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "1600028913"
-      ]
+      "default": ""
     },
     "pnc": {
       "$id": "#/properties/pnc",
       "type": "string",
       "title": "The pnc schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "A/1234560BA"
-      ]
+      "default": ""
     },
     "listNo": {
       "$id": "#/properties/listNo",
       "type": "string",
       "title": "The listNo schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "3rd"
-      ]
+      "default": ""
     },
     "courtCode": {
       "$id": "#/properties/courtCode",
       "type": "string",
       "title": "The courtCode schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "B10JQ"
-      ]
+      "default": ""
     },
     "courtRoom": {
       "$id": "#/properties/courtRoom",
       "type": "string",
       "title": "The courtRoom schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "1"
-      ]
+      "default": ""
     },
     "sessionStartTime": {
       "$id": "#/properties/sessionStartTime",
       "type": "string",
       "title": "The sessionStartTime schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "2019-12-14T09:00:00"
-      ]
+      "default": ""
     },
     "session": {
       "$id": "#/properties/session",
       "type": "string",
       "title": "The session schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "MORNING"
-      ]
+      "default": ""
     },
     "probationStatus": {
       "$id": "#/properties/probationStatus",
       "type": "string",
       "title": "The probationStatus schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "Possible nDelius record"
-      ]
+      "default": ""
     },
     "previouslyKnownTerminationDate": {
       "$id": "#/properties/previouslyKnownTerminationDate",
       "type": "string",
       "title": "The previouslyKnownTerminationDate schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "2010-01-01"
-      ]
+      "default": ""
     },
     "suspendedSentenceOrder": {
       "$id": "#/properties/suspendedSentenceOrder",
       "type": "boolean",
       "title": "The suspendedSentenceOrder schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": false,
-      "examples": [
-        true
-      ]
+      "default": false
     },
     "breach": {
       "$id": "#/properties/breach",
       "type": "boolean",
       "title": "The breach schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": false,
-      "examples": [
-        true
-      ]
+      "default": false
     },
     "preSentenceActivity": {
       "$id": "#/properties/preSentenceActivity",
       "type": "boolean",
       "title": "The preSentenceActivity schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": false,
-      "examples": [
-        true
-      ]
+      "default": false
     },
     "offences": {
       "$id": "#/properties/offences",
@@ -209,22 +119,6 @@
       "title": "The offences schema",
       "description": "An explanation about the purpose of this instance.",
       "default": [],
-      "examples": [
-        [
-          {
-            "offenceTitle": "Theft from a shop",
-            "offenceSummary": "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.",
-            "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-            "sequenceNumber": 1
-          },
-          {
-            "offenceTitle": "Theft from a different shop",
-            "offenceSummary": "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.",
-            "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-            "sequenceNumber": 2
-          }
-        ]
-      ],
       "items": {
         "$id": "#/properties/offences/items",
         "anyOf": [
@@ -234,18 +128,11 @@
             "title": "The first anyOf schema",
             "description": "An explanation about the purpose of this instance.",
             "default": {},
-            "examples": [
-              {
-                "offenceTitle": "Theft from a shop",
-                "offenceSummary": "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.",
-                "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-                "sequenceNumber": 1
-              }
-            ],
             "required": [
               "offenceTitle",
               "offenceSummary",
-              "act"
+              "act",
+              "sequenceNumber"
             ],
             "properties": {
               "offenceTitle": {
@@ -253,40 +140,28 @@
                 "type": "string",
                 "title": "The offenceTitle schema",
                 "description": "An explanation about the purpose of this instance.",
-                "default": "",
-                "examples": [
-                  "Theft from a shop"
-                ]
+                "default": ""
               },
               "offenceSummary": {
                 "$id": "#/properties/offences/items/anyOf/0/properties/offenceSummary",
                 "type": "string",
                 "title": "The offenceSummary schema",
                 "description": "An explanation about the purpose of this instance.",
-                "default": "",
-                "examples": [
-                  "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person."
-                ]
+                "default": ""
               },
               "act": {
                 "$id": "#/properties/offences/items/anyOf/0/properties/act",
                 "type": "string",
                 "title": "The act schema",
                 "description": "An explanation about the purpose of this instance.",
-                "default": "",
-                "examples": [
-                  "Contrary to section 1(1) and 7 of the Theft Act 1968."
-                ]
+                "default": ""
               },
               "sequenceNumber": {
                 "$id": "#/properties/offences/items/anyOf/0/properties/sequenceNumber",
                 "type": "integer",
                 "title": "The sequenceNumber schema",
                 "description": "An explanation about the purpose of this instance.",
-                "default": 0,
-                "examples": [
-                  1
-                ]
+                "default": 0
               }
             },
             "additionalProperties": true
@@ -299,26 +174,14 @@
       "type": "string",
       "title": "The defendantName schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "Mr Johnny BALL"
-      ]
+      "default": ""
     },
     "name": {
       "$id": "#/properties/name",
       "type": "object",
       "title": "The name schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": null,
-      "examples": [
-        {
-          "title": "Mr",
-          "forename1": "Johnny",
-          "forename2": "John",
-          "forename3": "Jon",
-          "surname": "BALL"
-        }
-      ],
+      "default": {},
       "required": [
         "title",
         "forename1",
@@ -332,50 +195,35 @@
           "type": "string",
           "title": "The title schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": "",
-          "examples": [
-            "Mr"
-          ]
+          "default": ""
         },
         "forename1": {
           "$id": "#/properties/name/properties/forename1",
           "type": "string",
           "title": "The forename1 schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": "",
-          "examples": [
-            "Johnny"
-          ]
+          "default": ""
         },
         "forename2": {
           "$id": "#/properties/name/properties/forename2",
           "type": "string",
           "title": "The forename2 schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": "",
-          "examples": [
-            "John"
-          ]
+          "default": ""
         },
         "forename3": {
           "$id": "#/properties/name/properties/forename3",
           "type": "string",
           "title": "The forename3 schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": "",
-          "examples": [
-            "Jon"
-          ]
+          "default": ""
         },
         "surname": {
           "$id": "#/properties/name/properties/surname",
           "type": "string",
           "title": "The surname schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": "",
-          "examples": [
-            "BALL"
-          ]
+          "default": ""
         }
       },
       "additionalProperties": true
@@ -386,14 +234,6 @@
       "title": "The defendantAddress schema",
       "description": "An explanation about the purpose of this instance.",
       "default": {},
-      "examples": [
-        {
-          "line1": "27",
-          "line2": "Elm Place",
-          "line3": "Bangor",
-          "postcode": "ad21 5dr"
-        }
-      ],
       "required": [
         "line1",
         "line2",
@@ -406,40 +246,42 @@
           "type": "string",
           "title": "The line1 schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": "",
-          "examples": [
-            "27"
-          ]
+          "default": ""
         },
         "line2": {
           "$id": "#/properties/defendantAddress/properties/line2",
           "type": "string",
           "title": "The line2 schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": "",
-          "examples": [
-            "Elm Place"
-          ]
+          "default": ""
         },
         "line3": {
           "$id": "#/properties/defendantAddress/properties/line3",
           "type": "string",
           "title": "The line3 schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": "",
-          "examples": [
-            "Bangor"
-          ]
+          "default": ""
+        },
+        "line4": {
+          "$id": "#/properties/defendantAddress/properties/line4",
+          "type": "string",
+          "title": "The line4 schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        },
+        "line5": {
+          "$id": "#/properties/defendantAddress/properties/line5",
+          "type": "string",
+          "title": "The line5 schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
         },
         "postcode": {
           "$id": "#/properties/defendantAddress/properties/postcode",
           "type": "string",
           "title": "The postcode schema",
           "description": "An explanation about the purpose of this instance.",
-          "default": "",
-          "examples": [
-            "ad21 5dr"
-          ]
+          "default": ""
         }
       },
       "additionalProperties": true
@@ -449,80 +291,56 @@
       "type": "string",
       "title": "The defendantDob schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "1958-10-10"
-      ]
+      "default": ""
     },
     "defendantSex": {
       "$id": "#/properties/defendantSex",
       "type": "string",
       "title": "The defendantSex schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "M"
-      ]
+      "default": ""
     },
     "defendantType": {
       "$id": "#/properties/defendantType",
       "type": "string",
       "title": "The defendantType schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "PERSON"
-      ]
+      "default": ""
     },
     "nationality1": {
       "$id": "#/properties/nationality1",
       "type": "string",
       "title": "The nationality1 schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "British"
-      ]
+      "default": ""
     },
     "nationality2": {
       "$id": "#/properties/nationality2",
       "type": "string",
       "title": "The nationality2 schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": "",
-      "examples": [
-        "Polish"
-      ]
+      "default": ""
     },
     "createdToday": {
       "$id": "#/properties/createdToday",
       "type": "boolean",
       "title": "The createdToday schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": false,
-      "examples": [
-        true
-      ]
+      "default": false
     },
     "removed": {
       "$id": "#/properties/removed",
       "type": "boolean",
       "title": "The removed schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": false,
-      "examples": [
-        false
-      ]
+      "default": false
     },
     "numberOfPossibleMatches": {
       "$id": "#/properties/numberOfPossibleMatches",
       "type": "integer",
       "title": "The numberOfPossibleMatches schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": 0,
-      "examples": [
-        3
-      ]
+      "default": 0
     }
   },
   "additionalProperties": true

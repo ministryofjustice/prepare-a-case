@@ -19,7 +19,7 @@
       "probationStatus": "Possible nDelius record",
       "numberOfPossibleMatches": 1,
       "session": "MORNING",
-      "previouslyKnownTerminationDate": null,
+      "previouslyKnownTerminationDate": "",
       "suspendedSentenceOrder": false,
       "breach": false,
       "preSentenceActivity": false,
@@ -27,27 +27,32 @@
         {
           "offenceTitle": "Theft from a shop",
           "offenceSummary": "On 01/01/2015 at Farmage, Edinburgh, stole ROBOTS to the value of £987.00, belonging to Franks Kinney.",
-          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 1
         },
         {
           "offenceTitle": "Attempt theft from the person of another",
           "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal WASHING MACHINE to the value of 750.00, belonging to Mckee Mayer.",
-          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 2
         },
         {
           "offenceTitle": "Theft from the person of another",
           "offenceSummary": "On 24/03/2016 at Manchester stole XBOX ONE to the value of 300.00, belonging to Marquez Bishop.",
-          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 3
         },
         {
           "offenceTitle": "Attempt theft from the person of another",
           "offenceSummary": "On 05/09/2016 at Sheffield attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Murray Blackwell.",
-          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 4
         },
         {
           "offenceTitle": "Assault by beating",
           "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Dickson Molina by beating him.",
-          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
+          "sequenceNumber": 5
         }
       ],
       "defendantSex": "F",
@@ -63,11 +68,12 @@
         "line1": "37",
         "line2": "Maple Avenue",
         "postcode": "L1 5dr",
-        "line3": "London",
-        "line4": null,
-        "line5": null
+        "line3": "London"
       },
-      "defendantDob": "1980-08-13"
+      "defendantDob": "1980-08-13",
+      "nationality1": "",
+      "createdToday": true,
+      "removed": false
     }
   }
 }

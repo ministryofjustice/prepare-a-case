@@ -2,7 +2,6 @@
 const fs = require('fs')
 const path = require('path')
 const Ajv = require('ajv').default
-const ajvErrors = require('ajv-errors')
 
 const { parseMockResponse } = require('./parseMockResponse')
 
@@ -15,12 +14,14 @@ function validateMocks (mockFilesPath, schema) {
       const wireMockFile = require(path.join(`${mockFilesPath}/${filename}`))
       const parsedMock = parseMockResponse(wireMockFile.response.jsonBody)
       const ajv = new Ajv({ allErrors: true })
-      ajvErrors(ajv)
+      require('ajv-errors')(ajv)
+
       const validateSchema = ajv.compile(schema)
-      if (validateSchema.errors) {
-        console.info(validateSchema.errors)
+      const isValidated = validateSchema(parsedMock)
+      if (!isValidated) {
+        console.log('ERROR IN MOCK:', path.join(`${mockFilesPath}/${filename}`), '\n', validateSchema.errors)
       }
-      expect(validateSchema(parsedMock)).toBeTruthy()
+      expect(isValidated).toBeTruthy()
     })
   })
 }
@@ -28,7 +29,11 @@ function validateMocks (mockFilesPath, schema) {
 function validateSchema (mockData, schema) {
   const ajv = new Ajv()
   const validateSchema = ajv.compile(schema)
-  expect(validateSchema(mockData)).toBeTruthy()
+  const isValidated = validateSchema(mockData)
+  if (!isValidated) {
+    console.log('ERROR IN MOCK DATA:', schema.title, '\n', validateSchema.errors)
+  }
+  expect(isValidated).toBeTruthy()
 }
 
 module.exports = {

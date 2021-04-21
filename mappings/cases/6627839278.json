@@ -27,17 +27,20 @@
         {
           "offenceTitle": "Attempt theft from the person of another",
           "offenceSummary": "On 05/09/2016 at Sheffield attempted to steal WASHING MACHINE to the value of 750.00, belonging to Hopper May.",
-          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 1
         },
         {
           "offenceTitle": "Assault by beating",
           "offenceSummary": "On 01/01/2016 at London assaulted Medina Brown by beating him.",
-          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
+          "sequenceNumber": 2
         },
         {
           "offenceTitle": "Attempt theft from the person of another",
           "offenceSummary": "On 05/09/2016 at Liverpool attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Cleveland Pena.",
-          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 3
         }
       ],
       "defendantSex": "M",
@@ -46,12 +49,13 @@
         "line1": "49",
         "line2": "Rochester Avenue",
         "postcode": "ad21 5dr",
-        "line3": "Bangor",
-        "line4": null,
-        "line5": null
+        "line3": "Bangor"
       },
       "defendantDob": "1958-10-13",
-      "nationality1": "Polish"
+      "nationality1": "Polish",
+      "createdToday": true,
+      "removed": false,
+      "numberOfPossibleMatches": 0
     }
   }
 }

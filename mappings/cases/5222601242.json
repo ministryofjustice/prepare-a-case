@@ -19,7 +19,7 @@
       "crn": "D991494",
       "probationStatus": "Current",
       "session": "MORNING",
-      "previouslyKnownTerminationDate": null,
+      "previouslyKnownTerminationDate": "",
       "suspendedSentenceOrder": false,
       "breach": true,
       "preSentenceActivity": false,
@@ -27,7 +27,8 @@
         {
           "offenceTitle": "Theft from a shop",
           "offenceSummary": "On 01/01/2015 at Tetratrex, Leeds, stole ROBOTS to the value of £987.00, belonging to Young Bryant.",
-          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 1
         }
       ],
       "defendantSex": "M",
@@ -36,13 +37,14 @@
         "line1": "99",
         "line2": "Ralph Avenue",
         "postcode": "ad21 5dr",
-        "line3": "London",
-        "line4": null,
-        "line5": null
+        "line3": "London"
       },
       "defendantDob": "1996-06-06",
       "nationality1": "British",
-      "nationality2": "Swedish"
+      "nationality2": "Swedish",
+      "createdToday": true,
+      "removed": false,
+      "numberOfPossibleMatches": 0
     }
   }
 }

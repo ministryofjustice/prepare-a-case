@@ -1,0 +1,250 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "required": [
+    "offenderMatchDetails"
+  ],
+  "properties": {
+    "offenderMatchDetails": {
+      "$id": "#/properties/offenderMatchDetails",
+      "type": "array",
+      "title": "The offenderMatchDetails schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "items": {
+        "$id": "#/properties/offenderMatchDetails/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/offenderMatchDetails/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "required": [
+              "title",
+              "forename",
+              "middleNames",
+              "surname",
+              "dateOfBirth",
+              "address",
+              "matchIdentifiers",
+              "probationStatus",
+              "mostRecentEvent"
+            ],
+            "properties": {
+              "title": {
+                "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/title",
+                "type": "string",
+                "title": "The title schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "forename": {
+                "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/forename",
+                "type": "string",
+                "title": "The forename schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "middleNames": {
+                "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/middleNames",
+                "type": "array",
+                "title": "The middleNames schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": [],
+                "items": {
+                  "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/middleNames/items",
+                  "anyOf": [
+                    {
+                      "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/middleNames/items/anyOf/0",
+                      "type": "string",
+                      "title": "The first anyOf schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "surname": {
+                "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/surname",
+                "type": "string",
+                "title": "The surname schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "dateOfBirth": {
+                "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/dateOfBirth",
+                "type": "string",
+                "title": "The dateOfBirth schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "address": {
+                "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/address",
+                "type": "object",
+                "title": "The address schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "required": [],
+                "properties": {
+                  "addressNumber": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/address/properties/addressNumber",
+                    "type": "string",
+                    "title": "The addressNumber schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "streetName": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/address/properties/streetName",
+                    "type": "string",
+                    "title": "The streetName schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "district": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/address/properties/district",
+                    "type": "string",
+                    "title": "The district schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "town": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/address/properties/town",
+                    "type": "string",
+                    "title": "The town schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "county": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/address/properties/county",
+                    "type": "string",
+                    "title": "The county schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "postcode": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/address/properties/postcode",
+                    "type": "string",
+                    "title": "The postcode schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": true
+              },
+              "matchIdentifiers": {
+                "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/matchIdentifiers",
+                "type": "object",
+                "title": "The matchIdentifiers schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "required": [
+                  "crn",
+                  "pnc",
+                  "cro"
+                ],
+                "properties": {
+                  "crn": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/matchIdentifiers/properties/crn",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "The crn schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "pnc": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/matchIdentifiers/properties/pnc",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "The pnc schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "cro": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/matchIdentifiers/properties/cro",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "The cro schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": true
+              },
+              "probationStatus": {
+                "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/probationStatus",
+                "type": "string",
+                "title": "The probationStatus schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "probationStatusActual": {
+                "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/probationStatusActual",
+                "type": "string",
+                "title": "The probationStatusActual schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "mostRecentEvent": {
+                "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/mostRecentEvent",
+                "type": "object",
+                "title": "The mostRecentEvent schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "required": [
+                  "startDate",
+                  "text",
+                  "length",
+                  "lengthUnits"
+                ],
+                "properties": {
+                  "startDate": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/mostRecentEvent/properties/startDate",
+                    "type": "string",
+                    "title": "The startDate schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "text": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/mostRecentEvent/properties/text",
+                    "type": "string",
+                    "title": "The text schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "length": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/mostRecentEvent/properties/length",
+                    "type": "integer",
+                    "title": "The length schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0
+                  },
+                  "lengthUnits": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/mostRecentEvent/properties/lengthUnits",
+                    "type": "string",
+                    "title": "The lengthUnits schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": true
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}

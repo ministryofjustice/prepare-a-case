@@ -10,6 +10,7 @@
     },
     "status": 200,
     "jsonBody": {
+      "requirements": [],
       "pssRequirements": [
         {
           "description": "Standard 7 conditions"
