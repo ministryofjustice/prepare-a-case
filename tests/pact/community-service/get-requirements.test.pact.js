@@ -4,14 +4,27 @@ const { Matchers } = require('@pact-foundation/pact')
 
 const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { request } = require('../../../server/services/utils/request')
-const requirementsMock = require('../../../mappings/community/requirements/DX12340A-requirements-1309234876.json')
+const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
+const pactResponseMock = require('./get-requirements.test.pact.json')
+const schema = require('../../../schemas/get-requirements.schema.json')
 
 pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
   describe('GET /offender/{crn}/convictions/{convictionId}/requirements', () => {
-    const crn = 'DX12340A'
-    const convictionId = '1309234876'
+    const crn = 'X320741'
+    const convictionId = '2500297061'
     const apiUrl = `/offender/${crn}/convictions/${convictionId}/requirements`
-    const parsedMockData = parseMockResponse(requirementsMock.response.jsonBody)
+    const parsedMockData = parseMockResponse(pactResponseMock.response.jsonBody)
+
+    it('should validate the JSON schema against the provided sample data', () => {
+      validateSchema(parsedMockData, schema)
+    })
+
+    /*
+    it('should validate the WireMock mocks against the JSON schema', () => {
+      const mockPath = process.env.INIT_CWD + '/mappings/community/requirements'
+      validateMocks(mockPath, schema)
+    })
+    */
 
     it('returns the requirements of a conviction', async () => {
       await provider.addInteraction({
@@ -25,8 +38,8 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
           }
         },
         willRespondWith: {
-          status: requirementsMock.response.status,
-          headers: requirementsMock.response.headers,
+          status: pactResponseMock.response.status,
+          headers: pactResponseMock.response.headers,
           body: Matchers.like(parsedMockData)
         }
       })

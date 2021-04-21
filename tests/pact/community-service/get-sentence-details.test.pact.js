@@ -6,7 +6,7 @@ const { request } = require('../../../server/services/utils/request')
 const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
 const sentenceMock = require('../../../mappings/community/sentence/DX12340A-sentence-1309234876.json')
-const pactResponseMock = require('./get-sentence-details-pact.json')
+const pactResponseMock = require('./get-sentence-details.test.pact.json')
 const schema = require('../../../schemas/get-sentence.schema.json')
 
 pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {

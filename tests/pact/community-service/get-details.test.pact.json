@@ -2,7 +2,7 @@
   "id": "83e9213b-a94c-4570-96b5-6fddf94ed4b5",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/PACT_TEST/detail"
+    "urlPathPattern": "/offender/D991494/detail"
   },
   "response": {
     "headers": {
@@ -11,13 +11,13 @@
     "status": 200,
     "jsonBody": {
       "otherIds": {
-        "crn": "D541487",
+        "crn": "D991494",
         "pncNumber": "PNC/1122",
         "croNumber": "CRO/aass23",
         "offenderId": 198765
       },
       "title": "Dame",
-      "forename": "Floealla",
+      "forename": "Floella",
       "middleNames": [
         "Karen",
         "Yunies"

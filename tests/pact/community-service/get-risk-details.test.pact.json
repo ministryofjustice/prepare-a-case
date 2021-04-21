@@ -1,0 +1,33 @@
+{
+  "id": "a12dd515-154b-419e-8de1-1bad92b6629e",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D991494/registrations"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": [
+      {
+        "type": "MAPPA",
+        "startDate": "2020-09-30",
+        "nextReviewDate": "2020-12-30",
+        "endDate": "2021-01-01",
+        "notes": [],
+        "active": true
+      },
+      {
+        "type": "Low RoSH",
+        "startDate": "2019-09-30",
+        "nextReviewDate": "2019-12-30",
+        "endDate": "2020-01-01",
+        "notes": [
+          "01-01-20 - MAPPA has now ended."
+        ],
+        "active": false
+      }
+    ]
+  }
+}

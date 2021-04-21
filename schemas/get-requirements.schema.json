@@ -1,0 +1,599 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "requirements": [
+        {
+          "requirementId": 2500083652,
+          "startDate": "2017-06-01",
+          "terminationDate": "2017-12-01",
+          "expectedStartDate": "2017-06-01",
+          "expectedEndDate": "2017-12-01",
+          "active": false,
+          "requirementTypeSubCategory": {
+            "code": "W01",
+            "description": "Regular"
+          },
+          "requirementTypeMainCategory": {
+            "code": "W",
+            "description": "Unpaid Work"
+          },
+          "terminationReason": {
+            "code": "74",
+            "description": "Hours Completed Outside 12 months (UPW only)"
+          },
+          "length": 60,
+          "lengthUnit": "Hours"
+        },
+        {
+          "requirementId": 2500007925,
+          "commencementDate": "2015-06-29",
+          "startDate": "2015-07-01",
+          "active": true,
+          "adRequirementTypeMainCategory": {
+            "code": "7",
+            "description": "Court - Accredited Programme"
+          },
+          "adRequirementTypeSubCategory": {
+            "code": "P12",
+            "description": "ASRO"
+          }
+        }
+      ],
+      "pssRequirements": [],
+      "licenceConditions": [
+        {
+          "description": "Curfew Arrangement",
+          "startDate": "2020-02-01"
+        },
+        {
+          "description": "Participate or co-op with Programme or Activities",
+          "startDate": "2020-02-01"
+        }
+      ]
+    }
+  ],
+  "required": [
+    "requirements",
+    "pssRequirements",
+    "licenceConditions"
+  ],
+  "properties": {
+    "requirements": {
+      "$id": "#/properties/requirements",
+      "type": "array",
+      "title": "The requirements schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        [
+          {
+            "requirementId": 2500083652,
+            "startDate": "2017-06-01",
+            "terminationDate": "2017-12-01",
+            "expectedStartDate": "2017-06-01",
+            "expectedEndDate": "2017-12-01",
+            "active": false,
+            "requirementTypeSubCategory": {
+              "code": "W01",
+              "description": "Regular"
+            },
+            "requirementTypeMainCategory": {
+              "code": "W",
+              "description": "Unpaid Work"
+            },
+            "terminationReason": {
+              "code": "74",
+              "description": "Hours Completed Outside 12 months (UPW only)"
+            },
+            "length": 60,
+            "lengthUnit": "Hours"
+          },
+          {
+            "requirementId": 2500007925,
+            "commencementDate": "2015-06-29",
+            "startDate": "2015-07-01",
+            "active": true,
+            "adRequirementTypeMainCategory": {
+              "code": "7",
+              "description": "Court - Accredited Programme"
+            },
+            "adRequirementTypeSubCategory": {
+              "code": "P12",
+              "description": "ASRO"
+            }
+          }
+        ]
+      ],
+      "items": {
+        "$id": "#/properties/requirements/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/requirements/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "requirementId": 2500083652,
+                "startDate": "2017-06-01",
+                "terminationDate": "2017-12-01",
+                "expectedStartDate": "2017-06-01",
+                "expectedEndDate": "2017-12-01",
+                "active": false,
+                "requirementTypeSubCategory": {
+                  "code": "W01",
+                  "description": "Regular"
+                },
+                "requirementTypeMainCategory": {
+                  "code": "W",
+                  "description": "Unpaid Work"
+                },
+                "terminationReason": {
+                  "code": "74",
+                  "description": "Hours Completed Outside 12 months (UPW only)"
+                },
+                "length": 60,
+                "lengthUnit": "Hours"
+              }
+            ],
+            "required": [
+              "requirementId",
+              "startDate",
+              "terminationDate",
+              "expectedStartDate",
+              "expectedEndDate",
+              "active",
+              "requirementTypeSubCategory",
+              "requirementTypeMainCategory",
+              "terminationReason",
+              "length",
+              "lengthUnit"
+            ],
+            "properties": {
+              "requirementId": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/requirementId",
+                "type": "integer",
+                "title": "The requirementId schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  2500083652
+                ]
+              },
+              "startDate": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/startDate",
+                "type": "string",
+                "title": "The startDate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "2017-06-01"
+                ]
+              },
+              "terminationDate": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/terminationDate",
+                "type": "string",
+                "title": "The terminationDate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "2017-12-01"
+                ]
+              },
+              "expectedStartDate": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/expectedStartDate",
+                "type": "string",
+                "title": "The expectedStartDate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "2017-06-01"
+                ]
+              },
+              "expectedEndDate": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/expectedEndDate",
+                "type": "string",
+                "title": "The expectedEndDate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "2017-12-01"
+                ]
+              },
+              "active": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/active",
+                "type": "boolean",
+                "title": "The active schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "requirementTypeSubCategory": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeSubCategory",
+                "type": "object",
+                "title": "The requirementTypeSubCategory schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "code": "W01",
+                    "description": "Regular"
+                  }
+                ],
+                "required": [
+                  "code",
+                  "description"
+                ],
+                "properties": {
+                  "code": {
+                    "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeSubCategory/properties/code",
+                    "type": "string",
+                    "title": "The code schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "W01"
+                    ]
+                  },
+                  "description": {
+                    "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeSubCategory/properties/description",
+                    "type": "string",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Regular"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "requirementTypeMainCategory": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeMainCategory",
+                "type": "object",
+                "title": "The requirementTypeMainCategory schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "code": "W",
+                    "description": "Unpaid Work"
+                  }
+                ],
+                "required": [
+                  "code",
+                  "description"
+                ],
+                "properties": {
+                  "code": {
+                    "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeMainCategory/properties/code",
+                    "type": "string",
+                    "title": "The code schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "W"
+                    ]
+                  },
+                  "description": {
+                    "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeMainCategory/properties/description",
+                    "type": "string",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Unpaid Work"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "terminationReason": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/terminationReason",
+                "type": "object",
+                "title": "The terminationReason schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "code": "74",
+                    "description": "Hours Completed Outside 12 months (UPW only)"
+                  }
+                ],
+                "required": [
+                  "code",
+                  "description"
+                ],
+                "properties": {
+                  "code": {
+                    "$id": "#/properties/requirements/items/anyOf/0/properties/terminationReason/properties/code",
+                    "type": "string",
+                    "title": "The code schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "74"
+                    ]
+                  },
+                  "description": {
+                    "$id": "#/properties/requirements/items/anyOf/0/properties/terminationReason/properties/description",
+                    "type": "string",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Hours Completed Outside 12 months (UPW only)"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "length": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/length",
+                "type": "integer",
+                "title": "The length schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  60
+                ]
+              },
+              "lengthUnit": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/lengthUnit",
+                "type": "string",
+                "title": "The lengthUnit schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Hours"
+                ]
+              }
+            },
+            "additionalProperties": true
+          },
+          {
+            "$id": "#/properties/requirements/items/anyOf/1",
+            "type": "object",
+            "title": "The second anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "requirementId": 2500007925,
+                "commencementDate": "2015-06-29",
+                "startDate": "2015-07-01",
+                "active": true,
+                "adRequirementTypeMainCategory": {
+                  "code": "7",
+                  "description": "Court - Accredited Programme"
+                },
+                "adRequirementTypeSubCategory": {
+                  "code": "P12",
+                  "description": "ASRO"
+                }
+              }
+            ],
+            "required": [
+              "requirementId",
+              "commencementDate",
+              "startDate",
+              "active",
+              "adRequirementTypeMainCategory",
+              "adRequirementTypeSubCategory"
+            ],
+            "properties": {
+              "requirementId": {
+                "$id": "#/properties/requirements/items/anyOf/1/properties/requirementId",
+                "type": "integer",
+                "title": "The requirementId schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  2500007925
+                ]
+              },
+              "commencementDate": {
+                "$id": "#/properties/requirements/items/anyOf/1/properties/commencementDate",
+                "type": "string",
+                "title": "The commencementDate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "2015-06-29"
+                ]
+              },
+              "startDate": {
+                "$id": "#/properties/requirements/items/anyOf/1/properties/startDate",
+                "type": "string",
+                "title": "The startDate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "2015-07-01"
+                ]
+              },
+              "active": {
+                "$id": "#/properties/requirements/items/anyOf/1/properties/active",
+                "type": "boolean",
+                "title": "The active schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "adRequirementTypeMainCategory": {
+                "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeMainCategory",
+                "type": "object",
+                "title": "The adRequirementTypeMainCategory schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "code": "7",
+                    "description": "Court - Accredited Programme"
+                  }
+                ],
+                "required": [
+                  "code",
+                  "description"
+                ],
+                "properties": {
+                  "code": {
+                    "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeMainCategory/properties/code",
+                    "type": "string",
+                    "title": "The code schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "7"
+                    ]
+                  },
+                  "description": {
+                    "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeMainCategory/properties/description",
+                    "type": "string",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Court - Accredited Programme"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "adRequirementTypeSubCategory": {
+                "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeSubCategory",
+                "type": "object",
+                "title": "The adRequirementTypeSubCategory schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "code": "P12",
+                    "description": "ASRO"
+                  }
+                ],
+                "required": [
+                  "code",
+                  "description"
+                ],
+                "properties": {
+                  "code": {
+                    "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeSubCategory/properties/code",
+                    "type": "string",
+                    "title": "The code schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "P12"
+                    ]
+                  },
+                  "description": {
+                    "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeSubCategory/properties/description",
+                    "type": "string",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "ASRO"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    },
+    "pssRequirements": {
+      "$id": "#/properties/pssRequirements",
+      "type": "array",
+      "title": "The pssRequirements schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        []
+      ],
+      "items": {
+        "$id": "#/properties/pssRequirements/items"
+      }
+    },
+    "licenceConditions": {
+      "$id": "#/properties/licenceConditions",
+      "type": "array",
+      "title": "The licenceConditions schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        [
+          {
+            "description": "Curfew Arrangement",
+            "startDate": "2020-02-01"
+          },
+          {
+            "description": "Participate or co-op with Programme or Activities",
+            "startDate": "2020-02-01"
+          }
+        ]
+      ],
+      "items": {
+        "$id": "#/properties/licenceConditions/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/licenceConditions/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "description": "Curfew Arrangement",
+                "startDate": "2020-02-01"
+              }
+            ],
+            "required": [
+              "description",
+              "startDate"
+            ],
+            "properties": {
+              "description": {
+                "$id": "#/properties/licenceConditions/items/anyOf/0/properties/description",
+                "type": "string",
+                "title": "The description schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Curfew Arrangement"
+                ]
+              },
+              "startDate": {
+                "$id": "#/properties/licenceConditions/items/anyOf/0/properties/startDate",
+                "type": "string",
+                "title": "The startDate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "2020-02-01"
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}

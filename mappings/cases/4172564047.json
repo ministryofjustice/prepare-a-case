@@ -10,7 +10,6 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": "838597",
       "caseNo": "4172564047",
       "courtCode": "SHF",
       "courtRoom": "10",
@@ -23,6 +22,7 @@
       "previouslyKnownTerminationDate": null,
       "suspendedSentenceOrder": false,
       "breach": false,
+      "preSentenceActivity": false,
       "offences": [
         {
           "offenceTitle": "Theft from a shop",

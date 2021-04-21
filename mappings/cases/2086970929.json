@@ -10,7 +10,6 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": "642220",
       "caseNo": "2086970929",
       "courtCode": "SHF",
       "courtRoom": "10",
@@ -23,6 +22,7 @@
       "previouslyKnownTerminationDate": "2013-01-01",
       "suspendedSentenceOrder": false,
       "breach": false,
+      "preSentenceActivity": false,
       "offences": [
         {
           "offenceTitle": "Theft from the person of another",

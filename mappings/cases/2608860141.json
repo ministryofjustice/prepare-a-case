@@ -10,7 +10,6 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": "458832",
       "caseNo": "2608860141",
       "courtCode": "SHF",
       "courtRoom": "10",
@@ -24,6 +23,7 @@
       "suspendedSentenceOrder": false,
       "numberOfPossibleMatches": 1,
       "breach": false,
+      "preSentenceActivity": false,
       "offences": [
         {
           "offenceTitle": "Theft from the person of another",

@@ -10,7 +10,6 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": "957781",
       "caseNo": "8678951874",
       "courtCode": "SHF",
       "courtRoom": "10",
@@ -22,6 +21,7 @@
       "previouslyKnownTerminationDate": null,
       "suspendedSentenceOrder": false,
       "breach": false,
+      "preSentenceActivity": false,
       "offences": [
         {
           "offenceTitle": "Attempt theft from the person of another",

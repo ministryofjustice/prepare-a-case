@@ -10,7 +10,6 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": "71467",
       "caseNo": "7483843110",
       "courtCode": "SHF",
       "courtRoom": "02",
@@ -22,6 +21,7 @@
       "previouslyKnownTerminationDate": null,
       "suspendedSentenceOrder": false,
       "breach": false,
+      "preSentenceActivity": false,
       "offences": [
         {
           "offenceTitle": "Assault by beating",

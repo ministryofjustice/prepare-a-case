@@ -6,7 +6,7 @@ const moment = require('moment')
 const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { validateSchema } = require('../../testUtils/schemaValidation')
 const { request } = require('../../../server/services/utils/request')
-const pactResponseMock = require('./get-case-list-pact.json')
+const pactResponseMock = require('./get-case-list.test.pact.json')
 const schema = require('../../../schemas/get-case-list.schema.json')
 
 pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
