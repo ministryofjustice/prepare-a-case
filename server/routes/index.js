@@ -50,7 +50,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/privacy-notice', (req, res) => {
-    res.render('privacy-notice', { params: { nonce: nonce } })
+    const { session } = req
+    res.render('privacy-notice', { params: { nonce: nonce, backLink: session.backLink } })
   })
 
   router.get('/my-courts', async (req, res) => {

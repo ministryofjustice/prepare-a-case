@@ -5,6 +5,16 @@
 
 {% block navigation %}{% endblock %}
 
+{% block backlink %}
+    {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+    {{ govukBackLink({
+        text: "Back",
+        href: params.backLink
+    }) }}
+
+{% endblock %}
+
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
@@ -16,7 +26,6 @@
                 provided by HMPPS Digital Services, part of the Ministry of Justice (MoJ).
 
             </p>
-
 
             <p class="govuk-body">
                 This privacy notice sets out the standards that you can expect from the Ministry of Justice when we
