@@ -61,6 +61,7 @@
 <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
 {% block bodyStart %}
+{% block cookieBanner %}
     {% if not analyticsCookies %}
         {% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
 
@@ -91,7 +92,7 @@
                         },
                         {
                             text: "View cookies",
-                            href: "#cookies-page"
+                            href: "/cookies-policy"
                         }
                     ]
                     }
@@ -99,6 +100,7 @@
             }) }}
         </form>
     {% endif %}
+{% endblock %}
 {% endblock %}
 
 {% block header %}
