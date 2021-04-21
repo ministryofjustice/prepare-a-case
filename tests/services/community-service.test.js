@@ -8,7 +8,9 @@ const {
   getProbationRecord,
   getProbationRecordWithRequirements,
   getProbationStatusDetails,
-  getBreachDetails
+  getBreachDetails,
+  getConviction,
+  getConvictionWithRequirements
 } = require('../../server/services/community-service')
 
 const apiUrl = config.apis.courtCaseService.url
@@ -80,6 +82,45 @@ describe('Community service', () => {
     })
 
     const response = await getProbationRecordWithRequirements('D123456')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/convictions/12345/requirements`)
+    return response
+  })
+
+  it('should call the API to request data for a single conviction', async () => {
+    moxios.stubRequest(`${apiUrl}/offender/D123456/convictions/12345678`, {
+      status: 200,
+      response: {
+        active: false
+      }
+    })
+
+    const response = await getConviction('D123456', '12345678')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/convictions/12345678`)
+    return response
+  })
+
+  it('should call the API to request data for a single conviction with requirements', async () => {
+    moxios.stubRequest(`${apiUrl}/offender/D123456/convictions/12345`, {
+      status: 200,
+      response: {
+        convictionId: 12345,
+        active: true,
+        sentence: {
+          description: 'Some sentence'
+        }
+      }
+    })
+
+    moxios.stubRequest(`${apiUrl}/offender/D123456/convictions/12345/requirements`, {
+      status: 200,
+      response: {
+        requirements: [{
+          requirementId: 7925250000
+        }]
+      }
+    })
+
+    const response = await getConvictionWithRequirements('D123456', '12345')
     expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/D123456/convictions/12345/requirements`)
     return response
   })

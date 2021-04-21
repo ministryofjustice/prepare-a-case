@@ -7,6 +7,7 @@ const {
   getDetails,
   getProbationRecord,
   getProbationRecordWithRequirements,
+  getConvictionWithRequirements,
   getProbationStatusDetails,
   getSentenceDetails,
   getBreachDetails,
@@ -47,6 +48,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/accessibility-statement', (req, res) => {
     const { session } = req
     res.render('accessibility-statement', { params: { nonce: nonce, backLink: session.backLink } })
+  })
+
+  router.get('/privacy-notice', (req, res) => {
+    const { session } = req
+    res.render('privacy-notice', { params: { nonce: nonce, backLink: session.backLink } })
   })
 
   router.get('/my-courts', async (req, res) => {
@@ -218,11 +224,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Order details'
 
     const { data: { crn } } = templateValues
-    let communityResponse = await getProbationRecordWithRequirements(crn)
+    let communityResponse = await getConvictionWithRequirements(crn, convictionId)
 
-    if (communityResponse.convictions) {
-      const { active, sentence } = communityResponse.convictions
-        .find(conviction => conviction.convictionId.toString() === convictionId.toString())
+    if (communityResponse) {
+      const { active, sentence } = communityResponse
       if (active) {
         const sentenceDetails = await getSentenceDetails(crn, convictionId, sentence.sentenceId)
         communityResponse = {

@@ -1,8 +1,8 @@
 {
-  "id": "f77083e7-34a3-42bb-801c-6f4ceebb174c",
+  "id": "37f401b8-9c4a-11eb-a8b3-0242ac130003",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/E654321/probation-record"
+    "urlPathPattern": "/offender/E654321/convictions/345464567"
   },
   "response": {
     "headers": {
@@ -10,26 +10,6 @@
     },
     "status": 200,
     "jsonBody": {
-      "crn": "E654321",
-      "offenderManagers": [
-        {
-          "staff": {
-            "forenames": "ANGEL",
-            "surname": "extravaganza",
-            "telephone": "01154223456",
-            "email": "d@none.com"
-          },
-          "allocatedDate": "2017-08-12",
-          "team": {
-            "description": "OMU A",
-            "telephone": "0114 22278787",
-            "district": "N04 Division"
-          },
-          "provider": "NPS Midlands"
-        }
-      ],
-      "convictions": [
-        {
           "convictionId": "345464567",
           "active": true,
           "inBreach": true,
@@ -55,11 +35,5 @@
           },
           "documents": []
         }
-      ],
-      "assessment": {
-        "type": "LAYER_3",
-        "completed": "2018-06-20T23:00:09"
-      }
     }
-  }
 }

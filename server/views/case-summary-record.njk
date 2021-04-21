@@ -125,8 +125,7 @@
                                 </p>
                                 <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
                             </td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third"
-                                style="vertical-align: bottom">
+                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third pac-!-valign-bottom">
                                 <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">
                                     Ended
                                     on {{ moment(order.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
@@ -147,15 +146,24 @@
         <div class="govuk-!-margin-bottom-6">
 
             {% if data.probationStatus === "Current" %}
-                <h2 class="govuk-heading-m">Offender Manager</h2>
+                <h2 class="govuk-heading-m">Offender manager</h2>
                 {% if offenderManager.allocatedDate %}
                     <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.staff.forenames | properCase }} {{ offenderManager.staff.surname | properCase }}</p>
-                    <p class="govuk-hint govuk-!-margin-top-1">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                    {% if offenderManager.staff.email %}
+                        <p class="govuk-body govuk-!-margin-bottom-0">Email: {{ offenderManager.staff.email }}</p>
+                    {% endif %}
+                    {% if offenderManager.staff.telephone %}
+                        <p class="govuk-body govuk-!-margin-bottom-3">Phone: {{ offenderManager.staff.telephone }}</p>
+                    {% endif %}
                     <p class="govuk-body govuk-!-margin-bottom-0">Provider: {{ offenderManager.provider }}</p>
                     <p class="govuk-body govuk-!-margin-bottom-0">LDU: {{ offenderManager.team.district }}</p>
-                    <p class="govuk-body govuk-!-margin-bottom-3">Team: {{ offenderManager.team.description }}</p>
+                    <p class="govuk-body govuk-!-margin-bottom-0">Team: {{ offenderManager.team.description }}</p>
+                    {% if offenderManager.team.email %}
+                        <p class="govuk-body govuk-!-margin-bottom-0">Team email: {{ offenderManager.team.email }}</p>
+                    {% endif %}
                     {% if offenderManager.team.telephone %}
-                        <p class="govuk-body govuk-!-margin-bottom-0">Team telephone: {{ offenderManager.team.telephone }}</p>
+                        <p class="govuk-body govuk-!-margin-bottom-0">Team phone: {{ offenderManager.team.telephone }}</p>
                     {% endif %}
                 {% endif %}
             {% endif %}

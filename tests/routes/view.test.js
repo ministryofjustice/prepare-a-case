@@ -57,6 +57,10 @@ describe('Routes', () => {
     return communityResponse
   })
 
+  jest.spyOn(communityService, 'getConvictionWithRequirements').mockImplementation(function () {
+    return communityResponse
+  })
+
   jest.spyOn(communityService, 'getDetails').mockImplementation(function () {
     return communityResponse
   })
@@ -192,23 +196,31 @@ describe('Routes', () => {
     return response
   })
 
+  it('case summary get conviction route should call the case service to fetch data for a single conviction', async () => {
+    caseResponse = {
+      probationStatus: 'Current',
+      crn: 'D985513'
+    }
+    const response = await request(app).get('/B14LO/case/8678951874/record/1403337513')
+    expect(caseService.getCase).toHaveBeenCalledWith('B14LO', '8678951874')
+    expect(communityService.getConvictionWithRequirements).toHaveBeenCalledWith('D985513', '1403337513')
+    return response
+  })
+
   it('case summary attendance route should call the case service to fetch attendance data', async () => {
     caseResponse = {
       probationStatus: 'Current',
       crn: 'D985513'
     }
     communityResponse = {
-      convictions: [{
-        convictionId: 1403337513,
-        active: true,
-        sentence: {
-          sentenceId: '12345678'
-        }
-      }]
+      convictionId: 1403337513,
+      active: true,
+      sentence: {
+        sentenceId: '12345678'
+      }
     }
     const response = await request(app).get('/B14LO/case/668911253/record/1403337513')
     expect(caseService.getCase).toHaveBeenCalledWith('B14LO', '668911253')
-    expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
     expect(communityService.getSentenceDetails).toHaveBeenCalledWith('D985513', '1403337513', '12345678')
     return response
   })
@@ -226,7 +238,6 @@ describe('Routes', () => {
     }
     const response = await request(app).get('/B14LO/case/668911253/record/1403337513')
     expect(caseService.getCase).toHaveBeenCalledWith('B14LO', '668911253')
-    expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
     expect(communityService.getSentenceDetails).not.toHaveBeenCalled()
     return response
   })

@@ -1,0 +1,39 @@
+{
+  "id": "e011045e-9c2c-11eb-a8b3-0242ac130003",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/DX12340A/convictions/636401162"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "convictionId": "636401162",
+      "active": false,
+      "inBreach": true,
+      "convictionDate": "2017-03-08",
+      "offences": [
+        {
+          "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+        },
+        {
+          "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+        }
+      ],
+      "sentence": {
+        "sentenceId": "123123121",
+        "description": "CJA - Std Determinate Custody",
+        "length": 18,
+        "lengthInDays": 547,
+        "lengthUnits": "Months",
+        "terminationDate": "2018-01-23",
+        "terminationReason": "ICMS Miscellaneous Event",
+        "startDate": "2017-03-08",
+        "endDate": "2018-09-08"
+      },
+      "documents": []
+    }
+  }
+}

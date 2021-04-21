@@ -1,8 +1,8 @@
 {
-  "id": "0b094ad6-534c-470a-8b6e-bffec5ba651e",
+  "id": "0312212c-9c2d-11eb-a8b3-0242ac130003",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/D985513/probation-record"
+    "urlPathPattern": "/offender/D985513/convictions/1679300004"
   },
   "response": {
     "headers": {
@@ -10,25 +10,6 @@
     },
     "status": 200,
     "jsonBody": {
-      "crn": "D985513",
-      "offenderManagers": [
-        {
-          "staff": {
-            "forenames": "Temperance",
-            "surname": "Brennan",
-            "telephone": "01154223456"
-          },
-          "allocatedDate": "2019-09-30",
-          "team": {
-            "description": "Unallocated Team(N07)",
-            "localDeliveryUnit": "N07 Division",
-            "district": "N07 Division"
-          },
-          "provider": "NPS London"
-        }
-      ],
-      "convictions": [
-        {
           "convictionId": "1679300004",
           "active": true,
           "inBreach": false,
@@ -72,11 +53,5 @@
             }
           ]
         }
-      ],
-      "assessment": {
-        "type": "LAYER_3",
-        "completed": "2018-06-20T23:00:09"
-      }
-    }
   }
 }

@@ -1,0 +1,80 @@
+{
+  "id": "f9ccbf6e-9c2c-11eb-a8b3-0242ac130003",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D991494/convictions/1361422142"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+          "convictionId": "1361422142",
+          "active": true,
+          "inBreach": true,
+          "convictionDate": "2018-10-07",
+          "offences": [
+            {
+              "description": "Abstracting electricity - 04300"
+            },
+            {
+              "description": "Common and other types of assault - 10500"
+            },
+            {
+              "description": "(Assault PC (Indictable/Either way) - 00807)"
+            }
+          ],
+          "breaches": [
+            {
+              "breachId": 12345,
+              "description": "Community Order/SSO Breach",
+              "statusDate": "2014-12-30",
+              "status": "In progress"
+            },
+            {
+              "breachId": 54321,
+              "description": "Community Order/SSO Breach",
+              "statusDate": "2014-12-26",
+              "status": "Breach Summons Issued"
+            },
+            {
+              "breachId": 98765,
+              "description": "Community Order/SSO Breach",
+              "statusDate": "2013-11-26",
+              "status": "Completed - Amended & Continued"
+            }
+          ],
+          "sentence": {
+            "sentenceId": "123123140",
+            "description": "ORA Community Order",
+            "length": 18,
+            "lengthUnits": "Months",
+            "lengthInDays": 547,
+            "terminationDate": "2020-04-07",
+            "terminationReason": "Auto Terminated",
+            "startDate":  "2018-10-07",
+            "endDate": "2020-06-17"
+          },
+          "documents": [
+            {
+              "documentId": "1d842fce-ec2d-45dc-ac9a-748d3076ca6b",
+              "documentName": "shortFormatPreSentenceReport_04092019_121424_OMIC_A_X320741.pdf",
+              "author": "Andy Marke",
+              "type": "COURT_REPORT_DOCUMENT",
+              "extendedDescription": "Pre-Sentence Report - Fast requested by Sheffield Crown Court on 08/10/2018",
+              "createdAt": "2019-10-08T00:00:00",
+              "subType": {
+                "code": "CJF",
+                "description": "Pre-Sentence Report - Fast"
+              },
+              "reportDocumentDates": {
+                "requestedDate": "2018-10-08",
+                "requiredDate": "2019-10-08",
+                "completedDate": "{{now offset='-5 days' format='yyyy-MM-dd'}}T00:00:00"
+              }
+            }
+          ]
+        }
+  }
+}
