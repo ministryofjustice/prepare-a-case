@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "array",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": [],
+  "items": {
+    "$id": "#/items",
+    "anyOf": [
+      {
+        "$id": "#/items/anyOf/0",
+        "type": "object",
+        "title": "The first anyOf schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "required": [
+          "type",
+          "startDate",
+          "nextReviewDate",
+          "endDate",
+          "active"
+        ],
+        "properties": {
+          "type": {
+            "$id": "#/items/anyOf/0/properties/type",
+            "type": "string",
+            "title": "The type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": ""
+          },
+          "startDate": {
+            "$id": "#/items/anyOf/0/properties/startDate",
+            "type": "string",
+            "title": "The startDate schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": ""
+          },
+          "nextReviewDate": {
+            "$id": "#/items/anyOf/0/properties/nextReviewDate",
+            "type": "string",
+            "title": "The nextReviewDate schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": ""
+          },
+          "endDate": {
+            "$id": "#/items/anyOf/0/properties/endDate",
+            "type": "string",
+            "title": "The endDate schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": ""
+          },
+          "notes": {
+            "$id": "#/items/anyOf/0/properties/notes",
+            "type": [
+              "array",
+              "string",
+              "null"
+            ],
+            "title": "The notes schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "items": {
+              "$id": "#/items/anyOf/0/properties/notes/items",
+              "anyOf": [
+                {
+                  "$id": "#/items/anyOf/0/properties/notes/items/anyOf/0",
+                  "type": "string",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": ""
+                }
+              ]
+            }
+          },
+          "active": {
+            "$id": "#/items/anyOf/0/properties/active",
+            "type": "boolean",
+            "title": "The active schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false
+          }
+        },
+        "additionalProperties": false
+      }
+    ]
+  }
+}

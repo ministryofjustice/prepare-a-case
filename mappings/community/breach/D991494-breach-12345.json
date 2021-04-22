@@ -10,6 +10,7 @@
     },
     "status": 200,
     "jsonBody": {
+      "breachId": 12345,
       "order": "ORA Community Order (12 Months)",
       "sentencingCourtName": "Harrogate Magistrates' Court",
       "incidentDate": "2020-02-19",

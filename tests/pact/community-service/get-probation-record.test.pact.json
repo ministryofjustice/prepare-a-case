@@ -14,6 +14,8 @@
       "offenderManagers": [
         {
           "staff": {
+            "telephone": "01154223456",
+            "email": "d@none.com",
             "forenames": "ANGEL",
             "surname": "Extravaganza"
           },
@@ -36,9 +38,6 @@
           "offences": [
             {
               "description": "Arson - 05600"
-            },
-            {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
             }
           ],
           "sentence": {
@@ -79,13 +78,6 @@
               "status": "Breach Initiated",
               "started": "2020-10-20",
               "statusDate": "2020-12-18"
-            },
-            {
-              "breachId": 11131321,
-              "description": "Community Order",
-              "status": "Breach Initiated",
-              "started": "2019-10-20",
-              "statusDate": "2019-12-18"
             }
           ]
         }

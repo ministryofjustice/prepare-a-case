@@ -11,14 +11,6 @@
     "status": 200,
     "jsonBody": [
       {
-        "type": "MAPPA",
-        "startDate": "2020-09-30",
-        "nextReviewDate": "2020-12-30",
-        "endDate": "2021-01-01",
-        "notes": [],
-        "active": true
-      },
-      {
         "type": "Low RoSH",
         "startDate": "2019-09-30",
         "nextReviewDate": "2019-12-30",

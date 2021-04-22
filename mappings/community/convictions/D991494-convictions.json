@@ -408,6 +408,7 @@
             }
           ],
           "sentence": {
+            "sentenceId": "123123151",
             "description": "CJA - Std Determinate Custody",
             "length": 18,
             "lengthUnits": "Months",
@@ -1457,6 +1458,7 @@
             }
           ],
           "sentence": {
+            "sentenceId": "123123151",
             "description": "Life imprisonment (Adult)",
             "length": 18,
             "lengthUnits": "Months",

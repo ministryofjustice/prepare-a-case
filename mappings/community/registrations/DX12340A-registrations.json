@@ -15,7 +15,7 @@
           "startDate": "2019-06-20",
           "nextReviewDate":  "2019-09-29",
           "endDate": "2019-09-29",
-          "notes": "18.7.19 - Warrant also issued today for new offence of Sec. 5 POA that he FTA'd.",
+          "notes": ["18.7.19 - Warrant also issued today for new offence of Sec. 5 POA that he FTA'd."],
           "active": false
         },
         {
@@ -26,7 +26,6 @@
           "notes": [],
           "active": true
         }
-
     ]
   }
 }
