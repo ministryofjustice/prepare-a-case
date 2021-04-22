@@ -91,6 +91,13 @@
                 "default": {},
                 "required": [],
                 "properties": {
+                  "buildingName": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/address/properties/buildingName",
+                    "type": "string",
+                    "title": "The buildingName schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
                   "addressNumber": {
                     "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/address/properties/addressNumber",
                     "type": "string",
@@ -134,7 +141,7 @@
                     "default": ""
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
               },
               "matchIdentifiers": {
                 "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/matchIdentifiers",
@@ -179,7 +186,7 @@
                     "default": ""
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
               },
               "probationStatus": {
                 "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/probationStatus",
@@ -237,14 +244,14 @@
                     "default": ""
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
               }
             },
-            "additionalProperties": true
+            "additionalProperties": false
           }
         ]
       }
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

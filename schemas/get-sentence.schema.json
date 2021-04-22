@@ -91,10 +91,10 @@
                     "default": ""
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
               }
             },
-            "additionalProperties": true
+            "additionalProperties": false
           }
         ]
       }
@@ -163,9 +163,19 @@
           "title": "The status schema",
           "description": "An explanation about the purpose of this instance.",
           "default": ""
+        },
+        "statusDate": {
+          "$id": "#/properties/unpaidWork/properties/statusDate",
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "The statusDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "currentOrderHeaderDetail": {
       "$id": "#/properties/currentOrderHeaderDetail",
@@ -215,7 +225,7 @@
               "default": ""
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "mainOffenceDescription": {
           "$id": "#/properties/currentOrderHeaderDetail/properties/mainOffenceDescription",
@@ -267,7 +277,7 @@
           "default": ""
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "links": {
       "$id": "#/properties/links",
@@ -287,8 +297,8 @@
           "default": ""
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

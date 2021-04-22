@@ -36,9 +36,22 @@
       "description": "An explanation about the purpose of this instance.",
       "default": ""
     },
+    "crn": {
+      "$id": "#/properties/crn",
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "The crn schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
     "pnc": {
       "$id": "#/properties/pnc",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "title": "The pnc schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
@@ -87,28 +100,40 @@
     },
     "previouslyKnownTerminationDate": {
       "$id": "#/properties/previouslyKnownTerminationDate",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "title": "The previouslyKnownTerminationDate schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
     },
     "suspendedSentenceOrder": {
       "$id": "#/properties/suspendedSentenceOrder",
-      "type": "boolean",
+      "type": [
+        "boolean",
+        "null"
+      ],
       "title": "The suspendedSentenceOrder schema",
       "description": "An explanation about the purpose of this instance.",
       "default": false
     },
     "breach": {
       "$id": "#/properties/breach",
-      "type": "boolean",
+      "type": [
+        "boolean",
+        "null"
+      ],
       "title": "The breach schema",
       "description": "An explanation about the purpose of this instance.",
       "default": false
     },
     "preSentenceActivity": {
       "$id": "#/properties/preSentenceActivity",
-      "type": "boolean",
+      "type": [
+        "boolean",
+        "null"
+      ],
       "title": "The preSentenceActivity schema",
       "description": "An explanation about the purpose of this instance.",
       "default": false
@@ -164,7 +189,7 @@
                 "default": 0
               }
             },
-            "additionalProperties": true
+            "additionalProperties": false
           }
         ]
       }
@@ -226,7 +251,7 @@
           "default": ""
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "defendantAddress": {
       "$id": "#/properties/defendantAddress",
@@ -284,7 +309,7 @@
           "default": ""
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "defendantDob": {
       "$id": "#/properties/defendantDob",
@@ -343,5 +368,5 @@
       "default": 0
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

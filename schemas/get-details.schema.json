@@ -96,7 +96,7 @@
           ]
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "title": {
       "$id": "#/properties/title",
@@ -178,5 +178,5 @@
       ]
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

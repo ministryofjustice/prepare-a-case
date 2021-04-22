@@ -187,7 +187,7 @@
                           "default": 0
                         }
                       },
-                      "additionalProperties": true
+                      "additionalProperties": false
                     }
                   ]
                 }
@@ -257,7 +257,7 @@
                     "default": ""
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
               },
               "defendantAddress": {
                 "$id": "#/properties/cases/items/anyOf/0/properties/defendantAddress",
@@ -321,7 +321,7 @@
                     "default": ""
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
               },
               "defendantDob": {
                 "$id": "#/properties/cases/items/anyOf/0/properties/defendantDob",
@@ -387,11 +387,11 @@
                 "default": ""
               }
             },
-            "additionalProperties": true
+            "additionalProperties": false
           }
         ]
       }
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

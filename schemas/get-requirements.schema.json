@@ -27,15 +27,7 @@
             "required": [
               "requirementId",
               "startDate",
-              "terminationDate",
-              "expectedStartDate",
-              "expectedEndDate",
-              "active",
-              "requirementTypeSubCategory",
-              "requirementTypeMainCategory",
-              "terminationReason",
-              "length",
-              "lengthUnit"
+              "active"
             ],
             "properties": {
               "requirementId": {
@@ -52,23 +44,42 @@
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               },
+              "commencementDate": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/commencementDate",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "The commencementDate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
               "terminationDate": {
                 "$id": "#/properties/requirements/items/anyOf/0/properties/terminationDate",
-                "type": "string",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "title": "The terminationDate schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               },
               "expectedStartDate": {
                 "$id": "#/properties/requirements/items/anyOf/0/properties/expectedStartDate",
-                "type": "string",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "title": "The expectedStartDate schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               },
               "expectedEndDate": {
                 "$id": "#/properties/requirements/items/anyOf/0/properties/expectedEndDate",
-                "type": "string",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "title": "The expectedEndDate schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
@@ -82,7 +93,10 @@
               },
               "requirementTypeSubCategory": {
                 "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeSubCategory",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "title": "The requirementTypeSubCategory schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": {},
@@ -106,11 +120,14 @@
                     "default": ""
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
               },
               "requirementTypeMainCategory": {
                 "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeMainCategory",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "title": "The requirementTypeMainCategory schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": {},
@@ -134,11 +151,14 @@
                     "default": ""
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
               },
               "terminationReason": {
                 "$id": "#/properties/requirements/items/anyOf/0/properties/terminationReason",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "title": "The terminationReason schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": {},
@@ -162,7 +182,69 @@
                     "default": ""
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
+              },
+              "adRequirementTypeMainCategory": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeMainCategory",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "title": "The adRequirementTypeMainCategory schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "required": [
+                  "code",
+                  "description"
+                ],
+                "properties": {
+                  "code": {
+                    "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeMainCategory/properties/code",
+                    "type": "string",
+                    "title": "The code schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "description": {
+                    "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeMainCategory/properties/description",
+                    "type": "string",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": false
+              },
+              "adRequirementTypeSubCategory": {
+                "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeSubCategory",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "title": "The adRequirementTypeSubCategory schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "required": [
+                  "code",
+                  "description"
+                ],
+                "properties": {
+                  "code": {
+                    "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeSubCategory/properties/code",
+                    "type": "string",
+                    "title": "The code schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "description": {
+                    "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeSubCategory/properties/description",
+                    "type": "string",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": false
               },
               "length": {
                 "$id": "#/properties/requirements/items/anyOf/0/properties/length",
@@ -179,116 +261,17 @@
                 "default": ""
               }
             },
-            "additionalProperties": true
-          },
-          {
-            "$id": "#/properties/requirements/items/anyOf/1",
-            "type": "object",
-            "title": "The second anyOf schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": {},
-            "required": [
-              "requirementId",
-              "commencementDate",
-              "startDate",
-              "active",
-              "adRequirementTypeMainCategory",
-              "adRequirementTypeSubCategory"
-            ],
-            "properties": {
-              "requirementId": {
-                "$id": "#/properties/requirements/items/anyOf/1/properties/requirementId",
-                "type": "integer",
-                "title": "The requirementId schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": 0
-              },
-              "commencementDate": {
-                "$id": "#/properties/requirements/items/anyOf/1/properties/commencementDate",
-                "type": "string",
-                "title": "The commencementDate schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": ""
-              },
-              "startDate": {
-                "$id": "#/properties/requirements/items/anyOf/1/properties/startDate",
-                "type": "string",
-                "title": "The startDate schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": ""
-              },
-              "active": {
-                "$id": "#/properties/requirements/items/anyOf/1/properties/active",
-                "type": "boolean",
-                "title": "The active schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": false
-              },
-              "adRequirementTypeMainCategory": {
-                "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeMainCategory",
-                "type": "object",
-                "title": "The adRequirementTypeMainCategory schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": {},
-                "required": [
-                  "code",
-                  "description"
-                ],
-                "properties": {
-                  "code": {
-                    "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeMainCategory/properties/code",
-                    "type": "string",
-                    "title": "The code schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "description": {
-                    "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeMainCategory/properties/description",
-                    "type": "string",
-                    "title": "The description schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  }
-                },
-                "additionalProperties": true
-              },
-              "adRequirementTypeSubCategory": {
-                "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeSubCategory",
-                "type": "object",
-                "title": "The adRequirementTypeSubCategory schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": {},
-                "required": [
-                  "code",
-                  "description"
-                ],
-                "properties": {
-                  "code": {
-                    "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeSubCategory/properties/code",
-                    "type": "string",
-                    "title": "The code schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "description": {
-                    "$id": "#/properties/requirements/items/anyOf/1/properties/adRequirementTypeSubCategory/properties/description",
-                    "type": "string",
-                    "title": "The description schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  }
-                },
-                "additionalProperties": true
-              }
-            },
-            "additionalProperties": true
+            "additionalProperties": false
           }
         ]
       }
     },
     "pssRequirements": {
       "$id": "#/properties/pssRequirements",
-      "type": "array",
+      "type": [
+        "array",
+        "null"
+      ],
       "title": "The pssRequirements schema",
       "description": "An explanation about the purpose of this instance.",
       "default": [],
@@ -298,7 +281,10 @@
     },
     "licenceConditions": {
       "$id": "#/properties/licenceConditions",
-      "type": "array",
+      "type": [
+        "array",
+        "null"
+      ],
       "title": "The licenceConditions schema",
       "description": "An explanation about the purpose of this instance.",
       "default": [],
@@ -323,6 +309,26 @@
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               },
+              "subTypeDescription": {
+                "$id": "#/properties/licenceConditions/items/anyOf/0/properties/subTypeDescription",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "The subTypeDescription schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "notes": {
+                "$id": "#/properties/licenceConditions/items/anyOf/0/properties/notes",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "The notes schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
               "startDate": {
                 "$id": "#/properties/licenceConditions/items/anyOf/0/properties/startDate",
                 "type": "string",
@@ -331,11 +337,11 @@
                 "default": ""
               }
             },
-            "additionalProperties": true
+            "additionalProperties": false
           }
         ]
       }
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }
