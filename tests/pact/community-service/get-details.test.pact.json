@@ -1,0 +1,30 @@
+{
+  "id": "83e9213b-a94c-4570-96b5-6fddf94ed4b5",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D991494/detail"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "otherIds": {
+        "crn": "D991494",
+        "pncNumber": "PNC/1122",
+        "croNumber": "CRO/aass23",
+        "offenderId": 198765
+      },
+      "title": "Dame",
+      "forename": "Floella",
+      "middleNames": [
+        "Karen",
+        "Yunies"
+      ],
+      "surname": "Benjamin",
+      "dateOfBirth": "1949-09-23",
+      "probationStatus": "No record"
+    }
+  }
+}

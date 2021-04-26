@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "/offender/{crn}/probation-status-detail",
+  "type": "object",
+  "title": "Probation status detail",
+  "description": "A request for defendant probation status details.",
+  "default": {
+    "status": "NOT_SENTENCED",
+    "inBreach": false,
+    "preSentenceActivity": false,
+    "previouslyKnownTerminationDate": null
+  },
+  "examples": [
+    {
+      "status": "CURRENT",
+      "inBreach": true,
+      "preSentenceActivity": true,
+      "previouslyKnownTerminationDate": "2020-01-15"
+    }
+  ],
+  "required": [
+    "status",
+    "inBreach",
+    "preSentenceActivity",
+    "previouslyKnownTerminationDate"
+  ],
+  "properties": {
+    "status": {
+      "$id": "#/properties/status",
+      "type": "string",
+      "title": "The status schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "NOT_SENTENCED",
+      "examples": [
+        "CURRENT",
+        "PREVIOUSLY_KNOWN"
+      ]
+    },
+    "inBreach": {
+      "$id": "#/properties/inBreach",
+      "type": "boolean",
+      "title": "The inBreach schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": false,
+      "examples": [
+        true
+      ]
+    },
+    "preSentenceActivity": {
+      "$id": "#/properties/preSentenceActivity",
+      "type": "boolean",
+      "title": "The preSentenceActivity schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": false,
+      "examples": [
+        true
+      ]
+    },
+    "previouslyKnownTerminationDate": {
+      "$id": "#/properties/previouslyKnownTerminationDate",
+      "type": "string",
+      "title": "The previouslyKnownTerminationDate schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": null,
+      "examples": [
+        "2020-01-15"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

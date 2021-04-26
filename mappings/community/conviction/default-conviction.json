@@ -1,0 +1,57 @@
+{
+  "id": "a43ef436-9b96-11eb-a8b3-0242ac130003",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/([A-Z0-9]*)/convictions/(?!1361422142|1403337513|636401162|1309234876|241412130|1531139839|345464567|2360414697|345464567)([0-9]*)"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "convictionId": "1403337513",
+      "active": false,
+      "inBreach": false,
+      "convictionDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+      "offences": [
+        {
+          "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
+        },
+        {
+          "description": "Abstracting electricity - 04300"
+        },
+        {
+          "description": "(Adulteration etc of milk products - 08902)"
+        },
+        {
+          "description": "Common assault and battery - 10501"
+        }
+      ],
+      "sentence": {
+        "sentenceId": "123123130",
+        "description": "ORA Adult Custody (inc PSS)",
+        "length": 18,
+        "lengthInDays": 547,
+        "lengthUnits": "Months",
+        "terminationDate": "{{now offset='5 months' format='yyyy-MM-dd'}}",
+        "terminationReason": "ICMS Miscellaneous Event",
+        "currentOrderHeaderDetail" : {
+          "custodialTypeCode" : "P",
+          "custodialTypeDescription": "ORA Adult Custody (inc PSS)",
+          "mainOffenceDescription": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
+          "status": "Post Sentence Supervision",
+          "disposalDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+          "actualReleaseDate": "{{now format='yyyy-MM-dd'}}",
+          "licenceExpiryDate": "{{now format='yyyy-MM-dd'}}",
+          "pssEndDate": "{{now offset='5 months' format='yyyy-MM-dd'}}",
+          "length": 11,
+          "lengthUnit": "Months"
+        },
+        "startDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+        "endDate": "2020-07-01"
+      },
+      "documents": []
+    }
+  }
+}

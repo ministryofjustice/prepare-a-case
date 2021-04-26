@@ -1,0 +1,87 @@
+{
+  "id": "a6b1b539-dc0b-4c62-bb8a-fd2ab48a2d15",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D991494/probation-record"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "crn": "D991494",
+      "offenderManagers": [
+        {
+          "staff": {
+            "telephone": "01154223456",
+            "email": "d@none.com",
+            "forenames": "ANGEL",
+            "surname": "Extravaganza"
+          },
+          "allocatedDate": "2019-09-30",
+          "team": {
+            "description": "OMIC OMU A",
+            "telephone": "0151 222 3333",
+            "localDeliveryUnit": "LDU Description",
+            "district": "OMiC POM Responsibility"
+          },
+          "provider": "NPS North East"
+        }
+      ],
+      "convictions": [
+        {
+          "convictionId": "2500295345",
+          "active": true,
+          "inBreach": true,
+          "convictionDate": "2019-09-03",
+          "offences": [
+            {
+              "description": "Arson - 05600"
+            }
+          ],
+          "sentence": {
+            "sentenceId": "123457",
+            "description": "CJA - Indeterminate Public Prot.",
+            "length": 5,
+            "lengthUnits": "Years",
+            "lengthInDays": 1826,
+            "terminationDate": "2019-01-01",
+            "startDate": "2014-01-01",
+            "endDate": "2019-01-01",
+            "terminationReason": "ICMS Miscellaneous Event"
+          },
+          "endDate": "2019-01-01",
+          "documents": [
+            {
+              "documentId": "1d842fce-ec2d-45dc-ac9a-748d3076ca6b",
+              "documentName": "shortFormatPreSentenceReport_04092019_121424_OMIC_A_X320741.pdf",
+              "author": "Andy Marke",
+              "type": "COURT_REPORT_DOCUMENT",
+              "extendedDescription": "Pre-Sentence Report - Fast requested by Sheffield Crown Court on 04/09/2018",
+              "createdAt": "2019-09-04T00:00:00",
+              "subType": {
+                "code": "CJF",
+                "description": "Pre-Sentence Report - Fast"
+              },
+              "reportDocumentDates": {
+                "requestedDate": "2018-09-04",
+                "requiredDate": "2019-09-04",
+                "completedDate": "2018-02-28T00:00:00"
+              }
+            }
+          ],
+          "breaches": [
+            {
+              "breachId": 11131322,
+              "description": "Community Order",
+              "status": "Breach Initiated",
+              "started": "2020-10-20",
+              "statusDate": "2020-12-18"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

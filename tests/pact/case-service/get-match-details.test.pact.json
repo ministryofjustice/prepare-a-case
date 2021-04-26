@@ -1,0 +1,48 @@
+{
+  "id": "d31c6e9e-a187-418b-830d-58842718241c",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/B10JQ/case/1600028913/matchesDetail"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "offenderMatchDetails": [
+        {
+          "title": "Mr.",
+          "forename": "Aadland",
+          "middleNames": [
+            "Felix",
+            "Hope"
+          ],
+          "surname": "Bertrand",
+          "dateOfBirth": "2000-07-19",
+          "address": {
+            "addressNumber": "19",
+            "streetName": "Junction Road",
+            "district": "Blackheath",
+            "town": "Sheffield",
+            "county": "South Yorkshire",
+            "postcode": "S10 2NA"
+          },
+          "matchIdentifiers": {
+            "crn": "X320741",
+            "pnc": "2004/0712343H",
+            "cro": "123456/04A"
+          },
+          "probationStatus": "Previously known",
+          "probationStatusActual": "PREVIOUSLY_KNOWN",
+          "mostRecentEvent": {
+            "startDate": "2014-01-01",
+            "text": "CJA - Indeterminate Public Prot.",
+            "length": 5,
+            "lengthUnits": "Years"
+          }
+        }
+      ]
+    }
+  }
+}
