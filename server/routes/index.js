@@ -23,12 +23,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.use(health)
 
   router.use((req, res, next) => {
-    const { path, url, cookies: { currentCourt, analyticsCookies } } = req
-    if (currentCourt) {
-      res.cookie('currentCourt', currentCourt, cookieOptions)
+    const { path, url, cookies } = req
+    if (cookies && cookies.currentCourt) {
+      res.cookie('currentCourt', cookies.currentCourt, cookieOptions)
     }
-    if (analyticsCookies) {
-      res.cookie('analyticsCookies', analyticsCookies, cookieOptions)
+    if (cookies && cookies.analyticsCookies) {
+      res.cookie('analyticsCookies', cookies.analyticsCookies, cookieOptions)
     }
     if (path.substr(-1) === '/' && path.length > 1) {
       const query = url.slice(path.length)
