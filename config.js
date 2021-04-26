@@ -85,7 +85,8 @@ module.exports = {
   },
   session: {
     secret: get('SESSION_SECRET', 'prepare-a-case-insecure-default-session', requiredInProduction),
-    expiry: get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)
+    expiry: get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120),
+    cookieOptions: { maxAge: 365 * 24 * 60 * 60 * 1000 }
   },
   apis: {
     userPreferenceService: {
