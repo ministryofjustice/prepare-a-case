@@ -23,5 +23,4 @@ Feature: Accessibility statement
       | Essential cookies | Analytics cookies (optional) | Change your cookie settings |
     When I click the "Save cookie settings" button
     And I should see the success banner message "You’ve set your cookie preferences."
-    And I should see link "Go back to the page you were looking at" with href "#"
     And There should be no a11y violations

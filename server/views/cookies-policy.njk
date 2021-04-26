@@ -10,15 +10,15 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
-            {% if saveCookieSettings %}
+            {% if params.saved %}
                 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
                 {% set successBanner %}
                     <p class="govuk-notification-banner__heading">
-                        You’ve set your cookie preferences. <a class="govuk-notification-banner__link" href="#">Go back to the page you were looking at</a>.
+                        You’ve set your cookie preferences.
                     </p>
                 {% endset %}
                 {{ govukNotificationBanner({
-                    type: "success",
+                    type: "Success",
                     html: successBanner
                 }) }}
             {% endif %}
@@ -118,10 +118,10 @@
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
                     <h2 class="govuk-heading-l">Change your cookie settings</h2>
-                    <form action="/cookie-preference" method="post" novalidate>
+                    <form action="/cookie-preference/page" method="post" novalidate>
                         {{ govukRadios({
                             idPrefix: "analytics-cookies",
-                            name: "analytics-cookies",
+                            name: "cookies",
                             fieldset: {
                                 legend: {
                                     text: "Do you want to accept analytics cookies?",
@@ -130,23 +130,21 @@
                             },
                             items: [
                                 {
-                                    value: "yes",
-                                    text: "Yes"
+                                    value: "accept",
+                                    text: "Yes",
+                                    checked: params.preference === 'accept'
                                 },
                                 {
-                                    value: "no",
+                                    value: "reject",
                                     text: "No",
-                                    checked: true
+                                    checked: params.preference === 'reject' or not params.preference
                                 }
                             ]
                         }) }}
 
                     {{ govukButton({
                             text: "Save cookie settings",
-                            type: "submit",
-                            href: "saveCookieSettings",
-                            name: "cookies",
-                            value: "save"
+                            type: "submit"
                         }) }}
                     </form>
                 </div>

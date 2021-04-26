@@ -296,3 +296,7 @@ And('I should see the key details banner', () => {
 When('I enter the text {string} into the {string} input and press ENTER', ($text, $id) => {
   cy.get(`#${$id}`).type($text).type('{enter}').blur()
 })
+
+And('I should see the success banner message {string}', $string => {
+  cy.get('.govuk-notification-banner__heading').contains($string).should('exist')
+})

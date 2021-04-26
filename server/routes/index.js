@@ -50,22 +50,28 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/cookies-policy', (req, res) => {
-    res.render('cookies-policy', { params: { nonce: nonce } })
+    res.render('cookies-policy', { params: { saved: req.query.saved, preference: req.cookies.analyticsCookies, nonce: nonce } })
   })
 
   router.use((req, res, next) => {
     res.locals.analyticsCookies = req.cookies && req.cookies.analyticsCookies
+    console.log("analytics", res.locals.analyticsCookies )
     next()
   })
 
-  router.post('/cookie-preference', (req, res) => {
+  router.post('/cookie-preference/:page?',(req, res) => {
     console.log('req.body', req.body.cookies)
+    const redirectUrl = req.params.page ? '/cookies-policy?saved=true' : '/'
     if (req.body.cookies) {
       if (req.body.cookies === 'reject') {
-        // DO SOMETHING HERE
+        for (const [key] of Object.entries(req.cookies)) {
+          if (key.indexOf('_g') !== -1) {
+            res.clearCookie(key)
+          }
+        }
       }
       res.cookie('analyticsCookies', req.body.cookies)
-        .redirect(302, '/')
+        .redirect(302, redirectUrl)
     }
   })
 
