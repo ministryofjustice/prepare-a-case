@@ -7,7 +7,7 @@ const { validateSchema } = require('../../testUtils/schemaValidation')
 const pactResponseMock = require('./update-case.test.pact.json')
 const schema = require('../../../schemas/put-case.schema.json')
 
-pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
+pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('PUT /court/{courtCode}/case/{caseNo}', () => {
     const courtCode = 'B14LO'
     const caseNo = '351196424'

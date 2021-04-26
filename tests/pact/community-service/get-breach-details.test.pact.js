@@ -7,7 +7,7 @@ const { validateMocks, validateSchema } = require('../../testUtils/schemaValidat
 const pactResponseMock = require('./get-breach-details.test.pact.json')
 const schema = require('../../../schemas/get-breach-details.schema.json')
 
-pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
+pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /offender/{crn}/convictions/{convictionId}/breaches/{breachId}', () => {
     const crn = 'D991494'
     const convictionId = '1361422142'

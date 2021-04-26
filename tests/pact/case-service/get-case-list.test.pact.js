@@ -9,7 +9,7 @@ const { request } = require('../../../server/services/utils/request')
 const pactResponseMock = require('./get-case-list.test.pact.json')
 const schema = require('../../../schemas/get-case-list.schema.json')
 
-pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
+pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /court/{courtCode}/cases?date={YYYY-MM-DD}', () => {
     const courtCode = 'B14LO'
     const apiUrl = `/court/${courtCode}/cases`
