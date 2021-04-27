@@ -1,0 +1,30 @@
+{
+  "id": "8f01aebb-b27e-4082-a5fb-8675fc772424",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/C178657/detail"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "otherIds": {
+        "crn": "C178657",
+        "pncNumber": "A/654321AB",
+        "croNumber": "CRO123456",
+        "offenderId": 198765
+      },
+      "title": "Mr",
+      "forename": "Guadalupe",
+      "middleNames": [
+        "Bob",
+        "Geoff"
+      ],
+      "surname": "Hess",
+      "dateOfBirth": "1989-02-18",
+      "probationStatus": "Previously known"
+    }
+  }
+}

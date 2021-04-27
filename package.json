@@ -103,6 +103,8 @@
   "devDependencies": {
     "@cucumber/cucumber": "7.1.0",
     "@pact-foundation/pact": "9.15.4",
+    "ajv": "8.1.0",
+    "ajv-errors": "3.0.0",
     "axe-core": "4.1.4",
     "cypress": "7.1.0",
     "cypress-axe": "0.12.2",

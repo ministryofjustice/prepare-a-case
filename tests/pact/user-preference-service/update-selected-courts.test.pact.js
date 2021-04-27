@@ -5,10 +5,10 @@ const { Matchers } = require('@pact-foundation/pact')
 const { update } = require('../../../server/services/utils/request')
 const selectedCourtsMock = require('../../../mappings/preferences/default-courts.json')
 
-pactWith({ consumer: 'Prepare a case', provider: 'User preferences service' }, provider => {
+pactWith({ consumer: 'prepare-a-case', provider: 'hmpps-user-preferences' }, provider => {
   describe('PUT /preferences/courts', () => {
     const apiUrl = '/preferences/courts'
-    const parsedMockData = selectedCourtsMock.response.jsonBody
+    const mockData = selectedCourtsMock.response.jsonBody
 
     it('updates and returns a specific case', async () => {
       await provider.addInteraction({
@@ -18,18 +18,20 @@ pactWith({ consumer: 'Prepare a case', provider: 'User preferences service' }, p
           method: 'PUT',
           path: apiUrl,
           headers: {
+            'Content-Type': 'application/json;charset=utf-8',
             Accept: 'application/json'
-          }
+          },
+          body: mockData
         },
         willRespondWith: {
           status: 201,
           headers: selectedCourtsMock.response.headers,
-          body: Matchers.like(parsedMockData)
+          body: Matchers.like(mockData)
         }
       })
 
-      const response = await update(`${provider.mockService.baseUrl}${apiUrl}`, parsedMockData)
-      expect(response.data).toEqual(parsedMockData)
+      const response = await update(`${provider.mockService.baseUrl}${apiUrl}`, mockData)
+      expect(response.data).toEqual(mockData)
       return response
     })
   })

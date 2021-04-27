@@ -1,0 +1,26 @@
+{
+  "id": "53314e37-95c3-4d45-bd16-2d668e554875",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D991494/convictions/1361422142/breaches/12345"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "breachId": 12345,
+      "order": "ORA Community Order (12 Months)",
+      "sentencingCourtName": "Harrogate Magistrates' Court",
+      "incidentDate": "2020-02-19",
+      "statusDate": "2020-05-22",
+      "provider": "NPS North East",
+      "team": "Enforcement hub - Sheffield and Rotherham",
+      "officer": "Unallocated",
+      "status": "Breach initiated",
+      "notes": "Paragraph 1: Some information.\nParagraph 2: And some more.",
+      "documents": []
+    }
+  }
+}

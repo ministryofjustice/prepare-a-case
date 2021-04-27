@@ -1,0 +1,36 @@
+{
+  "id": "433ac97b-65be-4e52-8d15-b7c22d55e313",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/X320741/convictions/2500295343/breaches/2500003903"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "breachId": 2500003903,
+      "incidentDate": "2017-03-21",
+      "started": "2017-03-22",
+      "statusDate": "2017-05-22",
+      "provider": "CPA West Yorkshire",
+      "team": "Unallocated",
+      "officer": "Unallocated Staff",
+      "status": "Induction Completed - Opted Out",
+      "order": "CJA - Community Order (12 Months)",
+      "sentencingCourtName": "Bicester Magistrates Court",
+      "notes": "Paragraph 1: Some information.\nParagraph 2: And some more.",
+      "documents": [
+        {
+          "documentId": "4191eada-6e03-4bd8-b52d-9e050eefa745",
+          "documentName": "NSI.pdf.pdf",
+          "author": "Andy Marke",
+          "type": "NSI_DOCUMENT",
+          "extendedDescription": "Non Statutory Intervention for Custody - Accredited Programme on 02/09/2019",
+          "createdAt": "2019-09-16T00:00:00"
+        }
+      ]
+    }
+  }
+}

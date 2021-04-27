@@ -4,15 +4,21 @@ const { Matchers } = require('@pact-foundation/pact')
 const moment = require('moment')
 
 const { parseMockResponse } = require('../../testUtils/parseMockResponse')
+const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
 const { request } = require('../../../server/services/utils/request')
-const caseListMock = require('../../../mappings/case-list-full.json')
+const pactResponseMock = require('./get-case-list.test.pact.json')
+const schema = require('../../../schemas/get-case-list.schema.json')
 
-pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
+pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /court/{courtCode}/cases?date={YYYY-MM-DD}', () => {
     const courtCode = 'B14LO'
     const apiUrl = `/court/${courtCode}/cases`
     const today = moment().format('YYYY-MM-DD')
-    const parsedMockData = parseMockResponse(caseListMock.response.jsonBody)
+    const parsedMockData = parseMockResponse(pactResponseMock.response.jsonBody)
+
+    it('should validate the JSON schema against the provided sample data', () => {
+      validateSchema(parsedMockData, schema)
+    })
 
     it('returns a list of cases', async () => {
       await provider.addInteraction({
@@ -29,8 +35,8 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
           }
         },
         willRespondWith: {
-          status: caseListMock.response.status,
-          headers: caseListMock.response.headers,
+          status: pactResponseMock.response.status,
+          headers: pactResponseMock.response.headers,
           body: Matchers.like(parsedMockData)
         }
       })
@@ -38,6 +44,10 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
       const response = await request(`${provider.mockService.baseUrl}${apiUrl}?date=${today}`)
       expect(response.data).toEqual(parsedMockData)
       return response
+    })
+
+    it('should validate the WireMock mocks against the JSON schema', () => {
+      validateMocks(process.env.INIT_CWD + '/mappings/case-list', schema)
     })
   })
 })

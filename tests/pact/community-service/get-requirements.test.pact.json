@@ -1,0 +1,59 @@
+{
+  "id": "33b45ea3-c0b6-4098-bf16-7faef625afba",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/([A-Z0-9]*)/convictions/([0-9]*)/requirements"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "requirements": [
+        {
+          "requirementId": 2500083652,
+          "startDate": "2017-06-01",
+          "commencementDate": "2015-06-29",
+          "terminationDate": "2017-12-01",
+          "expectedStartDate": "2017-06-01",
+          "expectedEndDate": "2017-12-01",
+          "active": false,
+          "requirementTypeSubCategory": {
+            "code": "W01",
+            "description": "Regular"
+          },
+          "requirementTypeMainCategory": {
+            "code": "W",
+            "description": "Unpaid Work"
+          },
+          "terminationReason": {
+            "code": "74",
+            "description": "Hours Completed Outside 12 months (UPW only)"
+          },
+          "adRequirementTypeMainCategory": {
+            "code": "7",
+            "description": "Court - Accredited Programme"
+          },
+          "adRequirementTypeSubCategory": {
+            "code": "P12",
+            "description": "ASRO"
+          },
+          "length": 60,
+          "lengthUnit": "Hours"
+        }
+      ],
+      "pssRequirements": [],
+      "licenceConditions": [
+        {
+          "description": "Curfew Arrangement",
+          "startDate": "2020-02-01"
+        },
+        {
+          "description": "Participate or co-op with Programme or Activities",
+          "startDate": "2020-02-01"
+        }
+      ]
+    }
+  }
+}
