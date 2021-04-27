@@ -39,7 +39,7 @@ module.exports = function createApp ({ signInService, userService }) {
   app.use(helmet({
     contentSecurityPolicy: {
       directives: {
-        defaultSrc: ['\'self\''],
+        defaultSrc: ['\'self\'', 'www.google-analytics.com'],
         objectSrc: ['\'none\''],
         scriptSrc: [
           '\'self\'',
