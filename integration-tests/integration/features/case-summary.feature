@@ -214,7 +214,6 @@ Feature: Case summary
     And I should see the body text "Angel Extravaganza"
     And I should see the hint text "Allocated on 12 Aug 2017"
     And I should see the body text "Email: d@none.com"
-    And I should see the body text "Phone: 01154223456"
     And I should see the body text "Provider: NPS Midlands"
     And I should see the body text "LDU: N04 Division"
     And I should see the body text "Team: OMU A"
