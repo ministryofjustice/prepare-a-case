@@ -62,7 +62,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/cookies-policy', (req, res) => {
-    res.render('cookies-policy', { params: {  saved: req.query.saved, preference: req.cookies.analyticsCookies, nonce: nonce } })
+    res.render('cookies-policy', { params: { saved: req.query.saved, preference: req.cookies.analyticsCookies, nonce: nonce } })
   })
 
   router.use((req, res, next) => {
