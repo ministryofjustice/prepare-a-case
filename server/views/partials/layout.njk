@@ -32,7 +32,7 @@
         <script src="/assets/accessible-autocomplete.min.js"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id={{ googleAnalyticsKey }}"></script>
+        <script async nonce="{{ params.nonce }}" src="https://www.googletagmanager.com/gtag/js?id={{ googleAnalyticsKey }}"></script>
         <script nonce="{{ params.nonce }}">
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
