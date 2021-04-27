@@ -66,7 +66,8 @@ module.exports = {
       { code: 'B17JA', name: 'Teesside Magistrates\' Court' },
       { code: 'B22MZ', name: 'Telford Magistrates\' Court' },
       { code: 'B01ND', name: 'Thames Magistrates\' Court' },
-      { code: 'B20NP', name: 'Walsall Magistrates\' Court' },
+      { code: 'B20NQ', name: 'Walsall (Stafford Street) Magistrates\' Court' },
+      { code: 'B20NP', name: 'Walsall (Aldridge) Magistrates\' Court' },
       { code: 'B23HS', name: 'Warwick Combined Court (Leamington Spa Magistrates\' Court)' },
       { code: 'B03OT', name: 'West Cumbria Magistrates\' Court' },
       { code: 'B01IX', name: 'Westminster Magistrates\' Court' },
@@ -84,7 +85,8 @@ module.exports = {
   },
   session: {
     secret: get('SESSION_SECRET', 'prepare-a-case-insecure-default-session', requiredInProduction),
-    expiry: get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120)
+    expiry: get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120),
+    cookieOptions: { maxAge: 365 * 24 * 60 * 60 * 1000 }
   },
   apis: {
     userPreferenceService: {

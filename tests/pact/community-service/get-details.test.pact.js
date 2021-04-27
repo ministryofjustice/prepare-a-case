@@ -3,13 +3,20 @@ const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
 
 const { request } = require('../../../server/services/utils/request')
-const defendantDetailsMock = require('../../../mappings/matching/2608860141-detail.json')
+const { parseMockResponse } = require('../../testUtils/parseMockResponse')
+const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
+const pactResponseMock = require('./get-details.test.pact.json')
+const schema = require('../../../schemas/get-details.schema.json')
 
-pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
+pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /offender/{crn}/detail', () => {
     const crn = 'D991494'
     const apiUrl = `/offender/${crn}/detail`
-    const mockData = defendantDetailsMock.response.jsonBody
+    const mockData = parseMockResponse(pactResponseMock.response.jsonBody)
+
+    it('should validate the JSON schema against the provided sample data', () => {
+      validateSchema(mockData, schema)
+    })
 
     it('returns the defendant details', async () => {
       await provider.addInteraction({
@@ -23,8 +30,8 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
           }
         },
         willRespondWith: {
-          status: defendantDetailsMock.response.status,
-          headers: defendantDetailsMock.response.headers,
+          status: pactResponseMock.response.status,
+          headers: pactResponseMock.response.headers,
           body: Matchers.like(mockData)
         }
       })
@@ -32,6 +39,10 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
       const response = await request(`${provider.mockService.baseUrl}${apiUrl}`)
       expect(response.data).toEqual(mockData)
       return response
+    })
+
+    it('should validate the WireMock mocks against the JSON schema', () => {
+      validateMocks(process.env.INIT_CWD + '/mappings/matching/detail', schema)
     })
   })
 })

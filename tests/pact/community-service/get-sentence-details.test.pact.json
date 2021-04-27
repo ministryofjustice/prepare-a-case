@@ -1,0 +1,66 @@
+{
+  "id": "4499f8a9e3a216efe38bfc538caa54b091883184",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/X320741/convictions/2500295343/sentences/2500298861"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "attendances": [
+        {
+          "contactId": 1325,
+          "attendanceDate": "2019-08-24",
+          "attended": true,
+          "complied": true,
+          "outcome": "Description of outcome",
+          "contactType": {
+            "description": "Description of contact type",
+            "code": "DSC01"
+          }
+        },
+        {
+          "contactId": 8888888,
+          "attendanceDate": "2020-02-29",
+          "attended": false,
+          "complied": false,
+          "outcome": "8888888 Description of outcome",
+          "contactType": {
+            "description": "8888888 Description of contact type",
+            "code": "DSC02"
+          }
+        }
+      ],
+      "unpaidWork": {
+        "minutesOffered": 3600,
+        "minutesCompleted": 360,
+        "appointmentsToDate": 5,
+        "attended": 2,
+        "acceptableAbsences": 1,
+        "unacceptableAbsences": 1,
+        "status": "Being worked"
+      },
+      "currentOrderHeaderDetail": {
+        "sentenceId": 2500298861,
+        "sentenceDescription": "CJA - Intermediate Public Prot.",
+        "custodialType": {
+          "code": "P",
+          "description": "Post Sentence Supervision"
+        },
+        "mainOffenceDescription": "Common assault and battery - 10501",
+        "sentenceDate": "2018-12-03",
+        "actualReleaseDate": "2019-07-03",
+        "licenceExpiryDate": "2019-11-03",
+        "pssEndDate": "2020-06-03",
+        "length": 11,
+        "lengthUnits": "Months"
+      },
+      "links": {
+        "deliusContactList": "https://ndelius.test.probation.service.justice.gov.uk/NDelius-war/delius/JSP/deeplink.jsp?component=ContactList&offenderId=2500343964&eventId=2500295343"
+      }
+    }
+  }
+}

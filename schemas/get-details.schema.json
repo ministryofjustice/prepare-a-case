@@ -1,0 +1,182 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "/offender/{crn}/detail",
+  "type": "object",
+  "title": "Defendant detail",
+  "description": "A request for defendant details.",
+  "default": {},
+  "examples": [
+    {
+      "otherIds": {
+        "crn": "D541487",
+        "pncNumber": "PNC/1122",
+        "croNumber": "CRO/aass23",
+        "offenderId": 198765
+      },
+      "title": "Dame",
+      "forename": "Floealla",
+      "middleNames": [
+        "Karen",
+        "Yunies"
+      ],
+      "surname": "Benjamin",
+      "dateOfBirth": "1949-09-23",
+      "probationStatus": "No record"
+    }
+  ],
+  "required": [
+    "otherIds",
+    "title",
+    "forename",
+    "middleNames",
+    "surname",
+    "dateOfBirth",
+    "probationStatus"
+  ],
+  "properties": {
+    "otherIds": {
+      "$id": "#/properties/otherIds",
+      "type": "object",
+      "title": "The otherIds schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "crn": "D541487",
+          "pncNumber": "PNC/1122",
+          "croNumber": "CRO/aass23",
+          "offenderId": 198765
+        }
+      ],
+      "required": [
+        "crn",
+        "pncNumber",
+        "croNumber",
+        "offenderId"
+      ],
+      "properties": {
+        "crn": {
+          "$id": "#/properties/otherIds/properties/crn",
+          "type": "string",
+          "title": "The crn schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "D541487"
+          ]
+        },
+        "pncNumber": {
+          "$id": "#/properties/otherIds/properties/pncNumber",
+          "type": "string",
+          "title": "The pncNumber schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "PNC/1122"
+          ]
+        },
+        "croNumber": {
+          "$id": "#/properties/otherIds/properties/croNumber",
+          "type": "string",
+          "title": "The croNumber schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "CRO/aass23"
+          ]
+        },
+        "offenderId": {
+          "$id": "#/properties/otherIds/properties/offenderId",
+          "type": "integer",
+          "title": "The offenderId schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            198765
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "title": {
+      "$id": "#/properties/title",
+      "type": "string",
+      "title": "The title schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "Dame"
+      ]
+    },
+    "forename": {
+      "$id": "#/properties/forename",
+      "type": "string",
+      "title": "The forename schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "Floealla"
+      ]
+    },
+    "middleNames": {
+      "$id": "#/properties/middleNames",
+      "type": "array",
+      "title": "The middleNames schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        [
+          "Karen",
+          "Yunies"
+        ]
+      ],
+      "items": {
+        "$id": "#/properties/middleNames/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/middleNames/items/anyOf/0",
+            "type": "string",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "Karen",
+              "Yunies"
+            ]
+          }
+        ]
+      }
+    },
+    "surname": {
+      "$id": "#/properties/surname",
+      "type": "string",
+      "title": "The surname schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "Benjamin"
+      ]
+    },
+    "dateOfBirth": {
+      "$id": "#/properties/dateOfBirth",
+      "type": "string",
+      "title": "The dateOfBirth schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "1949-09-23"
+      ]
+    },
+    "probationStatus": {
+      "$id": "#/properties/probationStatus",
+      "type": "string",
+      "title": "The probationStatus schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "No record"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,98 @@
+{
+  "id": "33d56548-646e-41ee-9503-1000df2452c2",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z0-9]{5})/case/3597035492/matchesDetail"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "offenderMatchDetails": [
+        {
+          "title": "Mr.",
+          "forename": "Guadalupe",
+          "middleNames": [
+            "Flowerlupe",
+            "Paratroop"
+          ],
+          "surname": "Hess",
+          "dateOfBirth": "1989-02-18",
+          "address": {
+            "addressNumber": "43",
+            "buildingName": "Hunterfly Place",
+            "town": "Birmingham",
+            "county": "Birmingham",
+            "postcode": "AD21 5DR"
+          },
+          "matchIdentifiers": {
+            "crn": "V178657",
+            "pnc": "D/9874483AB",
+            "cro": null
+          },
+          "probationStatus": "Current",
+          "mostRecentEvent": {
+            "startDate": "2017-11-27",
+            "text": "CJA Standard Determinate Custody",
+            "length": 6,
+            "lengthUnits": "Months"
+          }
+        },
+        {
+          "title": "Mr.",
+          "forename": "Guadalupe",
+          "middleNames": [
+            "Paul"
+          ],
+          "surname": "HESS",
+          "dateOfBirth": "1989-02-18",
+          "address": {
+            "buildingName": "Dunroamin",
+            "county": "Leicestershire",
+            "postcode": "LE2 3NA"
+          },
+          "matchIdentifiers": {
+            "crn": "C178657",
+            "pnc": null,
+            "cro": null
+          },
+          "probationStatus": "Previously known",
+          "mostRecentEvent": {
+            "startDate": "2017-11-27",
+            "text": "CJA Standard Determinate Custody",
+            "length": 12,
+            "lengthUnits": "Months"
+          }
+        },
+        {
+          "title": "Mr.",
+          "forename": "GUADALUPE",
+          "middleNames": [
+            "Flowerlupe"
+          ],
+          "surname": "Hess",
+          "dateOfBirth": "1998-02-18",
+          "address": {
+            "buildingName": "Dunroamin",
+            "county": "Leicestershire",
+            "postcode": "LE2 3NA"
+          },
+          "matchIdentifiers": {
+            "crn": "B123456",
+            "pnc": null,
+            "cro": null
+          },
+          "probationStatus": "Previously known",
+          "mostRecentEvent": {
+            "startDate": "2015-01-13",
+            "text": "CJA Standard Determinate Custody",
+            "length": 6,
+            "lengthUnits": "Months"
+          }
+        }
+      ]
+    }
+  }
+}

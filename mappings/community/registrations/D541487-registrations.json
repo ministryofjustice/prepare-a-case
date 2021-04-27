@@ -1,0 +1,57 @@
+{
+  "id": "20e9deb2-07bb-11eb-adc1-0242ac120002",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D541487/registrations"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": [
+      {
+        "type": "MAPPA",
+        "startDate": "2020-09-30",
+        "nextReviewDate": "2020-12-30",
+        "endDate": "2021-01-01",
+        "notes": [],
+        "active": true
+      },
+      {
+        "type": "MAPPA",
+        "startDate": "2019-09-30",
+        "nextReviewDate": "2019-12-30",
+        "endDate": "2020-01-01",
+        "notes": [
+          "01-01-20 - MAPPA has now ended."
+        ],
+        "active": false
+      },
+      {
+        "type": "Low RoSH",
+        "startDate": "2020-08-30",
+        "nextReviewDate": "2020-11-30",
+        "endDate": "2020-12-30",
+        "notes": ["01-12-20 - Notes added to Low RoSH"],
+        "active": true
+      },
+      {
+        "type": "Warrant",
+        "startDate": "2020-09-30",
+        "nextReviewDate": "2020-12-30",
+        "endDate": "2021-01-01",
+        "notes": [],
+        "active": true
+      },
+      {
+        "type": "MAPPA",
+        "startDate": "2020-09-30",
+        "nextReviewDate": "2020-12-30",
+        "endDate": "2021-01-01",
+        "notes": ["dsadsadsad\nNotes added to MAPPA"],
+        "active": true
+      }
+    ]
+  }
+}

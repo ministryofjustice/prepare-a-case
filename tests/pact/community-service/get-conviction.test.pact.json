@@ -1,0 +1,45 @@
+{
+  "id": "f28fee9e-b3cc-4b57-8752-6b830180325c",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D541487/convictions/1531139839"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "convictionId": "1531139839",
+      "active": false,
+      "inBreach": true,
+      "convictionDate": "2018-01-06",
+      "offences": [
+        {
+          "description": "Noise offences - 82200"
+        },
+        {
+          "description": "Acknowledging bail in false name - 08303"
+        },
+        {
+          "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+        },
+        {
+          "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
+        }
+      ],
+      "sentence": {
+        "sentenceId": "123123140",
+        "description": "CJA - Indeterminate Public Prot.",
+        "length": 18,
+        "lengthInDays": 547,
+        "lengthUnits": "Months",
+        "terminationDate": "2019-07-12",
+        "terminationReason": "Auto Terminated",
+        "startDate": "2018-01-06",
+        "endDate": "2019-07-12"
+      },
+      "documents": []
+    }
+  }
+}

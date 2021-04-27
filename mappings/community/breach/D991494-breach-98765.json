@@ -1,0 +1,35 @@
+{
+  "id": "950b6443-28e4-43cc-9d5d-bf76091cd9ee",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/D991494/convictions/1361422142/breaches/98765"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "breachId": 98765,
+      "order":"ORA Community Order (12 Months)",
+      "sentencingCourtName": "Sheffield Magistrates' Court",
+      "incidentDate": "2013-09-13",
+      "statusDate": "2013-11-26",
+      "provider": "NPS North East",
+      "team": "Enforcement hub - Sheffield and Rotherham",
+      "officer": "Unallocated",
+      "status": "Completed - Amended & Continued",
+      "notes": "Paragraph 1: Some information.\nParagraph 2: And some more.\nParagraph 3: And another\n\nParagraph 4: And another",
+      "documents": [
+        {
+          "documentId": "98765",
+          "documentName": "NAT NPS Breach Report CO SSO_HOUGHTON_R_DX12340X.doc",
+          "author": "Claire Smith",
+          "type": "NSI_DOCUMENT",
+          "extendedDescription": "Non Statutory Intervention for Breach Request on 18/09/2017",
+          "createdAt": "2020-02-25T15:48:09.163"
+        }
+      ]
+    }
+  }
+}

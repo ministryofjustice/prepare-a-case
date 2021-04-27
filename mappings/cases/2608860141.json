@@ -10,7 +10,6 @@
     },
     "status": 200,
     "jsonBody": {
-      "caseId": "458832",
       "caseNo": "2608860141",
       "courtCode": "SHF",
       "courtRoom": "10",
@@ -24,16 +23,19 @@
       "suspendedSentenceOrder": false,
       "numberOfPossibleMatches": 1,
       "breach": false,
+      "preSentenceActivity": false,
       "offences": [
         {
           "offenceTitle": "Theft from the person of another",
           "offenceSummary": "On 24/03/2016 at Bangor stole LAPTOP to the value of 300.00, belonging to Booker Becker.",
-          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 1
         },
         {
           "offenceTitle": "Assault by beating",
           "offenceSummary": "On 01/01/2016 at Birmingham assaulted Mcbride Barnes by beating him.",
-          "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+          "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
+          "sequenceNumber": 2
         }
       ],
       "defendantSex": "F",
@@ -42,11 +44,12 @@
         "line1": "70",
         "line2": "Guider Avenue",
         "postcode": "le21 5dr",
-        "line3": "Leeds",
-        "line4": null,
-        "line5": null
+        "line3": "Leeds"
       },
-      "defendantDob": "1980-09-13"
+      "defendantDob": "1980-09-13",
+      "nationality1": "",
+      "createdToday": true,
+      "removed": false
     }
   }
 }

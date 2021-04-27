@@ -4,14 +4,20 @@ const { Matchers } = require('@pact-foundation/pact')
 
 const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { request } = require('../../../server/services/utils/request')
-const caseMock = require('../../../mappings/cases/351196424.json')
+const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
+const pactResponseMock = require('./get-case.test.pact.json')
+const schema = require('../../../schemas/get-case.schema.json')
 
-pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provider => {
+pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /court/{courtCode}/case/{caseNo}', () => {
     const courtCode = 'B14LO'
     const caseNo = '351196424'
     const apiUrl = `/court/${courtCode}/case/${caseNo}`
-    const parsedMockData = parseMockResponse(caseMock.response.jsonBody)
+    const parsedMockData = parseMockResponse(pactResponseMock.response.jsonBody)
+
+    it('should validate the JSON schema against the provided sample data', () => {
+      validateSchema(parsedMockData, schema)
+    })
 
     it('returns a specific case', async () => {
       await provider.addInteraction({
@@ -25,8 +31,8 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
           }
         },
         willRespondWith: {
-          status: caseMock.response.status,
-          headers: caseMock.response.headers,
+          status: pactResponseMock.response.status,
+          headers: pactResponseMock.response.headers,
           body: Matchers.like(parsedMockData)
         }
       })
@@ -34,6 +40,10 @@ pactWith({ consumer: 'Prepare a case', provider: 'Court case service' }, provide
       const response = await request(`${provider.mockService.baseUrl}${apiUrl}`)
       expect(response.data).toEqual(parsedMockData)
       return response
+    })
+
+    it('should validate the WireMock mocks against the JSON schema', () => {
+      validateMocks(process.env.INIT_CWD + '/mappings/cases', schema)
     })
   })
 })

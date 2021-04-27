@@ -1,0 +1,176 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "required": [
+    "breachId",
+    "incidentDate",
+    "statusDate",
+    "provider",
+    "team",
+    "officer",
+    "status",
+    "order",
+    "sentencingCourtName",
+    "notes",
+    "documents"
+  ],
+  "properties": {
+    "breachId": {
+      "$id": "#/properties/breachId",
+      "type": "integer",
+      "title": "The breachId schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0
+    },
+    "incidentDate": {
+      "$id": "#/properties/incidentDate",
+      "type": "string",
+      "title": "The incidentDate schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "started": {
+      "$id": "#/properties/started",
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "The started schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "statusDate": {
+      "$id": "#/properties/statusDate",
+      "type": "string",
+      "title": "The statusDate schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "provider": {
+      "$id": "#/properties/provider",
+      "type": "string",
+      "title": "The provider schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "team": {
+      "$id": "#/properties/team",
+      "type": "string",
+      "title": "The team schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "officer": {
+      "$id": "#/properties/officer",
+      "type": "string",
+      "title": "The officer schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "status": {
+      "$id": "#/properties/status",
+      "type": "string",
+      "title": "The status schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "order": {
+      "$id": "#/properties/order",
+      "type": "string",
+      "title": "The order schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "sentencingCourtName": {
+      "$id": "#/properties/sentencingCourtName",
+      "type": "string",
+      "title": "The sentencingCourtName schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "notes": {
+      "$id": "#/properties/notes",
+      "type": "string",
+      "title": "The notes schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "documents": {
+      "$id": "#/properties/documents",
+      "type": "array",
+      "title": "The documents schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "items": {
+        "$id": "#/properties/documents/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/documents/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "required": [
+              "documentId",
+              "documentName",
+              "author",
+              "type",
+              "extendedDescription",
+              "createdAt"
+            ],
+            "properties": {
+              "documentId": {
+                "$id": "#/properties/documents/items/anyOf/0/properties/documentId",
+                "type": "string",
+                "title": "The documentId schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "documentName": {
+                "$id": "#/properties/documents/items/anyOf/0/properties/documentName",
+                "type": "string",
+                "title": "The documentName schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "author": {
+                "$id": "#/properties/documents/items/anyOf/0/properties/author",
+                "type": "string",
+                "title": "The author schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "type": {
+                "$id": "#/properties/documents/items/anyOf/0/properties/type",
+                "type": "string",
+                "title": "The type schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "extendedDescription": {
+                "$id": "#/properties/documents/items/anyOf/0/properties/extendedDescription",
+                "type": "string",
+                "title": "The extendedDescription schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "createdAt": {
+                "$id": "#/properties/documents/items/anyOf/0/properties/createdAt",
+                "type": "string",
+                "title": "The createdAt schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,304 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "required": [],
+  "properties": {
+    "attendances": {
+      "$id": "#/properties/attendances",
+      "type": "array",
+      "title": "The attendances schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "items": {
+        "$id": "#/properties/attendances/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/attendances/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "required": [
+              "contactId",
+              "attendanceDate",
+              "attended",
+              "complied",
+              "contactType"
+            ],
+            "properties": {
+              "contactId": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/contactId",
+                "type": "integer",
+                "title": "The contactId schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0
+              },
+              "attendanceDate": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/attendanceDate",
+                "type": "string",
+                "title": "The attendanceDate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "attended": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/attended",
+                "type": "boolean",
+                "title": "The attended schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false
+              },
+              "complied": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/complied",
+                "type": "boolean",
+                "title": "The complied schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false
+              },
+              "outcome": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/outcome",
+                "type": "string",
+                "title": "The outcome schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "contactType": {
+                "$id": "#/properties/attendances/items/anyOf/0/properties/contactType",
+                "type": "object",
+                "title": "The contactType schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "required": [
+                  "description",
+                  "code"
+                ],
+                "properties": {
+                  "description": {
+                    "$id": "#/properties/attendances/items/anyOf/0/properties/contactType/properties/description",
+                    "type": "string",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "code": {
+                    "$id": "#/properties/attendances/items/anyOf/0/properties/contactType/properties/code",
+                    "type": "string",
+                    "title": "The code schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "unpaidWork": {
+      "$id": "#/properties/unpaidWork",
+      "type": "object",
+      "title": "The unpaidWork schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "required": [
+        "minutesOffered",
+        "minutesCompleted",
+        "appointmentsToDate",
+        "attended",
+        "acceptableAbsences",
+        "unacceptableAbsences",
+        "status"
+      ],
+      "properties": {
+        "minutesOffered": {
+          "$id": "#/properties/unpaidWork/properties/minutesOffered",
+          "type": "integer",
+          "title": "The minutesOffered schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0
+        },
+        "minutesCompleted": {
+          "$id": "#/properties/unpaidWork/properties/minutesCompleted",
+          "type": "integer",
+          "title": "The minutesCompleted schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0
+        },
+        "appointmentsToDate": {
+          "$id": "#/properties/unpaidWork/properties/appointmentsToDate",
+          "type": "integer",
+          "title": "The appointmentsToDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0
+        },
+        "attended": {
+          "$id": "#/properties/unpaidWork/properties/attended",
+          "type": "integer",
+          "title": "The attended schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0
+        },
+        "acceptableAbsences": {
+          "$id": "#/properties/unpaidWork/properties/acceptableAbsences",
+          "type": "integer",
+          "title": "The acceptableAbsences schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0
+        },
+        "unacceptableAbsences": {
+          "$id": "#/properties/unpaidWork/properties/unacceptableAbsences",
+          "type": "integer",
+          "title": "The unacceptableAbsences schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0
+        },
+        "status": {
+          "$id": "#/properties/unpaidWork/properties/status",
+          "type": "string",
+          "title": "The status schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        },
+        "statusDate": {
+          "$id": "#/properties/unpaidWork/properties/statusDate",
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "The statusDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "currentOrderHeaderDetail": {
+      "$id": "#/properties/currentOrderHeaderDetail",
+      "type": "object",
+      "title": "The currentOrderHeaderDetail schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "required": [],
+      "properties": {
+        "sentenceId": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/sentenceId",
+          "type": "integer",
+          "title": "The sentenceId schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0
+        },
+        "sentenceDescription": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/sentenceDescription",
+          "type": "string",
+          "title": "The sentenceDescription schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        },
+        "custodialType": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/custodialType",
+          "type": "object",
+          "title": "The custodialType schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "required": [
+            "code",
+            "description"
+          ],
+          "properties": {
+            "code": {
+              "$id": "#/properties/currentOrderHeaderDetail/properties/custodialType/properties/code",
+              "type": "string",
+              "title": "The code schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": ""
+            },
+            "description": {
+              "$id": "#/properties/currentOrderHeaderDetail/properties/custodialType/properties/description",
+              "type": "string",
+              "title": "The description schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": ""
+            }
+          },
+          "additionalProperties": false
+        },
+        "mainOffenceDescription": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/mainOffenceDescription",
+          "type": "string",
+          "title": "The mainOffenceDescription schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        },
+        "sentenceDate": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/sentenceDate",
+          "type": "string",
+          "title": "The sentenceDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        },
+        "actualReleaseDate": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/actualReleaseDate",
+          "type": "string",
+          "title": "The actualReleaseDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        },
+        "licenceExpiryDate": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/licenceExpiryDate",
+          "type": "string",
+          "title": "The licenceExpiryDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        },
+        "pssEndDate": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/pssEndDate",
+          "type": "string",
+          "title": "The pssEndDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        },
+        "length": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/length",
+          "type": "integer",
+          "title": "The length schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0
+        },
+        "lengthUnits": {
+          "$id": "#/properties/currentOrderHeaderDetail/properties/lengthUnits",
+          "type": "string",
+          "title": "The lengthUnits schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "links": {
+      "$id": "#/properties/links",
+      "type": "object",
+      "title": "The links schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "required": [
+        "deliusContactList"
+      ],
+      "properties": {
+        "deliusContactList": {
+          "$id": "#/properties/links/properties/deliusContactList",
+          "type": "string",
+          "title": "The deliusContactList schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
