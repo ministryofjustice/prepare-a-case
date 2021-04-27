@@ -11,16 +11,12 @@
         <div class="govuk-grid-column-two-thirds">
 
             {% if params.saved %}
-                {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-                {% set successBanner %}
-                    <p class="govuk-notification-banner__heading">
-                        You’ve set your cookie preferences.
-                    </p>
-                {% endset %}
-                {{ govukNotificationBanner({
-                    type: "Success",
-                    html: successBanner
-                }) }}
+                        {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+                        {{ mojBanner({
+                            type: 'success',
+                            text: 'You’ve set your cookie preferences.',
+                            iconFallbackText: 'Success'
+                        }) }}
             {% endif %}
 
             <h1 class="govuk-heading-l">Cookies</h1>

@@ -298,5 +298,5 @@ When('I enter the text {string} into the {string} input and press ENTER', ($text
 })
 
 And('I should see the success banner message {string}', $string => {
-  cy.get('.govuk-notification-banner__heading').contains($string).should('exist')
+  cy.get('.moj-banner--success').contains($string).should('exist')
 })

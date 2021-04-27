@@ -11,6 +11,13 @@ Feature: Accessibility statement
     Then I should see the heading "Cookies"
     And I should see the following level 2 headings
     | Essential cookies | Analytics cookies (optional) | Change your cookie settings |
+    And I should see the following table headings
+      | Name | Purpose | Expires |
+    And I should see the following table rows
+      | Used to remember the court you last looked at | Does not expire |
+      | Keeps you logged into the service | 2 hours |
+      | [Saves your cookie consent settings] | [1 year] |
+      | Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service | 2 years |
     And There should be no a11y violations
 
   Scenario: View the success banner of the cookies policy page

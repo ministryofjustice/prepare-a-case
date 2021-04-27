@@ -65,7 +65,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     if (req.body.cookies) {
       if (req.body.cookies === 'reject') {
         for (const [key] of Object.entries(req.cookies)) {
-          if (key.indexOf('_g') !== -1) {
+          if (/^_g/.test(key)) {
             res.clearCookie(key)
           }
         }
