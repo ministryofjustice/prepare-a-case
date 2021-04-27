@@ -55,11 +55,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.use((req, res, next) => {
     res.locals.analyticsCookies = req.cookies && req.cookies.analyticsCookies
-    console.log("analytics", res.locals.analyticsCookies )
+    console.log('analytics', res.locals.analyticsCookies)
     next()
   })
 
-  router.post('/cookie-preference/:page?',(req, res) => {
+  router.post('/cookie-preference/:page?', (req, res) => {
     console.log('req.body', req.body.cookies)
     const redirectUrl = req.params.page ? '/cookies-policy?saved=true' : '/'
     if (req.body.cookies) {
