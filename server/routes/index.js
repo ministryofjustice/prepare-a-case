@@ -1,6 +1,6 @@
 const express = require('express')
 const getBaseDateString = require('../utils/getBaseDateString')
-const { settings, nonce, notification } = require('../../config')
+const { settings, nonce, notification, session: { cookieOptions } } = require('../../config')
 const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
@@ -23,7 +23,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.use(health)
 
   router.use((req, res, next) => {
-    const { path, url } = req
+    const { path, url, cookies } = req
+    if (cookies && cookies.currentCourt) {
+      res.cookie('currentCourt', cookies.currentCourt, cookieOptions)
+    }
+    if (cookies && cookies.analyticsCookies) {
+      res.cookie('analyticsCookies', cookies.analyticsCookies, cookieOptions)
+    }
     if (path.substr(-1) === '/' && path.length > 1) {
       const query = url.slice(path.length)
       res.redirect(301, path.slice(0, -1) + query)
@@ -116,7 +122,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const { params: { courtCode } } = req
 
     res.status(201)
-      .cookie('currentCourt', courtCode)
+      .cookie('currentCourt', courtCode, cookieOptions)
       .redirect(302, `/${courtCode}/cases/${getBaseDateString()}`)
   })
 
