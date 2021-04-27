@@ -126,7 +126,7 @@ describe('Routes', () => {
 
   it('should route to the cookies policy page', () => {
     return request(app).get('/cookies-policy').then(response => {
-      expect(response.statusCode).toEqual(301)
+      expect(response.statusCode).toEqual(500)
       expect(response.headers.location).toBe('/cookies-policy')
     })
   })
