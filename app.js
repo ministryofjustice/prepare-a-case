@@ -19,12 +19,18 @@ const authorisationMiddleware = require('./server/routes/middleware/authorisatio
 const errorHandler = require('./server/errorHandler')
 const log = require('./log')
 const nunjucksSetup = require('./server/utils/nunjucksSetup')
+const appName = process.env.npm_package_name
+const nodeVersion = process.version
+const os = require('os')
+const hostName = os.hostname()
 
 const { authenticationMiddleware } = auth
 
 module.exports = function createApp ({ signInService, userService }) {
   const service = new Service(axios)
   const app = express()
+
+  log.info(`Starting ${appName} using NodeJS ${nodeVersion} on ${hostName}`)
 
   auth.init(signInService)
 
@@ -39,18 +45,34 @@ module.exports = function createApp ({ signInService, userService }) {
   app.use(helmet({
     contentSecurityPolicy: {
       directives: {
-        defaultSrc: ['\'self\''],
+        defaultSrc: [
+          '\'self\'',
+          'https://www.google-analytics.com',
+          'www.google-analytics.com'
+        ],
         objectSrc: ['\'none\''],
         scriptSrc: [
           '\'self\'',
+          'www.google-analytics.com',
+          'https://www.google-analytics.com',
+          'https://www.googletagmanager.com',
           '\'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA=\'',
           '\'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ=\'',
           '\'sha256-Ex+PXm59nVbu/S+FH/u8FLio5zO5YfFPo0/jH0uw19k=\'',
           '\'sha256-QIG/FBh5vORMkpviiAyUOvMgp6XvwQIEagSXO2FUmyo=\'',
           `'nonce-${config.nonce}'`
         ],
+        imgSrc: [
+          '\'self\'',
+          'https://www.google-analytics.com',
+          'www.google-analytics.com'
+        ],
         upgradeInsecureRequests: [],
-        connectSrc: ['\'self\'', 'www.google-analytics.com']
+        connectSrc: [
+          '\'self\'',
+          'www.google-analytics.com',
+          'https://www.google-analytics.com'
+        ]
       }
     }
   }))
