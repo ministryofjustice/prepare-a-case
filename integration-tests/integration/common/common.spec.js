@@ -36,6 +36,10 @@ Given('I am an authenticated user', () => {
   cy.get('#loginForm').should('not.exist')
 })
 
+Then('I should not see the cookie banner', () => {
+  cy.get('bodyStart').should('not.exist')
+})
+
 When('I open the application', () => {
   cy.visit('/')
 })

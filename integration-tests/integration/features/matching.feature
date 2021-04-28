@@ -5,6 +5,8 @@ Feature: Matching defendants to nDelius records
 
   Scenario: View the list of defendants with possible probation record matches for a given day in court
     Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
     When I navigate to the "match/bulk" route for today
     Then I should be on the "Defendants with possible NDelius records" page
 
