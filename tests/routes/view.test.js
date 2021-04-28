@@ -124,8 +124,8 @@ describe('Routes', () => {
     })
   })
 
-  it('should route to the cookies policy page', async () => {
-    return await request(app).get('/cookies-preference/page').then(response => {
+  it('should route to the cookies policy page', () => {
+    return request(app).get('/cookies-preference').then(response => {
       expect(response.statusCode).toEqual(200)
     })
   })
