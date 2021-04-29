@@ -19,7 +19,6 @@ const authorisationMiddleware = require('./server/routes/middleware/authorisatio
 const errorHandler = require('./server/errorHandler')
 const log = require('./log')
 const nunjucksSetup = require('./server/utils/nunjucksSetup')
-const appName = process.env.npm_package_name
 const nodeVersion = process.version
 const os = require('os')
 const hostName = os.hostname()
@@ -30,7 +29,7 @@ module.exports = function createApp ({ signInService, userService }) {
   const service = new Service(axios)
   const app = express()
 
-  log.info(`Starting ${appName} using NodeJS ${nodeVersion} on ${hostName}`)
+  log.info(`Starting Prepare a Case using NodeJS ${nodeVersion} on ${hostName}`)
 
   auth.init(signInService)
 
