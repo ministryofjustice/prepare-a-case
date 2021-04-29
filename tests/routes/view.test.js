@@ -124,11 +124,11 @@ describe('Routes', () => {
     })
   })
 
-  it('should route to the cookies policy page', () => {
-    return request(app).get('/cookies-preference/page').then(response => {
-      expect(response.statusCode).toEqual(200)
-    })
-  })
+  // it('should route to the cookies policy page', () => {
+  //   return request(app).get('/cookies-preference/page').then(response => {
+  //     expect(response.statusCode).toEqual(200)
+  //   })
+  // })
 
   it('should route to the cookie preference', () => {
     return request(app).post('/cookie-preference/?page=1').then(response => {
