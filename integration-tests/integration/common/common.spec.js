@@ -37,7 +37,7 @@ Given('I am an authenticated user', () => {
 })
 
 Then('I should not see the cookie banner', () => {
-  cy.get('bodyStart').should('not.exist')
+  cy.get('.govuk-cookie-banner').should('not.exist')
 })
 
 When('I open the application', () => {
