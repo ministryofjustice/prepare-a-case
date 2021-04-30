@@ -47,7 +47,6 @@ const defaults = (req, res, next) => {
   const courtData = courtLookup(req.params.courtCode)
   req.params = {
     ...req.params,
-    analyticsCookies: req.cookies && req.cookies.analyticsCookies,
     limit: settings.casesPerPage,
     moment: moment,
     getMonthsAndDays: getMonthsAndDays,
