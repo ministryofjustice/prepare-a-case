@@ -6,24 +6,24 @@ Feature: Accessibility statement
   Scenario: View the cookies policy page
     Given I am an authenticated user
     When I open the application
-    And I should see footer link "Cookies policy" with href "/cookies-policy"
+    And I should see footer link "Cookies" with href "/cookies-policy"
     And I navigate to the "/cookies-policy" base route
     Then I should see the heading "Cookies"
     And I should see the following level 2 headings
-    | Essential cookies | Analytics cookies (optional) | Change your cookie settings |
+      | Essential cookies | Analytics cookies (optional) | Change your cookie settings |
     And I should see the following table headings
       | Name | Purpose | Expires |
     And I should see the following table rows
-      | Used to remember the court you last looked at | Does not expire |
-      | Keeps you logged into the service | 2 hours |
-      | [Saves your cookie consent settings] | [1 year] |
+      | Keeps you logged into the service                                                                                | 1 hour  |
+      | Used to remember the court you last looked at                                                                    | 1 year  |
+      | Saves your analytics cookie consent setting                                                                      | 1 year  |
       | Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service | 2 years |
     And There should be no a11y violations
 
   Scenario: View the success banner of the cookies policy page
     Given I am an authenticated user
     When I open the application
-    And I should see footer link "Cookies policy" with href "/cookies-policy"
+    And I should see footer link "Cookies" with href "/cookies-policy"
     And I navigate to the "/cookies-policy" base route
     Then I should see the heading "Cookies"
     And I should see the following level 2 headings
