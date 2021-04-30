@@ -36,6 +36,10 @@ Given('I am an authenticated user', () => {
   cy.get('#loginForm').should('not.exist')
 })
 
+Then('I should not see the cookie banner', () => {
+  cy.get('.govuk-cookie-banner').should('not.exist')
+})
+
 When('I open the application', () => {
   cy.visit('/')
 })
@@ -295,4 +299,8 @@ And('I should see the key details banner', () => {
 
 When('I enter the text {string} into the {string} input and press ENTER', ($text, $id) => {
   cy.get(`#${$id}`).type($text).type('{enter}').blur()
+})
+
+And('I should see the success banner message {string}', $string => {
+  cy.get('.moj-banner--success').contains($string).should('exist')
 })

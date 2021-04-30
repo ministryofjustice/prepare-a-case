@@ -31,6 +31,7 @@
 
         <script src="/assets/accessible-autocomplete.min.js"></script>
 
+        {% if analyticsCookies === 'accept' %}
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async nonce="{{ params.nonce }}" src="https://www.googletagmanager.com/gtag/js?id={{ googleAnalyticsKey }}"></script>
         <script nonce="{{ params.nonce }}">
@@ -39,7 +40,7 @@
           gtag('js', new Date());
           gtag('config', '{{ googleAnalyticsKey }}');
         </script>
-
+        {% endif %}
     {% endblock %}
 </head>
 <body class="govuk-template__body">
@@ -50,6 +51,49 @@
 
 <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
+{% block bodyStart %}
+    {% block cookieBanner %}
+        {% if not analyticsCookies %}
+            {% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+
+            {% set html %}
+                <p>We use some essential cookies to make this service work.</p>
+                <p>We’d also like to use analytics cookies so we can understand how you use the service and make
+                    improvements.</p>
+            {% endset %}
+            <form action="/cookie-preference" method="post">
+                {{ govukCookieBanner({
+                    ariaLabel: "Cookies on Prepare a case for sentence",
+                    messages: [
+                        {
+                            headingText: "Cookies on Prepare a case for sentence",
+                            html: html,
+                            actions: [
+                            {
+                                text: "Accept analytics cookies",
+                                type: "submit",
+                                name: "cookies",
+                                value: "accept"
+                            },
+                            {
+                                text: "Reject analytics cookies",
+                                type: "submit",
+                                name: "cookies",
+                                value: "reject"
+                            },
+                            {
+                                text: "View cookies",
+                                href: "/cookies-policy",
+                                classes: "govuk-link--no-visited-state"
+                            }
+                        ]
+                        }
+                    ]
+                }) }}
+            </form>
+        {% endif %}
+    {% endblock %}
+{% endblock %}
 {% block header %}
     {% include "./header.html" %}
 {% endblock %}
@@ -100,6 +144,10 @@
                     text: "Accessibility statement"
                 },
                 {
+                    href: "/cookies-policy",
+                    text: "Cookies"
+                 },
+                 {
                     href: "/privacy-notice",
                     text: "Privacy"
                 }

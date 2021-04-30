@@ -61,6 +61,30 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('privacy-notice', { params: { nonce: nonce, backLink: session.backLink } })
   })
 
+  router.get('/cookies-policy', (req, res) => {
+    res.render('cookies-policy', { params: { saved: req.query.saved, preference: req.cookies && req.cookies.analyticsCookies, nonce: nonce } })
+  })
+
+  router.use((req, res, next) => {
+    res.locals.analyticsCookies = req.cookies && req.cookies.analyticsCookies
+    next()
+  })
+
+  router.post('/cookie-preference/:page?', (req, res) => {
+    const redirectUrl = req.params.page ? '/cookies-policy?saved=true' : '/'
+    if (req.body.cookies) {
+      if (req.body.cookies === 'reject') {
+        for (const [key] of Object.entries(req.cookies)) {
+          if (/^_g/.test(key)) {
+            res.clearCookie(key)
+          }
+        }
+      }
+      res.cookie('analyticsCookies', req.body.cookies)
+        .redirect(302, redirectUrl)
+    }
+  })
+
   router.get('/my-courts', async (req, res) => {
     const { session } = req
     const userSelectedCourts = await getUserSelectedCourts(res.locals.user.userId)

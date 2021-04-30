@@ -17,6 +17,8 @@ Feature: Case summary
 
   Scenario: View the case summary for the given defendant that has not been matched with an existing NDelius record
     Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
 
     When I navigate to the "case/3597035492/summary" route
     Then I should be on the "Case summary" page
@@ -42,6 +44,8 @@ Feature: Case summary
 
   Scenario: View the case summary for the given defendant with no probation record
     Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
 
     When I navigate to the "case/8678951874/summary" route
     Then I should be on the "Case summary" page
@@ -70,6 +74,8 @@ Feature: Case summary
 
   Scenario: View the case summary for the given defendant with an existing probation record
     Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
 
     When I navigate to the "case/6627839278/summary" route
     Then I should be on the "Case summary" page
@@ -103,6 +109,8 @@ Feature: Case summary
 
   Scenario: View the case summary for the given defendant with a current probation record
     Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
 
     When I navigate to the "case/668911253/summary" route
     Then I should be on the "Case summary" page
@@ -137,6 +145,8 @@ Feature: Case summary
 
   Scenario: View the case summary for the given defendant in breach of a current order
     Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
 
     When I navigate to the "case/5222601242/summary" route
     Then I should be on the "Case summary" page
@@ -169,6 +179,8 @@ Feature: Case summary
 
   Scenario: View the probation record section of the case summary for a previously known offender
     Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
 
     When I navigate to the "cases" route
     Then I should be on the "Case list" page
@@ -191,6 +203,8 @@ Feature: Case summary
 
   Scenario: View the probation record section of the case summary for a current offender
     Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
 
     When I navigate to the "cases" route
     Then I should be on the "Case list" page
@@ -354,6 +368,8 @@ Feature: Case summary
 
   Scenario: View the attendance record section of the current offender order in breach without unpaid work appointments
     Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
 
     When I navigate to the "case/5222601242/record" route
     Then I should be on the "Probation record" page
