@@ -29,7 +29,7 @@ module.exports = function createApp ({ signInService, userService }) {
   const service = new Service(axios)
   const app = express()
 
-  log.info(`Starting Prepare a Case using NodeJS ${nodeVersion} on ${hostName}`)
+  console.info(`Starting Prepare a Case using NodeJS ${nodeVersion} on ${hostName}`)
 
   auth.init(signInService)
 
