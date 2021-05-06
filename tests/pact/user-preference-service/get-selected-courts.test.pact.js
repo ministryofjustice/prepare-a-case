@@ -7,7 +7,7 @@ const selectedCourtsMock = require('../../../mappings/preferences/default-courts
 
 pactWith({ consumer: 'Prepare a case', provider: 'User preferences service' }, provider => {
   describe('GET /preferences/courts', () => {
-    const apiUrl = '/preferences/courts'
+    const apiUrl = '/users/username/preferences/courts'
     const mockData = selectedCourtsMock.response.jsonBody
 
     it('returns the user selected courts', async () => {
