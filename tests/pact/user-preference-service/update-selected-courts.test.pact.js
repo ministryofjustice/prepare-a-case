@@ -7,7 +7,7 @@ const selectedCourtsMock = require('../../../mappings/preferences/default-courts
 
 pactWith({ consumer: 'prepare-a-case', provider: 'hmpps-user-preferences' }, provider => {
   describe('PUT /preferences/courts', () => {
-    const apiUrl = '/preferences/courts'
+    const apiUrl = '/users/username/preferences/courts'
     const mockData = selectedCourtsMock.response.jsonBody
 
     it('updates and returns a specific case', async () => {
