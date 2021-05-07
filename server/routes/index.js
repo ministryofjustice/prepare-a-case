@@ -153,7 +153,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/:courtCode/cases/:date?/:subsection?', defaults, async (req, res) => {
     const { params: { courtCode, date, limit, subsection }, query: { page }, session, path, params } = req
     const currentDate = date || getBaseDateString()
-    const response = await getCaseList(courtCode, currentDate, session.selectedFilters, subsection || session.currentView)
+    const response = await getCaseList(courtCode, currentDate, session.selectedFilters, subsection || (!date && session.currentView))
     const caseCount = response.cases.length
     const startCount = ((parseInt(page, 10) - 1) || 0) * limit
     const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
@@ -174,7 +174,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         unmatchedRecords: response.unmatchedRecords,
         lastUpdated: response ? response.lastUpdated : '',
         totalDays: settings.casesTotalDays,
-        subsection: subsection || session.currentView || '',
+        subsection: subsection || (!date && session.currentView) || '',
         filtersApplied: session.selectedFilters && Object.keys(session.selectedFilters).length,
         snapshot: response.snapshot
       },
