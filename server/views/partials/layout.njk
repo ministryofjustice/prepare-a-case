@@ -33,8 +33,8 @@
 
         {% if analyticsCookies === 'accept' %}
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async nonce="{{ params.nonce }}" src="https://www.googletagmanager.com/gtag/js?id={{ googleAnalyticsKey }}"></script>
-        <script nonce="{{ params.nonce }}">
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ googleAnalyticsKey }}"></script>
+        <script nonce="{{ nonce }}">
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
