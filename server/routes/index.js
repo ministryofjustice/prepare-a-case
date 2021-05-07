@@ -24,6 +24,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.use((req, res, next) => {
     const { path, url, cookies } = req
+    res.locals.analyticsCookies = req.cookies && req.cookies.analyticsCookies
+    res.locals.nonce = nonce
     if (cookies && cookies.currentCourt) {
       res.cookie('currentCourt', cookies.currentCourt, cookieOptions)
     }
@@ -48,26 +50,21 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/user-guide', (req, res) => {
-    res.render('user-guide', { params: { nonce: nonce } })
+    res.render('user-guide')
   })
 
   router.get('/accessibility-statement', (req, res) => {
     const { session } = req
-    res.render('accessibility-statement', { params: { nonce: nonce, backLink: session.backLink } })
+    res.render('accessibility-statement', { params: { backLink: session.backLink } })
   })
 
   router.get('/privacy-notice', (req, res) => {
     const { session } = req
-    res.render('privacy-notice', { params: { nonce: nonce, backLink: session.backLink } })
+    res.render('privacy-notice', { params: { backLink: session.backLink } })
   })
 
   router.get('/cookies-policy', (req, res) => {
-    res.render('cookies-policy', { params: { saved: req.query.saved, preference: req.cookies && req.cookies.analyticsCookies, nonce: nonce } })
-  })
-
-  router.use((req, res, next) => {
-    res.locals.analyticsCookies = req.cookies && req.cookies.analyticsCookies
-    next()
+    res.render('cookies-policy', { params: { saved: req.query.saved, preference: req.cookies && req.cookies.analyticsCookies } })
   })
 
   router.post('/cookie-preference/:page?', (req, res) => {
@@ -92,8 +89,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('view-courts', {
       params: {
         availableCourts: settings.availableCourts,
-        chosenCourts: session.courts,
-        nonce: nonce
+        chosenCourts: session.courts
       }
     })
   })
@@ -124,8 +120,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       state: state,
       params: {
         availableCourts: settings.availableCourts,
-        chosenCourts: session.courts,
-        nonce: nonce
+        chosenCourts: session.courts
       }
     })
   })
