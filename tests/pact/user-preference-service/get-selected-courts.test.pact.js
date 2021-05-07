@@ -5,7 +5,7 @@ const { Matchers } = require('@pact-foundation/pact')
 const { request } = require('../../../server/services/utils/request')
 const selectedCourtsMock = require('../../../mappings/preferences/default-courts.json')
 
-pactWith({ consumer: 'Prepare a case', provider: 'User preferences service' }, provider => {
+pactWith({ consumer: 'prepare-a-case', provider: 'hmpps-user-preferences' }, provider => {
   describe('GET /preferences/courts', () => {
     const apiUrl = '/users/username/preferences/courts'
     const mockData = selectedCourtsMock.response.jsonBody
