@@ -147,17 +147,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
     res.status(201)
       .cookie('currentCourt', courtCode, cookieOptions)
-      .redirect(302, `/${courtCode}/cases/${getBaseDateString()}`)
+      .redirect(302, `/${courtCode}/cases`)
   })
 
-  router.get('/:courtCode/cases', (req, res) => {
-    const { params: { courtCode }, session } = req
-    res.redirect(302, `/${courtCode}/cases/${getBaseDateString()}${session.currentView ? '/' + session.currentView : ''}`)
-  })
-
-  router.get('/:courtCode/cases/:date/:subsection?', defaults, async (req, res) => {
+  router.get('/:courtCode/cases/:date?/:subsection?', defaults, async (req, res) => {
     const { params: { courtCode, date, limit, subsection }, query: { page }, session, path, params } = req
-    const response = await getCaseList(courtCode, date, session.selectedFilters, subsection)
+    const currentDate = date || getBaseDateString()
+    const response = await getCaseList(courtCode, currentDate, session.selectedFilters, subsection)
     const caseCount = response.cases.length
     const startCount = ((parseInt(page, 10) - 1) || 0) * limit
     const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
@@ -165,6 +161,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       title: 'Cases',
       params: {
         ...params,
+        date: currentDate,
         notification: notification || '',
         filters: response.filters,
         page: parseInt(page, 10) || 1,
@@ -184,7 +181,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       data: response.cases.slice(startCount, endCount) || []
     }
     session.currentView = subsection
-    session.caseListDate = date
+    session.caseListDate = currentDate
     session.currentCaseListViewLink = `${path}?page=${templateValues.params.page}`
     session.backLink = session.currentCaseListViewLink
     res.render('case-list', templateValues)

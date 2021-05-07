@@ -143,22 +143,20 @@ describe('Routes', () => {
     })
   })
 
-  it('case list route should redirect to corrected route when viewing case list on Sunday', () => {
+  it('case list route should display Monday\'s case list when viewing the empty case list on Sunday', async () => {
     mockDate.set('2020-11-15')
-    return request(app).get('/B14LO/cases').then(response => {
-      expect(response.statusCode).toEqual(302)
-      expect(response.headers.location).toBe('/B14LO/cases/2020-11-16')
-      mockDate.reset()
-    })
+    const response = await request(app).get('/B14LO/cases')
+    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-11-16', undefined, undefined)
+    mockDate.reset()
+    return response
   })
 
-  it('case list route should redirect to corrected route', () => {
+  it('empty case list route should show case list for today\'s date', async () => {
     mockDate.set('2020-11-12')
-    return request(app).get('/B14LO/cases').then(response => {
-      expect(response.statusCode).toEqual(302)
-      expect(response.headers.location).toBe('/B14LO/cases/2020-11-12')
-      mockDate.reset()
-    })
+    const response = await request(app).get('/B14LO/cases')
+    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-11-12', undefined, undefined)
+    mockDate.reset()
+    return response
   })
 
   it('case list route should call the case service to fetch case list data', async () => {
