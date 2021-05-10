@@ -12,7 +12,7 @@ Feature: Case summary
     When I click the "Kara Ayers" link
     Then I should be on the "Case summary" page
     And I should see the heading "Kara Ayers"
-    And I should see back link "Back to cases" with href "/cases/$TODAY?page=1"
+    And I should see back link "Back to cases" with href "/cases?page=1"
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant that has not been matched with an existing NDelius record
@@ -188,7 +188,7 @@ Feature: Case summary
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Webb Mitchell" link
     Then I should be on the "Case summary" page
-    And I should see back link "Back to cases" with href "/cases/$TODAY?page=1"
+    And I should see back link "Back to cases" with href "/cases?page=1"
     And I should see the heading "Webb Mitchell"
     When I click the sub navigation with "Probation record" text
     Then I should see the level 2 heading "Previous orders (5)"
@@ -258,7 +258,7 @@ Feature: Case summary
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Latoya Kirkland" link
     Then I should be on the "Case summary" page
-    And I should see back link "Back to cases" with href "/cases/$TODAY?page=1"
+    And I should see back link "Back to cases" with href "/cases?page=1"
     And I should see the heading "Latoya Kirkland"
     When I click the sub navigation with "Probation record" text
     Then I should see the heading "You are restricted from viewing this record"
