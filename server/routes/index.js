@@ -350,7 +350,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   async function updateCaseDetails (courtCode, caseNo, crn, unlinking) {
-    console.info('updateCaseDetails', courtCode, caseNo, crn, unlinking)
     const caseResponse = await getCase(courtCode, caseNo)
     let offenderDetail
     let probationStatusDetails

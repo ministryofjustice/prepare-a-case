@@ -323,13 +323,13 @@ describe('Routes', () => {
   it('defendant confirm no match route should update the case data and redirect', async () => {
     const response = await request(app).get('/B14LO/match/defendant/3597035492/nomatch')
     const calledWith = {
-      'breach': null,
-      'crn': null,
-      'cro': null,
-      'pnc': undefined,
-      'preSentenceActivity': null,
-      'probationStatus': null,
-      'probationStatusActual': 'NO_RECORD'
+      breach: null,
+      crn: null,
+      cro: null,
+      pnc: undefined,
+      preSentenceActivity: null,
+      probationStatus: null,
+      probationStatusActual: 'NO_RECORD'
     }
     expect(caseService.getCase).toHaveBeenCalledWith('B14LO', '3597035492')
     expect(caseService.getMatchDetails).not.toHaveBeenCalled()
