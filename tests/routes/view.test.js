@@ -326,7 +326,7 @@ describe('Routes', () => {
       breach: null,
       crn: null,
       cro: null,
-      pnc: undefined,
+      pnc: null,
       preSentenceActivity: null,
       probationStatus: 'No record',
       probationStatusActual: 'NO_RECORD'
