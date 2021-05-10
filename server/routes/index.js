@@ -349,7 +349,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-defendant', templateValues)
   })
 
-  async function updateCaseDetails (courtCode, caseNo, crn, noRecord) {
+  async function updateCaseDetails (courtCode, caseNo, crn, unlinking) {
+    console.info('updateCaseDetails', courtCode, caseNo, crn, unlinking)
     const caseResponse = await getCase(courtCode, caseNo)
     let offenderDetail
     let probationStatusDetails
@@ -363,7 +364,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       crn: crn ? offenderDetail.otherIds.crn : null,
       cro: crn ? offenderDetail.otherIds.croNumber : null,
       probationStatus: crn ? probationStatusDetails.status : null,
-      probationStatusActual: crn ? probationStatusDetails.status : noRecord ? 'NO_RECORD' : null,
+      probationStatusActual: crn ? probationStatusDetails.status : !unlinking ? 'NO_RECORD' : null,
       breach: crn ? probationStatusDetails.inBreach : null,
       preSentenceActivity: crn ? probationStatusDetails.preSentenceActivity : null
     })
