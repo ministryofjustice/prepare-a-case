@@ -349,7 +349,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-defendant', templateValues)
   })
 
-  async function updateCaseDetails (courtCode, caseNo, crn) {
+  async function updateCaseDetails (courtCode, caseNo, crn, noRecord) {
     const caseResponse = await getCase(courtCode, caseNo)
     let offenderDetail
     let probationStatusDetails
@@ -363,6 +363,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       crn: crn ? offenderDetail.otherIds.crn : null,
       cro: crn ? offenderDetail.otherIds.croNumber : null,
       probationStatus: crn ? probationStatusDetails.status : null,
+      probationStatusActual: crn ? probationStatusDetails.status : noRecord ? 'NO_RECORD' : null,
       breach: crn ? probationStatusDetails.inBreach : null,
       preSentenceActivity: crn ? probationStatusDetails.preSentenceActivity : null
     })
@@ -398,7 +399,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/:courtCode/match/defendant/:caseNo/nomatch/:unlink?', defaults, async (req, res) => {
     const { params: { courtCode, caseNo, unlink }, session } = req
     let redirectUrl = '/'
-    const response = await updateCaseDetails(courtCode, caseNo, undefined)
+    const response = await updateCaseDetails(courtCode, caseNo, undefined, !!unlink)
     if (response.status === 201) {
       session.confirmedMatch = {
         name: session.matchName,
