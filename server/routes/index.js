@@ -64,7 +64,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/cookies-policy', (req, res) => {
-    res.render('cookies-policy', { params: { saved: req.query.saved, preference: req.cookies && req.cookies.analyticsCookies } })
+    res.render('cookies-policy', {
+      params: {
+        saved: req.query.saved,
+        preference: req.cookies && req.cookies.analyticsCookies
+      }
+    })
   })
 
   router.post('/cookie-preference/:page?', (req, res) => {
@@ -350,6 +355,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   async function updateCaseDetails (courtCode, caseNo, crn, unlinking) {
+    console.info('updateCaseDetails', courtCode, caseNo, crn, unlinking)
     const caseResponse = await getCase(courtCode, caseNo)
     let offenderDetail
     let probationStatusDetails
@@ -357,16 +363,21 @@ module.exports = function Index ({ authenticationMiddleware }) {
       offenderDetail = await getDetails(crn)
       probationStatusDetails = await getProbationStatusDetails(crn)
     }
-    return await updateCase(courtCode, caseNo, {
+
+    const tmpObj = {
       ...caseResponse,
       pnc: crn ? offenderDetail.otherIds.pncNumber : caseResponse.pnc,
       crn: crn ? offenderDetail.otherIds.crn : null,
       cro: crn ? offenderDetail.otherIds.croNumber : null,
-      probationStatus: crn ? probationStatusDetails.status : null,
+      probationStatus: crn ? probationStatusDetails.status : !unlinking ? 'No record' : null,
       probationStatusActual: crn ? probationStatusDetails.status : !unlinking ? 'NO_RECORD' : null,
       breach: crn ? probationStatusDetails.inBreach : null,
       preSentenceActivity: crn ? probationStatusDetails.preSentenceActivity : null
-    })
+    }
+
+    console.info('SENDING:', tmpObj)
+
+    return await updateCase(courtCode, caseNo, tmpObj)
   }
 
   function getMatchedUrl ($matchType, $matchDate, $caseNo) {
@@ -400,6 +411,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const { params: { courtCode, caseNo, unlink }, session } = req
     let redirectUrl = '/'
     const response = await updateCaseDetails(courtCode, caseNo, undefined, !!unlink)
+    console.info('Response:', response.data)
     if (response.status === 201) {
       session.confirmedMatch = {
         name: session.matchName,
