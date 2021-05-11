@@ -187,10 +187,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-list', templateValues)
   })
 
-  router.post('/:courtCode/cases/:date/:subsection?', defaults, async (req, res) => {
+  router.post('/:courtCode/cases/:date?/:subsection?', defaults, async (req, res) => {
     const { params: { courtCode, date, subsection }, session, body } = req
+    const currentDate = date || getBaseDateString()
     session.selectedFilters = body
-    res.redirect(302, `/${courtCode}/cases/${date}${subsection ? '/' + subsection : ''}`)
+    res.redirect(302, `/${courtCode}/cases/${currentDate}${subsection ? '/' + subsection : ''}`)
   })
 
   router.post('/:courtCode/case/:caseNo/record', async (req, res) => {
