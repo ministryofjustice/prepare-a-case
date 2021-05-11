@@ -1,5 +1,5 @@
 Feature: Case list
-  In order to view the list of cases sitting on the day in court
+  In order to view the list of cases sittigit ong on the day in court
   As an authenticated user
   I want to see a case list view
 
@@ -31,7 +31,7 @@ Feature: Case list
 
     And I should see the following table rows
       | Kara Ayers   | No record | Attempt theft from the person of another | 1st | Morning | 10 |
-      | Mann Carroll | Pre-sentence record | Assault by beating | 3rd | Morning | 2  |
+      | Mann Carroll | Pre-sentence record | Assault by beating             | 3rd | Morning | 2  |
 
     And I should see link "Kara Ayers" with href "/B14LO/case/8678951874/summary"
     And I should see link "Mann Carroll" with href "/B14LO/case/7483843110/summary"
