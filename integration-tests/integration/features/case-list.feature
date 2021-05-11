@@ -31,7 +31,7 @@ Feature: Case list
 
     And I should see the following table rows
       | Kara Ayers   | No record | Attempt theft from the person of another | 1st | Morning | 10 |
-      | Mann Carroll | No record | Assault by beating                       | 3rd | Morning | 2  |
+      | Mann Carroll | Pre-sentence record | Assault by beating | 3rd | Morning | 2  |
 
     And I should see link "Kara Ayers" with href "/B14LO/case/8678951874/summary"
     And I should see link "Mann Carroll" with href "/B14LO/case/7483843110/summary"
@@ -434,6 +434,44 @@ Feature: Case list
 
     And I should see the following table rows
       | Porter Salas | Current | Theft from the person of another | 2nd | Afternoon | 1 |
+
+    When I click the "Clear all" link
+
+    Then I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
+    And There should be no a11y violations
+
+  Scenario: A user wants to filter the list to show only Pre-sentence record offenders and quickly clear the selections
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+
+    And I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
+    When I click the "Probation status" filter button
+    And I select the "Pre-sentence record" filter
+    And I click the "Apply filters" button
+
+    Then I should see a count of "1 case"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Mann Carroll | Pre-sentence record | Assault by beating | 3rd | Morning | 2 |
+
 
     When I click the "Clear all" link
 
