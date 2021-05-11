@@ -334,7 +334,7 @@ Feature: Case list
 
   Scenario: A user wants to filter the list to show only court room 1 and quickly clear that selection
     Given I am an authenticated user
-    When I navigate to the "cases" route for today
+    When I navigate to the "cases" route
     Then I should be on the "Case list" page
 
     And I should see a count of "207 cases"
