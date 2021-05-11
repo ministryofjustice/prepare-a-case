@@ -9,6 +9,10 @@ And('I should see 7 days navigation bar', () => {
   cy.get('.pac-days-navigation').should('exist')
 })
 
+And('I should not see 7 days navigation bar', () => {
+  cy.get('.pac-days-navigation').should('not.exist')
+})
+
 And('I should see the matching inset text {string}', $string => {
   cy.get('.pac-inset-text').within(() => {
     cy.get('.govuk-body').contains($string).should('exist')

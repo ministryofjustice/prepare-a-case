@@ -176,6 +176,10 @@
             startDate: useTodayDate,
             currentDate: currentDate
         }) }}
+    {% else %}
+        <nav class="govuk-body govuk-!-margin-bottom-6" aria-label="Date navigation">
+            <a class="govuk-link govuk-link--no-visited-state pac-!-no-underline" href="/{{ params.courtCode }}/cases">Go to today</a>
+        </nav>
     {% endif %}
 
     {% if params.unmatchedRecords > 0 %}
