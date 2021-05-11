@@ -1,5 +1,5 @@
 Feature: Case list
-  In order to view the list of cases sittigit ong on the day in court
+  In order to view the list of cases sitting on the day in court
   As an authenticated user
   I want to see a case list view
 
