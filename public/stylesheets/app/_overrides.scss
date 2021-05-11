@@ -2,6 +2,10 @@
   @extend .govuk-link--no-visited-state;
 }
 
+.pac-\!-no-underline {
+  text-decoration: none;
+}
+
 .govuk-table.pac-table--no-borders {
   th, td {
     border: 0;

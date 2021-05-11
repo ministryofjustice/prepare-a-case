@@ -21,9 +21,6 @@ Feature: Case list
     And I should see a tab with text "Recently added (4)"
     And I should see a tab with text "Removed cases (1)"
 
-#    And I should see the last updated as "List updated: Today at 09:45am"
-#    And I should see the next update as "No further updates scheduled"
-
     And I should see a count of "207 cases"
 
     And I should see the following table headings
@@ -64,9 +61,6 @@ Feature: Case list
     And I should see a tab with text "Case list"
     And I should see a tab with text "Recently added (4)"
     And I should see a tab with text "Removed cases (1)"
-
-#    And I should see the last updated as "List updated: Today at 09:45am"
-#    And I should see the next update as "No further updates scheduled"
 
     And I should see a count of "207 cases"
 
@@ -259,6 +253,8 @@ Feature: Case list
     Then I should be on the "Case list" page
     And I should see the heading "Cases"
     And I should see the current day as "Thursday 2 January"
+    And I should not see 7 days navigation bar
+    And I should see link "Go to today" with href "/cases"
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should not see that any defendants have possible NDelius records
@@ -285,6 +281,7 @@ Feature: Case list
     Then I should be on the "Case list" page
     And I should see the heading "Cases"
     And I should see the current day as "Wednesday 1 January"
+    And I should not see 7 days navigation bar
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should not see that any defendants have possible NDelius records
