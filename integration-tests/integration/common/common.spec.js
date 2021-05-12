@@ -36,6 +36,10 @@ Given('I am an authenticated user', () => {
   cy.get('#loginForm').should('not.exist')
 })
 
+Then('I should see the URL with {string}', $string => {
+  cy.url().should('include', $string)
+})
+
 Then('I should not see the cookie banner', () => {
   cy.get('.govuk-cookie-banner').should('not.exist')
 })
