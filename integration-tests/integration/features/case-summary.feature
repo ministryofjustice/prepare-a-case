@@ -52,6 +52,7 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/cases/$TODAY"
     And I should see the heading "Kara Ayers"
     Then I should see the body text "Probation status: No record"
+    And I should not see the case level navigation
     And I should see the following level 2 headings
       | Appearance | Offences |
 
@@ -116,7 +117,10 @@ Feature: Case summary
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/cases/$TODAY"
     And I should see the heading "Mann Carroll"
+    Then I should see the body text "CRN: V654123"
+    Then I should see the body text "PNC: A/1234560BA"
     Then I should see the body text "Probation status: Pre-sentence record"
+    And I should not see the case level navigation
     And I should see the following level 2 headings
       | Appearance | Offences |
 
@@ -133,7 +137,7 @@ Feature: Case summary
       | Date of birth | 8 April 1955                        |
       | Nationality   | Unknown                             |
       | Address       | 91 Barbey street Sheffield AD21 5DR |
-    
+
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with a current probation record

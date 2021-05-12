@@ -68,7 +68,7 @@
           "courtRoom": "02",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
-          "crn": "D541487",
+          "crn": "V654123",
           "pnc": "A/1234560BA",
           "probationStatus": "Pre-sentence record",
           "session": "MORNING",
