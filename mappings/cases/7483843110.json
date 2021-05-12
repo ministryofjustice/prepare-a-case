@@ -16,7 +16,7 @@
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "3rd",
       "pnc": "A/1234560BA",
-      "probationStatus": "No record",
+      "probationStatus": "Pre-sentence record",
       "session": "AFTERNOON",
       "previouslyKnownTerminationDate": "",
       "suspendedSentenceOrder": false,
