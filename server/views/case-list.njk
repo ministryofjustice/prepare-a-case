@@ -87,7 +87,7 @@
 {% for i in range(startNum, endNum + 1) -%}
     {{ pageItems.push({
         text: i,
-        href: '/' + params.courtCode + '/cases/' + today + '?page=' + i,
+        href: '/' + params.courtCode + '/cases/' + params.date + '?page=' + i,
         selected: currentPage === i
     }) }}
 {%- endfor %}
@@ -97,7 +97,7 @@
 {% else %}
     {% set previousLink = {
         text: 'Previous',
-        href: '/' + params.courtCode + '/cases/' + today + '?page=' + (currentPage - 1)
+        href: '/' + params.courtCode + '/cases/' + params.date + '?page=' + (currentPage - 1)
     } %}
 {% endif %}
 
@@ -106,7 +106,7 @@
 {% else %}
     {% set nextLink = {
         text: 'Next',
-        href: '/' + params.courtCode + '/cases/' + today + '?page=' + (currentPage + 1)
+        href: '/' + params.courtCode + '/cases/' + params.date + '?page=' + (currentPage + 1)
     } %}
 {% endif %}
 
@@ -121,7 +121,7 @@
 {%- set listTabs = [{
     title: 'Case list',
     a11yTitle: 'View current case list',
-    link: '/' + params.courtCode + '/cases/' + today,
+    link: '/' + params.courtCode + '/cases/' + params.date,
     current: params.subsection === ''
 }] -%}
 
@@ -129,7 +129,7 @@
     {{ listTabs.push({
         title: 'Recently added',
         a11yTitle: 'View list of recently added cases',
-        link: '/' + params.courtCode + '/cases/' + today + '/added',
+        link: '/' + params.courtCode + '/cases/' + params.date + '/added',
         current: params.subsection === 'added',
         count: params.addedCount
     }) }}
@@ -138,7 +138,7 @@
     {{ listTabs.push({
         title: 'Removed cases',
         a11yTitle: 'View list of removed cases',
-        link: '/' + params.courtCode + '/cases/' + today + '/removed',
+        link: '/' + params.courtCode + '/cases/' + params.date + '/removed',
         current: params.subsection === 'removed',
         count: params.removedCount
     }) }}

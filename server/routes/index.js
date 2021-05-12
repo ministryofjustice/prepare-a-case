@@ -207,7 +207,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     return {
       currentCaseListViewLink: session.currentCaseListViewLink,
       backLink: session.backLink,
-      caseListDate,
+      caseListDate: caseListDate,
       params: {
         ...params
       },

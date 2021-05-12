@@ -90,3 +90,7 @@ When('I click the {string} button', $string => {
 When('I click the clear {string} filter tag', $string => {
   cy.get('.pac-filter__tag').contains($string).click()
 })
+
+When('I click the date navigation element {int}', $int => {
+  cy.get('.pac-days-navigation-item__link').eq($int - 1).click()
+})
