@@ -90,14 +90,16 @@ Feature: Case list
 
   Scenario: View the case list with data containing 207 cases for the given day and navigate to page 3
     Given I am an authenticated user
-    When I navigate to the "cases" route for today
+
+    # Move to Monday 4th Jan 2021 so that we can ensure pagination still functions correctly
+    When I navigate to the "cases/2021-01-04" route
 
     Then I should be on the "Case list" page
+    And I should see the URL with "cases/2021-01-04"
     And I should see the heading "Cases"
 
-    # Move to a different date so that we can ensure pagination still functions correctly
-    When I click the date navigation element 2
     And I click pagination link "3"
+    Then I should see the URL with "cases/2021-01-04?page=3"
 
     Then I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
