@@ -39,6 +39,18 @@
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '{{ googleAnalyticsKey }}');
+
+          // Feature detects Navigation Timing API support.
+          if (window.performance) {
+            // Gets the number of milliseconds since page load
+            // (and rounds the result since the value must be an integer).
+            var timeSincePageLoad = Math.round(performance.now());
+            // Sends the timing event to Google Analytics.
+            gtag('event', 'timing_complete', {
+              'name': 'load',
+              'value': timeSincePageLoad
+            });
+          }
         </script>
         {% endif %}
     {% endblock %}
@@ -162,20 +174,6 @@
     <script src="/moj/all.js"></script>
     <script src="/govuk/all.js"></script>
     <script>window.GOVUKFrontend.initAll()</script>
-
-    <script nonce="{{ nonce }}">
-      // Feature detects Navigation Timing API support.
-      if (window.performance) {
-        // Gets the number of milliseconds since page load
-        // (and rounds the result since the value must be an integer).
-        var timeSincePageLoad = Math.round(performance.now());
-        // Sends the timing event to Google Analytics.
-        gtag('event', 'timing_complete', {
-          'name': 'load',
-          'value': timeSincePageLoad
-        });
-      }
-    </script>
 {% endblock %}
 
 </body>
