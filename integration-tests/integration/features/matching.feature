@@ -338,18 +338,18 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Link an NDelius record to a not known defendant from case-summary
     Given I am an authenticated user
-    When I navigate to the "case/7483843110/summary" route
+    When I navigate to the "case/8678951874/summary" route
 
     And I click the "Link NDelius record" button
     Then I should be on the "Link an NDelius record to the defendant" page
-    And I should see back link "Back" with href "/B14LO/case/7483843110/summary"
-    And I should see link "Cancel" with href "/B14LO/case/7483843110/summary"
+    And I should see back link "Back" with href "/B14LO/case/8678951874/summary"
+    And I should see link "Cancel" with href "/B14LO/case/8678951874/summary"
 
     And There should be no a11y violations
 
   Scenario: Link an NDelius record to a not known defendant from case-summary
     Given I am an authenticated user
-    When I navigate to the "case/7483843110/summary" route
+    When I navigate to the "case/8678951874/summary" route
 
     And I click the "Link NDelius record" button
     Then I should be on the "Link an NDelius record to the defendant" page

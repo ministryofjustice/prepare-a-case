@@ -70,6 +70,10 @@ And('I should not see the breach banner message', () => {
   cy.get('.moj-banner__message').should('not.exist')
 })
 
+And('I should not see the case level navigation', () => {
+  cy.get('.moj-sub-navigation').should('not.exist')
+})
+
 And('If the total number of charges is greater than one', () => {
   cy.get('.govuk-accordion').should('exist')
 })

@@ -4,7 +4,7 @@
 
 {% set subNavItems = [] %}
 
-{% if data.crn %}
+{% if data.crn and data.probationStatus | string | lower !== "pre-sentence record" %}
     {{ subNavItems.push({
         text: 'Case summary',
         href: '/' + params.courtCode + '/case/' + data.caseNo + '/summary',
@@ -21,8 +21,8 @@
         href: '/' + params.courtCode + '/case/' + data.caseNo + '/risk',
         active: title === 'Risk register'
     }) }}
-
 {% endif %}
+
 {% set crn = [] %}
 {{ crn.push(data.crn) if data.crn }}
 
@@ -75,7 +75,7 @@
     {{ mojSubNavigation({
         label: 'Sub navigation',
         items: subNavItems
-    }) if not hideSubnav }}
+    }) if subNavItems | length and not hideSubnav }}
 
     {% block caseContent %}{% endblock %}
 

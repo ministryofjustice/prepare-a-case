@@ -52,6 +52,7 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/cases/$TODAY"
     And I should see the heading "Kara Ayers"
     Then I should see the body text "Probation status: No record"
+    And I should not see the case level navigation
     And I should see the following level 2 headings
       | Appearance | Offences |
 
@@ -104,6 +105,38 @@ Feature: Case summary
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
 
     And I should see a button with the label "Unlink NDelius record"
+
+    And There should be no a11y violations
+
+  Scenario: View the case summary for the given defendant with a pre-sentence record
+    Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
+
+    When I navigate to the "case/7483843110/summary" route
+    Then I should be on the "Case summary" page
+    And I should see back link "Back to cases" with href "/cases/$TODAY"
+    And I should see the heading "Mann Carroll"
+    Then I should see the body text "CRN: V654123"
+    Then I should see the body text "PNC: A/1234560BA"
+    Then I should see the body text "Probation status: Pre-sentence record"
+    And I should not see the case level navigation
+    And I should see the following level 2 headings
+      | Appearance | Offences |
+
+    And I should see the body text "Court 2, afternoon session, $LONG_TODAY (3rd listing)."
+    Then I should see the following list of charges in an accordion component
+      | Assault by beating |
+      | Theft from a shop  |
+      | Theft from a shop  |
+      | Assault by beating |
+
+    And I should see the following summary list
+      | Name          | Mann Carroll                        |
+      | Gender        | Female                              |
+      | Date of birth | 8 April 1955                        |
+      | Nationality   | Unknown                             |
+      | Address       | 91 Barbey street Sheffield AD21 5DR |
 
     And There should be no a11y violations
 
