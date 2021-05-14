@@ -9,7 +9,7 @@ const service = (name, url) => {
 }
 
 module.exports = function healthcheckFactory (authUrl, serviceUrl, preferencesUrl) {
-  const checks = [service('auth', `${authUrl}/ping`), service('court-case-service', `${serviceUrl}/ping`), service('hmpps-user-preferences', `${preferencesUrl}/ping`)]
+  const checks = [service('auth', `${authUrl}/ping`), service('court-case-service', `${serviceUrl}/ping`), service('hmpps-user-preferences', `${preferencesUrl}/health/ping`)]
 
   return callback =>
     Promise.all(checks.map(fn => fn())).then(checkResults => {

@@ -1,14 +1,32 @@
 {
-  "id" : "c6a96af2-5cf6-4370-b8b8-f9ce01ae6c1c",
-  "request": {
-    "method": "GET",
-    "url": "/ping"
-  },
-  "response": {
-    "headers": {
-      "Content-Type": "text/plain"
+  "mappings": [
+    {
+      "id": "c6a96af2-5cf6-4370-b8b8-f9ce01ae6c1c",
+      "request": {
+        "method": "GET",
+        "url": "/ping"
+      },
+      "response": {
+        "headers": {
+          "Content-Type": "text/plain"
+        },
+        "status": 200,
+        "body": "pong"
+      }
     },
-    "status": 200,
-    "body": "pong"
-  }
+    {
+      "id": "82bfc26e-5189-42ce-9659-41a52a9e45d6",
+      "request": {
+        "method": "GET",
+        "url": "/health/ping"
+      },
+      "response": {
+        "headers": {
+          "Content-Type": "text/plain"
+        },
+        "status": 200,
+        "body": "pong"
+      }
+    }
+  ]
 }
