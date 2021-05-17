@@ -23,10 +23,7 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
         withRequest: {
           method: pactResponseMock.request.method,
           path: apiUrl,
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8',
-            Accept: 'application/json'
-          },
+          headers: pactResponseMock.request.headers,
           body: pactResponseMock.request.jsonBody
         },
         willRespondWith: {

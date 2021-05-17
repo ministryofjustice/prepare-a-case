@@ -3,6 +3,9 @@
   "request": {
     "method": "PUT",
     "path": "/court/B10JQ/case/1600028913",
+    "headers": {
+      "Accept": "application/json"
+    },
     "jsonBody": {
       "caseNo": "1600028913",
       "pnc": "A/1234560BA",
@@ -56,8 +59,7 @@
   },
   "response": {
     "headers": {
-      "Content-Type": "application/json;charset=utf-8",
-      "Accept": "application/json"
+      "Content-Type": "application/json"
     },
     "status": 201,
     "jsonBody": {
