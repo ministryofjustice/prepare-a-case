@@ -9,9 +9,8 @@ const schema = require('../../../schemas/get-risk-details.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /offender/{crn}/registrations', () => {
-    const crn = 'D541487'
-    const apiUrl = `/offender/${crn}/registrations`
     const mockData = pactResponseMock.response.jsonBody
+    const apiUrl = pactResponseMock.request.path
 
     it('should validate the JSON schema against the provided sample data', () => {
       validateSchema(mockData, schema)
@@ -22,11 +21,9 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
         state: 'the defendant has an existing risk assessment',
         uponReceiving: 'a request for defendant risk details',
         withRequest: {
-          method: 'GET',
+          method: pactResponseMock.request.method,
           path: apiUrl,
-          headers: {
-            Accept: 'application/json'
-          }
+          headers: pactResponseMock.request.headers
         },
         willRespondWith: {
           status: pactResponseMock.response.status,

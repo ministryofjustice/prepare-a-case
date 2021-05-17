@@ -5,13 +5,14 @@
   "title": "The root schema",
   "description": "The root schema comprises the entire JSON document.",
   "default": {},
-  "required": [
-    "crn"
-  ],
+  "required": [],
   "properties": {
     "crn": {
       "$id": "#/properties/crn",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "title": "The crn schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""

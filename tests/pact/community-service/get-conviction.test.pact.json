@@ -2,7 +2,10 @@
   "id": "f28fee9e-b3cc-4b57-8752-6b830180325c",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/D541487/convictions/1531139839"
+    "path": "/offender/X320741/convictions/2500295343",
+    "headers": {
+      "Accept": "application/json"
+    }
   },
   "response": {
     "headers": {
@@ -10,36 +13,55 @@
     },
     "status": 200,
     "jsonBody": {
-      "convictionId": "1531139839",
-      "active": false,
-      "inBreach": true,
-      "convictionDate": "2018-01-06",
+      "convictionId": "2500295343",
+      "active": true,
+      "inBreach": false,
+      "convictionDate": "2017-06-01",
       "offences": [
         {
-          "description": "Noise offences - 82200"
-        },
-        {
-          "description": "Acknowledging bail in false name - 08303"
-        },
-        {
-          "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
-        },
-        {
-          "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
+          "description": "Arson - 05600"
         }
       ],
       "sentence": {
-        "sentenceId": "123123140",
-        "description": "CJA - Indeterminate Public Prot.",
-        "length": 18,
-        "lengthInDays": 547,
+        "description": "CJA - Community Order",
+        "length": 12,
         "lengthUnits": "Months",
-        "terminationDate": "2019-07-12",
-        "terminationReason": "Auto Terminated",
-        "startDate": "2018-01-06",
-        "endDate": "2019-07-12"
+        "lengthInDays": 364,
+        "terminationDate": "2017-12-01",
+        "startDate": "2017-06-01",
+        "endDate": "2018-05-31",
+        "terminationReason": "Completed - early good progress"
       },
-      "documents": []
+      "endDate": "2018-05-31",
+      "documents": [
+        {
+          "documentId": "5058ca66-3751-4701-855a-86bf518d9392",
+          "documentName": "Event document 2.txt",
+          "author": "Andy Marke",
+          "type": "COURT_REPORT_DOCUMENT",
+          "createdAt": "2019-09-04T00:00:00",
+          "subType": {
+            "code": "CR02",
+            "description": "Court Report"
+          }
+        }
+      ],
+      "breaches": [
+        {
+          "breachId": 11131322,
+          "description": "Community Order",
+          "status": "Breach Initiated",
+          "started": "2020-10-20",
+          "statusDate": "2020-12-18"
+        },
+        {
+          "breachId": 11131321,
+          "description": "Community Order",
+          "status": "Breach Initiated",
+          "started": "2019-10-20",
+          "statusDate": "2019-12-18"
+        }
+      ]
     }
   }
 }

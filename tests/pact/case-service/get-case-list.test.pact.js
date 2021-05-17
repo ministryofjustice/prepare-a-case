@@ -1,9 +1,7 @@
 /* global describe, it, expect */
 const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
-const moment = require('moment')
 
-const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
 const { request } = require('../../../server/services/utils/request')
 const pactResponseMock = require('./get-case-list.test.pact.json')
@@ -11,13 +9,12 @@ const schema = require('../../../schemas/get-case-list.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /court/{courtCode}/cases?date={YYYY-MM-DD}', () => {
-    const courtCode = 'B14LO'
-    const apiUrl = `/court/${courtCode}/cases`
-    const today = moment().format('YYYY-MM-DD')
-    const parsedMockData = parseMockResponse(pactResponseMock.response.jsonBody)
+    const mockData = pactResponseMock.response.jsonBody
+    const apiUrl = pactResponseMock.request.path
+    const apiQuery = pactResponseMock.request.query
 
     it('should validate the JSON schema against the provided sample data', () => {
-      validateSchema(parsedMockData, schema)
+      validateSchema(mockData, schema)
     })
 
     it('returns a list of cases', async () => {
@@ -25,24 +22,20 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
         state: 'a list of cases exist for the given date',
         uponReceiving: 'a request for a list of cases',
         withRequest: {
-          method: 'GET',
+          method: pactResponseMock.request.method,
           path: apiUrl,
-          query: {
-            date: today
-          },
-          headers: {
-            Accept: 'application/json'
-          }
+          query: apiQuery,
+          headers: pactResponseMock.request.headers
         },
         willRespondWith: {
           status: pactResponseMock.response.status,
           headers: pactResponseMock.response.headers,
-          body: Matchers.like(parsedMockData)
+          body: Matchers.like(mockData)
         }
       })
 
-      const response = await request(`${provider.mockService.baseUrl}${apiUrl}?date=${today}`)
-      expect(response.data).toEqual(parsedMockData)
+      const response = await request(`${provider.mockService.baseUrl}${apiUrl}?${apiQuery}`)
+      expect(response.data).toEqual(mockData)
       return response
     })
 
