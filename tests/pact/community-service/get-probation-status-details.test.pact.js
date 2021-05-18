@@ -5,7 +5,7 @@ const { Matchers } = require('@pact-foundation/pact')
 const { request } = require('../../../server/services/utils/request')
 const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
 const pactResponseMock = require('./get-probation-status-detail.test.pact.json')
-const schema = require('../../../schemas/probation-status-detail.schema.json')
+const schema = require('../../../schemas/get-probation-status-detail.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /offender/{crn}/detail', () => {

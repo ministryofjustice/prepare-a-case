@@ -1,10 +1,8 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "http://example.com/example.json",
-  "type": "object",
-  "title": "The root schema",
-  "description": "The root schema comprises the entire JSON document.",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "default": {},
+  "description": "The root schema comprises the entire JSON document.",
   "required": [
     "convictionId",
     "active",
@@ -14,6 +12,8 @@
     "sentence",
     "documents"
   ],
+  "title": "The root schema",
+  "type": "object",
   "properties": {
     "convictionId": {
       "$id": "#/properties/convictionId",
@@ -69,7 +69,8 @@
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               }
-            }
+            },
+            "additionalProperties": true
           }
         ]
       }
@@ -147,14 +148,12 @@
           "description": "An explanation about the purpose of this instance.",
           "default": ""
         }
-      }
+      },
+      "additionalProperties": true
     },
     "endDate": {
       "$id": "#/properties/endDate",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "title": "The endDate schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
@@ -170,18 +169,11 @@
         "anyOf": [
           {
             "$id": "#/properties/documents/items/anyOf/0",
-            "type": "object",
-            "title": "The first anyOf schema",
-            "description": "An explanation about the purpose of this instance.",
             "default": {},
-            "required": [
-              "documentId",
-              "documentName",
-              "author",
-              "type",
-              "createdAt",
-              "subType"
-            ],
+            "description": "An explanation about the purpose of this instance.",
+            "required": [],
+            "title": "The first anyOf schema",
+            "type": "object",
             "properties": {
               "documentId": {
                 "$id": "#/properties/documents/items/anyOf/0/properties/documentId",
@@ -243,32 +235,34 @@
                     "description": "An explanation about the purpose of this instance.",
                     "default": ""
                   }
-                }
+                },
+                "additionalProperties": true
               }
-            }
+            },
+            "additionalProperties": true
           }
         ]
       }
     },
     "breaches": {
       "$id": "#/properties/breaches",
+      "default": [],
+      "description": "An explanation about the purpose of this instance.",
+      "title": "The breaches schema",
       "type": [
         "array",
         "null"
       ],
-      "title": "The breaches schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": [],
       "items": {
         "$id": "#/properties/breaches/items",
         "anyOf": [
           {
             "$id": "#/properties/breaches/items/anyOf/0",
-            "type": "object",
-            "title": "The first anyOf schema",
-            "description": "An explanation about the purpose of this instance.",
             "default": {},
+            "description": "An explanation about the purpose of this instance.",
             "required": [],
+            "title": "The first anyOf schema",
+            "type": "object",
             "properties": {
               "breachId": {
                 "$id": "#/properties/breaches/items/anyOf/0/properties/breachId",
@@ -305,10 +299,12 @@
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               }
-            }
+            },
+            "additionalProperties": true
           }
         ]
       }
     }
-  }
+  },
+  "additionalProperties": true
 }

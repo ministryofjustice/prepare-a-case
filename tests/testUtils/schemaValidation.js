@@ -13,7 +13,7 @@ function validateMocks (mockFilesPath, schema) {
     filenames.forEach(filename => {
       const wireMockFile = require(path.join(`${mockFilesPath}/${filename}`))
       const parsedMock = parseMockResponse(wireMockFile.response.jsonBody)
-      const ajv = new Ajv({ allErrors: true })
+      const ajv = new Ajv({ allErrors: true, allowUnionTypes: true })
       require('ajv-errors')(ajv)
 
       const validateSchema = ajv.compile(schema)

@@ -4,7 +4,7 @@
     "method": "PUT",
     "path": "/court/B10JQ/case/1600028913",
     "headers": {
-      "Accept": "application/json"
+      "Content-Type": "application/json;charset=utf-8"
     },
     "jsonBody": {
       "caseNo": "1600028913",
