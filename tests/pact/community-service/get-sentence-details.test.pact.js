@@ -18,7 +18,7 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
 
     it('returns the conviction sentence details', async () => {
       await provider.addInteraction({
-        state: 'the defendant has an existing conviction',
+        state: 'the defendant has an existing conviction with sentence',
         uponReceiving: 'a request for a specific conviction sentence details',
         withRequest: {
           method: pactResponseMock.request.method,

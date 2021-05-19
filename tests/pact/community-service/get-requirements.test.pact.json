@@ -17,7 +17,6 @@
         {
           "requirementId": 2500083652,
           "startDate": "2017-06-01",
-          "commencementDate": "2015-06-29",
           "terminationDate": "2017-12-01",
           "expectedStartDate": "2017-06-01",
           "expectedEndDate": "2017-12-01",
@@ -34,6 +33,14 @@
             "code": "74",
             "description": "Hours Completed Outside 12 months (UPW only)"
           },
+          "length": 60,
+          "lengthUnit": "Hours"
+        },
+        {
+          "requirementId": 2500007925,
+          "commencementDate": "2015-06-29",
+          "startDate": "2015-07-01",
+          "active": true,
           "adRequirementTypeMainCategory": {
             "code": "7",
             "description": "Court - Accredited Programme"
@@ -41,9 +48,7 @@
           "adRequirementTypeSubCategory": {
             "code": "P12",
             "description": "ASRO"
-          },
-          "length": 60,
-          "lengthUnit": "Hours"
+          }
         }
       ],
       "pssRequirements": [],
