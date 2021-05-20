@@ -3,43 +3,37 @@ const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
 
 const { request } = require('../../../server/services/utils/request')
-const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
 const pactResponseMock = require('./get-sentence-details.test.pact.json')
 const schema = require('../../../schemas/get-sentence.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /offender/{crn}/convictions/{convictionId}/sentences/{sentenceId}', () => {
-    const crn = 'DX12340A'
-    const convictionId = '1309234876'
-    const sentenceId = '123123128'
-    const apiUrl = `/offender/${crn}/convictions/${convictionId}/sentences/${sentenceId}`
-    const parsedMockData = parseMockResponse(pactResponseMock.response.jsonBody)
+    const mockData = pactResponseMock.response.jsonBody
+    const apiUrl = pactResponseMock.request.path
 
     it('should validate the JSON schema against the provided sample data', () => {
-      validateSchema(parsedMockData, schema)
+      validateSchema(mockData, schema)
     })
 
     it('returns the conviction sentence details', async () => {
       await provider.addInteraction({
-        state: 'the defendant has an existing conviction',
+        state: 'the defendant has an existing conviction with sentence',
         uponReceiving: 'a request for a specific conviction sentence details',
         withRequest: {
-          method: 'GET',
+          method: pactResponseMock.request.method,
           path: apiUrl,
-          headers: {
-            Accept: 'application/json'
-          }
+          headers: pactResponseMock.request.headers
         },
         willRespondWith: {
           status: pactResponseMock.response.status,
           headers: pactResponseMock.response.headers,
-          body: Matchers.like(parsedMockData)
+          body: Matchers.like(mockData)
         }
       })
 
       const response = await request(`${provider.mockService.baseUrl}${apiUrl}`)
-      expect(response.data).toEqual(parsedMockData)
+      expect(response.data).toEqual(mockData)
       return response
     })
 

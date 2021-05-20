@@ -2,7 +2,10 @@
   "id": "efc0042f-484b-4f7f-8e08-77b46c7edf34",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/court/B10JQ/case/1600028913"
+    "path": "/court/B10JQ/case/1600028913",
+    "headers": {
+      "Accept": "application/json"
+    }
   },
   "response": {
     "headers": {

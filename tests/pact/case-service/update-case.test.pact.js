@@ -9,10 +9,8 @@ const schema = require('../../../schemas/put-case.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('PUT /court/{courtCode}/case/{caseNo}', () => {
-    const courtCode = 'B14LO'
-    const caseNo = '351196424'
-    const apiUrl = `/court/${courtCode}/case/${caseNo}`
     const mockData = pactResponseMock.response.jsonBody
+    const apiUrl = pactResponseMock.request.path
 
     it('should validate the JSON schema against the provided sample data', () => {
       validateSchema(mockData, schema)
@@ -23,13 +21,10 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
         state: 'a case exists with the given case number',
         uponReceiving: 'a request to update a specific case',
         withRequest: {
-          method: 'PUT',
+          method: pactResponseMock.request.method,
           path: apiUrl,
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8',
-            Accept: 'application/json'
-          },
-          body: mockData
+          headers: pactResponseMock.request.headers,
+          body: pactResponseMock.request.jsonBody
         },
         willRespondWith: {
           status: 201,

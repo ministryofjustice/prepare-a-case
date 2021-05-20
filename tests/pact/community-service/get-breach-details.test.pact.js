@@ -9,11 +9,8 @@ const schema = require('../../../schemas/get-breach-details.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /offender/{crn}/convictions/{convictionId}/breaches/{breachId}', () => {
-    const crn = 'D991494'
-    const convictionId = '1361422142'
-    const breachId = '12345'
-    const apiUrl = `/offender/${crn}/convictions/${convictionId}/breaches/${breachId}`
     const mockData = pactResponseMock.response.jsonBody
+    const apiUrl = pactResponseMock.request.path
 
     it('should validate the JSON schema against the provided sample data', () => {
       validateSchema(mockData, schema)
@@ -24,11 +21,9 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
         state: 'will return the specific conviction breach details',
         uponReceiving: 'a request for a specific conviction breach details',
         withRequest: {
-          method: 'GET',
+          method: pactResponseMock.request.method,
           path: apiUrl,
-          headers: {
-            Accept: 'application/json'
-          }
+          headers: pactResponseMock.request.headers
         },
         willRespondWith: {
           status: pactResponseMock.response.status,

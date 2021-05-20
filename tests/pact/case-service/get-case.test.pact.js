@@ -2,7 +2,6 @@
 const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
 
-const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { request } = require('../../../server/services/utils/request')
 const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
 const pactResponseMock = require('./get-case.test.pact.json')
@@ -10,13 +9,11 @@ const schema = require('../../../schemas/get-case.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /court/{courtCode}/case/{caseNo}', () => {
-    const courtCode = 'B14LO'
-    const caseNo = '351196424'
-    const apiUrl = `/court/${courtCode}/case/${caseNo}`
-    const parsedMockData = parseMockResponse(pactResponseMock.response.jsonBody)
+    const mockData = pactResponseMock.response.jsonBody
+    const apiUrl = pactResponseMock.request.path
 
     it('should validate the JSON schema against the provided sample data', () => {
-      validateSchema(parsedMockData, schema)
+      validateSchema(mockData, schema)
     })
 
     it('returns a specific case', async () => {
@@ -24,21 +21,19 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
         state: 'a case exists with the given case number',
         uponReceiving: 'a request for a specific case',
         withRequest: {
-          method: 'GET',
+          method: pactResponseMock.request.method,
           path: apiUrl,
-          headers: {
-            Accept: 'application/json'
-          }
+          headers: pactResponseMock.request.headers
         },
         willRespondWith: {
           status: pactResponseMock.response.status,
           headers: pactResponseMock.response.headers,
-          body: Matchers.like(parsedMockData)
+          body: Matchers.like(mockData)
         }
       })
 
       const response = await request(`${provider.mockService.baseUrl}${apiUrl}`)
-      expect(response.data).toEqual(parsedMockData)
+      expect(response.data).toEqual(mockData)
       return response
     })
 

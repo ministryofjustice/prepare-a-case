@@ -2,7 +2,10 @@
   "id": "433ac97b-65be-4e52-8d15-b7c22d55e313",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/X320741/convictions/2500295343/breaches/2500003903"
+    "path": "/offender/X320741/convictions/2500295343/breaches/2500003903",
+    "headers": {
+      "Accept": "application/json"
+    }
   },
   "response": {
     "headers": {

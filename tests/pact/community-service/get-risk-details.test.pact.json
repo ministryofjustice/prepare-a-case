@@ -2,7 +2,10 @@
   "id": "a12dd515-154b-419e-8de1-1bad92b6629e",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/D991494/registrations"
+    "path": "/offender/D991494/registrations",
+    "headers": {
+      "Accept": "application/json"
+    }
   },
   "response": {
     "headers": {

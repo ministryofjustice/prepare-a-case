@@ -3,16 +3,14 @@ const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
 
 const { request } = require('../../../server/services/utils/request')
-const { parseMockResponse } = require('../../testUtils/parseMockResponse')
 const { validateMocks, validateSchema } = require('../../testUtils/schemaValidation')
 const pactResponseMock = require('./get-details.test.pact.json')
 const schema = require('../../../schemas/get-details.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('GET /offender/{crn}/detail', () => {
-    const crn = 'D991494'
-    const apiUrl = `/offender/${crn}/detail`
-    const mockData = parseMockResponse(pactResponseMock.response.jsonBody)
+    const mockData = pactResponseMock.response.jsonBody
+    const apiUrl = pactResponseMock.request.path
 
     it('should validate the JSON schema against the provided sample data', () => {
       validateSchema(mockData, schema)
@@ -23,11 +21,9 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
         state: 'an offender record exists',
         uponReceiving: 'a request for defendant details',
         withRequest: {
-          method: 'GET',
+          method: pactResponseMock.request.method,
           path: apiUrl,
-          headers: {
-            Accept: 'application/json'
-          }
+          headers: pactResponseMock.request.headers
         },
         willRespondWith: {
           status: pactResponseMock.response.status,
