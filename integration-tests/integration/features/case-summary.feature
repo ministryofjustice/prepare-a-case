@@ -82,7 +82,7 @@ Feature: Case summary
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/cases/$TODAY"
     And I should see sub navigation with the following links
-      | Case summary | Probation record |
+      | Case summary | Probation record | Risk register |
     And I should see the heading "Webb Mitchell"
     Then I should see the body text "CRN: D541487"
     Then I should see the body text "PNC: A/8404713BA"
@@ -120,7 +120,8 @@ Feature: Case summary
     Then I should see the body text "CRN: V654123"
     Then I should see the body text "PNC: A/1234560BA"
     Then I should see the body text "Probation status: Pre-sentence record"
-    And I should not see the case level navigation
+    And I should see sub navigation with the following links
+      | Case summary | Probation record | Risk register |
     And I should see the following level 2 headings
       | Appearance | Offences |
 

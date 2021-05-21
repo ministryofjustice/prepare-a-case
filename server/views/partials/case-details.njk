@@ -4,7 +4,7 @@
 
 {% set subNavItems = [] %}
 
-{% if data.crn and data.probationStatus | string | lower !== "pre-sentence record" %}
+{% if data.crn %}
     {{ subNavItems.push({
         text: 'Case summary',
         href: '/' + params.courtCode + '/case/' + data.caseNo + '/summary',
@@ -15,7 +15,6 @@
         href: '/' + params.courtCode + '/case/' + data.caseNo + '/record',
         active: title === 'Probation record'
     }) }}
-
     {{ subNavItems.push({
         text: 'Risk register',
         href: '/' + params.courtCode + '/case/' + data.caseNo + '/risk',
