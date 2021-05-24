@@ -3,8 +3,8 @@ const Agent = require('agentkeepalive')
 const { HttpsAgent } = require('agentkeepalive')
 const logger = require('../../log')
 const config = require('../../config')
-const csRedis = require('cache-service-redis')
-const redisCache = new csRedis({
+const CsRedis = require('cache-service-redis')
+const redisCache = new CsRedis({
   port: config.redis.port,
   hostname: config.redis.port,
   auth: config.redis.password
