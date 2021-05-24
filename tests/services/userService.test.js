@@ -5,7 +5,6 @@ const context = { username: 'test', token: 'token-1' }
 
 const authClient = {
   getUser: jest.fn(),
-  getUserRoles: jest.fn(),
   getEmail: jest.fn()
 }
 
@@ -34,15 +33,11 @@ describe('Auth users - getUser()', () => {
     }
     authClient.getUser.mockReturnValue(authUser)
 
-    const roles = [{ roleCode: 'GLOBAL_SEARCH' }, { roleCode: 'PATHFINDER_OM' }]
-    authClient.getUserRoles.mockReturnValue(roles)
-
     const result = await service.getUser(context)
 
     expect(result).toEqual({
       ...authUser,
-      displayName: 'Sam Smith',
-      roles: [{ roleCode: 'GLOBAL_SEARCH' }, { roleCode: 'PATHFINDER_OM' }]
+      displayName: 'Sam Smith'
     })
 
     expect(authClientBuilder).toBeCalledWith(context.token)
@@ -133,14 +128,5 @@ describe('Email addresses', () => {
     await service.getEmails(context.token, ['Bob'])
 
     expect(authClientBuilder).toBeCalledWith(context.token)
-  })
-
-  it('should return roles for a user', async () => {
-    const roles = [{ roleCode: 'ROLE_PREPARE_A_CASE' }]
-    authClient.getUserRoles.mockReturnValue(roles)
-
-    const rolesReturned = await service.getUserRoles(context.token)
-
-    expect(rolesReturned).toEqual(roles)
   })
 })

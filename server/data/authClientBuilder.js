@@ -27,12 +27,6 @@ module.exports = token => {
       const { status, body } = await userGet({ path, raw: true })
       return { ...body, username, exists: status !== 404, verified: status === 200 }
     },
-    async getUserRoles () {
-      const path = `${apiUrl}/api/user/me/roles`
-      const { status, body } = await userGet({ path, raw: true })
-      logger.info('AUTH - /api/user/me/roles - status: ', status)
-      return body
-    },
     async getUser () {
       const path = `${apiUrl}/api/user/me`
       const { status, body } = await userGet({ path, raw: true })

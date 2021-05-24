@@ -7,17 +7,10 @@ module.exports = function createUserService (authClientBuilder) {
 
       // Get the user record from Auth to determine whether this is an auth-only or Nomis account
       const user = await authClient.getUser()
-      let nameForDisplay = null
-      let roles = null
-
-      user.displayName = user.name
-      nameForDisplay = user.name
-      roles = await authClient.getUserRoles()
 
       return {
         ...user,
-        displayName: nameForDisplay,
-        roles
+        displayName: user.name
       }
     } catch (error) {
       logger.error('Error during getUser: ', error.stack)
@@ -47,26 +40,8 @@ module.exports = function createUserService (authClientBuilder) {
     }
   }
 
-  async function getUserDetails (context) {
-    const authClient = authClientBuilder(context.token)
-    let user = null
-
-    user = await authClient.getUser(context.token)
-    user.displayName = user.name
-
-    return user
-  }
-
-  async function getUserRoles (context) {
-    const authClient = authClientBuilder(context.token)
-    const roles = await authClient.getUserRoles()
-    return roles
-  }
-
   return {
     getUser,
-    getEmails,
-    getUserDetails,
-    getUserRoles
+    getEmails
   }
 }
