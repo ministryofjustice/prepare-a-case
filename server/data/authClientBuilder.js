@@ -3,6 +3,13 @@ const Agent = require('agentkeepalive')
 const { HttpsAgent } = require('agentkeepalive')
 const logger = require('../../log')
 const config = require('../../config')
+const CsRedis = require('cache-service-redis')
+const redisCache = new CsRedis({
+  port: config.redis.port,
+  hostname: config.redis.port,
+  auth: config.redis.password
+})
+const superagentCache = require('superagent-cache-plugin')(redisCache)
 
 const timeoutSpec = {
   response: config.apis.oauth2.timeout.response,
@@ -27,12 +34,6 @@ module.exports = token => {
       const { status, body } = await userGet({ path, raw: true })
       return { ...body, username, exists: status !== 404, verified: status === 200 }
     },
-    async getUserRoles () {
-      const path = `${apiUrl}/api/user/me/roles`
-      const { status, body } = await userGet({ path, raw: true })
-      logger.info('AUTH - /api/user/me/roles - status: ', status)
-      return body
-    },
     async getUser () {
       const path = `${apiUrl}/api/user/me`
       const { status, body } = await userGet({ path, raw: true })
@@ -40,12 +41,14 @@ module.exports = token => {
     }
   }
 }
+
 function userGetBuilder (token) {
   return async ({ path = null, query = '', headers = {}, responseType = '', raw = false } = {}) => {
     logger.info(`Get using user credentials: calling oauth: ${path} ${query}`)
     try {
       const result = await superagent
         .get(path)
+        .use(superagentCache)
         .ok(res => res.status < 500)
         .agent(keepaliveAgent)
         .retry(2, (err, res) => {
