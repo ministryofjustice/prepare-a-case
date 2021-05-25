@@ -8,6 +8,11 @@ Feature: Accessibility statement
     When I open the application
     And I should see footer link "Cookies" with href "/cookies-policy"
     And I navigate to the "/cookies-policy" base route
+
+    And I should see the phase banner
+    And I should see the tag "Feedback"
+    And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
+
     Then I should see the heading "Cookies"
     And I should see the following level 2 headings
       | Essential cookies | Analytics cookies (optional) | Change your cookie settings |

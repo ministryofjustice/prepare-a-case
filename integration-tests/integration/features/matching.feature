@@ -10,6 +10,10 @@ Feature: Matching defendants to nDelius records
     When I navigate to the "match/bulk" route for today
     Then I should be on the "Defendants with possible NDelius records" page
 
+    And I should see the phase banner
+    And I should see the tag "Feedback"
+    And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
+
     And I should see the heading "Defendants with possible NDelius records"
 
     And I should see medium heading with text "2 defendants partially match with existing records."
@@ -21,8 +25,8 @@ Feature: Matching defendants to nDelius records
       | Guadalupe Hess     | 3 | Review records |
       | Felicia Villarreal | 2 | Review records |
 
-    And I should see link "Review records" in position 1 with href "match/defendant/3597035492"
-    And I should see link "Review records" in position 2 with href "match/defendant/4172564047"
+    And I should see link "Review records" in position 2 with href "match/defendant/3597035492"
+    And I should see link "Review records" in position 3 with href "match/defendant/4172564047"
 
     And There should be no a11y violations
 

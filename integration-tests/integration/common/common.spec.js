@@ -60,6 +60,20 @@ When('I navigate to the {string} base route', $route => {
   cy.visit($route)
 })
 
+And('I should see the phase banner', () => {
+  cy.get('.govuk-phase-banner').should('exist')
+})
+
+And('I should see the tag {string}', $string => {
+  cy.get('.govuk-tag').contains($string).should('exist')
+})
+
+And('I should see phase banner link {string} with href {string}', ($string, $href) => {
+  cy.get('.govuk-phase-banner').within(() => {
+    cy.get('.govuk-link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+  })
+})
+
 And('I should see the caption with the court name {string}', $string => {
   cy.get('.qa-court-name').contains($string)
 })
