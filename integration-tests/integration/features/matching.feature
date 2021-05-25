@@ -62,7 +62,7 @@ Feature: Matching defendants to nDelius records
       | 18 February 1989                                               |
       | 43 Hunterfly Place, Birmingham, Birmingham, AD21 5DR           |
       | V178657                                                        |
-      | D/9874483AB                                                            |
+      | D/9874483AB                                                    |
       | Current                                                        |
       | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
     And I should see the following table 3 rows
@@ -70,7 +70,7 @@ Feature: Matching defendants to nDelius records
       | 18 February 1989                                                |
       | Dunroamin, Leicestershire, LE2 3NA                              |
       | C178657                                                         |
-      | Unavailable                                                                |
+      | Unavailable                                                     |
       | Previously known                                                |
       | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
     And I should see the following table 4 rows
@@ -78,11 +78,64 @@ Feature: Matching defendants to nDelius records
       | 18 February 1998                                              |
       | Dunroamin, Leicestershire, LE2 3NA                            |
       | B123456                                                       |
-      | Unavailable                                                              |
+      | Unavailable                                                   |
       | Previously known                                              |
       | 13 January 2015 - CJA Standard Determinate Custody (6 Months) |
     And I should see radio buttons with the following IDs
       | defendant-1 | defendant-2 | defendant-3 |
+
+    And There should be no a11y violations
+
+  Scenario: View the list of possible NDelius records highlighted
+    Given I am an authenticated user
+    When I navigate to the "match/bulk" route for today
+    Then I should be on the "Defendants with possible NDelius records" page
+
+    And I should see the heading "Defendants with possible NDelius records"
+    And I should see the following table headings
+      | Defendant | NDelius records found | Action |
+    And I should see the following table rows
+      | Guadalupe Hess     | 3 | Review records |
+      | Felicia Villarreal | 2 | Review records |
+
+    Then I navigate to the "match/defendant/4172564047" route
+
+    And I should see the heading "Felicia Blob Popop Villareal"
+    And I should see the level 2 heading "Review possible NDelius records"
+    And I should see the body text "Compare details and confirm the correct record for the defendant."
+    And I should see the inset text "Details that match the defendant are highlighted."
+
+    Then I should see the level 3 heading "Defendant details"
+    And I should see the legend "2 NDelius records found"
+
+    And I should see the following table headings
+      | Name | Date of birth | Address | PNC |
+    And I should see the following table rows
+      | Felicia Blob Popop Villareal    |
+      | 13 August 1980                  |
+      | 37 Maple Avenue, London, L1 5DR |
+      | A/1234560BA                     |
+    And I should see the following table 2 headings
+      | Name | Date of birth | Address | CRN | PNC | Probation status | Most recent event |
+    And I should see the following table 2 rows
+      | Felicia Consuela Villarreal                                    |
+      | 26 August 1971                                                 |
+      | 20 Main Street Shangri La, Leicester, Leicestershire, LE2 1BG  |
+      | V178657                                                        |
+      | A/1234560BA                                                    |
+      | Current                                                        |
+      | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
+    And I should see the following table 3 rows
+      | Felecia Conswela Vilareel                                       |
+      | 26 August 1969                                                  |
+      | Dunroamin, Leicestershire, LE2 3NA                              |
+      | C178657                                                         |
+      | A/1234560BA                                                     |
+      | Previously known                                                |
+      | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
+
+    And I should see radio buttons with the following IDs
+      | defendant-1 | defendant-2 |
 
     And There should be no a11y violations
 

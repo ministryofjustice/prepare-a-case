@@ -19,16 +19,16 @@
 {% block content %}
 
     {% if session.serverError %}
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-three-quarters">
-            {%- from "moj/components/banner/macro.njk" import mojBanner -%}
-            {{ mojBanner({
-                type: 'warning',
-                text: 'Something went wrong - try again.',
-                iconFallbackText: 'Warning'
-            }) }}
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-three-quarters">
+                {%- from "moj/components/banner/macro.njk" import mojBanner -%}
+                {{ mojBanner({
+                    type: 'warning',
+                    text: 'Something went wrong - try again.',
+                    iconFallbackText: 'Warning'
+                }) }}
+            </div>
         </div>
-    </div>
     {% endif %}
 
     {% if session.formError %}
@@ -83,14 +83,14 @@
                                     + (data.defendantAddress.line3 + ", " if data.defendantAddress.line3)
                                     + (data.defendantAddress.line4 + ", " if data.defendantAddress.line4)
                                     + (data.defendantAddress.line5 + ", " if data.defendantAddress.line5)
-                                    + data.defendantAddress.postcode | upper
-                                %}
+                                    + data.defendantAddress.postcode | upper %}
                                 {{ dataAddress }}
                             </td>
                         </tr>
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">PNC</th>
-                            <td class="govuk-table__cell">{{ data.pnc or 'Unavailable'}}</td>
+                            {% set dataPnc = data.pnc %}
+                            <td class="govuk-table__cell">{{ dataPnc or 'Unavailable' }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -111,73 +111,79 @@
                         }
                     }) %}
 
-                    {% if session.formError %}
-                        <span id="changed-name-error" class="govuk-error-message">
+                        {% if session.formError %}
+                            <span id="changed-name-error" class="govuk-error-message">
                             <span class="govuk-visually-hidden">Error:</span> Select an NDelius record
                         </span>
-                    {% endif %}
+                        {% endif %}
 
-                    <div class="govuk-radios">
+                        <div class="govuk-radios">
 
-                        {% for item in data.matchData %}
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="defendant-{{ loop.index }}" name="crn" type="radio" value="{{ item.matchIdentifiers.crn }}">
-                            <label class="govuk-label govuk-radios__label govuk-!-padding-top-0" for="defendant-{{ loop.index }}">
+                            {% for item in data.matchData %}
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="defendant-{{ loop.index }}" name="crn"
+                                           type="radio" value="{{ item.matchIdentifiers.crn }}">
+                                    <label class="govuk-label govuk-radios__label govuk-!-padding-top-0"
+                                           for="defendant-{{ loop.index }}">
 
-                                <div class="pac-inset-block">
-                                    <table class="govuk-table pac-table--no-borders govuk-!-margin-0">
-                                        <tbody class="govuk-table__body">
-                                        <tr class="govuk-table__row">
-                                            <th scope="row" class="govuk-table__header pac-width-40">Name</th>
-                                            <td class="govuk-table__cell">
-                                                {% set matchName = item.forename + ' ' + (item.middleNames | join(' ') + ' ' if item.middleNames) + item.surname %}
-                                                {{ matchName | properCase | removeTitle | markMatches(defendantFullName) | safe }}
-                                            </td>
-                                        </tr>
-                                        <tr class="govuk-table__row">
-                                            <th scope="row" class="govuk-table__header">Date of birth</th>
-                                            <td class="govuk-table__cell">
-                                                {{ params.moment(item.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') | markMatches(params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY')) | safe if item.dateOfBirth }}
-                                            </td>
-                                        </tr>
-                                        <tr class="govuk-table__row">
-                                            <th scope="row" class="govuk-table__header">Address</th>
-                                            <td class="govuk-table__cell"><span class="highlight">
+                                        <div class="pac-inset-block">
+                                            <table class="govuk-table pac-table--no-borders govuk-!-margin-0">
+                                                <tbody class="govuk-table__body">
+                                                <tr class="govuk-table__row">
+                                                    <th scope="row" class="govuk-table__header pac-width-40">Name</th>
+                                                    <td class="govuk-table__cell">
+                                                        {% set matchName = item.forename + ' ' + (item.middleNames | join(' ') + ' ' if item.middleNames) + item.surname %}
+                                                        {{ matchName | properCase | removeTitle | markMatches(defendantFullName) | safe }}
+                                                    </td>
+                                                </tr>
+                                                <tr class="govuk-table__row">
+                                                    <th scope="row" class="govuk-table__header">Date of birth</th>
+                                                    <td class="govuk-table__cell">
+                                                        {{ params.moment(item.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') | markMatches(params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY')) | safe if item.dateOfBirth }}
+                                                    </td>
+                                                </tr>
+                                                <tr class="govuk-table__row">
+                                                    <th scope="row" class="govuk-table__header">Address</th>
+                                                    <td class="govuk-table__cell"><span class="highlight">
                                                     {% set itemAddress = (item.address.addressNumber + ' ' if item.address.addressNumber)
                                                         + (item.address.buildingName + ", " if item.address.buildingName)
                                                         + (item.address.town + ", " if item.address.town)
                                                         + (item.address.county + ", " if item.address.county)
-                                                        + item.address.postcode | upper
-                                                    %}
-                                                    {{ itemAddress | markMatches(dataAddress) | safe }}</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="govuk-table__row">
-                                            <th scope="row" class="govuk-table__header">CRN</th>
-                                            <td class="govuk-table__cell">{{ item.matchIdentifiers.crn }}</td>
-                                        </tr>
-                                        <tr class="govuk-table__row">
-                                            <th scope="row" class="govuk-table__header">PNC</th>
-                                            {% set itemPnc = item.matchIdentifiers.pnc %}
-                                            <td class="govuk-table__cell">{{ itemPnc | markMatches(dataPnc) | safe }}</td>
-                                        </tr>
-                                        <tr class="govuk-table__row">
-                                            <th scope="row" class="govuk-table__header">Probation status</th>
-                                            <td class="govuk-table__cell">{{ item.probationStatus | string | capitalize }}</td>
-                                        </tr>
-                                        <tr class="govuk-table__row">
-                                            <th scope="row" class="govuk-table__header">Most recent event</th>
-                                            <td class="govuk-table__cell">{{ params.moment(item.mostRecentEvent.startDate, 'YYYY-MM-DD').format('D MMMM YYYY') if item.mostRecentEvent.startDate }}{{ " - " + item.mostRecentEvent.text if item.mostRecentEvent.text }} {{ "(" + item.mostRecentEvent.length + " " + item.mostRecentEvent.lengthUnits + ")" if item.mostRecentEvent.length }}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                                        + item.address.postcode | upper %}
+                                                            {{ itemAddress | markMatches(dataAddress) | safe }}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="govuk-table__row">
+                                                    <th scope="row" class="govuk-table__header">CRN</th>
+                                                    <td class="govuk-table__cell">{{ item.matchIdentifiers.crn }}</td>
+                                                </tr>
+                                                <tr class="govuk-table__row">
+                                                    <th scope="row" class="govuk-table__header">PNC</th>
+                                                    <td class="govuk-table__cell">
+                                                    {% if item.matchIdentifiers.pnc %}
+                                                        {{ item.matchIdentifiers.pnc | markMatches(dataPnc) | safe }}
+                                                    {% else %}
+                                                        Unavailable
+                                                    {% endif %}
+                                                    </td>
+                                                </tr>
+                                                <tr class="govuk-table__row">
+                                                    <th scope="row" class="govuk-table__header">Probation status</th>
+                                                    <td class="govuk-table__cell">{{ item.probationStatus | string | capitalize }}</td>
+                                                </tr>
+                                                <tr class="govuk-table__row">
+                                                    <th scope="row" class="govuk-table__header">Most recent event</th>
+                                                    <td class="govuk-table__cell">{{ params.moment(item.mostRecentEvent.startDate, 'YYYY-MM-DD').format('D MMMM YYYY') if item.mostRecentEvent.startDate }}{{ " - " + item.mostRecentEvent.text if item.mostRecentEvent.text }} {{ "(" + item.mostRecentEvent.length + " " + item.mostRecentEvent.lengthUnits + ")" if item.mostRecentEvent.length }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </label>
                                 </div>
+                            {% endfor %}
 
-                            </label>
                         </div>
-                        {% endfor %}
-
-                    </div>
 
                     {% endcall %}
 
