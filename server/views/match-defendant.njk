@@ -158,7 +158,8 @@
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">PNC</th>
-                                            <td class="govuk-table__cell">{{ item.matchIdentifiers.pnc or 'Unavailable' }}</td>
+                                            {% set itemPnc = item.matchIdentifiers.pnc %}
+                                            <td class="govuk-table__cell">{{ itemPnc | markMatches(dataPnc) | safe }}</td>
                                         </tr>
                                         <tr class="govuk-table__row">
                                             <th scope="row" class="govuk-table__header">Probation status</th>
