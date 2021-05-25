@@ -7,6 +7,11 @@ Feature: Case summary
     Given I am an authenticated user
     When I navigate to the "cases" route
     Then I should be on the "Case list" page
+
+    And I should see the phase banner
+    And I should see the tag "Feedback"
+    And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
+
     And I should see the heading "Cases"
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Kara Ayers" link
@@ -441,9 +446,9 @@ Feature: Case summary
       | Community Order/SSO Breach | Breach Summons Issued           | 26 Dec 2014 |
       | Community Order/SSO Breach | Completed - Amended & Continued | 26 Nov 2013 |
 
-    And I should see link "Community Order/SSO Breach" in position 1 with href "1361422142/breach/12345"
-    And I should see link "Community Order/SSO Breach" in position 2 with href "1361422142/breach/54321"
-    And I should see link "Community Order/SSO Breach" in position 3 with href "1361422142/breach/98765"
+    And I should see link "Community Order/SSO Breach" in position 2 with href "1361422142/breach/12345"
+    And I should see link "Community Order/SSO Breach" in position 3 with href "1361422142/breach/54321"
+    And I should see link "Community Order/SSO Breach" in position 4 with href "1361422142/breach/98765"
 
     And I should see the level 2 heading "Attendance"
 

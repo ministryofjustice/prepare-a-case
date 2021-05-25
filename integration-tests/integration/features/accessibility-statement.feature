@@ -8,5 +8,10 @@ Feature: Accessibility statement
     When I open the application
     And I should see footer link "Accessibility statement" with href "/accessibility-statement"
     And I navigate to the "/accessibility-statement" base route
+
+    And I should see the phase banner
+    And I should see the tag "Feedback"
+    And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
+
     Then I should see the heading "Accessibility statement"
     And There should be no a11y violations

@@ -7,6 +7,11 @@ Feature: Select court
     Given I am an authenticated user
     When I open the application
     Then I should see the heading "Which courts do you work in?"
+
+    And I should see the phase banner
+    And I should see the tag "Feedback"
+    And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
+
     And I should see the body text "Add and save the courts you work in to view case lists for those courts."
     And There should be no a11y violations
 

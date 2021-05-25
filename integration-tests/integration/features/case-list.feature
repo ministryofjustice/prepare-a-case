@@ -8,6 +8,10 @@ Feature: Case list
     When I navigate to the "cases" route for today
     Then I should be on the "Case list" page
 
+    And I should see the phase banner
+    And I should see the tag "Feedback"
+    And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
+
     And I should see the heading "Cases"
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
