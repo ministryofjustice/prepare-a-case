@@ -12,8 +12,6 @@ Feature: Case list
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
 
-    And I should see the heading "Cases"
-
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should see the current day as "Today"
     And I should see 7 days navigation bar
@@ -52,7 +50,6 @@ Feature: Case list
     When I navigate to the "cases" route for today
 
     Then I should be on the "Case list" page
-    And I should see the heading "Cases"
 
     # Repeat some tests to ensure UI is consistent on subsequent pages
     And I should see the caption with the court name "Sheffield Magistrates' Court"
@@ -100,7 +97,6 @@ Feature: Case list
 
     Then I should be on the "Case list" page
     And I should see the URL with "cases/2021-01-04"
-    And I should see the heading "Cases"
 
     And I click pagination link "3"
     Then I should see the URL with "cases/2021-01-04?page=3"
@@ -132,7 +128,6 @@ Feature: Case list
     When I navigate to the "cases" route for today
 
     Then I should be on the "Case list" page
-    And I should see the heading "Cases"
 
     When I click pagination link "5"
 
@@ -169,7 +164,6 @@ Feature: Case list
     When I navigate to the "cases" route for today
 
     Then I should be on the "Case list" page
-    And I should see the heading "Cases"
 
     When I click pagination link "5"
     And I click pagination link "7"
@@ -259,7 +253,6 @@ Feature: Case list
 
     When I navigate to the "cases/2020-01-02" route
     Then I should be on the "Case list" page
-    And I should see the heading "Cases"
     And I should see the current day as "Thursday 2 January"
     And I should not see 7 days navigation bar
     And I should see link "Go to today" with href "/cases"
@@ -287,7 +280,6 @@ Feature: Case list
 
     When I navigate to the "cases/2020-01-01" route
     Then I should be on the "Case list" page
-    And I should see the heading "Cases"
     And I should see the current day as "Wednesday 1 January"
     And I should not see 7 days navigation bar
 
