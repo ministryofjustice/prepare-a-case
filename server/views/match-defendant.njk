@@ -154,10 +154,6 @@
                                                     </td>
                                                 </tr>
                                                 <tr class="govuk-table__row">
-                                                    <th scope="row" class="govuk-table__header">CRN</th>
-                                                    <td class="govuk-table__cell">{{ item.matchIdentifiers.crn }}</td>
-                                                </tr>
-                                                <tr class="govuk-table__row">
                                                     <th scope="row" class="govuk-table__header">PNC</th>
                                                     <td class="govuk-table__cell">
                                                     {% if item.matchIdentifiers.pnc %}
@@ -166,6 +162,10 @@
                                                         Unavailable
                                                     {% endif %}
                                                     </td>
+                                                </tr>
+                                                <tr class="govuk-table__row">
+                                                    <th scope="row" class="govuk-table__header">CRN</th>
+                                                    <td class="govuk-table__cell">{{ item.matchIdentifiers.crn }}</td>
                                                 </tr>
                                                 <tr class="govuk-table__row">
                                                     <th scope="row" class="govuk-table__header">Probation status</th>
