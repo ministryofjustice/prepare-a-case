@@ -56,29 +56,29 @@ Feature: Matching defendants to nDelius records
       | 43 Hunterfly Place, Birmingham, AD21 5DR |
       | Unavailable                              |
     And I should see the following table 2 headings
-      | Name | Date of birth | Address | CRN | PNC | Probation status | Most recent event |
+      | Name | Date of birth | Address | PNC | CRN | Probation status | Most recent event |
     And I should see the following table 2 rows
       | Guadalupe Flowerlupe Paratroop Hess                            |
       | 18 February 1989                                               |
       | 43 Hunterfly Place, Birmingham, Birmingham, AD21 5DR           |
-      | V178657                                                        |
-      | D/9874483AB                                                    |
+      | D/9874483AB                                                        |
+      | V178657                                                    |
       | Current                                                        |
       | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
     And I should see the following table 3 rows
       | Guadalupe Paul Hess                                             |
       | 18 February 1989                                                |
       | Dunroamin, Leicestershire, LE2 3NA                              |
-      | C178657                                                         |
-      | Unavailable                                                     |
+      | Unavailable                                                         |
+      | C178657                                                     |
       | Previously known                                                |
       | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
     And I should see the following table 4 rows
       | Guadalupe Flowerlupe Hess                                     |
       | 18 February 1998                                              |
       | Dunroamin, Leicestershire, LE2 3NA                            |
-      | B123456                                                       |
-      | Unavailable                                                   |
+      | Unavailable                                                       |
+      | B123456                                                   |
       | Previously known                                              |
       | 13 January 2015 - CJA Standard Determinate Custody (6 Months) |
     And I should see radio buttons with the following IDs
@@ -116,21 +116,21 @@ Feature: Matching defendants to nDelius records
       | 37 Maple Avenue, London, L1 5DR |
       | A/1234560BA                     |
     And I should see the following table 2 headings
-      | Name | Date of birth | Address | CRN | PNC | Probation status | Most recent event |
+      | Name | Date of birth | Address | PNC | CRN | Probation status | Most recent event |
     And I should see the following table 2 rows
       | Felicia Consuela Villarreal                                    |
       | 26 August 1971                                                 |
       | 20 Main Street Shangri La, Leicester, Leicestershire, LE2 1BG  |
-      | V178657                                                        |
-      | A/1234560BA                                                    |
+      | A/1234560BA                                                        |
+      | V178657                                                    |
       | Current                                                        |
       | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
     And I should see the following table 3 rows
       | Felecia Conswela Vilareel                                       |
       | 26 August 1969                                                  |
       | Dunroamin, Leicestershire, LE2 3NA                              |
-      | C178657                                                         |
-      | A/1234560BA                                                     |
+      | A/1234560BA                                                         |
+      | C178657                                                     |
       | Previously known                                                |
       | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
 
