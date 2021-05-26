@@ -24,6 +24,7 @@
       "numberOfPossibleMatches": 1,
       "breach": false,
       "preSentenceActivity": false,
+      "awaitingPsr": false,
       "offences": [
         {
           "offenceTitle": "Theft from the person of another",
