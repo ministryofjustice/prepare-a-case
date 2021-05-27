@@ -9,11 +9,16 @@ const schema = require('../../../schemas/put-case.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('PUT /court/{courtCode}/case/{caseNo}', () => {
-    const mockData = pactResponseMock.response.jsonBody
+    const mockRequestData = pactResponseMock.request.jsonBody
+    const mockResponseData = pactResponseMock.response.jsonBody
     const apiUrl = pactResponseMock.request.path
 
-    it('should validate the JSON schema against the provided sample data', () => {
-      validateSchema(mockData, schema)
+    it('should validate the JSON schema against the provided request sample data', () => {
+      validateSchema(mockRequestData, schema)
+    })
+
+    it('should validate the JSON schema against the provided response sample data', () => {
+      validateSchema(mockResponseData, schema)
     })
 
     it('updates and returns a specific case', async () => {
@@ -24,17 +29,17 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
           method: pactResponseMock.request.method,
           path: apiUrl,
           headers: pactResponseMock.request.headers,
-          body: pactResponseMock.request.jsonBody
+          body: mockRequestData
         },
         willRespondWith: {
           status: 201,
           headers: pactResponseMock.response.headers,
-          body: Matchers.like(mockData)
+          body: Matchers.like(mockResponseData)
         }
       })
 
-      const response = await update(`${provider.mockService.baseUrl}${apiUrl}`, mockData)
-      expect(response.data).toEqual(mockData)
+      const response = await update(`${provider.mockService.baseUrl}${apiUrl}`, mockResponseData)
+      expect(response.data).toEqual(mockResponseData)
       return response
     })
   })

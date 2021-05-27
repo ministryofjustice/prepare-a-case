@@ -64,6 +64,10 @@ And('I should see the phase banner', () => {
   cy.get('.govuk-phase-banner').should('exist')
 })
 
+And('I should see the Possible NDelius record badge', () => {
+  cy.get('.moj-badge--red').should('exist')
+})
+
 And('I should see the tag {string}', $string => {
   cy.get('.govuk-tag').contains($string).should('exist')
 })
@@ -128,7 +132,17 @@ And('I should see the following table rows', $data => {
   $data.raw().forEach((row, index) => {
     cy.get('.govuk-table__body > .govuk-table__row').eq(index).within(() => {
       row.forEach((text, colIndex) => {
-        cy.get('.govuk-table__cell').eq(colIndex).contains(text)
+        const safeText = text.split(' ').map(part => {
+          if (part.includes('{')) {
+            cy.get('.govuk-table__cell').eq(colIndex).within(() => {
+              cy.get('.pac-badge').contains(part.replace(/{|}|/g, '')).should('exist')
+            })
+            return undefined
+          } else {
+            return part
+          }
+        })
+        cy.get('.govuk-table__cell').eq(colIndex).contains(safeText.join(' ').trim())
       })
     })
   })
