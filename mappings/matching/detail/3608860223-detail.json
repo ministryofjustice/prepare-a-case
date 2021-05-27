@@ -1,0 +1,16 @@
+{
+  "id": "8f6b7d12-be38-11eb-8529-0242ac130003",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/F611234/detail"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 403,
+    "jsonBody": {
+      "developerMessage": "You are excluded from viewing this offender record. Please contact a system administrator"
+    }
+  }
+}
