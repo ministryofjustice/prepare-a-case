@@ -482,6 +482,42 @@ Feature: Case list
 
     And There should be no a11y violations
 
+  Scenario: A user wants to filter the list to show only Possible NDelius record offenders and quickly clear the selections
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+
+    And I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
+    When I click the "Probation status" filter button
+    And I select the "Possible NDelius record" filter
+    And I click the "Apply filters" button
+
+    Then I should see a count of "3 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the Possible NDelius record badge
+
+    When I click the "Clear all" link
+
+    Then I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
+    And There should be no a11y violations
+
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
     When I navigate to the "cases" route for today
