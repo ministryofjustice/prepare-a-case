@@ -29,8 +29,8 @@ Feature: Case list
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
     And I should see the following table rows
-      | Kara Ayers   | No record | Attempt theft from the person of another | 1st | Morning | 10 |
-      | Mann Carroll | Pre-sentence record | Assault by beating             | 3rd | Morning | 2  |
+      | Kara Ayers   | No record                 | Attempt theft from the person of another | 1st | Morning | 10 |
+      | Mann Carroll | {Psr} Pre-sentence record | Assault by beating                       | 3rd | Morning | 2  |
 
     And I should see link "Kara Ayers" with href "/B14LO/case/8678951874/summary"
     And I should see link "Mann Carroll" with href "/B14LO/case/7483843110/summary"
@@ -315,7 +315,8 @@ Feature: Case list
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
     And I should see the following table rows
-      | Lenore Marquez | Current | Attempt theft from the person of another | 2nd | Morning | 6 |
+      | Lenore Marquez  | {Psr} Current          | Attempt theft from the person of another | 2nd | Morning | 6 |
+      | Olsen Alexander | {Breach} {Sso} Current | Theft from a shop                        | 2nd | Morning | 2 |
 
     When I click the clear "Current" filter tag
 
@@ -468,7 +469,6 @@ Feature: Case list
 
     And I should see the following table rows
       | Mann Carroll | Pre-sentence record | Assault by beating | 3rd | Morning | 2 |
-
 
     When I click the "Clear all" link
 

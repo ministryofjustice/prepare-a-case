@@ -77,7 +77,7 @@
           "suspendedSentenceOrder": false,
           "breach": false,
           "preSentenceActivity": false,
-          "awaitingPsr": false,
+          "awaitingPsr": true,
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -435,7 +435,7 @@
           "suspendedSentenceOrder": false,
           "breach": false,
           "preSentenceActivity": false,
-          "awaitingPsr": false,
+          "awaitingPsr": true,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
