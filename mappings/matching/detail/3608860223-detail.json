@@ -10,7 +10,10 @@
     },
     "status": 403,
     "jsonBody": {
-      "developerMessage": "You are excluded from viewing this offender record. Please contact a system administrator"
+      "developerMessage": "You are excluded from viewing this offender record. Please contact a system administrator",
+      "errorCode": 0,
+      "moreInfo": "This is the more info returned",
+      "userMessage": "You cannot view probation information for this defendant due to restrictions on your NDelius account."
     }
   }
 }
