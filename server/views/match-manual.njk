@@ -39,7 +39,9 @@
         {% if session.formInvalid %}
             {%- set errorText = "CRN must be in the correct format" -%}
         {% endif %}
-        {% if session.crnInvalid %}
+        {% if session.status === 403 %}
+            {%- set errorText = "You are restricted from viewing this NDelius record" -%}
+        {% elseif session.crnInvalid %}
             {%- set errorText = "No records match the CRN" -%}
         {% endif %}
         {{ govukErrorSummary({
