@@ -64,6 +64,10 @@ And('I should see the phase banner', () => {
   cy.get('.govuk-phase-banner').should('exist')
 })
 
+And('I should see the Possible NDelius record badge', () => {
+  cy.get('.moj-badge--red').should('exist')
+})
+
 And('I should see the tag {string}', $string => {
   cy.get('.govuk-tag').contains($string).should('exist')
 })
