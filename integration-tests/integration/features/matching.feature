@@ -290,6 +290,27 @@ Feature: Matching defendants to nDelius records
 
     And There should be no a11y violations
 
+  Scenario: Manually match a defendant and submit with a valid CRN with Limited Access Markers
+    Given I am an authenticated user
+    When I navigate to the "match/bulk" route for today
+    Then I should be on the "Defendants with possible NDelius records" page
+
+    When I click the "Review records" link
+    Then I should be on the "Review possible NDelius records" page
+
+    And I click the element with id "defendant-1"
+    And I click the "Can't see the correct record?" summary link
+    And I click the "link it to them with a case reference number" link
+
+    Then I should be on the "Link an NDelius record to the defendant" page
+    When I enter "F611234" into text input with id "crn"
+    And I click the "Find record" button
+
+    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should see the error message "You are restricted from viewing this NDelius record"
+
+    And There should be no a11y violations
+
   Scenario: Manually match a defendant from the bulk list
     Given I am an authenticated user
     When I navigate to the "match/bulk" route for today

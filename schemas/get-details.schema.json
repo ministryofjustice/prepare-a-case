@@ -24,16 +24,48 @@
       "probationStatus": "No record"
     }
   ],
-  "required": [
-    "otherIds",
-    "title",
-    "forename",
-    "middleNames",
-    "surname",
-    "dateOfBirth",
-    "probationStatus"
-  ],
+  "required": [],
   "properties": {
+    "developerMessage": {
+      "$id": "#/properties/developerMessage",
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "The developerMessage schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "errorCode": {
+      "$id": "#/properties/errorCode",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "title": "The errorCode schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0
+    },
+    "moreInfo": {
+      "$id": "#/properties/moreInfo",
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "The moreInfo schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "userMessage": {
+      "$id": "#/properties/userMessage",
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "The userMessage schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
     "otherIds": {
       "$id": "#/properties/otherIds",
       "type": "object",

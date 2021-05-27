@@ -455,6 +455,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       const detailResponse = await getDetails(crn)
       if (detailResponse.status >= 400) {
         session.crn = req.body.crn
+        session.status = detailResponse.status
         session.formError = true
         session.crnInvalid = true
         redirectUrl = `/${courtCode}/match/defendant/${caseNo}/manual`
