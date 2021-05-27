@@ -137,6 +137,13 @@
                 "description": "An explanation about the purpose of this instance.",
                 "default": false
               },
+              "awaitingPsr": {
+                "$id": "#/properties/cases/items/anyOf/0/properties/awaitingPsr",
+                "type": "boolean",
+                "title": "The awaitingPsr schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false
+              },
               "offences": {
                 "$id": "#/properties/cases/items/anyOf/0/properties/offences",
                 "type": "array",

@@ -23,6 +23,7 @@
       "suspendedSentenceOrder": false,
       "breach": true,
       "preSentenceActivity": false,
+      "awaitingPsr": false,
       "offences": [
         {
           "offenceTitle": "Theft from a shop",
