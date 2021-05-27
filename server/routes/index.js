@@ -447,7 +447,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     if (!crn) {
       session.formError = true
       redirectUrl = `/${courtCode}/match/defendant/${caseNo}/manual`
-    } else if (!req.body.crn.match(/[A-Za-z][0-9]{6}/)) {
+    } else if (!req.body.crn.match(/^[A-Za-z][0-9]{6}$/)) {
       session.formError = true
       session.formInvalid = true
       redirectUrl = `/${courtCode}/match/defendant/${caseNo}/manual`
