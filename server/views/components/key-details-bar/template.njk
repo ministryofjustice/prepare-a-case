@@ -27,7 +27,8 @@
                          {% if params.probationStatus | string | lower === "possible ndelius record" or params.probationStatus | string | lower === "no record" if params.probationStatus %}
                             {{ params.probationStatus | string | capitalize }}
                          {% else %}
-                             {{ params.probationStatus | string | capitalize + ' (PSR)' }}
+                             {{ params.probationStatus | string | capitalize }}
+                             {% if params.awaitingPsr %} (PSR) {% endif %}
                              {% if params.breach %} (Breach) {% endif %}
                          {% endif %}
                     </span>

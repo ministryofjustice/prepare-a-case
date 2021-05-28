@@ -33,6 +33,11 @@
 {{ breach.push(data.breach) if data.breach }}
 {% endif %}
 
+{% if data.awaitingPsr == true %}
+    {% set awaitingPsr = [] %}
+    {{ awaitingPsr.push(data.awaitingPsr) if data.awaitingPsr }}
+{% endif %}
+
 {% set dob = [moment(data.defendantDob, 'YYYY-MM-DD').format('Do MMMM YYYY')] %}
 {% set probationStatus = [] %}
 {{ probationStatus.push(data.probationStatus) if data.probationStatus }}
@@ -50,6 +55,7 @@
         probationStatus: probationStatus,
         numberOfPossibleMatches: data.numberOfPossibleMatches,
         breach: breach,
+        awaitingPsr: awaitingPsr,
         hideUnlinkButton: hideUnlinkButton,
         manualMatch: data.manualMatch
     }) }}

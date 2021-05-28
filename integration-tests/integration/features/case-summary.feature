@@ -90,7 +90,7 @@ Feature: Case summary
     And I should see the heading "Webb Mitchell"
     Then I should see the body text "CRN: D541487"
     Then I should see the body text "PNC: A/8404713BA"
-    Then I should see the body text "Probation status: Previously known (PSR)"
+    Then I should see the body text "Probation status: Previously known"
     And I should see a straight line divide
     And I should see the following level 2 headings
       | Appearance | Offences |
@@ -123,7 +123,7 @@ Feature: Case summary
     And I should see the heading "Mann Carroll"
     Then I should see the body text "CRN: V654123"
     Then I should see the body text "PNC: A/1234560BA"
-    Then I should see the body text "Probation status: Pre-sentence record (PSR)"
+    Then I should see the body text "Probation status: Pre-sentence record"
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
     And I should see the following level 2 headings
@@ -158,7 +158,7 @@ Feature: Case summary
     And I should see the heading "Lenore Marquez"
     And I should see the body text "CRN: DX12340A"
     And I should see the body text "PNC: A/1234560BA"
-    And I should see the body text "Probation status: Current (PSR)"
+    And I should see the body text "Probation status: Current"
     And I should see a straight line divide
     And I should see the following level 2 headings
       | Appearance | Offences |
@@ -194,7 +194,7 @@ Feature: Case summary
     And I should see the heading "Olsen Alexander"
     And I should see the body text "CRN: D991494"
     And I should see the body text "PNC: D/9874483AB"
-    And I should see the body text "Probation status: Current (PSR) (Breach)"
+    And I should see the body text "Probation status: Current (Breach)"
     And I should see a straight line divide
     And I should see the following level 2 headings
       | Appearance | Offences |

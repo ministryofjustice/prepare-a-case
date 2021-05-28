@@ -23,7 +23,7 @@
       "suspendedSentenceOrder": false,
       "breach": false,
       "preSentenceActivity": false,
-      "awaitingPsr": false,
+      "awaitingPsr": true,
       "offences": [
         {
           "offenceTitle": "Assault by beating",
