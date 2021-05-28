@@ -29,6 +29,8 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "preSentenceActivity": false,
+          "awaitingPsr": false,
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -61,6 +63,8 @@
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "preSentenceActivity": false,
+          "awaitingPsr": false,
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -98,6 +102,8 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
+          "awaitingPsr": false,
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -130,6 +136,8 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": false,
+          "preSentenceActivity": false,
+          "awaitingPsr": false,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -167,6 +175,8 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": false,
+          "preSentenceActivity": false,
+          "awaitingPsr": false,
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",

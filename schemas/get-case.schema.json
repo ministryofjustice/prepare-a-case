@@ -18,6 +18,7 @@
     "suspendedSentenceOrder",
     "breach",
     "preSentenceActivity",
+    "awaitingPsr",
     "offences",
     "defendantName",
     "defendantAddress",
@@ -135,6 +136,16 @@
         "null"
       ],
       "title": "The preSentenceActivity schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": false
+    },
+    "awaitingPsr": {
+      "$id": "#/properties/awaitingPsr",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "title": "The awaitingPsr schema",
       "description": "An explanation about the purpose of this instance.",
       "default": false
     },

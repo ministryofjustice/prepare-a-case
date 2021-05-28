@@ -12,8 +12,6 @@ Feature: Case list
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
 
-    And I should see the heading "Cases"
-
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should see the current day as "Today"
     And I should see 7 days navigation bar
@@ -31,8 +29,8 @@ Feature: Case list
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
     And I should see the following table rows
-      | Kara Ayers   | No record | Attempt theft from the person of another | 1st | Morning | 10 |
-      | Mann Carroll | Pre-sentence record | Assault by beating             | 3rd | Morning | 2  |
+      | Kara Ayers   | No record                 | Attempt theft from the person of another | 1st | Morning | 10 |
+      | Mann Carroll | {Psr} Pre-sentence record | Assault by beating                       | 3rd | Morning | 2  |
 
     And I should see link "Kara Ayers" with href "/B14LO/case/8678951874/summary"
     And I should see link "Mann Carroll" with href "/B14LO/case/7483843110/summary"
@@ -52,7 +50,6 @@ Feature: Case list
     When I navigate to the "cases" route for today
 
     Then I should be on the "Case list" page
-    And I should see the heading "Cases"
 
     # Repeat some tests to ensure UI is consistent on subsequent pages
     And I should see the caption with the court name "Sheffield Magistrates' Court"
@@ -100,7 +97,6 @@ Feature: Case list
 
     Then I should be on the "Case list" page
     And I should see the URL with "cases/2021-01-04"
-    And I should see the heading "Cases"
 
     And I click pagination link "3"
     Then I should see the URL with "cases/2021-01-04?page=3"
@@ -132,7 +128,6 @@ Feature: Case list
     When I navigate to the "cases" route for today
 
     Then I should be on the "Case list" page
-    And I should see the heading "Cases"
 
     When I click pagination link "5"
 
@@ -169,7 +164,6 @@ Feature: Case list
     When I navigate to the "cases" route for today
 
     Then I should be on the "Case list" page
-    And I should see the heading "Cases"
 
     When I click pagination link "5"
     And I click pagination link "7"
@@ -259,7 +253,6 @@ Feature: Case list
 
     When I navigate to the "cases/2020-01-02" route
     Then I should be on the "Case list" page
-    And I should see the heading "Cases"
     And I should see the current day as "Thursday 2 January"
     And I should not see 7 days navigation bar
     And I should see link "Go to today" with href "/cases"
@@ -287,7 +280,6 @@ Feature: Case list
 
     When I navigate to the "cases/2020-01-01" route
     Then I should be on the "Case list" page
-    And I should see the heading "Cases"
     And I should see the current day as "Wednesday 1 January"
     And I should not see 7 days navigation bar
 
@@ -323,7 +315,8 @@ Feature: Case list
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
     And I should see the following table rows
-      | Lenore Marquez | Current | Attempt theft from the person of another | 2nd | Morning | 6 |
+      | Lenore Marquez  | {Psr} Current          | Attempt theft from the person of another | 2nd | Morning | 6 |
+      | Olsen Alexander | {Breach} {Sso} Current | Theft from a shop                        | 2nd | Morning | 2 |
 
     When I click the clear "Current" filter tag
 
@@ -477,6 +470,41 @@ Feature: Case list
     And I should see the following table rows
       | Mann Carroll | Pre-sentence record | Assault by beating | 3rd | Morning | 2 |
 
+    When I click the "Clear all" link
+
+    Then I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
+    And There should be no a11y violations
+
+  Scenario: A user wants to filter the list to show only Possible NDelius record offenders and quickly clear the selections
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+
+    And I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | 10 |
+
+    When I click the "Probation status" filter button
+    And I select the "Possible NDelius record" filter
+    And I click the "Apply filters" button
+
+    Then I should see a count of "3 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the Possible NDelius record badge
 
     When I click the "Clear all" link
 
