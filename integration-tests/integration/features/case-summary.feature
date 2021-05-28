@@ -28,7 +28,7 @@ Feature: Case summary
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/cases/$TODAY"
     And I should see the heading "Guadalupe Hess"
-    And I should see the body text "Probation status: Possible ndelius record"
+    And I should see the body text "Probation status: Possible NDelius record"
     And I should see the following level 2 headings
       | possible NDelius records found | Appearance | Offences |
 
