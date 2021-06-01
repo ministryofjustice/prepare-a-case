@@ -89,8 +89,8 @@
                         </tr>
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">PNC</th>
-                            {% set dataPnc = data.pnc %}
-                            <td class="govuk-table__cell">{{ dataPnc or 'Unavailable' }}</td>
+                            {% set dataPnc = data.pnc or 'Unavailable' %}
+                            <td class="govuk-table__cell">{{ dataPnc }}</td>
                         </tr>
                         </tbody>
                     </table>
