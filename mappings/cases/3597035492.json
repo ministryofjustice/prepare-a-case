@@ -16,7 +16,7 @@
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "3rd",
       "pnc": "",
-      "probationStatus": "Possible nDelius record",
+      "probationStatus": "Possible NDelius record",
       "numberOfPossibleMatches": 3,
       "session": "MORNING",
       "previouslyKnownTerminationDate": "",

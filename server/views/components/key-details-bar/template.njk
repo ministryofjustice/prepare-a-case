@@ -25,8 +25,8 @@
                 <div class="pac-key-details-bar-flex__child pac-probation-status">
                     <span class="govuk-body"><strong>Probation status: </strong>
                         {% set probationStatusInfo = params.probationStatus | string %}
-                         {% if params.probationStatus | string | lower === "possible NDelius record" or probationStatusInfo | lower === "no record" if probationStatusInfo %}
-                            {{ probationStatusInfo | capitalize }}
+                         {% if probationStatusInfo | lower === "possible ndelius record" or probationStatusInfo | lower === "no record" if params.probationStatus %}
+                            {{ probationStatusInfo }}
                          {% else %}
                              {{ probationStatusInfo | capitalize }}
                              {% if params.awaitingPsr %} (PSR) {% endif %}
