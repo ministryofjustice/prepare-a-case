@@ -7,7 +7,6 @@
   "default": {},
   "required": [
     "caseNo",
-    "pnc",
     "listNo",
     "courtCode",
     "courtRoom",

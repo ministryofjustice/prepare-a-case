@@ -370,6 +370,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       cro: crn ? offenderDetail.otherIds.croNumber : null,
       probationStatus: crn ? probationStatusDetails.status : !unlinking ? 'No record' : null,
       probationStatusActual: crn ? probationStatusDetails.status : !unlinking ? 'NO_RECORD' : null,
+      awaitingPsr: crn ? probationStatusDetails.awaitingPsr : null,
       breach: crn ? probationStatusDetails.inBreach : null,
       preSentenceActivity: crn ? probationStatusDetails.preSentenceActivity : null
     })
@@ -474,7 +475,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Link an NDelius record to the defendant'
     templateValues.details = {
       ...detailResponse,
-      probationStatus: probationStatusDetails.status
+      probationStatus: probationStatusDetails.status && probationStatusDetails.status.replace('_', ' ')
     }
     templateValues.session = {
       ...session
