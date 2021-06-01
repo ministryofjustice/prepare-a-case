@@ -151,7 +151,6 @@
                 "default": {},
                 "required": [
                   "crn",
-                  "pnc",
                   "cro"
                 ],
                 "properties": {
