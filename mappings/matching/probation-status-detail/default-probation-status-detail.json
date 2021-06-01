@@ -10,7 +10,7 @@
     },
     "status": 200,
     "jsonBody": {
-      "status": "CURRENT",
+      "status": "PREVIOUSLY_KNOWN",
       "inBreach": true,
       "preSentenceActivity": true,
       "previouslyKnownTerminationDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}"
