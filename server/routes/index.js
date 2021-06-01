@@ -474,7 +474,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Link an NDelius record to the defendant'
     templateValues.details = {
       ...detailResponse,
-      probationStatus: probationStatusDetails.status.replace('_', ' ')
+      probationStatus: probationStatusDetails.status && probationStatusDetails.status.replace('_', ' ')
     }
     templateValues.session = {
       ...session
