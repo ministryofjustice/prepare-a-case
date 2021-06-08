@@ -40,7 +40,7 @@ If unspecified, the app will use your local court-case-service app but you can a
  
 Start the standalone WireMock server
 ```
-java -jar wiremock-standalone-2.27.2.jar --global-response-templating --port 9091
+java -jar wiremock-jre8-standalone-2.28.1.jar --global-response-templating --port 9091
 ```
 
 And then, to build assets and start app with
@@ -69,7 +69,7 @@ For local running, start redis instance by:
 
 Start the standalone WireMock server
 ```
-java -jar wiremock-standalone-2.27.2.jar --global-response-templating --port 9091
+java -jar wiremock-jre8-standalone-2.28.1.jar --global-response-templating --port 9091
 ```
 
 Then run the server in test mode by:
