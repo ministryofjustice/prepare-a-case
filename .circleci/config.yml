@@ -153,7 +153,7 @@ jobs:
           key: dependencies-cache-{{ checksum "package.json" }}
       - run:
           name: Run wiremock
-          command: java -jar wiremock-standalone-2.27.2.jar --global-response-templating --port 9091
+          command: java -jar wiremock-jre8-standalone-2.28.1.jar --global-response-templating --port 9091
           background: true
       - run:
           name: Run the app
