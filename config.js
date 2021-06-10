@@ -118,5 +118,5 @@ module.exports = {
   https: production,
   nonce: crypto.randomBytes(16).toString('base64'),
   googleAnalyticsKey: get('GOOGLE_ANALYTICS_KEY', null),
-  notification: ''
+  notification: 'The service has not received updated case lists today. Case lists may be missing some or all cases.'
 }
