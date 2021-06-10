@@ -286,6 +286,25 @@ Feature: Case summary
     Then I should see 11 previous orders
     And There should be no a11y violations
 
+  Scenario: View the probation record section of the case summary for a current offender who is currently in custody
+    Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
+
+    When I navigate to the "cases" route
+    Then I should be on the "Case list" page
+
+    When I click the "English Madden" link
+    And I click the sub navigation with "Probation record" text
+    Then I should see the level 2 heading "Current orders (1)"
+    And I should see link "CJA - Std Determinate Custody (18 Months)" with href "record/345464567"
+    And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+    And I should see the hint text "Started on 8 Mar 2017"
+    And I should see the text "Status" within element with class "govuk-heading-s"
+    And I should see the body text "In custody"
+
+    And There should be no a11y violations
+
   Scenario: View the probation record section of the case summary when the user has restricted access marker
     Given I am an authenticated user
 
@@ -362,6 +381,17 @@ Feature: Case summary
 
     And I should see the level 2 heading "Contact list"
     And I should see link "View contact list (opens in NDelius)" with href "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=1309234876&eventId=123123128"
+
+    And There should be no a11y violations
+
+  Scenario: View the current offender order who is currently in custody
+    Given I am an authenticated user
+
+    When I navigate to the "case/351196424/record/345464567" route
+    Then I should be on the "Order details" page
+
+    And I should see the text "Status" within element with class "qa-elapsed-title"
+    And I should see the text "In custody" within element with class "qa-elapsed-time"
 
     And There should be no a11y violations
 
