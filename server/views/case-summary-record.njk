@@ -74,6 +74,11 @@
                     </ul>
                 {% endif %}
 
+                {% if order.custodialType.description === "In Custody" %}
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Status</h3>
+                    <p class="govuk-body">In custody</p>
+                {% endif %}
+
                 {% if order.licenceConditions and order.licenceConditions | length %}
                     <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Status</h3>
                     <p class="govuk-body">On licence</p>

@@ -12,8 +12,12 @@
     "jsonBody": {
           "convictionId": "345464567",
           "active": true,
-          "inBreach": true,
+          "inBreach": false,
           "convictionDate": "2017-03-08",
+          "custodialType": {
+            "code": "D",
+            "description": "In Custody"
+          },
           "offences": [
             {
               "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
