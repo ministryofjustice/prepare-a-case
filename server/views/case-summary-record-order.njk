@@ -21,6 +21,7 @@
 } %}
 
 {%- set communityData = data.communityData -%}
+{%- set custodialType = communityData.custodialType.description -%}
 
 {% if communityData.sentence.currentOrderHeaderDetail.custodialTypeCode %}
     {%- set custodialOrder = communityData.sentence.currentOrderHeaderDetail -%}
@@ -162,6 +163,8 @@
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-elapsed-title">
                         {% if custodialOrder %}
                             {{ "Licence ends" if isOnLicence else "PSS ends" }}
+                        {% elseif custodialType === "In Custody"%}
+                            {{ "Status" }}
                         {% else %}
                             {{ "Time elapsed" if communityData.active else "Reason" }}
                         {% endif %}
@@ -169,6 +172,8 @@
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-elapsed-time">
                         {% if custodialOrder %}
                             {{ moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicence else moment(custodialOrder.pssEndDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                        {% elseif custodialType === "In Custody"%}
+                            {{ "In custody" }}
                         {% else %}
                             {{ elapsedTime if communityData.active else communityData.sentence.terminationReason }}
                         {% endif %}

@@ -259,6 +259,17 @@
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               },
+              "custodialType": {
+                "$id": "#/properties/convictions/items/anyOf/0/properties/custodialType",
+                "type": "object",
+                "title": "The custodialType schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "required": [
+                  "code",
+                  "description"
+                ]
+              },
               "offences": {
                 "$id": "#/properties/convictions/items/anyOf/0/properties/offences",
                 "type": "array",

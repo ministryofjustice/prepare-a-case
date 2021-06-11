@@ -2,7 +2,7 @@
   "id": "093c5272-5928-48c6-8eab-8f0ecf4c89a4",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/([A-Z0-9]*)/convictions/(?!1403337513|636401162|1309234876|2360414697|345464567)([0-9]*)/requirements"
+    "urlPathPattern": "/offender/([A-Z0-9]*)/convictions/(?!1403337513|636401162|1309234876|2360414697)([0-9]*)/requirements"
   },
   "response": {
     "headers": {
