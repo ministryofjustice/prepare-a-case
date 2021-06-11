@@ -34,6 +34,7 @@ Feature: Case list
 
     And I should see link "Kara Ayers" with href "/B14LO/case/8678951874/summary"
     And I should see link "Mann Carroll" with href "/B14LO/case/7483843110/summary"
+    And I should see secondary text "V654123"
 
     And I should see pagination
     And I should not see pagination link "Previous"
