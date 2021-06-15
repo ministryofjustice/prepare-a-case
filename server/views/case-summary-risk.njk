@@ -38,7 +38,7 @@
                     {% if not activeRisks | length %}
                         <div class="govuk-body">There are no active registrations.</div>
                     {% else %}
-                        <table class="govuk-table">
+                        <table class="govuk-table" aria-label="Active registrations">
                             <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
                                 <th scope="col" class="govuk-table__header">Type</th>
@@ -65,7 +65,7 @@
                     {% if not inactiveRisks | length %}
                         <div class="govuk-body">There are no inactive registrations.</div>
                     {% else %}
-                        <table class="govuk-table">
+                        <table class="govuk-table" aria-label="Inactive registrations>
                             <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
                                 <th scope="col" class="govuk-table__header">Type</th>

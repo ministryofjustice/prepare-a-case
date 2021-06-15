@@ -119,7 +119,7 @@
                 <h2 class="govuk-heading-m{% if activeOrders | length and previousOrders | length %} govuk-!-margin-top-8{% endif %}">
                     Previous orders <span class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ previousOrders | length }})</span>
                 </h2>
-                <table class="govuk-table govuk-!-margin-bottom-3">
+                <table class="govuk-table govuk-!-margin-bottom-3" aria-label="Previous orders">
                     <tbody class="govuk-table__body">
                     {%- for order in previousOrders | limit(limitPreviousOrders) %}
                         <tr class="govuk-table__row">
