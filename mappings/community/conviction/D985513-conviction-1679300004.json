@@ -22,6 +22,7 @@
                 "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
               }
           ],
+          "requirements": [],
           "sentence": {
             "sentenceId": "123123141",
             "description": "CJA - Std Determinate Custody",

@@ -25,6 +25,7 @@
               "description": "(Assault PC (Indictable/Either way) - 00807)"
             }
           ],
+          "requirements": [],
           "breaches": [
             {
               "breachId": 12345,

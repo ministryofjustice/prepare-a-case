@@ -45,6 +45,50 @@
               "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
             }
           ],
+          "requirements": [
+            {
+              "requirementId": 7925250000,
+              "startDate": "2015-07-01",
+              "commencementDate": "2015-06-29",
+              "terminationDate": "2017-12-25",
+              "active": false,
+              "adRequirementTypeMainCategory": {
+                "code": "7",
+                "description": "Rehabilitation Activity Requirement (RAR)"
+              },
+              "adRequirementTypeSubCategory": {
+                "code": "P12",
+                "description": "Rehabilitation Activity Requirement (RAR)"
+              },
+              "terminationReason": {
+                "code": "74",
+                "description": "Expired (normal)"
+              },
+              "length": 20,
+              "lengthUnit": "Days"
+            },
+            {
+              "requirementId": 7092525000,
+              "startDate": "2015-07-01",
+              "commencementDate": "2015-06-29",
+              "terminationDate": "2017-12-25",
+              "active": false,
+              "adRequirementTypeMainCategory": {
+                "code": "7",
+                "description": "Court - Accredited Programme - Building Better Relationships"
+              },
+              "adRequirementTypeSubCategory": {
+                "code": "P12",
+                "description": "BBR"
+              },
+              "terminationReason": {
+                "code": "74",
+                "description": "Expired (normal)"
+              },
+              "length": 20,
+              "lengthUnit": "Days"
+            }
+          ],
           "sentence": {
             "sentenceId": "99483532",
             "description": "CJA - Std Determinate Custody",
