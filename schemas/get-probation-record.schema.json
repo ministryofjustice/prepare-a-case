@@ -302,276 +302,95 @@
                   ]
                 }
               },
-              "sentence": {
-                "$id": "#/properties/sentence",
-                "type": [
-                  "object",
-                  "null"
-                ],
-                "title": "The sentence schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": {},
-                "required": [
-                  "sentenceId",
-                  "description",
-                  "terminationDate",
-                  "terminationReason",
-                  "startDate",
-                  "endDate"
-                ],
-                "properties": {
-                  "sentenceId": {
-                    "$id": "#/properties/sentence/properties/sentenceId",
-                    "type": "string",
-                    "title": "The sentenceId schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "description": {
-                    "$id": "#/properties/sentence/properties/description",
-                    "type": "string",
-                    "title": "The description schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "length": {
-                    "$id": "#/properties/sentence/properties/length",
-                    "type": [
-                      "integer",
-                      "null"
-                    ],
-                    "title": "The length schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0
-                  },
-                  "lengthInDays": {
-                    "$id": "#/properties/sentence/properties/lengthInDays",
-                    "type": [
-                      "integer",
-                      "null"
-                    ],
-                    "title": "The lengthInDays schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0
-                  },
-                  "lengthUnits": {
-                    "$id": "#/properties/sentence/properties/lengthUnits",
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "title": "The lengthUnits schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "terminationDate": {
-                    "$id": "#/properties/sentence/properties/terminationDate",
-                    "type": "string",
-                    "title": "The terminationDate schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "terminationReason": {
-                    "$id": "#/properties/sentence/properties/terminationReason",
-                    "type": "string",
-                    "title": "The terminationReason schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "startDate": {
-                    "$id": "#/properties/sentence/properties/startDate",
-                    "type": "string",
-                    "title": "The startDate schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "endDate": {
-                    "$id": "#/properties/sentence/properties/endDate",
-                    "type": "string",
-                    "title": "The endDate schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "currentOrderHeaderDetail": {
-                    "$id": "#/properties/sentence/properties/currentOrderHeaderDetail",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "title": "The currentOrderHeaderDetail schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": {},
-                    "required": [
-                      "custodialTypeCode",
-                      "custodialTypeDescription",
-                      "mainOffenceDescription",
-                      "status",
-                      "disposalDate",
-                      "actualReleaseDate",
-                      "licenceExpiryDate",
-                      "pssEndDate",
-                      "length",
-                      "lengthUnit"
-                    ],
-                    "properties": {
-                      "custodialTypeCode": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/custodialTypeCode",
-                        "type": "string",
-                        "title": "The custodialTypeCode schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "custodialTypeDescription": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/custodialTypeDescription",
-                        "type": "string",
-                        "title": "The custodialTypeDescription schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "mainOffenceDescription": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/mainOffenceDescription",
-                        "type": "string",
-                        "title": "The mainOffenceDescription schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "status": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/status",
-                        "type": "string",
-                        "title": "The status schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "disposalDate": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/disposalDate",
-                        "type": "string",
-                        "title": "The disposalDate schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "actualReleaseDate": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/actualReleaseDate",
-                        "type": "string",
-                        "title": "The actualReleaseDate schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "licenceExpiryDate": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/licenceExpiryDate",
-                        "type": "string",
-                        "title": "The licenceExpiryDate schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "pssEndDate": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/pssEndDate",
-                        "type": "string",
-                        "title": "The pssEndDate schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "length": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/length",
-                        "type": "integer",
-                        "title": "The length schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": 0
-                      },
-                      "lengthUnit": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/lengthUnit",
-                        "type": "string",
-                        "title": "The lengthUnit schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      }
-                    },
-                    "additionalProperties": false
-                  }
-                },
-                "additionalProperties": false
-              },
-              "endDate": {
-                "$id": "#/properties/convictions/items/anyOf/0/properties/endDate",
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "title": "The endDate schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": ""
-              },
-              "documents": {
-                "$id": "#/properties/convictions/items/anyOf/0/properties/documents",
+              "requirements": {
+                "$id": "#/properties/requirements",
                 "type": "array",
-                "title": "The documents schema",
+                "title": "The requirements schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": [],
                 "items": {
-                  "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items",
+                  "$id": "#/properties/requirements/items",
                   "anyOf": [
                     {
-                      "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0",
+                      "$id": "#/properties/requirements/items/anyOf/0",
                       "type": "object",
                       "title": "The first anyOf schema",
                       "description": "An explanation about the purpose of this instance.",
                       "default": {},
                       "required": [
-                        "documentId",
-                        "documentName",
-                        "author",
-                        "type",
-                        "extendedDescription",
-                        "createdAt",
-                        "subType",
-                        "reportDocumentDates"
+                        "requirementId",
+                        "startDate",
+                        "active"
                       ],
                       "properties": {
-                        "documentId": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/documentId",
+                        "requirementId": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/requirementId",
+                          "type": "integer",
+                          "title": "The requirementId schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": 0
+                        },
+                        "startDate": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/startDate",
                           "type": "string",
-                          "title": "The documentId schema",
+                          "title": "The startDate schema",
                           "description": "An explanation about the purpose of this instance.",
                           "default": ""
                         },
-                        "documentName": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/documentName",
-                          "type": "string",
-                          "title": "The documentName schema",
+                        "commencementDate": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/commencementDate",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "The commencementDate schema",
                           "description": "An explanation about the purpose of this instance.",
                           "default": ""
                         },
-                        "author": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/author",
-                          "type": "string",
-                          "title": "The author schema",
+                        "terminationDate": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/terminationDate",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "The terminationDate schema",
                           "description": "An explanation about the purpose of this instance.",
                           "default": ""
                         },
-                        "type": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/type",
-                          "type": "string",
-                          "title": "The type schema",
+                        "expectedStartDate": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/expectedStartDate",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "The expectedStartDate schema",
                           "description": "An explanation about the purpose of this instance.",
                           "default": ""
                         },
-                        "extendedDescription": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/extendedDescription",
-                          "type": "string",
-                          "title": "The extendedDescription schema",
+                        "expectedEndDate": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/expectedEndDate",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "The expectedEndDate schema",
                           "description": "An explanation about the purpose of this instance.",
                           "default": ""
                         },
-                        "createdAt": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/createdAt",
-                          "type": "string",
-                          "title": "The createdAt schema",
+                        "active": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/active",
+                          "type": "boolean",
+                          "title": "The active schema",
                           "description": "An explanation about the purpose of this instance.",
-                          "default": ""
+                          "default": false
                         },
-                        "subType": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/subType",
-                          "type": "object",
-                          "title": "The subType schema",
+                        "requirementTypeSubCategory": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeSubCategory",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "title": "The requirementTypeSubCategory schema",
                           "description": "An explanation about the purpose of this instance.",
                           "default": {},
                           "required": [
@@ -580,14 +399,14 @@
                           ],
                           "properties": {
                             "code": {
-                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/subType/properties/code",
+                              "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeSubCategory/properties/code",
                               "type": "string",
                               "title": "The code schema",
                               "description": "An explanation about the purpose of this instance.",
                               "default": ""
                             },
                             "description": {
-                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/subType/properties/description",
+                              "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeSubCategory/properties/description",
                               "type": "string",
                               "title": "The description schema",
                               "description": "An explanation about the purpose of this instance.",
@@ -596,41 +415,143 @@
                           },
                           "additionalProperties": false
                         },
-                        "reportDocumentDates": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/reportDocumentDates",
-                          "type": "object",
-                          "title": "The reportDocumentDates schema",
+                        "requirementTypeMainCategory": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeMainCategory",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "title": "The requirementTypeMainCategory schema",
                           "description": "An explanation about the purpose of this instance.",
                           "default": {},
                           "required": [
-                            "requestedDate",
-                            "requiredDate",
-                            "completedDate"
+                            "code",
+                            "description"
                           ],
                           "properties": {
-                            "requestedDate": {
-                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/reportDocumentDates/properties/requestedDate",
+                            "code": {
+                              "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeMainCategory/properties/code",
                               "type": "string",
-                              "title": "The requestedDate schema",
+                              "title": "The code schema",
                               "description": "An explanation about the purpose of this instance.",
                               "default": ""
                             },
-                            "requiredDate": {
-                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/reportDocumentDates/properties/requiredDate",
+                            "description": {
+                              "$id": "#/properties/requirements/items/anyOf/0/properties/requirementTypeMainCategory/properties/description",
                               "type": "string",
-                              "title": "The requiredDate schema",
-                              "description": "An explanation about the purpose of this instance.",
-                              "default": ""
-                            },
-                            "completedDate": {
-                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/reportDocumentDates/properties/completedDate",
-                              "type": "string",
-                              "title": "The completedDate schema",
+                              "title": "The description schema",
                               "description": "An explanation about the purpose of this instance.",
                               "default": ""
                             }
                           },
                           "additionalProperties": false
+                        },
+                        "terminationReason": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/terminationReason",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "title": "The terminationReason schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "required": [
+                            "code",
+                            "description"
+                          ],
+                          "properties": {
+                            "code": {
+                              "$id": "#/properties/requirements/items/anyOf/0/properties/terminationReason/properties/code",
+                              "type": "string",
+                              "title": "The code schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "description": {
+                              "$id": "#/properties/requirements/items/anyOf/0/properties/terminationReason/properties/description",
+                              "type": "string",
+                              "title": "The description schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "adRequirementTypeMainCategory": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeMainCategory",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "title": "The adRequirementTypeMainCategory schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "required": [
+                            "code",
+                            "description"
+                          ],
+                          "properties": {
+                            "code": {
+                              "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeMainCategory/properties/code",
+                              "type": "string",
+                              "title": "The code schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "description": {
+                              "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeMainCategory/properties/description",
+                              "type": "string",
+                              "title": "The description schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "adRequirementTypeSubCategory": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeSubCategory",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "title": "The adRequirementTypeSubCategory schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "required": [
+                            "code",
+                            "description"
+                          ],
+                          "properties": {
+                            "code": {
+                              "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeSubCategory/properties/code",
+                              "type": "string",
+                              "title": "The code schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "description": {
+                              "$id": "#/properties/requirements/items/anyOf/0/properties/adRequirementTypeSubCategory/properties/description",
+                              "type": "string",
+                              "title": "The description schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "length": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/length",
+                          "type": "integer",
+                          "title": "The length schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": 0
+                        },
+                        "lengthUnit": {
+                          "$id": "#/properties/requirements/items/anyOf/0/properties/lengthUnit",
+                          "type": "string",
+                          "title": "The lengthUnit schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": ""
                         }
                       },
                       "additionalProperties": false
@@ -638,112 +559,526 @@
                   ]
                 }
               },
-              "breaches": {
-                "$id": "#/properties/convictions/items/anyOf/0/properties/breaches",
+              "pssRequirements": {
+                "$id": "#/properties/pssRequirements",
                 "type": [
                   "array",
                   "null"
                 ],
-                "title": "The breaches schema",
+                "title": "The pssRequirements schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": [],
                 "items": {
-                  "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items",
+                  "$id": "#/properties/pssRequirements/items"
+                }
+              },
+              "licenceConditions": {
+                "$id": "#/properties/licenceConditions",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "title": "The licenceConditions schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": [],
+                "items": {
+                  "$id": "#/properties/licenceConditions/items",
                   "anyOf": [
                     {
-                      "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0",
+                      "$id": "#/properties/licenceConditions/items/anyOf/0",
                       "type": "object",
                       "title": "The first anyOf schema",
                       "description": "An explanation about the purpose of this instance.",
                       "default": {},
                       "required": [
-                        "breachId",
                         "description",
-                        "status",
-                        "statusDate"
+                        "startDate"
                       ],
                       "properties": {
-                        "breachId": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0/properties/breachId",
-                          "type": "integer",
-                          "title": "The breachId schema",
-                          "description": "An explanation about the purpose of this instance.",
-                          "default": 0
-                        },
                         "description": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0/properties/description",
+                          "$id": "#/properties/licenceConditions/items/anyOf/0/properties/description",
                           "type": "string",
                           "title": "The description schema",
                           "description": "An explanation about the purpose of this instance.",
                           "default": ""
                         },
-                        "status": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0/properties/status",
-                          "type": "string",
-                          "title": "The status schema",
-                          "description": "An explanation about the purpose of this instance.",
-                          "default": ""
-                        },
-                        "started": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0/properties/started",
+                        "subTypeDescription": {
+                          "$id": "#/properties/licenceConditions/items/anyOf/0/properties/subTypeDescription",
                           "type": [
                             "string",
                             "null"
                           ],
-                          "title": "The started schema",
+                          "title": "The subTypeDescription schema",
                           "description": "An explanation about the purpose of this instance.",
                           "default": ""
                         },
-                        "statusDate": {
-                          "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0/properties/statusDate",
+                        "notes": {
+                          "$id": "#/properties/licenceConditions/items/anyOf/0/properties/notes",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "The notes schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": ""
+                        },
+                        "startDate": {
+                          "$id": "#/properties/licenceConditions/items/anyOf/0/properties/startDate",
                           "type": "string",
-                          "title": "The statusDate schema",
+                          "title": "The startDate schema",
                           "description": "An explanation about the purpose of this instance.",
                           "default": ""
                         }
                       },
                       "additionalProperties": false
                     }
-                  ]
-                }
+                  ],
+                  "sentence": {
+                    "$id": "#/properties/sentence",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "title": "The sentence schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "required": [
+                      "sentenceId",
+                      "description",
+                      "terminationDate",
+                      "terminationReason",
+                      "startDate",
+                      "endDate"
+                    ],
+                    "properties": {
+                      "sentenceId": {
+                        "$id": "#/properties/sentence/properties/sentenceId",
+                        "type": "string",
+                        "title": "The sentenceId schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": ""
+                      },
+                      "description": {
+                        "$id": "#/properties/sentence/properties/description",
+                        "type": "string",
+                        "title": "The description schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": ""
+                      },
+                      "length": {
+                        "$id": "#/properties/sentence/properties/length",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "title": "The length schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": 0
+                      },
+                      "lengthInDays": {
+                        "$id": "#/properties/sentence/properties/lengthInDays",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "title": "The lengthInDays schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": 0
+                      },
+                      "lengthUnits": {
+                        "$id": "#/properties/sentence/properties/lengthUnits",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "The lengthUnits schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": ""
+                      },
+                      "terminationDate": {
+                        "$id": "#/properties/sentence/properties/terminationDate",
+                        "type": "string",
+                        "title": "The terminationDate schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": ""
+                      },
+                      "terminationReason": {
+                        "$id": "#/properties/sentence/properties/terminationReason",
+                        "type": "string",
+                        "title": "The terminationReason schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": ""
+                      },
+                      "startDate": {
+                        "$id": "#/properties/sentence/properties/startDate",
+                        "type": "string",
+                        "title": "The startDate schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": ""
+                      },
+                      "endDate": {
+                        "$id": "#/properties/sentence/properties/endDate",
+                        "type": "string",
+                        "title": "The endDate schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": ""
+                      },
+                      "currentOrderHeaderDetail": {
+                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "title": "The currentOrderHeaderDetail schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "required": [
+                          "custodialTypeCode",
+                          "custodialTypeDescription",
+                          "mainOffenceDescription",
+                          "status",
+                          "disposalDate",
+                          "actualReleaseDate",
+                          "licenceExpiryDate",
+                          "pssEndDate",
+                          "length",
+                          "lengthUnit"
+                        ],
+                        "properties": {
+                          "custodialTypeCode": {
+                            "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/custodialTypeCode",
+                            "type": "string",
+                            "title": "The custodialTypeCode schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": ""
+                          },
+                          "custodialTypeDescription": {
+                            "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/custodialTypeDescription",
+                            "type": "string",
+                            "title": "The custodialTypeDescription schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": ""
+                          },
+                          "mainOffenceDescription": {
+                            "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/mainOffenceDescription",
+                            "type": "string",
+                            "title": "The mainOffenceDescription schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": ""
+                          },
+                          "status": {
+                            "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/status",
+                            "type": "string",
+                            "title": "The status schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": ""
+                          },
+                          "disposalDate": {
+                            "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/disposalDate",
+                            "type": "string",
+                            "title": "The disposalDate schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": ""
+                          },
+                          "actualReleaseDate": {
+                            "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/actualReleaseDate",
+                            "type": "string",
+                            "title": "The actualReleaseDate schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": ""
+                          },
+                          "licenceExpiryDate": {
+                            "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/licenceExpiryDate",
+                            "type": "string",
+                            "title": "The licenceExpiryDate schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": ""
+                          },
+                          "pssEndDate": {
+                            "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/pssEndDate",
+                            "type": "string",
+                            "title": "The pssEndDate schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": ""
+                          },
+                          "length": {
+                            "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/length",
+                            "type": "integer",
+                            "title": "The length schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": 0
+                          },
+                          "lengthUnit": {
+                            "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/lengthUnit",
+                            "type": "string",
+                            "title": "The lengthUnit schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": ""
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "endDate": {
+                    "$id": "#/properties/convictions/items/anyOf/0/properties/endDate",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "The endDate schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "documents": {
+                    "$id": "#/properties/convictions/items/anyOf/0/properties/documents",
+                    "type": "array",
+                    "title": "The documents schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": [],
+                    "items": {
+                      "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items",
+                      "anyOf": [
+                        {
+                          "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0",
+                          "type": "object",
+                          "title": "The first anyOf schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "required": [
+                            "documentId",
+                            "documentName",
+                            "author",
+                            "type",
+                            "extendedDescription",
+                            "createdAt",
+                            "subType",
+                            "reportDocumentDates"
+                          ],
+                          "properties": {
+                            "documentId": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/documentId",
+                              "type": "string",
+                              "title": "The documentId schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "documentName": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/documentName",
+                              "type": "string",
+                              "title": "The documentName schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "author": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/author",
+                              "type": "string",
+                              "title": "The author schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "type": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/type",
+                              "type": "string",
+                              "title": "The type schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "extendedDescription": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/extendedDescription",
+                              "type": "string",
+                              "title": "The extendedDescription schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "createdAt": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/createdAt",
+                              "type": "string",
+                              "title": "The createdAt schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "subType": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/subType",
+                              "type": "object",
+                              "title": "The subType schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "required": [
+                                "code",
+                                "description"
+                              ],
+                              "properties": {
+                                "code": {
+                                  "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/subType/properties/code",
+                                  "type": "string",
+                                  "title": "The code schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": ""
+                                },
+                                "description": {
+                                  "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/subType/properties/description",
+                                  "type": "string",
+                                  "title": "The description schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": ""
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "reportDocumentDates": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/reportDocumentDates",
+                              "type": "object",
+                              "title": "The reportDocumentDates schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": {},
+                              "required": [
+                                "requestedDate",
+                                "requiredDate",
+                                "completedDate"
+                              ],
+                              "properties": {
+                                "requestedDate": {
+                                  "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/reportDocumentDates/properties/requestedDate",
+                                  "type": "string",
+                                  "title": "The requestedDate schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": ""
+                                },
+                                "requiredDate": {
+                                  "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/reportDocumentDates/properties/requiredDate",
+                                  "type": "string",
+                                  "title": "The requiredDate schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": ""
+                                },
+                                "completedDate": {
+                                  "$id": "#/properties/convictions/items/anyOf/0/properties/documents/items/anyOf/0/properties/reportDocumentDates/properties/completedDate",
+                                  "type": "string",
+                                  "title": "The completedDate schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": ""
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "breaches": {
+                    "$id": "#/properties/convictions/items/anyOf/0/properties/breaches",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "title": "The breaches schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": [],
+                    "items": {
+                      "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items",
+                      "anyOf": [
+                        {
+                          "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0",
+                          "type": "object",
+                          "title": "The first anyOf schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "required": [
+                            "breachId",
+                            "description",
+                            "status",
+                            "statusDate"
+                          ],
+                          "properties": {
+                            "breachId": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0/properties/breachId",
+                              "type": "integer",
+                              "title": "The breachId schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": 0
+                            },
+                            "description": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0/properties/description",
+                              "type": "string",
+                              "title": "The description schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "status": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0/properties/status",
+                              "type": "string",
+                              "title": "The status schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "started": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0/properties/started",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "title": "The started schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "statusDate": {
+                              "$id": "#/properties/convictions/items/anyOf/0/properties/breaches/items/anyOf/0/properties/statusDate",
+                              "type": "string",
+                              "title": "The statusDate schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+              ]
+            }
+          },
+          "assessment"
+          :
+          {
+            "$id": "#/properties/assessment",
+            "type": [
+              "object",
+              "null"
+            ],
+            "title": "The assessment schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "required": [
+              "type",
+              "completed"
+            ],
+            "properties": {
+              "type": {
+                "$id": "#/properties/assessment/properties/type",
+                "type": "string",
+                "title": "The type schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "completed": {
+                "$id": "#/properties/assessment/properties/completed",
+                "type": "string",
+                "title": "The completed schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
               }
             },
             "additionalProperties": false
           }
-        ]
-      }
-    },
-    "assessment": {
-      "$id": "#/properties/assessment",
-      "type": [
-        "object",
-        "null"
-      ],
-      "title": "The assessment schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": {},
-      "required": [
-        "type",
-        "completed"
-      ],
-      "properties": {
-        "type": {
-          "$id": "#/properties/assessment/properties/type",
-          "type": "string",
-          "title": "The type schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": ""
-        },
-        "completed": {
-          "$id": "#/properties/assessment/properties/completed",
-          "type": "string",
-          "title": "The completed schema",
-          "description": "An explanation about the purpose of this instance.",
-          "default": ""
-        }
-      },
-      "additionalProperties": false
-    }
-  },
-  "additionalProperties": false
-}
+          },
+          "additionalProperties"
+          :
+          false
+          }
