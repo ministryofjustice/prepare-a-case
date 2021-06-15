@@ -6,8 +6,7 @@ const { getCaseList, getCase, getMatchDetails, updateCase } = require('../servic
 const {
   getDetails,
   getProbationRecord,
-  getProbationRecordWithRequirements,
-  getConvictionWithRequirements,
+  getConviction,
   getProbationStatusDetails,
   getSentenceDetails,
   getBreachDetails,
@@ -238,7 +237,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Probation record'
 
     const crn = templateValues.data.crn
-    const communityResponse = await getProbationRecordWithRequirements(crn, true)
+    const communityResponse = await getProbationRecord(crn, true)
     templateValues.params.showAllPreviousOrders = session.showAllPreviousOrders
     templateValues.data.communityData = {
       ...communityResponse
@@ -252,7 +251,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Order details'
 
     const { data: { crn } } = templateValues
-    let communityResponse = await getConvictionWithRequirements(crn, convictionId)
+    let communityResponse = await getConviction(crn, convictionId)
 
     if (communityResponse) {
       const { active, sentence } = communityResponse
@@ -294,7 +293,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.title = 'Licence conditions details'
 
     const { data: { crn } } = templateValues
-    const communityResponse = await getProbationRecordWithRequirements(crn)
+    const communityResponse = await getProbationRecord(crn)
 
     templateValues.data.communityData = communityResponse || {}
     res.render('case-summary-record-order-licence', templateValues)
