@@ -3,6 +3,8 @@
 
 Prepare a case is a service that allows probation staff to prepare court cases. 
 
+For more informations, check our [Runbook](https://dsdmoj.atlassian.net/wiki/spaces/NDSS/pages/2548662614/Prepare+a+Case+for+Sentence+RUNBOOK)
+
 ## Prerequisities
 Before you begin, ensure you have met the following requirements:
 * You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Fermium) >= v14.17.0
@@ -45,7 +47,7 @@ java -jar wiremock-jre8-standalone-2.28.1.jar --global-response-templating --por
 
 And then, to build assets and start app with
 ```
-`npm run start:watch
+npm run start:watch
 ```
 
 This will watch for changes in the application JavaScript and Nunjucks templates and automatically restart as required.
