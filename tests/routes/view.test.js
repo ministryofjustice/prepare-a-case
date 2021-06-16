@@ -53,11 +53,7 @@ describe('Routes', () => {
     return communityResponse
   })
 
-  jest.spyOn(communityService, 'getProbationRecordWithRequirements').mockImplementation(function () {
-    return communityResponse
-  })
-
-  jest.spyOn(communityService, 'getConvictionWithRequirements').mockImplementation(function () {
+  jest.spyOn(communityService, 'getConviction').mockImplementation(function () {
     return communityResponse
   })
 
@@ -202,7 +198,7 @@ describe('Routes', () => {
     }
     const response = await request(app).get('/B14LO/case/8678951874/record')
     expect(caseService.getCase).toHaveBeenCalledWith('B14LO', '8678951874')
-    expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513', true)
+    expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513', true)
     return response
   })
 
@@ -213,7 +209,7 @@ describe('Routes', () => {
     }
     const response = await request(app).get('/B14LO/case/8678951874/record/1403337513')
     expect(caseService.getCase).toHaveBeenCalledWith('B14LO', '8678951874')
-    expect(communityService.getConvictionWithRequirements).toHaveBeenCalledWith('D985513', '1403337513')
+    expect(communityService.getConviction).toHaveBeenCalledWith('D985513', '1403337513')
     return response
   })
 
@@ -387,7 +383,7 @@ describe('Routes', () => {
     }
     const response = await request(app).get('/B14LO/case/668911253/record/1403337513/licence-details')
     expect(caseService.getCase).toHaveBeenCalledWith('B14LO', '668911253')
-    expect(communityService.getProbationRecordWithRequirements).toHaveBeenCalledWith('D985513')
+    expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
     return response
   })
 })

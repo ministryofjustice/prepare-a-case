@@ -28,6 +28,7 @@
           "description": "Common assault and battery - 10501"
         }
       ],
+      "requirements": [],
       "sentence": {
         "sentenceId": "123123130",
         "description": "ORA Adult Custody (inc PSS)",

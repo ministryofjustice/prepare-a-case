@@ -30,7 +30,7 @@
 
 {%- set preciseDiff = params.preciseDiff -%}
 
-{%- for requirement in communityData.conviction.requirements %}
+{%- for requirement in communityData.requirements %}
     {% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
     {% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
 
@@ -181,10 +181,10 @@
                 </div>
             </div>
 
-                {% if communityData.conviction.licenceConditions | length %}
+                {% if communityData.licenceConditions | length %}
                     <h2 class="govuk-heading-m govuk-!-margin-top-8">Licence conditions</h2>
                     <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
-                        {%- for licenceConditions in communityData.conviction.licenceConditions %}
+                        {%- for licenceConditions in communityData.licenceConditions %}
                             <li>
                                 {{ licenceConditions.description }}
                             </li>
@@ -204,7 +204,7 @@
                     </ul>
                 {% endif %}
 
-            {% if communityData.conviction.requirements | length %}
+            {% if communityData.requirements | length %}
                 <h2 class="govuk-heading-m govuk-!-margin-top-8">Requirements</h2>
 
                 {%- from "govuk/components/table/macro.njk" import govukTable -%}

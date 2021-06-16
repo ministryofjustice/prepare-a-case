@@ -49,6 +49,7 @@
               "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
             }
           ],
+          "requirements": [],
           "sentence": {
             "sentenceId": "123123140",
             "description": "CJA - Indeterminate Public Prot.",

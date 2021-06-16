@@ -25,6 +25,7 @@
               "description": "Common assault and battery - 10501"
             }
           ],
+          "requirements": [],
           "sentence": {
             "sentenceId": "123123141",
             "description": "CJA - Indeterminate Public Prot.",
