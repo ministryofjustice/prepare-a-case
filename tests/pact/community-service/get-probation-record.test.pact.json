@@ -85,18 +85,7 @@
               }
             }
           ],
-          "pssRequirements": [
-            {
-              "description": "Standard 7 conditions"
-            },
-            {
-              "description": "Specified Activity",
-              "subTypeDescription": "ETE - High intensity"
-            },
-            {
-              "description": "Curfew Arrangement"
-            }
-          ],
+          "pssRequirements": [],
           "licenceConditions": [
             {
               "description": "Curfew Arrangement",
