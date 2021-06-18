@@ -55,7 +55,7 @@ module.exports = (app, path) => {
 
   env.addFilter('apostropheInName', (name) => {
     const pattern = /\b(&#39;)\b/g
-        return name.replace(pattern, "'")
+    return name.replace(pattern, "'")
   })
 
   env.addGlobal('googleAnalyticsKey', googleAnalyticsKey)
