@@ -60,26 +60,19 @@
           }
         }
       ],
-      "pssRequirements": [
-        {
-          "description": "Standard 7 conditions"
-        },
-        {
-          "description": "Specified Activity",
-          "subTypeDescription": "ETE - High intensity"
-        },
-        {
-          "description": "Curfew Arrangement"
-        }
-      ],
+      "pssRequirements": [],
       "licenceConditions": [
         {
           "description": "Curfew Arrangement",
-          "startDate": "2020-02-01"
+          "startDate": "2020-02-01",
+          "subTypeDescription": "ETE - High intensity",
+          "notes": "This is an example of licence condition notes"
         },
         {
           "description": "Participate or co-op with Programme or Activities",
-          "startDate": "2020-02-01"
+          "startDate": "2020-02-01",
+          "subTypeDescription": "ETE - High intensity",
+          "notes": "This is an example of licence condition notes"
         }
       ],
       "sentence": {
