@@ -23,7 +23,7 @@ Feature: Matching defendants to nDelius records
       | Defendant | NDelius records found | Action |
     And I should see the following table rows
       | Guadalupe Hess     | 3 | Review records |
-      | Felicia Villarreal | 2 | Review records |
+      | Feli'cia Villa'rreality | 2 | Review records |
 
     And I should see link "Review records" in position 2 with href "match/defendant/3597035492"
     And I should see link "Review records" in position 3 with href "match/defendant/4172564047"
@@ -96,7 +96,7 @@ Feature: Matching defendants to nDelius records
       | Defendant | NDelius records found | Action |
     And I should see the following table rows
       | Guadalupe Hess     | 3 | Review records |
-      | Felicia Villarreal | 2 | Review records |
+      | Feli'cia Villa'rreality | 2 | Review records |
 
     Then I navigate to the "match/defendant/4172564047" route
 
