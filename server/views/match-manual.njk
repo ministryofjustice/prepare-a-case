@@ -1,150 +1,1 @@
-{% if session.matchType === 'bulk' %}
-    {% extends "partials/layout.njk" %}
-{% else %}
-    {% extends "partials/case-details.njk" %}
-{% endif %}
-
-{% if not params.crn %}
-    {% set useBackLink = backLink or '/' + params.courtCode + '/cases/' + (caseListDate if caseListDate else "") %}
-{% else %}
-    {% set useBackLink = '/' + params.courtCode + '/match/defendant/' + params.caseNo + '/manual' %}
-{% endif %}
-
-{% block backlink %}
-    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
-    {{ govukBackLink({
-        text: "Back",
-        href: useBackLink
-    }) }}
-{% endblock %}
-
-{% block content %}
-
-    {% if session.serverError %}
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-three-quarters">
-                {%- from "moj/components/banner/macro.njk" import mojBanner -%}
-                {{ mojBanner({
-                    type: 'warning',
-                    text: 'Something went wrong - try again.',
-                    iconFallbackText: 'Warning'
-                }) }}
-            </div>
-        </div>
-    {% endif %}
-
-    {% if session.formError %}
-        {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-        {%- set errorText = "Enter a case reference number" -%}
-        {% if session.formInvalid %}
-            {%- set errorText = "CRN must be in the correct format" -%}
-        {% endif %}
-        {% if session.status === 403 %}
-            {%- set errorText = "You are restricted from viewing this NDelius record" -%}
-        {% elseif session.crnInvalid %}
-            {%- set errorText = "No records match the CRN" -%}
-        {% endif %}
-        {{ govukErrorSummary({
-            titleText: "There is a problem",
-            errorList: [
-                {
-                    text: errorText,
-                    href: "#crn"
-                }
-            ]
-        }) }}
-    {% endif %}
-
-    {% set defendantFullName = (data.name.forename1 +
-        (' ' + data.name.forename2 if data.name.forename2) +
-        (' ' + data.name.forename3 if data.name.forename3) +
-        ' ' + data.name.surname) if data.name else data.defendantName %}
-
-    <h1 class="govuk-heading-l">{{ title }}</h1>
-
-    <p class="govuk-body">Use a case reference number (CRN) to link to an existing NDelius record to the defendant.</p>
-
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-
-            <h2 class="govuk-heading-m govuk-!-margin-top-4">Defendant details</h2>
-
-            <dl class="govuk-summary-list">
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">Name</dt>
-                    <dd class="govuk-summary-list__value">{{ defendantFullName | properCase | removeTitle }}</dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">Date of birth</dt>
-                    <dd class="govuk-summary-list__value">{{ params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY') }}</dd>
-                </div>
-            </dl>
-
-            {% if not params.crn %}
-                <form name="matchDefendant" id="matchDefendant" method="post" novalidate>
-                    <h3 class="govuk-heading-m">Enter the CRN of the existing record</h3>
-                    {% from "govuk/components/input/macro.njk" import govukInput %}
-                    {% if session.formError %}
-                        {%- set errorMessage = {
-                            text: errorText
-                        } -%}
-                    {% endif %}
-                    {{ govukInput({
-                        label: { text: "Case reference number (CRN)" },
-                        hint: { text: "For example, A123456" },
-                        classes: "govuk-input--width-10",
-                        id: "crn",
-                        name: "crn",
-                        pattern: "^[A-Za-z][0-9]{6}$",
-                        errorMessage: errorMessage,
-                        value: session.crn
-                    }) }}
-
-                    <button type="submit" class="govuk-button">Find record</button>
-
-                    <p class="govuk-body"><a href="{{ useBackLink }}" class="govuk-link govuk-link--no-visited-state">Cancel</a></p>
-                </form>
-            {% else %}
-                <form name="matchDefendant" id="matchDefendant" action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/confirm" method="post" novalidate>
-
-                    <h3 class="govuk-heading-m">NDelius record found</h3>
-
-                    <dl class="govuk-summary-list">
-                        <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">Name</dt>
-                            <dd class="govuk-summary-list__value">{{ details.forename }} {{ details.surname }}</dd>
-                        </div>
-                        <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">Date of birth</dt>
-                            <dd class="govuk-summary-list__value">{{ params.moment(details.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') }}</dd>
-                        </div>
-                        <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">CRN</dt>
-                            <dd class="govuk-summary-list__value">{{ details.otherIds.crn }}</dd>
-                        </div>
-                        <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">PNC</dt>
-                            <dd class="govuk-summary-list__value">{{ details.otherIds.pncNumber }}</dd>
-                        </div>
-                        <div class="govuk-summary-list__row">
-                            <dt class="govuk-summary-list__key">Probation status</dt>
-                            <dd class="govuk-summary-list__value">{{ details.probationStatus | string | capitalize if details.probationStatus }}</dd>
-                        </div>
-                    </dl>
-
-                    <input type="hidden" id="crn" name="crn" value="{{ params.crn }}"/>
-                    <button type="submit" class="govuk-button">Link record to defendant</button>
-
-                    <p class="govuk-body">If this isn't the record you're looking for, you can
-                        <a href="{{ useBackLink }}"
-                           class="govuk-link govuk-link--no-visited-state">search again</a>.
-                    </p>
-                </form>
-            {% endif %}
-
-        </div>
-        <div class="govuk-grid-column-one-third">&nbsp;</div>
-    </div>
-
-{% endblock %}
-
+{% if session.matchType === 'bulk' %}    {% extends "partials/layout.njk" %}{% else %}    {% extends "partials/case-details.njk" %}{% endif %}{% if not params.crn %}    {% set useBackLink = backLink or '/' + params.courtCode + '/cases/' + (caseListDate if caseListDate else "") %}{% else %}    {% set useBackLink = '/' + params.courtCode + '/match/defendant/' + params.caseNo + '/manual' %}{% endif %}{% block backlink %}    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}    {{ govukBackLink({        text: "Back",        href: useBackLink    }) }}{% endblock %}{% block content %}    {% if session.serverError %}        <div class="govuk-grid-row">            <div class="govuk-grid-column-three-quarters">                {%- from "moj/components/banner/macro.njk" import mojBanner -%}                {{ mojBanner({                    type: 'warning',                    text: 'Something went wrong - try again.',                    iconFallbackText: 'Warning'                }) }}            </div>        </div>    {% endif %}    {% if session.formError %}        {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}        {%- set errorText = "Enter a case reference number" -%}        {% if session.formInvalid %}            {%- set errorText = "CRN must be in the correct format" -%}        {% endif %}        {% if session.status === 403 %}            {%- set errorText = "You are restricted from viewing this NDelius record" -%}        {% elseif session.crnInvalid %}            {%- set errorText = "No records match the CRN" -%}        {% endif %}        {{ govukErrorSummary({            titleText: "There is a problem",            errorList: [                {                    text: errorText,                    href: "#crn"                }            ]        }) }}    {% endif %}    {% set defendantFullName = (data.name.forename1 +        (' ' + data.name.forename2 if data.name.forename2) +        (' ' + data.name.forename3 if data.name.forename3) +        ' ' + data.name.surname) if data.name else data.defendantName %}    <h1 class="govuk-heading-l">{{ title }}</h1>    <p class="govuk-body">Use a case reference number (CRN) to link to an existing NDelius record to the defendant.</p>    <div class="govuk-grid-row">        <div class="govuk-grid-column-two-thirds">            <h2 class="govuk-heading-m govuk-!-margin-top-4">Defendant details</h2>            <dl class="govuk-summary-list">                <div class="govuk-summary-list__row">                    <dt class="govuk-summary-list__key">Name</dt>                    <dd class="govuk-summary-list__value">{{ defendantFullName | properCase | removeTitle }}</dd>                </div>                <div class="govuk-summary-list__row">                    <dt class="govuk-summary-list__key">Date of birth</dt>                    <dd class="govuk-summary-list__value">{{ params.moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY') }}</dd>                </div>            </dl>            {% if not params.crn %}                <form name="matchDefendant" id="matchDefendant" method="post" novalidate>                    <h3 class="govuk-heading-m">Enter the CRN of the existing record</h3>                    {% from "govuk/components/input/macro.njk" import govukInput %}                    {% if session.formError %}                        {%- set errorMessage = {                            text: errorText                        } -%}                    {% endif %}                    {{ govukInput({                        label: { text: "Case reference number (CRN)" },                        hint: { text: "For example, A123456" },                        classes: "govuk-input--width-10",                        id: "crn",                        name: "crn",                        pattern: "^[A-Za-z][0-9]{6}$",                        errorMessage: errorMessage,                        value: session.crn                    }) }}                    <button type="submit" class="govuk-button">Find record</button>                    <p class="govuk-body"><a href="{{ useBackLink }}" class="govuk-link govuk-link--no-visited-state">Cancel</a></p>                </form>            {% else %}                <form name="matchDefendant" id="matchDefendant" action="/{{ params.courtCode }}/match/defendant/{{ params.caseNo }}/confirm" method="post" novalidate>                    <h3 class="govuk-heading-m">NDelius record found</h3>                    <dl class="govuk-summary-list">                        <div class="govuk-summary-list__row">                            <dt class="govuk-summary-list__key">Name</dt>                            <dd class="govuk-summary-list__value">{{ details.forename }} {{ details.surname }}</dd>                        </div>                        <div class="govuk-summary-list__row">                            <dt class="govuk-summary-list__key">Date of birth</dt>                            <dd class="govuk-summary-list__value">{{ params.moment(details.dateOfBirth, 'YYYY-MM-DD').format('D MMMM YYYY') }}</dd>                        </div>                        <div class="govuk-summary-list__row">                            <dt class="govuk-summary-list__key">CRN</dt>                            <dd class="govuk-summary-list__value">{{ details.otherIds.crn }}</dd>                        </div>                        <div class="govuk-summary-list__row">                            <dt class="govuk-summary-list__key">PNC</dt>                            <dd class="govuk-summary-list__value">{{ details.otherIds.pncNumber }}</dd>                        </div>                        <div class="govuk-summary-list__row">                            <dt class="govuk-summary-list__key">Probation status</dt>                            <dd class="govuk-summary-list__value">{{ details.probationStatus | string | capitalize if details.probationStatus }}</dd>                        </div>                    </dl>                    <input type="hidden" id="crn" name="crn" value="{{ params.crn }}"/>                    <button type="submit" class="govuk-button">Link record to defendant</button>                    <p class="govuk-body">If this isn't the record you're looking for, you can                        <a href="{{ useBackLink }}"                           class="govuk-link govuk-link--no-visited-state">search again</a>.                    </p>                </form>            {% endif %}        </div>        <div class="govuk-grid-column-one-third">&nbsp;</div>    </div>{% endblock %}
