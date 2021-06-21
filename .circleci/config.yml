@@ -194,7 +194,7 @@ jobs:
           command: |
             npx pact-broker publish pact/pacts \
               --broker-base-url $PACT_BROKER_BASE_URL \
-              --consumer-app-version $APP_VERSION --tag $CIRCLE_BRANCH \
+              --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH \
               -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD
 
   build_docker:
