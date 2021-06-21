@@ -13,7 +13,7 @@
     {% if (item.probationStatus | string | lower == "possible ndelius record") and (item.numberOfPossibleMatches | int > 0) %}
         {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
         {%- set tableRow = [
-            { text: defendantFullName | escape |  properCase | removeTitle },
+            { text: defendantFullName | escape |  properCase | removeTitle | apostropheInName },
             { text: item.numberOfPossibleMatches | escape },
             { text: ('<a href="/' + params.courtCode + '/match/defendant/' + (item.caseNo | escape) + '" class="pac-defendant-link govuk-link govuk-link--no-visited-state">Review records</a>') | safe }
         ] -%}
