@@ -29,7 +29,7 @@ module.exports = function createApp ({ signInService, userService }) {
   const service = new Service(axios)
   const app = express()
 
-  console.info(`Starting Prepare a Case using NodeJS ${nodeVersion} on ${hostName}`)
+  console.info(`Starting Prepare a Case ${config.appVersion} using NodeJS ${nodeVersion} on ${hostName}`)
 
   auth.init(signInService)
 
@@ -98,13 +98,13 @@ module.exports = function createApp ({ signInService, userService }) {
   app.use(express.urlencoded({ extended: true }))
   app.use(cookieParser())
   app.use('/assets', [
-    express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets'), { maxage : '30d' }),
-    express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets'), { maxage : '30d' }),
-    express.static(path.join(__dirname, '/node_modules/accessible-autocomplete/dist'), { maxage : '30d' })
+    express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets'), { maxage: config.settings.assetCache }),
+    express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets'), { maxage: config.settings.assetCache }),
+    express.static(path.join(__dirname, '/node_modules/accessible-autocomplete/dist'), { maxage: config.settings.assetCache })
   ])
-  app.use('/moj', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj'), { maxage : '30d' }))
-  app.use('/govuk', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk'), { maxage : '30d' }))
-  app.use(express.static(path.join(__dirname, 'public'), { maxage : '30d' }))
+  app.use('/moj', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj'), { maxage: config.settings.assetCache }))
+  app.use('/govuk', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk'), { maxage: config.settings.assetCache }))
+  app.use(express.static(path.join(__dirname, 'public'), { maxage: config.settings.assetCache }))
 
   app.use(passport.initialize())
   app.use(passport.session())

@@ -2,8 +2,9 @@
 
 function minifyFile {
   if [[ $1 != *.min.* ]]; then
-    echo "Minify: $1"
-    minify "$1" >"${1%.*}.min.${1##*.}"
+    MinOut="${1%.*}-${APP_VERSION:-dev-build}.min.${1##*.}"
+    echo "Minify: $MinOut"
+    minify "$1" > "$MinOut"
   fi
 }
 

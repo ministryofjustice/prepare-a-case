@@ -1,6 +1,6 @@
 const express = require('express')
 const getBaseDateString = require('../utils/getBaseDateString')
-const { settings, nonce, notification, session: { cookieOptions } } = require('../../config')
+const { settings, nonce, notification, appVersion, session: { cookieOptions } } = require('../../config')
 const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
@@ -25,6 +25,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const { path, url, cookies } = req
     res.locals.analyticsCookies = req.cookies && req.cookies.analyticsCookies
     res.locals.nonce = nonce
+    res.locals.appVersion = appVersion
     if (cookies && cookies.currentCourt) {
       res.cookie('currentCourt', cookies.currentCourt, cookieOptions)
     }
