@@ -20,10 +20,11 @@ RUN npm i
 
 COPY . .
 
-RUN npm run css-build && \
-    npm run minify-js-css && \
+RUN export APP_VERSION=${BUILD_NUMBER} && \
     export BUILD_NUMBER=${BUILD_NUMBER} && \
     export GIT_REF=${GIT_REF} && \
+    npm run css-build && \
+    npm run minify-js-css && \
     npm run record-build-info
 
 RUN rm -rf node_modules && \
