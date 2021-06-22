@@ -31,6 +31,7 @@ RUN rm -rf node_modules && \
     npm ci --only=production
 
 EXPOSE 3000
+ENV APP_VERSION=${BUILD_NUMBER}
 ENV NODE_ENV='production'
 USER 2000
 
