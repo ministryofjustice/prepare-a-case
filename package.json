@@ -78,7 +78,6 @@
     "axios-middleware": "0.3.1",
     "bunyan": "1.8.15",
     "bunyan-format": "0.2.1",
-    "cache-service-redis": "2.0.2",
     "compression": "1.7.4",
     "connect-redis": "6.0.0",
     "cookie-parser": "1.4.5",
@@ -99,8 +98,7 @@
     "passport": "0.4.1",
     "passport-oauth2": "1.5.0",
     "redis": "3.1.2",
-    "superagent": "6.1.0",
-    "superagent-cache-plugin": "3.0.0-beta.1"
+    "superagent": "6.1.0"
   },
   "devDependencies": {
     "@cucumber/cucumber": "7.3.0",
