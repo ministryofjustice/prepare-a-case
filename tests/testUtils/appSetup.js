@@ -14,7 +14,7 @@ module.exports = route => {
   app.use((req, res, next) => {
     req.redisClient = {
       get: () => {},
-      set: () => {},
+      set: () => {}
     }
     req.user = {
       firstName: 'first',
