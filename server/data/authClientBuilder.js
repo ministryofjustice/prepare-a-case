@@ -37,7 +37,7 @@ module.exports = token => {
 
 function userGetBuilder (token) {
   return async ({ path = null, query = '', headers = {}, responseType = '', raw = false } = {}) => {
-    logger.info(`Get using user credentials: calling oauth: ${path} ${query}`)
+    logger.info(`Get user credentials: calling oauth: ${path} ${query}`)
     try {
       const result = await superagent
         .get(path)

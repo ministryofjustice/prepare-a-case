@@ -12,6 +12,10 @@ module.exports = route => {
   nunjucksSetup(app, path)
 
   app.use((req, res, next) => {
+    req.redisClient = {
+      get: () => {},
+      set: () => {},
+    }
     req.user = {
       firstName: 'first',
       lastName: 'last',

@@ -1,21 +1,15 @@
 const { promisify } = require('util')
-const redis = require('redis')
 const logger = require('../../../log.js')
-const config = require('../../../config')
-
-const client = redis.createClient({
-  port: config.redis.port,
-  password: config.redis.password,
-  host: config.redis.host,
-  tls: config.redis.tls_enabled === 'true' ? {} : false
-})
-const getAsync = promisify(client.get).bind(client)
-const setAsync = promisify(client.set).bind(client)
 
 module.exports = userService => async (req, res, next) => {
+  const { redisClient } = req
+  const getAsync = promisify(redisClient.get).bind(redisClient)
+  const setAsync = promisify(redisClient.set).bind(redisClient)
+
   if (res.locals.user) {
     const getReply = await getAsync(`${res.locals.user.username}.INFO`)
     if (getReply) {
+      logger.info('Get user credentials from Redis cache.')
       res.locals.user = { ...JSON.parse(getReply), ...res.locals.user }
       return next()
     }
