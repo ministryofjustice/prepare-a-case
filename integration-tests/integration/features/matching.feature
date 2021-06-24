@@ -22,8 +22,8 @@ Feature: Matching defendants to nDelius records
     And I should see the following table headings
       | Defendant | NDelius records found | Action |
     And I should see the following table rows
-      | Guadalupe Hess     | 3 | Review records |
-      | Feli'cia Villa'rreality | 2 | Review records |
+      | Guadalupe Hess          | 3 | Review records |
+      | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
 
     And I should see link "Review records" in position 2 with href "match/defendant/3597035492"
     And I should see link "Review records" in position 3 with href "match/defendant/4172564047"
@@ -61,24 +61,24 @@ Feature: Matching defendants to nDelius records
       | Guadalupe Flowerlupe Paratroop Hess                            |
       | 18 February 1989                                               |
       | 43 Hunterfly Place, Birmingham, Birmingham, AD21 5DR           |
-      | D/9874483AB                                                        |
-      | V178657                                                    |
+      | D/9874483AB                                                    |
+      | V178657                                                        |
       | Current                                                        |
       | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
     And I should see the following table 3 rows
       | Guadalupe Paul Hess                                             |
       | 18 February 1989                                                |
       | Dunroamin, Leicestershire, LE2 3NA                              |
-      | Unavailable                                                         |
-      | C178657                                                     |
+      | Unavailable                                                     |
+      | C178657                                                         |
       | Previously known                                                |
       | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
     And I should see the following table 4 rows
       | Guadalupe Flowerlupe Hess                                     |
       | 18 February 1998                                              |
       | Dunroamin, Leicestershire, LE2 3NA                            |
-      | Unavailable                                                       |
-      | B123456                                                   |
+      | Unavailable                                                   |
+      | B123456                                                       |
       | Previously known                                              |
       | 13 January 2015 - CJA Standard Determinate Custody (6 Months) |
     And I should see radio buttons with the following IDs
@@ -95,8 +95,8 @@ Feature: Matching defendants to nDelius records
     And I should see the following table headings
       | Defendant | NDelius records found | Action |
     And I should see the following table rows
-      | Guadalupe Hess     | 3 | Review records |
-      | Feli'cia Villa'rreality | 2 | Review records |
+      | Guadalupe Hess          | 3 | Review records |
+      | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
 
     Then I navigate to the "match/defendant/4172564047" route
 
@@ -121,16 +121,16 @@ Feature: Matching defendants to nDelius records
       | Felicia Consuela Villarreal                                    |
       | 26 August 1971                                                 |
       | 20 Main Street Shangri La, Leicester, Leicestershire, LE2 1BG  |
-      | A/1234560BA                                                        |
-      | V178657                                                    |
+      | A/1234560BA                                                    |
+      | V178657                                                        |
       | Current                                                        |
       | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
     And I should see the following table 3 rows
       | Felecia Conswela Vilareel                                       |
       | 26 August 1969                                                  |
       | Dunroamin, Leicestershire, LE2 3NA                              |
-      | A/1234560BA                                                         |
-      | C178657                                                     |
+      | A/1234560BA                                                     |
+      | C178657                                                         |
       | Previously known                                                |
       | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
 

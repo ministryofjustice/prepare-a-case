@@ -505,6 +505,10 @@ Feature: Case list
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
+    And I should see the following table rows
+      | Guadalupe Hess | Possible NDelius Record | Assault by beating | 3rd | Morning | 7 |
+      | Feli'Cia Villa'Rreali'Ty | Possible NDelius Record | Theft from a shop | 3rd | Afternoon | 2 |
+
     And I should see the Possible NDelius record badge
 
     When I click the "Clear all" link
