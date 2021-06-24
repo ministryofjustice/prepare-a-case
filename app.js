@@ -113,6 +113,7 @@ module.exports = function createApp ({ signInService, userService }) {
     res.setHeader('Cache-Control', 'no-cache, no-store')
     res.setHeader('Pragma', 'no-cache')
     req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
+    req.redisClient = client
     const startTime = new Date()
     log.info({
       req: {

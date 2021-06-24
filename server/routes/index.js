@@ -26,6 +26,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.locals.analyticsCookies = req.cookies && req.cookies.analyticsCookies
     res.locals.nonce = nonce
     res.locals.appVersion = appVersion
+
     if (cookies && cookies.currentCourt) {
       res.cookie('currentCourt', cookies.currentCourt, cookieOptions)
     }
