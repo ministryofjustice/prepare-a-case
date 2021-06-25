@@ -49,7 +49,7 @@
         courtCode: params.courtCode,
         caseNo: params.caseNo,
         accTitle: "Defendant: ",
-        title: data.defendantName | properCase | removeTitle,
+        title: data.defendantName | apostropheInName | properCase | removeTitle,
         crn: crn,
         pnc: pnc,
         probationStatus: probationStatus,

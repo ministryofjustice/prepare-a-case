@@ -40,7 +40,7 @@
         {{ offences.push('</ol>') }}
     {% endif %}
     {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
-    {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | properCase | removeTitle %}
+    {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
     {% set crnDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
     {%- set tableRow = [
             { text: ('<a href="/' + params.courtCode + '/case/' + item.caseNo + '/summary" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" aria-label="' + a11yTitle + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
