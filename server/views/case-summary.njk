@@ -10,7 +10,7 @@
     <div role="dialog" aria-labelledby="bannerDialogTitle" aria-describedby="bannerDialogDesc">
         <span id="bannerDialogTitle" class="govuk-visually-hidden" hidden>Defendant partially matches existing records and needs review.</span>
         <h2 class="govuk-heading-m" id="bannerDialogDesc">
-            {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found for {{ defendantFullName | properCase | removeTitle }}.
+            {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found for {{ defendantFullName | apostropheInName | properCase | removeTitle }}.
             <a href="/{{ params.courtCode }}/match/defendant/{{ data.caseNo }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>
         </h2>
     </div>
@@ -89,7 +89,7 @@
                         Name
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        {{ defendantFullName | properCase | removeTitle }}
+                        {{ defendantFullName | apostropheInName | properCase | removeTitle }}
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
