@@ -1,4 +1,5 @@
 const express = require('express')
+const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, nonce, appVersion, notification, session: { cookieOptions } } = require('../../config')
 const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
@@ -70,9 +71,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('set-notification', { currentNotification: currentNotification })
   })
 
-  router.post('/set-notification', async (req, res) => {
+  router.post('/set-notification', body('notification').trim().escape(), async (req, res) => {
     const { redisClient: { setAsync } } = req
-    await setAsync('case-list-notification', encodeURI(req.body.notification))
+    await setAsync('case-list-notification', req.body.notification)
     res.redirect(302, '/set-notification')
   })
 
@@ -178,7 +179,14 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/:courtCode/cases/:date?/:subsection?', defaults, async (req, res) => {
-    const { redisClient: { getAsync }, params: { courtCode, date, limit, subsection }, query: { page }, session, path, params } = req
+    const {
+      redisClient: { getAsync },
+      params: { courtCode, date, limit, subsection },
+      query: { page },
+      session,
+      path,
+      params
+    } = req
     const currentNotification = await getAsync('case-list-notification')
     const currentDate = date || getBaseDateString()
     const response = await getCaseList(courtCode, currentDate, session.selectedFilters, subsection || (!date && session.currentView))
@@ -464,7 +472,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-manual', templateValues)
   })
 
-  router.post('/:courtCode/match/defendant/:caseNo/manual', defaults, async (req, res) => {
+  router.post('/:courtCode/match/defendant/:caseNo/manual', body('crn').trim().escape(), defaults, async (req, res) => {
     const { params: { courtCode, caseNo }, body: { crn }, session } = req
     let redirectUrl = '/'
     session.serverError = false
@@ -512,7 +520,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-manual', templateValues)
   })
 
-  router.post('/:courtCode/match/defendant/:caseNo/confirm', defaults, async (req, res) => {
+  router.post('/:courtCode/match/defendant/:caseNo/confirm', body('crn').trim().escape(), defaults, async (req, res) => {
     const { params: { courtCode, caseNo }, body: { crn }, session } = req
     session.serverError = false
     let redirectUrl = '/'
