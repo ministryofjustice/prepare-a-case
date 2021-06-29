@@ -1,6 +1,6 @@
 const express = require('express')
 const getBaseDateString = require('../utils/getBaseDateString')
-const { settings, nonce, notification, appVersion, session: { cookieOptions } } = require('../../config')
+const { settings, nonce, appVersion, notification, session: { cookieOptions } } = require('../../config')
 const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
@@ -48,6 +48,32 @@ module.exports = function Index ({ authenticationMiddleware }) {
       res.clearCookie('court')
     }
     res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : '/my-courts/setup')
+  })
+
+  router.get('/set-notification', async (req, res) => {
+    const { redisClient: { getAsync } } = req
+    const currentNotification = await getAsync('case-list-notification')
+    const reject = () => {
+      res.setHeader('www-authenticate', 'Basic')
+      res.sendStatus(401)
+    }
+
+    const authorization = req.headers.authorization
+    if (!authorization) {
+      return reject()
+    }
+
+    const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+    if (!username || !password || username !== notification.username || password !== notification.password) {
+      return reject()
+    }
+    res.render('set-notification', { currentNotification: currentNotification })
+  })
+
+  router.post('/set-notification', async (req, res) => {
+    const { redisClient: { setAsync } } = req
+    await setAsync('case-list-notification', req.body.notification)
+    res.redirect(302, '/set-notification')
   })
 
   router.get('/user-guide', (req, res) => {
@@ -152,7 +178,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/:courtCode/cases/:date?/:subsection?', defaults, async (req, res) => {
-    const { params: { courtCode, date, limit, subsection }, query: { page }, session, path, params } = req
+    const { redisClient: { getAsync }, params: { courtCode, date, limit, subsection }, query: { page }, session, path, params } = req
+    const currentNotification = await getAsync('case-list-notification')
     const currentDate = date || getBaseDateString()
     const response = await getCaseList(courtCode, currentDate, session.selectedFilters, subsection || (!date && session.currentView))
     const caseCount = response.cases.length
@@ -163,7 +190,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       params: {
         ...params,
         date: currentDate,
-        notification: notification || '',
+        notification: currentNotification || '',
         filters: response.filters,
         page: parseInt(page, 10) || 1,
         from: startCount,

@@ -1,10 +1,7 @@
-const { promisify } = require('util')
 const logger = require('../../../log.js')
 
 module.exports = userService => async (req, res, next) => {
-  const { redisClient } = req
-  const getAsync = promisify(redisClient.get).bind(redisClient)
-  const setAsync = promisify(redisClient.set).bind(redisClient)
+  const { redisClient: { getAsync, setAsync } } = req
 
   if (res.locals.user) {
     const getReply = await getAsync(`${res.locals.user.username}.INFO`)
