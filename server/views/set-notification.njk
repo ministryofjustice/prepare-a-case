@@ -12,7 +12,7 @@
       {% if currentNotification | length %}
         {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
         {{ govukNotificationBanner({
-          html: "<span class='govuk-notification-banner__heading'>" + currentNotification + "</span>"
+          html: "<span class='govuk-notification-banner__heading'>" + currentNotification | escape + "</span>"
         }) }}
       {% endif %}
 
