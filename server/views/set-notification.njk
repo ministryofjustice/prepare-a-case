@@ -16,8 +16,8 @@
         }) }}
       {% endif %}
 
-      <h1 class="govuk-heading-l">Set notification</h1>
-      <p class="govuk-body">This will display a notification on the main case list page for all users.</p>
+      <h1 class="govuk-heading-l">Set notification banner</h1>
+      <p class="govuk-body">This will display a notification banner on the main case list page for all users.</p>
 
       {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
       {{ govukWarningText({
@@ -27,7 +27,7 @@
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
       {{ govukInput({
-        label: { text: "Notification text" },
+        label: { text: "Notification banner text" },
         id: "notification",
         name: "notification",
         value: currentNotification
