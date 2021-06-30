@@ -642,3 +642,18 @@ Feature: Case summary
     And I should see the body text "There are no inactive registrations"
 
     And There should be no a11y violations
+
+  Scenario: View the risk register section of the case summary when a user has restricted access
+    Given I am an authenticated user
+
+    When I navigate to the "cases" route
+    Then I should be on the "Case list" page
+
+    When I click the "English Madden" link
+    And I click the sub navigation with "Risk register" text
+    Then I should see the level 2 heading "You are restricted from viewing this record"
+
+    And I should see the body text "You cannot view probation information for this defendant due to restrictions on your NDelius account."
+    And I should see the body text "If you think you should be able to view this case, contact your line manager."
+
+    And There should be no a11y violations
