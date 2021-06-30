@@ -34,6 +34,18 @@ env:
         name: prepare-a-case
         key: GOOGLE_ANALYTICS_KEY
 
+  - name: NOTIFICATION_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: prepare-a-case
+        key: NOTIFICATION_USERNAME
+
+  - name: NOTIFICATION_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: prepare-a-case
+        key: NOTIFICATION_USERNAME
+
   - name: NOMIS_AUTH_URL
     value: {{ .Values.env.NOMIS_AUTH_URL | quote }}
 
