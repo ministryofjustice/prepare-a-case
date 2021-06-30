@@ -120,5 +120,8 @@ module.exports = {
   https: production,
   nonce: crypto.randomBytes(16).toString('base64'),
   googleAnalyticsKey: get('GOOGLE_ANALYTICS_KEY', null),
-  notification: ''
+  notification: {
+    username: get('NOTIFICATION_USERNAME', null, requiredInProduction),
+    password: get('NOTIFICATION_PASSWORD', null, requiredInProduction)
+  }
 }

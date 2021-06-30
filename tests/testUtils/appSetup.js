@@ -13,8 +13,8 @@ module.exports = route => {
 
   app.use((req, res, next) => {
     req.redisClient = {
-      get: () => {},
-      set: () => {}
+      getAsync: () => {},
+      setAsync: () => {}
     }
     req.user = {
       firstName: 'first',
