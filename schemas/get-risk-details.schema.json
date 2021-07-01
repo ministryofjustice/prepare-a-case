@@ -1,10 +1,35 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "http://example.com/example.json",
-  "type": "array",
+  "type": [
+    "array",
+    "object"
+    ],
   "title": "The root schema",
   "description": "The root schema comprises the entire JSON document.",
   "default": [],
+  "properties": {
+    "userMessage": {
+      "$id": "#/properties/userMessage",
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "User message",
+      "description": "In the case of an error, an explanatory message to show the user",
+      "default": "null"
+    },
+    "status": {
+      "$id": "#/properties/status",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "title": "Response status",
+      "description": "In the case of an error, the status code that is returned",
+      "default": "null"
+    }
+  },
   "items": {
     "$id": "#/items",
     "anyOf": [
