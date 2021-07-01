@@ -1,0 +1,17 @@
+{
+  "id": "d7cb64d3-94f8-420d-96ee-d497509eaa08",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/E654321/registrations"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 403,
+    "jsonBody": {
+      "userMessage": "You cannot view probation information for this defendant due to restrictions on your NDelius account.",
+      "status": 403
+    }
+  }
+}

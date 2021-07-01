@@ -1,6 +1,7 @@
 {% extends "partials/case-details.njk" %}
 
 {%- set riskData = data.riskData -%}
+{%  set forbidden = riskData.status === 403 %}
 {%- set activeRisks = [] -%}
 {%- set inactiveRisks = [] -%}
 {%- for risk in riskData  if riskData %}
@@ -18,8 +19,14 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
 
-            <h2 class="govuk-heading-l govuk-!-margin-bottom-7">Risk register</h2>
+            <h2 class="govuk-heading-l govuk-!-margin-bottom-7">{{ "You are restricted from viewing this record" if forbidden else "Risk register" }}</h2>
 
+            {% if forbidden %}
+                <p class="govuk-body">{{ riskData.userMessage }}</p>
+                <p class="govuk-body">If you think you should be able to view this case, contact your line manager.</p>
+            {% endif %}
+
+            {% if not forbidden %}
             <div class="govuk-tabs" data-module="govuk-tabs">
                 <ul class="govuk-tabs__list">
                     <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
@@ -88,6 +95,7 @@
                     {% endif %}
                 </div>
             </div>
+            {% endif %}
 
 
         </div>
