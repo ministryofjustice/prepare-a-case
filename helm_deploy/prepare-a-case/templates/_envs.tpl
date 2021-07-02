@@ -44,7 +44,7 @@ env:
     valueFrom:
       secretKeyRef:
         name: prepare-a-case
-        key: NOTIFICATION_USERNAME
+        key: NOTIFICATION_PASSWORD
 
   - name: NOMIS_AUTH_URL
     value: {{ .Values.env.NOMIS_AUTH_URL | quote }}
