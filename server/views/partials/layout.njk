@@ -183,7 +183,9 @@
         // Sends the timing event to Google Analytics.
         gtag('event', 'timing_complete', {
           'name': 'load',
-          'value': timeSincePageLoad
+          'value': timeSincePageLoad,
+          'event_category': 'Performance metrics',
+          'event_label': 'Page load time'
         });
       }
     </script>
