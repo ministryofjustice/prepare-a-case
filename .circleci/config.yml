@@ -64,11 +64,11 @@ executors:
     working_directory: ~/app
   builder:
     docker:
-      - image: cimg/node:14.17.0-browsers
+      - image: cimg/node:14.17.3-browsers
     working_directory: ~/app
   integration-tests:
     docker:
-      - image: cimg/node:14.17.0-browsers
+      - image: cimg/node:14.17.3-browsers
       - image: bitnami/redis:5.0
         environment:
           ALLOW_EMPTY_PASSWORD=yes
