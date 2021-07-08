@@ -323,7 +323,10 @@
     },
     "defendantDob": {
       "$id": "#/properties/defendantDob",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "title": "The defendantDob schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
