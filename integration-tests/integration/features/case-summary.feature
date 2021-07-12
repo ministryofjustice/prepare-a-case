@@ -139,7 +139,7 @@ Feature: Case summary
     And I should see the following summary list
       | Name          | Mann Carroll                        |
       | Gender        | Female                              |
-      | Date of birth | 8 April 1955                        |
+      | Date of birth | Unknown                       |
       | Nationality   | Unknown                             |
       | Address       | 91 Barbey street Sheffield AD21 5DR |
 

@@ -105,8 +105,12 @@
                         Date of birth
                     </dt>
                     <dd class="govuk-summary-list__value">
+                        {% if data.defendantDob | length %}
                         {{ moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY') }}
                         ({{ moment().diff(moment(data.defendantDob, 'YYYY-MM-DD'), 'years') }} years old)
+                        {% else %}
+                        Unknown
+                        {% endif %}
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">

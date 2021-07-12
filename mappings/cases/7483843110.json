@@ -58,7 +58,7 @@
         "postcode": "ad21 5dr",
         "line3": "Sheffield"
       },
-      "defendantDob": "1955-04-08",
+      "defendantDob": null,
       "nationality1": "",
       "createdToday": true,
       "removed": false,
