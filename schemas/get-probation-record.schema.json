@@ -259,6 +259,13 @@
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               },
+              "awaitingPsr": {
+                "$id": "#/properties/convictions/items/anyOf/0/properties/awaitingPsr",
+                "type": "boolean",
+                "title": "The awaitingPsr schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false
+              },
               "custodialType": {
                 "$id": "#/properties/convictions/items/anyOf/0/properties/custodialType",
                 "type": "object",
@@ -318,6 +325,78 @@
                     }
                   ]
                 }
+              },
+              "psr": {
+                "$id": "#/properties/psr",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "title": "The psr schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "required": [
+                  "requestedDate",
+                  "requiredDate",
+                  "completedDate",
+                  "type",
+                  "status",
+                  "provider",
+                  "team",
+                  "officer"
+                ],
+                "properties": {
+                  "requestedDate": {
+                    "$id": "#/properties/psr/properties/requestedDate",
+                    "type": "string",
+                    "title": "The requestedDate schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "completedDate": {
+                    "$id": "#/properties/psr/properties/completedDate",
+                    "type": "string",
+                    "title": "The completedDate schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "type": {
+                    "$id": "#/properties/psr/properties/type",
+                    "type": "string",
+                    "title": "The type schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "status": {
+                    "$id": "#/properties/psr/properties/status",
+                    "type": "string",
+                    "title": "The status schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "provider": {
+                    "$id": "#/properties/psr/properties/provider",
+                    "type": "string",
+                    "title": "The provider schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "team": {
+                    "$id": "#/properties/psr/properties/team",
+                    "type": "string",
+                    "title": "The team schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
+                  "officer": {
+                    "$id": "#/properties/psr/properties/officer",
+                    "type": "string",
+                    "title": "The officer schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": false
               },
               "requirements": {
                 "$id": "#/properties/requirements",
@@ -741,101 +820,6 @@
                     "title": "The endDate schema",
                     "description": "An explanation about the purpose of this instance.",
                     "default": ""
-                  },
-                  "currentOrderHeaderDetail": {
-                    "$id": "#/properties/sentence/properties/currentOrderHeaderDetail",
-                    "type": [
-                      "object",
-                      "null"
-                    ],
-                    "title": "The currentOrderHeaderDetail schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": {},
-                    "required": [
-                      "custodialTypeCode",
-                      "custodialTypeDescription",
-                      "mainOffenceDescription",
-                      "status",
-                      "disposalDate",
-                      "actualReleaseDate",
-                      "licenceExpiryDate",
-                      "pssEndDate",
-                      "length",
-                      "lengthUnit"
-                    ],
-                    "properties": {
-                      "custodialTypeCode": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/custodialTypeCode",
-                        "type": "string",
-                        "title": "The custodialTypeCode schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "custodialTypeDescription": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/custodialTypeDescription",
-                        "type": "string",
-                        "title": "The custodialTypeDescription schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "mainOffenceDescription": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/mainOffenceDescription",
-                        "type": "string",
-                        "title": "The mainOffenceDescription schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "status": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/status",
-                        "type": "string",
-                        "title": "The status schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "disposalDate": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/disposalDate",
-                        "type": "string",
-                        "title": "The disposalDate schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "actualReleaseDate": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/actualReleaseDate",
-                        "type": "string",
-                        "title": "The actualReleaseDate schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "licenceExpiryDate": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/licenceExpiryDate",
-                        "type": "string",
-                        "title": "The licenceExpiryDate schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "pssEndDate": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/pssEndDate",
-                        "type": "string",
-                        "title": "The pssEndDate schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      },
-                      "length": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/length",
-                        "type": "integer",
-                        "title": "The length schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": 0
-                      },
-                      "lengthUnit": {
-                        "$id": "#/properties/sentence/properties/currentOrderHeaderDetail/properties/lengthUnit",
-                        "type": "string",
-                        "title": "The lengthUnit schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": ""
-                      }
-                    },
-                    "additionalProperties": false
                   }
                 },
                 "additionalProperties": false

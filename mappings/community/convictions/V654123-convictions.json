@@ -33,6 +33,7 @@
           "active": true,
           "inBreach": true,
           "convictionDate": "2017-03-08",
+          "awaitingPsr": false,
           "offences": [
             {
               "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",

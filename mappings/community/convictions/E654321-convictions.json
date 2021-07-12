@@ -33,6 +33,7 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2017-03-08",
+          "awaitingPsr": true,
           "custodialType": {
             "code": "D",
             "description": "In Custody"
@@ -49,6 +50,16 @@
               "offenceDate": "2018-01-06"
             }
           ],
+          "psr": {
+            "requestedDate": "2019-09-03",
+            "requiredDate": "2019-09-03",
+            "completedDate": "2019-09-03",
+            "type": "Pre-Sentence Report - Fast",
+            "status": "COMPLETE",
+            "provider": "example provider",
+            "team": "example team",
+            "officer": "Carrie Smith"
+          },
           "requirements": [
             {
               "requirementId": 7925250000,

@@ -33,6 +33,7 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2018-11-23",
+          "awaitingPsr": false,
           "offences": [
             {
                 "description": "Acknowledging bail in false name - 08303",

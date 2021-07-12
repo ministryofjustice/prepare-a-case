@@ -38,6 +38,7 @@
           "active": true,
           "inBreach": true,
           "convictionDate": "2019-09-03",
+          "awaitingPsr": true,
           "custodialType": {
             "code": "D",
             "description": "In Custody"
@@ -47,6 +48,16 @@
               "description": "Arson - 05600"
             }
           ],
+          "psr": {
+            "requestedDate": "2019-09-03",
+            "requiredDate": "2019-09-03",
+            "completedDate": "2019-09-03",
+            "type": "Pre-Sentence Report - Fast",
+            "status": "COMPLETE",
+            "provider": "example provider",
+            "team": "example team",
+            "officer": "Carrie Smith"
+          },
           "requirements": [
             {
               "requirementId": 2500083652,

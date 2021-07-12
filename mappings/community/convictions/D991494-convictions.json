@@ -1435,6 +1435,7 @@
           "active": false,
           "inBreach": false,
           "convictionDate": "2018-06-21",
+          "awaitingPsr": false,
           "offences": [
             {
               "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
