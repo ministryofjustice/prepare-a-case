@@ -36,13 +36,19 @@
           "convictionDate": "2018-07-01",
           "offences": [
             {
-              "description": "(Adulteration etc of milk products - 08902)"
+              "description": "(Adulteration etc of milk products - 08902)",
+              "main": true,
+              "offenceDate": "2018-07-01"
             },
             {
-              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Aiding suicide - 07600"
+              "description": "Aiding suicide - 07600",
+              "main": false,
+              "offenceDate": "2018-02-11"
             }
           ],
           "sentence": {
@@ -65,10 +71,14 @@
           "convictionDate": "2018-02-09",
           "offences": [
             {
-              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
+              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
+              "main": true,
+              "offenceDate": "2018-02-09"
             },
             {
-              "description": "Aiding suicide - 07600"
+              "description": "Aiding suicide - 07600",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -91,13 +101,19 @@
           "convictionDate": "2018-10-07",
           "offences": [
             {
-              "description": "Abstracting electricity - 04300"
+              "description": "Abstracting electricity - 04300",
+              "main": true,
+              "offenceDate": "2018-10-07"
             },
             {
-              "description": "Common and other types of assault - 10500"
+              "description": "Common and other types of assault - 10500",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Assault PC (Indictable/Either way) - 00807)"
+              "description": "(Assault PC (Indictable/Either way) - 00807)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "breaches": [
@@ -158,7 +174,9 @@
           "convictionDate": "2018-06-12",
           "offences": [
             {
-              "description": "Acknowledging bail in false name - 08303"
+              "description": "Acknowledging bail in false name - 08303",
+              "main": true,
+              "offenceDate": "2018-06-12"
             }
           ],
           "sentence": {
@@ -181,16 +199,24 @@
           "convictionDate": "2018-11-12",
           "offences": [
             {
-              "description": "(Assault PC (Indictable/Either way) - 00807)"
+              "description": "(Assault PC (Indictable/Either way) - 00807)",
+              "main": true,
+              "offenceDate": "2018-11-12"
             },
             {
-              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Buggery and attempted buggery - 01600)"
+              "description": "(Buggery and attempted buggery - 01600)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -213,7 +239,9 @@
           "convictionDate": "2018-01-03",
           "offences": [
             {
-              "description": "Arson endangering life - 05601"
+              "description": "Arson endangering life - 05601",
+              "main": true,
+              "offenceDate": "2018-01-03"
             }
           ],
           "sentence": {
@@ -236,13 +264,19 @@
           "convictionDate": "2018-12-30",
           "offences": [
             {
-              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
+              "main": true,
+              "offenceDate": "2018-12-30"
             },
             {
-              "description": "Noise offences - 82200"
+              "description": "Noise offences - 82200",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Abstracting electricity - 04300"
+              "description": "Abstracting electricity - 04300",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -265,10 +299,14 @@
           "convictionDate": "2018-02-21",
           "offences": [
             {
-              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
+              "main": true,
+              "offenceDate": "2018-02-21"
             },
             {
-              "description": "(Assault PC (Indictable/Either way) - 00807)"
+              "description": "(Assault PC (Indictable/Either way) - 00807)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -291,13 +329,19 @@
           "convictionDate": "2018-02-05",
           "offences": [
             {
-              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
+              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
+              "main": true,
+              "offenceDate": "2018-02-05"
             },
             {
-              "description": "Adulteration of food, drugs etc (Summary) - 10100"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
+              "main": false,
+              "offenceDate": "2018-01-02"
             }
           ],
           "sentence": {
@@ -320,10 +364,14 @@
           "convictionDate": "2018-09-30",
           "offences": [
             {
-              "description": "Adulteration of food, drugs etc (Summary) - 10100"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100",
+              "main": true,
+              "offenceDate": "2018-09-30"
             },
             {
-              "description": "Acknowledging bail in false name - 08303"
+              "description": "Acknowledging bail in false name - 08303",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -346,13 +394,19 @@
           "convictionDate": "2018-11-13",
           "offences": [
             {
-              "description": "Common assault and battery - 10501"
+              "description": "Common assault and battery - 10501",
+              "main": true,
+              "offenceDate": "2018-11-13"
             },
             {
-              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Noise offences - 82200"
+              "description": "Noise offences - 82200",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -375,10 +429,14 @@
           "convictionDate": "2018-08-24",
           "offences": [
             {
-              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
+              "main": true,
+              "offenceDate": "2018-08-24"
             },
             {
-              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -401,10 +459,14 @@
           "convictionDate": "2018-07-04",
           "offences": [
             {
-              "description": "High treason - 06200"
+              "description": "High treason - 06200",
+              "main": true,
+              "offenceDate": "2018-07-04"
             },
             {
-              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -427,13 +489,19 @@
           "convictionDate": "2018-12-26",
           "offences": [
             {
-              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
+              "main": true,
+              "offenceDate": "2018-12-26"
             },
             {
-              "description": "Abstracting electricity - 04300"
+              "description": "Abstracting electricity - 04300",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "High treason - 06200"
+              "description": "High treason - 06200",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -456,10 +524,14 @@
           "convictionDate": "2018-03-02",
           "offences": [
             {
-              "description": "Noise offences - 82200"
+              "description": "Noise offences - 82200",
+              "main": true,
+              "offenceDate": "2018-03-02"
             },
             {
-              "description": "Acknowledging bail in false name - 08303"
+              "description": "Acknowledging bail in false name - 08303",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -482,16 +554,24 @@
           "convictionDate": "2018-08-13",
           "offences": [
             {
-              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
+              "main": true,
+              "offenceDate": "2018-08-13"
             },
             {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Adulteration etc of milk products - 08902)"
+              "description": "(Adulteration etc of milk products - 08902)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Common and other types of assault - 10500"
+              "description": "Common and other types of assault - 10500",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -514,7 +594,9 @@
           "convictionDate": "2018-11-24",
           "offences": [
             {
-              "description": "(Buggery and attempted buggery - 01600)"
+              "description": "(Buggery and attempted buggery - 01600)",
+              "main": true,
+              "offenceDate": "2018-11-24"
             }
           ],
           "sentence": {
@@ -537,16 +619,24 @@
           "convictionDate": "2018-01-24",
           "offences": [
             {
-              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Common and other types of assault - 10500"
+              "description": "Common and other types of assault - 10500",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Buggery and attempted buggery - 01600)"
+              "description": "(Buggery and attempted buggery - 01600)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -569,7 +659,9 @@
           "convictionDate": "2018-05-07",
           "offences": [
             {
-              "description": "(Buggery and attempted buggery - 01600)"
+              "description": "(Buggery and attempted buggery - 01600)",
+              "main": true,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -592,16 +684,24 @@
           "convictionDate": "2018-11-26",
           "offences": [
             {
-              "description": "Acknowledging bail in false name - 08303"
+              "description": "Acknowledging bail in false name - 08303",
+              "main": true,
+              "offenceDate": "2018-11-26"
             },
             {
-              "description": "Abstracting electricity - 04300"
+              "description": "Abstracting electricity - 04300",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Common assault and battery - 10501"
+              "description": "Common assault and battery - 10501",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Adulteration of food, drugs etc (Summary) - 10100"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -624,16 +724,24 @@
           "convictionDate": "2018-12-06",
           "offences": [
             {
-              "description": "Acknowledging bail in false name - 08303"
+              "description": "Acknowledging bail in false name - 08303",
+              "main": true,
+              "offenceDate": "2018-12-06"
             },
             {
-              "description": "Common and other types of assault - 10500"
+              "description": "Common and other types of assault - 10500",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Arson endangering life - 05601"
+              "description": "Arson endangering life - 05601",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -656,10 +764,14 @@
           "convictionDate": "2018-03-10",
           "offences": [
             {
-              "description": "Weights and Measures Acts - 18900"
+              "description": "Weights and Measures Acts - 18900",
+              "main": true,
+              "offenceDate": "2018-03-10"
             },
             {
-              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -682,10 +794,14 @@
           "convictionDate": "2018-04-05",
           "offences": [
             {
-              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -708,7 +824,9 @@
           "convictionDate": "2018-07-23",
           "offences": [
             {
-              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
+              "main": true,
+              "offenceDate": "2018-07-23"
             }
           ],
           "sentence": {
@@ -731,10 +849,14 @@
           "convictionDate": "2018-10-13",
           "offences": [
             {
-              "description": "Common and other types of assault - 10500"
+              "description": "Common and other types of assault - 10500",
+              "main": true,
+              "offenceDate": "2018-10-13"
             },
             {
-              "description": "Aiding suicide - 07600"
+              "description": "Aiding suicide - 07600",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -757,7 +879,9 @@
           "convictionDate": "2018-04-18",
           "offences": [
             {
-              "description": "Weights and Measures Acts - 18900"
+              "description": "Weights and Measures Acts - 18900",
+              "main": true,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -780,7 +904,9 @@
           "convictionDate": "2018-03-20",
           "offences": [
             {
-              "description": "Abstracting electricity - 04300"
+              "description": "Abstracting electricity - 04300",
+              "main": true,
+              "offenceDate": "2018-03-20"
             }
           ],
           "sentence": {
@@ -803,16 +929,24 @@
           "convictionDate": null,
           "offences": [
             {
-              "description": "Aiding suicide - 07600"
+              "description": "Aiding suicide - 07600",
+              "main": true,
+              "offenceDate": null
             },
             {
-              "description": "(Adulteration etc of milk products - 08902)"
+              "description": "(Adulteration etc of milk products - 08902)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Weights and Measures Acts - 18900"
+              "description": "Weights and Measures Acts - 18900",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Abstracting electricity - 04300"
+              "description": "Abstracting electricity - 04300",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": null,
@@ -826,13 +960,19 @@
           "convictionDate": "2018-07-30",
           "offences": [
             {
-              "description": "Weights and Measures Acts - 18900"
+              "description": "Weights and Measures Acts - 18900",
+              "main": true,
+              "offenceDate": "2018-07-30"
             },
             {
-              "description": "Weights and Measures Acts - 18900"
+              "description": "Weights and Measures Acts - 18900",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Aiding suicide - 07600"
+              "description": "Aiding suicide - 07600",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -855,7 +995,9 @@
           "convictionDate": null,
           "offences": [
             {
-              "description": "(Buggery and attempted buggery - 01600)"
+              "description": "(Buggery and attempted buggery - 01600)",
+              "main": true,
+              "offenceDate": null
             }
           ],
           "sentence": null,
@@ -868,10 +1010,14 @@
           "convictionDate": "2018-01-11",
           "offences": [
             {
-              "description": "Acknowledging bail in false name - 08303"
+              "description": "Acknowledging bail in false name - 08303",
+              "main": true,
+              "offenceDate": "2018-01-11"
             },
             {
-              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -894,7 +1040,9 @@
           "convictionDate": "2018-01-14",
           "offences": [
             {
-              "description": "Abstracting electricity - 04300"
+              "description": "Abstracting electricity - 04300",
+              "main": true,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -917,10 +1065,14 @@
           "convictionDate": "2018-02-17",
           "offences": [
             {
-              "description": "Weights and Measures Acts - 18900"
+              "description": "Weights and Measures Acts - 18900",
+              "main": true,
+              "offenceDate": "2018-02-17"
             },
             {
-              "description": "Common assault and battery - 10501"
+              "description": "Common assault and battery - 10501",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -943,16 +1095,24 @@
           "convictionDate": "2018-02-09",
           "offences": [
             {
-              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Common assault and battery - 10501"
+              "description": "Common assault and battery - 10501",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Common assault and battery - 10501"
+              "description": "Common assault and battery - 10501",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Adulteration etc of milk products - 08902)"
+              "description": "(Adulteration etc of milk products - 08902)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -975,13 +1135,19 @@
           "convictionDate": "2018-05-28",
           "offences": [
             {
-              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Weights and Measures Acts - 18900"
+              "description": "Weights and Measures Acts - 18900",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Buggery and attempted buggery - 01600)"
+              "description": "(Buggery and attempted buggery - 01600)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -1004,7 +1170,9 @@
           "convictionDate": "2018-08-06",
           "offences": [
             {
-              "description": "Arson endangering life - 05601"
+              "description": "Arson endangering life - 05601",
+              "main": true,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -1027,7 +1195,9 @@
           "convictionDate": "2018-07-21",
           "offences": [
             {
-              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
+              "main": true,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -1050,10 +1220,14 @@
           "convictionDate": "2018-07-07",
           "offences": [
             {
-              "description": "Weights and Measures Acts - 18900"
+              "description": "Weights and Measures Acts - 18900",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -1076,13 +1250,19 @@
           "convictionDate": "2018-04-12",
           "offences": [
             {
-              "description": "High treason - 06200"
+              "description": "High treason - 06200",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "High treason - 06200"
+              "description": "High treason - 06200",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Buggery and attempted buggery - 01600)"
+              "description": "(Buggery and attempted buggery - 01600)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -1105,10 +1285,14 @@
           "convictionDate": "2018-05-31",
           "offences": [
             {
-              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400"
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Acknowledging bail in false name - 08303"
+              "description": "Acknowledging bail in false name - 08303",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -1163,10 +1347,14 @@
           "convictionDate": "2018-11-05",
           "offences": [
             {
-              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
+              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
+              "main": true,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -1189,13 +1377,19 @@
           "convictionDate": "2018-04-26",
           "offences": [
             {
-              "description": "Adulteration of food, drugs etc (Summary) - 10100"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Acknowledging bail in false name - 08303"
+              "description": "Acknowledging bail in false name - 08303",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Common and other types of assault - 10500"
+              "description": "Common and other types of assault - 10500",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -1218,7 +1412,9 @@
           "convictionDate": "2018-05-09",
           "offences": [
             {
-              "description": "Common and other types of assault - 10500"
+              "description": "Common and other types of assault - 10500",
+              "main": true,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -1241,13 +1437,19 @@
           "convictionDate": "2018-06-21",
           "offences": [
             {
-              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Buggery and attempted buggery - 01600)"
+              "description": "(Buggery and attempted buggery - 01600)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Buggery and attempted buggery - 01600)"
+              "description": "(Buggery and attempted buggery - 01600)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "documents": []

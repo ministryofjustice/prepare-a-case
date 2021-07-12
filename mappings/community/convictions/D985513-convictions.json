@@ -35,10 +35,14 @@
           "convictionDate": "2018-11-23",
           "offences": [
             {
-                "description": "Acknowledging bail in false name - 08303"
+                "description": "Acknowledging bail in false name - 08303",
+                "main": true,
+                "offenceDate": "2018-11-23"
               },
             {
-                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
+                "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
+                "main": false,
+                "offenceDate": "2018-01-06"
               }
           ],
           "sentence": {

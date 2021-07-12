@@ -35,10 +35,14 @@
           "convictionDate": "2017-03-08",
           "offences": [
             {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": true,
+              "offenceDate": "2017-03-08"
             },
             {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "requirements": [
@@ -105,7 +109,9 @@
           "convictionDate": "2019-02-14",
           "offences": [
             {
-              "description": "Arson endangering life - 05601"
+              "description": "Arson endangering life - 05601",
+              "main": true,
+              "offenceDate": "2019-02-14"
             }
           ],
           "sentence": {
@@ -128,13 +134,19 @@
           "convictionDate": "2017-02-21",
           "offences": [
             {
-              "description": "Common and other types of assault - 10500"
+              "description": "Common and other types of assault - 10500",
+              "main": true,
+              "offenceDate": "2017-02-21"
             },
             {
-              "description": "Acknowledging bail in false name - 08303"
+              "description": "Acknowledging bail in false name - 08303",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Adulteration of food, drugs etc (Summary) - 10100"
+              "description": "Adulteration of food, drugs etc (Summary) - 10100",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -157,7 +169,9 @@
           "convictionDate": "2019-02-13",
           "offences": [
             {
-              "description": "(Assault PC (Indictable/Either way) - 00807)"
+              "description": "(Assault PC (Indictable/Either way) - 00807)",
+              "main": true,
+              "offenceDate": "2019-02-13"
             }
           ],
           "sentence": {
@@ -180,16 +194,24 @@
           "convictionDate": null,
           "offences": [
             {
-              "description": "Arson endangering life - 05601"
+              "description": "Arson endangering life - 05601",
+              "main": true,
+              "offenceDate": null
             },
             {
-              "description": "High treason - 06200"
+              "description": "High treason - 06200",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Buggery and attempted buggery - 01600)"
+              "description": "(Buggery and attempted buggery - 01600)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Aiding suicide - 07600"
+              "description": "Aiding suicide - 07600",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": null,
@@ -202,16 +224,24 @@
           "convictionDate": "2017-02-12",
           "offences": [
             {
-              "description": "High treason - 06200"
+              "description": "High treason - 06200",
+              "main": true,
+              "offenceDate": "2017-02-12"
             },
             {
-              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604"
+              "description": "Detaining and threatening to kill or injure a hostage (Taking of Hostages Act 1982) - 03604",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Assault PC (Indictable/Either way) - 00807)"
+              "description": "(Assault PC (Indictable/Either way) - 00807)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Common assault and battery - 10501"
+              "description": "Common assault and battery - 10501",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -234,7 +264,9 @@
           "convictionDate": "2019-05-19",
           "offences": [
             {
-              "description": "Aiding suicide - 07600"
+              "description": "Aiding suicide - 07600",
+              "main": true,
+              "offenceDate": null
             }
           ],
           "sentence": {
@@ -257,16 +289,24 @@
           "convictionDate": "2019-05-19",
           "offences": [
             {
-              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
+              "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
+              "main": true,
+              "offenceDate": "2019-05-19"
             },
             {
-              "description": "Common and other types of assault - 10500"
+              "description": "Common and other types of assault - 10500",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "(Adulteration etc of milk products - 08902)"
+              "description": "(Adulteration etc of milk products - 08902)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "requirements": [
@@ -375,16 +415,24 @@
           "convictionDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
           "offences": [
             {
-              "description": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200"
+              "description": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Aiding suicide - 07600"
+              "description": "Aiding suicide - 07600",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
+              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "requirements": [],
@@ -458,13 +506,19 @@
           "convictionDate": "2017-02-21",
           "offences": [
             {
-              "description": "Aiding suicide - 07600"
+              "description": "Aiding suicide - 07600",
+              "main": true,
+              "offenceDate": "2017-02-21"
             },
             {
-              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400"
+              "description": "Town and Country Planning Act 1990/Planning (Listed Buildings and Conservation Areas) Act 1990/Planning (Hazardous Substances Act) - 09400",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
+              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -488,7 +542,9 @@
           "endDate": "2020-07-01",
           "offences": [
             {
-              "description": "Arson endangering life - 05601"
+              "description": "Arson endangering life - 05601",
+              "main": true,
+              "offenceDate": "2020-07-01"
             }
           ],
           "documents": []
@@ -500,16 +556,24 @@
           "convictionDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
           "offences": [
             {
-              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100"
+              "description": "Aggravated burglary in a building other than a dwelling (including attempts) - 03100",
+              "main": true,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Abstracting electricity - 04300"
+              "description": "Abstracting electricity - 04300",
+              "main": false,
+              "offenceDate": null
             },
             {
-              "description": "(Adulteration etc of milk products - 08902)"
+              "description": "(Adulteration etc of milk products - 08902)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Common assault and battery - 10501"
+              "description": "Common assault and battery - 10501",
+              "main": false,
+              "offenceDate": null
             }
           ],
           "requirements": [],
@@ -577,13 +641,19 @@
           "convictionDate": "2018-02-25",
           "offences": [
             {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": true,
+              "offenceDate": "2018-02-25"
             },
             {
-              "description": "(Buggery and attempted buggery - 01600)"
+              "description": "(Buggery and attempted buggery - 01600)",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Abstracting electricity - 04300"
+              "description": "Abstracting electricity - 04300",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
@@ -606,7 +676,9 @@
           "convictionDate": "2017-02-22",
           "offences": [
             {
-              "description": "Arson endangering life - 05601"
+              "description": "Arson endangering life - 05601",
+              "main": true,
+              "offenceDate": "2017-02-22"
             }
           ],
           "sentence": {
@@ -629,16 +701,24 @@
           "convictionDate": "2018-03-01",
           "offences": [
             {
-              "description": "Acknowledging bail in false name - 08303"
+              "description": "Acknowledging bail in false name - 08303",
+              "main": true,
+              "offenceDate": "2018-03-01"
             },
             {
-              "description": "Common assault and battery - 10501"
+              "description": "Common assault and battery - 10501",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": false,
+              "offenceDate": "2018-01-06"
             },
             {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": false,
+              "offenceDate": "2018-11-02"
             }
           ],
           "sentence": {
@@ -661,10 +741,14 @@
           "convictionDate": "2018-02-27",
           "offences": [
             {
-              "description": "Common and other types of assault - 10500"
+              "description": "Common and other types of assault - 10500",
+              "main": true,
+              "offenceDate": "2018-02-27"
             },
             {
-              "description": "Abstracting electricity - 04300"
+              "description": "Abstracting electricity - 04300",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
           "sentence": {
