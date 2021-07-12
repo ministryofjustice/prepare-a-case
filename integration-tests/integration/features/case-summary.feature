@@ -230,11 +230,9 @@ Feature: Case summary
     When I click the sub navigation with "Probation record" text
     Then I should see the level 2 heading "Previous orders (5)"
     And I should see the following level 2 headings
-      | Previous orders | Last pre-sentence report | Last OASys assessment |
+      | Previous orders | Last OASys assessment |
 
-    And I should see medium heading with text "Last pre-sentence report"
-    And I should see the body text "Pre-Sentence Report - Fast"
-    And I should see the hint text "Delivered 1 month ago"
+    And I should not see the heading level 2 with text "Last pre-sentence report"
 
     And There should be no a11y violations
 
@@ -657,3 +655,4 @@ Feature: Case summary
     And I should see the body text "If you think you should be able to view this case, contact your line manager."
 
     And There should be no a11y violations
+
