@@ -45,7 +45,9 @@
           },
           "offences": [
             {
-              "description": "Arson - 05600"
+              "description": "Arson - 05600",
+              "main": true,
+              "offenceDate": "2017-03-08"
             }
           ],
           "psr": {
