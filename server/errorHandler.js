@@ -8,7 +8,7 @@ exports.notFound = (req, res, next) => {
   next(error)
 }
 
-exports.developmentErrors = (error, req, res, next) => {
+exports.developmentErrors = (error, req, res) => {
   logger.error(error)
   error.stack = error.stack || ''
   const errorDetails = {
@@ -25,7 +25,7 @@ exports.developmentErrors = (error, req, res, next) => {
   })
 }
 
-exports.productionErrors = (error, req, res, next) => {
+exports.productionErrors = (error, req, res) => {
   logger.error(error)
   res.status(error.status || 500)
   res.render('error', {

@@ -25,8 +25,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.use((req, res, next) => {
     const { path, url, cookies } = req
     res.locals.analyticsCookies = req.cookies && req.cookies.analyticsCookies
-    res.locals.nonce = nonce
-    res.locals.appVersion = appVersion
 
     if (cookies && cookies.currentCourt) {
       res.cookie('currentCourt', cookies.currentCourt, cookieOptions)
