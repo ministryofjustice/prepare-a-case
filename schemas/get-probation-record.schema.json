@@ -352,6 +352,13 @@
                     "description": "An explanation about the purpose of this instance.",
                     "default": ""
                   },
+                  "requiredDate": {
+                    "$id": "#/properties/psr/properties/requiredDate",
+                    "type": "string",
+                    "title": "The requiredDate schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": ""
+                  },
                   "completedDate": {
                     "$id": "#/properties/psr/properties/completedDate",
                     "type": [
