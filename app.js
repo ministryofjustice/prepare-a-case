@@ -114,6 +114,8 @@ module.exports = function createApp ({ signInService, userService }) {
     res.setHeader('Cache-Control', 'no-cache, no-store')
     res.setHeader('Pragma', 'no-cache')
     req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
+    res.locals.nonce = config.nonce
+    res.locals.appVersion = config.appVersion
     req.redisClient = {
       getAsync: promisify(client.get).bind(client),
       setAsync: promisify(client.set).bind(client)
