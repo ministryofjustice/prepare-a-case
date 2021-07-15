@@ -1,7 +1,7 @@
 const express = require('express')
 const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
-const { settings, nonce, appVersion, notification, session: { cookieOptions } } = require('../../config')
+const { settings, notification, session: { cookieOptions } } = require('../../config')
 const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
 const {
