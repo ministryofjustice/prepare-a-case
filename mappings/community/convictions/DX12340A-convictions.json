@@ -192,6 +192,7 @@
           "active": true,
           "inBreach": true,
           "convictionDate": null,
+          "awaitingPsr": false,
           "offences": [
             {
               "description": "Arson endangering life - 05601",
@@ -287,6 +288,7 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2019-05-19",
+          "awaitingPsr": true,
           "offences": [
             {
               "description": "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200",
@@ -309,6 +311,16 @@
               "offenceDate": "2018-01-06"
             }
           ],
+          "psr": {
+            "requestedDate": "2021-07-03",
+            "requiredDate": "2021-07-10",
+            "completedDate": null,
+            "type": "Pre-Sentence Report - Fast",
+            "status": "INCOMPLETE",
+            "provider": "example provider",
+            "team": "example team",
+            "officer": "Carrie Smith"
+          },
           "requirements": [
             {
               "requirementId": 2500083652,
@@ -699,7 +711,7 @@
           "active": false,
           "inBreach": true,
           "convictionDate": "2018-03-01",
-          "awaitingPsr": true,
+          "awaitingPsr": false,
           "offences": [
             {
               "description": "Acknowledging bail in false name - 08303",
@@ -722,16 +734,6 @@
               "offenceDate": "2018-11-02"
             }
           ],
-          "psr": {
-            "requestedDate": "2019-09-03",
-            "requiredDate": "2019-09-03",
-            "completedDate": "2019-09-03",
-            "type": "Pre-Sentence Report - Fast",
-            "status": "COMPLETE",
-            "provider": "example provider",
-            "team": "example team",
-            "officer": "Carrie Smith"
-          },
           "sentence": {
             "sentenceId": "123123133",
             "description": "ORA Adult Custody (Not PSS)",

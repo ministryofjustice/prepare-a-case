@@ -228,9 +228,19 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/cases?page=1"
     And I should see the heading "Webb Mitchell"
     When I click the sub navigation with "Probation record" text
-    Then I should see the level 2 heading "Previous orders (5)"
+    Then I should see the level 2 heading "Pre-sentence report requested"
+    Then I should see the level 2 heading "Previous orders (4)"
+    And I should see the body text "Noise offences - 82200"
+    And I should see the hint text "Offence committed on 6 January 2021"
+    And I should see the body text "Report requested on 5 July 2021"
     And I should see the following level 2 headings
-      | Previous orders | Last pre-sentence report | Last OASys assessment |
+      | Pre-sentence report requested | Current orders | Previous orders | Last pre-sentence report | Last OASys assessment |
+
+    And I should see the following summary list
+      | Type          | Pre-Sentence Report - Fast      |
+      | Author        | Carrie Smith                    |
+      | Required by   | 9 July 2021                     |
+      | Status        | Complete (8 July 2021)          |
 
     And I should see medium heading with text "Last pre-sentence report"
     And I should see the body text "Pre-Sentence Report - Fast"
@@ -261,7 +271,7 @@ Feature: Case summary
     And I should see the text "Ended on 23 Jan 2018" within element with class "qa-previous-order-1-end-date"
 
     And I should see the following level 2 headings
-      | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
+      | Pre-sentence report requested | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
     And I should see the body text "Angel Extravaganza"
     And I should see the hint text "Allocated on 12 Aug 2017"
     And I should see the body text "Email: d@none.com"
