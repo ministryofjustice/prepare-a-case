@@ -142,7 +142,7 @@ And('I should see the following table rows', $data => {
             return part
           }
         })
-        cy.get('.govuk-table__cell').eq(colIndex).contains(safeText.join(' ').trim())
+        cy.get('.govuk-table__cell').eq(colIndex).contains(correctDates(safeText.join(' ').trim()))
       })
     })
   })

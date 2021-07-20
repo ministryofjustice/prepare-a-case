@@ -7,6 +7,11 @@ const getConviction = async (crn, convictionId) => {
   return res.data
 }
 
+const getCustodyDetails = async (crn, convictionId) => {
+  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/sentence/custody`) || { data: undefined }
+  return res.data
+}
+
 const getProbationRecord = async crn => {
   const res = await request(`${apiUrl}/offender/${crn}/probation-record`) || { data: {} }
   return res.status >= 400 ? res : res.data
@@ -49,5 +54,6 @@ module.exports = {
   getBreachDetails,
   getAttachment,
   getRiskDetails,
-  getConviction
+  getConviction,
+  getCustodyDetails
 }

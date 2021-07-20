@@ -139,7 +139,7 @@ Feature: Case summary
     And I should see the following summary list
       | Name          | Mann Carroll                        |
       | Gender        | Female                              |
-      | Date of birth | Unknown                       |
+      | Date of birth | Unknown                             |
       | Nationality   | Unknown                             |
       | Address       | 91 Barbey street Sheffield AD21 5DR |
 
@@ -384,12 +384,23 @@ Feature: Case summary
 
   Scenario: View the current offender order who is currently in custody
     Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
 
     When I navigate to the "case/351196424/record/345464567" route
     Then I should be on the "Order details" page
 
     And I should see the text "Status" within element with class "qa-elapsed-title"
     And I should see the text "In custody" within element with class "qa-elapsed-time"
+
+    And I should see the level 2 heading "Post release dates"
+    And I should see the level 2 heading "Requirements"
+    And I should see the level 2 heading "Attendance"
+
+    And I should see the following table rows
+      | Home detention curfew     | 20 Aug 2021 | 20 Oct 2021 |
+      | License                   | 20 Aug 2021 | 20 Jan 2022 |
+      | Post sentence supervision | 20 Oct 2021 | 20 Jan 2022 |
 
     And There should be no a11y violations
 

@@ -11,7 +11,8 @@ const {
   getProbationStatusDetails,
   getSentenceDetails,
   getBreachDetails,
-  getRiskDetails
+  getRiskDetails,
+  getCustodyDetails
 } = require('../services/community-service')
 
 const { health } = require('./middleware/healthcheck')
@@ -292,9 +293,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
       const { active, sentence } = communityResponse
       if (active) {
         const sentenceDetails = await getSentenceDetails(crn, convictionId, sentence.sentenceId)
+        const custodyDetails = await getCustodyDetails(crn, convictionId)
         communityResponse = {
           ...communityResponse,
-          sentenceDetails
+          sentenceDetails,
+          custodyDetails: custodyDetails
         }
       }
     }
