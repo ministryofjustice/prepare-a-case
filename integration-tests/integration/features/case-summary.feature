@@ -242,9 +242,7 @@ Feature: Case summary
       | Required by   | 9 July 2021                     |
       | Status        | Complete (8 July 2021)          |
 
-    And I should see medium heading with text "Last pre-sentence report"
-    And I should see the body text "Pre-Sentence Report - Fast"
-    And I should see the hint text "Delivered 1 month ago"
+    And I should not see the heading level 2 with text "Last pre-sentence report"
 
     And There should be no a11y violations
 
@@ -667,3 +665,4 @@ Feature: Case summary
     And I should see the body text "If you think you should be able to view this case, contact your line manager."
 
     And There should be no a11y violations
+

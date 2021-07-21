@@ -244,21 +244,23 @@
 
             {% if probationDocuments | length %}
                 {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
-                {% set monthsOld = moment().diff(moment(latestDocument.completedDate, 'YYYY-MM-DD'), 'months') %}
-                <h2 class="govuk-heading-m govuk-!-margin-top-6">Last pre-sentence report</h2>
-                <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
-                <p class="govuk-hint govuk-!-margin-top-1">
-                    Delivered
-                    {% if monthsOld < 1 %}
-                        less than 1 month
-                    {% elseif monthsOld === 1 %}
-                        1 month
-                    {% elseif monthsOld > 6 %}
-                        more than 6 months
-                    {% else %}
-                        {{ monthsOld }} months
-                    {% endif %}
-                    ago ({{ moment(latestDocument.completedDate, 'YYYY-MM-DD').format(displayDateFormat) }})</p>
+                {% if latestDocument.completedDate | length %}
+                    {% set monthsOld = moment().diff(moment(latestDocument.completedDate, 'YYYY-MM-DD'), 'months') %}
+                    <h2 class="govuk-heading-m govuk-!-margin-top-6">Last pre-sentence report</h2>
+                    <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1">
+                        Delivered
+                        {% if monthsOld < 1 %}
+                            less than 1 month
+                        {% elseif monthsOld === 1 %}
+                            1 month
+                        {% elseif monthsOld > 6 %}
+                            more than 6 months
+                        {% else %}
+                            {{ monthsOld }} months
+                        {% endif %}
+                        ago ({{ moment(latestDocument.completedDate, 'YYYY-MM-DD').format(displayDateFormat) }})</p>
+                {% endif %}
             {% endif %}
 
             {% if communityData.assessment | length %}
