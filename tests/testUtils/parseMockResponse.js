@@ -1,7 +1,7 @@
 const moment = require('moment')
 
 function parseMockResponse ($json) {
-  let jsonString = JSON.stringify($json) || ""
+  let jsonString = JSON.stringify($json) || ''
   jsonString = jsonString.replace(/{{now format='yyyy-MM-dd'}}/g, moment().format('YYYY-MM-DD'))
     .replace(/{{now offset='5 months' format='yyyy-MM-dd'}}/g, moment().add(5, 'months').format('YYYY-MM-DD'))
     .replace(/{{now offset='6 months' format='yyyy-MM-dd'}}/g, moment().add(6, 'months').format('YYYY-MM-DD'))
