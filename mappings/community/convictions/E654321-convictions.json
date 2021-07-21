@@ -33,18 +33,33 @@
           "active": true,
           "inBreach": false,
           "convictionDate": "2017-03-08",
+          "awaitingPsr": true,
           "custodialType": {
             "code": "D",
             "description": "In Custody"
           },
           "offences": [
             {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": true,
+              "offenceDate": "2017-03-08"
             },
             {
-              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": false,
+              "offenceDate": "2018-01-06"
             }
           ],
+          "psr": {
+            "requestedDate": "2019-09-03",
+            "requiredDate": "2019-09-03",
+            "completedDate": "2019-09-03",
+            "type": "Pre-Sentence Report - Fast",
+            "status": "COMPLETE",
+            "provider": "example provider",
+            "team": "example team",
+            "officer": "Carrie Smith"
+          },
           "requirements": [
             {
               "requirementId": 7925250000,

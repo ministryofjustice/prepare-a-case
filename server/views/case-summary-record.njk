@@ -4,14 +4,29 @@
 {%- set communityData = data.communityData -%}
 {%- set activeOrders = [] -%}
 {%- set previousOrders = [] -%}
+{%- set mainOffence = [] -%}
+{%- set psrData = [] -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
     {% if order.sentence %}
         {% if order.active %}
+            {%- for offence in order.offences -%}
+                {% if offence.main === true %}
+                    {{ mainOffence.push(offence) }}
+                {% endif %}
+            {% endfor %}
             {{ activeOrders.push(order) }}
         {% else %}
             {{ previousOrders.push(order) }}
         {% endif %}
     {% endif %}
+{% endfor -%}
+{%- for order in activeOrders %}
+    {%- for offence in order.offences -%}
+        {% if offence.main === true %}
+            {{ mainOffence.push(offence) }}
+        {% endif %}
+    {% endfor %}
+    {{ psrData.push(order.psr) }}
 {% endfor -%}
 
 {% set defendantFullName = (data.name.forename1 + ' ' + data.name.surname) if data.name else data.defendantName %}
@@ -45,6 +60,56 @@
             <p class="govuk-body">If you think you should be able to view this case, contact your line manager.</p>
         {% endif %}
 
+        {%- for order in activeOrders %}
+            {% if order.awaitingPsr === true %}
+                <h2 class="govuk-heading-m">Pre-sentence report requested</h2>
+                <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ mainOffence[0].description }}</p>
+                <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Offence committed on {{ moment(mainOffence[0].offenceDate).format('D MMMM YYYY') }}</p>
+
+                <p class="govuk-body govuk-!-font-weight-bold">Report requested on {{ moment(psrData[0].requestedDate).format('D MMMM YYYY') }}</p>
+
+                <dl class="govuk-summary-list govuk-summary-list--no-border">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Type
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ psrData[0].type }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Author
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ psrData[0].officer }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                           Required by
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ moment(psrData[0].requiredDate).format('D MMMM YYYY') }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Status
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {% if psrData[0].completedDate | length %}
+                            {{(psrData[0].status) | title }} ({{(moment(psrData[0].completedDate).format('D MMMM YYYY'))}})
+                                {% else %}
+                                Incomplete
+                                {% endif %}
+                        </dd>
+                    </div>
+                </dl>
+            {% endif %}
+        {% endfor %}
+
+
         {% if activeOrders | length %}
             <h2 class="govuk-heading-m">Current orders <span
                         class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ activeOrders | length }})</span>
@@ -55,6 +120,7 @@
                        class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + (' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' if order.sentence.length) }}</a>
                     {% if order.inBreach %}<span class="moj-badge moj-badge--black pac-badge govuk-!-margin-left-1">Breach</span>{% endif %}
                 </p>
+
                 <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].description }}</p>
                 <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started
                     on {{ moment(order.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
@@ -67,7 +133,7 @@
                             {% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
                             {% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
                             <li>
-                                {{ category  | replace("-", "–")}} {{ " – " + subCategory if category !== subCategory }}
+                                {{ category  | replace("-", "–") }} {{ " – " + subCategory if category !== subCategory }}
                                 {{ ' – ' + requirement.length + ' ' + requirement.lengthUnit if requirement.length > 0 }}
                             </li>
                         {% endfor %}
@@ -154,21 +220,24 @@
                 <h2 class="govuk-heading-m">Offender manager</h2>
                 {% if offenderManager.allocatedDate %}
                     <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.staff.forenames | properCase }} {{ offenderManager.staff.surname | properCase }}</p>
-                    <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0">Allocated on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0">Allocated
+                        on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
                     {% if offenderManager.staff.email %}
                         <p class="govuk-body govuk-!-margin-bottom-0">Email: {{ offenderManager.staff.email }}</p>
                     {% endif %}
                     {% if offenderManager.staff.telephone %}
                         <p class="govuk-body">Phone: {{ offenderManager.staff.telephone }}</p>
                     {% endif %}
-                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-top-3">Provider: {{ offenderManager.provider }}</p>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-top-3">
+                        Provider: {{ offenderManager.provider }}</p>
                     <p class="govuk-body govuk-!-margin-bottom-0">LDU: {{ offenderManager.team.district }}</p>
                     <p class="govuk-body govuk-!-margin-bottom-0">Team: {{ offenderManager.team.description }}</p>
                     {% if offenderManager.team.email %}
                         <p class="govuk-body govuk-!-margin-bottom-0">Team email: {{ offenderManager.team.email }}</p>
                     {% endif %}
                     {% if offenderManager.team.telephone %}
-                        <p class="govuk-body govuk-!-margin-bottom-0">Team phone: {{ offenderManager.team.telephone }}</p>
+                        <p class="govuk-body govuk-!-margin-bottom-0">Team
+                            phone: {{ offenderManager.team.telephone }}</p>
                     {% endif %}
                 {% endif %}
             {% endif %}
