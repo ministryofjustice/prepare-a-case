@@ -377,6 +377,10 @@ Feature: Case summary
     And I should see the text "$SIX_MONTHS_AGO" within element with class "qa-end-date"
     And I should see the text "$SIX_MONTHS_TIME" within element with class "qa-elapsed-time"
 
+    And I should see the level 2 heading "Post release dates"
+    And I should see the following table rows
+      | License                   | $SIX_MONTHS_AGO   | $SIX_MONTHS_TIME   |
+
     And I should see the level 2 heading "Contact list"
     And I should see link "View contact list (opens in NDelius)" with href "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=1309234876&eventId=123123128"
 
@@ -398,9 +402,8 @@ Feature: Case summary
     And I should see the level 2 heading "Attendance"
 
     And I should see the following table rows
-      | Home detention curfew     | 20 Aug 2021 | 20 Oct 2021 |
-      | License                   | 20 Aug 2021 | 20 Jan 2022 |
-      | Post sentence supervision | 20 Oct 2021 | 20 Jan 2022 |
+      | Home detention curfew     | $ONE_MONTHS_TIME   | $THREE_MONTHS_TIME |
+      | Post sentence supervision | $THREE_MONTHS_TIME | $SIX_MONTHS_TIME   |
 
     And There should be no a11y violations
 

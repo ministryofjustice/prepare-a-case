@@ -12,8 +12,6 @@
     "jsonBody": {
       "homeDetentionCurfewActualDate": "{{now offset='1 months' format='yyyy-MM-dd'}}",
       "homeDetentionCurfewEndDate": "{{now offset='3 months' format='yyyy-MM-dd'}}",
-      "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",
-      "releaseDate": "{{now offset='1 months' format='yyyy-MM-dd'}}",
       "topupSupervisionStartDate": "{{now offset='3 months' format='yyyy-MM-dd'}}",
       "topupSupervisionExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}"
     }

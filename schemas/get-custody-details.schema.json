@@ -1,0 +1,71 @@
+{
+  "$id": "http://example.com/example.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "default": {},
+  "description": "The root schema comprises the entire JSON document.",
+  "required": [],
+  "title": "The root schema",
+  "type": "object",
+  "properties": {
+    "homeDetentionCurfewActualDate": {
+      "$id": "#/properties/homeDetentionCurfewActualDate",
+      "default": null,
+      "description": "An explanation about the purpose of this instance.",
+      "title": "The homeDetentionCurfewActualDate schema",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "homeDetentionCurfewEndDate": {
+      "$id": "#/properties/homeDetentionCurfewEndDate",
+      "default": null,
+      "description": "An explanation about the purpose of this instance.",
+      "title": "The homeDetentionCurfewEndDate schema",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "licenceExpiryDate": {
+      "$id": "#/properties/licenceExpiryDate",
+      "default": null,
+      "description": "An explanation about the purpose of this instance.",
+      "title": "The licenceExpiryDate schema",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "releaseDate": {
+      "$id": "#/properties/releaseDate",
+      "default": null,
+      "description": "An explanation about the purpose of this instance.",
+      "title": "The releaseDate schema",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "topupSupervisionStartDate": {
+      "$id": "#/properties/topupSupervisionStartDate",
+      "default": null,
+      "description": "An explanation about the purpose of this instance.",
+      "title": "The topupSupervisionStartDate schema",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "topupSupervisionExpiryDate": {
+      "$id": "#/properties/topupSupervisionExpiryDate",
+      "default": null,
+      "description": "An explanation about the purpose of this instance.",
+      "title": "The topupSupervisionExpiryDate schema",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

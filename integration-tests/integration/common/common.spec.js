@@ -15,6 +15,12 @@ function correctDates ($string) {
   if ($string.includes('$SIX_MONTHS_AGO')) {
     $string = $string.replace('$SIX_MONTHS_AGO', moment().add(-6, 'months').format(displayDateFormat))
   }
+  if ($string.includes('$ONE_MONTHS_TIME')) {
+    $string = $string.replace('$ONE_MONTHS_TIME', moment().add(1, 'months').format(displayDateFormat))
+  }
+  if ($string.includes('$THREE_MONTHS_TIME')) {
+    $string = $string.replace('$THREE_MONTHS_TIME', moment().add(3, 'months').format(displayDateFormat))
+  }
   if ($string.includes('$SIX_MONTHS_TIME')) {
     $string = $string.replace('$SIX_MONTHS_TIME', moment().add(6, 'months').format(displayDateFormat))
   }
