@@ -385,6 +385,10 @@ Feature: Case summary
     And I should see the text "$SIX_MONTHS_AGO" within element with class "qa-end-date"
     And I should see the text "$SIX_MONTHS_TIME" within element with class "qa-elapsed-time"
 
+    And I should see the level 2 heading "Post release dates"
+    And I should see the following table rows
+      | License | $SIX_MONTHS_AGO | $SIX_MONTHS_TIME |
+
     And I should see the level 2 heading "Contact list"
     And I should see link "View contact list (opens in NDelius)" with href "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=1309234876&eventId=123123128"
 
@@ -392,12 +396,22 @@ Feature: Case summary
 
   Scenario: View the current offender order who is currently in custody
     Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
 
     When I navigate to the "case/351196424/record/345464567" route
     Then I should be on the "Order details" page
 
     And I should see the text "Status" within element with class "qa-elapsed-title"
     And I should see the text "In custody" within element with class "qa-elapsed-time"
+
+    And I should see the level 2 heading "Post release dates"
+    And I should see the level 2 heading "Requirements"
+    And I should see the level 2 heading "Attendance"
+
+    And I should see the following table rows
+      | Home detention curfew     | $ONE_MONTHS_TIME   | $THREE_MONTHS_TIME |
+      | Post sentence supervision | $THREE_MONTHS_TIME | $SIX_MONTHS_TIME   |
 
     And There should be no a11y violations
 

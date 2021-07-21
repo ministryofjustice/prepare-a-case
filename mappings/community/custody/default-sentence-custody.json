@@ -1,0 +1,13 @@
+{
+  "id": "25bc4f40-8a68-4727-9e50-0f53c716bbdf",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/([A-Z0-9]*)/convictions/(?!345464567|1309234876)([0-9]*)/sentence/custody"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 404
+  }
+}
