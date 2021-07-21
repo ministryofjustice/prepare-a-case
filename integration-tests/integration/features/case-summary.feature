@@ -139,7 +139,7 @@ Feature: Case summary
     And I should see the following summary list
       | Name          | Mann Carroll                        |
       | Gender        | Female                              |
-      | Date of birth | Unknown                       |
+      | Date of birth | Unknown                             |
       | Nationality   | Unknown                             |
       | Address       | 91 Barbey street Sheffield AD21 5DR |
 
@@ -234,15 +234,13 @@ Feature: Case summary
     And I should see the hint text "Offence committed on 6 January 2021"
     And I should see the body text "Report requested on 5 July 2021"
     And I should see the following level 2 headings
-      | Pre-sentence report requested | Current orders | Previous orders | Last pre-sentence report | Last OASys assessment |
+      | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
 
     And I should see the following summary list
-      | Type          | Pre-Sentence Report - Fast      |
-      | Author        | Carrie Smith                    |
-      | Required by   | 9 July 2021                     |
-      | Status        | Complete (8 July 2021)          |
-
-    And I should not see the heading level 2 with text "Last pre-sentence report"
+      | Type        | Pre-Sentence Report - Fast |
+      | Author      | Carrie Smith               |
+      | Required by | 9 July 2021                |
+      | Status      | Complete (8 July 2021)     |
 
     And There should be no a11y violations
 
