@@ -58,16 +58,23 @@
               "offenceDate": "2017-11-01"
             }
           ],
-          "psr": {
-            "requestedDate": "2021-07-05",
-            "requiredDate": "2021-07-09",
-            "completedDate": "2021-07-08",
-            "type": "Pre-Sentence Report - Fast",
-            "status": "COMPLETE",
-            "provider": "example provider",
-            "team": "example team",
-            "officer": "Carrie Smith"
-          },
+          "psrReports": [
+            {
+              "author": {
+                "forenames": "Carrie",
+                "surname": "Smith",
+                "unallocated": false
+              },
+              "completedDate": "2021-07-08",
+              "courtReportId": 1,
+              "courtReportType": {
+                "code": "CJF",
+                "description": "Pre-Sentence Report - Fast"
+              },
+              "requestedDate": "2021-07-05",
+              "requiredDate": "2021-07-09"
+            }
+          ],
           "requirements": [],
           "sentence": {
             "sentenceId": "123123140",
