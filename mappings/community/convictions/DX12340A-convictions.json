@@ -17,7 +17,7 @@
             "forenames": "ANGEL",
             "surname": "extravaganza",
             "email": "d@none.com"
-        },
+          },
           "allocatedDate": "2017-08-12",
           "team": {
             "description": "OMU A",
@@ -311,16 +311,23 @@
               "offenceDate": "2018-01-06"
             }
           ],
-          "psr": {
-            "requestedDate": "2021-07-03",
-            "requiredDate": "2021-07-10",
-            "completedDate": null,
-            "type": "Pre-Sentence Report - Fast",
-            "status": "INCOMPLETE",
-            "provider": "example provider",
-            "team": "example team",
-            "officer": "Carrie Smith"
-          },
+          "psrReports": [
+            {
+              "author": {
+                "forenames": "John",
+                "surname": "Jones",
+                "unallocated": false
+              },
+              "completedDate": "2018-01-02",
+              "courtReportId": 1,
+              "courtReportType": {
+                "code": "CJF",
+                "description": "Pre-Sentence Report - Fast"
+              },
+              "requestedDate": "2018-01-01",
+              "requiredDate": "2018-01-02"
+            }
+          ],
           "requirements": [
             {
               "requirementId": 2500083652,

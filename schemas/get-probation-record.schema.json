@@ -326,86 +326,127 @@
                   ]
                 }
               },
-              "psr": {
-                "$id": "#/properties/psr",
+              "psrReports": {
+                "$id": "#/properties/psrReports",
+                "default": null,
+                "description": "An explanation about the purpose of this instance.",
+                "title": "The psrReports schema",
                 "type": [
-                  "object",
+                  "array",
                   "null"
                 ],
-                "title": "The psr schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": {},
-                "required": [
-                  "requestedDate",
-                  "requiredDate",
-                  "type",
-                  "status",
-                  "provider",
-                  "team",
-                  "officer"
-                ],
-                "properties": {
-                  "requestedDate": {
-                    "$id": "#/properties/psr/properties/requestedDate",
-                    "type": "string",
-                    "title": "The requestedDate schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "requiredDate": {
-                    "$id": "#/properties/psr/properties/requiredDate",
-                    "type": "string",
-                    "title": "The requiredDate schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "completedDate": {
-                    "$id": "#/properties/psr/properties/completedDate",
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "title": "The completedDate schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "type": {
-                    "$id": "#/properties/psr/properties/type",
-                    "type": "string",
-                    "title": "The type schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "status": {
-                    "$id": "#/properties/psr/properties/status",
-                    "type": "string",
-                    "title": "The status schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "provider": {
-                    "$id": "#/properties/psr/properties/provider",
-                    "type": "string",
-                    "title": "The provider schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "team": {
-                    "$id": "#/properties/psr/properties/team",
-                    "type": "string",
-                    "title": "The team schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  },
-                  "officer": {
-                    "$id": "#/properties/psr/properties/officer",
-                    "type": "string",
-                    "title": "The officer schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": ""
-                  }
-                },
-                "additionalProperties": false
+                "items": {
+                  "$id": "#/properties/psrReports/items",
+                  "anyOf": [
+                    {
+                      "$id": "#/properties/psrReports/items/anyOf/0",
+                      "type": "object",
+                      "title": "The first anyOf schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "required": [
+                        "author",
+                        "completedDate",
+                        "courtReportId",
+                        "courtReportType",
+                        "requestedDate",
+                        "requiredDate"
+                      ],
+                      "properties": {
+                        "author": {
+                          "$id": "#/properties/psrReports/items/anyOf/0/properties/author",
+                          "type": "object",
+                          "title": "The author schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "required": [
+                            "forenames",
+                            "surname",
+                            "unallocated"
+                          ],
+                          "properties": {
+                            "forenames": {
+                              "$id": "#/properties/psrReports/items/anyOf/0/properties/author/properties/forenames",
+                              "type": "string",
+                              "title": "The forenames schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "surname": {
+                              "$id": "#/properties/psrReports/items/anyOf/0/properties/author/properties/surname",
+                              "type": "string",
+                              "title": "The surname schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "unallocated": {
+                              "$id": "#/properties/psrReports/items/anyOf/0/properties/author/properties/unallocated",
+                              "type": "boolean",
+                              "title": "The unallocated schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": false
+                            }
+                          }
+                        },
+                        "completedDate": {
+                          "$id": "#/properties/psrReports/items/anyOf/0/properties/completedDate",
+                          "type": "string",
+                          "title": "The completedDate schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": ""
+                        },
+                        "courtReportId": {
+                          "$id": "#/properties/psrReports/items/anyOf/0/properties/courtReportId",
+                          "type": "integer",
+                          "title": "The courtReportId schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": 0
+                        },
+                        "courtReportType": {
+                          "$id": "#/properties/psrReports/items/anyOf/0/properties/courtReportType",
+                          "type": "object",
+                          "title": "The courtReportType schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "required": [
+                            "code",
+                            "description"
+                          ],
+                          "properties": {
+                            "code": {
+                              "$id": "#/properties/psrReports/items/anyOf/0/properties/courtReportType/properties/code",
+                              "type": "string",
+                              "title": "The code schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            },
+                            "description": {
+                              "$id": "#/properties/psrReports/items/anyOf/0/properties/courtReportType/properties/description",
+                              "type": "string",
+                              "title": "The description schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": ""
+                            }
+                          }
+                        },
+                        "requestedDate": {
+                          "$id": "#/properties/psrReports/items/anyOf/0/properties/requestedDate",
+                          "type": "string",
+                          "title": "The requestedDate schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": ""
+                        },
+                        "requiredDate": {
+                          "$id": "#/properties/psrReports/items/anyOf/0/properties/requiredDate",
+                          "type": "string",
+                          "title": "The requiredDate schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": ""
+                        }
+                      }
+                    }
+                  ]
+                }
               },
               "requirements": {
                 "$id": "#/properties/requirements",

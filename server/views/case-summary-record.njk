@@ -26,8 +26,11 @@
             {{ mainOffence.push(offence) }}
         {% endif %}
     {% endfor %}
-    {{ psrData.push(order.psr) }}
+    {% if order.psrReports | length %}
+        {{ psrData.push(order.psrReports[0]) }}
+    {% endif %}
 {% endfor -%}
+{%- set psrData = psrData | first -%}
 
 {% set defendantFullName = (data.name.forename1 + ' ' + data.name.surname) if data.name else data.defendantName %}
 {%- set offenderManager = communityData.offenderManagers | first if communityData.offenderManagers -%}
@@ -66,7 +69,7 @@
                 <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ mainOffence[0].description }}</p>
                 <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Offence committed on {{ moment(mainOffence[0].offenceDate).format('D MMMM YYYY') }}</p>
 
-                <p class="govuk-body govuk-!-font-weight-bold">Report requested on {{ moment(psrData[0].requestedDate).format('D MMMM YYYY') }}</p>
+                <p class="govuk-body govuk-!-font-weight-bold">Report requested on {{ moment(psrData.requestedDate).format('D MMMM YYYY') }}</p>
 
                 <dl class="govuk-summary-list govuk-summary-list--no-border">
                     <div class="govuk-summary-list__row">
@@ -74,7 +77,7 @@
                             Type
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {{ psrData[0].type }}
+                            {{ psrData.courtReportType.description }}
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -82,7 +85,11 @@
                             Author
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {{ psrData[0].officer }}
+                            {% if psrData.author.unallocated %}
+                                Unallocated
+                            {% else %}
+                                {{ psrData.author.forenames + " " + psrData.author.surname }}
+                            {% endif %}
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -90,7 +97,7 @@
                            Required by
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {{ moment(psrData[0].requiredDate).format('D MMMM YYYY') }}
+                            {{ moment(psrData.requiredDate).format('D MMMM YYYY') }}
                         </dd>
                     </div>
                     <div class="govuk-summary-list__row">
@@ -98,11 +105,11 @@
                             Status
                         </dt>
                         <dd class="govuk-summary-list__value">
-                            {% if psrData[0].completedDate | length %}
-                            {{(psrData[0].status) | title }} ({{(moment(psrData[0].completedDate).format('D MMMM YYYY'))}})
-                                {% else %}
+                            {% if psrData.completedDate | length %}
+                                Complete ({{(moment(psrData.completedDate).format('D MMMM YYYY'))}})
+                            {% else %}
                                 Incomplete
-                                {% endif %}
+                            {% endif %}
                         </dd>
                     </div>
                 </dl>
