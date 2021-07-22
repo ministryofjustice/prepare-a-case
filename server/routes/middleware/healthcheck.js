@@ -1,6 +1,5 @@
 const axios = require('axios')
-const config = require('../../../config')
-const apiUrl = config.apis.courtCaseService.url
+const { apis: { courtCaseService }, settings: { healthTimeout } } = require('../../../config')
 
 const health = async (req, res, next) => {
   function unhealthy () {
@@ -8,7 +7,7 @@ const health = async (req, res, next) => {
   }
 
   try {
-    const response = await axios.get(`${apiUrl}/ping`)
+    const response = await axios.get(`${courtCaseService.url}/ping`, { timeout: healthTimeout })
     if (response && response.status < 400) {
       next()
     } else {

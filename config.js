@@ -19,6 +19,8 @@ const requiredInProduction = { requireInProduction: true }
 
 module.exports = {
   settings: {
+    defaultTimeout: 2000,
+    healthTimeout: 1000,
     casesPerPage: get('CASES_PER_PAGE', 20),
     casesTotalDays: get('CASES_TOTAL_DAYS', 7),
     casesExcludedDays: get('CASES_EXCLUDED_DAYS', '0'), // Coma delimited String of days to exclude, incremental from 0 (Sunday)
