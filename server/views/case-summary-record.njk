@@ -7,6 +7,9 @@
 {%- set mainOffence = [] -%}
 {%- set psrData = [] -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
+    {% if order.active and order.awaitingPsr and order.psrReports | length %}
+        {{ psrData.push(order.psrReports[0]) }}
+    {% endif %}
     {% if order.sentence %}
         {% if order.active %}
             {%- for offence in order.offences -%}
@@ -26,12 +29,9 @@
             {{ mainOffence.push(offence) }}
         {% endif %}
     {% endfor %}
-    {% if order.psrReports | length %}
-        {{ psrData.push(order.psrReports[0]) }}
-    {% endif %}
 {% endfor -%}
-{%- set psrData = psrData | first -%}
 
+{%- set psrData = psrData | first -%}
 {% set defendantFullName = (data.name.forename1 + ' ' + data.name.surname) if data.name else data.defendantName %}
 {%- set offenderManager = communityData.offenderManagers | first if communityData.offenderManagers -%}
 
