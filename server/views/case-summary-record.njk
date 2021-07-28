@@ -4,280 +4,279 @@
 {%- set communityData = data.communityData -%}
 {%- set activeOrders = [] -%}
 {%- set previousOrders = [] -%}
-{%- set mainOffence = [] -%}
-{%- set psrData = [] -%}
+
 {%- for order in communityData.convictions if communityData.convictions | length %}
-    {% if order.active and order.awaitingPsr and order.psrReports | length %}
-        {{ psrData.push(order.psrReports[0]) }}
+  {% if order.sentence %}
+    {% if order.active %}
+      {{ activeOrders.push(order) }}
+    {% else %}
+      {{ previousOrders.push(order) }}
     {% endif %}
-    {% if order.sentence %}
-        {% if order.active %}
-            {%- for offence in order.offences -%}
-                {% if offence.main === true %}
-                    {{ mainOffence.push(offence) }}
-                {% endif %}
-            {% endfor %}
-            {{ activeOrders.push(order) }}
-        {% else %}
-            {{ previousOrders.push(order) }}
-        {% endif %}
-    {% endif %}
-{% endfor -%}
-{%- for order in activeOrders %}
-    {%- for offence in order.offences -%}
-        {% if offence.main === true %}
-            {{ mainOffence.push(offence) }}
-        {% endif %}
-    {% endfor %}
+  {% endif %}
 {% endfor -%}
 
-{%- set psrData = psrData | first -%}
 {% set defendantFullName = (data.name.forename1 + ' ' + data.name.surname) if data.name else data.defendantName %}
 {%- set offenderManager = communityData.offenderManagers | first if communityData.offenderManagers -%}
 
 {%- set probationDocuments = [] -%}
 {%- for order in communityData.convictions if communityData.convictions | length %}
-    {%- for document in order.documents if order.documents | length %}
-        {{ probationDocuments.push({
-            description: document.subType.description,
-            completedDate: document.reportDocumentDates.completedDate
-        }) }}
-    {% endfor -%}
+  {%- for document in order.documents if order.documents | length %}
+    {{ probationDocuments.push({
+      description: document.subType.description,
+      completedDate: document.reportDocumentDates.completedDate
+    }) }}
+  {% endfor -%}
 {% endfor -%}
 
 {% block caseContent %}
 
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds">
 
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <h1 class="govuk-heading-l">
-                    {{ "You are restricted from viewing this record" if communityData.status === 403 else "Probation record" }}
-                </h1>
-            </div>
-        </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-l">
+          {{ "You are restricted from viewing this record" if communityData.status === 403 else "Probation record" }}
+        </h1>
+      </div>
+    </div>
 
-        {% if communityData.status === 403 %}
-            <p class="govuk-body">{{ communityData.data.userMessage }}</p>
-            <p class="govuk-body">If you think you should be able to view this case, contact your line manager.</p>
+    {% if communityData.status === 403 %}
+      <p class="govuk-body">{{ communityData.data.userMessage }}</p>
+      <p class="govuk-body">If you think you should be able to view this case, contact your line manager.</p>
+    {% endif %}
+
+    {%- set mainOffence = null -%}
+    {%- for order in communityData.convictions if communityData.convictions | length %}
+      {% if order.active and order.awaitingPsr === true and order.psrReports | length %}
+
+        <!--
+        {%- set psrData = order.psrReports[0] -%}
+        {%- for offence in order.offences -%}
+          {% if offence.main === true %}
+            {%- set mainOffence = offence -%}
+          {% endif %}
+        {%- endfor -%}
+        -->
+
+        <h2 class="govuk-heading-m">Pre-sentence report requested</h2>
+        <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">
+          {{ mainOffence.description }}
+        </p>
+        <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Offence committed
+          on {{ moment(mainOffence.offenceDate).format('D MMMM YYYY') }}</p>
+
+        <p class="govuk-body govuk-!-font-weight-bold">Report requested
+          on {{ moment(psrData.requestedDate).format('D MMMM YYYY') }}</p>
+
+        <dl class="govuk-summary-list govuk-summary-list--no-border">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ psrData.courtReportType.description }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Author
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if psrData.author.unallocated %}
+                Unallocated
+              {% else %}
+                {{ psrData.author.forenames + " " + psrData.author.surname }}
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Required by
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ moment(psrData.requiredDate).format('D MMMM YYYY') }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if psrData.completedDate | length %}
+                Complete ({{ (moment(psrData.completedDate).format('D MMMM YYYY')) }})
+              {% else %}
+                Incomplete
+              {% endif %}
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+    {% endfor %}
+
+    {% if activeOrders | length %}
+      <h2 class="govuk-heading-m">Current orders <span
+            class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ activeOrders | length }})</span>
+      </h2>
+      {%- for order in activeOrders %}
+        <p class="govuk-body govuk-!-margin-bottom-0">
+          <a href="record/{{ order.convictionId }}"
+             class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + (' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' if order.sentence.length) }}</a>
+          {% if order.inBreach %}<span
+              class="moj-badge moj-badge--black pac-badge govuk-!-margin-left-1">Breach</span>{% endif %}
+        </p>
+
+        <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].description }}</p>
+        <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started
+          on {{ moment(order.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+
+        {% if order.requirements and order.requirements | length %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Requirements</h3>
+
+          <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
+            {%- for requirement in order.requirements %}
+              {% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
+              {% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
+              <li>
+                {{ category  | replace("-", "–") }} {{ " – " + subCategory if category !== subCategory }}
+                {{ ' – ' + requirement.length + ' ' + requirement.lengthUnit if requirement.length > 0 }}
+              </li>
+            {% endfor %}
+          </ul>
         {% endif %}
 
-        {%- for order in activeOrders %}
-            {% if order.awaitingPsr === true %}
-                <h2 class="govuk-heading-m">Pre-sentence report requested</h2>
-                <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ mainOffence[0].description }}</p>
-                <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Offence committed on {{ moment(mainOffence[0].offenceDate).format('D MMMM YYYY') }}</p>
+        {% if order.custodialType.description === "In Custody" %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Status</h3>
+          <p class="govuk-body">In custody</p>
+        {% endif %}
 
-                <p class="govuk-body govuk-!-font-weight-bold">Report requested on {{ moment(psrData.requestedDate).format('D MMMM YYYY') }}</p>
+        {% if order.licenceConditions and order.licenceConditions | length %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Status</h3>
+          <p class="govuk-body">On licence</p>
 
-                <dl class="govuk-summary-list govuk-summary-list--no-border">
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Type
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ psrData.courtReportType.description }}
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Author
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {% if psrData.author.unallocated %}
-                                Unallocated
-                            {% else %}
-                                {{ psrData.author.forenames + " " + psrData.author.surname }}
-                            {% endif %}
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                           Required by
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {{ moment(psrData.requiredDate).format('D MMMM YYYY') }}
-                        </dd>
-                    </div>
-                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                            Status
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                            {% if psrData.completedDate | length %}
-                                Complete ({{(moment(psrData.completedDate).format('D MMMM YYYY'))}})
-                            {% else %}
-                                Incomplete
-                            {% endif %}
-                        </dd>
-                    </div>
-                </dl>
-            {% endif %}
-        {% endfor %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Licence conditions</h3>
+          <ul class="govuk-list govuk-list--bullet qa-current-licence-conditions-{{ loop.index0 }}">
+            {%- for licenceCondition in order.licenceConditions %}
+              <li>{{ licenceCondition.description }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
 
+        {% if order.pssRequirements and order.pssRequirements | length %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Status</h3>
+          <p class="govuk-body">On post-sentence supervision (PSS)</p>
 
-        {% if activeOrders | length %}
-            <h2 class="govuk-heading-m">Current orders <span
-                        class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ activeOrders | length }})</span>
-            </h2>
-            {%- for order in activeOrders %}
-                <p class="govuk-body govuk-!-margin-bottom-0">
-                    <a href="record/{{ order.convictionId }}"
-                       class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + (' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' if order.sentence.length) }}</a>
-                    {% if order.inBreach %}<span class="moj-badge moj-badge--black pac-badge govuk-!-margin-left-1">Breach</span>{% endif %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">PSS requirements</h3>
+          <ul class="govuk-list govuk-list--bullet qa-current-pss-requirements-{{ loop.index0 }}">
+            {%- for pssRequirement in order.pssRequirements %}
+              <li>{{ pssRequirement.description  + (' – ' + pssRequirement.subTypeDescription  | replace("-", "–") if pssRequirement.subTypeDescription | length) }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"/>
+
+      {% endfor -%}
+    {% endif %}
+
+    {% if previousOrders | length %}
+      {% if params.showAllPreviousOrders === params.caseNo %}
+        {% set limitPreviousOrders = previousOrders | length %}
+      {% else %}
+        {% set limitPreviousOrders = 5 %}
+      {% endif %}
+
+      <form name="previousOrders" id="previousOrders" method="post">
+        <h2 class="govuk-heading-m{% if activeOrders | length and previousOrders | length %} govuk-!-margin-top-8{% endif %}">
+          Previous orders <span
+              class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ previousOrders | length }})</span>
+        </h2>
+        <table class="govuk-table govuk-!-margin-bottom-3" aria-label="Previous orders">
+          <tbody class="govuk-table__body">
+          {%- for order in previousOrders | limit(limitPreviousOrders) %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-!-width-two-thirds">
+                <p class="govuk-body govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}"><a
+                      href="record/{{ order.convictionId }}"
+                      class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + (' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' if order.sentence.length ) }}</a>
                 </p>
-
-                <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{ order.offences[0].description }}</p>
-                <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Started
-                    on {{ moment(order.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
-
-                {% if order.requirements and order.requirements | length %}
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Requirements</h3>
-
-                    <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
-                        {%- for requirement in order.requirements %}
-                            {% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
-                            {% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
-                            <li>
-                                {{ category  | replace("-", "–") }} {{ " – " + subCategory if category !== subCategory }}
-                                {{ ' – ' + requirement.length + ' ' + requirement.lengthUnit if requirement.length > 0 }}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-
-                {% if order.custodialType.description === "In Custody" %}
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Status</h3>
-                    <p class="govuk-body">In custody</p>
-                {% endif %}
-
-                {% if order.licenceConditions and order.licenceConditions | length %}
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Status</h3>
-                    <p class="govuk-body">On licence</p>
-
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Licence conditions</h3>
-                    <ul class="govuk-list govuk-list--bullet qa-current-licence-conditions-{{ loop.index0 }}">
-                        {%- for licenceCondition in order.licenceConditions %}
-                            <li>{{ licenceCondition.description }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-
-                {% if order.pssRequirements and order.pssRequirements | length %}
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Status</h3>
-                    <p class="govuk-body">On post-sentence supervision (PSS)</p>
-
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">PSS requirements</h3>
-                    <ul class="govuk-list govuk-list--bullet qa-current-pss-requirements-{{ loop.index0 }}">
-                        {%- for pssRequirement in order.pssRequirements %}
-                            <li>{{ pssRequirement.description  + (' – ' + pssRequirement.subTypeDescription  | replace("-", "–") if pssRequirement.subTypeDescription | length) }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-
-                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"/>
-
-            {% endfor -%}
+                <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
+              </td>
+              <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third pac-!-valign-bottom">
+                <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">
+                  Ended
+                  on {{ moment(order.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+              </td>
+            </tr>
+          {% endfor -%}
+          </tbody>
+        </table>
+        {% if previousOrders | length > limitPreviousOrders %}
+          <button type="submit" class="govuk-button govuk-button--secondary">Show all previous orders</button>
         {% endif %}
+      </form>
+    {% endif %}
 
-        {% if previousOrders | length %}
-            {% if params.showAllPreviousOrders === params.caseNo %}
-                {% set limitPreviousOrders = previousOrders | length %}
+  </div>
+
+  <div class="govuk-grid-column-one-third govuk-!-padding-left-9 govuk-!-padding-top-9">
+    <div class="govuk-!-margin-bottom-6">
+
+      {% if data.probationStatus === "Current" %}
+        <h2 class="govuk-heading-m">Offender manager</h2>
+        {% if offenderManager.allocatedDate %}
+          <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.staff.forenames | properCase }} {{ offenderManager.staff.surname | properCase }}</p>
+          <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0">Allocated
+            on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+          {% if offenderManager.staff.email %}
+            <p class="govuk-body govuk-!-margin-bottom-0">Email: {{ offenderManager.staff.email }}</p>
+          {% endif %}
+          {% if offenderManager.staff.telephone %}
+            <p class="govuk-body">Phone: {{ offenderManager.staff.telephone }}</p>
+          {% endif %}
+          <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-top-3">
+            Provider: {{ offenderManager.provider }}</p>
+          <p class="govuk-body govuk-!-margin-bottom-0">LDU: {{ offenderManager.team.district }}</p>
+          <p class="govuk-body govuk-!-margin-bottom-0">Team: {{ offenderManager.team.description }}</p>
+          {% if offenderManager.team.email %}
+            <p class="govuk-body govuk-!-margin-bottom-0">Team email: {{ offenderManager.team.email }}</p>
+          {% endif %}
+          {% if offenderManager.team.telephone %}
+            <p class="govuk-body govuk-!-margin-bottom-0">Team
+              phone: {{ offenderManager.team.telephone }}</p>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+
+      {% if probationDocuments | length %}
+        {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
+        {% if latestDocument.completedDate | length %}
+          {% set monthsOld = moment().diff(moment(latestDocument.completedDate, 'YYYY-MM-DD'), 'months') %}
+          <h2 class="govuk-heading-m govuk-!-margin-top-6">Last pre-sentence report</h2>
+          <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
+          <p class="govuk-hint govuk-!-margin-top-1">
+            Delivered
+            {% if monthsOld < 1 %}
+              less than 1 month
+            {% elseif monthsOld === 1 %}
+              1 month
+            {% elseif monthsOld > 6 %}
+              more than 6 months
             {% else %}
-                {% set limitPreviousOrders = 5 %}
+              {{ monthsOld }} months
             {% endif %}
-
-            <form name="previousOrders" id="previousOrders" method="post">
-                <h2 class="govuk-heading-m{% if activeOrders | length and previousOrders | length %} govuk-!-margin-top-8{% endif %}">
-                    Previous orders <span class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ previousOrders | length }})</span>
-                </h2>
-                <table class="govuk-table govuk-!-margin-bottom-3" aria-label="Previous orders">
-                    <tbody class="govuk-table__body">
-                    {%- for order in previousOrders | limit(limitPreviousOrders) %}
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell govuk-!-width-two-thirds">
-                                <p class="govuk-body govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}"><a
-                                            href="record/{{ order.convictionId }}"
-                                            class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">{{ order.sentence.description + (' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' if order.sentence.length ) }}</a>
-                                </p>
-                                <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-0 qa-previous-order-{{ loop.index }}-offence">{{ order.offences[0].description }}</p>
-                            </td>
-                            <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-width-one-third pac-!-valign-bottom">
-                                <p class="govuk-hint govuk-!-margin-bottom-0 qa-termination-date qa-previous-order-{{ loop.index }}-end-date">
-                                    Ended
-                                    on {{ moment(order.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
-                            </td>
-                        </tr>
-                    {% endfor -%}
-                    </tbody>
-                </table>
-                {% if previousOrders | length > limitPreviousOrders %}
-                    <button type="submit" class="govuk-button govuk-button--secondary">Show all previous orders</button>
-                {% endif %}
-            </form>
+            ago ({{ moment(latestDocument.completedDate, 'YYYY-MM-DD').format(displayDateFormat) }})</p>
         {% endif %}
+      {% endif %}
 
+      {% if communityData.assessment | length %}
+        <h2 class="govuk-heading-m govuk-!-margin-top-6">Last OASys assessment</h2>
+        <p class="govuk-body govuk-!-margin-bottom-0">OASys
+          Assessment {{ communityData.assessment.type | capitalize | replace("_", " ") }}</p>
+        <p class="govuk-hint govuk-!-margin-top-1">Completed
+          on {{ params.moment(communityData.assessment.completed, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
+      {% endif %}
     </div>
+  </div>
 
-    <div class="govuk-grid-column-one-third govuk-!-padding-left-9 govuk-!-padding-top-9">
-        <div class="govuk-!-margin-bottom-6">
-
-            {% if data.probationStatus === "Current" %}
-                <h2 class="govuk-heading-m">Offender manager</h2>
-                {% if offenderManager.allocatedDate %}
-                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offenderManager.staff.forenames | properCase }} {{ offenderManager.staff.surname | properCase }}</p>
-                    <p class="govuk-hint govuk-!-margin-top-0 govuk-!-margin-bottom-0">Allocated
-                        on {{ moment(offenderManager.allocatedDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
-                    {% if offenderManager.staff.email %}
-                        <p class="govuk-body govuk-!-margin-bottom-0">Email: {{ offenderManager.staff.email }}</p>
-                    {% endif %}
-                    {% if offenderManager.staff.telephone %}
-                        <p class="govuk-body">Phone: {{ offenderManager.staff.telephone }}</p>
-                    {% endif %}
-                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-top-3">
-                        Provider: {{ offenderManager.provider }}</p>
-                    <p class="govuk-body govuk-!-margin-bottom-0">LDU: {{ offenderManager.team.district }}</p>
-                    <p class="govuk-body govuk-!-margin-bottom-0">Team: {{ offenderManager.team.description }}</p>
-                    {% if offenderManager.team.email %}
-                        <p class="govuk-body govuk-!-margin-bottom-0">Team email: {{ offenderManager.team.email }}</p>
-                    {% endif %}
-                    {% if offenderManager.team.telephone %}
-                        <p class="govuk-body govuk-!-margin-bottom-0">Team
-                            phone: {{ offenderManager.team.telephone }}</p>
-                    {% endif %}
-                {% endif %}
-            {% endif %}
-
-            {% if probationDocuments | length %}
-                {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
-                {% if latestDocument.completedDate | length %}
-                    {% set monthsOld = moment().diff(moment(latestDocument.completedDate, 'YYYY-MM-DD'), 'months') %}
-                    <h2 class="govuk-heading-m govuk-!-margin-top-6">Last pre-sentence report</h2>
-                    <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
-                    <p class="govuk-hint govuk-!-margin-top-1">
-                        Delivered
-                        {% if monthsOld < 1 %}
-                            less than 1 month
-                        {% elseif monthsOld === 1 %}
-                            1 month
-                        {% elseif monthsOld > 6 %}
-                            more than 6 months
-                        {% else %}
-                            {{ monthsOld }} months
-                        {% endif %}
-                        ago ({{ moment(latestDocument.completedDate, 'YYYY-MM-DD').format(displayDateFormat) }})</p>
-                {% endif %}
-            {% endif %}
-
-            {% if communityData.assessment | length %}
-                <h2 class="govuk-heading-m govuk-!-margin-top-6">Last OASys assessment</h2>
-                <p class="govuk-body govuk-!-margin-bottom-0">OASys
-                    Assessment {{ communityData.assessment.type | capitalize | replace("_", " ") }}</p>
-                <p class="govuk-hint govuk-!-margin-top-1">Completed
-                    on {{ params.moment(communityData.assessment.completed, 'YYYY-MM-DD').format('D MMM YYYY') }}</p>
-            {% endif %}
-        </div>
-    </div>
-
-    {% endblock %}
+  {% endblock %}
