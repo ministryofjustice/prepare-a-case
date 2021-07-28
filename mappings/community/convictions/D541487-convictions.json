@@ -33,13 +33,13 @@
         {
           "convictionId": "1531139839",
           "active": true,
-          "inBreach": true,
+          "inBreach": false,
           "convictionDate": "2021-07-06",
           "awaitingPsr": true,
           "offences": [
             {
               "description": "Noise offences - 82200",
-              "main": true,
+              "main": false,
               "offenceDate": "2021-01-06"
             },
             {
@@ -49,7 +49,7 @@
             },
             {
               "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
-              "main": false,
+              "main": true,
               "offenceDate": "2017-11-10"
             },
             {
@@ -73,6 +73,37 @@
               },
               "requestedDate": "2021-07-05",
               "requiredDate": "2021-07-09"
+            }
+          ],
+          "requirements": [],
+          "documents": []
+        },
+        {
+          "convictionId": "1531139839",
+          "active": true,
+          "inBreach": true,
+          "convictionDate": "2021-07-06",
+          "awaitingPsr": false,
+          "offences": [
+            {
+              "description": "Noise offences - 82200",
+              "main": true,
+              "offenceDate": "2021-01-06"
+            },
+            {
+              "description": "Acknowledging bail in false name - 08303",
+              "main": false,
+              "offenceDate": "2017-12-06"
+            },
+            {
+              "description": "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801",
+              "main": false,
+              "offenceDate": "2017-11-10"
+            },
+            {
+              "description": "Highways Acts - Other offences, other than those caused by vehicles - 12400",
+              "main": false,
+              "offenceDate": "2017-11-01"
             }
           ],
           "requirements": [],
