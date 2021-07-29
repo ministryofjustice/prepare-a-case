@@ -2,7 +2,7 @@
   "id": "b71963d0-963c-4ed4-8c9d-1561146d7cd1",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/DX12340A/convictions/1309234876/sentences/123123128"
+    "urlPathPattern": "/offender/DX12340A/convictions/1309234876/sentence"
   },
   "response": {
     "headers": {
