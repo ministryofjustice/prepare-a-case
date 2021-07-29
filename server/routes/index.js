@@ -290,9 +290,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     let communityResponse = await getConviction(crn, convictionId)
 
     if (communityResponse) {
-      const { active, sentence } = communityResponse
+      const { active } = communityResponse
       if (active) {
-        const sentenceDetails = await getSentenceDetails(crn, convictionId, sentence.sentenceId)
+        const sentenceDetails = await getSentenceDetails(crn, convictionId)
         const custodyDetails = await getCustodyDetails(crn, convictionId)
         communityResponse = {
           ...communityResponse,

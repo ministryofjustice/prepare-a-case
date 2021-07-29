@@ -2,7 +2,7 @@
   "id": "4499f8a9e3a216efe38bfc538caa54b091883184",
   "request": {
     "method": "GET",
-    "path": "/offender/X320741/convictions/2500295343/sentences/2500298861",
+    "path": "/offender/X320741/convictions/2500295343/sentence",
     "headers": {
       "Accept": "application/json"
     }

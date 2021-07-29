@@ -17,8 +17,8 @@ const getProbationRecord = async crn => {
   return res.status >= 400 ? res : res.data
 }
 
-const getSentenceDetails = async (crn, convictionId, sentenceId) => {
-  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/sentences/${sentenceId}`) || { data: {} }
+const getSentenceDetails = async (crn, convictionId) => {
+  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/sentence`) || { data: {} }
   return res.data
 }
 

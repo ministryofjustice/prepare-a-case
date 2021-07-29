@@ -8,7 +8,7 @@ const pactResponseMock = require('./get-sentence-details.test.pact.json')
 const schema = require('../../../schemas/get-sentence.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
-  describe('GET /offender/{crn}/convictions/{convictionId}/sentences/{sentenceId}', () => {
+  describe('GET /offender/{crn}/convictions/{convictionId}/sentence', () => {
     const mockData = pactResponseMock.response.jsonBody
     const apiUrl = pactResponseMock.request.path
 

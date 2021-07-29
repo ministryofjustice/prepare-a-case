@@ -227,7 +227,7 @@ describe('Routes', () => {
     }
     const response = await request(app).get('/B14LO/case/668911253/record/1403337513')
     expect(caseService.getCase).toHaveBeenCalledWith('B14LO', '668911253')
-    expect(communityService.getSentenceDetails).toHaveBeenCalledWith('D985513', '1403337513', '12345678')
+    expect(communityService.getSentenceDetails).toHaveBeenCalledWith('D985513', '1403337513')
     return response
   })
 
