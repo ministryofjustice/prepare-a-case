@@ -2,7 +2,7 @@
   "id": "729583fe-ab3e-479a-b0cd-e858351197fa",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/D991494/convictions/1361422142/sentence"
+    "urlPathPattern": "/offender/E654321/convictions/345464567/sentence"
   },
   "response": {
     "headers": {
@@ -673,6 +673,12 @@
       },
       "links": {
         "deliusContactList": "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=1361422142&eventId=123123140"
+      },
+      "custody": {
+        "custodialType": {
+          "code": "In Custody",
+          "description": "In Custody"
+        }
       }
     }
   }

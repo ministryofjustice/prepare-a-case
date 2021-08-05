@@ -653,8 +653,8 @@
         "sentenceId": 2500298861,
         "sentenceDescription": "ORA Adult Custody (inc PSS)",
         "custodialType": {
-          "code": "P",
-          "description": "Post Sentence Supervision"
+          "code": "B",
+          "description": "On licence"
         },
         "mainOffenceDescription": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
         "sentenceDate": "2018-12-03",
@@ -669,11 +669,10 @@
       },
       "custody": {
         "custodialType": {
-          "code": "P",
-          "description": "Post Sentence Supervision"
+          "code": "B",
+          "description": "On licence"
         },
-        "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",
-        "pssEndDate": "{{now offset='12 months' format='yyyy-MM-dd'}}"
+        "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}"
       }
     }
   }

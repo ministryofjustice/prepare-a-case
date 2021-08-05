@@ -155,14 +155,6 @@
       },
       "links": {
         "deliusContactList": "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=1403337513&eventId=123123127"
-      },
-      "custody": {
-        "custodialType": {
-          "code": "P",
-          "description": "Post Sentence Supervision"
-        },
-        "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",
-        "pssEndDate": "{{now offset='12 months' format='yyyy-MM-dd'}}"
       }
   }
   }

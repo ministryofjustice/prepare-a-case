@@ -1,0 +1,16 @@
+{
+  "id": "83d75f91-8e21-4b02-a8ca-ca92cb6e993d",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/DX12340A/convictions/2360414697/sentence/custody"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "licenceExpiryDate": "2021-08-05"
+    }
+  }
+}
