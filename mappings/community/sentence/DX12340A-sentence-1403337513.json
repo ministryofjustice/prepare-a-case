@@ -10,9 +10,13 @@
     },
     "status": 200,
     "jsonBody": {
-      "links": {
-        "deliusContactList": "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=1403337513&eventId=123123127"
-      },
+      "sentenceId": 123123127,
+      "sentenceDescription": "ORA Community Order",
+      "mainOffenceDescription": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
+      "sentenceDate": "2019-05-20",
+      "actualReleaseDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+      "length": 18,
+      "lengthUnits": "Months",
       "attendances": [
         {
           "contactId": 867430,
@@ -133,7 +137,33 @@
         "attended": 2,
         "acceptableAbsences": 0,
         "unacceptableAbsences": 0
+      },
+      "currentOrderHeaderDetail": {
+        "sentenceId": 123123127,
+        "sentenceDescription": "ORA Community Order",
+        "custodialType": {
+          "code": "P",
+          "description": "Post Sentence Supervision"
+        },
+        "mainOffenceDescription": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
+        "sentenceDate": "2019-05-20",
+        "actualReleaseDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+        "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",
+        "pssEndDate": "{{now offset='12 months' format='yyyy-MM-dd'}}",
+        "length": 18,
+        "lengthUnits": "Months"
+      },
+      "links": {
+        "deliusContactList": "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=1403337513&eventId=123123127"
+      },
+      "custody": {
+        "custodialType": {
+          "code": "P",
+          "description": "Post Sentence Supervision"
+        },
+        "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",
+        "pssEndDate": "{{now offset='12 months' format='yyyy-MM-dd'}}"
       }
-    }
+  }
   }
 }

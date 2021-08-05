@@ -2,7 +2,7 @@
   "id": "b71963d0-963c-4ed4-8c9d-1561146d7cd1",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/E654321/convictions/345464567/sentence"
+    "urlPathPattern": "/offender/V654123/convictions/345464567/sentence"
   },
   "response": {
     "headers": {
@@ -10,9 +10,13 @@
     },
     "status": 200,
     "jsonBody": {
-      "links": {
-        "deliusContactList": "https://ndelius-dummy-urldeeplink.jsp?component=ContactList&offenderId=345464567&eventId=99483532"
-      },
+      "sentenceId": 1502610579,
+      "sentenceDescription": "ORA Community Order",
+      "mainOffenceDescription": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
+      "sentenceDate": "2019-05-20",
+      "actualReleaseDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+      "length": 18,
+      "lengthUnits": "Months",
       "attendances": [
         {
           "contactId": 1687499199,
@@ -1073,6 +1077,15 @@
       ],
       "currentOrderHeaderDetail": {
         "sentenceId": 1502610579,
+        "custodialType": {
+          "code": "NOT_IN_CUSTODY",
+          "description": "Not in custody"
+        }
+      },
+      "links": {
+        "deliusContactList": "https://ndelius-dummy-urldeeplink.jsp?component=ContactList&offenderId=345464567&eventId=99483532"
+      },
+      "custody": {
         "custodialType": {
           "code": "NOT_IN_CUSTODY",
           "description": "Not in custody"
