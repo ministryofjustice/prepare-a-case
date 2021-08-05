@@ -384,8 +384,22 @@
               "default": ""
             }
           }
-        }
-      },
+        },
+        "licenceExpiryDate": {
+          "$id": "#/properties/custody/properties/licenceExpiryDate",
+          "type": "string",
+          "title": "The licenceExpiryDate schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        },
+        "pssEndDate": {
+        "$id": "#/properties/custody/properties/pssEndDate",
+        "type": "string",
+        "title": "The pssEndDate schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": ""
+      }
+    },
       "additionalProperties": false
     },
     "additionalProperties": false
