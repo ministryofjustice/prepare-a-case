@@ -8,49 +8,49 @@
   "required": [],
   "properties": {
     "sentenceId": {
-      "$id": "#/properties/currentOrderHeaderDetail/properties/sentenceId",
+      "$id": "#/properties/sentenceId",
       "type": "integer",
       "title": "The sentenceId schema",
       "description": "An explanation about the purpose of this instance.",
       "default": 0
     },
     "sentenceDescription": {
-      "$id": "#/properties/currentOrderHeaderDetail/properties/sentenceDescription",
+      "$id": "#/properties/sentenceDescription",
       "type": "string",
       "title": "The sentenceDescription schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
     },
     "mainOffenceDescription": {
-      "$id": "#/properties/currentOrderHeaderDetail/properties/mainOffenceDescription",
+      "$id": "#/properties/mainOffenceDescription",
       "type": "string",
       "title": "The mainOffenceDescription schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
     },
     "sentenceDate": {
-      "$id": "#/properties/currentOrderHeaderDetail/properties/sentenceDate",
+      "$id": "#/properties/sentenceDate",
       "type": "string",
       "title": "The sentenceDate schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
     },
     "actualReleaseDate": {
-      "$id": "#/properties/currentOrderHeaderDetail/properties/actualReleaseDate",
+      "$id": "#/properties/actualReleaseDate",
       "type": "string",
       "title": "The actualReleaseDate schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
     },
     "length": {
-      "$id": "#/properties/currentOrderHeaderDetail/properties/length",
+      "$id": "#/properties/length",
       "type": "integer",
       "title": "The length schema",
       "description": "An explanation about the purpose of this instance.",
       "default": 0
     },
     "lengthUnits": {
-      "$id": "#/properties/currentOrderHeaderDetail/properties/lengthUnits",
+      "$id": "#properties/lengthUnits",
       "type": "string",
       "title": "The lengthUnits schema",
       "description": "An explanation about the purpose of this instance.",
