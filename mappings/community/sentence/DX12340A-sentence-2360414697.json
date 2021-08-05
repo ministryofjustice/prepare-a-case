@@ -161,7 +161,7 @@
           "code": "P",
           "description": "Post Sentence Supervision"
         },
-
+        "licenceExpiryDate": "2021-08-05",
         "pssEndDate": "2022-01-05"
       }
     }
