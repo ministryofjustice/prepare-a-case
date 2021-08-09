@@ -10,13 +10,9 @@
     },
     "status": 200,
     "jsonBody": {
-      "sentenceId": 1502610579,
-      "sentenceDescription": "ORA Community Order",
-      "mainOffenceDescription": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
-      "sentenceDate": "2019-05-20",
-      "actualReleaseDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
-      "length": 18,
-      "lengthUnits": "Months",
+      "links": {
+        "deliusContactList": "https://ndelius-dummy-urldeeplink.jsp?component=ContactList&offenderId=345464567&eventId=99483532"
+      },
       "attendances": [
         {
           "contactId": 1687499199,
@@ -1077,15 +1073,6 @@
       ],
       "currentOrderHeaderDetail": {
         "sentenceId": 1502610579,
-        "custodialType": {
-          "code": "NOT_IN_CUSTODY",
-          "description": "Not in custody"
-        }
-      },
-      "links": {
-        "deliusContactList": "https://ndelius-dummy-urldeeplink.jsp?component=ContactList&offenderId=345464567&eventId=99483532"
-      },
-      "custody": {
         "custodialType": {
           "code": "NOT_IN_CUSTODY",
           "description": "Not in custody"

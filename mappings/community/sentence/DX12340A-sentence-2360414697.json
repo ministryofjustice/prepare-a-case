@@ -10,8 +10,159 @@
     },
     "status": 200,
     "jsonBody": {
+      "sentenceId": 123123127,
+      "sentenceDescription": "ORA Community Order",
+      "mainOffenceDescription": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
+      "sentenceDate": "2019-05-20",
+      "actualReleaseDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+      "length": 18,
+      "lengthUnits": "Months",
+      "attendances": [
+        {
+          "contactId": 867430,
+          "attended": false,
+          "complied": false,
+          "attendanceDate": "2018-03-06",
+          "contactType": {
+            "description": "Planned office visit",
+            "code": "899407"
+          },
+          "outcome": "Employment"
+        },
+        {
+          "contactId": 964445,
+          "attended": false,
+          "complied": false,
+          "attendanceDate": "2018-03-06",
+          "contactType": {
+            "description": "Planned office visit",
+            "code": "985513"
+          }
+        },
+        {
+          "contactId": 928547,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2020-03-04",
+          "contactType": {
+            "description": "Planned office visit",
+            "code": "947482"
+          },
+          "outcome": "Professional judgement decision"
+        },
+        {
+          "contactId": 868600,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2019-10-09",
+          "contactType": {
+            "description": "Unpaid work",
+            "code": "878549"
+          },
+          "outcome": "Medical"
+        },
+        {
+          "contactId": 826480,
+          "attended": false,
+          "complied": false,
+          "attendanceDate": "2018-11-08",
+          "contactType": {
+            "description": "Planned office visit",
+            "code": "913536"
+          },
+          "outcome": "Professional judgement decision"
+        },
+        {
+          "contactId": 881479,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-07-22",
+          "contactType": {
+            "description": "Planned office visit",
+            "code": "950459"
+          },
+          "outcome": "Professional judgement decision"
+        },
+        {
+          "contactId": 874408,
+          "attended": true,
+          "complied": false,
+          "attendanceDate": "2018-10-30",
+          "contactType": {
+            "description": "IAPS / Accredited programme",
+            "code": "911596"
+          },
+          "outcome": "Rescheduled"
+        },
+        {
+          "contactId": 996547,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-06-06",
+          "contactType": {
+            "description": "Appointment with External Agency",
+            "code": "809554"
+          },
+          "outcome": "Medical"
+        },
+        {
+          "contactId": 932430,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-12-14",
+          "contactType": {
+            "description": "IAPS / Accredited programme",
+            "code": "848483"
+          },
+          "outcome": "Rescheduled"
+        },
+        {
+          "contactId": 993407,
+          "attended": true,
+          "complied": true,
+          "attendanceDate": "2018-08-17",
+          "contactType": {
+            "description": "Unpaid work",
+            "code": "917402"
+          },
+          "outcome": "Professional judgement decision"
+        }
+      ],
+      "unpaidWork": {
+        "status": "Terminated",
+        "statusDate": "2018-01-23",
+        "minutesOffered": 720,
+        "minutesCompleted": 120,
+        "appointmentsToDate": 2,
+        "attended": 2,
+        "acceptableAbsences": 0,
+        "unacceptableAbsences": 0
+      },
+      "currentOrderHeaderDetail": {
+        "sentenceId": 123123127,
+        "sentenceDescription": "ORA Community Order",
+        "custodialType": {
+          "code": "P",
+          "description": "Post Sentence Supervision"
+        },
+        "mainOffenceDescription": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
+        "sentenceDate": "2019-05-20",
+        "actualReleaseDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+        "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",
+        "pssEndDate": "{{now offset='12 months' format='yyyy-MM-dd'}}",
+        "length": 18,
+        "lengthUnits": "Months"
+      },
       "links": {
         "deliusContactList": "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=2360414697&eventId=123123130"
+      },
+      "custody": {
+        "custodialType": {
+          "code": "P",
+          "description": "Post Sentence Supervision"
+        },
+        "licenceExpiryDate": "2021-08-05",
+        "pssEndDate": "2022-01-05"
       }
     }
   }

@@ -13,6 +13,13 @@
     },
     "status": 200,
     "jsonBody": {
+      "sentenceId": 2500298861,
+      "sentenceDescription": "CJA - Intermediate Public Prot.",
+      "mainOffenceDescription": "Common assault and battery - 10501",
+      "sentenceDate": "2018-12-03",
+      "actualReleaseDate": "2019-07-03",
+      "length": 11,
+      "lengthUnits": "Months",
       "attendances": [
         {
           "contactId": 1325,
@@ -63,6 +70,14 @@
       },
       "links": {
         "deliusContactList": "https://ndelius.test.probation.service.justice.gov.uk/NDelius-war/delius/JSP/deeplink.jsp?component=ContactList&offenderId=2500343964&eventId=2500295343"
+      },
+      "custody": {
+        "custodialType": {
+          "code": "P",
+          "description": "Post Sentence Supervision"
+        },
+        "licenceExpiryDate": "2019-11-03",
+        "pssEndDate": "2020-06-03"
       }
     }
   }
