@@ -53,21 +53,6 @@
         "unacceptableAbsences": 1,
         "status": "Being worked"
       },
-      "currentOrderHeaderDetail": {
-        "sentenceId": 2500298861,
-        "sentenceDescription": "CJA - Intermediate Public Prot.",
-        "custodialType": {
-          "code": "P",
-          "description": "Post Sentence Supervision"
-        },
-        "mainOffenceDescription": "Common assault and battery - 10501",
-        "sentenceDate": "2018-12-03",
-        "actualReleaseDate": "2019-07-03",
-        "licenceExpiryDate": "2019-11-03",
-        "pssEndDate": "2020-06-03",
-        "length": 11,
-        "lengthUnits": "Months"
-      },
       "links": {
         "deliusContactList": "https://ndelius.test.probation.service.justice.gov.uk/NDelius-war/delius/JSP/deeplink.jsp?component=ContactList&offenderId=2500343964&eventId=2500295343"
       },

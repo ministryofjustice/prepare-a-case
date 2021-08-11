@@ -1070,14 +1070,7 @@
             "code": "COPT"
           }
         }
-      ],
-      "currentOrderHeaderDetail": {
-        "sentenceId": 1502610579,
-        "custodialType": {
-          "code": "NOT_IN_CUSTODY",
-          "description": "Not in custody"
-        }
-      }
+      ]
     }
   }
 }
