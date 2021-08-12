@@ -1075,13 +1075,6 @@
           }
         }
       ],
-      "currentOrderHeaderDetail": {
-        "sentenceId": 1502610579,
-        "custodialType": {
-          "code": "NOT_IN_CUSTODY",
-          "description": "Not in custody"
-        }
-      },
       "links": {
         "deliusContactList": "https://ndelius-dummy-urldeeplink.jsp?component=ContactList&offenderId=345464567&eventId=99483532"
       },

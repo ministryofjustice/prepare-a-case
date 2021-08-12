@@ -58,18 +58,6 @@
         "lengthUnits": "Months",
         "terminationDate": "2018-01-23",
         "terminationReason": "ICMS Miscellaneous Event",
-        "currentOrderHeaderDetail" : {
-          "custodialTypeCode" : "B",
-          "custodialTypeDescription": "ORA Adult Custody (inc PSS)",
-          "mainOffenceDescription": "Dangerous driving/Aid, abet cause or permit reckless driving - 80200",
-          "status": "Released - On Licence",
-          "disposalDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
-          "actualReleaseDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
-          "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}",
-          "pssEndDate": "{{now offset='12 months' format='yyyy-MM-dd'}}",
-          "length": 12,
-          "lengthUnit": "Months"
-        },
         "startDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
         "endDate": "{{now offset='6 months' format='yyyy-MM-dd'}}"
       },
