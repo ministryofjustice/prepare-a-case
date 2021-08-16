@@ -25,6 +25,7 @@
 
 {% if communityData.sentenceDetails.custody.custodialType.code %}
     {%- set custodialOrder = communityData.sentenceDetails.custody -%}
+    {%- set inCustody = communityData.sentenceDetails.custody.custodialType.description == 'In Custody'-%}
     {%- set isOnLicence = moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').isAfter() -%}
 {% endif %}
 
@@ -134,9 +135,9 @@
 
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
-                    <p class="govuk-hint govuk-!-margin-bottom-0 qa-start-title">{{ "Post-release status" if custodialOrder else "Order started" }}</p>
+                    <p class="govuk-hint govuk-!-margin-bottom-0 qa-start-title">{{ "Post-release status" if custodialOrder and not inCustody else "Order started" }}</p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-start-date">
-                        {%- if custodialOrder -%}
+                        {%- if custodialOrder and not inCustody -%}
                             {{ "On licence" if custodialOrder.custodialType.code === "B" else "On post-sentence supervision (PSS)" }}
                         {% else %}
                             {{ moment(communityData.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}
@@ -145,14 +146,14 @@
                 </div>
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-end-title">
-                        {% if custodialOrder %}
+                        {% if custodialOrder and not inCustody %}
                             {{ "Licence started" if isOnLicence else "PSS started" }}
                         {% else %}
                             {{ "Order ends" if currentOrder.active else "Order ended" }}
                         {% endif %}
                     </p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-end-date">
-                        {% if custodialOrder %}
+                        {% if custodialOrder and not inCustody %}
                             {{ moment(communityData.custodyDetails.releaseDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicence else moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% else %}
                             {{ moment(communityData.sentence.endDate, 'YYYY-MM-DD').format(displayDateFormat) if communityData.active else moment(communityData.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}
@@ -161,7 +162,7 @@
                 </div>
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-elapsed-title">
-                        {% if custodialType === "In Custody"%}
+                        {% if inCustody %}
                             {{ "Status" }}
                         {% elseif custodialOrder.custodialType.code %}
                             {{ "Licence ends" if isOnLicence else "PSS ends" }}
@@ -170,7 +171,7 @@
                         {% endif %}
                     </p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-elapsed-time">
-                        {% if custodialType === "In Custody"%}
+                        {% if inCustody %}
                         {{ "In custody" }}
                         {% elseif custodialOrder %}
                             {{ moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicence else moment(custodialOrder.pssEndDate, 'YYYY-MM-DD').format(displayDateFormat) }}
@@ -181,7 +182,7 @@
                 </div>
             </div>
 
-            {% if communityData.custodyDetails %}
+            {% if communityData.custodyDetails | length %}
                 <h2 class="govuk-heading-m govuk-!-margin-top-8">Post release dates</h2>
                 <table class="govuk-table">
                     <thead class="govuk-table__head">
