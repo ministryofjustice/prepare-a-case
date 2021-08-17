@@ -658,6 +658,12 @@
       },
       "links": {
         "deliusContactList": "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=1361422142&eventId=123123140"
+      },
+      "custody": {
+        "custodialType": {
+          "code": "NOT_IN_CUSTODY",
+          "description": "Not in custody"
+        }
       }
     }
   }
