@@ -166,7 +166,7 @@
                 </div>
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-elapsed-title">
-                        {% if inCustody or communityData.sentence%}
+                        {% if inCustody %}
                             {{ "Status" }}
                         {% elseif isOnLicence or isOnPSS %}
                             {{ "Licence ends" if isOnLicence }}
