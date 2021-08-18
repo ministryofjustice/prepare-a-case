@@ -152,7 +152,7 @@
                             {{ "Licence started" if isOnLicence }}
                             {{ "PSS started" if isOnPSS  }}
                         {% else %}
-                            {{ "Order ends" if currentOrder.active else "Order ended" }}
+                            {{ "Order ends" if communityData.active else "Order ended" }}
                         {% endif %}
                     </p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-end-date">
