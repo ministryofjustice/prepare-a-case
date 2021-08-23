@@ -7,7 +7,7 @@ For more informations, check our [Runbook](https://dsdmoj.atlassian.net/wiki/spa
 
 ## Prerequisities
 Before you begin, ensure you have met the following requirements:
-* You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Fermium) >= v14.17.3
+* You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Fermium) >= v14.17.5
 
 For code quality the project adheres to [JavaScript Standard Style](https://standardjs.com/) which requires minimal configuration of your chosen IDE.
 
@@ -42,7 +42,7 @@ If unspecified, the app will use your local court-case-service app but you can a
  
 Start the standalone WireMock server
 ```
-java -jar wiremock-jre8-standalone-2.29.0.jar --global-response-templating --port 9091
+java -jar wiremock-jre8-standalone-2.30.1.jar --global-response-templating --port 9091
 ```
 
 And then, to build assets and start app with
@@ -71,7 +71,7 @@ For local running, start redis instance by:
 
 Start the standalone WireMock server
 ```
-java -jar wiremock-jre8-standalone-2.29.0.jar --global-response-templating --port 9091
+java -jar wiremock-jre8-standalone-2.30.1.jar --global-response-templating --port 9091
 ```
 
 Then run the server in test mode by:
