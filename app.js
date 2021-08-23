@@ -1,3 +1,4 @@
+const fs = require('fs')
 const axios = require('axios')
 const { promisify } = require('util')
 const { Service } = require('axios-middleware')
@@ -30,6 +31,8 @@ module.exports = function createApp ({ signInService, userService }) {
   const service = new Service(axios)
   const app = express()
 
+  const data = fs.readFileSync('banner.txt', 'utf8')
+  console.log(data.toString())
   console.info(`Starting Prepare a Case ${config.appVersion} using NodeJS ${nodeVersion} on ${hostName}`)
 
   auth.init(signInService)
