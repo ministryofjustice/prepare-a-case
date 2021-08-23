@@ -26,8 +26,8 @@
 {% if communityData.sentenceDetails.custody.custodialType.code %}
     {%- set custodialOrder = communityData.sentenceDetails.custody -%}
     {%- set inCustody = communityData.sentenceDetails.custody.custodialType.description == 'In Custody'-%}
-    {%- set isOnLicence = moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').isAfter() -%}
-    {%- set isOnPSS = moment(custodialOrder.pssEndDate, 'YYYY-MM-DD').isAfter() -%}
+    {%- set isOnLicence = communityData.sentenceDetails.custody.custodialType.code == 'B' -%}
+    {%- set isOnPSS = communityData.sentenceDetails.custody.custodialType.code == 'P' -%}
 {% endif %}
 
 {%- set preciseDiff = params.preciseDiff -%}
