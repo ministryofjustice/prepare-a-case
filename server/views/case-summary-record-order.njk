@@ -179,7 +179,7 @@
                         {% if inCustody %}
                         {{ "In custody" }}
                         {% elseif isOnLicence or isOnPSS %}
-                            {{ moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicence }}
+                            {{ moment(communityData.custodyDetails.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicence }}
                             {{ moment(custodialOrder.pssEndDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnPSS }}
                         {% else %}
                             {{ elapsedTime if communityData.active else communityData.sentence.terminationReason }}
