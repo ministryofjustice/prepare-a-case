@@ -25,9 +25,9 @@
 
 {% if communityData.sentenceDetails.custody.custodialType.code %}
     {%- set custodialOrder = communityData.sentenceDetails.custody -%}
-    {%- set inCustody = communityData.sentenceDetails.custody.custodialType.description == 'In Custody'-%}
-    {%- set isOnLicence = communityData.sentenceDetails.custody.custodialType.code == 'B' -%}
-    {%- set isOnPSS = communityData.sentenceDetails.custody.custodialType.code == 'P' -%}
+    {%- set inCustody = custodialOrder.custodialType.description === "In Custody"-%}
+    {%- set isOnLicence = custodialOrder.custodialType.code === "B" -%}
+    {%- set isOnPSS = custodialOrder.custodialType.code === "P" -%}
 {% endif %}
 
 {%- set preciseDiff = params.preciseDiff -%}
@@ -138,9 +138,10 @@
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-start-title">{{ "Post-release status" if isOnLicence or isOnPSS else "Order started" }}</p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-start-date">
-                        {%- if isOnLicence or isOnPSS -%}
-                            {{ "On licence" if isOnLicence }}
-                            {{ "On post-sentence supervision (PSS)" if isOnPSS }}
+                        {% if isOnLicence %}
+                            On licence
+                        {% elseif isOnPSS %}
+                            On post-sentence supervision (PSS)
                         {% else %}
                             {{ moment(communityData.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% endif %}
@@ -148,17 +149,19 @@
                 </div>
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-end-title">
-                        {% if isOnLicence or isOnPSS %}
-                            {{ "Licence started" if isOnLicence }}
-                            {{ "PSS started" if isOnPSS  }}
+                        {% if isOnLicence %}
+                            Licence started
+                        {% elseif isOnPSS %}
+                            PSS started
                         {% else %}
                             {{ "Order ends" if communityData.active else "Order ended" }}
                         {% endif %}
                     </p>
                     <p class="govuk-body-l govuk-!-font-weight-bold govuk-!-margin-0 qa-end-date">
-                        {% if isOnLicence or isOnPSS %}
-                            {{ moment(communityData.custodyDetails.releaseDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnLicence }}
-                            {{ moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) if isOnPSS }}
+                        {% if isOnLicence %}
+                            {{ moment(communityData.custodyDetails.releaseDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                        {% elseif isOnPSS %}
+                            {{ moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% else %}
                             {{ moment(communityData.sentence.endDate, 'YYYY-MM-DD').format(displayDateFormat) if communityData.active else moment(communityData.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% endif %}
@@ -167,10 +170,11 @@
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-hint govuk-!-margin-bottom-0 qa-elapsed-title">
                         {% if inCustody %}
-                            {{ "Status" }}
-                        {% elseif isOnLicence or isOnPSS %}
-                            {{ "Licence ends" if isOnLicence }}
-                            {{ "PSS ends" if isOnPSS }}
+                            Status
+                        {% elseif isOnLicence %}
+                            Licence ends
+                        {% elseif isOnPSS %}
+                            PSS ends
                         {% else %}
                             {{ "Time elapsed" if communityData.active else "Reason" }}
                         {% endif %}
