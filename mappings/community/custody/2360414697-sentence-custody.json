@@ -10,7 +10,7 @@
     },
     "status": 200,
     "jsonBody": {
-      "licenceExpiryDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
+      "licenceExpiryDate": "{{now format='yyyy-MM-dd'}}",
       "releaseDate": "{{now offset='-12 months' format='yyyy-MM-dd'}}"
     }
   }

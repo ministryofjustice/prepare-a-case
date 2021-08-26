@@ -657,7 +657,7 @@
           "code": "B",
           "description": "Released - On Licence"
         },
-        "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}"
+        "licenceExpiryDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}"
       }
     }
   }
