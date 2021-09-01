@@ -3,17 +3,28 @@ import { Before, And, Given, Then, When } from 'cypress-cucumber-preprocessor/st
 import 'cypress-axe'
 import moment from 'moment'
 
+const shortDateFormat = 'YYYY-MM-DD'
+const longDateFormat = 'dddd D MMMM'
 const displayDateFormat = 'D MMM YYYY'
 
 function correctDates ($string) {
   if ($string.includes('$TODAY')) {
-    $string = $string.replace('$TODAY', moment().format('YYYY-MM-DD'))
+    $string = $string.replace('$TODAY', moment().format(shortDateFormat))
   }
   if ($string.includes('$LONG_TODAY')) {
-    $string = $string.replace('$LONG_TODAY', moment().format('dddd D MMMM'))
+    $string = $string.replace('$LONG_TODAY', moment().format(longDateFormat))
   }
-  if ($string.includes('$LONG_TOMORROW')) {
-    $string = $string.replace('$LONG_TOMORROW', moment().add(1, 'days').format('dddd D MMMM'))
+  if ($string.includes('$END_TODAY')) {
+    $string = $string.replace('$END_TODAY', moment().format(displayDateFormat))
+  }
+  if ($string.includes('$TOMORROW')) {
+    $string = $string.replace('$TOMORROW', moment().add(1, 'days').format(shortDateFormat))
+  }
+  if ($string.includes('$END_TOMORROW')) {
+    $string = $string.replace('$END_TOMORROW', moment().add(1, 'days').format(displayDateFormat))
+  }
+  if ($string.includes('$ONE_YEAR_AGO')) {
+    $string = $string.replace('$ONE_YEAR_AGO', moment().add(-1, 'years').format(displayDateFormat))
   }
   if ($string.includes('$SIX_MONTHS_AGO')) {
     $string = $string.replace('$SIX_MONTHS_AGO', moment().add(-6, 'months').format(displayDateFormat))
@@ -29,9 +40,6 @@ function correctDates ($string) {
   }
   if ($string.includes('$FIVE_MONTHS_TIME')) {
     $string = $string.replace('$FIVE_MONTHS_TIME', moment().add(5, 'months').format(displayDateFormat))
-  }
-  if ($string.includes('$END_TODAY')) {
-    $string = $string.replace('$END_TODAY', moment().format(displayDateFormat))
   }
   return $string
 }
