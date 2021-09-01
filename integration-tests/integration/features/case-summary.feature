@@ -445,8 +445,12 @@ Feature: Case summary
     And I should see the text "PSS started" within element with class "qa-end-title"
     And I should see the text "PSS ends" within element with class "qa-elapsed-title"
     And I should see the text "On post-sentence supervision (PSS)" within element with class "qa-start-date"
-    And I should see the text "$END_TODAY" within element with class "qa-end-date"
+    And I should see the text "$END_TOMORROW" within element with class "qa-end-date"
     And I should see the text "$FIVE_MONTHS_TIME" within element with class "qa-elapsed-time"
+
+    And I should see the following table rows
+      | Licence                   | $ONE_YEAR_AGO | $END_TODAY        |
+      | Post sentence supervision | $END_TOMORROW | $FIVE_MONTHS_TIME |
 
     And I should see the level 2 heading "Contact list"
     And I should see link "View contact list (opens in NDelius)" with href "https://ndelius-dummy-url/deeplink.jsp?component=ContactList&offenderId=2360414697&eventId=123123130"
