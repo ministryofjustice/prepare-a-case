@@ -445,7 +445,7 @@ Feature: Case summary
     And I should see the text "PSS started" within element with class "qa-end-title"
     And I should see the text "PSS ends" within element with class "qa-elapsed-title"
     And I should see the text "On post-sentence supervision (PSS)" within element with class "qa-start-date"
-    And I should see the text "$END_TODAY" within element with class "qa-end-date"
+    And I should see the text "$LONG_TOMORROW" within element with class "qa-end-date"
     And I should see the text "$FIVE_MONTHS_TIME" within element with class "qa-elapsed-time"
 
     And I should see the level 2 heading "Contact list"

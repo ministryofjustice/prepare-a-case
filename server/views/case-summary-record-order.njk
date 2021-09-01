@@ -161,7 +161,7 @@
                         {% if isOnLicence %}
                             {{ moment(communityData.custodyDetails.releaseDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% elseif isOnPSS %}
-                            {{ moment(custodialOrder.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                            {{ moment(communityData.custodyDetails.topupSupervisionStartDate, 'YYYY-MM-DD').format(displayDateFormat) if communityData.custodyDetails.topupSupervisionStartDate | length }}
                         {% else %}
                             {{ moment(communityData.sentence.endDate, 'YYYY-MM-DD').format(displayDateFormat) if communityData.active else moment(communityData.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {% endif %}
@@ -185,7 +185,7 @@
                         {% elseif isOnLicence %}
                             {{ moment(communityData.custodyDetails.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) }}
                         {%  elseif isOnPSS %}
-                            {{ moment(custodialOrder.pssEndDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                            {{ moment(communityData.custodyDetails.topupSupervisionExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) if communityData.custodyDetails.topupSupervisionExpiryDate | length }}
                         {% else %}
                             {{ elapsedTime if communityData.active else communityData.sentence.terminationReason }}
                         {% endif %}

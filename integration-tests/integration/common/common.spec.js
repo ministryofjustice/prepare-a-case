@@ -12,6 +12,9 @@ function correctDates ($string) {
   if ($string.includes('$LONG_TODAY')) {
     $string = $string.replace('$LONG_TODAY', moment().format('dddd D MMMM'))
   }
+  if ($string.includes('$LONG_TOMORROW')) {
+    $string = $string.replace('$LONG_TOMORROW', moment().add(1, 'days').format('dddd D MMMM'))
+  }
   if ($string.includes('$SIX_MONTHS_AGO')) {
     $string = $string.replace('$SIX_MONTHS_AGO', moment().add(-6, 'months').format(displayDateFormat))
   }
