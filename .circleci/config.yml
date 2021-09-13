@@ -64,11 +64,11 @@ executors:
     working_directory: ~/app
   builder:
     docker:
-      - image: cimg/node:14.17.3-browsers
+      - image: cimg/node:14.17.5-browsers
     working_directory: ~/app
   integration-tests:
     docker:
-      - image: cimg/node:14.17.3-browsers
+      - image: cimg/node:14.17.5-browsers
       - image: bitnami/redis:5.0
         environment:
           ALLOW_EMPTY_PASSWORD=yes
@@ -161,7 +161,7 @@ jobs:
           command: npm run minify-js-css
       - run:
           name: Run wiremock
-          command: java -jar wiremock-jre8-standalone-2.29.0.jar --global-response-templating --port 9091
+          command: java -jar wiremock-jre8-standalone-2.30.1.jar --global-response-templating --port 9091
           background: true
       - run:
           name: Run the app

@@ -10,8 +10,10 @@
     },
     "status": 200,
     "jsonBody": {
-      "licenceExpiryDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}",
-      "releaseDate": "{{now offset='-12 months' format='yyyy-MM-dd'}}"
+      "licenceExpiryDate": "{{now format='yyyy-MM-dd'}}",
+      "releaseDate": "{{now offset='-12 months' format='yyyy-MM-dd'}}",
+      "topupSupervisionStartDate": "{{now offset='1 days' format='yyyy-MM-dd'}}",
+      "topupSupervisionExpiryDate": "{{now offset='5 months' format='yyyy-MM-dd'}}"
     }
   }
 }

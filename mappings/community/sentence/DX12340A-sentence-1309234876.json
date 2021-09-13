@@ -655,9 +655,9 @@
       "custody": {
         "custodialType": {
           "code": "B",
-          "description": "On licence"
+          "description": "Released - On Licence"
         },
-        "licenceExpiryDate": "{{now offset='6 months' format='yyyy-MM-dd'}}"
+        "licenceExpiryDate": "{{now offset='-6 months' format='yyyy-MM-dd'}}"
       }
     }
   }
