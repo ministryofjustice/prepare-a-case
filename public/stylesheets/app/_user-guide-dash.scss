@@ -1,0 +1,5 @@
+// 'pac' prefix used for custom styles to prevent collisions
+.pac-dash-list > li:before {
+  content: "—";
+  overflow: hidden;
+}
