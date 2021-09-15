@@ -85,6 +85,10 @@ And('I should see the Possible NDelius record badge', () => {
   cy.get('.moj-badge--red').should('exist')
 })
 
+And('I should see an iframe with src {string}', ($string) => {
+  cy.get('iframe').should('have.attr', 'src').and('include', $string)
+})
+
 And('I should see the tag {string}', $string => {
   cy.get('.govuk-tag').contains($string).should('exist')
 })
@@ -230,7 +234,7 @@ And('I should see link {string} with href {string}', ($string, $href) => {
   cy.get('.govuk-link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
 })
 
-And('Link with text {string} should not be visible', ($string, $href) => {
+And('Link with text {string} should not be visible', ($string) => {
   cy.get('.govuk-link').contains($string).should('not.be.visible')
 })
 
@@ -320,6 +324,10 @@ And('I should see the text input label {string}', $string => {
 
 And('I should see the text {string} in a table cell', $string => {
   cy.get('.govuk-table__cell').contains($string).should('exist')
+})
+
+And('I should see the text {string} in a list', $string => {
+  cy.get('.govuk-list').contains($string).should('exist')
 })
 
 And('I should see the text input with id {string}', $id => {
