@@ -54,6 +54,7 @@ module.exports = function createApp ({ signInService, userService }) {
           'www.google-analytics.com'
         ],
         objectSrc: ['\'none\''],
+        frameSrc: ['https://www.youtube.com'],
         scriptSrc: [
           '\'self\'',
           'www.google-analytics.com',
