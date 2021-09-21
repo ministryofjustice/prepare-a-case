@@ -24,7 +24,7 @@
       "breach": false,
       "preSentenceActivity": false,
       "awaitingPsr": false,
-      "source": "",
+      "source": "COMMON_PLATFORM",
       "offences": [
         {
           "offenceTitle": "Assault by beating",
