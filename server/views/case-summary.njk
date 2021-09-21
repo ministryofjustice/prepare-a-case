@@ -49,6 +49,12 @@
                 {{ moment(data.sessionStartTime).format('dddd D MMMM') }} ({{ data.listNo }}
                 listing).</p>
 
+            {% if data.source | length %}
+            <p class="govuk-caption-m govuk-!-margin-top-3">Source:
+            {{ data.source | replace("_", " ") | title }}{% if data.source | lower === "libra" %}, case number {{ params.caseNo }}{% endif %}
+            </p>
+            {% endif %}
+
             <h2 class="govuk-heading-m govuk-!-margin-top-9">Offences</h2>
 
             {% set offences = [] %}
