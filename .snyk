@@ -1,15 +1,25 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.19.0
+version: v1.22.1
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   SNYK-JS-TAR-1536528:
     - '*':
-        reason: Low risk, no update
+        reason: 'Low risk, no update'
         expires: 2021-09-04T15:01:46.276Z
         created: 2021-08-05T15:01:46.279Z
   SNYK-JS-TAR-1536531:
     - '*':
-        reason: Low risk, no update
+        reason: 'Low risk, no update'
         expires: 2021-09-04T15:02:03.039Z
         created: 2021-08-05T15:02:03.041Z
+  SNYK-JS-ANSIREGEX-1583908:
+    - applicationinsights-native-metrics > @mapbox/node-pre-gyp > npmlog > gauge > strip-ansi > ansi-regex:
+        reason: 'Low risk, no update'
+        expires: '2021-10-21T16:57:58.637Z'
+    - applicationinsights-native-metrics > @mapbox/node-pre-gyp > npmlog > gauge > string-width > strip-ansi > ansi-regex:
+        reason: 'Low risk, no update'
+        expires: '2021-10-21T16:57:58.637Z'
+    - applicationinsights-native-metrics > @mapbox/node-pre-gyp > npmlog > gauge > wide-align > string-width > strip-ansi > ansi-regex:
+        reason: 'Low risk, no update'
+        expires: '2021-10-21T16:57:58.637Z'
 patch: {}
