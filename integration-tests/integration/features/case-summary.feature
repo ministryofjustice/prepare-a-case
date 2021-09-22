@@ -17,6 +17,7 @@ Feature: Case summary
     Then I should be on the "Case summary" page
     And I should see the heading "Kara Ayers"
     And I should see back link "Back to cases" with href "/cases?page=1"
+    And I should see the caption text "Source: Libra, case number 8678951874"
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant that has not been matched with an existing NDelius record
@@ -124,6 +125,7 @@ Feature: Case summary
     Then I should see the body text "CRN: V654123"
     Then I should see the body text "PNC: A/1234560BA"
     Then I should see the body text "Probation status: Pre-sentence record (PSR)"
+    And I should see the caption text "Source: Common Platform"
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
     And I should see the following level 2 headings

@@ -24,6 +24,7 @@
       "breach": false,
       "preSentenceActivity": false,
       "awaitingPsr": true,
+      "source": "COMMON_PLATFORM",
       "offences": [
         {
           "offenceTitle": "Attempt theft from the person of another",
