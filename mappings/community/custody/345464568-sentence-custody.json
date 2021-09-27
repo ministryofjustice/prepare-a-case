@@ -2,7 +2,7 @@
   "id": "83d75f91-8e21-4b02-a8ca-ca92cb6e993d",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/offender/V654123/convictions/345464568/sentence/custody"
+    "urlPathPattern": "/offender/V654123/convictions/345464567/sentence/custody"
   },
   "response": {
     "headers": {

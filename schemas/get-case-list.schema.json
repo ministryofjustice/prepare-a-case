@@ -25,6 +25,8 @@
             "description": "An explanation about the purpose of this instance.",
             "default": {},
             "required": [
+              "caseId",
+              "defendantId",
               "caseNo",
               "listNo",
               "courtCode",
@@ -37,6 +39,20 @@
               "defendantAddress"
             ],
             "properties": {
+              "caseId": {
+                "$id": "#/properties/cases/items/anyOf/0/properties/caseId",
+                "type": "string",
+                "title": "The caseId schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "defendantId": {
+                "$id": "#/properties/cases/items/anyOf/0/properties/defendantId",
+                "type": "string",
+                "title": "The defendantId schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
               "caseNo": {
                 "$id": "#/properties/cases/items/anyOf/0/properties/caseNo",
                 "type": "string",

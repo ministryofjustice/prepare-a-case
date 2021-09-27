@@ -2,7 +2,7 @@
   "id": "efc0042f-484b-4f7f-8e08-77b46c7edf34",
   "request": {
     "method": "GET",
-    "path": "/court/B10JQ/case/1600028913",
+    "path": "/case/ac24a1be-939b-49a4-a524-21a3d228f8bc/defendantId/40db17d6-04db-11ec-b2d8-0242ac130002",
     "headers": {
       "Accept": "application/json"
     }
@@ -13,6 +13,8 @@
     },
     "status": 200,
     "jsonBody": {
+      "caseId": "ac24a1be-939b-49a4-a524-21a3d228f8bc",
+      "defendantId": "40db17d6-04db-11ec-b2d8-0242ac130002",
       "caseNo": "1600028913",
       "pnc": "A/1234560BA",
       "listNo": "3rd",

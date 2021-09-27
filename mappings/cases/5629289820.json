@@ -2,7 +2,7 @@
   "id": "2bacb15c-6daa-4a07-9f3f-0516f10aea17",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/court/([A-Z0-9]{5})/case/5629289820"
+    "urlPathPattern": "/case/65541fa4-0015-48a4-abe7-d62e897ccb13/defendant/f2b2cdce-78a4-4d30-aaa4-50439fd76b9e0"
   },
   "response": {
     "headers": {
@@ -10,6 +10,8 @@
     },
     "status": 200,
     "jsonBody": {
+      "caseId": "65541fa4-0015-48a4-abe7-d62e897ccb13",
+      "defendantId": "f2b2cdce-78a4-4d30-aaa4-50439fd76b9e0",
       "caseNo": "5629289820",
       "courtCode": "SHF",
       "courtRoom": "06",

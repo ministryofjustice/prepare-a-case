@@ -77,6 +77,10 @@ When('I navigate to the {string} base route', $route => {
   cy.visit($route)
 })
 
+When('I navigate to the {string} base route for today', $route => {
+  cy.visit(`${$route}/${moment().format('YYYY-MM-DD')}`)
+})
+
 And('I should see the phase banner', () => {
   cy.get('.govuk-phase-banner').should('exist')
 })

@@ -2,7 +2,7 @@
   "id": "c4d7338c-b503-44c3-a4af-505d557fab09",
   "request": {
     "method": "PUT",
-    "urlPathPattern": "/court/([A-Z0-9]{5})/case/2608860141"
+    "urlPathPattern": "/case/f76f1dfe-c41e-4242-b5fa-865d7dd2ce57/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846"
   },
   "response": {
     "headers": {

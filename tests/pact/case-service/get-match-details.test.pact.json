@@ -2,7 +2,7 @@
   "id": "d31c6e9e-a187-418b-830d-58842718241c",
   "request": {
     "method": "GET",
-    "path": "/court/B10JQ/case/1600028913/matchesDetail",
+    "path": "/case/5f1d5fdc-9b3f-4fe7-95a5-0cbece2ed124/defendant/a1fe46ac-cf7d-46db-ada6-6c36f1538ac4/matchesDetail",
     "headers": {
       "Accept": "application/json"
     }
