@@ -62,17 +62,17 @@ const getCaseList = async (courtCode, date, selectedFilters, subsection) => {
   }
 }
 
-const getCase = async (courtCode, caseNo) => {
-  const res = await request(`${apiUrl}/court/${courtCode}/case/${caseNo}`) || { data: {} }
+const getCase = async (caseId, defendantId) => {
+  const res = await request(`${apiUrl}/case/${caseId}/defendant/${defendantId}`) || { data: {} }
   return res.data
 }
 
-const updateCase = async (courtCode, caseNo, caseData) => {
-  return await update(`${apiUrl}/court/${courtCode}/case/${caseNo}`, caseData)
+const updateCase = async (caseId, defendantId, caseData) => {
+  return await update(`${apiUrl}/case/${caseId}/defendant/${defendantId}`, caseData)
 }
 
-const getMatchDetails = async (courtCode, caseNo) => {
-  const res = await request(`${apiUrl}/court/${courtCode}/case/${caseNo}/matchesDetail`) || { data: {} }
+const getMatchDetails = async (caseId, defendantId) => {
+  const res = await request(`${apiUrl}/case/${caseId}/defendant/${defendantId}/matchesDetail`) || { data: {} }
   return res.data
 }
 

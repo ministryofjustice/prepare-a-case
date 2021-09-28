@@ -180,7 +180,7 @@
     {% endif %}
 
     {% if previousOrders | length %}
-      {% if params.showAllPreviousOrders === params.caseNo %}
+      {% if params.showAllPreviousOrders === params.caseId %}
         {% set limitPreviousOrders = previousOrders | length %}
       {% else %}
         {% set limitPreviousOrders = 5 %}
@@ -278,5 +278,6 @@
       {% endif %}
     </div>
   </div>
+</div>
 
   {% endblock %}

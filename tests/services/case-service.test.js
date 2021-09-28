@@ -30,13 +30,13 @@ describe('Case service', () => {
   })
 
   it('should call the API to request case detail data', async () => {
-    moxios.stubRequest(`${apiUrl}/court/SHF/case/123456`, {
+    moxios.stubRequest(`${apiUrl}/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730`, {
       status: 200,
       response: {}
     })
 
-    const response = await getCase('SHF', '123456')
-    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/case/123456`)
+    const response = await getCase('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730`)
     return response
   })
 
@@ -105,7 +105,7 @@ describe('Case service', () => {
   })
 
   it('should call the API to request match details data', async () => {
-    const endpoint = `${apiUrl}/court/SHF/case/3597035492/matchesDetail`
+    const endpoint = `${apiUrl}/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
     moxios.stubRequest(endpoint, {
       status: 200,
       response: {
@@ -113,18 +113,18 @@ describe('Case service', () => {
       }
     })
 
-    const response = await getMatchDetails('SHF', '3597035492')
+    const response = await getMatchDetails('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
     return response
   })
 
   it('should call the API to update case details data', async () => {
-    const endpoint = `${apiUrl}/court/SHF/case/3597035492`
+    const endpoint = `${apiUrl}/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730`
     moxios.stubRequest(endpoint, {
       status: 201
     })
 
-    const response = await updateCase('SHF', '3597035492', {})
+    const response = await updateCase('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730', {})
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
     return response
   })

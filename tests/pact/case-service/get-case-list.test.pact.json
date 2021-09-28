@@ -16,6 +16,8 @@
     "jsonBody": {
       "cases": [
         {
+          "caseId": "ac24a1be-939b-49a4-a524-21a3d228f8bc",
+          "defendantId": "40db17d6-04db-11ec-b2d8-0242ac130002",
           "caseNo": "16000",
           "crn": "C16000",
           "pnc": "A/160000BA",
@@ -64,6 +66,8 @@
           "probationStatusActual": "NOT_SENTENCED"
         },
         {
+          "caseId": "ac24a1be-939b-49a4-a524-21a3d228f8bc",
+          "defendantId": "40db17d6-04db-11ec-b2d8-0242ac130002",
           "caseNo": "16001",
           "crn": "D16000",
           "pnc": "D/160000BA",
@@ -106,6 +110,8 @@
           "numberOfPossibleMatches": 0
         },
         {
+          "caseId": "ac24a1be-939b-49a4-a524-21a3d228f8bc",
+          "defendantId": "40db17d6-04db-11ec-b2d8-0242ac130002",
           "caseNo": "16002",
           "listNo": "1st",
           "courtCode": "B10JQ",

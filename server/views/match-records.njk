@@ -15,7 +15,7 @@
         {%- set tableRow = [
             { text: defendantFullName | escape | apostropheInName | properCase | removeTitle },
             { text: item.numberOfPossibleMatches | escape },
-            { text: ('<a href="/' + params.courtCode + '/match/defendant/' + (item.caseNo | escape) + '" class="pac-defendant-link govuk-link govuk-link--no-visited-state">Review records</a>') | safe }
+            { text: ('<a href="/case/' + item.caseId + '/match/defendant/' + (item.defendantId | escape) + '" class="pac-defendant-link govuk-link govuk-link--no-visited-state">Review records</a>') | safe }
         ] -%}
         {{ tableData.rows.push(tableRow) }}
     {% endif %}

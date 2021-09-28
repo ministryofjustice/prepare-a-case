@@ -17,6 +17,8 @@
     "jsonBody": {
       "cases": [
         {
+          "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "caseNo": "1474726180",
           "crn": "C16000",
           "courtCode": "SHF",
@@ -51,6 +53,8 @@
           "defendantDob": "1971-11-17"
         },
         {
+          "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "caseNo": "4071719588",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -90,6 +94,8 @@
           "defendantDob": "1985-07-13"
         },
         {
+          "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "caseNo": "1674533419",
           "courtCode": "SHF",
           "courtRoom": "7",
@@ -124,6 +130,8 @@
           "defendantDob": "1970-04-06"
         },
         {
+          "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "caseNo": "1625017313",
           "courtCode": "SHF",
           "courtRoom": "1",
@@ -163,6 +171,8 @@
           "defendantDob": "1955-04-08"
         },
         {
+          "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "caseNo": "8170180452",
           "courtCode": "SHF",
           "courtRoom": "8",

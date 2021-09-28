@@ -32,8 +32,8 @@ Feature: Case list
       | Kara Ayers   | No record                 | Attempt theft from the person of another | 1st | Morning | 10 |
       | Mann Carroll | {Psr} Pre-sentence record | Assault by beating                       | 3rd | Morning | 2  |
 
-    And I should see link "Kara Ayers" with href "/B14LO/case/8678951874/summary"
-    And I should see link "Mann Carroll" with href "/B14LO/case/7483843110/summary"
+    And I should see link "Kara Ayers" with href "/case/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
+    And I should see link "Mann Carroll" with href "/case/18745630-1398-42b3-b6bc-435325241cc6/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary"
     And I should see secondary text "V654123"
 
     And I should see pagination
@@ -75,8 +75,8 @@ Feature: Case list
       | Robert Hardin | No record | Attempt theft from the person of another | 3rd | Morning | 3 |
       | Vance Landry  | No record | Theft from the person of another         | 3rd | Morning | 3 |
 
-    And I should see link "Robert Hardin" with href "/B14LO/case/3698624753/summary"
-    And I should see link "Vance Landry" with href "/B14LO/case/8339335977/summary"
+    And I should see link "Robert Hardin" with href "/case/e4833681-366f-4e4d-9e8e-97852ad065fd/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
+    And I should see link "Vance Landry" with href "/case/d1a5a715-d8cc-4364-9aff-fe2062838326/defendant/903ecefd-8697-4d0e-bf01-f892f9dee7e7/summary"
 
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=1"
@@ -109,8 +109,8 @@ Feature: Case list
       | Amanda McKay   | Current   | Theft from the person of another         | 3rd | Morning | 1 |
       | Perry Delacruz | No record | Attempt theft from the person of another | 1st | Morning | 1 |
 
-    And I should see link "Amanda McKay" with href "/B14LO/case/7259057874/summary"
-    And I should see link "Perry Delacruz" with href "/B14LO/case/4956910657/summary"
+    And I should see link "Amanda McKay" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
+    And I should see link "Perry Delacruz" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
 
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=2"
@@ -139,8 +139,8 @@ Feature: Case list
       | Leticia Santana | Previously known | Assault by beating                       | 3rd | Morning | 8 |
       | Maribel Camacho | Previously known | Attempt theft from the person of another | 1st | Morning | 6 |
 
-    And I should see link "Leticia Santana" with href "/B14LO/case/198802204/summary"
-    And I should see link "Maribel Camacho" with href "/B14LO/case/5622691303/summary"
+    And I should see link "Leticia Santana" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
+    And I should see link "Maribel Camacho" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
 
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=4"
@@ -178,8 +178,8 @@ Feature: Case list
       | Luisa Alston      | No record        | Theft from a shop                | 3rd | Afternoon | 3 |
       | Macdonald Ellison | Previously known | Theft from the person of another | 3rd | Afternoon | 4 |
 
-    And I should see link "Luisa Alston" with href "/B14LO/case/8618449819/summary"
-    And I should see link "Macdonald Ellison" with href "/B14LO/case/5935205489/summary"
+    And I should see link "Luisa Alston" with href "/case/194e7037-2a6e-4f61-8794-dc2f72738518/defendant/2c4dc41c-1e52-4993-9c39-15295427b693/summary"
+    And I should see link "Macdonald Ellison" with href "/case/31d27795-b94d-433f-a756-6136a74f7726/defendant/ff79634e-b5c1-430a-9db8-3caffe0a7a26/summary"
 
     And I should see pagination
     And I should see pagination link "Previous" with href "?page=10"
@@ -210,8 +210,8 @@ Feature: Case list
       | Sara Ortega   | Previously known | Assault by beating | 3rd | Morning | 3 |
       | Obrien McCall | No record        | Theft from a shop  | 2nd | Morning | 8 |
 
-    And I should see link "Sara Ortega" with href "/B14LO/case/2980462628/summary"
-    And I should see link "Obrien McCall" with href "/B14LO/case/649174512/summary"
+    And I should see link "Sara Ortega" with href "/case/7cd249df-b851-4bf5-a819-4ba0a0614d70/defendant/c8fe5f8a-57f2-43a0-b5fb-73562036f080/summary"
+    And I should see link "Obrien McCall" with href "/case/f2ae5024-bc08-4317-bec1-9c68ede45627/defendant/b8ea0ada-bc7f-4aed-99e3-1b3146274df6/summary"
 
     And I should not see pagination
     And I should not see filters
@@ -238,7 +238,7 @@ Feature: Case list
     And I should see the following table rows
       | Geoff McTaggart | No record | Assault by beating | 3rd | Afternoon | 1 | 7483843114 |
 
-    And I should see link "Geoff McTaggart" with href "/B14LO/case/7483843114/summary"
+    And I should see link "Geoff McTaggart" with href "/case/4c2ff8e9-b1ef-44f9-b88d-472aff27fe9f/defendant/523137c4-4dfe-40a4-aa99-9cbe64bf0476/summary"
 
     And I should not see pagination
     And I should not see filters
@@ -270,8 +270,8 @@ Feature: Case list
       | Gill Arnold    | Current          | Theft from the person of another | 3rd | Morning | 1 |
       | Cornelia McCoy | Previously known | Assault by beating               | 2nd | Morning | 1 |
 
-    And I should see link "Gill Arnold" with href "/B14LO/case/1474726180/summary"
-    And I should see link "Cornelia McCoy" with href "/B14LO/case/4071719588/summary"
+    And I should see link "Gill Arnold" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
+    And I should see link "Cornelia McCoy" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
 
     And I should not see pagination
     And There should be no a11y violations

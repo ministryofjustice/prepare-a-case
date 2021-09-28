@@ -6,6 +6,8 @@
   "description": "The root schema comprises the entire JSON document.",
   "default": {},
   "required": [
+    "caseId",
+    "defendantId",
     "caseNo",
     "listNo",
     "courtCode",
@@ -30,6 +32,20 @@
     "source"
   ],
   "properties": {
+    "caseId": {
+      "$id": "#/properties/caseId",
+      "type": "string",
+      "title": "The caseId schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "defendantId": {
+      "$id": "#/properties/defendantId",
+      "type": "string",
+      "title": "The defendantId schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
     "caseNo": {
       "$id": "#/properties/caseNo",
       "type": "string",
