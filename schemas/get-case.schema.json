@@ -8,7 +8,6 @@
   "required": [
     "caseId",
     "defendantId",
-    "caseNo",
     "listNo",
     "courtCode",
     "courtRoom",
@@ -43,13 +42,6 @@
       "$id": "#/properties/defendantId",
       "type": "string",
       "title": "The defendantId schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": ""
-    },
-    "caseNo": {
-      "$id": "#/properties/caseNo",
-      "type": "string",
-      "title": "The caseNo schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
     },

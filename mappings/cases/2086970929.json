@@ -12,7 +12,6 @@
     "jsonBody": {
       "caseId": "495fa02e-fb3d-4965-b42b-9a1370bfd824",
       "defendantId": "40b17ef2-7e26-463b-a526-4851d6f23bec",
-      "caseNo": "2086970929",
       "courtCode": "SHF",
       "courtRoom": "10",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
