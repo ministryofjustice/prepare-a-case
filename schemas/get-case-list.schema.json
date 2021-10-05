@@ -27,7 +27,6 @@
             "required": [
               "caseId",
               "defendantId",
-              "caseNo",
               "listNo",
               "courtCode",
               "courtRoom",
@@ -112,6 +111,13 @@
                 "$id": "#/properties/cases/items/anyOf/0/properties/session",
                 "type": "string",
                 "title": "The session schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "source": {
+                "$id": "#/properties/cases/items/anyOf/0/properties/source",
+                "type": "string",
+                "title": "The source schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               },
