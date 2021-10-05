@@ -182,6 +182,8 @@ jobs:
           path: integration-tests/screenshots
 
   pact:
+    environment:
+      PACT_BROKER_DISABLE_SSL_VERIFICATION: "true"
     executor: builder
     steps:
       - checkout
