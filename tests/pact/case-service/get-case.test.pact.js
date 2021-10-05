@@ -18,7 +18,7 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
 
     it('returns a specific case', async () => {
       await provider.addInteraction({
-        state: 'a case exists with the given case number',
+        state: 'a case exists with the given case id and defendant id',
         uponReceiving: 'a request for a specific case',
         withRequest: {
           method: pactResponseMock.request.method,
