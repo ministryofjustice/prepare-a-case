@@ -16,21 +16,21 @@
     "jsonBody": {
       "cases": [
         {
-          "caseId": "ac24a1be-939b-49a4-a524-21a3d228f8bc",
-          "defendantId": "40db17d6-04db-11ec-b2d8-0242ac130002",
+          "caseId": "683bcde4-611f-4487-9833-f68090507b74",
           "caseNo": "16000",
           "crn": "C16000",
           "pnc": "A/160000BA",
           "listNo": "3rd",
           "courtCode": "B10JQ",
           "courtRoom": "1",
+          "source": "COMMON_PLATFORM",
           "sessionStartTime": "2020-02-29T09:00:00",
           "session": "MORNING",
-          "probationStatus": "No record",
+          "probationStatus": "Pre-sentence record",
           "previouslyKnownTerminationDate": "2010-01-01",
-          "suspendedSentenceOrder": true,
-          "breach": true,
-          "preSentenceActivity": true,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "preSentenceActivity": false,
           "offences": [
             {
               "offenceTitle": "Offence Title 16000",
@@ -58,6 +58,7 @@
           "defendantDob": "1958-10-10",
           "defendantSex": "M",
           "defendantType": "PERSON",
+          "defendantId": "005ae89b-46e9-4fa5-bb5e-d117011cab32",
           "nationality1": "British",
           "nationality2": "Polish",
           "createdToday": true,
@@ -66,18 +67,19 @@
           "probationStatusActual": "NOT_SENTENCED"
         },
         {
-          "caseId": "ac24a1be-939b-49a4-a524-21a3d228f8bc",
-          "defendantId": "40db17d6-04db-11ec-b2d8-0242ac130002",
-          "caseNo": "16001",
+          "caseId": "683bcde4-611f-4487-9833-f68090507b74",
+          "caseNo": "16000",
           "crn": "D16000",
           "pnc": "D/160000BA",
-          "listNo": "1st",
+          "listNo": "3rd",
           "courtCode": "B10JQ",
           "courtRoom": "1",
-          "sessionStartTime": "2020-02-29T14:00:00",
-          "session": "AFTERNOON",
-          "probationStatus": "No record",
+          "source": "COMMON_PLATFORM",
+          "sessionStartTime": "2020-02-29T09:00:00",
+          "session": "MORNING",
+          "probationStatus": "Pre-sentence record",
           "suspendedSentenceOrder": false,
+          "breach": false,
           "preSentenceActivity": false,
           "offences": [
             {
@@ -104,23 +106,29 @@
           "defendantDob": "1939-10-10",
           "defendantSex": "M",
           "defendantType": "PERSON",
+          "defendantId": "f2c83643-8ebd-4609-9183-cd8c34984e33",
           "nationality1": "British",
           "createdToday": true,
           "removed": false,
-          "numberOfPossibleMatches": 0
+          "numberOfPossibleMatches": 0,
+          "probationStatusActual": "NOT_SENTENCED"
         },
         {
-          "caseId": "ac24a1be-939b-49a4-a524-21a3d228f8bc",
-          "defendantId": "40db17d6-04db-11ec-b2d8-0242ac130002",
-          "caseNo": "16002",
+          "caseId": "2243231a-7810-496c-bd41-cb01ceb1fe0b",
+          "caseNo": "16001",
           "listNo": "1st",
           "courtCode": "B10JQ",
           "courtRoom": "10",
+          "source": "LIBRA",
           "sessionStartTime": "2020-02-29T14:00:00",
           "session": "AFTERNOON",
           "probationStatus": "No record",
+          "suspendedSentenceOrder": false,
+          "breach": false,
           "preSentenceActivity": false,
-          "offences": [],
+          "offences": [
+
+          ],
           "defendantName": "ACME MOTORS LTD",
           "name": {
             "surname": "ACME MOTORS LTD"
@@ -132,6 +140,7 @@
             "postcode": "XX1 1XX"
           },
           "defendantType": "ORGANISATION",
+          "defendantId": "bfd7df09-4177-475e-b16f-0ace34a5ef2f",
           "createdToday": true,
           "removed": false,
           "numberOfPossibleMatches": 0

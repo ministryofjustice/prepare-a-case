@@ -7,6 +7,7 @@
   "default": {},
   "required": [
     "caseNo",
+    "caseId",
     "pnc",
     "listNo",
     "courtCode",
@@ -26,6 +27,7 @@
     "defendantDob",
     "defendantSex",
     "defendantType",
+    "defendantId",
     "nationality1",
     "nationality2",
     "createdToday",

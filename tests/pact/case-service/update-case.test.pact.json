@@ -7,6 +7,7 @@
       "Content-Type": "application/json"
     },
     "jsonBody": {
+      "caseId": "f76f1dfe-c41e-4242-b5fa-865d7dd2ce57",
       "caseNo": "1600028913",
       "pnc": "A/1234560BA",
       "listNo": "3rd",
@@ -51,6 +52,7 @@
       "defendantDob": "1958-10-10",
       "defendantSex": "M",
       "defendantType": "PERSON",
+      "defendantId": "062c670d-fdf6-441f-99e1-d2ce0c3a3846",
       "nationality1": "British",
       "nationality2": "Polish",
       "createdToday": true,
@@ -64,6 +66,7 @@
     },
     "status": 201,
     "jsonBody": {
+      "caseId": "f76f1dfe-c41e-4242-b5fa-865d7dd2ce57",
       "caseNo": "1600028913",
       "pnc": "A/1234560BA",
       "listNo": "3rd",
@@ -108,6 +111,7 @@
       "defendantDob": "1958-10-10",
       "defendantSex": "M",
       "defendantType": "PERSON",
+      "defendantId": "062c670d-fdf6-441f-99e1-d2ce0c3a3846",
       "nationality1": "British",
       "nationality2": "Polish",
       "createdToday": true,
