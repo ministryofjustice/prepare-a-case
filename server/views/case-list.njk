@@ -26,7 +26,7 @@
 {% for item in data %}
 
     {% set offences = [] %}
-    {% set courtRoom = item.courtRoom - 0 %}
+    {% set courtRoom = item.courtRoom | replace("0", "") if item.courtRoom | first === "0" else item.courtRoom %}
     {% set notMatched = item.probationStatus | string | lower == "possible ndelius record" %}
     {% if item.offences | length === 1 %}
         {% for offence in item.offences %}
