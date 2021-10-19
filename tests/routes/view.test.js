@@ -326,7 +326,7 @@ describe('Routes', () => {
       pnc: null,
       preSentenceActivity: null,
       awaitingPsr: null,
-      probationStatus: 'No record',
+      probationStatus: 'NO_RECORD',
       probationStatusActual: 'NO_RECORD'
     }
     expect(caseService.getCase).toHaveBeenCalledWith('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
