@@ -407,7 +407,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       pnc: crn ? offenderDetail.otherIds.pncNumber : caseResponse.pnc || null,
       crn: crn ? offenderDetail.otherIds.crn : null,
       cro: crn ? offenderDetail.otherIds.croNumber : null,
-      probationStatus: crn ? probationStatusDetails.status : !unlinking ? 'No record' : null,
+      probationStatus: crn ? probationStatusDetails.status : !unlinking ? 'NO_RECORD' : null,
       probationStatusActual: crn ? probationStatusDetails.status : !unlinking ? 'NO_RECORD' : null,
       awaitingPsr: crn ? probationStatusDetails.awaitingPsr : null,
       breach: crn ? probationStatusDetails.inBreach : null,
