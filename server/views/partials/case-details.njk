@@ -7,17 +7,17 @@
 {% if data.crn %}
     {{ subNavItems.push({
         text: 'Case summary',
-        href: '/case/' + data.caseId + '/defendant/' + data.defendantId + '/summary',
+        href: '/' + params.courtCode + '/case/' + data.caseId + '/defendant/' + data.defendantId + '/summary',
         active: title === 'Case summary'
     }) }}
     {{ subNavItems.push({
         text: 'Probation record',
-        href: '/case/' + data.caseId + '/defendant/' + data.defendantId + '/record',
+        href: '/' + params.courtCode + '/case/' + data.caseId + '/defendant/' + data.defendantId + '/record',
         active: title === 'Probation record'
     }) }}
     {{ subNavItems.push({
         text: 'Risk register',
-        href: '/case/' + data.caseId + '/defendant/' + data.defendantId + '/risk',
+        href: '/' + params.courtCode + '/case/' + data.caseId + '/defendant/' + data.defendantId + '/risk',
         active: title === 'Risk register'
     }) }}
 {% endif %}
