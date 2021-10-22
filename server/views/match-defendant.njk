@@ -3,7 +3,7 @@
 {% if session.matchType === 'bulk' %}
   {%- set backUrl = '/' + session.courtCode + '/match/' + session.matchType + '/' + session.matchDate -%}
 {% else %}
-  {%- set backUrl = '/case/' + data.caseId + '/defendant/' + data.defendantId + '/summary' -%}
+  {%- set backUrl = '/' + params.courtCode + '/case/' + data.caseId + '/defendant/' + data.defendantId + '/summary' -%}
 {% endif %}
 
 {% block backlink %}
@@ -191,7 +191,7 @@
     </div>
 
     {% from "govuk/components/details/macro.njk" import govukDetails %}
-    {%- set detailsText = "<p class=\"govuk-body\">If the defendant is unknown to probation, you must <a href=\"/case/" + params.caseId + "/match/defendant/" + params.defendantId + "/nomatch\" class=\"govuk-link govuk-link--no-visited-state\">confirm they have no record</a>.</p><p class=\"govuk-body\">If they have an NDelius record, you can <a href=\"/case/" + params.caseId + "/match/defendant/" + params.defendantId + "/manual\" class=\"govuk-link govuk-link--no-visited-state\">link it to them with a case reference number</a>.</p>" -%}
+    {%- set detailsText = "<p class=\"govuk-body\">If the defendant is unknown to probation, you must <a href=\"/" + params.courtCode + "/case/" + params.caseId + "/match/defendant/" + params.defendantId + "/nomatch\" class=\"govuk-link govuk-link--no-visited-state\">confirm they have no record</a>.</p><p class=\"govuk-body\">If they have an NDelius record, you can <a href=\"/" + params.courtCode + "/case/" + params.caseId + "/match/defendant/" + params.defendantId + "/manual\" class=\"govuk-link govuk-link--no-visited-state\">link it to them with a case reference number</a>.</p>" -%}
     {{ govukDetails({
       classes: "govuk-!-margin-top-6",
       summaryText: "Can't see the correct record?",
