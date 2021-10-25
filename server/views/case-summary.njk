@@ -11,7 +11,7 @@
         <span id="bannerDialogTitle" class="govuk-visually-hidden" hidden>Defendant partially matches existing records and needs review.</span>
         <h2 class="govuk-heading-m" id="bannerDialogDesc">
             {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found for {{ defendantFullName | apostropheInName | properCase | removeTitle }}.
-            <a href="/case/{{ data.caseId }}/match/defendant/{{ data.defendantId }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>
+            <a href="/{{ params.courtCode }}/case/{{ data.caseId }}/match/defendant/{{ data.defendantId }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>
         </h2>
     </div>
 {% endset %}
