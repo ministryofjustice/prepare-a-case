@@ -170,9 +170,12 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Confirm defendant record match from case summary
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730" base route
+    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
+    And I click the "Review records" link
 
-    And I click the element with id "defendant-1"
+    Then I should be on the "Review possible NDelius records" page
+
+    When I click the element with id "defendant-1"
     And I click the "Confirm record" button
 
     Then I should be on the "Case summary" page
@@ -199,7 +202,8 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Click the back button on matching screen when starting the journey at case summary
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730" base route
+    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
+    And I click the "Review records" link
 
     Then I should be on the "Review possible NDelius records" page
     When I click the "Back" link
