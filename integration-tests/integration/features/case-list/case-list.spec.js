@@ -75,10 +75,6 @@ And('I click pagination link {string}', $string => {
   cy.get('.moj-pagination__link').contains($string).click()
 })
 
-When('I click the {string} button', $string => {
-  cy.get('button').contains($string).click()
-})
-
 When('I click the date navigation element {int}', $int => {
   cy.get('.pac-days-navigation-item__link').eq($int - 1).click()
 })
