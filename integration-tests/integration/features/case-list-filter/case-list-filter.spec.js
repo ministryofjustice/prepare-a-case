@@ -2,7 +2,7 @@
 import { When } from 'cypress-cucumber-preprocessor/steps'
 
 When('I click the {string} filter button', $string => {
-  cy.get('.pac-filter-button').contains($string).click()
+  cy.get('.pac-filter-button').contains($string).click({ force: true })
 })
 
 When('I select the {string} filter', $string => {
