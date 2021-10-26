@@ -18,7 +18,8 @@ Feature: Case list filters
 
     When I click the "Probation status" filter button
     And I select the "Current" filter
-    And I force click the "Apply filters" button
+    And I click the "Probation status" filter button
+    And I click the "Apply filters" button
 
     Then I should see a count of "66 cases"
 
@@ -56,7 +57,8 @@ Feature: Case list filters
 
     When I click the "Courtroom" filter button
     And I select the "01" filter
-    And I force click the "Apply filters" button
+    And I click the "Courtroom" filter button
+    And I click the "Apply filters" button
 
     Then I should see a count of "22 cases"
 
@@ -93,7 +95,8 @@ Feature: Case list filters
 
     When I click the "Session" filter button
     And I select the "AFTERNOON" filter
-    And I force click the "Apply filters" button
+    And I click the "Session" filter button
+    And I click the "Apply filters" button
 
     Then I should see a count of "6 cases"
 
@@ -130,11 +133,14 @@ Feature: Case list filters
 
     When I click the "Probation status" filter button
     And I select the "Current" filter
+    And I click the "Probation status" filter button
     And I click the "Courtroom" filter button
     And I select the "01" filter
+    And I click the "Courtroom" filter button
     And I click the "Session" filter button
     And I select the "AFTERNOON" filter
-    And I force click the "Apply filters" button
+    And I click the "Session" filter button
+    And I click the "Apply filters" button
 
     Then I should see a count of "1 case"
 
@@ -171,9 +177,11 @@ Feature: Case list filters
 
     When I click the "Probation status" filter button
     And I select the "Possible NDelius record" filter
+    And I click the "Probation status" filter button
     And I click the "Courtroom" filter button
     And I select the "Crown Court 3-1" filter
-    And I force click the "Apply filters" button
+    And I click the "Courtroom" filter button
+    And I click the "Apply filters" button
 
     Then I should see a count of "1 case"
 
@@ -200,7 +208,8 @@ Feature: Case list filters
 
     When I click the "Probation status" filter button
     And I select the "Pre-sentence record" filter
-    And I force click the "Apply filters" button
+    And I click the "Probation status" filter button
+    And I click the "Apply filters" button
 
     Then I should see a count of "1 case"
 
@@ -237,7 +246,8 @@ Feature: Case list filters
 
     When I click the "Probation status" filter button
     And I select the "Possible NDelius record" filter
-    And I force click the "Apply filters" button
+    And I click the "Probation status" filter button
+    And I click the "Apply filters" button
 
     Then I should see a count of "3 cases"
 
@@ -277,11 +287,14 @@ Feature: Case list filters
 
     When I click the "Probation status" filter button
     And I select the "Current" filter
+    And I click the "Probation status" filter button
     And I click the "Courtroom" filter button
     And I select the "06" filter
+    And I click the "Courtroom" filter button
     And I click the "Session" filter button
     And I select the "AFTERNOON" filter
-    And I force click the "Apply filters" button
+    And I click the "Session" filter button
+    And I click the "Apply filters" button
 
     And I should see a count of "0 cases"
     Then I should see the body text "There are no matching cases."

@@ -276,10 +276,6 @@ When('I click the {string} button', $string => {
   cy.get('.govuk-button').contains($string).click()
 })
 
-When('I force click the {string} button', $string => {
-  cy.get('.govuk-button').contains($string).click({ force: true })
-})
-
 And('I should see a button with the label {string}', $string => {
   cy.get('.govuk-button').contains($string).should('exist')
 })
