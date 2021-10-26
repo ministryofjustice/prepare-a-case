@@ -35,7 +35,7 @@ const getCaseList = async (courtCode, date, selectedFilters, subsection) => {
       let notFiltered = true
       let matched = false
       filterObj.items.forEach(item => {
-        if (item.checked) {
+        if (item && item.checked) {
           notFiltered = false
           matched = matched || courtCase[filterObj.id].toString().toLowerCase() === item.value.toString().toLowerCase()
         }
