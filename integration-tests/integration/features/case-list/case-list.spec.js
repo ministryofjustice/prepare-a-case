@@ -59,10 +59,6 @@ And('I should see pagination page {string} highlighted', $string => {
   cy.get('.moj-pagination__item--active').contains($string).should('exist')
 })
 
-And('I should see a count of {string}', $string => {
-  cy.get('.govuk-heading-m').contains(`${$string}`).should('exist')
-})
-
 And('I should not see pagination link {string}', $string => {
   cy.get('.moj-pagination__link').contains($string).should('not.exist')
 })
@@ -77,22 +73,6 @@ And('I should not see filters', () => {
 
 And('I click pagination link {string}', $string => {
   cy.get('.moj-pagination__link').contains($string).click()
-})
-
-When('I click the {string} filter button', $string => {
-  cy.get('.pac-filter-button').contains($string).click()
-})
-
-When('I select the {string} filter', $string => {
-  cy.get('[type="checkbox"]').check($string)
-})
-
-When('I click the {string} button', $string => {
-  cy.get('button').contains($string).click()
-})
-
-When('I click the clear {string} filter tag', $string => {
-  cy.get('.pac-filter__tag').contains($string).click()
 })
 
 When('I click the date navigation element {int}', $int => {

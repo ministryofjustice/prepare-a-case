@@ -8,11 +8,19 @@ module.exports = (caseListData, selectedFilters) => {
     }
   })
 
-  const courtRooms = [...new Set(caseListData.map(item => parseInt(item.courtRoom, 10)))]
+  const courtRoomStrings = [...new Set(caseListData.map(item => item.courtRoom))]
+    .filter(item => isNaN(item))
     .sort((a, b) => a - b)
-    .map(item => {
-      return item && { label: item.toString(), value: ('0' + item.toString()).slice(-2) }
+    .map(item => item && {
+      label: item.toString().charAt(0) === '0' ? item.toString().substring(1) : item.toString(),
+      value: item.toString()
     })
+
+  const courtRooms = [...new Set(caseListData.map(item => parseInt(item.courtRoom, 10)))]
+    .filter(item => !isNaN(item))
+    .sort((a, b) => a - b)
+    .map(item => item && { label: item.toString(), value: ('0' + item.toString()).slice(-2) })
+    .concat(courtRoomStrings)
 
   const availableSessions = [...new Set(caseListData.map(item => item.session))]
   const sessions = []

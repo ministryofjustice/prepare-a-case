@@ -272,7 +272,7 @@ When('I click the {string} header navigation link', $string => {
   cy.get('.moj-header__navigation-link').contains($string).click()
 })
 
-And('I click the {string} button', $string => {
+When('I click the {string} button', $string => {
   cy.get('.govuk-button').contains($string).click()
 })
 
@@ -364,4 +364,8 @@ When('I enter the text {string} into the {string} input and press ENTER', ($text
 
 And('I should see the success banner message {string}', $string => {
   cy.get('.moj-banner--success').contains($string).should('exist')
+})
+
+And('I should see a count of {string}', $string => {
+  cy.get('.govuk-heading-m').contains(`${$string}`).should('exist')
 })
