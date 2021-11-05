@@ -58,6 +58,7 @@ module.exports = {
       { code: 'B16HE', name: 'Hull Magistrates\' Court' },
       { code: 'B37HI', name: 'Ipswich Magistrates\' Court' },
       { code: 'B22HM', name: 'Kidderminster Magistrates\' Court' },
+      { code: 'B01LY', name: 'Lavender Hill Magistrates\' Court' },
       { code: 'B23HS', name: 'Leamington Spa Magistrates\' Court' },
       { code: 'B13HT', name: 'Leeds Magistrates\' Court and Family Court' },
       { code: 'B33HU', name: 'Leicester Magistrates\' Court' },
