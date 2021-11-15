@@ -104,7 +104,7 @@ Feature: Case summary
 
     And I should see the following summary list
       | Name          | Webb Mitchell                       |
-      | Gender        | Male                                |
+      | Gender        | Not specified                       |
       | Date of birth | 13 October 1958                     |
       | Nationality   | Polish                              |
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
