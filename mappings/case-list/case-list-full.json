@@ -121,7 +121,7 @@
           "courtCode": "SHF",
           "courtRoom": "Crown Court 3-1",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-          "listNo": "3rd",
+          "listNo": null,
           "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Possible NDelius record",

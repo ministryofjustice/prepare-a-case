@@ -29,8 +29,9 @@ Feature: Case list
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
     And I should see the following table rows
-      | Kara Ayers   | No record                 | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
-      | Mann Carroll | {Psr} Pre-sentence record | Assault by beating                       | 3rd | Morning | 2               |
+      | Kara Ayers     | No record                 | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
+      | Mann Carroll   | {Psr} Pre-sentence record | Assault by beating                       | 3rd | Morning | 2               |
+      | Guadalupe Hess | {Possible}                | Assault by beating                       |     | Morning | Crown Court 3-1 |
 
     And I should see link "Kara Ayers" with href "/case/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
     And I should see link "Mann Carroll" with href "/case/18745630-1398-42b3-b6bc-435325241cc6/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary"
