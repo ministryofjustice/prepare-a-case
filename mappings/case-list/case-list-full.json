@@ -121,7 +121,7 @@
           "courtCode": "SHF",
           "courtRoom": "Crown Court 3-1",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-          "listNo": null,
+          "listNo": "GARBAGE",
           "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Possible NDelius record",
@@ -132,6 +132,7 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "source": "COMMON_PLATFORM",
           "offences": [
             {
               "offenceTitle": "Assault by beating",
