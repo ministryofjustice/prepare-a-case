@@ -189,7 +189,7 @@ Feature: Case list filters
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
     And I should see the following table rows
-      | Guadalupe Hess | Possible NDelius Record | Assault by beating | 3rd | Morning | Crown Court 3-1 |
+      | Guadalupe Hess | Possible NDelius Record | Assault by beating |  | Morning | Crown Court 3-1 |
 
     And There should be no a11y violations
 
@@ -255,7 +255,7 @@ Feature: Case list filters
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
     And I should see the following table rows
-      | Guadalupe Hess           | Possible NDelius Record | Assault by beating | 3rd | Morning   | Crown Court 3-1 |
+      | Guadalupe Hess           | Possible NDelius Record | Assault by beating |     | Morning   | Crown Court 3-1 |
       | Feli'Cia Villa'Rreali'Ty | Possible NDelius Record | Theft from a shop  | 3rd | Afternoon | 2               |
 
     And I should see the Possible NDelius record badge

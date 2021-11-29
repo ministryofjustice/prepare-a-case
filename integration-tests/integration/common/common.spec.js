@@ -167,7 +167,10 @@ And('I should see the following table rows', $data => {
             return part
           }
         })
-        cy.get('.govuk-table__cell').eq(colIndex).contains(correctDates(safeText.join(' ').trim()))
+        const checkText = safeText.join(' ').trim()
+        if (checkText !== '') {
+          cy.get('.govuk-table__cell').eq(colIndex).contains(correctDates(checkText))
+        }
       })
     })
   })
