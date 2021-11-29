@@ -27,7 +27,6 @@
             "required": [
               "caseId",
               "defendantId",
-              "listNo",
               "courtCode",
               "courtRoom",
               "sessionStartTime",
@@ -81,7 +80,10 @@
               },
               "listNo": {
                 "$id": "#/properties/cases/items/anyOf/0/properties/listNo",
-                "type": "string",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "title": "The listNo schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
