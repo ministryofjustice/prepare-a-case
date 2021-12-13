@@ -71,7 +71,7 @@ module.exports = {
       { code: 'B46IU', name: 'Margate Magistrates\' Court' },
       { code: 'B46DH', name: 'Medway Magistrates\' Court and Family Court' },
       { code: 'B10BD', name: 'Mid and South East Northumberland Magistrates\' Court' },
-      { code: 'B10JJ', name: 'Newcastle Magistrates\' Court' },
+      { code: 'B10JL', name: 'Newcastle Magistrates\' Court' },
       { code: 'B21JI', name: 'North Staffordshire Justice Centre' },
       { code: 'B10JQ', name: 'North Tyneside Magistrates\' Court' },
       { code: 'B31JV', name: 'Nottingham Magistrates\' Court' },
