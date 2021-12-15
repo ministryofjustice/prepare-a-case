@@ -207,7 +207,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
         addedCount: response.addedCount,
         removedCount: response.removedCount,
         unmatchedRecords: response.unmatchedRecords,
-        lastUpdated: response ? response.lastUpdated : '',
         totalDays: settings.casesTotalDays,
         subsection: subsection || (!date && session.currentView) || '',
         filtersApplied: session.selectedFilters && Object.keys(session.selectedFilters).length,
