@@ -33,7 +33,7 @@ Feature: Case summary
     And I should see the following level 2 headings
       | possible NDelius records found | Appearance | Offences |
 
-    And I should see the body text "Court 7, morning session, $LONG_TODAY (3rd listing)."
+    And I should see the body text "Court 7, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
       | Assault by beating                       |
       | Attempt theft from the person of another |
@@ -61,7 +61,7 @@ Feature: Case summary
     And I should see the following level 2 headings
       | Appearance | Offences |
 
-    And I should see the body text "Court 10-1, morning session, $LONG_TODAY (1st listing)."
+    And I should see the body text "Court 10-1, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
       | Attempt theft from the person of another |
       | Assault by beating                       |
@@ -96,7 +96,7 @@ Feature: Case summary
     And I should see the following level 2 headings
       | Appearance | Offences |
 
-    And I should see the body text "Court 8, morning session, $LONG_TODAY (2nd listing)."
+    And I should see the body text "Court 8, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
       | Attempt theft from the person of another |
       | Assault by beating                       |
@@ -131,7 +131,7 @@ Feature: Case summary
     And I should see the following level 2 headings
       | Appearance | Offences |
 
-    And I should see the body text "Court 2-3, afternoon session, $LONG_TODAY (3rd listing)."
+    And I should see the body text "Court 2-3, afternoon session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
       | Assault by beating |
       | Theft from a shop  |
@@ -165,7 +165,7 @@ Feature: Case summary
     And I should see the following level 2 headings
       | Appearance | Offences |
 
-    And I should see the body text "Court 6, morning session, $LONG_TODAY (2nd listing)."
+    And I should see the body text "Court 6, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
       | Attempt theft from the person of another |
       | Theft from the person of another         |
@@ -201,7 +201,7 @@ Feature: Case summary
     And I should see the following level 2 headings
       | Appearance | Offences |
 
-    And I should see the body text "Court 9, morning session, $LONG_TODAY (1st listing)."
+    And I should see the body text "Court 9, morning session, $LONG_TODAY."
     And I should see the body text "Theft from a shop" in bold
     And I should see the body text "On 01/01/2015 at Tetratrex, Leeds, stole ROBOTS to the value of £987.00, belonging to Young Bryant."
     And I should see the caption text "Contrary to section 1(1) and 7 of the Theft Act 1968."

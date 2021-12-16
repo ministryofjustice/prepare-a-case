@@ -46,8 +46,7 @@
 
             <h2 class="govuk-heading-m">Appearance</h2>
             <p class="govuk-body">Court {{ courtRoom }}, {{ data.session | lower }} session,
-                {{ moment(data.sessionStartTime).format('dddd D MMMM') }} ({{ data.listNo }}
-                listing).</p>
+                {{ moment(data.sessionStartTime).format('dddd D MMMM') }}.</p>
 
             {% if data.source | length %}
             <p class="govuk-caption-m govuk-!-margin-top-3">Source:
