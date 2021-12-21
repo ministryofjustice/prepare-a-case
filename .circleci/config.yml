@@ -14,6 +14,7 @@ commands:
           env_var: APP_VERSION
           value: "${VERSION}"
   setup:
+    #    TODO: Delete
     description: "Install tools and configure kubectl"
     steps:
       - kubernetes/install
@@ -35,7 +36,30 @@ commands:
             # confirm setup is ok
             kubectl config use-context circleci
             kubectl -n "${KUBE_ENV_NAMESPACE}" get pods
+  setup-live:
+    description: "Install tools and configure kubectl"
+    steps:
+      - kubernetes/install
+      - helm/install-helm-client:
+          version: v3.2.4
+      - run:
+          name: Setup kubectl
+          command: |
+            echo -n "${KUBE_ENV_CACERT}" | base64 -d > /tmp/cluster_ca.crt
+            kubectl config set-cluster "${KUBE_ENV_NAME}" \
+              --certificate-authority="/tmp/cluster_ca.crt" \
+              --server="https://${KUBE_ENV_NAME}"
+            kubectl config set-credentials circleci \
+              --token="${KUBE_ENV_TOKEN}"
+            kubectl config set-context circleci \
+              --cluster="${KUBE_ENV_NAME}" \
+              --user="circleci" \
+              --namespace="${KUBE_ENV_NAMESPACE}"
+            # confirm setup is ok
+            kubectl config use-context circleci
+            kubectl -n "${KUBE_ENV_NAMESPACE}" get pods
   deploy_to_env:
+#    TODO: Delete
     parameters:
       env:
         type: string
@@ -56,6 +80,30 @@ commands:
               --description="${APP_VERSION} - ${CIRCLE_BUILD_URL}" \
               --values ~/git/helm_deploy/values-<< parameters.env >>.yaml \
               --values - \
+              --values ~/git/helm_deploy/prepare-a-case/values-live1.yaml \
+              --set image.tag="${APP_VERSION}"
+  deploy_to_live_env:
+    parameters:
+      env:
+        type: string
+    steps:
+      - setup-live
+      - mem/recall:
+          env_var: APP_VERSION
+      - checkout:
+          path: ~/git
+      - attach_workspace:
+          at: ~/app
+      - deploy:
+          name: Deploy to << parameters.env >>
+          command: |
+            helm upgrade prepare-a-case ~/git/helm_deploy/prepare-a-case/. \
+              --install --wait --reset-values --timeout 360s \
+              --namespace=${KUBE_ENV_NAMESPACE} \
+              --description="${APP_VERSION} - ${CIRCLE_BUILD_URL}" \
+              --values ~/git/helm_deploy/values-<< parameters.env >>.yaml \
+              --values - \
+              --values ~/git/helm_deploy/prepare-a-case/values-live.yaml \
               --set image.tag="${APP_VERSION}"
 executors:
   deployer:
@@ -271,7 +319,7 @@ jobs:
           target-file: 'Dockerfile'
           monitor-on-build: true
           <<: *snyk_options
-
+# TODO: Delete
   deploy_dev:
     executor: deployer
     steps:
@@ -286,6 +334,23 @@ jobs:
     executor: deployer
     steps:
       - deploy_to_env:
+          env: "prod"
+# TODO: END
+
+  deploy_live_dev:
+    executor: deployer
+    steps:
+      - deploy_to_live_env:
+          env: "dev"
+  deploy_live_preprod:
+    executor: deployer
+    steps:
+      - deploy_to_live_env:
+          env: "preprod"
+  deploy_live_prod:
+    executor: deployer
+    steps:
+      - deploy_to_live_env:
           env: "prod"
 
 workflows:
@@ -345,13 +410,14 @@ workflows:
             branches:
               only: main
           main: true
-      - deploy_dev:
+      - image_scan:
           requires:
             - build_docker_main
           filters:
             branches:
               only: main
-      - image_scan:
+#              TODO: DELETE
+      - deploy_dev:
           requires:
             - build_docker_main
           filters:
@@ -373,3 +439,27 @@ workflows:
           context: court-probation-prod
           requires:
             - request-prod-approval
+#          TODO: END
+      - deploy_live_dev:
+          context: court-probation-live-dev
+          requires:
+            - build_docker_main
+          filters:
+            branches:
+              only: main
+      - request-live-preprod-approval:
+          type: approval
+          requires:
+            - deploy_live_dev
+      - deploy_live_preprod:
+          context: court-probation-live-preprod
+          requires:
+            - request-live-preprod-approval
+      - request-live-prod-approval:
+          type: approval
+          requires:
+            - deploy_preprod
+#      - deploy_live_prod:
+#          context: court-probation-live-prod
+#          requires:
+#            - request-live-prod-approval
