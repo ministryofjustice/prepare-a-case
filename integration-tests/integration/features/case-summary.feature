@@ -388,7 +388,7 @@ Feature: Case summary
     And I should see the text "$SIX_MONTHS_AGO" within element with class "qa-end-date"
     And I should see the text "$SIX_MONTHS_TIME" within element with class "qa-elapsed-time"
 
-    And I should see the level 2 heading "Post release dates"
+    And I should see the level 2 heading "Post-release dates"
     And I should see the following table rows
       | Licence | $SIX_MONTHS_AGO | $SIX_MONTHS_TIME |
 
@@ -408,7 +408,7 @@ Feature: Case summary
     And I should see the text "Status" within element with class "qa-elapsed-title"
     And I should see the text "In custody" within element with class "qa-elapsed-time"
 
-    And I should see the level 2 heading "Post release dates"
+    And I should see the level 2 heading "Post-release dates"
     And I should see the level 2 heading "Requirements"
     And I should see the level 2 heading "Attendance"
 
