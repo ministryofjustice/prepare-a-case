@@ -67,19 +67,21 @@
                     <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
                 {% endfor %}
                 {% elif offences | length > 1 %}
-                <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{ params.caseNo }}">
+                <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{ params.caseId }}">
                     {% for offence in data.offences %}
-                        <div class="govuk-accordion__section">
-                            <div class="govuk-accordion__section-header">
-                                <h2 class="govuk-accordion__section-heading">
-                                    <span class="govuk-accordion__section-button govuk-!-font-size-19">{{ offence.offenceTitle }}</span>
-                                </h2>
-                            </div>
-                            <div class="govuk-accordion__section-content" id="accordion-{{ params.caseNo }}-content-{{ loop.index }}">
-                                <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.offenceSummary }}</p>
-                                <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
-                            </div>
+                    <div class="govuk-accordion__section">
+                        <div class="govuk-accordion__section-header">
+                            <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button" id="accordion-{{ params.caseId }}-heading-{{ loop.index }}">
+                                    <span class="pac-accordion-section-heading">{{ offence.offenceTitle }}</span>
+                                </span>
+                            </h2>
                         </div>
+                        <div id="accordion-{{ params.caseId }}-content-{{ loop.index }}" class="govuk-accordion__section-content" aria-labelledby="accordion-{{ params.caseId }}-heading-{{ loop.index }}">
+                            <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.offenceSummary }}</p>
+                            <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
+                        </div>
+                    </div>
                     {% endfor %}
                 </div>
             {% endif %}
