@@ -16,7 +16,9 @@ metadata:
     nginx.ingress.kubernetes.io/custom-http-errors: "418"
     kubernetes.io/ingress.class: "modsec01"
     external-dns.alpha.kubernetes.io/set-identifier: {{ $fullName }}-{{ .Release.Namespace }}-{{ .Values.ingress.contextColour }}
-    external-dns.alpha.kubernetes.io/aws-weight: "100"
+    {{- with .Values.ingress.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   tls:
     - hosts:
