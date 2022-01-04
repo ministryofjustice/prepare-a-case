@@ -459,7 +459,7 @@ workflows:
           type: approval
           requires:
             - deploy_preprod
-#      - deploy_live_prod:
-#          context: court-probation-live-prod
-#          requires:
-#            - request-live-prod-approval
+      - deploy_live_prod:
+          context: court-probation-live-prod
+          requires:
+            - request-live-prod-approval
