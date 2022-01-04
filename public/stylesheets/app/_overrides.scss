@@ -17,6 +17,10 @@
   }
 }
 
+.pac-accordion-section-heading {
+  @extend .govuk-\!-font-size-19;
+}
+
 .pac-\!-border-left {
   border-left: 2px solid govuk-colour("mid-grey");
 }
