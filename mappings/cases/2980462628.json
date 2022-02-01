@@ -32,25 +32,29 @@
           "offenceTitle": "Assault by beating",
           "offenceSummary": "On 01/01/2016 at Newcastle assaulted Mullen Rojas by beating him.",
           "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
-          "sequenceNumber": 1
+          "sequenceNumber": 1,
+          "listNo": "3rd"
         },
         {
           "offenceTitle": "Assault by beating",
           "offenceSummary": "On 01/01/2016 at Newcastle assaulted Bradshaw Hoover by beating him.",
           "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
-          "sequenceNumber": 2
+          "sequenceNumber": 2,
+          "listNo": "2nd"
         },
         {
           "offenceTitle": "Theft from the person of another",
           "offenceSummary": "On 24/03/2016 at Sheffield stole XBOX ONE to the value of 300.00, belonging to Colon Bowers.",
           "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-          "sequenceNumber": 3
+          "sequenceNumber": 3,
+          "listNo": "5th"
         },
         {
           "offenceTitle": "Theft from the person of another",
           "offenceSummary": "On 24/03/2016 at Preston stole NINTENDO SWITCH to the value of 300.00, belonging to Bender Schmidt.",
           "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-          "sequenceNumber": 4
+          "sequenceNumber": 4,
+          "listNo": "6th"
         }
       ],
       "defendantSex": "F",
