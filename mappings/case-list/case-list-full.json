@@ -121,7 +121,7 @@
           "courtCode": "SHF",
           "courtRoom": "Crown Court 3-1",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-          "listNo": "GARBAGE",
+          "listNo": "",
           "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Possible NDelius record",
@@ -315,7 +315,7 @@
           "courtRoom": "03",
           "createdToday": true,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-          "listNo": "3rd",
+          "listNo": "1st",
           "crn": "D541487",
           "pnc": "A/1234560BA",
           "probationStatus": "Previously known",
@@ -325,6 +325,7 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "source": "COMMON_PLATFORM",
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -382,7 +383,14 @@
             {
               "offenceTitle": "Theft from the person of another",
               "offenceSummary": "On 24/03/2016 at Newcastle stole NINTENDO SWITCH to the value of 300.00, belonging to Wong Landry.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+              "listNo": "7th"
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at Newcastle stole NINTENDO SWITCH to the value of 300.00, belonging to Wong Landry.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+              "listNo": "7th"
             }
           ],
           "defendantSex": "F",
