@@ -325,31 +325,26 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
-          "source": "COMMON_PLATFORM",
           "offences": [
             {
               "offenceTitle": "Assault by beating",
               "offenceSummary": "On 01/01/2016 at Newcastle assaulted Mullen Rojas by beating him.",
-              "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
-              "listNo": "3rd"
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             },
             {
               "offenceTitle": "Assault by beating",
               "offenceSummary": "On 01/01/2016 at Newcastle assaulted Bradshaw Hoover by beating him.",
-              "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
-              "listNo": "2nd"
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
             },
             {
               "offenceTitle": "Theft from the person of another",
               "offenceSummary": "On 24/03/2016 at Sheffield stole XBOX ONE to the value of 300.00, belonging to Colon Bowers.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-              "listNo": "5th"
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             },
             {
               "offenceTitle": "Theft from the person of another",
               "offenceSummary": "On 24/03/2016 at Preston stole NINTENDO SWITCH to the value of 300.00, belonging to Bender Schmidt.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-              "listNo": "6th"
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
             }
           ],
           "defendantSex": "F",
@@ -591,31 +586,37 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "source": "COMMON_PLATFORM",
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
               "offenceSummary": "On 05/09/2016 at Edinburgh attempted to steal WASHING MACHINE to the value of 750.00, belonging to Flores Howell.",
-              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+              "listNo": "2nd"
             },
             {
               "offenceTitle": "Theft from a shop",
               "offenceSummary": "On 01/01/2015 at Zaya, Bangor, stole LAPTOP to the value of £987.00, belonging to Humphrey England.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+              "listNo": "4th"
             },
             {
               "offenceTitle": "Theft from the person of another",
               "offenceSummary": "On 24/03/2016 at Liverpool stole LAPTOP to the value of 300.00, belonging to Mcfarland Mckinney.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+              "listNo": "6th"
             },
             {
               "offenceTitle": "Theft from a shop",
               "offenceSummary": "On 01/01/2015 at Zilidium, Cardiff, stole LAPTOP to the value of £987.00, belonging to Moreno Petty.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+              "listNo": "8th"
             },
             {
               "offenceTitle": "Attempt theft from the person of another",
               "offenceSummary": "On 05/09/2016 at Leeds attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Farmer Stanton.",
-              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+              "listNo": "10th"
             }
           ],
           "defendantSex": "F",
