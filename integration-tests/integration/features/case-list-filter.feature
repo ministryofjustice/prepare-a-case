@@ -256,7 +256,7 @@ Feature: Case list filters
 
     And I should see the following table rows
       | Guadalupe Hess           | Possible NDelius Record | Assault by beating |     | Morning   | Crown Court 3-1 |
-      | Feli'Cia Villa'Rreali'Ty | Possible NDelius Record | Theft from a shop  | 3rd | Afternoon | 2               |
+      | Feli'Cia Villa'Rreali'Ty | Possible NDelius Record | Theft from a shop  |     | Afternoon | 2               |
 
     And I should see the Possible NDelius record badge
 
