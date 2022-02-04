@@ -121,7 +121,7 @@
           "courtCode": "SHF",
           "courtRoom": "Crown Court 3-1",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-          "listNo": "GARBAGE",
+          "listNo": "1st",
           "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Possible NDelius record",
@@ -138,13 +138,13 @@
               "offenceTitle": "Assault by beating",
               "offenceSummary": "On 01/01/2016 at Glasgow assaulted Horne Parker by beating him.",
               "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
-              "listNo": "1st"
+              "listNo": 1
             },
             {
               "offenceTitle": "Attempt theft from the person of another",
               "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Shaw Leon.",
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
-              "listNo": "2nd"
+              "listNo": 2
             }
           ],
           "defendantSex": "M",
@@ -594,31 +594,31 @@
               "offenceTitle": "Attempt theft from the person of another",
               "offenceSummary": "On 05/09/2016 at Edinburgh attempted to steal WASHING MACHINE to the value of 750.00, belonging to Flores Howell.",
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
-              "listNo": "2nd"
+              "listNo": 2
             },
             {
               "offenceTitle": "Theft from a shop",
               "offenceSummary": "On 01/01/2015 at Zaya, Bangor, stole LAPTOP to the value of £987.00, belonging to Humphrey England.",
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-              "listNo": "4th"
+              "listNo": 4
             },
             {
               "offenceTitle": "Theft from the person of another",
               "offenceSummary": "On 24/03/2016 at Liverpool stole LAPTOP to the value of 300.00, belonging to Mcfarland Mckinney.",
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-              "listNo": "6th"
+              "listNo": 6
             },
             {
               "offenceTitle": "Theft from a shop",
               "offenceSummary": "On 01/01/2015 at Zilidium, Cardiff, stole LAPTOP to the value of £987.00, belonging to Moreno Petty.",
               "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
-              "listNo": "8th"
+              "listNo": 8
             },
             {
               "offenceTitle": "Attempt theft from the person of another",
               "offenceSummary": "On 05/09/2016 at Leeds attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Farmer Stanton.",
               "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
-              "listNo": "10th"
+              "listNo": 10
             }
           ],
           "defendantSex": "F",
