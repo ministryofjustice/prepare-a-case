@@ -121,7 +121,7 @@
           "courtCode": "SHF",
           "courtRoom": "Crown Court 3-1",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-          "listNo": "",
+          "listNo": "GARBAGE",
           "crn": null,
           "pnc": "A/1234560BA",
           "probationStatus": "Possible NDelius record",
@@ -137,12 +137,14 @@
             {
               "offenceTitle": "Assault by beating",
               "offenceSummary": "On 01/01/2016 at Glasgow assaulted Horne Parker by beating him.",
-              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
+              "listNo": "1st"
             },
             {
               "offenceTitle": "Attempt theft from the person of another",
               "offenceSummary": "On 05/09/2016 at Cardiff attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Shaw Leon.",
-              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+              "listNo": "2nd"
             }
           ],
           "defendantSex": "M",
