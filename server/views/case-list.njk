@@ -40,10 +40,12 @@
         {{ offences.push('</ol>') }}
 
     {% set listing = [] %}
-        {% if item.source === "COMMON_PLATFORM" and item.probationStatus !== "Possible NDelius record" %}
+        {% if item.probationStatus === "Possible NDelius record" %}
+            {{ listing.push("") }}
+        {% elif item.source === "COMMON_PLATFORM" %}
             {{ listing.push('<ol class="govuk-list govuk-!-margin-bottom-0">') }}
-        {% for listNumber in item.offences %}
-            {{ listing.push('<li>' + listNumber.listNo + '<li>') }}
+        {% for listNumberFromCP in item.offences %}
+            {{ listing.push('<li>' + listNumberFromCP.listNo + '<li>') }}
         {% endfor %}
             {% else %}
                 {{ listing.push(item.listNo) }}

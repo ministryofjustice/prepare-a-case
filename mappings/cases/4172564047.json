@@ -26,7 +26,7 @@
       "breach": false,
       "preSentenceActivity": false,
       "awaitingPsr": false,
-      "source": "COMMON_PLATFORM",
+      "source": "LIBRA",
       "offences": [
         {
           "offenceTitle": "Theft from a shop",
