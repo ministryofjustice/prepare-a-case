@@ -1,6 +1,5 @@
 const nunjucks = require('nunjucks')
 const { googleAnalyticsKey } = require('../../config')
-const { number } = require('nunjucks/src/tests')
 
 module.exports = (app, path) => {
   const env = nunjucks.configure([
@@ -60,7 +59,7 @@ module.exports = (app, path) => {
   })
 
   env.addFilter('ordinalNumber', (number) => {
-      const ordinal = ["st","nd","rd"][((number+90)%100-10)%10-1] || "th"
+    const ordinal = ['st', 'nd', 'rd'][((number + 90) % 100 - 10) % 10 - 1] || 'th'
     return number + ordinal
   })
 
