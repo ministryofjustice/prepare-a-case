@@ -32,30 +32,35 @@
           "offenceTitle": "Attempt theft from the person of another",
           "offenceSummary": "On 05/09/2016 at Edinburgh attempted to steal WASHING MACHINE to the value of 750.00, belonging to Flores Howell.",
           "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 1,
           "listNo": 2
         },
         {
           "offenceTitle": "Theft from a shop",
           "offenceSummary": "On 01/01/2015 at Zaya, Bangor, stole LAPTOP to the value of £987.00, belonging to Humphrey England.",
           "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 2,
           "listNo": 4
         },
         {
           "offenceTitle": "Theft from the person of another",
           "offenceSummary": "On 24/03/2016 at Liverpool stole LAPTOP to the value of 300.00, belonging to Mcfarland Mckinney.",
           "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 3,
           "listNo": 6
         },
         {
           "offenceTitle": "Theft from a shop",
           "offenceSummary": "On 01/01/2015 at Zilidium, Cardiff, stole LAPTOP to the value of £987.00, belonging to Moreno Petty.",
           "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 4,
           "listNo": 8
         },
         {
           "offenceTitle": "Attempt theft from the person of another",
           "offenceSummary": "On 05/09/2016 at Leeds attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Farmer Stanton.",
           "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 5,
           "listNo": 10
         }
       ],

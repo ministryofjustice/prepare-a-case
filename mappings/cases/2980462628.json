@@ -14,7 +14,7 @@
       "defendantId": "c8fe5f8a-57f2-43a0-b5fb-73562036f080",
       "caseNo": "2980462628",
       "courtCode": "SHF",
-      "courtRoom": "03",
+      "courtRoom": "Courtroom 03",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "1st",
       "crn": "D541487",
@@ -33,7 +33,7 @@
           "offenceSummary": "On 01/01/2016 at Newcastle assaulted Mullen Rojas by beating him.",
           "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
           "sequenceNumber": 1,
-          "listNo": 3
+          "listNo": 1
         },
         {
           "offenceTitle": "Assault by beating",
@@ -47,14 +47,14 @@
           "offenceSummary": "On 24/03/2016 at Sheffield stole XBOX ONE to the value of 300.00, belonging to Colon Bowers.",
           "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
           "sequenceNumber": 3,
-          "listNo": 5
+          "listNo": 3
         },
         {
           "offenceTitle": "Theft from the person of another",
           "offenceSummary": "On 24/03/2016 at Preston stole NINTENDO SWITCH to the value of 300.00, belonging to Bender Schmidt.",
           "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
           "sequenceNumber": 4,
-          "listNo": 6
+          "listNo": 4
         }
       ],
       "defendantSex": "F",

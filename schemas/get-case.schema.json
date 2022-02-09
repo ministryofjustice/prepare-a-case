@@ -217,9 +217,9 @@
               "listNo": {
                 "$id": "#/properties/offenceListNo",
                 "type": "integer",
-                "title": "The listNo schema",
+                "title": "The listNumber schema",
                 "description": "An explanation about the purpose of this instance.",
-                "default": ""
+                "default": 0
               }
             },
             "additionalProperties": false
