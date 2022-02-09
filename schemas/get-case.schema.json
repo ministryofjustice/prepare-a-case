@@ -9,7 +9,6 @@
     "caseId",
     "defendantId",
     "caseNo",
-    "listNo",
     "courtCode",
     "courtRoom",
     "sessionStartTime",
@@ -214,6 +213,13 @@
                 "title": "The sequenceNumber schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": 0
+              },
+              "listNo": {
+                "$id": "#/properties/offenceListNo",
+                "type": "integer",
+                "title": "The listNo schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
               }
             },
             "additionalProperties": false
