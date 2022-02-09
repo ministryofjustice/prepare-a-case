@@ -216,9 +216,16 @@
                           "title": "The sequenceNumber schema",
                           "description": "An explanation about the purpose of this instance.",
                           "default": 0
-                        }
-                      },
-                      "additionalProperties": false
+                        },
+                        "listNo": {
+                          "$id": "#/properties/cases/items/anyOf/0/properties/offences/items/anyOf/0/properties/listNo",
+                          "type": "integer",
+                          "title": "The listNo schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": 0
+                        },
+                        "additionalProperties": false
+                      }
                     }
                   ]
                 }

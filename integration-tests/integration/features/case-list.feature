@@ -163,35 +163,35 @@ Feature: Case list
 
   Scenario: View the case list with data containing 207 cases for the given day and navigate to page 11
     Given I am an authenticated user
-#    When I navigate to the "cases" route for today
-#
-#    Then I should be on the "Case list" page
-#
-#    When I click pagination link "5"
-#    And I click pagination link "7"
+    When I navigate to the "cases" route for today
+
+    Then I should be on the "Case list" page
+
+    When I click pagination link "5"
+    And I click pagination link "7"
 #    And I click pagination link "9"
 #    And I click pagination link "11"
-#
-#    Then I should see the following table headings
-#      | Defendant | Probation status | Offence | Listing | Session | Court |
-#
-#    And I should see the following table rows
-#      | Luisa Alston      | No record        | Theft from a shop                | 3rd | Afternoon | 3 |
-#      | Macdonald Ellison | Previously known | Theft from the person of another | 3rd | Afternoon | 4 |
-#
-#    And I should see link "Luisa Alston" with href "/case/194e7037-2a6e-4f61-8794-dc2f72738518/defendant/2c4dc41c-1e52-4993-9c39-15295427b693/summary"
-#    And I should see link "Macdonald Ellison" with href "/case/31d27795-b94d-433f-a756-6136a74f7726/defendant/ff79634e-b5c1-430a-9db8-3caffe0a7a26/summary"
-#
-#    And I should see pagination
-#    And I should see pagination link "Previous" with href "?page=10"
-#    And I should see pagination link "7" with href "?page=7"
-#    And I should see pagination link "8" with href "?page=8"
-#    And I should see pagination link "9" with href "?page=9"
+
+    Then I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Pacheco Burgess | Previously known | Assault by beating                       | 1st | Morning | 7 |
+      | Craig Hahn      | Current          | Attempt theft from the person of another | 1st | Morning | 6 |
+
+    And I should see link "Pacheco Burgess" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
+    And I should see link "Craig Hahn" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
+
+    And I should see pagination
+    And I should see pagination link "Previous" with href "?page=10"
+    And I should see pagination link "7" with href "?page=7"
+    And I should see pagination link "8" with href "?page=8"
+    And I should see pagination link "9" with href "?page=9"
 #    And I should see pagination link "10" with href "?page=10"
-#    And I should not see pagination link "11"
-#    And I should see pagination page "11" highlighted
-#    And I should not see pagination link "Next"
-#    And I should see pagination text "Showing 201 to 207 of 207 results"
+    And I should not see pagination link "11"
+    And I should see pagination page "11" highlighted
+    And I should not see pagination link "Next"
+    And I should see pagination text "Showing 201 to 207 of 207 results"
     And There should be no a11y violations
 
   Scenario: View the recently added cases on the case list

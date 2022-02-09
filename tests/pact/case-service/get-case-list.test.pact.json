@@ -35,7 +35,8 @@
               "offenceTitle": "Offence Title 16000",
               "offenceSummary": "Offence Summary 16000",
               "act": "Offence ACT 16000",
-              "sequenceNumber": 1
+              "sequenceNumber": 1,
+              "listNo": 1
             }
           ],
           "defendantName": "Mr Johnny BALL",
@@ -84,7 +85,8 @@
               "offenceTitle": "Offence Title 16001",
               "offenceSummary": "Offence Summary 16001",
               "act": "Offence ACT 16001",
-              "sequenceNumber": 1
+              "sequenceNumber": 1,
+              "listNo": 2
             }
           ],
           "defendantName": "Mr Brian CANT",
