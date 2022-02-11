@@ -253,28 +253,28 @@ Feature: Case list
   Scenario: View the case list with data containing 5 cases for the given day
     Given I am an authenticated user
 
-    When I navigate to the "cases/2021-02-03" route
+    When I navigate to the "cases/2020-01-02" route
     Then I should be on the "Case list" page
-    And I should see the current day as "Wednesday 3 February"
+    And I should see the current day as "Thursday 2 January"
     And I should not see 7 days navigation bar
     And I should see link "Go to today" with href "/cases"
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
-#    And I should not see that any defendants have possible NDelius records
+    And I should not see that any defendants have possible NDelius records
 
-#    And I should see a count of "5 cases"
+    And I should see a count of "5 cases"
 
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
-#    And I should see the following table rows
-#      | Gill Arnold    | Current          | Theft from the person of another | 3rd | Morning | 1 |
-#      | Cornelia McCoy | Previously known | Assault by beating               | 2nd | Morning | 1 |
-#
-#    And I should see link "Gill Arnold" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
-#    And I should see link "Cornelia McCoy" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
+    And I should see the following table rows
+      | Gill Arnold    | Current          | Theft from the person of another | 3rd | Morning | 1 |
+      | Cornelia McCoy | Previously known | Assault by beating               | 2nd | Morning | 1 |
 
-#    And I should not see pagination
+    And I should see link "Gill Arnold" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
+    And I should see link "Cornelia McCoy" with href "/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
+
+    And I should not see pagination
     And There should be no a11y violations
 
   Scenario: View the case list with no data for the given day
