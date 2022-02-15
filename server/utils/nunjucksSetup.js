@@ -63,5 +63,10 @@ module.exports = (app, path) => {
     return number + ordinal
   })
 
+  env.addFilter('courtroomDisplay', (sourceString) => {
+    const courtroomFromCP = sourceString.replace("Courtroom", "")
+    return sourceString.replace("0") ? courtroomFromCP.replace("0","") : sourceString.replace("0","")
+  })
+
   env.addGlobal('googleAnalyticsKey', googleAnalyticsKey)
 }
