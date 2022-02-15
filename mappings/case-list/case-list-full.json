@@ -588,7 +588,7 @@
           "defendantId": "f2b2cdce-78a4-4d30-aaa4-50439fd76b9e0",
           "caseNo": "5629289820",
           "courtCode": "SHF",
-          "courtRoom": "07",
+          "courtRoom": "Courtroom 07",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "crn": null,
