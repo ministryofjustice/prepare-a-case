@@ -12,7 +12,7 @@ module.exports = (caseListData, selectedFilters) => {
     .filter(item => isNaN(item))
     .sort((a, b) => a - b)
     .map(item => item && {
-      label: item.includes("Courtroom") ? item.toString().replace(/([A-Za-z 0]*)?/, "") : item.toString(),
+      label: item.includes('Courtroom') ? item.replace(/([A-Za-z 0]*)?/, '') : item.replace(/([0]*)?/, ''),
       value: item.toString()
     })
 
