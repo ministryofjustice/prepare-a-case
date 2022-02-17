@@ -72,7 +72,6 @@
   "dependencies": {
     "@ministryofjustice/frontend": "1.1.0",
     "accessible-autocomplete": "2.0.3",
-    "agentkeepalive": "4.1.4",
     "applicationinsights": "2.2.0",
     "applicationinsights-native-metrics": "0.0.6",
     "axios": "0.24.0",
@@ -104,6 +103,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "7.3.1",
     "@pact-foundation/pact": "9.17.0",
+    "agentkeepalive": "^4.2.0",
     "ajv": "8.8.2",
     "ajv-errors": "3.0.0",
     "axe-core": "4.3.5",
