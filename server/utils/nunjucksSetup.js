@@ -55,12 +55,16 @@ module.exports = (app, path) => {
 
   env.addFilter('apostropheInName', (name) => {
     const pattern = /\b(&#39;)\b/g
-    return name.replace(pattern, "'")
+    return name.replace(pattern, '\'')
   })
 
   env.addFilter('ordinalNumber', (number) => {
     const ordinal = ['st', 'nd', 'rd'][((number + 90) % 100 - 10) % 10 - 1] || 'th'
     return number + ordinal
+  })
+
+  env.addFilter('courtRoomDisplay', (sourceString) => {
+    return sourceString.includes('Courtroom') ? sourceString.replace(/([A-Za-z 0]*)?/, '') : sourceString.replace(/([0]*)?/, '')
   })
 
   env.addGlobal('googleAnalyticsKey', googleAnalyticsKey)

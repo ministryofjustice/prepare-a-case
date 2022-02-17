@@ -588,7 +588,7 @@
           "defendantId": "f2b2cdce-78a4-4d30-aaa4-50439fd76b9e0",
           "caseNo": "5629289820",
           "courtCode": "SHF",
-          "courtRoom": "07",
+          "courtRoom": "Courtroom 17",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "crn": null,
@@ -653,7 +653,7 @@
           "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "caseNo": "8261371444",
           "courtCode": "SHF",
-          "courtRoom": "06",
+          "courtRoom": "Courtroom 060",
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "crn": null,
@@ -665,31 +665,42 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "source": "COMMON_PLATFORM",
           "offences": [
             {
               "offenceTitle": "Assault by beating",
               "offenceSummary": "On 01/01/2016 at Liverpool assaulted Erickson Henry by beating him.",
-              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988.",
+              "sequenceNumber": 1,
+              "listNo": 1
             },
             {
               "offenceTitle": "Theft from a shop",
               "offenceSummary": "On 01/01/2015 at Futuris, Manchester, stole LAPTOP to the value of £987.00, belonging to Lindsay Curry.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+              "sequenceNumber": 2,
+              "listNo": 2
             },
             {
               "offenceTitle": "Theft from the person of another",
               "offenceSummary": "On 24/03/2016 at Leeds stole LAPTOP to the value of 300.00, belonging to Edwards Fuentes.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+              "sequenceNumber": 3,
+              "listNo": 3
             },
             {
               "offenceTitle": "Theft from the person of another",
               "offenceSummary": "On 24/03/2016 at Edinburgh stole PLAYSTATION 4 to the value of 300.00, belonging to Mccullough Harrell.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+              "sequenceNumber": 4,
+              "listNo": 4
             },
             {
               "offenceTitle": "Attempt theft from the person of another",
               "offenceSummary": "On 05/09/2016 at Newcastle attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Schultz William.",
-              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981."
+              "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+              "sequenceNumber": 5,
+              "listNo": 5
             }
           ],
           "defendantSex": "F",
