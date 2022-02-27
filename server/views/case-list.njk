@@ -42,10 +42,30 @@
     {% endif %}
 
     {% set listing = [] %}
+{#    {% if item.source === "COMMON_PLATFORM" %}#}
+{#        {{ listing.push('<ol class="govuk-list govuk-!-margin-bottom-0">') }}#}
+{#        {% if item.offences > 1 %}#}
+{#            {% for offence in item.offences %}#}
+{#                {% if offence.listNo[0] === offence.listNo[1] || undefined %}#}
+{#                    {{ listing.push('<li>' + offence.listNo[0] | ordinalNumber | escape + 'hey' + '</li>' ) }}#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#        {% endif %}#}
+
+{#            {% if offence.listNo[0] !== offence.listNo[1] %}#}
+{#                {{ listing.push('<li>' + offence.listNo | ordinalNumber | escape + '</li>' ) }}#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#    {% endif %}#}
+{#    {% else %}#}
+{#        {{ listing.push(item.listNo) }}#}
+{#        {{ listing.push('</ol>') }}#}
+{#    {% endif %}#}
+{% set firstItem = listing | string | first %}
     {% if item.source === "COMMON_PLATFORM" %}
         {{ listing.push('<ol class="govuk-list govuk-!-margin-bottom-0">') }}
-        {% for listNOfromCP in item.offences %}
-            {{ listing.push('<li>' + listNOfromCP.listNo | ordinalNumber | escape + '</li>' ) }}
+        {% for offence in item.offences %}
+            {{ listing.push('<li>' + offence.listNo | string if offence.listNo | string === firstItem else offence.listNo + '___' + '</li>' ) }}
         {% endfor %}
     {% else %}
         {{ listing.push(item.listNo) }}
@@ -59,7 +79,7 @@
         { text: ('<a href="/' + params.courtCode + '/case/' + item.caseId + '/defendant/' + item.defendantId + '/summary" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" aria-label="' + a11yTitle + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
         { text: ('<div>' + ('<span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span>' | safe if notMatched ) + ('<span class="moj-badge moj-badge--black pac-badge">Psr</span>' | safe if item.awaitingPsr) + ('<span class="moj-badge moj-badge--black pac-badge">Breach</span>' | safe if item.breach) + ('<span class="moj-badge moj-badge--black pac-badge">Sso</span>' | safe if item.suspendedSentenceOrder) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched) + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate)) | safe },
         { text: offences | join('') | safe },
-        { text: listing  | join('') | safe },
+        { text: listing | join('') | safe },
         { text: item.session | capitalize },
         { text: courtRoom, format: "numeric"}
     ] -%}

@@ -67,5 +67,14 @@ module.exports = (app, path) => {
     return sourceString.includes('Courtroom') ? sourceString.replace(/([A-Za-z 0]*)?/, '') : sourceString.replace(/([0]*)?/, '')
   })
 
+  env.addFilter('listingCompare', (listing) => {
+    for (let i = 0; i < listing.length; i++) {
+      for (let k = i + 1; k < listing.length; k++) {
+        if (listing[i] !== listing[k]) {
+          console.log(listing[i] !== listing[k], listing[k], "hey")
+        }
+      }
+    }
+  })
   env.addGlobal('googleAnalyticsKey', googleAnalyticsKey)
 }
