@@ -42,31 +42,19 @@
     {% endif %}
 
     {% set listing = [] %}
-{#    {% if item.source === "COMMON_PLATFORM" %}#}
-{#        {{ listing.push('<ol class="govuk-list govuk-!-margin-bottom-0">') }}#}
-{#        {% if item.offences > 1 %}#}
-{#            {% for offence in item.offences %}#}
-{#                {% if offence.listNo[0] === offence.listNo[1] || undefined %}#}
-{#                    {{ listing.push('<li>' + offence.listNo[0] | ordinalNumber | escape + 'hey' + '</li>' ) }}#}
-{#                {% endif %}#}
-{#            {% endfor %}#}
-{#        {% endif %}#}
-
-{#            {% if offence.listNo[0] !== offence.listNo[1] %}#}
-{#                {{ listing.push('<li>' + offence.listNo | ordinalNumber | escape + '</li>' ) }}#}
-{#            {% endif %}#}
-{#        {% endfor %}#}
-{#    {% endif %}#}
-{#    {% else %}#}
-{#        {{ listing.push(item.listNo) }}#}
-{#        {{ listing.push('</ol>') }}#}
-{#    {% endif %}#}
-{% set firstItem = listing | string | first %}
+    {% set updatedListing = [] %}
     {% if item.source === "COMMON_PLATFORM" %}
         {{ listing.push('<ol class="govuk-list govuk-!-margin-bottom-0">') }}
-        {% for offence in item.offences %}
-            {{ listing.push('<li>' + offence.listNo | string if offence.listNo | string === firstItem else offence.listNo + '___' + '</li>' ) }}
+        {% for cpListNo in item.offences %}
+            {{ updatedListing.push(cpListNo.listNo) }}
         {% endfor %}
+        {% if updatedListing | first !== updatedListing | last %}
+            {% for number in updatedListing %}
+                {{ listing.push('<li>' + number | ordinalNumber | escape + '</li>' ) }}
+            {% endfor %}
+        {% else %}
+            {{ listing.push('<li>' + updatedListing | first | ordinalNumber | escape + '</li>' ) }}
+        {% endif %}
     {% else %}
         {{ listing.push(item.listNo) }}
         {{ listing.push('</ol>') }}
