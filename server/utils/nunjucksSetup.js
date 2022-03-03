@@ -67,7 +67,7 @@ module.exports = (app, path) => {
     return sourceString.includes('Courtroom') ? sourceString.replace(/([A-Za-z 0]*)?/, '') : sourceString.replace(/([0]*)?/, '')
   })
 
-  env.addFilter('unique', arr => arr instanceof Array && arr.filter((e, i, arr) => arr.indexOf(e) === i) || arr)
+  env.addFilter('unique', arr => [...new Set(arr)])
 
   env.addGlobal('googleAnalyticsKey', googleAnalyticsKey)
 }
