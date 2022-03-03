@@ -47,15 +47,15 @@
         {% for cpListNo in item.offences %}
             {{ updatedListing.push(cpListNo.listNo) }}
         {% endfor %}
-        {{ listing.push('<ol class="govuk-list govuk-!-margin-bottom-0">') }}
         {% if updatedListing | unique | length === 1 %}
-            {{ listing.push('<li>' + updatedListing | first | ordinalNumber | escape + '</li>' ) }}
+            {{ listing.push(updatedListing | first | ordinalNumber | escape) }}
         {% else %}
+            {{ listing.push('<ol class="govuk-list govuk-!-margin-bottom-0">') }}
             {% for number in updatedListing %}
                 {{ listing.push('<li>' + number | ordinalNumber | escape + '</li>' ) }}
             {% endfor %}
+            {{ listing.push('</ol>') }}
         {% endif %}
-        {{ listing.push('</ol>') }}
     {% else %}
         {{ listing.push(item.listNo) }}
     {% endif %}
