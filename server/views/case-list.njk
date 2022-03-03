@@ -33,7 +33,7 @@
         {% for offence in item.offences %}
             {{ offences.push(offence.offenceTitle | escape) }}
         {% endfor %}
-        {% elif item.offences | length %}
+    {% elif item.offences | length %}
         {{ offences.push('<ol class="govuk-list govuk-list--number govuk-!-margin-bottom-0">') }}
         {% for offence in item.offences %}
             {{ offences.push('<li>' + offence.offenceTitle | escape + '</li>') }}
@@ -44,20 +44,20 @@
     {% set listing = [] %}
     {% set updatedListing = [] %}
     {% if item.source === "COMMON_PLATFORM" %}
-        {{ listing.push('<ol class="govuk-list govuk-!-margin-bottom-0">') }}
         {% for cpListNo in item.offences %}
             {{ updatedListing.push(cpListNo.listNo) }}
         {% endfor %}
-        {% if updatedListing | first !== updatedListing | last %}
+        {{ listing.push('<ol class="govuk-list govuk-!-margin-bottom-0">') }}
+        {% if updatedListing | unique | length === 1 %}
+            {{ listing.push('<li>' + updatedListing | first | ordinalNumber | escape + '</li>' ) }}
+        {% else %}
             {% for number in updatedListing %}
                 {{ listing.push('<li>' + number | ordinalNumber | escape + '</li>' ) }}
             {% endfor %}
-        {% else %}
-            {{ listing.push('<li>' + updatedListing | first | ordinalNumber | escape + '</li>' ) }}
         {% endif %}
+        {{ listing.push('</ol>') }}
     {% else %}
         {{ listing.push(item.listNo) }}
-        {{ listing.push('</ol>') }}
     {% endif %}
 
     {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
