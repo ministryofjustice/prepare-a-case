@@ -61,7 +61,7 @@ Feature: Case summary
     And I should see the following level 2 headings
       | Appearance | Offences |
 
-    And I should see the body text "Court 10-1, morning session, $LONG_TODAY."
+    And I should see the body text "Court Crown Court 3-1, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
       | Attempt theft from the person of another |
       | Assault by beating                       |
