@@ -89,8 +89,7 @@ And('Defendant {string} should display the following {string} data', ($defendant
           })
         })
       })
-    }
-    else {
+    } else {
       cy.get('.govuk-table__cell').eq(headerIndex).within(() => {
         cy.get('li').should('not.exist')
       })
