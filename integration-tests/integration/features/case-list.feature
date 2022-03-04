@@ -47,6 +47,24 @@ Feature: Case list
     And I should see pagination text "Showing 1 to 20 of 207 results"
     And There should be no a11y violations
 
+  Scenario: View specific offence data on the case list
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+    And Defendant "Guadalupe Hess" should display the following "Offence" data
+      | Assault by beating | Attempt theft from the person of another |
+    And Defendant "Olsen Alexander" should display the following "Offence" data
+      | Theft from a shop |
+
+  Scenario: View specific listing data on the case list
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+    And Defendant "Latoya Kirkland" should display the following "Listing" data
+      | 2nd | 4th | 6th | 8th | 10th |
+    And Defendant "Dora Clayton" should display the following "Listing" data
+      | 1st |
+
   Scenario: View the case list with data containing 207 cases for the given day and navigate to page 2
     Given I am an authenticated user
     When I navigate to the "cases" route for today
