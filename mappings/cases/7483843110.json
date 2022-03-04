@@ -14,7 +14,7 @@
       "defendantId": "d1d38809-af04-4ff0-9328-4db39c0a3d85",
       "caseNo": "7483843110",
       "courtCode": "SHF",
-      "courtRoom": "02-3",
+      "courtRoom": "Courtroom 02-3",
       "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
       "listNo": "3rd",
       "pnc": "A/1234560BA",
