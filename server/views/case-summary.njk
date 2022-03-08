@@ -120,14 +120,25 @@
                         {% endif %}
                     </dd>
                 </div>
+
+                {% set telephones = data.phoneNumber %}
+                {% if data.source === "COMMON_PLATFORM" %}
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
-                        Nationality
+                        Phone number
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        {{ data.nationality1 or "Unknown" }}{{ " / " + data.nationality2 if data.nationality2 }}
+                        {% if telephones | length < 1 %}
+                            {{ "Unavalaible" }}
+                        {% else %}
+                            {{ telephones.mobile + " (Mobile)" if telephones.mobile else "" }}
+                            {{ telephones.home + " (Home)" if telephones.home else "" }}
+                            {{ telephones.work + " (Work)" if telephones.work else "" }}
+                        {% endif %}
                     </dd>
                 </div>
+                {% endif %}
+
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                         Address
