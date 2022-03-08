@@ -134,7 +134,7 @@
                         </dt>
                         <dd class="govuk-summary-list__value">
                             {% if telephones | length < 1 %}
-                                {{ "Unavalaible" }}
+                                {{ "Unavailable" }}
                             {% else %}
                                 {{ telephones.mobile + " (Mobile)" if telephones.mobile else "" }}
                                 {{ telephones.home + " (Home)" if telephones.home else "" }}

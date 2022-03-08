@@ -42,7 +42,6 @@ Feature: Case summary
       | Name          | Guadalupe Hess                         |
       | Gender        | Male                                   |
       | Date of birth | 18 February 1989                       |
-      | Nationality   | Unknown                                |
       | Address       | 43 Hunterfly Place Birmingham AD21 5DR |
 
     And There should be no a11y violations
@@ -72,7 +71,6 @@ Feature: Case summary
       | Name          | Kara Ayers                        |
       | Gender        | Female                            |
       | Date of birth | 31 October 1980                   |
-      | Nationality   | Unknown                           |
       | Address       | 22 Waldorf Court Cardiff AD21 5DR |
 
     And I should see a button with the label "Link NDelius record"
@@ -106,7 +104,7 @@ Feature: Case summary
       | Name          | Webb Mitchell                       |
       | Gender        | Not specified                       |
       | Date of birth | 13 October 1958                     |
-      | Nationality   | Polish                              |
+      | Phone number  | 020 789 789 789 (Work)              |
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
 
     And I should see a button with the label "Unlink NDelius record"
@@ -142,7 +140,9 @@ Feature: Case summary
       | Name          | Mann Carroll                        |
       | Gender        | Female                              |
       | Date of birth | Unknown                             |
-      | Nationality   | Unknown                             |
+      | Phone number  | 07 123 123 123 (Mobile)             |
+      |               | 020 456 456 456 (Home)              |
+      |               | 020 789 789 789 (Work)              |
       | Address       | 91 Barbey street Sheffield AD21 5DR |
 
     And There should be no a11y violations
@@ -176,7 +176,7 @@ Feature: Case summary
       | Name          | Lenore Marquez                     |
       | Gender        | Female                             |
       | Date of birth | 18 August 1979                     |
-      | Nationality   | British                            |
+      | Phone number  | Unavailable                        |
       | Address       | 38 Clarendon Road Glasgow AD21 5DR |
 
     And I should see a button with the label "Unlink NDelius record"
@@ -210,7 +210,6 @@ Feature: Case summary
       | Name          | Olsen Alexander                 |
       | Gender        | Male                            |
       | Date of birth | 6 June 1996                     |
-      | Nationality   | British / Swedish               |
       | Address       | 99 Ralph Avenue London AD21 5DR |
 
     And I should see a button with the label "Unlink NDelius record"
