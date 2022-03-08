@@ -56,7 +56,9 @@
         "line3": "Bangor"
       },
       "defendantDob": "1958-10-13",
-      "nationality1": "Polish",
+      "phoneNumber": {
+        "work": "020 789 789 789"
+      },
       "createdToday": true,
       "removed": false,
       "numberOfPossibleMatches": 0
