@@ -136,9 +136,9 @@
                             {% if telephones | length < 1 %}
                                 {{ "Unavailable" }}
                             {% else %}
-                                {{ telephones.mobile + " (Mobile)" if telephones.mobile else "" }}
-                                {{ telephones.home + " (Home)" if telephones.home else "" }}
-                                {{ telephones.work + " (Work)" if telephones.work else "" }}
+                                {% if telephones.mobile %}{{ telephones.mobile + " (Mobile)" }}<br/>{% endif %}
+                                {% if telephones.home %}{{ telephones.home + " (Home)" }}<br/>{% endif %}
+                                {% if telephones.work %}{{ telephones.work + " (Work)" }}<br/>{% endif %}
                             {% endif %}
                         </dd>
                     </div>
