@@ -59,8 +59,9 @@
           "defendantSex": "M",
           "defendantType": "PERSON",
           "defendantId": "005ae89b-46e9-4fa5-bb5e-d117011cab32",
-          "nationality1": "British",
-          "nationality2": "Polish",
+          "phoneNumber": {
+            "mobile": "07 123 123 123"
+          },
           "createdToday": true,
           "removed": false,
           "numberOfPossibleMatches": 1,
@@ -107,7 +108,9 @@
           "defendantSex": "M",
           "defendantType": "PERSON",
           "defendantId": "f2c83643-8ebd-4609-9183-cd8c34984e33",
-          "nationality1": "British",
+          "phoneNumber": {
+            "mobile": "07 123 123 123"
+          },
           "createdToday": true,
           "removed": false,
           "numberOfPossibleMatches": 0,
@@ -141,6 +144,7 @@
           },
           "defendantType": "ORGANISATION",
           "defendantId": "bfd7df09-4177-475e-b16f-0ace34a5ef2f",
+          "phoneNumber": {},
           "createdToday": true,
           "removed": false,
           "numberOfPossibleMatches": 0

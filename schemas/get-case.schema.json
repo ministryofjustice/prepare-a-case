@@ -24,7 +24,6 @@
     "defendantAddress",
     "defendantDob",
     "defendantSex",
-    "nationality1",
     "createdToday",
     "removed",
     "numberOfPossibleMatches",
@@ -368,19 +367,48 @@
       "description": "An explanation about the purpose of this instance.",
       "default": ""
     },
-    "nationality1": {
-      "$id": "#/properties/nationality1",
-      "type": "string",
-      "title": "The nationality1 schema",
+    "phoneNumber": {
+      "$id": "#/properties/defendantPhoneNumber",
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "The phoneNumber schema",
       "description": "An explanation about the purpose of this instance.",
-      "default": ""
-    },
-    "nationality2": {
-      "$id": "#/properties/nationality2",
-      "type": "string",
-      "title": "The nationality2 schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": ""
+      "default": {},
+      "required": [],
+      "properties": {
+        "mobile": {
+          "$id": "#/properties/defendantPhoneNumber/properties/mobile",
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "The mobile phoneNumber schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        },
+        "home": {
+          "$id": "#/properties/defendantPhoneNumber/properties/home",
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "The home phoneNumber schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        },
+        "work": {
+          "$id": "#/properties/defendantPhoneNumber/properties/work",
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "The work phoneNumber schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": ""
+        }
+      }
     },
     "createdToday": {
       "$id": "#/properties/createdToday",
