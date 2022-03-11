@@ -64,6 +64,11 @@ npm run lint
 npm run unit-test
 ```
 
+### Run PACT tests
+```
+npm run pact-test
+```
+
 ### Run integration tests
 For local running, start redis instance by:
 
