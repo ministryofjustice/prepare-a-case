@@ -57,8 +57,6 @@ Feature: Case summary
 
     And There should be no a11y violations
 
-    And There should be no a11y violations
-
   Scenario: View the case summary for the given defendant that has not been matched with an existing NDelius record
     Given I am an authenticated user
     And I click the "Accept analytics cookies" button

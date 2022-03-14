@@ -380,32 +380,17 @@
       "properties": {
         "mobile": {
           "$id": "#/properties/defendantPhoneNumber/properties/mobile",
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "The mobile phoneNumber schema",
-          "description": "An explanation about the purpose of this instance.",
+          "type": "string",
           "default": ""
         },
         "home": {
           "$id": "#/properties/defendantPhoneNumber/properties/home",
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "The home phoneNumber schema",
-          "description": "An explanation about the purpose of this instance.",
+          "type": "string",
           "default": ""
         },
         "work": {
           "$id": "#/properties/defendantPhoneNumber/properties/work",
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "The work phoneNumber schema",
-          "description": "An explanation about the purpose of this instance.",
+          "type": "string",
           "default": ""
         }
       }
