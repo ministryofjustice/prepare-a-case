@@ -60,8 +60,11 @@
       "defendantDob": "1958-10-10",
       "defendantSex": "M",
       "defendantType": "PERSON",
-      "nationality1": "British",
-      "nationality2": "Polish",
+      "phoneNumber": {
+        "mobile": "07 123 123 123",
+        "home": "020 456 456 456",
+        "work": "020 789 789 789"
+      },
       "createdToday": true,
       "removed": false,
       "numberOfPossibleMatches": 3

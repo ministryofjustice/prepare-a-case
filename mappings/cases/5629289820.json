@@ -73,7 +73,10 @@
         "line3": "Manchester"
       },
       "defendantDob": "1986-07-11",
-      "nationality1": "British",
+      "phoneNumber": {
+        "home": "020 456 456 456",
+        "work": "020 789 789 789"
+      },
       "createdToday": true,
       "removed": false,
       "numberOfPossibleMatches": 0

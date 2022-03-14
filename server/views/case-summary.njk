@@ -10,8 +10,10 @@
     <div role="dialog" aria-labelledby="bannerDialogTitle" aria-describedby="bannerDialogDesc">
         <span id="bannerDialogTitle" class="govuk-visually-hidden" hidden>Defendant partially matches existing records and needs review.</span>
         <h2 class="govuk-heading-m" id="bannerDialogDesc">
-            {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found for {{ defendantFullName | apostropheInName | properCase | removeTitle }}.
-            <a href="/{{ params.courtCode }}/case/{{ data.caseId }}/match/defendant/{{ data.defendantId }}" class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>.
+            {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found
+            for {{ defendantFullName | apostropheInName | properCase | removeTitle }}.
+            <a href="/{{ params.courtCode }}/case/{{ data.caseId }}/match/defendant/{{ data.defendantId }}"
+               class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>.
         </h2>
     </div>
 {% endset %}
@@ -49,9 +51,9 @@
                 {{ moment(data.sessionStartTime).format('dddd D MMMM') }}.</p>
 
             {% if data.source | length %}
-            <p class="govuk-caption-m govuk-!-margin-top-3">Source:
-            {{ data.source | replace("_", " ") | title }}{% if data.source | lower === "libra" %}, case number {{ data.caseNo }}{% endif %}
-            </p>
+                <p class="govuk-caption-m govuk-!-margin-top-3">Source:
+                    {{ data.source | replace("_", " ") | title }}{% if data.source | lower === "libra" %}, case number {{ data.caseNo }}{% endif %}
+                </p>
             {% endif %}
 
             <h2 class="govuk-heading-m govuk-!-margin-top-9">Offences</h2>
@@ -69,19 +71,22 @@
                 {% elif offences | length > 1 %}
                 <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{ params.caseId }}">
                     {% for offence in data.offences %}
-                    <div class="govuk-accordion__section">
-                        <div class="govuk-accordion__section-header">
-                            <h2 class="govuk-accordion__section-heading">
-                                <span class="govuk-accordion__section-button" id="accordion-{{ params.caseId }}-heading-{{ loop.index }}">
+                        <div class="govuk-accordion__section">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button"
+                                      id="accordion-{{ params.caseId }}-heading-{{ loop.index }}">
                                     <span class="pac-accordion-section-heading">{{ offence.offenceTitle }}</span>
                                 </span>
-                            </h2>
+                                </h2>
+                            </div>
+                            <div id="accordion-{{ params.caseId }}-content-{{ loop.index }}"
+                                 class="govuk-accordion__section-content"
+                                 aria-labelledby="accordion-{{ params.caseId }}-heading-{{ loop.index }}">
+                                <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.offenceSummary }}</p>
+                                <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
+                            </div>
                         </div>
-                        <div id="accordion-{{ params.caseId }}-content-{{ loop.index }}" class="govuk-accordion__section-content" aria-labelledby="accordion-{{ params.caseId }}-heading-{{ loop.index }}">
-                            <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.offenceSummary }}</p>
-                            <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
-                        </div>
-                    </div>
                     {% endfor %}
                 </div>
             {% endif %}
@@ -113,21 +118,32 @@
                     </dt>
                     <dd class="govuk-summary-list__value">
                         {% if data.defendantDob | length %}
-                        {{ moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY') }}
-                        ({{ moment().diff(moment(data.defendantDob, 'YYYY-MM-DD'), 'years') }} years old)
+                            {{ moment(data.defendantDob, 'YYYY-MM-DD').format('D MMMM YYYY') }}
+                            ({{ moment().diff(moment(data.defendantDob, 'YYYY-MM-DD'), 'years') }} years old)
                         {% else %}
-                        Unknown
+                            Unknown
                         {% endif %}
                     </dd>
                 </div>
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        Nationality
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        {{ data.nationality1 or "Unknown" }}{{ " / " + data.nationality2 if data.nationality2 }}
-                    </dd>
-                </div>
+
+                {% set telephones = data.phoneNumber %}
+                {% if data.source === "COMMON_PLATFORM" %}
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Phone number
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {% if telephones | length < 1 %}
+                                {{ "Unavailable" }}
+                            {% else %}
+                                {% if telephones.mobile %}{{ telephones.mobile + " (Mobile)" }}<br/>{% endif %}
+                                {% if telephones.home %}{{ telephones.home + " (Home)" }}<br/>{% endif %}
+                                {% if telephones.work %}{{ telephones.work + " (Work)" }}{% endif %}
+                            {% endif %}
+                        </dd>
+                    </div>
+                {% endif %}
+
                 <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                         Address

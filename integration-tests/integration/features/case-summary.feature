@@ -3,7 +3,7 @@ Feature: Case summary
   As an authenticated user
   I want to see a case summary view
 
-  Scenario: View the case summary for the given defendant by clicking the link on the case list page
+  Scenario: View the case summary with no contact detail for a Libra case by clicking the link on the case list page
     Given I am an authenticated user
     When I navigate to the "cases" route
     Then I should be on the "Case list" page
@@ -18,6 +18,43 @@ Feature: Case summary
     And I should see the heading "Kara Ayers"
     And I should see back link "Back to cases" with href "/B14LO/cases?page=1"
     And I should see the caption text "Source: Libra, case number 8678951874"
+
+    Then I should see the following summary list
+      | Name          | Kara Ayers                        |
+      | Gender        | Female                            |
+      | Date of birth | 31 October 1980                   |
+      | Address       | 22 Waldorf Court Cardiff AD21 5DR |
+
+    And There should be no a11y violations
+
+  Scenario: View the case summary with contact details for a Common Platform case by clicking the link on the case list page
+    Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
+
+    When I navigate to the "/B14LO/case/18745630-1398-42b3-b6bc-435325241cc6/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary" base route
+    Then I should be on the "Case summary" page
+    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
+    And I should see the caption text "Source: Common Platform"
+    And I should see sub navigation with the following links
+      | Case summary | Probation record | Risk register |
+    And I should see the following level 2 headings
+      | Appearance | Offences |
+
+    And I should see the body text "Court 2-3, afternoon session, $LONG_TODAY."
+    Then I should see the following list of charges in an accordion component
+      | Assault by beating |
+      | Theft from a shop  |
+      | Theft from a shop  |
+      | Assault by beating |
+
+    And I should see the following summary list
+      | Name          | Mann Carroll                                                          |
+      | Gender        | Female                                                                |
+      | Date of birth | Unknown                                                               |
+      | Phone number  | 07 123 123 123 (Mobile) 020 456 456 456 (Home) 020 789 789 789 (Work) |
+      | Address       | 91 Barbey street Sheffield AD21 5DR                                   |
+
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant that has not been matched with an existing NDelius record
@@ -42,7 +79,6 @@ Feature: Case summary
       | Name          | Guadalupe Hess                         |
       | Gender        | Male                                   |
       | Date of birth | 18 February 1989                       |
-      | Nationality   | Unknown                                |
       | Address       | 43 Hunterfly Place Birmingham AD21 5DR |
 
     And There should be no a11y violations
@@ -72,7 +108,6 @@ Feature: Case summary
       | Name          | Kara Ayers                        |
       | Gender        | Female                            |
       | Date of birth | 31 October 1980                   |
-      | Nationality   | Unknown                           |
       | Address       | 22 Waldorf Court Cardiff AD21 5DR |
 
     And I should see a button with the label "Link NDelius record"
@@ -106,7 +141,7 @@ Feature: Case summary
       | Name          | Webb Mitchell                       |
       | Gender        | Not specified                       |
       | Date of birth | 13 October 1958                     |
-      | Nationality   | Polish                              |
+      | Phone number  | 020 789 789 789 (Work)              |
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
 
     And I should see a button with the label "Unlink NDelius record"
@@ -142,7 +177,7 @@ Feature: Case summary
       | Name          | Mann Carroll                        |
       | Gender        | Female                              |
       | Date of birth | Unknown                             |
-      | Nationality   | Unknown                             |
+      | Phone number  | 07 123 123 123 (Mobile)             |
       | Address       | 91 Barbey street Sheffield AD21 5DR |
 
     And There should be no a11y violations
@@ -176,7 +211,7 @@ Feature: Case summary
       | Name          | Lenore Marquez                     |
       | Gender        | Female                             |
       | Date of birth | 18 August 1979                     |
-      | Nationality   | British                            |
+      | Phone number  | Unavailable                        |
       | Address       | 38 Clarendon Road Glasgow AD21 5DR |
 
     And I should see a button with the label "Unlink NDelius record"
@@ -210,7 +245,6 @@ Feature: Case summary
       | Name          | Olsen Alexander                 |
       | Gender        | Male                            |
       | Date of birth | 6 June 1996                     |
-      | Nationality   | British / Swedish               |
       | Address       | 99 Ralph Avenue London AD21 5DR |
 
     And I should see a button with the label "Unlink NDelius record"
