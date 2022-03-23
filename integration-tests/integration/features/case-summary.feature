@@ -52,7 +52,7 @@ Feature: Case summary
       | Name          | Mann Carroll                                                          |
       | Gender        | Female                                                                |
       | Date of birth | Unknown                                                               |
-      | Phone number  | 07 123 123 123 (Mobile) 020 456 456 456 (Home) 020 789 789 789 (Work) |
+      | Phone number  | 020 456 456 456 (Home) 07 123 123 123 (Mobile) 020 789 789 789 (Work) |
       | Address       | 91 Barbey street Sheffield AD21 5DR                                   |
 
     And There should be no a11y violations
