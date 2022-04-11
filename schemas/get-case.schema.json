@@ -27,7 +27,8 @@
     "createdToday",
     "removed",
     "numberOfPossibleMatches",
-    "source"
+    "source",
+    "urn"
   ],
   "properties": {
     "caseId": {
@@ -423,6 +424,13 @@
         "null"
       ],
       "title": "The source schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "urn": {
+      "$id": "#/properties/urn",
+      "type": "string",
+      "title": "The urn schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
     }
