@@ -17,7 +17,9 @@ Feature: Case summary
     Then I should be on the "Case summary" page
     And I should see the heading "Kara Ayers"
     And I should see back link "Back to cases" with href "/B14LO/cases?page=1"
-    And I should see the caption text "Source: Libra, case number 8678951874"
+    And I should see the caption text "Source: Libra"
+    And I should see the caption text "Case number: 8678951874"
+    And I should see the caption text "URN: 01WW0298121"
 
     Then I should see the following summary list
       | Name          | Kara Ayers                        |
@@ -36,6 +38,7 @@ Feature: Case summary
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "Source: Common Platform"
+    And I should see the caption text "URN: 01WW0298121"
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
     And I should see the following level 2 headings
@@ -161,6 +164,7 @@ Feature: Case summary
     Then I should see the body text "PNC: A/1234560BA"
     Then I should see the body text "Probation status: Pre-sentence record (PSR)"
     And I should see the caption text "Source: Common Platform"
+    And I should see the caption text "URN: 01WW0298121"
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
     And I should see the following level 2 headings

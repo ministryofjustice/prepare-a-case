@@ -52,7 +52,7 @@
 
             {% if data.source | length %}
                 <p class="govuk-caption-m govuk-!-margin-top-3">Source:
-                    {{ data.source | replace("_", " ") | title }}{% if data.source | lower === "libra" %}, case number {{ data.caseNo }}{% endif %}
+                {{ data.source | replace("_", " ") | title }} {% if data.source | lower === "libra" %} <br/> Case number: {{ data.caseNo }} {% endif %} <br/> URN: {{ data.urn }}
                 </p>
             {% endif %}
 
