@@ -7,7 +7,7 @@ For more informations, check our [Runbook](https://dsdmoj.atlassian.net/wiki/spa
 
 ## Prerequisities
 Before you begin, ensure you have met the following requirements:
-* You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Dubnium) >= v16.14.0
+* You have Node.js [LTS](https://nodejs.org/en/about/releases/) (Dubnium) >= v16.14.2
 
 For code quality the project adheres to [JavaScript Standard Style](https://standardjs.com/) which requires minimal configuration of your chosen IDE.
 
