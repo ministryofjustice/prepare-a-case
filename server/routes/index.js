@@ -307,8 +307,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary-record-order', templateValues)
   })
 
-  router.get('/:courtCode/case/:caseId/defendant/:defendantId/record/:convictionId/breach/:breachId', defaults, async (req, res) => {
-    const templateValues = await getCaseAndTemplateValues(req)
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/breach/:breachId', defaults, async (req, res) => {
+    const templateValues = await getCaseAndTemplateValues(req)//
     templateValues.title = 'Breach details'
 
     const { params: { convictionId, breachId } } = req
@@ -375,10 +375,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/:courtCode/case/:caseId/match/defendant/:defendantId', defaults, async (req, res) => {
-    const { params: { defendantId }, session, path } = req
+    const { params: { defendantId, caseId }, session, path } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Review possible NDelius records'
-    const {data: {caseId, defendantName}} = templateValues
+    const { data: { defendantName } } = templateValues
     const response = await getMatchDetails(caseId, defendantId)
     templateValues.session = {
       ...session
