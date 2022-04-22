@@ -2,7 +2,7 @@
   "id": "b01f2b40-422c-48f5-a7e7-6ef5860e0f04",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/case/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f"
+    "urlPathPattern": "/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f"
   },
   "response": {
     "headers": {
@@ -11,6 +11,7 @@
     "status": 200,
     "jsonBody": {
       "caseId": "0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec",
+      "hearingId": "5b9c8c1d-e552-494e-bc90-d475740c64d8",
       "defendantId": "8597a10b-d330-43e5-80c3-27ce3b46979f",
       "caseNo": "8678951874",
       "courtCode": "SHF",

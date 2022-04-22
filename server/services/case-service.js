@@ -62,8 +62,8 @@ const getCaseList = async (courtCode, date, selectedFilters, subsection) => {
   }
 }
 
-const getCase = async (caseId, defendantId) => {
-  const res = await request(`${apiUrl}/case/${caseId}/defendant/${defendantId}`) || { data: {} }
+const getCase = async (hearingId, defendantId) => {
+  const res = await request(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`) || { data: {} }
   return res.data
 }
 
