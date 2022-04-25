@@ -25,8 +25,8 @@ Feature: Matching defendants to nDelius records
       | Guadalupe Hess          | 3 | Review records |
       | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
 
-    And I should see link "Review records" in position 2 with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
-    And I should see link "Review records" in position 3 with href "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85"
+    And I should see link "Review records" in position 2 with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
+    And I should see link "Review records" in position 3 with href "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85"
 
     And There should be no a11y violations
 
@@ -98,7 +98,7 @@ Feature: Matching defendants to nDelius records
       | Guadalupe Hess          | 3 | Review records |
       | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
 
-    Then I navigate to the "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85" base route
+    Then I navigate to the "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85" base route
 
     And I should see the heading "Felicia Blob Popop Villareal"
     And I should see the level 2 heading "Review possible NDelius records"
@@ -170,7 +170,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Confirm defendant record match from case summary
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
+    When I navigate to the "/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
     And I click the "Review records" link
 
     Then I should be on the "Review possible NDelius records" page
