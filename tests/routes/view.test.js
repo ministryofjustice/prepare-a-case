@@ -186,7 +186,7 @@ describe('Routes', () => {
   })
 
   it('case summary details route should redirect when viewing all previous orders', () => {
-    return request(app).post('/B14LO/case/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/record', {}).then(response => {
+    return request(app).post('/B14LO/hearing/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/record', {}).then(response => {
       expect(response.statusCode).toEqual(302)
     })
   })
@@ -383,8 +383,8 @@ describe('Routes', () => {
         convictionId: 1403337513
       }]
     }
-    const response = await request(app).get('/B14LO/case/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1403337513/licence-details')
-    expect(caseService.getCase).toHaveBeenCalledWith('mock-hearing-id', 'cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc')
+    const response = await request(app).get('/B14LO/hearing/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1403337513/licence-details')
+    expect(caseService.getCase).toHaveBeenCalledWith('5d0d02d4-3e2b-4008-be56-4ab486bf7f50', 'cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc')
     expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
     return response
   })

@@ -229,7 +229,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, `/${courtCode}/cases/${currentDate}${subsection ? '/' + subsection : ''}`)
   })
 
-  router.post('/:courtCode/case/:caseId/defendant/:defendantId/record', async (req, res) => {
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', async (req, res) => {
     const { params: { courtCode, caseId, defendantId }, session } = req
     session.showAllPreviousOrders = caseId
     res.redirect(302, `/${courtCode}/case/${caseId}/defendant/${defendantId}/record#previousOrders`)
@@ -327,7 +327,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary-record-order-breach', templateValues)
   })
 
-  router.get('/:courtCode/case/:caseId/defendant/:defendantId/record/:convictionId/licence-details', defaults, async (req, res) => {
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/licence-details', defaults, async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Licence conditions details'
 
@@ -367,7 +367,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
       data: response.cases
     }
     session.confirmedMatch = undefined
-    session.matchName = undefined
     session.matchType = 'bulk'
     session.matchDate = date
     session.courtCode = courtCode

@@ -11,6 +11,7 @@
     "status": 200,
     "jsonBody": {
       "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+      "hearingId": "37a5b7f9-e1e5-453b-a3cf-7246971ec71c",
       "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
       "caseNo": "7986902512",
       "courtCode": "SHF",
