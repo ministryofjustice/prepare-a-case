@@ -53,7 +53,7 @@
             {%- for order in communityData.convictions if communityData.convictions | length %}
                 {% if order.active and order.awaitingPsr === true and order.psrReports | length %}
 
-                    {%- set psrData = order.psrReports[0] -%}
+                    {%- set psrData = order.psrReports | first -%}
 
                     {%- for offence in order.offences -%}
                         {% if offence.main !== true %}
