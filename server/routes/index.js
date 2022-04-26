@@ -230,9 +230,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', async (req, res) => {
-    const { params: { courtCode, caseId, defendantId }, session } = req
-    session.showAllPreviousOrders = caseId
-    res.redirect(302, `/${courtCode}/case/${caseId}/defendant/${defendantId}/record#previousOrders`)
+    const { params: { courtCode, hearingId, defendantId }, session } = req
+    session.showAllPreviousOrders = hearingId
+    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/record#previousOrders`)
   })
 
   async function getCaseAndTemplateValues (req) {
