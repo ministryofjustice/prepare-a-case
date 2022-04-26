@@ -83,12 +83,17 @@ describe('Routes', () => {
     }
   })
 
-  jest.spyOn(caseService, 'updateCase').mockImplementation(function () {
+  jest.spyOn(caseService, 'updateOffender').mockImplementation(function () {
     return {
-      status: 201,
+      status: 200,
       data: {
         probationStatus: 'Current'
       }
+    }
+  })
+  jest.spyOn(caseService, 'deleteOffender').mockImplementation(function () {
+    return {
+      status: 200
     }
   })
 
@@ -320,19 +325,7 @@ describe('Routes', () => {
   it('defendant confirm no match route should update the case data and redirect', async () => {
     const requestUrl = '/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/nomatch'
     const response = await request(app).get(requestUrl)
-    const calledWith = {
-      breach: null,
-      crn: null,
-      cro: null,
-      pnc: null,
-      preSentenceActivity: null,
-      awaitingPsr: null,
-      probationStatus: 'NO_RECORD',
-      probationStatusActual: 'NO_RECORD'
-    }
-    expect(caseService.getCase).toHaveBeenCalledWith('fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
-    expect(caseService.getMatchDetails).not.toHaveBeenCalled()
-    expect(caseService.updateCase).toHaveBeenCalledWith('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730', calledWith)
+    expect(caseService.deleteOffender).toHaveBeenCalledWith('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     expect(response.header.location).toEqual('/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary')
     expect(response.statusCode).toEqual(302)
     return response
@@ -359,8 +352,7 @@ describe('Routes', () => {
 
   it('defendant manual match confirm submission route should call case-service methods and redirect', () => {
     return request(app).post('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/confirm', { crn: 'V178657' }).then(response => {
-      expect(caseService.getCase).toHaveBeenCalledWith('fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
-      expect(caseService.updateCase).toHaveBeenCalledWith('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730', expect.any(Object))
+      expect(caseService.updateOffender).toHaveBeenCalledWith('2e0afeb7-95d2-42f4-80e6-ccf96b282730', expect.any(Object))
       expect(response.header.location).toEqual('/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary')
       expect(response.statusCode).toEqual(302)
     })

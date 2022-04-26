@@ -148,5 +148,8 @@ module.exports = {
   notification: {
     username: get('NOTIFICATION_USERNAME', null, requiredInProduction),
     password: get('NOTIFICATION_PASSWORD', null, requiredInProduction)
+  },
+  features: {
+    sendPncAndCroWithOffenderUpdates: false
   }
 }

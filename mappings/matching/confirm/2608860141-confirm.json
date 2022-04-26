@@ -8,6 +8,6 @@
     "headers": {
       "Content-Type": "application/json"
     },
-    "status": 201
+    "status": 200
   }
 }
