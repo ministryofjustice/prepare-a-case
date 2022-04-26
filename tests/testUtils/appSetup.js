@@ -11,8 +11,6 @@ module.exports = route => {
 
   nunjucksSetup(app, path)
 
-  app.use(cookieSession({ keys: [''] }))
-
   app.use((req, res, next) => {
     req.redisClient = {
       getAsync: () => {},
@@ -28,6 +26,7 @@ module.exports = route => {
     res.locals.user = { token: 'ABCDEF', username: 'me' }
     next()
   })
+  app.use(cookieSession({ keys: [''] }))
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use('/', route)

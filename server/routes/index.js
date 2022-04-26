@@ -236,8 +236,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   async function getCaseAndTemplateValues (req) {
-    const { params: { defendantId }, session, params } = req
-    const hearingId = params.hearingId || session.hearingId
+    const { params: { defendantId, hearingId }, session, params } = req
     const response = await getCase(hearingId, defendantId)
     const caseListDate = session.caseListDate || getBaseDateString()
     return {
@@ -265,7 +264,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.matchType = 'defendant'
     session.matchDate = undefined
     session.backLink = path
-    session.hearingId = templateValues.data.hearingId
     res.render('case-summary', templateValues)
   })
 
@@ -387,7 +385,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
       ...templateValues.data,
       matchData: response && response.offenderMatchDetails
     }
-    session.hearingId = hearingId
     session.confirmedMatch = undefined
     session.matchName = defendantName
     session.formError = false
@@ -422,21 +419,21 @@ module.exports = function Index ({ authenticationMiddleware }) {
   }
 
   router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId', defaults, async (req, res) => {
-    const { params: { courtCode, caseId, defendantId }, body: { crn }, session } = req
+    const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
     let redirectUrl
-    const tryAgainRedirect = `/${courtCode}/case/${caseId}/hearing/${session.hearingId}/match/defendant/${defendantId}`
+    const tryAgainRedirect = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}`
     if (!crn) {
       session.confirmedMatch = undefined
       session.formError = true
       redirectUrl = tryAgainRedirect
     } else {
-      const response = await updateCaseDetails(caseId, session.hearingId, defendantId, crn)
+      const response = await updateCaseDetails(caseId, hearingId, defendantId, crn)
       if (response.status === 201) {
         session.confirmedMatch = {
           name: session.matchName,
           matchType: 'Known'
         }
-        redirectUrl = `/${getMatchedUrl(session.matchType, session.matchDate, session.hearingId, defendantId, courtCode)}`
+        redirectUrl = `/${getMatchedUrl(session.matchType, session.matchDate, hearingId, defendantId, courtCode)}`
       } else {
         session.serverError = true
         redirectUrl = tryAgainRedirect
@@ -511,7 +508,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm/:crn', defaults, async (req, res) => {
-    const { params: { crn, hearingId }, session } = req
+    const { params: { crn }, session } = req
     const templateValues = await getCaseAndTemplateValues(req)
     const detailResponse = await getDetails(crn)
     const probationStatusDetails = await getProbationStatusDetails(crn)
@@ -521,8 +518,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       probationStatus: probationStatusDetails.status && probationStatusDetails.status.replace('_', ' ')
     }
     templateValues.session = {
-      ...session,
-      hearingId
+      ...session
     }
     session.matchName = templateValues.data.defendantName
     res.render('match-manual', templateValues)

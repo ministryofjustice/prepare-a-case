@@ -7,7 +7,7 @@
 {% if not params.crn %}
   {% set useBackLink = backLink or '/' + params.courtCode + '/cases/' + (caseListDate if caseListDate else "") %}
 {% else %}
-  {% set useBackLink = '/' + params.courtCode + '/case/' + params.caseId + '/hearing/' + session.hearingId + '/match/defendant/' + params.defendantId + '/manual' %}
+  {% set useBackLink = '/' + params.courtCode + '/case/' + params.caseId + '/hearing/' + data.hearingId + '/match/defendant/' + params.defendantId + '/manual' %}
 {% endif %}
 
 {% block backlink %}
