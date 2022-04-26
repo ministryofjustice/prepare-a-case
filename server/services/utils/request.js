@@ -33,8 +33,19 @@ const update = async (url, data) => {
   return response
 }
 
+const http_delete = async (url) => {
+  let response = {}
+  try {
+    response = await axios.delete(url, { headers: { Accept: 'application/json' }, timeout: defaultTimeout })
+  } catch (e) {
+    axiosError(e)
+  }
+  return response
+}
+
 module.exports = {
   request,
   requestFile,
-  update
+  update,
+  http_delete
 }
