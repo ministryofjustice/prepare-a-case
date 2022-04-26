@@ -2,7 +2,7 @@
 const moxios = require('moxios')
 const config = require('../../config')
 
-const { getCaseList, getCase, getMatchDetails, updateCase, updateOffender, deleteOffender } = require('../../server/services/case-service')
+const { getCaseList, getCase, getMatchDetails, updateOffender, deleteOffender } = require('../../server/services/case-service')
 
 const apiUrl = config.apis.courtCaseService.url
 
@@ -124,7 +124,7 @@ describe('Case service', () => {
       status: 200
     })
 
-    const offenderData = {yond: "offender data"}
+    const offenderData = { yond: 'offender data' }
     const response = await updateOffender('2e0afeb7-95d2-42f4-80e6-ccf96b282730', offenderData)
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
     expect(moxios.requests.mostRecent().config.data).toBe(JSON.stringify(offenderData))

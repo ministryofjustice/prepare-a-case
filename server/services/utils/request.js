@@ -33,7 +33,7 @@ const update = async (url, data) => {
   return response
 }
 
-const http_delete = async (url) => {
+const httpDelete = async (url) => {
   let response = {}
   try {
     response = await axios.delete(url, { headers: { Accept: 'application/json' }, timeout: defaultTimeout })
@@ -47,5 +47,5 @@ module.exports = {
   request,
   requestFile,
   update,
-  http_delete
+  httpDelete: httpDelete
 }

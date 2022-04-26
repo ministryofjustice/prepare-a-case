@@ -1,13 +1,13 @@
 {
   "id": "33d56548-646e-41ee-9503-1000df2452c2",
   "request": {
-    "method": "DELETE",
+    "method": "PUT",
     "urlPathPattern": "/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85/offender"
   },
   "response": {
     "headers": {
       "Content-Type": "application/json"
     },
-    "status": 400
+    "status": 500
   }
 }
