@@ -298,27 +298,27 @@ describe('Routes', () => {
   })
 
   it('defendant match selection screen should call the case service to fetch case data and match details data', async () => {
-    const response = await request(app).get('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    const response = await request(app).get('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730')
 
-    expect(caseService.getCase).toHaveBeenCalledWith('mock-hearing-id', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    expect(caseService.getCase).toHaveBeenCalledWith('fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     expect(caseService.getMatchDetails).toHaveBeenCalledWith('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     return response
   })
 
   it('defendant match selection route should redirect when form error', () => {
-    return request(app).post('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730', {}).then(response => {
+    return request(app).post('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730', {}).then(response => {
       expect(response.statusCode).toEqual(302)
     })
   })
 
   it('defendant match selection route should redirect when submitting confirmation', () => {
-    return request(app).post('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730', { crn: 'V178657' }).then(response => {
+    return request(app).post('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730', { crn: 'V178657' }).then(response => {
       expect(response.statusCode).toEqual(302)
     })
   })
 
   it('defendant confirm no match route should update the case data and redirect', async () => {
-    const requestUrl = '/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/nomatch'
+    const requestUrl = '/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/nomatch'
     const response = await request(app).get(requestUrl)
     const calledWith = {
       breach: null,
@@ -330,45 +330,45 @@ describe('Routes', () => {
       probationStatus: 'NO_RECORD',
       probationStatusActual: 'NO_RECORD'
     }
-    expect(caseService.getCase).toHaveBeenCalledWith('mock-hearing-id', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    expect(caseService.getCase).toHaveBeenCalledWith('fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     expect(caseService.getMatchDetails).not.toHaveBeenCalled()
     expect(caseService.updateCase).toHaveBeenCalledWith('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730', calledWith)
-    expect(response.header.location).toEqual('/B14LO/hearing/mock-hearing-id/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary')
+    expect(response.header.location).toEqual('/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary')
     expect(response.statusCode).toEqual(302)
     return response
   })
 
   it('defendant manual match route should call the case service for case data', async () => {
-    const response = await request(app).get('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/manual')
-    expect(caseService.getCase).toHaveBeenCalledWith('mock-hearing-id', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    const response = await request(app).get('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/manual')
+    expect(caseService.getCase).toHaveBeenCalledWith('fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     return response
   })
 
   it('defendant manual match route should redirect when submitting a valid CRN', () => {
-    return request(app).post('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/manual', { crn: 'V178657' }).then(response => {
+    return request(app).post('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/manual', { crn: 'V178657' }).then(response => {
       expect(response.statusCode).toEqual(302)
     })
   })
 
   it('defendant manual match confirmation route should call the case service for case data', async () => {
-    const response = await request(app).get('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/confirm/C178657')
-    expect(caseService.getCase).toHaveBeenCalledWith('mock-hearing-id', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    const response = await request(app).get('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/confirm/C178657')
+    expect(caseService.getCase).toHaveBeenCalledWith('fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     expect(communityService.getDetails).toHaveBeenCalledWith('C178657')
     return response
   })
 
   it('defendant manual match confirm submission route should call case-service methods and redirect', () => {
-    return request(app).post('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/confirm', { crn: 'V178657' }).then(response => {
-      expect(caseService.getCase).toHaveBeenCalledWith('mock-hearing-id', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    return request(app).post('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/confirm', { crn: 'V178657' }).then(response => {
+      expect(caseService.getCase).toHaveBeenCalledWith('fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
       expect(caseService.updateCase).toHaveBeenCalledWith('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730', expect.any(Object))
-      expect(response.header.location).toEqual('/B14LO/hearing/mock-hearing-id/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary')
+      expect(response.header.location).toEqual('/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary')
       expect(response.statusCode).toEqual(302)
     })
   })
 
   it('defendant unlink route should call case-service and community-service methods', async () => {
-    const response = await request(app).get('/B14LO/case/f76f1dfe-c41e-4242-b5fa-865d7dd2ce57/match/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/unlink/D541487')
-    expect(caseService.getCase).toHaveBeenCalledWith('mock-hearing-id', '062c670d-fdf6-441f-99e1-d2ce0c3a3846')
+    const response = await request(app).get('/B14LO/case/f76f1dfe-c41e-4242-b5fa-865d7dd2ce57/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/unlink/D541487')
+    expect(caseService.getCase).toHaveBeenCalledWith('fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e', '062c670d-fdf6-441f-99e1-d2ce0c3a3846')
     expect(communityService.getDetails).toHaveBeenCalledWith('D541487')
     return response
   })

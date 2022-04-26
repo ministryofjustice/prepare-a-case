@@ -445,9 +445,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, redirectUrl)
   })
 
-  router.get('/:courtCode/case/:caseId/match/defendant/:defendantId/nomatch/:unlink?', defaults, async (req, res) => {
-    const { params: { courtCode, caseId, defendantId, unlink }, session, session: { hearingId } } = req
-    let redirectUrl = '/'
+  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/nomatch/:unlink?', defaults, async (req, res) => {
+    const { params: { courtCode, caseId, defendantId, hearingId, unlink }, session } = req
+    let redirectUrl
     const response = await updateCaseDetails(caseId, hearingId, defendantId, undefined, !!unlink)
     if (response.status === 201) {
       session.confirmedMatch = {
@@ -462,7 +462,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, redirectUrl)
   })
 
-  router.get('/:courtCode/case/:caseId/match/defendant/:defendantId/manual', defaults, async (req, res) => {
+  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual', defaults, async (req, res) => {
     const { session } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Link an NDelius record to the defendant'
@@ -478,8 +478,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-manual', templateValues)
   })
 
-  router.post('/:courtCode/case/:caseId/match/defendant/:defendantId/manual', body('crn').trim().escape(), defaults, async (req, res) => {
-    const { params: { courtCode, caseId, defendantId }, body: { crn }, session } = req
+  router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual', body('crn').trim().escape(), defaults, async (req, res) => {
+    const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
     let redirectUrl = '/'
     session.serverError = false
     session.formError = false
@@ -487,13 +487,14 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.crnInvalid = false
     session.confirmedMatch = undefined
     session.matchName = undefined
+    const retryRedirect = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`
     if (!crn) {
       session.formError = true
-      redirectUrl = `/${courtCode}/case/${caseId}/match/defendant/${defendantId}/manual`
+      redirectUrl = retryRedirect
     } else if (!req.body.crn.match(/^[A-Za-z][0-9]{6}$/)) {
       session.formError = true
       session.formInvalid = true
-      redirectUrl = `/${courtCode}/case/${caseId}/match/defendant/${defendantId}/manual`
+      redirectUrl = retryRedirect
     } else {
       const detailResponse = await getDetails(crn)
       if (detailResponse.status >= 400) {
@@ -501,16 +502,16 @@ module.exports = function Index ({ authenticationMiddleware }) {
         session.status = detailResponse.status
         session.formError = true
         session.crnInvalid = true
-        redirectUrl = `/${courtCode}/case/${caseId}/match/defendant/${defendantId}/manual`
+        redirectUrl = retryRedirect
       } else {
-        redirectUrl = `/${courtCode}/case/${caseId}/match/defendant/${defendantId}/confirm/${crn}`
+        redirectUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/confirm/${crn}`
       }
     }
     res.redirect(302, redirectUrl)
   })
 
-  router.get('/:courtCode/case/:caseId/match/defendant/:defendantId/confirm/:crn', defaults, async (req, res) => {
-    const { params: { crn }, session } = req
+  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm/:crn', defaults, async (req, res) => {
+    const { params: { crn, hearingId }, session } = req
     const templateValues = await getCaseAndTemplateValues(req)
     const detailResponse = await getDetails(crn)
     const probationStatusDetails = await getProbationStatusDetails(crn)
@@ -520,39 +521,40 @@ module.exports = function Index ({ authenticationMiddleware }) {
       probationStatus: probationStatusDetails.status && probationStatusDetails.status.replace('_', ' ')
     }
     templateValues.session = {
-      ...session
+      ...session,
+      hearingId
     }
     session.matchName = templateValues.data.defendantName
     res.render('match-manual', templateValues)
   })
 
-  router.post('/:courtCode/case/:caseId/match/defendant/:defendantId/confirm', body('crn').trim().escape(), defaults, async (req, res) => {
-    const { params: { courtCode, caseId, defendantId }, body: { crn }, session } = req
+  router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm', body('crn').trim().escape(), defaults, async (req, res) => {
+    const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
     session.serverError = false
     let redirectUrl = '/'
-    const response = await updateCaseDetails(caseId, session.hearingId, defendantId, crn)
+    const response = await updateCaseDetails(caseId, hearingId, defendantId, crn)
     if (response.status === 201) {
       session.confirmedMatch = {
         name: session.matchName,
         matchType: 'linked',
         probationStatus: response.data.probationStatus
       }
-      redirectUrl = `/${getMatchedUrl(session.matchType, session.matchDate, session.hearingId, defendantId, courtCode)}`
+      redirectUrl = `/${getMatchedUrl(session.matchType, session.matchDate, hearingId, defendantId, courtCode)}`
     } else {
       session.serverError = true
-      redirectUrl = `/${courtCode}/case/${caseId}/match/defendant/${defendantId}/confirm`
+      redirectUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/confirm`
     }
     res.redirect(302, redirectUrl)
   })
 
-  router.get('/:courtCode/case/:caseId/match/defendant/:defendantId/unlink/:crn', defaults, async (req, res) => {
-    const { params: { courtCode, defendantId, crn }, session } = req
+  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/unlink/:crn', defaults, async (req, res) => {
+    const { params: { courtCode, defendantId, crn, hearingId }, session } = req
     const templateValues = await getCaseAndTemplateValues(req)
     const detailResponse = await getDetails(crn)
     templateValues.title = 'Unlink NDelius record from the defendant'
     templateValues.hideSubnav = true
     templateValues.backText = 'Back'
-    templateValues.backLink = `/${courtCode}/hearing/${templateValues.data.hearingId}/defendant/${defendantId}/summary`
+    templateValues.backLink = `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`
     templateValues.hideUnlinkButton = true
     templateValues.params = {
       ...templateValues.params

@@ -25,7 +25,6 @@ module.exports = route => {
       token: 'token',
       username: 'CA_USER_TEST'
     }
-    req.session.hearingId = 'mock-hearing-id'
     res.locals.user = { token: 'ABCDEF', username: 'me' }
     next()
   })
