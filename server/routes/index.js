@@ -373,7 +373,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId', defaults, async (req, res) => {
-    const { params: { defendantId, caseId, hearingId }, session, path } = req
+    const { params: { defendantId, caseId }, session, path } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Review possible NDelius records'
     const { data: { defendantName } } = templateValues
