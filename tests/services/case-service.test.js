@@ -2,7 +2,7 @@
 const moxios = require('moxios')
 const config = require('../../config')
 
-const { getCaseList, getCase, getMatchDetails, updateCase } = require('../../server/services/case-service')
+const { getCaseList, getCase, getMatchDetails, updateCase, updateOffender, deleteOffender } = require('../../server/services/case-service')
 
 const apiUrl = config.apis.courtCaseService.url
 
@@ -118,13 +118,26 @@ describe('Case service', () => {
     return response
   })
 
-  it('should call the API to update case details data', async () => {
-    const endpoint = `${apiUrl}/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730`
+  it('should call the API to update offender data', async () => {
+    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/offender`
     moxios.stubRequest(endpoint, {
-      status: 201
+      status: 200
     })
 
-    const response = await updateCase('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730', {})
+    const offenderData = {yond: "offender data"}
+    const response = await updateOffender('2e0afeb7-95d2-42f4-80e6-ccf96b282730', offenderData)
+    expect(moxios.requests.mostRecent().url).toBe(endpoint)
+    expect(moxios.requests.mostRecent().config.data).toBe(JSON.stringify(offenderData))
+    return response
+  })
+
+  it('should call the API to delete offender data', async () => {
+    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/offender`
+    moxios.stubRequest(endpoint, {
+      status: 200
+    })
+
+    const response = await deleteOffender('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
     return response
   })

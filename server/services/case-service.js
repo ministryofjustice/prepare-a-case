@@ -1,4 +1,4 @@
-const { request, update } = require('./utils/request')
+const { request, update, http_delete } = require('./utils/request')
 const getCaseListFilters = require('../utils/getCaseListFilters')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
@@ -68,7 +68,7 @@ const getCase = async (hearingId, defendantId) => {
 }
 
 const updateCase = async (caseId, defendantId, caseData) => {
-  return await update(`${apiUrl}/case/${caseId}/defendant/${defendantId}`, caseData)
+  throw new Error("Deprecated method updateCase")
 }
 
 const getMatchDetails = async (caseId, defendantId) => {
@@ -76,9 +76,19 @@ const getMatchDetails = async (caseId, defendantId) => {
   return res.data
 }
 
+const updateOffender = async (defendantId, offenderData) => {
+  return await update(`${apiUrl}/defendant/${defendantId}/offender`, offenderData)
+}
+
+const deleteOffender = async (defendantId) => {
+  return await http_delete(`${apiUrl}/defendant/${defendantId}/offender`)
+}
+
 module.exports = {
   getMatchDetails,
   getCaseList,
   getCase,
-  updateCase
+  updateCase,
+  updateOffender,
+  deleteOffender
 }
