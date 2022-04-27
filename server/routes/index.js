@@ -477,21 +477,18 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual', body('crn').trim().escape(), defaults, async (req, res) => {
     const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
-    let redirectUrl = '/'
     session.serverError = false
     session.formError = false
     session.formInvalid = false
     session.crnInvalid = false
     session.confirmedMatch = undefined
     session.matchName = undefined
-    const retryRedirect = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`
+    let redirectUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`
     if (!crn) {
       session.formError = true
-      redirectUrl = retryRedirect
     } else if (!req.body.crn.match(/^[A-Za-z][0-9]{6}$/)) {
       session.formError = true
       session.formInvalid = true
-      redirectUrl = retryRedirect
     } else {
       const detailResponse = await getDetails(crn)
       if (detailResponse.status >= 400) {
@@ -499,7 +496,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
         session.status = detailResponse.status
         session.formError = true
         session.crnInvalid = true
-        redirectUrl = retryRedirect
       } else {
         redirectUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/confirm/${crn}`
       }
