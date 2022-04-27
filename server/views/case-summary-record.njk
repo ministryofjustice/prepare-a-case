@@ -194,12 +194,12 @@
                 {% endfor -%}
             {% endif %}
 
-            {% if previousOrders | length %}
-                {% if params.showAllPreviousOrders === params.caseId %}
-                    {% set limitPreviousOrders = previousOrders | length %}
-                {% else %}
-                    {% set limitPreviousOrders = 5 %}
-                {% endif %}
+    {% if previousOrders | length %}
+      {% if params.showAllPreviousOrders === params.hearingId %}
+        {% set limitPreviousOrders = previousOrders | length %}
+      {% else %}
+        {% set limitPreviousOrders = 5 %}
+      {% endif %}
 
                 <form name="previousOrders" id="previousOrders" method="post">
                     <h2 class="govuk-heading-m{% if activeOrders | length and previousOrders | length %} govuk-!-margin-top-8{% endif %}">

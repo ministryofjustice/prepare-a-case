@@ -12,7 +12,7 @@
         <h2 class="govuk-heading-m" id="bannerDialogDesc">
             {{ data.numberOfPossibleMatches }} possible NDelius {{ recordCount }} found
             for {{ defendantFullName | apostropheInName | properCase | removeTitle }}.
-            <a href="/{{ params.courtCode }}/case/{{ data.caseId }}/match/defendant/{{ data.defendantId }}"
+            <a href="/{{ params.courtCode }}/case/{{ data.caseId }}/hearing/{{ data.hearingId }}/match/defendant/{{ data.defendantId }}"
                class="govuk-link govuk-link--no-visited-state">Review {{ recordCount }}</a>.
         </h2>
     </div>

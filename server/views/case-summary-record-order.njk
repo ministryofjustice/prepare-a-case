@@ -119,7 +119,7 @@
     {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
     {{ govukBackLink({
         text: "Back to probation record",
-        href: '/' + params.courtCode + '/case/' + data.caseId + '/defendant/' + data.defendantId + '/record'
+        href: '/' + params.courtCode + '/hearing/' + data.hearingId + '/defendant/' + data.defendantId + '/record'
     }) }}
 {% endblock %}
 
@@ -238,7 +238,7 @@
                             </li>
                         {% endfor %}
                     </ul>
-                    <a href="/{{ params.courtCode }}/case/{{ data.caseId }}/defendant/{{ data.defendantId }}/record/{{ communityData.convictionId }}/licence-details" class=" govuk-body-m govuk-link govuk-link--no-visited-state">View licence conditions details</a>
+                    <a href="/{{ params.courtCode }}/hearing/{{ data.hearingId }}/defendant/{{ data.defendantId }}/record/{{ communityData.convictionId }}/licence-details" class=" govuk-body-m govuk-link govuk-link--no-visited-state">View licence conditions details</a>
                 {% endif %}
 
                 {% if communityData.pssRequirements | length %}

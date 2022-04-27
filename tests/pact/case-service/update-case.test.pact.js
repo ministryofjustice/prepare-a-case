@@ -8,7 +8,7 @@ const pactResponseMock = require('./update-case.test.pact.json')
 const schema = require('../../../schemas/put-case.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
-  describe('PUT /case/{caseId}/defendant/{defendantId}', () => {
+  describe('PUT /hearing/{hearingId}/defendant/{defendantId}', () => {
     const mockRequestData = pactResponseMock.request.jsonBody
     const mockResponseData = pactResponseMock.response.jsonBody
     const apiUrl = pactResponseMock.request.path

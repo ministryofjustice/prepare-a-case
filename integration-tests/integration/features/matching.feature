@@ -25,8 +25,8 @@ Feature: Matching defendants to nDelius records
       | Guadalupe Hess          | 3 | Review records |
       | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
 
-    And I should see link "Review records" in position 2 with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
-    And I should see link "Review records" in position 3 with href "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85"
+    And I should see link "Review records" in position 2 with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
+    And I should see link "Review records" in position 3 with href "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85"
 
     And There should be no a11y violations
 
@@ -98,7 +98,7 @@ Feature: Matching defendants to nDelius records
       | Guadalupe Hess          | 3 | Review records |
       | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
 
-    Then I navigate to the "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85" base route
+    Then I navigate to the "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85" base route
 
     And I should see the heading "Felicia Blob Popop Villareal"
     And I should see the level 2 heading "Review possible NDelius records"
@@ -170,7 +170,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Confirm defendant record match from case summary
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
+    When I navigate to the "/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
     And I click the "Review records" link
 
     Then I should be on the "Review possible NDelius records" page
@@ -202,7 +202,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Click the back button on matching screen when starting the journey at case summary
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
+    When I navigate to the "/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
     And I click the "Review records" link
 
     Then I should be on the "Review possible NDelius records" page
@@ -329,7 +329,7 @@ Feature: Matching defendants to nDelius records
 
     Then I should be on the "Link an NDelius record to the defendant" page
     And I should not see the key details banner
-    And I should see link "Cancel" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
+    And I should see link "Cancel" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
     When I enter "C178657" into text input with id "crn"
     And I click the "Find record" button
 
@@ -350,7 +350,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Manually match a defendant from the case list
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730" base route
+    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730" base route
 
     And I click the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
@@ -358,12 +358,12 @@ Feature: Matching defendants to nDelius records
 
     Then I should be on the "Link an NDelius record to the defendant" page
     And I should see the key details banner
-    And I should see link "Cancel" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
+    And I should see link "Cancel" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
     When I enter "C178657" into text input with id "crn"
     And I click the "Find record" button
 
     Then I should be on the "Link an NDelius record to the defendant" page
-    And I should see back link "Back" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
+    And I should see back link "Back" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
     And I should see the body text "Use a case reference number (CRN) to link to an existing NDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
     And I should see the following summary list 1 with keys
@@ -380,7 +380,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Manually match a defendant and choose to search again
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/confirm/C178657" base route
+    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/confirm/C178657" base route
 
     Then I should be on the "Link an NDelius record to the defendant" page
     And I should see the body text "Use a case reference number (CRN) to link to an existing NDelius record to the defendant."
@@ -397,7 +397,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Confirm no existing defendant record match from case summary
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730" base route
+    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730" base route
 
     And I click the "Can't see the correct record?" summary link
     And I click the "confirm they have no record" link
@@ -409,7 +409,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Attempt to confirm match but encounter a server error
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85" base route
+    When I navigate to the "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85" base route
 
     And I click the element with id "defendant-1"
     And I click the "Confirm record" button
@@ -420,18 +420,18 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Link an NDelius record to a not known defendant from case-summary
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
+    When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
 
     And I click the "Link NDelius record" button
     Then I should be on the "Link an NDelius record to the defendant" page
-    And I should see back link "Back" with href "/B14LO/case/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
-    And I should see link "Cancel" with href "/B14LO/case/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
+    And I should see back link "Back" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
+    And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
 
     And There should be no a11y violations
 
   Scenario: Link an NDelius record to a not known defendant from case-summary
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
+    When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
 
     And I click the "Link NDelius record" button
     Then I should be on the "Link an NDelius record to the defendant" page
@@ -440,7 +440,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Unlink NDelius record from the defendant
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/f76f1dfe-c41e-4242-b5fa-865d7dd2ce57/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary" base route
+    When I navigate to the "/B14LO/hearing/3f80d674-d964-4781-927a-99c78bc340e2/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary" base route
 
     Then I should be on the "Case summary" page
     When I click the "Unlink NDelius record" button
@@ -455,7 +455,7 @@ Feature: Matching defendants to nDelius records
 
   Scenario: Visit the unlink NDelius record from the defendant page and click the back button
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/f76f1dfe-c41e-4242-b5fa-865d7dd2ce57/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary" base route
+    When I navigate to the "/B14LO/hearing/3f80d674-d964-4781-927a-99c78bc340e2/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary" base route
 
     Then I should be on the "Case summary" page
     When I click the "Unlink NDelius record" button

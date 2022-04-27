@@ -26,6 +26,7 @@
             "default": {},
             "required": [
               "caseId",
+              "hearingId",
               "defendantId",
               "courtCode",
               "courtRoom",
@@ -41,6 +42,13 @@
                 "$id": "#/properties/cases/items/anyOf/0/properties/caseId",
                 "type": "string",
                 "title": "The caseId schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "hearingId": {
+                "$id": "#/properties/cases/items/anyOf/0/properties/hearingid",
+                "type": "string",
+                "title": "The hearingId schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               },

@@ -7,6 +7,7 @@
   "default": {},
   "required": [
     "caseId",
+    "hearingId",
     "defendantId",
     "caseNo",
     "courtCode",
@@ -36,6 +37,13 @@
       "type": "string",
       "title": "The caseId schema",
       "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "hearingId": {
+      "$id": "#/properties/hearingId",
+      "type": "string",
+      "title": "The hearingId schema",
+      "description": "The hearing id returned by the get case endpoint",
       "default": ""
     },
     "defendantId": {

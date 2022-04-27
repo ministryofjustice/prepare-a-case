@@ -34,7 +34,7 @@ Feature: Case summary
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
 
-    When I navigate to the "/B14LO/case/18745630-1398-42b3-b6bc-435325241cc6/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary" base route
+    When I navigate to the "/B14LO/hearing/a395526d-b805-4c52-8f61-3c41bca15537/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary" base route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "Source: Common Platform"
@@ -65,7 +65,7 @@ Feature: Case summary
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
 
-    When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
+    When I navigate to the "/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see the heading "Guadalupe Hess"
@@ -91,7 +91,7 @@ Feature: Case summary
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
 
-    When I navigate to the "/B14LO/case/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
+    When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see the heading "Kara Ayers"
@@ -121,7 +121,7 @@ Feature: Case summary
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
 
-    When I navigate to the "/B14LO/case/36a7a502-70b2-4071-8996-e095717a26b7/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary" base route
+    When I navigate to the "/B14LO/hearing/37a5b7f9-e1e5-453b-a3cf-7246971ec71c/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary" base route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see sub navigation with the following links
@@ -156,7 +156,7 @@ Feature: Case summary
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
 
-    When I navigate to the "/B14LO/case/18745630-1398-42b3-b6bc-435325241cc6/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary" base route
+    When I navigate to the "/B14LO/hearing/a395526d-b805-4c52-8f61-3c41bca15537/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary" base route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see the heading "Mann Carroll"
@@ -191,7 +191,7 @@ Feature: Case summary
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
 
-    When I navigate to the "/B14LO/case/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/summary" base route
+    When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/summary" base route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see sub navigation with the following links
@@ -227,7 +227,7 @@ Feature: Case summary
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
 
-    When I navigate to the "/B14LO/case/5e75a3b1-21d3-47c2-9667-4380e740d64a/defendant/9f60bdb8-0978-404c-bd89-addc3f5388a7/summary" base route
+    When I navigate to the "/B14LO/hearing/8d187ea4-d24d-4806-a5c7-1626919c44bb/defendant/9f60bdb8-0978-404c-bd89-addc3f5388a7/summary" base route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see sub navigation with the following links
@@ -379,7 +379,7 @@ Feature: Case summary
   Scenario: View the attendance record section of the current offender order with unpaid work appointments
     Given I am an authenticated user
 
-    When I navigate to the "/B14LO/case/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
+    When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
     And I should see the heading "Lenore Marquez"
 
@@ -422,7 +422,7 @@ Feature: Case summary
   Scenario: View the current offender order who is currently on licence
     Given I am an authenticated user
 
-    When I navigate to the "/B14LO/case/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876" base route
+    When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876" base route
     Then I should be on the "Order details" page
 
     And I should see the text "Post-release status" within element with class "qa-start-title"
@@ -446,7 +446,7 @@ Feature: Case summary
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
 
-    When I navigate to the "/B14LO/case/aebaafa9-70dd-46c0-b607-14117f3480a4/defendant/82bfc40d-389a-46ba-81e1-0829a5fbf6c8/record/345464567" base route
+    When I navigate to the "/B14LO/hearing/9b9a6ab6-ef6d-485a-a8b4-b79b67e5b1f8/defendant/82bfc40d-389a-46ba-81e1-0829a5fbf6c8/record/345464567" base route
     Then I should be on the "Order details" page
 
     And I should see the text "Status" within element with class "qa-elapsed-title"
@@ -465,11 +465,11 @@ Feature: Case summary
   Scenario: View the licence conditions details for a current offender
     Given I am an authenticated user
 
-    When I navigate to the "/B14LO/case/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876" base route
+    When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876" base route
     Then I should be on the "Order details" page
 
     And I should see link "View licence conditions details" with href "/record/1309234876/licence-details"
-    When I navigate to the "/B14LO/case/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876/licence-details" base route
+    When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876/licence-details" base route
     Then I should be on the "Licence conditions details" page
     And I should see the text "Alcohol" within element with class "govuk-heading-m"
     And I should see the following summary list 3 with keys
@@ -484,7 +484,7 @@ Feature: Case summary
   Scenario: View the current offender order who is currently on Post Sentence Supervision
     Given I am an authenticated user
 
-    When I navigate to the "/B14LO/case/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/2360414697" base route
+    When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/2360414697" base route
     Then I should be on the "Order details" page
 
     And I should see the text "Post-release status" within element with class "qa-start-title"
@@ -508,7 +508,7 @@ Feature: Case summary
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
 
-    When I navigate to the "/B14LO/case/5e75a3b1-21d3-47c2-9667-4380e740d64a/defendant/9f60bdb8-0978-404c-bd89-addc3f5388a7/record" base route
+    When I navigate to the "/B14LO/hearing/8d187ea4-d24d-4806-a5c7-1626919c44bb/defendant/9f60bdb8-0978-404c-bd89-addc3f5388a7/record" base route
     Then I should be on the "Probation record" page
     And I should see the heading "Olsen Alexander"
 
@@ -608,7 +608,7 @@ Feature: Case summary
   Scenario: View the attendance record section of the previous offender order
     Given I am an authenticated user
 
-    When I navigate to the "/B14LO/case/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
+    When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
     And I should see the heading "Lenore Marquez"
 
@@ -632,7 +632,7 @@ Feature: Case summary
 
   Scenario: View the case details of a defendant to see a list of current charges and the associated summary/description
     Given I am an authenticated user
-    When I navigate to the "/B14LO/case/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/summary" base route
+    When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/summary" base route
     Then I should see the level 2 heading "Offences"
     And If the total number of charges is greater than one
     Then I should see the following list of charges in an accordion component
@@ -649,7 +649,7 @@ Feature: Case summary
   Scenario: View the requirements section of a current order
     Given I am an authenticated user
 
-    When I navigate to the "/B14LO/case/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
+    When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
     And I should see the heading "Lenore Marquez"
 
@@ -663,7 +663,7 @@ Feature: Case summary
   Scenario: View the requirements section of a previous order
     Given I am an authenticated user
 
-    When I navigate to the "/B14LO/case/5d0d02d4-3e2b-4008-be56-4ab486bf7f50/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
+    When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
     And I should see the heading "Lenore Marquez"
 

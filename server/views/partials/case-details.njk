@@ -7,17 +7,17 @@
 {% if data.crn %}
     {{ subNavItems.push({
         text: 'Case summary',
-        href: '/' + params.courtCode + '/case/' + data.caseId + '/defendant/' + data.defendantId + '/summary',
+        href: '/' + params.courtCode + '/hearing/' + data.hearingId + '/defendant/' + data.defendantId + '/summary',
         active: title === 'Case summary'
     }) }}
     {{ subNavItems.push({
         text: 'Probation record',
-        href: '/' + params.courtCode + '/case/' + data.caseId + '/defendant/' + data.defendantId + '/record',
+        href: '/' + params.courtCode + '/hearing/' + data.hearingId + '/defendant/' + data.defendantId + '/record',
         active: title === 'Probation record'
     }) }}
     {{ subNavItems.push({
         text: 'Risk register',
-        href: '/' + params.courtCode + '/case/' + data.caseId + '/defendant/' + data.defendantId + '/risk',
+        href: '/' + params.courtCode + '/hearing/' + data.hearingId + '/defendant/' + data.defendantId + '/risk',
         active: title === 'Risk register'
     }) }}
 {% endif %}
@@ -47,7 +47,8 @@
     {%- from "components/key-details-bar/macro.njk" import pacKeyDetailsBar -%}
     {{ pacKeyDetailsBar({
         courtCode: params.courtCode,
-        caseId: params.caseId,
+        caseId: data.caseId,
+        hearingId: params.hearingId,
         defendantId: params.defendantId,
         caseNo: params.caseNo,
         accTitle: "Defendant: ",

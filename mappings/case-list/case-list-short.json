@@ -18,6 +18,7 @@
       "cases": [
         {
           "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+          "hearingId": "7e0f9cb9-b492-4657-9028-a86de1301e25",
           "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "caseNo": "1474726180",
           "crn": "C16000",
@@ -54,6 +55,7 @@
         },
         {
           "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+          "hearingId": "680a6d4a-4588-45dc-ac85-61fc556d06e9",
           "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "caseNo": "4071719588",
           "courtCode": "SHF",
@@ -95,6 +97,7 @@
         },
         {
           "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+          "hearingId": "36a7a502-70b2-4071-8996-e095717a26b7",
           "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "caseNo": "1674533419",
           "courtCode": "SHF",
@@ -131,6 +134,7 @@
         },
         {
           "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+          "hearingId": "36a7a502-70b2-4071-8996-e095717a26b7",
           "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "caseNo": "1625017313",
           "courtCode": "SHF",
@@ -172,6 +176,7 @@
         },
         {
           "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+          "hearingId": "36a7a502-70b2-4071-8996-e095717a26b7",
           "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "caseNo": "8170180452",
           "courtCode": "SHF",
