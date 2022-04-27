@@ -2,7 +2,7 @@
   "id": "3e862519-78b0-4449-b2b5-535ee1b81294",
   "request": {
     "method": "PUT",
-    "path": "/case/f76f1dfe-c41e-4242-b5fa-865d7dd2ce57/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846",
+    "path": "/hearing/f76f1dfe-c41e-4242-b5fa-865d7dd2ce57/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846",
     "headers": {
       "Content-Type": "application/json"
     },
