@@ -3,7 +3,7 @@ const getCaseListFilters = require('../utils/getCaseListFilters')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
 
-const createService = (apiUrl) => {
+const createCaseService = (apiUrl) => {
   return {
     getMatchDetails: async (caseId, defendantId) => {
       const res = await request(`${apiUrl}/case/${caseId}/defendant/${defendantId}/matchesDetail`) || { data: {} }
@@ -79,9 +79,9 @@ const createService = (apiUrl) => {
   }
 }
 
-const defaultService = createService(config.apis.courtCaseService.url)
+const defaultService = createCaseService(config.apis.courtCaseService.url)
 
 module.exports = {
   ...defaultService,
-  createService
+  createCaseService
 }

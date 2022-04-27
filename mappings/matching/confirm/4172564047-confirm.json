@@ -8,6 +8,13 @@
     "headers": {
       "Content-Type": "application/json"
     },
+    "jsonBody": {
+      "probationStatus": "CURRENT",
+      "crn": "C178657",
+      "previouslyKnownTerminationDate": "2022-03-26",
+      "breach": true,
+      "preSentenceActivity": true
+    },
     "status": 500
   }
 }
