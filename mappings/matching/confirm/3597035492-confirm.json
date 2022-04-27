@@ -3,19 +3,28 @@
   "request": {
     "method": "PUT",
     "urlPathPattern": "/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/offender",
-    "bodyPatterns" : [ {
-      "equalToJson" : {
-        "probationStatus": "PREVIOUSLY_KNOWN",
-        "crn": "V178657",
-        "previouslyKnownTerminationDate": "2021-10-26",
-        "breach": true,
-        "preSentenceActivity": true
+    "bodyPatterns": [
+      {
+        "equalToJson": {
+          "probationStatus": "PREVIOUSLY_KNOWN",
+          "crn": "V178657",
+          "previouslyKnownTerminationDate": "2021-10-26",
+          "breach": true,
+          "preSentenceActivity": true
+        }
       }
-    } ]
+    ]
   },
   "response": {
     "headers": {
       "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "probationStatus": "PREVIOUSLY_KNOWN",
+      "crn": "V178657",
+      "previouslyKnownTerminationDate": "2021-10-26",
+      "breach": true,
+      "preSentenceActivity": true
     },
     "status": 200
   }
