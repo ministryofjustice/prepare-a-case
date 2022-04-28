@@ -8,7 +8,7 @@
         "equalToJson": {
           "probationStatus": "CURRENT",
           "crn": "C178657",
-          "previouslyKnownTerminationDate": "2022-03-26",
+          "previouslyKnownTerminationDate": "2022-03-28",
           "breach": true,
           "preSentenceActivity": true
         }
@@ -22,7 +22,7 @@
     "jsonBody": {
       "probationStatus": "CURRENT",
       "crn": "C178657",
-      "previouslyKnownTerminationDate": "2022-03-26",
+      "previouslyKnownTerminationDate": "2022-03-28",
       "breach": true,
       "preSentenceActivity": true
     },
