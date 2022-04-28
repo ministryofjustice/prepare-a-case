@@ -3,154 +3,154 @@ Feature: Matching defendants to nDelius records
   As an authenticated user
   I want to be able to confirm existing probation records match with defendants appearing in court
 
-#  Scenario: View the list of defendants with possible probation record matches for a given day in court
-#    Given I am an authenticated user
-#    And I click the "Accept analytics cookies" button
-#    Then I should not see the cookie banner
-#    When I navigate to the "/B14LO/match/bulk" base route for today
-#    Then I should be on the "Defendants with possible NDelius records" page
-#
-#    And I should see the phase banner
-#    And I should see the tag "Feedback"
-#    And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
-#
-#    And I should see the heading "Defendants with possible NDelius records"
-#
-#    And I should see medium heading with text "2 defendants partially match with existing records."
-#    And I should see the body text "Review and confirm the correct record for each defendant."
-#
-#    And I should see the following table headings
-#      | Defendant | NDelius records found | Action |
-#    And I should see the following table rows
-#      | Guadalupe Hess          | 3 | Review records |
-#      | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
-#
-#    And I should see link "Review records" in position 2 with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
-#    And I should see link "Review records" in position 3 with href "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85"
-#
-#    And There should be no a11y violations
-#
-#  Scenario: View the list of possible NDelius records
-#    Given I am an authenticated user
-#    When I navigate to the "/B14LO/match/bulk" base route for today
-#    Then I should be on the "Defendants with possible NDelius records" page
-#
-#    And I should see the heading "Defendants with possible NDelius records"
-#
-#    When I click the "Review records" link
-#    Then I should be on the "Review possible NDelius records" page
-#
-#    And I should see the heading "Guadalupe Paratroop Flowerlupe Hess"
-#    And I should see the level 2 heading "Review possible NDelius records"
-#    And I should see the body text "Compare details and confirm the correct record for the defendant."
-#    And I should see the inset text "Details that match the defendant are highlighted."
-#
-#    Then I should see the level 3 heading "Defendant details"
-#    And I should see the legend "3 NDelius records found"
-#
-#    And I should see the following table headings
-#      | Name | Date of birth | Address | PNC |
-#    And I should see the following table rows
-#      | Guadalupe Paratroop Flowerlupe Hess      |
-#      | 18 February 1989                         |
-#      | 43 Hunterfly Place, Birmingham, AD21 5DR |
-#      | Unavailable                              |
-#    And I should see the following table 2 headings
-#      | Name | Date of birth | Address | PNC | CRN | Probation status | Most recent event |
-#    And I should see the following table 2 rows
-#      | Guadalupe Flowerlupe Paratroop Hess                            |
-#      | 18 February 1989                                               |
-#      | 43 Hunterfly Place, Birmingham, Birmingham, AD21 5DR           |
-#      | D/9874483AB                                                    |
-#      | V178657                                                        |
-#      | Current                                                        |
-#      | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
-#    And I should see the following table 3 rows
-#      | Guadalupe Paul Hess                                             |
-#      | 18 February 1989                                                |
-#      | Dunroamin, Leicestershire, LE2 3NA                              |
-#      | Unavailable                                                     |
-#      | C178657                                                         |
-#      | Previously known                                                |
-#      | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
-#    And I should see the following table 4 rows
-#      | Guadalupe Flowerlupe Hess                                     |
-#      | 18 February 1998                                              |
-#      | Dunroamin, Leicestershire, LE2 3NA                            |
-#      | Unavailable                                                   |
-#      | B123456                                                       |
-#      | Previously known                                              |
-#      | 13 January 2015 - CJA Standard Determinate Custody (6 Months) |
-#    And I should see radio buttons with the following IDs
-#      | defendant-1 | defendant-2 | defendant-3 |
-#
-#    And There should be no a11y violations
-#
-#  Scenario: View the list of possible NDelius records highlighted
-#    Given I am an authenticated user
-#    When I navigate to the "/B14LO/match/bulk" base route for today
-#    Then I should be on the "Defendants with possible NDelius records" page
-#
-#    And I should see the heading "Defendants with possible NDelius records"
-#    And I should see the following table headings
-#      | Defendant | NDelius records found | Action |
-#    And I should see the following table rows
-#      | Guadalupe Hess          | 3 | Review records |
-#      | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
-#
-#    Then I navigate to the "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85" base route
-#
-#    And I should see the heading "Felicia Blob Popop Villareal"
-#    And I should see the level 2 heading "Review possible NDelius records"
-#    And I should see the body text "Compare details and confirm the correct record for the defendant."
-#    And I should see the inset text "Details that match the defendant are highlighted."
-#
-#    Then I should see the level 3 heading "Defendant details"
-#    And I should see the legend "2 NDelius records found"
-#
-#    And I should see the following table headings
-#      | Name | Date of birth | Address | PNC |
-#    And I should see the following table rows
-#      | Felicia Blob Popop Villareal    |
-#      | 13 August 1980                  |
-#      | 37 Maple Avenue, London, L1 5DR |
-#      | A/1234560BA                     |
-#    And I should see the following table 2 headings
-#      | Name | Date of birth | Address | PNC | CRN | Probation status | Most recent event |
-#    And I should see the following table 2 rows
-#      | Felicia Consuela Villarreal                                    |
-#      | 26 August 1971                                                 |
-#      | 20 Main Street Shangri La, Leicester, Leicestershire, LE2 1BG  |
-#      | A/1234560BA                                                    |
-#      | V178657                                                        |
-#      | Current                                                        |
-#      | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
-#    And I should see the following table 3 rows
-#      | Felecia Conswela Vilareel                                       |
-#      | 26 August 1969                                                  |
-#      | Dunroamin, Leicestershire, LE2 3NA                              |
-#      | A/1234560BA                                                     |
-#      | C178657                                                         |
-#      | Previously known                                                |
-#      | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
-#
-#    And I should see radio buttons with the following IDs
-#      | defendant-1 | defendant-2 |
-#
-#    And There should be no a11y violations
-#
-#  Scenario: Display an error message if the user does not select a radio button when confirming a match
-#    Given I am an authenticated user
-#    When I navigate to the "/B14LO/match/bulk" base route for today
-#    Then I should be on the "Defendants with possible NDelius records" page
-#
-#    When I click the "Review records" link
-#    Then I should be on the "Review possible NDelius records" page
-#
-#    When I click the "Confirm record" button
-#    Then I should see the error message "Select an NDelius record"
-#
-#    And There should be no a11y violations
+  Scenario: View the list of defendants with possible probation record matches for a given day in court
+    Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
+    When I navigate to the "/B14LO/match/bulk" base route for today
+    Then I should be on the "Defendants with possible NDelius records" page
+
+    And I should see the phase banner
+    And I should see the tag "Feedback"
+    And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
+
+    And I should see the heading "Defendants with possible NDelius records"
+
+    And I should see medium heading with text "2 defendants partially match with existing records."
+    And I should see the body text "Review and confirm the correct record for each defendant."
+
+    And I should see the following table headings
+      | Defendant | NDelius records found | Action |
+    And I should see the following table rows
+      | Guadalupe Hess          | 3 | Review records |
+      | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
+
+    And I should see link "Review records" in position 2 with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
+    And I should see link "Review records" in position 3 with href "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85"
+
+    And There should be no a11y violations
+
+  Scenario: View the list of possible NDelius records
+    Given I am an authenticated user
+    When I navigate to the "/B14LO/match/bulk" base route for today
+    Then I should be on the "Defendants with possible NDelius records" page
+
+    And I should see the heading "Defendants with possible NDelius records"
+
+    When I click the "Review records" link
+    Then I should be on the "Review possible NDelius records" page
+
+    And I should see the heading "Guadalupe Paratroop Flowerlupe Hess"
+    And I should see the level 2 heading "Review possible NDelius records"
+    And I should see the body text "Compare details and confirm the correct record for the defendant."
+    And I should see the inset text "Details that match the defendant are highlighted."
+
+    Then I should see the level 3 heading "Defendant details"
+    And I should see the legend "3 NDelius records found"
+
+    And I should see the following table headings
+      | Name | Date of birth | Address | PNC |
+    And I should see the following table rows
+      | Guadalupe Paratroop Flowerlupe Hess      |
+      | 18 February 1989                         |
+      | 43 Hunterfly Place, Birmingham, AD21 5DR |
+      | Unavailable                              |
+    And I should see the following table 2 headings
+      | Name | Date of birth | Address | PNC | CRN | Probation status | Most recent event |
+    And I should see the following table 2 rows
+      | Guadalupe Flowerlupe Paratroop Hess                            |
+      | 18 February 1989                                               |
+      | 43 Hunterfly Place, Birmingham, Birmingham, AD21 5DR           |
+      | D/9874483AB                                                    |
+      | V178657                                                        |
+      | Current                                                        |
+      | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
+    And I should see the following table 3 rows
+      | Guadalupe Paul Hess                                             |
+      | 18 February 1989                                                |
+      | Dunroamin, Leicestershire, LE2 3NA                              |
+      | Unavailable                                                     |
+      | C178657                                                         |
+      | Previously known                                                |
+      | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
+    And I should see the following table 4 rows
+      | Guadalupe Flowerlupe Hess                                     |
+      | 18 February 1998                                              |
+      | Dunroamin, Leicestershire, LE2 3NA                            |
+      | Unavailable                                                   |
+      | B123456                                                       |
+      | Previously known                                              |
+      | 13 January 2015 - CJA Standard Determinate Custody (6 Months) |
+    And I should see radio buttons with the following IDs
+      | defendant-1 | defendant-2 | defendant-3 |
+
+    And There should be no a11y violations
+
+  Scenario: View the list of possible NDelius records highlighted
+    Given I am an authenticated user
+    When I navigate to the "/B14LO/match/bulk" base route for today
+    Then I should be on the "Defendants with possible NDelius records" page
+
+    And I should see the heading "Defendants with possible NDelius records"
+    And I should see the following table headings
+      | Defendant | NDelius records found | Action |
+    And I should see the following table rows
+      | Guadalupe Hess          | 3 | Review records |
+      | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
+
+    Then I navigate to the "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85" base route
+
+    And I should see the heading "Felicia Blob Popop Villareal"
+    And I should see the level 2 heading "Review possible NDelius records"
+    And I should see the body text "Compare details and confirm the correct record for the defendant."
+    And I should see the inset text "Details that match the defendant are highlighted."
+
+    Then I should see the level 3 heading "Defendant details"
+    And I should see the legend "2 NDelius records found"
+
+    And I should see the following table headings
+      | Name | Date of birth | Address | PNC |
+    And I should see the following table rows
+      | Felicia Blob Popop Villareal    |
+      | 13 August 1980                  |
+      | 37 Maple Avenue, London, L1 5DR |
+      | A/1234560BA                     |
+    And I should see the following table 2 headings
+      | Name | Date of birth | Address | PNC | CRN | Probation status | Most recent event |
+    And I should see the following table 2 rows
+      | Felicia Consuela Villarreal                                    |
+      | 26 August 1971                                                 |
+      | 20 Main Street Shangri La, Leicester, Leicestershire, LE2 1BG  |
+      | A/1234560BA                                                    |
+      | V178657                                                        |
+      | Current                                                        |
+      | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
+    And I should see the following table 3 rows
+      | Felecia Conswela Vilareel                                       |
+      | 26 August 1969                                                  |
+      | Dunroamin, Leicestershire, LE2 3NA                              |
+      | A/1234560BA                                                     |
+      | C178657                                                         |
+      | Previously known                                                |
+      | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
+
+    And I should see radio buttons with the following IDs
+      | defendant-1 | defendant-2 |
+
+    And There should be no a11y violations
+
+  Scenario: Display an error message if the user does not select a radio button when confirming a match
+    Given I am an authenticated user
+    When I navigate to the "/B14LO/match/bulk" base route for today
+    Then I should be on the "Defendants with possible NDelius records" page
+
+    When I click the "Review records" link
+    Then I should be on the "Review possible NDelius records" page
+
+    When I click the "Confirm record" button
+    Then I should see the error message "Select an NDelius record"
+
+    And There should be no a11y violations
 
   Scenario: Confirm defendant record match from bulk match list
     Given I am an authenticated user
