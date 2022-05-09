@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "A put request or response for an Offender from court-case-service",
+  "default": {},
+  "required": [
+    "probationStatus",
+    "crn"
+  ],
+  "properties": {
+    "probationStatus": {
+      "$id": "#/properties/probationStatus",
+      "type": "string",
+      "title": "Probation status",
+      "default": "CURRENT"
+    },
+    "crn": {
+      "$id": "#/properties/crn",
+      "type": "string",
+      "title": "CRN",
+      "default": "X123456"
+    },
+    "pnc": {
+      "$id": "#/properties/pnc",
+      "type": "string",
+      "title": "PNC"
+    },
+    "cro": {
+      "$id": "#/properties/cro",
+      "type": "string",
+      "title": "CRO"
+    },
+    "previouslyKnownTerminationDate": {
+      "$id": "#/properties/previouslyKnownTerminationDate",
+      "type": "string",
+      "title": "Previously known termination date"
+    },
+    "suspendedSentenceOrder": {
+      "$id": "#/properties/suspendedSentenceOrder",
+      "type": "boolean",
+      "title": "Suspended sentence order",
+      "default": false
+    },
+    "breach": {
+      "$id": "#/properties/breach",
+      "type": "boolean",
+      "title": "Breach",
+      "default": false
+    },
+    "preSentenceActivity": {
+      "$id": "#/properties/preSentenceActivity",
+      "type": "boolean",
+      "title": "preSentenceActivity",
+      "default": false
+    },
+    "awaitingPsr": {
+      "$id": "#/properties/awaitingPsr",
+      "type": "boolean",
+      "title": "Awaiting PSR",
+      "default": false
+    }
+  }
+}

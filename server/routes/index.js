@@ -1,9 +1,9 @@
 const express = require('express')
 const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
-const { settings, notification, session: { cookieOptions } } = require('../../config')
+const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
 const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
-const { getCaseList, getCase, getMatchDetails, updateCase } = require('../services/case-service')
+const { getCaseList, getCase, getMatchDetails, deleteOffender, updateOffender } = require('../services/case-service')
 const {
   getDetails,
   getProbationRecord,
@@ -393,31 +393,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-defendant', templateValues)
   })
 
-  async function updateCaseDetails (caseId, hearingId, defendantId, crn, unlinking) {
-    const caseResponse = await getCase(hearingId, defendantId)
-    let offenderDetail
-    let probationStatusDetails
-    if (crn) {
-      offenderDetail = await getDetails(crn)
-      probationStatusDetails = await getProbationStatusDetails(crn)
-    }
-    return await updateCase(caseId, defendantId, {
-      ...caseResponse,
-      pnc: crn ? offenderDetail.otherIds.pncNumber : caseResponse.pnc || null,
-      crn: crn ? offenderDetail.otherIds.crn : null,
-      cro: crn ? offenderDetail.otherIds.croNumber : null,
-      probationStatus: crn ? probationStatusDetails.status : !unlinking ? 'NO_RECORD' : null,
-      probationStatusActual: crn ? probationStatusDetails.status : !unlinking ? 'NO_RECORD' : null,
-      awaitingPsr: crn ? probationStatusDetails.awaitingPsr : null,
-      breach: crn ? probationStatusDetails.inBreach : null,
-      preSentenceActivity: crn ? probationStatusDetails.preSentenceActivity : null
-    })
-  }
-
-  function getMatchedUrl ($matchType, $matchDate, $hearingId, $defendantId, $courtCode) {
-    return $matchType === 'bulk' ? $courtCode + '/match/bulk/' + $matchDate : $courtCode + '/hearing/' + $hearingId + '/defendant/' + $defendantId + '/summary'
-  }
-
   router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId', defaults, async (req, res) => {
     const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
     let redirectUrl
@@ -428,7 +403,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       redirectUrl = tryAgainRedirect
     } else {
       const response = await updateCaseDetails(caseId, hearingId, defendantId, crn)
-      if (response.status === 201) {
+      if (response.status === 200) {
         session.confirmedMatch = {
           name: session.matchName,
           matchType: 'Known'
@@ -443,10 +418,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/nomatch/:unlink?', defaults, async (req, res) => {
-    const { params: { courtCode, caseId, defendantId, hearingId, unlink }, session } = req
+    const { params: { courtCode, defendantId, hearingId, unlink }, session } = req
     let redirectUrl
-    const response = await updateCaseDetails(caseId, hearingId, defendantId, undefined, !!unlink)
-    if (response.status === 201) {
+    const response = await unlinkOffender(defendantId)
+    if (response.status === 200) {
       session.confirmedMatch = {
         name: session.matchName,
         matchType: unlink ? 'unlinked' : 'No record'
@@ -525,7 +500,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.serverError = false
     let redirectUrl = '/'
     const response = await updateCaseDetails(caseId, hearingId, defendantId, crn)
-    if (response.status === 201) {
+    if (response.status === 200) {
       session.confirmedMatch = {
         name: session.matchName,
         matchType: 'linked',
@@ -557,6 +532,29 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.matchName = templateValues.data.defendantName
     res.render('match-unlink', templateValues)
   })
+
+  async function updateCaseDetails (caseId, hearingId, defendantId, crn) {
+    const offenderDetail = await getDetails(crn)
+    const probationStatusDetails = await getProbationStatusDetails(crn)
+    return await updateOffender(defendantId, {
+      probationStatus: probationStatusDetails.status,
+      crn: offenderDetail.otherIds && offenderDetail.otherIds.crn,
+      previouslyKnownTerminationDate: probationStatusDetails.previouslyKnownTerminationDate,
+      breach: probationStatusDetails.inBreach,
+      preSentenceActivity: probationStatusDetails.preSentenceActivity,
+      awaitingPsr: probationStatusDetails.awaitingPsr,
+      pnc: sendPncAndCroWithOffenderUpdates && offenderDetail.otherIds ? offenderDetail.otherIds.pncNumber : undefined,
+      cro: sendPncAndCroWithOffenderUpdates && offenderDetail.otherIds ? offenderDetail.otherIds.croNumber : undefined
+    })
+  }
+
+  async function unlinkOffender (defendantId) {
+    return await deleteOffender(defendantId)
+  }
+
+  function getMatchedUrl ($matchType, $matchDate, $hearingId, $defendantId, $courtCode) {
+    return $matchType === 'bulk' ? $courtCode + '/match/bulk/' + $matchDate : $courtCode + '/hearing/' + $hearingId + '/defendant/' + $defendantId + '/summary'
+  }
 
   return router
 }
