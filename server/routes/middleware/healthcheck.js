@@ -3,7 +3,7 @@ const { apis: { courtCaseService }, settings: { healthTimeout } } = require('../
 
 const health = async (req, res, next) => {
   function unhealthy () {
-    res.render('error', { status: 500 }).end()
+    res.render('error', { status: 500 })
   }
 
   try {
