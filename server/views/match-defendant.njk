@@ -137,7 +137,6 @@
                         {% set aliases = item.matchIdentifiers.aliases %}
 
                         {% if aliases %}
-
                           {% set aliasesLength = aliases | length if aliases else 0 %}
 
                           <tr class="govuk-table__row">
@@ -146,12 +145,11 @@
                               {% set aliasDisplayLimit = 3 if aliasesLength > 2 else aliasesLength %}
 
                               {% for i in range(0, aliasDisplayLimit) -%}
-                                {% set alias = aliases[i] %}
-                                {% set aliasName = alias.firstName + ' ' + (alias.middleNames | join(' ') + ' ' if alias.middleNames) + alias.surname %}
+                                {% set aliasName = aliases[i].firstName + ' ' + (aliases[i].middleNames | join(' ') + ' ' if aliases[i].middleNames) + aliases[i].surname %}
                                 {{ aliasName | apostropheInName | properCase | removeTitle | markMatches(defendantFullName) | safe }}{{ ',' if not loop.last }}
                               {%- endfor %}
 
-                              {{ ['+ ', aliasesLength - 3, ' other name' + ('s' if aliasesLength> 4 else ''), ' matched' ] | join('') if aliasesLength > 3  }}
+                              {{ ['+ ', aliasesLength - 3, ' other name', ('s' if aliasesLength > 4), ' matched' ] | join('') if aliasesLength > 3  }}
                             </td>
                           </tr>
                         {% endif %}
