@@ -63,10 +63,6 @@ module.exports = (app, path) => {
     return number + ordinal
   })
 
-  env.addFilter('courtRoomDisplay', (sourceString) => {
-    return sourceString.includes('Courtroom') ? sourceString.replace(/([A-Za-z 0]*)?/, '') : sourceString.replace(/([0]*)?/, '')
-  })
-
   env.addFilter('unique', arr => [...new Set(arr)])
 
   env.addGlobal('googleAnalyticsKey', googleAnalyticsKey)
