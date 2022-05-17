@@ -8,7 +8,7 @@
         "equalToJson": {
           "probationStatus": "CURRENT",
           "crn": "C178657",
-          "previouslyKnownTerminationDate": "2022-03-28",
+          "previouslyKnownTerminationDate": "${json-unit.any-string}",
           "breach": true,
           "preSentenceActivity": true
         }

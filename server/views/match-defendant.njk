@@ -134,6 +134,25 @@
                             {{ matchName | apostropheInName | properCase | removeTitle | markMatches(defendantFullName) | safe }}
                           </td>
                         </tr>
+                        {% set aliases = item.matchIdentifiers.aliases %}
+
+                        {% if aliases %}
+                          {% set aliasesLength = aliases | length if aliases else 0 %}
+
+                          <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header pac-width-40">Alias{{ 'es' if aliasesLength > 1 }}</th>
+                            <td class="govuk-table__cell">
+                              {% set aliasDisplayLimit = 3 if aliasesLength > 2 else aliasesLength %}
+
+                              {% for i in range(0, aliasDisplayLimit) -%}
+                                {% set aliasName = aliases[i].firstName + ' ' + (aliases[i].middleNames | join(' ') + ' ' if aliases[i].middleNames) + aliases[i].surname %}
+                                {{ aliasName | apostropheInName | properCase | removeTitle | markMatches(defendantFullName) | safe }}{{ ',' if not loop.last }}
+                              {%- endfor %}
+
+                              {{ ['+ ', aliasesLength - 3, ' other name', ('s' if aliasesLength > 4), ' matched' ] | join('') if aliasesLength > 3  }}
+                            </td>
+                          </tr>
+                        {% endif %}
                         <tr class="govuk-table__row">
                           <th scope="row" class="govuk-table__header">Date of birth</th>
                           <td class="govuk-table__cell">
