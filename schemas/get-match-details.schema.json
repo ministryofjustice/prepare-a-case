@@ -183,6 +183,50 @@
                     "title": "The cro schema",
                     "description": "An explanation about the purpose of this instance.",
                     "default": ""
+                  },
+                  "aliases": {
+                    "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/matchIdentifiers/properties/aliases",
+                    "title": "Aliases",
+                    "type": "array",
+                    "default": [],
+                    "items":{
+                      "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/matchIdentifiers/properties/aliases/items",
+                      "title": "Items",
+                      "type": "object",
+                      "required": [
+                        "dateOfBirth",
+                        "firstName",
+                        "surname",
+                        "gender"
+                      ],
+                      "properties": {
+                        "dateOfBirth": {
+                          "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/matchIdentifiers/properties/aliases/items/dateOfBirth",
+                          "type": "string",
+                          "title": "The dateOfBirth schema",
+                          "default": ""
+                        },
+                        "firstName": {
+                          "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/matchIdentifiers/properties/aliases/items/firstName",
+                          "title": "Firstname",
+                          "type": "string",
+                          "default": ""
+                        },
+                        "surname": {
+                          "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/matchIdentifiers/properties/aliases/items/surname",
+                          "title": "Surname",
+                          "type": "string",
+                          "default": ""
+                        },
+                        "gender": {
+                          "$id": "#/properties/offenderMatchDetails/items/anyOf/0/properties/matchIdentifiers/properties/aliases/items/gender",
+                          "title": "Gender",
+                          "type": "string",
+                          "default": ""
+                        }
+                      }
+                    }
+
                   }
                 },
                 "additionalProperties": false

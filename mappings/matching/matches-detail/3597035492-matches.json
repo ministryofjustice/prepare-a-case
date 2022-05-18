@@ -30,7 +30,15 @@
           "matchIdentifiers": {
             "crn": "V178657",
             "pnc": "D/9874483AB",
-            "cro": null
+            "cro": null,
+            "aliases": [
+              {
+                "dateOfBirth": "1969-08-26",
+                "firstName": "Para",
+                "surname": "Flowerlupe",
+                "gender": "Male"
+              }
+            ]
           },
           "probationStatus": "Current",
           "mostRecentEvent": {
@@ -55,7 +63,35 @@
           },
           "matchIdentifiers": {
             "crn": "C178657",
-            "cro": null
+            "cro": null,
+            "aliases": [
+              {
+                "dateOfBirth": "1969-08-26",
+                "firstName": "Para",
+                "surname": "Flowerlupe",
+                "gender": "Male"
+              },
+              {
+                "dateOfBirth": "1968-08-06",
+                "firstName": "Some",
+                "middleNames": ["Midone", "Midtwo"],
+                "surname": "Flowerlupe",
+                "gender": "Male"
+              },
+              {
+                "dateOfBirth": "1969-08-26",
+                "firstName": "Para",
+                "surname": "Flowerlupe",
+                "gender": "Male"
+              },
+              {
+                "dateOfBirth": "1968-08-06",
+                "firstName": "Some",
+                "middleNames": ["Midone", "Midtwo"],
+                "surname": "Flowerlupe",
+                "gender": "Male"
+              }
+            ]
           },
           "probationStatus": "Previously known",
           "mostRecentEvent": {
@@ -81,7 +117,40 @@
           "matchIdentifiers": {
             "crn": "B123456",
             "pnc": null,
-            "cro": null
+            "cro": null,
+            "aliases": [
+              {
+                "dateOfBirth": "1969-08-26",
+                "firstName": "Para",
+                "surname": "Flowerlupe",
+                "gender": "Male"
+              },
+              {
+                "dateOfBirth": "1968-08-06",
+                "firstName": "Someone",
+                "middleNames": ["Midone", "Midtwo"],
+                "surname": "Flowerlupe",
+                "gender": "Male"
+              },
+              {
+                "dateOfBirth": "1968-08-06",
+                "firstName": "Sometwo",
+                "surname": "Flowerlupe",
+                "gender": "Male"
+              },
+              {
+                "dateOfBirth": "1968-08-06",
+                "firstName": "Sometwo",
+                "surname": "Flowerlupe",
+                "gender": "Male"
+              },
+              {
+                "dateOfBirth": "1968-08-06",
+                "firstName": "Sometwo",
+                "surname": "Flowerlupe",
+                "gender": "Male"
+              }
+            ]
           },
           "probationStatus": "Previously known",
           "mostRecentEvent": {
