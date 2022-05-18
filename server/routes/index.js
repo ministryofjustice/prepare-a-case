@@ -538,13 +538,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const probationStatusDetails = await getProbationStatusDetails(crn)
     return await updateOffender(defendantId, {
       probationStatus: probationStatusDetails.status,
-      crn: offenderDetail.otherIds && offenderDetail.otherIds.crn,
+      crn: offenderDetail && offenderDetail.otherIds ? offenderDetail.otherIds.crn : undefined,
       previouslyKnownTerminationDate: probationStatusDetails.previouslyKnownTerminationDate,
       breach: probationStatusDetails.inBreach,
       preSentenceActivity: probationStatusDetails.preSentenceActivity,
       awaitingPsr: probationStatusDetails.awaitingPsr,
-      pnc: sendPncAndCroWithOffenderUpdates && offenderDetail.otherIds ? offenderDetail.otherIds.pncNumber : undefined,
-      cro: sendPncAndCroWithOffenderUpdates && offenderDetail.otherIds ? offenderDetail.otherIds.croNumber : undefined
+      pnc: sendPncAndCroWithOffenderUpdates && offenderDetail && offenderDetail.otherIds ? offenderDetail.otherIds.pncNumber : undefined,
+      cro: sendPncAndCroWithOffenderUpdates && offenderDetail && offenderDetail.otherIds ? offenderDetail.otherIds.croNumber : undefined
     })
   }
 
