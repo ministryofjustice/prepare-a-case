@@ -75,7 +75,7 @@
     "agentkeepalive": "^4.2.1",
     "applicationinsights": "2.3.1",
     "applicationinsights-native-metrics": "0.0.7",
-    "axios": "0.26.1",
+    "axios": "0.27.2",
     "axios-middleware": "0.3.1",
     "bunyan": "1.8.15",
     "bunyan-format": "0.2.1",
