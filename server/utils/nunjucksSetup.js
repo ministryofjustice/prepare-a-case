@@ -63,6 +63,17 @@ module.exports = (app, path) => {
     return number + ordinal
   })
 
+  env.addFilter('courtRoomDisplay', (sourceString) => {
+    return sourceString.includes('Courtroom') ? sourceString.replace(/([A-Za-z 0]*)?/, '') : sourceString.replace(/([0]*)?/, '')
+  })
+
+  // env.addFilter('courtRoomDisplay', (sourceString) => {
+  //   const sourceClean = sourceString.includes('Courtroom') ? sourceString.replace(/([A-Za-z 0]*)?/, '') : sourceString.replace(/([0]*)?/, '')
+  //   let myButton = document.getElementsByName("courtRoom");
+  //   myButton.value = "num"
+  //   return sourceClean + myButton
+  // })
+
   env.addFilter('unique', arr => [...new Set(arr)])
 
   env.addGlobal('googleAnalyticsKey', googleAnalyticsKey)

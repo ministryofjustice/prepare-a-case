@@ -26,6 +26,7 @@
 {% for item in data %}
 
     {% set offences = [] %}
+    {% set courtRoom = item.courtRoom | courtRoomDisplay %}
 
     {% set notMatched = item.probationStatus | string | lower == "possible ndelius record" %}
     {% if item.offences | length === 1 %}
@@ -68,7 +69,7 @@
         { text: offences | join('') | safe },
         { text: listing | join('') | safe },
         { text: item.session | capitalize },
-        { text: item.courtRoom, format: "numeric"}
+        { text: courtRoom, format: "numeric"}
     ] -%}
     {%- if params.subsection === 'removed' %}
         {{ tableRow.push({ text: item.caseNo, format: "numeric" }) }}

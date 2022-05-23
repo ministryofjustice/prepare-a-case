@@ -12,6 +12,7 @@ const createCaseService = (apiUrl) => {
     getCaseList: async (courtCode, date, selectedFilters, subsection) => {
       const latestSnapshot = getLatestSnapshot(date).format('YYYY-MM-DDTHH:mm:00.000')
       const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`) || { data: { cases: [] } }
+      const filters = getCaseListFilters(res.data.cases, selectedFilters)
       const allCases = []
       const addedCases = []
       const removedCases = []
@@ -30,10 +31,9 @@ const createCaseService = (apiUrl) => {
           } else {
             allCases.push($case)
           }
-          $case.courtRoom = $case.courtRoom.includes('Courtroom') ? $case.courtRoom.replace(/([A-Za-z 0]*)?/, '') : $case.courtRoom.replace(/([0]*)?/, '')
         })
       }
-      const filters = getCaseListFilters(res.data.cases, selectedFilters)
+
       let filteredCases = subsection === 'added' ? addedCases : subsection === 'removed' ? removedCases : allCases
 
       function applyFilter (filterObj) {
@@ -43,7 +43,7 @@ const createCaseService = (apiUrl) => {
           filterObj.items.forEach(item => {
             if (item && item.checked) {
               notFiltered = false
-              matched = matched || courtCase[filterObj.id].toString().toLowerCase() === item.value.toString().toLowerCase()
+              matched = matched || courtCase[filterObj.id].toString().toLowerCase() === (item.value.toString().toLowerCase() || `Courtroom ${item.value}`)
             }
           })
           return notFiltered || matched
