@@ -1,3 +1,35 @@
+// sorts the map with a combo of numerics and string in ascending order pushing strings to bottom
+const getSortedCourtRoomMap = (courtRoomMap) => {
+  return new Map([...courtRoomMap.entries()].sort((e1, e2) => {
+    const strA = e1.at(0);
+    const strB = e2.at(0);
+    const numA = parseInt(strA);
+    const numB = parseInt(strB);
+    if (isNaN(numB)) {
+      if (isNaN(numA)) {
+        return strA < strB ? -1 : 1;
+      }
+      return -1;
+    }
+    if (isNaN(numA)) {
+      return 1
+    }
+    return numA - numB;
+  }));
+}
+
+// Creates a map with unique courtroom as key and values are a csv of Libra & CP courtroom names/numbers
+// eg. courtrooms [3, 'Courtroom 7', 7] will me reduced to { 3: '3', 7: '7, Courtroom 7' }
+const groupCourtRoomsByRoomNumber = (uniqueCourtRooms) =>
+   uniqueCourtRooms.reduce((reducedMap, courtRoom) => {
+    let courtRoomStr = courtRoom.toString();
+    var key = courtRoomStr.includes('Courtroom') ? courtRoomStr.replace(/([A-Za-z 0]*)?/, '') : courtRoomStr.replace(/([0]*)?/, '');
+    const value = reducedMap.get(key)
+    !!value ? reducedMap.set(key, [value, courtRoomStr].join()) : reducedMap.set(key, courtRoomStr)
+    return reducedMap;
+  }, new Map());
+
+
 module.exports = (caseListData, selectedFilters) => {
   const availableProbationStatuses = [...new Set(caseListData.map(item => item.probationStatus))]
   const probationStatuses = []
@@ -8,19 +40,13 @@ module.exports = (caseListData, selectedFilters) => {
     }
   })
 
-  const courtRoomStrings = [...new Set(caseListData.map(item => item.courtRoom))]
-    .filter(item => isNaN(item))
-    .sort((a, b) => a - b)
-    .map(item => item && {
-      label: item.includes('Courtroom') ? item.replace(/([A-Za-z 0]*)?/, '') : item.replace(/([0]*)?/, ''),
-      value: item.toString()
-    })
+  const uniqueCourtRooms = [...new Set(caseListData.map(item =>  item.courtRoom.toString())).values()];
 
-  const courtRooms = [...new Set(caseListData.map(item => parseInt(item.courtRoom, 10)))]
-    .filter(item => !isNaN(item))
-    .sort((a, b) => a - b)
-    .map(item => item && { label: item.toString(), value: ('0' + item.toString()).slice(-2) })
-    .concat(courtRoomStrings)
+  const courtRoomMap = groupCourtRoomsByRoomNumber(uniqueCourtRooms);
+
+  const sortedCourtRoomMap = getSortedCourtRoomMap(courtRoomMap);
+
+  const courtRooms = Array.from(sortedCourtRoomMap, ([key, value]) => ({ label: key, value }));
 
   const availableSessions = [...new Set(caseListData.map(item => item.session))]
   const sessions = []

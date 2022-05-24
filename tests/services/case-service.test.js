@@ -47,9 +47,11 @@ describe('Case service', () => {
       status: 200,
       response: {
         cases: [{
-          probationStatus: 'Current'
+          probationStatus: 'Current',
+          courtRoom: "1"
         }, {
-          probationStatus: 'No record'
+          probationStatus: 'No record',
+          courtRoom: "1"
         }]
       }
     })
@@ -90,10 +92,12 @@ describe('Case service', () => {
       response: {
         cases: [{
           probationStatus: 'Current',
-          session: 'MORNING'
+          session: 'MORNING',
+          courtRoom: "1"
         }, {
           probationStatus: 'Current',
-          session: 'AFTERNOON'
+          session: 'AFTERNOON',
+          courtRoom: "2"
         }]
       }
     })

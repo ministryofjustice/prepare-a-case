@@ -42,7 +42,7 @@ const createCaseService = (apiUrl) => {
           filterObj.items.forEach(item => {
             if (item && item.checked) {
               notFiltered = false
-              matched = matched || courtCase[filterObj.id].toString().toLowerCase() === item.value.toString().toLowerCase()
+              matched = matched || item.value.toString().toLowerCase().split(',').includes(courtCase[filterObj.id].toString().toLowerCase())
             }
           })
           return notFiltered || matched
