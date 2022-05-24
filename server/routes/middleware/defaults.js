@@ -48,12 +48,12 @@ const defaults = (req, res, next) => {
   req.params = {
     ...req.params,
     limit: settings.casesPerPage,
-    moment: moment,
-    getMonthsAndDays: getMonthsAndDays,
-    addBusinessDays: addBusinessDays,
-    getPath: getPath,
+    moment,
+    getMonthsAndDays,
+    addBusinessDays,
+    getPath,
     courtName: courtData.name,
-    nonce: nonce
+    nonce
   }
   next()
 }

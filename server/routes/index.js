@@ -67,7 +67,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     if (username !== notification.username || password !== notification.password) {
       return reject()
     }
-    res.render('set-notification', { currentNotification: currentNotification })
+    res.render('set-notification', { currentNotification })
   })
 
   router.post('/set-notification', body('notification').trim().escape(), async (req, res) => {
@@ -147,9 +147,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
       return res.redirect(req.path)
     }
     res.render('edit-courts', {
-      formError: formError,
-      serverError: serverError,
-      state: state,
+      formError,
+      serverError,
+      state,
       params: {
         availableCourts: settings.availableCourts,
         chosenCourts: session.courts
@@ -203,7 +203,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         from: startCount,
         to: endCount,
         totalCount: response.totalCount,
-        caseCount: caseCount,
+        caseCount,
         addedCount: response.addedCount,
         removedCount: response.removedCount,
         unmatchedRecords: response.unmatchedRecords,
@@ -242,7 +242,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     return {
       currentCaseListViewLink: session.currentCaseListViewLink,
       backLink: session.backLink,
-      caseListDate: caseListDate,
+      caseListDate,
       params: {
         ...params
       },
@@ -297,7 +297,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         communityResponse = {
           ...communityResponse,
           sentenceDetails,
-          custodyDetails: custodyDetails
+          custodyDetails
         }
       }
     }
