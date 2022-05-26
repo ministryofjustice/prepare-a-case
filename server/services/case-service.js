@@ -5,8 +5,8 @@ const config = require('../../config')
 
 const createCaseService = (apiUrl) => {
   return {
-    getMatchDetails: async (caseId, defendantId) => {
-      const res = await request(`${apiUrl}/case/${caseId}/defendant/${defendantId}/matchesDetail`) || { data: {} }
+    getMatchDetails: async (defendantId) => {
+      const res = await request(`${apiUrl}/defendant/${defendantId}/matchesDetail`) || { data: {} }
       return res.data
     },
     getCaseList: async (courtCode, date, selectedFilters, subsection) => {

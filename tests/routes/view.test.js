@@ -306,7 +306,7 @@ describe('Routes', () => {
     const response = await request(app).get('/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730')
 
     expect(caseService.getCase).toHaveBeenCalledWith('fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
-    expect(caseService.getMatchDetails).toHaveBeenCalledWith('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    expect(caseService.getMatchDetails).toHaveBeenCalledWith('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     return response
   })
 
