@@ -243,9 +243,10 @@ jobs:
                 name: Publish to docker hub
                 command: |
                   docker login -u="${QUAYIO_USERNAME}" -p="${QUAYIO_PASSWORD}" quay.io
-                  docker tag hmpps/prepare-a-case:$APP_VERSION hmpps/prepare-a-case:latest
-                  docker push hmpps/prepare-a-case:$APP_VERSION
-                  docker push hmpps/prepare-a-case:latest
+                  docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:$APP_VERSION
+                  docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:latest
+                  docker push quay.io/hmpps/prepare-a-case:$APP_VERSION
+                  docker push quay.io/hmpps/prepare-a-case:latest
 
   app_scan:
     executor: builder
