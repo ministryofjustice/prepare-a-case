@@ -146,7 +146,8 @@
 
                               {% for i in range(0, aliasDisplayLimit) -%}
                                 {% set aliasName = aliases[i].firstName + ' ' + (aliases[i].middleNames | join(' ') + ' ' if aliases[i].middleNames) + aliases[i].surname %}
-                                {{ aliasName | apostropheInName | properCase | removeTitle | markMatches(defendantFullName) | safe }}{{ ',' if not loop.last }}
+                                {% set markedAlias =  (aliasName | apostropheInName | properCase | removeTitle | markMatches(defendantFullName) | safe | emptyIfUnmarked )%}
+                                {{ ', ' if (not loop.first and markedAlias) }} {{ markedAlias }}
                               {%- endfor %}
 
                               {{ ['+ ', aliasesLength - 3, ' other name', ('s' if aliasesLength > 4), ' matched' ] | join('') if aliasesLength > 3  }}
