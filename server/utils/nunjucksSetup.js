@@ -54,7 +54,7 @@ module.exports = (app, path) => {
   })
 
   env.addFilter('emptyIfUnmarked', (matchString) => {
-    return matchString.includes("<mark>") ? matchString : '';
+    return matchString.includes('<mark>') ? matchString : ''
   })
 
   env.addFilter('apostropheInName', (name) => {
