@@ -70,7 +70,7 @@ Feature: Matching defendants to nDelius records
       | Name | Aliases |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
     And I should see the following table 3 rows
       | Guadalupe Paul Hess                                                                     |
-      | Para Flowerlupe, Some Midone Midtwo Flowerlupe, Para Flowerlupe + 1 other name matched  |
+      | Para Flowerlupe, Some Midone Midtwo Flowerlupe, Para Flowerlupe +1 other name matched  |
       | 18 February 1989                                                                        |
       | Dunroamin, Leicestershire, LE2 3NA                                                      |
       | Unavailable                                                                             |
@@ -81,7 +81,7 @@ Feature: Matching defendants to nDelius records
       | Name | Aliases |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
     And I should see the following table 4 rows
       | Guadalupe Flowerlupe Hess                                                                     |
-      | Para Flowerlupe, Someone Midone Midtwo Flowerlupe, Sometwo Flowerlupe + 2 other names matched |
+      | Para Flowerlupe, Someone Midone Midtwo Flowerlupe, Sometwo Flowerlupe +2 other names matched |
       | 18 February 1998                                                                              |
       | Dunroamin, Leicestershire, LE2 3NA                                                            |
       | Unavailable                                                                                   |
