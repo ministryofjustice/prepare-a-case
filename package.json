@@ -70,7 +70,7 @@
     "stepDefinitions": "integration-tests/integration/"
   },
   "dependencies": {
-    "@ministryofjustice/frontend": "1.4.0",
+    "@ministryofjustice/frontend": "1.4.1",
     "accessible-autocomplete": "2.0.4",
     "agentkeepalive": "^4.2.1",
     "applicationinsights": "2.3.3",
