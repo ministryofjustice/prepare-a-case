@@ -2,7 +2,7 @@
   "id": "4b627224-8eb5-44c3-a53a-f9ff5d3d775d",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/case/07fe9ad9-ee10-4460-9683-a81d5316334e/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85/matchesDetail"
+    "urlPathPattern": "/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85/matchesDetail"
   },
   "response": {
     "headers": {

@@ -16,6 +16,20 @@ Feature: Matching defendants to nDelius records
 
     And I should see the heading "Defendants with possible NDelius records"
 
+    And I should see medium heading with text "2 defendants partially match with existing records."
+    And I should see the body text "Review and confirm the correct record for each defendant."
+
+    And I should see the following table headings
+      | Defendant | NDelius records found | Action |
+    And I should see the following table rows
+      | Guadalupe Hess          | 3 | Review records |
+      | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
+
+    And I should see link "Review records" in position 2 with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
+    And I should see link "Review records" in position 3 with href "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85"
+
+    And There should be no a11y violations
+
   Scenario: View the list of possible NDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
@@ -56,7 +70,7 @@ Feature: Matching defendants to nDelius records
       | Name | Aliases |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
     And I should see the following table 3 rows
       | Guadalupe Paul Hess                                                                     |
-      | Para Flowerlupe, Some Midone Midtwo Flowerlupe, Para Flowerlupe + 1 other name matched  |
+      | Para Flowerlupe, Some Midone Midtwo Flowerlupe, Para Flowerlupe +1 other name matched  |
       | 18 February 1989                                                                        |
       | Dunroamin, Leicestershire, LE2 3NA                                                      |
       | Unavailable                                                                             |
@@ -67,7 +81,7 @@ Feature: Matching defendants to nDelius records
       | Name | Aliases |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
     And I should see the following table 4 rows
       | Guadalupe Flowerlupe Hess                                                                     |
-      | Para Flowerlupe, Someone Midone Midtwo Flowerlupe, Sometwo Flowerlupe + 2 other names matched |
+      | Para Flowerlupe, Someone Midone Midtwo Flowerlupe, Sometwo Flowerlupe +2 other names matched |
       | 18 February 1998                                                                              |
       | Dunroamin, Leicestershire, LE2 3NA                                                            |
       | Unavailable                                                                                   |

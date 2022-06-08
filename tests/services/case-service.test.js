@@ -105,7 +105,7 @@ describe('Case service', () => {
   })
 
   it('should call the API to request match details data', async () => {
-    const endpoint = `${apiUrl}/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
+    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
     moxios.stubRequest(endpoint, {
       status: 200,
       response: {
@@ -113,7 +113,7 @@ describe('Case service', () => {
       }
     })
 
-    const response = await getMatchDetails('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    const response = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
     return response
   })
