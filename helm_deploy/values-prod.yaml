@@ -5,7 +5,7 @@ minReplicaCount: 2
 maxReplicaCount: 4
 
 image:
-  repository: docker.io/mojdigitalstudio/prepare-a-case
+  repository: quay.io/hmpps/prepare-a-case
   tag: latest
   pullPolicy: Always
   port: 3000

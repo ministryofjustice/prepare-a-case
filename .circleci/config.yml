@@ -227,7 +227,7 @@ jobs:
           command: |
             docker build --pull \
                --rm=false . \
-               --tag "mojdigitalstudio/prepare-a-case:$APP_VERSION" \
+               --tag "hmpps/prepare-a-case:$APP_VERSION" \
                --label "maintainer=info@digital.justice.gov.uk" \
                --label "app.version=$APP_VERSION" \
                --label "build.version=$APP_VERSION" \
@@ -242,10 +242,11 @@ jobs:
             - run:
                 name: Publish to docker hub
                 command: |
-                  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                  docker tag mojdigitalstudio/prepare-a-case:$APP_VERSION mojdigitalstudio/prepare-a-case:latest
-                  docker push mojdigitalstudio/prepare-a-case:$APP_VERSION
-                  docker push mojdigitalstudio/prepare-a-case:latest
+                  docker login -u="${QUAYIO_USERNAME}" -p="${QUAYIO_PASSWORD}" quay.io
+                  docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:$APP_VERSION
+                  docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:latest
+                  docker push quay.io/hmpps/prepare-a-case:$APP_VERSION
+                  docker push quay.io/hmpps/prepare-a-case:latest
 
   app_scan:
     executor: builder
@@ -268,7 +269,7 @@ jobs:
           docker_layer_caching: true
       - snyk/scan:
           project: '${CIRCLE_PROJECT_REPONAME}-docker/${CIRCLE_BRANCH}'
-          docker-image-name: 'mojdigitalstudio/prepare-a-case:latest'
+          docker-image-name: 'quay.io/hmpps/prepare-a-case:latest'
           target-file: 'Dockerfile'
           monitor-on-build: true
           <<: *snyk_options
