@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.22.1
+version: v1.25.0
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   SNYK-JS-TAR-1536528:
@@ -22,4 +22,9 @@ ignore:
     - applicationinsights-native-metrics > @mapbox/node-pre-gyp > npmlog > gauge > wide-align > string-width > strip-ansi > ansi-regex:
         reason: 'Low risk, no update'
         expires: '2021-10-21T16:57:58.637Z'
+  SNYK-JS-FORMIDABLE-2838956:
+    - '*':
+        reason: 'No upgrade available'
+        expires: 2022-07-08T14:44:41.474Z
+        created: 2022-06-08T14:44:41.478Z
 patch: {}
