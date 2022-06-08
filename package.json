@@ -98,7 +98,7 @@
     "nunjucks": "3.2.3",
     "passport": "0.6.0",
     "passport-oauth2": "1.6.1",
-    "redis": "4.1.0",
+    "redis": "3.1.2",
     "superagent": "7.1.6"
   },
   "devDependencies": {
