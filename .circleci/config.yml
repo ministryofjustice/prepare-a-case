@@ -65,12 +65,12 @@ executors:
     working_directory: ~/app
   builder:
     docker:
-      - image: cimg/node:16.15.0-browsers
+      - image: cimg/node:16.15.1-browsers
     working_directory: ~/app
   integration-tests:
     docker:
-      - image: cimg/node:16.15.0-browsers
-      - image: cimg/redis:5.0.14
+      - image: cimg/node:16.15.1-browsers
+      - image: cimg/redis:6.2.7
         environment:
           ALLOW_EMPTY_PASSWORD=yes
     working_directory: ~/app
