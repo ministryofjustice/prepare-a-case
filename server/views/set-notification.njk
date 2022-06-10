@@ -33,6 +33,46 @@
         value: currentNotification
       }) }}
 
+      {% from "govuk/components/select/macro.njk" import govukSelect %}
+      {{ govukSelect({
+        id: "expires",
+        name: "expires",
+        label: {
+          text: "Expires in"
+        },
+        items: [
+          {
+            value: "6",
+            text: "6 hours"
+          },
+          {
+            value: "12",
+            text: "12 hours",
+            selected: true
+          },
+          {
+            value: "24",
+            text: "24 hours"
+          },
+          {
+            value: "36",
+            text: "36 hours"
+          },
+          {
+            value: "48",
+            text: "48 hours"
+          },
+          {
+            value: "60",
+            text: "60 hours"
+          },
+          {
+            value: "72",
+            text: "72 hours"
+          }
+        ]
+      }) }}
+
       <button type="submit" class="govuk-button">Set notification text</button>
 
     </div>

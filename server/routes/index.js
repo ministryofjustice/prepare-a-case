@@ -72,7 +72,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.post('/set-notification', body('notification').trim().escape(), async (req, res) => {
     const { redisClient: { setAsync } } = req
-    await setAsync('case-list-notification', req.body.notification, 'EX', 60 * 60 * 12)
+    await setAsync('case-list-notification', req.body.notification, 'EX', 60 * 60 * (parseInt(req.body.expires, 10)))
     res.redirect(302, '/set-notification')
   })
 
