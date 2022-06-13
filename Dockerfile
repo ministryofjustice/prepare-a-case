@@ -28,7 +28,7 @@ RUN export APP_VERSION=${BUILD_NUMBER} && \
     npm run record-build-info
 
 RUN rm -rf node_modules && \
-    npm ci --only=production
+    npm ci --only=production --ignore-scripts
 
 EXPOSE 3000
 ENV APP_VERSION=${BUILD_NUMBER}
