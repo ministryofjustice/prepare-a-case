@@ -47,6 +47,8 @@ module.exports = {
       { code: 'B47CL', name: 'Brighton Magistrates\' Court' },
       { code: 'B01CN', name: 'Bromley Magistrates\' Court' },
       { code: 'B04CO', name: 'Burnley Magistrates\' Court' },
+      { code: 'B35CZ', name: 'Cambridge Magistrates\' Court' },
+
       { code: 'B21DA', name: 'Cannock Magistrates\' Court' },
       { code: 'B46DB', name: 'Canterbury Magistrates\' Court' },
       { code: 'B62DC', name: 'Cardiff Magistrates\' Court' },
@@ -57,6 +59,8 @@ module.exports = {
       { code: 'B01DU', name: 'City of London Magistrates\' Court' },
       { code: 'B42CO', name: 'Colchester Magistrates\' Court and Family Court' },
       { code: 'B20EB', name: 'Coventry Magistrates\' Court' },
+      { code: 'B47EC', name: 'Crawley Magistrates\' Court' },
+
       { code: 'B07ED', name: 'Crewe (South Cheshire) Magistrates\' Court' },
       { code: 'B01EF', name: 'Croydon Magistrates\' Court' },
       { code: 'B11EI', name: 'Darlington Magistrates\' Court' },
@@ -64,16 +68,33 @@ module.exports = {
       { code: 'B14ET', name: 'Doncaster Justice Centre North' },
       { code: 'B20EY', name: 'Dudley Magistrates\' Court' },
       { code: 'B01FA', name: 'Ealing Magistrates\' Court' },
+      { code: 'B43LV', name: 'East Berkshire Magistrates\' Court, Slough' },
+
       { code: 'B46FO', name: 'Folkestone Magistrates\' Court' },
       { code: 'B10FR', name: 'Gateshead Magistrates\' Court' },
+      { code: 'B36FZ', name: 'Great Yarmouth Magistrates\' Court' },
+
       { code: 'B16GB', name: 'Grimsby Magistrates\' Court' },
+      { code: 'B45GC', name: 'Guildford Magistrates\' Court' },
+      { code: 'B47GL', name: 'Hastings Magistrates\' Court' },
+
+      { code: 'B41US', name: 'Hatfield Magistrates\' Court' },
+
       { code: 'B12GH', name: 'Harrogate Justice Centre' },
       { code: 'B01GQ', name: 'Hendon Magistrates\' Court' },
       { code: 'B22GR', name: 'Hereford Justice Centre' },
+      { code: 'B43OX', name: 'High Wycombe Magistrates\' Court' },
+
       { code: 'B01GU', name: 'Highbury Corner Magistrates\' Court' },
+      { code: 'B47HB', name: 'Horsham Magistrates\' Court' },
+
       { code: 'B16HE', name: 'Hull and Holderness Magistrates\' Court' },
+      { code: 'B35HF', name: 'Huntingdon Law Courts' },
+
       { code: 'B37HI', name: 'Ipswich Magistrates\' Court' },
       { code: 'B22HM', name: 'Kidderminster Magistrates\' Court' },
+      { code: 'B36HN', name: 'King\'s Lynn Magistrates\' Court' },
+
       { code: 'B13HD', name: 'Kirklees (Huddersfield) Magistrates\' Court' },
       { code: 'B04HQ', name: 'Lancaster Courthouse' },
       { code: 'B01LY', name: 'Lavender Hill Magistrates\' Court' },
@@ -90,17 +111,27 @@ module.exports = {
       { code: 'B46IU', name: 'Margate Magistrates\' Court' },
       { code: 'B46DH', name: 'Medway Magistrates\' Court' },
       { code: 'B10BD', name: 'Mid and South East Northumberland Law Courts' },
+      { code: 'B43JC', name: 'Milton Keynes Magistrates\' Court' },
+
       { code: 'B10JL', name: 'Newcastle Magistrates\' Court' },
       { code: 'B11JP', name: 'Newton Aycliffe Magistrates\' Court' },
       { code: 'B30PG', name: 'North East Derbyshire & Dales (Chesterfield) Magistrates\' Court' },
       { code: 'B21JI', name: 'North Staffordshire Justice Centre' },
       { code: 'B10JQ', name: 'North Tyneside Magistrates\' Court' },
       { code: 'B34JS', name: 'Northampton Magistrates\' Court' },
+      { code: 'B36JU', name: 'Norwich Magistrates\' Court' },
+
       { code: 'B31JV', name: 'Nottingham Magistrates\' Court' },
       { code: 'B23PP', name: 'Nuneaton Magistrates\' Court' },
+      { code: 'B43KB', name: 'Oxford and Southern Oxfordshire Magistrates\' Court' },
+
+      { code: 'B35KE', name: 'Peterborough Magistrates\' Court' },
+
       { code: 'B11KF', name: 'Peterlee Magistrates\' Court' },
       { code: 'B04KO', name: 'Preston Magistrates\' Court' },
+      { code: 'B43KQ', name: 'Reading Magistrates\' Court' },
       { code: 'B22KS', name: 'Redditch Magistrates\' Court' },
+
       { code: 'B01LA', name: 'Romford Magistrates\' Court' },
       { code: 'B12LK', name: 'Scarborough Justice Centre' },
       { code: 'B05BW', name: 'Sefton Magistrates\' Court' },
@@ -110,6 +141,13 @@ module.exports = {
       { code: 'B12LT', name: 'Skipton Magistrates\' Court' },
       { code: 'B10LX', name: 'South Tyneside Magistrates\' Court' },
       { code: 'B22OS', name: 'South Worcestershire Magistrates\' Court' },
+      { code: 'B42MB', name: 'Southend Magistrates\' Court' },
+
+      { code: 'B41ME', name: 'St Albans Magistrates\' Court' },
+      { code: 'B45MH', name: 'Staines Magistrates\' Court' },
+
+      { code: 'B41MJ', name: 'Stevenage Magistrates\' Court' },
+
       { code: 'B06MK', name: 'Stockport Magistrates\' Court' },
       { code: 'B01MN', name: 'Stratford Magistrates\' Court' },
       { code: 'B10MR', name: 'Sunderland Magistrates\' Court' },
