@@ -1,5 +1,6 @@
 const nunjucks = require('nunjucks')
 const { googleAnalyticsKey } = require('../../config')
+const { courtRoomDisplay, ordinalNumber } = require('./nunjucksFilters')
 
 module.exports = (app, path) => {
   const env = nunjucks.configure([
@@ -62,14 +63,9 @@ module.exports = (app, path) => {
     return name.replace(pattern, '\'')
   })
 
-  env.addFilter('ordinalNumber', (number) => {
-    const ordinal = ['st', 'nd', 'rd'][((number + 90) % 100 - 10) % 10 - 1] || 'th'
-    return number + ordinal
-  })
+  env.addFilter('ordinalNumber', ordinalNumber)
 
-  env.addFilter('courtRoomDisplay', (sourceString) => {
-    return sourceString.includes('Courtroom') ? sourceString.replace(/([A-Za-z 0]*)?/, '') : sourceString.replace(/([0]*)?/, '')
-  })
+  env.addFilter('courtRoomDisplay', courtRoomDisplay)
 
   env.addFilter('unique', arr => [...new Set(arr)])
 
