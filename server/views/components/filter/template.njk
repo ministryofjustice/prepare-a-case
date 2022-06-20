@@ -3,7 +3,7 @@
 <section class="pac-filter-card govuk-!-margin-bottom-6">
     <form name="pac-filter-form" id="pac-filter-form" method="post">
 
-        <p class="govuk-heading-s">Filters</p>
+        <h2 class="govuk-heading-s">Filters</h2>
 
         {% for filter in params.filters %}
 
@@ -63,9 +63,9 @@
         {% endfor %}
 
         <div class="pac-selected-filters{% if not hasSelected %} moj-js-hidden{% endif %}">
-            <p class="govuk-body govuk-!-margin-bottom-0">
+            <h2 class="govuk-body govuk-!-margin-bottom-0">
                 <span class="govuk-!-font-weight-bold">Applied filters</span>
-                <a href="#" id="reset-filters" class="govuk-link govuk-link--no-visited-state govuk-body-s govuk-!-margin-left-2">Clear all</a></p>
+                <a href="#" id="reset-filters" class="govuk-link govuk-link--no-visited-state govuk-body-s govuk-!-margin-left-2">Clear all</a></h2>
 
             {% for filter in params.filters %}
 
