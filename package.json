@@ -46,6 +46,9 @@
     "ext": "js,html,njk,scss"
   },
   "standard": {
+    "env":  [
+      "jest"
+    ],
     "ignore": [
       "/public/**/*.js",
       "/integration-tests/config",
