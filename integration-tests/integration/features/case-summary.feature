@@ -268,27 +268,21 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/B14LO/cases?page=1"
     And I should see the heading "Webb Mitchell"
     When I click the sub navigation with "Probation record" text
-    Then I should see the level 2 heading "Pre-sentence report requested (4)"
+    Then I should see the level 2 heading "Pre-sentence report requested (2)"
     Then I should see the level 2 heading "Current orders (1)"
     Then I should see the level 2 heading "Previous orders (4)"
     And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
     And I should see the hint text "Offence committed on 10 November 2017"
-    And I should see the body text "Noise offences - 82200"
-    And I should see the hint text "Offence committed on 6 January 2021"
-    And I should see the body text "Acknowledging bail in false name - 08303"
-    And I should see the hint text "Offence committed on 6 December 2017"
-    And I should see the body text "Highways Acts - Other offences, other than those caused by vehicles - 12402"
-    And I should see the hint text "Offence committed on 1 November 2017"
     And I should see the body text "Report requested on 5 July 2021"
-    And I should see the following level 2 headings
-      | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
-
     And I should see the following summary list
       | Type        | Pre-Sentence Report - Fast |
-      | Author      | Carrie Smith               |
+      | Author      | Jeff Bloggs                |
       | Required by | 9 July 2021                |
       | Status      | Complete (8 July 2021)     |
-
+    And I should see the body text "Noise offences - 82200"
+    And I should see the hint text "Offence committed on 6 January 2021"
+    And I should see the following level 2 headings
+      | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
     And There should be no a11y violations
 
   Scenario: View the probation record section of the case summary for a current offender

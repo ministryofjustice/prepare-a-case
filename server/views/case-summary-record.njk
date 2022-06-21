@@ -2,6 +2,7 @@
 
 {%- set moment = params.moment -%}
 {%- set communityData = data.communityData -%}
+{%- set psrRequestedConvictions = data.psrRequestedConvictions -%}
 {%- set activeOrders = [] -%}
 {%- set previousOrders = [] -%}
 
@@ -46,41 +47,20 @@
                 <p class="govuk-body">If you think you should be able to view this case, contact your line manager.</p>
             {% endif %}
 
+            {% if psrRequestedConvictions and psrRequestedConvictions | length %}
 
-            {%- set mainOffence = null -%}
-            {%- set otherOffences = [] -%}
+                <h2 class="govuk-heading-m">Pre-sentence report requested <span
+                            class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ psrRequestedConvictions | length }})</span>
+                </h2>
 
-            {%- for order in communityData.convictions if communityData.convictions | length %}
-                {% if order.active and order.awaitingPsr === true and order.psrReports | length %}
-
-                    {%- set psrData = order.psrReports | first -%}
-
-                    {%- for offence in order.offences -%}
-                        {% if offence.main !== true %}
-                            {%- set others = otherOffences.push(offence) -%}
-                        {% else %}
-                            {%- set mainOffence = offence -%}
-                        {% endif %}
-                    {%- endfor -%}
-
-                    <h2 class="govuk-heading-m">Pre-sentence report requested <span
-                                class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ order.offences | length }})</span>
-                    </h2>
+                {%- for conviction in psrRequestedConvictions -%}
+                    {%- set psrData = conviction.psrReport -%}
 
                     <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">
-                        {{ mainOffence.description }}
+                        {{ conviction.offence.description | string }}
                     </p>
                     <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Offence committed
-                        on {{ moment(mainOffence.offenceDate).format('D MMMM YYYY') }}</p>
-
-                    {% for singleOffence in otherOffences %}
-                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"/>
-                        <p class="govuk-body govuk-!-margin-0">
-                            {{ singleOffence.description }}
-                        </p>
-                        <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Offence committed
-                            on {{ moment(singleOffence.offenceDate).format('D MMMM YYYY') }}</p>
-                    {% endfor %}
+                        on {{ moment(conviction.offence.offenceDate).format('D MMMM YYYY') }}</p>
 
                     <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-top-7">Report requested
                         on {{ moment(psrData.requestedDate).format('D MMMM YYYY') }}</p>
@@ -127,8 +107,14 @@
                             </dd>
                         </div>
                     </dl>
-                {% endif %}
-            {% endfor %}
+
+                    {% if not loop.last %}
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"/>
+                    {% endif %}
+
+                {%- endfor -%}
+
+            {% endif %}
 
             {% if activeOrders | length %}
                 <h2 class="govuk-heading-m">Current orders <span
