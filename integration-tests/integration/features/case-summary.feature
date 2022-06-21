@@ -276,7 +276,7 @@ Feature: Case summary
     And I should see the body text "Report requested on 5 July 2021"
     And I should see the following summary list
       | Type        | Pre-Sentence Report - Fast |
-      | Author      | Jeff Bloggs                |
+      | Author      | Carrie Smith               |
       | Required by | 9 July 2021                |
       | Status      | Complete (8 July 2021)     |
     And I should see the body text "Noise offences - 82200"

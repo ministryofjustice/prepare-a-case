@@ -61,8 +61,8 @@
           "psrReports": [
             {
               "author": {
-                "forenames": "Jeff",
-                "surname": "Bloggs",
+                "forenames": "Carrie",
+                "surname": "Smith",
                 "unallocated": false
               },
               "completedDate": "2021-07-08",
@@ -83,13 +83,12 @@
           "active": true,
           "inBreach": true,
           "convictionDate": "2021-07-06",
-          "awaitingPsr": false,
           "awaitingPsr": true,
           "psrReports": [
             {
               "author": {
-                "forenames": "Carrie",
-                "surname": "Smith",
+                "forenames": "Jeff",
+                "surname": "Bloggs",
                 "unallocated": false
               },
               "completedDate": "2021-07-08",
