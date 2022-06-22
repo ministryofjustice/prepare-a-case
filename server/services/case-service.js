@@ -12,7 +12,7 @@ const createCaseService = (apiUrl) => {
     getCaseList: async (courtCode, date, selectedFilters, subsection) => {
       const latestSnapshot = getLatestSnapshot(date).format('YYYY-MM-DDTHH:mm:00.000')
       const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`) || { data: { cases: [] } }
-      const filters = getCaseListFilters(res.data.cases, selectedFilters)
+      const filters = getCaseListFilters(res.data.cases || [], selectedFilters)
       const allCases = []
       const addedCases = []
       const removedCases = []
