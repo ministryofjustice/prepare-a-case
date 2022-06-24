@@ -105,7 +105,7 @@
     "ajv": "8.11.0",
     "ajv-errors": "3.0.0",
     "axe-core": "4.4.1",
-    "cypress": "9.5.4",
+    "cypress": "^9.7.0",
     "cypress-axe": "0.14.0",
     "cypress-cucumber-preprocessor": "4.3.1",
     "husky": "8.0.1",
