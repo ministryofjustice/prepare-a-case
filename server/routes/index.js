@@ -17,6 +17,7 @@ const {
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
+const { getPsrRequestedConvictions } = require('./helpers')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -274,10 +275,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
     const crn = templateValues.data.crn
     const communityResponse = await getProbationRecord(crn, true)
+
     templateValues.params.showAllPreviousOrders = session.showAllPreviousOrders
     templateValues.data.communityData = {
       ...communityResponse
     }
+    templateValues.data.psrRequestedConvictions = getPsrRequestedConvictions(communityResponse)
+
     res.render('case-summary-record', templateValues)
   })
 

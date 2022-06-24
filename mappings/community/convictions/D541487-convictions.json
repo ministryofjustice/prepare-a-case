@@ -83,7 +83,24 @@
           "active": true,
           "inBreach": true,
           "convictionDate": "2021-07-06",
-          "awaitingPsr": false,
+          "awaitingPsr": true,
+          "psrReports": [
+            {
+              "author": {
+                "forenames": "Jeff",
+                "surname": "Bloggs",
+                "unallocated": false
+              },
+              "completedDate": "2021-07-08",
+              "courtReportId": 1,
+              "courtReportType": {
+                "code": "CJF",
+                "description": "Pre-Sentence Report - Fast"
+              },
+              "requestedDate": "2021-07-05",
+              "requiredDate": "2021-08-10"
+            }
+          ],
           "offences": [
             {
               "description": "Noise offences - 82200",
