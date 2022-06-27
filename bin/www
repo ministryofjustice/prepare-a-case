@@ -8,11 +8,6 @@ const app = require('../server/index');
 const debug = require('debug')('prepare-a-case:server');
 const http = require('http');
 
-process.on('uncaughtException', function (err) {
-  console.error(err);
-  console.log("An unhandled error has occurred");
-});
-
 /**
  * Get port from environment and store in Express.
  */
