@@ -190,6 +190,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const currentNotification = await getAsync('case-list-notification')
     const currentDate = date || getBaseDateString()
     const response = await getCaseList(courtCode, currentDate, session.selectedFilters, subsection || (!date && session.currentView))
+    if(response.isError) {
+      res.render('error', { status: response.status || 500 })
+      return;
+    }
     const caseCount = response.cases.length
     const startCount = ((parseInt(page, 10) - 1) || 0) * limit
     const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
