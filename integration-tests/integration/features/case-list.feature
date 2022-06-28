@@ -311,3 +311,11 @@ Feature: Case list
     And I should see the body text "No case list information available."
     And I should not see pagination
     And There should be no a11y violations
+
+  Scenario: Show error page when get case list backend endpoint returns error
+    Given I am an authenticated user
+
+    When I navigate to the "cases/2020-11-11" route
+
+    And I should see the heading "Sorry, there is a problem with the service"
+    And I should see the body text "Please try again later."
