@@ -315,7 +315,7 @@ Feature: Case list
   Scenario: Show error page when get case list backend endpoint returns error
     Given I am an authenticated user
 
-    When I navigate to the "cases/2020-11-11" route
+    When I navigate to the "cases/2019-12-12" route
 
     And I should see the heading "Sorry, there is a problem with the service"
     And I should see the body text "Please try again later."

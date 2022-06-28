@@ -1,11 +1,12 @@
 {
   "id": "2cef79f1-8779-4a59-8f88-b29fc4dbf6cd",
+  "priority": 1,
   "request": {
     "method": "GET",
     "urlPathPattern": "/court/([A-Z0-9]{5})/cases",
     "queryParameters": {
       "date": {
-        "matches": "2020-11-11"
+        "matches": "2019-12-12"
       }
     }
   },
