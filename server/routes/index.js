@@ -198,6 +198,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
   async function getCaseAndTemplateValues (req) {
     const { params: { defendantId, hearingId }, session, params } = req
     const response = await getCase(hearingId, defendantId)
+    if (response.isError) {
+      return response
+    }
     const caseListDate = session.caseListDate || getBaseDateString()
     return {
       currentCaseListViewLink: session.currentCaseListViewLink,
@@ -230,6 +233,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, async (req, res) => {
     const { session } = req
     const templateValues = await getCaseAndTemplateValues(req)
+    if (templateValues.isError) {
+      res.render('error', { status: templateValues.status })
+      return
+    }
     templateValues.title = 'Probation record'
 
     const crn = templateValues.data.crn
