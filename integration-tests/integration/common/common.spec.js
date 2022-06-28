@@ -115,6 +115,10 @@ And('I should see medium heading with text {string}', $string => {
   cy.get('.govuk-heading-m').contains($string).should('exist')
 })
 
+And('I should see large heading with text {string}', $string => {
+  cy.get('.govuk-heading-l').contains($string).should('exist')
+})
+
 And('I should see the heading {string}', $title => {
   cy.get('h1').contains($title)
 })
