@@ -4,7 +4,7 @@ const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
 
 const isHttpSuccess = status => {
-  return status / 100 === 2;
+  return status / 100 === 2
 }
 
 const createCaseService = (apiUrl) => {
@@ -17,7 +17,7 @@ const createCaseService = (apiUrl) => {
       const latestSnapshot = getLatestSnapshot(date).format('YYYY-MM-DDTHH:mm:00.000')
       const { data, status } = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
       if (!isHttpSuccess(status)) {
-        return  { status, isError: true };
+        return { status, isError: true }
       }
       const filters = getCaseListFilters(data.cases, selectedFilters)
       const allCases = []

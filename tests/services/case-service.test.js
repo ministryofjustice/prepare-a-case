@@ -38,8 +38,8 @@ describe('Case service', () => {
 
     const response = await getCaseList('SHF', '2020-01-01')
     expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
-    expect(response.status).toBe(500);
-    expect(response.isError).toBe(true);
+    expect(response.status).toBe(500)
+    expect(response.isError).toBe(true)
     return response
   })
 
