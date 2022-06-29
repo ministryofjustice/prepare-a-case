@@ -3,6 +3,10 @@ const getCaseListFilters = require('../utils/getCaseListFilters')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
 
+const isHttpSuccess = status => {
+  return status / 100 === 2
+}
+
 const createCaseService = (apiUrl) => {
   return {
     getMatchDetails: async (defendantId) => {
@@ -11,14 +15,17 @@ const createCaseService = (apiUrl) => {
     },
     getCaseList: async (courtCode, date, selectedFilters, subsection) => {
       const latestSnapshot = getLatestSnapshot(date).format('YYYY-MM-DDTHH:mm:00.000')
-      const res = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`) || { data: { cases: [] } }
-      const filters = getCaseListFilters(res.data.cases, selectedFilters)
+      const { data, status } = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
+      if (!isHttpSuccess(status)) {
+        return { status, isError: true }
+      }
+      const filters = getCaseListFilters(data.cases, selectedFilters)
       const allCases = []
       const addedCases = []
       const removedCases = []
       let unmatchedRecords = 0
-      if (res.data && res.data.cases) {
-        res.data.cases.forEach($case => {
+      if (data && data.cases) {
+        data.cases.forEach($case => {
           if ($case.probationStatus.toLowerCase() === 'possible ndelius record' && $case.numberOfPossibleMatches > 0) {
             unmatchedRecords++
           }
@@ -56,7 +63,7 @@ const createCaseService = (apiUrl) => {
       }
 
       return {
-        ...res.data,
+        ...data,
         totalCount: allCases.length,
         addedCount: addedCases.length,
         removedCount: removedCases.length,

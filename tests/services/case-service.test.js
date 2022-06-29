@@ -29,6 +29,20 @@ describe('Case service', () => {
     return response
   })
 
+  it('should return http error code in status when API call fails', async () => {
+    moxios.stubRequest(`${apiUrl}/court/SHF/cases?date=2020-01-01`, {
+      status: 500,
+      response: {
+      }
+    })
+
+    const response = await getCaseList('SHF', '2020-01-01')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
+    expect(response.status).toBe(500)
+    expect(response.isError).toBe(true)
+    return response
+  })
+
   it('should call the API to request case detail data', async () => {
     moxios.stubRequest(`${apiUrl}/hearing/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730`, {
       status: 200,

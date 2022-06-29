@@ -18,6 +18,7 @@ const {
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
 const { getPsrRequestedConvictions } = require('./helpers')
+const getCaseListHandler = require('../routes/handlers/getCaseListRouteHandler')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -178,49 +179,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       .redirect(302, `/${courtCode}/cases`)
   })
 
-  router.get('/:courtCode/cases/:date?/:subsection?', defaults, async (req, res) => {
-    const {
-      redisClient: { getAsync },
-      params: { courtCode, date, limit, subsection },
-      query: { page },
-      session,
-      path,
-      params
-    } = req
-    const currentNotification = await getAsync('case-list-notification')
-    const currentDate = date || getBaseDateString()
-    const response = await getCaseList(courtCode, currentDate, session.selectedFilters, subsection || (!date && session.currentView))
-    const caseCount = response.cases.length
-    const startCount = ((parseInt(page, 10) - 1) || 0) * limit
-    const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
-    const templateValues = {
-      title: 'Cases',
-      params: {
-        ...params,
-        date: currentDate,
-        notification: currentNotification || '',
-        filters: response.filters,
-        page: parseInt(page, 10) || 1,
-        from: startCount,
-        to: endCount,
-        totalCount: response.totalCount,
-        caseCount: caseCount,
-        addedCount: response.addedCount,
-        removedCount: response.removedCount,
-        unmatchedRecords: response.unmatchedRecords,
-        totalDays: settings.casesTotalDays,
-        subsection: subsection || (!date && session.currentView) || '',
-        filtersApplied: session.selectedFilters && Object.keys(session.selectedFilters).length,
-        snapshot: response.snapshot
-      },
-      data: response.cases.slice(startCount, endCount) || []
-    }
-    session.currentView = subsection
-    session.caseListDate = currentDate
-    session.currentCaseListViewLink = `${path}?page=${templateValues.params.page}`
-    session.backLink = session.currentCaseListViewLink
-    res.render('case-list', templateValues)
-  })
+  router.get('/:courtCode/cases/:date?/:subsection?', defaults, getCaseListHandler({ getCaseList }))
 
   router.post('/:courtCode/cases/:date?/:subsection?', defaults, async (req, res) => {
     const { params: { courtCode, date, subsection }, session, body } = req
@@ -275,7 +234,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
     const crn = templateValues.data.crn
     const communityResponse = await getProbationRecord(crn, true)
-
     templateValues.params.showAllPreviousOrders = session.showAllPreviousOrders
     templateValues.data.communityData = {
       ...communityResponse
