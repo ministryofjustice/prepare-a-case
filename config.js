@@ -76,7 +76,7 @@ module.exports = {
       { code: 'B20EY', name: 'Dudley Magistrates\' Court' },
       { code: 'B01FA', name: 'Ealing Magistrates\' Court' },
       { code: 'B43LV', name: 'East Berkshire Magistrates\' Court, Slough' },
-      { code: 'B50FI', name: 'Exeter Magistrates\' Court - North and East Devon' },
+      { code: 'B50VR', name: 'Exeter Magistrates\' Court - North and East Devon' },
       { code: 'B46FO', name: 'Folkestone Magistrates\' Court' },
       { code: 'B10FR', name: 'Gateshead Magistrates\' Court' },
       { code: 'B36FZ', name: 'Great Yarmouth Magistrates\' Court' },
