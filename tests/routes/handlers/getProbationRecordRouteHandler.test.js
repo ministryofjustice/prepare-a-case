@@ -1,9 +1,7 @@
-/* global describe, beforeEach, afterEach, it, expect, jest */
+/* global describe, it, expect, jest */
 
 describe('getProbationRecordRouteHandler', () => {
-
   const {
-    caseServiceMock: caseService,
     communityServiceMock,
     getCaseAndTemplateValuesMock,
     mockResponse
@@ -24,7 +22,7 @@ describe('getProbationRecordRouteHandler', () => {
     params: { defendantId: testDefendantId, hearingId: testHearingId },
     query: { page: 1 },
     session,
-    path: `/test/path`
+    path: '/test/path'
   }
   const testCrn = 'test-crn'
   const testCase = { caseId: 'test-case-id', crn: testCrn }
@@ -42,9 +40,7 @@ describe('getProbationRecordRouteHandler', () => {
       }
     }
     getCaseAndTemplateValuesMock.mockReturnValueOnce(testTemplateValues)
-    
     communityServiceMock.getProbationRecord.mockReturnValueOnce(testCommunityResponse)
-
     // When
     await subject(mockRequest, mockResponse)
 
@@ -52,7 +48,7 @@ describe('getProbationRecordRouteHandler', () => {
     expect(getCaseAndTemplateValuesMock).toHaveBeenLastCalledWith(mockRequest)
     expect(communityServiceMock.getProbationRecord).toHaveBeenLastCalledWith(testCase.crn, true)
     expect(mockResponse.render).toHaveBeenCalledWith('case-summary-record', {
-     ...testTemplateValues,
+      ...testTemplateValues,
       params: { ...testTemplateValues.params, showAllPreviousOrders: true },
       data: { ...testTemplateValues.data, communityData: testCommunityResponse },
       title: 'Probation record'
@@ -64,7 +60,7 @@ describe('getProbationRecordRouteHandler', () => {
     const testErrorResponse = {
       isError: true,
       status: 500
-    };
+    }
     getCaseAndTemplateValuesMock.mockReturnValueOnce(testErrorResponse)
 
     // When

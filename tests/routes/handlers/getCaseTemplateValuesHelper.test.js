@@ -1,29 +1,28 @@
-/* global describe, beforeEach, afterEach, it, expect, jest */
+/* global describe, it, expect, jest */
 
 describe('getCaseTemplateValuesHelper', () => {
-
   const { caseServiceMock: caseService } = require('./test-helpers')
   const subject = require('../../../server/routes/handlers/getCaseTemplateValuesHelper')(caseService)
-  const testDefendantId = 'test-defendant-id';
-  const testHearingId = 'test-hearing-id';
+  const testDefendantId = 'test-defendant-id'
+  const testHearingId = 'test-hearing-id'
 
   const session = {
     currentCaseListViewLink: '/test/case/link',
     backLink: '/back/link',
     caseListDate: '2022-01-01'
-  };
+  }
 
   const mockRequest = {
     redisClient: { getAsync: jest.fn() },
     params: { defendantId: testDefendantId, hearingId: testHearingId },
     query: { page: 1 },
     session,
-    path: `/test/path`
+    path: '/test/path'
   }
 
   it('should return case and template values', async () => {
     // Given
-    const testCase = { caseId: 'test-case-id' };
+    const testCase = { caseId: 'test-case-id' }
     caseService.getCase.mockReturnValueOnce(testCase)
 
     // When
@@ -44,7 +43,7 @@ describe('getCaseTemplateValuesHelper', () => {
 
   it('should return caseListDate with today\'s date when session.caseListDate is not present', async () => {
     // Given
-    const testCase = { caseId: 'test-case-id' };
+    const testCase = { caseId: 'test-case-id' }
     caseService.getCase.mockReturnValueOnce(testCase)
 
     // When
@@ -70,7 +69,7 @@ describe('getCaseTemplateValuesHelper', () => {
 
   it('should return error response back to caller when getCase API call fails', async () => {
     // Given
-    let errorResponse = { isError: true, status: 500 }
+    const errorResponse = { isError: true, status: 500 }
     caseService.getCase.mockReturnValueOnce(errorResponse)
 
     // When
@@ -80,4 +79,4 @@ describe('getCaseTemplateValuesHelper', () => {
     expect(caseService.getCase).toHaveBeenLastCalledWith(testHearingId, testDefendantId)
     expect(actual).toStrictEqual(errorResponse)
   })
-});
+})

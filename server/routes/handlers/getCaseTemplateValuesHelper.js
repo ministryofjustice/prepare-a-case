@@ -1,4 +1,4 @@
-const getBaseDateString = require('../../utils/getBaseDateString');
+const getBaseDateString = require('../../utils/getBaseDateString')
 
 const getCaseTemplateValuesHelper = caseService => async req => {
   const { params: { defendantId, hearingId }, session, params } = req
@@ -20,4 +20,4 @@ const getCaseTemplateValuesHelper = caseService => async req => {
   }
 }
 
-module.exports = getCaseTemplateValuesHelper;
+module.exports = getCaseTemplateValuesHelper

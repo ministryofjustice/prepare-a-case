@@ -1,7 +1,6 @@
 /* global jest, describe, it, expect */
 
 describe('getCaseListRouteHandler', () => {
-
   const { caseServiceMock: caseService, mockResponse } = require('./test-helpers')
   const subject = require('../../../server/routes/handlers/getCaseListRouteHandler')(caseService)
   const mockRequest = {

@@ -1,3 +1,4 @@
+/* global jest */
 const caseServiceMock = {
   getCase: jest.fn(),
   getCaseList: jest.fn()

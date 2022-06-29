@@ -1,4 +1,4 @@
-const { getPsrRequestedConvictions } = require("../helpers");
+const { getPsrRequestedConvictions } = require('../helpers')
 
 const getProbationRecordRouteHandler = (communityService, getCaseAndTemplateValues) => async (req, res) => {
   const { session } = req
@@ -20,4 +20,4 @@ const getProbationRecordRouteHandler = (communityService, getCaseAndTemplateValu
   res.render('case-summary-record', templateValues)
 }
 
-module.exports = getProbationRecordRouteHandler;
+module.exports = getProbationRecordRouteHandler

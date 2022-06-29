@@ -75,7 +75,7 @@ const createCaseService = (apiUrl) => {
     },
     getCase: async (hearingId, defendantId) => {
       const res = await request(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`)
-      if(!isHttpSuccess(res.status)) {
+      if (!isHttpSuccess(res.status)) {
         return { isError: true, status: res.status }
       }
       return res.data
