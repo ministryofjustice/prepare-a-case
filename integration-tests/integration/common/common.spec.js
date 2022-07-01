@@ -309,6 +309,10 @@ And('I click the {string} summary link', $string => {
   cy.get('.govuk-details__summary').contains($string).click()
 })
 
+And('I should see the following summary list text {string}', $string => {
+  cy.get('.govuk-summary-list').contains($string).should('exist')
+})
+
 And('I should see the error message {string}', $string => {
   cy.get('.govuk-error-summary').should('exist')
   cy.get('.govuk-error-summary').within(() => {
