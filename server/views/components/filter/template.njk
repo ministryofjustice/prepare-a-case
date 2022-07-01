@@ -62,11 +62,14 @@
             {% endfor %}
         {% endfor %}
 
-        <div class="pac-selected-filters{% if not hasSelected %} moj-js-hidden{% endif %}">
-            <h2 class="govuk-body govuk-!-margin-bottom-0">
-                <span class="govuk-!-font-weight-bold">Applied filters</span>
-                <a href="#" id="reset-filters" class="govuk-link govuk-link--no-visited-state govuk-body-s govuk-!-margin-left-2">Clear all</a></h2>
-
+        <fieldset class="govuk-fieldset pac-selected-filters{% if not hasSelected %} moj-js-hidden{% endif %}">
+            <legend class="govuk-fieldset__legend">
+                <h2 class="govuk-body govuk-!-margin-bottom-0 govuk-!-font-weight-bold">
+                    Applied filters
+                    <a href="#" id="reset-filters"
+                       class="govuk-link govuk-link--no-visited-state govuk-body-s govuk-!-margin-left-2">Clear all</a>
+                </h2>
+            </legend>
             {% for filter in params.filters %}
 
                 {%- set hasSelected = false -%}
@@ -75,21 +78,20 @@
                         {% set hasSelected = true %}
                     {% endif %}
                 {% endfor %}
-
                 <div id="pac-filters-applied-{{ filter.id }}"
                      class="pac-filters-applied--container{% if not hasSelected %} moj-js-hidden{% endif %}">
-                    <p class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0 pac-selected-filters--label">{{ filter.label }}</p>
-                    <div class="pac-filters-applied">
-                        {% for item in filter.items %}
-                            {% if item.checked %}
-                                <button class="moj-filter__tag pac-filter__tag" type="button"
-                                     data-controls="checkbox-{{ filter.id }}-{{ loop.index }}">{{ item.label }}</button>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
+                    <label class="govuk-label govuk-!-margin-top-2 govuk-!-margin-bottom-0 pac-selected-filters--label"
+                           for="filters">
+                        {{ filter.label }}
+                    </label>
+                    {% for item in filter.items %}
+                        {% if item.checked %}
+                            <button class="moj-filter__tag pac-filter__tag" type="button"
+                                    data-controls="checkbox-{{ filter.id }}-{{ loop.index }}">{{ item.label }}</button>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             {% endfor %}
-        </div>
-
+        </fieldset>
     </form>
 </section>
