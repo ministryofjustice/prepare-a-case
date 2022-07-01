@@ -85,7 +85,8 @@ const convictions = [
     ],
     documents: [{
       documentId: 'id-four',
-      type: 'COURT_REPORT_DOCUMENT', subType: {
+      type: 'COURT_REPORT_DOCUMENT',
+      subType: {
         code: 'CJF',
         description: 'Pre-Sentence Report - Fast'
       },
@@ -105,31 +106,30 @@ const convictions = [
     ],
     sentence: { sentenceId: 'sentence-id' },
     documents: [{
-        documentId: 'id-one',
-        type: 'INSTITUTION_REPORT_DOCUMENT',
-        reportDocumentDates: {
-          completedDate: '2018-02-28T00:00:00'
-        }
-      },
-      {
-        documentId: 'id-two',
-        type: 'COURT_REPORT_DOCUMENT',
-        reportDocumentDates: {
-        }
-      },
-      {
-        documentId: 'id-three',
-        type: 'COURT_REPORT_DOCUMENT',
-        reportDocumentDates: {
-          completedDate: '2018-02-28T00:00:00'
-        }
-      }]
+      documentId: 'id-one',
+      type: 'INSTITUTION_REPORT_DOCUMENT',
+      reportDocumentDates: {
+        completedDate: '2018-02-28T00:00:00'
+      }
+    },
+    {
+      documentId: 'id-two',
+      type: 'COURT_REPORT_DOCUMENT',
+      reportDocumentDates: {}
+    },
+    {
+      documentId: 'id-three',
+      type: 'COURT_REPORT_DOCUMENT',
+      reportDocumentDates: {
+        completedDate: '2018-02-28T00:00:00'
+      }
+    }]
   }
 ]
 describe('helpers', () => {
   describe('getPsrRequestedConvictions', () => {
     it('Should find convictions with psr requested status and return main offence and psr report details', () => {
-      const actual = getPsrRequestedConvictions({convictions})
+      const actual = getPsrRequestedConvictions({ convictions })
       expect(actual.length).toBe(2)
       expect(actual).toMatchObject([
         {
@@ -140,7 +140,7 @@ describe('helpers', () => {
               unallocated: false
             }
           },
-          offence: {description: 'Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801'}
+          offence: { description: 'Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801' }
         },
         {
           psrReport: {
@@ -150,14 +150,14 @@ describe('helpers', () => {
               unallocated: false
             }
           },
-          offence: {description: 'Noise offences - 82200'}
+          offence: { description: 'Noise offences - 82200' }
         }])
     })
   })
 
   describe('getLastSentencedConvictionPSR', () => {
     it('should return the PSR report details of the last conviction that has a sentence attached', function () {
-      expect(getLastSentencedConvictionPSR({convictions})).toStrictEqual({
+      expect(getLastSentencedConvictionPSR({ convictions })).toStrictEqual({
         documentId: 'id-three',
         type: 'COURT_REPORT_DOCUMENT',
         reportDocumentDates: {
