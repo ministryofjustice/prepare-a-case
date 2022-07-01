@@ -37,7 +37,7 @@ Feature: Select court
     Then I should see the heading "Which courts do you work in?"
     When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
     And I click the "Add" button
-    Then I should see the text "Sheffield Magistrates' Court" in a table cell
+    And I should see the following summary list text "Sheffield Magistrates' Court"
     And I should see link "Remove" with href "?remove=B14LO"
     When I click the "Save and continue" button
     Then I should be on the "My courts" page
@@ -58,7 +58,7 @@ Feature: Select court
     When I click the "Edit my courts" link
     Then I should be on the "Edit my courts" page
     And I should see the body text "Add or remove courts from your list."
-    Then I should see the text "Sheffield Magistrates' Court" in a table cell
+    And I should see the following summary list text "Sheffield Magistrates' Court"
     And I should see link "Remove" with href "?remove=B14LO"
     And I should see link "Cancel" with href "/my-courts"
     When I click the "Remove" link
