@@ -8,5 +8,6 @@ module.exports = {
   watchPathIgnorePatterns: [
     'pact/logs/*',
     'pact/pacts/*'
-  ]
+  ],
+  testTimeout: 20000
 }
