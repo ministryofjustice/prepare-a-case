@@ -1,4 +1,4 @@
-const { getPsrRequestedConvictions } = require('../helpers')
+const { getPsrRequestedConvictions, getLastSentencedConvictionPSR } = require('../helpers')
 
 const getProbationRecordRouteHandler = (communityService, getCaseAndTemplateValues) => async (req, res) => {
   const { session } = req
@@ -16,6 +16,7 @@ const getProbationRecordRouteHandler = (communityService, getCaseAndTemplateValu
     ...communityResponse
   }
   templateValues.data.psrRequestedConvictions = getPsrRequestedConvictions(communityResponse)
+  templateValues.data.lastPsrWithSentence = getLastSentencedConvictionPSR(communityResponse)
 
   res.render('case-summary-record', templateValues)
 }
