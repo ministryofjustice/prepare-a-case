@@ -11,7 +11,7 @@ function validateMocks (mockFilesPath, schema, excludeMocks = []) {
       return
     }
     filenames.forEach(filename => {
-      if(excludeMocks.includes(filename)) {
+      if (excludeMocks.includes(filename)) {
         return
       }
       const wireMockFile = require(path.join(`${mockFilesPath}/${filename}`))
