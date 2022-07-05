@@ -9,6 +9,14 @@ const getPsrRequestedConvictions = communityResponse => {
     })
 }
 
+const getLastSentencedConvictionPSR = communityResponse => {
+  return communityResponse.convictions?.filter(conviction => conviction.sentence?.sentenceId && conviction.documents?.length)
+    .flatMap(c => c.documents)
+    ?.filter(d => d.type === 'COURT_REPORT_DOCUMENT' && d.reportDocumentDates?.completedDate)
+    ?.sort((a, b) => new Date(b.reportDocumentDates.completedDate) - new Date(a.reportDocumentDates.completedDate))[0]
+}
+
 module.exports = {
-  getPsrRequestedConvictions
+  getPsrRequestedConvictions,
+  getLastSentencedConvictionPSR
 }

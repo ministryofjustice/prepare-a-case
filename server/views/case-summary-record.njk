@@ -19,16 +19,6 @@
 {% set defendantFullName = (data.name.forename1 + ' ' + data.name.surname) if data.name else data.defendantName %}
 {%- set offenderManager = communityData.offenderManagers | first if communityData.offenderManagers -%}
 
-{%- set probationDocuments = [] -%}
-{%- for order in communityData.convictions if communityData.convictions | length %}
-    {%- for document in order.documents if order.documents | length %}
-        {{ probationDocuments.push({
-            description: document.subType.description,
-            completedDate: document.reportDocumentDates.completedDate
-        }) }}
-    {% endfor -%}
-{% endfor -%}
-
 {% block caseContent %}
 
     <div class="govuk-grid-row">
@@ -251,25 +241,27 @@
                     {% endif %}
                 {% endif %}
 
-                {% if probationDocuments | length %}
-                    {% set latestDocument = probationDocuments | sort(true, false, 'completedDate') | first %}
-                    {% if latestDocument.completedDate | length %}
-                        {% set monthsOld = moment().diff(moment(latestDocument.completedDate, 'YYYY-MM-DD'), 'months') %}
-                        <h2 class="govuk-heading-m govuk-!-margin-top-6">Last pre-sentence report</h2>
-                        <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
-                        <p class="govuk-hint govuk-!-margin-top-1">
-                            Delivered
-                            {% if monthsOld < 1 %}
-                                less than 1 month
-                            {% elseif monthsOld === 1 %}
-                                1 month
-                            {% elseif monthsOld > 6 %}
-                                more than 6 months
-                            {% else %}
-                                {{ monthsOld }} months
-                            {% endif %}
-                            ago ({{ moment(latestDocument.completedDate, 'YYYY-MM-DD').format(displayDateFormat) }})</p>
-                    {% endif %}
+                {% if data.lastPsrWithSentence %}
+                    {% set latestDocument = {
+                        description: data.lastPsrWithSentence.subType.description,
+                        completedDate: data.lastPsrWithSentence.reportDocumentDates.completedDate
+                    } %}
+
+                    {% set monthsOld = moment().diff(moment(latestDocument.completedDate, 'YYYY-MM-DD'), 'months') %}
+                    <h2 class="govuk-heading-m govuk-!-margin-top-6">Last pre-sentence report</h2>
+                    <p class="govuk-body govuk-!-margin-bottom-0">{{ latestDocument.description }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1">
+                        Delivered
+                        {% if monthsOld < 1 %}
+                            less than 1 month
+                        {% elseif monthsOld === 1 %}
+                            1 month
+                        {% elseif monthsOld > 6 %}
+                            more than 6 months
+                        {% else %}
+                            {{ monthsOld }} months
+                        {% endif %}
+                        ago ({{ moment(latestDocument.completedDate, 'YYYY-MM-DD').format(displayDateFormat) }})</p>
                 {% endif %}
 
                 {% if communityData.assessment | length %}
