@@ -709,7 +709,7 @@ Feature: Case summary
 
     When I click the "English Madden" link
     And I click the sub navigation with "Risk register" text
-    Then I should see the level 2 heading "You are restricted from viewing this record"
+    And I should see the heading "You are restricted from viewing this record"
 
     And I should see the body text "You cannot view probation information for this defendant due to restrictions on your NDelius account."
     And I should see the body text "If you think you should be able to view this case, contact your line manager."
