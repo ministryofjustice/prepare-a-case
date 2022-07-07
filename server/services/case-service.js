@@ -3,9 +3,11 @@ const getCaseListFilters = require('../utils/getCaseListFilters')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
 
-const isHttpSuccess = status => {
-  return status / 100 === 2
+const isHttpSuccess = response => {
+  return response && response.status / 100 === 2
 }
+
+const getInternalServerErrorResponse = res => ({ isError: true, status: res?.status || 500 })
 
 const createCaseService = (apiUrl) => {
   return {
@@ -15,10 +17,11 @@ const createCaseService = (apiUrl) => {
     },
     getCaseList: async (courtCode, date, selectedFilters, subsection) => {
       const latestSnapshot = getLatestSnapshot(date).format('YYYY-MM-DDTHH:mm:00.000')
-      const { data, status } = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
-      if (!isHttpSuccess(status)) {
-        return { status, isError: true }
+      const response = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
+      if (!isHttpSuccess(response)) {
+        return getInternalServerErrorResponse(response)
       }
+      const { data } = response
       const filters = getCaseListFilters(data.cases, selectedFilters)
       const allCases = []
       const addedCases = []
@@ -75,8 +78,8 @@ const createCaseService = (apiUrl) => {
     },
     getCase: async (hearingId, defendantId) => {
       const res = await request(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`)
-      if (!isHttpSuccess(res.status)) {
-        return { isError: true, status: res.status }
+      if (!isHttpSuccess(res)) {
+        return getInternalServerErrorResponse(res)
       }
       return res.data
     },
