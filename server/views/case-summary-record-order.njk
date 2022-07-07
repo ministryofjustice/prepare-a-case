@@ -25,7 +25,7 @@
 
 {% if communityData.sentenceDetails.custody.custodialType.code %}
     {%- set custodialOrder = communityData.sentenceDetails.custody -%}
-    {%- set inCustody = custodialOrder.custodialType.description === "In Custody"-%}
+    {%- set inCustody = custodialOrder.custodialType.description === "In Custody" -%}
     {%- set isOnLicence = custodialOrder.custodialType.code === "B" -%}
     {%- set isOnPSS = custodialOrder.custodialType.code === "P" -%}
 {% endif %}
@@ -75,9 +75,9 @@
             {% else %}
                 {{ attendedAppointments.failed.push(attendance) }}
             {% endif %}
-        {% elif attendance.complied | string === "true" %}
+            {% elif attendance.complied | string === "true" %}
             {{ absentAppointments.complied.push(attendance) }}
-        {% elif not attendance.outcome or attendance.outcome | lower === "iaps deleted record" %}
+            {% elif not attendance.outcome or attendance.outcome | lower === "iaps deleted record" %}
             {{ awaitingOutcome.push(attendance) }}
         {% else %}
             {{ absentAppointments.failed.push(attendance) }}
@@ -125,7 +125,7 @@
 
 {% block caseContent %}
 
-    <h2 class="govuk-heading-l govuk-!-margin-0">{{ communityData.sentence.description + (' (' + communityData.sentence.length + ' ' + communityData.sentence.lengthUnits + ')' if communityData.sentence.length)}}</h2>
+    <h2 class="govuk-heading-l govuk-!-margin-0">{{ communityData.sentence.description + (' (' + communityData.sentence.length + ' ' + communityData.sentence.lengthUnits + ')' if communityData.sentence.length) }}</h2>
 
     <div class="govuk-grid-row govuk-!-margin-top-6">
         <div class="govuk-grid-column-two-thirds">
@@ -184,7 +184,7 @@
                             In custody
                         {% elseif isOnLicence %}
                             {{ moment(communityData.custodyDetails.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) }}
-                        {%  elseif isOnPSS %}
+                        {% elseif isOnPSS %}
                             {{ moment(communityData.custodyDetails.topupSupervisionExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) if communityData.custodyDetails.topupSupervisionExpiryDate | length }}
                         {% else %}
                             {{ elapsedTime if communityData.active else communityData.sentence.terminationReason }}
@@ -205,18 +205,18 @@
                     </thead>
                     <tbody class="govuk-table__body">
                     {% if communityData.custodyDetails.homeDetentionCurfewActualDate and communityData.custodyDetails.homeDetentionCurfewEndDate %}
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell govuk-table__header">Home detention curfew</td>
-                        <td class="govuk-table__cell">{{ moment(communityData.custodyDetails.homeDetentionCurfewActualDate, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
-                        <td class="govuk-table__cell">{{ moment(communityData.custodyDetails.homeDetentionCurfewEndDate, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
-                    </tr>
-                    {%  endif %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell govuk-table__header">Home detention curfew</td>
+                            <td class="govuk-table__cell">{{ moment(communityData.custodyDetails.homeDetentionCurfewActualDate, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
+                            <td class="govuk-table__cell">{{ moment(communityData.custodyDetails.homeDetentionCurfewEndDate, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
+                        </tr>
+                    {% endif %}
                     {% if communityData.custodyDetails.releaseDate and communityData.custodyDetails.licenceExpiryDate %}
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell govuk-table__header">Licence</td>
-                        <td class="govuk-table__cell">{{ moment(communityData.custodyDetails.releaseDate, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
-                        <td class="govuk-table__cell">{{ moment(communityData.custodyDetails.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
-                    </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell govuk-table__header">Licence</td>
+                            <td class="govuk-table__cell">{{ moment(communityData.custodyDetails.releaseDate, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
+                            <td class="govuk-table__cell">{{ moment(communityData.custodyDetails.licenceExpiryDate, 'YYYY-MM-DD').format(displayDateFormat) }}</td>
+                        </tr>
                     {% endif %}
                     {% if communityData.custodyDetails.topupSupervisionStartDate and communityData.custodyDetails.topupSupervisionExpiryDate %}
                         <tr class="govuk-table__row">
@@ -229,28 +229,29 @@
                 </table>
             {% endif %}
 
-                {% if communityData.licenceConditions | length %}
-                    <h2 class="govuk-heading-m govuk-!-margin-top-8">Licence conditions</h2>
-                    <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
-                        {%- for licenceConditions in communityData.licenceConditions %}
-                            <li>
-                                {{ licenceConditions.description }}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                    <a href="/{{ params.courtCode }}/hearing/{{ data.hearingId }}/defendant/{{ data.defendantId }}/record/{{ communityData.convictionId }}/licence-details" class=" govuk-body-m govuk-link govuk-link--no-visited-state">View licence conditions details</a>
-                {% endif %}
+            {% if communityData.licenceConditions | length %}
+                <h2 class="govuk-heading-m govuk-!-margin-top-8">Licence conditions</h2>
+                <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
+                    {%- for licenceConditions in communityData.licenceConditions %}
+                        <li>
+                            {{ licenceConditions.description }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="/{{ params.courtCode }}/hearing/{{ data.hearingId }}/defendant/{{ data.defendantId }}/record/{{ communityData.convictionId }}/licence-details"
+                   class=" govuk-body-m govuk-link govuk-link--no-visited-state">View licence conditions details</a>
+            {% endif %}
 
-                {% if communityData.pssRequirements | length %}
-                    <h2 class="govuk-heading-m govuk-!-margin-top-8">Post-sentence supervision requirements</h2>
-                    <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
-                        {%- for pssRequirement in communityData.pssRequirements %}
-                            <li>
-                                {{ pssRequirement.description  + (' - ' + pssRequirement.subTypeDescription if pssRequirement.subTypeDescription | length) }}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
+            {% if communityData.pssRequirements | length %}
+                <h2 class="govuk-heading-m govuk-!-margin-top-8">Post-sentence supervision requirements</h2>
+                <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
+                    {%- for pssRequirement in communityData.pssRequirements %}
+                        <li>
+                            {{ pssRequirement.description  + (' - ' + pssRequirement.subTypeDescription if pssRequirement.subTypeDescription | length) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
 
             {% if communityData.requirements | length %}
                 <h2 class="govuk-heading-m govuk-!-margin-top-8">Requirements</h2>
@@ -299,102 +300,145 @@
 
         <h2 class="govuk-heading-m govuk-!-margin-top-8">Attendance</h2>
 
-        {% if attendedAppointments.all | length %}
-            {% set lastAttendance = attendedAppointments.all | sort(true, false, 'attendanceDate') | first %}
-            <p class="govuk-body"><span
-                        class="govuk-!-font-weight-bold">Last attended:</span> {{ moment(lastAttendance.attendanceDate, 'YYYY-MM-DD').format(displayDateFormat) }}
-                - {{ lastAttendance.contactType.description }}
-                ({{ "Acceptable" if lastAttendance.complied else "Unacceptable" }})</p>
-        {% endif %}
+        <dl class="govuk-grid-row">
+            {% if attendedAppointments.all | length %}
+                {% set lastAttendance = attendedAppointments.all | sort(true, false, 'attendanceDate') | first %}
 
-        <div class="govuk-!-padding-top-2">
-            <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third pac-!-grid-column-18">
-                    <h3 class="govuk-heading-m govuk-!-margin-bottom-0"><span
-                                class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
-                Appointments to date</span></h3>
+                    <div class="govuk-heading-m govuk-!-margin-bottom-0">
+                        <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                            Last attended:</h3>
+                    </div>
                 </div>
+
                 <div class="govuk-grid-column-two-thirds">
-                    <p class="govuk-heading-m govuk-!-margin-bottom-0"><span
-                                class="pac-dashboard-count">{{ attendances | length }}</span></p>
+                    <div class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-top-1">
+                        <dt class="pac-dashboard-count">{{ moment(lastAttendance.attendanceDate, 'YYYY-MM-DD').format(displayDateFormat) }}
+                            - {{ lastAttendance.contactType.description }}
+                            ({{ "Acceptable" if lastAttendance.complied else "Unacceptable" }})
+                        </dt>
+                    </div>
+                </div>
+            {% endif %}
+        </dl>
+
+        <dl class="govuk-grid-row">
+            <div class="govuk-!-padding-top-2">
+                <div class="govuk-grid-column-one-third pac-!-grid-column-18">
+                    <div class="govuk-heading-m govuk-!-margin-bottom-0">
+                        <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                            Appointments to date</h3>
+                    </div>
+                </div>
+
+                <div class="govuk-grid-column-two-thirds">
+                    <div class="govuk-heading-m govuk-!-margin-bottom-0">
+                        <dt class="pac-dashboard-count">{{ attendances | length }}</dt>
+                    </div>
                 </div>
             </div>
-        </div>
+        </dl>
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible app-section-break--heavy govuk-!-width-two-thirds">
 
-        <div class="govuk-grid-row">
+        <dl class="govuk-grid-row">
             <div class="govuk-grid-column-one-third pac-!-grid-column-18">
-                <h3 class="govuk-heading-m govuk-!-margin-bottom-0"><span
-                            class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
-                Acceptable</span></h3>
+                <div class="govuk-heading-m govuk-!-margin-bottom-0">
+                    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                        Acceptable</h3>
+                </div>
             </div>
+
             <div class="govuk-grid-column-two-thirds">
-                <p class="govuk-heading-m govuk-!-margin-bottom-1"><span
-                            class="pac-dashboard-count">{{ attendedAppointments.complied | length }}</span><span
-                            class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">Attendances</span>
-                </p>
+                <div class="govuk-heading-m govuk-!-margin-bottom-1">
+                    <dt class="pac-dashboard-count">{{ attendedAppointments.complied | length }}</dt>
+                    <dd class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                        Attendances
+                    </dd>
+                </div>
+
                 {% for complied in attendedComplied | sort(true, false, 'count') %}
-                    <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body pac-dashboard-count">{{ complied.count }}</span>{{ complied.description }}
-                    </p>
+                    <div class="govuk-body govuk-!-margin-0">
+                        <dt class="govuk-body pac-dashboard-count">{{ complied.count }}</dt>
+                        <dd class="govuk-body govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ complied.description }}</dd>
+                    </div>
                 {% endfor %}
-                <p class="govuk-heading-m govuk-!-margin-bottom-1"><span
-                            class="pac-dashboard-count">{{ absentAppointments.complied | length }}</span><span
-                            class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
-                Absences </span></p>
+
+                <div class="govuk-heading-m govuk-!-margin-bottom-1">
+                    <dt class="pac-dashboard-count">{{ absentAppointments.complied | length }}</dt>
+                    <dd class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                        Absences
+                    </dd>
+                </div>
+
                 {% for complied in absentComplied | sort(true, false, 'count') %}
-                    <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body pac-dashboard-count">{{ complied.count }}</span>{{ complied.description }}
-                    </p>
+                    <div class="govuk-body govuk-!-margin-0">
+                        <dt class="govuk-body pac-dashboard-count">{{ complied.count }}</dt>
+                        <dd class="govuk-body govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ complied.description }}</dd>
+                    </div>
                 {% endfor %}
+
             </div>
-        </div>
+        </dl>
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-width-two-thirds">
 
-        <div class="govuk-grid-row">
+        <dl class="govuk-grid-row">
             <div class="govuk-grid-column-one-third pac-!-grid-column-18">
-                <h3 class="govuk-heading-m govuk-!-margin-bottom-2"><span
-                            class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
-                Unacceptable</span></h3>
+                <div class="govuk-heading-m govuk-!-margin-bottom-2">
+                    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                        Unacceptable</h3>
+                </div>
             </div>
+
             <div class="govuk-grid-column-two-thirds">
-                <p class="govuk-heading-m govuk-!-margin-bottom-1"><span
-                            class="pac-dashboard-count">{{ attendedAppointments.failed | length }}</span><span
-                            class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">Attendances</span>
-                </p>
+                <div class="govuk-heading-m govuk-!-margin-bottom-1">
+                    <dt class="pac-dashboard-count">{{ attendedAppointments.failed | length }}</dt>
+                    <dd class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                        Attendances
+                    </dd>
+                </div>
+
                 {% for failed in attendedFailed | sort(true, false, 'count') %}
-                    <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body pac-dashboard-count">{{ failed.count }}</span>{{ failed.description }}
-                    </p>
+                    <div class="govuk-body govuk-!-margin-0">
+                        <dt class="govuk-body pac-dashboard-count">{{ failed.count }}</dt>
+                        <dd class="govuk-body govuk-!-margin-left-0 govuk govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ failed.description }}</dd>
+                    </div>
                 {% endfor %}
-                <p class="govuk-heading-m govuk-!-margin-bottom-1"><span
-                            class="pac-dashboard-count">{{ absentAppointments.failed | length }}</span><span
-                            class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
-                Absences </span></p>
+
+                <div class="govuk-heading-m govuk-!-margin-bottom-1">
+                    <dt class="pac-dashboard-count">{{ absentAppointments.failed | length }}</dt>
+                    <dd class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                        Absences
+                    </dd>
+                </div>
+
                 {% for failed in absentFailed | sort(true, false, 'count') %}
-                    <p class="govuk-body govuk-!-margin-0"><span
-                                class="govuk-body pac-dashboard-count">{{ failed.count }}</span>{{ failed.description }}
-                    </p>
+                    <div class="govuk-body govuk-!-margin-0">
+                        <dt class="govuk-body pac-dashboard-count">{{ failed.count }}</dt>
+                        <dd class="govuk-body govuk-!-margin-left-0 govuk govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ failed.description }}</dd>
+                    </div>
                 {% endfor %}
             </div>
-        </div>
+        </dl>
+
         {% if awaitingOutcome.length > 0 %}
             {% if awaitingOutcome.length | sort(false, false, 'IAPS deleted record') %}
+
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-width-two-thirds">
 
-                <div class="govuk-grid-row">
+                <dl class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third pac-!-grid-column-18">
-                        <h3 class="govuk-heading-m govuk-!-margin-bottom-2"><span
-                                    class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
-                    Awaiting outcome</span></h3>
+                        <div class="govuk-heading-m govuk-!-margin-bottom-2">
+                            <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                                Awaiting outcome</h3>
+                        </div>
                     </div>
+
                     <div class="govuk-grid-column-two-thirds">
-                        <p class="govuk-heading-m govuk-!-margin-bottom-1 pac-dashboard-count">{{ awaitingOutcome | length }}
-                        </p>
+                        <dd class="govuk-heading-m govuk-!-margin-left-0 govuk-!-margin-bottom-1 pac-dashboard-count">{{ awaitingOutcome | length }}</dd>
                     </div>
-                </div>
+                </dl>
             {% endif %}
         {% endif %}
 
@@ -455,7 +499,10 @@
 
     {% if communityData.sentenceDetails.links.deliusContactList %}
         <h2 class="govuk-heading-m govuk-!-margin-top-8">Contact list</h2>
-        <p class="govuk-body"><a href="{{ communityData.sentenceDetails.links.deliusContactList }}" target="_blank" class="govuk-link govuk-link--no-visited-state">View contact list (opens in NDelius)</a></p>
+        <p class="govuk-body">
+            <a href="{{ communityData.sentenceDetails.links.deliusContactList }}" target="_blank"
+               class="govuk-link govuk-link--no-visited-state">View contact list (opens in NDelius)</a>
+        </p>
     {% endif %}
 
 {% endblock %}

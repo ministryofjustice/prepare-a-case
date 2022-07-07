@@ -383,7 +383,7 @@ Feature: Case summary
     And I should see the level 2 heading "Attendance"
 
     And I should see the following level 3 headings
-      | Appointments to date | Acceptable | Unacceptable |
+      | Last attended: | Appointments to date | Acceptable | Unacceptable |
     And I should see the body text "Last attended: 4 Mar 2020 - Planned office visit (Acceptable)"
 
     And I should see the text "Order started" within element with class "qa-start-title"
