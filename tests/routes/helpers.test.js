@@ -1,5 +1,9 @@
 /* global describe, it, expect */
-const { getPsrRequestedConvictions, getLastSentencedConvictionPSR } = require('../../server/routes/helpers')
+const {
+  getPsrRequestedConvictions,
+  getCourtRoomLabel,
+  getLastSentencedConvictionPSR
+} = require('../../server/routes/helpers')
 
 const convictions = [
   {
@@ -164,6 +168,21 @@ describe('helpers', () => {
           completedDate: '2018-02-28T00:00:00'
         }
       })
+    })
+  })
+
+  describe('getCourtRoomLabel', () => {
+    it.each([
+      ['1', '1'],
+      ['01', '1'],
+      ['010', '10'],
+      ['10', '10'],
+      ['Courtroom 060', '60'],
+      ['Courtroom 17', '17'],
+      ['02-3', '2-3'],
+      ['Crown Court 3-1', 'Crown Court 3-1']
+    ])('given court room %s, should return court room label %s', (courtRoom, expectedLabel) => {
+      expect(getCourtRoomLabel(courtRoom)).toEqual(expectedLabel)
     })
   })
 })

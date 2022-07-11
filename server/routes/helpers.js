@@ -16,7 +16,12 @@ const getLastSentencedConvictionPSR = communityResponse => {
     ?.sort((a, b) => new Date(b.reportDocumentDates.completedDate) - new Date(a.reportDocumentDates.completedDate))[0]
 }
 
+const getCourtRoomLabel = courtRoomStr => isNaN(courtRoomStr)
+  ? (courtRoomStr.includes('Courtroom') ? courtRoomStr.replace(/([A-Za-z 0]*)?/, '') : courtRoomStr.replace(/([0]*)?/, ''))
+  : parseInt(courtRoomStr).toString()
+
 module.exports = {
   getPsrRequestedConvictions,
-  getLastSentencedConvictionPSR
+  getLastSentencedConvictionPSR,
+  getCourtRoomLabel
 }
