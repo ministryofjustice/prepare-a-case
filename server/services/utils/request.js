@@ -47,5 +47,5 @@ module.exports = {
   request,
   requestFile,
   update,
-  httpDelete: httpDelete
+  httpDelete
 }

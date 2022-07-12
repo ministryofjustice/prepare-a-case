@@ -31,7 +31,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
       from: startCount,
       to: endCount,
       totalCount: response.totalCount,
-      caseCount: caseCount,
+      caseCount,
       addedCount: response.addedCount,
       removedCount: response.removedCount,
       unmatchedRecords: response.unmatchedRecords,
