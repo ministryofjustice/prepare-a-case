@@ -2,6 +2,7 @@
 
 const { getCaseList, getCase } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
+const { getUserSelectedCourts } = require('../../services/user-preference-service')
 
 const getCaseListHandler = require('./getCaseListRouteHandler')({ getCaseList })
 
@@ -9,8 +10,11 @@ const getCaseAndTemplateValues = require('./getCaseTemplateValuesHelper')({ getC
 
 const getProbationRecordHandler = require('./getProbationRecordRouteHandler')({ getProbationRecord }, getCaseAndTemplateValues)
 
+const getUserSelectedCourtsHandler = require('./getUserSelectedCourtsHandler')(getUserSelectedCourts)
+
 module.exports = {
   getCaseListHandler,
   getCaseAndTemplateValues,
-  getProbationRecordHandler
+  getProbationRecordHandler,
+  getUserSelectedCourtsHandler
 }
