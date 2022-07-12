@@ -2,7 +2,7 @@ const express = require('express')
 const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
-const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
+const { updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getMatchDetails, deleteOffender, updateOffender } = require('../services/case-service')
 const {
   getDetails,
@@ -17,7 +17,7 @@ const {
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
-const { getCaseListHandler, getCaseAndTemplateValues, getProbationRecordHandler } = require('../routes/handlers')
+const { getCaseListHandler, getCaseAndTemplateValues, getProbationRecordHandler, getUserSelectedCourtsHandler } = require('../routes/handlers')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -115,17 +115,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
   })
 
-  router.get('/my-courts', async (req, res) => {
-    const { session } = req
-    const userSelectedCourts = await getUserSelectedCourts(res.locals.user.userId)
-    session.courts = userSelectedCourts.items
-    res.render('view-courts', {
-      params: {
-        availableCourts: settings.availableCourts,
-        chosenCourts: session.courts
-      }
-    })
-  })
+  router.get('/my-courts', getUserSelectedCourtsHandler)
 
   router.get('/my-courts/:state', async (req, res) => {
     const { params: { state }, query: { error, remove, save }, session } = req
