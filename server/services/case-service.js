@@ -70,8 +70,8 @@ const createCaseService = (apiUrl) => {
         totalCount: allCases.length,
         addedCount: addedCases.length,
         removedCount: removedCases.length,
-        unmatchedRecords: unmatchedRecords,
-        filters: filters,
+        unmatchedRecords,
+        filters,
         cases: filteredCases,
         snapshot: latestSnapshot
       }

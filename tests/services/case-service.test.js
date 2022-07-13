@@ -168,4 +168,32 @@ describe('Case service', () => {
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
     return response
   })
+
+  it('should return error response when API call to get case list fails with 500 status', async () => {
+    const endpoint = `${apiUrl}/court/SHF/cases?date=2020-01-01`
+    moxios.stubRequest(endpoint, {
+      status: 500
+    })
+
+    const response = await getCaseList('SHF', '2020-01-01')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
+    expect(response).toStrictEqual({
+      isError: true,
+      status: 500
+    })
+    return response
+  })
+
+  it('should return default 500 error response when API call fails without response status', async () => {
+    const endpoint = `${apiUrl}/court/SHF/cases?date=2020-01-01`
+    moxios.stubRequest(endpoint, undefined)
+
+    const response = await getCaseList('SHF', '2020-01-01')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
+    expect(response).toStrictEqual({
+      isError: true,
+      status: 500
+    })
+    return response
+  })
 })
