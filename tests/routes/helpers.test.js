@@ -1,7 +1,7 @@
 /* global describe, it, expect */
 const {
   getPsrRequestedConvictions,
-  getCourtRoomLabel,
+  getNormalisedCourtRoom,
   getLastSentencedConvictionPSR
 } = require('../../server/routes/helpers')
 
@@ -182,7 +182,7 @@ describe('helpers', () => {
       ['02-3', '2-3'],
       ['Crown Court 3-1', 'Crown Court 3-1']
     ])('given court room %s, should return court room label %s', (courtRoom, expectedLabel) => {
-      expect(getCourtRoomLabel(courtRoom)).toEqual(expectedLabel)
+      expect(getNormalisedCourtRoom(courtRoom)).toEqual(expectedLabel)
     })
   })
 })
