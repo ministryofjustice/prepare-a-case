@@ -60,7 +60,7 @@ Feature: Case list filters
     And I click the "Courtroom" filter button
     And I click the "Apply filters" button
 
-    Then I should see a count of "22 cases"
+    Then I should see a count of "39 cases"
 
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |

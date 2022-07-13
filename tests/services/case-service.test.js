@@ -109,6 +109,31 @@ describe('Case service', () => {
     return response
   })
 
+  it('should filter the case list by court room ignoring 0 prefix', async () => {
+    const filtersObj = { courtRoom: '01' }
+
+    moxios.stubRequest(`${apiUrl}/court/SHF/cases?date=2020-01-01`, {
+      status: 200,
+      response: {
+        cases: [{
+          probationStatus: 'Current',
+          courtRoom: '01'
+        }, {
+          probationStatus: 'Current',
+          courtRoom: '02'
+        }, {
+          probationStatus: 'Current',
+          courtRoom: '1'
+        }]
+      }
+    })
+
+    const response = await getCaseList('SHF', '2020-01-01', filtersObj)
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
+    expect(response.cases.length).toEqual(2)
+    return response
+  })
+
   it('should filter the case list by session', async () => {
     const filtersObj = { session: 'MORNING' }
 
