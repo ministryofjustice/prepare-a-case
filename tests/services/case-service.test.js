@@ -54,6 +54,19 @@ describe('Case service', () => {
     return response
   })
 
+  it('should return error code when API call to request case data failed', async () => {
+    moxios.stubRequest(`${apiUrl}/hearing/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730`, {
+      status: 500,
+      response: {}
+    })
+
+    const response = await getCase('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/hearing/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730`)
+    expect(response.isError).toBe(true)
+    expect(response.status).toBe(500)
+    return response
+  })
+
   it('should filter the case list by probation status', async () => {
     const filtersObj = { probationStatus: 'Current' }
 
@@ -153,6 +166,34 @@ describe('Case service', () => {
 
     const response = await deleteOffender('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
+    return response
+  })
+
+  it('should return error response when API call to get case list fails with 500 status', async () => {
+    const endpoint = `${apiUrl}/court/SHF/cases?date=2020-01-01`
+    moxios.stubRequest(endpoint, {
+      status: 500
+    })
+
+    const response = await getCaseList('SHF', '2020-01-01')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
+    expect(response).toStrictEqual({
+      isError: true,
+      status: 500
+    })
+    return response
+  })
+
+  it('should return default 500 error response when API call fails without response status', async () => {
+    const endpoint = `${apiUrl}/court/SHF/cases?date=2020-01-01`
+    moxios.stubRequest(endpoint, undefined)
+
+    const response = await getCaseList('SHF', '2020-01-01')
+    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
+    expect(response).toStrictEqual({
+      isError: true,
+      status: 500
+    })
     return response
   })
 })

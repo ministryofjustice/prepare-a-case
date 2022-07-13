@@ -1,20 +1,18 @@
 /* global jest, describe, it, expect */
 
 describe('getCaseListRouteHandler', () => {
+  const { caseServiceMock: caseService, mockResponse } = require('./test-helpers')
+  const subject = require('../../../server/routes/handlers/getCaseListRouteHandler')(caseService)
+  const mockRequest = {
+    redisClient: { getAsync: jest.fn() },
+    params: { courtCode: 'ABC', date: '2020-11-11', limit: 10 },
+    query: { page: 1 },
+    session: {},
+    path: '/SHF/cases'
+  }
+
   it('should render error page when getCaseList returns errors', async () => {
     // Given
-    const caseService = { getCaseList: jest.fn() }
-    const subject = require('../../../server/routes/handlers/getCaseListRouteHandler')(caseService)
-    const mockRequest = {
-      redisClient: { getAsync: jest.fn() },
-      params: { courtCode: 'ABC', date: '2020-11-11', limit: 10 },
-      query: { page: 1 },
-      session: {},
-      path: '/SHF/cases'
-    }
-    const mockResponse = {
-      render: jest.fn()
-    }
     caseService.getCaseList.mockReturnValueOnce({ isError: true, status: 500 })
 
     // When
@@ -30,18 +28,6 @@ describe('getCaseListRouteHandler', () => {
 
   it('should successfully render case list returned by getCaseList', async () => {
     // Given
-    const caseService = { getCaseList: jest.fn() }
-    const subject = require('../../../server/routes/handlers/getCaseListRouteHandler')(caseService)
-    const mockRequest = {
-      redisClient: { getAsync: jest.fn() },
-      params: { courtCode: 'ABC', date: '2020-11-11', limit: 10 },
-      query: { page: 1 },
-      session: {},
-      path: '/SHF/cases'
-    }
-    const mockResponse = {
-      render: jest.fn()
-    }
     caseService.getCaseList.mockReturnValueOnce({
       totalCount: 4,
       addedCount: 2,

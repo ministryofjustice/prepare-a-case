@@ -15,7 +15,7 @@ Feature: Case summary
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Kara Ayers" link
     Then I should be on the "Case summary" page
-    And I should see the heading "Kara Ayers"
+    And I should see the level 2 heading "Kara Ayers"
     And I should see back link "Back to cases" with href "/B14LO/cases?page=1"
     And I should see the caption text "Source: Libra"
     And I should see the caption text "Case number: 8678951874"
@@ -42,7 +42,7 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
     And I should see the following level 2 headings
-      | Appearance | Offences |
+      | Mann Carroll | Appearance | Offences |
 
     And I should see the body text "Court 2-3, afternoon session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -68,10 +68,9 @@ Feature: Case summary
     When I navigate to the "/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
-    And I should see the heading "Guadalupe Hess"
     And I should see the body text "Probation status: Possible NDelius record"
     And I should see the following level 2 headings
-      | possible NDelius records found | Appearance | Offences |
+      | Guadalupe Hess | possible NDelius records found | Appearance | Offences |
 
     And I should see the body text "Court 7, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -94,11 +93,10 @@ Feature: Case summary
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
-    And I should see the heading "Kara Ayers"
     Then I should see the body text "Probation status: No record"
     And I should not see the case level navigation
     And I should see the following level 2 headings
-      | Appearance | Offences |
+      | Kara Ayers | Appearance | Offences |
 
     And I should see the body text "Court Crown Court 3-1, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -126,13 +124,12 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
-    And I should see the heading "Webb Mitchell"
     Then I should see the body text "CRN: D541487"
     Then I should see the body text "PNC: A/8404713BA"
     Then I should see the body text "Probation status: Previously known"
     And I should see a straight line divide
     And I should see the following level 2 headings
-      | Appearance | Offences |
+      | Webb Mitchell | Appearance | Offences |
 
     And I should see the body text "Court 8, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -159,7 +156,6 @@ Feature: Case summary
     When I navigate to the "/B14LO/hearing/a395526d-b805-4c52-8f61-3c41bca15537/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary" base route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
-    And I should see the heading "Mann Carroll"
     Then I should see the body text "CRN: V654123"
     Then I should see the body text "PNC: A/1234560BA"
     Then I should see the body text "Probation status: Pre-sentence record (PSR)"
@@ -168,7 +164,7 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
     And I should see the following level 2 headings
-      | Appearance | Offences |
+      | Mann Carroll | Appearance | Offences |
 
     And I should see the body text "Court 2-3, afternoon session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -196,13 +192,12 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see sub navigation with the following links
       | Case summary | Probation record |
-    And I should see the heading "Lenore Marquez"
     And I should see the body text "CRN: DX12340A"
     And I should see the body text "PNC: A/1234560BA"
     And I should see the body text "Probation status: Current (PSR)"
     And I should see a straight line divide
     And I should see the following level 2 headings
-      | Appearance | Offences |
+      | Lenore Marquez | Appearance | Offences |
 
     And I should see the body text "Court 6, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -232,13 +227,12 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see sub navigation with the following links
       | Case summary | Probation record |
-    And I should see the heading "Olsen Alexander"
     And I should see the body text "CRN: D991494"
     And I should see the body text "PNC: D/9874483AB"
     And I should see the body text "Probation status: Current (Breach)"
     And I should see a straight line divide
     And I should see the following level 2 headings
-      | Appearance | Offences |
+      | Olsen Alexander | Appearance | Offences |
 
     And I should see the body text "Court 9, morning session, $LONG_TODAY."
     And I should see the body text "Theft from a shop" in bold
@@ -266,7 +260,6 @@ Feature: Case summary
     When I click the "Webb Mitchell" link
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases?page=1"
-    And I should see the heading "Webb Mitchell"
     When I click the sub navigation with "Probation record" text
     Then I should see the level 2 heading "Pre-sentence report requested (2)"
     Then I should see the level 2 heading "Current orders (1)"
@@ -282,7 +275,7 @@ Feature: Case summary
     And I should see the body text "Noise offences - 82200"
     And I should see the hint text "Offence committed on 6 January 2021"
     And I should see the following level 2 headings
-      | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
+      | Webb Mitchell | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
     And There should be no a11y violations
 
   Scenario: View the probation record section of the case summary for a current offender
@@ -308,7 +301,7 @@ Feature: Case summary
     And I should see the text "Ended on 23 Jan 2018" within element with class "qa-previous-order-1-end-date"
 
     And I should see the following level 2 headings
-      | Pre-sentence report requested | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
+      | Lenore Marquez | Pre-sentence report requested | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
     And I should see the body text "Angel Extravaganza"
     And I should see the hint text "Allocated on 12 Aug 2017"
     And I should see the body text "Email: d@none.com"
@@ -361,7 +354,7 @@ Feature: Case summary
     When I click the "Latoya Kirkland" link
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases?page=1"
-    And I should see the heading "Latoya Kirkland"
+    And I should see the level 2 heading "Latoya Kirkland"
     When I click the sub navigation with "Probation record" text
     Then I should see the heading "You are restricted from viewing this record"
 
@@ -375,7 +368,7 @@ Feature: Case summary
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
-    And I should see the heading "Lenore Marquez"
+    And I should see the level 2 heading "Lenore Marquez"
 
     When I click the "ORA Community Order (18 Months)" link
     Then I should be on the "Order details" page
@@ -504,7 +497,7 @@ Feature: Case summary
 
     When I navigate to the "/B14LO/hearing/8d187ea4-d24d-4806-a5c7-1626919c44bb/defendant/9f60bdb8-0978-404c-bd89-addc3f5388a7/record" base route
     Then I should be on the "Probation record" page
-    And I should see the heading "Olsen Alexander"
+    And I should see the level 2 heading "Olsen Alexander"
 
     And I should see medium heading with text "Last pre-sentence report"
     And I should see the body text "Pre-Sentence Report - Fast"
@@ -604,7 +597,7 @@ Feature: Case summary
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
-    And I should see the heading "Lenore Marquez"
+    And I should see the level 2 heading "Lenore Marquez"
 
     When I click the "CJA - Std Determinate Custody" link
     Then I should be on the "Order details" page
@@ -645,7 +638,7 @@ Feature: Case summary
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
-    And I should see the heading "Lenore Marquez"
+    And I should see the level 2 heading "Lenore Marquez"
 
     When I click the "ORA Community Order (18 Months)" link
     Then I should be on the "Order details" page
@@ -659,7 +652,7 @@ Feature: Case summary
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
-    And I should see the heading "Lenore Marquez"
+    And I should see the level 2 heading "Lenore Marquez"
 
     When I click the "CJA - Std Determinate Custody" link
     Then I should be on the "Order details" page
@@ -716,7 +709,7 @@ Feature: Case summary
 
     When I click the "English Madden" link
     And I click the sub navigation with "Risk register" text
-    Then I should see the level 2 heading "You are restricted from viewing this record"
+    And I should see the heading "You are restricted from viewing this record"
 
     And I should see the body text "You cannot view probation information for this defendant due to restrictions on your NDelius account."
     And I should see the body text "If you think you should be able to view this case, contact your line manager."

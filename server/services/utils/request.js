@@ -8,7 +8,7 @@ const request = async url => {
     response = await axios.get(url, { headers: { Accept: 'application/json' }, timeout: defaultTimeout })
   } catch (e) {
     axiosError(e)
-    return e.response
+    return e.response || {}
   }
   return response
 }
@@ -20,7 +20,7 @@ const requestFile = async url => {
   } catch (e) {
     axiosError(e)
   }
-  return response
+  return response || {}
 }
 
 const update = async (url, data) => {
@@ -30,7 +30,7 @@ const update = async (url, data) => {
   } catch (e) {
     axiosError(e)
   }
-  return response
+  return response || {}
 }
 
 const httpDelete = async (url) => {
@@ -40,12 +40,12 @@ const httpDelete = async (url) => {
   } catch (e) {
     axiosError(e)
   }
-  return response
+  return response || {}
 }
 
 module.exports = {
   request,
   requestFile,
   update,
-  httpDelete: httpDelete
+  httpDelete
 }

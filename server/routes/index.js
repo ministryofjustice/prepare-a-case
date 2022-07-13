@@ -2,8 +2,8 @@ const express = require('express')
 const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
-const { getUserSelectedCourts, updateSelectedCourts } = require('../services/user-preference-service')
-const { getCaseList, getCase, getMatchDetails, deleteOffender, updateOffender } = require('../services/case-service')
+const { updateSelectedCourts } = require('../services/user-preference-service')
+const { getCaseList, getMatchDetails, deleteOffender, updateOffender } = require('../services/case-service')
 const {
   getDetails,
   getProbationRecord,
@@ -17,8 +17,7 @@ const {
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
-const { getPsrRequestedConvictions } = require('./helpers')
-const getCaseListHandler = require('../routes/handlers/getCaseListRouteHandler')
+const { getCaseListHandler, getCaseAndTemplateValues, getProbationRecordHandler, getUserSelectedCourtsHandler } = require('../routes/handlers')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -69,7 +68,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     if (username !== notification.username || password !== notification.password) {
       return reject()
     }
-    res.render('set-notification', { currentNotification: currentNotification })
+    res.render('set-notification', { currentNotification })
   })
 
   router.post('/set-notification', body('notification').trim().escape(), async (req, res) => {
@@ -116,17 +115,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
   })
 
-  router.get('/my-courts', async (req, res) => {
-    const { session } = req
-    const userSelectedCourts = await getUserSelectedCourts(res.locals.user.userId)
-    session.courts = userSelectedCourts.items
-    res.render('view-courts', {
-      params: {
-        availableCourts: settings.availableCourts,
-        chosenCourts: session.courts
-      }
-    })
-  })
+  router.get('/my-courts', getUserSelectedCourtsHandler)
 
   router.get('/my-courts/:state', async (req, res) => {
     const { params: { state }, query: { error, remove, save }, session } = req
@@ -149,9 +138,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
       return res.redirect(req.path)
     }
     res.render('edit-courts', {
-      formError: formError,
-      serverError: serverError,
-      state: state,
+      formError,
+      serverError,
+      state,
       params: {
         availableCourts: settings.availableCourts,
         chosenCourts: session.courts
@@ -179,7 +168,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       .redirect(302, `/${courtCode}/cases`)
   })
 
-  router.get('/:courtCode/cases/:date?/:subsection?', defaults, getCaseListHandler({ getCaseList }))
+  router.get('/:courtCode/cases/:date?/:subsection?', defaults, getCaseListHandler)
 
   router.post('/:courtCode/cases/:date?/:subsection?', defaults, async (req, res) => {
     const { params: { courtCode, date, subsection }, session, body } = req
@@ -194,23 +183,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.showAllPreviousOrders = hearingId
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/record#previousOrders`)
   })
-
-  async function getCaseAndTemplateValues (req) {
-    const { params: { defendantId, hearingId }, session, params } = req
-    const response = await getCase(hearingId, defendantId)
-    const caseListDate = session.caseListDate || getBaseDateString()
-    return {
-      currentCaseListViewLink: session.currentCaseListViewLink,
-      backLink: session.backLink,
-      caseListDate: caseListDate,
-      params: {
-        ...params
-      },
-      data: {
-        ...response
-      }
-    }
-  }
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, async (req, res) => {
     const { session, path } = req
@@ -227,21 +199,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary', templateValues)
   })
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, async (req, res) => {
-    const { session } = req
-    const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Probation record'
-
-    const crn = templateValues.data.crn
-    const communityResponse = await getProbationRecord(crn, true)
-    templateValues.params.showAllPreviousOrders = session.showAllPreviousOrders
-    templateValues.data.communityData = {
-      ...communityResponse
-    }
-    templateValues.data.psrRequestedConvictions = getPsrRequestedConvictions(communityResponse)
-
-    res.render('case-summary-record', templateValues)
-  })
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, getProbationRecordHandler)
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId?', defaults, async (req, res) => {
     const { params: { convictionId } } = req
@@ -259,7 +217,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         communityResponse = {
           ...communityResponse,
           sentenceDetails,
-          custodyDetails: custodyDetails
+          custodyDetails
         }
       }
     }

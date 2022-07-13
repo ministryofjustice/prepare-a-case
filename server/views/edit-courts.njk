@@ -61,24 +61,20 @@
     {% endif %}
 
     {% if params.chosenCourts | length %}
-      <table class="govuk-table pac-!-grid-column--max-700" aria-label={{ title }}>
-        <tbody class="govuk-table__body">
+      <dl class="govuk-summary-list pac-!-grid-column--max-700" aria-label={{ title }}>
         {%- for court in params.availableCourts -%}
           {%- for chosen in params.chosenCourts -%}
             {% if chosen === court.code %}
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell">
-                  <span class="govuk-!-font-weight-bold">{{ court.name }}</span>
-                </td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">{{ court.name }}</dt>
+                  <dd class="govuk-summary-list__actions">
                   <a href="?remove={{ court.code }}" class="govuk-link govuk-link--no-visited-state">Remove</a>
-                </td>
-              </tr>
+                  </dd>
+                </div>
             {% endif %}
           {%- endfor -%}
         {%- endfor -%}
-        </tbody>
-      </table>
+      </dl>
 
     {% endif %}
 
