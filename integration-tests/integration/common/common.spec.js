@@ -211,6 +211,10 @@ And('I should see the body text {string}', $text => {
   cy.get('.govuk-body').contains(correctDates($text))
 })
 
+// And('I should see a date and body text {string}', $text => {
+//   cy.get('.pac-dashboard-count').contains(correctDates($text))
+// })
+
 And('I should see the text {string} within element with class {string}', ($text, $class) => {
   cy.get(`.${$class}`).contains(correctDates($text))
 })

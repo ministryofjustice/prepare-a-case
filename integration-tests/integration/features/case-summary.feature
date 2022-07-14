@@ -377,7 +377,7 @@ Feature: Case summary
 
     And I should see the following level 3 headings
       | Last attended: | Appointments to date | Acceptable | Unacceptable |
-    And I should see the body text "Last attended: 4 Mar 2020 - Planned office visit (Acceptable)"
+    And I should see the body text "4 Mar 2020 - Planned office visit (Acceptable)"
 
     And I should see the text "Order started" within element with class "qa-start-title"
     And I should see the text "Order ends" within element with class "qa-end-title"
@@ -389,7 +389,7 @@ Feature: Case summary
     And I should see the correctly calculated elapsed time between "2019-05-20" and "2020-05-25"
 
     And I should see the following level 3 headings
-      | Appointments to date | Acceptable | Unacceptable | Awaiting outcome |
+      | Last attended: | Appointments to date | Acceptable | Unacceptable | Awaiting outcome |
     And I should see the following attendance counts
       | 10 | 6 | 2 | 2 | 1 | 1 | 0 | 1 | 1 | 2 | 2 | 1 |
     And I should see the body text "Planned office visit"
@@ -511,8 +511,8 @@ Feature: Case summary
 
     And I should see the body text "Abstracting electricity - 04300"
     And I should see the following level 3 headings
-      | Appointments to date | Acceptable | Unacceptable |
-    And I should see the body text "Last attended: 10 Mar 2020 - Unpaid work (Acceptable)"
+      |Last attended:| Appointments to date | Acceptable | Unacceptable |
+    And I should see the body text "10 Mar 2020 - Unpaid work (Acceptable)"
 
     And I should see the text "Order started" within element with class "qa-start-title"
     And I should see the text "Order ends" within element with class "qa-end-title"
