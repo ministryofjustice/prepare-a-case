@@ -61,7 +61,7 @@
     {% endif %}
 
     {% if params.chosenCourts | length %}
-      <dl class="govuk-summary-list pac-!-grid-column--max-700" aria-label={{ title }}>
+      <dl class="govuk-summary-list pac-!-grid-column--max-700" aria-label="{{ title }}">
         {%- for court in params.availableCourts -%}
           {%- for chosen in params.chosenCourts -%}
             {% if chosen === court.code %}
