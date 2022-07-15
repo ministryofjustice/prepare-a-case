@@ -340,12 +340,27 @@
             </dd>
         </dl>
 
+
+{#        <dl class="govuk-grid-row">#}
+{#            {% for complied in attendedComplied | sort(true, false, 'count') %}#}
+{#                <dt class="govuk-grid-column-one-third pac-!-grid-column-18">&nbsp;</dt>#}
+{#                <dd class="govuk-grid-column-two-thirds pac-!-grid-column-18">#}
+{#                    <dt class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-left-0 govuk-!-display-inline-block pac-dashboard-count">{{ complied.count }}</dt>#}
+{#                <dt class="govuk-grid-column-one-third govuk-!-margin-top-0"></dt>#}
+{#                    <dd class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-left-0 govuk-!-display-inline-block">{{ complied.description }}</dd>#}
+{#                #}{#                <br>#}
+{#                </dd>#}
+{#            {% endfor %}#}
+
+{#        </dl>#}
+
+
         <dl class="govuk-grid-row">
             {% for complied in attendedComplied | sort(true, false, 'count') %}
                 <dt class="govuk-grid-column-one-third pac-!-grid-column-18">&nbsp;</dt>
                 <dd class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-left-0 govuk-!-display-inline-block pac-dashboard-count">{{ complied.count }}</dd>
-                <dt class="govuk-grid-column-two-thirds govuk-!-margin-top-0"></dt>
-                <dd class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-left-0 govuk-!-display-inline-block">{{ complied.description }}</dd>
+                <dt class="govuk-grid-column-one-third govuk-!-margin-top-0"></dt>
+                <dd class="govuk-grid-column-one-third pac-!-grid-column-18 govuk-body govuk-!-margin-bottom-0 govuk-!-margin-left-0 govuk-!-display-inline-block">{{ complied.description }}</dd>
                 <br>
             {% endfor %}
         </dl>
