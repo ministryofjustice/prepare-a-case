@@ -9,6 +9,8 @@ const isHttpSuccess = response => {
 
 const getInternalServerErrorResponse = res => ({ isError: true, status: res?.status || 500 })
 
+const defaultFilterMatcher = (courtCase, filterObj, item) => courtCase[filterObj.id].toString().toLowerCase() === item.value.toString().toLowerCase()
+
 const createCaseService = (apiUrl) => {
   return {
     getMatchDetails: async (defendantId) => {
@@ -52,7 +54,7 @@ const createCaseService = (apiUrl) => {
           filterObj.items.forEach(item => {
             if (item && item.checked) {
               notFiltered = false
-              matched = matched || courtCase[filterObj.id].toString().toLowerCase() === item.value.toString().toLowerCase()
+              matched = matched || (filterObj.matcher ? filterObj.matcher(courtCase, item) : defaultFilterMatcher(courtCase, filterObj, item))
             }
           })
           return notFiltered || matched

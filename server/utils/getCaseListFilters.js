@@ -1,3 +1,4 @@
+const { getNormalisedCourtRoom } = require('../routes/helpers')
 module.exports = (caseListData, selectedFilters) => {
   const availableProbationStatuses = [...new Set(caseListData.map(item => item.probationStatus))]
   const probationStatuses = []
@@ -12,14 +13,14 @@ module.exports = (caseListData, selectedFilters) => {
     .filter(item => isNaN(item))
     .sort((a, b) => a - b)
     .map(item => item && {
-      label: item.includes('Courtroom') ? item.replace(/([A-Za-z 0]*)?/, '') : item.replace(/([0]*)?/, ''),
+      label: getNormalisedCourtRoom(item),
       value: item.toString()
     })
 
   const courtRooms = [...new Set(caseListData.map(item => parseInt(item.courtRoom, 10)))]
     .filter(item => !isNaN(item))
     .sort((a, b) => a - b)
-    .map(item => item && { label: item.toString(), value: ('0' + item.toString()).slice(-2) })
+    .map(item => item && { label: getNormalisedCourtRoom(item), value: ('0' + item.toString()).slice(-2) })
     .concat(courtRoomStrings)
 
   const availableSessions = [...new Set(caseListData.map(item => item.session))]
@@ -32,7 +33,7 @@ module.exports = (caseListData, selectedFilters) => {
   })
 
   const caseListFilters = [{ id: 'probationStatus', label: 'Probation status', items: probationStatuses },
-    { id: 'courtRoom', label: 'Courtroom', items: courtRooms },
+    { id: 'courtRoom', label: 'Courtroom', items: courtRooms, matcher: (courtCase, filter) => getNormalisedCourtRoom(courtCase.courtRoom) === filter.label },
     { id: 'session', label: 'Session', items: sessions }]
 
   // Ensure selected filters are type Array

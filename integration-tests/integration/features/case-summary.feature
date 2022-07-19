@@ -372,7 +372,7 @@ Feature: Case summary
 
     When I click the "ORA Community Order (18 Months)" link
     Then I should be on the "Order details" page
-    And I should see the level 2 heading "ORA Community Order (18 Months)"
+    And I should see the heading "ORA Community Order (18 Months)"
     And I should see the level 2 heading "Attendance"
 
     And I should see the following level 3 headings
@@ -507,7 +507,7 @@ Feature: Case summary
     And I should see the breach badge
     When I click the "ORA Community Order (18 Months)" link
     Then I should be on the "Order details" page
-    And I should see the level 2 heading "ORA Community Order (18 Months)"
+    And I should see the heading "ORA Community Order (18 Months)"
 
     And I should see the body text "Abstracting electricity - 04300"
     And I should see the following level 3 headings
@@ -601,7 +601,7 @@ Feature: Case summary
 
     When I click the "CJA - Std Determinate Custody" link
     Then I should be on the "Order details" page
-    And I should see the level 2 heading "CJA - Std Determinate Custody"
+    And I should see the heading "CJA - Std Determinate Custody"
 
     And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
 
@@ -642,7 +642,7 @@ Feature: Case summary
 
     When I click the "ORA Community Order (18 Months)" link
     Then I should be on the "Order details" page
-    And I should see the level 2 heading "ORA Community Order (18 Months)"
+    And I should see the heading "ORA Community Order (18 Months)"
     And I should see the level 2 heading "Requirements"
     And I should see the following table headings
       | Requirement | Length |
@@ -656,7 +656,7 @@ Feature: Case summary
 
     When I click the "CJA - Std Determinate Custody" link
     Then I should be on the "Order details" page
-    And I should see the level 2 heading "CJA - Std Determinate Custody"
+    And I should see the heading "CJA - Std Determinate Custody"
     And I should see the level 2 heading "Requirements"
     And I should see the following table headings
       | Requirement | Length | Ended | Reason |
