@@ -48,12 +48,10 @@ describe('Community service', () => {
         userMessage: 'User message'
       }
     })
-
-    const response = await getProbationRecord('F378109')
-    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/F378109/probation-record`)
-    expect(response.status).toBe(403)
-    expect(response.data.userMessage).toBe('User message')
-    return response
+    expect.assertions(1)
+    return getProbationRecord('F378109').catch(e => {
+      expect(e).toEqual(new Error('Request failed with status code 403'))
+    })
   })
 
   it('should call the API to request offender conviction details data', async () => {
