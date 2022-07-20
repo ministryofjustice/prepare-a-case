@@ -153,13 +153,14 @@ describe('Community service', () => {
     return response
   })
 
-  it('should fail silently', async () => {
+  it('should throw axios error to the handler', async () => {
     moxios.stubRequest(`${apiUrl}/offender/D123456/probation-record`, {
       status: 500,
-      response: {}
+      response: {
+      }
     })
-    expect(async () => {
-      await getProbationRecord('D123456')
-    }).not.toThrow()
+    return expect(async () =>
+      getProbationRecord('D123456')
+    ).rejects.toThrow()
   })
 })
