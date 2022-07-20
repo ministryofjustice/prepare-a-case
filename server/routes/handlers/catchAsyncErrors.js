@@ -1,6 +1,6 @@
 const logger = require('../../../log')
 
-const expressAsyncErrorProgressionWrapper = (handler) => async (req, res, next) => {
+const catchAsyncErrors = (handler) => async (req, res, next) => {
   try {
     await handler(req, res)
   } catch (e) {
@@ -16,4 +16,4 @@ const expressAsyncErrorProgressionWrapper = (handler) => async (req, res, next) 
   }
 }
 
-module.exports = expressAsyncErrorProgressionWrapper
+module.exports = catchAsyncErrors

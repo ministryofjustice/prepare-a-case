@@ -27,7 +27,7 @@ describe('expressAsyncErrorProgressionWrapper.js', () => {
     toString: testError.toString
   }
 
-  const subject = require('../../../server/routes/handlers/expressAsyncErrorProgressionWrapper')
+  const subject = require('../../../server/routes/handlers/catchAsyncErrors')
   const loggerMock = require('../../../log')
 
   it('should catch, log and progress the error to express when handler throws an error', async () => {

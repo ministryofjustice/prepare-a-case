@@ -18,7 +18,7 @@ const {
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
 const { getCaseListHandler, getCaseAndTemplateValues, getProbationRecordHandler, getUserSelectedCourtsHandler } = require('../routes/handlers')
-const expressAsyncErrorProgressionWrapper = require('./handlers/expressAsyncErrorProgressionWrapper')
+const catchErrors = require('./handlers/catchAsyncErrors')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -52,7 +52,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : '/my-courts/setup')
   })
 
-  router.get('/set-notification', expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/set-notification', catchErrors(async (req, res) => {
     const { redisClient: { getAsync } } = req
     const currentNotification = await getAsync('case-list-notification')
     const reject = () => {
@@ -72,7 +72,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('set-notification', { currentNotification })
   }))
 
-  router.post('/set-notification', body('notification').trim().escape(), expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.post('/set-notification', body('notification').trim().escape(), catchErrors(async (req, res) => {
     const { redisClient: { setAsync } } = req
     await setAsync('case-list-notification', req.body.notification, 'EX', 60 * 60 * (parseInt(req.body.expires, 10)))
     res.redirect(302, '/set-notification')
@@ -116,9 +116,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
   })
 
-  router.get('/my-courts', expressAsyncErrorProgressionWrapper(getUserSelectedCourtsHandler))
+  router.get('/my-courts', catchErrors(getUserSelectedCourtsHandler))
 
-  router.get('/my-courts/:state', expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/my-courts/:state', catchErrors(async (req, res) => {
     const { params: { state }, query: { error, remove, save }, session } = req
     let formError = error
     let serverError = false
@@ -149,7 +149,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     })
   }))
 
-  router.post('/my-courts/:state', expressAsyncErrorProgressionWrapper((req, res) => {
+  router.post('/my-courts/:state', catchErrors((req, res) => {
     const { params: { state }, session, body: { court } } = req
     if (!court) {
       return res.redirect(302, `/my-courts/${state}?error=true`)
@@ -161,7 +161,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(req.path)
   }))
 
-  router.get('/select-court/:courtCode', expressAsyncErrorProgressionWrapper((req, res) => {
+  router.get('/select-court/:courtCode', catchErrors((req, res) => {
     const { params: { courtCode } } = req
 
     res.status(201)
@@ -169,9 +169,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
       .redirect(302, `/${courtCode}/cases`)
   }))
 
-  router.get('/:courtCode/cases/:date?/:subsection?', defaults, expressAsyncErrorProgressionWrapper(getCaseListHandler))
+  router.get('/:courtCode/cases/:date?/:subsection?', defaults, catchErrors(getCaseListHandler))
 
-  router.post('/:courtCode/cases/:date?/:subsection?', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.post('/:courtCode/cases/:date?/:subsection?', defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, date, subsection }, session, body } = req
     const currentDate = date || getBaseDateString()
     session.selectedFilters = body
@@ -179,13 +179,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, `/${courtCode}/cases/${currentDate}${subsection ? '/' + subsection : ''}`)
   }))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', catchErrors(async (req, res) => {
     const { params: { courtCode, hearingId, defendantId }, session } = req
     session.showAllPreviousOrders = hearingId
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/record#previousOrders`)
   }))
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
     const { session, path } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Case summary'
@@ -200,9 +200,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary', templateValues)
   }))
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, expressAsyncErrorProgressionWrapper(getProbationRecordHandler))
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId?', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId?', defaults, catchErrors(async (req, res) => {
     const { params: { convictionId } } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Order details'
@@ -227,7 +227,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary-record-order', templateValues)
   }))
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/breach/:breachId', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/breach/:breachId', defaults, catchErrors(async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)//
     templateValues.title = 'Breach details'
 
@@ -247,7 +247,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary-record-order-breach', templateValues)
   }))
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/licence-details', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/licence-details', defaults, catchErrors(async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Licence conditions details'
 
@@ -258,7 +258,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary-record-order-licence', templateValues)
   }))
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/risk', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/risk', defaults, catchErrors(async (req, res) => {
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Risk register'
 
@@ -273,7 +273,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary-risk', templateValues)
   }))
 
-  router.get('/:courtCode/match/bulk/:date', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/:courtCode/match/bulk/:date', defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, date }, session, params } = req
     const response = await getCaseList(courtCode, date)
     const templateValues = {
@@ -293,7 +293,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-records', templateValues)
   }))
 
-  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId', defaults, catchErrors(async (req, res) => {
     const { params: { defendantId }, session, path } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Review possible NDelius records'
@@ -314,7 +314,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-defendant', templateValues)
   }))
 
-  router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId', defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
     let redirectUrl
     const tryAgainRedirect = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}`
@@ -343,7 +343,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, redirectUrl)
   }))
 
-  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/nomatch/:unlink?', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/nomatch/:unlink?', defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, defendantId, hearingId, unlink }, session } = req
     let redirectUrl
     const response = await unlinkOffender(defendantId)
@@ -360,7 +360,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, redirectUrl)
   }))
 
-  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual', defaults, catchErrors(async (req, res) => {
     const { session } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Link an NDelius record to the defendant'
@@ -376,7 +376,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-manual', templateValues)
   }))
 
-  router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual', body('crn').trim().escape(), defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual', body('crn').trim().escape(), defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
     session.serverError = false
     session.formError = false
@@ -409,7 +409,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, redirectUrl)
   }))
 
-  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm/:crn', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm/:crn', defaults, catchErrors(async (req, res) => {
     const { params: { crn }, session } = req
     const templateValues = await getCaseAndTemplateValues(req)
     const detailResponse = await getDetails(crn)
@@ -426,7 +426,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('match-manual', templateValues)
   }))
 
-  router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm', body('crn').trim().escape(), defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm', body('crn').trim().escape(), defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
     session.serverError = false
     let redirectUrl = '/'
@@ -445,7 +445,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, redirectUrl)
   }))
 
-  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/unlink/:crn', defaults, expressAsyncErrorProgressionWrapper(async (req, res) => {
+  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/unlink/:crn', defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, defendantId, crn, hearingId }, session } = req
     const templateValues = await getCaseAndTemplateValues(req)
     const detailResponse = await getDetails(crn)
