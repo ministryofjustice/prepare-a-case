@@ -323,7 +323,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
       session.formError = true
       redirectUrl = tryAgainRedirect
     } else {
-      const response = await updateCaseDetails(caseId, hearingId, defendantId, crn)
+      let response
+      try {
+        response = await updateCaseDetails(caseId, hearingId, defendantId, crn)
+      } catch (e) {
+        response = e.response
+      }
       if (response.status === 200) {
         session.confirmedMatch = {
           name: session.matchName,
@@ -386,7 +391,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
       session.formError = true
       session.formInvalid = true
     } else {
-      const detailResponse = await getDetails(crn)
+      let detailResponse
+      try {
+        detailResponse = await getDetails(crn)
+      } catch (e) {
+        detailResponse = e.response
+      }
       if (detailResponse.status >= 400) {
         session.crn = req.body.crn
         session.status = detailResponse.status
