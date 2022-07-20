@@ -1,5 +1,6 @@
 const getBaseDateString = require('../../utils/getBaseDateString')
 const { settings } = require('../../../config')
+const moment = require('moment')
 
 const getCaseListRouteHandler = caseService => async (req, res) => {
   const {
@@ -36,6 +37,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
       removedCount: response.removedCount,
       unmatchedRecords: response.unmatchedRecords,
       totalDays: settings.casesTotalDays,
+      casesPastDays: settings.casesPastDays,
       subsection: subsection || (!date && session.currentView) || '',
       filtersApplied: !!session.selectedFilters && Object.keys(session.selectedFilters).length,
       snapshot: response.snapshot
@@ -43,6 +45,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
     data: response.cases.slice(startCount, endCount) || []
   }
   session.currentView = subsection
+
   session.caseListDate = currentDate
   session.currentCaseListViewLink = `${path}?page=${templateValues.params.page}`
   session.backLink = session.currentCaseListViewLink
