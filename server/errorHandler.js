@@ -27,9 +27,10 @@ exports.developmentErrors = (error, req, res, next) => {
 
 exports.productionErrors = (error, req, res, next) => {
   logger.error(error)
-  res.status(error.status || 500)
+  const status = error.status || 500
+  res.status(status)
   res.render('error', {
-    status: error.status,
+    status,
     maintenanceDate: moment().add(1, 'days').format('dddd D MMMM')
   })
 }

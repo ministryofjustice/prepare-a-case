@@ -39,7 +39,7 @@ describe('Community service', () => {
   })
 
   it('should call the api for probation record and handle an unauthorised response', async () => {
-    moxios.stubRequest(`${apiUrl}/offender/F378109/probation-record`, {
+    const stubResponse = {
       status: 403,
       response: {
         developerMessage: 'This is the developer message returned',
@@ -47,13 +47,10 @@ describe('Community service', () => {
         moreInfo: 'This is the more info returned',
         userMessage: 'User message'
       }
-    })
-
-    const response = await getProbationRecord('F378109')
-    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/offender/F378109/probation-record`)
-    expect(response.status).toBe(403)
-    expect(response.data.userMessage).toBe('User message')
-    return response
+    }
+    moxios.stubRequest(`${apiUrl}/offender/F378109/probation-record`, stubResponse)
+    const actual = await getProbationRecord('F378109')
+    return expect(actual.data).toEqual(stubResponse.response)
   })
 
   it('should call the API to request offender conviction details data', async () => {

@@ -1,6 +1,7 @@
 const { request, requestFile } = require('./utils/request')
 const config = require('../../config')
 const apiUrl = config.apis.courtCaseService.url
+const logger = require('../../log')
 
 const getConviction = async (crn, convictionId) => {
   const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}`) || { data: {} }
@@ -8,12 +9,24 @@ const getConviction = async (crn, convictionId) => {
 }
 
 const getCustodyDetails = async (crn, convictionId) => {
-  const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/sentence/custody`) || { data: undefined }
+  let res
+  try {
+    res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/sentence/custody`) || { data: undefined }
+  } catch (e) {
+    logger.error(e, 'Error occurred while getting custody details')
+    res = e.response
+  }
   return res.data
 }
 
 const getProbationRecord = async crn => {
-  const res = await request(`${apiUrl}/offender/${crn}/probation-record`) || { data: {} }
+  let res
+  try {
+    res = await request(`${apiUrl}/offender/${crn}/probation-record`)
+  } catch (e) {
+    logger.error(e, 'Error occurred while getting probation record')
+    res = e.response
+  }
   return res.status >= 400 ? res : res.data
 }
 
@@ -37,12 +50,24 @@ const getDetails = async crn => {
 }
 
 const getProbationStatusDetails = async crn => {
-  const res = await request(`${apiUrl}/offender/${crn}/probation-status-detail`) || {}
+  let res
+  try {
+    res = await request(`${apiUrl}/offender/${crn}/probation-status-detail`) || {}
+  } catch (e) {
+    logger.error(e, 'Error occurred while getting probation status details')
+    res = e.response
+  }
   return res.status >= 400 ? res : res.data
 }
 
 const getRiskDetails = async crn => {
-  const res = await request(`${apiUrl}/offender/${crn}/registrations`) || { data: {} }
+  let res
+  try {
+    res = await request(`${apiUrl}/offender/${crn}/registrations`) || { data: {} }
+  } catch (e) {
+    logger.error(e, 'Error occurred while getting registrations')
+    return e.response?.data
+  }
   return res.data
 }
 
