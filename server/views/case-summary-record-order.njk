@@ -125,7 +125,7 @@
 
 {% block caseContent %}
 
-    <h1 class="govuk-heading-l govuk-!-margin-0">{{ communityData.sentence.description + (' (' + communityData.sentence.length + ' ' + communityData.sentence.lengthUnits + ')' if communityData.sentence.length)}}</h1>
+    <h1 class="govuk-heading-l govuk-!-margin-0">{{ communityData.sentence.description + (' (' + communityData.sentence.length + ' ' + communityData.sentence.lengthUnits + ')' if communityData.sentence.length) }}</h1>
 
     <div class="govuk-grid-row govuk-!-margin-top-6">
         <div class="govuk-grid-column-two-thirds">
@@ -317,7 +317,8 @@
             {% endif %}
 
             <dt class="govuk-!-padding-top-2 govuk-grid-column-one-third pac-!-grid-column-18 govuk-heading-m govuk-!-margin-bottom-0">
-                <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">Appointments to date</h3>
+                <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                    Appointments to date</h3>
             </dt>
 
             <dd class="govuk-grid-column-two-thirds govuk-!-margin-0 govuk-heading-m govuk-!-text-align-left govuk-!-padding-top-2 pac-dashboard-count">{{ attendances | length }}</dd>
@@ -325,67 +326,83 @@
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible app-section-break--heavy govuk-!-width-two-thirds">
 
-        <dl class="govuk-grid-row">
-            <div class="govuk-grid-column-one-third pac-!-grid-column-18 govuk-heading-m govuk-!-margin-bottom-0">
-                <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">Acceptable</h3>
-            </div>
+        <div class="govuk-grid-row">
+            <dl class="govuk-grid-column-one-third pac-!-grid-column-18 govuk-!-margin-top-0">
+                <dt class="govuk-heading-m govuk-!-margin-bottom-0">
+                    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block"
+                        aria-hidden="true">Acceptable</h3>
+                </dt>
+                <dd hidden="true">Acceptable</dd>
+            </dl>
 
-            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-0">
-                    <dt class="govuk-heading-m govuk-!-margin-bottom-1 pac-dashboard-count">{{ attendedAppointments.complied | length }}</dt>
-                    <dd class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">Attendances</dd>
+            <dl class="govuk-grid-column-two-thirds govuk-!-margin-top-0">
+                <dt hidden="true">Acceptable</dt>
 
+                <dd class="govuk-!-margin-left-0">
+                    <span class="govuk-heading-m govuk-!-margin-bottom-1 pac-dashboard-count">{{ attendedAppointments.complied | length }}</span>
+                    <span class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">Attendances</span>
+                </dd>
 
                 {% for complied in attendedComplied | sort(true, false, 'count') %}
-                    <div class="govuk-body govuk-!-margin-0">
-                        <dt class="govuk-body govuk-!-margin-0 pac-dashboard-count">{{ complied.count }}</dt>
-                        <dd class="govuk-body govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ complied.description }}</dd>
-                    </div>
+                    <dd class="govuk-body govuk-!-margin-0">
+                        <span class="govuk-body govuk-!-margin-0 pac-dashboard-count">{{ complied.count }}</span>
+                        <span class="govuk-body govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ complied.description }}</span>
+                    </dd>
                 {% endfor %}
 
-                    <dt class="govuk-heading-m govuk-!-margin-bottom-1 pac-dashboard-count">{{ absentAppointments.complied | length }}</dt>
-                    <dd class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">Absences</dd>
+                <dd class="govuk-!-margin-left-0 govuk-!-margin-top-1">
+                    <span class="govuk-heading-m govuk-!-margin-bottom-1 pac-dashboard-count">{{ absentAppointments.complied | length }}</span>
+                    <span class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">Absences</span>
+                </dd>
 
                 {% for complied in absentComplied | sort(true, false, 'count') %}
-                    <div class="govuk-body govuk-!-margin-0">
-                        <dt class="govuk-body pac-dashboard-count">{{ complied.count }}</dt>
-                        <dd class="govuk-body govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ complied.description }}</dd>
-                    </div>
+                    <dd class="govuk-body govuk-!-margin-0">
+                        <span class="govuk-body pac-dashboard-count">{{ complied.count }}</span>
+                        <span class="govuk-body govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ complied.description }}</span>
+                    </dd>
                 {% endfor %}
-            </div>
-        </dl>
+            </dl>
+        </div>
 
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-width-two-thirds">
 
 
-        <dl class="govuk-grid-row">
-                <div class="govuk-grid-column-one-third pac-!-grid-column-18 govuk-heading-m govuk-!-margin-bottom-2">
-                    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">Unacceptable</h3>
-                </div>
+        <div class="govuk-grid-row">
+            <dl class="govuk-grid-column-one-third pac-!-grid-column-18 govuk-!-margin-top-0">
+                <dt class="govuk-heading-m govuk-!-margin-bottom-0">
+                    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block"
+                        aria-hidden="true">Unacceptable</h3>
+                </dt>
+                <dd hidden="true">Unacceptable</dd>
+            </dl>
 
-                <div class="govuk-grid-column-two-thirds govuk-!-margin-top-0 govuk-heading-m govuk-!-margin-bottom-1">
-                    <dt class="pac-dashboard-count">{{ attendedAppointments.failed | length }}</dt>
-                    <dd class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">Attendances</dd>
+            <dl class="govuk-grid-column-two-thirds govuk-!-margin-top-0 govuk-heading-m govuk-!-margin-bottom-1">
+                <dt hidden="true">Acceptable</dt>
+                <dd class="govuk-!-margin-left-0">
+                    <span class="pac-dashboard-count">{{ attendedAppointments.failed | length }}</span>
+                    <span class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">Attendances</span>
+                </dd>
 
                 {% for failed in attendedFailed | sort(true, false, 'count') %}
-                    <div class="govuk-body govuk-!-margin-0">
-                        <dt class="govuk-body pac-dashboard-count">{{ failed.count }}</dt>
-                        <dd class="govuk-body govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ failed.description }}</dd>
-                    </div>
+                    <dd class="govuk-body govuk-!-margin-0">
+                        <span class="govuk-body pac-dashboard-count">{{ failed.count }}</span>
+                        <span class="govuk-body govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ failed.description }}</span>
+                    </dd>
                 {% endfor %}
-
-                    <dt class="govuk-heading-m govuk-!-margin-bottom-1 pac-dashboard-count">{{ absentAppointments.failed | length }}</dt>
-                    <dd class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">Absences</dd>
-
+                <dd class="govuk-!-margin-left-0 govuk-!-margin-top-1">
+                    <span class="govuk-heading-m govuk-!-margin-bottom-1 pac-dashboard-count">{{ absentAppointments.failed | length }}</span>
+                    <span class="govuk-body govuk-!-font-weight-bold govuk-!-margin-left-0 govuk-!-margin-bottom-0 govuk-!-display-inline-block">Absences</span>
+                </dd>
 
                 {% for failed in absentFailed | sort(true, false, 'count') %}
-                    <div class="govuk-body govuk-!-margin-0">
-                        <dt class="govuk-body pac-dashboard-count">{{ failed.count }}</dt>
-                        <dd class="govuk-body govuk-!-margin-left-0 govuk govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ failed.description }}</dd>
-                    </div>
+                    <dd class="govuk-body govuk-!-margin-0">
+                        <span class="govuk-body pac-dashboard-count">{{ failed.count }}</span>
+                        <span class="govuk-body govuk-!-margin-left-0 govuk govuk-!-margin-bottom-0 govuk-!-display-inline-block">{{ failed.description }}</span>
+                    </dd>
                 {% endfor %}
-                </div>
-        </dl>
+            </dl>
+        </div>
 
 
         {% if awaitingOutcome.length > 0 %}
@@ -394,7 +411,9 @@
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-width-two-thirds">
 
                 <dl class="govuk-grid-row">
-                    <dt class="govuk-grid-column-one-third pac-!-grid-column-18 govuk-heading-m govuk-!-margin-bottom-2"><h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">Awaiting outcome</h3></dt>
+                    <dt class="govuk-grid-column-one-third pac-!-grid-column-18 govuk-heading-m govuk-!-margin-bottom-2">
+                        <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
+                            Awaiting outcome</h3></dt>
                     <dd class="govuk-grid-column-two-thirds govuk-!-margin-top-0 govuk-heading-m govuk-!-margin-left-0 govuk-!-margin-bottom-1 govuk-!-text-align-left pac-dashboard-count">{{ awaitingOutcome | length }}</dd>
                 </dl>
             {% endif %}
