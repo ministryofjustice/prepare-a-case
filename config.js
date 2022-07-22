@@ -62,6 +62,7 @@ module.exports = {
       { code: 'B42CM', name: 'Chelmsford Magistrates\' Court and Family Court' },
       { code: 'B53DJ', name: 'Cheltenham Magistrates\' Court' },
       { code: 'B07DM', name: 'Chester Magistrates\' Court' },
+      { code: 'B53DT', name: 'Cirencester Magistrates\' Court' },
       { code: 'B30PG', name: 'North East Derbyshire & Dales (Chesterfield) Magistrates\' Court' },
       { code: 'B01DU', name: 'City of London Magistrates\' Court' },
       { code: 'B42CO', name: 'Colchester Magistrates\' Court and Family Court' },
