@@ -9,6 +9,10 @@ const getPsrRequestedConvictions = communityResponse => {
     })
 }
 
+const getOrderTitle = communityResponse => {
+  return communityResponse.sentence.description + (communityResponse.sentence.length ? ' (' + communityResponse.sentence.length + ' ' + communityResponse.sentence.lengthUnits + ')' : '')
+}
+
 const getLastSentencedConvictionPSR = communityResponse => {
   return communityResponse.convictions?.filter(conviction => conviction.sentence?.sentenceId && conviction.documents?.length)
     .flatMap(c => c.documents)
@@ -23,5 +27,6 @@ const getNormalisedCourtRoom = courtRoomStr => isNaN(courtRoomStr)
 module.exports = {
   getPsrRequestedConvictions,
   getLastSentencedConvictionPSR,
-  getNormalisedCourtRoom
+  getNormalisedCourtRoom,
+  getOrderTitle
 }

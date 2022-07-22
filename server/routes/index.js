@@ -14,6 +14,7 @@ const {
   getRiskDetails,
   getCustodyDetails
 } = require('../services/community-service')
+const { getOrderTitle } = require('./helpers')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
@@ -205,7 +206,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId?', defaults, catchErrors(async (req, res) => {
     const { params: { convictionId } } = req
     const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Order details'
 
     const { data: { crn } } = templateValues
     let communityResponse = await getConviction(crn, convictionId)
@@ -224,6 +224,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
 
     templateValues.data.communityData = communityResponse || {}
+
+    templateValues.title = getOrderTitle(communityResponse)
+
     res.render('case-summary-record-order', templateValues)
   }))
 
