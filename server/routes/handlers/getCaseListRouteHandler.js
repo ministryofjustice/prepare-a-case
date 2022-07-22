@@ -1,6 +1,5 @@
 const getBaseDateString = require('../../utils/getBaseDateString')
 const { settings } = require('../../../config')
-const moment = require('moment')
 
 const getCaseListRouteHandler = caseService => async (req, res) => {
   const {

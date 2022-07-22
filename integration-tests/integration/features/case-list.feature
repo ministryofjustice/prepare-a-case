@@ -14,7 +14,7 @@ Feature: Case list
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should see the current day as "Today"
-    And I should see 7 days navigation bar
+    And I should see 13 days navigation bar
 
     And I should see link "Review defendants with possible NDelius records" with href "/B14LO/match/bulk/"
     And I should see the matching inset text "2 defendants partially match existing records and need review"
@@ -74,7 +74,7 @@ Feature: Case list
     # Repeat some tests to ensure UI is consistent on subsequent pages
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should see the current day as "Today"
-    And I should see 7 days navigation bar
+    And I should see 13 days navigation bar
 
     And I should see link "Review defendants with possible NDelius records" with href "/B14LO/match/bulk/"
     And I should see the matching inset text "2 defendants partially match existing records and need review"
@@ -274,7 +274,7 @@ Feature: Case list
     When I navigate to the "cases/2020-01-02" route
     Then I should be on the "Case list" page
     And I should see the current day as "Thursday 2 January"
-    And I should not see 7 days navigation bar
+    And I should not see days navigation bar
     And I should see link "Go to today" with href "/cases"
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
@@ -301,7 +301,7 @@ Feature: Case list
     When I navigate to the "cases/2020-01-01" route
     Then I should be on the "Case list" page
     And I should see the current day as "Wednesday 1 January"
-    And I should not see 7 days navigation bar
+    And I should not see days navigation bar
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should not see that any defendants have possible NDelius records
