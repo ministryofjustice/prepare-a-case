@@ -2,7 +2,7 @@
 const {
   getPsrRequestedConvictions,
   getNormalisedCourtRoom,
-  getLastSentencedConvictionPSR
+  getLastSentencedConvictionPSR, getOrderTitle
 } = require('../../server/routes/helpers')
 
 const convictions = [
@@ -131,6 +131,32 @@ const convictions = [
   }
 ]
 describe('helpers', () => {
+  describe('getOrderTitle', () => {
+    it('should render a title including the sentence description and length', () => {
+      const communityResponse = {
+        sentence: {
+          description: 'ORA Community Order',
+          length: 4,
+          lengthUnits: 'Months'
+        }
+      }
+      const result = getOrderTitle(communityResponse)
+
+      expect(result).toBe('ORA Community Order (4 Months)')
+    })
+
+    it('should render a title when no sentence length is available', () => {
+      const communityResponse = {
+        sentence: {
+          description: 'ORA Community Order'
+        }
+      }
+      const result = getOrderTitle(communityResponse)
+
+      expect(result).toBe('ORA Community Order')
+    })
+  })
+
   describe('getPsrRequestedConvictions', () => {
     it('Should find convictions with psr requested status and return main offence and psr report details', () => {
       const actual = getPsrRequestedConvictions({ convictions })
