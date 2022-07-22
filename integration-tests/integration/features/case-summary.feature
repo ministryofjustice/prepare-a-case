@@ -371,7 +371,7 @@ Feature: Case summary
     And I should see the level 2 heading "Lenore Marquez"
 
     When I click the "ORA Community Order (18 Months)" link
-    Then I should be on the "Order details" page
+    Then I should be on the "ORA Community Order (18 Months)" page
     And I should see the heading "ORA Community Order (18 Months)"
     And I should see the level 2 heading "Attendance"
 
@@ -410,7 +410,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876" base route
-    Then I should be on the "Order details" page
+    Then I should be on the "ORA Adult Custody (inc PSS) (12 Months)" page
 
     And I should see the text "Post-release status" within element with class "qa-start-title"
     And I should see the text "Licence started" within element with class "qa-end-title"
@@ -434,7 +434,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/9b9a6ab6-ef6d-485a-a8b4-b79b67e5b1f8/defendant/82bfc40d-389a-46ba-81e1-0829a5fbf6c8/record/345464567" base route
-    Then I should be on the "Order details" page
+    Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
 
     And I should see the text "Status" within element with class "qa-elapsed-title"
     And I should see the text "In custody" within element with class "qa-elapsed-time"
@@ -453,7 +453,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876" base route
-    Then I should be on the "Order details" page
+    Then I should be on the "ORA Adult Custody (inc PSS) (12 Months)" page
 
     And I should see link "View licence conditions details" with href "/record/1309234876/licence-details"
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876/licence-details" base route
@@ -472,7 +472,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/2360414697" base route
-    Then I should be on the "Order details" page
+    Then I should be on the "ORA Adult Custody (inc PSS) (18 Months)" page
 
     And I should see the text "Post-release status" within element with class "qa-start-title"
     And I should see the text "PSS started" within element with class "qa-end-title"
@@ -506,7 +506,7 @@ Feature: Case summary
     And I should see link "ORA Community Order (18 Months)" with href "record/1361422142"
     And I should see the breach badge
     When I click the "ORA Community Order (18 Months)" link
-    Then I should be on the "Order details" page
+    Then I should be on the "ORA Community Order (18 Months)" page
     And I should see the heading "ORA Community Order (18 Months)"
 
     And I should see the body text "Abstracting electricity - 04300"
@@ -600,7 +600,7 @@ Feature: Case summary
     And I should see the level 2 heading "Lenore Marquez"
 
     When I click the "CJA - Std Determinate Custody" link
-    Then I should be on the "Order details" page
+    Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
     And I should see the heading "CJA - Std Determinate Custody"
 
     And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
@@ -641,7 +641,7 @@ Feature: Case summary
     And I should see the level 2 heading "Lenore Marquez"
 
     When I click the "ORA Community Order (18 Months)" link
-    Then I should be on the "Order details" page
+    Then I should be on the "ORA Community Order (18 Months)" page
     And I should see the heading "ORA Community Order (18 Months)"
     And I should see the level 2 heading "Requirements"
     And I should see the following table headings
@@ -655,7 +655,7 @@ Feature: Case summary
     And I should see the level 2 heading "Lenore Marquez"
 
     When I click the "CJA - Std Determinate Custody" link
-    Then I should be on the "Order details" page
+    Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
     And I should see the heading "CJA - Std Determinate Custody"
     And I should see the level 2 heading "Requirements"
     And I should see the following table headings

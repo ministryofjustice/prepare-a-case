@@ -3,6 +3,7 @@ const request = require('supertest')
 const mockDate = require('mockdate')
 const caseService = require('../../server/services/case-service')
 const communityService = require('../../server/services/community-service')
+const helpers = require('../../server/routes/helpers')
 const appSetup = require('../testUtils/appSetup')
 const { authenticationMiddleware } = require('../testUtils/mockAuthentication')
 
@@ -20,6 +21,7 @@ const viewRoute = createRouter({
 })
 
 jest.mock('../../server/routes/middleware/healthcheck')
+jest.mock('../../server/routes/helpers')
 jest.mock('../../server/services/case-service')
 jest.mock('../../server/services/community-service')
 
@@ -96,6 +98,8 @@ describe('Routes', () => {
       status: 200
     }
   })
+
+  jest.spyOn(helpers, 'getOrderTitle').mockImplementation(() => { return 'title' })
 
   beforeEach(() => {
     app = require('../../app')

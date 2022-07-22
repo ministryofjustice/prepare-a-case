@@ -36,11 +36,14 @@ describe('Case service', () => {
       }
     })
 
-    const response = await getCaseList('SHF', '2020-01-01')
-    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
-    expect(response.status).toBe(500)
-    expect(response.isError).toBe(true)
-    return response
+    try {
+      await getCaseList('SHF', '2020-01-01')
+    } catch (e) {
+      const response = e.response
+      expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
+      expect(response.status).toBe(500)
+      return response
+    }
   })
 
   it('should call the API to request case detail data', async () => {
@@ -60,11 +63,14 @@ describe('Case service', () => {
       response: {}
     })
 
-    const response = await getCase('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
-    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/hearing/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730`)
-    expect(response.isError).toBe(true)
-    expect(response.status).toBe(500)
-    return response
+    try {
+      await getCase('d9628cdd-c3a1-4113-80ba-ef3f8d18df9d', '2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    } catch (e) {
+      const response = e.response
+      expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/hearing/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730`)
+      expect(response.status).toBe(500)
+      return response
+    }
   })
 
   it('should filter the case list by probation status', async () => {
@@ -200,25 +206,13 @@ describe('Case service', () => {
       status: 500
     })
 
-    const response = await getCaseList('SHF', '2020-01-01')
-    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
-    expect(response).toStrictEqual({
-      isError: true,
-      status: 500
-    })
-    return response
-  })
-
-  it('should return default 500 error response when API call fails without response status', async () => {
-    const endpoint = `${apiUrl}/court/SHF/cases?date=2020-01-01`
-    moxios.stubRequest(endpoint, undefined)
-
-    const response = await getCaseList('SHF', '2020-01-01')
-    expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
-    expect(response).toStrictEqual({
-      isError: true,
-      status: 500
-    })
-    return response
+    try {
+      await getCaseList('SHF', '2020-01-01')
+    } catch (e) {
+      const response = e.response
+      expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/court/SHF/cases?date=2020-01-01`)
+      expect(response.status).toBe(500)
+      return response
+    }
   })
 })
