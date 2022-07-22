@@ -141,7 +141,6 @@ describe('helpers', () => {
         }
       }
       const result = getOrderTitle(communityResponse)
-
       expect(result).toBe('ORA Community Order (4 Months)')
     })
 
