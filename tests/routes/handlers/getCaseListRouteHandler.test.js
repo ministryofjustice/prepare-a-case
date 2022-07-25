@@ -66,7 +66,8 @@ describe('getCaseListRouteHandler', () => {
           subsection: '',
           to: 4,
           totalCount: 4,
-          totalDays: 7,
+          totalDays: 13,
+          casesPastDays: 6,
           unmatchedRecords: 2
         }
       })

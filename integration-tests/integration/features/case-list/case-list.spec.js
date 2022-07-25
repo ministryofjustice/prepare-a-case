@@ -5,11 +5,12 @@ And('I should see the current day as {string}', $string => {
   cy.get('.qa-case-list-day').eq(0).contains($string)
 })
 
-And('I should see 7 days navigation bar', () => {
+And('I should see 13 days navigation bar', () => {
   cy.get('.pac-days-navigation').should('exist')
+  cy.get('.pac-days-navigation-item').should('have.length', 13)
 })
 
-And('I should not see 7 days navigation bar', () => {
+And('I should not see days navigation bar', () => {
   cy.get('.pac-days-navigation').should('not.exist')
 })
 

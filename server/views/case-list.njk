@@ -80,11 +80,13 @@
 
 {% set isSunday = moment().day() === 0 %}
 {% set dateFormat = 'dddd D MMMM' %}
-{% set useTodayDate = moment() if not isSunday else moment().add(1, 'days') %}
+{% set pastDate = moment().subtract(params.casesPastDays + 1, 'days') %}
+{% set useStartDate = pastDate if not isSunday else pastDate.subtract(1, 'days') %}
 {% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
 {% set today = moment().format('YYYY-MM-DD') %}
 {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
-{% set withinDateRange = currentDate.isBetween(moment(), params.addBusinessDays(moment(), params.totalDays - 1), 'day', '[]') %}
+{% set yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD') %}
+{% set withinDateRange = currentDate.isBetween(useStartDate, params.addBusinessDays(useStartDate, params.totalDays - 1), 'day', '[]') %}
 
 {% set maxPagesDisplay = 5 %}
 {% set currentPage = params.page %}
@@ -176,7 +178,9 @@
     {% endif %}
 
     <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-6" aria-label="Case list for {{ currentDate.format(dateFormat) }}">
-        {% if params.date === today %}
+        {% if params.date === yesterday and not isSunday %}
+            {{ currentDate.format(dateFormat) }} <span class="pac-secondary-text">(Yesterday)</span>
+        {% elseif params.date === today %}
             {{ currentDate.format(dateFormat) }} <span class="pac-secondary-text">(Today)</span>
         {% elseif params.date === tomorrow and not isSunday %}
             {{ currentDate.format(dateFormat) }} <span class="pac-secondary-text">(Tomorrow)</span>
@@ -192,8 +196,9 @@
             baseUrl:  '/' + params.courtCode + '/cases',
             addBusinessDays: params.addBusinessDays,
             totalDays: totalDays,
-            startDate: useTodayDate,
-            currentDate: currentDate
+            startDate: useStartDate,
+            currentDate: currentDate,
+            today: today
         }) }}
     {% else %}
         <nav class="govuk-body govuk-!-margin-bottom-6" aria-label="Date navigation">
