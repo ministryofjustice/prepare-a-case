@@ -86,7 +86,7 @@
                     </label>
                     {% for item in filter.items %}
                         {% if item.checked %}
-                            <button class="moj-filter__tag pac-filter__tag" type="button"
+                            <button class="moj-filter__tag pac-filter__tag" type="button" aria-label="Remove {{ item.label }}"
                                     data-controls="checkbox-{{ filter.id }}-{{ loop.index }}">{{ item.label }}</button>
                         {% endif %}
                     {% endfor %}
