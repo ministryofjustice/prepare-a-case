@@ -1,6 +1,7 @@
 .pac-days-navigation {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 
   &-item {
     display: flex;
