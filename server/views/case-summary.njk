@@ -38,8 +38,14 @@
 {% block caseContent %}
 
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
+        <div class="govuk-grid-column-three-quarters">
             <h1 class="govuk-heading-l">Case summary</h1>
+
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+            {% if enableCaseHistory %}
+                <a class="moj-primary-navigation__link" href="{{ caseHistoryUrl }}">View case history (&#946;)</a>
+            {% endif %}
         </div>
     </div>
 

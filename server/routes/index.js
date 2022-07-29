@@ -3,7 +3,7 @@ const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
 const { updateSelectedCourts } = require('../services/user-preference-service')
-const { getCaseList, getMatchDetails, deleteOffender, updateOffender } = require('../services/case-service')
+const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory } = require('../services/case-service')
 const {
   getDetails,
   getProbationRecord,
@@ -170,6 +170,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
       .redirect(302, `/${courtCode}/cases`)
   }))
 
+  if (settings.enableCaseHistory) {
+    router.get('/:courtCode/cases/:caseId/history', defaults, catchErrors(async (req, res) => {
+      const data = await getCaseHistory(req.params.caseId)
+      res.render('case-history', { caseId: data.caseId, params: req.params, data: JSON.stringify(data, null, 2) })
+    }))
+  }
+
   router.get('/:courtCode/cases/:date?/:subsection?', defaults, catchErrors(getCaseListHandler))
 
   router.post('/:courtCode/cases/:date?/:subsection?', defaults, catchErrors(async (req, res) => {
@@ -187,12 +194,14 @@ module.exports = function Index ({ authenticationMiddleware }) {
   }))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
-    const { session, path } = req
+    const { session, path, params: { courtCode } } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Case summary'
     templateValues.session = {
       ...session
     }
+    templateValues.enableCaseHistory = settings.enableCaseHistory
+    templateValues.caseHistoryUrl = `/${courtCode}/cases/${templateValues.data.caseId}/history`
     session.confirmedMatch = undefined
     session.matchName = undefined
     session.matchType = 'defendant'

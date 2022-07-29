@@ -1,0 +1,10 @@
+{% extends "partials/layout.njk" %}
+
+{% block content %}
+    <h1 class="qa-case-list-day govuk-heading-m govuk-!-margin-bottom-6" aria-label="Case history for {{ caseId }}">
+        Case history for {{ caseId }}
+    </h1>
+    <pre class="case-history">
+       {{ data }}
+    </pre>
+{% endblock %}
