@@ -20,7 +20,7 @@ Feature: Case list
     And I should see the matching inset text "2 defendants partially match existing records and need review"
 
     And I should see a tab with text "Case list"
-    And I should see a tab with text "Recently added (4)"
+    And I should see a tab with text "Recently added (21)"
     And I should see a tab with text "Removed cases (1)"
 
     And I should see a count of "207 cases"
@@ -80,7 +80,7 @@ Feature: Case list
     And I should see the matching inset text "2 defendants partially match existing records and need review"
 
     And I should see a tab with text "Case list"
-    And I should see a tab with text "Recently added (4)"
+    And I should see a tab with text "Recently added (21)"
     And I should see a tab with text "Removed cases (1)"
 
     And I should see a count of "207 cases"
@@ -217,10 +217,10 @@ Feature: Case list
     When I navigate to the "cases" route for today
     Then I should be on the "Case list" page
 
-    When I click the "Recently added (4)" link
+    When I click the "Recently added (21)" link
     Then I should be on the "Recently added cases" page
 
-    Then I should see medium heading with text "4 cases added to today's case list."
+    Then I should see medium heading with text "21 cases added to today's case list."
 
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
@@ -230,16 +230,22 @@ Feature: Case list
       | Obrien McCall | No record        | Theft from a shop  | 2nd | Morning | 8 |
 
     And I should see link "Sara Ortega" with href "/hearing/228fdfe6-0056-47ce-974d-b0ba9cc6d6f8/defendant/c8fe5f8a-57f2-43a0-b5fb-73562036f080/summary"
-    And I should see link "Obrien McCall" with href "/hearing/f9a66faa-a758-46d3-928c-8666367f6649/defendant/b8ea0ada-bc7f-4aed-99e3-1b3146274df6/summary"
+    And I should see link "Pamela Stanton" with href "/hearing/f9a66faa-a758-46d3-928c-8666367f6649/defendant/b8ea0ada-bc7f-4aed-99e3-1b3146274df6/summary"
 
-    And I should not see pagination
+    And I should see pagination
+    And I should not see pagination link "Previous"
+    And I should not see pagination link "1"
+    And I should see pagination page "1" highlighted
+    And I should see pagination link "2" with href "added?page=2"
+    And I should see pagination link "Next" with href "added?page=2"
+    And I should see pagination text "Showing 1 to 20 of 21 results"
     And I should not see filters
     And There should be no a11y violations
 
     # Test state held in session
     When I navigate to the "cases" route
     Then I should be on the "Recently added cases" page
-    And I should see medium heading with text "4 cases added to today's case list."
+    And I should see medium heading with text "21 cases added to today's case list."
 
   Scenario: View the removed cases on the case list
     Given I am an authenticated user
