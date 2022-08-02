@@ -26,7 +26,6 @@ module.exports = {
     casesPastDays: get('CASES_PAST_DAYS', 6),
     casesExcludedDays: get('CASES_EXCLUDED_DAYS', '0'), // Coma delimited String of days to exclude, incremental from 0 (Sunday)
     snapshotTimes: get('CASE_SNAPSHOT_TIMES', '00:00,08:45,09:45'), // Coma delimited string of snapshot times, earliest - latest
-    enableCaseHistory: get('ENABLE_CASE_HISTORY', false),
     assetCache: '30d',
     scriptCache: '24h',
     availableCourts: [

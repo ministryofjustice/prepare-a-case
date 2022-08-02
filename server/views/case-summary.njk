@@ -42,10 +42,8 @@
             <h1 class="govuk-heading-l">Case summary</h1>
 
         </div>
-        <div class="govuk-grid-column-one-quarter">
-            {% if enableCaseHistory %}
-                <a class="moj-primary-navigation__link" href="{{ caseHistoryUrl }}">View case history (&#946;)</a>
-            {% endif %}
+        <div hidden class="govuk-grid-column-one-quarter">
+            <a class="govuk-link" href="{{ caseHistoryUrl }}">View case history (&#946;)</a>
         </div>
     </div>
 

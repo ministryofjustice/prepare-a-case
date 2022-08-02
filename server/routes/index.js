@@ -170,12 +170,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
       .redirect(302, `/${courtCode}/cases`)
   }))
 
-  if (settings.enableCaseHistory) {
-    router.get('/:courtCode/cases/:caseId/history', defaults, catchErrors(async (req, res) => {
-      const data = await getCaseHistory(req.params.caseId)
-      res.render('case-history', { caseId: data.caseId, params: req.params, data: JSON.stringify(data, null, 2) })
-    }))
-  }
+  router.get('/:courtCode/cases/:caseId/history', defaults, catchErrors(async (req, res) => {
+    const data = await getCaseHistory(req.params.caseId)
+    res.render('case-history', { caseId: data.caseId, params: req.params, data: JSON.stringify(data, null, 2) })
+  }))
 
   router.get('/:courtCode/cases/:date?/:subsection?', defaults, catchErrors(getCaseListHandler))
 
