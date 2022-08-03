@@ -35,8 +35,9 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
       addedCount: response.addedCount,
       removedCount: response.removedCount,
       unmatchedRecords: response.unmatchedRecords,
-      totalDays: settings.casesTotalDays,
-      casesPastDays: settings.casesPastDays,
+      totalDays: settings.enablePastCasesNavigation ? settings.casesTotalDays : 7,
+      casesPastDays: settings.enablePastCasesNavigation ? settings.casesPastDays : -1,
+      enablePastCasesNavigation: settings.enablePastCasesNavigation,
       subsection: subsection || (!date && session.currentView) || '',
       filtersApplied: !!session.selectedFilters && Object.keys(session.selectedFilters).length,
       snapshot: response.snapshot
