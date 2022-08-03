@@ -13,6 +13,10 @@ const defaultFilterMatcher = (courtCase, filterObj, item) => courtCase[filterObj
 
 const createCaseService = (apiUrl) => {
   return {
+    getCaseHistory: async (caseId) => {
+      const res = await request(`${apiUrl}/cases/${caseId}`)
+      return res.data
+    },
     getMatchDetails: async (defendantId) => {
       const res = await request(`${apiUrl}/defendant/${defendantId}/matchesDetail`) || { data: {} }
       return res.data
