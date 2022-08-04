@@ -83,5 +83,7 @@ env:
   - name: USER_PREFERENCE_SERVICE_URL
     value: {{ .Values.env.USER_PREFERENCE_SERVICE_URL | quote }}
 
+  - name: ENABLE_PAST_CASES_NAVIGATION
+    value: {{ .Values.env.ENABLE_PAST_CASES_NAVIGATION }}
 
 {{- end -}}
