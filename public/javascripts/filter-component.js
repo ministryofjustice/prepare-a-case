@@ -16,6 +16,20 @@
     var filterButtons = document.getElementsByClassName('pac-filter-button')
     var main = document.getElementsByClassName('govuk-main-wrapper')
 
+    function checkFiltersFocus (e) {
+      var target = e.target && e.target.id.substr(e.target.id.indexOf('-') + 1)
+      var relatedTarget = e.relatedTarget && e.relatedTarget.id.substr(e.relatedTarget.id.indexOf('-') + 1)
+      if (!relatedTarget || relatedTarget.indexOf(target) === -1) {
+        var filterSections = document.getElementsByClassName('pac-filter-selection')
+        Array.prototype.forEach.call(filterButtons, function (element, index) {
+          element.setAttribute('aria-expanded', false)
+          element.classList.remove('pac-filter-button--open')
+          filterSections[index].classList.add('moj-js-hidden')
+          element.active = false
+        })
+      }
+    }
+
     function toggleFilter (e) {
       e.stopPropagation()
       var $el = e.target
@@ -33,11 +47,18 @@
     }
 
     Array.prototype.forEach.call(filterButtons, function (element) {
+      element.addEventListener('focus', checkFiltersFocus)
+      element.addEventListener('blur', checkFiltersFocus)
       element.addEventListener('click', toggleFilter)
     })
 
     Array.prototype.forEach.call(main, function (element) {
       element.addEventListener('click', toggleFilter)
+    })
+
+    var applyFiltersButton = document.getElementsByClassName('pac-apply-filters-button')
+    Array.prototype.forEach.call(applyFiltersButton, function (element) {
+      element.addEventListener('focus', checkFiltersFocus)
     })
   }
 
