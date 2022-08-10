@@ -1,6 +1,6 @@
 // A central file where all the handlers are created with necessary dependencies injected
 
-const { getCaseList, getCase } = require('../../services/case-service')
+const { getCaseList, getCase, addCaseComment } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
 const { getUserSelectedCourts } = require('../../services/user-preference-service')
 
@@ -12,9 +12,12 @@ const getProbationRecordHandler = require('./getProbationRecordRouteHandler')({ 
 
 const getUserSelectedCourtsHandler = require('./getUserSelectedCourtsHandler')(getUserSelectedCourts)
 
+const addCaseCommentRequestHandler = require('./getAddCommentRequestHandler')({ addCaseComment })
+
 module.exports = {
   getCaseListHandler,
   getCaseAndTemplateValues,
   getProbationRecordHandler,
-  getUserSelectedCourtsHandler
+  getUserSelectedCourtsHandler,
+  addCaseCommentRequestHandler
 }

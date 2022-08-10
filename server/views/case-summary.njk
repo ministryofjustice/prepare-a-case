@@ -168,4 +168,39 @@
         <div class="govuk-grid-column-one-third"></div>
     </div>
 
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            <h2 class="govuk-heading-m">Comments</h2>
+            <p id="comments-hint-p1" class="govuk-body">
+                Add notes and observations about this case. Your colleagues who use Prepare a Case will be able to read them.
+            </p>
+            <p id="comments-hint-p2" class="govuk-body">
+                These comments will not be saved to NDelius.
+            </p>
+            <form class="govuk-form-group govuk-!-margin-bottom-0" method="post" action="comment" novalidate="">
+                <textarea class="govuk-textarea" id="comment" name="comment" rows="5" aria-describedby="more-detail-hint"></textarea>
+                <input type="hidden" name="caseId" value="{{ data.caseId }}">
+                <button class="govuk-button" data-module="govuk-button">Save</button>
+            </form>
+            {% if data.caseComments | length %}
+                <h2 class="govuk-heading-s">Comments</h2>
+                <table class="govuk-table" id="comments">
+                    <tbody class="govuk-table__body">
+                        {% for comment in data.caseComments %}
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">
+                                    {{ comment.comment }}<br>
+                                    <span class="govuk-caption-m govuk-!-padding-top-2 govuk-!-padding-bottom-2 govuk-!-font-size-16">
+                                        {{ comment.author }} on {{ comment.created | caseCommentTimeFormat }}
+                                    </span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+
 {% endblock %}

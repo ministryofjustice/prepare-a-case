@@ -18,7 +18,7 @@ const { getOrderTitle } = require('./helpers')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
-const { getCaseListHandler, getCaseAndTemplateValues, getProbationRecordHandler, getUserSelectedCourtsHandler } = require('../routes/handlers')
+const { getCaseListHandler, getCaseAndTemplateValues, getProbationRecordHandler, getUserSelectedCourtsHandler, addCaseCommentRequestHandler } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 
 module.exports = function Index ({ authenticationMiddleware }) {
@@ -207,6 +207,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.backLink = path
     res.render('case-summary', templateValues)
   }))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/comment', defaults, catchErrors(addCaseCommentRequestHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))
 

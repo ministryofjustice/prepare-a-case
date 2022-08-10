@@ -1,0 +1,17 @@
+{
+  "id": "4da534af-1ccf-47f2-90eb-cdab00cf54a9",
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/cases/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/comments"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 201,
+    "jsonBody": {
+      "caseId": "0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec",
+      "comment": "case comment example"
+    }
+  }
+}

@@ -2,7 +2,7 @@
 const moxios = require('moxios')
 const config = require('../../config')
 
-const { getCaseList, getCase, getMatchDetails, updateOffender, deleteOffender } = require('../../server/services/case-service')
+const { getCaseList, getCase, getMatchDetails, updateOffender, deleteOffender, addCaseComment } = require('../../server/services/case-service')
 
 const apiUrl = config.apis.courtCaseService.url
 
@@ -214,5 +214,20 @@ describe('Case service', () => {
       expect(response.status).toBe(500)
       return response
     }
+  })
+
+  it('should call the API to create comment', async () => {
+    const endpoint = `${apiUrl}/cases/2e0afeb7-95d2-42f4-80e6-ccf96b282730/comments`
+    moxios.stubRequest(endpoint, {
+      status: 201
+    })
+
+    const caseId = '2e0afeb7-95d2-42f4-80e6-ccf96b282730'
+    const comment = 'A comment'
+    const author = 'Adam Sandler'
+    const response = await addCaseComment(caseId, comment, author)
+    expect(moxios.requests.mostRecent().url).toBe(endpoint)
+    expect(moxios.requests.mostRecent().config.data).toBe(JSON.stringify({ caseId, comment, author }))
+    return response
   })
 })

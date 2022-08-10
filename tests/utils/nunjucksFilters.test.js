@@ -38,4 +38,12 @@ describe('nunjucksFilters', () => {
       expect(filters.ordinalNumber(value.input)).toEqual(value.expected)
     })
   })
+
+  it.each([
+    ['2022-08-09T17:17:09.555', '9 August 2022, 17:17'],
+    ['2022-8-9T11:17:09', 'Invalid date'],
+    [undefined, 'Not available']
+  ])('should format JSON datetime %s as %s', (input, expected) => {
+    expect(filters.caseCommentTimeFormat(input)).toEqual(expected)
+  })
 })
