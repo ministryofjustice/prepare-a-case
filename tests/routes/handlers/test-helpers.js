@@ -16,7 +16,8 @@ module.exports = {
     render: jest.fn(),
     redirect: jest.fn(),
     locals: {
-      name: 'Adam Sandler'
+      name: 'Adam Sandler',
+      uuid: 'test-user-uuid'
     }
   },
   getCaseAndTemplateValuesMock: jest.fn()

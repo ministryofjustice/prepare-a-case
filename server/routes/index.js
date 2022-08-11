@@ -205,6 +205,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.matchType = 'defendant'
     session.matchDate = undefined
     session.backLink = path
+    session.caseCommentBlankError = undefined
     res.render('case-summary', templateValues)
   }))
 
