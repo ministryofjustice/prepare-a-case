@@ -20,6 +20,7 @@ const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
 const { getCaseListHandler, getCaseAndTemplateValues, getProbationRecordHandler, getUserSelectedCourtsHandler, addCaseCommentRequestHandler } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
+const moment = require('moment')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -198,6 +199,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.session = {
       ...session
     }
+    templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
+      return moment(b.created).unix() - moment(a.created).unix()
+    })
     templateValues.enableCaseHistory = settings.enableCaseHistory
     templateValues.caseHistoryUrl = `/${courtCode}/cases/${templateValues.data.caseId}/history`
     session.confirmedMatch = undefined

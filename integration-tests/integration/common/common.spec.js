@@ -7,6 +7,27 @@ const shortDateFormat = 'YYYY-MM-DD'
 const longDateFormat = 'dddd D MMMM'
 const displayDateFormat = 'D MMM YYYY'
 
+// to log a11y violations
+function terminalLog (violations) {
+  cy.task(
+    'log',
+    `${violations.length} accessibility violation${
+      violations.length === 1 ? '' : 's'
+    } ${violations.length === 1 ? 'was' : 'were'} detected`
+  )
+  // pluck specific keys to keep the table readable
+  const violationData = violations.map(
+    ({ id, impact, description, nodes }) => ({
+      id,
+      impact,
+      description,
+      nodes: nodes.length
+    })
+  )
+
+  cy.task('table', violationData)
+}
+
 function correctDates ($string) {
   if ($string.includes('$TODAY')) {
     $string = $string.replace('$TODAY', moment().format(shortDateFormat))
@@ -204,7 +225,7 @@ And('I should see the caption {string}', $caption => {
 
 And('There should be no a11y violations', () => {
   cy.injectAxe()
-  cy.checkA11y('main#main-content')
+  cy.checkA11y('main#main-content', null, terminalLog)
 })
 
 And('I should see the body text {string}', $text => {
@@ -373,6 +394,18 @@ And('I should see the success banner message {string}', $string => {
   cy.get('.moj-banner--success').contains($string).should('exist')
 })
 
+And('I should see a textarea with id {string}', $comment => {
+  cy.get(`#${$comment}`).should('exist')
+})
+
 And('I should see a count of {string}', $string => {
   cy.get('.govuk-heading-m').contains(`${$string}`).should('exist')
+})
+
+And('I should see the following summary list', $data => {
+  cy.get('.govuk-summary-list').within(() => {
+    $data.raw().forEach((text, index) => {
+      cy.get(index % 2 === 0 ? '.govuk-summary-list__key' : '.govuk-summary-list__value').eq(index).contains(text[index % 2])
+    })
+  })
 })

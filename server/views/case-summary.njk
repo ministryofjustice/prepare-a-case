@@ -173,28 +173,30 @@
             <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
             <h2 class="govuk-heading-m">Comments</h2>
             <div class="govuk-form-group {{ "govuk-form-group--error" if session.caseCommentBlankError }}">
-                <p id="comments-hint-p1" class="govuk-body">
-                    Add notes and observations about this case. Your colleagues who use Prepare a Case will be able to read them.
-                </p>
-                <p id="comments-hint-p2" class="govuk-body govuk-!-margin-bottom-5">
-                    These comments will not be saved to NDelius.
-                </p>
+                <div id="comments-hint">
+                    <p id="comments-hint-p1" class="govuk-body">
+                        Add notes and observations about this case. Your colleagues who use Prepare a Case will be able to read them.
+                    </p>
+                    <p id="comments-hint-p2" class="govuk-body govuk-!-margin-bottom-5">
+                        These comments will not be saved to NDelius.
+                    </p>
+                </div>
                 {% if session.caseCommentBlankError %}
-                    <p id="more-detail-error" class="govuk-error-message govuk-!-margin-bottom-4">
+                    <p id="comment-error" class="govuk-error-message govuk-!-margin-bottom-4">
                         <span class="govuk-visually-hidden">Error:</span> Enter a comment
                     </p>
                 {% endif %}
                 <form method="post" action="comment">
-                    <textarea class="govuk-textarea {{ "govuk-textarea--error" if session.caseCommentBlankError }}" id="comment" name="comment" rows="5"></textarea>
-                    <button type="submit" class="govuk-button" style="margin-bottom: 0" data-module="govuk-button">Save</button>
+                    <textarea class="govuk-textarea{{ " govuk-textarea--error" if session.caseCommentBlankError }}" id="comment" name="comment" rows="5" aria-labelledby="comments-hint"></textarea>
+                    <button type="submit" id="save-comments" class="govuk-button" style="margin-bottom: 0 !important" data-module="govuk-button">Save</button>
                     <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
                 </form>
             </div>
 
             {% if data.caseComments | length %}
-                <form name="previousComments" id="previousComments" method="post" action="summary/previousComments">
+                <form name="previousCommentsForm" method="post" action="summary/previousComments">
                     <h2 class="govuk-heading-s">Comments</h2>
-                    <table class="govuk-table" id="comments">
+                    <table class="govuk-table" id="previousComments">
                         <tbody class="govuk-table__body">
                         {% if session.showPreviousComments === data.caseId %}
                             {% set limitPreviousComments = data.caseComments | length %}
