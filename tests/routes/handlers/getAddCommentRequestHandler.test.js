@@ -24,6 +24,6 @@ describe('getAddCommentRequestHandler', () => {
 
     // Then
     expect(caseServiceMock.addCaseComment).toHaveBeenLastCalledWith(testCaseId, 'A comment', 'Adam Sandler', 'test-user-uuid')
-    expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode} + '/hearing/${testHearingId}/defendant/${testDefendantId}/summary#caseComments`)
+    expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/hearing/${testHearingId}/defendant/${testDefendantId}/summary#caseComments`)
   })
 })

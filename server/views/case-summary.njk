@@ -192,21 +192,33 @@
             </div>
 
             {% if data.caseComments | length %}
-                <h2 class="govuk-heading-s">Comments</h2>
-                <table class="govuk-table" id="comments">
-                    <tbody class="govuk-table__body">
-                    {% for comment in data.caseComments %}
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">
-                                {{ comment.comment }}<br>
-                                <span class="govuk-caption-m govuk-!-padding-top-2 govuk-!-padding-bottom-2 govuk-!-font-size-16">
-                                            {{ comment.author }} on {{ comment.created | caseCommentTimeFormat }}
-                                        </span>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                <form name="previousComments" id="previousComments" method="post" action="summary/previousComments">
+                    <h2 class="govuk-heading-s">Comments</h2>
+                    <table class="govuk-table" id="comments">
+                        <tbody class="govuk-table__body">
+                        {% if session.showPreviousComments === data.caseId %}
+                            {% set limitPreviousComments = data.caseComments | length %}
+                        {% else %}
+                            {% set limitPreviousComments = 6 %}
+                        {% endif %}
+                        {% for comment in data.caseComments | limit(limitPreviousComments) %}
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">
+                                    {{ comment.comment }}<br>
+                                    <span class="govuk-caption-m govuk-!-padding-top-2 govuk-!-padding-bottom-2 govuk-!-font-size-16">
+                                        {{ comment.author }} on {{ comment.created | caseCommentTimeFormat }}
+                                    </span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
+                    {% if data.caseComments | length > limitPreviousComments %}
+                        <button type="submit" class="govuk-button govuk-button--secondary">Show all previous comments
+                        </button>
+                    {% endif %}
+                </form>
             {% endif %}
         </div>
     </div>

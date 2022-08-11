@@ -209,6 +209,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary', templateValues)
   }))
 
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/previousComments', defaults, catchErrors(async (req, res) => {
+    const { params: { courtCode, hearingId, defendantId }, session, body: { caseId } } = req
+    session.showPreviousComments = caseId
+    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
+  }))
+
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/comment', defaults, catchErrors(addCaseCommentRequestHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))

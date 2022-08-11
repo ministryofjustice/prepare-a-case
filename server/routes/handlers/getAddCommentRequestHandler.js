@@ -7,7 +7,7 @@ const getAddCaseCommentHandler = caseService => async (req, res) => {
     await caseService.addCaseComment(caseId, comment, res.locals.name, res.locals.uuid)
   }
 
-  res.redirect(`/${courtCode} + '/hearing/${hearingId}/defendant/${defendantId}/summary#caseComments`)
+  res.redirect(`/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseComments`)
 }
 
 module.exports = getAddCaseCommentHandler
