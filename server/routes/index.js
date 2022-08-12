@@ -203,6 +203,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       return moment(b.created).unix() - moment(a.created).unix()
     })
     templateValues.enableCaseHistory = settings.enableCaseHistory
+    templateValues.enableCaseComments = settings.enableCaseComments
     templateValues.caseHistoryUrl = `/${courtCode}/cases/${templateValues.data.caseId}/history`
     session.confirmedMatch = undefined
     session.matchName = undefined
@@ -213,13 +214,19 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-summary', templateValues)
   }))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/previousComments', defaults, catchErrors(async (req, res) => {
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/showPreviousComments', defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, hearingId, defendantId }, session, body: { caseId } } = req
     session.showPreviousComments = caseId
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
   }))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/comment', defaults, catchErrors(addCaseCommentRequestHandler))
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/hideOlderComments', defaults, catchErrors(async (req, res) => {
+    const { params: { courtCode, hearingId, defendantId }, session } = req
+    session.showPreviousComments = undefined
+    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
+  }))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))
 

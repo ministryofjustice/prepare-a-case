@@ -1,8 +1,8 @@
-
 Feature: Case comments
-  In order to add comments
+  I need to quickly and easily record notes about a case
+  So that I can make important information, or actions, visible to others
   As an authenticated user
-  I want to see a case comments
+  I want to add and see a case's comments
 
   Scenario: View case comments on case summary page
     Given I am an authenticated user
@@ -28,6 +28,19 @@ Feature: Case comments
 
     When I click the "Show all previous comments" button
     Then I should see 10 previous comments
+
+    And I should see the following comments with the comment, author and date commented on
+      | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 |
+      | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     |
+      | Comment Eight     | Author Two on 19 August 2022, 17:17          |
+      | PSR completed     | Author Two on 19 August 2022, 17:17          |
+      | Comment One       | Adam Sandler on 9 August 2022, 17:17         |
+      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17     |
+
+    And I should see a button with the label "Hide older comments"
+
+    When I click the "Hide older comments" button
+    Then I should see 6 previous comments
 
     And I should see the following comments with the comment, author and date commented on
       | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 |
