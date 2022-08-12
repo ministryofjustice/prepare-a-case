@@ -54,6 +54,19 @@ Feature: Case comments
       | Comment One       | Adam Sandler on 9 August 2022, 17:17         |
       | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17     |
 
+    And I should see a button with the label "Hide older comments"
+
+    When I click the "Hide older comments" button
+    Then I should see 6 previous comments
+
+    And I should see the following comments with the comment, author and date commented on
+      | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 |
+      | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     |
+      | Comment Eight     | Author Two on 19 August 2022, 17:17          |
+      | PSR completed     | Author Two on 19 August 2022, 17:17          |
+      | Comment One       | Adam Sandler on 9 August 2022, 17:17         |
+      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17     |
+
   Scenario: Should show error when the save button is clicked without a comment
     Given I am an authenticated user
     And I click the "Accept analytics cookies" button
