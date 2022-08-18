@@ -1,0 +1,71 @@
+{% extends "partials/layout.njk" %}
+
+{% block backlink %}
+
+    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
+    {{ govukBackLink({
+        text: backText or 'Go back',
+        href: backLink
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+    <form method="post" novalidate>
+        <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-l">Are you sure you want to delete this comment?</h1>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <div class="confirm-delete-box">
+                    <span class="govuk-caption-m govuk-!-padding-bottom-5">
+                        {{ author }} on {{ created }}
+                    </span>
+                    <span class="govuk-body">{{ comment }}
+                        hidden{display:none}.autocomplete__menu--overlay{box-shadow:rgba(0
+                        ,0,0,.256863) 0 2px 6px;left:0;position:absolute;top:100%;z-index:100}.autocomplete__menu--inline{position:relative}.autocomplete__option{border-bottom:soli
+                        d #b1b4b6;border-width:1px 0;cursor:pointer;display:block;position:relative}.autocomplete__option>*{pointer-events:none}.autocomplete__option:first-of-type{border-t
+                        op-width:0}.autocomplete__option:last-of-type{border-bottom-width:0}.autocomplete__option--odd{background-color:#fafafa}.autocomplete__option--focused,.autocomplete__op
+                        tion:hover{background-color:#1d70b8;border-color:#1d70b8;color:#fff;outline:0}@media (-ms-high-contrast:active),(forced-colors:active){.autocomplete__menu{border-color:Fie
+                        ldText}.autocomplete__option{background-color:Field;color:FieldText}.autocomplete__option--focused,.autocomplete__option:hover{forced-color-adjust:none;background-color:Highligh
+                        t;border-color:Highlight;color:HighlightText;background-color:SelectedItem;border-color:SelectedItem;color:SelectedItemText;outline-color:SelectedItemText}}.autocomplete__option--
+                        no-results{background-color:#fafafa;color:#646b6f;cursor:not-allowed}.autocomplete__hint,.autocomplete__input,.autocomplete__option{font-size:16px;line-height:1.25}.autocomplete__hin
+                        t,.autocomplete__option{padding:5px}@media (min-width:641px){.autocomplete__hint,.autocomplete__input,.autocomplete__option{font-size:19px;line-height:1.31579}}.pac-\!-no-underline{te
+                        xt-decoration:none}.govuk-phase-banner{border:none}.govuk-table.pac-table--no-borders td,.govuk-table.pac-table--no-borders th{border:0;padding:5px 20px}.pac-\!-border-left{border-left:
+                        2px solid #b1b4b6}.pac-\!-grid-column-45{width:45%}.pac-\!-grid-column--max-700{max-width:700px}.pac-header-tag{margin-top:-3px}.pac-\!-grid-column-55{width:55%}.pac-\!-grid-column-18{w
+                        idth:18%}pac-\!-width-40{width:40%}pac-\!-valign-bottom{vertical-align:bottom}.pac-inline-header-banner{line-height:.25}@media (max-width:40.0525em){.pac-hide--mobile{display:none}}.aut
+                        ocomplete__option{margin:0}body.js-enabled .moj-js-hidden{position:absolute!important;width:1px!important;height:1px!important;margin:0!important;padding:0!important;overflow:hidden!imp
+
+                        ortant;clip:rect(0 0 0 0)!important;-webkit-clip-path:inset(50%)!important;clip-path:inset(50%)!important;border:0!important;white-space:nowrap!important}mark{border-bottom:2px solid #f
+                        fbf47;background-color:#fff2d3;padding:0}.pac-badge{display:block;margin-bottom:3px;margin-right:10px!important}@media (min-width:40.0625em){.pac-badge{display:inline-block}.pac-badge:not(:last-child){margin-right:3px}}.pac-filter-card{position:relative;background-color:#f3f2f1;padding:15px}.pac-filter-card:after{content:"";display:block;clear:both}.pac-filter-container{display:inline-block;float:left;height:37px;margin:0 15px 0 0;min-width:200px}.pac-filter-container:after{content:"";display:block;clear:both}.pac-filter-selection{position:relative;display:block;background-color:#fff;border:1px solid #000;padding:25px 15px 0 15px;top:-1px;border-top:0;z-index:9999;max-height:250px;overflow-y:auto}.pac-selected-filters{clear:both;margin-top:25px}.pac-filter-tags{display:block}.pac-filter__tag{position:relative;float:left;margin:3px 15px 0 0;z-index:1}.pac-filter__tag:after{content:"";display:block;clear:both}.pac-filter__tag:after{display:inline-block}.pac-filter-button{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-decoration:underline;display:inline-block;border:1px solid #000;font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-weight:400;font-size:16px;font-size:1rem;line-height:1.25;padding:5px 10px;text-align:left;height:35px;background-color:#fff}@media print{.pac-filter-button{font-family:sans-serif}}.pac-filter-button:focus{outline:3px solid transparent;color:#0b0c0c;background-color:#fd0;box-shadow:0 -2px #fd0,0 4px #0b0c0c;text-decoration:none}.pac-filter-button:link{color:#1d70b8}.pac-filter-button:visited{color:#4c2c92}.pac-filter-button:hover{color:#003078}.pac-filter-button:active{color:#0b0c0c}.pac-filter-button:focus{color:#0b0c0c}@media print{.pac-filter-button{font-family:sans-serif}}@media (min-width:40.0625em){.pac-filter-button{font-size:19px;font-size:1.1875rem;line-height:1.31579}}@media print{.pac-filter-button{font-size:14pt;line-height:1.15}}.pac-filter-button--selected{font-weight:700}body.js-enabled .pac-filter-button:after{display:inline-block;content:"";position:relative;border-style:solid;border-width:3px 3px 0 0;transform:rotate(135deg);height:8px;width:8px;top:-2px;margin-left:10px}body.js-enabled .pac-filter-button--open{border-bottom:0}body.js-enabled .pac-filter-button--open:after{top:3px;transform:rotate(-45deg)}.pac-filters-applied{display:inline-block;float:left}.pac-filters-applied:after{content:"";display:block;clear:both}.pac-filters-applied--container{float:left;margin:10px 10px 0 0}.pac-filters-applied--container:after{content:"";display:block;clear:both}.pac-selected-filters--label{display:inline-block;float:left;margin-right:10px;font-weight:700}.pac-selected-filters--label:after{content:"";display:block;clear:both}.pac-apply-filters-button{display:inline-block;padding:5px 25px;margin:0}body:not(.js-enabled) .pac-selected-filters{display:none!important}body:not(.js-enabled) .pac-filter-container{float:none;position:relative;top:0}.pac-inset-block{background:#f3f2f1;border-left:4px solid #b1b4b6;border-bottom:1px solid #b1b4b6;padding:10px 0}.pac-inset-text{margin:0;display:inline-block;padding-right:30px;background-color:#f3f2f1}.pac-inset-text--important{border-left-color:#d4351c}.pac-key-details-bar{background-color:#1d70b8}.pac-key-details-bar .autocomplete__option,.pac-key-details-bar .govuk-body,.pac-key-details-bar .pac-days-navigation-item,.pac-key-details-bar h1,.pac-key-details-bar h2{color:#fff}.pac-key-details-bar .pac-probation-status{margin-top:10px;margin-bottom:5px}@media (max-width:48.0525em){.pac-key-details-bar .pac-probation-status{margin:0}}.pac-key-details-bar__button{margin:10px 0}@media (max-width:48.0525em){.pac-key-details-bar__button{margin:10px 0 0 0}}.pac-key-details-bar__key-details{max-width:1220px;margin:0 15px;padding:20px 0}@media (min-width:40.0625em){.pac-key-details-bar__key-details{margin:0 30px}}@media (min-width:1280px){.pac-key-details-bar__key-details{margin:0 auto}}.pac-key-details-bar-flex{display:flex;flex-flow:row wrap;align-items:flex-end;justify-content:space-between}.pac-key-details-bar-flex__child{flex:0 1 auto;flex-basis:auto}@media (min-width:48.0625em){.pac-key-details-bar-flex__child{margin:0 15px 0 0}}@media (max-width:48.0525em){.pac-key-details-bar-flex__child{margin-bottom:10px;flex-basis:100%}}.pac-key-details-bar-flex__child__right{justify-self:flex-end;align-self:center}.pac-key-details-bar__name{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-weight:700;font-size:18px;font-size:1.125rem;line-height:1.11111;margin:0}@media print{.pac-key-details-bar__name{font-family:sans-serif}}@media (min-width:40.0625em){.pac-key-details-bar__name{font-size:27px;font-size:1.6875rem;line-height:1.11111}}@media print{.pac-key-details-bar__name{font-size:18pt;line-height:1.15}}@media (max-width:40.0525em){.pac-key-details-bar__name{font-family:"GDS Transport",arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-weight:700;font-size:24px;font-size:1.5rem;line-height:1.04167}}@media print and (max-width:40.0525em){.pac-key-details-bar__name{font-family:sans-serif}}@media (max-width:40.0525em) and (min-width:40.0625em){.pac-key-details-bar__name{font-size:36px;font-size:2.25rem;line-height:1.11111}}@media print and (max-width:40.0525em){.pac-key-details-bar__name{font-size:24pt;line-height:1.05}}.pac-key-details-bar__divider{border-right:1px solid rgba(255,255,255,.3);padding:0 15px 0 0}@media (max-width:48.0525em){.pac-key-details-bar__divider{border:0}}.pac-days-navigation{display:flex;flex-direction:row;flex-wrap:wrap}.pac-days-navigation-item{display:flex;flex-direction:column;text-align:center;padding:10px 0;min-width:68px;background-color:#1d70b8;color:#fff}@media (max-width:40.0525em){.pac-days-navigation-item{min-width:50px}}.pac-days-navigation-item__link{text-decoration:none;background-color:transparent}.p
+                        ac-days-navigation-item__link:hover{background-color:#f3f2f1}.pac-days-navigation-item__link:active{ba
+                        ckground-color:#fd0}.app-section-break--heavy{border-bottom:2px solid}.pac-sign-out-link{cursor:pointer;text-decoration:underline!important}.pac-dashboard-count{padding-right:10px!important;text-align:right;min-width:30px!important;display:inline-block;margin-bottom:0}.pac-white-space-format{white-space:pre-line}.pac-secondary-text{color:#626a6e}.pac-dash-list>li:before{content:"—";overflow:hidden}.no-border{border:none}.calendar-nav-link-today{border-style:solid;border-width:thin;border-color:#1d70b8}.confirm-delete-box{box-sizing:border-box;padding:20px;height:border-box;background-color:#f3f2f1;border:5px solid </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row govuk-!-padding-top-5">
+            <div class="govuk-grid-column-one-third">
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-half govuk-!-padding-right-0">
+                        <button class="govuk-button govuk-button--warning" data-module="govuk-button" type="submit">
+                            Delete comment
+                        </button>
+                    </div>
+                    <div class="govuk-grid-column-one-half">
+                        <span class="govuk-!-font-size-19 govuk-!-display-block govuk-!-padding-top-2 govuk-!-padding-left-0">
+                            <a href="{{ backLink }}" class="govuk-link">Cancel</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+{% endblock %}
+

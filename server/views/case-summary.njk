@@ -40,7 +40,6 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-three-quarters">
             <h1 class="govuk-heading-l">Case summary</h1>
-
         </div>
         <div hidden class="govuk-grid-column-one-quarter">
             <a class="govuk-link" href="{{ caseHistoryUrl }}">View case history (&#946;)</a>
@@ -207,6 +206,25 @@
                         {% for comment in data.caseComments | limit(limitPreviousComments) %}
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell">
+                                    <div class="govuk-grid-row">
+                                        <div class="govuk-grid-column-full govuk-!-padding-bottom-3">
+                                            {{ comment.comment }}
+                                        </div>
+                                    </div>
+                                    <div class="govuk-grid-row">
+                                        <div class="govuk-grid-column-one-half">
+                                            <span class="govuk-caption-m govuk-!-font-size-16">
+                                                {{ comment.author }} on {{ comment.created | caseCommentTimeFormat }}
+                                            </span>
+                                        </div>
+                                        <div class="govuk-grid-column-one-quarter">
+                                            {% if comment.createdByUuid === currentUserUuid %}
+                                            <span class="govuk-!-font-size-16 govuk-!-display-block">
+                                                <a href="summary/comments/{{ comment.commentId }}/delete" class="govuk-link">Delete</a>
+                                            </span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
                                     <span class="govuk-body case-comments-comment-td">{{ comment.comment }}</span>
                                     <span class="govuk-caption-m govuk-!-padding-top-2 govuk-!-padding-bottom-2 govuk-!-font-size-16">
                                         {{ comment.author }} on {{ comment.created | caseCommentTimeFormat }}

@@ -14,10 +14,13 @@ const getUserSelectedCourtsHandler = require('./getUserSelectedCourtsHandler')(g
 
 const addCaseCommentRequestHandler = require('./getAddCommentRequestHandler')({ addCaseComment })
 
+const deleteCaseCommentConfirmationHandler = require('./getDeleteCaseCommentConfirmationHandler')(getCaseAndTemplateValues)
+
 module.exports = {
   getCaseListHandler,
   getCaseAndTemplateValues,
   getProbationRecordHandler,
   getUserSelectedCourtsHandler,
-  addCaseCommentRequestHandler
+  addCaseCommentRequestHandler,
+  deleteCaseCommentConfirmationHandler
 }
