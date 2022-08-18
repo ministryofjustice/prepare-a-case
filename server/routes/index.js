@@ -237,8 +237,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(deleteCaseCommentConfirmationHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, hearingId, defendantId, commentId, body: { caseId } } } = req
-    await deleteCaseComment(caseId, commentId, res.locals.user.uuid)
+    const { params: { courtCode, hearingId, defendantId, commentId }, body: { caseId } } = req
+    await deleteCaseComment(caseId, commentId)
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
   }))
 
