@@ -1,3 +1,4 @@
+const moment = require('moment')
 module.exports = {
   json: function (value) {
     return value ? JSON.parse(value) : ''
@@ -59,5 +60,12 @@ module.exports = {
     if (!Number.isInteger(number)) return 'Not available'
     const ordinal = ['st', 'nd', 'rd'][((number + 90) % 100 - 10) % 10 - 1] || 'th'
     return number + ordinal
+  },
+
+  caseCommentTimeFormat: (dateString) => {
+    if (!dateString) {
+      return 'Not available'
+    }
+    return moment(dateString).format('D MMMM YYYY, HH:mm')
   }
 }

@@ -7,11 +7,14 @@ const requestFile = async url => await axios.get(url, { responseType: 'stream', 
 
 const update = async (url, data) => await axios.put(url, data, { headers: { Accept: 'application/json' }, timeout: defaultTimeout })
 
+const create = async (url, data) => await axios.post(url, data, { headers: { Accept: 'application/json' }, timeout: defaultTimeout })
+
 const httpDelete = async (url) => await axios.delete(url, { headers: { Accept: 'application/json' }, timeout: defaultTimeout })
 
 module.exports = {
   request,
   requestFile,
   update,
-  httpDelete
+  httpDelete,
+  create
 }

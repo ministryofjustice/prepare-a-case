@@ -235,6 +235,70 @@
         ]
       }
     },
+    "caseComments": {
+      "$id": "#/properties/caseComments",
+      "type": "array",
+      "title": "The case comments schema",
+      "description": "List of comments added on the case",
+      "default": [],
+      "items": {
+        "$id": "#/properties/caseComments/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/caseComments/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "required": [
+              "created",
+              "author",
+              "comment",
+              "commentId",
+              "caseId"
+            ],
+            "properties": {
+              "created": {
+                "$id": "#/properties/caseComments/items/anyOf/0/properties/created",
+                "type": "string",
+                "title": "The comment created date",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "author": {
+                "$id": "#/properties/caseComments/items/anyOf/0/properties/author",
+                "type": "string",
+                "title": "The author of the comment",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "comment": {
+                "$id": "#/properties/caseComments/items/anyOf/0/properties/comment",
+                "type": "string",
+                "title": "The comment",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "commentId": {
+                "$id": "#/properties/caseComments/items/anyOf/0/properties/commentId",
+                "type": "integer",
+                "title": "The comment identifier",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0
+              },
+              "caseId": {
+                "$id": "#/properties/caseComments/items/anyOf/0/properties/caseId",
+                "type": "string",
+                "title": "The case id",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
     "defendantName": {
       "$id": "#/properties/defendantName",
       "type": "string",

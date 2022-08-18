@@ -18,8 +18,9 @@ const { getOrderTitle } = require('./helpers')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
-const { getCaseListHandler, getCaseAndTemplateValues, getProbationRecordHandler, getUserSelectedCourtsHandler } = require('../routes/handlers')
+const { getCaseListHandler, getCaseAndTemplateValues, getProbationRecordHandler, getUserSelectedCourtsHandler, addCaseCommentRequestHandler } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
+const moment = require('moment')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -198,15 +199,34 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.session = {
       ...session
     }
+    templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
+      return moment(b.created).unix() - moment(a.created).unix()
+    })
     templateValues.enableCaseHistory = settings.enableCaseHistory
+    templateValues.enableCaseComments = settings.enableCaseComments
     templateValues.caseHistoryUrl = `/${courtCode}/cases/${templateValues.data.caseId}/history`
     session.confirmedMatch = undefined
     session.matchName = undefined
     session.matchType = 'defendant'
     session.matchDate = undefined
     session.backLink = path
+    session.caseCommentBlankError = undefined
     res.render('case-summary', templateValues)
   }))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/showPreviousComments', defaults, catchErrors(async (req, res) => {
+    const { params: { courtCode, hearingId, defendantId }, session, body: { caseId } } = req
+    session.showPreviousComments = caseId
+    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
+  }))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/hideOlderComments', defaults, catchErrors(async (req, res) => {
+    const { params: { courtCode, hearingId, defendantId }, session } = req
+    session.showPreviousComments = undefined
+    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
+  }))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))
 

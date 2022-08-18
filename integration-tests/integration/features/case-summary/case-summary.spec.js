@@ -14,14 +14,6 @@ And('I should see {int} previous orders', $int => {
   })
 })
 
-And('I should see the following summary list', $data => {
-  cy.get('.govuk-summary-list').within(() => {
-    $data.raw().forEach((text, index) => {
-      cy.get(index % 2 === 0 ? '.govuk-summary-list__key' : '.govuk-summary-list__value').eq(index).contains(text[index % 2])
-    })
-  })
-})
-
 Then('I should see the following risk register tabs', $data => {
   cy.get('.govuk-tabs').within(() => {
     $data.raw().flat().forEach((text, index) => {

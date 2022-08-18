@@ -70,7 +70,79 @@
       },
       "createdToday": true,
       "removed": false,
-      "numberOfPossibleMatches": 0
+      "numberOfPossibleMatches": 0,
+      "caseComments": [
+        {
+          "commentId": 1234560,
+          "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "comment": "Comment One",
+          "created": "2022-08-09T17:17:09",
+          "author": "Adam Sandler"
+        },
+        {
+          "commentId": 1234561,
+          "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "comment": "Comment Two",
+          "created": "2022-08-09T17:17:09",
+          "author": "Adam Sandler Two"
+        },
+        {
+          "commentId": 1234561,
+          "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "comment": "Comment Three",
+          "created": "2022-08-19T17:17:09",
+          "author": "Adam Sandler Three"
+        },
+        {
+          "commentId": 1234560,
+          "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "comment": "Comment Four",
+          "created": "2022-08-09T17:17:09",
+          "author": "Adam Sandler Four"
+        },
+        {
+          "commentId": 1234561,
+          "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "comment": "Comment Five",
+          "created": "2022-08-09T17:17:09",
+          "author": "Adam Sandler 5"
+        },
+        {
+          "commentId": 1234561,
+          "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "comment": "Comment Six",
+          "created": "2022-08-19T17:17:09",
+          "author": "Adam Sandler 6"
+        },
+        {
+          "commentId": 1234561,
+          "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "comment": "Comment Seven",
+          "created": "2022-08-09T17:17:09",
+          "author": "Author Two"
+        },
+        {
+          "commentId": 1234561,
+          "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "comment": "Comment Eight",
+          "created": "2022-08-19T17:17:09",
+          "author": "Author Two"
+        },
+        {
+          "commentId": 1234561,
+          "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "comment": "PSR completed",
+          "created": "2022-08-09T17:17:09",
+          "author": "Author Two"
+        },
+        {
+          "commentId": 1234561,
+          "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "comment": "PSR completed",
+          "created": "2022-08-19T17:17:09",
+          "author": "Author Two"
+        }
+      ]
     }
   }
 }

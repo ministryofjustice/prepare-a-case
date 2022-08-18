@@ -86,4 +86,7 @@ env:
   - name: ENABLE_PAST_CASES_NAVIGATION
     value: {{ .Values.env.ENABLE_PAST_CASES_NAVIGATION | quote }}
 
+  - name: ENABLE_CASE_COMMENTS
+    value: {{ .Values.env.ENABLE_CASE_COMMENTS | quote }}
+
 {{- end -}}
