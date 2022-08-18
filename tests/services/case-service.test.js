@@ -225,10 +225,9 @@ describe('Case service', () => {
     const caseId = '2e0afeb7-95d2-42f4-80e6-ccf96b282730'
     const comment = 'A comment'
     const author = 'Adam Sandler'
-    const userUuid = 'uuid-one'
-    const response = await addCaseComment(caseId, comment, author, userUuid)
+    const response = await addCaseComment(caseId, comment, author)
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
-    expect(moxios.requests.mostRecent().config.data).toBe(JSON.stringify({ caseId, comment, author, userUuid }))
+    expect(moxios.requests.mostRecent().config.data).toBe(JSON.stringify({ caseId, comment, author }))
     return response
   })
 })

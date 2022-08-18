@@ -17,8 +17,7 @@ module.exports = {
     redirect: jest.fn(),
     locals: {
       user: {
-        name: 'Adam Sandler',
-        uuid: 'test-user-uuid'
+        name: 'Adam Sandler'
       }
     }
   },

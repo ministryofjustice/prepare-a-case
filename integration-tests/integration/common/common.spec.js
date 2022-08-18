@@ -394,8 +394,8 @@ And('I should see the success banner message {string}', $string => {
   cy.get('.moj-banner--success').contains($string).should('exist')
 })
 
-And('I should see a textarea with id {string}', $comment => {
-  cy.get(`#${$comment}`).should('exist')
+And('I should see a textarea with id {string}', $id => {
+  cy.get(`#${$id}`).should('exist')
 })
 
 And('I should see a count of {string}', $string => {

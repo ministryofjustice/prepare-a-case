@@ -32,10 +32,14 @@ Feature: Case comments
     And I should see the following comments with the comment, author and date commented on
       | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 |
       | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     |
-      | Comment Eight     | Author Two on 19 August 2022, 17:17          |
-      | PSR completed     | Author Two on 19 August 2022, 17:17          |
-      | Comment One       | Adam Sandler on 9 August 2022, 17:17         |
-      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17     |
+      | Comment Eight     | Author Two on 19 August 2022, 17:17         |
+      | PSR completed     | Author Two on 19 August 2022, 17:17         |
+      | Comment One       | Adam Sandler on 9 August 2022, 17:17        |
+      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17    |
+      | Comment Four      | Adam Sandler Four on 9 August 2022, 17:17   |
+      | Comment Five      | Adam Sandler 5 on 9 August 2022, 17:17      |
+      | Comment Seven     | Author Two on 9 August 2022, 17:17          |
+      |  PSR completed    | Author Two on 9 August 2022, 17:17          |
 
     And I should see a button with the label "Hide older comments"
 
