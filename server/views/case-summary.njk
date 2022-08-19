@@ -196,7 +196,7 @@
 
             {% if data.caseComments | length %}
                 <form name="previousCommentsForm" method="post" action="summary/comments/{{ "hideOlderComments" if session.showPreviousComments === data.caseId else "showPreviousComments"}}">
-                    <h2 class="govuk-heading-s">Comments</h2>
+                    <h2 class="govuk-heading-s govuk-!-padding-top-0">Comments</h2>
                     <table class="govuk-table" id="previousComments">
                         <tbody class="govuk-table__body">
                         {% if session.showPreviousComments === data.caseId %}
@@ -207,7 +207,7 @@
                         {% for comment in data.caseComments | limit(limitPreviousComments) %}
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell">
-                                    {{ comment.comment }}<br>
+                                    <span class="govuk-body case-comments-comment-td">{{ comment.comment }}</span>
                                     <span class="govuk-caption-m govuk-!-padding-top-2 govuk-!-padding-bottom-2 govuk-!-font-size-16">
                                         {{ comment.author }} on {{ comment.created | caseCommentTimeFormat }}
                                     </span>

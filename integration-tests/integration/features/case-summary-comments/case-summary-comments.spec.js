@@ -28,7 +28,9 @@ And('I should see the following comments with the comment, author and date comme
   $data.raw().forEach((dataRow, index) => {
     cy.get('.govuk-table__body > .govuk-table__row').eq(index).within(() => {
       const tableCell = cy.get('.govuk-table__cell').eq(0)
-      tableCell.contains(dataRow[0])
+      tableCell.within(() => {
+        cy.get('.case-comments-comment-td').contains(dataRow[0])
+      })
       tableCell.within(() => {
         cy.get('.govuk-caption-m').contains(dataRow[1])
       })
