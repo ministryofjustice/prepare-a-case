@@ -91,7 +91,7 @@
         {
           "commentId": 1234551,
           "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
-          "comment": "Comment Three",
+          "comment": "Comment Three\r\nline one\r\nline two\r\n\r\nline three",
           "created": "2022-08-19T17:17:09",
           "author": "Adam Sandler Three",
           "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
