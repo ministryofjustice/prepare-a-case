@@ -24,5 +24,6 @@ module.exports = {
   getProbationRecordHandler,
   getUserSelectedCourtsHandler,
   addCaseCommentRequestHandler,
-  deleteCaseCommentConfirmationHandler
+  deleteCaseCommentConfirmationHandler,
+  deleteCaseCommentHandler
 }

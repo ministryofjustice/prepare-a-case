@@ -10,7 +10,6 @@ describe('getDeleteCaseCommentHandler', () => {
   const hearingId = 'test-hearing-id'
   const caseId = 'test-case-id'
 
-
   const commentId = 1234561
   const courtCode = 'B1007'
 

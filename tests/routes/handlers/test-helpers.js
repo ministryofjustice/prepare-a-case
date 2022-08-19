@@ -22,5 +22,5 @@ module.exports = {
       }
     }
   },
-  getCaseAndTemplateValuesMock: jest.fn(),
+  getCaseAndTemplateValuesMock: jest.fn()
 }

@@ -1,8 +1,8 @@
 const getDeleteCaseCommentHandler = ({ deleteCaseComment }) => async (req, res) => {
-  const {params: {courtCode, hearingId, defendantId, commentId}, body: {caseId}, session} = req
+  const { params: { courtCode, hearingId, defendantId, commentId }, body: { caseId }, session } = req
   await deleteCaseComment(caseId, commentId)
   session.deleteCommentSuccess = caseId
   res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseComments`)
-};
+}
 
-module.exports = getDeleteCaseCommentHandler;
+module.exports = getDeleteCaseCommentHandler
