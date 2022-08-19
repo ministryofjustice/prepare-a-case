@@ -3,7 +3,7 @@ const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
 const { updateSelectedCourts } = require('../services/user-preference-service')
-const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory, deleteCaseComment } = require('../services/case-service')
+const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory } = require('../services/case-service')
 const {
   getDetails,
   getProbationRecord,
@@ -24,7 +24,8 @@ const {
   getProbationRecordHandler,
   getUserSelectedCourtsHandler,
   addCaseCommentRequestHandler,
-  deleteCaseCommentConfirmationHandler
+  deleteCaseCommentConfirmationHandler,
+  deleteCaseCommentHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -237,12 +238,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(deleteCaseCommentConfirmationHandler))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, hearingId, defendantId, commentId }, body: { caseId }, session } = req
-    await deleteCaseComment(caseId, commentId)
-    session.deleteCommentSuccess = caseId
-    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseComments`)
-  }))
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(deleteCaseCommentHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))
 
