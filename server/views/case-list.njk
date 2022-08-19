@@ -147,6 +147,14 @@
     current: params.subsection === ''
 }] -%}
 
+{% set recentlyAddedPageItems = [] %}
+{% for recentlyAdded in range(startNum, endNum + 1) -%}
+    {{ recentlyAddedPageItems.push({
+        text: recentlyAdded,
+        href: '/' + params.courtCode + '/cases/' + params.date + '/added' + '?page=' + recentlyAdded,
+        selected: currentPage === recentlyAdded
+    }) }}
+{%- endfor %}
 {% if params.addedCount > 0 %}
     {{ listTabs.push({
         title: 'Recently added',
@@ -156,6 +164,23 @@
         count: params.addedCount
     }) }}
 {% endif %}
+{% if currentPage === 1 %}
+    {% set previousLink = null %}
+{% else %}
+    {% set recentlyAddedPreviousLink = {
+        text: 'Previous',
+        href: '/' + params.courtCode + '/cases/' + params.date + '/added' + '?page=' + (currentPage - 1)
+    } %}
+{% endif %}
+{% if currentPage === totalPages %}
+    {% set nextLink = null %}
+{% else %}
+    {% set recentlyAddedNextLink = {
+        text: 'Next',
+        href: '/' + params.courtCode + '/cases/' + params.date +  '/added' + '?page=' +  (currentPage + 1)
+    } %}
+{% endif %}
+
 {% if params.removedCount > 0 %}
     {{ listTabs.push({
         title: 'Removed cases',
@@ -260,9 +285,9 @@
                     to: params.to,
                     count: params.caseCount
                 },
-                previous: previousLink,
-                next: nextLink,
-                items: pageItems
+                previous: recentlyAddedPreviousLink if params.subsection === 'added' else previousLink,
+                next: recentlyAddedNextLink if params.subsection === 'added' else nextLink,
+                items: recentlyAddedPageItems if params.subsection === 'added' else pageItems
             }) }}
         {% endblock %}
     {% endif %}

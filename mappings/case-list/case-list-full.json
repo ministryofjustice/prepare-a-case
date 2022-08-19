@@ -8420,12 +8420,69 @@
           "defendantDob": "1988-08-20"
         },
         {
+          "caseId": "f2ae5024-bc08-4317-bec1-9c68ede45627",
+          "hearingId": "f9a66faa-a758-46d3-928c-8666367f6649",
+          "defendantId": "b8ea0ada-bc7f-4aed-99e3-1b3146274df6",
+          "caseNo": "649174512",
+          "courtCode": "SHF",
+          "courtRoom": "8",
+          "createdToday": true,
+          "crn": null,
+          "pnc": null,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "2nd",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Stockpost, Liverpool, stole LAPTOP to the value of £987.00, belonging to Salinas Merrill.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Glasgow assaulted Hensley Murray by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Liverpool assaulted Santana Mcknight by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Uneeq, Edinburgh, stole LAPTOP to the value of £987.00, belonging to Riley Leonard.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Ontality, Edinburgh, stole LAPTOP to the value of £987.00, belonging to Battle Jennings.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantSex": "M",
+          "defendantName": "Obrien Mccall",
+          "defendantAddress": {
+            "line1": "82",
+            "line2": "Harman Street",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "1974-10-12"
+        },
+        {
           "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
-          "hearingId": "d95e90dc-fe12-4742-85a5-577d1c9cc9a9",
-          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
+          "hearingId": "f9a66faa-a758-46d3-928c-8666367f6649",
+          "defendantId": "b8ea0ada-bc7f-4aed-99e3-1b3146274df6",
           "caseNo": "1717780334",
           "courtCode": "SHF",
           "courtRoom": "8",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -8471,6 +8528,7 @@
           "caseNo": "8180923581",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -8511,6 +8569,7 @@
           "caseNo": "4989650366",
           "courtCode": "SHF",
           "courtRoom": "6",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -8566,6 +8625,7 @@
           "caseNo": "4299708253",
           "courtCode": "SHF",
           "courtRoom": "5",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -8616,6 +8676,7 @@
           "caseNo": "1534504210",
           "courtCode": "SHF",
           "courtRoom": "1",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -8671,6 +8732,7 @@
           "caseNo": "4431331699",
           "courtCode": "SHF",
           "courtRoom": "2",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -8706,6 +8768,7 @@
           "caseNo": "1374192515",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -8756,6 +8819,7 @@
           "caseNo": "5990487475",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -8811,6 +8875,7 @@
           "caseNo": "6834284",
           "courtCode": "SHF",
           "courtRoom": "4",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -8861,6 +8926,7 @@
           "caseNo": "9864616924",
           "courtCode": "SHF",
           "courtRoom": "7",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -8916,6 +8982,7 @@
           "caseNo": "9499365066",
           "courtCode": "SHF",
           "courtRoom": "3",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -8966,6 +9033,7 @@
           "caseNo": "7227064792",
           "courtCode": "SHF",
           "courtRoom": "01",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -9015,52 +9083,13 @@
           "defendantDob": "1995-01-15"
         },
         {
-          "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
-          "hearingId": "d95e90dc-fe12-4742-85a5-577d1c9cc9a9",
-          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
-          "caseNo": "3493039165",
-          "courtCode": "SHF",
-          "courtRoom": "9",
-          "crn": null,
-          "pnc": null,
-          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-          "listNo": "1st",
-          "probationStatus": "No record",
-          "session": "MORNING",
-          "previouslyKnownTerminationDate": null,
-          "suspendedSentenceOrder": true,
-          "breach": false,
-          "offences": [
-            {
-              "offenceTitle": "Theft from a shop",
-              "offenceSummary": "On 01/01/2015 at Deviltoe, Edinburgh, stole ARTWORK to the value of £987.00, belonging to Mcmahon Meadows.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
-            },
-            {
-              "offenceTitle": "Theft from the person of another",
-              "offenceSummary": "On 24/03/2016 at London stole XBOX ONE to the value of 300.00, belonging to Page Silva.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
-            }
-          ],
-          "defendantSex": "M",
-          "defendantName": "Lynch Tate",
-          "defendantAddress": {
-            "line1": "82",
-            "line2": "Dumont Avenue",
-            "postcode": "ad21 5dr",
-            "line3": "Bangor",
-            "line4": null,
-            "line5": null
-          },
-          "defendantDob": "1978-07-30"
-        },
-        {
           "caseId": "194e7037-2a6e-4f61-8794-dc2f72738518",
           "hearingId": "5991b905-19a1-49a6-8a82-8accab818c4c",
           "defendantId": "2c4dc41c-1e52-4993-9c39-15295427b693",
           "caseNo": "8618449819",
           "courtCode": "SHF",
           "courtRoom": "03",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -9096,6 +9125,7 @@
           "caseNo": "5935205489",
           "courtCode": "SHF",
           "courtRoom": "04",
+          "createdToday": true,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "3rd",
           "crn": null,
@@ -9136,6 +9166,7 @@
           "caseNo": "8027509592",
           "courtCode": "SHF",
           "courtRoom": "04",
+          "createdToday": true,
           "crn": null,
           "pnc": null,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
@@ -9191,6 +9222,7 @@
           "caseNo": "9665797440",
           "courtCode": "SHF",
           "courtRoom": "9",
+          "createdToday": true,
           "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
           "listNo": "1st",
           "crn": null,
@@ -9234,62 +9266,6 @@
             "line5": null
           },
           "defendantDob": "1986-04-20"
-        },
-        {
-          "caseId": "f2ae5024-bc08-4317-bec1-9c68ede45627",
-          "hearingId": "f9a66faa-a758-46d3-928c-8666367f6649",
-          "defendantId": "b8ea0ada-bc7f-4aed-99e3-1b3146274df6",
-          "caseNo": "649174512",
-          "courtCode": "SHF",
-          "courtRoom": "8",
-          "createdToday": true,
-          "crn": null,
-          "pnc": null,
-          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
-          "listNo": "2nd",
-          "probationStatus": "No record",
-          "session": "MORNING",
-          "previouslyKnownTerminationDate": null,
-          "suspendedSentenceOrder": false,
-          "breach": false,
-          "offences": [
-            {
-              "offenceTitle": "Theft from a shop",
-              "offenceSummary": "On 01/01/2015 at Stockpost, Liverpool, stole LAPTOP to the value of £987.00, belonging to Salinas Merrill.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
-            },
-            {
-              "offenceTitle": "Assault by beating",
-              "offenceSummary": "On 01/01/2016 at Glasgow assaulted Hensley Murray by beating him.",
-              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
-            },
-            {
-              "offenceTitle": "Assault by beating",
-              "offenceSummary": "On 01/01/2016 at Liverpool assaulted Santana Mcknight by beating him.",
-              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
-            },
-            {
-              "offenceTitle": "Theft from a shop",
-              "offenceSummary": "On 01/01/2015 at Uneeq, Edinburgh, stole LAPTOP to the value of £987.00, belonging to Riley Leonard.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
-            },
-            {
-              "offenceTitle": "Theft from a shop",
-              "offenceSummary": "On 01/01/2015 at Ontality, Edinburgh, stole LAPTOP to the value of £987.00, belonging to Battle Jennings.",
-              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
-            }
-          ],
-          "defendantSex": "M",
-          "defendantName": "Obrien Mccall",
-          "defendantAddress": {
-            "line1": "82",
-            "line2": "Harman Street",
-            "postcode": "ad21 5dr",
-            "line3": "Bangor",
-            "line4": null,
-            "line5": null
-          },
-          "defendantDob": "1974-10-12"
         },
         {
           "caseId": "015284cf-aeb2-4826-b28e-e57cdbcc934d",
@@ -9377,6 +9353,47 @@
             "line5": null
           },
           "defendantDob": "1973-01-16"
+        },
+        {
+          "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
+          "hearingId": "d95e90dc-fe12-4742-85a5-577d1c9cc9a9",
+          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
+          "caseNo": "3493039165",
+          "courtCode": "SHF",
+          "courtRoom": "9",
+          "createdToday": true,
+          "crn": null,
+          "pnc": null,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "probationStatus": "No record",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": true,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Deviltoe, Edinburgh, stole ARTWORK to the value of £987.00, belonging to Mcmahon Meadows.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from the person of another",
+              "offenceSummary": "On 24/03/2016 at London stole XBOX ONE to the value of 300.00, belonging to Page Silva.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            }
+          ],
+          "defendantSex": "M",
+          "defendantName": "Lynch Tate",
+          "defendantAddress": {
+            "line1": "82",
+            "line2": "Dumont Avenue",
+            "postcode": "ad21 5dr",
+            "line3": "Bangor",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "1978-07-30"
         },
         {
           "caseId": "4c2ff8e9-b1ef-44f9-b88d-472aff27fe9f",
