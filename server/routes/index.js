@@ -206,6 +206,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.session = {
       ...session
     }
+    session.deleteCommentSuccess = undefined
     templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
       return moment(b.created).unix() - moment(a.created).unix()
     })
@@ -237,9 +238,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(deleteCaseCommentConfirmationHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, hearingId, defendantId, commentId }, body: { caseId } } = req
+    const { params: { courtCode, hearingId, defendantId, commentId }, body: { caseId }, session } = req
     await deleteCaseComment(caseId, commentId)
-    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
+    session.deleteCommentSuccess = caseId
+    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseComments`)
   }))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))

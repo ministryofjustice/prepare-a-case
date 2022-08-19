@@ -172,6 +172,19 @@
         <div class="govuk-grid-column-two-thirds" id="caseComments">
             <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
             <h2 class="govuk-heading-m">Comments</h2>
+            {% if session.deleteCommentSuccess === data.caseId %}
+                {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+                {% set html %}
+                    <span class="govuk-body-l">
+                        You successfully deleted a comment
+                    </span>
+                {% endset %}
+
+                {{ govukNotificationBanner({
+                    html: html,
+                    type: 'success'
+                }) }}
+            {% endif %}
             <div class="govuk-form-group {{ "govuk-form-group--error" if session.caseCommentBlankError }}">
                 <div id="comments-hint">
                     <p id="comments-hint-p1" class="govuk-body">
@@ -219,9 +232,9 @@
                                         </div>
                                         <div class="govuk-grid-column-one-quarter">
                                             {% if comment.createdByUuid === currentUserUuid %}
-                                            <span class="govuk-!-font-size-16 govuk-!-display-block">
-                                                <a href="summary/comments/{{ comment.commentId }}/delete" class="govuk-link">Delete</a>
-                                            </span>
+                                            <a href="summary/comments/{{ comment.commentId }}/delete" class="govuk-link">
+                                                <span class="govuk-!-font-size-16 govuk-!-display-block">Delete</span>
+                                            </a>
                                             {% endif %}
                                         </div>
                                     </div>
