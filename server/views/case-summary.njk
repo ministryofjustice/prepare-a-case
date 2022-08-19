@@ -179,10 +179,10 @@
                         You successfully deleted a comment
                     </span>
                 {% endset %}
-
                 {{ govukNotificationBanner({
                     html: html,
-                    type: 'success'
+                    type: 'success',
+                    classes: 'case-comments-delete-success-notification'
                 }) }}
             {% endif %}
             <div class="govuk-form-group {{ "govuk-form-group--error" if session.caseCommentBlankError }}">
