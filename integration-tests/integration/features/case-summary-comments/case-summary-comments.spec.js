@@ -36,3 +36,15 @@ And('I should see the following comments with the comment, author and date comme
     })
   })
 })
+
+And('I click Delete on the below comment located in table row {int}', ($int, $data) => {
+  const dataRow = $data.raw()[0]
+  cy.get('.govuk-table__body > .govuk-table__row').eq($int - 1).within(() => {
+    const tableCell = cy.get('.govuk-table__cell').eq(0)
+    tableCell.within(() => {
+      cy.get('.case-comments-comment-display').contains(dataRow[0])
+      cy.get('.govuk-caption-m').contains(dataRow[1])
+      cy.get('.govuk-link').should('exist').click()
+    })
+  })
+})

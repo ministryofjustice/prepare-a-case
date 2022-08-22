@@ -413,3 +413,16 @@ And('I should see the following summary list', $data => {
     })
   })
 })
+
+And('I should see govuk notification banner with header {string} and message {string}', ($header, $message) => {
+  const govukNotificationBanner = cy.get('.govuk-notification-banner')
+  govukNotificationBanner.should('exist')
+  govukNotificationBanner.within(() => {
+    cy.get('.govuk-notification-banner__header > h2').contains($header)
+    cy.get('.govuk-notification-banner__content').contains($message)
+  })
+})
+
+And('I should not see govuk notification banner', () => {
+  cy.get('.govuk-notification-banner').should('not.exist')
+})

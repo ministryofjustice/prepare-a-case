@@ -93,7 +93,25 @@ const token = () =>
     }
   })
 
+const userMe = () =>
+  stubFor({
+    request: {
+      method: 'GET',
+      urlPattern: '/auth/api/user/me'
+    },
+    response: {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
+      jsonBody: {
+        uuid: 'b2679ef7-084d-4f7f-81dd-2d44aae74cbb',
+        name: 'Display Name'
+      }
+    }
+  })
+
 module.exports = {
   getLoginUrl,
-  stubLogin: options => Promise.all([favicon(), redirect(), logout(), token(options)])
+  stubLogin: options => Promise.all([favicon(), redirect(), logout(), token(options), userMe()])
 }

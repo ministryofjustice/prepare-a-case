@@ -59,7 +59,6 @@
                                         </span>
                                     </div>
                                     <div class="govuk-grid-column-one-quarter govuk-!-padding-bottom-2">
-                                        currentUserUuid: {{ currentUserUuid }}
                                         {% if comment.createdByUuid === currentUserUuid %}
                                             <a href="summary/comments/{{ comment.commentId }}/delete" class="govuk-link">
                                                 <span class="govuk-!-font-size-16 govuk-!-display-block">Delete</span>
