@@ -1,0 +1,53 @@
+{% extends "partials/layout.njk" %}
+
+{% block backlink %}
+
+    {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
+    {{ govukBackLink({
+        text: backText or 'Go back',
+        href: backLink
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+    <form method="post" novalidate>
+        <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-l">Are you sure you want to delete this comment?</h1>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <div class="confirm-delete-box">
+                    <span class="govuk-caption-m govuk-!-padding-bottom-5">
+                        Added on the {{ created | caseCommentTimeFormat}}
+                    </span>
+                    <span class="govuk-body">{{ comment }}
+                </div>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row govuk-!-padding-top-5">
+            <div class="govuk-grid-column-one-third">
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-half govuk-!-padding-right-0">
+                        <button class="govuk-button govuk-button--warning" data-module="govuk-button" type="submit">
+                            Delete comment
+                        </button>
+                    </div>
+                    <div class="govuk-grid-column-one-half">
+                        <span class="govuk-!-font-size-19 govuk-!-display-block govuk-!-padding-top-2 govuk-!-padding-left-0">
+                            <a href="{{ backLink }}" class="govuk-link">Cancel</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+{% endblock %}
+

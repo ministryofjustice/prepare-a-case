@@ -255,7 +255,8 @@
               "author",
               "comment",
               "commentId",
-              "caseId"
+              "caseId",
+              "createdByUuid"
             ],
             "properties": {
               "created": {
@@ -290,6 +291,13 @@
                 "$id": "#/properties/caseComments/items/anyOf/0/properties/caseId",
                 "type": "string",
                 "title": "The case id",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "createdByUuid": {
+                "$id": "#/properties/caseComments/items/anyOf/0/properties/createdByUuid",
+                "type": "string",
+                "title": "The uuid of the user who created the comment",
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               }

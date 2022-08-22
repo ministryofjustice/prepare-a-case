@@ -1,8 +1,23 @@
-.case-comments-comment-td {
+.case-comments-comment-display {
   white-space: pre-line;
   margin-top: 0;
 }
 
 .case-comments-save-button {
   margin-bottom: 0;
+}
+
+.confirm-delete-box {
+  box-sizing: border-box;
+  padding: 20px;
+  padding-top: 15px;
+  height: border-box;
+  background-color: #f3f2f1;
+  border: 5px solid transparent;
+  height: 220px;
+  width: 90%;
+}
+
+.case-comments-delete-success-notification {
+  margin-bottom: 30px;
 }

@@ -18,7 +18,15 @@ const { getOrderTitle } = require('./helpers')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
-const { getCaseListHandler, getCaseAndTemplateValues, getProbationRecordHandler, getUserSelectedCourtsHandler, addCaseCommentRequestHandler } = require('../routes/handlers')
+const {
+  getCaseListHandler,
+  getCaseAndTemplateValues,
+  getProbationRecordHandler,
+  getUserSelectedCourtsHandler,
+  addCaseCommentRequestHandler,
+  deleteCaseCommentConfirmationHandler,
+  deleteCaseCommentHandler
+} = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
 
@@ -199,12 +207,14 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.session = {
       ...session
     }
+    session.deleteCommentSuccess = undefined
     templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
       return moment(b.created).unix() - moment(a.created).unix()
     })
     templateValues.enableCaseHistory = settings.enableCaseHistory
     templateValues.enableCaseComments = settings.enableCaseComments
     templateValues.caseHistoryUrl = `/${courtCode}/cases/${templateValues.data.caseId}/history`
+    templateValues.currentUserUuid = res.locals.user.uuid
     session.confirmedMatch = undefined
     session.matchName = undefined
     session.matchType = 'defendant'
@@ -225,6 +235,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.showPreviousComments = undefined
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
   }))
+
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(deleteCaseCommentConfirmationHandler))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(deleteCaseCommentHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))
 

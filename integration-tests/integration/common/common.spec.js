@@ -398,6 +398,10 @@ And('I should see a textarea with id {string}', $id => {
   cy.get(`#${$id}`).should('exist')
 })
 
+And('I should see a textarea with id {string}', $comment => {
+  cy.get(`#${$comment}`).should('exist')
+})
+
 And('I should see a count of {string}', $string => {
   cy.get('.govuk-heading-m').contains(`${$string}`).should('exist')
 })
@@ -408,4 +412,17 @@ And('I should see the following summary list', $data => {
       cy.get(index % 2 === 0 ? '.govuk-summary-list__key' : '.govuk-summary-list__value').eq(index).contains(text[index % 2])
     })
   })
+})
+
+And('I should see govuk notification banner with header {string} and message {string}', ($header, $message) => {
+  const govukNotificationBanner = cy.get('.govuk-notification-banner')
+  govukNotificationBanner.should('exist')
+  govukNotificationBanner.within(() => {
+    cy.get('.govuk-notification-banner__header > h2').contains($header)
+    cy.get('.govuk-notification-banner__content').contains($message)
+  })
+})
+
+And('I should not see govuk notification banner', () => {
+  cy.get('.govuk-notification-banner').should('not.exist')
 })
