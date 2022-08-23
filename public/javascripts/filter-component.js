@@ -19,7 +19,7 @@
     function checkFiltersFocus (e) {
       var target = e.target && e.target.id.substr(e.target.id.indexOf('-') + 1)
       var relatedTarget = e.relatedTarget && e.relatedTarget.id.substr(e.relatedTarget.id.indexOf('-') + 1)
-      if (!relatedTarget || relatedTarget.indexOf(target) === -1) {
+      if (!target || !relatedTarget || relatedTarget.indexOf(target) === -1) {
         var filterSections = document.getElementsByClassName('pac-filter-selection')
         Array.prototype.forEach.call(filterButtons, function (element, index) {
           element.setAttribute('aria-expanded', false)
