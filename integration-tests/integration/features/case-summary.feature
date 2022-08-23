@@ -312,7 +312,7 @@ Feature: Case summary
 
     And I should see medium heading with text "Last pre-sentence report"
     And I should see the body text "Pre-Sentence Report - Fast"
-    And I should see the hint text "Delivered more than 6 months ago"
+    And I should see the hint text "Completed more than 6 months ago"
 
     And I should see medium heading with text "Last OASys assessment"
     And I should see the body text "OASys Assessment Layer 3"
@@ -501,7 +501,7 @@ Feature: Case summary
 
     And I should see medium heading with text "Last pre-sentence report"
     And I should see the body text "Pre-Sentence Report - Fast"
-    And I should see the hint text "Delivered less than 1 month ago"
+    And I should see the hint text "Completed less than 1 month ago"
 
     And I should see link "ORA Community Order (18 Months)" with href "record/1361422142"
     And I should see the breach badge
