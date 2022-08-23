@@ -71,7 +71,7 @@
     "@ministryofjustice/frontend": "1.4.1",
     "accessible-autocomplete": "2.0.4",
     "agentkeepalive": "^4.2.1",
-    "applicationinsights": "2.3.3",
+    "applicationinsights": "2.3.4",
     "applicationinsights-native-metrics": "0.0.7",
     "axios": "0.26.1",
     "axios-middleware": "0.3.1",
