@@ -6,6 +6,7 @@ const createToken = () => {
     user_name: 'ITAG_USER',
     scope: ['read', 'write'],
     auth_source: 'delius',
+    uuid: 'b2679ef7-084d-4f7f-81dd-2d44aae74cbb',
     authorities: [
       'ROLE_PREPARE_A_CASE'
     ],
@@ -84,6 +85,7 @@ const token = () =>
         token_type: 'bearer',
         refresh_token: 'refresh',
         user_name: 'TEST_USER',
+        uuid: 'b2679ef7-084d-4f7f-81dd-2d44aae74cbb',
         expires_in: 600,
         scope: 'read write',
         internalUser: true
@@ -91,7 +93,25 @@ const token = () =>
     }
   })
 
+const userMe = () =>
+  stubFor({
+    request: {
+      method: 'GET',
+      urlPattern: '/auth/api/user/me'
+    },
+    response: {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
+      jsonBody: {
+        uuid: 'b2679ef7-084d-4f7f-81dd-2d44aae74cbb',
+        name: 'Display Name'
+      }
+    }
+  })
+
 module.exports = {
   getLoginUrl,
-  stubLogin: options => Promise.all([favicon(), redirect(), logout(), token(options)])
+  stubLogin: options => Promise.all([favicon(), redirect(), logout(), token(options), userMe()])
 }

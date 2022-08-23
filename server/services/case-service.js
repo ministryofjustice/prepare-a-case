@@ -1,4 +1,4 @@
-const { request, update, httpDelete } = require('./utils/request')
+const { request, update, httpDelete, create } = require('./utils/request')
 const getCaseListFilters = require('../utils/getCaseListFilters')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
@@ -94,7 +94,9 @@ const createCaseService = (apiUrl) => {
     },
     deleteOffender: async (defendantId) => {
       return await httpDelete(`${apiUrl}/defendant/${defendantId}/offender`)
-    }
+    },
+    addCaseComment: async (caseId, comment, author) => await create(`${apiUrl}/cases/${caseId}/comments`, { caseId, comment, author }),
+    deleteCaseComment: async (caseId, commentId) => await httpDelete(`${apiUrl}/cases/${caseId}/comments/${commentId}`)
   }
 }
 
