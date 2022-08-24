@@ -1,0 +1,57 @@
+{
+  "$id": "#/properties/caseComments/items/anyOf/0",
+  "type": "object",
+  "title": "Create case comment request",
+  "description": "",
+  "default": {},
+  "required": [
+    "author",
+    "comment",
+    "caseId"
+  ],
+  "properties": {
+    "author": {
+      "$id": "#/properties/caseComments/items/anyOf/0/properties/author",
+      "type": "string",
+      "title": "The author of the comment",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "comment": {
+      "$id": "#/properties/caseComments/items/anyOf/0/properties/comment",
+      "type": "string",
+      "title": "The comment",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "caseId": {
+      "$id": "#/properties/caseComments/items/anyOf/0/properties/caseId",
+      "type": "string",
+      "title": "The case id",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "createdByUuid": {
+      "$id": "#/properties/caseComments/items/anyOf/0/properties/createdByUuid",
+      "type": "string",
+      "title": "The created user uuid",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "created": {
+      "$id": "#/properties/caseComments/items/anyOf/0/properties/created",
+      "type": "string",
+      "title": "The created time stamp",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "commentId": {
+      "$id": "#/properties/caseComments/items/anyOf/0/properties/commentId",
+      "type": "integer",
+      "title": "The created time stamp",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    }
+  },
+  "additionalProperties": false
+}
