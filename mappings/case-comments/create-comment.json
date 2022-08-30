@@ -1,0 +1,30 @@
+{
+  "id": "e5552927-3236-42c2-8d3c-508b7a1e53f0",
+  "request": {
+    "method": "PUT",
+    "urlPathPattern": "/cases/e5552927-3236-42c2-8d3c-508b7a1e53f0/comments",
+    "bodyPatterns": [
+      {
+        "equalToJson": {
+          "author": "${json-unit.any-string}",
+          "caseId": "f76f1dfe-c41e-4242-b5fa-865d7dd2ce57",
+          "comment": "${json-unit.any-string}"
+        }
+      }
+    ]
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "author": "Adam Sandler",
+      "caseId": "e5552927-3236-42c2-8d3c-508b7a1e53f0",
+      "comment": "A comment",
+      "commentId": 12345,
+      "createdByUuid": "e5552927-3236-42c2-8d3c-508b7a1e53f0",
+      "created": "2022-08-23T09:30:00"
+    },
+    "status": 201
+  }
+}
