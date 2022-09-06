@@ -201,7 +201,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   }))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
-    const { session, path, params: { courtCode } } = req
+    const { session, path } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Case summary'
     templateValues.session = {
@@ -216,7 +216,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     })
     templateValues.enableCaseHistory = settings.enableCaseHistory
     templateValues.enableCaseComments = settings.enableCaseComments
-    templateValues.caseHistoryUrl = `/${courtCode}/cases/${templateValues.data.caseId}/history`
+    templateValues.enableCaseProgress = settings.enableCaseProgress
     templateValues.currentUserUuid = res.locals.user.uuid
     session.confirmedMatch = undefined
     session.matchName = undefined
