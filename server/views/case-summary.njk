@@ -108,7 +108,7 @@
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
+                    <dt class="govuk-summary-list__key>
                         Gender
                     </dt>
                     <dd class="govuk-summary-list__value">
@@ -166,6 +166,8 @@
         </div>
         <div class="govuk-grid-column-one-third"></div>
     </div>
+
+    {% include "court-case-progress.njk" %}
 
     {% if enableCaseComments %}
         {% include "court-case-comments.njk" %}
