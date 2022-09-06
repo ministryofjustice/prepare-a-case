@@ -307,6 +307,78 @@
         ]
       }
     },
+    "hearings": {
+      "$id": "#/properties/hearings",
+      "type": "array",
+      "title": "The case hearings schema",
+      "description": "List of hearings for the case",
+      "default": [],
+      "items": {
+        "$id": "#/properties/hearings/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/hearings/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "required": [
+              "hearingId",
+              "court",
+              "courtRoom",
+              "session",
+              "hearingTypeLabel",
+              "hearingDateTime"
+            ],
+            "properties": {
+              "hearingDateTime": {
+                "$id": "#/properties/hearings/items/anyOf/0/properties/hearingDateTime",
+                "type": "string",
+                "title": "The hearing date",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "court": {
+                "$id": "#/properties/hearings/items/anyOf/0/properties/court",
+                "type": "string",
+                "title": "The court name where the hearing is scheduled",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "courtRoom": {
+                "$id": "#/properties/hearings/items/anyOf/0/properties/courtRoom",
+                "type": "string",
+                "title": "The court room where the hearing is scheduled",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "hearingId": {
+                "$id": "#/properties/hearings/items/anyOf/0/properties/hearingId",
+                "type": "string",
+                "title": "The hearing identifier",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0
+              },
+              "hearingTypeLabel": {
+                "$id": "#/properties/hearings/items/anyOf/0/properties/hearingTypeLabel",
+                "type": "string",
+                "title": "The hearing type label for display",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              },
+              "session": {
+                "$id": "#/properties/hearings/items/anyOf/0/properties/session",
+                "type": "string",
+                "title": "The court session",
+                "description": "An explanation about the purpose of this instance.",
+                "default": ""
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
     "defendantName": {
       "$id": "#/properties/defendantName",
       "type": "string",
