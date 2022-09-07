@@ -1,0 +1,33 @@
+{
+  "$id": "#/properties/hearingNotes/items/anyOf/0",
+  "type": "object",
+  "title": "Create hearing note request",
+  "description": "",
+  "default": {},
+  "required": [
+    "author",
+    "note",
+    "hearingId"
+  ],
+  "properties": {
+    "author": {
+      "$id": "#/properties/hearingNotes/items/anyOf/0/properties/author",
+      "type": "string",
+      "title": "The author of the note",
+      "default": ""
+    },
+    "note": {
+      "$id": "#/properties/hearingNotes/items/anyOf/0/properties/note",
+      "type": "string",
+      "title": "The note",
+      "default": ""
+    },
+    "hearingId": {
+      "$id": "#/properties/hearingNotes/items/anyOf/0/properties/hearingId",
+      "type": "string",
+      "title": "The hearing id",
+      "default": ""
+    }
+  },
+  "additionalProperties": false
+}
