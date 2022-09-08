@@ -152,6 +152,72 @@
           "author": "Author Two",
           "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
         }
+      ],
+      "hearings": [
+        {
+          "hearingId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "court": "North Shields",
+          "courtRoom": "2",
+          "session": "MORNING",
+          "hearingTypeLabel": "5th hearing",
+          "hearingDateTime": "2019-05-14T09:00:00"
+        },
+        {
+          "hearingId": "2aa6f5e0-f842-4939-bc6a-01346abc09e7",
+          "court": "Leicester",
+          "courtRoom": "3",
+          "session": "MORNING",
+          "hearingTypeLabel": "3rd hearing",
+          "hearingDateTime": "2019-03-14T09:00:00"
+        },
+        {
+          "hearingId": "2aa6f5e0-f842-4939-bc6a-01346abc09e7",
+          "court": "Leicester",
+          "courtRoom": "5",
+          "session": "AFTERNOON",
+          "hearingTypeLabel": "2nd hearing",
+          "hearingDateTime": "2019-02-14T09:00:00"
+        },
+        {
+          "hearingId": "2aa6f5e0-f842-4939-bc6a-01346abc09e7",
+          "court": "Leicester",
+          "courtRoom": "1",
+          "session": "MORNING",
+          "hearingTypeLabel": "1st hearing",
+          "hearingDateTime": "2019-01-14T09:00:00"
+        },
+        {
+          "hearingId": "2aa6f5e0-f842-4939-bc6a-01346abc09e7",
+          "court": "Leicester",
+          "courtRoom": "2",
+          "session": "MORNING",
+          "hearingTypeLabel": "8th hearing",
+          "hearingDateTime": "2019-08-14T09:00:00"
+        },
+        {
+          "hearingId": "2aa6f5e0-f842-4939-bc6a-01346abc09e7",
+          "court": "Leicester",
+          "courtRoom": "3",
+          "session": "MORNING",
+          "hearingTypeLabel": "4th hearing",
+          "hearingDateTime": "2019-04-14T09:00:00"
+        },
+        {
+          "hearingId": "2aa6f5e0-f842-4939-bc6a-01346abc09e7",
+          "court": "Leicester",
+          "courtRoom": "1",
+          "session": "MORNING",
+          "hearingTypeLabel": "7th hearing",
+          "hearingDateTime": "2019-07-14T09:00:00"
+        },
+        {
+          "hearingId": "2aa6f5e0-f842-4939-bc6a-01346abc09e7",
+          "court": "Leicester",
+          "courtRoom": "2",
+          "session": "MORNING",
+          "hearingTypeLabel": "12th hearing",
+          "hearingDateTime": "2019-12-14T09:00:00"
+        }
       ]
     }
   }

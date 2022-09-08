@@ -89,4 +89,7 @@ env:
   - name: ENABLE_CASE_COMMENTS
     value: {{ .Values.env.ENABLE_CASE_COMMENTS | quote }}
 
+  - name: ENABLE_CASE_PROGRESS
+    value: {{ .Values.env.ENABLE_CASE_PROGRESS | quote }}
+
 {{- end -}}
