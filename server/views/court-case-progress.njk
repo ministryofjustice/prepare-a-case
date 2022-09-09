@@ -25,7 +25,19 @@
                                 <span class="govuk-details__summary-text">Add a note</span>
                             </summary>
                             <div class="govuk-details__text">
-                                <p class="govuk-!-margin-bottom-0">Coming soon...</p>
+                                {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+                                {{ govukTextarea({
+                                    name: "more-detail",
+                                    id: "more-detail",
+                                    label: {
+                                        text: "Add a note"
+                                    }
+                                }) }}
+
+                                {% from "govuk/components/button/macro.njk" import govukButton %}
+                                {{ govukButton({
+                                    text: "Save"
+                                }) }}
                             </div>
                         </details>
                     </div>
