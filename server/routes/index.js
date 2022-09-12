@@ -4,16 +4,7 @@ const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
 const { updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory } = require('../services/case-service')
-const {
-  getDetails,
-  getProbationRecord,
-  getConviction,
-  getProbationStatusDetails,
-  getSentenceDetails,
-  getBreachDetails,
-  getRiskDetails,
-  getCustodyDetails
-} = require('../services/community-service')
+const { getDetails, getProbationRecord, getConviction, getProbationStatusDetails, getSentenceDetails, getBreachDetails, getRiskDetails, getCustodyDetails } = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
 
 const { health } = require('./middleware/healthcheck')
@@ -25,7 +16,8 @@ const {
   getUserSelectedCourtsHandler,
   addCaseCommentRequestHandler,
   deleteCaseCommentConfirmationHandler,
-  deleteCaseCommentHandler
+  deleteCaseCommentHandler,
+  addCaseNoteRequestHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -216,6 +208,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     })
     templateValues.enableCaseHistory = settings.enableCaseHistory
     templateValues.enableCaseComments = settings.enableCaseComments
+    templateValues.enableCaseNotes = settings.enableCaseNotes
     templateValues.enableCaseProgress = settings.enableCaseProgress
     templateValues.currentUserUuid = res.locals.user.uuid
     session.confirmedMatch = undefined
@@ -224,6 +217,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.matchDate = undefined
     session.backLink = path
     session.caseCommentBlankError = undefined
+    session.caseNoteBlankError = undefined
     res.render('case-summary', templateValues)
   }))
 
@@ -231,6 +225,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const { params: { courtCode, hearingId, defendantId }, session, body: { caseId } } = req
     session.showPreviousComments = caseId
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
+  }))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/showPreviousNotes', defaults, catchErrors(async (req, res) => {
+    const { params: { courtCode, hearingId, defendantId }, session, body: { caseId } } = req
+    session.showPreviousNotes = caseId
+    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousNotes`)
   }))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/hideOlderComments', defaults, catchErrors(async (req, res) => {
@@ -256,6 +256,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(deleteCaseCommentHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(addCaseNoteRequestHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))
 

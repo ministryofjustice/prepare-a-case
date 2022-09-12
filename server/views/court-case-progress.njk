@@ -8,6 +8,8 @@
                 {% else %}
                     {% set limitPreviousHearings = 6 %}
                 {% endif %}
+
+
                 {% for hearing in data.hearings | limit(limitPreviousHearings) %}
                 <div class="app-summary-card govuk-!-margin-bottom-5">
                     <header class="app-summary-card__header">
@@ -19,6 +21,19 @@
                         </div>
                     </header>
 
+
+                    <div class="govuk-body">
+                        {% for note in data.caseNotes %}
+                        <div class="govuk-grid-row govuk-grid-column-full">
+{#                            <div class="govuk-!-margin-2">#}
+                                <span class="govuk-!-padding-bottom-2">{{ note.note }}</span>
+                                <span class="govuk-caption-m govuk-!-font-size-16">{{ note.author }} on {{ note.noteCreated | caseCommentTimeFormat }}</span>
+                                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+{#                            </div>#}
+                        </div>
+                        {% endfor %}
+                    </div>
+
                     <div class="app-summary-card__body">
                         <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
                             <summary class="govuk-details__summary">
@@ -27,8 +42,8 @@
                             <div class="govuk-details__text">
                                 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
                                 {{ govukTextarea({
-                                    name: "more-detail",
-                                    id: "more-detail",
+                                    name: "add-note",
+                                    id: "add-note",
                                     label: {
                                         text: "Add a note"
                                     }
@@ -36,22 +51,24 @@
 
                                 {% from "govuk/components/button/macro.njk" import govukButton %}
                                 {{ govukButton({
-                                    text: "Save"
+                                    text: "Save",
+                                    type: "submit"
                                 }) }}
                             </div>
                         </details>
                     </div>
-                </div>
+                    </div>
                 {% endfor %}
+
+
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
                 {% if data.hearings | length > limitPreviousHearings %}
-                    <button type="submit" id="showPreviousHearings" class="govuk-button govuk-button--secondary">Show all previous hearings
-                    </button>
+                    <button type="submit" id="showPreviousHearings" class="govuk-button govuk-button--secondary">Show all previous hearings</button>
                 {% endif %}
                 {% if session.showPreviousHearings === data.caseId %}
-                    <button type="submit" id="showHideOlderHearings" class="govuk-button govuk-button--secondary">Hide older hearings
-                    </button>
+                    <button type="submit" id="showHideOlderHearings" class="govuk-button govuk-button--secondary">Hide older hearings</button>
                 {% endif %}
+
             </form>
         {% endif %}
     </div>
