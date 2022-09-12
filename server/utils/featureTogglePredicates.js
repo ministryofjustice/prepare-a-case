@@ -21,6 +21,14 @@ const mainFeatureToggleEnabled = feature => ({
   }
 })
 
+const enabledForSourceTypes = (...sourceTypes) => (
+  {
+    isEnabled: (context) => {
+      return !!context && !!context.sourceType && sourceTypes?.includes(context.sourceType)
+    }
+  }
+)
+
 const enabledForAll = () => {
   return {
     isEnabled: () => {
@@ -54,6 +62,7 @@ module.exports = {
   enabledForUsers,
   enabledForCourts,
   enabledForAll,
+  enabledForSourceTypes,
   disabledForAll,
   allOf,
   anyOf
