@@ -164,11 +164,11 @@
         <div class="govuk-grid-column-one-third"></div>
     </div>
 
-    {% if enableCaseProgress %}
+    {% if features.caseProgress %}
         {% include "court-case-progress.njk" %}
     {% endif %}
 
-    {% if enableCaseComments %}
+    {% if features.caseComments %}
         {% include "court-case-comments.njk" %}
     {% endif %}
 

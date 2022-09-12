@@ -15,6 +15,7 @@ const {
   getCustodyDetails
 } = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
+const featuresToggles = require('../utils/features')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
@@ -201,7 +202,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   }))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
-    const { session, path } = req
+    const { session, path, params: { courtCode } } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Case summary'
     templateValues.session = {
@@ -218,6 +219,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.enableCaseComments = settings.enableCaseComments
     templateValues.enableCaseProgress = settings.enableCaseProgress
     templateValues.currentUserUuid = res.locals.user.uuid
+    const context = { court: courtCode, username: res.locals.username }
+    templateValues.features = {
+      caseComments: featuresToggles.caseComments.isEnabled(context),
+      caseProgress: featuresToggles.caseProgress.isEnabled(context)
+    }
     session.confirmedMatch = undefined
     session.matchName = undefined
     session.matchType = 'defendant'
