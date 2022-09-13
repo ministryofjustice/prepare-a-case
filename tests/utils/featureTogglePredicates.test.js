@@ -17,11 +17,11 @@ describe('featureConfigPredicates', () => {
   })
 
   describe('enabledForUsers', () => {
-    it('should return true when a court is in the enabled list of courts', () => {
+    it('should return true when a user is in the enabled list of users', () => {
       expect(enabledForUsers('user-four', 'user-one').isEnabled({ username: 'user-one' })).toBe(true)
     })
 
-    it('should return false when a court is NOT in the enabled list of courts', () => {
+    it('should return false when a user is NOT in the enabled list of users', () => {
       expect(enabledForUsers('user-four', 'user-one').isEnabled({ username: 'user-three' })).toBe(false)
     })
 
