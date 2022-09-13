@@ -24,12 +24,10 @@
 
                     <div class="govuk-body">
                         {% for note in data.caseNotes %}
-                        <div class="govuk-grid-row govuk-grid-column-full">
-{#                            <div class="govuk-!-margin-2">#}
-                                <span class="govuk-!-padding-bottom-2">{{ note.note }}</span>
-                                <span class="govuk-caption-m govuk-!-font-size-16">{{ note.author }} on {{ note.noteCreated | caseCommentTimeFormat }}</span>
+                        <div class="govuk-grid-row govuk-grid-column-full app-summary-card__title govuk-!-margin-top-3">
+                                <span class=" govuk-!-margin-bottom-2">{{ note.note }}</span>
+                                <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ note.author }} on {{ note.noteCreated | caseCommentTimeFormat }} <a class="govuk-link govuk-!-margin-left-5" href="#">Delete</a></span>
                                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-{#                            </div>#}
                         </div>
                         {% endfor %}
                     </div>
