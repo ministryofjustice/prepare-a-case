@@ -74,10 +74,17 @@
       "caseNotes": [
         {
           "noteId": 1234560,
-          "note": "Result: 12 month Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
+          "note": "Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
           "noteCreated": "2022-07-09T17:13:09",
           "author": "Jane Smith",
           "createdByUuid": "q1111qq1-084d-4f7f-81dd-1q11qqq11qqq"
+        },
+        {
+          "noteId": 987650,
+          "note": "Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.",
+          "noteCreated": "2022-08-09T17:16:14",
+          "author": "John Doe",
+          "createdByUuid": "a2222aa2-084d-4f7f-81dd-2a22aaa22aaa"
         }
       ],
       "caseComments": [

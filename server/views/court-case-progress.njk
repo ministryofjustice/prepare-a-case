@@ -2,7 +2,8 @@
     <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-m" id="caseHearingsHeading">Case progress</h2>
         {% if data.hearings | length %}
-            <form name="previousCommentsForm" id="caseHearingsForm" method="post" action="summary/hearings/{{ "hideOlderHearings" if session.showPreviousHearings === data.caseId else "showPreviousHearings"}}">
+            <form name="previousCommentsForm" id="caseHearingsForm" method="post"
+                  action="summary/hearings/{{ "hideOlderHearings" if session.showPreviousHearings === data.caseId else "showPreviousHearings" }}">
                 {% if session.showPreviousHearings === data.caseId %}
                     {% set limitPreviousHearings = data.hearings | length %}
                 {% else %}
@@ -11,61 +12,62 @@
 
 
                 {% for hearing in data.hearings | limit(limitPreviousHearings) %}
-                <div class="app-summary-card govuk-!-margin-bottom-5">
-                    <header class="app-summary-card__header">
-                        <div class="app-summary-card__title">
-                            <span class="govuk-heading-s govuk-!-margin-bottom-0">{{ hearing.hearingTypeLabel }}</span>
-                            <span class="govuk-body">
+                    <div class="app-summary-card govuk-!-margin-bottom-5">
+                        <header class="app-summary-card__header">
+                            <div class="app-summary-card__title">
+                                <span class="govuk-heading-s govuk-!-margin-bottom-0">{{ hearing.hearingTypeLabel }}</span>
+                                <span class="govuk-body">
                                 {{ hearing.hearingDateTime | caseCommentTimeFormat }}, Court {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
                             </span>
-                        </div>
-                    </header>
-
-
-                    <div class="govuk-body">
-                        {% for note in data.caseNotes %}
-                        <div class="govuk-grid-row govuk-grid-column-full app-summary-card__title govuk-!-margin-top-3">
-                                <span class=" govuk-!-margin-bottom-2">{{ note.note }}</span>
-                                <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ note.author }} on {{ note.noteCreated | caseCommentTimeFormat }} <a class="govuk-link govuk-!-margin-left-5" href="#">Delete</a></span>
-                                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                        </div>
-                        {% endfor %}
-                    </div>
-
-                    <div class="app-summary-card__body">
-                        <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
-                            <summary class="govuk-details__summary">
-                                <span class="govuk-details__summary-text">Add a note</span>
-                            </summary>
-                            <div class="govuk-details__text">
-                                {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-                                {{ govukTextarea({
-                                    name: "add-note",
-                                    id: "add-note",
-                                    label: {
-                                        text: "Add a note"
-                                    }
-                                }) }}
-
-                                {% from "govuk/components/button/macro.njk" import govukButton %}
-                                {{ govukButton({
-                                    text: "Save",
-                                    type: "submit"
-                                }) }}
                             </div>
-                        </details>
-                    </div>
+                        </header>
+
+                        <form method="post" action="notes">
+                            <div class="govuk-body">
+                                {% for note in data.caseNotes %}
+                                    <div class="govuk-grid-row govuk-grid-column-full app-summary-card__title govuk-!-margin-top-3">
+                                        <span class=" govuk-!-margin-bottom-2">{{ note.note }}</span>
+                                        <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ note.author }} on {{ note.noteCreated | caseCommentTimeFormat }} <a
+                                                    class="govuk-link govuk-!-margin-left-5" href="#">Delete</a></span>
+                                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="app-summary-card__body">
+                                <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                                    <summary class="govuk-details__summary">
+                                        <span class="govuk-details__summary-text">Add a note</span>
+                                    </summary>
+                                    <div class="govuk-details__text">
+                                        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+                                        {{ govukTextarea({
+                                            name: "add-note",
+                                            id: "add-note",
+                                            label: {
+                                                text: "Add a note"
+                                            }
+                                        }) }}
+                                        <button type="submit" id="save-notes" class="govuk-button case-comments-save-button" data-module="govuk-button">Save</button>
+                                    </div>
+                                </details>
+                            </div>
                     </div>
                 {% endfor %}
+            </form>
 
 
-                <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
-                {% if data.hearings | length > limitPreviousHearings %}
-                    <button type="submit" id="showPreviousHearings" class="govuk-button govuk-button--secondary">Show all previous hearings</button>
-                {% endif %}
-                {% if session.showPreviousHearings === data.caseId %}
-                    <button type="submit" id="showHideOlderHearings" class="govuk-button govuk-button--secondary">Hide older hearings</button>
-                {% endif %}
+            <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
+            {% if data.hearings | length > limitPreviousHearings %}
+                <button type="submit" id="showPreviousHearings" class="govuk-button govuk-button--secondary">Show all
+                    previous hearings
+                </button>
+            {% endif %}
+            {% if session.showPreviousHearings === data.caseId %}
+                <button type="submit" id="showHideOlderHearings" class="govuk-button govuk-button--secondary">Hide older
+                    hearings
+                </button>
+            {% endif %}
 
             </form>
         {% endif %}
