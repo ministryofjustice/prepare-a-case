@@ -1,0 +1,56 @@
+{
+  "$id": "#/properties/caseNotes/items/anyOf/0",
+  "type": "object",
+  "title": "Create case note request",
+  "description": "",
+  "default": {},
+  "required": [
+    "author",
+    "caseId"
+  ],
+  "properties": {
+    "author": {
+      "$id": "#/properties/caseNotes/items/anyOf/0/properties/author",
+      "type": "string",
+      "title": "The author of the note",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "note": {
+      "$id": "#/properties/caseNotes/items/anyOf/0/properties/comment",
+      "type": "string",
+      "title": "The note",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "caseId": {
+      "$id": "#/properties/caseNotes/items/anyOf/0/properties/caseId",
+      "type": "string",
+      "title": "The case id",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "createdByUuid": {
+      "$id": "#/properties/caseNotes/items/anyOf/0/properties/createdByUuid",
+      "type": "string",
+      "title": "The created user uuid",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "created": {
+      "$id": "#/properties/caseNotes/items/anyOf/0/properties/created",
+      "type": "string",
+      "title": "The created time stamp",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "noteId": {
+      "$id": "#/properties/caseNotes/items/anyOf/0/properties/commentId",
+      "type": "integer",
+      "title": "The created time stamp",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    }
+  },
+  "additionalProperties": false
+}
