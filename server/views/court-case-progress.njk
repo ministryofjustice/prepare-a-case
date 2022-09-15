@@ -48,14 +48,13 @@
                                                 text: "Add a note"
                                             }
                                         }) }}
-                                        <button type="submit" id="save-notes" class="govuk-button case-comments-save-button" data-module="govuk-button">Save</button>
+                                        <button type="submit" id="save-notes" data-module="govuk-button">Save</button>
                                     </div>
                                 </details>
                             </div>
                     </div>
                 {% endfor %}
             </form>
-
 
             <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
             {% if data.hearings | length > limitPreviousHearings %}

@@ -7,7 +7,7 @@ const getAddCaseNoteHandler = caseService => async (req, res) => {
     await caseService.addCaseNote(caseId, note, res.locals.user.name)
   }
 
-  res.redirect(`/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseNotes`)
+  res.redirect(`/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/#caseNotes`)
 }
 
 module.exports = getAddCaseNoteHandler
