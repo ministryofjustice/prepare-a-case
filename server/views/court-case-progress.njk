@@ -2,15 +2,11 @@
     <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-m" id="caseHearingsHeading">Case progress</h2>
         {% if data.hearings | length %}
-            <form name="previousCommentsForm" id="caseHearingsForm" method="post"
-                  action="summary/hearings/{{ "hideOlderHearings" if session.showPreviousHearings === data.caseId else "showPreviousHearings" }}">
                 {% if session.showPreviousHearings === data.caseId %}
                     {% set limitPreviousHearings = data.hearings | length %}
                 {% else %}
                     {% set limitPreviousHearings = 6 %}
                 {% endif %}
-
-
                 {% for hearing in data.hearings | limit(limitPreviousHearings) %}
                     <div class="app-summary-card govuk-!-margin-bottom-5">
                         <header class="app-summary-card__header">
@@ -22,53 +18,26 @@
                             </div>
                         </header>
 
-                        <form method="post" action="notes">
-                            <div class="govuk-body">
-                                {% for note in data.caseNotes %}
-                                    <div class="govuk-grid-row govuk-grid-column-full app-summary-card__title govuk-!-margin-top-3">
-                                        <span class=" govuk-!-margin-bottom-2">{{ note.note }}</span>
-                                        <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ note.author }} on {{ note.noteCreated | caseCommentTimeFormat }} <a
-                                                    class="govuk-link govuk-!-margin-left-5" href="#">Delete</a></span>
-                                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-                                    </div>
-                                {% endfor %}
-                            </div>
-
-                            <div class="app-summary-card__body">
-                                <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
-                                    <summary class="govuk-details__summary">
-                                        <span class="govuk-details__summary-text">Add a note</span>
-                                    </summary>
-                                    <div class="govuk-details__text">
-                                        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-                                        {{ govukTextarea({
-                                            name: "add-note",
-                                            id: "add-note",
-                                            label: {
-                                                text: "Add a note"
-                                            }
-                                        }) }}
-                                        <button class="govuk-button" type="submit" id="save-notes" data-module="govuk-button">Save</button>
-                                    </div>
-                                </details>
-                            </div>
+                        {%- from "components/case-notes/macro.njk" import pacCaseNotes -%}
+                        {{ pacCaseNotes({
+                            data: data,
+                            hearing: hearing
+                        }) }}
                     </div>
                 {% endfor %}
-            </form>
+            <form name="previousCommentsForm" id="caseHearingsForm" method="post" action="summary/hearings/{{ "hideOlderHearings" if session.showPreviousHearings === data.caseId else "showPreviousHearings"}}">
 
-            <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
-            {% if data.hearings | length > limitPreviousHearings %}
-                <button type="submit" id="showPreviousHearings" class="govuk-button govuk-button--secondary">Show all
-                    previous hearings
-                </button>
-            {% endif %}
-            {% if session.showPreviousHearings === data.caseId %}
-                <button type="submit" id="showHideOlderHearings" class="govuk-button govuk-button--secondary">Hide older
-                    hearings
-                </button>
-            {% endif %}
-
+                <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
+                {% if data.hearings | length > limitPreviousHearings %}
+                    <button type="submit" id="showPreviousHearings" class="govuk-button govuk-button--secondary">Show all previous hearings
+                    </button>
+                {% endif %}
+                {% if session.showPreviousHearings === data.caseId %}
+                    <button type="submit" id="showHideOlderHearings" class="govuk-button govuk-button--secondary">Hide older hearings
+                    </button>
+                {% endif %}
             </form>
+            <form id="save-notes" action="summary/comments" method="post"></form>
         {% endif %}
     </div>
 </div>

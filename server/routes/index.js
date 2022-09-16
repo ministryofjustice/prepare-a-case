@@ -227,11 +227,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
   }))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/notes', defaults, catchErrors(async (req, res) => {
+  //               /B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary/notes
+  /*  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, hearingId, defendantId }, session, body: { caseId } } = req
     session.showPreviousNotes = caseId
-    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/notes`)
-  }))
+    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseHearingsHeading`)
+    })) */
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/hideOlderComments', defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, hearingId, defendantId }, session } = req
@@ -257,7 +258,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/notes', defaults, catchErrors(addCaseNoteRequestHandler))
+  //              /B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary/notes
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(addCaseNoteRequestHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))
 
