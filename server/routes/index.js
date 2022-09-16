@@ -17,7 +17,7 @@ const {
   addCaseCommentRequestHandler,
   deleteCaseCommentConfirmationHandler,
   deleteCaseCommentHandler,
-  addCaseNoteRequestHandler
+  addHearingNoteRequestHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -208,7 +208,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     })
     templateValues.enableCaseHistory = settings.enableCaseHistory
     templateValues.enableCaseComments = settings.enableCaseComments
-    templateValues.enableCaseNotes = settings.enableCaseNotes
+    templateValues.enableHearingNotes = settings.enableHearingNotes
     templateValues.enableCaseProgress = settings.enableCaseProgress
     templateValues.currentUserUuid = res.locals.user.uuid
     session.confirmedMatch = undefined
@@ -217,7 +217,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.matchDate = undefined
     session.backLink = path
     session.caseCommentBlankError = undefined
-    session.caseNoteBlankError = undefined
     res.render('case-summary', templateValues)
   }))
 
@@ -251,7 +250,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(addCaseNoteRequestHandler))
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(addHearingNoteRequestHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))
 

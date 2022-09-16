@@ -4,7 +4,7 @@ const caseServiceMock = {
   getCaseList: jest.fn(),
   addCaseComment: jest.fn(),
   deleteCaseComment: jest.fn(),
-  addCaseNote: jest.fn()
+  addHearingNote: jest.fn()
 }
 
 const communityServiceMock = {

@@ -18,8 +18,8 @@
                             </div>
                         </header>
 
-                        {%- from "components/case-notes/macro.njk" import pacCaseNotes -%}
-                        {{ pacCaseNotes({
+                        {%- from "components/hearing-notes/macro.njk" import pacCaseNotes -%}
+                        {{ pacHearingNotes({
                             data: data,
                             hearing: hearing
                         }) }}

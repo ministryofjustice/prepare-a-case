@@ -2,7 +2,7 @@
 const { pactWith } = require('jest-pact')
 const { createCaseService } = require('../../../server/services/case-service')
 const { validateSchema, validateMocks } = require('../../testUtils/schemaValidation')
-const schema = require('../../../schemas/post-case-note-schema.schema.json')
+const schema = require('../../../schemas/post-hearing-note-schema.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
   describe('POST /cases/{caseId}/notes', () => {
@@ -49,7 +49,7 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
       })
 
       const caseService = createCaseService(provider.mockService.baseUrl)
-      const response = await caseService.addCaseNote(caseId, 'A note', 'Jane Smith')
+      const response = await caseService.addHearingNote(caseId, 'A note', 'Jane Smith')
       expect(response.status).toEqual(201)
       expect(response.data).toEqual(addNoteResponse)
     })

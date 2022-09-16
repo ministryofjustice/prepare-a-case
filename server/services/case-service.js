@@ -97,7 +97,7 @@ const createCaseService = (apiUrl) => {
     },
     addCaseComment: async (caseId, comment, author) => await create(`${apiUrl}/cases/${caseId}/comments`, { caseId, comment, author }),
     deleteCaseComment: async (caseId, commentId) => await httpDelete(`${apiUrl}/cases/${caseId}/comments/${commentId}`),
-    addCaseNote: async (hearingId, note, author) => await create(`${apiUrl}/hearings/${hearingId}/notes`, { hearingId, note, author })
+    addHearingNote: async (hearingId, note, author) => await create(`${apiUrl}/hearings/${hearingId}/notes`, { hearingId, note, author })
   }
 }
 

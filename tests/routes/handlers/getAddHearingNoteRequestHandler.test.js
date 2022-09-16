@@ -5,7 +5,7 @@ describe('getAddNoteRequestHandler', () => {
     caseServiceMock,
     mockResponse
   } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/getAddCaseNoteRequestHandler')(caseServiceMock)
+  const subject = require('../../../server/routes/handlers/getAddHearingNoteRequestHandler')(caseServiceMock)
   const testDefendantId = 'test-defendant-id'
   const testHearingId = 'test-hearing-id'
   const courtCode = 'B007'
@@ -22,7 +22,7 @@ describe('getAddNoteRequestHandler', () => {
     await subject(mockRequest, mockResponse)
 
     // Then
-    expect(caseServiceMock.addCaseNote).toHaveBeenLastCalledWith(testHearingId, 'A note', 'Adam Sandler')
+    expect(caseServiceMock.addHearingNote).toHaveBeenLastCalledWith(testHearingId, 'A note', 'Adam Sandler')
     expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/hearing/${testHearingId}/defendant/${testDefendantId}/summary#save-notes-${testHearingId}`)
   })
 
@@ -31,6 +31,6 @@ describe('getAddNoteRequestHandler', () => {
     await subject({ ...mockRequest, body: { caseId: testHearingId, note: '' } }, mockResponse)
 
     // Then
-    expect(caseServiceMock.addCaseNote).not.toHaveBeenCalled()
+    expect(caseServiceMock.addHearingNote).not.toHaveBeenCalled()
   })
 })
