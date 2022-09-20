@@ -203,7 +203,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
       return moment(b.created).unix() - moment(a.created).unix()
     })
-    templateValues.data.hearings = templateValues.data.hearings?.sort((a, b) => {
+    templateValues.data.hearing = templateValues.data.hearing?.sort((a, b) => {
       return moment(b.hearingDateTime).unix() - moment(a.hearingDateTime).unix()
     })
     templateValues.enableCaseHistory = settings.enableCaseHistory
@@ -232,13 +232,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
   }))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/hearings/showPreviousHearings', defaults, catchErrors(async (req, res) => {
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/hearing/showPreviousHearings', defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, hearingId, defendantId }, session, body: { caseId } } = req
     session.showPreviousHearings = caseId
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseHearingsHeading`)
   }))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/hearings/hideOlderHearings', defaults, catchErrors(async (req, res) => {
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/hearing/hideOlderHearings', defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, hearingId, defendantId }, session } = req
     session.showPreviousHearings = undefined
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseHearingsHeading`)

@@ -1,8 +1,8 @@
 <div class="app-summary-card__body">
 
-    <div class="govuk-grid-row govuk-grid-column-full app-summary-card__title govuk-!-margin-top-3">
+    <div class="govuk-grid-row govuk-grid-column-full app-summary-card__body">
         {% for previousNote in params.hearing.notes %}
-            <span class=" govuk-!-margin-bottom-2">{{ previousNote.note }}</span>
+            <span class="govuk-!-margin-bottom-2 app-summary-card__body">{{ previousNote.note }}</span>
             <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.noteCreated | caseCommentTimeFormat }}
                             <a class="govuk-link govuk-!-margin-left-5" href="#">Delete</a>
                         </span>
@@ -10,18 +10,35 @@
         {% endfor %}
     </div>
 
-    <form id="save-notes-{{ params.hearing.hearingId }}" action="summary/notes" method="post">
+    <form id="save-notes-{{ params.hearing.hearingId }}" action="summary/notes" method="post"></form>
 
         <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
-            <summary class="govuk-details__summary">
+            <summary class="govuk-details__summary govuk-!-margin-left-2">
                 <span class="govuk-details__summary-text">Add a note</span>
             </summary>
             <div class="govuk-details__text">
-                <textarea class="govuk-textarea" id="note" name="note" rows="5"></textarea>
-                <button class="govuk-button" type="submit" id="save-notes" data-module="govuk-button">Save</button>
+{#                {% for note in params.hearing.hearingId -%}#}
+{#                    {% from "govuk/components/textarea/macro.njk" import govukTextarea %}#}
+{#                    {{ govukTextarea({#}
+{#                        name: "note-box",#}
+{#                        id: "note-box",#}
+{#                        label: {#}
+{#                         type:"hidden"#}
+{#                        }#}
+{#                    }) }}#}
+{#                    {% from "govuk/components/button/macro.njk" import govukButton %}#}
+{#                    {{ govukButton({#}
+{#                        type: "submit",#}
+{#                        text: "Save"#}
+{#                    }) }}#}
+                <label class="govuk-label" for="note-box" type="hidden">Add note</label>
+{#                <textarea class="govuk-textarea" { if id="note-box" } name="note-box" rows="5" aria-describedby="note-box"></textarea>#}
+                <textarea class="govuk-textarea" id="note-box" name="note-box" rows="5" aria-describedby="note-box"></textarea>
+                <button class="govuk-button" type="submit" data-module="govuk-button">Save</button>
                 <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
+{#                {%- endfor %}#}
             </div>
         </details>
-    </form>
+{#    </form>#}
 </div>
 
