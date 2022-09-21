@@ -10,35 +10,19 @@
         {% endfor %}
     </div>
 
-    <form id="save-notes-{{ params.hearing.hearingId }}" action="summary/notes" method="post"></form>
+    <form id="save-notes-{{ params.hearing.hearingId }}" action="summary/notes" method="post">
 
         <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
             <summary class="govuk-details__summary govuk-!-margin-left-2">
                 <span class="govuk-details__summary-text">Add a note</span>
             </summary>
             <div class="govuk-details__text">
-{#                {% for note in params.hearing.hearingId -%}#}
-{#                    {% from "govuk/components/textarea/macro.njk" import govukTextarea %}#}
-{#                    {{ govukTextarea({#}
-{#                        name: "note-box",#}
-{#                        id: "note-box",#}
-{#                        label: {#}
-{#                         type:"hidden"#}
-{#                        }#}
-{#                    }) }}#}
-{#                    {% from "govuk/components/button/macro.njk" import govukButton %}#}
-{#                    {{ govukButton({#}
-{#                        type: "submit",#}
-{#                        text: "Save"#}
-{#                    }) }}#}
-                <label class="govuk-label" for="note-box" type="hidden">Add note</label>
-{#                <textarea class="govuk-textarea" { if id="note-box" } name="note-box" rows="5" aria-describedby="note-box"></textarea>#}
-                <textarea class="govuk-textarea" id="note-box" name="note-box" rows="5" aria-describedby="note-box"></textarea>
+                <label class="govuk-label" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add note</label>
+                <textarea class="govuk-textarea" id="note-box-{{ params.hearing.hearingId }}"  name="noteBox" rows="5" aria-describedby="note-box"></textarea>
                 <button class="govuk-button" type="submit" data-module="govuk-button">Save</button>
                 <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
-{#                {%- endfor %}#}
             </div>
         </details>
-{#    </form>#}
+    </form>
 </div>
 
