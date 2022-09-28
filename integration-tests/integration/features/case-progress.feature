@@ -24,12 +24,12 @@ Feature: Case progress
     And I should see 6 previous hearings headers
 
     And I should see the following hearings with the hearing type label, hearing details and next appearance badge if applicable
-      | Millionth hearing   | 14 July 2999, 09:00, Court 1, morning session, Neptune Mags   |                 |
-      | Million-1th hearing | 14 July 2998, 09:00, Court 1, morning session, Mars Mags      | NEXT APPEARANCE |
-      | 12th hearing        | 14 December 2019, 09:00, Court 2, morning session, Leicester  |                 |
-      | 8th hearing         | 14 August 2019, 09:00, Court 2, morning session, Leicester    |                 |
-      | 7th hearing         | 14 July 2019, 09:00, Court 1, morning session, Leicester      |                 |
-      | 5th hearing         | 14 May 2019, 09:00, Court 2, morning session, North Shields   |                 |
+      | Millionth hearing   | Sunday 14 July 2999, Court 1, morning session, Neptune Mags       |                 |
+      | Million-1th hearing | Saturday 14 July 2998, Court 1, morning session, Mars Mags        | NEXT APPEARANCE |
+      | 12th hearing        | Saturday 14 December 2019, Court 2, morning session, Leicester    |                 |
+      | 8th hearing         | Wednesday 14 August 2019, Court 2, morning session, Leicester     |                 |
+      | 7th hearing         | Sunday 14 July 2019, Court 1, morning session, Leicester          |                 |
+      | 5th hearing         | Tuesday 14 May 2019, Court 2, morning session, North Shields      |                 |
 
     And I should see a button with the label "Show all previous hearings"
 
@@ -37,16 +37,16 @@ Feature: Case progress
     Then I should see 10 previous hearings headers
 
     And I should see the following hearings with the hearing type label, hearing details and next appearance badge if applicable
-      | Millionth hearing   | 14 July 2999, 09:00, Court 1, morning session, Neptune Mags   |                 |
-      | Million-1th hearing | 14 July 2998, 09:00, Court 1, morning session, Mars Mags      | NEXT APPEARANCE |
-      | 12th hearing        | 14 December 2019, 09:00, Court 2, morning session, Leicester  |                 |
-      | 8th hearing         | 14 August 2019, 09:00, Court 2, morning session, Leicester    |                 |
-      | 7th hearing         | 14 July 2019, 09:00, Court 1, morning session, Leicester      |                 |
-      | 5th hearing         | 14 May 2019, 09:00, Court 2, morning session, North Shields   |                 |
-      | 4th hearing         | 14 April 2019, 09:00, Court 3, morning session, Leicester     |                 |
-      | 3rd hearing         | 14 March 2019, 09:00, Court 3, morning session, Leicester     |                 |
-      | 2nd hearing         | 14 February 2019, 09:00, Court 5, afternoon session, Leicester|                 |
-      | 1st hearing         | 14 January 2019, 09:00, Court 1, morning session, Leicester   |                 |
+      | Millionth hearing   | Sunday 14 July 2999, Court 1, morning session, Neptune Mags       |                 |
+      | Million-1th hearing | Saturday 14 July 2998, Court 1, morning session, Mars Mags        | NEXT APPEARANCE |
+      | 12th hearing        | Saturday 14 December 2019, Court 2, morning session, Leicester    |                 |
+      | 8th hearing         | Wednesday 14 August 2019, Court 2, morning session, Leicester     |                 |
+      | 7th hearing         | Sunday 14 July 2019, Court 1, morning session, Leicester          |                 |
+      | 5th hearing         | Tuesday 14 May 2019, Court 2, morning session, North Shields      |                 |
+      | 4th hearing         | Sunday 14 April 2019, Court 3, morning session, Leicester         |                 |
+      | 3rd hearing         | Thursday 14 March 2019, Court 3, morning session, Leicester       |                 |
+      | 2nd hearing         | Thursday 14 February 2019, Court 5, afternoon session, Leicester  |                 |
+      | 1st hearing         | Monday 14 January 2019, Court 1, morning session, Leicester       |                 |
 
     And I should see a button with the label "Hide older hearings"
 

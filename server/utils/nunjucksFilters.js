@@ -67,5 +67,12 @@ module.exports = {
       return 'Not available'
     }
     return moment(dateString).format('D MMMM YYYY, HH:mm')
+  },
+
+  hearingNoteTimeFormat: (dateString) => {
+    if (!dateString) {
+      return 'Not available'
+    }
+    return moment(dateString).format('dddd D MMMM YYYY')
   }
 }

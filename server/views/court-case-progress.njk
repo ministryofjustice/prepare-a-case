@@ -17,7 +17,7 @@
                                     {% endif %}
                                 <br/>
                                 <span class="govuk-body">
-                                    {{ hearing.hearingDateTime | caseCommentTimeFormat }}, Court {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
+                                    {{ hearing.hearingDateTime | hearingNoteTimeFormat }}, Court {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
                                 </span>
                             </div>
                         </header>
