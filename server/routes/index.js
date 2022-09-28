@@ -205,13 +205,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
       return moment(b.created).unix() - moment(a.created).unix()
     })
-    templateValues.data.nextAppearanceHearingId = getNextHearing(templateValues.data.hearings, moment(), templateValues.data.source)?.hearingId
+    templateValues.data.nextAppearanceHearingId = templateValues.data.hearings &&
+      getNextHearing(templateValues.data.hearings, moment(), templateValues.data.source)?.hearingId
     templateValues.data.hearings = templateValues.data.hearings?.sort((a, b) => {
       return moment(b.hearingDateTime).unix() - moment(a.hearingDateTime).unix()
     })
     templateValues.enableCaseHistory = settings.enableCaseHistory
     templateValues.enableCaseComments = settings.enableCaseComments
-    templateValues.enableHearingNotes = settings.enableHearingNotes
     templateValues.enableCaseProgress = settings.enableCaseProgress
     templateValues.currentUserUuid = res.locals.user.uuid
     const context = { court: courtCode, username: res.locals.username, sourceType: templateValues.data.source }
