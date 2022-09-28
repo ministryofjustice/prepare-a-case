@@ -22,7 +22,7 @@ describe('getAddNoteRequestHandler', () => {
     await subject(mockRequest, mockResponse)
 
     // Then
-    expect(caseServiceMock.addHearingNote).toHaveBeenLastCalledWith(testHearingId, 'A note', 'Adam Sandler')
+    expect(caseServiceMock.addHearingNote).toHaveBeenCalledWith(testHearingId, 'A note', 'Adam Sandler')
     expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/hearing/${testHearingId}/defendant/${testDefendantId}/summary#save-notes-${testHearingId}`)
   })
 

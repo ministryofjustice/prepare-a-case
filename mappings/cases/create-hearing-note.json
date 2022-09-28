@@ -2,7 +2,7 @@
   "id": "4da534af-1ccf-47f2-90eb-cdab00cf54bc",
   "request": {
     "method": "POST",
-    "urlPathPattern": "/hearings/.*/notes"
+    "urlPathPattern": "/hearing/.*/notes"
   },
   "response": {
     "headers": {
