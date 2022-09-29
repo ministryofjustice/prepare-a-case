@@ -1,11 +1,15 @@
-/* global cy Then When */
+/* global cy */
 import 'cypress-axe'
-import { And } from 'cypress-cucumber-preprocessor/steps'
+import { And, When, Then } from 'cypress-cucumber-preprocessor/steps'
 
 And('I should see {int} previous comments', $int => {
   cy.get('#previousComments').within(() => {
     cy.get('tr').should('have.length', $int)
   })
+})
+
+When('I click the button to {string} comment', $string => {
+  cy.get('#save-comments').contains($string).click()
 })
 
 Then('I should see the comments textarea highlighted as error', () => {

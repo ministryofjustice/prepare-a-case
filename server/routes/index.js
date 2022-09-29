@@ -4,16 +4,7 @@ const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
 const { updateSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory } = require('../services/case-service')
-const {
-  getDetails,
-  getProbationRecord,
-  getConviction,
-  getProbationStatusDetails,
-  getSentenceDetails,
-  getBreachDetails,
-  getRiskDetails,
-  getCustodyDetails
-} = require('../services/community-service')
+const { getDetails, getProbationRecord, getConviction, getProbationStatusDetails, getSentenceDetails, getBreachDetails, getRiskDetails, getCustodyDetails } = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
 const featuresToggles = require('../utils/features')
 
@@ -26,7 +17,8 @@ const {
   getUserSelectedCourtsHandler,
   addCaseCommentRequestHandler,
   deleteCaseCommentConfirmationHandler,
-  deleteCaseCommentHandler
+  deleteCaseCommentHandler,
+  addHearingNoteRequestHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -217,6 +209,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     })
     templateValues.enableCaseHistory = settings.enableCaseHistory
     templateValues.enableCaseComments = settings.enableCaseComments
+    templateValues.enableHearingNotes = settings.enableHearingNotes
     templateValues.enableCaseProgress = settings.enableCaseProgress
     templateValues.currentUserUuid = res.locals.user.uuid
     const context = { court: courtCode, username: res.locals.username }
@@ -262,6 +255,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(deleteCaseCommentHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(addHearingNoteRequestHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))
 

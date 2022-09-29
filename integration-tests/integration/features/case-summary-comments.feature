@@ -120,7 +120,7 @@ Feature: Case comments
     Then I should be on the "Case summary" page
     And I should see a button with the label "Save"
 
-    When I click the "Save" button
+    When I click the button to "Save" comment
     Then I should see the comments textarea highlighted as error
     Then I should see an error message "Error: Enter a comment"
 
@@ -133,5 +133,5 @@ Feature: Case comments
     Then I should be on the "Case summary" page
 
     When I enter a comment "a comment" in the comment box
-    And I click the "Save" button
+    And I click the button to "Save" comment
     Then I should NOT see an error message

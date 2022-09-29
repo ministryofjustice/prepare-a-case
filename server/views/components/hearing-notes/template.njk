@@ -1,0 +1,28 @@
+<div class="app-summary-card__body">
+
+    <div class="govuk-grid-row govuk-grid-column-full app-summary-card__body">
+        {% for previousNote in params.hearing.notes %}
+            <span class="govuk-!-margin-bottom-2">{{ previousNote.note }}</span>
+            <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.noteCreated | caseCommentTimeFormat }}
+                            <a class="govuk-link govuk-!-margin-left-5" href="#">Delete</a>
+                        </span>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        {% endfor %}
+    </div>
+
+    <form id="save-notes-{{ params.hearing.hearingId }}" action="summary/notes" method="post">
+
+        <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">Add a note</span>
+            </summary>
+            <div class="govuk-details__text">
+                <label class="govuk-label" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add note</label>
+                <textarea class="govuk-textarea" id="note-box-{{ params.hearing.hearingId }}"  name="noteBox" rows="5" aria-describedby="note-box"></textarea>
+                <button class="govuk-button" type="submit" data-module="govuk-button">Save</button>
+                <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
+            </div>
+        </details>
+    </form>
+</div>
+

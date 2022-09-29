@@ -331,6 +331,13 @@
               "hearingDateTime"
             ],
             "properties": {
+              "hearingId": {
+                "$id": "#/properties/hearings/items/anyOf/0/properties/hearingId",
+                "type": "string",
+                "title": "The hearing identifier",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0
+              },
               "hearingDateTime": {
                 "$id": "#/properties/hearings/items/anyOf/0/properties/hearingDateTime",
                 "type": "string",
@@ -352,13 +359,6 @@
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               },
-              "hearingId": {
-                "$id": "#/properties/hearings/items/anyOf/0/properties/hearingId",
-                "type": "string",
-                "title": "The hearing identifier",
-                "description": "An explanation about the purpose of this instance.",
-                "default": 0
-              },
               "hearingTypeLabel": {
                 "$id": "#/properties/hearings/items/anyOf/0/properties/hearingTypeLabel",
                 "type": "string",
@@ -372,6 +372,56 @@
                 "title": "The court session",
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
+              },
+              "notes": {
+                "$id": "#/properties/hearings/items/notes",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "anyOf": [
+                    {
+                      "$id": "#/properties/hearings/items/notes/items/anyOf/0",
+                      "type": "object",
+                      "properties": {
+                        "noteId": {
+                          "$id": "#/properties/hearings/items/notes/items/anyOf/0/properties/noteId",
+                          "type": "integer",
+                          "title": "The unique identifier for this note",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": ""
+                        },
+                        "note": {
+                          "$id": "#/properties/hearings/items/notes/items/anyOf/0/properties/note",
+                          "type": "string",
+                          "title": "The note",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": ""
+                        },
+                        "author": {
+                          "$id": "#/properties/hearings/items/notes/items/anyOf/0/properties/author",
+                          "type": "string",
+                          "title": "The author of the note",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": ""
+                        },
+                        "createdByUuid": {
+                          "$id": "#/properties/hearings/items/notes/items/anyOf/0/properties/createdByUuid",
+                          "type": "string",
+                          "title": "The created user uuid",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": ""
+                        },
+                        "created": {
+                          "$id": "#/properties/hearings/items/notes/items/anyOf/0/properties/created",
+                          "type": "string",
+                          "title": "The created time stamp",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": ""
+                        }
+                      }
+                    }
+                  ]
+                }
               }
             },
             "additionalProperties": false
