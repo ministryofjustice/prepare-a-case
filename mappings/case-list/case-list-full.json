@@ -485,7 +485,7 @@
           "crn": "DX12340A",
           "probationStatus": "Current",
           "session": "MORNING",
-          "previouslyKnownTerminationDate": null,
+          "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": false,
           "breach": false,
           "preSentenceActivity": false,
