@@ -3,7 +3,7 @@
     <div class="govuk-grid-row govuk-grid-column-full app-summary-card__body">
         {% for previousNote in params.hearing.notes %}
             <span class="govuk-!-margin-bottom-2">{{ previousNote.note }}</span>
-            <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.noteCreated | caseCommentTimeFormat }}
+            <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}
                             <a class="govuk-link govuk-!-margin-left-5" href="#">Delete</a>
                         </span>
             <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
