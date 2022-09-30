@@ -378,6 +378,16 @@
                 "type": "array",
                 "items": {
                   "type": "object",
+                  "title": "The notes anyOf schema",
+                  "description": "An explanation about the purpose of the note.",
+                  "default": {},
+                  "required": [
+                    "noteId",
+                    "note",
+                    "author",
+                    "createdByUuid",
+                    "created"
+                  ],
                   "anyOf": [
                     {
                       "$id": "#/properties/hearings/items/notes/items/anyOf/0",
