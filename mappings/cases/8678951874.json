@@ -284,7 +284,7 @@
           "notes":[
             {
               "noteId": 134344560,
-              "note": "Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
+              "note": "Note three\r\nline one\r\nline two\r\n\r\nline three",
               "created": "2022-07-09T17:13:09",
               "author": "Jane Smith",
               "createdByUuid": "q1111qq1-084d-4f7f-81dd-1q11qqq11qqq"

@@ -77,7 +77,7 @@ Feature: Case progress
 
     When I click delete hearing note with id "1288880" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
     Then I should see the heading "Are you sure you want to delete this note?"
-    And I should see the text "Added on the 9 July 2022, 17:13" within element with class "govuk-caption-m"
+    And I should see the text "Added on the Saturday 9 July 2022" within element with class "govuk-caption-m"
     And I should see a button with the label "Delete note"
     And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary#case-progress-hearing-2aa6f5e0-f842-4939-bc6a-01346abc09e3"
 
@@ -87,7 +87,7 @@ Feature: Case progress
 
     When I click delete hearing note with id "1234560" on hearing "1f93aa0a-7e46-4885-a1cb-f25a4be33a00"
     Then I should see the heading "Are you sure you want to delete this note?"
-    And I should see the text "Added on the 9 July 2022, 17:13" within element with class "govuk-caption-m"
+    And I should see the text "Added on the Saturday 9 July 2022" within element with class "govuk-caption-m"
     And I should see a button with the label "Delete note"
     And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary#case-progress-hearing-1f93aa0a-7e46-4885-a1cb-f25a4be33a00"
 
