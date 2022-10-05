@@ -1,6 +1,19 @@
-<div class="govuk-grid-row">
+<div class="govuk-grid-row" id="caseProgressComponent">
     <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-m" id="caseHearingsHeading">Case progress</h2>
+        {% if session.deleteHearingNoteSuccess %}
+            {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+            {% set html %}
+                <span class="govuk-body-l">
+                        You successfully deleted a note
+                    </span>
+            {% endset %}
+            {{ govukNotificationBanner({
+                html: html,
+                type: 'success',
+                classes: 'case-comments-delete-success-notification'
+            }) }}
+        {% endif %}
         {% if data.hearings | length %}
                 {% if session.showPreviousHearings === data.caseId %}
                     {% set limitPreviousHearings = data.hearings | length %}
