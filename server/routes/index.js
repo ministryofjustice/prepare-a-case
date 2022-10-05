@@ -7,6 +7,7 @@ const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHis
 const { getDetails, getProbationRecord, getConviction, getProbationStatusDetails, getSentenceDetails, getBreachDetails, getRiskDetails, getCustodyDetails } = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
 const featuresToggles = require('../utils/features')
+const getNextHearing = require('../utils/getNextHearing')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
@@ -204,18 +205,20 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
       return moment(b.created).unix() - moment(a.created).unix()
     })
+    templateValues.data.nextAppearanceHearingId = templateValues.data.hearings &&
+      getNextHearing(templateValues.data.hearings, moment(), templateValues.data.source)?.hearingId
     templateValues.data.hearings = templateValues.data.hearings?.sort((a, b) => {
       return moment(b.hearingDateTime).unix() - moment(a.hearingDateTime).unix()
     })
     templateValues.enableCaseHistory = settings.enableCaseHistory
     templateValues.enableCaseComments = settings.enableCaseComments
-    templateValues.enableHearingNotes = settings.enableHearingNotes
     templateValues.enableCaseProgress = settings.enableCaseProgress
     templateValues.currentUserUuid = res.locals.user.uuid
-    const context = { court: courtCode, username: res.locals.username }
+    const context = { court: courtCode, username: res.locals.username, sourceType: templateValues.data.source }
     templateValues.features = {
       caseComments: featuresToggles.caseComments.isEnabled(context),
-      caseProgress: featuresToggles.caseProgress.isEnabled(context)
+      caseProgress: featuresToggles.caseProgress.isEnabled(context),
+      caseProgressNextAppearanceBadge: featuresToggles.caseProgressNextAppearanceBadge.isEnabled(context)
     }
     session.confirmedMatch = undefined
     session.matchName = undefined

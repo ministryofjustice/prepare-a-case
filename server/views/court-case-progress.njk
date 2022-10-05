@@ -8,13 +8,17 @@
                     {% set limitPreviousHearings = 6 %}
                 {% endif %}
                 {% for hearing in data.hearings | limit(limitPreviousHearings) %}
-                    <div class="app-summary-card govuk-!-margin-bottom-5">
+                    <div class="app-summary-card govuk-!-margin-bottom-5" id="case-progress-hearing-{{ hearing.hearingId }}">
                         <header class="app-summary-card__header">
                             <div class="app-summary-card__title">
-                                <span class="govuk-heading-s govuk-!-margin-bottom-0">{{ hearing.hearingTypeLabel }}</span>
+                                <span class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-display-inline">{{ hearing.hearingTypeLabel }}</span>
+                                    {% if features.caseProgressNextAppearanceBadge and hearing.hearingId === data.nextAppearanceHearingId %}
+                                        <span class="moj-badge moj-badge--blue pac-badge govuk-!-display-inline govuk-!-margin-left-3">NEXT APPEARANCE</span>
+                                    {% endif %}
+                                <br/>
                                 <span class="govuk-body">
-                                {{ hearing.hearingDateTime | caseCommentTimeFormat }}, Court {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
-                            </span>
+                                    {{ hearing.hearingDateTime | hearingNoteTimeFormat }}, Court {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
+                                </span>
                             </div>
                         </header>
 
