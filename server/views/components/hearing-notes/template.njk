@@ -2,11 +2,13 @@
 
     <div class="govuk-grid-row govuk-grid-column-full">
         {% for previousNote in params.hearing.notes %}
-            <span class="govuk-!-margin-bottom-2">{{ previousNote.note }}</span>
-            <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}
-                            <a class="govuk-link govuk-!-margin-left-5" href="#">Delete</a>
-                        </span>
-            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            <div id="previous-note-{{ previousNote.noteId }}">
+                <span class="govuk-!-margin-bottom-2 case-comments-comment-display">{{ previousNote.note }}</span>
+                <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.created | hearingNoteTimeFormat }}
+                    <a class="govuk-link govuk-!-margin-left-5" href="summary/notes/delete?targetHearingId={{ params.hearing.hearingId }}&noteId={{ previousNote.noteId }}">Delete</a>
+                </span>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            </div>
         {% endfor %}
     </div>
 
@@ -19,7 +21,7 @@
             <div class="govuk-details__text govuk-!-padding-bottom-0">
                 <label class="govuk-label" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add note</label>
                 <textarea class="govuk-textarea" id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5" aria-describedby="note-box"></textarea>
-                <button class="govuk-button" type="submit" data-module="govuk-button">Save</button>
+                <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">Save</button>
                 <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
             </div>
         </details>

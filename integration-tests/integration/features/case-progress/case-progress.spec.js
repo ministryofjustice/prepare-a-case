@@ -8,6 +8,14 @@ And('I should see {int} previous hearings headers', $int => {
   })
 })
 
+And('I click delete hearing note with id {string} on hearing {string}', ($noteId, $hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get(`#previous-note-${$noteId}`).within(() => {
+      cy.get('a').click()
+    })
+  })
+})
+
 And('I should see the following hearings with the hearing type label, hearing details and next appearance badge if applicable', $data => {
   $data.raw().forEach((dataRow, index) => {
     cy.get('.app-summary-card').eq(index).within(() => {

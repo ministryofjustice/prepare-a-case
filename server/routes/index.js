@@ -23,6 +23,7 @@ const {
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
+const { deleteHearingNoteConfirmationHandler, deleteHearingNoteHandler } = require('./handlers')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -202,6 +203,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       ...session
     }
     session.deleteCommentSuccess = undefined
+    session.deleteHearingNoteSuccess = undefined
     templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
       return moment(b.created).unix() - moment(a.created).unix()
     })
@@ -260,6 +262,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(addHearingNoteRequestHandler))
+
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete', defaults, catchErrors(deleteHearingNoteConfirmationHandler))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete', defaults, catchErrors(deleteHearingNoteHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))
 

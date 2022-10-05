@@ -187,14 +187,14 @@
           "hearingDateTime": "2019-03-14T09:00:00",
           "notes":[
             {
-              "noteId": 1234560,
+              "noteId": 3334560,
               "note": "Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
               "created": "2022-07-09T17:13:09",
               "author": "Jane Smith",
               "createdByUuid": "q1111qq1-084d-4f7f-81dd-1q11qqq11qqq"
             },
             {
-              "noteId": 987650,
+              "noteId": 933650,
               "note": "Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.",
               "created": "2022-08-09T17:16:14",
               "author": "John Doe",
@@ -211,14 +211,14 @@
           "hearingDateTime": "2019-02-14T09:00:00",
           "notes":[
             {
-              "noteId": 1234560,
+              "noteId": 12554560,
               "note": "Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
               "created": "2022-07-09T17:13:09",
               "author": "Jane Smith",
               "createdByUuid": "q1111qq1-084d-4f7f-81dd-1q11qqq11qqq"
             },
             {
-              "noteId": 987650,
+              "noteId": 985550,
               "note": "Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.",
               "created": "2022-08-09T17:16:14",
               "author": "John Doe",
@@ -235,14 +235,14 @@
           "hearingDateTime": "2019-01-14T09:00:00",
           "notes":[
             {
-              "noteId": 1234560,
+              "noteId": 1237760,
               "note": "Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
               "created": "2022-07-09T17:13:09",
               "author": "Jane Smith",
               "createdByUuid": "q1111qq1-084d-4f7f-81dd-1q11qqq11qqq"
             },
             {
-              "noteId": 987650,
+              "noteId": 9877650,
               "note": "Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.",
               "created": "2022-08-09T17:16:14",
               "author": "John Doe",
@@ -259,14 +259,14 @@
           "hearingDateTime": "2019-08-14T09:00:00",
           "notes":[
             {
-              "noteId": 1234560,
+              "noteId": 1288880,
               "note": "Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
               "created": "2022-07-09T17:13:09",
               "author": "Jane Smith",
               "createdByUuid": "q1111qq1-084d-4f7f-81dd-1q11qqq11qqq"
             },
             {
-              "noteId": 987650,
+              "noteId": 123650,
               "note": "Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.",
               "created": "2022-08-09T17:16:14",
               "author": "John Doe",
@@ -283,14 +283,14 @@
           "hearingDateTime": "2019-04-14T09:00:00",
           "notes":[
             {
-              "noteId": 1234560,
-              "note": "Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
+              "noteId": 134344560,
+              "note": "Note three\r\nline one\r\nline two\r\n\r\nline three",
               "created": "2022-07-09T17:13:09",
               "author": "Jane Smith",
               "createdByUuid": "q1111qq1-084d-4f7f-81dd-1q11qqq11qqq"
             },
             {
-              "noteId": 987650,
+              "noteId": 99887650,
               "note": "Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.",
               "created": "2022-08-09T17:16:14",
               "author": "John Doe",
@@ -307,14 +307,14 @@
           "hearingDateTime": "2019-07-14T09:00:00",
           "notes":[
             {
-              "noteId": 1234560,
+              "noteId": 12398960,
               "note": "Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
               "created": "2022-07-09T17:13:09",
               "author": "Jane Smith",
               "createdByUuid": "q1111qq1-084d-4f7f-81dd-1q11qqq11qqq"
             },
             {
-              "noteId": 987650,
+              "noteId": 88888650,
               "note": "Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.",
               "created": "2022-08-09T17:16:14",
               "author": "John Doe",
@@ -347,14 +347,14 @@
           "hearingDateTime": "2019-12-14T09:00:00",
           "notes":[
             {
-              "noteId": 1234560,
+              "noteId": 454544560,
               "note": "Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
               "created": "2022-07-09T17:13:09",
               "author": "Jane Smith",
               "createdByUuid": "q1111qq1-084d-4f7f-81dd-1q11qqq11qqq"
             },
             {
-              "noteId": 987650,
+              "noteId": 9887650,
               "note": "Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.",
               "created": "2022-08-09T17:16:14",
               "author": "John Doe",
