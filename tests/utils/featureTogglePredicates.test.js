@@ -1,5 +1,7 @@
 /* global describe, it, expect, jest */
-const { enabledForUsers, enabledForCourts, disabledForAll, enabledForAll, allOf, anyOf } = require('../../server/utils/featureTogglePredicates')
+const { enabledForUsers, enabledForCourts, disabledForAll, enabledForAll, allOf, anyOf, isEnv, mainFeatureToggleEnabled } = require('../../server/utils/featureTogglePredicates')
+const { settings } = require('../../config')
+const features = require('../../server/utils/features')
 
 describe('featureConfigPredicates', () => {
   describe('enabledForCourts', () => {
@@ -30,6 +32,30 @@ describe('featureConfigPredicates', () => {
     })
   })
 
+  describe('mainFeatureToggleEnabled', () => {
+    settings.enableCaseProgress = false
+    settings.enableCaseComments = false
+    settings.enablePastCasesNavigation = false
+
+    it('should return false when main feature toggles are disabled', () => {
+      settings.enableCaseProgress = false
+      settings.enableCaseComments = false
+      settings.enablePastCasesNavigation = false
+      expect(mainFeatureToggleEnabled('enableCaseProgress').isEnabled()).toBe(false)
+      expect(mainFeatureToggleEnabled('enableCaseComments').isEnabled()).toBe(false)
+      expect(mainFeatureToggleEnabled('enablePastCasesNavigation').isEnabled()).toBe(false)
+    })
+
+    it('should return true when main feature toggles are enabled', () => {
+      settings.enableCaseProgress = true
+      settings.enableCaseComments = true
+      settings.enablePastCasesNavigation = true
+      expect(mainFeatureToggleEnabled('enableCaseProgress').isEnabled()).toBe(true)
+      expect(mainFeatureToggleEnabled('enableCaseComments').isEnabled()).toBe(true)
+      expect(mainFeatureToggleEnabled('enablePastCasesNavigation').isEnabled()).toBe(true)
+    })
+  })
+
   describe('enabledForAll', () => {
     it('should return true when invoked', () => {
       expect(enabledForAll().isEnabled()).toBe(true)
@@ -39,6 +65,23 @@ describe('featureConfigPredicates', () => {
   describe('disabledForAll', () => {
     it('should return false when invoked', () => {
       expect(disabledForAll().isEnabled()).toBe(false)
+    })
+  })
+
+  describe('isEnv', () => {
+    it('should return true when settings.pacEnvironment and input env matches', () => {
+      settings.pacEnvironment = 'DEV'
+      expect(isEnv('dev').isEnabled()).toBe(true)
+      expect(isEnv('dev', 'preprod').isEnabled()).toBe(true)
+
+      settings.pacEnvironment = 'PREPROD'
+      expect(isEnv('dev', 'preprod').isEnabled()).toBe(true)
+    })
+
+    it('should return false when settings.pacEnvironment and input env DO NOT matche', () => {
+      settings.pacEnvironment = 'prod'
+      expect(isEnv('dev', 'preprod').isEnabled()).toBe(false)
+      expect(isEnv('dev', 'preprod', 'staging').isEnabled()).toBe(false)
     })
   })
 
@@ -111,6 +154,33 @@ describe('featureConfigPredicates', () => {
       const context = { court: 'court-one', username: 'user-one' }
       expect(feature.isEnabled(context)).toBe(false)
       isEnabledMocks.forEach(value => expect(value).toHaveBeenCalledWith(context))
+    })
+  })
+
+  describe('pre pilot features toggle tests', () => {
+    it.each(
+      [
+        ['prod', 'MaRg', 'B50KH', true],
+        ['preprod', 'MaRg', 'B50KH', true],
+        ['prod', 'BEVERLYWILMOTTNPS', 'B50KH', true],
+        ['preprod', 'BEVERLYWILMOTTNPS', 'B50KH', false],
+        ['prod', 'ZRX14Y', 'B50KH', true],
+        ['preprod', 'ZRX14Y', 'B50KH', false],
+        ['prod', 'zrx14y', 'B50KH', true],
+        ['prod', 'BEVERLYWILMOTTNPS', 'SHF', false],
+        ['prod', 'Marg', 'SHEF', false],
+        ['prod', 'InvlaidUser', 'B50KH', false],
+        ['dev', 'any-user', 'any-court', true]
+      ]
+    )('given env %s, user %s and court %s return %s', (environment, currentUser, court, expected) => {
+      settings.pacEnvironment = environment
+      settings.enableCaseProgress = true
+      settings.enableCaseComments = true
+      settings.enablePastCasesNavigation = true
+      const context = { court, username: currentUser }
+      expect(features.caseProgress.isEnabled(context)).toBe(expected)
+      expect(features.caseComments.isEnabled(context)).toBe(expected)
+      expect(features.pastCasesNavigation.isEnabled(context)).toBe(expected)
     })
   })
 })

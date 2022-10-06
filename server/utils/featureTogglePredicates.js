@@ -1,16 +1,30 @@
 const { settings } = require('../../config')
+
+const normaliseListValues = list => list?.map(value => value?.toLowerCase()) || []
+
 const enabledForCourts = (...courtList) => {
+  const normalisedCourtsList = normaliseListValues(courtList)
   return {
     isEnabled: (context) => {
-      return !!context && courtList?.includes(context.court)
+      return !!context && normalisedCourtsList.includes(context.court?.toLowerCase())
     }
   }
 }
 
 const enabledForUsers = (...userList) => {
+  const normalisedUserNames = normaliseListValues(userList)
   return {
     isEnabled: (context) => {
-      return !!context && userList?.includes(context.username)
+      return !!context && normalisedUserNames.includes(context.username?.toLowerCase())
+    }
+  }
+}
+
+const isEnv = (...envs) => {
+  const normalizedEnvs = normaliseListValues(envs)
+  return {
+    isEnabled: () => {
+      return !!normalizedEnvs.find(env => env === settings.pacEnvironment?.toLowerCase())
     }
   }
 }
@@ -65,5 +79,6 @@ module.exports = {
   enabledForSourceTypes,
   disabledForAll,
   allOf,
-  anyOf
+  anyOf,
+  isEnv
 }

@@ -1,5 +1,6 @@
 const getBaseDateString = require('../../utils/getBaseDateString')
 const { settings } = require('../../../config')
+const features = require('../../utils/features')
 
 const getCaseListRouteHandler = caseService => async (req, res) => {
   const {
@@ -20,6 +21,8 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
   const caseCount = response.cases.length
   const startCount = ((parseInt(page, 10) - 1) || 0) * limit
   const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
+
+  const context = { court: courtCode, username: res.locals.username }
   const templateValues = {
     title: 'Cases',
     params: {
@@ -36,7 +39,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
       removedCount: response.removedCount,
       unmatchedRecords: response.unmatchedRecords,
       totalDays: settings.enablePastCasesNavigation ? settings.casesTotalDays : 7,
-      casesPastDays: settings.enablePastCasesNavigation ? settings.casesPastDays : -1,
+      casesPastDays: features.pastCasesNavigation.isEnabled(context) ? settings.casesPastDays : -1,
       enablePastCasesNavigation: settings.enablePastCasesNavigation,
       subsection: subsection || (!date && session.currentView) || '',
       filtersApplied: !!session.selectedFilters && Object.keys(session.selectedFilters).length,

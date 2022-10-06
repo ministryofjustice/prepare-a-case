@@ -92,4 +92,7 @@ env:
   - name: ENABLE_CASE_PROGRESS
     value: {{ .Values.env.ENABLE_CASE_PROGRESS | quote }}
 
+  - name: PAC_ENV
+    value: {{ .Values.env.PAC_ENV | quote }}
+
 {{- end -}}

@@ -17,6 +17,7 @@ ingress:
   path: /
 
 env:
+  PAC_ENV: dev
   COURT_CASE_SERVICE_URL: https://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk
   CASES_PER_PAGE: 20
   NOMIS_AUTH_URL: https://sign-in-dev.hmpps.service.justice.gov.uk/auth

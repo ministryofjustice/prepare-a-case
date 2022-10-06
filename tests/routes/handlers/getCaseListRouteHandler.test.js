@@ -41,6 +41,7 @@ describe('getCaseListRouteHandler', () => {
     })
 
     settings.enablePastCasesNavigation = true
+    settings.pacEnvironment = 'dev'
 
     // When
     await subject(mockRequest, mockResponse)
