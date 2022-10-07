@@ -160,15 +160,17 @@ describe('featureConfigPredicates', () => {
   describe('pre pilot features toggle tests', () => {
     it.each(
       [
-        ['prod', 'MaRg', 'B50KH', true],
-        ['preprod', 'MaRg', 'B50KH', false],
+        ['prod', 'mdy87w', 'B50KH', true],
+        ['preprod', 'mdy87w', 'B50KH', true],
+        ['preprod', 'joana.aguia', 'B50KH', true],
+        ['preprod', 'mdy87w', 'B50KH', true],
         ['prod', 'BEVERLYWILMOTTNPS', 'B50KH', false],
         ['preprod', 'BEVERLYWILMOTTNPS', 'B50KH', false],
         ['prod', 'ZRX14Y', 'B50KH', false],
         ['preprod', 'ZRX14Y', 'B50KH', false],
         ['prod', 'zrx14y', 'B50KH', false],
         ['prod', 'BEVERLYWILMOTTNPS', 'SHF', false],
-        ['prod', 'Marg', 'SHEF', false],
+        ['prod', 'mdy87w', 'SHEF', false],
         ['prod', 'InvlaidUser', 'B50KH', false],
         ['dev', 'any-user', 'any-court', true]
       ]

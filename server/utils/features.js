@@ -10,13 +10,13 @@ const features = {
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableCaseComments'),
       enabledForCourts('B50KH'),
-      enabledForUsers('Jo', 'Rebecca', 'Tony')
+      enabledForUsers('joana.aguia', 'mdy87w', 'tony.howard')
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseComments'),
       enabledForCourts('B50KH'),
-      enabledForUsers('Jo', 'Marg', 'Rebecca', 'Tony')
+      enabledForUsers('joana.aguia', 'mdy87w', 'zap37s', 'tony.howard')
     )
   ),
   caseProgress: anyOf(
@@ -28,13 +28,13 @@ const features = {
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableCaseProgress'),
       enabledForCourts('B50KH'),
-      enabledForUsers('Jo', 'Rebecca', 'Tony')
+      enabledForUsers('joana.aguia', 'mdy87w', 'tony.howard')
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseProgress'),
       enabledForCourts('B50KH'),
-      enabledForUsers('Jo', 'Marg', 'Rebecca', 'Tony')
+      enabledForUsers('joana.aguia', 'mdy87w', 'zap37s', 'tony.howard')
     )
   ),
   pastCasesNavigation: anyOf(
@@ -46,13 +46,13 @@ const features = {
       isEnv('preprod'),
       mainFeatureToggleEnabled('enablePastCasesNavigation'),
       enabledForCourts('B50KH'),
-      enabledForUsers('Jo', 'Rebecca', 'Tony')
+      enabledForUsers('joana.aguia', 'mdy87w', 'tony.howard')
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enablePastCasesNavigation'),
       enabledForCourts('B50KH'),
-      enabledForUsers('Jo', 'Marg', 'Rebecca', 'Tony')
+      enabledForUsers('joana.aguia', 'mdy87w', 'zap37s', 'tony.howard')
     )
   ),
   caseProgressNextAppearanceBadge: enabledForSourceTypes('COMMON_PLATFORM', 'LIBRA')
