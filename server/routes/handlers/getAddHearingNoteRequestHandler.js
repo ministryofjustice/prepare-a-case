@@ -5,7 +5,7 @@ const getAddHearingNoteHandler = caseService => async (req, res) => {
     await caseService.addHearingNote(targetHearingId, note, res.locals.user.name)
   }
 
-  res.redirect(`/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#save-notes-${targetHearingId}`)
+  res.redirect(`/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#case-progress-hearing-${targetHearingId}`)
 }
 
 module.exports = getAddHearingNoteHandler
