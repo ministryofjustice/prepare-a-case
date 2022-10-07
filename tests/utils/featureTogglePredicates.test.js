@@ -160,10 +160,10 @@ describe('featureConfigPredicates', () => {
   describe('pre pilot features toggle tests', () => {
     it.each(
       [
-        ['prod', '***REMOVED***', 'B50KH', true],
+        ['prod', 'zap37s', 'B50KH', true],
+        ['preprod', '***REMOVED***', 'B50KH', false],
         ['preprod', '***REMOVED***', 'B50KH', true],
-        ['preprod', '***REMOVED***', 'B50KH', true],
-        ['preprod', '***REMOVED***', 'B50KH', true],
+        ['preprod', '***REMOVED***', 'B50KH', false],
         ['prod', 'BEVERLYWILMOTTNPS', 'B50KH', false],
         ['preprod', 'BEVERLYWILMOTTNPS', 'B50KH', false],
         ['prod', '***REMOVED***', 'B50KH', false],
