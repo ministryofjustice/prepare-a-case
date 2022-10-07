@@ -1,7 +1,7 @@
 const moment = require('moment')
 
 const getNextHearing = (hearings, currentDateTime, sourceType) => {
-  const morningSessionStart = moment(currentDateTime).hours(9).minute(59).seconds(59)
+  const morningSessionStart = moment(currentDateTime).hours(8).minute(59).seconds(59)
 
   const morningSessionEnd = moment(currentDateTime).hours(13).minutes(0).seconds(1)
 
