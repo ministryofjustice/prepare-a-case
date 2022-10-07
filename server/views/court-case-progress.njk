@@ -38,7 +38,8 @@
                         {%- from "components/hearing-notes/macro.njk" import pacHearingNotes -%}
                         {{ pacHearingNotes({
                             data: data,
-                            hearing: hearing
+                            hearing: hearing,
+                            currentUserUuid: currentUserUuid
                         }) }}
                     </div>
                 {% endfor %}
