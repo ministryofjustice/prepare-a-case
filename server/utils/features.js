@@ -10,13 +10,13 @@ const features = {
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableCaseComments'),
       enabledForCourts('B50KH'),
-      enabledForUsers('joana.aguia', 'mdy87w', 'tony.howard')
+      enabledForUsers('joana.aguia', 'tony.howard')
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseComments'),
       enabledForCourts('B50KH'),
-      enabledForUsers('joana.aguia', 'mdy87w', 'zap37s', 'tony.howard')
+      enabledForUsers('ZAP37S')
     )
   ),
   caseProgress: anyOf(
@@ -28,13 +28,13 @@ const features = {
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableCaseProgress'),
       enabledForCourts('B50KH'),
-      enabledForUsers('joana.aguia', 'mdy87w', 'tony.howard')
+      enabledForUsers('joana.aguia', 'tony.howard')
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseProgress'),
       enabledForCourts('B50KH'),
-      enabledForUsers('joana.aguia', 'mdy87w', 'zap37s', 'tony.howard')
+      enabledForUsers('ZAP37S')
     )
   ),
   pastCasesNavigation: anyOf(
@@ -46,13 +46,13 @@ const features = {
       isEnv('preprod'),
       mainFeatureToggleEnabled('enablePastCasesNavigation'),
       enabledForCourts('B50KH'),
-      enabledForUsers('joana.aguia', 'mdy87w', 'tony.howard')
+      enabledForUsers('joana.aguia', 'tony.howard')
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enablePastCasesNavigation'),
       enabledForCourts('B50KH'),
-      enabledForUsers('joana.aguia', 'mdy87w', 'zap37s', 'tony.howard')
+      enabledForUsers('ZAP37S')
     )
   ),
   caseProgressNextAppearanceBadge: enabledForSourceTypes('COMMON_PLATFORM', 'LIBRA')
