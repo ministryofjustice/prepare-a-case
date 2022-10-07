@@ -23,7 +23,7 @@ describe('getAddNoteRequestHandler', () => {
 
     // Then
     expect(caseServiceMock.addHearingNote).toHaveBeenCalledWith(testHearingId, 'A note', 'Adam Sandler')
-    expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/hearing/${testHearingId}/defendant/${testDefendantId}/summary#save-notes-${testHearingId}`)
+    expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/hearing/${testHearingId}/defendant/${testDefendantId}/summary#case-progress-hearing-${testHearingId}`)
   })
 
   it('should not show anything when a note is not provided', async () => {
