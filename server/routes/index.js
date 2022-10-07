@@ -221,7 +221,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.enableCaseComments = settings.enableCaseComments
     templateValues.enableCaseProgress = settings.enableCaseProgress
     templateValues.currentUserUuid = res.locals.user.uuid
-    const context = { court: courtCode, username: res.locals.username, sourceType: templateValues.data.source }
+    const context = { court: courtCode, username: res.locals.user.username, sourceType: templateValues.data.source }
     templateValues.features = {
       caseComments: featuresToggles.caseComments.isEnabled(context),
       caseProgress: featuresToggles.caseProgress.isEnabled(context),
