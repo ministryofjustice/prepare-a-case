@@ -212,6 +212,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.data.hearings = templateValues.data.hearings?.sort((a, b) => {
       return moment(b.hearingDateTime).unix() - moment(a.hearingDateTime).unix()
     })
+    templateValues.data.hearings?.forEach(hearing => {
+      hearing.notes = hearing.notes?.sort((a, b) => {
+        return moment(b.created).unix() - moment(a.created).unix()
+      })
+    })
     templateValues.enableCaseHistory = settings.enableCaseHistory
     templateValues.enableCaseComments = settings.enableCaseComments
     templateValues.enableCaseProgress = settings.enableCaseProgress
