@@ -4,7 +4,7 @@
         {% for previousNote in params.hearing.notes %}
             <div id="previous-note-{{ previousNote.noteId }}">
                 <span class="govuk-!-margin-bottom-2 case-comments-comment-display">{{ previousNote.note }}</span>
-                <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.created | hearingNoteTimeFormat }}
+                <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}
                     {% if previousNote.createdByUuid === params.currentUserUuid %}
                         <a class="govuk-link govuk-!-margin-left-5" href="summary/notes/delete?targetHearingId={{ params.hearing.hearingId }}&noteId={{ previousNote.noteId }}">Delete</a>
                     {% endif %}
