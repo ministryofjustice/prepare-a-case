@@ -22,7 +22,8 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
   const startCount = ((parseInt(page, 10) - 1) || 0) * limit
   const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
 
-  const context = { court: courtCode, username: res.locals.username }
+  const context = { court: courtCode, username: res.locals.user.username }
+  const pastCaseNavigationEnabled = features.pastCasesNavigation.isEnabled(context)
   const templateValues = {
     title: 'Cases',
     params: {
@@ -38,8 +39,8 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
       addedCount: response.addedCount,
       removedCount: response.removedCount,
       unmatchedRecords: response.unmatchedRecords,
-      totalDays: settings.enablePastCasesNavigation ? settings.casesTotalDays : 7,
-      casesPastDays: features.pastCasesNavigation.isEnabled(context) ? settings.casesPastDays : -1,
+      totalDays: pastCaseNavigationEnabled ? settings.casesTotalDays : 7,
+      casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
       enablePastCasesNavigation: settings.enablePastCasesNavigation,
       subsection: subsection || (!date && session.currentView) || '',
       filtersApplied: !!session.selectedFilters && Object.keys(session.selectedFilters).length,
