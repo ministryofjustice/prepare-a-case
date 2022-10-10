@@ -161,17 +161,20 @@ describe('featureConfigPredicates', () => {
     it.each(
       [
         ['prod', 'zap37s', 'B50KH', true],
+        ['prod', '***REMOVED***', 'B50KH', true],
+        ['prod', '***REMOVED***', 'B50KH', true],
+        ['prod', 'BEVERLYWILMOTTNPS', 'B50KH', true],
+        ['prod', 'beverlywilmottnps', 'B50KH', true],
+        ['prod', '***REMOVED***', 'B50KH', true],
+        ['prod', 'zrx14y', 'B50KH', true],
+        ['prod', 'BEVERLYWILMOTTNPS', 'B14LO', false],
+        ['prod', '***REMOVED***', 'B14LO', false],
+        ['prod', 'InvlaidUser', 'B50KH', false],
         ['preprod', '***REMOVED***', 'B50KH', false],
         ['preprod', '***REMOVED***', 'B50KH', true],
         ['preprod', '***REMOVED***', 'B50KH', false],
-        ['prod', 'BEVERLYWILMOTTNPS', 'B50KH', false],
         ['preprod', 'BEVERLYWILMOTTNPS', 'B50KH', false],
-        ['prod', '***REMOVED***', 'B50KH', false],
         ['preprod', '***REMOVED***', 'B50KH', false],
-        ['prod', 'zrx14y', 'B50KH', false],
-        ['prod', 'BEVERLYWILMOTTNPS', 'SHF', false],
-        ['prod', '***REMOVED***', 'SHEF', false],
-        ['prod', 'InvlaidUser', 'B50KH', false],
         ['dev', 'any-user', 'any-court', true]
       ]
     )('given env %s, user %s and court %s return %s', (environment, currentUser, court, expected) => {
