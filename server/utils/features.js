@@ -16,7 +16,7 @@ const features = {
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseComments'),
       enabledForCourts('B50KH'),
-      enabledForUsers('ZAP37S')
+      enabledForUsers('ZAP37S', 'BEVERLYWILMOTTNPS', 'ZRX14Y', 'wyi97r', 'mdy87w')
     )
   ),
   caseProgress: anyOf(
@@ -34,7 +34,7 @@ const features = {
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseProgress'),
       enabledForCourts('B50KH'),
-      enabledForUsers('ZAP37S')
+      enabledForUsers('ZAP37S', 'BEVERLYWILMOTTNPS', 'ZRX14Y', 'wyi97r', 'mdy87w')
     )
   ),
   pastCasesNavigation: anyOf(
@@ -52,7 +52,7 @@ const features = {
       isEnv('prod'),
       mainFeatureToggleEnabled('enablePastCasesNavigation'),
       enabledForCourts('B50KH'),
-      enabledForUsers('ZAP37S')
+      enabledForUsers('ZAP37S', 'BEVERLYWILMOTTNPS', 'ZRX14Y', 'wyi97r', 'mdy87w')
     )
   ),
   caseProgressNextAppearanceBadge: enabledForSourceTypes('COMMON_PLATFORM', 'LIBRA')
