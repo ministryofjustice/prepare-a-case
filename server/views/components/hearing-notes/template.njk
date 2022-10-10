@@ -1,7 +1,7 @@
 <div class="app-summary-card__body">
 
     <div class="govuk-grid-row govuk-grid-column-full">
-        <table class="govuk-table" id="previous-note">
+        <table class="govuk-table">
         {% for previousNote in params.hearing.notes %}
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell" id="previous-note-{{ previousNote.noteId }}">
@@ -13,7 +13,9 @@
                             <span class="govuk-caption-m govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.created | hearingNoteTimeFormat }}
                         </div>
                         <div class="govuk-grid-column-one-quarter govuk-!-font-size-16">
-                            <a class="govuk-link" href="summary/notes/delete?targetHearingId={{ params.hearing.hearingId }}&noteId={{ previousNote.noteId }}">Delete</a>
+                            {% if previousNote.createdByUuid === params.currentUserUuid %}
+                                <a class="govuk-link" href="summary/notes/delete?targetHearingId={{ params.hearing.hearingId }}&noteId={{ previousNote.noteId }}">Delete</a>
+                            {% endif %}
                         </div>
                     </div>
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
