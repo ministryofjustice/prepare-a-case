@@ -1,17 +1,28 @@
 <div class="app-summary-card__body">
 
     <div class="govuk-grid-row govuk-grid-column-full">
+        <table class="govuk-table">
         {% for previousNote in params.hearing.notes %}
-            <div id="previous-note-{{ previousNote.noteId }}">
-                <span class="govuk-!-margin-bottom-2 case-comments-comment-display">{{ previousNote.note }}</span>
-                <span class="govuk-caption-m govuk-!-margin-top-2 govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}
-                    {% if previousNote.createdByUuid === params.currentUserUuid %}
-                        <a class="govuk-link govuk-!-margin-left-5" href="summary/notes/delete?targetHearingId={{ params.hearing.hearingId }}&noteId={{ previousNote.noteId }}">Delete</a>
-                    {% endif %}
-                </span>
-                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-            </div>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell" id="previous-note-{{ previousNote.noteId }}">
+                    <div class="govuk-grid-row">
+                        <span class="govuk-grid-column-full case-comments-comment-display">{{ previousNote.note }}</span>
+                    </div>
+                    <div class="govuk-grid-row govuk-!-margin-top-2">
+                        <div class="govuk-grid-column-one-half govuk-!-padding-bottom-2">
+                            <span class="govuk-caption-m govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.created | hearingNoteTimeFormat }}
+                        </div>
+                        <div class="govuk-grid-column-one-quarter govuk-!-font-size-16">
+                            {% if previousNote.createdByUuid === params.currentUserUuid %}
+                                <a class="govuk-link" href="summary/notes/delete?targetHearingId={{ params.hearing.hearingId }}&noteId={{ previousNote.noteId }}">Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                </td>
+            </tr>
         {% endfor %}
+        </table>
     </div>
 
     <form id="save-notes-{{ params.hearing.hearingId }}" action="summary/notes" method="post">

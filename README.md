@@ -25,7 +25,7 @@ npm i
 
 And then, to build the assets and start the app with (substituting in a valid client secret for the dev environment)
 ```
-env API_CLIENT_SECRET={client-secret} COURT_CASE_SERVICE_URL=http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk NOMIS_AUTH_URL=https://sign-in-dev.hmpps.service.justice.gov.uk/auth npm run start
+env API_CLIENT_SECRET={client-secret} COURT_CASE_SERVICE_URL=http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk PAC_ENV=dev ENABLE_CASE_COMMENTS=true ENABLE_CASE_PROGRESS=true NOMIS_AUTH_URL=https://sign-in-dev.hmpps.service.justice.gov.uk/auth npm run start
 ```
 
 Or to use alongside a local instance of *court-case-service* 
@@ -47,7 +47,8 @@ java -jar wiremock-jre8-standalone-2.32.0.jar --global-response-templating --por
 
 And then, to build assets and start app with
 ```
-npm run start:watch
+PAC_ENV=dev ENABLE_CASE_COMMENTS=true ENABLE_CASE_PROGRESS=true npm run start-feature
+
 ```
 
 This will watch for changes in the application JavaScript and Nunjucks templates and automatically restart as required.
