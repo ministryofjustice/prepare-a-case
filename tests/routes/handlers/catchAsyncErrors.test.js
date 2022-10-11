@@ -2,7 +2,7 @@
 
 jest.mock('../../../log')
 
-describe('expressAsyncErrorProgressionWrapper.js', () => {
+describe('catchAsyncErrors', () => {
   const nextMock = jest.fn()
   const handlerMock = jest.fn()
   const testReq = { params: { one: 'one' } }
@@ -16,7 +16,10 @@ describe('expressAsyncErrorProgressionWrapper.js', () => {
     code: 'code1',
     config: {
       url: httpBackendHelloEndpoint,
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer sEcRetToKen'
+      }
     },
     response: {
       status: 400,
@@ -43,9 +46,20 @@ describe('expressAsyncErrorProgressionWrapper.js', () => {
     handlerMock.mockRejectedValueOnce(testAxiosError)
     const wrappedHandler = subject(handlerMock)
     await wrappedHandler(testReq, testRes, nextMock)
+    const expectedAxiosError = {
+      ...testAxiosError,
+      config: {
+        ...testAxiosError.config,
+        headers: {
+          ...testAxiosError.config.headers,
+          Authorization: '***'
+        }
+      }
+    }
+
     expect(handlerMock).toHaveBeenCalledWith(testReq, testRes)
-    expect(nextMock).toHaveBeenLastCalledWith({ ...testAxiosError, status: 400 })
-    expect(loggerMock.error.mock.calls).toEqual([[testAxiosError],
+    expect(nextMock).toHaveBeenLastCalledWith({ ...expectedAxiosError, status: 400 })
+    expect(loggerMock.error.mock.calls).toEqual([[expectedAxiosError],
       [{ type: 'API Error', code: 'code1', URL: httpBackendHelloEndpoint, method: 'GET', httpStatus: 400, message: testBackendErrorMessage }, 'Error: Unexpected error']
     ])
   })
