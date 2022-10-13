@@ -16,7 +16,7 @@ const features = {
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseComments'),
       enabledForCourts('B50KH'),
-      enabledForUsers('***REMOVED***', 'BEVERLYWILMOTTNPS', '***REMOVED***', '***REMOVED***', '***REMOVED***')
+      enabledForUsers('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
     )
   ),
   caseProgress: anyOf(
@@ -34,7 +34,7 @@ const features = {
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseProgress'),
       enabledForCourts('B50KH'),
-      enabledForUsers('***REMOVED***', 'BEVERLYWILMOTTNPS', '***REMOVED***', '***REMOVED***', '***REMOVED***')
+      enabledForUsers('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
     )
   ),
   pastCasesNavigation: anyOf(
@@ -52,7 +52,7 @@ const features = {
       isEnv('prod'),
       mainFeatureToggleEnabled('enablePastCasesNavigation'),
       enabledForCourts('B50KH'),
-      enabledForUsers('***REMOVED***', 'BEVERLYWILMOTTNPS', '***REMOVED***', '***REMOVED***', '***REMOVED***')
+      enabledForUsers('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
     )
   ),
   caseProgressNextAppearanceBadge: enabledForSourceTypes('COMMON_PLATFORM', 'LIBRA')
