@@ -237,9 +237,14 @@ module.exports = function createApp ({ signInService, userService }) {
     })(req, res, next)
   )
 
-  app.use('/logout', (req, res) => {
+  app.use('/logout', (req, res, next) => {
     if (req.user) {
-      req.logout()
+      req.logout(err => {
+        if (err) {
+          log.error('Error during logout', err)
+          return next(err)
+        }
+      })
       req.session.destroy()
     }
     res.redirect(authLogoutUrl)
