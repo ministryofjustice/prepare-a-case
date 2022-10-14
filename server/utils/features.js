@@ -1,4 +1,5 @@
 const { allOf, mainFeatureToggleEnabled, enabledForSourceTypes, enabledForCourts, enabledForUsers, isEnv, anyOf } = require('./featureTogglePredicates')
+const { settings } = require('../../config')
 
 const features = {
   caseComments: anyOf(
@@ -10,13 +11,13 @@ const features = {
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableCaseComments'),
       enabledForCourts('B50KH'),
-      enabledForUsers('***REMOVED***', '***REMOVED***')
+      enabledForUsers(...settings.caseTrackingPrePilotUsers)
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseComments'),
       enabledForCourts('B50KH'),
-      enabledForUsers('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
+      enabledForUsers(...settings.caseTrackingPrePilotUsers)
     )
   ),
   caseProgress: anyOf(
@@ -28,13 +29,13 @@ const features = {
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableCaseProgress'),
       enabledForCourts('B50KH'),
-      enabledForUsers('***REMOVED***', '***REMOVED***')
+      enabledForUsers(...settings.caseTrackingPrePilotUsers)
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseProgress'),
       enabledForCourts('B50KH'),
-      enabledForUsers('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
+      enabledForUsers(...settings.caseTrackingPrePilotUsers)
     )
   ),
   pastCasesNavigation: anyOf(
@@ -46,13 +47,13 @@ const features = {
       isEnv('preprod'),
       mainFeatureToggleEnabled('enablePastCasesNavigation'),
       enabledForCourts('B50KH'),
-      enabledForUsers('***REMOVED***', '***REMOVED***')
+      enabledForUsers(...settings.caseTrackingPrePilotUsers)
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enablePastCasesNavigation'),
       enabledForCourts('B50KH'),
-      enabledForUsers('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
+      enabledForUsers(...settings.caseTrackingPrePilotUsers)
     )
   ),
   caseProgressNextAppearanceBadge: enabledForSourceTypes('COMMON_PLATFORM', 'LIBRA')
