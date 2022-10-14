@@ -4,6 +4,9 @@ const catchAsyncErrors = (handler) => async (req, res, next) => {
   try {
     await handler(req, res)
   } catch (e) {
+    if (e.config && e.config.headers && e.config.headers.Authorization) {
+      e.config.headers.Authorization = '***'
+    }
     logger.error(e)
     let status = e.status || 500
     let message
