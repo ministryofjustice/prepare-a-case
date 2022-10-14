@@ -19,6 +19,8 @@ const getBooleanParam = (name, options = {}) => get(name, 'false').toLowerCase()
 
 const requiredInProduction = { requireInProduction: true }
 
+const getCsvParamAsArray = param => get(param, '')?.split(',').map(value => value.trim())
+
 module.exports = {
   settings: {
     defaultTimeout: 6000,
@@ -26,6 +28,7 @@ module.exports = {
     casesPerPage: get('CASES_PER_PAGE', 20),
     casesTotalDays: get('CASES_TOTAL_DAYS', 13),
     casesPastDays: get('CASES_PAST_DAYS', 6),
+    caseTrackingPrePilotUsers: getCsvParamAsArray('CASE_TRACKING_PRE_PILOT_USERS'),
     pacEnvironment: get('PAC_ENV', 'UNKNOWN'),
     enablePastCasesNavigation: getBooleanParam('ENABLE_PAST_CASES_NAVIGATION'),
     enableCaseComments: getBooleanParam('ENABLE_CASE_COMMENTS'),
