@@ -9,7 +9,7 @@
                             <span class="govuk-grid-column-full">{{ previousNote.note }}</span>
                         </div>
                         <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-3">
-                            <span class="govuk-!-margin-left-3">{{ previousNote.author }} on {{ previousNote.created | hearingNoteTimeFormat }}
+                            <span class="govuk-!-margin-left-3">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}
                                 {% if previousNote.createdByUuid === params.currentUserUuid %}
                                     <a class="govuk-link govuk-!-margin-left-5" href="summary/notes/delete?targetHearingId={{ params.hearing.hearingId }}&noteId={{ previousNote.noteId }}">Delete</a>
                                 {% endif %}
