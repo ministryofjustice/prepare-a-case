@@ -1,26 +1,23 @@
-<div class="app-summary-card__body">
+<div class="app-summary-card__body govuk-!-padding-top-0">
 
     <div class="govuk-grid-row govuk-grid-column-full">
         <table class="govuk-table">
-        {% for previousNote in params.hearing.notes %}
-            <tr class="govuk-table__row">
-                <td class="govuk-table__cell" id="previous-note-{{ previousNote.noteId }}">
-                    <div class="govuk-grid-row">
-                        <span class="govuk-grid-column-full case-comments-comment-display">{{ previousNote.note }}</span>
-                    </div>
-                    <div class="govuk-grid-row govuk-!-margin-top-2">
-                        <div class="govuk-grid-column-one-half govuk-!-padding-bottom-2">
-                            <span class="govuk-caption-m govuk-!-font-size-16">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}
+            {% for previousNote in params.hearing.notes %}
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell govuk-!-padding-top-3 govuk-!-padding-bottom-2" id="previous-note-{{ previousNote.noteId }}">
+                        <div class="govuk-grid-row">
+                            <span class="govuk-grid-column-full">{{ previousNote.note }}</span>
                         </div>
-                        <div class="govuk-grid-column-one-quarter govuk-!-font-size-16">
-                            {% if previousNote.createdByUuid === params.currentUserUuid %}
-                                <a class="govuk-link" href="summary/notes/delete?targetHearingId={{ params.hearing.hearingId }}&noteId={{ previousNote.noteId }}">Delete</a>
-                            {% endif %}
+                        <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-3">
+                            <span class="govuk-!-margin-left-3">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}
+                                {% if previousNote.createdByUuid === params.currentUserUuid %}
+                                    <a class="govuk-link govuk-!-margin-left-5" href="summary/notes/delete?targetHearingId={{ params.hearing.hearingId }}&noteId={{ previousNote.noteId }}">Delete</a>
+                                {% endif %}
+                            </span>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 
@@ -32,8 +29,10 @@
             </summary>
             <div class="govuk-details__text govuk-!-padding-bottom-0">
                 <label class="govuk-label" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add note</label>
-                <textarea class="govuk-textarea" id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5" aria-describedby="note-box"></textarea>
-                <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">Save</button>
+                <textarea class="govuk-textarea" id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5"
+                          aria-describedby="note-box"></textarea>
+                <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">Save
+                </button>
                 <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
             </div>
         </details>

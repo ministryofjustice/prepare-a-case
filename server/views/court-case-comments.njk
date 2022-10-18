@@ -15,10 +15,11 @@
                 classes: 'case-comments-delete-success-notification'
             }) }}
         {% endif %}
-        <div class="govuk-form-group govuk-!-margin-bottom-7 {{" govuk-form-group--error" if session.caseCommentBlankError }}">
+        <div class="govuk-form-group govuk-!-margin-bottom-7 {{ " govuk-form-group--error" if session.caseCommentBlankError }}">
             <div id="comments-hint">
                 <p id="comments-hint-p1" class="govuk-body">
-                    Add notes and observations about this case. Your colleagues who use Prepare a Case will be able to read them.
+                    Add notes and observations about this case. Your colleagues who use Prepare a Case will be able to
+                    read them.
                 </p>
                 <p id="comments-hint-p2" class="govuk-body govuk-!-margin-bottom-5">
                     These comments will not be saved to NDelius.
@@ -30,14 +31,18 @@
                 </p>
             {% endif %}
             <form method="post" action="summary/comments">
-                <textarea class="govuk-textarea{{ " govuk-textarea--error" if session.caseCommentBlankError }}" id="comment" name="comment" rows="5" aria-labelledby="comments-hint"></textarea>
-                <button type="submit" id="save-comments" class="govuk-button case-comments-save-button" data-module="govuk-button">Save</button>
+                <textarea class="govuk-textarea{{ " govuk-textarea--error" if session.caseCommentBlankError }}"
+                          id="comment" name="comment" rows="5" aria-labelledby="comments-hint"></textarea>
+                <button type="submit" id="save-comments" class="govuk-button case-comments-save-button"
+                        data-module="govuk-button">Save
+                </button>
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
             </form>
         </div>
 
         {% if data.caseComments | length %}
-            <form name="previousCommentsForm" method="post" action="summary/comments/{{ "hideOlderComments" if session.showPreviousComments === data.caseId else "showPreviousComments"}}">
+            <form name="previousCommentsForm" method="post"
+                  action="summary/comments/{{ "hideOlderComments" if session.showPreviousComments === data.caseId else "showPreviousComments" }}">
                 <h2 class="govuk-heading-s govuk-!-padding-top-0 govuk-!-margin-bottom-2">Comments</h2>
                 <table class="govuk-table" id="previousComments">
                     <tbody class="govuk-table__body">
@@ -53,15 +58,12 @@
                                     <div class="govuk-grid-column-full govuk-!-padding-bottom-3 case-comments-comment-display">{{ comment.comment }}</div>
                                 </div>
                                 <div class="govuk-grid-row">
-                                    <div class="govuk-grid-column-one-half govuk-!-padding-bottom-2">
-                                        <span class="govuk-caption-m govuk-!-font-size-16">
-                                            {{ comment.author }} on {{ comment.created | caseCommentTimeFormat }}
-                                        </span>
-                                    </div>
-                                    <div class="govuk-grid-column-one-quarter govuk-!-padding-bottom-2">
+                                    <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-3">
+                                        <span class="govuk-!-margin-left-6">{{ comment.author }} on {{ comment.created | caseCommentTimeFormat }}</span>
                                         {% if comment.createdByUuid === currentUserUuid %}
-                                            <a href="summary/comments/{{ comment.commentId }}/delete" class="govuk-link">
-                                                <span class="govuk-!-font-size-16 govuk-!-display-block">Delete</span>
+                                            <a href="summary/comments/{{ comment.commentId }}/delete"
+                                               class="govuk-link">
+                                                <span class="govuk-!-font-size-16 govuk-!-margin-left-5">Delete</span>
                                             </a>
                                         {% endif %}
                                     </div>
