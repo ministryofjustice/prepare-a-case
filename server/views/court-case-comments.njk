@@ -15,7 +15,7 @@
                 classes: 'case-comments-delete-success-notification'
             }) }}
         {% endif %}
-        <div class="govuk-form-group govuk-!-margin-bottom-7 {{ " govuk-form-group--error" if session.caseCommentBlankError }}">
+        <div class="govuk-form-group govuk-!-margin-bottom-7">
             <div id="comments-hint">
                 <p id="comments-hint-p1" class="govuk-body">
                     Add notes and observations about this case. Your colleagues who use Prepare a Case will be able to
@@ -25,13 +25,8 @@
                     These comments will not be saved to NDelius.
                 </p>
             </div>
-            {% if session.caseCommentBlankError %}
-                <p id="comment-error" class="govuk-error-message govuk-!-margin-bottom-4">
-                    <span class="govuk-visually-hidden">Error:</span> Enter a comment
-                </p>
-            {% endif %}
             <form method="post" action="summary/comments">
-                <textarea class="govuk-textarea{{ " govuk-textarea--error" if session.caseCommentBlankError }}"
+                <textarea class="govuk-textarea"
                           id="comment" name="comment" rows="5" aria-labelledby="comments-hint"></textarea>
                 <button type="submit" id="save-comments" class="govuk-button case-comments-save-button"
                         data-module="govuk-button">Save
