@@ -95,4 +95,7 @@ env:
   - name: PAC_ENV
     value: {{ .Values.env.PAC_ENV | quote }}
 
+  - name: CASE_TRACKING_PRE_PILOT_USERS
+    value: {{ .Values.env.CASE_TRACKING_PRE_PILOT_USERS | quote }}
+
 {{- end -}}
