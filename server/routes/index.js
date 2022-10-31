@@ -54,7 +54,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     if (cookies && cookies.court) {
       res.clearCookie('court')
     }
-    res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : '/my-courts/setup')
+    res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : '/my-courts')
   })
 
   router.get('/set-notification', catchErrors(async (req, res) => {
