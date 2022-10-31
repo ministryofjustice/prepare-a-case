@@ -23,7 +23,7 @@ const features = {
         ),
         allOf(
           enabledForCourts('B05PK'),
-          enabledForUsers('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, '***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
         )
       )
     )
@@ -49,7 +49,7 @@ const features = {
         ),
         allOf(
           enabledForCourts('B05PK'),
-          enabledForUsers('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, '***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
         )
       )
     )
@@ -75,7 +75,7 @@ const features = {
         ),
         allOf(
           enabledForCourts('B05PK'),
-          enabledForUsers('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, '***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***')
         )
       )
     )
