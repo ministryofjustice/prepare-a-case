@@ -23,7 +23,7 @@ const features = {
         ),
         allOf(
           enabledForCourts('B05PK'),
-          enabledForUsers('TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k')
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, 'TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k')
         )
       )
     )
@@ -49,7 +49,7 @@ const features = {
         ),
         allOf(
           enabledForCourts('B05PK'),
-          enabledForUsers('TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k')
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, 'TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k')
         )
       )
     )
@@ -75,7 +75,7 @@ const features = {
         ),
         allOf(
           enabledForCourts('B05PK'),
-          enabledForUsers('TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k')
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, 'TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k')
         )
       )
     )
