@@ -1,6 +1,8 @@
 const { allOf, mainFeatureToggleEnabled, enabledForSourceTypes, enabledForCourts, enabledForUsers, isEnv, anyOf } = require('./featureTogglePredicates')
 const { settings } = require('../../config')
 
+const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k', 'brn63n']
+
 const features = {
   caseComments: anyOf(
     allOf(
@@ -23,7 +25,7 @@ const features = {
         ),
         allOf(
           enabledForCourts('B05PK'),
-          enabledForUsers(...settings.caseTrackingPrePilotUsers, 'TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k')
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, ...LIVERPOOL_PRE_PILOT_USERS)
         )
       )
     )
@@ -49,7 +51,7 @@ const features = {
         ),
         allOf(
           enabledForCourts('B05PK'),
-          enabledForUsers(...settings.caseTrackingPrePilotUsers, 'TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k')
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, ...LIVERPOOL_PRE_PILOT_USERS)
         )
       )
     )
@@ -75,7 +77,7 @@ const features = {
         ),
         allOf(
           enabledForCourts('B05PK'),
-          enabledForUsers(...settings.caseTrackingPrePilotUsers, 'TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k')
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, ...LIVERPOOL_PRE_PILOT_USERS)
         )
       )
     )
