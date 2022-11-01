@@ -26,6 +26,7 @@ const os = require('os')
 const hostName = os.hostname()
 
 const { authenticationMiddleware } = auth
+const catchErrors = require('./server/routes/handlers/catchAsyncErrors')
 
 module.exports = function createApp ({ signInService, userService }) {
   const service = new Service(axios)
@@ -237,7 +238,7 @@ module.exports = function createApp ({ signInService, userService }) {
     })(req, res, next)
   )
 
-  app.use('/logout', (req, res, next) => {
+  app.use('/logout', catchErrors((req, res, next) => {
     if (req.user) {
       req.logout(err => {
         if (err) {
@@ -245,10 +246,9 @@ module.exports = function createApp ({ signInService, userService }) {
           return next(err)
         }
       })
-      req.session.destroy()
     }
     res.redirect(authLogoutUrl)
-  })
+  }))
 
   const currentUserInContext = populateCurrentUser(userService)
   app.use(currentUserInContext)
