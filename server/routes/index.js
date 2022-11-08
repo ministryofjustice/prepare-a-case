@@ -49,12 +49,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
   })
 
   router.get('/', (req, res) => {
-    const { cookies } = req
+    const { cookies, session } = req
     // @FIXME: Cookie check and removal to be removed at a later date
     if (cookies && cookies.court) {
       res.clearCookie('court')
     }
-    res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : '/my-courts')
+    res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : session.courts && session.courts?.length ? '/my-courts' : '/my-courts/setup')
   })
 
   router.get('/set-notification', catchErrors(async (req, res) => {
