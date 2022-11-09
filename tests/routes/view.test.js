@@ -24,6 +24,7 @@ jest.mock('../../server/routes/middleware/healthcheck')
 jest.mock('../../server/routes/helpers')
 jest.mock('../../server/services/case-service')
 jest.mock('../../server/services/community-service')
+jest.mock('../../server/services/user-preference-service')
 
 let app
 let caseResponse = {}
