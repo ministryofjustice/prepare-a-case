@@ -2,7 +2,7 @@ const express = require('express')
 const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
-const { updateSelectedCourts } = require('../services/user-preference-service')
+const { updateSelectedCourts, getUserSelectedCourts } = require('../services/user-preference-service')
 const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory } = require('../services/case-service')
 const { getDetails, getProbationRecord, getConviction, getProbationStatusDetails, getSentenceDetails, getBreachDetails, getRiskDetails, getCustodyDetails } = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
@@ -48,14 +48,21 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
   })
 
-  router.get('/', (req, res) => {
-    const { cookies, session } = req
+  const getCourts = async ({ session }, { locals: { user } }) => {
+    if (!session.courts) {
+      session.courts = await getUserSelectedCourts(user.userId) || []
+    }
+    return session.courts && session.courts?.length
+  }
+
+  router.get('/', catchErrors(async (req, res) => {
+    const { cookies } = req
     // @FIXME: Cookie check and removal to be removed at a later date
     if (cookies && cookies.court) {
       res.clearCookie('court')
     }
-    res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : session.courts && session.courts?.length ? '/my-courts' : '/my-courts/setup')
-  })
+    res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : await getCourts(req, res) ? '/my-courts' : '/my-courts/setup')
+  }))
 
   router.get('/set-notification', catchErrors(async (req, res) => {
     const { redisClient: { getAsync } } = req
