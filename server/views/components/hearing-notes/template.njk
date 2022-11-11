@@ -29,13 +29,26 @@
             </summary>
             <div class="govuk-details__text govuk-!-padding-bottom-0">
                 <label class="govuk-label" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add note</label>
-                <textarea class="govuk-textarea" id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5"
-                          aria-describedby="note-box"></textarea>
-                <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">Save
-                </button>
+                <textarea class="govuk-textarea" id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5" aria-describedby="note-box"></textarea>
+                <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">Save</button>
                 <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
+
+                <div class="popup-wrapper togglePopup">
+                    <div class ="popup-grid">
+                        <div class ="popup-content govuk-!-padding-left-3 govuk-!-padding-top-2">
+                            <div class="govuk-warning-text govuk-!-margin-bottom-1">
+                                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                                <strong class="govuk-warning-text__text">
+                                    <span class="govuk-warning-text__assistive">Warning</span>
+                                    There are unsaved notes
+                                </strong>
+                            </div>
+                            <p class="govuk-!-margin-bottom-9">Save your notes before adding a new one.</p>
+                            <button type="button" id="close-btn" class="govuk-button" data-module="govuk-button">Go back</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </details>
     </form>
 </div>
-

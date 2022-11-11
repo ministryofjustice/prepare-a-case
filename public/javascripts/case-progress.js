@@ -1,23 +1,43 @@
-(function setupCaseProgressScripts() {
+(function setupCaseProgressScripts () {
+  const hasMultipleNoteBoxes = (form) => {
+    let multipleNoteBoxFilled = false
+    const currentForm = form.getElementsByTagName('textarea')?.item(0)?.getAttribute('id')
 
-  const validateNotes = (element) => event => {
-    let otherNotesFound = false;
-    const currentForm = element.getElementsByTagName('textarea')?.item(0)?.getAttribute('id')
-    document.querySelectorAll(".comments-form-tag textarea").forEach(value => {
-      if (otherNotesFound) {
+    const selectedForm = document.querySelectorAll('.comments-form-tag textarea')
+    selectedForm.forEach(value => {
+      console.log("this is a text area")
+      if (multipleNoteBoxFilled) {
         return
       }
-      if (value.getAttribute('id') != currentForm && value.value?.trim() != '') {
-        otherNotesFound = true
+      if (value.getAttribute('id') !== currentForm && value.value?.trim() !== '') {
+        multipleNoteBoxFilled = true
       }
     })
-    if (otherNotesFound) {
-      alert('There are unsaved notes\nSave your notes before adding new one')
-      event.preventDefault()
-    }
+    return multipleNoteBoxFilled
   }
 
-  document.querySelectorAll(".comments-form-tag").forEach(form => {
-    form.addEventListener("submit", validateNotes(form));
+  const popupWrapper = document.getElementsByClassName('popup-wrapper')[0]
+
+  const goBackBtn = document.getElementById('close-btn')
+  console.log('goBackBtn', goBackBtn)
+  goBackBtn.addEventListener('click', () => {
+    console.log("hidding the pop up again...")
+    popupWrapper.classList.remove('togglePopup')
+  })
+
+  const hearingForms = document.querySelectorAll('.comments-form-tag')
+  hearingForms.forEach(form => {
+    console.log('form', form)
+    form.addEventListener('submit', (event) => {
+      console.log("we're in the submit")
+      if (hasMultipleNoteBoxes(form)) {
+        console.log("cancelling submission (multiple boxes with text found)")
+
+        popupWrapper.classList.remove('togglePopup')
+        event.preventDefault()
+        return false;
+      }
+      return true;
+    })
   })
 })()
