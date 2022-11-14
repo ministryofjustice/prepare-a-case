@@ -48,20 +48,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
   })
 
-  const getCourts = async ({ session }, { locals: { user } }) => {
-    if (!session.courts) {
-      session.courts = await getUserSelectedCourts(user.userId) || []
-    }
-    return session.courts && session.courts?.length
-  }
-
   router.get('/', catchErrors(async (req, res) => {
     const { cookies } = req
     // @FIXME: Cookie check and removal to be removed at a later date
     if (cookies && cookies.court) {
       res.clearCookie('court')
     }
-    res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : await getCourts(req, res) ? '/my-courts' : '/my-courts/setup')
+    res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : '/my-courts')
   }))
 
   router.get('/set-notification', catchErrors(async (req, res) => {

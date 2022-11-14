@@ -1,9 +1,9 @@
 {
-  "id": "a9a953b9-ca70-49a2-b722-e52a0bcef1df",
-  "priority": 5,
+  "id": "44947550-6d60-44b1-91ec-863b6af426bd",
+  "priority": "1",
   "request": {
     "method": "GET",
-    "urlPathPattern": "/users/(.*)/preferences/courts"
+    "urlPathPattern": "/users/no_courts_user/preferences/courts"
   },
   "response": {
     "headers": {
@@ -11,9 +11,6 @@
     },
     "status": 200,
     "jsonBody": {
-      "items": [
-        "B14LO"
-      ]
     }
   }
 }
