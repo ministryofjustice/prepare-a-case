@@ -2,6 +2,7 @@
 import { Before, And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import 'cypress-axe'
 import moment from 'moment'
+import { updateStubFor } from '../../mockApis/wiremock'
 
 const shortDateFormat = 'YYYY-MM-DD'
 const longDateFormat = 'dddd D MMMM'
@@ -70,8 +71,14 @@ Before(() => {
   cy.login()
 })
 
-Given('I am an authenticated user', () => {
-  cy.get('#loginForm').should('not.exist')
+/*Given('I am an authenticated user with no saved courts', async () => {
+  await cy.task('stubLogin', { userId: 'no_courts_user', username: 'no_courts_user', user_name: 'no_courts_user' })
+  await cy.login()
+  await cy.get('#loginForm').should('not.exist')
+})*/
+
+Given('I am an authenticated user', async () => {
+  await cy.get('#loginForm').should('not.exist')
 })
 
 Then('I should see the URL with {string}', $string => {
@@ -294,6 +301,47 @@ When('I click the {string} link', $string => {
 
 When('I click the {string} header navigation link', $string => {
   cy.get('.moj-header__navigation-link').contains($string).click()
+})
+
+Given('Get user preference courts stub return no courts', $string => {
+  updateStubFor('a9a953b9-ca70-49a2-b722-e52a0bcef1df', {
+      "id": "a9a953b9-ca70-49a2-b722-e52a0bcef1df",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/users/(.*)/preferences/courts"
+      },
+      "response": {
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200,
+        "jsonBody": {
+        }
+      }
+    }
+  )
+})
+
+Given('Get user preference courts stub return sheffield court', $string => {
+
+  updateStubFor('a9a953b9-ca70-49a2-b722-e52a0bcef1df', {
+      "id": "a9a953b9-ca70-49a2-b722-e52a0bcef1df",
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/users/(.*)/preferences/courts"
+      },
+      "response": {
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200,
+        "jsonBody": {
+          "items": ["B14LO"]
+        }
+      }
+    }
+  )
 })
 
 When('I click the {string} button', $string => {

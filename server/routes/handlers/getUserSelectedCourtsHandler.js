@@ -8,12 +8,16 @@ const getUserSelectedCourtsHandler = (getUserSelectedCourts) => async (req, res)
     return
   }
   session.courts = userSelectedCourts?.items || []
-  res.render('view-courts', {
-    params: {
-      availableCourts: settings.availableCourts,
-      chosenCourts: session.courts
-    }
-  })
+  if(session.courts?.length) {
+    res.render('view-courts', {
+      params: {
+        availableCourts: settings.availableCourts,
+        chosenCourts: session.courts
+      }
+    })
+  } else {
+    res.redirect('/my-courts/setup')
+  }
 }
 
 module.exports = getUserSelectedCourtsHandler

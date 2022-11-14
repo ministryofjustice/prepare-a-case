@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken')
 const { stubFor, getRequests } = require('./wiremock')
 
-const createToken = () => {
+const createToken = (options) => {
   const payload = {
+    ...options,
     user_name: 'ITAG_USER',
     scope: ['read', 'write'],
     auth_source: 'delius',
@@ -68,8 +69,19 @@ const logout = () =>
     }
   })
 
-const token = () =>
-  stubFor({
+const token = (options) => {
+  const jsonBody = {
+    access_token: createToken(options),
+    token_type: 'bearer',
+    refresh_token: 'refresh',
+    user_name: 'TEST_USER',
+    uuid: 'b2679ef7-084d-4f7f-81dd-2d44aae74cbb',
+    expires_in: 600,
+    scope: 'read write',
+    internalUser: true,
+    ...options
+  };
+  return stubFor({
     request: {
       method: 'POST',
       urlPattern: '/auth/oauth/token'
@@ -80,21 +92,18 @@ const token = () =>
         'Content-Type': 'application/json;charset=UTF-8',
         Location: 'http://localhost:3007/login/callback?code=codexxxx&state=stateyyyy'
       },
-      jsonBody: {
-        access_token: createToken(),
-        token_type: 'bearer',
-        refresh_token: 'refresh',
-        user_name: 'TEST_USER',
-        uuid: 'b2679ef7-084d-4f7f-81dd-2d44aae74cbb',
-        expires_in: 600,
-        scope: 'read write',
-        internalUser: true
-      }
+      jsonBody
     }
   })
+}
 
-const userMe = () =>
-  stubFor({
+const userMe = (options) => {
+  const jsonBody = {
+    uuid: 'b2679ef7-084d-4f7f-81dd-2d44aae74cbb',
+    name: 'Display Name',
+    ...options
+  };
+  return stubFor({
     request: {
       method: 'GET',
       urlPattern: '/auth/api/user/me'
@@ -104,14 +113,16 @@ const userMe = () =>
       headers: {
         'Content-Type': 'application/json;charset=UTF-8'
       },
-      jsonBody: {
-        uuid: 'b2679ef7-084d-4f7f-81dd-2d44aae74cbb',
-        name: 'Display Name'
-      }
+      jsonBody
     }
-  })
+  });
+}
+
+function getPromise(options) {
+  return Promise.all([favicon(), redirect(), logout(), token(options), userMe(options)]);
+}
 
 module.exports = {
   getLoginUrl,
-  stubLogin: options => Promise.all([favicon(), redirect(), logout(), token(options), userMe()])
+  stubLogin: options => getPromise(options)
 }
