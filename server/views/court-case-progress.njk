@@ -1,6 +1,22 @@
 <div class="govuk-grid-row" id="caseProgressComponent">
     <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-m" id="caseHearingsHeading">Case progress</h2>
+
+        <div id="popup-wrapper" class="togglePopup">
+            <div class ="popup-grid">
+                <div class ="popup-content govuk-!-padding-left-3 govuk-!-padding-top-2">
+                    <div class="govuk-warning-text govuk-!-margin-bottom-1">
+                        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                        <strong class="govuk-warning-text__text">
+                            <span class="govuk-warning-text__assistive">Warning</span>
+                            There are unsaved notes
+                        </strong>
+                    </div>
+                    <p class="govuk-!-margin-bottom-9">Save your notes before adding a new one.</p>
+                    <button type="button" id="close-btn" class="govuk-button" data-module="govuk-button">Go back</button>
+                </div>
+            </div>
+        </div>
         {% if session.deleteHearingNoteSuccess %}
             {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
             {% set html %}
@@ -58,3 +74,6 @@
         {% endif %}
     </div>
 </div>
+{% block javascripts %}
+    <script type="text/javascript" src="/javascripts/case-progress.js"></script>
+{% endblock %}

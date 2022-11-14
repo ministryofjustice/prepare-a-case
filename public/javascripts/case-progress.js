@@ -16,13 +16,13 @@
     return multipleNoteBoxFilled
   }
 
-  const popupWrapper = document.getElementsByClassName('popup-wrapper')[0]
+  const popupWrapper = document.getElementById('popup-wrapper')
 
   const goBackBtn = document.getElementById('close-btn')
   console.log('goBackBtn', goBackBtn)
   goBackBtn.addEventListener('click', () => {
     console.log("hidding the pop up again...")
-    popupWrapper.classList.remove('togglePopup')
+    popupWrapper.style.display = "none"
   })
 
   const hearingForms = document.querySelectorAll('.comments-form-tag')
@@ -33,11 +33,11 @@
       if (hasMultipleNoteBoxes(form)) {
         console.log("cancelling submission (multiple boxes with text found)")
 
-        popupWrapper.classList.remove('togglePopup')
+        popupWrapper.style.display = "block"
         event.preventDefault()
-        return false;
+        // return false;
       }
-      return true;
+      // return true;
     })
   })
 })()
