@@ -1,15 +1,14 @@
 body{
   width: 100%;
 }
-.popup-wrapper{
+.popup-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6));
 }
-.popup-grid {
+.popup-modal {
   background-color: #fff;
   display: block;
   margin-left: auto;
@@ -17,8 +16,9 @@ body{
   margin-top: 30%;
   width: 60%;
 }
+
 /* popup toggle class */
-.togglePopup {
+.popup-toggle {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -28,9 +28,5 @@ body{
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-/* popup content */
-.popup-content{
-  text-align: left;
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
 }
