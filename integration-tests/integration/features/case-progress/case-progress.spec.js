@@ -1,6 +1,6 @@
 /* global cy */
 import 'cypress-axe'
-import { And } from 'cypress-cucumber-preprocessor/steps'
+import { And, Then } from 'cypress-cucumber-preprocessor/steps'
 
 And('I should see {int} previous hearings headers', $int => {
   cy.get('.app-summary-card').within(() => {
@@ -39,4 +39,28 @@ And('I should see the following hearings with the hearing type label, hearing de
       })
     })
   })
+})
+
+And('the note with the id {string} on hearing {string} is filled with the text {string}', ($noteId, $hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get(`#previous-note-${$noteId}`).within(() => {
+      cy.get('.govuk-button').click()
+    })
+  })
+})
+
+Then('should appears a popup modal box which displays information', () => {
+  cy.get('.popup-toggle').should('exist')
+})
+
+And('I should see a warning icon', () => {
+  cy.get('.govuk-warning-text__icon').should('exist')
+})
+
+And('I should see the text heading message {string}', $string => {
+  cy.get('.govuk-warning-text__text').contains($string)
+})
+
+And('I should see the text body message {string}', $string => {
+  cy.get('.govuk-body-s').contains($string)
 })
