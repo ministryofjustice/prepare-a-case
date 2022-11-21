@@ -1,6 +1,8 @@
 const { allOf, mainFeatureToggleEnabled, enabledForSourceTypes, enabledForCourts, enabledForUsers, isEnv, anyOf } = require('./featureTogglePredicates')
 const { settings } = require('../../config')
 
+const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k', 'brn63n']
+
 const features = {
   caseComments: anyOf(
     allOf(
@@ -10,14 +12,22 @@ const features = {
     allOf(
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableCaseComments'),
-      enabledForCourts('B50KH'),
+      enabledForCourts('B50KH', 'B05PK'),
       enabledForUsers(...settings.caseTrackingPrePilotUsers)
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseComments'),
-      enabledForCourts('B50KH'),
-      enabledForUsers(...settings.caseTrackingPrePilotUsers)
+      anyOf(
+        allOf(
+          enabledForCourts('B50KH'),
+          enabledForUsers(...settings.caseTrackingPrePilotUsers)
+        ),
+        allOf(
+          enabledForCourts('B05PK'),
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, ...LIVERPOOL_PRE_PILOT_USERS)
+        )
+      )
     )
   ),
   caseProgress: anyOf(
@@ -28,14 +38,22 @@ const features = {
     allOf(
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableCaseProgress'),
-      enabledForCourts('B50KH'),
+      enabledForCourts('B50KH', 'B05PK'),
       enabledForUsers(...settings.caseTrackingPrePilotUsers)
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enableCaseProgress'),
-      enabledForCourts('B50KH'),
-      enabledForUsers(...settings.caseTrackingPrePilotUsers)
+      anyOf(
+        allOf(
+          enabledForCourts('B50KH'),
+          enabledForUsers(...settings.caseTrackingPrePilotUsers)
+        ),
+        allOf(
+          enabledForCourts('B05PK'),
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, ...LIVERPOOL_PRE_PILOT_USERS)
+        )
+      )
     )
   ),
   pastCasesNavigation: anyOf(
@@ -46,14 +64,22 @@ const features = {
     allOf(
       isEnv('preprod'),
       mainFeatureToggleEnabled('enablePastCasesNavigation'),
-      enabledForCourts('B50KH'),
+      enabledForCourts('B50KH', 'B05PK'),
       enabledForUsers(...settings.caseTrackingPrePilotUsers)
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enablePastCasesNavigation'),
-      enabledForCourts('B50KH'),
-      enabledForUsers(...settings.caseTrackingPrePilotUsers)
+      anyOf(
+        allOf(
+          enabledForCourts('B50KH'),
+          enabledForUsers(...settings.caseTrackingPrePilotUsers)
+        ),
+        allOf(
+          enabledForCourts('B05PK'),
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, ...LIVERPOOL_PRE_PILOT_USERS)
+        )
+      )
     )
   ),
   caseProgressNextAppearanceBadge: enabledForSourceTypes('COMMON_PLATFORM', 'LIBRA')
