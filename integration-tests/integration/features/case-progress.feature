@@ -9,6 +9,10 @@ Feature: Case progress
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
 
+    Given I am an authenticated user
+    When I navigate to the "cases" route
+    Then I should be on the "Case list" page
+
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"

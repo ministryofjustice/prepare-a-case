@@ -24,7 +24,7 @@
 
   const hearingForms = document.querySelectorAll('.comments-form-tag')
   hearingForms.forEach(form => {
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('keydown', (event) => {
       if (hasMultipleNoteBoxes(form)) {
         popupWrapper.style.display = "block"
         event.preventDefault()
