@@ -1,9 +1,10 @@
 (function setupCaseProgressScripts () {
   const hasMultipleNoteBoxes = (form) => {
     let multipleNoteBoxFilled = false
-    const currentForm = form.getElementsByTagName('textarea')?.item(0)?.getAttribute('id')
+    const currentForm = form.getAttribute('id')
 
-    const selectedForm = document.querySelectorAll('.comments-form-tag textarea')
+
+    const selectedForm = document.querySelectorAll('.case-notes')
     selectedForm.forEach(value => {
       if (multipleNoteBoxFilled) {
         return
@@ -22,15 +23,11 @@
     popupWrapper.style.display = "none"
   })
 
-  const hearingForms = document.querySelectorAll('.comments-form-tag')
+  const hearingForms = document.querySelectorAll('.case-notes')
   hearingForms.forEach(form => {
-    console.log(form, "here the form when appearing on the page")
     form.addEventListener('keypress', (event) => {
-      console.log(form, "When I press a key in a note")
       if (hasMultipleNoteBoxes(form)) {
-        console.log(form, "check if there is multiple box")
         popupWrapper.style.display = "block"
-        console.log(popupWrapper, "popupWrapper")
         event.preventDefault()
       }
     })
