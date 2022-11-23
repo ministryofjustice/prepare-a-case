@@ -132,4 +132,4 @@ Feature: Case progress
     And I should see a warning icon
     And I should see the text heading message "There are unsaved notes"
     And I should see the text body message "Save your notes before adding a new one."
-    And I click the "Go back" link
+    Then I click the "Go back" button

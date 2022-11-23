@@ -2,21 +2,10 @@
     <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-m" id="caseHearingsHeading">Case progress</h2>
 
-        <div id="popup-wrapper" class="popup-toggle">
-            <div class ="popup-modal">
-                <div class ="govuk-!-text-align-left govuk-!-padding-left-3 govuk-!-padding-top-2 govuk-!-padding-right-3">
-                    <div class="govuk-warning-text govuk-!-margin-bottom-1">
-                        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                        <strong class="govuk-warning-text__text">
-                            <span class="govuk-warning-text__assistive">Warning</span>
-                            There are unsaved notes
-                        </strong>
-                    </div>
-                    <p class="govuk-body-s govuk-!-margin-bottom-9">Save your notes before adding a new one.</p>
-                    <button type="button" id="close-btn" class="govuk-button govuk-!-padding-right-3" data-module="govuk-button">Go back</button>
-                </div>
-            </div>
-        </div>
+        {%- from "components/modal-box/macro.njk" import pacModalBox -%}
+        {{ pacModalBox({
+            hearingForms: hearingForms
+        }) }}
 
         {% if session.deleteHearingNoteSuccess %}
             {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
