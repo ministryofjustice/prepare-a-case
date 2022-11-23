@@ -126,9 +126,8 @@ Feature: Case progress
 
 
     And the note with the id "1288880" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3" is filled with the text "I am a first unsaved note"
-    And the note with the id "123650" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3" is filled with the text "I am a second unsaved note"
+    And the note with the id "123650" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3" is filled with the text "A"
 
-    And I click the "Save" button
     Then should appears a popup modal box which displays information
     And I should see a warning icon
     And I should see the text heading message "There are unsaved notes"
