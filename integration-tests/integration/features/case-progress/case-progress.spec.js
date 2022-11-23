@@ -43,13 +43,11 @@ And('I should see the following hearings with the hearing type label, hearing de
 
 And('the note with the id {string} on hearing {string} is filled with the text {string}', ($noteId, $hearingId) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
-    cy.get(`#previous-note-${$noteId}`).within(() => {
-      cy.get('.govuk-button').click()
-    })
+    cy.get(`#previous-note-${$noteId}`).should('exist')
   })
 })
 
-Then('should appears a popup modal box which displays information', () => {
+Then('should appears a css hidden modal which displays information', () => {
   cy.get('.popup-toggle').should('exist')
 })
 
@@ -63,4 +61,7 @@ And('I should see the text heading message {string}', $string => {
 
 And('I should see the text body message {string}', $string => {
   cy.get('.govuk-body-s').contains($string)
+})
+Then('I click the {string} button to be back on my page', $string => {
+  cy.get('#close-btn').contains($string).click({ force: true })
 })

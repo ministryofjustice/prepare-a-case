@@ -15,7 +15,6 @@ Feature: Case progress
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
     Then I should be on the "Case summary" page
-    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
     And I should see the following summary list
@@ -128,8 +127,8 @@ Feature: Case progress
     And the note with the id "1288880" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3" is filled with the text "I am a first unsaved note"
     And the note with the id "123650" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3" is filled with the text "A"
 
-    Then should appears a popup modal box which displays information
+    Then should appears a css hidden modal which displays information
     And I should see a warning icon
     And I should see the text heading message "There are unsaved notes"
     And I should see the text body message "Save your notes before adding a new one."
-    Then I click the "Go back" button
+    Then I click the "Go back" button to be back on my page
