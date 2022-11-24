@@ -1,6 +1,12 @@
 <div class="govuk-grid-row" id="caseProgressComponent">
     <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-m" id="caseHearingsHeading">Case progress</h2>
+
+        {%- from "components/modal-box/macro.njk" import pacModalBox -%}
+        {{ pacModalBox({
+            hearingForms: hearingForms
+        }) }}
+
         {% if session.deleteHearingNoteSuccess %}
             {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
             {% set html %}
@@ -58,3 +64,6 @@
         {% endif %}
     </div>
 </div>
+{% block javascripts %}
+    <script type="text/javascript" src="/javascripts/case-progress.js"></script>
+{% endblock %}
