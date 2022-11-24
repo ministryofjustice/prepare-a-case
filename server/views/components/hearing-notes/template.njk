@@ -10,9 +10,9 @@
                         </div>
                         <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-3">
                             <span class="govuk-!-margin-left-3">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}
-                                {% if previousNote.createdByUuid === params.currentUserUuid %}
+                                 {% if previousNote.createdByUuid === params.currentUserUuid %}
                                     <a class="govuk-link govuk-!-margin-left-5" href="summary/notes/delete?targetHearingId={{ params.hearing.hearingId }}&noteId={{ previousNote.noteId }}">Delete</a>
-                                {% endif %}
+                                 {% endif %}
                             </span>
                         </div>
                     </td>
@@ -29,13 +29,11 @@
             </summary>
             <div class="govuk-details__text govuk-!-padding-bottom-0">
                 <label class="govuk-label" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add note</label>
-                <textarea class="govuk-textarea" id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5"
-                          aria-describedby="note-box"></textarea>
-                <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">Save
-                </button>
+                <textarea class="govuk-textarea case-notes" id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5" aria-describedby="note-box"></textarea>
+                <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">Save</button>
                 <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
+
             </div>
         </details>
     </form>
 </div>
-
