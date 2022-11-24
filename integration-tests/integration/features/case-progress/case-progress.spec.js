@@ -47,7 +47,7 @@ And('the note with the id {string} on hearing {string} is filled with the text {
   })
 })
 
-Then('should appears a css hidden modal which displays information', () => {
+Then('the user should be alerted with a popup', () => {
   cy.get('.popup-toggle').should('exist')
 })
 
