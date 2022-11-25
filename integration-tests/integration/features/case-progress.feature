@@ -126,5 +126,29 @@ Feature: Case progress
     Then the user should be alerted with a popup
     And I should see a warning icon
     And I should see the text heading message "There are unsaved notes"
-    And I should see the text body message "Save your notes before adding a new one."
+    And I should see the text body message "Save your note before adding a new one."
+    Then I click the "Go back" button to be back on my page
+
+  Scenario: Display an alert when a comment is written without being saved and a new note is started
+    Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
+
+    When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
+    Then I should be on the "Case summary" page
+    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
+    And I should see the caption text "URN: 01WW0298121"
+
+    And I should see the level 2 heading "Case progress"
+    And I should see 6 previous hearings headers
+
+    And I should see the level 2 heading "Comments"
+
+    When I enter a comment "a comment" in the comment textarea
+    And the note with the id "1288880" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3" is filled with the text "A"
+
+    Then the user should be alerted with a popup
+    And I should see a warning icon
+    And I should see the text heading message "There are unsaved comments"
+    And I should see the text body message "Save your comment before adding a new one."
     Then I click the "Go back" button to be back on my page
