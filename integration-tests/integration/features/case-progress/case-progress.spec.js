@@ -1,6 +1,6 @@
 /* global cy */
 import 'cypress-axe'
-import { And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
 
 And('I should see {int} previous hearings headers', $int => {
   cy.get('.app-summary-card').within(() => {
@@ -47,6 +47,10 @@ And('the note with the id {string} on hearing {string} is filled with the text {
   })
 })
 
+When('I enter a comment {string} in the comment textarea', $comment => {
+  cy.get('#comment').should('exist')
+})
+
 Then('the user should be alerted with a popup', () => {
   cy.get('.popup-toggle').should('exist')
 })
@@ -55,12 +59,12 @@ And('I should see a warning icon', () => {
   cy.get('.govuk-warning-text__icon').should('exist')
 })
 
-And('I should see the text heading message {string}', $string => {
-  cy.get('.govuk-warning-text__text').contains($string)
+And('I should see the text heading message {string}', () => {
+  cy.get('#modal-title-message').should('exist')
 })
 
-And('I should see the text body message {string}', $string => {
-  cy.get('.govuk-body-s').contains($string)
+And('I should see the text body message {string}', () => {
+  cy.get('#modal-body-message').should('exist')
 })
 Then('I click the {string} button to be back on my page', $string => {
   cy.get('#close-btn').contains($string).click({ force: true })
