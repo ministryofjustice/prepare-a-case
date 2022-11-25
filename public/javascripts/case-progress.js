@@ -1,33 +1,45 @@
 (function setupCaseProgressScripts () {
-  const hasMultipleNoteBoxes = (form) => {
-    let multipleNoteBoxFilled = false
-    const currentForm = form.getAttribute('id')
+  const checkIfOneOrMoreTextareaAreFilled__returnStatus = (textarea) => {
 
+    let textareaStatus = undefined
+    const currentTextarea = textarea.getAttribute('id')
 
-    const selectedForm = document.querySelectorAll('.case-notes')
-    selectedForm.forEach(value => {
-      if (multipleNoteBoxFilled) {
+    const checkTheStateOfOneOrMoreTextarea = document.querySelectorAll('.textarea-container')
+    checkTheStateOfOneOrMoreTextarea.forEach(uniqueTextarea => {
+
+      if (textareaStatus) {
         return
       }
-      if (value.getAttribute('id') !== currentForm && value.value?.trim() !== '') {
-        multipleNoteBoxFilled = true
+      if (uniqueTextarea.getAttribute('id') !== currentTextarea && uniqueTextarea.value?.trim() !== '') {
+        textareaStatus = uniqueTextarea
       }
     })
-    return multipleNoteBoxFilled
+    return textareaStatus
   }
 
-  const popupWrapper = document.getElementById('popup-wrapper')
+  const modalContainer = document.getElementById('popup-wrapper')
+  const modalTitleMessage = document.getElementById('modal-title-message')
+  const modalBodyMessage = document.getElementById('modal-body-message')
 
   const goBackBtn = document.getElementById('close-btn')
   goBackBtn.addEventListener('click', () => {
-    popupWrapper.style.display = "none"
+    modalContainer.style.display = "none"
   })
 
-  const hearingForms = document.querySelectorAll('.case-notes')
-  hearingForms.forEach(form => {
-    form.addEventListener('keypress', (event) => {
-      if (hasMultipleNoteBoxes(form)) {
-        popupWrapper.style.display = "block"
+
+  const multipleTextareaFilled__displayModal = document.querySelectorAll('.textarea-container')
+  multipleTextareaFilled__displayModal.forEach(textarea => {
+    textarea.addEventListener('keypress', (event) => {
+      const textareaUpdated = checkIfOneOrMoreTextareaAreFilled__returnStatus(textarea)
+      if (textareaUpdated) {
+        if(textareaUpdated.id === 'comment' ){
+          modalTitleMessage.textContent = "There are unsaved comments"
+          modalBodyMessage.textContent = "Save your comment before adding a new one."
+        } else {
+          modalTitleMessage.textContent = "There are unsaved notes"
+          modalBodyMessage.textContent = "Save your note before adding a new one."
+        }
+        modalContainer.style.display = "block"
         event.preventDefault()
       }
     })
