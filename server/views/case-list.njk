@@ -202,6 +202,11 @@
         }) }}
     {% endif %}
 
+        {%- from "components/search/macro.njk" import pacSearch -%}
+        {{ pacSearch({
+            search: search
+        }) }}
+
     <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-6" aria-label="Case list for {{ currentDate.format(dateFormat) }}">
         {% if params.date === yesterday and not isSunday %}
             {{ currentDate.format(dateFormat) }} <span class="pac-secondary-text">(Yesterday)</span>
