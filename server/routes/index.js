@@ -85,6 +85,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, '/set-notification')
   }))
 
+  router.post('/search-list', (req, res) => {
+    res.render('search-list')
+  })
+
   router.get('/user-guide', (req, res) => {
     res.render('user-guide')
   })
