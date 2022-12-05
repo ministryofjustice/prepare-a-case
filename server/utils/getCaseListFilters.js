@@ -1,6 +1,6 @@
 const { getNormalisedCourtRoom } = require('../routes/helpers')
-module.exports = (caseListData, selectedFilters) => {
-  const availableProbationStatuses = [...new Set(caseListData.map(item => item.probationStatus))]
+module.exports = ({ cases: caseListData, filters }, selectedFilters) => {
+  const availableProbationStatuses = filters?.probationStatus || []
   const probationStatuses = []
   const statusOrder = ['Current', 'Pre-sentence record', 'Previously known', 'No record', 'Possible NDelius record']
   statusOrder.forEach(status => {
@@ -9,7 +9,8 @@ module.exports = (caseListData, selectedFilters) => {
     }
   })
 
-  const courtRoomStrings = [...new Set(caseListData.map(item => item.courtRoom))]
+  const availableCourtRooms = filters?.courtRoom || []
+  const courtRoomStrings = availableCourtRooms
     .filter(item => isNaN(item))
     .sort((a, b) => a - b)
     .map(item => item && {
@@ -17,13 +18,13 @@ module.exports = (caseListData, selectedFilters) => {
       value: item.toString()
     })
 
-  const courtRooms = [...new Set(caseListData.map(item => parseInt(item.courtRoom, 10)))]
+  const courtRooms = [...new Set(availableCourtRooms.map(courtRoom => parseInt(courtRoom, 10)))]
     .filter(item => !isNaN(item))
     .sort((a, b) => a - b)
     .map(item => item && { label: getNormalisedCourtRoom(item), value: ('0' + item.toString()).slice(-2) })
     .concat(courtRoomStrings)
 
-  const availableSessions = [...new Set(caseListData.map(item => item.session))]
+  const availableSessions = filters?.session || []
   const sessions = []
   const sessionOrder = ['MORNING', 'AFTERNOON']
   sessionOrder.forEach(session => {
@@ -46,7 +47,7 @@ module.exports = (caseListData, selectedFilters) => {
   }
 
   // Flag selected filters
-  caseListFilters.forEach(item => {
+  caseListFilters?.forEach(item => {
     item.items.forEach(obj => {
       if (obj) {
         Object.keys(obj).forEach(() => {

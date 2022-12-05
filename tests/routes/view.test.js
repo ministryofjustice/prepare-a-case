@@ -151,7 +151,7 @@ describe('Routes', () => {
   it('case list route should display Monday\'s case list when viewing the empty case list on Sunday', async () => {
     mockDate.set('2020-11-15')
     const response = await request(app).get('/B14LO/cases')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-11-16', undefined, undefined)
+    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-11-16', undefined, undefined, undefined)
     mockDate.reset()
     return response
   })
@@ -159,26 +159,26 @@ describe('Routes', () => {
   it('empty case list route should show case list for today\'s date', async () => {
     mockDate.set('2020-11-12')
     const response = await request(app).get('/B14LO/cases')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-11-12', undefined, undefined)
+    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-11-12', undefined, undefined, undefined)
     mockDate.reset()
     return response
   })
 
   it('case list route should call the case service to fetch case list data', async () => {
     const response = await request(app).get('/B14LO/cases/2020-01-01')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, false)
+    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, false, undefined)
     return response
   })
 
   it('case list route should call the case service to fetch recently added case list data', async () => {
     const response = await request(app).get('/B14LO/cases/2020-01-01/added')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, 'added')
+    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, 'added', undefined)
     return response
   })
 
   it('case list route should call the case service to fetch recently removed case list data', async () => {
     const response = await request(app).get('/B14LO/cases/2020-01-01/removed')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, 'removed')
+    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, 'removed', undefined)
     return response
   })
 

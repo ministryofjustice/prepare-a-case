@@ -16,6 +16,15 @@
     },
     "status": 200,
     "jsonBody": {
+      "recentlyAdded": 13,
+      "possibleNdeliusRecords": 4,
+      "totalCount": 105,
+      "currentPage": 2,
+      "filters": {
+        "probationStatus": ["Current", "Pre-sentence record", "No record", "Possible NDelius record"],
+        "courtRoom": ["1", "2", "2-4", "court-01", "9", "10"],
+        "session": ["MORNING", "AFTERNOON"]
+      },
       "cases": [
         {
           "caseId": "0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec",

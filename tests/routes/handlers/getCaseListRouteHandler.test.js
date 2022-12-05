@@ -23,7 +23,7 @@ describe('getCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getCaseList).toHaveBeenCalled()
-    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false)
+    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('error', { status: 500 })
   })
@@ -49,7 +49,7 @@ describe('getCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getCaseList).toHaveBeenCalled()
-    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false)
+    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
@@ -99,7 +99,7 @@ describe('getCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getCaseList).toHaveBeenCalled()
-    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false)
+    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
