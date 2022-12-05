@@ -9,6 +9,54 @@
     "cases"
   ],
   "properties": {
+    "filters": {
+      "$id": "#/properties/filters",
+      "type": "object",
+      "description": "List of filters available for filtering",
+      "properties": {
+        "recentlyAdded": {
+          "$id": "#/properties/recentlyAdded",
+          "type": "integer",
+          "description": "Number of cases added recently(today)"
+        },
+        "possibleNdeliusRecords": {
+          "$id": "#/properties/possibleNdeliusRecords",
+          "type": "integer",
+          "description": "Number of defendants that have more at least one possible NDelius match"
+        },
+        "totalCount": {
+          "$id": "#/properties/totalCount",
+          "type": "integer",
+          "description": "Total number of hearings available after applying the filters"
+        },
+        "currentPage": {
+          "$id": "#/properties/currentPage",
+          "type": "integer",
+          "description": "The current page number"
+        },
+        "probationStatus": {
+          "$id": "#/properties/filters/probationStatus",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "courtRoom": {
+          "$id": "#/properties/filters/courtRoom",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "session": {
+          "$id": "#/properties/filters/session",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "cases": {
       "$id": "#/properties/cases",
       "type": "array",

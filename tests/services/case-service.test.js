@@ -83,21 +83,37 @@ describe('Case service', () => {
     const filtersObj = { probationStatus: ['Pre-sentence record', 'No record'], courtRoom: ['02', '10'], session: 'MORNING' }
 
     const caseListApiUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&probationStatus[]=Pre-sentence+record&probationStatus[]=No+record&courtRoom[]=02&courtRoom[]=10&session=MORNING&page=2&pageSize=20&recentlyAdded=true`
+    const filters = {
+      recentlyAdded: 21,
+      possibleNdeliusRecords: 2,
+      totalCount: 105,
+      currentPage: 2,
+      probationStatus: ['Current', 'Pre-sentence record', 'No record', 'Possible NDelius record'],
+      courtRoom: ['1', '2', '2-4', 'court-01', '9', '10'],
+      session: ['MORNING', 'AFTERNOON']
+    }
+    const cases = [{
+      probationStatus: 'Current',
+      session: 'MORNING'
+    }, {
+      probationStatus: 'Current',
+      session: 'AFTERNOON'
+    }]
     moxios.stubRequest(caseListApiUrl, {
       status: 200,
       response: {
-        cases: [{
-          probationStatus: 'Current',
-          session: 'MORNING'
-        }, {
-          probationStatus: 'Current',
-          session: 'AFTERNOON'
-        }]
+        filters,
+        cases
       }
     })
 
     const response = await getCaseList('SHF', '2020-01-01', filtersObj, 'added', 2)
     expect(moxios.requests.mostRecent().url).toBe(caseListApiUrl)
+    expect(response.totalCount).toBe(filters.totalCount)
+    expect(response.addedCount).toBe(filters.recentlyAdded)
+    expect(response.removedCount).toBe(filters.removedCases)
+    expect(response.unmatchedRecords).toBe(filters.possibleNdeliusRecords)
+    expect(response.cases).toBe(cases)
     return response
   })
 
