@@ -25,7 +25,8 @@ const createCaseService = (apiUrl) => {
         ...selectedFilters,
         page,
         pageSize: settings.casesPerPage,
-        recentlyAdded: subsection && subsection === 'added' ? true : null
+        recentlyAdded: subsection && subsection === 'added' ? true : null,
+        removedCases: subsection && subsection === 'removed' ? true : null
       }
 
       const latestSnapshot = getLatestSnapshot(date).format('YYYY-MM-DDTHH:mm:00.000')
