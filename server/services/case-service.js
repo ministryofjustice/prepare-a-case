@@ -38,10 +38,10 @@ const createCaseService = (apiUrl) => {
 
       return {
         ...data,
-        totalCount: data.totalCount,
-        addedCount: data.recentlyAdded,
-        removedCount: data.removedCases,
-        unmatchedRecords: data.possibleNdeliusRecords,
+        totalCount: data.filters?.totalCount,
+        addedCount: data.filters?.recentlyAdded,
+        removedCount: data.filters?.removedCases,
+        unmatchedRecords: data.filters?.possibleNdeliusRecords,
         filters,
         cases: data.cases,
         snapshot: latestSnapshot
