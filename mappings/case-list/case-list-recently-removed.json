@@ -1,0 +1,84 @@
+{
+  "id": "0e9ba07d-ed1a-4f02-85e8-3b1459b698e5",
+  "priority": 5,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z0-9]{5})/cases",
+    "queryParameters": {
+      "removedCases": {
+        "equalTo": "true"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "filters": {
+        "recentlyAdded": 21,
+        "removedCases": 1,
+        "possibleNdeliusRecords": 2,
+        "totalCount": 1,
+        "currentPage": 1,
+        "probationStatus": ["Current", "Pre-sentence record", "No record", "Possible NDelius record"],
+        "courtRoom": ["1", "2", "2-4", "court-01", "9", "10"],
+        "session": ["MORNING", "AFTERNOON"]
+      },
+      "cases": [
+        {
+          "caseId": "4c2ff8e9-b1ef-44f9-b88d-472aff27fe9f",
+          "hearingId": "bae9a472-d1fc-403d-b639-a65d304089a2",
+          "defendantId": "523137c4-4dfe-40a4-aa99-9cbe64bf0476",
+          "caseNo": "7483843114",
+          "courtCode": "SHF",
+          "courtRoom": "01",
+          "removed": true,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "3rd",
+          "crn": "D541445",
+          "pnc": "A/1234576BA",
+          "probationStatus": "No record",
+          "session": "AFTERNOON",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "offences": [
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Edinburgh assaulted Howe Williams by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Zolarity, Leeds, stole LAPTOP to the value of £987.00, belonging to Powers Gould.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Theft from a shop",
+              "offenceSummary": "On 01/01/2015 at Xixan, Sheffield, stole COMPUTER to the value of £987.00, belonging to Cote Ochoa.",
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+            },
+            {
+              "offenceTitle": "Assault by beating",
+              "offenceSummary": "On 01/01/2016 at Bangor assaulted Watkins Cummings by beating him.",
+              "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+            }
+          ],
+          "defendantSex": "M",
+          "defendantName": "Geoff McTaggart",
+          "defendantAddress": {
+            "line1": "91",
+            "line2": "Barbey street",
+            "postcode": "ad21 5dr",
+            "line3": "Sheffield",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "1955-04-08"
+        }
+      ]
+    }
+  }
+}

@@ -18,7 +18,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
     res.render('error', { status: response.status || 500 })
     return
   }
-  const caseCount = response.cases.length
+  const caseCount = !subsection ? response.totalCount : subsection === 'added' ? response.addedCount : response.removedCount
   const startCount = ((parseInt(page, 10) - 1) || 0) * limit
   const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
 
