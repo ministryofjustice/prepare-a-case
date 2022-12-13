@@ -3,7 +3,7 @@ const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
 const { updateSelectedCourts } = require('../services/user-preference-service')
-const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory } = require('../services/case-service')
+const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory, getSearchList } = require('../services/case-service')
 const { getDetails, getProbationRecord, getConviction, getProbationStatusDetails, getSentenceDetails, getBreachDetails, getRiskDetails, getCustodyDetails } = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
 const featuresToggles = require('../utils/features')
@@ -83,6 +83,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const { redisClient: { setAsync } } = req
     await setAsync('case-list-notification', req.body.notification, 'EX', 60 * 60 * (parseInt(req.body.expires, 10)))
     res.redirect(302, '/set-notification')
+  }))
+
+  router.get('/search-list', defaults, catchErrors(async (req, res) => {
+    const data = await getSearchList(req.params.crn)
+    res.render('search-list', { params: req.params, data: JSON.stringify(data, null) })
   }))
 
   router.post('/search-list', (req, res) => {

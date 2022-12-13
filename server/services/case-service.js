@@ -82,6 +82,11 @@ const createCaseService = (apiUrl) => {
         snapshot: latestSnapshot
       }
     },
+
+    getSearchList: async (defendantId, crn) => {
+      return await request(`${apiUrl}/defendant/${defendantId}`) || (`${apiUrl}/defendant/${crn}`)
+    },
+
     getCase: async (hearingId, defendantId) => {
       const res = await request(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`)
       if (!isHttpSuccess(res)) {
