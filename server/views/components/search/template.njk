@@ -1,9 +1,9 @@
 <section class="pac-filter-card govuk-!-margin-bottom-6">
-    <form name="pac-search-form" id="pac-search-form" method="post" action="/search-list">
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Search</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Search</h2>
+    <form name="pac-search-form" id="pac-search-form" method="get" action="case-search">
         <div class="search-group">
             <label class="govuk-label govuk-!-margin-bottom-3" for="one-third">Enter the CRN or the name of the case you are searching for</label>
-            <input class="govuk-input govuk-!-width-one-third" id="one-third" name="one-third" type="text">
+            <input class="govuk-input govuk-!-width-one-third" id="search-term" name="crn" type="text" value="{{ params.crn }}">
             <button class="govuk-button govuk-!-margin-bottom-1 govuk-!-margin-left-3" data-module="govuk-button" value="search" type="submit" name="search-list">Search</button>
         </div>
     </form>

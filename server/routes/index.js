@@ -85,14 +85,19 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, '/set-notification')
   }))
 
-  router.get('/search-list', defaults, catchErrors(async (req, res) => {
-    const data = await getSearchList(req.params.crn)
-    res.render('search-list', { params: req.params, data: JSON.stringify(data, null) })
-  }))
+  router.get('/:courtCode/case-search', defaults, catchErrors(async (req, res) => {
+    const crn = req.query.crn
+    const data = await getSearchList(crn)
 
-  router.post('/search-list', (req, res) => {
-    res.render('search-list')
-  })
+    const templateValues = {
+      params: req.params,
+      data: {
+        ...data.data,
+        crn
+      }
+    }
+    res.render('case-search', templateValues)
+  }))
 
   router.get('/user-guide', (req, res) => {
     res.render('user-guide')

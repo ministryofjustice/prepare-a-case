@@ -204,7 +204,8 @@
 
         {%- from "components/search/macro.njk" import pacSearch -%}
         {{ pacSearch({
-            search: search
+            search: search,
+            courtCode: params.courtCode
         }) }}
 
     <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-6" aria-label="Case list for {{ currentDate.format(dateFormat) }}">

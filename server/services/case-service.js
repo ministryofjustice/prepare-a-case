@@ -83,8 +83,8 @@ const createCaseService = (apiUrl) => {
       }
     },
 
-    getSearchList: async (defendantId, crn) => {
-      return await request(`${apiUrl}/defendant/${defendantId}`) || (`${apiUrl}/defendant/${crn}`)
+    getSearchList: async (crn) => {
+      return await request(`${apiUrl}/search`, { crn })
     },
 
     getCase: async (hearingId, defendantId) => {

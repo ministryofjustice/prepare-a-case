@@ -1,0 +1,21 @@
+{
+  "id": "2d743cf2-fb21-41b0-b767-ef11fc9bf063",
+  "request": {
+    "method": "GET",
+    "urlPath": "/search",
+    "queryParameters": {
+      "crn": {
+        "matches": "none"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "items": []
+    }
+  }
+}

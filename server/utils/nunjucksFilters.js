@@ -69,10 +69,17 @@ module.exports = {
     return moment(dateString).format('D MMMM YYYY, HH:mm')
   },
 
+  doubleQuote: (string) => {
+    if (!string) {
+      string = ''
+    }
+    return `&ldquo;${string}&rdquo;`
+  },
+
   hearingNoteTimeFormat: (dateString) => {
     if (!dateString) {
-      return 'Not available'
+      return ''
     }
-    return moment(dateString).format('dddd D MMMM YYYY')
   }
+
 }

@@ -6,6 +6,15 @@ const { settings } = require('../../config')
 const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k', 'brn63n']
 
 const features = {
+  searchFeature: anyOf(
+    allOf(
+      isEnv('dev', 'preprod')
+    ),
+    allOf(
+      isEnv('prod'),
+      enabledForUsers(...settings.caseSearchUsers)
+    )
+  ),
   caseComments: anyOf(
     allOf(
       isEnv('dev'),
