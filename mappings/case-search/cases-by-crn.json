@@ -36,9 +36,7 @@
           "offenceTitles": ["Theft from the person of another", "Another theft from shop"],
           "defendantName": "Mr Adam Sandler",
           "lastHearingDate": "2022-12-16",
-          "lastHearingCourt": "Sheffield Mags",
-          "nextHearingDate": "2023-01-23",
-          "nextHearingCourt": "Leicester Mags"
+          "lastHearingCourt": "Sheffield Mags"
         },
         {
           "hearingId": "7e0f9cb9-b492-4657-9028-a86de1301e25",
@@ -47,8 +45,6 @@
           "probationStatus": "Current",
           "offenceTitles": ["Theft from the person of another", "Another theft from shop"],
           "defendantName": "Mr Adam Sandler",
-          "lastHearingDate": "2022-12-16",
-          "lastHearingCourt": "Sheffield Mags",
           "nextHearingDate": "2023-01-23",
           "nextHearingCourt": "Leicester Mags"
         }

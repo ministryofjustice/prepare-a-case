@@ -3,7 +3,7 @@ const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
 const { updateSelectedCourts } = require('../services/user-preference-service')
-const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory, getSearchList } = require('../services/case-service')
+const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory, searchByCrn } = require('../services/case-service')
 const { getDetails, getProbationRecord, getConviction, getProbationStatusDetails, getSentenceDetails, getBreachDetails, getRiskDetails, getCustodyDetails } = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
 const featuresToggles = require('../utils/features')
@@ -87,7 +87,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/:courtCode/case-search', defaults, catchErrors(async (req, res) => {
     const crn = req.query.crn
-    const data = await getSearchList(crn)
+    const data = await searchByCrn(crn)
 
     const templateValues = {
       params: req.params,

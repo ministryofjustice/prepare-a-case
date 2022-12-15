@@ -83,8 +83,16 @@ const createCaseService = (apiUrl) => {
       }
     },
 
-    getSearchList: async (crn) => {
-      return await request(`${apiUrl}/search`, { crn })
+    searchByCrn: async (crn) => {
+      try {
+        const response = await request(`${apiUrl}/search`, { crn })
+        return response
+      } catch (e) {
+        if (e.response && e.response.status === 404) {
+          return { data: {} }
+        }
+        throw e
+      }
     },
 
     getCase: async (hearingId, defendantId) => {
