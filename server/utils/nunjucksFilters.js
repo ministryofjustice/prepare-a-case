@@ -76,10 +76,11 @@ module.exports = {
     return `&ldquo;${string}&rdquo;`
   },
 
-  hearingNoteTimeFormat: (dateString) => {
+  caseSearchDateFormat: (dateString) => {
     if (!dateString) {
       return ''
     }
+    return moment(dateString).format('D MMMM YYYY')
   }
 
 }
