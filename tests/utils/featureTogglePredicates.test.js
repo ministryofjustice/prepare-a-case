@@ -155,45 +155,4 @@ describe('featureConfigPredicates', () => {
       isEnabledMocks.forEach(value => expect(value).toHaveBeenCalledWith(context))
     })
   })
-
-  describe('pre pilot features toggle tests', () => {
-    const prodHelmUserConfig = 'ZAP37S,BEVERLEYWILLMOTTNPS,ZRX14Y,wyi97r,mdy87w'
-    const preprodHelmUserConfig = 'joana.aguia,tony.howard'
-    it.each(
-      [
-        [prodHelmUserConfig, 'prod', 'zap37s', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', 'mdy87w', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', 'wyi97r', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', 'BEVERLEYWILLMOTTNPS', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', 'BEVERLEYWILLMOTTNPS', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', 'ZRX14Y', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', 'zrx14y', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', 'BEVERLEYWILLMOTTNPS', 'B14LO', true],
-        [prodHelmUserConfig, 'prod', 'joana.aguia', 'B14LO', true],
-        [prodHelmUserConfig, 'prod', 'InvlaidUser', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', 'mdy87w', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', 'joana.aguia', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', 'mdy87w', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', 'BEVERLEYWILLMOTTNPS', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', 'ZRX14Y', 'B50KH', true],
-        ['All', 'dev', 'any-user', 'any-court', true]
-      ]
-    )('given helm config %s, env %s, user %s and court %s return %s', (helmConfig, environment, currentUser, court, expected) => {
-      process.env.CASE_TRACKING_PRE_PILOT_USERS = helmConfig
-      process.env.PAC_ENV = environment
-      jest.resetModules()
-      const { settings } = require('../../config')
-      const features = require('../../server/utils/features')
-
-      settings.pacEnvironment = environment
-      settings.enableCaseProgress = true
-      settings.enableCaseComments = true
-      settings.enablePastCasesNavigation = true
-
-      const context = { court, username: currentUser }
-      expect(features.caseProgress.isEnabled(context)).toBe(expected)
-      expect(features.caseComments.isEnabled(context)).toBe(expected)
-      expect(features.pastCasesNavigation.isEnabled(context)).toBe(expected)
-    })
-  })
 })
