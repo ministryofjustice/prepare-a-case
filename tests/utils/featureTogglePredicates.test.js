@@ -168,14 +168,14 @@ describe('featureConfigPredicates', () => {
         [prodHelmUserConfig, 'prod', '***REMOVED***', 'B50KH', true],
         [prodHelmUserConfig, 'prod', '***REMOVED***', 'B50KH', true],
         [prodHelmUserConfig, 'prod', 'zrx14y', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', '***REMOVED***', 'B14LO', false],
-        [prodHelmUserConfig, 'prod', '***REMOVED***', 'B14LO', false],
-        [prodHelmUserConfig, 'prod', 'InvlaidUser', 'B50KH', false],
-        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', false],
+        [prodHelmUserConfig, 'prod', '***REMOVED***', 'B14LO', true],
+        [prodHelmUserConfig, 'prod', '***REMOVED***', 'B14LO', true],
+        [prodHelmUserConfig, 'prod', 'InvlaidUser', 'B50KH', true],
         [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', false],
-        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', false],
-        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', false],
+        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', true],
+        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', true],
+        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', true],
+        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', true],
         ['All', 'dev', 'any-user', 'any-court', true]
       ]
     )('given helm config %s, env %s, user %s and court %s return %s', (helmConfig, environment, currentUser, court, expected) => {

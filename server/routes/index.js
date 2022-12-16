@@ -97,6 +97,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('privacy-notice', { params: { backLink: session.backLink } })
   })
 
+  router.get('/whats-new', (req, res) => {
+    res.render('whats-new')
+  })
+
   router.get('/cookies-policy', (req, res) => {
     res.render('cookies-policy', {
       params: {
