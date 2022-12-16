@@ -168,14 +168,14 @@ describe('featureConfigPredicates', () => {
         [prodHelmUserConfig, 'prod', 'BEVERLEYWILLMOTTNPS', 'B50KH', true],
         [prodHelmUserConfig, 'prod', 'ZRX14Y', 'B50KH', true],
         [prodHelmUserConfig, 'prod', 'zrx14y', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', 'BEVERLEYWILLMOTTNPS', 'B14LO', false],
-        [prodHelmUserConfig, 'prod', 'joana.aguia', 'B14LO', false],
-        [prodHelmUserConfig, 'prod', 'InvlaidUser', 'B50KH', false],
-        [preprodHelmUserConfig, 'preprod', 'mdy87w', 'B50KH', false],
+        [prodHelmUserConfig, 'prod', 'BEVERLEYWILLMOTTNPS', 'B14LO', true],
+        [prodHelmUserConfig, 'prod', 'joana.aguia', 'B14LO', true],
+        [prodHelmUserConfig, 'prod', 'InvlaidUser', 'B50KH', true],
+        [preprodHelmUserConfig, 'preprod', 'mdy87w', 'B50KH', true],
         [preprodHelmUserConfig, 'preprod', 'joana.aguia', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', 'mdy87w', 'B50KH', false],
-        [preprodHelmUserConfig, 'preprod', 'BEVERLEYWILLMOTTNPS', 'B50KH', false],
-        [preprodHelmUserConfig, 'preprod', 'ZRX14Y', 'B50KH', false],
+        [preprodHelmUserConfig, 'preprod', 'mdy87w', 'B50KH', true],
+        [preprodHelmUserConfig, 'preprod', 'BEVERLEYWILLMOTTNPS', 'B50KH', true],
+        [preprodHelmUserConfig, 'preprod', 'ZRX14Y', 'B50KH', true],
         ['All', 'dev', 'any-user', 'any-court', true]
       ]
     )('given helm config %s, env %s, user %s and court %s return %s', (helmConfig, environment, currentUser, court, expected) => {
