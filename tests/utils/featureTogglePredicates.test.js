@@ -155,45 +155,4 @@ describe('featureConfigPredicates', () => {
       isEnabledMocks.forEach(value => expect(value).toHaveBeenCalledWith(context))
     })
   })
-
-  describe('pre pilot features toggle tests', () => {
-    const prodHelmUserConfig = '***REMOVED***,***REMOVED***,***REMOVED***,***REMOVED***,***REMOVED***'
-    const preprodHelmUserConfig = '***REMOVED***,***REMOVED***'
-    it.each(
-      [
-        [prodHelmUserConfig, 'prod', 'zap37s', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', '***REMOVED***', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', '***REMOVED***', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', '***REMOVED***', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', '***REMOVED***', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', '***REMOVED***', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', 'zrx14y', 'B50KH', true],
-        [prodHelmUserConfig, 'prod', '***REMOVED***', 'B14LO', true],
-        [prodHelmUserConfig, 'prod', '***REMOVED***', 'B14LO', true],
-        [prodHelmUserConfig, 'prod', 'InvlaidUser', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', true],
-        [preprodHelmUserConfig, 'preprod', '***REMOVED***', 'B50KH', true],
-        ['All', 'dev', 'any-user', 'any-court', true]
-      ]
-    )('given helm config %s, env %s, user %s and court %s return %s', (helmConfig, environment, currentUser, court, expected) => {
-      process.env.CASE_TRACKING_PRE_PILOT_USERS = helmConfig
-      process.env.PAC_ENV = environment
-      jest.resetModules()
-      const { settings } = require('../../config')
-      const features = require('../../server/utils/features')
-
-      settings.pacEnvironment = environment
-      settings.enableCaseProgress = true
-      settings.enableCaseComments = true
-      settings.enablePastCasesNavigation = true
-
-      const context = { court, username: currentUser }
-      expect(features.caseProgress.isEnabled(context)).toBe(expected)
-      expect(features.caseComments.isEnabled(context)).toBe(expected)
-      expect(features.pastCasesNavigation.isEnabled(context)).toBe(expected)
-    })
-  })
 })

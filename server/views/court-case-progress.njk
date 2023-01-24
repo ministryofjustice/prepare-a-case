@@ -45,7 +45,8 @@
                         {{ pacHearingNotes({
                             data: data,
                             hearing: hearing,
-                            currentUserUuid: currentUserUuid
+                            currentUserUuid: currentUserUuid,
+                            enableHearingNotes: features.hearingNotes
                         }) }}
                     </div>
                 {% endfor %}

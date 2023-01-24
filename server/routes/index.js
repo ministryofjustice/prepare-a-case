@@ -229,6 +229,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     templateValues.features = {
       caseComments: featuresToggles.caseComments.isEnabled(context),
       caseProgress: featuresToggles.caseProgress.isEnabled(context),
+      hearingNotes: featuresToggles.hearingNotes.isEnabled(context),
       caseProgressNextAppearanceBadge: featuresToggles.caseProgressNextAppearanceBadge.isEnabled(context)
     }
     session.confirmedMatch = undefined
