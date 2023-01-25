@@ -317,6 +317,7 @@ workflows:
               only: main
           main: true
       - build:
+          context: [hmpps-common-vars]
           filters:
             tags:
               ignore: /.*/
@@ -330,9 +331,11 @@ workflows:
           requires:
             - build
       - pact:
+          context: [hmpps-common-vars]
           requires:
             - build
       - build_docker:
+          context: [ hmpps-common-vars ]
           requires:
             - build
           filters:
@@ -340,6 +343,7 @@ workflows:
               ignore: main
       - build_docker:
           name: build_docker_main
+          context: [ hmpps-common-vars ]
           requires:
             - build
           filters:
@@ -353,7 +357,9 @@ workflows:
             branches:
               only: main
       - deploy_dev:
-          context: court-probation-live-dev
+          context:
+            - court-probation-live-dev
+            - hmpps-common-vars
           requires:
             - build_docker_main
           filters:
@@ -364,7 +370,9 @@ workflows:
           requires:
             - deploy_dev
       - deploy_preprod:
-          context: court-probation-live-preprod
+          context:
+            - court-probation-live-preprod
+            - hmpps-common-vars
           requires:
             - request-preprod-approval
       - request-prod-approval:
@@ -372,6 +380,8 @@ workflows:
           requires:
             - deploy_preprod
       - deploy_prod:
-          context: court-probation-live-prod
+          context:
+            - court-probation-live-prod
+            - hmpps-common-vars
           requires:
             - request-prod-approval
