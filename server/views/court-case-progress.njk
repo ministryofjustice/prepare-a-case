@@ -36,7 +36,7 @@
                                     {% endif %}
                                 <br/>
                                 <span class="govuk-body">
-                                    {{ hearing.hearingDateTime | hearingNoteTimeFormat }}, Court {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
+                                    {{ hearing.hearingDateTime | hearingNoteTimeFormat }}, {{ 'Court ' if data.source === 'LIBRA' }} {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
                                 </span>
                             </div>
                         </header>
