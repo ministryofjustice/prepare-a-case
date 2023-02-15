@@ -199,6 +199,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/record#previousOrders`)
   }))
 
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/auto-save', defaults, catchErrors(async (req, res) => {
+    console.log("***********  saving note", JSON.stringify(req.body))
+    res.sendStatus(200)
+  }))
+
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
     const { session, path, params: { courtCode } } = req
     const templateValues = await getCaseAndTemplateValues(req)
