@@ -8,12 +8,19 @@ const getConviction = async (crn, convictionId) => {
   return res.data
 }
 
+const preProcessHttpClientError = (e) => {
+  if (!e.response) {
+    throw e
+  }
+}
+
 const getCustodyDetails = async (crn, convictionId) => {
   let res
   try {
     res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}/sentence/custody`) || { data: undefined }
   } catch (e) {
     logger.error(e, 'Error occurred while getting custody details')
+    preProcessHttpClientError(e)
     res = e.response
   }
   return res.data
@@ -25,6 +32,7 @@ const getProbationRecord = async crn => {
     res = await request(`${apiUrl}/offender/${crn}/probation-record`)
   } catch (e) {
     logger.error(e, 'Error occurred while getting probation record')
+    preProcessHttpClientError(e)
     res = e.response
   }
   return res.status >= 400 ? res : res.data
@@ -55,6 +63,7 @@ const getProbationStatusDetails = async crn => {
     res = await request(`${apiUrl}/offender/${crn}/probation-status-detail`) || {}
   } catch (e) {
     logger.error(e, 'Error occurred while getting probation status details')
+    preProcessHttpClientError(e)
     res = e.response
   }
   return res.status >= 400 ? res : res.data
@@ -66,6 +75,7 @@ const getRiskDetails = async crn => {
     res = await request(`${apiUrl}/offender/${crn}/registrations`) || { data: {} }
   } catch (e) {
     logger.error(e, 'Error occurred while getting registrations')
+    preProcessHttpClientError(e)
     return e.response?.data
   }
   return res.data
