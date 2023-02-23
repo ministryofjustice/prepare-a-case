@@ -23,7 +23,7 @@ const {
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
-const { deleteHearingNoteConfirmationHandler, deleteHearingNoteHandler } = require('./handlers')
+const { deleteHearingNoteConfirmationHandler, deleteHearingNoteHandler, editHearingNoteConfirmationHandler } = require('./handlers')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -199,6 +199,18 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/record#previousOrders`)
   }))
 
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/auto-save', defaults, catchErrors(async (req, res) => {
+    console.log("***********  saving note", JSON.stringify(req.body))
+    let value = req.body[0].value;
+    if(value.endsWith('error500')) {
+      res.sendStatus(500)
+    } else if(value.endsWith('timeout')) {
+      throw Error('timeout exceeded 8500ms')
+    } else {
+      res.sendStatus(200)
+    }
+  }))
+
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
     const { session, path, params: { courtCode } } = req
     const templateValues = await getCaseAndTemplateValues(req)
@@ -276,6 +288,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete', defaults, catchErrors(deleteHearingNoteConfirmationHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete', defaults, catchErrors(deleteHearingNoteHandler))
+
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/edit', defaults, catchErrors(editHearingNoteConfirmationHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))
 

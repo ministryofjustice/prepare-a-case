@@ -22,6 +22,8 @@ const addHearingNoteRequestHandler = require('./getAddHearingNoteRequestHandler'
 
 const deleteHearingNoteConfirmationHandler = require('./getDeleteHearingNoteConfirmationHandler')(getCaseAndTemplateValues)
 
+const editHearingNoteConfirmationHandler = require('./getEditHearingNoteConfirmationHandler')(getCaseAndTemplateValues)
+
 const deleteHearingNoteHandler = require('./getDeleteHearingNoteHandler')({ deleteHearingNote })
 
 module.exports = {
@@ -34,5 +36,6 @@ module.exports = {
   deleteCaseCommentHandler,
   addHearingNoteRequestHandler,
   deleteHearingNoteConfirmationHandler,
-  deleteHearingNoteHandler
+  deleteHearingNoteHandler,
+  editHearingNoteConfirmationHandler
 }
