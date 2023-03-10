@@ -1,6 +1,6 @@
 // A central file where all the handlers are created with necessary dependencies injected
 
-const { getCaseList, getCase, addCaseComment, deleteCaseComment, addHearingNote, deleteHearingNote } = require('../../services/case-service')
+const { getCaseList, getCase, addCaseComment, deleteCaseComment, addHearingNote, deleteHearingNote, saveDraftHearingNote } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
 const { getUserSelectedCourts } = require('../../services/user-preference-service')
 
@@ -24,6 +24,8 @@ const deleteHearingNoteConfirmationHandler = require('./getDeleteHearingNoteConf
 
 const deleteHearingNoteHandler = require('./getDeleteHearingNoteHandler')({ deleteHearingNote })
 
+const autoSaveHearingNoteHandler = require('./getAutoSaveHearingNoteHandler')({ saveDraftHearingNote })
+
 module.exports = {
   getCaseListHandler,
   getCaseAndTemplateValues,
@@ -34,5 +36,6 @@ module.exports = {
   deleteCaseCommentHandler,
   addHearingNoteRequestHandler,
   deleteHearingNoteConfirmationHandler,
-  deleteHearingNoteHandler
+  deleteHearingNoteHandler,
+  autoSaveHearingNoteHandler
 }

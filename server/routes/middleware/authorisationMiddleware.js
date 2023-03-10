@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
   // Make sure only users with court admin role can access court app
   if (res.locals && res.locals.user && res.locals.user.token) {
     const roles = jwtDecode(res.locals.user.token).authorities
-    if (!roles?.includes(config.apis.oauth2.role) && !(config.settings.LOCAL_MODE === "true")) {
+    if (!roles.includes(config.apis.oauth2.role)) {
       log.warn(`User does not have required role ${config.apis.oauth2.role}`)
       return res.redirect('/autherror')
     }

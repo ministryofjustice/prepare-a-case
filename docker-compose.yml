@@ -10,6 +10,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=dev
       - APPLICATION_AUTHENTICATION_UI_ALLOWLIST=0.0.0.0/0
+      - SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true
 
   court-case-service:
     image: docker.io/mojdigitalstudio/court-case-service:latest

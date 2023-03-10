@@ -23,7 +23,6 @@ const getCsvParamAsArray = param => get(param, '')?.split(',').map(value => valu
 
 module.exports = {
   settings: {
-    LOCAL_MODE: get('LOCAL_MODE'),
     defaultTimeout: get('DEFAULT_TIMEOUT', 6000),
     healthTimeout: 2000,
     casesPerPage: get('CASES_PER_PAGE', 20),

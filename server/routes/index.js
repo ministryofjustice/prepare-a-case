@@ -19,7 +19,8 @@ const {
   addCaseCommentRequestHandler,
   deleteCaseCommentConfirmationHandler,
   deleteCaseCommentHandler,
-  addHearingNoteRequestHandler
+  addHearingNoteRequestHandler,
+  autoSaveHearingNoteHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -199,10 +200,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/record#previousOrders`)
   }))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/auto-save', defaults, catchErrors(async (req, res) => {
-    console.log("***********  saving note", JSON.stringify(req.body))
-    res.sendStatus(200)
-  }))
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/auto-save', defaults, catchErrors(autoSaveHearingNoteHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
     const { session, path, params: { courtCode } } = req
