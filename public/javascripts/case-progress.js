@@ -32,12 +32,12 @@
         )
       }, debounceTimer);
     }
-
     return noteEventListener
   }
 
-  const hearingForms = document.querySelectorAll('.auto-save-text')
-  hearingForms.forEach(form => {
-    form.addEventListener('keypress', getAutoSaveHandler(form))
-  })
+  const setupAutoSave = (textarea) => {
+    textarea.addEventListener('keypress', getAutoSaveHandler(textarea))
+  }
+
+  document.querySelectorAll('.auto-save-text').forEach(setupAutoSave)
 })()

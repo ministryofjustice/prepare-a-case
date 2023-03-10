@@ -1,7 +1,7 @@
 {
   "id": "193e12a6-8d22-4843-b9bb-1befe8f10674",
   "request": {
-    "method": "POST",
+    "method": "PUT",
     "urlPathPattern": "/hearing/.*/notes/draft"
   },
   "response": {
