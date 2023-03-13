@@ -3,8 +3,8 @@
 
     <table class="govuk-table">
         {% for previousNote in params.hearing.notes %}
-            {% if previousNote.draft and previousNote.createdByUuid === params.currentUserUuid %}
-                {% set draftNote = previousNote.note %}
+            {% if previousNote.draft %}
+                {% set draftNote = previousNote.note if previousNote.createdByUuid === params.currentUserUuid %}
             {% else %}
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell govuk-!-padding-top-3 govuk-!-padding-bottom-2" id="previous-note-{{ previousNote.noteId }}">
