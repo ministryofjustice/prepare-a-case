@@ -1,0 +1,23 @@
+{
+  "id": "193e12a6-8d22-4843-b9bb-1befe8f10674",
+  "request": {
+    "method": "PUT",
+    "urlPathPattern": "/hearing/.*/notes/draft"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "hearingId": "0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec",
+      "notes": {
+        "author": "James Doe",
+        "note": "Case note example",
+        "noteId": "12346",
+        "createdByUuid": "e5552927-3236-42c2-8d3c-508b7a1e53f0",
+        "created": "2022-08-23T09:30:00"
+      }
+    }
+  }
+}
