@@ -5,7 +5,8 @@ const caseServiceMock = {
   addCaseComment: jest.fn(),
   deleteCaseComment: jest.fn(),
   addHearingNote: jest.fn(),
-  deleteHearingNote: jest.fn()
+  deleteHearingNote: jest.fn(),
+  saveDraftHearingNote: jest.fn()
 }
 
 const communityServiceMock = {
@@ -17,6 +18,7 @@ module.exports = {
   communityServiceMock,
   mockResponse: {
     render: jest.fn(),
+    send: jest.fn(),
     redirect: jest.fn(),
     locals: {
       user: {

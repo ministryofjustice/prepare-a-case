@@ -1,35 +1,43 @@
 (function setupCaseProgressScripts () {
-  const hasMultipleNoteBoxes = (form) => {
-    let multipleNoteBoxFilled = false
-    const currentForm = form.getAttribute('id')
 
+  // The timer before saving the draft note after the user paused typing
+  const debounceTimer = 2000;
 
-    const selectedForm = document.querySelectorAll('.case-notes')
-    selectedForm.forEach(value => {
-      if (multipleNoteBoxFilled) {
-        return
-      }
-      if (value.getAttribute('id') !== currentForm && value.value?.trim() !== '') {
-        multipleNoteBoxFilled = true
-      }
-    })
-    return multipleNoteBoxFilled
+  function getAutoSaveHandler(textarea) {
+    const hearingId = textarea.dataset.hearingid
+    let timeoutId;
+
+    const noteEventListener = (event) => {
+      // If a timer was already started, clear it.
+      if (timeoutId) clearTimeout(timeoutId);
+      // Set timer that will save comment when it fires.
+      timeoutId = setTimeout(function () {
+        // Make ajax call to save data.
+        const xhr = new XMLHttpRequest()
+        xhr.open('POST', 'summary/auto-save', true)
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.setRequestHeader('x-csrf-token', window.csrfToken)
+        xhr.onload = function () {
+          if (this.status < 200 || this.status >= 400) {
+            console.log("Error status", this.status)
+          }
+        }
+        xhr.send(
+          JSON.stringify(
+            {
+              note: event.srcElement.value,
+              hearingId
+            },
+          )
+        )
+      }, debounceTimer);
+    }
+    return noteEventListener
   }
 
-  const popupWrapper = document.getElementById('popup-wrapper')
+  const setupAutoSave = (textarea) => {
+    textarea.addEventListener('keypress', getAutoSaveHandler(textarea))
+  }
 
-  const goBackBtn = document.getElementById('close-btn')
-  goBackBtn.addEventListener('click', () => {
-    popupWrapper.style.display = "none"
-  })
-
-  const hearingForms = document.querySelectorAll('.case-notes')
-  hearingForms.forEach(form => {
-    form.addEventListener('keypress', (event) => {
-      if (hasMultipleNoteBoxes(form)) {
-        popupWrapper.style.display = "block"
-        event.preventDefault()
-      }
-    })
-  })
+  document.querySelectorAll('.auto-save-text').forEach(setupAutoSave)
 })()
