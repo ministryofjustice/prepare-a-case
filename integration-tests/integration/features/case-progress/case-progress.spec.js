@@ -11,7 +11,7 @@ And('I should see {int} previous hearings headers', $int => {
 And('I click delete hearing note with id {string} on hearing {string}', ($noteId, $hearingId) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get(`#previous-note-${$noteId}`).within(() => {
-      cy.get('a').click()
+      cy.get('.note-delete-link').click()
     })
   })
 })

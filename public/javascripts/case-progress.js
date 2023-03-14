@@ -48,6 +48,7 @@
     const hearingId = textarea.dataset.hearingid
     const noteId = textarea.dataset.noteid
     let timeoutId;
+    let apiCallCount = 0
 
     const noteEventListener = (event) => {
       // If a timer was already started, clear it.
@@ -60,11 +61,14 @@
         xhr.setRequestHeader('Content-Type', 'application/json')
         xhr.setRequestHeader('x-csrf-token', window.csrfToken)
         xhr.onload = function () {
+          apiCallCount--
           if (this.status < 200 || this.status >= 400) {
             console.log("Error status", this.status)
           }
-          noteEditDoneLink.classList.remove('govuk-button--disabled')
-          noteEditDoneLink.removeAttribute('disabled')
+          if(apiCallCount === 0) {
+            noteEditDoneLink.classList.remove('govuk-button--disabled')
+            noteEditDoneLink.removeAttribute('disabled')
+          }
         }
         noteEditDoneLink.setAttribute('disabled', true)
         noteEditDoneLink.classList.add('govuk-button--disabled')
@@ -77,6 +81,7 @@
             },
           )
         )
+        apiCallCount++
       }, debounceTimer);
     }
     return noteEventListener
@@ -104,14 +109,16 @@
 
   noteContainers.forEach(noteContainer => {
     const hearingNoteDisplayContainer = noteContainer.querySelector('.hearing-note-display')
-    const noteReadonlyText = hearingNoteDisplayContainer.querySelector('.hearing-note-display-text')
     const noteEditLink = hearingNoteDisplayContainer.querySelector('.note-edit-link')
+    if (noteEditLink) {
+      const noteReadonlyText = hearingNoteDisplayContainer.querySelector('.hearing-note-display-text')
 
-    const noteEditContainer = noteContainer.querySelector('.note-edit-container')
-    const noteEditTextArea = noteEditContainer.querySelector('.case-notes-edit')
-    const noteEditDoneLink = noteEditContainer.querySelector('.hearing-note-edit-done')
-    noteEditLink.addEventListener('click', getNotEditHandler(hearingNoteDisplayContainer, noteEditContainer, noteReadonlyText, noteEditTextArea, true, noteEditDoneLink))
-    noteEditDoneLink.addEventListener('click', getNotEditHandler(hearingNoteDisplayContainer, noteEditContainer, noteReadonlyText, noteEditTextArea, false))
+      const noteEditContainer = noteContainer.querySelector('.note-edit-container')
+      const noteEditTextArea = noteEditContainer.querySelector('.case-notes-edit')
+      const noteEditDoneLink = noteEditContainer.querySelector('.hearing-note-edit-done')
+      noteEditLink.addEventListener('click', getNotEditHandler(hearingNoteDisplayContainer, noteEditContainer, noteReadonlyText, noteEditTextArea, true, noteEditDoneLink))
+      noteEditDoneLink.addEventListener('click', getNotEditHandler(hearingNoteDisplayContainer, noteEditContainer, noteReadonlyText, noteEditTextArea, false))
+    }
   })
 
 })()
