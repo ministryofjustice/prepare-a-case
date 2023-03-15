@@ -60,8 +60,7 @@
   }
 
   .govuk-summary-list__row:last-child,
-  .govuk-summary-list__row:last-child > *,
-  .govuk-table__row:last-child .govuk-table__cell {
+  .govuk-summary-list__row:last-child > * {
     border-bottom: 0;
   }
 }
