@@ -91,3 +91,26 @@ Feature: Case progress
     When I click the "Cancel" link
     Then I should be on the "Case summary" page
     And I should not see govuk notification banner
+
+  Scenario: Display hearing notes
+    Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
+
+    When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
+    Then I should be on the "Case summary" page
+    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
+    And I should see the caption text "URN: 01WW0298121"
+
+    And I should see the following summary list
+      | Name          | Kara Ayers                                                            |
+      | Gender        | Female                                                                |
+      | Date of birth | 31 October 1980 (41 years old)                                        |
+      | Address       | 22 Waldorf Court Cardiff AD21 5DR                                     |
+
+    And I should see the level 2 heading "Case progress"
+    And I should see 6 previous hearings headers
+    And I should see below notes on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" with author datetime and note with edit and delete links
+      | John Doe    | 9 August 2022, 17:16  | Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.   |
+      | Jane Smith  | 9 July 2022, 17:13    | Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office. |
+    And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" should have a draft note with text "This is a draft note"
