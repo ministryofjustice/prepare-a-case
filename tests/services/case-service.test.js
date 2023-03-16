@@ -2,7 +2,7 @@
 const moxios = require('moxios')
 const config = require('../../config')
 
-const { getCaseList, getCase, getMatchDetails, updateOffender, deleteOffender, addCaseComment, deleteCaseComment, deleteHearingNote } = require('../../server/services/case-service')
+const { getCaseList, getCase, getMatchDetails, updateOffender, deleteOffender, addCaseComment, deleteCaseComment, deleteHearingNote, saveDraftHearingNote, updateHearingNote } = require('../../server/services/case-service')
 
 const apiUrl = config.apis.courtCaseService.url
 
@@ -254,6 +254,39 @@ describe('Case service', () => {
     const noteId = 12345
     const response = await deleteHearingNote(hearingId, noteId)
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
+    return response
+  })
+
+  it('should call the API to save draft hearing note', async () => {
+    const endpoint = `${apiUrl}/hearing/2e0afeb7-95d2-42f4-80e6-ccf96b282730/notes/draft`
+    moxios.stubRequest(endpoint, {
+      status: 200
+    })
+
+    const hearingId = '2e0afeb7-95d2-42f4-80e6-ccf96b282730'
+    const note = 'note'
+    const author = 'Author'
+    const response = await saveDraftHearingNote(hearingId, note, author)
+    const mostRecent = moxios.requests.mostRecent()
+    expect(mostRecent.url).toBe(endpoint)
+    expect(mostRecent.config.data).toBe(JSON.stringify({ hearingId, note, author }))
+    return response
+  })
+
+  it('should call the API to update hearing note', async () => {
+    const noteId = 123
+    const endpoint = `${apiUrl}/hearing/2e0afeb7-95d2-42f4-80e6-ccf96b282730/notes/${noteId}`
+    moxios.stubRequest(endpoint, {
+      status: 200
+    })
+
+    const hearingId = '2e0afeb7-95d2-42f4-80e6-ccf96b282730'
+    const note = 'note'
+    const author = 'Author'
+    const response = await updateHearingNote(hearingId, note, noteId, author)
+    const mostRecent = moxios.requests.mostRecent()
+    expect(mostRecent.url).toBe(endpoint)
+    expect(mostRecent.config.data).toBe(JSON.stringify({ hearingId, note, author, noteId }))
     return response
   })
 })
