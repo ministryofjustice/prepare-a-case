@@ -43,7 +43,7 @@ And('I should see the following hearings with the hearing type label, hearing de
 
 And('I should see a bottom border on all notes within a hearing', () => {
   cy.get('.app-summary-card').within(() => {
-    cy.get('.govuk-table__row:last-child .govuk-table__cell').should('not.have.css', 'border-bottom', '0px none rgb(11, 12, 12)')
+    cy.get('[data-cy="note-td"]').should('have.css', 'border-bottom', '1px solid rgb(177, 180, 182)')
   })
 })
 
