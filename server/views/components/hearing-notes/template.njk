@@ -12,7 +12,7 @@
                 <tr class="govuk-table__row hearing-note-container">
 
                     <td class="govuk-table__cell govuk-!-padding-top-3 govuk-!-padding-bottom-2"
-                        id="previous-note-{{ previousNote.noteId }}" data-cy="note-td">
+                        id="previous-note-{{ previousNote.noteId }}" data-test="note-td">
                         <div class="hearing-note-display">
 
                             <div class="govuk-grid-row">
@@ -76,5 +76,6 @@
                     </form>
                 </td>
             </tr>
+        {% endif %}
     </table>
 </div>
