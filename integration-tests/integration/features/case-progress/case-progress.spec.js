@@ -84,6 +84,12 @@ And('I should see the following hearings with the hearing type label, hearing de
   })
 })
 
+And('I should see a bottom border on all notes within a hearing', () => {
+  cy.get('.app-summary-card').within(() => {
+    cy.get('[data-test="note-td"]').should('have.css', 'border-bottom', '1px solid rgb(177, 180, 182)')
+  })
+})
+
 And('the note with the id {string} on hearing {string} is filled with the text {string}', ($noteId, $hearingId) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get(`#previous-note-${$noteId}`).should('exist')

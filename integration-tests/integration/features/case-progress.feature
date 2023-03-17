@@ -30,6 +30,7 @@ Feature: Case progress
       | 7th hearing         | Sunday 14 July 2019, Court 1, morning session, Leicester          |                 |
       | 5th hearing         | Tuesday 14 May 2019, Court 2, morning session, North Shields      |                 |
 
+    And I should see a bottom border on all notes within a hearing
     And I should see a button with the label "Show all previous hearings"
 
     When I click the "Show all previous hearings" button

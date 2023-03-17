@@ -12,7 +12,7 @@
                 <tr class="govuk-table__row hearing-note-container">
 
                     <td class="govuk-table__cell govuk-!-padding-top-3 govuk-!-padding-bottom-2"
-                        id="previous-note-{{ previousNote.noteId }}">
+                        id="previous-note-{{ previousNote.noteId }}" data-test="note-td">
                         <div class="hearing-note-display">
 
                             <div class="govuk-grid-row">
@@ -50,28 +50,32 @@
                 </tr>
             {% endif %}
         {% endfor %}
-    </table>
-    {% if params.enableHearingNotes %}
-        <form id="save-notes-{{ params.hearing.hearingId }}" action="summary/notes" method="post">
+        {% if params.enableHearingNotes %}
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-top-3 govuk-!-padding-bottom-2">
+                    <form id="save-notes-{{ params.hearing.hearingId }}" action="summary/notes" method="post">
 
-            <details {{ 'open' if draftNote | length }} class="govuk-details govuk-!-margin-bottom-0"
-                                                        data-module="govuk-details">
-                <summary class="govuk-details__summary govuk-!-margin-bottom-0 govuk-!-margin-top-2">
-                    <span class="govuk-details__summary-text">Add a note</span>
-                </summary>
-                <div class="govuk-details__text govuk-!-padding-bottom-0">
-                    <label class="govuk-label" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add
-                        note</label>
-                    <textarea data-hearingid="{{ params.hearing.hearingId }}"
-                              class="govuk-textarea case-notes auto-save-text"
-                              id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5"
-                              aria-describedby="note-box">{{ draftNote }}</textarea>
-                    <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">
-                        Save
-                    </button>
-                    <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
-                </div>
-            </details>
-        </form>
-    {% endif %}
+                        <details {{ 'open' if draftNote | length }} class="govuk-details govuk-!-margin-bottom-0"
+                                                                    data-module="govuk-details">
+                            <summary class="govuk-details__summary govuk-!-margin-bottom-0 govuk-!-margin-top-2">
+                                <span class="govuk-details__summary-text">Add a note</span>
+                            </summary>
+                            <div class="govuk-details__text govuk-!-padding-bottom-0">
+                                <label class="govuk-label" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add
+                                    note</label>
+                                <textarea data-hearingid="{{ params.hearing.hearingId }}"
+                                        class="govuk-textarea case-notes auto-save-text"
+                                        id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5"
+                                        aria-describedby="note-box">{{ draftNote }}</textarea>
+                                <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">
+                                    Save
+                                </button>
+                                <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
+                            </div>
+                        </details>
+                    </form>
+                </td>
+            </tr>
+        {% endif %}
+    </table>
 </div>
