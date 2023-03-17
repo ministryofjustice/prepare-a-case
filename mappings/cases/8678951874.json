@@ -359,6 +359,22 @@
               "created": "2022-08-09T17:16:14",
               "author": "John Doe",
               "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
+            },
+            {
+              "noteId": 1234561,
+              "note": "This is a draft note",
+              "created": "2022-07-09T17:13:09",
+              "author": "Jane Smith",
+              "draft": true,
+              "createdByUuid": "7ca04ed7-8275-45b2-afb4-4ff51432d1ea"
+            },
+            {
+              "noteId": 1234562,
+              "note": "This is a draft note",
+              "created": "2022-07-09T17:13:09",
+              "author": "Jane Smith",
+              "draft": true,
+              "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
             }
           ]
         }

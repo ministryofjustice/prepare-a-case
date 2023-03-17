@@ -6,7 +6,8 @@ const caseServiceMock = {
   deleteCaseComment: jest.fn(),
   addHearingNote: jest.fn(),
   deleteHearingNote: jest.fn(),
-  saveDraftHearingNote: jest.fn()
+  saveDraftHearingNote: jest.fn(),
+  updateHearingNote: jest.fn()
 }
 
 const communityServiceMock = {

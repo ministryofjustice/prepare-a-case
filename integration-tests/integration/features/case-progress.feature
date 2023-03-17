@@ -93,7 +93,7 @@ Feature: Case progress
     Then I should be on the "Case summary" page
     And I should not see govuk notification banner
 
-  Scenario: Display an alert when multiple notes are written simultaneously without being saved previously
+  Scenario: Display hearing notes
     Given I am an authenticated user
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
@@ -111,21 +111,7 @@ Feature: Case progress
 
     And I should see the level 2 heading "Case progress"
     And I should see 6 previous hearings headers
-
-    Then I should see the following hearings with the hearing type label, hearing details and next appearance badge if applicable
-      | Millionth hearing   | Sunday 14 July 2999, Court 1, morning session, Neptune Mags       |                 |
-      | Million-1th hearing | Saturday 14 July 2998, Court 1, morning session, Mars Mags        | NEXT APPEARANCE |
-      | 12th hearing        | Saturday 14 December 2019, Court 2, morning session, Leicester    |                 |
-      | 8th hearing         | Wednesday 14 August 2019, Court 2, morning session, Leicester     |                 |
-      | 7th hearing         | Sunday 14 July 2019, Court 1, morning session, Leicester          |                 |
-      | 5th hearing         | Tuesday 14 May 2019, Court 2, morning session, North Shields      |                 |
-
-
-    And the note with the id "1288880" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3" is filled with the text "I am a first unsaved note"
-    And the note with the id "123650" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3" is filled with the text "A"
-
-    Then the user should be alerted with a popup
-    And I should see a warning icon
-    And I should see the text heading message "There are unsaved notes"
-    And I should see the text body message "Save your notes before adding a new one."
-    Then I click the "Go back" button to be back on my page
+    And I should see below notes on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" with author datetime and note with edit and delete links
+      | John Doe    | 9 August 2022, 17:16  | Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.   |
+      | Jane Smith  | 9 July 2022, 17:13    | Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office. |
+    And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" should have a draft note with text "This is a draft note"
