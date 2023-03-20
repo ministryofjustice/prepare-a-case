@@ -7,6 +7,6 @@ Then('the "appInsights" object should be defined on the window', () => {
 
 And('the "appInsights" object should have properties and methods', $data => {
   $data.raw().forEach((dataRow) => {
-    cy.window().should('have.nested.property', dataRow[0])
+    cy.window().its('appInsights').should('have.property', dataRow[0])
   })
 })
