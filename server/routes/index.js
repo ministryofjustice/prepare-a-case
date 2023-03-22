@@ -3,7 +3,7 @@ const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
 const { updateSelectedCourts } = require('../services/user-preference-service')
-const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory, searchByCrn } = require('../services/case-service')
+const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory } = require('../services/case-service')
 const { getDetails, getProbationRecord, getConviction, getProbationStatusDetails, getSentenceDetails, getBreachDetails, getRiskDetails, getCustodyDetails } = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
 const featuresToggles = require('../utils/features')
@@ -21,7 +21,8 @@ const {
   deleteCaseCommentHandler,
   addHearingNoteRequestHandler,
   autoSaveHearingNoteHandler,
-  autoSaveHearingNoteEditHandler
+  autoSaveHearingNoteEditHandler,
+  searchByDefendant
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -85,19 +86,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, '/set-notification')
   }))
 
-  router.get('/:courtCode/case-search', defaults, catchErrors(async (req, res) => {
-    const crn = req.query.crn
-    const data = await searchByCrn(crn)
-
-    const templateValues = {
-      params: req.params,
-      data: {
-        ...data.data,
-        crn
-      }
-    }
-    res.render('case-search', templateValues)
-  }))
+  router.get('/:courtCode/case-search', defaults, catchErrors(searchByDefendant))
 
   router.get('/user-guide', (req, res) => {
     res.render('user-guide')
