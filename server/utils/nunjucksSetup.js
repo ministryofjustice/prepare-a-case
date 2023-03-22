@@ -1,5 +1,5 @@
 const nunjucks = require('nunjucks')
-const { googleAnalyticsKey } = require('../../config')
+const { googleAnalyticsKey, instrumentationKey } = require('../../config')
 const filters = require('./nunjucksFilters')
 
 module.exports = (app, path) => {
@@ -17,4 +17,5 @@ module.exports = (app, path) => {
     .forEach(([name, filter]) => env.addFilter(name, filter))
 
   env.addGlobal('googleAnalyticsKey', googleAnalyticsKey)
+  env.addGlobal('instrumentationKey', instrumentationKey)
 }
