@@ -5,7 +5,7 @@
     "urlPath": "/search",
     "queryParameters": {
       "crn": {
-        "matches": "test"
+        "matches": "CRN007"
       }
     }
   },
@@ -21,7 +21,7 @@
           "defendantId": "8597a10b-d330-43e5-80c3-27ce3b46979f",
           "crn": "C16000",
           "probationStatus": "Current",
-          "offenceTitles": ["Theft from the person of another", "Another theft from shop"],
+          "offenceTitles": ["Theft from the person", "Theft from shop"],
           "defendantName": "Miss Kara Ayers",
           "lastHearingDate": "2022-12-16",
           "lastHearingCourt": "Sheffield Mags",
@@ -33,7 +33,7 @@
           "defendantId": "062c670d-fdf6-441f-99e1-d2ce0c3a3846",
           "crn": "C16000",
           "probationStatus": "Current",
-          "offenceTitles": ["Theft from the person of another", "Another theft from shop"],
+          "offenceTitles": ["Theft two from the person", "Theft from shop two"],
           "defendantName": "Mr Adam Sandler",
           "lastHearingDate": "2022-12-16",
           "lastHearingCourt": "Sheffield Mags"
@@ -43,7 +43,7 @@
           "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "crn": "C16000",
           "probationStatus": "Current",
-          "offenceTitles": ["Theft from the person of another", "Another theft from shop"],
+          "offenceTitles": ["Theft three from the person", "Theft from shop three"],
           "defendantName": "Mr Adam Sandler",
           "nextHearingDate": "2023-01-23",
           "nextHearingCourt": "Leicester Mags"

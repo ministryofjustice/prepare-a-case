@@ -37,7 +37,7 @@ const deleteHearingNoteHandler = require('./getDeleteHearingNoteHandler')({ dele
 const autoSaveHearingNoteHandler = require('./getAutoSaveHearingNoteHandler')({ saveDraftHearingNote })
 
 const autoSaveHearingNoteEditHandler = require('./getAutoSaveHearingNoteEditsHandler')({ updateHearingNote })
-const searchByDefendant = require('./searchByDefendant')({ searchByCrn })
+const caseSearchHandler = require('./getCaseSearchHandler')({ searchByCrn })
 
 module.exports = {
   getCaseListHandler,
@@ -52,5 +52,5 @@ module.exports = {
   deleteHearingNoteHandler,
   autoSaveHearingNoteHandler,
   autoSaveHearingNoteEditHandler,
-  searchByDefendant
+  caseSearchHandler
 }

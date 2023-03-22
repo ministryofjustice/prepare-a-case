@@ -374,6 +374,10 @@ And('I enter {string} into text input with id {string}', ($string, $id) => {
   cy.get(`#${$id}`).type($string)
 })
 
+And('I see value {string} into text input with id {string}', ($string, $id) => {
+  cy.get(`#${$id}`).should('contain.value', $string)
+})
+
 And('I should not see the key details banner', () => {
   cy.get('.pac-key-details-bar').should('not.exist')
 })

@@ -1,5 +1,5 @@
 /* global jest, describe, it, expect */
-describe('searchByDefendant', () => {
+describe('caseSearchHandler', () => {
   const searchByCrnMock = jest.fn()
 
   const mockResponse = {
@@ -14,7 +14,7 @@ describe('searchByDefendant', () => {
   const crn = 'C123'
   const mockRequest = { query: { crn } }
 
-  const handler = require('../../../server/routes/handlers/searchByDefendant')({ searchByCrn: searchByCrnMock })
+  const handler = require('../../../server/routes/handlers/getCaseSearchHandler')({ searchByCrn: searchByCrnMock })
 
   it('should invoke the service to search for cases and render template', async () => {
     const data = { items: [] }

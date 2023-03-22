@@ -22,7 +22,7 @@ const {
   addHearingNoteRequestHandler,
   autoSaveHearingNoteHandler,
   autoSaveHearingNoteEditHandler,
-  searchByDefendant
+  caseSearchHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -86,7 +86,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, '/set-notification')
   }))
 
-  router.get('/:courtCode/case-search', defaults, catchErrors(searchByDefendant))
+  router.get('/case-search', defaults, catchErrors(caseSearchHandler))
 
   router.get('/user-guide', (req, res) => {
     res.render('user-guide')

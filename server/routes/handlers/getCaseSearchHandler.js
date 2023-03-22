@@ -1,4 +1,4 @@
-const getSearchByDefendant = ({ searchByCrn }) => async (req, res) => {
+const getCaseSearchHandler = ({ searchByCrn }) => async (req, res) => {
   const crn = req.query.crn
   if (crn) {
     const data = await searchByCrn(crn)
@@ -16,4 +16,4 @@ const getSearchByDefendant = ({ searchByCrn }) => async (req, res) => {
   }
 }
 
-module.exports = getSearchByDefendant
+module.exports = getCaseSearchHandler
