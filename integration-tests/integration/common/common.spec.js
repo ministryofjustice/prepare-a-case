@@ -374,7 +374,7 @@ And('I enter {string} into text input with id {string}', ($string, $id) => {
   cy.get(`#${$id}`).type($string)
 })
 
-And('I see value {string} into text input with id {string}', ($string, $id) => {
+And('I see value {string} in the text input with id {string}', ($string, $id) => {
   cy.get(`#${$id}`).should('contain.value', $string)
 })
 

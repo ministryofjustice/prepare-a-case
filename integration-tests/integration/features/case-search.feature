@@ -20,7 +20,7 @@ Feature: Case search
       | Kara Ayers    | Current  | Theft from the person        | 16 December 2022 | 23 January 2023 |
       | Adam Sandler  | Current  | Theft two from the person    | 16 December 2022 |                 |
       | Adam Sandler  | Current  | Theft three from the person  |                  | 23 January 2023 |
-    And I see value "CRN007" into text input with id "search-term"
+    And I see value "CRN007" in the text input with id "search-term"
 
   Scenario: Should not show result table when search for given CRN does not return result
     Given I am an authenticated user
@@ -33,7 +33,7 @@ Feature: Case search
     When I enter "no-result" into text input with id "search-term"
     And I click the "Search" button
     Then I should see the level 3 heading "“0” search results for “no-result”"
-    And I see value "no-result" into text input with id "search-term"
+    And I see value "no-result" in the text input with id "search-term"
 
 
 

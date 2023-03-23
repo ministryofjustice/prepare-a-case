@@ -201,12 +201,13 @@
             html: "<span class='govuk-notification-banner__heading'>" + params.notification | escape + "</span>"
         }) }}
     {% endif %}
-
+    {% if  params.caseSearchEnabled %}
         {%- from "components/search/macro.njk" import pacSearch -%}
         {{ pacSearch({
             search: search,
             courtCode: params.courtCode
         }) }}
+    {% endif %}
 
     <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-6" aria-label="Case list for {{ currentDate.format(dateFormat) }}">
         {% if params.date === yesterday and not isSunday %}

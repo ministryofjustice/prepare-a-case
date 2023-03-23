@@ -7,13 +7,7 @@ const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddi
 
 const features = {
   searchFeature: anyOf(
-    allOf(
-      isEnv('dev', 'preprod')
-    ),
-    allOf(
-      isEnv('prod'),
-      enabledForUsers(...settings.caseSearchUsers)
-    )
+    isEnv('dev', 'preprod')
   ),
   caseComments: anyOf(
     allOf(

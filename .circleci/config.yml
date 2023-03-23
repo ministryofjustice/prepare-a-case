@@ -236,14 +236,17 @@ jobs:
                --label "build.gitref=$CIRCLE_SHA1" \
                --build-arg BUILD_NUMBER=$APP_VERSION \
                --build-arg GIT_REF=$CIRCLE_SHA1 \
-      - run:
-          name: Publish to docker hub
-          command: |
-            docker login -u="${QUAYIO_USERNAME}" -p="${QUAYIO_PASSWORD}" quay.io
-            docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:$APP_VERSION
-            docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:latest
-            docker push quay.io/hmpps/prepare-a-case:$APP_VERSION
-            docker push quay.io/hmpps/prepare-a-case:latest
+      - when:
+          condition: << parameters.main >>
+          steps:
+            - run:
+                name: Publish to docker hub
+                command: |
+                  docker login -u="${QUAYIO_USERNAME}" -p="${QUAYIO_PASSWORD}" quay.io
+                  docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:$APP_VERSION
+                  docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:latest
+                  docker push quay.io/hmpps/prepare-a-case:$APP_VERSION
+                  docker push quay.io/hmpps/prepare-a-case:latest
 
   app_scan:
     executor: builder
