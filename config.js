@@ -29,6 +29,7 @@ module.exports = {
     casesTotalDays: get('CASES_TOTAL_DAYS', 13),
     casesPastDays: get('CASES_PAST_DAYS', 6),
     caseTrackingPrePilotUsers: getCsvParamAsArray('CASE_TRACKING_PRE_PILOT_USERS'),
+    caseSearchUsers: getCsvParamAsArray('CASE_SEARCH_USERS'),
     pacEnvironment: get('PAC_ENV', 'UNKNOWN'),
     enablePastCasesNavigation: getBooleanParam('ENABLE_PAST_CASES_NAVIGATION'),
     enableCaseComments: getBooleanParam('ENABLE_CASE_COMMENTS'),
