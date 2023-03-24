@@ -75,6 +75,9 @@ describe('featureConfigPredicates', () => {
 
       settings.pacEnvironment = 'PREPROD'
       expect(isEnv('dev', 'preprod').isEnabled()).toBe(true)
+
+      settings.pacEnvironment = undefined
+      expect(isEnv('dev', 'preprod').isEnabled()).toBe(false)
     })
 
     it('should return false when settings.pacEnvironment and input env DO NOT matche', () => {

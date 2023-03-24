@@ -2,7 +2,19 @@
 const moxios = require('moxios')
 const config = require('../../config')
 
-const { getCaseList, getCase, getMatchDetails, updateOffender, deleteOffender, addCaseComment, deleteCaseComment, deleteHearingNote, saveDraftHearingNote, updateHearingNote } = require('../../server/services/case-service')
+const {
+  getCaseList,
+  getCase,
+  getMatchDetails,
+  updateOffender,
+  deleteOffender,
+  addCaseComment,
+  deleteCaseComment,
+  deleteHearingNote,
+  saveDraftHearingNote,
+  updateHearingNote,
+  searchByCrn
+} = require('../../server/services/case-service')
 
 const apiUrl = config.apis.courtCaseService.url
 
@@ -287,6 +299,41 @@ describe('Case service', () => {
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
     expect(mostRecent.config.data).toBe(JSON.stringify({ hearingId, note, author, noteId }))
+    return response
+  })
+
+  it('should call the API to search by CRN', async () => {
+    const crn = 'C123'
+    const endpoint = `${apiUrl}/search?crn=${crn}`
+    const data = {
+      items: [{
+        hearingId: '5b9c8c1d-e552-494e-bc90-d475740c64d8',
+        defendantId: '8597a10b-d330-43e5-80c3-27ce3b46979f'
+      }]
+    }
+    moxios.stubRequest(endpoint, {
+      status: 200,
+      response: data
+    })
+
+    const response = await searchByCrn(crn)
+    const mostRecent = moxios.requests.mostRecent()
+    expect(mostRecent.url).toBe(endpoint)
+    expect(response.data).toBe(data)
+    return response
+  })
+
+  it('should call the API to search by CRN and return empty data on 404', async () => {
+    const crn = 'C123'
+    const endpoint = `${apiUrl}/search?crn=${crn}`
+    moxios.stubRequest(endpoint, {
+      status: 404
+    })
+
+    const response = await searchByCrn(crn)
+    const mostRecent = moxios.requests.mostRecent()
+    expect(mostRecent.url).toBe(endpoint)
+    expect(response.data).toStrictEqual({})
     return response
   })
 })

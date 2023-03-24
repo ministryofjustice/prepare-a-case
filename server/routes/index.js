@@ -21,7 +21,8 @@ const {
   deleteCaseCommentHandler,
   addHearingNoteRequestHandler,
   autoSaveHearingNoteHandler,
-  autoSaveHearingNoteEditHandler
+  autoSaveHearingNoteEditHandler,
+  caseSearchHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -84,6 +85,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     await setAsync('case-list-notification', req.body.notification, 'EX', 60 * 60 * (parseInt(req.body.expires, 10)))
     res.redirect(302, '/set-notification')
   }))
+
+  router.get('/case-search', defaults, catchErrors(caseSearchHandler))
 
   router.get('/user-guide', (req, res) => {
     res.render('user-guide')

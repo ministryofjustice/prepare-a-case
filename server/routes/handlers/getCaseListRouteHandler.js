@@ -24,6 +24,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
 
   const context = { court: courtCode, username: res.locals.user.username }
   const pastCaseNavigationEnabled = features.pastCasesNavigation.isEnabled(context)
+  const caseSearchEnabled = features.searchFeature.isEnabled(context)
   const templateValues = {
     title: 'Cases',
     params: {
@@ -42,6 +43,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
       totalDays: pastCaseNavigationEnabled ? settings.casesTotalDays : 7,
       casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
       enablePastCasesNavigation: settings.enablePastCasesNavigation,
+      caseSearchEnabled,
       subsection: subsection || (!date && session.currentView) || '',
       filtersApplied: !!session.selectedFilters && Object.keys(session.selectedFilters).length,
       snapshot: response.snapshot
