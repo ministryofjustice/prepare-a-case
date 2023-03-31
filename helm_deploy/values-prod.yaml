@@ -27,6 +27,7 @@ env:
   ENABLE_PAST_CASES_NAVIGATION: true
   ENABLE_CASE_COMMENTS: true
   ENABLE_CASE_PROGRESS: true
+  ENABLE_APP_INSIGHTS: false
   CASE_TRACKING_PRE_PILOT_USERS: ZAP37S,BEVERLEYWILLMOTTNPS,ZRX14Y,wyi97r,mdy87w,sarahclarkenps,bethanylilleynps,jenniferrawlingsnps,maxholgatenps,wjf65j,xzu68s
   CASE_SEARCH_USERS: all
 
