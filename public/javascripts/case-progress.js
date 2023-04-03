@@ -44,7 +44,7 @@
 
   // Edit note
 
-  const getNotEditHandler = (hearingNoteDisplayContainer, noteEditContainer, noteReadonlyText, noteEditText, editing, noteEditDoneLink) => {
+  const getNotEditHandler = (hearingNoteDisplayContainer, noteEditContainer, noteReadonlyText, noteEditText, editing) => {
     const originalText = noteReadonlyText.innerText
     const handler = (event) => {
       event.preventDefault()
