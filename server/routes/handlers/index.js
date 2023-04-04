@@ -9,7 +9,7 @@ const {
   deleteHearingNote,
   saveDraftHearingNote,
   updateHearingNote,
-  searchCases
+  searchByCrn
 } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
 const { getUserSelectedCourts } = require('../../services/user-preference-service')
