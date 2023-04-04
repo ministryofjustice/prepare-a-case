@@ -1,10 +1,11 @@
 {
+  "priority": 1,
   "id": "a4a369a9-abb8-4a6b-b2bf-1db8a5f62e59",
   "request": {
     "method": "GET",
     "urlPath": "/search",
     "queryParameters": {
-      "crn": {
+      "term": {
         "matches": "none"
       }
     }

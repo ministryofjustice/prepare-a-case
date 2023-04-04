@@ -1,13 +1,13 @@
-const getCaseSearchHandler = ({ searchByCrn }) => async (req, res) => {
-  const crn = req.query.crn
-  if (crn) {
-    const data = await searchByCrn(crn)
+const getCaseSearchHandler = ({ searchCases }) => async (req, res) => {
+  const term = req.query.term
+  if (term) {
+    const data = await searchCases(term)
 
     const templateValues = {
       params: req.params,
       data: {
         ...data.data,
-        crn
+        term
       }
     }
     res.render('case-search', templateValues)
