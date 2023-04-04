@@ -25,6 +25,6 @@ describe('getAutoSaveHearingNoteEditsHandler', () => {
 
     // Then
     expect(caseServiceMock.updateHearingNote).toHaveBeenLastCalledWith(testHearingId, 'A note', 123, 'Adam Sandler')
-    expect(mockResponse.send).toHaveBeenCalledWith({ note: 'note' }, 200)
+    expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/hearing/${testHearingId}/defendant/${testDefendantId}/summary#case-progress-hearing-${testHearingId}`)
   })
 })

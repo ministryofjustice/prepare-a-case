@@ -33,14 +33,19 @@
                             <div hidden class="note-edit-container">
                                 <div class="govuk-grid-row">
                                     <div class="govuk-!-margin-right-2 govuk-!-margin-left-2">
-                                        <form>
-                                        <textarea
-                                                class="govuk-body govuk-textarea case-comments-comment-display case-notes-edit"
-                                                rows="5" data-hearingid="{{ params.hearing.hearingId }}"
-                                                data-noteid="{{ previousNote.noteId }}"></textarea>
+                                        <form method="post" action="summary/publish-edited-note">
+                                            <textarea
+                                                    class="govuk-body govuk-textarea case-comments-comment-display case-notes-edit"
+                                                    rows="5" data-hearingid="{{ params.hearing.hearingId }}"
+                                                    data-noteid="{{ previousNote.noteId }}"></textarea>
+                                            <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
+                                            <input type="hidden" name="noteId" value="{{ previousNote.noteId }}"/>
+
                                             <button class="govuk-button case-comments-save-button hearing-note-edit-done"
                                                     data-module="govuk-button">Save
                                             </button>
+                                            <a class="govuk-link govuk-!-margin-left-5 note-edit-cancel-link"
+                                               href="#">Cancel</a>
                                         </form>
                                     </div>
                                 </div>

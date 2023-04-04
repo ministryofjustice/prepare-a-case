@@ -206,7 +206,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/auto-save-new-note', defaults, catchErrors(autoSaveHearingNoteHandler))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/auto-save-note-edits', defaults, catchErrors(autoSaveHearingNoteEditHandler))
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/publish-edited-note', defaults, catchErrors(autoSaveHearingNoteEditHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
     const { session, path, params: { courtCode } } = req
