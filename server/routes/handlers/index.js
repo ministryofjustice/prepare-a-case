@@ -9,7 +9,7 @@ const {
   deleteHearingNote,
   saveDraftHearingNote,
   updateHearingNote,
-  searchByCrn
+  searchCases
 } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
 const { getUserSelectedCourts } = require('../../services/user-preference-service')
@@ -37,7 +37,7 @@ const deleteHearingNoteHandler = require('./getDeleteHearingNoteHandler')({ dele
 const autoSaveHearingNoteHandler = require('./getAutoSaveHearingNoteHandler')({ saveDraftHearingNote })
 
 const autoSaveHearingNoteEditHandler = require('./getAutoSaveHearingNoteEditsHandler')({ updateHearingNote })
-const caseSearchHandler = require('./getCaseSearchHandler')({ searchByCrn })
+const caseSearchHandler = require('./getCaseSearchHandler')({ searchCases })
 
 module.exports = {
   getCaseListHandler,
