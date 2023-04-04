@@ -11,20 +11,20 @@ describe('caseSearchHandler', () => {
       },
     render: jest.fn()
   }
-  const crn = 'C123'
-  const mockRequest = { query: { crn } }
+  const term = 'C123'
+  const mockRequest = { query: { term } }
 
-  const handler = require('../../../server/routes/handlers/getCaseSearchHandler')({ searchByCrn: searchByCrnMock })
+  const handler = require('../../../server/routes/handlers/getCaseSearchHandler')({ searchCases: searchByCrnMock })
 
   it('should invoke the service to search for cases and render template', async () => {
     const data = { items: [] }
     searchByCrnMock.mockResolvedValueOnce({ data })
 
     await handler(mockRequest, mockResponse)
-    expect(searchByCrnMock).toHaveBeenCalledWith(crn)
+    expect(searchByCrnMock).toHaveBeenCalledWith(term)
     expect(mockResponse.render).toHaveBeenCalledWith('case-search', {
       params: mockRequest.params,
-      data: { ...data, crn }
+      data: { ...data, term }
     })
   })
 })

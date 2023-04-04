@@ -83,9 +83,9 @@ const createCaseService = (apiUrl) => {
       }
     },
 
-    searchByCrn: async (crn) => {
+    searchCases: async (term) => {
       try {
-        const response = await request(`${apiUrl}/search`, { crn })
+        const response = await request(`${apiUrl}/search`, { term })
         return response
       } catch (e) {
         if (e.response && e.response.status === 404) {
