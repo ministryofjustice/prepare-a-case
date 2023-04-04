@@ -205,6 +205,7 @@
         {%- from "components/search/macro.njk" import pacSearch -%}
         {{ pacSearch({
             search: search,
+            term: data.term,
             courtCode: params.courtCode
         }) }}
     {% endif %}
