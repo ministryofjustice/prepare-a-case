@@ -13,6 +13,7 @@ const {
 } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
 const { getUserSelectedCourts } = require('../../services/user-preference-service')
+const getCaseSearchType = require('../../utils/getCaseSearchType')
 
 const getCaseListHandler = require('./getCaseListRouteHandler')({ getCaseList })
 
@@ -37,7 +38,7 @@ const deleteHearingNoteHandler = require('./getDeleteHearingNoteHandler')({ dele
 const autoSaveHearingNoteHandler = require('./getAutoSaveHearingNoteHandler')({ saveDraftHearingNote })
 
 const autoSaveHearingNoteEditHandler = require('./getAutoSaveHearingNoteEditsHandler')({ updateHearingNote })
-const caseSearchHandler = require('./getCaseSearchHandler')({ searchCases })
+const caseSearchHandler = require('./getCaseSearchHandler')({ searchCases }, getCaseSearchType)
 
 module.exports = {
   getCaseListHandler,
