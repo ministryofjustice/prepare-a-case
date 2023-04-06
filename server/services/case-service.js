@@ -83,9 +83,9 @@ const createCaseService = (apiUrl) => {
       }
     },
 
-    searchCases: async (term) => {
+    searchCases: async (term, type) => {
       try {
-        const response = await request(`${apiUrl}/search`, { term })
+        const response = await request(`${apiUrl}/search`, { term, type })
         return response
       } catch (e) {
         if (e.response && e.response.status === 404) {

@@ -6,6 +6,9 @@
     "queryParameters": {
       "term": {
         "matches": ".*"
+      },
+       "type": {
+        "matches": "(CRN|NAME)"
       }
     }
   },
