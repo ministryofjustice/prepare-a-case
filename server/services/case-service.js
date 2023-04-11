@@ -113,7 +113,17 @@ const createCaseService = (apiUrl) => {
     addHearingNote: async (hearingId, note, author) => await create(`${apiUrl}/hearing/${hearingId}/notes`, { hearingId, note, author }),
     saveDraftHearingNote: async (hearingId, note, author) => await update(`${apiUrl}/hearing/${hearingId}/notes/draft`, { hearingId, note, author }),
     updateHearingNote: async (hearingId, note, noteId, author) => await update(`${apiUrl}/hearing/${hearingId}/notes/${noteId}`, { hearingId, note, author, noteId }),
-    deleteHearingNote: async (hearingId, noteId) => await httpDelete(`${apiUrl}/hearing/${hearingId}/notes/${noteId}`)
+    deleteHearingNote: async (hearingId, noteId) => await httpDelete(`${apiUrl}/hearing/${hearingId}/notes/${noteId}`),
+    deleteHearingNoteDraft: async (hearingId) => {
+      try {
+        await httpDelete(`${apiUrl}/hearing/${hearingId}/notes/draft`)
+      } catch (e) {
+        if (e.response?.status === 404) {
+          return // if the note draft has never been saved, delete would return 404 which we should be ignoring it.
+        }
+        throw e
+      }
+    }
   }
 }
 
