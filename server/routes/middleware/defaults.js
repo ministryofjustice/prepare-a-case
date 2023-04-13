@@ -53,8 +53,7 @@ const defaults = (req, res, next) => {
     addBusinessDays,
     getPath,
     courtName: courtData.name,
-    nonce,
-    appInsights: settings.enableAppInsights
+    nonce
   }
   next()
 }
