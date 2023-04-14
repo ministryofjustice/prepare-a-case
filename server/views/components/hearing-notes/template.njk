@@ -40,12 +40,13 @@
                                                     data-noteid="{{ previousNote.noteId }}"></textarea>
                                             <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
                                             <input type="hidden" name="noteId" value="{{ previousNote.noteId }}"/>
-
-                                            <button class="govuk-button case-comments-save-button hearing-note-edit-done"
-                                                    data-module="govuk-button">Save
-                                            </button>
-                                            <a class="govuk-link govuk-!-margin-left-5 note-edit-cancel-link"
-                                               href="#">Cancel</a>
+                                            <div class="govuk-button-group">
+                                                <button class="govuk-button case-comments-save-button hearing-note-edit-done"
+                                                        data-module="govuk-button">Save
+                                                </button>
+                                                <a class="govuk-link govuk-!-margin-left-5 note-edit-cancel-link"
+                                                   href="#">Cancel</a>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
