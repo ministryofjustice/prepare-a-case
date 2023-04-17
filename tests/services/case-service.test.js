@@ -13,7 +13,7 @@ const {
   deleteHearingNote,
   saveDraftHearingNote,
   updateHearingNote,
-  searchByCrn
+  searchCases
 } = require('../../server/services/case-service')
 
 const apiUrl = config.apis.courtCaseService.url
@@ -302,9 +302,10 @@ describe('Case service', () => {
     return response
   })
 
-  it('should call the API to search by CRN', async () => {
-    const crn = 'C123'
-    const endpoint = `${apiUrl}/search?crn=${crn}`
+  it('should call the API to search by term and type', async () => {
+    const term = 'C123'
+    const type = 'CRN'
+    const endpoint = `${apiUrl}/search?term=${term}&type=${type}`
     const data = {
       items: [{
         hearingId: '5b9c8c1d-e552-494e-bc90-d475740c64d8',
@@ -316,7 +317,7 @@ describe('Case service', () => {
       response: data
     })
 
-    const response = await searchByCrn(crn)
+    const response = await searchCases(term, 'CRN')
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
     expect(response.data).toBe(data)
@@ -324,13 +325,13 @@ describe('Case service', () => {
   })
 
   it('should call the API to search by CRN and return empty data on 404', async () => {
-    const crn = 'C123'
-    const endpoint = `${apiUrl}/search?crn=${crn}`
+    const term = 'C123'
+    const endpoint = `${apiUrl}/search?term=${term}`
     moxios.stubRequest(endpoint, {
       status: 404
     })
 
-    const response = await searchByCrn(crn)
+    const response = await searchCases(term)
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
     expect(response.data).toStrictEqual({})

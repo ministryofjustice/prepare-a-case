@@ -4,8 +4,11 @@
     "method": "GET",
     "urlPath": "/search",
     "queryParameters": {
-      "crn": {
-        "matches": "CRN007"
+      "term": {
+        "matches": ".*"
+      },
+       "type": {
+        "matches": "(CRN|NAME)"
       }
     }
   },
