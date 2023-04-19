@@ -1,0 +1,13 @@
+{
+  "id": "5937124f-6cb8-4e18-9fee-c521eef6a401",
+  "request": {
+    "method": "DELETE",
+    "urlPathPattern": "/hearing/.*/notes/draft"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200
+  }
+}

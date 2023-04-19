@@ -40,12 +40,13 @@
                                                     data-noteid="{{ previousNote.noteId }}"></textarea>
                                             <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
                                             <input type="hidden" name="noteId" value="{{ previousNote.noteId }}"/>
-
-                                            <button class="govuk-button case-comments-save-button hearing-note-edit-done"
-                                                    data-module="govuk-button">Save
-                                            </button>
-                                            <a class="govuk-link govuk-!-margin-left-5 note-edit-cancel-link"
-                                               href="#">Cancel</a>
+                                            <div class="govuk-button-group">
+                                                <button class="govuk-button case-comments-save-button hearing-note-edit-done"
+                                                        data-module="govuk-button">Save
+                                                </button>
+                                                <a class="govuk-link govuk-!-margin-left-5 note-edit-cancel-link"
+                                                   href="#">Cancel</a>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -66,16 +67,19 @@
                                 <span class="govuk-details__summary-text">Add a note</span>
                             </summary>
                             <div class="govuk-details__text govuk-!-padding-bottom-0">
-                                <label class="govuk-label" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add
-                                    note</label>
+                                <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
+                                <label class="govuk-label" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add note</label>
                                 <textarea data-hearingid="{{ params.hearing.hearingId }}"
                                         class="govuk-textarea case-notes auto-save-text"
                                         id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5"
                                         aria-describedby="note-box">{{ draftNote }}</textarea>
-                                <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">
-                                    Save
-                                </button>
-                                <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
+                                <div class="govuk-button-group">
+                                    <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">
+                                        Save
+                                    </button>
+                                    <a class="govuk-link note-draft-cancel-link"
+                                    href="summary/notes/{{ params.hearing.hearingId }}/cancel-draft-note">Cancel</a>
+                                </div>
                             </div>
                         </details>
                     </form>
