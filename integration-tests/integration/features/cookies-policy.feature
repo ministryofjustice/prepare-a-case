@@ -22,7 +22,7 @@ Feature: Accessibility statement
       | Keeps you logged into the service                                                                                | 1 hour  |
       | Used to remember the court you last looked at                                                                    | 1 year  |
       | Saves your analytics cookie consent setting                                                                      | 1 year  |
-      | Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service | 2 years |
+      | Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service | 1 year |
     And There should be no a11y violations
 
   Scenario: View the success banner of the cookies policy page
