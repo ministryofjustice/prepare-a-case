@@ -34,6 +34,39 @@ And('I should see below notes on hearing {string} with author datetime and note 
   })
 })
 
+And('I click Add a note on hearing with id {string}', ($hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.govuk-details__summary-text').click()
+  })
+})
+
+And('I should see {string} link on hearing with id {string}', ($title, $hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.govuk-details__summary-text').should('have.text', 'Add a note')
+  })
+})
+
+And('I should see a text area wih label Add note on hearing with id {string}', $hearingId => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.govuk-details__text').within(() => {
+      cy.get('label').should('contain.text', 'Add note')
+      cy.get('textarea').should('exist')
+    })
+  })
+})
+
+And('I should see a Save button on hearing with id {string}', $hearingId => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.govuk-details__text button').should('contain.text', 'Save')
+  })
+})
+
+And('I should see a Cancel link on hearing with id {string}', $hearingId => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.govuk-details__text a').should('have.text', 'Cancel')
+  })
+})
+
 And('I should see the following hearings with the hearing type label, hearing details and next appearance badge if applicable', $data => {
   $data.raw().forEach((dataRow, index) => {
     cy.get('.app-summary-card').eq(index).within(() => {

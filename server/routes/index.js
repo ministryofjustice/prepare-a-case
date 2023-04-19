@@ -22,7 +22,8 @@ const {
   addHearingNoteRequestHandler,
   autoSaveHearingNoteHandler,
   autoSaveHearingNoteEditHandler,
-  caseSearchHandler
+  caseSearchHandler,
+  cancelHearingNoteDraftHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -283,6 +284,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(addHearingNoteRequestHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete', defaults, catchErrors(deleteHearingNoteConfirmationHandler))
+
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/:targetHearingId/cancel-draft-note', defaults, catchErrors(cancelHearingNoteDraftHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete', defaults, catchErrors(deleteHearingNoteHandler))
 
