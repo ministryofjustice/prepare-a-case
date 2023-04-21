@@ -123,7 +123,8 @@ const createCaseService = (apiUrl) => {
         }
         throw e
       }
-    }
+    },
+    addHearingOutcome: async (hearingId, hearingOutcomeType) => await update(`${apiUrl}/hearing/${hearingId}/outcome`, { hearingOutcomeType })
   }
 }
 
