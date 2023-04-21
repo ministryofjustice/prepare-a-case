@@ -60,7 +60,13 @@ const features = {
     )
   ),
   pastCasesNavigation: enabledForAll(),
-  caseProgressNextAppearanceBadge: enabledForSourceTypes('COMMON_PLATFORM', 'LIBRA')
+  caseProgressNextAppearanceBadge: enabledForSourceTypes('COMMON_PLATFORM', 'LIBRA'),
+  hearingOutcomes: anyOf(
+    allOf(
+      isEnv('dev'),
+      mainFeatureToggleEnabled('enableHearingOutcomes')
+    )
+  )
 }
 
 module.exports = features
