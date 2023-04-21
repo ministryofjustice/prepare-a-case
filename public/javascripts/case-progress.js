@@ -78,4 +78,43 @@
     }
   })
 
+  // ---- Case Workflow add hearing outcome START
+
+  const modal = document.getElementsByClassName("modal-container")[0];
+
+  const modalCloseButton = modal.getElementsByClassName("modal-close")[0];
+
+  const hearingOutcomeForm = modal.getElementsByClassName("hearing-outcome-form")[0];
+
+  const hearingOutcomeTypeSelect = hearingOutcomeForm.getElementsByTagName('select')[0]
+  const sendOutcomeToAdminButton = hearingOutcomeForm.querySelector('#send-to-admin')
+  const hearingOutcomeError = hearingOutcomeForm.getElementsByClassName('hearing-outcome-modal-error')[0]
+  const targetHearingIdInput = hearingOutcomeForm.querySelector('#targetHearingId')
+
+  sendOutcomeToAdminButton.onclick = (event) => {
+    if (hearingOutcomeTypeSelect.value === 'NOT_SELECTED') {
+      event.preventDefault()
+      hearingOutcomeError.classList.remove('govuk-!-display-none')
+    }
+  }
+
+  hearingOutcomeTypeSelect.onchange = (event) => {
+    if (event.value !== 'NOT_SELECTED' && !(hearingOutcomeError.classList.contains('govuk-!-display-none'))) {
+      hearingOutcomeError.classList.add('govuk-!-display-none')
+    }
+  }
+
+  modalCloseButton.onclick = function() {
+    modal.style.display = "none";
+    hearingOutcomeError.classList.add('govuk-!-display-none')
+  }
+
+  const addOutcomeButtons = document.querySelectorAll('.btn-send-hearing-outcome');
+  addOutcomeButtons.forEach(sendOutcomeButton => {
+    sendOutcomeButton.onclick = () => {
+        targetHearingIdInput.value = sendOutcomeButton.dataset.hearingid
+        modal.style.display = "block";
+    }
+  })
+  // ---- Case Workflow add hearing outcome START
 })()

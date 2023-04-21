@@ -1,0 +1,13 @@
+{
+  "id": "1cbe51d0-0e87-44f2-ab6d-471709b2a0be",
+  "request": {
+    "method": "PUT",
+    "urlPathPattern": "/hearing/.*/outcome"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200
+  }
+}
