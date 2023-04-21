@@ -3,6 +3,19 @@
         <h2 class="govuk-heading-m" id="caseHearingsHeading">Case progress</h2>
         {% if hearingOutcomes %}
             {% include "court-case-progress-hearing-outcome-modal.njk" %}
+
+        {% if session.deleteHearingNoteSuccess %}
+            {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+            {% set html %}
+                <span class="govuk-body-l">
+                    You successfully deleted a note
+                </span>
+            {% endset %}
+            {{ govukNotificationBanner({
+                html: html,
+                type: 'success',
+                classes: 'case-comments-delete-success-notification'
+            }) }}
         {% endif %}
         {% if data.hearings | length %}
             {% if session.showPreviousHearings === data.caseId %}
@@ -69,17 +82,14 @@
 
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
                 {% if data.hearings | length > limitPreviousHearings %}
-                    <button type="submit" id="showPreviousHearings" class="govuk-button govuk-button--secondary">Show
-                        all previous hearings
+                    <button type="submit" id="showPreviousHearings" class="govuk-button govuk-button--secondary">Show all previous hearings
                     </button>
                 {% endif %}
                 {% if session.showPreviousHearings === data.caseId %}
-                    <button type="submit" id="showHideOlderHearings" class="govuk-button govuk-button--secondary">Hide
-                        older hearings
+                    <button type="submit" id="showHideOlderHearings" class="govuk-button govuk-button--secondary">Hide older hearings
                     </button>
                 {% endif %}
             </form>
         {% endif %}
     </div>
 </div>
-
