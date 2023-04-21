@@ -1,24 +1,8 @@
 body{
   width: 100%;
 }
-.popup-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.popup-modal {
-  background-color: #fff;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10%;
-  width: 40%;
-}
 
-/* popup toggle class */
-.popup-toggle {
+.modal-container {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -28,5 +12,61 @@ body{
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-close {
+  float: right!important;
+  outline: none;
+  appearance: none;
+  color: black;
+  background: none!important;
+  border: none!important;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 2px solid #000000!important;
+  width: 35%!important; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  float: right;
+  outline: none;
+  appearance: none;
+  color: black;
+  background: none;
+  border: 0px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.add-outcome-button-group {
+  margin: auto;
+  width: 70%;
+}
+
+.hearing-outcome-type-select {
+  background: #FFFFFFFF;
+}
+
+.hearing-outcome-type-select option {
+  border: 2px solid #000000 !important;
+}
+
+.hearing-outcome-modal-error {
+  color: red;
 }

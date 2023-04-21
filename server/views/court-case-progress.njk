@@ -2,17 +2,12 @@
     <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-m" id="caseHearingsHeading">Case progress</h2>
 
-        {%- from "components/modal-box/macro.njk" import pacModalBox -%}
-        {{ pacModalBox({
-            hearingForms: hearingForms
-        }) }}
-
         {% if session.deleteHearingNoteSuccess %}
             {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
             {% set html %}
                 <span class="govuk-body-l">
-                        You successfully deleted a note
-                    </span>
+                    You successfully deleted a note
+                </span>
             {% endset %}
             {{ govukNotificationBanner({
                 html: html,
@@ -20,48 +15,98 @@
                 classes: 'case-comments-delete-success-notification'
             }) }}
         {% endif %}
-        {% if data.hearings | length %}
-                {% if session.showPreviousHearings === data.caseId %}
-                    {% set limitPreviousHearings = data.hearings | length %}
-                {% else %}
-                    {% set limitPreviousHearings = 6 %}
-                {% endif %}
-                {% for hearing in data.hearings | limit(limitPreviousHearings) %}
-                    <div class="app-summary-card govuk-!-margin-bottom-5" id="case-progress-hearing-{{ hearing.hearingId }}">
-                        <header class="app-summary-card__header">
-                            <div class="app-summary-card__title">
-                                <span class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-display-inline">{{ hearing.hearingTypeLabel }}</span>
-                                    {% if features.caseProgressNextAppearanceBadge and hearing.hearingId === data.nextAppearanceHearingId %}
-                                        <span class="moj-badge moj-badge--blue pac-badge govuk-!-display-inline govuk-!-margin-left-3">NEXT APPEARANCE</span>
-                                    {% endif %}
-                                <br/>
-                                <div class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">
-                                    {{ hearing.hearingDateTime | hearingNoteTimeFormat }}, {{ 'Court ' if data.source === 'LIBRA' }} {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
+        <div id="myModal" class="modal-container">
+            <!-- Modal content -->
+            <div class="modal-content govuk-!-padding-5">
+                <div class="govuk-grid-row">
+                    <button class="modal-close govuk-!-font-size-16">X</button>
+                </div>
+                <div class="modal-body govuk-grid-row">
+                    <div class="hearing-outcome-form">
+                        <div class="govuk-grid-row">
+                            <p class="govuk-heading-m govuk-!-text-align-centre govuk-!-padding-left-6 govuk-!-padding-right-6 hearing-outcome-modal-error govuk-!-display-none">
+                                Choose an outcome and send this case to admin</p>
+                        </div>
+                        <div class="govuk-grid-row">
+                            <p class="govuk-heading-m govuk-!-text-align-centre govuk-!-padding-left-6 govuk-!-padding-right-6">
+                                Choose an outcome and send this case to admin</p>
+                            <form method="post" action="summary/add-hearing-outcome">
+                                <div class="govuk-button-group govuk-!-padding-top-5 add-outcome-button-group">
+                                    <select class="govuk-select hearing-outcome-type-select" id="hearing-outcome-type"
+                                            name="hearingOutcomeType">
+                                        <option value="NOT_SELECTED">Outcome type</option>
+                                        <option value="PROBATION_SENTENCE">Probation sentence</option>
+                                        <option value="NON_PROBATION_SENTENCE">Non-probation sentence</option>
+                                        <option value="REPORT_REQUESTED">Report requested</option>
+                                        <option value="ADJOURNED">Adjourned</option>
+                                        <option value="COMMITTED_TO_CROWN">Committed to Crown</option>
+                                        <option value="CROWN_PLUS_PSR">Crown plus PSR</option>
+                                        <option value="OTHER">Other</option>
+                                    </select>
+                                    <input type="hidden" name="targetHearingId" id="targetHearingId" value=""/>
+                                    <button type="submit" id="send-to-admin" class="govuk-button govuk-!-margin-left-3"
+                                            data-module="govuk-button">Send to admin
+                                    </button>
                                 </div>
-                            </div>
-                        </header>
-
-                        {%- from "components/hearing-notes/macro.njk" import pacHearingNotes -%}
-                        {{ pacHearingNotes({
-                            data: data,
-                            hearing: hearing,
-                            currentUserUuid: currentUserUuid,
-                            enableHearingNotes: features.hearingNotes
-                        }) }}
+                            </form>
+                        </div>
                     </div>
-                {% endfor %}
-            <form name="previousCommentsForm" id="caseHearingsForm" method="post" action="summary/hearings/{{ "hideOlderHearings" if session.showPreviousHearings === data.caseId else "showPreviousHearings"}}">
+                </div>
+            </div>
+        </div>
+
+        {% if data.hearings | length %}
+            {% if session.showPreviousHearings === data.caseId %}
+                {% set limitPreviousHearings = data.hearings | length %}
+            {% else %}
+                {% set limitPreviousHearings = 6 %}
+            {% endif %}
+            {% for hearing in data.hearings | limit(limitPreviousHearings) %}
+                <div class="app-summary-card govuk-!-margin-bottom-5"
+                     id="case-progress-hearing-{{ hearing.hearingId }}">
+                    <header class="app-summary-card__header">
+                        <div class="app-summary-card__title">
+                            <span class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-display-inline">{{ hearing.hearingTypeLabel }}</span>
+                            {% if features.caseProgressNextAppearanceBadge and hearing.hearingId === data.nextAppearanceHearingId %}
+                                <span class="moj-badge moj-badge--blue pac-badge govuk-!-display-inline govuk-!-margin-left-3">NEXT APPEARANCE</span>
+                            {% endif %}
+                            <br/>
+                            <div class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">
+                                {{ hearing.hearingDateTime | hearingNoteTimeFormat }}
+                                , {{ 'Court ' if data.source === 'LIBRA' }} {{ hearing.courtRoom }}
+                                , {{ hearing.session | lower }} session, {{ hearing.court }}
+                            </div>
+                            <button class="govuk-button btn-send-hearing-outcome" data-hearingid="{{ hearing.hearingId }}" data-module="govuk-button">Send
+                                outcome to admin
+                            </button>
+                        </div>
+                    </header>
+
+                    {%- from "components/hearing-notes/macro.njk" import pacHearingNotes -%}
+                    {{ pacHearingNotes({
+                        data: data,
+                        hearing: hearing,
+                        currentUserUuid: currentUserUuid,
+                        enableHearingNotes: features.hearingNotes
+                    }) }}
+                </div>
+            {% endfor %}
+            <form name="previousCommentsForm" id="caseHearingsForm" method="post"
+                  action="summary/hearings/{{ "hideOlderHearings" if session.showPreviousHearings === data.caseId else "showPreviousHearings" }}">
 
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
                 {% if data.hearings | length > limitPreviousHearings %}
-                    <button type="submit" id="showPreviousHearings" class="govuk-button govuk-button--secondary">Show all previous hearings
+                    <button type="submit" id="showPreviousHearings" class="govuk-button govuk-button--secondary">Show
+                        all previous hearings
                     </button>
                 {% endif %}
                 {% if session.showPreviousHearings === data.caseId %}
-                    <button type="submit" id="showHideOlderHearings" class="govuk-button govuk-button--secondary">Hide older hearings
+                    <button type="submit" id="showHideOlderHearings" class="govuk-button govuk-button--secondary">Hide
+                        older hearings
                     </button>
                 {% endif %}
             </form>
         {% endif %}
     </div>
 </div>
+
