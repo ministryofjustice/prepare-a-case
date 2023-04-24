@@ -22,33 +22,36 @@
                     <button class="modal-close govuk-!-font-size-16">X</button>
                 </div>
                 <div class="modal-body govuk-grid-row">
-                    <div class="hearing-outcome-form">
-                        <div class="govuk-grid-row">
-                            <p class="govuk-heading-m govuk-!-text-align-centre govuk-!-padding-left-6 govuk-!-padding-right-6 hearing-outcome-modal-error govuk-!-display-none">
-                                Choose an outcome and send this case to admin</p>
-                        </div>
-                        <div class="govuk-grid-row">
-                            <p class="govuk-heading-m govuk-!-text-align-centre govuk-!-padding-left-6 govuk-!-padding-right-6">
-                                Choose an outcome and send this case to admin</p>
-                            <form method="post" action="summary/add-hearing-outcome">
-                                <div class="govuk-button-group govuk-!-padding-top-5 add-outcome-button-group">
-                                    <select class="govuk-select hearing-outcome-type-select" id="hearing-outcome-type"
-                                            name="hearingOutcomeType">
-                                        <option value="NOT_SELECTED">Outcome type</option>
-                                        <option value="PROBATION_SENTENCE">Probation sentence</option>
-                                        <option value="NON_PROBATION_SENTENCE">Non-probation sentence</option>
-                                        <option value="REPORT_REQUESTED">Report requested</option>
-                                        <option value="ADJOURNED">Adjourned</option>
-                                        <option value="COMMITTED_TO_CROWN">Committed to Crown</option>
-                                        <option value="CROWN_PLUS_PSR">Crown plus PSR</option>
-                                        <option value="OTHER">Other</option>
-                                    </select>
-                                    <input type="hidden" name="targetHearingId" id="targetHearingId" value=""/>
-                                    <button type="submit" id="send-to-admin" class="govuk-button govuk-!-margin-left-3"
-                                            data-module="govuk-button">Send to admin
-                                    </button>
-                                </div>
-                            </form>
+                    <div class="govuk-grid-column-full">
+                        <div class="govuk-form-group hearing-outcome-form">
+                            <div class="govuk-grid-row">
+                                <p class="govuk-heading-m govuk-!-text-align-centre govuk-!-padding-left-6 govuk-!-padding-right-6 hearing-outcome-modal-error govuk-error-message govuk-!-display-none">
+                                    Choose an outcome type for this hearing before sending to admin
+                                </p>
+                            </div>
+                            <div class="govuk-grid-row">
+                                <p class="govuk-heading-m govuk-!-text-align-centre govuk-!-padding-left-6 govuk-!-padding-right-6">
+                                    Choose an outcome and send this case to admin</p>
+                                <form method="post" action="summary/add-hearing-outcome">
+                                    <div class="govuk-button-group govuk-!-padding-top-5 add-outcome-button-group">
+                                        <select class="govuk-select hearing-outcome-type-select" id="hearing-outcome-type"
+                                                name="hearingOutcomeType">
+                                            <option value="NOT_SELECTED">Outcome type</option>
+                                            <option value="PROBATION_SENTENCE">Probation sentence</option>
+                                            <option value="NON_PROBATION_SENTENCE">Non-probation sentence</option>
+                                            <option value="REPORT_REQUESTED">Report requested</option>
+                                            <option value="ADJOURNED">Adjourned</option>
+                                            <option value="COMMITTED_TO_CROWN">Committed to Crown</option>
+                                            <option value="CROWN_PLUS_PSR">Crown plus PSR</option>
+                                            <option value="OTHER">Other</option>
+                                        </select>
+                                        <input type="hidden" name="targetHearingId" id="targetHearingId" value=""/>
+                                        <button type="submit" id="send-to-admin" class="govuk-button govuk-!-margin-left-3"
+                                                data-module="govuk-button">Send to admin
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,21 +67,46 @@
             {% for hearing in data.hearings | limit(limitPreviousHearings) %}
                 <div class="app-summary-card govuk-!-margin-bottom-5"
                      id="case-progress-hearing-{{ hearing.hearingId }}">
+                    {% if hearing.hearingOutcome and hearing.hearingOutcome.hearingOutcomeType %}
+                    <div class="govuk-grid-row" style="background: green">
+                        <div class="govuk-grid-column-full">
+                            <span class="colo">{{ hearing.hearingOutcome.hearingOutcomeType }}</span> <span>Sent to admin on N/A</span>
+                        </div>
+                    </div>
+                    {% endif %}
                     <header class="app-summary-card__header">
                         <div class="app-summary-card__title">
-                            <span class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-display-inline">{{ hearing.hearingTypeLabel }}</span>
-                            {% if features.caseProgressNextAppearanceBadge and hearing.hearingId === data.nextAppearanceHearingId %}
-                                <span class="moj-badge moj-badge--blue pac-badge govuk-!-display-inline govuk-!-margin-left-3">NEXT APPEARANCE</span>
+                            {% if hearing.hearingOutcome and hearing.hearingOutcome.hearingOutcomeType %}
+
                             {% endif %}
-                            <br/>
-                            <div class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">
-                                {{ hearing.hearingDateTime | hearingNoteTimeFormat }}
-                                , {{ 'Court ' if data.source === 'LIBRA' }} {{ hearing.courtRoom }}
-                                , {{ hearing.session | lower }} session, {{ hearing.court }}
+                            <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-full">
+                                    <span class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-display-inline">{{ hearing.hearingTypeLabel }}</span>
+                                    {% if features.caseProgressNextAppearanceBadge and hearing.hearingId === data.nextAppearanceHearingId %}
+                                        <span class="moj-badge moj-badge--blue pac-badge govuk-!-display-inline govuk-!-margin-left-3">NEXT APPEARANCE</span>
+                                    {% endif %}
+                                </div>
                             </div>
-                            <button class="govuk-button btn-send-hearing-outcome" data-hearingid="{{ hearing.hearingId }}" data-module="govuk-button">Send
-                                outcome to admin
-                            </button>
+                            {% set showAddHearingOutcomeButton = hearing.notes and hearing.notes | length and not hearing.hearingOutcome.hearingOutcomeType %}
+
+                            <div class="govuk-grid-row">
+                                <div class="{{ "govuk-grid-column-two-thirds" if showAddHearingOutcomeButton else "govuk-grid-column-full" }}">
+                                    <div class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">
+                                        {{ hearing.hearingDateTime | hearingNoteTimeFormat }}
+                                        , {{ 'Court ' if data.source === 'LIBRA' }} {{ hearing.courtRoom }}
+                                        , {{ hearing.session | lower }} session, {{ hearing.court }}
+                                    </div>
+                                </div>
+                                {% if showAddHearingOutcomeButton  %}
+                                <div class="govuk-grid-column-one-third">
+                                    <button class="govuk-button btn-send-hearing-outcome govuk-!-margin-bottom-0"
+                                            data-hearingid="{{ hearing.hearingId }}" data-module="govuk-button">Send
+                                        outcome to admin
+                                    </button>
+                                </div>
+                                {% endif %}
+                            </div>
+
                         </div>
                     </header>
 
