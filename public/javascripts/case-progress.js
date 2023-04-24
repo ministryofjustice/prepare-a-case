@@ -89,24 +89,28 @@
   const hearingOutcomeTypeSelect = hearingOutcomeForm.getElementsByTagName('select')[0]
   const sendOutcomeToAdminButton = hearingOutcomeForm.querySelector('#send-to-admin')
   const hearingOutcomeError = hearingOutcomeForm.getElementsByClassName('hearing-outcome-modal-error')[0]
+  const hearingOutcomeFormGroup = hearingOutcomeForm.querySelector('.hearing-outcome-form')
   const targetHearingIdInput = hearingOutcomeForm.querySelector('#targetHearingId')
 
   sendOutcomeToAdminButton.onclick = (event) => {
     if (hearingOutcomeTypeSelect.value === 'NOT_SELECTED') {
       event.preventDefault()
       hearingOutcomeError.classList.remove('govuk-!-display-none')
+      hearingOutcomeFormGroup.classList.add('govuk-form-group--error')
     }
   }
 
   hearingOutcomeTypeSelect.onchange = (event) => {
     if (event.value !== 'NOT_SELECTED' && !(hearingOutcomeError.classList.contains('govuk-!-display-none'))) {
       hearingOutcomeError.classList.add('govuk-!-display-none')
+      hearingOutcomeFormGroup.classList.remove('govuk-form-group--error')
     }
   }
 
   modalCloseButton.onclick = function() {
     modal.style.display = "none";
     hearingOutcomeError.classList.add('govuk-!-display-none')
+    hearingOutcomeFormGroup.classList.remove('govuk-form-group--error')
   }
 
   const addOutcomeButtons = document.querySelectorAll('.btn-send-hearing-outcome');
