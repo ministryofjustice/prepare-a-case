@@ -6,7 +6,7 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
   const { cookies } = req
   if (term && type) {
     const data = await searchCases(term, type)
-    trackEvent('CRN Search Performed', {
+    trackEvent('PiCCRNSearchPerformed', {
       term,
       type,
       length: data.data.items.length,
