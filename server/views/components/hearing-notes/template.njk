@@ -36,7 +36,7 @@
                                         <form method="post" action="summary/publish-edited-note">
                                             <textarea
                                                     class="govuk-body govuk-textarea case-comments-comment-display case-notes-edit"
-                                                    rows="5" data-hearingid="{{ params.hearing.hearingId }}"
+                                                    rows="5" name="note" data-hearingid="{{ params.hearing.hearingId }}"
                                                     data-noteid="{{ previousNote.noteId }}"></textarea>
                                             <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
                                             <input type="hidden" name="noteId" value="{{ previousNote.noteId }}"/>
