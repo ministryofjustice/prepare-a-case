@@ -430,3 +430,23 @@ And('I should see govuk notification banner with header {string} and message {st
 And('I should not see govuk notification banner', () => {
   cy.get('.govuk-notification-banner').should('not.exist')
 })
+
+And('I should see the Primary navigation', () => {
+  cy.get('.moj-primary-navigation').should('exist')
+})
+
+And('I should see the Primary navigation {string} link', $string => {
+  cy.get('.moj-primary-navigation').within(() => {
+    cy.get('.moj-primary-navigation__link').contains($string)
+  })
+})
+
+When('I click on the {string} link in the Primary navigation', $string => {
+  cy.get('.moj-primary-navigation').within(() => {
+    cy.get('.moj-primary-navigation__link').contains($string).click()
+  })
+})
+
+And('the page should produce a 404 error', () => {
+  cy.get('h1').should('have.text', 'Page not found')
+})
