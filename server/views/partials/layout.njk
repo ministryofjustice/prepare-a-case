@@ -130,15 +130,24 @@
         </aside>
     {% endset -%}
     {%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
+    
+    {% set navItems = [{
+        text: 'Cases',
+        href: '/' + params.courtCode + '/cases',
+        active: title === 'Case list'
+    }] %}
+
+    {%- if hearingOutcomes %}
+        {% set navItems = (navItems.push({
+            text: 'Outcomes',
+            href: '/' + params.courtCode + '/outcomes',
+            active: title === 'Outcomes'
+        }), navItems) %}
+    {% endif -%}
+
     {{ mojPrimaryNavigation({
         label: 'Primary navigation',
-        items: [
-            {
-                text: 'Cases',
-                href: '/' + params.courtCode + '/cases',
-                active: title === 'Cases'
-            }
-        ],
+        items: navItems,
         searchHtml: currentCourtHtml
     }) }}
 {% endblock %}
