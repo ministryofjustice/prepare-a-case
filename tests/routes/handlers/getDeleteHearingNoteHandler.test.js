@@ -29,6 +29,6 @@ describe('getDeleteHearingNoteHandler', () => {
     // Then
     expect(mockRequest.session.deleteHearingNoteSuccess).toEqual(targetHearingId)
     expect(caseServiceMock.deleteHearingNote).toHaveBeenCalledWith(targetHearingId, noteId)
-    expect(mockResponse.redirect).toHaveBeenCalledWith(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseProgressComponent`)
+    expect(mockResponse.redirect).toHaveBeenCalledWith(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`)
   })
 })

@@ -80,45 +80,54 @@
 
   // ---- Case Workflow add hearing outcome START
 
-  const modal = document.getElementsByClassName("modal-container")[0];
+  const modal = document.querySelector("#add-hearing-outcome-modal");
 
-  const modalCloseButton = modal.getElementsByClassName("modal-close")[0];
+  if(modal) {
+    const modalCloseButton = modal.getElementsByClassName("modal-close")[0];
 
-  const hearingOutcomeForm = modal.getElementsByClassName("hearing-outcome-form")[0];
+    const hearingOutcomeForm = modal.querySelector("#hearing-outcome-form-row");
 
-  const hearingOutcomeTypeSelect = hearingOutcomeForm.getElementsByTagName('select')[0]
-  const sendOutcomeToAdminButton = hearingOutcomeForm.querySelector('#send-to-admin')
-  const hearingOutcomeError = hearingOutcomeForm.getElementsByClassName('hearing-outcome-modal-error')[0]
-  const hearingOutcomeFormGroup = hearingOutcomeForm.querySelector('.hearing-outcome-form')
-  const targetHearingIdInput = hearingOutcomeForm.querySelector('#targetHearingId')
+    const hearingOutcomeTypeSelect = hearingOutcomeForm.getElementsByTagName('select')[0]
+    const sendOutcomeToAdminButton = hearingOutcomeForm.querySelector('#send-outcome-to-admin')
+    const hearingOutcomeError = hearingOutcomeForm.getElementsByClassName('hearing-outcome-modal-error')[0]
+    const targetHearingIdInput = hearingOutcomeForm.querySelector('#targetHearingId')
 
-  sendOutcomeToAdminButton.onclick = (event) => {
-    if (hearingOutcomeTypeSelect.value === 'NOT_SELECTED') {
-      event.preventDefault()
-      hearingOutcomeError.classList.remove('govuk-!-display-none')
-      hearingOutcomeFormGroup.classList.add('govuk-form-group--error')
+    sendOutcomeToAdminButton.onclick = (event) => {
+      if (hearingOutcomeTypeSelect.value === 'NOT_SELECTED') {
+        event.preventDefault()
+        hearingOutcomeError.classList.remove('govuk-!-display-none')
+        hearingOutcomeForm.classList.add('govuk-form-group--error')
+      }
     }
-  }
 
-  hearingOutcomeTypeSelect.onchange = (event) => {
-    if (event.value !== 'NOT_SELECTED' && !(hearingOutcomeError.classList.contains('govuk-!-display-none'))) {
+    hearingOutcomeTypeSelect.onchange = (event) => {
+      if (event.value !== 'NOT_SELECTED' && !(hearingOutcomeError.classList.contains('govuk-!-display-none'))) {
+        hearingOutcomeError.classList.add('govuk-!-display-none')
+        hearingOutcomeForm.classList.remove('govuk-form-group--error')
+      }
+    }
+
+    modalCloseButton.onclick = () => {
+      modal.style.display = "none";
       hearingOutcomeError.classList.add('govuk-!-display-none')
-      hearingOutcomeFormGroup.classList.remove('govuk-form-group--error')
+      hearingOutcomeForm.classList.remove('govuk-form-group--error')
     }
-  }
 
-  modalCloseButton.onclick = function() {
-    modal.style.display = "none";
-    hearingOutcomeError.classList.add('govuk-!-display-none')
-    hearingOutcomeFormGroup.classList.remove('govuk-form-group--error')
-  }
-
-  const addOutcomeButtons = document.querySelectorAll('.btn-send-hearing-outcome');
-  addOutcomeButtons.forEach(sendOutcomeButton => {
-    sendOutcomeButton.onclick = () => {
+    const addOutcomeButtons = document.querySelectorAll('.btn-send-hearing-outcome');
+    addOutcomeButtons.forEach(sendOutcomeButton => {
+      sendOutcomeButton.onclick = () => {
         targetHearingIdInput.value = sendOutcomeButton.dataset.hearingid
+        sendOutcomeToAdminButton.dataset.targetHearingId = sendOutcomeButton.dataset.hearingid
         modal.style.display = "block";
+      }
+    })
+
+    const addHearingOutcomeSuccess = document.querySelector("#add-hearing-outcome-modal");
+    if (addHearingOutcomeSuccess) {
+      (addHearingOutcomeSuccess.getElementsByClassName("modal-close")[0]).onclick = function () {
+        addHearingOutcomeSuccess.style.display = "none";
+      };
     }
-  })
-  // ---- Case Workflow add hearing outcome START
+  }
+  // ---- Case Workflow add hearing outcome END
 })()

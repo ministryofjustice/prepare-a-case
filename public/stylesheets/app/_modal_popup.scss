@@ -29,10 +29,10 @@ body{
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto;
   padding: 20px;
   border: 2px solid #000000!important;
-  width: 35%!important; /* Could be more or less, depending on screen size */
+  width: 35%!important;
 }
 
 /* The Close Button */
@@ -57,16 +57,4 @@ body{
 .add-outcome-button-group {
   margin: auto;
   width: 70%;
-}
-
-.hearing-outcome-type-select {
-  background: #FFFFFFFF;
-}
-
-.hearing-outcome-type-select option {
-  border: 2px solid #000000 !important;
-}
-
-.hearing-outcome-modal-error {
-  color: red;
 }
