@@ -220,6 +220,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
     session.deleteCommentSuccess = undefined
     session.deleteHearingNoteSuccess = undefined
+    session.addHearingOutcomeSuccess = undefined
     templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
       return moment(b.created).unix() - moment(a.created).unix()
     })

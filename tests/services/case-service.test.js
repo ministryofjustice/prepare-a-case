@@ -14,7 +14,8 @@ const {
   saveDraftHearingNote,
   updateHearingNote,
   searchCases,
-  deleteHearingNoteDraft
+  deleteHearingNoteDraft,
+  addHearingOutcome
 } = require('../../server/services/case-service')
 
 const apiUrl = config.apis.courtCaseService.url
@@ -374,6 +375,20 @@ describe('Case service', () => {
     const response = await deleteHearingNoteDraft(hearingId)
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
+    return response
+  })
+
+  it('should invoke API to add hearing outcome', async () => {
+    const hearingId = 'id-one'
+    const endpoint = `${apiUrl}/hearing/${hearingId}/outcome`
+    moxios.stubRequest(endpoint, {
+      status: 200
+    })
+    const hearingOutcomeType = 'REPORT_REQUESTED'
+    const response = await addHearingOutcome(hearingId, hearingOutcomeType)
+    const mostRecent = moxios.requests.mostRecent()
+    expect(mostRecent.url).toBe(endpoint)
+    expect(mostRecent.config.data).toBe(JSON.stringify({ hearingOutcomeType }))
     return response
   })
 })

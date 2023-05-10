@@ -31,6 +31,32 @@
         matchType: session.confirmedMatch.matchType
     }) }}
 
+    {% if session.deleteHearingNoteSuccess %}
+        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+        {% set html %}
+            <p class="govuk-notification-banner__heading">
+                You successfully deleted a note
+            </p>
+        {% endset %}
+        {{ govukNotificationBanner({
+            html: html,
+            type: 'success'
+        }) }}
+    {% endif %}
+
+    {% if session.addHearingOutcomeSuccess %}
+        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+        {% set html %}
+            <p class="govuk-notification-banner__heading">
+                Outcome sent to admin
+            </p>
+        {% endset %}
+        {{ govukNotificationBanner({
+            html: html,
+            type: 'success'
+        }) }}
+    {% endif %}
+
     {% if data.probationStatus and data.probationStatus | string | lower === "possible ndelius record" %}
         {%- from "moj/components/banner/macro.njk" import mojBanner -%}
         {{ mojBanner({

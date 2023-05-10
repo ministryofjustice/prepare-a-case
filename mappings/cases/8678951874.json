@@ -305,6 +305,11 @@
           "session": "MORNING",
           "hearingTypeLabel": "7th hearing",
           "hearingDateTime": "2019-07-14T09:00:00",
+          "hearingOutcome": {
+            "hearingOutcomeType": "REPORT_REQUESTED",
+            "hearingOutcomeDescription": "Report requested",
+            "outcomeDate": "2023-05-09T09:09:09"
+          },
           "notes":[
             {
               "noteId": 12398960,
@@ -345,6 +350,11 @@
           "session": "MORNING",
           "hearingTypeLabel": "12th hearing",
           "hearingDateTime": "2019-12-14T09:00:00",
+          "hearingOutcome": {
+            "hearingOutcomeType": "ADJOURNED",
+            "hearingOutcomeDescription": "Adjourned",
+            "outcomeDate": "2023-04-24T09:09:09"
+          },
           "notes":[
             {
               "noteId": 454544560,
