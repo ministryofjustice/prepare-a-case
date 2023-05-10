@@ -97,3 +97,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.hearing-outcome-display {
+  &-date {
+    font-weight: unset!important;
+  }
+}
