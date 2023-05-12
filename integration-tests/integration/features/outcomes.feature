@@ -21,3 +21,19 @@ Feature: Outcomes List
     And I should see a tab with text "Cases to result"
     And I should see a tab with text "In progress"
     And I should see a tab with text "Resulted cases"
+
+  Scenario: View the In progress tab on the Outcomes page
+    Given I am an authenticated user
+    When I navigate to the "outcomes" route for today
+    Then I should be on the "Hearing outcomes" page
+
+    When I click the "In progress" link
+    Then I should see the URL with "in-progress"
+
+ Scenario: View the Resulted Cases tab on the Outcomes page
+    Given I am an authenticated user
+    When I navigate to the "outcomes" route for today
+    Then I should be on the "Hearing outcomes" page
+
+    When I click the "Resulted cases" link
+    Then I should see the URL with "resulted-cases" 
