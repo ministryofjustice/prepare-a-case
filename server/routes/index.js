@@ -16,6 +16,7 @@ const {
   getCaseAndTemplateValues,
   getProbationRecordHandler,
   getUserSelectedCourtsHandler,
+  getCaseOutcomesRouteHandler,
   addCaseCommentRequestHandler,
   deleteCaseCommentConfirmationHandler,
   deleteCaseCommentHandler,
@@ -554,6 +555,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.matchName = templateValues.data.defendantName
     res.render('match-unlink', templateValues)
   }))
+
+  router.get('/:courtCode/outcomes/:subsection?', defaults, catchErrors(getCaseOutcomesRouteHandler))
 
   async function updateCaseDetails (caseId, hearingId, defendantId, crn) {
     const offenderDetail = await getDetails(crn)
