@@ -24,6 +24,8 @@ const getProbationRecordHandler = require('./getProbationRecordRouteHandler')({ 
 
 const getUserSelectedCourtsHandler = require('./getUserSelectedCourtsHandler')(getUserSelectedCourts)
 
+const getCaseOutcomesRouteHandler = require('./getCaseOutcomesRouteHandler')()
+
 const addCaseCommentRequestHandler = require('./getAddCommentRequestHandler')({ addCaseComment })
 
 const deleteCaseCommentConfirmationHandler = require('./getDeleteCaseCommentConfirmationHandler')(getCaseAndTemplateValues)
@@ -49,6 +51,7 @@ module.exports = {
   getCaseAndTemplateValues,
   getProbationRecordHandler,
   getUserSelectedCourtsHandler,
+  getCaseOutcomesRouteHandler,
   addCaseCommentRequestHandler,
   deleteCaseCommentConfirmationHandler,
   deleteCaseCommentHandler,

@@ -384,4 +384,10 @@ describe('Routes', () => {
     expect(communityService.getProbationRecord).toHaveBeenCalledWith('D985513')
     return response
   })
+
+  it('should route to the outcomes page', async () => {
+    return request(app).get('/B14LO/outcomes').then(response => {
+      expect(response.statusCode).toEqual(200)
+    })
+  })
 })
