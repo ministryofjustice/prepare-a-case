@@ -450,3 +450,7 @@ When('I click on the {string} link in the Primary navigation', $string => {
 And('the page should produce a 404 error', () => {
   cy.get('h1').should('have.text', 'Page not found')
 })
+
+And('I should see a tab with text {string}', $string => {
+  cy.get('.govuk-tabs__tab').contains($string)
+})
