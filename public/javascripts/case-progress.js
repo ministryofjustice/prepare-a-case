@@ -113,21 +113,14 @@
       hearingOutcomeForm.classList.remove('govuk-form-group--error')
     }
 
-    const addOutcomeButtons = document.querySelectorAll('.btn-send-hearing-outcome');
-    addOutcomeButtons.forEach(sendOutcomeButton => {
-      sendOutcomeButton.onclick = () => {
-        targetHearingIdInput.value = sendOutcomeButton.dataset.hearingid
-        sendOutcomeToAdminButton.dataset.targetHearingId = sendOutcomeButton.dataset.hearingid
-        modal.style.display = "block";
-      }
-    })
+    document.querySelector('#hearing-progress-wrapper')?.addEventListener('click', (event) => {
+      const target = event.target
+      if (!target.classList.contains('btn-send-hearing-outcome')) return
 
-    const addHearingOutcomeSuccess = document.querySelector("#add-hearing-outcome-modal");
-    if (addHearingOutcomeSuccess) {
-      (addHearingOutcomeSuccess.getElementsByClassName("modal-close")[0]).onclick = function () {
-        addHearingOutcomeSuccess.style.display = "none";
-      };
-    }
+      targetHearingIdInput.value = target.dataset.hearingid
+      sendOutcomeToAdminButton.dataset.targetHearingId = target.dataset.hearingid
+      modal.style.display = "block";
+    })
   }
   // ---- Case Workflow add hearing outcome END
 })()

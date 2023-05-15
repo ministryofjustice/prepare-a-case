@@ -13,45 +13,25 @@ body{
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
 
-.modal-close {
-  float: right!important;
-  outline: none;
-  appearance: none;
-  color: black;
-  background: none!important;
-  border: none!important;
-  font-weight: bold;
-  cursor: pointer;
-}
+  .modal-close {
+    float: right;
+    outline: none;
+    appearance: none;
+    color: black;
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 2px solid #000000!important;
-  width: 35%!important;
-}
-
-/* The Close Button */
-.close {
-  float: right;
-  outline: none;
-  appearance: none;
-  color: black;
-  background: none;
-  border: 0px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 2px solid #000000;
+    width: 35%;
+  }
 }
 
 .add-outcome-button-group {

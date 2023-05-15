@@ -1,4 +1,4 @@
-Feature: Case progress
+Feature: Case progress - Hearing outcome
   I need to add and see the hearing outcome for eligible cases
   So that I can make important information, or actions, visible to others
   As an authenticated user
