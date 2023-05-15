@@ -10,6 +10,7 @@
             {% else %}
                 {% set limitPreviousHearings = 6 %}
             {% endif %}
+            <div id="hearing-progress-wrapper">
             {% for hearing in data.hearings | limit(limitPreviousHearings) %}
                 <div class="app-summary-card govuk-!-margin-bottom-5"
                      id="case-progress-hearing-{{ hearing.hearingId }}">
@@ -62,6 +63,7 @@
                     }) }}
                 </div>
             {% endfor %}
+            </div>
             <form name="previousCommentsForm" id="caseHearingsForm" method="post"
                   action="summary/hearings/{{ "hideOlderHearings" if session.showPreviousHearings === data.caseId else "showPreviousHearings" }}">
 
