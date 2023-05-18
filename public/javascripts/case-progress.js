@@ -45,14 +45,22 @@
   // Edit note
 
   const getNotEditHandler = (hearingNoteDisplayContainer, noteEditContainer, noteReadonlyText, noteEditText, editing) => {
+    const trackEvent = (name, properties) => {
+      if (window && window.appInsights && window.appInsights.trackEvent && name) {
+        window.appInsights.trackEvent({ name, properties })
+        window.appInsights.flush()
+      }
+    }
     const originalText = noteReadonlyText.innerText
     const handler = (event) => {
       event.preventDefault()
       if (editing) {
+        trackEvent('PiCEditNoteStarted', { hearingId: noteEditText.dataset.hearingid, noteId: noteEditText.dataset.noteid })
         noteEditText.value = noteReadonlyText.innerText
         hearingNoteDisplayContainer.setAttribute('hidden', true)
         noteEditContainer.removeAttribute('hidden')
       } else {
+        trackEvent('PiCEditNoteCancel', { hearingId: noteEditText.dataset.hearingid, noteId: noteEditText.dataset.noteid })
         noteEditText.value = ''
         noteReadonlyText.innerText = originalText
         hearingNoteDisplayContainer.removeAttribute('hidden')
