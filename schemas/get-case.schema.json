@@ -373,6 +373,32 @@
                 "description": "An explanation about the purpose of this instance.",
                 "default": ""
               },
+              "hearingOutcome": {
+                "$id": "#/properties/hearingOutcome",
+                "type": "object",
+                "title": "The hearing outcome schema",
+                "default": {},
+                "required": ["hearingOutcomeType", "outcomeDate", "hearingOutcomeDescription"],
+                "properties": {
+                  "hearingOutcomeType": {
+                    "$id": "#/properties/hearingOutcome/hearingOutcomeType",
+                    "type": "string",
+                    "enum": ["PROBATION_SENTENCE","NON_PROBATION_SENTENCE","REPORT_REQUESTED","ADJOURNED","COMMITTED_TO_CROWN","CROWN_PLUS_PSR","OTHER"],
+                    "title": "The hearing outcome type"
+                  },
+                  "hearingOutcomeDescription": {
+                    "$id": "#/properties/hearingOutcome/hearingOutcomeDescription",
+                    "type": "string",
+                    "enum": ["Probation sentence", "Non-probation sentence", "Report requested", "Adjourned", "Committed to Crown", "Crown plus PSR", "Other"],
+                    "title": "The hearing outcome type description"
+                  },
+                  "outcomeDate": {
+                    "$id": "#/properties/hearingOutcome/outcomeDate",
+                    "type": "string",
+                    "title": "The hearing outcome date"
+                  }
+                }
+              },
               "notes": {
                 "$id": "#/properties/hearings/items/notes",
                 "type": "array",

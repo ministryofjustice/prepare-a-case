@@ -78,4 +78,49 @@
     }
   })
 
+  // ---- Case Workflow add hearing outcome START
+
+  const modal = document.querySelector("#add-hearing-outcome-modal");
+
+  if(modal) {
+    const modalCloseButton = modal.getElementsByClassName("modal-close")[0];
+
+    const hearingOutcomeForm = modal.querySelector("#hearing-outcome-form-row");
+
+    const hearingOutcomeTypeSelect = hearingOutcomeForm.getElementsByTagName('select')[0]
+    const sendOutcomeToAdminButton = hearingOutcomeForm.querySelector('#send-outcome-to-admin')
+    const hearingOutcomeError = hearingOutcomeForm.getElementsByClassName('hearing-outcome-modal-error')[0]
+    const targetHearingIdInput = hearingOutcomeForm.querySelector('#targetHearingId')
+
+    sendOutcomeToAdminButton.onclick = (event) => {
+      if (hearingOutcomeTypeSelect.value === 'NOT_SELECTED') {
+        event.preventDefault()
+        hearingOutcomeError.classList.remove('govuk-!-display-none')
+        hearingOutcomeForm.classList.add('govuk-form-group--error')
+      }
+    }
+
+    hearingOutcomeTypeSelect.onchange = (event) => {
+      if (event.value !== 'NOT_SELECTED' && !(hearingOutcomeError.classList.contains('govuk-!-display-none'))) {
+        hearingOutcomeError.classList.add('govuk-!-display-none')
+        hearingOutcomeForm.classList.remove('govuk-form-group--error')
+      }
+    }
+
+    modalCloseButton.onclick = () => {
+      modal.style.display = "none";
+      hearingOutcomeError.classList.add('govuk-!-display-none')
+      hearingOutcomeForm.classList.remove('govuk-form-group--error')
+    }
+
+    document.querySelector('#hearing-progress-wrapper')?.addEventListener('click', (event) => {
+      const target = event.target
+      if (!target.classList.contains('btn-send-hearing-outcome')) return
+
+      targetHearingIdInput.value = target.dataset.hearingid
+      sendOutcomeToAdminButton.dataset.targetHearingId = target.dataset.hearingid
+      modal.style.display = "block";
+    })
+  }
+  // ---- Case Workflow add hearing outcome END
 })()
