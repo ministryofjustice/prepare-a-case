@@ -1,0 +1,10 @@
+{
+  "id": "3919691e-7e28-4ce6-8c86-3f81e7c70067",
+  "request": {
+    "method": "DELETE",
+    "urlPathPattern": "/cases/.*/comments/draft"
+  },
+  "response": {
+    "status": 200
+  }
+}
