@@ -25,7 +25,7 @@ Then('I should NOT see an error message', $string => {
 })
 
 When('I enter a comment {string} in the comment box', $comment => {
-  cy.get('#comment').type($comment)
+  cy.get('#case-comment').type($comment)
 })
 
 And('I should see the following comments with the comment, author and date commented on', $data => {
