@@ -11,7 +11,8 @@ const {
   saveDraftHearingNote,
   updateHearingNote,
   searchCases,
-  addHearingOutcome
+  addHearingOutcome,
+  saveDraftCaseComment
 } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
 const { getUserSelectedCourts } = require('../../services/user-preference-service')
@@ -49,6 +50,8 @@ const cancelHearingNoteDraftHandler = require('./getCancelHearingNoteDraftHandle
 
 const addHearingOutcomeHandler = require('./getAddHearingOutcomeHandler')({ addHearingOutcome })
 
+const autoSaveCaseCommentHandler = require('./getAutoSaveCaseCommentHandler')({ saveDraftCaseComment })
+
 module.exports = {
   getCaseListHandler,
   getCaseAndTemplateValues,
@@ -65,5 +68,6 @@ module.exports = {
   autoSaveHearingNoteHandler,
   autoSaveHearingNoteEditHandler,
   caseSearchHandler,
-  addHearingOutcomeHandler
+  addHearingOutcomeHandler,
+  autoSaveCaseCommentHandler
 }
