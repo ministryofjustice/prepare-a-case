@@ -33,13 +33,13 @@
   }
 
   const setupAutoSaveHearingNote = (textarea) => {
-    textarea.addEventListener('keypress', getAutoSaveHandler(textarea,  'summary/auto-save-new-note', (textarea, event) => ({ note: event.srcElement.value, hearingId: textarea.dataset.hearingid }) ))
+    textarea.addEventListener('keyup', getAutoSaveHandler(textarea,  'summary/auto-save-new-note', (textarea, event) => ({ note: event.srcElement.value, hearingId: textarea.dataset.hearingid }) ))
   }
 
   document.querySelectorAll('.auto-save-text').forEach(setupAutoSaveHearingNote)
 
   const caseCommentsTextArea = document.querySelector('#case-comment');
-  caseCommentsTextArea?.addEventListener('keypress',
+  caseCommentsTextArea?.addEventListener('keyup',
     getAutoSaveHandler(caseCommentsTextArea,  'summary/comments/auto-save-new-comment', (textarea, event) => ({ comment: event.srcElement.value, caseId: textarea.dataset.caseid }) ))
 
 
