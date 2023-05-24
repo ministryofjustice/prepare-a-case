@@ -21,7 +21,7 @@ Feature: Case comments
       | Address       | 22 Waldorf Court Cardiff AD21 5DR                                     |
 
     And I should see the level 2 heading "Comments"
-    And I should see a textarea with id "comment"
+    And I should see a textarea with id "case-comment"
     And I should see a button with the label "Save"
     And I should see 6 previous comments
     And I should see a button with the label "Show all previous comments"
