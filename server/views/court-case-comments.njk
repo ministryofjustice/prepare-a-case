@@ -48,40 +48,56 @@
         </div>
 
         {% if data.caseComments | length - draftCommentOffset %}
+
+            <h2 class="govuk-heading-s govuk-!-padding-top-0 govuk-!-margin-bottom-2">Comments</h2>
+            <table class="govuk-table" id="previousComments">
+                <tbody class="govuk-table__body">
+                {% if session.showPreviousComments === data.caseId %}
+                    {% set limitPreviousComments = data.caseComments | length - draftCommentOffset %}
+                {% else %}
+                    {% set limitPreviousComments = 6 %}
+                {% endif %}
+                {% for comment in data.caseComments | limit(limitPreviousComments) %}
+                    {% if not comment.draft %}
+                    <tr class="govuk-table__row" id="case-comment-row-{{ comment.commentId }}">
+                        <td class="govuk-table__cell" id="case-comment-display-{{ comment.commentId }}">
+                            <div class="govuk-grid-row">
+                                <div id="case-comments-comment-display-{{ comment.commentId }}" class="govuk-grid-column-full govuk-!-padding-bottom-3 case-comments-comment-display">{{ comment.comment }}</div>
+                            </div>
+                            <div class="govuk-grid-row">
+                                <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-3">
+                                    <span class="govuk-!-margin-left-6">{{ comment.author }} on {{ comment.created | caseCommentTimeFormat }}</span>
+                                    {% if comment.createdByUuid === currentUserUuid %}
+                                        <a href="#" data-commentid="{{ comment.commentId }}"
+                                           class="govuk-link govuk-!-margin-left-5 case-comment-edit">Edit</a>
+                                        <a href="summary/comments/{{ comment.commentId }}/delete"
+                                           class="govuk-link govuk-!-margin-left-5">Delete
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="govuk-table__cell govuk-!-display-none" id="case-comment-edit-{{ comment.commentId }}">
+                            <form method="post" id="case-comment-edit-form" action="summary/comments/publish-edited-comment">
+                                <textarea class="govuk-textarea case-notes" id="case-comment-edit-textarea-{{ comment.commentId }}"
+                                    name="comment" rows="5" aria-labelledby="comments-hint"></textarea>
+                                <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
+                                <input type="hidden" name="commentId" value="{{ comment.commentId }}"/>
+                                <div class="govuk-button-group">
+                                    <button type="submit" class="govuk-button case-comments-save-button"
+                                            data-module="govuk-button">Save
+                                    </button>
+                                    <a href="#" data-commentid="{{ comment.commentId }}" class="govuk-link case-comment-edit-cancel">Cancel</a>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
             <form name="previousCommentsForm" method="post"
                   action="summary/comments/{{ "hideOlderComments" if session.showPreviousComments === data.caseId else "showPreviousComments" }}">
-                <h2 class="govuk-heading-s govuk-!-padding-top-0 govuk-!-margin-bottom-2">Comments</h2>
-                <table class="govuk-table" id="previousComments">
-                    <tbody class="govuk-table__body">
-                    {% if session.showPreviousComments === data.caseId %}
-                        {% set limitPreviousComments = data.caseComments | length - draftCommentOffset %}
-                    {% else %}
-                        {% set limitPreviousComments = 6 %}
-                    {% endif %}
-                    {% for comment in data.caseComments | limit(limitPreviousComments) %}
-                        {% if not comment.draft %}
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">
-                                <div class="govuk-grid-row">
-                                    <div class="govuk-grid-column-full govuk-!-padding-bottom-3 case-comments-comment-display">{{ comment.comment }}</div>
-                                </div>
-                                <div class="govuk-grid-row">
-                                    <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-3">
-                                        <span class="govuk-!-margin-left-6">{{ comment.author }} on {{ comment.created | caseCommentTimeFormat }}</span>
-                                        {% if comment.createdByUuid === currentUserUuid %}
-                                            <a href="summary/comments/{{ comment.commentId }}/delete"
-                                               class="govuk-link">
-                                                <span class="govuk-!-font-size-16 govuk-!-margin-left-5">Delete</span>
-                                            </a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        {% endif %}
-                    {% endfor %}
-                    </tbody>
-                </table>
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
                 {% if data.caseComments | length - draftCommentOffset > limitPreviousComments %}
                     <button type="submit" class="govuk-button govuk-button--secondary">Show all previous comments
