@@ -36,9 +36,13 @@
             <form method="post" id="case-comment-form" action="summary/comments">
                 <textarea class="govuk-textarea case-notes" data-caseid="{{ data.caseId }}"
                           id="case-comment" name="comment" rows="5" aria-labelledby="comments-hint">{{ draftComment }}</textarea>
-                <button type="submit" id="save-comments" class="govuk-button case-comments-save-button"
-                        data-module="govuk-button">Save
-                </button>
+                <div class="govuk-button-group">
+                    <button type="submit" id="save-comments" class="govuk-button case-comments-save-button"
+                            data-module="govuk-button">Save
+                    </button>
+                    <a class="govuk-link comment-draft-cancel-link"
+                       href="summary/comments/{{ data.caseId }}/cancel-draft-comment">Cancel</a>
+                </div>
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
             </form>
         </div>

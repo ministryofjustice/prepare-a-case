@@ -64,8 +64,7 @@
                 </div>
             {% endfor %}
             </div>
-            <form name="previousCommentsForm" id="caseHearingsForm" method="post"
-                  action="summary/hearings/{{ "hideOlderHearings" if session.showPreviousHearings === data.caseId else "showPreviousHearings" }}">
+            <form name="previousCommentsForm" id="caseHearingsForm" method="post" action="summary/hearings/{{ "hideOlderHearings" if session.showPreviousHearings === data.caseId else "showPreviousHearings"}}">
 
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
                 {% if data.hearings | length > limitPreviousHearings %}
