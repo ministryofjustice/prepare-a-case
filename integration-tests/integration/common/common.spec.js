@@ -304,6 +304,12 @@ And('I should see a button with the label {string}', $string => {
   cy.get('.govuk-button').contains($string).should('exist')
 })
 
+And('I should see a link with text Cancel to cancel a draft comment', $string => {
+  cy.get('#caseComments').within(() => {
+    cy.get('.comment-draft-cancel-link').contains('Cancel').should('exist')
+  })
+})
+
 And('I should not see a button with the label {string}', $string => {
   cy.get('.govuk-button').contains($string).should('not.exist')
 })
