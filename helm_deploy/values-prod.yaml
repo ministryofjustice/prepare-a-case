@@ -29,7 +29,7 @@ env:
   ENABLE_CASE_PROGRESS: true
   ENABLE_APP_INSIGHTS: false
   ENABLE_HEARING_OUTCOMES: false
-  CASE_TRACKING_PRE_PILOT_USERS: ZAP37S,BEVERLEYWILLMOTTNPS,ZRX14Y,wyi97r,mdy87w,sarahclarkenps,bethanylilleynps,jenniferrawlingsnps,maxholgatenps,wjf65j,xzu68s
+  CASE_TRACKING_PRE_PILOT_USERS: ZAP37S,BEVERLEYWILLMOTTNPS,ZRX14Y,wyi97r,mdy87w,sarahclarkenps,bethanylilleynps,jenniferrawlingsnps,maxholgatenps,wjf65j,xzu68s,CZE89A
   CASE_SEARCH_USERS: all
 
 whitelist:
