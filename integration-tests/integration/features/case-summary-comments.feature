@@ -31,16 +31,16 @@ Feature: Case comments
     Then I should see 10 previous comments
 
     And I should see the following comments with the comment, author and date commented on
-      | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 | Show delete link        |
-      | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     | Do not show delete link |
-      | Comment Eight     | Author Two on 19 August 2022, 17:17         | Show delete link        |
-      | PSR completed     | Author Two on 19 August 2022, 17:17         | Show delete link        |
-      | Comment One       | Adam Sandler on 9 August 2022, 17:17        | Show delete link        |
-      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17    | Show delete link        |
-      | Comment Four      | Adam Sandler Four on 9 August 2022, 17:17   | Show delete link        |
-      | Comment Five      | Adam Sandler 5 on 9 August 2022, 17:17      | Show delete link        |
-      | Comment Seven     | Author Two on 9 August 2022, 17:17          | Show delete link        |
-      |  PSR completed    | Author Two on 9 August 2022, 17:17          | Show delete link        |
+      | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 | Do not show delete link | Do not show edit link |
+      | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     | Do not show delete link | Do not show edit link |
+      | Comment Eight     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        |
+      | PSR completed     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        |
+      | Comment One       | Adam Sandler on 9 August 2022, 17:17        | Show delete link        | Show edit link        |
+      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17    | Show delete link        | Show edit link        |
+      | Comment Four      | Adam Sandler Four on 9 August 2022, 17:17   | Show delete link        | Show edit link        |
+      | Comment Five      | Adam Sandler 5 on 9 August 2022, 17:17      | Show delete link        | Show edit link        |
+      | Comment Seven     | Author Two on 9 August 2022, 17:17          | Show delete link        | Show edit link        |
+      |  PSR completed    | Author Two on 9 August 2022, 17:17          | Show delete link        | Show edit link        |
 
     And I should see a button with the label "Hide older comments"
 
@@ -48,12 +48,12 @@ Feature: Case comments
     Then I should see 6 previous comments
 
     And I should see the following comments with the comment, author and date commented on
-      | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 | Show delete link        |
-      | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     | Do not show delete link |
-      | Comment Eight     | Author Two on 19 August 2022, 17:17         | Show delete link        |
-      | PSR completed     | Author Two on 19 August 2022, 17:17         | Show delete link        |
-      | Comment One       | Adam Sandler on 9 August 2022, 17:17        | Show delete link        |
-      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17    | Show delete link        |
+      | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 | Do not show delete link | Do not show edit link |
+      | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     | Do not show delete link | Do not show edit link |
+      | Comment Eight     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        |
+      | PSR completed     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        |
+      | Comment One       | Adam Sandler on 9 August 2022, 17:17        | Show delete link        | Show edit link        |
+      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17    | Show delete link        | Show edit link        |
 
   Scenario: Delete a case comment successfully
     Given I am an authenticated user
@@ -71,7 +71,7 @@ Feature: Case comments
     And I should see the level 2 heading "Comments"
     And I should see 6 previous comments
 
-    When I click Delete on the below comment located in table row 3
+    When I click "Delete" on the below comment located in table row 3
       | Comment Eight     | Author Two on 19 August 2022, 17:17 |
     Then I should see the heading "Are you sure you want to delete this comment?"
     And I should see the text "Added on the 19 August 2022, 17:17" within element with class "govuk-caption-m"
@@ -82,7 +82,7 @@ Feature: Case comments
     Then I should be on the "Case summary" page
     And I should see govuk notification banner with header "Success" and message "You successfully deleted a comment"
 
-    Then I click Delete on the below comment located in table row 5
+    Then I click "Delete" on the below comment located in table row 5
       | Comment One     | Adam Sandler on 9 August 2022, 17:17 |
     Then I should see the heading "Are you sure you want to delete this comment?"
     And I should see the text "Added on the 9 August 2022, 17:17" within element with class "govuk-caption-m"
@@ -102,7 +102,7 @@ Feature: Case comments
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
-    Then I click Delete on the below comment located in table row 5
+    Then I click "Delete" on the below comment located in table row 5
       | Comment One     | Adam Sandler on 9 August 2022, 17:17 |
     Then I should see the heading "Are you sure you want to delete this comment?"
     And I should see the text "Added on the 9 August 2022, 17:17" within element with class "govuk-caption-m"
@@ -123,3 +123,23 @@ Feature: Case comments
     When I enter a comment "a comment" in the comment box
     And I click the button to "Save" comment
     Then I should NOT see an error message
+
+  Scenario: Should be able to edit a comment
+    Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
+
+    When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
+    Then I should be on the "Case summary" page
+
+    When I enter a comment "a comment" in the comment box
+    And I click the button to "Save" comment
+    Then I should NOT see an error message
+
+    And I click "Edit" on the below comment located in table row 5
+      | Comment One     | Adam Sandler on 9 August 2022, 17:17 |
+
+    Then the comment displayed in row 5 should be converted into textarea with content "Comment One"
+
+    And I click "Cancel" on the edit textarea in row 5
+    Then the edit textarea in row 5 should be transformed to comment display with comment "Comment One"

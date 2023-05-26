@@ -33,22 +33,70 @@ And('I should see the following comments with the comment, author and date comme
     cy.get('.govuk-table__body > .govuk-table__row').eq(index).within(() => {
       const tableCell = cy.get('.govuk-table__cell').eq(0)
       tableCell.within(() => {
+        cy.log('***************************', dataRow.toString())
         cy.get('.case-comments-comment-display').contains(dataRow[0])
         cy.get('.govuk-caption-m').contains(dataRow[1])
-        cy.get('.govuk-link').should(`${dataRow[2] === 'Show delete link' ? 'exist' : 'not.exist'}`)
+        if (dataRow[2] === 'Show delete link') {
+          cy.get('.case-comment-delete').should('exist')
+        } else {
+          cy.get('.case-comment-delete').should('not.exist')
+        }
+        if (dataRow[3] === 'Show edit link') {
+          cy.get('.case-comment-edit').should('exist')
+        } else {
+          cy.get('.case-comment-edit').should('not.exist')
+        }
       })
     })
   })
 })
 
-And('I click Delete on the below comment located in table row {int}', ($int, $data) => {
+const getCommentsRow = rowNum => cy.get('.govuk-table__body > .govuk-table__row').eq(rowNum - 1)
+
+And('I click {string} on the below comment located in table row {int}', ($link, $int, $data) => {
   const dataRow = $data.raw()[0]
-  cy.get('.govuk-table__body > .govuk-table__row').eq($int - 1).within(() => {
+  getCommentsRow($int).within(() => {
     const tableCell = cy.get('.govuk-table__cell').eq(0)
     tableCell.within(() => {
       cy.get('.case-comments-comment-display').contains(dataRow[0])
       cy.get('.govuk-caption-m').contains(dataRow[1])
-      cy.get('.govuk-link').should('exist').click()
+      cy.get('.govuk-link').eq($link === 'Delete' ? 1 : 0).contains($link).should('exist').click()
+    })
+  })
+})
+
+And('I click {string} on the edit textarea in row {int}', ($string, $int) => {
+  getCommentsRow($int).within(() => {
+    cy.get('.govuk-table__cell').eq(0).within(() => {
+      cy.get('.case-comment-edit-container').should('be.visible').within(() => {
+        cy.get('a').contains('Cancel').should('exist').click()
+      })
+    })
+  })
+})
+
+And('the comment displayed in row {int} should be converted into textarea with content {string}', ($int, $string) => {
+  getCommentsRow($int).within(() => {
+    cy.get('.govuk-table__cell').eq(0).within(() => {
+      cy.get('.case-comment-display-container').should('not.be.visible')
+      cy.get('.case-comment-edit-container').should('be.visible').within(() => {
+        cy.get('textarea').should('have.value', $string)
+        cy.get('a').contains('Cancel').should('exist')
+        cy.get('button').contains('Save').should('exist')
+      })
+    })
+  })
+})
+
+And('the edit textarea in row {int} should be transformed to comment display with comment {string}', ($int, $string) => {
+  getCommentsRow($int).within(() => {
+    cy.get('.govuk-table__cell').eq(0).within(() => {
+      cy.get('.case-comment-edit-container').should('not.be.visible')
+      cy.get('.case-comment-display-container').should('be.visible').within(() => {
+        cy.get('.case-comments-comment-display').should('have.text', $string)
+        cy.get('a').eq(0).should('contain.text', 'Edit')
+        cy.get('a').eq(1).should('contain.text', 'Delete')
+      })
     })
   })
 })
