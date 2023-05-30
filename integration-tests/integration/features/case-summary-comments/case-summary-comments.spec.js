@@ -33,7 +33,6 @@ And('I should see the following comments with the comment, author and date comme
     cy.get('.govuk-table__body > .govuk-table__row').eq(index).within(() => {
       const tableCell = cy.get('.govuk-table__cell').eq(0)
       tableCell.within(() => {
-        cy.log('***************************', dataRow.toString())
         cy.get('.case-comments-comment-display').contains(dataRow[0])
         cy.get('.govuk-caption-m').contains(dataRow[1])
         if (dataRow[2] === 'Show delete link') {

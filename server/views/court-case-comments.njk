@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="govuk-table__cell govuk-!-display-none case-comment-edit-container" id="case-comment-edit-{{ comment.commentId }}">
-                                <form method="post" id="case-comment-edit-form" action="summary/comments/publish-edited-comment">
+                                <form method="post" action="summary/comments/publish-edited-comment">
                                 <textarea class="govuk-textarea case-notes" id="case-comment-edit-textarea-{{ comment.commentId }}"
                                           name="comment" rows="5" aria-labelledby="comments-hint"></textarea>
                                     <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
