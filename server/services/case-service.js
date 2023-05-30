@@ -123,6 +123,18 @@ const createCaseService = (apiUrl) => {
         }
         throw e
       }
+    },
+    addHearingOutcome: async (hearingId, hearingOutcomeType) => await update(`${apiUrl}/hearing/${hearingId}/outcome`, { hearingOutcomeType }),
+    saveDraftCaseComment: async (caseId, comment, author) => await update(`${apiUrl}/cases/${caseId}/comments/draft`, { caseId, comment, author }),
+    deleteCaseCommentDraft: async (caseId) => {
+      try {
+        await httpDelete(`${apiUrl}/cases/${caseId}/comments/draft`)
+      } catch (e) {
+        if (e.response?.status === 404) {
+          return // if the comment draft has never been saved, delete would return 404 which we should be ignoring it.
+        }
+        throw e
+      }
     }
   }
 }

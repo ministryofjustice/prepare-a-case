@@ -24,7 +24,10 @@ const {
   autoSaveHearingNoteHandler,
   autoSaveHearingNoteEditHandler,
   caseSearchHandler,
-  cancelHearingNoteDraftHandler
+  cancelHearingNoteDraftHandler,
+  addHearingOutcomeHandler,
+  autoSaveCaseCommentHandler,
+  cancelCaseCommentDraftHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -206,7 +209,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/record#previousOrders`)
   }))
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/auto-save-new-note', defaults, catchErrors(autoSaveHearingNoteHandler))
+  router.put('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/auto-save-new-note', defaults, catchErrors(autoSaveHearingNoteHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/publish-edited-note', defaults, catchErrors(autoSaveHearingNoteEditHandler))
 
@@ -219,6 +222,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
     session.deleteCommentSuccess = undefined
     session.deleteHearingNoteSuccess = undefined
+    session.addHearingOutcomeSuccess = undefined
     templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
       return moment(b.created).unix() - moment(a.created).unix()
     })
@@ -282,7 +286,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))
 
+  router.put('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/auto-save-new-comment', defaults, catchErrors(autoSaveCaseCommentHandler))
+
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:caseId/cancel-draft-comment', defaults, catchErrors(cancelCaseCommentDraftHandler))
+
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(addHearingNoteRequestHandler))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/add-hearing-outcome', defaults, catchErrors(addHearingOutcomeHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete', defaults, catchErrors(deleteHearingNoteConfirmationHandler))
 

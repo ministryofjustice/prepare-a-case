@@ -14,7 +14,9 @@ const {
   saveDraftHearingNote,
   updateHearingNote,
   searchCases,
-  deleteHearingNoteDraft
+  deleteHearingNoteDraft,
+  addHearingOutcome,
+  deleteCaseCommentDraft
 } = require('../../server/services/case-service')
 
 const apiUrl = config.apis.courtCaseService.url
@@ -365,7 +367,7 @@ describe('Case service', () => {
     return response
   })
 
-  it('should invoke API to delete draft', async () => {
+  it('should invoke API to delete hearing note draft for given hearing', async () => {
     const hearingId = 'id-one'
     const endpoint = `${apiUrl}/hearing/${hearingId}/notes/draft`
     moxios.stubRequest(endpoint, {
@@ -374,6 +376,57 @@ describe('Case service', () => {
     const response = await deleteHearingNoteDraft(hearingId)
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
+    return response
+  })
+
+  it('should invoke API to delete case comment draft for a given case', async () => {
+    const caseId = 'id-one'
+    const endpoint = `${apiUrl}/cases/${caseId}/comments/draft`
+    moxios.stubRequest(endpoint, {
+      status: 200
+    })
+    const response = await deleteCaseCommentDraft(caseId)
+    const mostRecent = moxios.requests.mostRecent()
+    expect(mostRecent.url).toBe(endpoint)
+    return response
+  })
+
+  it('should ignore 404 from API to delete case comment draft', async () => {
+    const caseId = 'id-one'
+    const endpoint = `${apiUrl}/cases/${caseId}/comments/draft`
+    moxios.stubRequest(endpoint, {
+      status: 404
+    })
+    const response = await deleteCaseCommentDraft(caseId)
+    const mostRecent = moxios.requests.mostRecent()
+    expect(mostRecent.url).toBe(endpoint)
+    return response
+  })
+
+  it('should throw non 404 from the API call to delete draft comment', async () => {
+    const caseId = 'id-one'
+    const endpoint = `${apiUrl}/cases/${caseId}/comments/draft`
+    moxios.stubRequest(endpoint, {
+      status: 401
+    })
+
+    const response = await expect(async () => await deleteCaseCommentDraft(caseId)).rejects.toThrow('Request failed with status code 401')
+    const mostRecent = moxios.requests.mostRecent()
+    expect(mostRecent.url).toBe(endpoint)
+    return response
+  })
+
+  it('should invoke API to add hearing outcome', async () => {
+    const hearingId = 'id-one'
+    const endpoint = `${apiUrl}/hearing/${hearingId}/outcome`
+    moxios.stubRequest(endpoint, {
+      status: 200
+    })
+    const hearingOutcomeType = 'REPORT_REQUESTED'
+    const response = await addHearingOutcome(hearingId, hearingOutcomeType)
+    const mostRecent = moxios.requests.mostRecent()
+    expect(mostRecent.url).toBe(endpoint)
+    expect(mostRecent.config.data).toBe(JSON.stringify({ hearingOutcomeType }))
     return response
   })
 })

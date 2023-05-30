@@ -1,0 +1,45 @@
+<div id="add-hearing-outcome-modal" class="modal-container">
+    <div class="modal-content govuk-!-padding-2">
+        <button class="modal-close govuk-!-font-size-16">X</button>
+        <div class="modal-body govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-bottom-5">
+                <form id="hearing-outcome-form-row" method="post" action="summary/add-hearing-outcome">
+                    <p class="govuk-heading-m hearing-outcome-modal-error govuk-error-message govuk-!-display-none">
+                        Choose an outcome type for this hearing before sending to admin
+                    </p>
+                    <p class="govuk-heading-m govuk-!-text-align-centre">
+                        Choose an outcome and send this case to admin</p>
+                    <div class="govuk-button-group govuk-!-padding-top-5 add-outcome-button-group">
+                        <select class="govuk-select"
+                                id="hearing-outcome-type"
+                                name="hearingOutcomeType">
+                            <option class="NOT_SELECTED" value="NOT_SELECTED">Outcome type
+                            </option>
+                            <option class="PROBATION_SENTENCE" value="PROBATION_SENTENCE">
+                                Probation sentence
+                            </option>
+                            <option class="NON_PROBATION_SENTENCE"
+                                    value="NON_PROBATION_SENTENCE">Non-probation sentence
+                            </option>
+                            <option class="REPORT_REQUESTED" value="REPORT_REQUESTED">Report requested
+                            </option>
+                            <option class="ADJOURNED" value="ADJOURNED">Adjourned</option>
+                            <option class="COMMITTED_TO_CROWN" value="COMMITTED_TO_CROWN">
+                                Committed to Crown
+                            </option>
+                            <option class="CROWN_PLUS_PSR" value="CROWN_PLUS_PSR">Crown plus PSR
+                            </option>
+                            <option class="OTHER" value="OTHER">Other</option>
+                        </select>
+                        <input type="hidden" name="targetHearingId" id="targetHearingId"
+                               value=""/>
+                        <button type="submit" id="send-outcome-to-admin"
+                                class="govuk-button govuk-!-margin-left-3"
+                                data-module="govuk-button">Send to admin
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

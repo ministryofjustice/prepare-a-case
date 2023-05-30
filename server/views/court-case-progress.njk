@@ -1,55 +1,69 @@
 <div class="govuk-grid-row" id="caseProgressComponent">
     <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-m" id="caseHearingsHeading">Case progress</h2>
-
-        {%- from "components/modal-box/macro.njk" import pacModalBox -%}
-        {{ pacModalBox({
-            hearingForms: hearingForms
-        }) }}
-
-        {% if session.deleteHearingNoteSuccess %}
-            {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-            {% set html %}
-                <span class="govuk-body-l">
-                        You successfully deleted a note
-                    </span>
-            {% endset %}
-            {{ govukNotificationBanner({
-                html: html,
-                type: 'success',
-                classes: 'case-comments-delete-success-notification'
-            }) }}
+        {% if hearingOutcomes %}
+            {% include "court-case-progress-hearing-outcome-modal.njk" %}
         {% endif %}
         {% if data.hearings | length %}
-                {% if session.showPreviousHearings === data.caseId %}
-                    {% set limitPreviousHearings = data.hearings | length %}
-                {% else %}
-                    {% set limitPreviousHearings = 6 %}
-                {% endif %}
-                {% for hearing in data.hearings | limit(limitPreviousHearings) %}
-                    <div class="app-summary-card govuk-!-margin-bottom-5" id="case-progress-hearing-{{ hearing.hearingId }}">
-                        <header class="app-summary-card__header">
-                            <div class="app-summary-card__title">
-                                <span class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-display-inline">{{ hearing.hearingTypeLabel }}</span>
+            {% if session.showPreviousHearings === data.caseId %}
+                {% set limitPreviousHearings = data.hearings | length %}
+            {% else %}
+                {% set limitPreviousHearings = 6 %}
+            {% endif %}
+            <div id="hearing-progress-wrapper">
+            {% for hearing in data.hearings | limit(limitPreviousHearings) %}
+                <div class="app-summary-card govuk-!-margin-bottom-5"
+                     id="case-progress-hearing-{{ hearing.hearingId }}">
+                    {% if hearing.hearingOutcome and hearing.hearingOutcome.hearingOutcomeType %}
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-full">
+                                <div class="govuk-grid-column-full govuk-notification-banner--success govuk-notification-banner__header govuk-!-padding-left-3 govuk-!-padding-top-2 govuk-!-padding-bottom-2">
+                                    <span class="govuk-notification-banner__title govuk-!-font-size-16">{{ hearing.hearingOutcome.hearingOutcomeDescription }}</span>
+                                    <span class="govuk-notification-banner__title govuk-!-font-size-16 hearing-outcome-display-date govuk-!-padding-left-2">Sent to admin on {{ hearing.hearingOutcome.outcomeDate | hearingNoteTimeFormat }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <header class="app-summary-card__header">
+                        <div class="app-summary-card__title">
+                            <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-full">
+                                    <span class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-display-inline">{{ hearing.hearingTypeLabel }}</span>
                                     {% if features.caseProgressNextAppearanceBadge and hearing.hearingId === data.nextAppearanceHearingId %}
                                         <span class="moj-badge moj-badge--blue pac-badge govuk-!-display-inline govuk-!-margin-left-3">NEXT APPEARANCE</span>
                                     {% endif %}
-                                <br/>
-                                <div class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">
-                                    {{ hearing.hearingDateTime | hearingNoteTimeFormat }}, {{ 'Court ' if data.source === 'LIBRA' }} {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
                                 </div>
                             </div>
-                        </header>
+                            {% set showAddHearingOutcomeButton = hearingOutcomes and hearing.notes and hearing.notes | length and not hearing.hearingOutcome.hearingOutcomeType %}
 
-                        {%- from "components/hearing-notes/macro.njk" import pacHearingNotes -%}
-                        {{ pacHearingNotes({
-                            data: data,
-                            hearing: hearing,
-                            currentUserUuid: currentUserUuid,
-                            enableHearingNotes: features.hearingNotes
-                        }) }}
-                    </div>
-                {% endfor %}
+                            <div class="govuk-grid-row">
+                                <div class="{{ "govuk-grid-column-two-thirds" if showAddHearingOutcomeButton else "govuk-grid-column-full" }}">
+                                    <div class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">
+                                        {{ hearing.hearingDateTime | hearingNoteTimeFormat }}, {{ 'Court ' if data.source === 'LIBRA' }} {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
+                                    </div>
+                                </div>
+                                {% if showAddHearingOutcomeButton %}
+                                    <div class="govuk-grid-column-one-third">
+                                        <button class="govuk-button btn-send-hearing-outcome govuk-!-margin-bottom-0"
+                                                data-hearingid="{{ hearing.hearingId }}" data-module="govuk-button">Send outcome to admin
+                                        </button>
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </header>
+
+                    {%- from "components/hearing-notes/macro.njk" import pacHearingNotes -%}
+                    {{ pacHearingNotes({
+                        data: data,
+                        hearing: hearing,
+                        currentUserUuid: currentUserUuid,
+                        enableHearingNotes: features.hearingNotes
+                    }) }}
+                </div>
+            {% endfor %}
+            </div>
             <form name="previousCommentsForm" id="caseHearingsForm" method="post" action="summary/hearings/{{ "hideOlderHearings" if session.showPreviousHearings === data.caseId else "showPreviousHearings"}}">
 
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
