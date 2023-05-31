@@ -20,5 +20,5 @@ module.exports = (app, path) => {
   env.addGlobal('googleAnalyticsKey', googleAnalyticsKey)
   env.addGlobal('instrumentationKey', instrumentationKey)
   env.addGlobal('appInsights', settings.enableAppInsights)
-  env.addGlobal('hearingOutcomes', hearingOutcomes)
+  env.addGlobal('hearingOutcomes', hearingOutcomes.isEnabled({}))
 }
