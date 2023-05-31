@@ -166,7 +166,7 @@ jobs:
           background: true
       - run:
           name: Run the app
-          command: ENABLE_CASE_COMMENTS=true ENABLE_CASE_PROGRESS=true ENABLE_APP_INSIGHTS=true PAC_ENV=dev npm run start-feature
+          command: ENABLE_CASE_COMMENTS=true ENABLE_CASE_PROGRESS=true ENABLE_APP_INSIGHTS=true ENABLE_HEARING_OUTCOMES=true PAC_ENV=dev npm run start-feature
           background: true
       - run:
           name: Wait for node app to start
