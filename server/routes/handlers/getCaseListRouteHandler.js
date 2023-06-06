@@ -1,6 +1,7 @@
 const getBaseDateString = require('../../utils/getBaseDateString')
 const { settings } = require('../../../config')
 const features = require('../../utils/features')
+const trackEvent = require('../../utils/analytics.js')
 
 const getCaseListRouteHandler = caseService => async (req, res) => {
   const {
@@ -15,6 +16,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
   const currentDate = date || getBaseDateString()
   const response = await caseService.getCaseList(courtCode, currentDate, session.selectedFilters, subsection || (!date && session.currentView))
   if (response.isError) {
+    trackEvent('PiC Error Log Event - getCaseListRouteHandler [caseService.getCaseList]', { req, response })
     res.render('error', { status: response.status || 500 })
     return
   }

@@ -1,9 +1,11 @@
 const { settings } = require('../../../config')
+const trackEvent = require('../../utils/analytics')
 
 const getUserSelectedCourtsHandler = (getUserSelectedCourts) => async (req, res) => {
   const { session } = req
   const userSelectedCourts = await getUserSelectedCourts(res.locals.user.userId)
   if (userSelectedCourts.isError) {
+    trackEvent('PiC Error Log Event - getUserSelectedCourtsHandler [getUserSelectedCourts]', { req, userSelectedCourts, userId: res.locals.user.userId })
     res.render('error', { status: userSelectedCourts.status || 500 })
     return
   }
