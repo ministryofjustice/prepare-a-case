@@ -16,7 +16,14 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
   const currentDate = date || getBaseDateString()
   const response = await caseService.getCaseList(courtCode, currentDate, session.selectedFilters, subsection || (!date && session.currentView))
   if (response.isError) {
-    trackEvent('PiC Error Log Event - getCaseListRouteHandler [caseService.getCaseList]', { req, response })
+    trackEvent(
+      'PiCPrepareACaseErrorTrace',
+      {
+        operation: ' getCaseListRouteHandler [caseService.getCaseList]',
+        req,
+        response
+      }
+    )
     res.render('error', { status: response.status || 500 })
     return
   }

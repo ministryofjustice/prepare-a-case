@@ -5,7 +5,16 @@ const getCaseTemplateValuesHelper = caseService => async req => {
   const { params: { defendantId, hearingId }, session, params } = req
   const response = await caseService.getCase(hearingId, defendantId)
   if (response.isError) {
-    trackEvent('PiC Error Log Event - getCaseTemplateValuesHelper [caseService.getCase]', { response, hearingId, defendantId, req })
+    trackEvent(
+      'PiCPrepareACaseErrorTrace',
+      {
+        operation: 'getCaseTemplateValuesHelper [caseService.getCase]',
+        response,
+        hearingId,
+        defendantId,
+        req
+      }
+    )
     return response
   }
   const caseListDate = session.caseListDate || getBaseDateString()

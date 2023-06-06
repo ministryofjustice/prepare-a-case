@@ -6,7 +6,14 @@ const getProbationRecordRouteHandler = (communityService, getCaseAndTemplateValu
   const templateValues = await getCaseAndTemplateValues(req)
   if (templateValues.isError) {
     res.render('error', { status: templateValues.status })
-    trackEvent('PiC Error Log Event - getProbationRecordRouteHandler [templateValues]', { req, templateValues })
+    trackEvent(
+      'PiCPrepareACaseErrorTrace',
+      {
+        operation: 'getProbationRecordRouteHandler [templateValues]',
+        req,
+        templateValues
+      }
+    )
     return
   }
   templateValues.title = 'Probation record'
