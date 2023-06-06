@@ -1,4 +1,5 @@
 const logger = require('../log.js')
+const trackEvent = require('./utils/analytics.js')
 
 const moment = require('moment')
 
@@ -27,6 +28,15 @@ exports.developmentErrors = (error, req, res, next) => {
 
 exports.productionErrors = (error, req, res, next) => {
   logger.error(error)
+  trackEvent(
+    'PiCPrepareACaseErrorTrace',
+    {
+      operation: 'errorHandler[productionErrors]',
+      req,
+      res,
+      error
+    }
+  )
   const status = error.status || 500
   res.status(status)
   res.render('error', {
