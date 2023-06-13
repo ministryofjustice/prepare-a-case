@@ -80,11 +80,11 @@
 
         {% set pageItems = [] %}
         {% for i in range(startNum, endNum + 1) -%}
-            {{ pageItems.push({
-                text: i,
+            {% set pageItems = (pageItems.push({
+                text: i + '',
                 href: '/case-search?term=' + data.term + '&page=' + i,
                 selected: currentPage === i
-            }) }}
+            }), pageItems) %}
         {%- endfor %}
         {% if currentPage === 1 %}
             {% set previousLink = null %}
