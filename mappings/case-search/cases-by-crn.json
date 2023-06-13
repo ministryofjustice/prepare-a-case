@@ -18,6 +18,8 @@
     },
     "status": 200,
     "jsonBody": {
+      "totalElements": 125,
+      "totalPages": 7,
       "items": [
         {
           "hearingId": "5b9c8c1d-e552-494e-bc90-d475740c64d8",

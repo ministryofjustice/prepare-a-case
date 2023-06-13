@@ -24,7 +24,7 @@ Feature: Case search
 
     When I enter "Jeff Bloggs" into text input with id "search-term"
     And I click the "Search" button
-    Then I should see the level 3 heading "3 search results for CRN007"
+    Then I should see the level 3 heading "125 search results for CRN007"
     And I should see the following table headings
       | Defendant | Probation status | Offence | Last hearing | Next hearing |
     And I should see the following table rows

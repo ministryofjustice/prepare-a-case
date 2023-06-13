@@ -13,37 +13,37 @@
     rows: []
 } %}
 
-    {% for item in data.items %}
+{% for item in data.items %}
 
-        {% set offences = [] %}
+    {% set offences = [] %}
 
-        {% if item.offenceTitles | length === 1 %}
-            {% for offenceTitle in item.offenceTitles %}
-                {{ offences.push(offenceTitle | escape) }}
-            {% endfor %}
-        {% elif item.offenceTitles | length %}
-            {{ offences.push('<ol class="govuk-list govuk-list--number govuk-!-margin-bottom-0">') }}
-            {% for offenceTitle in item.offenceTitles %}
-                {{ offences.push('<li>' + offenceTitle | escape + '</li>') }}
-            {% endfor %}
-            {{ offences.push('</ol>') }}
-        {% endif %}
+    {% if item.offenceTitles | length === 1 %}
+        {% for offenceTitle in item.offenceTitles %}
+            {{ offences.push(offenceTitle | escape) }}
+        {% endfor %}
+    {% elif item.offenceTitles | length %}
+        {{ offences.push('<ol class="govuk-list govuk-list--number govuk-!-margin-bottom-0">') }}
+        {% for offenceTitle in item.offenceTitles %}
+            {{ offences.push('<li>' + offenceTitle | escape + '</li>') }}
+        {% endfor %}
+        {{ offences.push('</ol>') }}
+    {% endif %}
 
-        {% set defendantFullName = item.defendantName %}
-        {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
-        {% set crnDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
-        {% set noRecordDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">No record</div>' %}
+    {% set defendantFullName = item.defendantName %}
+    {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
+    {% set crnDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
+    {% set noRecordDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">No record</div>' %}
 
-        {%- set tableRow = [
-            { text: ('<a href="/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" aria-label="' + a11yTitle + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
-            { text: ('<div>' + ('<span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span>' | safe if notMatched ) + ('<span class="moj-badge moj-badge--black pac-badge">Psr</span>' | safe if item.awaitingPsr) + ('<span class="moj-badge moj-badge--black pac-badge">Breach</span>' | safe if item.breach) + ('<span class="moj-badge moj-badge--black pac-badge">Sso</span>' | safe if item.suspendedSentenceOrder) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched) + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate and item.probationStatus == 'Previously known')) | safe },
-            { text: offences | join('') | safe },
-            { text: (((item.lastHearingDate | caseSearchDateFormat ) + '<br>' + item.lastHearingCourt ) | safe ) if item.lastHearingDate else noRecordDisplay | safe },
-            { text: (((item.nextHearingDate | caseSearchDateFormat)  + '<br>' + item.nextHearingCourt ) | safe ) if item.nextHearingDate else noRecordDisplay | safe }
-        ] -%}
-        {{ tableData.rows.push(tableRow) }}
+    {%- set tableRow = [
+        { text: ('<a href="/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" aria-label="' + a11yTitle + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
+        { text: ('<div>' + ('<span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span>' | safe if notMatched ) + ('<span class="moj-badge moj-badge--black pac-badge">Psr</span>' | safe if item.awaitingPsr) + ('<span class="moj-badge moj-badge--black pac-badge">Breach</span>' | safe if item.breach) + ('<span class="moj-badge moj-badge--black pac-badge">Sso</span>' | safe if item.suspendedSentenceOrder) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched) + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate and item.probationStatus == 'Previously known')) | safe },
+        { text: offences | join('') | safe },
+        { text: (((item.lastHearingDate | caseSearchDateFormat ) + '<br>' + item.lastHearingCourt ) | safe ) if item.lastHearingDate else noRecordDisplay | safe },
+        { text: (((item.nextHearingDate | caseSearchDateFormat)  + '<br>' + item.nextHearingCourt ) | safe ) if item.nextHearingDate else noRecordDisplay | safe }
+    ] -%}
+    {{ tableData.rows.push(tableRow) }}
 
-    {% endfor %}
+{% endfor %}
 
 {% block content %}
 
@@ -54,11 +54,70 @@
         courtCode: data.params.courtCode
     }) }}
 
-    <h3 class="govuk-heading-m">{{ data.items | length }} search results for {{ data.term }}</h3>
+    <h3 class="govuk-heading-m">{{ data.totalElements if data.totalElements > 0 else 0}} search results for {{ data.term }}</h3>
+    {% set resultSize = data.items | length  %}
     {% if data.items | length %}
         {% block table %}
             {%- from "govuk/components/table/macro.njk" import govukTable -%}
                 {{ govukTable(tableData) }}
+        {% endblock %}
+
+        {% set maxPagesDisplay = 5 %}
+        {% set startNum = currentPage - ((maxPagesDisplay - 1) / 2) %}
+        {% set endNum = currentPage + ((maxPagesDisplay - 1) / 2) %}
+        {% set totalPages = (data.totalElements / pageSize) | round(0, "ceil") %}
+
+        {% if startNum < 1 or totalPages <= maxPagesDisplay %}
+            {% set startNum = 1 %}
+            {% set endNum = maxPagesDisplay %}
+            {% elif endNum > totalPages %}
+            {% set startNum = totalPages - (maxPagesDisplay - 1) %}
+        {% endif %}
+
+        {% if endNum > totalPages %}
+            {% set endNum = totalPages %}
+        {% endif %}
+
+        {% set pageItems = [] %}
+        {% for i in range(startNum, endNum + 1) -%}
+            {{ pageItems.push({
+                text: i,
+                href: '/case-search?term=' + data.term + '&page=' + i,
+                selected: currentPage === i
+            }) }}
+        {%- endfor %}
+        {% if currentPage === 1 %}
+            {% set previousLink = null %}
+        {% else %}
+            {% set previousLink = {
+                text: 'Previous',
+                href: '/case-search?term=' + data.term + '&page=' + (currentPage - 1)
+            } %}
+        {% endif %}
+
+        {% if currentPage === data.totalPages %}
+            {% set nextLink = null %}
+        {% else %}
+            {% set nextLink = {
+                text: 'Next',
+                href: '/case-search?term=' + data.term + '&page=' + (currentPage + 1)
+            } %}
+        {% endif %}
+
+        {% set toElementCount = (currentPage * pageSize) if (currentPage * pageSize) <= data.totalElements else data.totalElements %}
+
+        {% block pagination %}
+            {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+            {{ mojPagination({
+                results: {
+                    from: (currentPage - 1) * pageSize + 1,
+                    to: toElementCount,
+                    count: data.totalElements
+                },
+                previous: previousLink,
+                next: nextLink,
+                items: pageItems
+            }) }}
         {% endblock %}
     {% endif %}
 

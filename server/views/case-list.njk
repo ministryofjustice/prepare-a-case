@@ -88,7 +88,7 @@
 {% set yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD') %}
 {% set withinDateRange = currentDate.isBetween(useStartDate, params.addBusinessDays(useStartDate, params.totalDays - 1), 'day', '[]') %}
 
-{% set maxPagesDisplay = 5 %}
+{% set maxPagesDisplay = 3 %}
 {% set currentPage = params.page %}
 {% set startNum = currentPage - ((maxPagesDisplay - 1) / 2) %}
 {% set endNum = currentPage + ((maxPagesDisplay - 1) / 2) %}
