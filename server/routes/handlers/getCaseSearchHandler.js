@@ -7,10 +7,12 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
   const { cookies } = req
   const page = req.query.page > 0 ? req.query.page : undefined
   if (term && type) {
-    const data = await searchCases(term, type, page, settings.caseSearchResultPageSize)
+    const pageSize = settings.caseSearchResultPageSize
+    const data = await searchCases(term, type, page, pageSize)
     trackEvent('PiCCRNSearchPerformed', {
       term,
       type,
+      page,
       length: data.data.items.length,
       court: cookies && cookies.currentCourt ? cookies.currentCourt : undefined
     })
@@ -22,7 +24,7 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
         term
       },
       currentPage,
-      pageSize: settings.caseSearchResultPageSize
+      pageSize
     }
     res.render('case-search', templateValues)
   } else {
