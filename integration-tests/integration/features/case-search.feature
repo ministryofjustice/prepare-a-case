@@ -13,7 +13,7 @@ Feature: Case search
 
     When I enter "CRN007" into text input with id "search-term"
     And I click the "Search" button
-    Then I should see the level 3 heading "3 search results for CRN007"
+    Then I should see the level 3 heading "125 search results for CRN007"
     And I should see the following table headings
       | Defendant | Probation status | Offence | Last hearing | Next hearing |
     And I should see the following table rows
@@ -24,7 +24,7 @@ Feature: Case search
 
     When I enter "Jeff Bloggs" into text input with id "search-term"
     And I click the "Search" button
-    Then I should see the level 3 heading "3 search results for CRN007"
+    Then I should see the level 3 heading "125 search results for CRN007"
     And I should see the following table headings
       | Defendant | Probation status | Offence | Last hearing | Next hearing |
     And I should see the following table rows
@@ -45,6 +45,37 @@ Feature: Case search
     And I click the "Search" button
     Then I should see the level 3 heading "0 search results for none"
     And I see value "none" in the text input with id "search-term"
+
+  Scenario: Case search results pagination
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+    And I should see the level 2 heading "Search"
+    And I should see a button with the label "Search"
+    And I should see the text input label "Enter CRN or defendant name."
+
+    When I enter "CRN007" into text input with id "search-term"
+    And I click the "Search" button
+    Then I should see the level 3 heading "125 search results for CRN007"
+    And I should see 5 numbered pagination links from 1 to 5 followed by a link Next
+    And I should see the pagination numbers 1 to 20 of 125 results
+    
+    When I click the "Next" link in the pagination links
+    Then the page 2 should be loaded
+    And I should see 5 numbered pagination links from 1 to 5 followed by a link Next
+    Then I should see the pagination numbers 21 to 40 of 125 results
+
+    When I click the "Next" link in the pagination links
+    Then the page 3 should be loaded
+    And I should see 5 numbered pagination links from 1 to 5 followed by a link Next
+    And I should see the pagination numbers 41 to 60 of 125 results
+
+    When I click the "Next" link in the pagination links
+    Then the page 4 should be loaded
+    And I should see the pagination numbers 61 to 80 of 125 results
+    And I should see 5 numbered pagination links from 2 to 6 followed by a link Next
+
+
 
 
 

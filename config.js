@@ -40,6 +40,7 @@ module.exports = {
     snapshotTimes: get('CASE_SNAPSHOT_TIMES', '00:00,08:45,09:45'), // Coma delimited string of snapshot times, earliest - latest
     assetCache: '30d',
     scriptCache: '24h',
+    caseSearchResultPageSize: get('CASE_SEARCH_PAGE_SIZE', 20),
     availableCourts: [
       { code: 'B63AD', name: 'Aberystwyth Magistrates Court' },
       { code: 'B44AG', name: 'Aldershot Magistrates\' Court' },
