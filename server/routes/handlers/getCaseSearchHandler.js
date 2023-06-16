@@ -7,6 +7,14 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
   const { cookies } = req
   const page = req.query.page > 0 ? req.query.page : undefined
 
+  const trackingEvent = {
+    term,
+    type,
+    page,
+    court: cookies && cookies.currentCourt ? cookies.currentCourt : undefined,
+    userError: error
+  }
+
   if (error) {
     res.render('case-search', { searchError: error, term })
     return
@@ -15,13 +23,9 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
   if (term && type) {
     const pageSize = settings.caseSearchResultPageSize
     const data = await searchCases(term, type, page, pageSize)
-    trackEvent('PiCCRNSearchPerformed', {
-      term,
-      type,
-      page,
-      length: data?.data?.items?.length,
-      court: cookies && cookies.currentCourt ? cookies.currentCourt : undefined
-    })
+
+    trackingEvent.length = data?.data?.items?.length
+
     const currentPage = parseInt(req.query.page || 1, 10)
     const templateValues = {
       params: req.params,
@@ -37,6 +41,8 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
     log.warn('Invalid search term/type: ', term, type)
     res.redirect('/')
   }
+
+  trackEvent('PiCCaseSearchPerformed', trackingEvent)
 }
 
 module.exports = getCaseSearchHandler

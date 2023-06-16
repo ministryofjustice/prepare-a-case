@@ -11,20 +11,20 @@ Feature: Case search
     And I should see a button with the label "Search"
     And I should see the text input label "Enter CRN or defendant name."
 
-    When I enter "CRN007" into text input with id "search-term"
+    When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
-    Then I should see the level 3 heading "125 search results for CRN007"
+    Then I should see the level 3 heading "125 search results for C123456"
     And I should see the following table headings
       | Defendant | Probation status | Offence | Last hearing | Next hearing |
     And I should see the following table rows
       | Kara Ayers    | Current  | Theft from the person        | 16 December 2022 | 23 January 2023 |
       | Adam Sandler  | Current  | Theft two from the person    | 16 December 2022 | No record       |
       | Adam Sandler  | Current  | Theft three from the person  | No record        | 23 January 2023 |
-    And I see value "CRN007" in the text input with id "search-term"
+    And I see value "C123456" in the text input with id "search-term"
 
     When I enter "Jeff Bloggs" into text input with id "search-term"
     And I click the "Search" button
-    Then I should see the level 3 heading "125 search results for CRN007"
+    Then I should see the level 3 heading "125 search results for C123456"
     And I should see the following table headings
       | Defendant | Probation status | Offence | Last hearing | Next hearing |
     And I should see the following table rows
@@ -54,12 +54,12 @@ Feature: Case search
     And I should see a button with the label "Search"
     And I should see the text input label "Enter CRN or defendant name."
 
-    When I enter "CRN007" into text input with id "search-term"
+    When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
-    Then I should see the level 3 heading "125 search results for CRN007"
+    Then I should see the level 3 heading "125 search results for C123456"
     And I should see 5 numbered pagination links from 1 to 5 followed by a link Next
     And I should see the pagination numbers 1 to 20 of 125 results
-    
+
     When I click the "Next" link in the pagination links
     Then the page 2 should be loaded
     And I should see 5 numbered pagination links from 1 to 5 followed by a link Next
@@ -75,8 +75,19 @@ Feature: Case search
     And I should see the pagination numbers 61 to 80 of 125 results
     And I should see 5 numbered pagination links from 2 to 6 followed by a link Next
 
+  Scenario: Should handle case search errors
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+    And I should see the level 2 heading "Search"
+    And I should see a button with the label "Search"
+    And I should see the text input label "Enter CRN or defendant name."
 
-
+    When I enter search term "A12345" into search input and click search then I should see error "Enter a CRN in the format one letter followed by 6 numbers, for example A123456."
+    When I enter search term "A12345G" into search input and click search then I should see error "Enter a CRN in the format one letter followed by 6 numbers, for example A123456."
+    When I enter search term " " into search input and click search then I should see error "You must enter a CRN or a person’s name."
+    When I enter search term "A123456" into search input and click search then I should see error "NO_ERROR"
+    When I enter search term "Joe Blogs" into search input and click search then I should see error "NO_ERROR"
 
 
 

@@ -1,7 +1,7 @@
 const getCaseSearchType = searchTerm => {
   let validations = {}
-  if (searchTerm) {
-    const searchTermString = String(searchTerm)
+  if (searchTerm && searchTerm.trim().length > 0) {
+    const searchTermString = String(searchTerm.trim())
     if (searchTermString.length > 650) {
       return { error: 'Name must be less than 650 characters' }
     }

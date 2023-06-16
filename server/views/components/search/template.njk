@@ -1,3 +1,20 @@
+{% if params.searchError %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+            <h2 class="govuk-error-summary__title">
+                There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#error-validate-characters">{{ params.searchError }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
 <section class="pac-filter-card govuk-!-margin-bottom-6">
     <div class = "{{ ' govuk-form-group--error' if params.searchError else '' }}">
         <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Search</h2>
