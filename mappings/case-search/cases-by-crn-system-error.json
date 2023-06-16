@@ -1,12 +1,11 @@
 {
-  "priority": 1,
-  "id": "a4a369a9-abb8-4a6b-b2bf-1db8a5f62e59",
+  "id": "91d20ae3-2f41-45e6-beef-456a8bee90d2",
   "request": {
     "method": "GET",
     "urlPath": "/search",
     "queryParameters": {
       "term": {
-        "matches": "none"
+        "matches": "systemerror"
       }
     }
   },
@@ -14,10 +13,9 @@
     "headers": {
       "Content-Type": "application/json"
     },
-    "status": 200,
+    "status": 500,
     "jsonBody": {
-      "items": [],
-      "totalElements": 0
+      "message": "unexpected error"
     }
   }
 }

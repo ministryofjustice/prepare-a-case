@@ -47,78 +47,106 @@
 
 {% block content %}
 
+    {% if searchError %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+            <h2 class="govuk-error-summary__title">
+                There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#error-validate-characters">{{ searchError }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     {%- from "components/search/macro.njk" import pacSearch -%}
     {{ pacSearch({
         search: search,
-        term: data.term,
-        courtCode: data.params.courtCode
+        term: term,
+        courtCode: data.params.courtCode,
+        searchError: searchError
     }) }}
 
-    <h3 class="govuk-heading-m">{{ data.totalElements if data.totalElements > 0 else 0}} search results for {{ data.term }}</h3>
-    {% set resultSize = data.items | length  %}
-    {% if data.items | length %}
-        {% block table %}
-            {%- from "govuk/components/table/macro.njk" import govukTable -%}
-                {{ govukTable(tableData) }}
-        {% endblock %}
-
-        {% set maxPagesDisplay = 5 %}
-        {% set startNum = currentPage - ((maxPagesDisplay - 1) / 2) %}
-        {% set endNum = currentPage + ((maxPagesDisplay - 1) / 2) %}
-        {% set totalPages = (data.totalElements / pageSize) | round(0, "ceil") %}
-
-        {% if startNum < 1 or totalPages <= maxPagesDisplay %}
-            {% set startNum = 1 %}
-            {% set endNum = maxPagesDisplay %}
-            {% elif endNum > totalPages %}
-            {% set startNum = totalPages - (maxPagesDisplay - 1) %}
+    {% if searchError | length == 0 %}
+        <h3 class="govuk-heading-m">{{ data.totalElements if data.totalElements > 0 else 0}} search results for {{ term }}</h3>
+        {% if data.totalElements == 0 %}
+            <p class="govuk-body">Improve your search by:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>double-checking the spelling</li>
+                <li>removing special characters like hyphens and accent letters</li>
+                <li>searching for a CRN instead of a name</li>
+            </ul>
         {% endif %}
+        {% set resultSize = data.items | length  %}
+        {% if data.items | length %}
+            {% block table %}
+                {%- from "govuk/components/table/macro.njk" import govukTable -%}
+                    {{ govukTable(tableData) }}
+            {% endblock %}
 
-        {% if endNum > totalPages %}
-            {% set endNum = totalPages %}
+            {% set maxPagesDisplay = 5 %}
+            {% set startNum = currentPage - ((maxPagesDisplay - 1) / 2) %}
+            {% set endNum = currentPage + ((maxPagesDisplay - 1) / 2) %}
+            {% set totalPages = (data.totalElements / pageSize) | round(0, "ceil") %}
+
+            {% if startNum < 1 or totalPages <= maxPagesDisplay %}
+                {% set startNum = 1 %}
+                {% set endNum = maxPagesDisplay %}
+                {% elif endNum > totalPages %}
+                {% set startNum = totalPages - (maxPagesDisplay - 1) %}
+            {% endif %}
+
+            {% if endNum > totalPages %}
+                {% set endNum = totalPages %}
+            {% endif %}
+
+            {% set pageItems = [] %}
+            {% for i in range(startNum, endNum + 1) -%}
+                {% set pageItems = (pageItems.push({
+                    text: i + '',
+                    href: '/case-search?term=' + term + '&page=' + i,
+                    selected: currentPage === i
+                }), pageItems) %}
+            {%- endfor %}
+            {% if currentPage === 1 %}
+                {% set previousLink = null %}
+            {% else %}
+                {% set previousLink = {
+                    text: 'Previous',
+                    href: '/case-search?term=' + term + '&page=' + (currentPage - 1)
+                } %}
+            {% endif %}
+
+            {% if currentPage === data.totalPages %}
+                {% set nextLink = null %}
+            {% else %}
+                {% set nextLink = {
+                    text: 'Next',
+                    href: '/case-search?term=' + term + '&page=' + (currentPage + 1)
+                } %}
+            {% endif %}
+
+            {% set toElementCount = (currentPage * pageSize) if (currentPage * pageSize) <= data.totalElements else data.totalElements %}
+
+            {% block pagination %}
+                {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+                {{ mojPagination({
+                    results: {
+                        from: (currentPage - 1) * pageSize + 1,
+                        to: toElementCount,
+                        count: data.totalElements
+                    },
+                    previous: previousLink,
+                    next: nextLink,
+                    items: pageItems
+                }) }}
+            {% endblock %}
         {% endif %}
-
-        {% set pageItems = [] %}
-        {% for i in range(startNum, endNum + 1) -%}
-            {% set pageItems = (pageItems.push({
-                text: i + '',
-                href: '/case-search?term=' + data.term + '&page=' + i,
-                selected: currentPage === i
-            }), pageItems) %}
-        {%- endfor %}
-        {% if currentPage === 1 %}
-            {% set previousLink = null %}
-        {% else %}
-            {% set previousLink = {
-                text: 'Previous',
-                href: '/case-search?term=' + data.term + '&page=' + (currentPage - 1)
-            } %}
-        {% endif %}
-
-        {% if currentPage === data.totalPages %}
-            {% set nextLink = null %}
-        {% else %}
-            {% set nextLink = {
-                text: 'Next',
-                href: '/case-search?term=' + data.term + '&page=' + (currentPage + 1)
-            } %}
-        {% endif %}
-
-        {% set toElementCount = (currentPage * pageSize) if (currentPage * pageSize) <= data.totalElements else data.totalElements %}
-
-        {% block pagination %}
-            {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
-            {{ mojPagination({
-                results: {
-                    from: (currentPage - 1) * pageSize + 1,
-                    to: toElementCount,
-                    count: data.totalElements
-                },
-                previous: previousLink,
-                next: nextLink,
-                items: pageItems
-            }) }}
-        {% endblock %}
     {% endif %}
 
 {% endblock %}

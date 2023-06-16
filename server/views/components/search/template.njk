@@ -1,10 +1,17 @@
 <section class="pac-filter-card govuk-!-margin-bottom-6">
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Search</h2>
-    <form name="pac-search-form" id="pac-search-form" method="get" action="/case-search">
-        <div class="search-group">
-            <label class="govuk-label govuk-!-margin-bottom-3" for="search-term">Enter CRN or defendant name.</label>
-            <input class="govuk-input govuk-!-width-one-third" id="search-term" name="term" type="text" value="{{ params.term }}">
-            <button class="govuk-button govuk-!-margin-bottom-1 govuk-!-margin-left-3" data-module="govuk-button" type="submit">Search</button>
-        </div>
-    </form>
+    <div class = "{{ ' govuk-form-group--error' if params.searchError else '' }}">
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Search</h2>
+        {% if params.searchError %}
+            <p id="more-detail-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span>{{ params.searchError }}
+            </p>
+        {% endif %}
+        <form name="pac-search-form" id="pac-search-form" method="get" action="/case-search">
+            <div class="search-group">
+                <label class="govuk-label govuk-!-margin-bottom-3" for="search-term">Enter CRN or defendant name.</label>
+                <input class="govuk-input govuk-!-width-one-third" id="search-term" name="term" type="text" maxlength="650" value="{{ params.term }}">
+                <button class="govuk-button govuk-!-margin-bottom-1 govuk-!-margin-left-3" data-module="govuk-button" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
 </section>
