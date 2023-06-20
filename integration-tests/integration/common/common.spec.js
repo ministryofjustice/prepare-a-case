@@ -1,4 +1,4 @@
-/* global cy */
+/* global cy expect */
 import { Before, And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import 'cypress-axe'
 import moment from 'moment'
@@ -304,6 +304,12 @@ And('I should see a button with the label {string}', $string => {
   cy.get('.govuk-button').contains($string).should('exist')
 })
 
+And('I should see a link with text Cancel to cancel a draft comment', $string => {
+  cy.get('#caseComments').within(() => {
+    cy.get('.comment-draft-cancel-link').contains('Cancel').should('exist')
+  })
+})
+
 And('I should not see a button with the label {string}', $string => {
   cy.get('.govuk-button').contains($string).should('not.exist')
 })
@@ -376,6 +382,32 @@ And('I enter {string} into text input with id {string}', ($string, $id) => {
 
 And('I see value {string} in the text input with id {string}', ($string, $id) => {
   cy.get(`#${$id}`).should('contain.value', $string)
+})
+
+And('I should see 5 numbered pagination links from {int} to {int} followed by a link Next', ($fromNum, $toNum) => {
+  const nav = cy.get('.moj-pagination .moj-pagination__list')
+
+  for (let i = $fromNum; i <= $toNum; i++) {
+    nav.within(() => {
+      cy.get('.moj-pagination__item').contains(`${i}`).should('exist')
+    })
+  }
+  cy.get('.moj-pagination__item').contains('Next').should('exist')
+})
+
+And('I should see the pagination numbers {int} to {int} of {int} results', ($fromNum, $toNum, $ofNum) => {
+  cy.get('.moj-pagination__results').should('contain.text', `Showing ${$fromNum} to ${$toNum} of ${$ofNum} results`)
+})
+
+And('I click the "Next" link in the pagination links', () => {
+  cy.get('.moj-pagination .moj-pagination__list .moj-pagination__item').contains('Next').click()
+})
+
+Then('the page {int} should be loaded', ($pageNo) => {
+  cy.location().should(location => {
+    const urlParams = new URLSearchParams(location.href)
+    expect(urlParams.get('page')).eq(`${$pageNo}`)
+  })
 })
 
 And('I should not see the key details banner', () => {

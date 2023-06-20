@@ -3,10 +3,17 @@
   // The timer before saving the draft note after the user paused typing
   const debounceTimer = 1000;
 
-  function getAutoSaveHandler(textarea) {
-    const hearingId = textarea.dataset.hearingid
-    let timeoutId;
+  function getCookie(name) {
+    let cookie = {};
+    document.cookie.split(';').forEach(function(el) {
+      let [k,v] = el.split('=');
+      cookie[k.trim()] = v;
+    })
+    return cookie[name];
+  }
 
+  function getAutoSaveHandler(textarea, url, inputDataFormatter) {
+    let timeoutId;
     const noteEventListener = (event) => {
       // If a timer was already started, clear it.
       if (timeoutId) clearTimeout(timeoutId);
@@ -14,7 +21,7 @@
       timeoutId = setTimeout(function () {
         // Make ajax call to save data.
         const xhr = new XMLHttpRequest()
-        xhr.open('POST', 'summary/auto-save-new-note', true)
+        xhr.open('PUT', url, true)
         xhr.setRequestHeader('Content-Type', 'application/json')
         xhr.setRequestHeader('x-csrf-token', window.csrfToken)
         xhr.onload = function () {
@@ -25,8 +32,7 @@
         xhr.send(
           JSON.stringify(
             {
-              note: event.srcElement.value,
-              hearingId
+              ...inputDataFormatter(textarea, event)
             },
           )
         )
@@ -35,19 +41,31 @@
     return noteEventListener
   }
 
-  const setupAutoSave = (textarea) => {
-    textarea.addEventListener('keypress', getAutoSaveHandler(textarea))
+  const setupAutoSaveHearingNote = (textarea) => {
+    textarea.addEventListener('keyup', getAutoSaveHandler(textarea,  'summary/auto-save-new-note', (textarea, event) => ({ note: event.srcElement.value, hearingId: textarea.dataset.hearingid }) ))
   }
 
-  document.querySelectorAll('.auto-save-text').forEach(setupAutoSave)
+  document.querySelectorAll('.auto-save-text').forEach(setupAutoSaveHearingNote)
+
+  const caseCommentsTextArea = document.querySelector('#case-comment');
+  caseCommentsTextArea?.addEventListener('keyup',
+    getAutoSaveHandler(caseCommentsTextArea,  'summary/comments/auto-save-new-comment', (textarea, event) => ({ comment: event.srcElement.value, caseId: textarea.dataset.caseid }) ))
 
 
   // Edit note
 
   const getNotEditHandler = (hearingNoteDisplayContainer, noteEditContainer, noteReadonlyText, noteEditText, editing) => {
+    const trackEvent = (name, properties) => {
+      if (window && window.appInsights && window.appInsights.trackEvent && name) {
+        window.appInsights.trackEvent({ name, properties })
+        window.appInsights.flush()
+
+      }
+    }
     const originalText = noteReadonlyText.innerText
     const handler = (event) => {
       event.preventDefault()
+
       if (editing) {
         noteEditText.value = noteReadonlyText.innerText
         hearingNoteDisplayContainer.setAttribute('hidden', true)
@@ -58,6 +76,12 @@
         hearingNoteDisplayContainer.removeAttribute('hidden')
         noteEditContainer.setAttribute('hidden', true)
       }
+      trackEvent(editing ? 'PiCEditNoteStarted' : 'PiCEditNoteCancel', { 
+          hearingId: noteEditText.dataset.hearingid, 
+          noteId: noteEditText.dataset.noteid,
+          courtCode: getCookie('currentCourt')
+        }
+      )
     }
     return handler
   }

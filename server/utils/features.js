@@ -5,6 +5,8 @@ const { settings } = require('../../config')
 
 const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k', 'brn63n']
 
+const PLYMOUTH_MAGS_COURT_CODE = 'B50KH'
+
 const features = {
   searchFeature: anyOf(
     isEnv('dev', 'preprod')
@@ -17,7 +19,7 @@ const features = {
     allOf(
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableCaseComments'),
-      enabledForCourts('B50KH', 'B05PK'),
+      enabledForCourts(PLYMOUTH_MAGS_COURT_CODE, 'B05PK'),
       enabledForUsers(...settings.caseTrackingPrePilotUsers)
     ),
     allOf(
@@ -25,7 +27,7 @@ const features = {
       mainFeatureToggleEnabled('enableCaseComments'),
       anyOf(
         allOf(
-          enabledForCourts('B50KH'),
+          enabledForCourts(PLYMOUTH_MAGS_COURT_CODE),
           enabledForUsers(...settings.caseTrackingPrePilotUsers)
         ),
         allOf(
@@ -42,14 +44,14 @@ const features = {
     ),
     allOf(
       isEnv('preprod'),
-      enabledForCourts('B50KH', 'B05PK'),
+      enabledForCourts(PLYMOUTH_MAGS_COURT_CODE, 'B05PK'),
       enabledForUsers(...settings.caseTrackingPrePilotUsers)
     ),
     allOf(
       isEnv('prod'),
       anyOf(
         allOf(
-          enabledForCourts('B50KH'),
+          enabledForCourts(PLYMOUTH_MAGS_COURT_CODE),
           enabledForUsers(...settings.caseTrackingPrePilotUsers)
         ),
         allOf(

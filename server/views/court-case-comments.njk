@@ -25,28 +25,41 @@
                     These comments will not be saved to NDelius.
                 </p>
             </div>
+            {% set draftComment = '' %}
+            {% set draftCommentOffset = 0 %}
+            {% for comment in data.caseComments %}
+                {% if comment.draft and comment.createdByUuid === currentUserUuid %}
+                    {% set draftComment = comment.comment %}
+                    {% set draftCommentOffset = 1 %}
+                {% endif %}
+            {% endfor %}
             <form method="post" id="case-comment-form" action="summary/comments">
-                <textarea class="govuk-textarea case-notes"
-                          id="comment" name="comment" rows="5" aria-labelledby="comments-hint"></textarea>
-                <button type="submit" id="save-comments" class="govuk-button case-comments-save-button"
-                        data-module="govuk-button">Save
-                </button>
+                <textarea class="govuk-textarea case-notes" data-caseid="{{ data.caseId }}"
+                          id="case-comment" name="comment" rows="5" aria-labelledby="comments-hint">{{ draftComment }}</textarea>
+                <div class="govuk-button-group">
+                    <button type="submit" id="save-comments" class="govuk-button case-comments-save-button"
+                            data-module="govuk-button">Save
+                    </button>
+                    <a class="govuk-link comment-draft-cancel-link"
+                       href="summary/comments/{{ data.caseId }}/cancel-draft-comment">Cancel</a>
+                </div>
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
             </form>
         </div>
 
-        {% if data.caseComments | length %}
+        {% if data.caseComments | length - draftCommentOffset %}
             <form name="previousCommentsForm" method="post"
                   action="summary/comments/{{ "hideOlderComments" if session.showPreviousComments === data.caseId else "showPreviousComments" }}">
                 <h2 class="govuk-heading-s govuk-!-padding-top-0 govuk-!-margin-bottom-2">Comments</h2>
                 <table class="govuk-table" id="previousComments">
                     <tbody class="govuk-table__body">
                     {% if session.showPreviousComments === data.caseId %}
-                        {% set limitPreviousComments = data.caseComments | length %}
+                        {% set limitPreviousComments = data.caseComments | length - draftCommentOffset %}
                     {% else %}
                         {% set limitPreviousComments = 6 %}
                     {% endif %}
                     {% for comment in data.caseComments | limit(limitPreviousComments) %}
+                        {% if not comment.draft %}
                         <tr class="govuk-table__row">
                             <td class="govuk-table__cell">
                                 <div class="govuk-grid-row">
@@ -65,11 +78,12 @@
                                 </div>
                             </td>
                         </tr>
+                        {% endif %}
                     {% endfor %}
                     </tbody>
                 </table>
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
-                {% if data.caseComments | length > limitPreviousComments %}
+                {% if data.caseComments | length - draftCommentOffset > limitPreviousComments %}
                     <button type="submit" class="govuk-button govuk-button--secondary">Show all previous comments
                     </button>
                 {% endif %}
