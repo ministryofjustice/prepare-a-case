@@ -272,6 +272,159 @@ Feature: Case list filters
 
     And There should be no a11y violations
 
+  Scenario: A user wants to filter the list to show only breached record offenders and quickly clear the selections
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+
+    And I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
+
+    When I click the "Flag" filter button
+    And I select the "true" filter
+    And I click the "Flag" filter button
+    And I click the "Apply filters" button
+
+    Then I should see a count of "63 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Olsen Alexander | {Breach} {Sso} Current | Theft from a shop                        | 2nd | Morning   | 2 |
+      | English Madden  | {Breach} Current       | Attempt theft from the person of another | 2nd | Morning   | 6 |
+
+    And I should see the breach badge
+
+    When I click the "Clear all" link
+
+    Then I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
+
+    And There should be no a11y violations
+
+  Scenario: A user wants to filter the list to show only Common Platform record offenders and quickly clear the selections
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+
+    And I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
+
+    When I click the "Source" filter button
+    And I select the "COMMON_PLATFORM" filter
+    And I click the "Source" filter button
+    And I click the "Apply filters" button
+
+    Then I should see a count of "3 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Guadalupe Hess  | {Possible}       | Assault by beating                       | 1st | Morning | Crown Court 3-1 |
+      | Latoya Kirkland | Previously known | Attempt theft from the person of another | 2nd | Morning | 17              |
+
+    When I click the "Clear all" link
+
+    Then I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
+
+    And There should be no a11y violations
+
+  Scenario: A user wants to filter the list to show only Libra record offenders and quickly clear the selections
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+
+    And I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
+
+    When I click the "Source" filter button
+    And I select the "LIBRA" filter
+    And I click the "Source" filter button
+    And I click the "Apply filters" button
+
+    Then I should see a count of "3 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Charlene Hammond         | Previously known        | Theft from the person of another | 3rd | Afternoon | 10 |
+      | Feli'Cia Villa'Rreali'Ty | Possible NDelius Record | Theft from a shop                | 3rd | Afternoon | 2  |
+
+    When I click the "Clear all" link
+
+    Then I should see a count of "207 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
+
+    And There should be no a11y violations
+
+  Scenario: A user wants to not see the Source filter when all records are from Common Platform
+    Given I am an authenticated user
+    When I navigate to the "cases/2020-01-03" route
+    Then I should be on the "Case list" page
+
+    And I should see a count of "5 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Gill Arnold | Current | Theft from the person of another | Not available | Morning | 1 |
+
+    And I should not see the "Source" filter
+
+    And There should be no a11y violations
+
+  Scenario: A user wants to not see the Source filter when all records are from Libra
+    Given I am an authenticated user
+    When I navigate to the "cases/2020-01-04" route
+    Then I should be on the "Case list" page
+
+    And I should see a count of "5 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Gill Arnold | Current | Theft from the person of another | 3rd | Morning | 1 |
+
+    And I should not see the "Source" filter
+
+    And There should be no a11y violations
+
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
     When I navigate to the "cases" route for today

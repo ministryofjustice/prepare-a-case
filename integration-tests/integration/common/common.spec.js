@@ -454,3 +454,11 @@ And('the page should produce a 404 error', () => {
 And('I should see a tab with text {string}', $string => {
   cy.get('.govuk-tabs__tab').contains($string)
 })
+
+And('I should see the breach badge', () => {
+  cy.get('.moj-badge.moj-badge--black.pac-badge').contains('Breach').should('exist')
+})
+
+And('I should not see the {string} filter', $string => {
+  cy.get('.pac-filter-button').contains($string).should('not.exist')
+})
