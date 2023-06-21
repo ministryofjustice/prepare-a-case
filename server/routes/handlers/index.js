@@ -2,6 +2,7 @@
 
 const {
   getCaseList,
+  getOutcomesList,
   getCase,
   addCaseComment,
   deleteCaseComment,
@@ -28,7 +29,7 @@ const getProbationRecordHandler = require('./getProbationRecordRouteHandler')({ 
 
 const getUserSelectedCourtsHandler = require('./getUserSelectedCourtsHandler')(getUserSelectedCourts)
 
-const getCaseOutcomesRouteHandler = require('./getCaseOutcomesRouteHandler')()
+const getCaseOutcomesRouteHandler = require('./getCaseOutcomesRouteHandler')({ getOutcomesList })
 
 const addCaseCommentRequestHandler = require('./getAddCommentRequestHandler')({ addCaseComment })
 

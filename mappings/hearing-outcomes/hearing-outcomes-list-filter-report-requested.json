@@ -1,0 +1,40 @@
+{
+  "id": "94b0434e-f2f2-43ed-88af-6d73627735a2",
+  "priority": 2,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z0-9]{5})/outcomes",
+    "queryParameters": {
+      "state": {
+        "matches": "NEW"
+      },
+      "hearingOutcomeType": {
+        "equalTo": "Report requested"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "path": "hearing-outcomes-list-filter-report-requested.json",
+      "cases": [
+        {
+          "hearingOutcomeType": "Report requested",
+          "hearingId": "7e0f9cb9-b492-4657-9028-a86de1301e25",
+          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
+          "hearingDate": "{{now format='YYYY-MM-DD'}}T09:30:00",
+          "probationStatus": "Current",
+          "offences": [
+            "Offence title one",
+            "Offence title two",
+            "Loooooooooooooooooooooooooooooooooong offence title three"
+          ],
+          "defendantName": "Gill Arnold"
+        }
+      ]
+    }
+  }
+}

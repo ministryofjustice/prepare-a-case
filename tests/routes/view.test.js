@@ -47,6 +47,13 @@ describe('Routes', () => {
     }
   })
 
+  jest.spyOn(caseService, 'getOutcomesList').mockImplementation(function () {
+    return {
+      cases: [],
+      filters: []
+    }
+  })
+
   jest.spyOn(caseService, 'getCase').mockImplementation(function () {
     return caseResponse
   })

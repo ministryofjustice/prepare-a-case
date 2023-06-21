@@ -1,0 +1,28 @@
+{
+  "id": "94b0434e-f2f2-43ed-88af-6d73627735a3",
+  "priority": 5,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z0-9]{5})/outcomes",
+    "queryParameters": {
+      "state": {
+        "matches": "NEW"
+      },
+      "hearingOutcomeType": {
+        "and": [
+          { "doesNotMatch": "Report requested" },
+          { "doesNotMatch": "Report requested,Adjourned" }
+          ]
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "cases": []
+    }
+  }
+}

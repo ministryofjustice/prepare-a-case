@@ -1,0 +1,55 @@
+{
+  "id": "94b0434e-f2f2-43ed-88af-6d73627735a1",
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z0-9]{5})/outcomes",
+    "queryParameters": {
+      "state": {
+        "matches": "NEW"
+      },
+      "hearingOutcomeType": {
+        "or": [
+          { "matches": "" },
+          { "contains": "Report requested,Adjourned" }
+        ]
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "cases": [
+        {
+          "hearingOutcomeType": "Report requested",
+          "hearingId": "7e0f9cb9-b492-4657-9028-a86de1301e25",
+          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
+          "hearingDate": "{{now format='YYYY-MM-DD'}}T09:30:00",
+          "probationStatus": "Current",
+          "offences": [
+            "Offence title one",
+            "Offence title two",
+            "Loooooooooooooooooooooooooooooooooong offence title three"
+          ],
+          "defendantName": "Gill Arnold"
+        },
+        {
+          "hearingOutcomeType": "Adjourned",
+          "hearingId": "9b9a6ab6-ef6d-485a-a8b4-b79b67e5b1f8",
+          "defendantId": "82bfc40d-389a-46ba-81e1-0829a5fbf6c8",
+          "hearingDate": "{{now offset='2 months' format='YYYY-MM-DD'}}T09:30:00",
+          "probationStatus": "Previously known",
+          "offences": [
+            "Attempt theft from the person of another",
+            "Theft from the person of another",
+            "Attempt theft from the person of another"
+          ],
+          "defendantName": "English Madden"
+        }
+      ]
+    }
+  }
+}

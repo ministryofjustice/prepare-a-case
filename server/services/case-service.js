@@ -1,5 +1,6 @@
 const { request, update, httpDelete, create } = require('./utils/request')
 const getCaseListFilters = require('../utils/getCaseListFilters')
+const getOutcomeListFilterSorts = require('../utils/geOutcomesListFilterSorts')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
 
@@ -83,10 +84,48 @@ const createCaseService = (apiUrl) => {
       }
     },
 
+    getOutcomesList: async (courtCode, selectedFilterSorts, subsection) => {
+      const { filters, sorts } = getOutcomeListFilterSorts(selectedFilterSorts)
+
+      const urlMap = new URLSearchParams({
+        state: 'NEW'
+      })
+
+      filters.forEach(filter => {
+        const checkedFilters = filter.items.filter(item => item.checked).map(item => item.value)
+        urlMap.set(filter.id, checkedFilters)
+      })
+
+      sorts.forEach(sort => {
+        urlMap.append('sortBy', sort.id)
+        urlMap.append('order', sort.value)
+      })
+
+      const response = await request(`${apiUrl}/court/${courtCode}/outcomes?${urlMap}`)
+      if (!isHttpSuccess(response)) {
+        return getInternalServerErrorResponse(response)
+      }
+      const { data } = response
+      const casesToResult = data.cases
+      const casesInProgress = []
+      const casesResulted = []
+
+      const filteredCases = subsection === 'in-progress' ? casesInProgress : subsection === 'resulted-cases' ? casesResulted : casesToResult
+
+      return {
+        ...data,
+        totalCount: casesToResult.length,
+        inProgressCount: casesInProgress.length,
+        resultedCount: casesResulted.length,
+        filters,
+        sorts,
+        cases: filteredCases
+      }
+    },
+
     searchCases: async (term, type, page, pageSize) => {
       try {
-        const response = await request(`${apiUrl}/search`, { term, type, page, size: pageSize })
-        return response
+        return await request(`${apiUrl}/search`, { term, type, page, size: pageSize })
       } catch (e) {
         if (e.response && e.response.status === 404) {
           return { data: {} }

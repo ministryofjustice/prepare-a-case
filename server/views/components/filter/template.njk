@@ -3,6 +3,10 @@
 <section class="pac-filter-card govuk-!-margin-bottom-6" data-test="pac-filter-card">
     <form name="pac-filter-form" id="pac-filter-form" method="post">
 
+        {% for sort in params.sorts %}
+            <input type="hidden" id="sort-{{ sort.id }}" name="{{ sort.id }}" value="{{ sort.value }}" />
+        {% endfor %}
+
         <h2 class="govuk-heading-s">Filters</h2>
 
         {% for filter in params.filters %}
