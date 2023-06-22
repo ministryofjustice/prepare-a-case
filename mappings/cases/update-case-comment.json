@@ -1,0 +1,11 @@
+{
+  "id": "3919691e-7e28-4ce6-8c86-3f81e7c70067",
+  "priority": 5,
+  "request": {
+    "method": "PUT",
+    "urlPathPattern": "/cases/.*/comments/(0|[1-9][0-9]*)"
+  },
+  "response": {
+    "status": 200
+  }
+}
