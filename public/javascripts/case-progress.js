@@ -147,4 +147,29 @@
     })
   }
   // ---- Case Workflow add hearing outcome END
+
+  // --- case comments edit START
+  document.querySelector('#caseComments')?.addEventListener('click', (event) => {
+    const eventClassList = event.target.classList;
+    if (!eventClassList.contains('case-comment-edit') && !eventClassList.contains('case-comment-edit-cancel')) return
+
+    event.preventDefault()
+    const commentId = event.target.dataset.commentid
+    const commentRow = document.querySelector(`#case-comment-row-${commentId}`)
+
+    const commentDisplayContainer = commentRow.querySelector(`#case-comment-display-${commentId}`);
+    const commentEditContainer = commentRow.querySelector(`#case-comment-edit-${commentId}`)
+
+    if (eventClassList.contains('case-comment-edit')) {
+      commentRow.querySelector(`#case-comment-edit-textarea-${commentId}`).value = commentRow.querySelector(`#case-comments-comment-display-${commentId}`).innerText
+      commentDisplayContainer.classList.add('govuk-!-display-none')
+      commentEditContainer.classList.remove('govuk-!-display-none')
+    } else if (eventClassList.contains('case-comment-edit-cancel')) {
+      commentDisplayContainer.classList.remove('govuk-!-display-none')
+      commentEditContainer.classList.add('govuk-!-display-none')
+    } else {
+      return
+    }
+  })
+  // --- case comments edit END
 })()
