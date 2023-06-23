@@ -36,11 +36,19 @@
                 src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", // The SDK URL Source
                 crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
                 cfg: { // Application Insights Configuration
-                    instrumentationKey:"{{ instrumentationKey }}",
-                    ingestionendpoint: 'https://northeurope-0.in.applicationinsights.azure.com/',
-                    liveendpoint: 'https://northeurope.livediagnostics.monitor.azure.com/',
-                    autoTrackPageVisitTime: true
+                  instrumentationKey:"{{ instrumentationKey }}",
+                  ingestionendpoint: 'https://northeurope-0.in.applicationinsights.azure.com/',
+                  liveendpoint: 'https://northeurope.livediagnostics.monitor.azure.com/',
+                  autoTrackPageVisitTime: true
                 }});
+
+                window.appInsights = appInsights
+
+                appInsights.queue.push(function () {
+                  appInsights.addTelemetryInitializer(function (envelope) {
+                    envelope.tags["ai.cloud.role"] = "prepare-a-case";
+                  })
+                })
             </script>
           {% endif %}
         <!-- Global site tag (gtag.js) - Google Analytics -->
