@@ -292,8 +292,8 @@ Feature: Case list
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
     And I should see the following table rows
-      | Gill Arnold    | Current          | Theft from the person of another | 3rd | Morning | 1 |
-      | Cornelia McCoy | Previously known | Assault by beating               | 2nd | Morning | 1 |
+      | Gill Arnold    | Current          | Theft from the person of another | Not available | Morning | 1 |
+      | Cornelia McCoy | Previously known | Assault by beating               | Not available | Morning | 1 |
 
     And I should see link "Gill Arnold" with href "/hearing/7e0f9cb9-b492-4657-9028-a86de1301e25/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
     And I should see link "Cornelia McCoy" with href "/hearing/680a6d4a-4588-45dc-ac85-61fc556d06e9/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
