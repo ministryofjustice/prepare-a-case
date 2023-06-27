@@ -380,6 +380,39 @@ And('I enter {string} into text input with id {string}', ($string, $id) => {
   cy.get(`#${$id}`).type($string)
 })
 
+And('I enter invalid search term into search input and click search then I should see appropriate error', ($data) => {
+  let $searchTerm, $expectedError
+  $data.raw().forEach((row) => {
+    $searchTerm = row[0].trim() === 'EMPTY' ? '' : row[0]
+    $expectedError = row[1]
+
+    cy.get('#search-term').type($searchTerm)
+    cy.get('.govuk-button').contains('Search').click()
+    cy.get('.govuk-error-summary').within(() => {
+      cy.get('h2').should('contain.text', 'There is a problem')
+      cy.get('a').should('have.text', $expectedError)
+    })
+    cy.get('.govuk-form-group--error .govuk-error-message').should('contain.text', `Error:${$expectedError}`)
+  })
+})
+
+When('I enter search term {string} into search input and click search then I should see error {string}', ($searchTerm, $expectedError) => {
+  cy.get('#search-term').clear()
+  cy.get('#search-term').type($searchTerm)
+  cy.get('.govuk-button').contains('Search').click()
+
+  if ($expectedError === 'NO_ERROR') {
+    cy.get('.govuk-error-summary').should('not.exist')
+    cy.get('.govuk-form-group--error .govuk-error-message').should('not.exist')
+  } else {
+    cy.get('.govuk-error-summary').within(() => {
+      cy.get('h2').should('contain.text', 'There is a problem')
+      cy.get('a').should('have.text', $expectedError)
+    })
+    cy.get('.govuk-form-group--error .govuk-error-message').should('contain.text', `Error:${$expectedError}`)
+  }
+})
+
 And('I see value {string} in the text input with id {string}', ($string, $id) => {
   cy.get(`#${$id}`).should('contain.value', $string)
 })

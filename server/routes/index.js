@@ -27,7 +27,8 @@ const {
   cancelHearingNoteDraftHandler,
   addHearingOutcomeHandler,
   autoSaveCaseCommentHandler,
-  cancelCaseCommentDraftHandler
+  cancelCaseCommentDraftHandler,
+  updateCaseCommentHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -289,6 +290,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.put('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/auto-save-new-comment', defaults, catchErrors(autoSaveCaseCommentHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:caseId/cancel-draft-comment', defaults, catchErrors(cancelCaseCommentDraftHandler))
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/publish-edited-comment', defaults, catchErrors(updateCaseCommentHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(addHearingNoteRequestHandler))
 
