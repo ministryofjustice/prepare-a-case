@@ -9,7 +9,7 @@ const isHttpSuccess = response => {
 
 const getInternalServerErrorResponse = res => ({ isError: true, status: res?.status || 500 })
 
-const defaultFilterMatcher = (courtCase, filterObj, item) => courtCase[filterObj.id].toString().toLowerCase() === item.value.toString().toLowerCase()
+const defaultFilterMatcher = (courtCase, filterObj, item) => courtCase[filterObj.id] ? courtCase[filterObj.id].toString().toLowerCase() === item.value.toString().toLowerCase() : false
 
 const createCaseService = (apiUrl) => {
   return {

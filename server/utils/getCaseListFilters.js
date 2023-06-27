@@ -32,9 +32,18 @@ module.exports = (caseListData, selectedFilters) => {
     }
   })
 
-  const caseListFilters = [{ id: 'probationStatus', label: 'Probation status', items: probationStatuses },
+  const caseListFilters = [
+    { id: 'probationStatus', label: 'Probation status', items: probationStatuses },
     { id: 'courtRoom', label: 'Courtroom', items: courtRooms, matcher: (courtCase, filter) => getNormalisedCourtRoom(courtCase.courtRoom) === filter.label },
-    { id: 'session', label: 'Session', items: sessions }]
+    { id: 'session', label: 'Session', items: sessions },
+    { id: 'breach', label: 'Flag', items: [{ label: 'Breach', value: 'true' }] }
+  ]
+
+  const availableSources = [...new Set(caseListData.filter(item => item.source !== undefined).map(item => item.source))]
+
+  if (availableSources.length > 1) {
+    caseListFilters.splice(3, 0, { id: 'source', label: 'Source', items: [{ label: 'Common Platform', value: 'COMMON_PLATFORM' }, { label: 'Libra', value: 'LIBRA' }] })
+  }
 
   // Ensure selected filters are type Array
   if (selectedFilters) {

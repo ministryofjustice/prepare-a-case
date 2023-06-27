@@ -3,13 +3,19 @@
   background-color: govuk-colour("light-grey");
   padding: 15px;
   @include govuk-clearfix();
+  .govuk-heading-s {
+    margin-bottom: 5px;
+    @media (min-width: 40.0625em) {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .pac-filter-container {
   display: inline-block;
   float: left;
   height: 37px;
-  margin: 0 15px 0 0;
+  margin: 10px 15px 0 0;
   min-width: 200px;
   @include govuk-clearfix();
 }
@@ -58,6 +64,7 @@
   text-align: left;
   height: 35px;
   background-color: govuk-colour("white");
+  text-decoration: none;
 
   &--selected {
     @include govuk-typography-weight-bold;
@@ -113,7 +120,7 @@ body.js-enabled {
 .pac-apply-filters-button {
   display: inline-block;
   padding: 5px 25px;
-  margin: 0;
+  margin: 10px 0 0 0;
 }
 
 body:not(.js-enabled) {

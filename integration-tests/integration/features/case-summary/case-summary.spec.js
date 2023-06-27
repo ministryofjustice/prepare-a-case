@@ -4,10 +4,6 @@ import 'cypress-axe'
 import { And, Then, When } from 'cypress-cucumber-preprocessor/steps'
 import { getMonthsAndDays } from '../../../../server/routes/middleware/defaults'
 
-And('I should see the breach badge', () => {
-  cy.get('.moj-badge.moj-badge--black.pac-badge').contains('Breach').should('exist')
-})
-
 And('I should see {int} previous orders', $int => {
   cy.get('#previousOrders').within(() => {
     cy.get('tr').should('have.length', $int)
