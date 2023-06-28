@@ -28,7 +28,10 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
 
     const currentPage = parseInt(req.query.page || 1, 10)
     const templateValues = {
-      params: req.params,
+      params: {
+        ...req.params,
+        courtCode: req.cookies.currentCourt
+      },
       data: {
         ...data.data
       },
