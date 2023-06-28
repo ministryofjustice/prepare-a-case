@@ -2,6 +2,9 @@ const getCaseSearchType = searchTerm => {
   let validations = {}
   if (searchTerm && searchTerm.trim().length > 0) {
     const searchTermString = String(searchTerm.trim())
+    if (!searchTermString.match(/^[A-Za-z\d\s]+$/)) {
+      return { error: 'CRNs and names can only contain numbers 0 to 9 and letters A to Z.' }
+    }
     if (searchTermString.length > 650) {
       return { error: 'Name must be less than 650 characters' }
     }
