@@ -532,9 +532,9 @@ Feature: Case summary
       | Community Order/SSO Breach | Breach Summons Issued           | 26 Dec 2014 |
       | Community Order/SSO Breach | Completed - Amended & Continued | 26 Nov 2013 |
 
-    And I should see link "Community Order/SSO Breach" in position 2 with href "1361422142/breach/12345"
-    And I should see link "Community Order/SSO Breach" in position 3 with href "1361422142/breach/54321"
-    And I should see link "Community Order/SSO Breach" in position 4 with href "1361422142/breach/98765"
+    And I should see link "Community Order/SSO Breach" in position 3 with href "1361422142/breach/12345"
+    And I should see link "Community Order/SSO Breach" in position 4 with href "1361422142/breach/54321"
+    And I should see link "Community Order/SSO Breach" in position 5 with href "1361422142/breach/98765"
 
     And I should see the level 2 heading "Attendance"
 
