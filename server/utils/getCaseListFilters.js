@@ -1,4 +1,6 @@
 const { getNormalisedCourtRoom } = require('../routes/helpers')
+const features = require('../utils/features')
+
 module.exports = (caseListData, selectedFilters) => {
   const availableProbationStatuses = [...new Set(caseListData.map(item => item.probationStatus))]
   const probationStatuses = []
@@ -35,14 +37,17 @@ module.exports = (caseListData, selectedFilters) => {
   const caseListFilters = [
     { id: 'probationStatus', label: 'Probation status', items: probationStatuses },
     { id: 'courtRoom', label: 'Courtroom', items: courtRooms, matcher: (courtCase, filter) => getNormalisedCourtRoom(courtCase.courtRoom) === filter.label },
-    { id: 'session', label: 'Session', items: sessions },
-    { id: 'breach', label: 'Flag', items: [{ label: 'Breach', value: 'true' }] }
+    { id: 'session', label: 'Session', items: sessions }
   ]
 
-  const availableSources = [...new Set(caseListData.filter(item => item.source !== undefined).map(item => item.source))]
+  if (features.advancedFilters.isEnabled({ court: undefined, username: undefined })) {
+    caseListFilters.push({ id: 'breach', label: 'Flag', items: [{ label: 'Breach', value: 'true' }] })
 
-  if (availableSources.length > 1) {
-    caseListFilters.splice(3, 0, { id: 'source', label: 'Source', items: [{ label: 'Common Platform', value: 'COMMON_PLATFORM' }, { label: 'Libra', value: 'LIBRA' }] })
+    const availableSources = [...new Set(caseListData.filter(item => item.source !== undefined).map(item => item.source))]
+
+    if (availableSources.length > 1) {
+      caseListFilters.splice(3, 0, { id: 'source', label: 'Source', items: [{ label: 'Common Platform', value: 'COMMON_PLATFORM' }, { label: 'Libra', value: 'LIBRA' }] })
+    }
   }
 
   // Ensure selected filters are type Array
