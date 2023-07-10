@@ -1,6 +1,6 @@
 const { request, update, httpDelete, create } = require('./utils/request')
 const getCaseListFilters = require('../utils/getCaseListFilters')
-const getOutcomeListFilterSorts = require('../utils/geOutcomesListFilterSorts')
+const getOutcomeListFilterSorts = require('../utils/getOutcomesListFilterSorts')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
 
@@ -87,21 +87,36 @@ const createCaseService = (apiUrl) => {
     getOutcomesList: async (courtCode, selectedFilterSorts, subsection) => {
       const { filters, sorts } = getOutcomeListFilterSorts(selectedFilterSorts)
 
-      const urlMap = new URLSearchParams({
+      const filterMap = {
+        'Probation sentence': 'PROBATION_SENTENCE',
+        'Non-probation sentence': 'NON_PROBATION_SENTENCE',
+        'Report requested': 'REPORT_REQUESTED',
+        Adjourned: 'ADJOURNED',
+        'Committed to Crown': 'COMMITTED_TO_CROWN',
+        'Crown plus PSR': 'CROWN_PLUS_PSR',
+        Other: 'OTHER'
+      }
+
+      const paramMap = new URLSearchParams({
         state: 'NEW'
       })
 
-      filters.forEach(filter => {
-        const checkedFilters = filter.items.filter(item => item.checked).map(item => item.value)
-        urlMap.set(filter.id, checkedFilters)
-      })
+      filters.forEach(filter => filter.items.filter(item => item.checked).forEach(item => {
+        paramMap.append(filter.id, filterMap[item.value])
+      }))
+
+      const allowedSortValues = { ascending: 'ASC', descending: 'DESC' }
 
       sorts.forEach(sort => {
-        urlMap.append('sortBy', sort.id)
-        urlMap.append('order', sort.value)
+        if (sort.value !== 'none' && allowedSortValues[sort.value]) {
+          paramMap.append('sortBy', sort.id)
+          paramMap.append('order', allowedSortValues[sort.value])
+        }
       })
 
-      const response = await request(`${apiUrl}/court/${courtCode}/outcomes?${urlMap}`)
+      const urlString = `${apiUrl}/courts/${courtCode}/hearing-outcomes?${paramMap}`
+
+      const response = await request(urlString)
       if (!isHttpSuccess(response)) {
         return getInternalServerErrorResponse(response)
       }

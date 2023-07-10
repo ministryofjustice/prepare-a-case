@@ -21,7 +21,7 @@
 
     { text: ('
       <button id="button-hearing-outcome-sort" type="button" data-sort="' + params.hearingDateSort + '"
-          aria-controls="button-hearing-outcome-sort">Hearing date
+          aria-controls="button-hearing-outcome-sort" class="pac-sort-button">Hearing date
       </button>
     ') | safe,
       format: 'numeric',
@@ -109,7 +109,7 @@
     {%- from "components/filter/macro.njk" import pacFilter -%}
     {{ pacFilter({
       filters: params.filters,
-      sorts: params.sorts
+      hiddenInputs: params.sorts
     }) }}
   {% endif %}
 

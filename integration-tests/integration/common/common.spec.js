@@ -304,7 +304,7 @@ And('I should see a button with the label {string}', $string => {
   cy.get('.govuk-button').contains($string).should('exist')
 })
 
-And('I should see a link with text Cancel to cancel a draft comment', $string => {
+And('I should see a link with text Cancel to cancel a draft comment', () => {
   cy.get('#caseComments').within(() => {
     cy.get('.comment-draft-cancel-link').contains('Cancel').should('exist')
   })
@@ -526,4 +526,11 @@ And('I should see the breach badge', () => {
 
 And('I should not see the {string} filter', $string => {
   cy.get('.pac-filter-button').contains($string).should('not.exist')
+})
+
+And('I should see the {string} query have the value {string}', ($string, $value) => {
+  cy.location('search').then(query => {
+    const urlParams = new URLSearchParams(query)
+    expect(urlParams.get($string)).eq($value)
+  })
 })

@@ -392,9 +392,38 @@ describe('Routes', () => {
     return response
   })
 
-  it('should route to the outcomes page', async () => {
+  it('outcomes list route should call the case service to fetch outcome list data', async () => {
     return request(app).get('/B14LO/outcomes').then(response => {
       expect(response.statusCode).toEqual(200)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', {}, undefined)
+    })
+  })
+
+  it('outcomes list route should call the case service to filter outcome list data', async () => {
+    return request(app).get('/B14LO/outcomes?hearingOutcomeType=Adjourned').then(response => {
+      expect(response.statusCode).toEqual(200)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingOutcomeType: 'Adjourned' }, undefined)
+    })
+  })
+
+  it('outcomes list route should call the case service to sort outcome list data', async () => {
+    return request(app).get('/B14LO/outcomes?hearingDate=ascending').then(response => {
+      expect(response.statusCode).toEqual(200)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingDate: 'ascending' }, undefined)
+    })
+  })
+
+  it('outcomes list route should call the case service to filter & sort outcome list data', async () => {
+    return request(app).get('/B14LO/outcomes?hearingDate=ascending&hearingOutcomeType=Adjourned').then(response => {
+      expect(response.statusCode).toEqual(200)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingOutcomeType: 'Adjourned', hearingDate: 'ascending' }, undefined)
+    })
+  })
+
+  it('outcomes list route should call the case service to filter outcome list data with multiple filters', async () => {
+    return request(app).get('/B14LO/outcomes?hearingOutcomeType=Report+requested&hearingOutcomeType=Adjourned').then(response => {
+      expect(response.statusCode).toEqual(200)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingOutcomeType: ['Report requested', 'Adjourned'] }, undefined)
     })
   })
 })

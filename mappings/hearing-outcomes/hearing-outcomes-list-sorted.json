@@ -1,12 +1,15 @@
 {
-  "id": "94b0434e-f2f2-43ed-88af-6d73627735a4",
-  "priority": 6,
+  "id": "94b0434e-f2f2-43ed-88af-6d73627735a6",
+  "priority": 1,
   "request": {
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
-      "hearingOutcomeType": {
-        "matches": "REPORT_REQUESTED"
+      "sortBy": {
+        "matches": "hearingDate"
+      },
+      "order": {
+        "matches": "DESC"
       }
     }
   },
@@ -17,6 +20,19 @@
     "status": 200,
     "jsonBody": {
       "cases": [
+        {
+          "hearingOutcomeType": "Adjourned",
+          "hearingId": "9b9a6ab6-ef6d-485a-a8b4-b79b67e5b1f8",
+          "defendantId": "82bfc40d-389a-46ba-81e1-0829a5fbf6c8",
+          "hearingDate": "2023-09-05T09:30:00",
+          "probationStatus": "Previously known",
+          "offences": [
+            "Attempt theft from the person of another",
+            "Theft from the person of another",
+            "Attempt theft from the person of another"
+          ],
+          "defendantName": "English Madden"
+        },
         {
           "hearingOutcomeType": "Report requested",
           "hearingId": "7e0f9cb9-b492-4657-9028-a86de1301e25",
