@@ -86,7 +86,9 @@ Feature: Case search
     When I enter search term "A12345" into search input and click search then I should see error "Enter a CRN in the format one letter followed by 6 numbers, for example A123456."
     When I enter search term "A12345G" into search input and click search then I should see error "Enter a CRN in the format one letter followed by 6 numbers, for example A123456."
     When I enter search term " " into search input and click search then I should see error "You must enter a CRN or a person’s name."
-    When I enter search term "o’hara" into search input and click search then I should see error "CRNs and names can only contain numbers 0 to 9 and letters A to Z."
+    When I enter search term "o’hara" into search input and click search then I should see error "CRNs and names can only contain numbers 0 to 9, letters A to Z, hyphens and apostrophes."
+    When I enter search term "o'hara" into search input and click search then I should see error "NO_ERROR"
+    When I enter search term "o-hara" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "A123456" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "Joe Blogs" into search input and click search then I should see error "NO_ERROR"
 
