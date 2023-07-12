@@ -13,7 +13,7 @@ describe('getCaseSearchType', () => {
 
   const CRN_ERROR = 'Enter a CRN in the format one letter followed by 6 numbers, for example A123456.'
   const MISSING_CRN_ERROR = 'You must enter a CRN or a person’s name.'
-  const ERROR_ONLY_ALPHANUMERIC = 'CRNs and names can only contain numbers 0 to 9 and letters A to Z.'
+  const ERROR_ONLY_ALPHANUMERIC = 'CRNs and names can only contain numbers 0 to 9, letters A to Z, hyphens and apostrophes.'
   it.each([
     ['C12345', CRN_ERROR],
     ['C12345D', CRN_ERROR],
@@ -24,6 +24,8 @@ describe('getCaseSearchType', () => {
     ['a'.repeat(651), 'Name must be less than 650 characters'],
     ['a'.repeat(650), undefined],
     ['o’hara', ERROR_ONLY_ALPHANUMERIC],
+    ['o\'hara', undefined],
+    ['o-hara', undefined],
     ['name & name', ERROR_ONLY_ALPHANUMERIC]
   ])('given search term %s should return error for invalid input', (input, expectedError) => {
     expect(getCaseSearchType(input).error).toEqual(expectedError)
