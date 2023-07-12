@@ -11,6 +11,7 @@ Feature: Case list
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
+    And I should see phase banner link "report a bug" with href "https://docs.google.com/forms/d/e/1FAIpQLSfLqoIFzPIivFNJwCvQPcw6L_fUkbTY6RNqgzrIpN4XGKBqpA/viewform?pli=1"
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should see the current day as "Today"

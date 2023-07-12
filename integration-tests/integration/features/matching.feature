@@ -13,6 +13,7 @@ Feature: Matching defendants to nDelius records
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
+    And I should see phase banner link "report a bug" with href "https://docs.google.com/forms/d/e/1FAIpQLSfLqoIFzPIivFNJwCvQPcw6L_fUkbTY6RNqgzrIpN4XGKBqpA/viewform?pli=1"
 
     And I should see the heading "Defendants with possible NDelius records"
 
@@ -25,8 +26,8 @@ Feature: Matching defendants to nDelius records
       | Guadalupe Hess          | 3 | Review records |
       | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
 
-    And I should see link "Review records" in position 2 with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
-    And I should see link "Review records" in position 3 with href "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85"
+    And I should see link "Review records" in position 3 with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
+    And I should see link "Review records" in position 4 with href "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85"
 
     And There should be no a11y violations
 
