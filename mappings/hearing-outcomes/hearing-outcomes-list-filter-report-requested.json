@@ -5,7 +5,7 @@
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
-      "hearingOutcomeType": {
+      "outcomeType": {
         "matches": "REPORT_REQUESTED"
       }
     }
@@ -18,7 +18,8 @@
     "jsonBody": {
       "cases": [
         {
-          "hearingOutcomeType": "Report requested",
+          "hearingOutcomeType": "REPORT_REQUESTED",
+          "hearingOutcomeDescription": "Report requested",
           "hearingId": "7e0f9cb9-b492-4657-9028-a86de1301e25",
           "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "hearingDate": "2023-07-05T09:30:00",

@@ -12,6 +12,8 @@ const getInternalServerErrorResponse = res => ({ isError: true, status: res?.sta
 
 const defaultFilterMatcher = (courtCase, filterObj, item) => courtCase[filterObj.id] ? courtCase[filterObj.id].toString().toLowerCase() === item.value.toString().toLowerCase() : false
 
+const allowedSortValues = ['ASC', 'DESC']
+
 const createCaseService = (apiUrl) => {
   return {
     getCaseHistory: async (caseId) => {
@@ -87,30 +89,18 @@ const createCaseService = (apiUrl) => {
     getOutcomesList: async (courtCode, selectedFilterSorts, subsection) => {
       const { filters, sorts } = getOutcomeListFilterSorts(selectedFilterSorts)
 
-      const filterMap = {
-        'Probation sentence': 'PROBATION_SENTENCE',
-        'Non-probation sentence': 'NON_PROBATION_SENTENCE',
-        'Report requested': 'REPORT_REQUESTED',
-        Adjourned: 'ADJOURNED',
-        'Committed to Crown': 'COMMITTED_TO_CROWN',
-        'Crown plus PSR': 'CROWN_PLUS_PSR',
-        Other: 'OTHER'
-      }
-
       const paramMap = new URLSearchParams({
         state: 'NEW'
       })
 
       filters.forEach(filter => filter.items.filter(item => item.checked).forEach(item => {
-        paramMap.append(filter.id, filterMap[item.value])
+        paramMap.append(filter.id, item.value)
       }))
 
-      const allowedSortValues = { ascending: 'ASC', descending: 'DESC' }
-
       sorts.forEach(sort => {
-        if (sort.value !== 'none' && allowedSortValues[sort.value]) {
+        if (sort.value !== 'NONE' && allowedSortValues.includes(sort.value)) {
           paramMap.append('sortBy', sort.id)
-          paramMap.append('order', allowedSortValues[sort.value])
+          paramMap.append('order', sort.value)
         }
       })
 

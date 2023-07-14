@@ -400,30 +400,30 @@ describe('Routes', () => {
   })
 
   it('outcomes list route should call the case service to filter outcome list data', async () => {
-    return request(app).get('/B14LO/outcomes?hearingOutcomeType=Adjourned').then(response => {
+    return request(app).get('/B14LO/outcomes?outcomeType=ADJOURNED').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingOutcomeType: 'Adjourned' }, undefined)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: 'ADJOURNED' }, undefined)
     })
   })
 
   it('outcomes list route should call the case service to sort outcome list data', async () => {
-    return request(app).get('/B14LO/outcomes?hearingDate=ascending').then(response => {
+    return request(app).get('/B14LO/outcomes?hearingDate=ASC').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingDate: 'ascending' }, undefined)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingDate: 'ASC' }, undefined)
     })
   })
 
   it('outcomes list route should call the case service to filter & sort outcome list data', async () => {
-    return request(app).get('/B14LO/outcomes?hearingDate=ascending&hearingOutcomeType=Adjourned').then(response => {
+    return request(app).get('/B14LO/outcomes?hearingDate=ASC&outcomeType=ADJOURNED').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingOutcomeType: 'Adjourned', hearingDate: 'ascending' }, undefined)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: 'ADJOURNED', hearingDate: 'ASC' }, undefined)
     })
   })
 
   it('outcomes list route should call the case service to filter outcome list data with multiple filters', async () => {
-    return request(app).get('/B14LO/outcomes?hearingOutcomeType=Report+requested&hearingOutcomeType=Adjourned').then(response => {
+    return request(app).get('/B14LO/outcomes?outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingOutcomeType: ['Report requested', 'Adjourned'] }, undefined)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] }, undefined)
     })
   })
 })

@@ -34,7 +34,7 @@ describe('getCaseOutcomesRouteHandler', () => {
       totalCount: 4,
       inProgressCount: 2,
       resultedCount: 2,
-      filters: [{ id: 'hearingOutcomeType', label: 'Outcome type', items }],
+      filters: [{ id: 'outcomeType', label: 'Outcome type', items }],
       sorts: [{ label: 'Hearing date', value: 'hearingDate' }],
       cases: [{}, {}, {}, {}]
     })

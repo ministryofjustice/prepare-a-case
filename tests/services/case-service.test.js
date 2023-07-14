@@ -434,21 +434,21 @@ describe('Case service', () => {
   describe('getOutcomesList', () => {
     const courtCode = 'SHF'
     const expected1 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW`
-    const expected2 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&hearingOutcomeType=ADJOURNED`
+    const expected2 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=ADJOURNED`
     const expected3 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&sortBy=hearingDate&order=DESC`
-    const expected4 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&hearingOutcomeType=ADJOURNED&sortBy=hearingDate&order=ASC`
-    const expected5 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&hearingOutcomeType=REPORT_REQUESTED&sortBy=hearingDate&order=DESC`
-    const expected6 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&hearingOutcomeType=REPORT_REQUESTED&hearingOutcomeType=ADJOURNED&sortBy=hearingDate&order=DESC`
+    const expected4 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=ADJOURNED&sortBy=hearingDate&order=ASC`
+    const expected5 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=REPORT_REQUESTED&sortBy=hearingDate&order=DESC`
+    const expected6 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED&sortBy=hearingDate&order=DESC`
     test.each`
       courtCode    |  selectedFilterSorts   | expected
       ${courtCode} | ${null} | ${expected1}
-      ${courtCode} | ${{ hearingOutcomeType: 'Adjourned' }} | ${expected2}
-      ${courtCode} | ${{ hearingDate: 'descending' }} | ${expected3}
-      ${courtCode} | ${{ hearingOutcomeType: 'Adjourned', hearingDate: 'ascending' }} | ${expected4}
-      ${courtCode} | ${{ hearingDate: 'ascending', hearingOutcomeType: 'Adjourned' }} | ${expected4}
-      ${courtCode} | ${{ hearingDate: 'descending', hearingOutcomeType: 'Report requested' }} | ${expected5}
-      ${courtCode} | ${{ hearingDate: 'descending', hearingOutcomeType: ['Report requested', 'Adjourned'] }} | ${expected6}
-      ${courtCode} | ${{ hearingDateUknown: 'descending', hearingOutcomeTypeUknown: 'Report requested' }} | ${expected1}
+      ${courtCode} | ${{ outcomeType: 'ADJOURNED' }} | ${expected2}
+      ${courtCode} | ${{ hearingDate: 'DESC' }} | ${expected3}
+      ${courtCode} | ${{ outcomeType: 'ADJOURNED', hearingDate: 'ASC' }} | ${expected4}
+      ${courtCode} | ${{ hearingDate: 'ASC', outcomeType: 'ADJOURNED' }} | ${expected4}
+      ${courtCode} | ${{ hearingDate: 'DESC', outcomeType: 'REPORT_REQUESTED' }} | ${expected5}
+      ${courtCode} | ${{ hearingDate: 'DESC', outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] }} | ${expected6}
+      ${courtCode} | ${{ hearingDateUknown: 'DESC', outcomeTypeUknown: 'REPORT_REQUESTED' }} | ${expected1}
     `('calls API with $expected when getOutcomesList($courtCode, $selectedFilterSorts)', async ({
       courtCode,
       selectedFilterSorts,

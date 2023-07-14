@@ -12,7 +12,12 @@ const getCaseOutcomesRouteHandler = caseService => async (req, res) => {
   const caseCount = response.cases.length
   const filtersApplied = response.filters.filter(filter => filter.items.filter(item => item.checked).length > 0).length
 
-  const hearingDateSort = response.sorts && response.sorts.map(item => item.value).pop()
+  const sortMapping = {
+    NONE: 'none',
+    ASC: 'ascending',
+    DESC: 'descending'
+  }
+  const hearingDateSort = sortMapping[response.sorts && response.sorts.map(item => item.value).pop()]
 
   const templateValues = {
     title: 'Hearing outcomes',

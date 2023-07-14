@@ -5,7 +5,7 @@
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
-      "hearingOutcomeType": {
+      "outcomeType": {
         "equalTo": "ADJOURNED"
       }
     }
@@ -18,7 +18,8 @@
     "jsonBody": {
       "cases": [
         {
-          "hearingOutcomeType": "Adjourned",
+          "hearingOutcomeType": "ADJOURNED",
+          "hearingOutcomeDescription": "Adjourned",
           "hearingId": "9b9a6ab6-ef6d-485a-a8b4-b79b67e5b1f8",
           "defendantId": "82bfc40d-389a-46ba-81e1-0829a5fbf6c8",
           "hearingDate": "2023-09-05T09:30:00",

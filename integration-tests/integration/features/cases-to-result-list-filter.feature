@@ -18,7 +18,7 @@ Feature: Cases to Result List filters
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Outcome type" filter button
-    And I select the "Report requested" filter
+    And I select the "REPORT_REQUESTED" filter
     And I click the "Outcome type" filter button
     And I click the "Apply filters" button
 
@@ -30,7 +30,7 @@ Feature: Cases to Result List filters
     And I should see the following table 1 rows
       | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
 
-    And I should see the "hearingOutcomeType" query have the value "Report requested"
+    And I should see the "outcomeType" query have the value "REPORT_REQUESTED"
 
     When I click the clear "Report requested" filter tag
 
@@ -60,7 +60,7 @@ Feature: Cases to Result List filters
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Outcome type" filter button
-    And I select the "Adjourned" filter
+    And I select the "ADJOURNED" filter
     And I click the "Outcome type" filter button
     And I click the "Apply filters" button
 
@@ -72,7 +72,7 @@ Feature: Cases to Result List filters
     And I should see the following table 1 rows
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
-    And I should see the "hearingOutcomeType" query have the value "Adjourned"
+    And I should see the "outcomeType" query have the value "ADJOURNED"
 
     When I click the clear "Adjourned" filter tag
 
@@ -103,11 +103,11 @@ Feature: Cases to Result List filters
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Outcome type" filter button
-    And I select the "Other" filter
+    And I select the "OTHER" filter
     And I click the "Outcome type" filter button
     And I click the "Apply filters" button
 
-    And I should see the "hearingOutcomeType" query have the value "Other"
+    And I should see the "outcomeType" query have the value "OTHER"
 
     Then I should see a tab with text "Cases to result (0)"
 
@@ -152,7 +152,7 @@ Feature: Cases to Result List filters
       | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
-    And I should see the "hearingDate" query have the value "ascending"
+    And I should see the "hearingDate" query have the value "ASC"
 
     And There should be no a11y violations
 
@@ -167,4 +167,4 @@ Feature: Cases to Result List filters
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
       | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
 
-    And I should see the "hearingDate" query have the value "descending"
+    And I should see the "hearingDate" query have the value "DESC"
