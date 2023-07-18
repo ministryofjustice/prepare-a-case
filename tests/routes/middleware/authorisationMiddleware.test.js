@@ -27,7 +27,8 @@ describe('authorisationMiddleware', () => {
         user: {
           token: createToken(authorities)
         }
-      }
+      },
+      redirect: jest.fn()
     })
 
     test('Should have a user', () => {
