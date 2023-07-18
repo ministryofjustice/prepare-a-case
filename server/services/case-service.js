@@ -1,5 +1,6 @@
 const { request, update, httpDelete, create } = require('./utils/request')
 const getCaseListFilters = require('../utils/getCaseListFilters')
+const getOutcomeListFilterSorts = require('../utils/getOutcomesListFilterSorts')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
 
@@ -10,6 +11,8 @@ const isHttpSuccess = response => {
 const getInternalServerErrorResponse = res => ({ isError: true, status: res?.status || 500 })
 
 const defaultFilterMatcher = (courtCase, filterObj, item) => courtCase[filterObj.id] ? courtCase[filterObj.id].toString().toLowerCase() === item.value.toString().toLowerCase() : false
+
+const allowedSortValues = ['ASC', 'DESC']
 
 const createCaseService = (apiUrl) => {
   return {
@@ -83,10 +86,51 @@ const createCaseService = (apiUrl) => {
       }
     },
 
+    getOutcomesList: async (courtCode, selectedFilterSorts, subsection) => {
+      const { filters, sorts } = getOutcomeListFilterSorts(selectedFilterSorts)
+
+      const paramMap = new URLSearchParams({
+        state: 'NEW'
+      })
+
+      filters.forEach(filter => filter.items.filter(item => item.checked).forEach(item => {
+        paramMap.append(filter.id, item.value)
+      }))
+
+      sorts.forEach(sort => {
+        if (sort.value !== 'NONE' && allowedSortValues.includes(sort.value)) {
+          paramMap.append('sortBy', sort.id)
+          paramMap.append('order', sort.value)
+        }
+      })
+
+      const urlString = `${apiUrl}/courts/${courtCode}/hearing-outcomes?${paramMap}`
+
+      const response = await request(urlString)
+      if (!isHttpSuccess(response)) {
+        return getInternalServerErrorResponse(response)
+      }
+      const { data } = response
+      const casesToResult = data.cases
+      const casesInProgress = []
+      const casesResulted = []
+
+      const filteredCases = subsection === 'in-progress' ? casesInProgress : subsection === 'resulted-cases' ? casesResulted : casesToResult
+
+      return {
+        ...data,
+        totalCount: casesToResult.length,
+        inProgressCount: casesInProgress.length,
+        resultedCount: casesResulted.length,
+        filters,
+        sorts,
+        cases: filteredCases
+      }
+    },
+
     searchCases: async (term, type, page, pageSize) => {
       try {
-        const response = await request(`${apiUrl}/search`, { term, type, page, size: pageSize })
-        return response
+        return await request(`${apiUrl}/search`, { term, type, page, size: pageSize })
       } catch (e) {
         if (e.response && e.response.status === 404) {
           return { data: {} }

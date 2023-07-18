@@ -534,7 +534,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm', body('crn').trim().escape(), defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
     session.serverError = false
-    let redirectUrl = '/'
+    let redirectUrl
     const response = await updateCaseDetails(caseId, hearingId, defendantId, crn)
     if (response.status === 200) {
       session.confirmedMatch = {

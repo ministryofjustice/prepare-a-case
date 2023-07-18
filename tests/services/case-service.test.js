@@ -1,9 +1,10 @@
-/* global describe, beforeEach, afterEach, it, expect, jest */
+/* global describe, beforeEach, afterEach, it, expect, jest, test */
 const moxios = require('moxios')
 const config = require('../../config')
 
 const {
   getCaseList,
+  getOutcomesList,
   getCase,
   getMatchDetails,
   updateOffender,
@@ -428,5 +429,56 @@ describe('Case service', () => {
     expect(mostRecent.url).toBe(endpoint)
     expect(mostRecent.config.data).toBe(JSON.stringify({ hearingOutcomeType }))
     return response
+  })
+
+  describe('getOutcomesList', () => {
+    const courtCode = 'SHF'
+    const expected1 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW`
+    const expected2 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=ADJOURNED`
+    const expected3 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&sortBy=hearingDate&order=DESC`
+    const expected4 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=ADJOURNED&sortBy=hearingDate&order=ASC`
+    const expected5 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=REPORT_REQUESTED&sortBy=hearingDate&order=DESC`
+    const expected6 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED&sortBy=hearingDate&order=DESC`
+    test.each`
+      courtCode    |  selectedFilterSorts   | expected
+      ${courtCode} | ${null} | ${expected1}
+      ${courtCode} | ${{ outcomeType: 'ADJOURNED' }} | ${expected2}
+      ${courtCode} | ${{ hearingDate: 'DESC' }} | ${expected3}
+      ${courtCode} | ${{ outcomeType: 'ADJOURNED', hearingDate: 'ASC' }} | ${expected4}
+      ${courtCode} | ${{ hearingDate: 'ASC', outcomeType: 'ADJOURNED' }} | ${expected4}
+      ${courtCode} | ${{ hearingDate: 'DESC', outcomeType: 'REPORT_REQUESTED' }} | ${expected5}
+      ${courtCode} | ${{ hearingDate: 'DESC', outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] }} | ${expected6}
+      ${courtCode} | ${{ hearingDateUknown: 'DESC', outcomeTypeUknown: 'REPORT_REQUESTED' }} | ${expected1}
+    `('calls API with $expected when getOutcomesList($courtCode, $selectedFilterSorts)', async ({
+      courtCode,
+      selectedFilterSorts,
+      expected
+    }) => {
+      moxios.stubRequest(expected, {
+        status: 200,
+        response: {
+          cases: []
+        }
+      })
+      const response = await getOutcomesList(courtCode, selectedFilterSorts)
+      expect(moxios.requests.mostRecent().url).toBe(expected)
+      return response
+    })
+    it('should return http error code in status when API call fails', async () => {
+      moxios.stubRequest(`${apiUrl}/courts/SHF/hearing-outcomes?state=NEW`, {
+        status: 500,
+        response: { isError: true, status: 500 }
+      })
+
+      try {
+        await getOutcomesList('SHF')
+      } catch (e) {
+        const response = e.response
+        expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/courts/SHF/hearing-outcomes?state=NEW`)
+        expect(response.status).toBe(500)
+        expect(response.data.isError).toBe(true)
+        return response
+      }
+    })
   })
 })

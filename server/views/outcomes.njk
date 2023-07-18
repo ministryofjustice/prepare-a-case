@@ -1,21 +1,95 @@
+{%- set moment = params.moment -%}
+{%- set displayFilters = params.subsection === '' and (params.caseCount or params.filtersApplied) -%}
+
+{% block javascripts %}
+  {% if displayFilters %}
+    <script type="text/javascript" src="/javascripts/hearing-outcomes-date-sort-component-{{ appVersion }}.min.js"></script>
+    <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
+  {% endif %}
+{% endblock %}
+
+{% set tableData = {
+  attributes: {
+    'data-module': 'moj-sortable-table'
+  },
+  head:
+  [
+    { text: "Defendant" },
+    { text: "Outcome type" },
+    { text: "Probation status" },
+    { text: "Offence" },
+
+    { text: ('
+      <button id="button-hearing-outcome-sort" type="button" data-sort="' + params.hearingDateSort + '"
+          aria-controls="button-hearing-outcome-sort" class="pac-sort-button">Hearing date
+      </button>
+    ') | safe,
+      format: 'numeric',
+      attributes: {
+        "aria-sort": params.hearingDateSort
+      }
+    }
+  ],
+  rows: []
+} %}
+
+{% for item in data %}
+
+  {% set offences = [] %}
+
+  {% set notMatched = item.probationStatus | string | lower == "possible ndelius record" %}
+  {% if item.offences | length === 1 %}
+    {% for offence in item.offences %}
+      {{ offences.push(offence | escape) }}
+    {% endfor %}
+    {% elif item.offences | length %}
+    {{ offences.push('<ol class="govuk-list govuk-list--number govuk-!-margin-bottom-0">') }}
+    {% for offence in item.offences %}
+      {{ offences.push('<li>' + offence | escape + '</li>') }}
+    {% endfor %}
+    {{ offences.push('</ol>') }}
+  {% endif %}
+
+
+  {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
+  {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
+  {% set crnDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
+  {%- set tableRow = [
+    { text: ('<a href="/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" aria-label="' + a11yTitle + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
+    { text: item.hearingOutcomeDescription | safe },
+    { text: ('<div>' + ('<span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span>' | safe if notMatched ) + ('<span class="moj-badge moj-badge--black pac-badge">Psr</span>' | safe if item.awaitingPsr) + ('<span class="moj-badge moj-badge--black pac-badge">Breach</span>' | safe if item.breach) + ('<span class="moj-badge moj-badge--black pac-badge">Sso</span>' | safe if item.suspendedSentenceOrder) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched) + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate and item.probationStatus == 'Previously known')) | safe },
+    { text: offences | join('') | safe },
+    { text: moment(item.hearingDate, 'YYYY-MM-DD').format("D MMM YYYY"), format: 'numeric' }
+  ] -%}
+  {%- if params.subsection === 'removed' %}
+    {{ tableRow.push({ text: item.caseNo, format: "numeric" }) }}
+  {% endif -%}
+  {{ tableData.rows.push(tableRow) }}
+
+{% endfor %}
+
+
 {%- set listTabs = [
   {
     title: 'Cases to result',
     a11yTitle: 'View cases to result',
     link: '/' + params.courtCode + '/outcomes/',
-    current: params.subsection === undefined
+    current: params.subsection === '',
+    count: params.totalCount
   },
   {
     title: 'In progress',
     a11yTitle: 'View case outcomes in progress',
     link: '/' + params.courtCode + '/outcomes/in-progress',
-    current: params.subsection === 'in-progress'
+    current: params.subsection === 'in-progress',
+    count: params.inProgressCount
   },
   {
     title: 'Resulted cases',
     a11yTitle: 'View resulted cases',
     link: '/' + params.courtCode + '/outcomes/resulted-cases',
-    current: params.subsection === 'resulted-cases'
+    current: params.subsection === 'resulted-cases',
+    count: params.resultedCount
   }
 ] -%}
 
@@ -28,6 +102,27 @@
 
   {{ pacTabs({
       items: listTabs,
-      controls: "case-list"
+      controls: "outcomes"
   }) }}
+
+  {% if displayFilters %}
+    {%- from "components/filter/macro.njk" import pacFilter -%}
+    {{ pacFilter({
+      filters: params.filters,
+      hiddenInputs: params.sorts
+    }) }}
+  {% endif %}
+
+  {% if tableData.rows | length %}
+    {% block table %}
+      {%- from "govuk/components/table/macro.njk" import govukTable -%}
+      {{ govukTable(tableData) }}
+    {% endblock %}
+  {% else %}
+    {% if params.filtersApplied %}
+      <span class="govuk-heading-m">0 cases</span>
+    {% endif %}
+    <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "No case list information available." }}</p>
+  {% endif %}
+
 {% endblock %}

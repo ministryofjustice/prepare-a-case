@@ -47,6 +47,13 @@ describe('Routes', () => {
     }
   })
 
+  jest.spyOn(caseService, 'getOutcomesList').mockImplementation(function () {
+    return {
+      cases: [],
+      filters: []
+    }
+  })
+
   jest.spyOn(caseService, 'getCase').mockImplementation(function () {
     return caseResponse
   })
@@ -385,9 +392,38 @@ describe('Routes', () => {
     return response
   })
 
-  it('should route to the outcomes page', async () => {
+  it('outcomes list route should call the case service to fetch outcome list data', async () => {
     return request(app).get('/B14LO/outcomes').then(response => {
       expect(response.statusCode).toEqual(200)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', {}, undefined)
+    })
+  })
+
+  it('outcomes list route should call the case service to filter outcome list data', async () => {
+    return request(app).get('/B14LO/outcomes?outcomeType=ADJOURNED').then(response => {
+      expect(response.statusCode).toEqual(200)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: 'ADJOURNED' }, undefined)
+    })
+  })
+
+  it('outcomes list route should call the case service to sort outcome list data', async () => {
+    return request(app).get('/B14LO/outcomes?hearingDate=ASC').then(response => {
+      expect(response.statusCode).toEqual(200)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingDate: 'ASC' }, undefined)
+    })
+  })
+
+  it('outcomes list route should call the case service to filter & sort outcome list data', async () => {
+    return request(app).get('/B14LO/outcomes?hearingDate=ASC&outcomeType=ADJOURNED').then(response => {
+      expect(response.statusCode).toEqual(200)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: 'ADJOURNED', hearingDate: 'ASC' }, undefined)
+    })
+  })
+
+  it('outcomes list route should call the case service to filter outcome list data with multiple filters', async () => {
+    return request(app).get('/B14LO/outcomes?outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED').then(response => {
+      expect(response.statusCode).toEqual(200)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] }, undefined)
     })
   })
 })
