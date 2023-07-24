@@ -5,11 +5,18 @@ const { settings } = require('../../config')
 
 const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k', 'brn63n']
 
+const PRE_PILOT_SEARCH_USERS_PLYMOUTH = ['serenacannannps', 'BeverleyWillmottnps', 'xzu68s', 'CZE89A', 'ZAP37S']
+
 const PLYMOUTH_MAGS_COURT_CODE = 'B50KH'
 
 const features = {
   searchFeature: anyOf(
-    isEnv('dev', 'preprod')
+    isEnv('dev', 'preprod'),
+    allOf(
+      isEnv('prod'),
+      enabledForCourts(PLYMOUTH_MAGS_COURT_CODE),
+      enabledForUsers(...PRE_PILOT_SEARCH_USERS_PLYMOUTH)
+    )
   ),
   caseComments: anyOf(
     allOf(
