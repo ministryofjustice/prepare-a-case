@@ -5,45 +5,11 @@ const { settings } = require('../../config')
 
 const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k', 'brn63n']
 
-const PRE_PILOT_SEARCH_USERS_PLYMOUTH = ['serenacannannps', 'BeverleyWillmottnps', 'xzu68s', 'CZE89A', 'ZAP37S', 'wjf65j']
-
 const PLYMOUTH_MAGS_COURT_CODE = 'B50KH'
 
 const features = {
-  searchFeature: anyOf(
-    isEnv('dev', 'preprod'),
-    allOf(
-      isEnv('prod'),
-      enabledForCourts(PLYMOUTH_MAGS_COURT_CODE),
-      enabledForUsers(...PRE_PILOT_SEARCH_USERS_PLYMOUTH)
-    )
-  ),
-  caseComments: anyOf(
-    allOf(
-      isEnv('dev'),
-      mainFeatureToggleEnabled('enableCaseComments')
-    ),
-    allOf(
-      isEnv('preprod'),
-      mainFeatureToggleEnabled('enableCaseComments'),
-      enabledForCourts(PLYMOUTH_MAGS_COURT_CODE, 'B05PK'),
-      enabledForUsers(...settings.caseTrackingPrePilotUsers)
-    ),
-    allOf(
-      isEnv('prod'),
-      mainFeatureToggleEnabled('enableCaseComments'),
-      anyOf(
-        allOf(
-          enabledForCourts(PLYMOUTH_MAGS_COURT_CODE),
-          enabledForUsers(...settings.caseTrackingPrePilotUsers)
-        ),
-        allOf(
-          enabledForCourts('B05PK'),
-          enabledForUsers(...settings.caseTrackingPrePilotUsers, ...LIVERPOOL_PRE_PILOT_USERS)
-        )
-      )
-    )
-  ),
+  searchFeature: enabledForAll(),
+  caseComments: enabledForAll(),
   caseProgress: enabledForAll(),
   hearingNotes: anyOf(
     allOf(
