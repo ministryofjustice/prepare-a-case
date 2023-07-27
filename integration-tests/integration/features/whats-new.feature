@@ -17,7 +17,15 @@ Feature: What's new
 
     Then I should see the heading "What's new"
     And I should see the following level 2 headings
+      | 27 July 2023    |
+      | 7 February 2023 |
+      | 24 January 2023 |
+    And I should see the following level 3 headings
+      | Search for a defendant                        |
+      | Add comments to a case                        |
       | View cases in the past and see a case history |
+      | Checking for missing PSR statuses             |
+      | How to find reports in Court Diary            |
     And I should see footer link "What's new" with href "/whats-new"
 
     And There should be no a11y violations
