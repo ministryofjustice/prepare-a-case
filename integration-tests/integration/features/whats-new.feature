@@ -17,6 +17,10 @@ Feature: What's new
 
     Then I should see the heading "What's new"
     And I should see the following level 2 headings
+      | 27 July 2023                                  |
+      | Search for a defendant                        |
+      | Add comments to a case                        |
+      | 7 February 2023                               |
       | View cases in the past and see a case history |
     And I should see footer link "What's new" with href "/whats-new"
 
