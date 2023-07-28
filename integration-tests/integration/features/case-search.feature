@@ -9,7 +9,7 @@ Feature: Case search
     Then I should be on the "Case list" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter CRN or defendant name."
+    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
 
     When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
@@ -39,7 +39,7 @@ Feature: Case search
     Then I should be on the "Case list" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter CRN or defendant name."
+    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
 
     When I enter "none" into text input with id "search-term"
     And I click the "Search" button
@@ -52,7 +52,7 @@ Feature: Case search
     Then I should be on the "Case list" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter CRN or defendant name."
+    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
 
     When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
@@ -81,7 +81,7 @@ Feature: Case search
     Then I should be on the "Case list" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter CRN or defendant name."
+    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
 
     When I enter search term "A12345" into search input and click search then I should see error "Enter a CRN in the format one letter followed by 6 numbers, for example A123456."
     When I enter search term "A12345G" into search input and click search then I should see error "Enter a CRN in the format one letter followed by 6 numbers, for example A123456."
