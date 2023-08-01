@@ -24,9 +24,27 @@ const getNormalisedCourtRoom = courtRoomStr => isNaN(courtRoomStr)
   ? (courtRoomStr.includes('Courtroom') ? courtRoomStr.replace(/([A-Za-z 0]*)?/, '') : courtRoomStr.replace(/([0]*)?/, ''))
   : parseInt(courtRoomStr).toString()
 
+const prepareCourtRoomFilters = (allCourtRooms) => {
+  const courtRoomStrings = allCourtRooms
+    .filter(item => isNaN(item))
+    .sort((a, b) => a - b)
+    .map(item => item && {
+      label: getNormalisedCourtRoom(item),
+      value: item.toString()
+    })
+
+  const courtRooms = [...new Set(allCourtRooms.map(item => parseInt(item, 10)))]
+    .filter(item => !isNaN(item))
+    .sort((a, b) => a - b)
+    .map(item => item && { label: getNormalisedCourtRoom(item), value: ('0' + item.toString()).slice(-2) })
+    .concat(courtRoomStrings)
+  return courtRooms
+}
+
 module.exports = {
   getPsrRequestedConvictions,
   getLastSentencedConvictionPSR,
   getNormalisedCourtRoom,
+  prepareCourtRoomFilters,
   getOrderTitle
 }

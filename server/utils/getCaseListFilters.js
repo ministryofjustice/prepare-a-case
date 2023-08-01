@@ -1,4 +1,4 @@
-const { getNormalisedCourtRoom } = require('../routes/helpers')
+const { getNormalisedCourtRoom, prepareCourtRoomFilters } = require('../routes/helpers')
 const features = require('../utils/features')
 
 module.exports = (caseListData, selectedFilters) => {
@@ -11,19 +11,9 @@ module.exports = (caseListData, selectedFilters) => {
     }
   })
 
-  const courtRoomStrings = [...new Set(caseListData.map(item => item.courtRoom))]
-    .filter(item => isNaN(item))
-    .sort((a, b) => a - b)
-    .map(item => item && {
-      label: getNormalisedCourtRoom(item),
-      value: item.toString()
-    })
+  const allCourtRooms = [...new Set(caseListData.map(item => item.courtRoom))]
 
-  const courtRooms = [...new Set(caseListData.map(item => parseInt(item.courtRoom, 10)))]
-    .filter(item => !isNaN(item))
-    .sort((a, b) => a - b)
-    .map(item => item && { label: getNormalisedCourtRoom(item), value: ('0' + item.toString()).slice(-2) })
-    .concat(courtRoomStrings)
+  const courtRooms = prepareCourtRoomFilters(allCourtRooms)
 
   const availableSessions = [...new Set(caseListData.map(item => item.session))]
   const sessions = []

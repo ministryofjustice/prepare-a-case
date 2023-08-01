@@ -2,6 +2,7 @@
 
 const {
   getCaseList,
+  getPagedCaseList,
   getOutcomesList,
   getCase,
   addCaseComment,
@@ -59,6 +60,8 @@ const cancelCaseCommentDraftHandler = require('./getCancelCaseCommentDraftHandle
 
 const updateCaseCommentHandler = require('./getUpdateCommentRequestHandler')({ updateCaseComment })
 
+const pagedCaseListRouteHandler = require('./getPagedCaseListRouteHandler')({ getPagedCaseList })
+
 module.exports = {
   getCaseListHandler,
   getCaseAndTemplateValues,
@@ -78,5 +81,6 @@ module.exports = {
   addHearingOutcomeHandler,
   autoSaveCaseCommentHandler,
   cancelCaseCommentDraftHandler,
-  updateCaseCommentHandler
+  updateCaseCommentHandler,
+  pagedCaseListRouteHandler
 }
