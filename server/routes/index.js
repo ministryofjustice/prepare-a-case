@@ -28,11 +28,13 @@ const {
   addHearingOutcomeHandler,
   autoSaveCaseCommentHandler,
   cancelCaseCommentDraftHandler,
-  updateCaseCommentHandler
+  updateCaseCommentHandler,
+  pagedCaseListRouteHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
 const { deleteHearingNoteConfirmationHandler, deleteHearingNoteHandler } = require('./handlers')
+const features = require('../utils/features')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -194,7 +196,16 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('case-history', { caseId: data.caseId, params: req.params, data: JSON.stringify(data, null, 2) })
   }))
 
-  router.get('/:courtCode/cases/:date?/:subsection?', defaults, catchErrors(getCaseListHandler))
+  router.get('/:courtCode/cases/:date?/:subsection?', defaults, catchErrors((req, res) => {
+    const { params: { courtCode, version1 } } = req
+    const context = { court: courtCode, username: res.locals.user.username }
+    const serverSidePagingEnabled = features.serverSidePaging.isEnabled(context)
+
+    if (serverSidePagingEnabled && !version1) {
+      return pagedCaseListRouteHandler(req, res)
+    }
+    return getCaseListHandler(req, res)
+  }))
 
   router.post('/:courtCode/cases/:date?/:subsection?', defaults, catchErrors(async (req, res) => {
     const { params: { courtCode, date, subsection }, session, body } = req

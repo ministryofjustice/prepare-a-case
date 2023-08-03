@@ -2,6 +2,7 @@
 const caseServiceMock = {
   getCase: jest.fn(),
   getCaseList: jest.fn(),
+  getPagedCaseList: jest.fn(),
   getOutcomesList: jest.fn(),
   addCaseComment: jest.fn(),
   deleteCaseComment: jest.fn(),

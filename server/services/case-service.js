@@ -3,6 +3,8 @@ const getCaseListFilters = require('../utils/getCaseListFilters')
 const getOutcomeListFilterSorts = require('../utils/getOutcomesListFilterSorts')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
+const { prepareCourtRoomFilters } = require('../routes/helpers')
+const features = require('../utils/features')
 
 const isHttpSuccess = response => {
   return response && response.status / 100 === 2
@@ -23,6 +25,76 @@ const createCaseService = (apiUrl) => {
     getMatchDetails: async (defendantId) => {
       const res = await request(`${apiUrl}/defendant/${defendantId}/matchesDetail`) || { data: {} }
       return res.data
+    },
+    getPagedCaseList: async (courtCode, date, selectedFilters, subsection, page, limit) => {
+      const apiUrlBuilder = new URL(`${apiUrl}/court/${courtCode}/cases`)
+
+      apiUrlBuilder.searchParams.append('date', date)
+      apiUrlBuilder.searchParams.append('VERSION2', 'true')
+      apiUrlBuilder.searchParams.append('page', page || '1')
+      apiUrlBuilder.searchParams.append('limit', limit)
+      if (subsection === 'added') {
+        apiUrlBuilder.searchParams.append('recentlyAdded', 'true')
+      }
+
+      const response = await request(apiUrlBuilder.href)
+      if (!isHttpSuccess(response)) {
+        return getInternalServerErrorResponse(response)
+      }
+
+      const caseListFilters = [
+        {
+          id: 'probationStatus',
+          label: 'Probation status',
+          items: [
+            { value: 'CURRENT', label: 'Current' },
+            { value: 'PREVIOUSLY_KNOWN', label: 'Previously known' },
+            { value: 'NOT_SENTENCED', label: 'Pre-sentence record' },
+            { value: 'NO_RECORD', label: 'No record' },
+            { value: 'Possible NDelius record', label: 'Possible NDelius record' }
+          ]
+        },
+        {
+          id: 'courtRoom',
+          label: 'Courtroom',
+          items: prepareCourtRoomFilters(response.courtRoomFilters)
+        },
+        {
+          id: 'session',
+          label: 'Session',
+          items: [{ value: 'MORNING', label: 'Morning' }, { value: 'AFTERNOON', label: 'Afternoon' }]
+        }
+      ]
+
+      if (features.advancedFilters.isEnabled({})) {
+        caseListFilters.push(
+          {
+            id: 'source',
+            label: 'Source',
+            items: [{ label: 'Common Platform', value: 'COMMON_PLATFORM' }, { label: 'Libra', value: 'LIBRA' }]
+          },
+          {
+            id: 'breach',
+            label: 'Flag',
+            items: [{ label: 'Breach', value: 'true' }]
+          }
+        )
+      }
+
+      if (selectedFilters) {
+        caseListFilters.filter(caseListFilter => !!selectedFilters[caseListFilter.id]).forEach(caseListFilter => {
+          const selectedValues = selectedFilters[caseListFilter.id]
+          const multipleSelection = Array.isArray(selectedValues)
+          caseListFilter.items.forEach(item => {
+            item.checked = item.checked || (multipleSelection ? selectedValues.includes(item.value) : selectedValues === item.value)
+          })
+        })
+      }
+
+      return {
+        ...response.data,
+        filters: caseListFilters
+      }
     },
     getCaseList: async (courtCode, date, selectedFilters, subsection) => {
       const latestSnapshot = getLatestSnapshot(date).format('YYYY-MM-DDTHH:mm:00.000')
