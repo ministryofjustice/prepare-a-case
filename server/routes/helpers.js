@@ -25,6 +25,9 @@ const getNormalisedCourtRoom = courtRoomStr => isNaN(courtRoomStr)
   : parseInt(courtRoomStr).toString()
 
 const prepareCourtRoomFilters = (allCourtRooms) => {
+  if (!allCourtRooms || !allCourtRooms.length) {
+    return []
+  }
   const courtRoomStrings = allCourtRooms
     .filter(item => isNaN(item))
     .sort((a, b) => a - b)
