@@ -34,6 +34,10 @@ const features = {
       )
     )
   ),
+  serverSidePaging: allOf(
+    mainFeatureToggleEnabled('enableServerSidePaging'),
+    isEnv('dev', 'preprod')
+  ),
   pastCasesNavigation: enabledForAll(),
   caseProgressNextAppearanceBadge: enabledForSourceTypes('COMMON_PLATFORM', 'LIBRA'),
   hearingOutcomes: allOf(
