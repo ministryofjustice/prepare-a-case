@@ -57,7 +57,7 @@ const createCaseService = (apiUrl) => {
         {
           id: 'courtRoom',
           label: 'Courtroom',
-          items: prepareCourtRoomFilters(response.courtRoomFilters)
+          items: prepareCourtRoomFilters(response.data?.courtRoomFilters)
         },
         {
           id: 'session',
