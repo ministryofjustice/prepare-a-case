@@ -1,6 +1,5 @@
 const { request, update, httpDelete, create } = require('./utils/request')
 const getCaseListFilters = require('../utils/getCaseListFilters')
-const getOutcomeListFilterSorts = require('../utils/getOutcomesListFilterSorts')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
 const { prepareCourtRoomFilters } = require('../routes/helpers')
@@ -15,6 +14,7 @@ const getInternalServerErrorResponse = res => ({ isError: true, status: res?.sta
 const defaultFilterMatcher = (courtCase, filterObj, item) => courtCase[filterObj.id] ? courtCase[filterObj.id].toString().toLowerCase() === item.value.toString().toLowerCase() : false
 
 const allowedSortValues = ['ASC', 'DESC']
+const allowedStates = ['NEW', 'IN_PROGRESS', 'RESULTED']
 
 const createCaseService = (apiUrl) => {
   return {
@@ -158,23 +158,25 @@ const createCaseService = (apiUrl) => {
       }
     },
 
-    getOutcomesList: async (courtCode, selectedFilterSorts, subsection) => {
-      const { filters, sorts } = getOutcomeListFilterSorts(selectedFilterSorts)
+    getOutcomesList: async (courtCode, filters, sorts, state) => {
+      const paramMap = new URLSearchParams()
 
-      const paramMap = new URLSearchParams({
-        state: 'NEW'
-      })
+      if (state && allowedStates.includes(state)) {
+        paramMap.set('state', state)
+      }
 
-      filters.forEach(filter => filter.items.filter(item => item.checked).forEach(item => {
-        paramMap.append(filter.id, item.value)
-      }))
+      if (filters && filters.length) {
+        filters.forEach(filter => filter.items.filter(item => item.checked).forEach(item => {
+          paramMap.append(filter.id, item.value)
+        }))
+      }
 
-      sorts.forEach(sort => {
-        if (sort.value !== 'NONE' && allowedSortValues.includes(sort.value)) {
+      if (sorts && sorts.length) {
+        sorts.filter(sort => sort.value !== 'NONE' && allowedSortValues.includes(sort.value)).forEach(sort => {
           paramMap.append('sortBy', sort.id)
           paramMap.append('order', sort.value)
-        }
-      })
+        })
+      }
 
       const urlString = `${apiUrl}/courts/${courtCode}/hearing-outcomes?${paramMap}`
 
@@ -182,22 +184,7 @@ const createCaseService = (apiUrl) => {
       if (!isHttpSuccess(response)) {
         return getInternalServerErrorResponse(response)
       }
-      const { data } = response
-      const casesToResult = data.cases
-      const casesInProgress = []
-      const casesResulted = []
-
-      const filteredCases = subsection === 'in-progress' ? casesInProgress : subsection === 'resulted-cases' ? casesResulted : casesToResult
-
-      return {
-        ...data,
-        totalCount: casesToResult.length,
-        inProgressCount: casesInProgress.length,
-        resultedCount: casesResulted.length,
-        filters,
-        sorts,
-        cases: filteredCases
-      }
+      return response.data
     },
 
     searchCases: async (term, type, page, pageSize) => {

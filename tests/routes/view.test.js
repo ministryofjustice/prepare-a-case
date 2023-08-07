@@ -6,6 +6,7 @@ const communityService = require('../../server/services/community-service')
 const helpers = require('../../server/routes/helpers')
 const appSetup = require('../testUtils/appSetup')
 const { authenticationMiddleware } = require('../testUtils/mockAuthentication')
+const getOutcomeTypesListFilters = require('../../server/utils/getOutcomeTypesListFilters')
 
 let roles
 // This needs mocking early, before 'requiring' jwt-decode
@@ -28,6 +29,8 @@ jest.mock('../../server/services/community-service')
 let app
 let caseResponse = {}
 let communityResponse = {}
+let defaultFilters = []
+let defaultSort = []
 
 describe('Routes', () => {
   jest.spyOn(healthcheck, 'health').mockImplementation(function (req, res, next) {
@@ -111,6 +114,8 @@ describe('Routes', () => {
   beforeEach(() => {
     app = require('../../app')
     app = appSetup(viewRoute)
+    defaultFilters = getOutcomeTypesListFilters()
+    defaultSort = [{ id: 'hearingDate', value: 'NONE' }]
   })
 
   afterEach(() => {
@@ -395,35 +400,56 @@ describe('Routes', () => {
   it('outcomes list route should call the case service to fetch outcome list data', async () => {
     return request(app).get('/B14LO/outcomes').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', {}, undefined)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', defaultFilters, defaultSort, 'NEW')
     })
   })
 
   it('outcomes list route should call the case service to filter outcome list data', async () => {
     return request(app).get('/B14LO/outcomes?outcomeType=ADJOURNED').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: 'ADJOURNED' }, undefined)
+      defaultFilters.map(filter => {
+        filter.items.map(item => {
+          item.checked = item.value === 'ADJOURNED'
+          return item
+        })
+        return filter
+      })
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', defaultFilters, defaultSort, 'NEW')
     })
   })
 
   it('outcomes list route should call the case service to sort outcome list data', async () => {
     return request(app).get('/B14LO/outcomes?hearingDate=ASC').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingDate: 'ASC' }, undefined)
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', defaultFilters, [{ id: 'hearingDate', value: 'ASC' }], 'NEW')
     })
   })
 
   it('outcomes list route should call the case service to filter & sort outcome list data', async () => {
     return request(app).get('/B14LO/outcomes?hearingDate=ASC&outcomeType=ADJOURNED').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: 'ADJOURNED', hearingDate: 'ASC' }, undefined)
+      defaultFilters.map(filter => {
+        filter.items.map(item => {
+          item.checked = item.value === 'ADJOURNED'
+          return item
+        })
+        return filter
+      })
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', defaultFilters, [{ id: 'hearingDate', value: 'ASC' }], 'NEW')
     })
   })
 
   it('outcomes list route should call the case service to filter outcome list data with multiple filters', async () => {
     return request(app).get('/B14LO/outcomes?outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] }, undefined)
+      defaultFilters.map(filter => {
+        filter.items.map(item => {
+          item.checked = item.value === 'ADJOURNED' || item.value === 'REPORT_REQUESTED'
+          return item
+        })
+        return filter
+      })
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', defaultFilters, defaultSort, 'NEW')
     })
   })
 })

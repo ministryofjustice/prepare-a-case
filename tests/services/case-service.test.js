@@ -19,6 +19,8 @@ const {
   addHearingOutcome,
   deleteCaseCommentDraft
 } = require('../../server/services/case-service')
+const getOutcomeTypesListFilters = require('../../server/utils/getOutcomeTypesListFilters')
+const getOutcomeListSorts = require('../../server/utils/getOutcomesSorts')
 
 const apiUrl = config.apis.courtCaseService.url
 
@@ -432,26 +434,29 @@ describe('Case service', () => {
   })
 
   describe('getOutcomesList', () => {
+    const state = 'NEW'
     const courtCode = 'SHF'
-    const expected1 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW`
-    const expected2 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=ADJOURNED`
-    const expected3 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&sortBy=hearingDate&order=DESC`
-    const expected4 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=ADJOURNED&sortBy=hearingDate&order=ASC`
-    const expected5 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=REPORT_REQUESTED&sortBy=hearingDate&order=DESC`
-    const expected6 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=NEW&outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED&sortBy=hearingDate&order=DESC`
+    const expected1 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}`
+    const expected2 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=ADJOURNED`
+    const expected3 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&sortBy=hearingDate&order=DESC`
+    const expected4 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=ADJOURNED&sortBy=hearingDate&order=ASC`
+    const expected5 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=REPORT_REQUESTED&sortBy=hearingDate&order=DESC`
+    const expected6 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED&sortBy=hearingDate&order=DESC`
+
     test.each`
-      courtCode    |  selectedFilterSorts   | expected
-      ${courtCode} | ${null} | ${expected1}
-      ${courtCode} | ${{ outcomeType: 'ADJOURNED' }} | ${expected2}
-      ${courtCode} | ${{ hearingDate: 'DESC' }} | ${expected3}
-      ${courtCode} | ${{ outcomeType: 'ADJOURNED', hearingDate: 'ASC' }} | ${expected4}
-      ${courtCode} | ${{ hearingDate: 'ASC', outcomeType: 'ADJOURNED' }} | ${expected4}
-      ${courtCode} | ${{ hearingDate: 'DESC', outcomeType: 'REPORT_REQUESTED' }} | ${expected5}
-      ${courtCode} | ${{ hearingDate: 'DESC', outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] }} | ${expected6}
-      ${courtCode} | ${{ hearingDateUknown: 'DESC', outcomeTypeUknown: 'REPORT_REQUESTED' }} | ${expected1}
-    `('calls API with $expected when getOutcomesList($courtCode, $selectedFilterSorts)', async ({
+      courtCode    |  filters | sorts | state   | expected
+      ${courtCode} | ${null} | ${null} | '${state}' | ${expected1}
+      ${courtCode} | ${getOutcomeTypesListFilters({ outcomeType: ['ADJOURNED'] })} | ${null} | '${state}' | ${expected2}
+      ${courtCode} | ${null} | ${getOutcomeListSorts({ hearingDate: 'DESC' })} | '${state}' | ${expected3}
+      ${courtCode} | ${getOutcomeTypesListFilters({ outcomeType: ['ADJOURNED'] })} | ${getOutcomeListSorts({ hearingDate: 'ASC' })} | '${state}' | ${expected4}
+      ${courtCode} | ${getOutcomeTypesListFilters({ outcomeType: ['REPORT_REQUESTED'] })} | ${getOutcomeListSorts({ hearingDate: 'DESC' })} | '${state}' | ${expected5}
+      ${courtCode} | ${getOutcomeTypesListFilters({ outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] })} | ${getOutcomeListSorts({ hearingDate: 'DESC' })} | '${state}' | ${expected6}
+      ${courtCode} | ${getOutcomeTypesListFilters({ outcomeTypeUnknown: ['REPORT_REQUESTED'] })} | ${getOutcomeListSorts({ hearingDateUnknown: 'DESC' })} | '${state}' | ${expected1}
+    `('calls API with $expected when getOutcomesList($courtCode, $filters, $sorts, $state)', async ({
       courtCode,
-      selectedFilterSorts,
+      filters,
+      sorts,
+      state,
       expected
     }) => {
       moxios.stubRequest(expected, {
@@ -460,7 +465,7 @@ describe('Case service', () => {
           cases: []
         }
       })
-      const response = await getOutcomesList(courtCode, selectedFilterSorts)
+      const response = await getOutcomesList(courtCode, filters, sorts, state)
       expect(moxios.requests.mostRecent().url).toBe(expected)
       return response
     })
@@ -471,7 +476,7 @@ describe('Case service', () => {
       })
 
       try {
-        await getOutcomesList('SHF')
+        await getOutcomesList('SHF', [], [], 'NEW')
       } catch (e) {
         const response = e.response
         expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/courts/SHF/hearing-outcomes?state=NEW`)
