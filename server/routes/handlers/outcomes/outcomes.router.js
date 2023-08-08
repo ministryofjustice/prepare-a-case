@@ -7,7 +7,7 @@ const getResultedCasesHandler = require('./getResultedCasesHandler')({ getOutcom
 
 const { defaults } = require('../../middleware/defaults')
 const catchErrors = require('../catchAsyncErrors')
-const outcomesMiddleware = require('./outcomes.middleware')
+const outcomesMiddleware = require('../../middleware/outcomesMiddleware')
 
 const outcomesRouter = express.Router({ mergeParams: true })
 

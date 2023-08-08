@@ -25,7 +25,7 @@ Feature: Outcomes List
 
   Scenario: View the In progress tab on the Outcomes page
     Given I am an authenticated user
-    When I navigate to the "outcomes" route for today
+    When I navigate to the "outcomes" route
     Then I should be on the "Hearing outcomes" page
 
     When I click the "In progress" link
@@ -33,7 +33,7 @@ Feature: Outcomes List
 
  Scenario: View the Resulted Cases tab on the Outcomes page
     Given I am an authenticated user
-    When I navigate to the "outcomes" route for today
+    When I navigate to the "outcomes" route
     Then I should be on the "Hearing outcomes" page
 
     When I click the "Resulted cases" link

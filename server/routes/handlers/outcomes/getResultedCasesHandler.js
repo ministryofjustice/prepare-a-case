@@ -5,6 +5,7 @@ const getResultedCasesHandler = caseService => async (req, res) => {
   } = req
 
   const filters = []
+  const filtersApplied = 0
 
   const response = await caseService.getOutcomesList(courtCode, filters, sorts, state)
   if (response && response.isError !== undefined && response.isError) {
@@ -16,7 +17,8 @@ const getResultedCasesHandler = caseService => async (req, res) => {
     params: {
       ...params,
       filters,
-      filtersApplied: 0
+      filtersApplied,
+      resultedCasesCount: filtersApplied ? response.cases.length : params.resultedCasesCount
     },
     title,
     data: response.cases || []

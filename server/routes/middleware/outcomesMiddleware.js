@@ -1,4 +1,4 @@
-const getOutcomeListSorts = require('../../../utils/getOutcomesSorts')
+const getOutcomeListSorts = require('../../utils/getOutcomesSorts')
 const outcomesMiddleware = state => async (req, res, next) => {
   const {
     params

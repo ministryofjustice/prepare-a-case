@@ -6,6 +6,7 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
   } = req
 
   const filters = []
+  const filtersApplied = 0
 
   const response = await caseService.getOutcomesList(courtCode, filters, sorts, state)
   if (response && response.isError !== undefined && response.isError) {
@@ -17,7 +18,8 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     params: {
       ...params,
       filters,
-      filtersApplied: 0
+      filtersApplied,
+      casesInProgressCount: filtersApplied ? response.cases.length : params.casesInProgressCount
     },
     title,
     data: response.cases || []
