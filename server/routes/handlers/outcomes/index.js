@@ -1,2 +1,2 @@
-const outcomesRouter = require('./outcomes.router')
+const outcomesRouter = require('./outcomesRouter')
 module.exports = outcomesRouter
