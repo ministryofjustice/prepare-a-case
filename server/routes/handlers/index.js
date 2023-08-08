@@ -3,7 +3,6 @@
 const {
   getCaseList,
   getPagedCaseList,
-  getOutcomesList,
   getCase,
   addCaseComment,
   deleteCaseComment,
