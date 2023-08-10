@@ -37,6 +37,17 @@ const createCaseService = (apiUrl) => {
         apiUrlBuilder.searchParams.append('recentlyAdded', 'true')
       }
 
+      if (selectedFilters) {
+        const entries = Object.entries(selectedFilters)
+        entries.forEach(entry => {
+          if (Array.isArray(entry[1])) {
+            entry[1].forEach(value => apiUrlBuilder.searchParams.append(entry[0], value))
+          } else {
+            apiUrlBuilder.searchParams.append(entry[0], entry[1].toString())
+          }
+        })
+      }
+
       const response = await request(apiUrlBuilder.href)
       if (!isHttpSuccess(response)) {
         return getInternalServerErrorResponse(response)

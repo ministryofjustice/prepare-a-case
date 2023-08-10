@@ -4,6 +4,7 @@ const config = require('../../config')
 
 const {
   getCaseList,
+  getPagedCaseList,
   getOutcomesList,
   getCase,
   getMatchDetails,
@@ -479,6 +480,35 @@ describe('Case service', () => {
         expect(response.data.isError).toBe(true)
         return response
       }
+    })
+  })
+  describe('server side paging', () => {
+    it('should invoke api url correctly', async () => {
+      const expectedUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&limit=20&probationStatus=CURRENT&probationStatus=NO_RECORD&courtRoom=01&courtRoom=02&source=COMMON_PLATFORM&session=MORNING&breach=true`
+      moxios.stubRequest(expectedUrl, {
+        status: 200,
+        response: {
+          cases: [],
+          possibleMatchesCount: 2,
+          recentlyAddedCount: 5,
+          courtRoomFilters: ['01', '02'],
+          page: 1,
+          totalPages: 2,
+          totalElements: 130
+        }
+      })
+
+      const selectedFilters = {
+        probationStatus: ['CURRENT', 'NO_RECORD'],
+        courtRoom: ['01', '02'],
+        source: 'COMMON_PLATFORM',
+        session: 'MORNING',
+        breach: true
+      }
+
+      // (courtCode, date, selectedFilters, subsection, page, limit)
+      await getPagedCaseList('SHF', '2020-01-01', selectedFilters, undefined, 1, 20)
+      expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
     })
   })
 })
