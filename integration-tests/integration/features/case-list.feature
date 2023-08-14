@@ -325,4 +325,5 @@ Feature: Case list
     When I navigate to the "cases/2019-12-12" route
 
     And I should see the heading "Sorry, there is a problem with the service"
-    And I should see the body text "Please try again later."
+    And I should see the body text "Try refreshing the page or going back and trying again."
+    And I should see the body text "Use this form to tell us about the problem."
