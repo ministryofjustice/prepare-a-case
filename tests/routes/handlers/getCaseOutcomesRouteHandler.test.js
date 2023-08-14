@@ -1,17 +1,20 @@
 /* global describe, it, expect */
 
+const getOutcomeTypesListFilters = require('../../../server/utils/getOutcomeTypesListFilters')
 describe('getCaseOutcomesRouteHandler', () => {
   const {
     mockResponse,
     caseServiceMock: caseService
   } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/getCaseOutcomesRouteHandler')(caseService)
+  const subject = require('../../../server/routes/handlers/outcomes/getCasesToResultHandler')(caseService)
   const courtCode = 'B007'
 
   const mockRequest = {
     params: { courtCode },
     session: {}
   }
+
+  const filters = getOutcomeTypesListFilters()
 
   it('should render error page when getOutcomesList returns errors', async () => {
     // Given
@@ -22,7 +25,7 @@ describe('getCaseOutcomesRouteHandler', () => {
 
     // Then
     expect(caseService.getOutcomesList).toHaveBeenCalled()
-    expect(caseService.getOutcomesList).toHaveBeenCalledWith(courtCode, undefined, undefined)
+    expect(caseService.getOutcomesList).toHaveBeenCalledWith(courtCode, filters, undefined, undefined)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('error', { status: 500 })
   })
@@ -44,7 +47,7 @@ describe('getCaseOutcomesRouteHandler', () => {
 
     // Then
     expect(caseService.getOutcomesList).toHaveBeenCalled()
-    expect(caseService.getOutcomesList).toHaveBeenCalledWith(courtCode, undefined, undefined)
+    expect(caseService.getOutcomesList).toHaveBeenCalledWith(courtCode, filters, undefined, undefined)
     expect(mockResponse.render).toHaveBeenCalled()
   })
 })

@@ -1,5 +1,5 @@
 {%- set moment = params.moment -%}
-{%- set displayFilters = params.subsection === '' and (params.caseCount or params.filtersApplied) -%}
+{%- set displayFilters = params.casesToResultCount or params.filtersApplied -%}
 
 {% block javascripts %}
   {% if displayFilters %}
@@ -74,26 +74,24 @@
     title: 'Cases to result',
     a11yTitle: 'View cases to result',
     link: '/' + params.courtCode + '/outcomes/',
-    current: params.subsection === '',
-    count: params.totalCount
+    current: true,
+    count: params.casesToResultCount
   },
   {
     title: 'In progress',
     a11yTitle: 'View case outcomes in progress',
     link: '/' + params.courtCode + '/outcomes/in-progress',
-    current: params.subsection === 'in-progress',
-    count: params.inProgressCount
+    count: params.casesInProgressCount
   },
   {
     title: 'Resulted cases',
     a11yTitle: 'View resulted cases',
     link: '/' + params.courtCode + '/outcomes/resulted-cases',
-    current: params.subsection === 'resulted-cases',
-    count: params.resultedCount
+    count: params.resultedCasesCount
   }
 ] -%}
 
-{% extends "partials/layout.njk" %}
+{% extends "../partials/layout.njk" %}
 
 {% block content %}
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-6" aria-label="{{ title }}">{{ title }}</h1>

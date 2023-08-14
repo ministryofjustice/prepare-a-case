@@ -1,0 +1,37 @@
+{%- set listTabs = [
+  {
+    title: 'Cases to result',
+    a11yTitle: 'View cases to result',
+    link: '/' + params.courtCode + '/outcomes/',
+    count: params.casesToResultCount
+  },
+  {
+    title: 'In progress',
+    a11yTitle: 'View case outcomes in progress',
+    link: '/' + params.courtCode + '/outcomes/in-progress',
+    current: true,
+    count: params.casesInProgressCount
+  },
+  {
+    title: 'Resulted cases',
+    a11yTitle: 'View resulted cases',
+    link: '/' + params.courtCode + '/outcomes/resulted-cases',
+    count: params.resultedCasesCount
+  }
+] -%}
+
+{% extends "../partials/layout.njk" %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6" aria-label="{{ title }}">{{ title }}</h1>
+
+  {%- from "components/tabs/macro.njk" import pacTabs -%}
+
+  {{ pacTabs({
+    items: listTabs,
+    controls: "outcomes"
+  }) }}
+
+  <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "No case list information available." }}</p>
+
+{% endblock %}
