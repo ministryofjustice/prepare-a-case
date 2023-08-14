@@ -3,7 +3,6 @@
 const {
   getCaseList,
   getPagedCaseList,
-  getOutcomesList,
   getCase,
   addCaseComment,
   deleteCaseComment,
@@ -30,7 +29,7 @@ const getProbationRecordHandler = require('./getProbationRecordRouteHandler')({ 
 
 const getUserSelectedCourtsHandler = require('./getUserSelectedCourtsHandler')(getUserSelectedCourts)
 
-const getCaseOutcomesRouteHandler = require('./getCaseOutcomesRouteHandler')({ getOutcomesList })
+const outcomesRouter = require('./outcomes')
 
 const addCaseCommentRequestHandler = require('./getAddCommentRequestHandler')({ addCaseComment })
 
@@ -67,7 +66,7 @@ module.exports = {
   getCaseAndTemplateValues,
   getProbationRecordHandler,
   getUserSelectedCourtsHandler,
-  getCaseOutcomesRouteHandler,
+  outcomesRouter,
   addCaseCommentRequestHandler,
   deleteCaseCommentConfirmationHandler,
   deleteCaseCommentHandler,

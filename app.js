@@ -70,6 +70,7 @@ module.exports = function createApp ({ signInService, userService }) {
         ],
         imgSrc: [
           '\'self\'',
+          'https://www.googletagmanager.com',
           'https://www.google-analytics.com',
           'www.google-analytics.com'
         ],
