@@ -2,6 +2,7 @@
 const {
   getPsrRequestedConvictions,
   getNormalisedCourtRoom,
+  prepareCourtRoomFilters,
   getLastSentencedConvictionPSR, getOrderTitle
 } = require('../../server/routes/helpers')
 
@@ -203,11 +204,32 @@ describe('helpers', () => {
       ['010', '10'],
       ['10', '10'],
       ['Courtroom 060', '60'],
+      ['Courtroom 01', '1'],
       ['Courtroom 17', '17'],
       ['02-3', '2-3'],
       ['Crown Court 3-1', 'Crown Court 3-1']
     ])('given court room %s, should return court room label %s', (courtRoom, expectedLabel) => {
       expect(getNormalisedCourtRoom(courtRoom)).toEqual(expectedLabel)
+    })
+  })
+
+  describe('prepareCourtRoomFilters', () => {
+    it.each([
+      [
+        ['01', '05', '03', '08', '01', '05', '03', '08'],
+        [{ label: '1', value: ['01'] }, { label: '3', value: ['03'] }, { label: '5', value: ['05'] }, { label: '8', value: ['08'] }]
+      ],
+      [
+        ['Courtroom 01', '05', '03', '08', '01', 'Courtroom 05', 'Crown Court 5-6', 'Crown Court 5-6', 'Crown Court 3-1', '03', '08'],
+        [{ label: '1', value: ['Courtroom 01', '01'] }, { label: '3', value: ['03'] }, { label: '5', value: ['05', 'Courtroom 05'] }, { label: '8', value: ['08'] }, { label: 'Crown Court 3-1', value: 'Crown Court 3-1' }, { label: 'Crown Court 5-6', value: 'Crown Court 5-6' }]
+      ],
+      [
+        ['Crown Court 5-6', '01', '05', '03', '08', 'Crown Court 3-1', 'Crown Court 5-6', '01', '05', '03', '08'],
+        [{ label: '1', value: ['01'] }, { label: '3', value: ['03'] }, { label: '5', value: ['05'] }, { label: '8', value: ['08'] }, { label: 'Crown Court 3-1', value: 'Crown Court 3-1' }, { label: 'Crown Court 5-6', value: 'Crown Court 5-6' }]
+      ]
+    ])('given court room list %s, should return court room filters %s', (courtRooms, expected) => {
+      const actual = prepareCourtRoomFilters(courtRooms)
+      expect(actual).toStrictEqual(expected)
     })
   })
 })
