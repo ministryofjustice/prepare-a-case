@@ -41,7 +41,14 @@ const createCaseService = (apiUrl) => {
         const entries = Object.entries(selectedFilters)
         entries.forEach(entry => {
           if (Array.isArray(entry[1])) {
-            entry[1].forEach(value => apiUrlBuilder.searchParams.append(entry[0], value))
+            entry[1].forEach(value => {
+              if (entry[0] === 'courtRoom') {
+                // courtRoom can be csv so append each room separately
+                value.split(',').forEach(courtRoom => apiUrlBuilder.searchParams.append(entry[0], courtRoom))
+              } else {
+                apiUrlBuilder.searchParams.append(entry[0], value)
+              }
+            })
           } else {
             apiUrlBuilder.searchParams.append(entry[0], entry[1].toString())
           }
@@ -95,9 +102,12 @@ const createCaseService = (apiUrl) => {
       if (selectedFilters) {
         caseListFilters.filter(caseListFilter => !!selectedFilters[caseListFilter.id]).forEach(caseListFilter => {
           const selectedValues = selectedFilters[caseListFilter.id]
+          const isCourt = caseListFilter.id === 'courtRoom'
           const multipleSelection = Array.isArray(selectedValues)
           caseListFilter.items.forEach(item => {
-            item.checked = item.checked || (multipleSelection ? selectedValues.includes(item.value) : selectedValues === item.value)
+            // courtrooms can be arrays here and in selected filters they are csv so convert array to csv for comparison
+            const compareItemValue = isCourt && Array.isArray(item.value) ? item.value.join(',') : item.value
+            item.checked = item.checked || (multipleSelection ? selectedValues.includes(compareItemValue) : selectedValues === compareItemValue)
           })
         })
       }
