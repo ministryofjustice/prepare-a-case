@@ -489,14 +489,14 @@ describe('Case service', () => {
   })
   describe('server side paging', () => {
     it('should invoke api url correctly', async () => {
-      const expectedUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&limit=20&probationStatus=CURRENT&probationStatus=NO_RECORD&courtRoom=01&courtRoom=02&source=COMMON_PLATFORM&session=MORNING&breach=true`
+      const expectedUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&limit=20&probationStatus=CURRENT&probationStatus=NO_RECORD&courtRoom=01&courtRoom=Courtroom+01&courtRoom=Crown+court+1-3&courtRoom=02&source=COMMON_PLATFORM&session=MORNING&breach=true`
       moxios.stubRequest(expectedUrl, {
         status: 200,
         response: {
           cases: [],
           possibleMatchesCount: 2,
           recentlyAddedCount: 5,
-          courtRoomFilters: ['01', '02'],
+          courtRoomFilters: ['07', '01', 'Crown court 5-6', '08', 'Courtroom 01', '02', 'Crown court 1-3'],
           page: 1,
           totalPages: 2,
           totalElements: 130
@@ -505,15 +505,27 @@ describe('Case service', () => {
 
       const selectedFilters = {
         probationStatus: ['CURRENT', 'NO_RECORD'],
-        courtRoom: ['01', '02'],
+        courtRoom: ['01,Courtroom 01', 'Crown court 1-3', '02'],
         source: 'COMMON_PLATFORM',
         session: 'MORNING',
         breach: true
       }
 
       // (courtCode, date, selectedFilters, subsection, page, limit)
-      await getPagedCaseList('SHF', '2020-01-01', selectedFilters, undefined, 1, 20)
+      const resp = await getPagedCaseList('SHF', '2020-01-01', selectedFilters, undefined, 1, 20)
       expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
+      expect(resp.filters[1]).toStrictEqual({
+        id: 'courtRoom',
+        label: 'Courtroom',
+        items: [
+          { label: '1', value: ['01', 'Courtroom 01'], checked: true },
+          { label: '2', value: ['02'], checked: true },
+          { label: '7', value: ['07'], checked: false },
+          { label: '8', value: ['08'], checked: false },
+          { label: 'Crown court 1-3', value: 'Crown court 1-3', checked: true },
+          { label: 'Crown court 5-6', value: 'Crown court 5-6', checked: false }
+        ]
+      })
     })
   })
 })
