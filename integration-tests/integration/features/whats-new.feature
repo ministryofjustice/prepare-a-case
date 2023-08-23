@@ -23,6 +23,7 @@ Feature: What's new
       | 24 January 2023 |
     And I should see the following level 3 headings
       | New filters on the case list                  |
+      | Speed improvements                            |
       | Search for a defendant                        |
       | Add comments to a case                        |
       | View cases in the past and see a case history |
