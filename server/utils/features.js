@@ -44,7 +44,7 @@ const features = {
     isEnv('dev'),
     mainFeatureToggleEnabled('enableHearingOutcomes')
   ),
-  advancedFilters: isEnv('dev', 'preprod')
+  advancedFilters: isEnv('dev', 'preprod', 'prod')
 }
 
 module.exports = features
