@@ -61,9 +61,6 @@
     { text: offences | join('') | safe },
     { text: moment(item.hearingDate, 'YYYY-MM-DD').format("D MMM YYYY"), format: 'numeric' }
   ] -%}
-  {%- if params.subsection === 'removed' %}
-    {{ tableRow.push({ text: item.caseNo, format: "numeric" }) }}
-  {% endif -%}
   {{ tableData.rows.push(tableRow) }}
 
 {% endfor %}
