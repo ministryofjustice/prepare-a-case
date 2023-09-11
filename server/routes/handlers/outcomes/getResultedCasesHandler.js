@@ -9,10 +9,6 @@ const getResultedCasesHandler = caseService => async (req, res) => {
   const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).pop()
 
   const response = await caseService.getOutcomesList(courtCode, filters, sorts, state)
-  if (response && response.isError !== undefined && response.isError) {
-    res.render('error', { status: response.status || 500 })
-    return
-  }
 
   const templateValues = {
     params: {
