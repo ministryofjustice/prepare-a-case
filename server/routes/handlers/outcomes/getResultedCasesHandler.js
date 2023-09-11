@@ -1,11 +1,12 @@
+const getOutcomeTypesListFilters = require('../../../utils/getOutcomeTypesListFilters')
 const getResultedCasesHandler = caseService => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
     params
   } = req
 
-  const filters = []
-  const filtersApplied = 0
+  const filters = getOutcomeTypesListFilters(req.query)
+  const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).pop()
 
   const response = await caseService.getOutcomesList(courtCode, filters, sorts, state)
   if (response && response.isError !== undefined && response.isError) {
@@ -18,9 +19,10 @@ const getResultedCasesHandler = caseService => async (req, res) => {
       ...params,
       filters,
       filtersApplied,
-      resultedCasesCount: filtersApplied ? response.cases.length : params.resultedCasesCount
+      casesInProgressCount: filtersApplied ? response.cases.length : params.casesInProgressCount
     },
     title,
+    currentUserUuid: res.locals.user.uuid,
     data: response.cases || []
   }
 
