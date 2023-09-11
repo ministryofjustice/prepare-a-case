@@ -23,8 +23,9 @@ Feature: Cases to Result List
       | Defendant | Outcome type | Probation status | Offence | Hearing date |  Resulted by |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Joe Blogs on 11 Sep 2023 at 09:50   |
-      | Hazel Nutt     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Olive Tree on 11 Aug 2023 at 10:35  |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Johnny Ball on 9 Sep 2023 at 14:16  |
+#    Workaround to assert multiline text in table cells: Use ' \n ' to represent line breaks
+      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Joe Blogs \n on 11 Sep 2023 at 09:50   |
+      | Hazel Nutt     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Olive Tree \n on 11 Aug 2023 at 10:35  |
+      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Johnny Ball \n on 9 Sep 2023 at 14:16  |
 
     And There should be no a11y violations

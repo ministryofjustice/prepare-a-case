@@ -190,7 +190,7 @@ And('I should see the following table rows', $data => {
         })
         const checkText = safeText.join(' ').trim()
         if (checkText !== '') {
-          cy.get('.govuk-table__cell').eq(colIndex).should('include.text', correctDates(checkText))
+          cy.get('.govuk-table__cell').eq(colIndex).should('include.text', correctDates(checkText).replaceAll(' \n ', ''))
         }
       })
     })
