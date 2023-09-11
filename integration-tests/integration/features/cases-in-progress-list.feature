@@ -23,6 +23,10 @@ Feature: Cases in Progress List
 
     And I should see the following table rows
       | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
+      | Olive Tree     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
     And There should be no a11y violations
+
+    When I click the Move to resulted button for defendant "English Madden"
+    Then I should see govuk notification banner with header "Success" and message "You have moved English Madden's case to resulted cases."

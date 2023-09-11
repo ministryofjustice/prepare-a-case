@@ -18,7 +18,8 @@ const {
   searchCases,
   deleteHearingNoteDraft,
   addHearingOutcome,
-  deleteCaseCommentDraft
+  deleteCaseCommentDraft,
+  updateHearingOutcomeToResulted
 } = require('../../server/services/case-service')
 const getOutcomeTypesListFilters = require('../../server/utils/getOutcomeTypesListFilters')
 const getOutcomeListSorts = require('../../server/utils/getOutcomesSorts')
@@ -526,6 +527,19 @@ describe('Case service', () => {
           { label: 'Crown court 5-6', value: 'Crown court 5-6', checked: false }
         ]
       })
+    })
+  })
+
+  describe('updateHearingOutcomeToResulted', () => {
+    it('given hearing id, when updateHearingOutcomeToResulted is invoked, should invoke api correctly', async () => {
+      const hearingId = 'test-hearing-id'
+      const expectedUrl = `${apiUrl}/hearing/${hearingId}/outcome/result`
+      moxios.stubRequest(expectedUrl, {
+        status: 200
+      })
+
+      await updateHearingOutcomeToResulted(hearingId)
+      expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
     })
   })
 })
