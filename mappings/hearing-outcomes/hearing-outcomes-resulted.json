@@ -1,29 +1,12 @@
 {
-  "id": "94b0434e-f2f2-43ed-88af-6d73627735a1",
-  "priority": 3,
+  "id": "930abd34-84bf-49f3-8312-ff4c50d1b55a",
+  "priority": 2,
   "request": {
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
       "state": {
-        "matches": "NEW"
-      },
-      "outcomeType": {
-        "or": [
-          {
-            "and": [
-              {
-                "equalTo": "REPORT_REQUESTED"
-              },
-              {
-                "equalTo": "ADJOURNED"
-              }
-            ]
-          },
-          {
-            "absent": true
-          }
-        ]
+        "equalTo": "RESULTED"
       }
     }
   },
@@ -40,7 +23,10 @@
           "hearingId": "7e0f9cb9-b492-4657-9028-a86de1301e25",
           "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
           "hearingDate": "2023-07-05T09:30:00",
+          "resultedDate": "2023-09-11T09:50:00",
           "probationStatus": "Current",
+          "assignedTo": "Joe Blogs",
+          "assignedToUuid": "d85eef94-d166-4ff7-86b7-67eae70acc8e",
           "offences": [
             "Offence title one",
             "Offence title two",
@@ -54,7 +40,27 @@
           "hearingId": "9b9a6ab6-ef6d-485a-a8b4-b79b67e5b1f8",
           "defendantId": "82bfc40d-389a-46ba-81e1-0829a5fbf6c8",
           "hearingDate": "2023-09-05T09:30:00",
+          "resultedDate": "2023-08-11T10:35:00",
           "probationStatus": "Previously known",
+          "assignedTo": "Olive Tree",
+          "assignedToUuid": "7ca04ed7-8275-45b2-afb4-4ff51432d1ea",
+          "offences": [
+            "Attempt theft from the person of another",
+            "Theft from the person of another",
+            "Attempt theft from the person of another"
+          ],
+          "defendantName": "Hazel Nutt"
+        },
+        {
+          "hearingOutcomeType": "ADJOURNED",
+          "hearingOutcomeDescription": "Adjourned",
+          "hearingId": "9b9a6ab6-ef6d-485a-a8b4-b79b67e5b1f8",
+          "defendantId": "82bfc40d-389a-46ba-81e1-0829a5fbf6c8",
+          "hearingDate": "2023-09-05T09:30:00",
+          "resultedDate": "2023-09-09T14:16:00",
+          "probationStatus": "Previously known",
+          "assignedTo": "Johnny Ball",
+          "assignedToUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
           "offences": [
             "Attempt theft from the person of another",
             "Theft from the person of another",
