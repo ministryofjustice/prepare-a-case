@@ -1,0 +1,13 @@
+{
+    "id": "d318a132-4bf0-11ee-be56-0242ac120002",
+    "request": {
+      "method": "PUT",
+      "urlPathPattern": "/hearing/.*/outcome/assign"
+    },
+    "response": {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status": 200
+    }
+}
