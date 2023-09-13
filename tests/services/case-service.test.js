@@ -18,7 +18,8 @@ const {
   searchCases,
   deleteHearingNoteDraft,
   addHearingOutcome,
-  deleteCaseCommentDraft
+  deleteCaseCommentDraft,
+  assignHearingOutcome
 } = require('../../server/services/case-service')
 const getOutcomeTypesListFilters = require('../../server/utils/getOutcomeTypesListFilters')
 const getOutcomeListSorts = require('../../server/utils/getOutcomesSorts')
@@ -527,5 +528,18 @@ describe('Case service', () => {
         ]
       })
     })
+  })
+  it('should invoke API to assign hearing outcome', async () => {
+    const hearingId = 'id-one'
+    const endpoint = `${apiUrl}/hearing/${hearingId}/outcome/assign`
+    moxios.stubRequest(endpoint, {
+      status: 200
+    })
+    const author = 'Adam Sandler'
+    const response = await assignHearingOutcome(hearingId, author)
+    const mostRecent = moxios.requests.mostRecent()
+    expect(mostRecent.url).toBe(endpoint)
+    expect(mostRecent.config.data).toBe(JSON.stringify({ author }))
+    return response
   })
 })
