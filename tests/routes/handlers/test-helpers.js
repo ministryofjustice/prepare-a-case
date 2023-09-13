@@ -30,7 +30,8 @@ module.exports = {
     redirect: jest.fn(),
     locals: {
       user: {
-        name: 'Adam Sandler'
+        name: 'Adam Sandler',
+        uuid: '78be7d32-d6be-4429-b469-f2b0ba232033'
       }
     }
   },
