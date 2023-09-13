@@ -56,6 +56,19 @@
         }) }}
     {% endif %}
 
+    {% if session.assignHearingOutcomeSuccess %}
+        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+        {% set html %}
+            <p class="govuk-notification-banner__heading">
+                You are assigned to result this case. It has moved to the in progress tab.
+            </p>
+        {% endset %}
+        {{ govukNotificationBanner({
+            html: html,
+            type: 'success'
+        }) }}
+    {% endif %}
+
     {% if data.probationStatus and data.probationStatus | string | lower === "possible ndelius record" %}
         {%- from "moj/components/banner/macro.njk" import mojBanner -%}
         {{ mojBanner({

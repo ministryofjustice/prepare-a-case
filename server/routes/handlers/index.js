@@ -15,7 +15,8 @@ const {
   addHearingOutcome,
   saveDraftCaseComment,
   deleteCaseCommentDraft,
-  updateCaseComment
+  updateCaseComment,
+  assignHearingOutcome
 } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
 const { getUserSelectedCourts } = require('../../services/user-preference-service')
@@ -61,6 +62,8 @@ const updateCaseCommentHandler = require('./getUpdateCommentRequestHandler')({ u
 
 const pagedCaseListRouteHandler = require('./getPagedCaseListRouteHandler')({ getPagedCaseList })
 
+const assignHearingOutcomeRouteHandler = require('./getAssignUserToOutcomeRequestHandler')({ assignHearingOutcome })
+
 module.exports = {
   getCaseListHandler,
   getCaseAndTemplateValues,
@@ -81,5 +84,6 @@ module.exports = {
   autoSaveCaseCommentHandler,
   cancelCaseCommentDraftHandler,
   updateCaseCommentHandler,
-  pagedCaseListRouteHandler
+  pagedCaseListRouteHandler,
+  assignHearingOutcomeRouteHandler
 }

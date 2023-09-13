@@ -6,6 +6,7 @@
     <script type="text/javascript" src="/javascripts/hearing-outcomes-date-sort-component-{{ appVersion }}.min.js"></script>
     <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
   {% endif %}
+  <script type="text/javascript" src="/javascripts/case-progress-{{ appVersion }}.min.js"/>
 {% endblock %}
 
 {% set tableData = {
@@ -54,8 +55,9 @@
   {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
   {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
   {% set crnDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
+  {% set summaryLink = '/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary' %}
   {%- set tableRow = [
-    { text: ('<a href="/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" aria-label="' + a11yTitle + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
+    { text: ('<a href="' + summaryLink + '" class="pac-defendant-link pac-assign govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" aria-label="' + a11yTitle + '" data-hearingid="' + item.hearingId + '" data-defendantid="' + item.defendantId + '" data-courtcode="' + params.courtCode + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
     { text: item.hearingOutcomeDescription | safe },
     { text: ('<div>' + ('<span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span>' | safe if notMatched ) + ('<span class="moj-badge moj-badge--black pac-badge">Psr</span>' | safe if item.awaitingPsr) + ('<span class="moj-badge moj-badge--black pac-badge">Breach</span>' | safe if item.breach) + ('<span class="moj-badge moj-badge--black pac-badge">Sso</span>' | safe if item.suspendedSentenceOrder) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched) + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate and item.probationStatus == 'Previously known')) | safe },
     { text: offences | join('') | safe },
@@ -110,6 +112,8 @@
       hiddenInputs: params.sorts
     }) }}
   {% endif %}
+
+  {% include "court-case-progress-assign-modal.njk" %}
 
   {% if tableData.rows | length %}
     {% block table %}
