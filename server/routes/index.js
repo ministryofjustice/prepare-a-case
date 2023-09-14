@@ -29,8 +29,7 @@ const {
   autoSaveCaseCommentHandler,
   cancelCaseCommentDraftHandler,
   updateCaseCommentHandler,
-  pagedCaseListRouteHandler,
-  assignHearingOutcomeRouteHandler
+  pagedCaseListRouteHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
@@ -236,6 +235,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.deleteCommentSuccess = undefined
     session.deleteHearingNoteSuccess = undefined
     session.addHearingOutcomeSuccess = undefined
+    session.assignHearingOutcomeSuccess = undefined
     templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
       return moment(b.created).unix() - moment(a.created).unix()
     })
@@ -582,8 +582,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
   }))
 
   router.use('/:courtCode/outcomes', outcomesRouter)
-
-  router.post('/hearing/:hearingId/outcome/assign', defaults, catchErrors(assignHearingOutcomeRouteHandler))
 
   async function updateCaseDetails (caseId, hearingId, defendantId, crn) {
     const offenderDetail = await getDetails(crn)

@@ -166,8 +166,8 @@
       event.preventDefault()
       const target = event.target
 
-      const viewLink = '/' + target.dataset.courtcode + '/hearing/' + target.dataset.hearingid + '/defendant/' + target.dataset.defendantid + '/summary'
-      const submitLink = '/hearing/' + target.dataset.hearingid + '/outcome/assign'
+      const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
+      const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/outcome/assign`
       
       targetDefendantIdInput.value = target.dataset.defendantid
       targetCourtCodeInput.value = target.dataset.courtcode

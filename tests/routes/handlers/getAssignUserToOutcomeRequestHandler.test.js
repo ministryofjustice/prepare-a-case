@@ -5,7 +5,7 @@ describe('getAssignUserToOutcomeRequestHandler', () => {
     caseServiceMock,
     mockResponse
   } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/getAssignUserToOutcomeRequestHandler')(caseServiceMock)
+  const subject = require('../../../server/routes/handlers/outcomes/getAssignUserToOutcomeRequestHandler')(caseServiceMock)
   const testHearingId = 'test-hearing-id'
   const targetDefendantId = 'test-target-defendant-id'
   const targetCourtCode = 'B007'

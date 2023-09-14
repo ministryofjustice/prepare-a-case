@@ -535,11 +535,11 @@ describe('Case service', () => {
     moxios.stubRequest(endpoint, {
       status: 200
     })
-    const author = 'Adam Sandler'
-    const response = await assignHearingOutcome(hearingId, author)
+    const assignedTo = 'Adam Sandler'
+    const response = await assignHearingOutcome(hearingId, assignedTo)
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
-    expect(mostRecent.config.data).toBe(JSON.stringify({ author }))
+    expect(mostRecent.config.data).toBe(JSON.stringify({ assignedTo }))
     return response
   })
 })
