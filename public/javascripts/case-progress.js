@@ -162,9 +162,11 @@
       assignOutcomeModal.style.display = "none"
     }
 
-    function openAssignOutcomeModal (event) {
-      event.preventDefault()
+    document.querySelector('#hearing-outcome')?.addEventListener('click', (event) => {
       const target = event.target
+      if (!target.classList.contains('pac-assign')) return
+
+      event.preventDefault()
 
       const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
       const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
@@ -174,12 +176,6 @@
       assignOutcomeForm.setAttribute('action', submitLink)
       assignOutcomeViewLink.href = viewLink
       assignOutcomeModal.style.display = "block"
-    }
-
-    var assignLinks = document.getElementsByClassName('pac-assign')
-
-    Array.prototype.forEach.call(assignLinks, function (element) {
-      element.addEventListener('click', openAssignOutcomeModal)
     })
   }
   // ---- Assign Modal End
