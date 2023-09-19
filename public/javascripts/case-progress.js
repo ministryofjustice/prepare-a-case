@@ -167,7 +167,7 @@
       const target = event.target
 
       const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
-      const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/outcome/assign`
+      const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
       
       targetDefendantIdInput.value = target.dataset.defendantid
       targetCourtCodeInput.value = target.dataset.courtcode

@@ -15,6 +15,6 @@ const outcomesRouter = express.Router({ mergeParams: true })
 outcomesRouter.get('/', defaults, outcomesMiddleware('NEW'), catchErrors(casesToResultHandler))
 outcomesRouter.get('/in-progress', defaults, outcomesMiddleware('IN_PROGRESS'), catchErrors(casesInProgressHandler))
 outcomesRouter.get('/resulted-cases', defaults, outcomesMiddleware('RESULTED'), catchErrors(getResultedCasesHandler))
-outcomesRouter.post('/hearing/:hearingId/outcome/assign', defaults, catchErrors(assignHearingOutcomeRouteHandler))
+outcomesRouter.post('/hearing/:hearingId/assign', defaults, catchErrors(assignHearingOutcomeRouteHandler))
 
 module.exports = outcomesRouter
