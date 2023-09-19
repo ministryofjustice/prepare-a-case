@@ -31,6 +31,7 @@ Feature: Cases In progress List filters
       | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
 
     And I should see the "outcomeType" query have the value "REPORT_REQUESTED"
+    And I should see the "Report requested" filter tag
 
     When I click the clear "Report requested" filter tag
 
