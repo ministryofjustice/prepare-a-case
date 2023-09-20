@@ -1,4 +1,4 @@
-/* global describe, it, expect, jest */
+/* global describe, it, expect */
 
 const subject = require('../../server/utils/getHearingOutcomeAssignedToFilters')
 
@@ -12,23 +12,22 @@ describe('getHearingOutcomeAssignedToFilters', () => {
       { assignedTo: 'Ash Gourd', assignedToUuid: 'ash-gourd-uuid' },
       { assignedTo: 'Hazel Nutt', assignedToUuid: 'hazel-nutt-uuid' },
       { assignedTo: 'Ash Gourd', assignedToUuid: 'ash-gourd-uuid' },
-      { assignedTo: 'Gin Tonic', assignedToUuid: 'gin-tonic-uuid' },
+      { assignedTo: 'Gin Tonic', assignedToUuid: 'gin-tonic-uuid' }
     ]
 
-    const selectedFilters = [
-      {label: 'Gin Tonic', value: 'gin-tonic-uuid'},
-      {label: 'Olive Tree', value: 'olive-tree-uuid'}
-    ]
+    const expected = {
+      id: 'assignedTo',
+      label: 'Assigned to',
+      items: [
+        { label: 'Ash Gourd', value: 'ash-gourd-uuid' },
+        { label: 'Gin Tonic', value: 'gin-tonic-uuid' },
+        { label: 'Hazel Nutt', value: 'hazel-nutt-uuid' },
+        { label: 'Joe Blogs', value: 'joe-blogs-uuid' },
+        { label: 'Olive Tree', value: 'olive-tree-uuid' }
+      ]
+    }
 
-    const expected = [
-      { label: 'Ash Gourd', value: 'ash-gourd-uuid' },
-      { label: 'Gin Tonic', value: 'gin-tonic-uuid' },
-      { label: 'Hazel Nutt', value: 'hazel-nutt-uuid' },
-      { label: 'Joe Blogs', value: 'joe-blogs-uuid' },
-      { label: 'Olive Tree', value: 'olive-tree-uuid' }
-    ]
-
-    const filters = subject(cases, {});
+    const filters = subject(cases)
     expect(filters).toStrictEqual(expected)
   })
 })
