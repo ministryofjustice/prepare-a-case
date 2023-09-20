@@ -15,7 +15,7 @@ const getResultedCasesHandler = caseService => async (req, res) => {
       ...params,
       filters,
       filtersApplied,
-      casesInProgressCount: filtersApplied ? response.cases.length : params.casesInProgressCount
+      resultedCasesCount: filtersApplied ? response.cases.length : params.resultedCasesCount
     },
     title,
     currentUserUuid: res.locals.user.uuid,
