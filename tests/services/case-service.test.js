@@ -560,6 +560,3 @@ describe('Case service', () => {
     })
   })
 })
-
-
-
