@@ -19,7 +19,8 @@ const {
   deleteHearingNoteDraft,
   addHearingOutcome,
   deleteCaseCommentDraft,
-  assignHearingOutcome
+  assignHearingOutcome,
+  updateHearingOutcomeToResulted
 } = require('../../server/services/case-service')
 const getOutcomeTypesListFilters = require('../../server/utils/getOutcomeTypesListFilters')
 const getOutcomeListSorts = require('../../server/utils/getOutcomesSorts')
@@ -529,17 +530,36 @@ describe('Case service', () => {
       })
     })
   })
-  it('should invoke API to assign hearing outcome', async () => {
-    const hearingId = 'id-one'
-    const endpoint = `${apiUrl}/hearing/${hearingId}/outcome/assign`
-    moxios.stubRequest(endpoint, {
-      status: 200
+
+  describe('assignHearingOutcome', () => {
+    it('should invoke API to assign hearing outcome', async () => {
+      const hearingId = 'id-one'
+      const endpoint = `${apiUrl}/hearing/${hearingId}/outcome/assign`
+      moxios.stubRequest(endpoint, {
+        status: 200
+      })
+      const assignedTo = 'Adam Sandler'
+      const response = await assignHearingOutcome(hearingId, assignedTo)
+      const mostRecent = moxios.requests.mostRecent()
+      expect(mostRecent.url).toBe(endpoint)
+      expect(mostRecent.config.data).toBe(JSON.stringify({ assignedTo }))
+      return response
     })
-    const assignedTo = 'Adam Sandler'
-    const response = await assignHearingOutcome(hearingId, assignedTo)
-    const mostRecent = moxios.requests.mostRecent()
-    expect(mostRecent.url).toBe(endpoint)
-    expect(mostRecent.config.data).toBe(JSON.stringify({ assignedTo }))
-    return response
+  })
+
+  describe('updateHearingOutcomeToResulted', () => {
+    it('given hearing id, when updateHearingOutcomeToResulted is invoked, should invoke api correctly', async () => {
+      const hearingId = 'test-hearing-id'
+      const expectedUrl = `${apiUrl}/hearing/${hearingId}/outcome/result`
+      moxios.stubRequest(expectedUrl, {
+        status: 200
+      })
+
+      await updateHearingOutcomeToResulted(hearingId)
+      expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
+    })
   })
 })
+
+
+

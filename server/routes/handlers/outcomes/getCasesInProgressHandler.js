@@ -3,7 +3,8 @@ const getOutcomeTypesListFilters = require('../../../utils/getOutcomeTypesListFi
 const getCasesInProgressHandler = caseService => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
-    params
+    params,
+    session
   } = req
 
   const filters = getOutcomeTypesListFilters(req.query)
@@ -23,8 +24,11 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
       casesInProgressCount: filtersApplied ? response.cases.length : params.casesInProgressCount
     },
     title,
+    currentUserUuid: res.locals.user.uuid,
+    moveToResultedSuccess: session.moveToResultedSuccess,
     data: response.cases || []
   }
+  session.moveToResultedSuccess = undefined
 
   res.render('outcomes/casesInProgress', templateValues)
 }
