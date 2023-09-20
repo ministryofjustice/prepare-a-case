@@ -1,12 +1,12 @@
 /* global describe, it, expect */
 
 const getOutcomeTypesListFilters = require('../../../server/utils/getOutcomeTypesListFilters')
-describe('getCaseOutcomesRouteHandler', () => {
+describe('getCasesInProgressHandler', () => {
   const {
     mockResponse,
     caseServiceMock: caseService
   } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/outcomes/getCasesToResultHandler')(caseService)
+  const subject = require('../../../server/routes/handlers/outcomes/getCasesInProgressHandler')(caseService)
   const courtCode = 'B007'
 
   const mockRequest = {

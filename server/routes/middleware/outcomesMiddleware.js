@@ -14,12 +14,13 @@ const outcomesMiddleware = state => async (req, res, next) => {
   }
   const hearingDateSort = sortMapping[sorts && sorts.map(item => item.value).pop()]
 
+  // TODO: get these counts from the API
   req.params = {
     ...params,
     title: 'Hearing outcomes',
     sorts,
     casesToResultCount: 2,
-    casesInProgressCount: 0,
+    casesInProgressCount: 2,
     resultedCasesCount: 0,
     hearingDateSort,
     state
