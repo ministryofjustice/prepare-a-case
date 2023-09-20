@@ -104,12 +104,12 @@
 
   // ---- Case Workflow add hearing outcome START
 
-  const modal = document.querySelector("#add-hearing-outcome-modal");
+  const modal = document.querySelector("#add-hearing-outcome-modal")
 
   if(modal) {
-    const modalCloseButton = modal.getElementsByClassName("modal-close")[0];
+    const modalCloseButton = modal.getElementsByClassName("modal-close")[0]
 
-    const hearingOutcomeForm = modal.querySelector("#hearing-outcome-form-row");
+    const hearingOutcomeForm = modal.querySelector("#hearing-outcome-form-row")
 
     const hearingOutcomeTypeSelect = hearingOutcomeForm.getElementsByTagName('select')[0]
     const sendOutcomeToAdminButton = hearingOutcomeForm.querySelector('#send-outcome-to-admin')
@@ -132,7 +132,7 @@
     }
 
     modalCloseButton.onclick = () => {
-      modal.style.display = "none";
+      modal.style.display = "none"
       hearingOutcomeError.classList.add('govuk-!-display-none')
       hearingOutcomeForm.classList.remove('govuk-form-group--error')
     }
@@ -143,10 +143,42 @@
 
       targetHearingIdInput.value = target.dataset.hearingid
       sendOutcomeToAdminButton.dataset.targetHearingId = target.dataset.hearingid
-      modal.style.display = "block";
+      modal.style.display = "block"
     })
   }
   // ---- Case Workflow add hearing outcome END
+
+  // ---- Assign Modal START
+  const assignOutcomeModal = document.querySelector("#assign-outcome-modal")
+
+  if(assignOutcomeModal) {
+    const assignOutcomeModalCloseButton = assignOutcomeModal.getElementsByClassName("modal-close")[0]
+    const assignOutcomeForm = assignOutcomeModal.querySelector("#assign-outcome-form-row")
+    const assignOutcomeViewLink = assignOutcomeModal.querySelector("#assign-outcome-view")
+    const targetDefendantIdInput = assignOutcomeForm.querySelector('#targetDefendantId')
+    const targetCourtCodeInput = assignOutcomeForm.querySelector('#targetCourtCode')
+
+    assignOutcomeModalCloseButton.onclick = () => {
+      assignOutcomeModal.style.display = "none"
+    }
+
+    document.querySelector('#hearing-outcome')?.addEventListener('click', (event) => {
+      const target = event.target
+      if (!target.classList.contains('pac-assign')) return
+
+      event.preventDefault()
+
+      const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
+      const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
+      
+      targetDefendantIdInput.value = target.dataset.defendantid
+      targetCourtCodeInput.value = target.dataset.courtcode
+      assignOutcomeForm.setAttribute('action', submitLink)
+      assignOutcomeViewLink.href = viewLink
+      assignOutcomeModal.style.display = "block"
+    })
+  }
+  // ---- Assign Modal End
 
   // --- case comments edit START
   document.querySelector('#caseComments')?.addEventListener('click', (event) => {
