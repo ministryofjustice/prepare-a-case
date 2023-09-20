@@ -5,9 +5,6 @@
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
-      "state": {
-        "matches": "NEW"
-      },
       "outcomeType": {
         "or": [
           {

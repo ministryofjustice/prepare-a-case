@@ -3,7 +3,10 @@
 {%- set moment = params.moment -%}
 {% set courtRoom = data.courtRoom | replace("0", "") if data.courtRoom | first === "0" else data.courtRoom -%}
 {%- set communityData = data.communityData -%}
-{% set defendantFullName = (data.name.forename1 + ' ' + data.name.surname) if (data.name.forename1 and data.name.surname) else data.defendantName %}
+{% set defendantFullName = (data.name.forename1 +
+    (' ' + data.name.forename2 if data.name.forename2) +
+    (' ' + data.name.forename3 if data.name.forename3) +
+    ' ' + data.name.surname) if data.name else data.defendantName %}
 
 {% set bannerHtml %}
     {% set recordCount = 'record' if data.numberOfPossibleMatches === 1 else 'records' %}
