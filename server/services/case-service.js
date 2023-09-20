@@ -208,6 +208,11 @@ const createCaseService = (apiUrl) => {
       return response.data
     },
 
+    updateHearingOutcomeToResulted: async (hearingId) => {
+      const urlString = `${apiUrl}/hearing/${hearingId}/outcome/result`
+      await create(urlString)
+    },
+
     searchCases: async (term, type, page, pageSize) => {
       try {
         return await request(`${apiUrl}/search`, { term, type, page, size: pageSize })
