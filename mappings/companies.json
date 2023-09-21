@@ -1,0 +1,625 @@
+{
+  "id": "2d743cf2-fb21-41b0-b767-ef11fc9bf061",
+  "request": {
+    "method": "GET",
+    "urlPath": "/truproxy/Search",
+    "queryParameters": {
+      "Query": {
+        "equalTo": "BBC"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "page_number": 1,
+      "kind": "search#companies",
+      "total_results": 20,
+      "items": [
+        {
+          "company_status": "active",
+          "address_snippet": "Boswell Cottage Main Street, North Leverton, Retford, England, DN22 0AD",
+          "date_of_creation": "2008-02-11",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "06500244 - Incorporated on 11 February 2008",
+          "links": {
+            "self": "/company/06500244"
+          },
+          "company_number": "06500244",
+          "title": "BBC LIMITED",
+          "company_type": "ltd",
+          "address": {
+            "premises": "Boswell Cottage Main Street",
+            "postal_code": "DN22 0AD",
+            "country": "England",
+            "locality": "Retford",
+            "address_line_1": "North Leverton"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "Unit 2 Restormel Estate, Liddicoat Road, Lostwithiel, Cornwall, PL22 0HG",
+          "date_of_creation": "2011-02-07",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "07520089 - Incorporated on  7 February 2011",
+          "links": {
+            "self": "/company/07520089"
+          },
+          "company_number": "07520089",
+          "title": "BBC AND CO LIMITED",
+          "company_type": "ltd",
+          "address": {
+            "premises": "Unit 2",
+            "postal_code": "PL22 0HG",
+            "locality": "Lostwithiel",
+            "region": "Cornwall",
+            "address_line_1": "Restormel Estate",
+            "address_line_2": "Liddicoat Road"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "Suite 4 Second Floor Honeycomb, Edmund Street, Liverpool, England, L3 9NG",
+          "date_of_creation": "2015-07-03",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "09670032 - Incorporated on  3 July 2015",
+          "links": {
+            "self": "/company/09670032"
+          },
+          "company_number": "09670032",
+          "title": "BBC AESTHETICS LIMITED",
+          "company_type": "ltd",
+          "address": {
+            "premises": "Suite 4",
+            "postal_code": "L3 9NG",
+            "country": "England",
+            "locality": "Liverpool",
+            "address_line_1": "Second Floor Honeycomb",
+            "address_line_2": "Edmund Street"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "dissolved",
+          "address_snippet": "30 Chalcot Grove, Birmingham, England, B20 1HJ",
+          "date_of_creation": "2020-07-23",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "12763638 - Dissolved on 12 September 2023",
+          "links": {
+            "self": "/company/12763638"
+          },
+          "company_number": "12763638",
+          "title": "BBC & GLAZING LTD",
+          "company_type": "ltd",
+          "address": {
+            "premises": "30",
+            "postal_code": "B20 1HJ",
+            "country": "England",
+            "locality": "Birmingham",
+            "address_line_1": "Chalcot Grove"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "dissolved-on"
+          ],
+          "date_of_cessation": "2023-09-12"
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "2 Longwood Hall, Bingley, W. Yorks, England, BD16 2RX",
+          "date_of_creation": "2010-04-07",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "07215276 - Incorporated on  7 April 2010",
+          "links": {
+            "self": "/company/07215276"
+          },
+          "company_number": "07215276",
+          "title": "BBC APPLICATIONS LIMITED",
+          "company_type": "ltd",
+          "address": {
+            "premises": "2",
+            "postal_code": "BD16 2RX",
+            "country": "England",
+            "locality": "Bingley",
+            "region": "W. Yorks",
+            "address_line_1": "Longwood Hall"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "liquidation",
+          "address_snippet": "602/604  Seven Sisters Road, London, N15 6HT",
+          "date_of_creation": "1980-02-27",
+          "matches": {
+            "title": [
+              1,
+              6
+            ]
+          },
+          "description": "01481686 - Incorporated on 27 February 1980 - Liquidation",
+          "links": {
+            "self": "/company/01481686"
+          },
+          "company_number": "01481686",
+          "title": "B.B.C. BATHROOMS LIMITED",
+          "company_type": "ltd",
+          "address": {
+            "premises": "602/604 ",
+            "postal_code": "N15 6HT",
+            "address_line_1": "Seven Sisters Road",
+            "address_line_2": "London"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on",
+            "liquidation"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "67 Westow Street, Upper Norwood, London, SE19 3RW",
+          "date_of_creation": "2002-09-24",
+          "matches": {
+            "title": [
+              1,
+              5
+            ]
+          },
+          "description": "04543129 - Incorporated on 24 September 2002",
+          "links": {
+            "self": "/company/04543129"
+          },
+          "company_number": "04543129",
+          "title": "B.B.C (BIG BEN CONSULTING) GROUP LTD",
+          "company_type": "ltd",
+          "address": {
+            "premises": "67",
+            "postal_code": "SE19 3RW",
+            "locality": "London",
+            "address_line_1": "Westow Street",
+            "address_line_2": "Upper Norwood"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "23 West Close, London, England, N9 9QR",
+          "date_of_creation": "2022-03-28",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "14006528 - Incorporated on 28 March 2022",
+          "links": {
+            "self": "/company/14006528"
+          },
+          "company_number": "14006528",
+          "title": "BBC - BLESSING BEAUTY COSMETICS LIMITED",
+          "company_type": "ltd",
+          "address": {
+            "premises": "23",
+            "postal_code": "N9 9QR",
+            "country": "England",
+            "locality": "London",
+            "address_line_1": "West Close"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "liquidation",
+          "address_snippet": "C/O Begbies Traynor, 3rd Floor Castlemead, Lower Castle Street, Bristol, BS1 3AG",
+          "date_of_creation": "2010-03-24",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "07201733 - Incorporated on 24 March 2010 - Liquidation",
+          "links": {
+            "self": "/company/07201733"
+          },
+          "company_number": "07201733",
+          "title": "BBC (BRISTOL) CLUB LIMITED",
+          "company_type": "private-limited-guarant-nsc",
+          "address": {
+            "premises": "C/O Begbies Traynor, 3rd Floor Castlemead",
+            "postal_code": "BS1 3AG",
+            "locality": "Bristol",
+            "address_line_1": "Lower Castle Street"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on",
+            "liquidation"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "3000 Hillswood Drive, Chertsey, England, KT16 0RS",
+          "date_of_creation": "2019-02-06",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "11811163 - Incorporated on  6 February 2019",
+          "links": {
+            "self": "/company/11811163"
+          },
+          "company_number": "11811163",
+          "title": "BBC CARE SERVICE LIMITED",
+          "company_type": "ltd",
+          "address": {
+            "premises": "3000",
+            "postal_code": "KT16 0RS",
+            "country": "England",
+            "locality": "Chertsey",
+            "address_line_1": "Hillswood Drive"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "Unit C, Weir St, Blackburn, United Kingdom, BB2 2AN",
+          "date_of_creation": "2020-08-07",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "12800068 - Incorporated on  7 August 2020",
+          "links": {
+            "self": "/company/12800068"
+          },
+          "company_number": "12800068",
+          "title": "BBC CATERING LTD",
+          "company_type": "ltd",
+          "address": {
+            "premises": "Unit C",
+            "postal_code": "BB2 2AN",
+            "country": "United Kingdom",
+            "locality": "Blackburn",
+            "address_line_1": "Weir St"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "Bridge House, Media City Uk, Salford, England, M50 2BH",
+          "date_of_creation": "2003-04-04",
+          "matches": {
+            "snippet": [
+              5,
+              7
+            ],
+            "title": [
+              1,
+              3
+            ]
+          },
+          "snippet": "THE BBC CHILDREN IN NEED APPEAL ",
+          "description": "04723022 - Incorporated on  4 April 2003",
+          "links": {
+            "self": "/company/04723022"
+          },
+          "company_number": "04723022",
+          "title": "BBC CHILDREN IN NEED",
+          "company_type": "private-limited-guarant-nsc-limited-exemption",
+          "address": {
+            "premises": "Bridge House",
+            "postal_code": "M50 2BH",
+            "country": "England",
+            "locality": "Salford",
+            "address_line_1": "Media City Uk"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "1 Television Centre, Wood Lane, London, England, W12 7FA",
+          "date_of_creation": "2015-12-07",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "09905558 - Incorporated on  7 December 2015",
+          "links": {
+            "self": "/company/09905558"
+          },
+          "company_number": "09905558",
+          "title": "BBC CHILDREN'S PRODUCTIONS LIMITED",
+          "company_type": "ltd",
+          "address": {
+            "premises": "1",
+            "postal_code": "W12 7FA",
+            "country": "England",
+            "locality": "London",
+            "address_line_1": "Television Centre",
+            "address_line_2": "Wood Lane"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "ACHMET MOUCHTEREM, Wogan House Bbc Club, 99 Great Portland Street, London, England, W1A 1AA",
+          "date_of_creation": "2010-04-01",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "07211699 - Incorporated on  1 April 2010",
+          "links": {
+            "self": "/company/07211699"
+          },
+          "company_number": "07211699",
+          "title": "BBC CLUB SPORTS AND LEISURE LIMITED",
+          "company_type": "private-limited-guarant-nsc",
+          "address": {
+            "premises": "Wogan House Bbc Club",
+            "postal_code": "W1A 1AA",
+            "country": "England",
+            "locality": "London",
+            "address_line_1": "99 Great Portland Street"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "Adanac Business Park, Adanac North, Unit E3 & E4,, Adanac Drive, Southampton, United Kingdom, SO16 0BT",
+          "date_of_creation": "2020-11-09",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "13005466 - Incorporated on  9 November 2020",
+          "links": {
+            "self": "/company/13005466"
+          },
+          "company_number": "13005466",
+          "title": "BBC COFFEE LIMITED",
+          "company_type": "ltd",
+          "address": {
+            "premises": "Adanac Business Park, Adanac North, Unit E3 & E4,",
+            "postal_code": "SO16 0BT",
+            "country": "United Kingdom",
+            "locality": "Southampton",
+            "address_line_1": "Adanac Drive"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "1 Television Centre, 101 Wood Lane, London, United Kingdom, W12 7FA",
+          "date_of_creation": "2014-08-01",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "09158624 - Incorporated on  1 August 2014",
+          "links": {
+            "self": "/company/09158624"
+          },
+          "company_number": "09158624",
+          "title": "BBC COMEDY PRODUCTIONS LIMITED",
+          "company_type": "ltd",
+          "address": {
+            "premises": "1",
+            "postal_code": "W12 7FA",
+            "country": "United Kingdom",
+            "locality": "London",
+            "address_line_1": "Television Centre",
+            "address_line_2": "101 Wood Lane"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "1 Television Centre, 101 Wood Lane, London, United Kingdom, United Kingdom, W12 7FA",
+          "date_of_creation": "2002-06-18",
+          "matches": {
+            "snippet": [
+              1,
+              3
+            ],
+            "title": [
+              1,
+              3
+            ]
+          },
+          "snippet": "BBC COMMERCIAL HOLDINGS ",
+          "description": "04463534 - Incorporated on 18 June 2002",
+          "links": {
+            "self": "/company/04463534"
+          },
+          "company_number": "04463534",
+          "title": "BBC COMMERCIAL LIMITED",
+          "company_type": "ltd",
+          "address": {
+            "premises": "1",
+            "postal_code": "W12 7FA",
+            "country": "United Kingdom",
+            "locality": "London",
+            "region": "United Kingdom",
+            "address_line_1": "Television Centre",
+            "address_line_2": "101 Wood Lane"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "1-3 St. Annes Place, Halifax, England, HX1 5RB",
+          "date_of_creation": "2021-09-22",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "13637184 - Incorporated on 22 September 2021",
+          "links": {
+            "self": "/company/13637184"
+          },
+          "company_number": "13637184",
+          "title": "BBC CONCRETE PRODUCTS LTD",
+          "company_type": "ltd",
+          "address": {
+            "premises": "1-3",
+            "postal_code": "HX1 5RB",
+            "country": "England",
+            "locality": "Halifax",
+            "address_line_1": "St. Annes Place"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "22 Notting Hill Gate, 22 Deal Chambers Dr. Consultants, London, England, United Kingdom, W11 3JE",
+          "date_of_creation": "2022-02-09",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "13903907 - Incorporated on  9 February 2022",
+          "links": {
+            "self": "/company/13903907"
+          },
+          "company_number": "13903907",
+          "title": "BBC CONSERVATOIRE OF MUSIC & MATHEMATICS LTD",
+          "company_type": "ltd",
+          "address": {
+            "premises": "22",
+            "postal_code": "W11 3JE",
+            "country": "United Kingdom",
+            "locality": "London",
+            "region": "England",
+            "address_line_1": "Notting Hill Gate",
+            "address_line_2": "22 Deal Chambers Dr. Consultants"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        },
+        {
+          "company_status": "active",
+          "address_snippet": "52a Gordon Road, London, England, W5 2AR",
+          "date_of_creation": "2020-11-02",
+          "matches": {
+            "title": [
+              1,
+              3
+            ]
+          },
+          "description": "12990923 - Incorporated on  2 November 2020",
+          "links": {
+            "self": "/company/12990923"
+          },
+          "company_number": "12990923",
+          "title": "BBC CONSTRUCTION LTD",
+          "company_type": "ltd",
+          "address": {
+            "premises": "52a",
+            "postal_code": "W5 2AR",
+            "country": "England",
+            "locality": "London",
+            "address_line_1": "Gordon Road"
+          },
+          "kind": "searchresults#company",
+          "description_identifier": [
+            "incorporated-on"
+          ]
+        }
+      ]
+    }
+  }
+}

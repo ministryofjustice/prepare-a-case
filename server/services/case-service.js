@@ -187,19 +187,18 @@ const createCaseService = (apiUrl) => {
       }
 
       const filtersCopy = {
-        ...filters
-      }
-
-      if (filtersCopy.hearingDate) {
-        delete filtersCopy.hearingDate
+        outcomeType: filters?.outcomeType,
+        assignedToUuid: filters?.assignedToUuid
       }
 
       Object.keys(filtersCopy).forEach(key => {
         const values = filtersCopy[key]
-        if (Array.isArray(values)) {
-          values.forEach(val => paramMap.append(key, val))
-        } else {
-          paramMap.append(key, values)
+        if (values) {
+          if (Array.isArray(values)) {
+            values.forEach(val => paramMap.append(key, val))
+          } else {
+            paramMap.append(key, values)
+          }
         }
       })
 

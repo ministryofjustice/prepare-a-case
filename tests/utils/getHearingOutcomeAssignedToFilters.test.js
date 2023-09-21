@@ -16,7 +16,7 @@ describe('getHearingOutcomeAssignedToFilters', () => {
     ]
 
     const expected = {
-      id: 'assignedTo',
+      id: 'assignedToUuid',
       label: 'Assigned to',
       items: [
         { label: 'Ash Gourd', value: 'ash-gourd-uuid' },
