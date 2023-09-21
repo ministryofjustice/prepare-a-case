@@ -10,5 +10,5 @@ module.exports = (cases) => {
       const textB = b.label.toUpperCase()
       return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
     })
-  return { id: 'assignedTo', label: 'Assigned to', items }
+  return { id: 'assignedToUuid', label: 'Assigned to', items }
 }

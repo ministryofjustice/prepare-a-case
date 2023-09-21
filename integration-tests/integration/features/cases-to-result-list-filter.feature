@@ -18,7 +18,7 @@ Feature: Cases to Result List filters
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Outcome type" filter button
-    And I select the "REPORT_REQUESTED" filter
+    And I select the "Report requested" filter
     And I click the "Outcome type" filter button
     And I click the "Apply filters" button
 
@@ -60,7 +60,7 @@ Feature: Cases to Result List filters
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Outcome type" filter button
-    And I select the "ADJOURNED" filter
+    And I select the "Adjourned" filter
     And I click the "Outcome type" filter button
     And I click the "Apply filters" button
 
@@ -103,7 +103,7 @@ Feature: Cases to Result List filters
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Outcome type" filter button
-    And I select the "OTHER" filter
+    And I select the "Other" filter
     And I click the "Outcome type" filter button
     And I click the "Apply filters" button
 

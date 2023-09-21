@@ -1,3 +1,4 @@
+
 Feature: Case list filters
   In order to view the list of specific cases sitting on the day in court
   As an authenticated user
@@ -56,7 +57,7 @@ Feature: Case list filters
       | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
 
     When I click the "Courtroom" filter button
-    And I select the "01" filter
+    And I select the "1" filter
     And I click the "Courtroom" filter button
     And I click the "Apply filters" button
 
@@ -94,7 +95,7 @@ Feature: Case list filters
       | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
 
     When I click the "Session" filter button
-    And I select the "AFTERNOON" filter
+    And I select the "Afternoon" filter
     And I click the "Session" filter button
     And I click the "Apply filters" button
 
@@ -135,10 +136,10 @@ Feature: Case list filters
     And I select the "Current" filter
     And I click the "Probation status" filter button
     And I click the "Courtroom" filter button
-    And I select the "01" filter
+    And I select the "1" filter
     And I click the "Courtroom" filter button
     And I click the "Session" filter button
-    And I select the "AFTERNOON" filter
+    And I select the "Afternoon" filter
     And I click the "Session" filter button
     And I click the "Apply filters" button
 
@@ -286,7 +287,7 @@ Feature: Case list filters
       | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
 
     When I click the "Flag" filter button
-    And I select the "true" filter
+    And I select the "Breach" filter
     And I click the "Flag" filter button
     And I click the "Apply filters" button
 
@@ -327,7 +328,7 @@ Feature: Case list filters
       | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
 
     When I click the "Source" filter button
-    And I select the "COMMON_PLATFORM" filter
+    And I select the "Common Platform" filter
     And I click the "Source" filter button
     And I click the "Apply filters" button
 
@@ -366,7 +367,7 @@ Feature: Case list filters
       | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
 
     When I click the "Source" filter button
-    And I select the "LIBRA" filter
+    And I select the "Libra" filter
     And I click the "Source" filter button
     And I click the "Apply filters" button
 
@@ -442,10 +443,10 @@ Feature: Case list filters
     And I select the "Current" filter
     And I click the "Probation status" filter button
     And I click the "Courtroom" filter button
-    And I select the "06" filter
+    And I select the "6" filter
     And I click the "Courtroom" filter button
     And I click the "Session" filter button
-    And I select the "AFTERNOON" filter
+    And I select the "Afternoon" filter
     And I click the "Session" filter button
     And I click the "Apply filters" button
 

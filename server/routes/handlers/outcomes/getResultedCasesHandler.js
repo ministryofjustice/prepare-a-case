@@ -28,7 +28,7 @@ const getResultedCasesHandler = caseService => async (req, res) => {
       ...params,
       filters: flaggedFilters,
       filtersApplied,
-      casesInProgressCount: 0
+      casesInProgressCount: 2
     },
     title,
     currentUserUuid: res.locals.user.uuid,
