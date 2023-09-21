@@ -114,7 +114,7 @@ describe('Routes', () => {
   beforeEach(() => {
     app = require('../../app')
     app = appSetup(viewRoute)
-    defaultFilters = getOutcomeTypesListFilters()
+    defaultFilters = [getOutcomeTypesListFilters()]
     defaultSort = [{ id: 'hearingDate', value: 'NONE' }]
   })
 
@@ -400,7 +400,7 @@ describe('Routes', () => {
   it('outcomes list route should call the case service to fetch outcome list data', async () => {
     return request(app).get('/B14LO/outcomes').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', defaultFilters, defaultSort, 'NEW')
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', {}, defaultSort, 'NEW')
     })
   })
 
@@ -414,14 +414,14 @@ describe('Routes', () => {
         })
         return filter
       })
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', defaultFilters, defaultSort, 'NEW')
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: ['ADJOURNED'] }, defaultSort, 'NEW')
     })
   })
 
   it('outcomes list route should call the case service to sort outcome list data', async () => {
     return request(app).get('/B14LO/outcomes?hearingDate=ASC').then(response => {
       expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', defaultFilters, [{ id: 'hearingDate', value: 'ASC' }], 'NEW')
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingDate: ['ASC'] }, [{ id: 'hearingDate', value: 'ASC' }], 'NEW')
     })
   })
 
@@ -435,7 +435,7 @@ describe('Routes', () => {
         })
         return filter
       })
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', defaultFilters, [{ id: 'hearingDate', value: 'ASC' }], 'NEW')
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingDate: ['ASC'], outcomeType: ['ADJOURNED'] }, [{ id: 'hearingDate', value: 'ASC' }], 'NEW')
     })
   })
 
@@ -449,7 +449,7 @@ describe('Routes', () => {
         })
         return filter
       })
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', defaultFilters, defaultSort, 'NEW')
+      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] }, defaultSort, 'NEW')
     })
   })
 })
