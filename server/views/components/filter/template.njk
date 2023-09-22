@@ -40,6 +40,7 @@
                                         <input class="govuk-checkboxes__input pac-filter-checkbox"
                                                id="checkbox-{{ filter.id }}-{{ loop.index }}"
                                                name="{{ filter.id }}"
+                                               data-test="{{ item.label }}"
                                                type="checkbox"
                                                value="{{ item.value or item.label }}"{% if item.checked %} checked{% endif %}>
                                         <label class="govuk-label govuk-checkboxes__label"
