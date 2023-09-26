@@ -364,6 +364,12 @@ And('I should see the text {string} in a table cell', $string => {
   cy.get('.govuk-table__cell').contains($string).should('exist')
 })
 
+And('I should see the link {string} in a table row', $string => {
+  cy.get('.govuk-table__row').within(() => {
+    cy.get('.govuk-link').contains($string).should('exist')
+  })
+})
+
 And('I should see the text {string} in a list', $string => {
   cy.get('.govuk-list').contains($string).should('exist')
 })
@@ -532,5 +538,58 @@ And('I should see the {string} query have the value {string}', ($string, $value)
   cy.location('search').then(query => {
     const urlParams = new URLSearchParams(query)
     expect(urlParams.get($string)).eq($value)
+  })
+})
+
+// Modals
+
+And('I should {string} the {string} modal popup to assign hearing outcome', ($expected, $id) => {
+  const expected = $expected.toLowerCase()
+  expect(['see', 'not see']).to.include(expected)
+  cy.get(`[data-cy=${$id}]`).should(`${expected === 'not see' ? 'not.' : ''}be.visible`)
+})
+
+And('the {string} modal popup should have the close button', ($id) => {
+  cy.get(`[data-cy=${$id}]`).within(() => {
+    cy.get('button').contains('X').should('exist')
+  })
+})
+
+When('I click button {string} on {string} modal popup', ($buttonText, $id) => {
+  cy.get(`#${$id} button`).contains($buttonText).click()
+})
+
+// I should see the link "Gill Arnold" will open a modal
+And('I should see the link {string} {string} open a reassign modal', ($string, $expected) => {
+  const expected = $expected.toLowerCase()
+  expect(['will', 'will not']).to.include(expected)
+
+  cy.get('.govuk-table__row').within(() => {
+    cy.get('.govuk-link').contains($string).should('have.attr', 'class')
+      .and(`${expected === 'will not' ? 'not.' : ''}contain`, 'pac-reassign')
+  })
+})
+
+And('the {string} modal popup should have text heading {string}', ($id, $string) => {
+  cy.get(`[data-cy=${$id}]`).within(() => {
+    cy.get('h2').contains($string).should('be.visible')
+  })
+})
+
+And('the {string} modal popup should have text paragraph {string}', ($id, $string) => {
+  cy.get(`[data-cy=${$id}]`).within(() => {
+    cy.get('p').contains($string).should('be.visible')
+  })
+})
+
+And('the {string} modal popup should have the button {string}', ($id, $string) => {
+  cy.get(`[data-cy=${$id}]`).within(() => {
+    cy.get('button').contains($string).should('exist')
+  })
+})
+
+And('the {string} modal popup should have the link {string}', ($id, $string) => {
+  cy.get(`[data-cy=${$id}]`).within(() => {
+    cy.get('a').contains($string).should('exist')
   })
 })
