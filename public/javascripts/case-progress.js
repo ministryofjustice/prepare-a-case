@@ -180,6 +180,38 @@
   }
   // ---- Assign Modal End
 
+  // ---- Reassign Modal START
+  const reassignOutcomeModal = document.querySelector("#reassign-outcome-modal")
+
+  if(reassignOutcomeModal) {
+    const reassignOutcomeModalCloseButton = reassignOutcomeModal.getElementsByClassName("modal-close")[0]
+    const reassignOutcomeForm = reassignOutcomeModal.querySelector("#reassign-outcome-form-row")
+    const reassignOutcomeViewLink = reassignOutcomeModal.querySelector("#reassign-outcome-view")
+    const reassigntargetDefendantIdInput = reassignOutcomeForm.querySelector('#targetDefendantId')
+    const reassigntargetCourtCodeInput = reassignOutcomeForm.querySelector('#targetCourtCode')
+
+    reassignOutcomeModalCloseButton.onclick = () => {
+      reassignOutcomeModal.style.display = "none"
+    }
+
+    document.querySelector('#hearing-outcome-in-progress')?.addEventListener('click', (event) => {
+      const target = event.target
+      console.log(target)
+      if (!target.classList.contains('pac-reassign')) return
+      event.preventDefault()
+
+      const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
+      const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
+      
+      reassigntargetDefendantIdInput.value = target.dataset.defendantid
+      reassigntargetCourtCodeInput.value = target.dataset.courtcode
+      reassignOutcomeForm.setAttribute('action', submitLink)
+      reassignOutcomeViewLink.href = viewLink
+      reassignOutcomeModal.style.display = "block"
+    })
+  }
+  // ---- Assign Modal End
+
   // --- case comments edit START
   document.querySelector('#caseComments')?.addEventListener('click', (event) => {
     const eventClassList = event.target.classList;
