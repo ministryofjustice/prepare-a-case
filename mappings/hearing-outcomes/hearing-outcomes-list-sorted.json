@@ -6,10 +6,10 @@
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
       "sortBy": {
-        "matches": "hearingDate"
+        "equalTo": "hearingDate"
       },
       "order": {
-        "matches": "DESC"
+        "equalTo": "DESC"
       }
     }
   },
