@@ -4,6 +4,10 @@ module.exports = {
     return value ? JSON.parse(value) : ''
   },
 
+  stringify: function (value) {
+    return value ? JSON.stringify(value) : ''
+  },
+
   limit: (arr, limit) => {
     return arr ? arr.slice(0, limit) : []
   },
