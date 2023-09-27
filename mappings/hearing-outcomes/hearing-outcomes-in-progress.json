@@ -7,6 +7,9 @@
     "queryParameters": {
       "state": {
         "matches": "IN_PROGRESS"
+      },
+      "sortBy": {
+        "absent": true
       }
     }
   },
