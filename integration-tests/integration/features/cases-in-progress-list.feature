@@ -28,5 +28,53 @@ Feature: Cases in Progress List
 
     And There should be no a11y violations
 
+  Scenario: Clicking on the Move to Resulted button should show a banner
+    Given I am an authenticated user
+    When I navigate to the "outcomes/in-progress" route
+    Then I should be on the "Hearing outcomes" page
+  
     When I click the Move to resulted button for defendant "English Madden"
     Then I should see govuk notification banner with header "Success" and message "You have moved English Madden's case to resulted cases."
+
+  Scenario: Clicking on a case the user is not assigned to should show a modal
+    Given I am an authenticated user
+    When I navigate to the "outcomes/in-progress" route
+    Then I should be on the "Hearing outcomes" page
+
+    And I should see the link "Gill Arnold" in a table row
+    And I should see the link "Gill Arnold" "will" open a reassign modal
+
+    When I click the "Gill Arnold" link
+    Then I should "see" the "reassign-outcome-modal" modal popup to assign hearing outcome
+
+    And I click button "X" on "reassign-outcome-modal" modal popup
+    Then I should "NOT see" the "reassign-outcome-modal" modal popup to assign hearing outcome
+
+Scenario: Clicking on a case the user is assigned to should not show a modal and take you directly to the Case Summary
+    Given I am an authenticated user
+    When I navigate to the "outcomes/in-progress" route
+    Then I should be on the "Hearing outcomes" page
+
+    And I should see the link "English Madden" in a table row
+    And I should see the link "English Madden" "will not" open a reassign modal
+
+    When I click the "English Madden" link
+    Then I should be on the "Case summary" page
+
+Scenario: Clicking on a case the user is not assigned to should allow the user to assign to themselves
+    Given I am an authenticated user
+    When I navigate to the "outcomes/in-progress" route
+    Then I should be on the "Hearing outcomes" page
+
+    When I click the "Olive Tree" link
+    Then I should "see" the "reassign-outcome-modal" modal popup to assign hearing outcome
+    And the "reassign-outcome-modal" modal popup should have text heading "This case is assigned to someone else"
+    And the "reassign-outcome-modal" modal popup should have text paragraph "If you need to check some details, open as read only."
+    And the "reassign-outcome-modal" modal popup should have text paragraph "If the person assigned to it cannot finish resulting it, you should assign it to yourself to result it."
+    And the "reassign-outcome-modal" modal popup should have the button "Assign to me"
+    And the "reassign-outcome-modal" modal popup should have the link "Open as read only"
+    And the "reassign-outcome-modal" modal popup should have the close button
+
+    When I click the "Assign to me" button
+    Then I should be on the "Case summary" page
+    And I should see govuk notification banner with header "Success" and message "You are assigned to result this case. It has moved to the in progress tab."

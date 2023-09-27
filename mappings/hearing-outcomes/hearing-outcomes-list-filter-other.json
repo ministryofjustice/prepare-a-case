@@ -1,0 +1,22 @@
+{
+  "id": "e6ebf4f4-ebd2-4cc6-9756-7f3d15bc1781",
+  "priority": 2,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
+    "queryParameters": {
+      "outcomeType": {
+        "equalTo": "OTHER"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "cases": []
+    }
+  }
+}

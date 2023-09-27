@@ -1,6 +1,6 @@
 {
   "id": "94b0434e-f2f2-43ed-88af-6d73627735a4",
-  "priority": 6,
+  "priority": 2,
   "request": {
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",

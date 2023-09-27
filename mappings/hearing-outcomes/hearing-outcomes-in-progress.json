@@ -1,12 +1,15 @@
 {
   "id": "d6679f3b-e1c8-4076-b169-79001645b268",
-  "priority": 2,
+  "priority": 3,
   "request": {
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
       "state": {
         "matches": "IN_PROGRESS"
+      },
+      "sortBy": {
+        "absent": true
       }
     }
   },
