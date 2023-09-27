@@ -1,15 +1,11 @@
 {
-  "id": "94b0434e-f2f2-43ed-88af-6d73627735a3",
-  "priority": 2,
+  "id": "c9999d22-f861-42de-a453-3b531370b51a",
   "request": {
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
       "state": {
-        "equalTo": "IN_PROGRESS"
-      },
-      "outcomeType": {
-        "equalTo": "ADJOURNED"
+        "equalTo": "NEW"
       }
     }
   },
@@ -20,6 +16,20 @@
     "status": 200,
     "jsonBody": {
       "cases": [
+        {
+          "hearingOutcomeType": "REPORT_REQUESTED",
+          "hearingOutcomeDescription": "Report requested",
+          "hearingId": "7e0f9cb9-b492-4657-9028-a86de1301e25",
+          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
+          "hearingDate": "2023-07-05T09:30:00",
+          "probationStatus": "Current",
+          "offences": [
+            "Offence title one",
+            "Offence title two",
+            "Loooooooooooooooooooooooooooooooooong offence title three"
+          ],
+          "defendantName": "Gill Arnold"
+        },
         {
           "hearingOutcomeType": "ADJOURNED",
           "hearingOutcomeDescription": "Adjourned",
