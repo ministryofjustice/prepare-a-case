@@ -6,21 +6,22 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
     params,
-    session
+    session,
+    query: queryParams
   } = req
 
-  const response = await caseService.getOutcomesList(courtCode, req.query, sorts, state)
+  const response = await caseService.getOutcomesList(courtCode, queryParams, sorts, state)
 
   const cases = response.cases
 
   const filters = [getOutcomeTypesListFilters()]
-  const assignedToFilter = getHearingOutcomeAssignedToFilters(cases, req.query)
+  const assignedToFilter = getHearingOutcomeAssignedToFilters(cases, queryParams)
 
   if (assignedToFilter) {
     filters.push(assignedToFilter)
   }
 
-  const flaggedFilters = flagFilters(req.query, filters)
+  const flaggedFilters = flagFilters(queryParams, filters)
 
   const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).pop()
 

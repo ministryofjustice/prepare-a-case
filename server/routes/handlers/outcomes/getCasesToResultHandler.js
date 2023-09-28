@@ -3,16 +3,17 @@ const flagFilters = require('../../../utils/flagFilters')
 const getCasesToResultHandler = caseService => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
-    params
+    params,
+    query: queryParams
   } = req
 
-  const response = await caseService.getOutcomesList(courtCode, req.query, sorts, state)
+  const response = await caseService.getOutcomesList(courtCode, queryParams, sorts, state)
   if (response && response.isError !== undefined && response.isError) {
     res.render('error', { status: response.status || 500 })
     return
   }
 
-  const filters = flagFilters(req.query, [getOutcomeTypesListFilters()])
+  const filters = flagFilters(queryParams, [getOutcomeTypesListFilters()])
 
   const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).pop()
 
