@@ -22,7 +22,6 @@ const {
   assignHearingOutcome,
   updateHearingOutcomeToResulted
 } = require('../../server/services/case-service')
-const getOutcomeTypesListFilters = require('../../server/utils/getOutcomeTypesListFilters')
 const getOutcomeListSorts = require('../../server/utils/getOutcomesSorts')
 
 const apiUrl = config.apis.courtCaseService.url
@@ -449,12 +448,12 @@ describe('Case service', () => {
     test.each`
       courtCode    |  filters | sorts | state   | expected
       ${courtCode} | ${null} | ${null} | '${state}' | ${expected1}
-      ${courtCode} | ${getOutcomeTypesListFilters({ outcomeType: ['ADJOURNED'] })} | ${null} | '${state}' | ${expected2}
+      ${courtCode} | ${{ outcomeType: ['ADJOURNED'] }} | ${null} | '${state}' | ${expected2}
       ${courtCode} | ${null} | ${getOutcomeListSorts({ hearingDate: 'DESC' })} | '${state}' | ${expected3}
-      ${courtCode} | ${getOutcomeTypesListFilters({ outcomeType: ['ADJOURNED'] })} | ${getOutcomeListSorts({ hearingDate: 'ASC' })} | '${state}' | ${expected4}
-      ${courtCode} | ${getOutcomeTypesListFilters({ outcomeType: ['REPORT_REQUESTED'] })} | ${getOutcomeListSorts({ hearingDate: 'DESC' })} | '${state}' | ${expected5}
-      ${courtCode} | ${getOutcomeTypesListFilters({ outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] })} | ${getOutcomeListSorts({ hearingDate: 'DESC' })} | '${state}' | ${expected6}
-      ${courtCode} | ${getOutcomeTypesListFilters({ outcomeTypeUnknown: ['REPORT_REQUESTED'] })} | ${getOutcomeListSorts({ hearingDateUnknown: 'DESC' })} | '${state}' | ${expected1}
+      ${courtCode} | ${{ outcomeType: ['ADJOURNED'] }} | ${getOutcomeListSorts({ hearingDate: 'ASC' })} | '${state}' | ${expected4}
+      ${courtCode} | ${{ outcomeType: ['REPORT_REQUESTED'] }} | ${getOutcomeListSorts({ hearingDate: 'DESC' })} | '${state}' | ${expected5}
+      ${courtCode} | ${{ outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] }} | ${getOutcomeListSorts({ hearingDate: 'DESC' })} | '${state}' | ${expected6}
+      ${courtCode} | ${{ outcomeTypeUnknown: ['REPORT_REQUESTED'] }} | ${getOutcomeListSorts({ hearingDateUnknown: 'DESC' })} | '${state}' | ${expected1}
     `('calls API with $expected when getOutcomesList($courtCode, $filters, $sorts, $state)', async ({
       courtCode,
       filters,

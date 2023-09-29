@@ -1,6 +1,4 @@
-const flagFilters = require('./flagFilters')
-
-module.exports = (selectedFilters) => {
+module.exports = () => {
   const outcomeTypes = [
     { label: 'Probation sentence', value: 'PROBATION_SENTENCE' },
     { label: 'Non-probation sentence', value: 'NON_PROBATION_SENTENCE' },
@@ -11,5 +9,5 @@ module.exports = (selectedFilters) => {
     { label: 'Other', value: 'OTHER' }
   ]
 
-  return flagFilters(selectedFilters, [{ id: 'outcomeType', label: 'Outcome type', items: outcomeTypes }])
+  return { id: 'outcomeType', label: 'Outcome type', items: outcomeTypes }
 }
