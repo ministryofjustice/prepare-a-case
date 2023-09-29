@@ -33,7 +33,8 @@ const getResultedCasesHandler = caseService => async (req, res) => {
     },
     title,
     currentUserUuid: res.locals.user.uuid,
-    data: cases || []
+    data: cases || [],
+    displayFilters: response.cases?.length || filtersApplied
   }
 
   res.render('outcomes/resultedCases', templateValues)

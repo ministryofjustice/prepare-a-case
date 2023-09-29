@@ -36,7 +36,8 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     title,
     currentUserUuid: res.locals.user.uuid,
     moveToResultedSuccess: session.moveToResultedSuccess,
-    data: response.cases || []
+    data: response.cases || [],
+    displayFilters: response.cases?.length || filtersApplied
   }
   session.moveToResultedSuccess = undefined
 

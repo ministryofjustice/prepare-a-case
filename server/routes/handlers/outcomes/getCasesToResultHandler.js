@@ -26,7 +26,8 @@ const getCasesToResultHandler = caseService => async (req, res) => {
       casesToResultCount: response?.countsByState?.toResultCount || 0
     },
     title,
-    data: response.cases || []
+    data: response.cases || [],
+    displayFilters: response.cases?.length || filtersApplied
   }
 
   res.render('outcomes/casesToResult', templateValues)
