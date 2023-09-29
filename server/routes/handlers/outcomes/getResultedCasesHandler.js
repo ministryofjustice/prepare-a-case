@@ -1,25 +1,38 @@
 const getOutcomeTypesListFilters = require('../../../utils/getOutcomeTypesListFilters')
+const getHearingOutcomeAssignedToFilters = require('../../../utils/getHearingOutcomeAssignedToFilters')
+const flagFilters = require('../../../utils/flagFilters')
+
 const getResultedCasesHandler = caseService => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
     params
   } = req
 
-  const filters = getOutcomeTypesListFilters(req.query)
-  const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).pop()
+  const response = await caseService.getOutcomesList(courtCode, req.query, sorts, state)
 
-  const response = await caseService.getOutcomesList(courtCode, filters, sorts, state)
+  const cases = response.cases
+
+  const filters = [getOutcomeTypesListFilters()]
+  const assignedToFilter = getHearingOutcomeAssignedToFilters(cases, req.query)
+
+  if (assignedToFilter) {
+    filters.push(assignedToFilter)
+  }
+
+  const flaggedFilters = flagFilters(req.query, filters)
+
+  const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).pop()
 
   const templateValues = {
     params: {
       ...params,
-      filters,
+      filters: flaggedFilters,
       filtersApplied,
-      resultedCasesCount: filtersApplied ? response.cases.length : params.resultedCasesCount
+      casesInProgressCount: 2
     },
     title,
     currentUserUuid: res.locals.user.uuid,
-    data: response.cases || []
+    data: cases || []
   }
 
   res.render('outcomes/resultedCases', templateValues)

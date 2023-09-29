@@ -186,11 +186,21 @@ const createCaseService = (apiUrl) => {
         paramMap.set('state', state)
       }
 
-      if (filters && filters.length) {
-        filters.forEach(filter => filter.items.filter(item => item.checked).forEach(item => {
-          paramMap.append(filter.id, item.value)
-        }))
+      const filtersCopy = {
+        outcomeType: filters?.outcomeType,
+        assignedToUuid: filters?.assignedToUuid
       }
+
+      Object.keys(filtersCopy).forEach(key => {
+        const values = filtersCopy[key]
+        if (values) {
+          if (Array.isArray(values)) {
+            values.forEach(val => paramMap.append(key, val))
+          } else {
+            paramMap.append(key, values)
+          }
+        }
+      })
 
       if (sorts && sorts.length) {
         sorts.filter(sort => sort.value !== 'NONE' && allowedSortValues.includes(sort.value)).forEach(sort => {

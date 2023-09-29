@@ -28,4 +28,16 @@ Feature: Cases to Result List
       | Hazel Nutt     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Olive Tree \n on 11 Aug 2023 at 10:35  |
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Johnny Ball \n on 9 Sep 2023 at 14:16  |
 
+    When I click the "Outcome type" filter button
+    And I select the "Adjourned" filter
+    And I click the "Apply filters" button
+    Then I should see the "Adjourned" filter tag
+    And I click the clear "Adjourned" filter tag
+
+    When I click the "Assigned to" filter button
+    And I select the "Johnny Ball" filter
+    And I click the "Assigned to" filter button
+    And I click the "Apply filters" button
+    Then I should see the "Johnny Ball" filter tag
+
     And There should be no a11y violations

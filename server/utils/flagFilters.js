@@ -7,7 +7,6 @@ module.exports = function (selectedFilters, filters) {
       }
     })
   }
-
   const flaggedFilters = JSON.parse(JSON.stringify(filters))
 
   // Flag selected filters

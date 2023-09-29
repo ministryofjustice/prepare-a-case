@@ -1,6 +1,5 @@
 /* global describe, it, expect */
 
-const getOutcomeTypesListFilters = require('../../../server/utils/getOutcomeTypesListFilters')
 describe('getCasesInProgressHandler', () => {
   const {
     mockResponse,
@@ -9,26 +8,14 @@ describe('getCasesInProgressHandler', () => {
   const subject = require('../../../server/routes/handlers/outcomes/getCasesInProgressHandler')(caseService)
   const courtCode = 'B007'
 
+  const query = {
+    outcomeType: ['ADJOURNED']
+  }
   const mockRequest = {
     params: { courtCode },
-    session: {}
+    session: {},
+    query
   }
-
-  const filters = getOutcomeTypesListFilters()
-
-  it('should render error page when getOutcomesList returns errors', async () => {
-    // Given
-    caseService.getOutcomesList.mockReturnValueOnce({ isError: true, status: 500 })
-
-    // When
-    await subject(mockRequest, mockResponse)
-
-    // Then
-    expect(caseService.getOutcomesList).toHaveBeenCalled()
-    expect(caseService.getOutcomesList).toHaveBeenCalledWith(courtCode, filters, undefined, undefined)
-    expect(mockResponse.render).toHaveBeenCalled()
-    expect(mockResponse.render).toHaveBeenCalledWith('error', { status: 500 })
-  })
 
   it('should invoke the route handler and render blank outcomes page', async () => {
     // Given
@@ -47,7 +34,7 @@ describe('getCasesInProgressHandler', () => {
 
     // Then
     expect(caseService.getOutcomesList).toHaveBeenCalled()
-    expect(caseService.getOutcomesList).toHaveBeenCalledWith(courtCode, filters, undefined, undefined)
+    expect(caseService.getOutcomesList).toHaveBeenCalledWith(courtCode, query, undefined, undefined)
     expect(mockResponse.render).toHaveBeenCalled()
   })
 })
