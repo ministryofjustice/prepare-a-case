@@ -34,7 +34,12 @@
           ],
           "defendantName": "English Madden"
         }
-      ]
+      ],
+      "countsByState": {
+        "toResultCount": 2,
+        "inProgressCount": 5,
+        "resultedCount": 9
+      }
     }
   }
 }

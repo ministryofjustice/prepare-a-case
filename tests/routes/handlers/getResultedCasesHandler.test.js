@@ -23,7 +23,16 @@ describe('getResultedCasesHandler', () => {
 
   it('should invoke get hearing outcomes for RESULTED state', async () => {
     // Given
-    const apiResponse = { cases: [{ assignedToUuid: 'uuid-one', assignedTo: 'AUthor One' }, { assignedToUuid: 'uuid-two', assignedTo: 'Author Two' }] }
+    const apiResponse = {
+      cases: [{ assignedToUuid: 'uuid-one', assignedTo: 'AUthor One' }, {
+        assignedToUuid: 'uuid-two',
+        assignedTo: 'Author Two'
+      }],
+      countsByState: {
+        toResultCount: 2,
+        inProgressCount: 5
+      }
+    }
     caseServiceMock.getOutcomesList.mockResolvedValueOnce(apiResponse)
 
     // When
@@ -42,7 +51,8 @@ describe('getResultedCasesHandler', () => {
           ...params,
           filters,
           filtersApplied: 0,
-          casesInProgressCount: 2
+          casesInProgressCount: 5,
+          casesToResultCount: 2
         },
         title: params.title,
         currentUserUuid: '78be7d32-d6be-4429-b469-f2b0ba232033',

@@ -30,7 +30,8 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
       ...params,
       filters: flaggedFilters,
       filtersApplied,
-      casesInProgressCount: filtersApplied ? response.cases.length : params.casesInProgressCount
+      casesInProgressCount: response?.countsByState?.inProgressCount || 0,
+      casesToResultCount: response?.countsByState?.toResultCount || 0
     },
     title,
     currentUserUuid: res.locals.user.uuid,
