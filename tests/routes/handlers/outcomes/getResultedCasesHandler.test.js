@@ -1,13 +1,13 @@
 /* global describe, it, expect, jest */
-const getOutcomeTypesListFilters = require('.././../../server/utils/getOutcomeTypesListFilters')
-const getAssignedToFilters = require('.././../../server/utils/getHearingOutcomeAssignedToFilters')
+const getOutcomeTypesListFilters = require('../.././../../server/utils/getOutcomeTypesListFilters')
+const getAssignedToFilters = require('../.././../../server/utils/getHearingOutcomeAssignedToFilters')
 
 describe('getResultedCasesHandler', () => {
   const {
     caseServiceMock,
     mockResponse
-  } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/outcomes/getResultedCasesHandler')(caseServiceMock)
+  } = require('../test-helpers')
+  const subject = require('../../../../server/routes/handlers/outcomes/getResultedCasesHandler')(caseServiceMock)
   const courtCode = 'B007'
 
   const params = { title: 'Resulted cases', sorts: { sorts: 'hearingDate', order: 'ASC' }, courtCode, state: 'RESULTED', casesInProgressCount: 2 }

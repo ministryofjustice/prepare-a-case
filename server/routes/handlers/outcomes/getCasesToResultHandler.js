@@ -22,7 +22,7 @@ const getCasesToResultHandler = caseService => async (req, res) => {
       ...params,
       filters,
       filtersApplied,
-      casesInProgressCount: response?.countsByState?.inProgressCount || 0,
+      casesInProgressCount: response?.cases?.length || 0,
       casesToResultCount: response?.countsByState?.toResultCount || 0
     },
     title,
