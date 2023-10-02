@@ -210,7 +210,7 @@
       reassignOutcomeModal.style.display = "block"
     })
   }
-  // ---- Assign Modal End
+  // ---- Reassign Modal End
 
   // --- case comments edit START
   document.querySelector('#caseComments')?.addEventListener('click', (event) => {
