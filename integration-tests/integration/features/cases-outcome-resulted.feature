@@ -42,7 +42,7 @@ Feature: Cases to Result List
 
     And There should be no a11y violations
   
-  cenario: Clicking on a case the user is not assigned to should allow the user to assign to themselves
+  Scenario: Clicking on a resulted case should allow the user to assign to themselves and move to In Progress
     Given I am an authenticated user
     When I navigate to the "outcomes/resulted" route
     Then I should be on the "Hearing outcomes" page
