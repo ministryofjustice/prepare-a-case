@@ -41,3 +41,21 @@ Feature: Cases to Result List
     Then I should see the "Johnny Ball" filter tag
 
     And There should be no a11y violations
+  
+  cenario: Clicking on a case the user is not assigned to should allow the user to assign to themselves
+    Given I am an authenticated user
+    When I navigate to the "outcomes/resulted" route
+    Then I should be on the "Hearing outcomes" page
+
+    When I click the "Hazel Nutt" link
+    Then I should "see" the "reassign-resulted-outcome-modal" modal popup to assign hearing outcome
+    And the "reassign-resulted-outcome-modal" modal popup should have text heading "This case has been resulted"
+    And the "reassign-resulted-outcome-modal" modal popup should have text paragraph "If you need to check some details, open as read only."
+    And the "reassign-resulted-outcome-modal" modal popup should have text paragraph "To result it again, assign it to yourself."
+    And the "reassign-resulted-outcome-modal" modal popup should have the button "Assign to me"
+    And the "reassign-resulted-outcome-modal" modal popup should have the link "Open as read only"
+    And the "reassign-resulted-outcome-modal" modal popup should have the close button
+
+    When I click the "Assign to me" button
+    Then I should be on the "Case summary" page
+    And I should see govuk notification banner with header "Success" and message "You are assigned to result this case. It has moved to the in progress tab."
