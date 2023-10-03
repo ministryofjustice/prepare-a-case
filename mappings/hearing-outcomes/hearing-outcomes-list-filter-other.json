@@ -5,6 +5,12 @@
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
+      "sortBy": {
+        "equalTo": "hearingDate"
+      },
+      "order": {
+        "equalTo": "DESC"
+      },
       "outcomeType": {
         "equalTo": "OTHER"
       }

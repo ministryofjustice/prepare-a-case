@@ -14,7 +14,6 @@ Feature: Outcomes List
 
     And I should see a tab with text "Cases to result (2)"
     And I should see a tab with text "In progress (2)"
-    And I should see a tab with text "Resulted cases (0)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date |
@@ -45,7 +44,6 @@ Feature: Outcomes List
 
     And I should see a tab with text "Cases to result (2)"
     And I should see a tab with text "In progress (2)"
-    And I should see a tab with text "Resulted cases (0)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date |
@@ -76,7 +74,6 @@ Feature: Outcomes List
 
     And I should see a tab with text "Cases to result (2)"
     And I should see a tab with text "In progress (2)"
-    And I should see a tab with text "Resulted cases (0)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date |
