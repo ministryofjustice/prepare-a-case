@@ -1,5 +1,4 @@
 {%- set moment = params.moment -%}
-{%- set displayFilters = params.casesToResultCount or params.filtersApplied -%}
 
 {% block javascripts %}
   {% if displayFilters %}
@@ -86,8 +85,7 @@
   {
     title: 'Resulted cases',
     a11yTitle: 'View resulted cases',
-    link: '/' + params.courtCode + '/outcomes/resulted-cases',
-    count: params.resultedCasesCount
+    link: '/' + params.courtCode + '/outcomes/resulted-cases'
   }
 ] -%}
 

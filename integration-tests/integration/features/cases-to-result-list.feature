@@ -15,8 +15,10 @@ Feature: Cases to Result List
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
-    
+
     And I should see a tab with text "Cases to result (2)"
+
+    And I should see a tab with text "In progress (5)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date |

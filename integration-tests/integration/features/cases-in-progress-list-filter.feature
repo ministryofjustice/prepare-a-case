@@ -8,7 +8,9 @@ Feature: Cases In progress List filters
     When I navigate to the "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
 
-    And I should see a tab with text "In progress (2)"
+    And I should see a tab with text "Cases to result (8)"
+
+    And I should see a tab with text "In progress (3)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date |
@@ -23,8 +25,6 @@ Feature: Cases In progress List filters
     And I click the "Outcome type" filter button
     And I click the "Apply filters" button
 
-#    Then I should see a tab with text "In progress (1)"
-
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
@@ -34,8 +34,6 @@ Feature: Cases In progress List filters
     And I should see the "outcomeType" query have the value "ADJOURNED"
 
     When I click the clear "Adjourned" filter tag
-
-#    Then I should see a tab with text "In progress (2)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
@@ -52,8 +50,6 @@ Feature: Cases In progress List filters
     When I navigate to the "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
 
-#    And I should see a tab with text "In progress (2)"
-
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
@@ -69,11 +65,7 @@ Feature: Cases In progress List filters
 
     And I should see the "outcomeType" query have the value "OTHER"
 
-#    Then I should see a tab with text "In progress (0)"
-
     When I click the clear "Other" filter tag
-
-#    Then I should see a tab with text "In progress (2)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
@@ -90,8 +82,6 @@ Feature: Cases In progress List filters
     When I navigate to the "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
 
-#    And I should see a tab with text "In progress (2)"
-
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
@@ -101,8 +91,6 @@ Feature: Cases In progress List filters
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
     When I click the "Hearing" sort button
-
-#    Then I should see a tab with text "In progress (2)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
@@ -117,8 +105,6 @@ Feature: Cases In progress List filters
     And There should be no a11y violations
 
     When I click the "Hearing" sort button
-
-    Then I should see a tab with text "In progress (2)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
