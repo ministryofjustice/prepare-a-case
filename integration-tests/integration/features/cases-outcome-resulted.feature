@@ -44,7 +44,7 @@ Feature: Cases to Result List
   
   Scenario: Clicking on a resulted case should allow the user to assign to themselves and move to In Progress
     Given I am an authenticated user
-    When I navigate to the "outcomes/resulted" route
+    When I navigate to the "outcomes/resulted-cases" route
     Then I should be on the "Hearing outcomes" page
 
     When I click the "Hazel Nutt" link
@@ -59,3 +59,15 @@ Feature: Cases to Result List
     When I click the "Assign to me" button
     Then I should be on the "Case summary" page
     And I should see govuk notification banner with header "Success" and message "You are assigned to result this case. It has moved to the in progress tab."
+
+  Scenario: Clicking on a Outcome should allow the user to view the case without assigning to themselves
+    Given I am an authenticated user
+    When I navigate to the "outcomes/resulted-cases" route
+    Then I should be on the "Hearing outcomes" page
+
+    When I click the "Hazel Nutt" link
+    Then I should "see" the "reassign-resulted-outcome-modal" modal popup to assign hearing outcome
+
+    When I click the "reassign-resulted-outcome-modal" modal "Open as read only" link
+    Then I should be on the "Case summary" page
+    And I should not see govuk notification banner

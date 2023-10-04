@@ -581,7 +581,6 @@ When('I click button {string} on {string} modal popup', ($buttonText, $id) => {
   cy.get(`#${$id} button`).contains($buttonText).click()
 })
 
-// I should see the link "Gill Arnold" will open a modal
 And('I should see the link {string} {string} open a reassign modal', ($string, $expected) => {
   const expected = $expected.toLowerCase()
   expect(['will', 'will not']).to.include(expected)
@@ -613,5 +612,17 @@ And('the {string} modal popup should have the button {string}', ($id, $string) =
 And('the {string} modal popup should have the link {string}', ($id, $string) => {
   cy.get(`[data-cy=${$id}]`).within(() => {
     cy.get('a').contains($string).should('exist')
+  })
+})
+
+And('the {string} modal popup should have the link {string}', ($id, $string) => {
+  cy.get(`[data-cy=${$id}]`).within(() => {
+    cy.get('a').contains($string).should('exist')
+  })
+})
+
+When('I click the {string} modal {string} link', ($id, $string) => {
+  cy.get(`[data-cy=${$id}]`).within(() => {
+    cy.get('.govuk-link').contains($string).click()
   })
 })
