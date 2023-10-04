@@ -22,8 +22,8 @@ const getCasesToResultHandler = caseService => async (req, res) => {
       ...params,
       filters,
       filtersApplied,
-      casesInProgressCount: response?.cases?.length || 0,
-      casesToResultCount: response?.countsByState?.toResultCount || 0
+      casesInProgressCount: response?.countsByState?.inProgressCount || 0,
+      casesToResultCount: response.cases?.length || 0
     },
     title,
     data: response.cases || [],
