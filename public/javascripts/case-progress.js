@@ -211,7 +211,7 @@
 
       const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
       const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
-      
+
       reassigntargetDefendantIdInput.value = target.dataset.defendantid
       reassigntargetCourtCodeInput.value = target.dataset.courtcode
       reassignOutcomeForm.setAttribute('action', submitLink)
@@ -242,7 +242,7 @@
 
       const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
       const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
-      
+
       reassignResultedtargetDefendantIdInput.value = target.dataset.defendantid
       reassignResultedtargetCourtCodeInput.value = target.dataset.courtcode
       reassignResultedOutcomeForm.setAttribute('action', submitLink)
