@@ -308,7 +308,8 @@
           "hearingOutcome": {
             "hearingOutcomeType": "REPORT_REQUESTED",
             "hearingOutcomeDescription": "Report requested",
-            "outcomeDate": "2023-05-09T09:09:09"
+            "outcomeDate": "2023-05-09T09:09:09",
+            "state": "NEW"
           },
           "notes":[
             {
@@ -353,7 +354,8 @@
           "hearingOutcome": {
             "hearingOutcomeType": "ADJOURNED",
             "hearingOutcomeDescription": "Adjourned",
-            "outcomeDate": "2023-04-24T09:09:09"
+            "outcomeDate": "2023-04-24T09:09:09",
+            "state": "IN_PROGRESS"
           },
           "notes":[
             {

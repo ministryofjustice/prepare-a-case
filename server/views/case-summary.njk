@@ -23,7 +23,7 @@
 
 {% block javascripts %}
     {{ super() }}
-    <script type="text/javascript" src="/javascripts/case-progress-{{ appVersion }}.min.js"/>
+    <script type="text/javascript" src="/javascripts/case-progress-{{ appVersion }}.min.js"></script>
 {% endblock %}
 
 {% block message %}
@@ -51,6 +51,19 @@
         {% set html %}
             <p class="govuk-notification-banner__heading">
                 Outcome sent to admin
+            </p>
+        {% endset %}
+        {{ govukNotificationBanner({
+            html: html,
+            type: 'success'
+        }) }}
+    {% endif %}
+
+    {% if session.editHearingOutcomeSuccess %}
+        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+        {% set html %}
+            <p class="govuk-notification-banner__heading">
+                Updated outcome sent
             </p>
         {% endset %}
         {{ govukNotificationBanner({
