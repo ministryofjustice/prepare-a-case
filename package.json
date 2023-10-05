@@ -24,7 +24,8 @@
     "int-test:ui": "npx cypress open",
     "lint": "npx standard",
     "css-build": "bash ./bin/build-css",
-    "minify-js-css": "bash ./bin/minify-js-css",
+    "minify-js-css": "bash ./bin/minify-js-css && npm run build:external",
+    "build:external": "webpack --mode production",
     "start": "npm run css-build && npm run minify-js-css && node ./bin/www",
     "start:watch": "npx nodemon --exec npm run start --scripts-prepend-node-path",
     "unit-test": "npx jest --config=./tests/jest.config.js --ci --forceExit",
@@ -75,6 +76,7 @@
     "applicationinsights-native-metrics": "0.0.7",
     "axios": "0.26.1",
     "axios-middleware": "0.3.1",
+    "bootstrap": "^5.3.2",
     "bunyan": "1.8.15",
     "bunyan-format": "0.2.1",
     "compression": "1.7.4",
@@ -123,6 +125,8 @@
     "nodemon": "^2.0.19",
     "redis-mock": "0.56.3",
     "standard": "17.0.0",
-    "supertest": "6.2.2"
+    "supertest": "6.2.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }
