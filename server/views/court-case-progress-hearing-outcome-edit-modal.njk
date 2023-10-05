@@ -1,0 +1,46 @@
+<div class="modal outcome" id="edit-hearing-outcome-modal" tabindex="-1" aria-labelledby="edit-hearing-outcome-modal-label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <p class="modal-title govuk-heading-m">Edit Outcome</p>
+                <button type="button" class="btn-close govuk-!-font-size-16" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+
+            <form method="post" action="summary/edit-hearing-outcome">
+                <input type="hidden" name="targetHearingId" value=""/>
+                <div class="modal-body">
+                    <p class="modal-title govuk-heading-m">This case is already being resulted</p>
+                    <div class="modal-error-wrapper">
+                        <p class="govuk-heading-m hearing-outcome-modal-error govuk-error-message govuk-!-display-none">
+                            Choose an outcome type for this hearing before sending to admin
+                        </p>
+                        <p class="govuk-body-m govuk-!-text-align-centre" id="edit-hearing-outcome-modal-label">
+                            This case is in progress on the outcomes page, which means an admin might already be resulting it based on the original outcome type you selected
+                        </p>
+                    <div class="govuk-button-group govuk-!-padding-top-5 add-outcome-button-group">
+                            {% for outcomeType in outcomeTypes %}
+                                <label class="" for="edit-{{ outcomeType.id }}">You can choose an outcome and send this case to admin</label>
+                                <select id="edit-{{ outcomeType.id }}" name="hearingOutcomeType" class="govuk-select govuk-!-width-full govuk-!-margin-bottom-3">
+                                    <option value="">Select an outcome type</option>
+                                    {% for option in outcomeType.items %}
+                                        <option value="{{ option.value }}">{{ option.label }}</option>
+                                    {% endfor %}
+                                </select>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="govuk-button govuk-button--secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" id="send-outcome-to-admin"
+                            class="govuk-button govuk-!-margin-left-3"
+                            data-module="govuk-button">Send to admin
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

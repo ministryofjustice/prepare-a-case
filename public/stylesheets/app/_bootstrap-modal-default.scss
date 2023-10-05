@@ -1,0 +1,27 @@
+$variable-prefix:             moj-bs- !default; // Deprecated in v5.2.0 for the shorter `$prefix`
+$modal-content-border-radius: 0;
+$modal-content-border-color: #000;
+$modal-content-border-width: 2px;
+$modal-scale-transform: 0;
+
+
+// scss-docs-start import-stack
+// Configuration
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/variables-dark";
+@import "node_modules/bootstrap/scss/maps";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/utilities";
+
+// Layout & components
+@import "node_modules/bootstrap/scss/root";
+@import "node_modules/bootstrap/scss/transitions";
+@import "node_modules/bootstrap/scss/modal";
+
+// Helpers
+@import "node_modules/bootstrap/scss/helpers";
+
+// Utilities
+@import "node_modules/bootstrap/scss/utilities/api";
+// scss-docs-end import-stack
