@@ -1,0 +1,22 @@
+<div id="reassign-resulted-outcome-modal" class="modal-container" role="dialog" tabindex="-1" data-cy="reassign-resulted-outcome-modal">
+    <div class="modal-content govuk-!-padding-3" role="document">
+        <button class="modal-close govuk-!-font-size-16" aria-label="Close">X</button>
+        <div class="modal-body govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-bottom-5">
+                <h2 class="govuk-heading-m">This case has been resulted</h2>
+                <p class="govuk-body">If you need to check some details, open as read only.</p>
+                <p class="govuk-body">To result it again, assign it to yourself.</p>
+                <form id="reassign-resulted-outcome-form-row" method="post" action="summary/add-hearing-outcome">
+                  <input type="hidden" name="targetDefendantId" id="targetDefendantId"
+                               value=""/>
+                  <input type="hidden" name="targetCourtCode" id="targetCourtCode"
+                               value=""/>
+                  <div class="govuk-button-group">
+                      <button class="govuk-button" type="submit" data-module="govuk-button" id="reassign-outcome-submit">Assign to me</button>
+                      <a class="govuk-link govuk-!-margin-left-5" id="reassign-outcome-view" href="#">Open as read only</a>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
