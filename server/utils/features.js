@@ -17,8 +17,7 @@ const features = {
     ),
     allOf(
       isEnv('preprod'),
-      enabledForCourts(PLYMOUTH_MAGS_COURT_CODE, 'B05PK'),
-      enabledForUsers(...settings.caseTrackingPrePilotUsers)
+      enabledForAll()
     ),
     allOf(
       isEnv('prod'),
