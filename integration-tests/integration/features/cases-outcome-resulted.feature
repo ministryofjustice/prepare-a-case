@@ -44,3 +44,33 @@ Feature: Cases to Result List
     Then I should see the "Johnny Ball" filter tag
 
     And There should be no a11y violations
+  
+  Scenario: Clicking on a resulted case should allow the user to assign to themselves and move to In Progress
+    Given I am an authenticated user
+    When I navigate to the "outcomes/resulted-cases" route
+    Then I should be on the "Hearing outcomes" page
+
+    When I click the "Hazel Nutt" link
+    Then I should "see" the "reassign-resulted-outcome-modal" modal popup to assign hearing outcome
+    And the "reassign-resulted-outcome-modal" modal popup should have text heading "This case has been resulted"
+    And the "reassign-resulted-outcome-modal" modal popup should have text paragraph "If you need to check some details, open as read only."
+    And the "reassign-resulted-outcome-modal" modal popup should have text paragraph "To result it again, assign it to yourself."
+    And the "reassign-resulted-outcome-modal" modal popup should have the button "Assign to me"
+    And the "reassign-resulted-outcome-modal" modal popup should have the link "Open as read only"
+    And the "reassign-resulted-outcome-modal" modal popup should have the close button
+
+    When I click the "Assign to me" button
+    Then I should be on the "Case summary" page
+    And I should see govuk notification banner with header "Success" and message "You are assigned to result this case. It has moved to the in progress tab."
+
+  Scenario: Clicking on a Outcome should allow the user to view the case without assigning to themselves
+    Given I am an authenticated user
+    When I navigate to the "outcomes/resulted-cases" route
+    Then I should be on the "Hearing outcomes" page
+
+    When I click the "Hazel Nutt" link
+    Then I should "see" the "reassign-resulted-outcome-modal" modal popup to assign hearing outcome
+
+    When I click the "reassign-resulted-outcome-modal" modal "Open as read only" link
+    Then I should be on the "Case summary" page
+    And I should not see govuk notification banner

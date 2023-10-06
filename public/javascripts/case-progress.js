@@ -196,7 +196,6 @@
 
     document.querySelector('#hearing-outcome-in-progress')?.addEventListener('click', (event) => {
       const target = event.target
-      console.log(target)
       if (!target.classList.contains('pac-reassign')) return
       event.preventDefault()
 
@@ -210,7 +209,38 @@
       reassignOutcomeModal.style.display = "block"
     })
   }
-  // ---- Assign Modal End
+  // ---- Reassign Modal End
+
+  // ---- Reassign Resulted Modal START
+  const reassignResultedOutcomeModal = document.querySelector("#reassign-resulted-outcome-modal")
+
+  if(reassignResultedOutcomeModal) {
+    const reassignResultedOutcomeModalCloseButton = reassignResultedOutcomeModal.getElementsByClassName("modal-close")[0]
+    const reassignResultedOutcomeForm = reassignResultedOutcomeModal.querySelector("#reassign-resulted-outcome-form-row")
+    const reassignResultedOutcomeViewLink = reassignResultedOutcomeModal.querySelector("#reassign-outcome-view")
+    const reassignResultedtargetDefendantIdInput = reassignResultedOutcomeForm.querySelector('#targetDefendantId')
+    const reassignResultedtargetCourtCodeInput = reassignResultedOutcomeForm.querySelector('#targetCourtCode')
+
+    reassignResultedOutcomeModalCloseButton.onclick = () => {
+      reassignResultedOutcomeModal.style.display = "none"
+    }
+
+    document.querySelector('#hearing-outcome-resulted')?.addEventListener('click', (event) => {
+      const target = event.target
+      if (!target.classList.contains('pac-reassign-resulted')) return
+      event.preventDefault()
+
+      const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
+      const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
+      
+      reassignResultedtargetDefendantIdInput.value = target.dataset.defendantid
+      reassignResultedtargetCourtCodeInput.value = target.dataset.courtcode
+      reassignResultedOutcomeForm.setAttribute('action', submitLink)
+      reassignResultedOutcomeViewLink.href = viewLink
+      reassignResultedOutcomeModal.style.display = "block"
+    })
+  }
+  // ---- Reassign Resulted Modal End
 
   // --- case comments edit START
   document.querySelector('#caseComments')?.addEventListener('click', (event) => {
