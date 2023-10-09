@@ -258,7 +258,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
       caseComments: featuresToggles.caseComments.isEnabled(context),
       caseProgress: featuresToggles.caseProgress.isEnabled(context),
       hearingNotes: featuresToggles.hearingNotes.isEnabled(context),
-      caseProgressNextAppearanceBadge: featuresToggles.caseProgressNextAppearanceBadge.isEnabled(context)
+      caseProgressNextAppearanceBadge: featuresToggles.caseProgressNextAppearanceBadge.isEnabled(context),
+      hearingOutcomesEnabled: featuresToggles.hearingOutcomes.isEnabled(context)
     }
     session.confirmedMatch = undefined
     session.matchName = undefined

@@ -1,7 +1,7 @@
 <div class="govuk-grid-row" id="caseProgressComponent">
     <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-m" id="caseHearingsHeading">Case progress</h2>
-        {% if hearingOutcomes %}
+        {% if features.hearingOutcomesEnabled %}
             {% include "court-case-progress-hearing-outcome-modal.njk" %}
         {% endif %}
         {% if data.hearings | length %}
@@ -34,7 +34,7 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            {% set showAddHearingOutcomeButton = hearingOutcomes and hearing.notes and hearing.notes | length and not hearing.hearingOutcome.hearingOutcomeType %}
+                            {% set showAddHearingOutcomeButton = features.hearingOutcomesEnabled and hearing.notes and hearing.notes | length and not hearing.hearingOutcome.hearingOutcomeType %}
 
                             <div class="govuk-grid-row">
                                 <div class="{{ "govuk-grid-column-two-thirds" if showAddHearingOutcomeButton else "govuk-grid-column-full" }}">

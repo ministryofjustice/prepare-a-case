@@ -37,6 +37,7 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
   const context = { court: courtCode, username: res.locals.user.username }
   const pastCaseNavigationEnabled = features.pastCasesNavigation.isEnabled(context)
   const caseSearchEnabled = features.searchFeature.isEnabled(context)
+  const hearingOutcomesEnabled = features.hearingOutcomes.isEnabled(context)
 
   const templateValues = {
     title: 'Cases',
@@ -58,7 +59,8 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
       subsection: subsection || (!date && session.currentView) || '',
       filtersApplied: !!selectedFilters && Object.keys(selectedFilters).length
     },
-    data: response.cases
+    data: response.cases,
+    hearingOutcomesEnabled
   }
   session.currentView = subsection
 
