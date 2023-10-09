@@ -17,7 +17,6 @@ const features = {
     ),
     allOf(
       isEnv('preprod'),
-      enabledForCourts(PLYMOUTH_MAGS_COURT_CODE, 'B05PK'),
       enabledForUsers(...settings.caseTrackingPrePilotUsers)
     ),
     allOf(
@@ -40,9 +39,16 @@ const features = {
   ),
   pastCasesNavigation: enabledForAll(),
   caseProgressNextAppearanceBadge: enabledForSourceTypes('COMMON_PLATFORM', 'LIBRA'),
-  hearingOutcomes: allOf(
-    isEnv('dev'),
-    mainFeatureToggleEnabled('enableHearingOutcomes')
+  hearingOutcomes: anyOf(
+    allOf(
+      isEnv('dev'),
+      mainFeatureToggleEnabled('enableHearingOutcomes')
+    ),
+    allOf(
+      isEnv('preprod'),
+      mainFeatureToggleEnabled('enableHearingOutcomes'),
+      enabledForUsers(...settings.caseTrackingPrePilotUsers)
+    )
   ),
   advancedFilters: isEnv('dev', 'preprod', 'prod')
 }
