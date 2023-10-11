@@ -72,7 +72,8 @@ describe('getPagedCaseListRouteHandler', () => {
           unmatchedRecords: 2,
           enablePastCasesNavigation: true,
           caseSearchEnabled: true
-        }
+        },
+        hearingOutcomesEnabled: false
       })
   })
 
@@ -118,7 +119,8 @@ describe('getPagedCaseListRouteHandler', () => {
           unmatchedRecords: 2,
           enablePastCasesNavigation: false,
           caseSearchEnabled: true
-        }
+        },
+        hearingOutcomesEnabled: false
       })
   })
 })

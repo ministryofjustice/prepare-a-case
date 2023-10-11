@@ -1,6 +1,5 @@
 const nunjucks = require('nunjucks')
 const { googleAnalyticsKey, instrumentationKey, settings } = require('../../config')
-const { hearingOutcomes } = require('../utils/features')
 const filters = require('./nunjucksFilters')
 
 module.exports = (app, path) => {
@@ -20,5 +19,4 @@ module.exports = (app, path) => {
   env.addGlobal('googleAnalyticsKey', googleAnalyticsKey)
   env.addGlobal('instrumentationKey', instrumentationKey)
   env.addGlobal('appInsights', settings.enableAppInsights)
-  env.addGlobal('hearingOutcomes', hearingOutcomes.isEnabled({}))
 }
