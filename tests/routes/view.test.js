@@ -1,4 +1,4 @@
-/* global describe, beforeEach, afterEach, it, expect, jest */
+/* global describe, beforeEach, afterEach, it, expect, jest, beforeAll, afterAll */
 const request = require('supertest')
 const mockDate = require('mockdate')
 const caseService = require('../../server/services/case-service')
@@ -16,6 +16,7 @@ const createRouter = require('../../server/routes/index')
 
 const defaults = require('../../server/routes/middleware/defaults')
 const healthcheck = require('../../server/routes/middleware/healthcheck')
+const features = require('../../server/utils/features')
 
 const viewRoute = createRouter({
   authenticationMiddleware
@@ -397,59 +398,72 @@ describe('Routes', () => {
     return response
   })
 
-  it('outcomes list route should call the case service to fetch outcome list data', async () => {
-    return request(app).get('/B14LO/outcomes').then(response => {
-      expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', {}, defaultSort, 'NEW')
-    })
-  })
+  describe('Hearing outcomes', () => {
+    let temp
 
-  it('outcomes list route should call the case service to filter outcome list data', async () => {
-    return request(app).get('/B14LO/outcomes?outcomeType=ADJOURNED').then(response => {
-      expect(response.statusCode).toEqual(200)
-      defaultFilters.map(filter => {
-        filter.items.map(item => {
-          item.checked = item.value === 'ADJOURNED'
-          return item
-        })
-        return filter
+    beforeAll(() => {
+      temp = features.hearingOutcomes.isEnabled
+      features.hearingOutcomes.isEnabled = () => true
+    })
+
+    afterAll(() => {
+      temp = features.hearingOutcomes.isEnabled = temp
+    })
+
+    it('outcomes list route should call the case service to fetch outcome list data', async () => {
+      return request(app).get('/B14LO/outcomes').then(response => {
+        expect(response.statusCode).toEqual(200)
+        expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', {}, defaultSort, 'NEW')
       })
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: ['ADJOURNED'] }, defaultSort, 'NEW')
     })
-  })
 
-  it('outcomes list route should call the case service to sort outcome list data', async () => {
-    return request(app).get('/B14LO/outcomes?hearingDate=ASC').then(response => {
-      expect(response.statusCode).toEqual(200)
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingDate: ['ASC'] }, [{ id: 'hearingDate', value: 'ASC' }], 'NEW')
-    })
-  })
-
-  it('outcomes list route should call the case service to filter & sort outcome list data', async () => {
-    return request(app).get('/B14LO/outcomes?hearingDate=ASC&outcomeType=ADJOURNED').then(response => {
-      expect(response.statusCode).toEqual(200)
-      defaultFilters.map(filter => {
-        filter.items.map(item => {
-          item.checked = item.value === 'ADJOURNED'
-          return item
+    it('outcomes list route should call the case service to filter outcome list data', async () => {
+      return request(app).get('/B14LO/outcomes?outcomeType=ADJOURNED').then(response => {
+        expect(response.statusCode).toEqual(200)
+        defaultFilters.map(filter => {
+          filter.items.map(item => {
+            item.checked = item.value === 'ADJOURNED'
+            return item
+          })
+          return filter
         })
-        return filter
+        expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: ['ADJOURNED'] }, defaultSort, 'NEW')
       })
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingDate: ['ASC'], outcomeType: ['ADJOURNED'] }, [{ id: 'hearingDate', value: 'ASC' }], 'NEW')
     })
-  })
 
-  it('outcomes list route should call the case service to filter outcome list data with multiple filters', async () => {
-    return request(app).get('/B14LO/outcomes?outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED').then(response => {
-      expect(response.statusCode).toEqual(200)
-      defaultFilters.map(filter => {
-        filter.items.map(item => {
-          item.checked = item.value === 'ADJOURNED' || item.value === 'REPORT_REQUESTED'
-          return item
-        })
-        return filter
+    it('outcomes list route should call the case service to sort outcome list data', async () => {
+      return request(app).get('/B14LO/outcomes?hearingDate=ASC').then(response => {
+        expect(response.statusCode).toEqual(200)
+        expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingDate: ['ASC'] }, [{ id: 'hearingDate', value: 'ASC' }], 'NEW')
       })
-      expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] }, defaultSort, 'NEW')
+    })
+
+    it('outcomes list route should call the case service to filter & sort outcome list data', async () => {
+      return request(app).get('/B14LO/outcomes?hearingDate=ASC&outcomeType=ADJOURNED').then(response => {
+        expect(response.statusCode).toEqual(200)
+        defaultFilters.map(filter => {
+          filter.items.map(item => {
+            item.checked = item.value === 'ADJOURNED'
+            return item
+          })
+          return filter
+        })
+        expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { hearingDate: ['ASC'], outcomeType: ['ADJOURNED'] }, [{ id: 'hearingDate', value: 'ASC' }], 'NEW')
+      })
+    })
+
+    it('outcomes list route should call the case service to filter outcome list data with multiple filters', async () => {
+      return request(app).get('/B14LO/outcomes?outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED').then(response => {
+        expect(response.statusCode).toEqual(200)
+        defaultFilters.map(filter => {
+          filter.items.map(item => {
+            item.checked = item.value === 'ADJOURNED' || item.value === 'REPORT_REQUESTED'
+            return item
+          })
+          return filter
+        })
+        expect(caseService.getOutcomesList).toHaveBeenCalledWith('B14LO', { outcomeType: ['REPORT_REQUESTED', 'ADJOURNED'] }, defaultSort, 'NEW')
+      })
     })
   })
 })
