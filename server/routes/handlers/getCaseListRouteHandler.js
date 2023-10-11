@@ -34,6 +34,8 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
   const context = { court: courtCode, username: res.locals.user.username }
   const pastCaseNavigationEnabled = features.pastCasesNavigation.isEnabled(context)
   const caseSearchEnabled = features.searchFeature.isEnabled(context)
+  const hearingOutcomesEnabled = features.hearingOutcomes.isEnabled(context)
+
   const templateValues = {
     title: 'Cases',
     params: {
@@ -57,7 +59,8 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
       filtersApplied: !!session.selectedFilters && Object.keys(session.selectedFilters).length,
       snapshot: response.snapshot
     },
-    data: response.cases.slice(startCount, endCount) || []
+    data: response.cases.slice(startCount, endCount) || [],
+    hearingOutcomesEnabled
   }
   session.currentView = subsection
 
