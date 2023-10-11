@@ -31,7 +31,8 @@ const outcomesMiddleware = state => async (req, res, next) => {
     title: 'Hearing outcomes',
     sorts,
     hearingDateSort,
-    state
+    state,
+    hearingOutcomesEnabled
   }
   next()
 }
