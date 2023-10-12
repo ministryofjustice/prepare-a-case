@@ -56,6 +56,7 @@ describe('getCaseListRouteHandler', () => {
         title: 'Cases',
         data: [{}, {}, {}, {}],
         params: {
+          hearingOutcomesEnabled: false,
           addedCount: 2,
           caseCount: 4,
           courtCode: 'ABC',
@@ -108,6 +109,7 @@ describe('getCaseListRouteHandler', () => {
         title: 'Cases',
         data: [{}, {}, {}, {}],
         params: {
+          hearingOutcomesEnabled: false,
           addedCount: 2,
           caseCount: 4,
           courtCode: 'ABC',
