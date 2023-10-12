@@ -145,7 +145,7 @@
         active: title === 'Case list'
     }] %}
 
-    {%- if hearingOutcomesEnabled %}
+    {%- if params.hearingOutcomesEnabled %}
         {% set navItems = (navItems.push({
             text: 'Outcomes',
             href: '/' + params.courtCode + '/outcomes',

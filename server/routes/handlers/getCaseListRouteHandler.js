@@ -40,6 +40,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
     title: 'Cases',
     params: {
       ...params,
+      hearingOutcomesEnabled,
       date: currentDate,
       notification: currentNotification || '',
       filters: response.filters,
