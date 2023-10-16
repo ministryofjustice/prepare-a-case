@@ -140,13 +140,13 @@
     margin: calc(-.5 * var(--#{$prefix}modal-header-padding-y)) calc(-.5 * var(--#{$prefix}modal-header-padding-x)) calc(-.5 * var(--#{$prefix}modal-header-padding-y)) auto;
 
     /// MOJ specific styling
-    //outline: none;
-    //appearance: none;
-    //color: $black;
-    //background: none;
-    //border: none;
-    //font-weight: bold;
-    //cursor: pointer;
+    outline: none;
+    appearance: none;
+    color: $black;
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
   }
 }
 
@@ -172,7 +172,7 @@
   flex-shrink: 0;
   flex-wrap: wrap;
   align-items: center; // vertically center
-  justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
+  justify-content: flex-start; // put footer elements on the left
   padding: calc(var(--#{$prefix}modal-padding) - var(--#{$prefix}modal-footer-gap) * .5);
   background-color: var(--#{$prefix}modal-footer-bg);
   border-top: var(--#{$prefix}modal-footer-border-width) solid var(--#{$prefix}modal-footer-border-color);
@@ -205,7 +205,7 @@
   }
 }
 
-@include govuk-media-query($until: desktop) {
+@include govuk-media-query($from: tablet) {
   .modal-lg,
   .modal-xl {
     --#{$prefix}modal-width: #{$modal-lg};
