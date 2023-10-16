@@ -228,7 +228,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/publish-edited-note', defaults, catchErrors(autoSaveHearingNoteEditHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
-    const outcomeTypes = getOutcomeTypesListFilters()
+    // build outcome types list for select controls
+    const outcomeTypeItems = getOutcomeTypesListFilters().pop().items
+    const outcomeTypes = [
+      ...[{ value: '', text: 'Select an outcome type' }],
+      ...outcomeTypeItems.map(item => { return { text: item.label, value: item.value } })
+    ]
+
     const { session, path, params: { courtCode } } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Case summary'

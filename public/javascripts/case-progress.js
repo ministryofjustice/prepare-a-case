@@ -104,11 +104,24 @@
 
   // ---- Case Workflow add/edit hearing outcome START
   const hideErrors = (modal) => {
-    modal.querySelector('.hearing-outcome-modal-error').classList.add('govuk-!-display-none')
-    modal.querySelector('.modal-error-wrapper').classList.remove('govuk-form-group--error')
+    modal.querySelector('.govuk-error-message').classList.add('govuk-!-display-none')
+    modal.querySelector('.govuk-form-group').classList.remove('govuk-form-group--error')
+    modal.querySelector('select').classList.remove('govuk-select--error')
+  }
+
+  const showErrors = (modal) => {
+    modal.querySelector('.govuk-error-message').classList.remove('govuk-!-display-none')
+    modal.querySelector('.govuk-form-group').classList.add('govuk-form-group--error')
+    modal.querySelector('select').classList.add('govuk-select--error')
   }
 
   document.querySelectorAll('.modal.outcome').forEach(modal => {
+
+    modal.addEventListener('show.bs.modal', event => {
+      hideErrors(event.target)
+      // disable scrolling on the background
+      document.documentElement.style.overflow = 'hidden'
+    })
 
     modal.addEventListener('shown.bs.modal', event => {
       const outcomeModal = event.target
@@ -124,16 +137,15 @@
       // reset the form
       hideErrors(outcomeModal)
       outcomeModal.querySelector('select').value = ''
+      document.documentElement.style.removeProperty('overflow')
     })
 
     modal.querySelector('form').addEventListener('submit', event => {
       const modalForm = event.target
       const selectInput = modalForm.querySelector('select')
-      const hearingOutcomeError = modalForm.querySelector('.hearing-outcome-modal-error')
       if (selectInput.value === '') {
         event.preventDefault()
-        hearingOutcomeError.classList.remove('govuk-!-display-none')
-        modalForm.querySelector('.modal-error-wrapper').classList.add('govuk-form-group--error')
+        showErrors(modalForm)
       }
     })
 
