@@ -229,7 +229,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
     // build outcome types list for select controls
-    const outcomeTypeItems = getOutcomeTypesListFilters().pop().items
+    const outcomeTypeItems = getOutcomeTypesListFilters().items
     const outcomeTypes = [
       ...[{ value: '', text: 'Select an outcome type' }],
       ...outcomeTypeItems.map(item => { return { text: item.label, value: item.value } })
