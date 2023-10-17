@@ -231,7 +231,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     // build outcome types list for select controls
     const outcomeTypeItems = getOutcomeTypesListFilters().items
     const outcomeTypes = [
-      ...[{ value: '', text: 'Select an outcome type' }],
+      ...[{ value: '', text: 'Outcome type' }],
       ...outcomeTypeItems.map(item => { return { text: item.label, value: item.value } })
     ]
 
