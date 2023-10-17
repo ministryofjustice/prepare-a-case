@@ -16,34 +16,46 @@ And('hearing {string} should have button "Send outcome to admin"', ($hearingId) 
   })
 })
 
-And('I should {string} the modal popup to add hearing outcome', ($expected) => {
+And('hearing {string} should have link "Edit"', ($hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.hearing-outcome-edit').contains('Edit').should('exist')
+  })
+})
+
+And('hearing {string} should not have link "Edit"', ($hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.hearing-outcome-edit').should('not.exist')
+  })
+})
+
+And('I should {string} the modal popup to {string} hearing outcome', ($expected, $modal) => {
   const expected = $expected.toLowerCase()
   expect(['see', 'not see']).to.include(expected)
-  cy.get('#add-hearing-outcome-modal').should(`${expected === 'not see' ? 'not.' : ''}be.visible`)
+  cy.get(`#${$modal}-hearing-outcome-modal`).should(`${expected === 'not see' ? 'not.' : ''}be.visible`)
 })
 
-And('I should NOT see a modal popup to add hearing outcome', ($hearingId) => {
-  cy.get('#add-hearing-outcome-modal').should('not.exist')
+And('I should NOT see a modal popup to {string} hearing outcome', ($hearingId, $modal) => {
+  cy.get(`#${$modal}-hearing-outcome-modal`).should('not.exist')
 })
 
-And('the modal popup should have text paragraph {string}', ($pContent) => {
-  cy.get('#add-hearing-outcome-modal p').contains($pContent).should('be.visible')
+And('the {string} modal popup should have text paragraph {string}', ($modal, $pContent) => {
+  cy.get(`#${$modal}-hearing-outcome-modal p`).contains($pContent).should('be.visible')
 })
 
-And('the modal popup should have a select input with items', ($data) => {
-  cy.get('#add-hearing-outcome-modal select option').then(opts => {
+And('the {string} modal popup should have a select input with items', ($modal, $data) => {
+  cy.get(`#${$modal}-hearing-outcome-modal select option`).then(opts => {
     const optionValues = [...opts].map(opt => opt.innerText.trim())
     const expectedValues = $data.raw().map(d => d[0].trim())
     expect(optionValues).to.deep.eq(expectedValues)
   })
 })
 
-And('the modal popup should have the button "Send to admin"', () => {
-  cy.get('#add-hearing-outcome-modal button').contains('Send to admin').should('exist')
+And('the {string} modal popup should have the button {string}', ($modal, $btnText) => {
+  cy.get(`#${$modal}-hearing-outcome-modal button`).contains($btnText).should('exist')
 })
 
-And('the modal popup should have the close button', () => {
-  cy.get('#add-hearing-outcome-modal button').contains('X').should('exist')
+And('the {string} modal popup should have the close button', ($modal) => {
+  cy.get(`#${$modal}-hearing-outcome-modal button`).contains('X').should('exist')
 })
 
 When('I click "Send outcome to admin" for hearing {string}', ($hearingId) => {
@@ -52,14 +64,20 @@ When('I click "Send outcome to admin" for hearing {string}', ($hearingId) => {
   })
 })
 
-When('I click button {string} on hearing outcome modal popup', ($buttonText) => {
-  cy.get('#add-hearing-outcome-modal button').contains($buttonText).click()
+When('I click "Edit" for hearing {string}', ($hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.hearing-outcome-edit').contains('Edit').click()
+  })
 })
 
-When('I select "Report requested" from select options', () => {
-  cy.get('#add-hearing-outcome-modal select').select('Report requested')
+When('I click button {string} on hearing {string} outcome modal popup', ($buttonText, $modal) => {
+  cy.get(`#${$modal}-hearing-outcome-modal button`).contains($buttonText).click()
 })
 
-And('I click "Send to admin" button', () => {
-  cy.get('#add-hearing-outcome-modal button').contains('Send to admin').click()
+When('I select "Report requested" from select options on {string} modal', ($modal) => {
+  cy.get(`#${$modal}-hearing-outcome-modal select`).select('Report requested')
+})
+
+And('I click "Send to admin" button on {string} modal', ($modal) => {
+  cy.get(`#${$modal}-hearing-outcome-modal select`).contains('Send to admin').click()
 })

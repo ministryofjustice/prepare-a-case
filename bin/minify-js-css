@@ -12,6 +12,8 @@ for js in "$(pwd)"/public/javascripts/*.js; do
   minifyFile "$js"
 done
 
+webpack --env app_version="${APP_VERSION:-dev-build}" --mode production
+
 for css in "$(pwd)"/public/stylesheets/*.css; do
   minifyFile "$css"
 done

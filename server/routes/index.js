@@ -8,6 +8,7 @@ const { getDetails, getProbationRecord, getConviction, getProbationStatusDetails
 const { getOrderTitle } = require('./helpers')
 const featuresToggles = require('../utils/features')
 const getNextHearing = require('../utils/getNextHearing')
+const getOutcomeTypesListFilters = require('../utils/getOutcomeTypesListFilters')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
@@ -26,6 +27,7 @@ const {
   caseSearchHandler,
   cancelHearingNoteDraftHandler,
   addHearingOutcomeHandler,
+  editHearingOutcomeHandler,
   autoSaveCaseCommentHandler,
   cancelCaseCommentDraftHandler,
   updateCaseCommentHandler,
@@ -226,6 +228,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/publish-edited-note', defaults, catchErrors(autoSaveHearingNoteEditHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
+    // build outcome types list for select controls
+    const outcomeTypeItems = getOutcomeTypesListFilters().items
+    const outcomeTypes = [
+      ...[{ value: '', text: 'Outcome type' }],
+      ...outcomeTypeItems.map(item => { return { text: item.label, value: item.value } })
+    ]
+
     const { session, path, params: { courtCode } } = req
     const templateValues = await getCaseAndTemplateValues(req)
     templateValues.title = 'Case summary'
@@ -235,6 +244,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     session.deleteCommentSuccess = undefined
     session.deleteHearingNoteSuccess = undefined
     session.addHearingOutcomeSuccess = undefined
+    session.editHearingOutcomeSuccess = undefined
     session.assignHearingOutcomeSuccess = undefined
     templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
       return moment(b.created).unix() - moment(a.created).unix()
@@ -261,6 +271,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       caseProgressNextAppearanceBadge: featuresToggles.caseProgressNextAppearanceBadge.isEnabled(context),
       hearingOutcomesEnabled: featuresToggles.hearingOutcomes.isEnabled(context)
     }
+    templateValues.outcomeTypes = outcomeTypes
     session.confirmedMatch = undefined
     session.matchName = undefined
     session.matchType = 'defendant'
@@ -309,6 +320,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(addHearingNoteRequestHandler))
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/add-hearing-outcome', defaults, catchErrors(addHearingOutcomeHandler))
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/edit-hearing-outcome', defaults, catchErrors(editHearingOutcomeHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete', defaults, catchErrors(deleteHearingNoteConfirmationHandler))
 
