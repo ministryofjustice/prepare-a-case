@@ -1,5 +1,5 @@
 {% from "govuk/components/select/macro.njk" import govukSelect %}
-<div id="add-hearing-outcome-modal" class="modal outcome" tabindex="-1" aria-labelledby="addHearingOutcomeType" aria-describedby="add-hearing-outcome-modal-label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div id="add-hearing-outcome-modal" class="modal outcome" tabindex="-1" aria-labelledby="add-hearing-outcome-modal-label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,7 +16,10 @@
                             errorMessage: {
                                 text: 'Choose an outcome type for this hearing before sending to admin'
                             },
-                            items: outcomeTypes
+                            items: outcomeTypes,
+                            attributes: {
+                                'aria-labelledby': 'add-hearing-outcome-modal-label'
+                            }
                         }) }}
 
                     <button type="submit" id="send-outcome-to-admin"

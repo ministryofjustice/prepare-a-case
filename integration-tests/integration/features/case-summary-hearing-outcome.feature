@@ -50,6 +50,7 @@ Feature: Case progress - Hearing outcome
       | Other                   |
     And the "add" modal popup should have the button "Send to admin"
     And the "add" modal popup should have the close button
+    And There should be no a11y violations
 
   Scenario: Add hearing outcome
     Given I am an authenticated user
@@ -131,6 +132,7 @@ Feature: Case progress - Hearing outcome
       | Other                   |
     And the "edit" modal popup should have the button "Update outcome"
     And the "edit" modal popup should have the close button
+    And There should be no a11y violations
 
   Scenario: Edit hearing outcome
     Given I am an authenticated user
