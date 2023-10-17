@@ -46,6 +46,20 @@ module.exports = function createApp ({ signInService, userService }) {
 
   app.set('view engine', 'njk')
 
+  if (config.maintenanceModeEnabled) {
+    app.use(express.static(path.join(__dirname, 'public'), { maxage: config.settings.assetCache }))
+
+    const router = express.Router()
+    const filePath = path.join(__dirname, 'public', 'maintenance.html')
+
+    router.use(async (req, res, next) => {
+      res.sendFile(filePath)
+    })
+
+    app.use('/**', router)
+    return app
+  }
+
   app.use(helmet({
     contentSecurityPolicy: {
       directives: {

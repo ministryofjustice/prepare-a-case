@@ -239,6 +239,7 @@ module.exports = {
     }
   },
   appVersion: get('APP_VERSION', 'dev-build'),
+  maintenanceModeEnabled: getBooleanParam('MAINTENANCE_MODE'),
   domain: `${get('INGRESS_URL', `http://localhost:${port}`)}`,
   https: production,
   nonce: crypto.randomBytes(16).toString('base64'),
