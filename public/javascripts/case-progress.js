@@ -102,51 +102,61 @@
     }
   })
 
-  // ---- Case Workflow add hearing outcome START
-
-  const modal = document.querySelector("#add-hearing-outcome-modal")
-
-  if(modal) {
-    const modalCloseButton = modal.getElementsByClassName("modal-close")[0]
-
-    const hearingOutcomeForm = modal.querySelector("#hearing-outcome-form-row")
-
-    const hearingOutcomeTypeSelect = hearingOutcomeForm.getElementsByTagName('select')[0]
-    const sendOutcomeToAdminButton = hearingOutcomeForm.querySelector('#send-outcome-to-admin')
-    const hearingOutcomeError = hearingOutcomeForm.getElementsByClassName('hearing-outcome-modal-error')[0]
-    const targetHearingIdInput = hearingOutcomeForm.querySelector('#targetHearingId')
-
-    sendOutcomeToAdminButton.onclick = (event) => {
-      if (hearingOutcomeTypeSelect.value === 'NOT_SELECTED') {
-        event.preventDefault()
-        hearingOutcomeError.classList.remove('govuk-!-display-none')
-        hearingOutcomeForm.classList.add('govuk-form-group--error')
-      }
-    }
-
-    hearingOutcomeTypeSelect.onchange = (event) => {
-      if (event.value !== 'NOT_SELECTED' && !(hearingOutcomeError.classList.contains('govuk-!-display-none'))) {
-        hearingOutcomeError.classList.add('govuk-!-display-none')
-        hearingOutcomeForm.classList.remove('govuk-form-group--error')
-      }
-    }
-
-    modalCloseButton.onclick = () => {
-      modal.style.display = "none"
-      hearingOutcomeError.classList.add('govuk-!-display-none')
-      hearingOutcomeForm.classList.remove('govuk-form-group--error')
-    }
-
-    document.querySelector('#hearing-progress-wrapper')?.addEventListener('click', (event) => {
-      const target = event.target
-      if (!target.classList.contains('btn-send-hearing-outcome')) return
-
-      targetHearingIdInput.value = target.dataset.hearingid
-      sendOutcomeToAdminButton.dataset.targetHearingId = target.dataset.hearingid
-      modal.style.display = "block"
-    })
+  // ---- Case Workflow add/edit hearing outcome START
+  const hideErrors = (modal) => {
+    modal.querySelector('.govuk-error-message').classList.add('govuk-!-display-none')
+    modal.querySelector('.govuk-form-group').classList.remove('govuk-form-group--error')
+    modal.querySelector('select').classList.remove('govuk-select--error')
   }
-  // ---- Case Workflow add hearing outcome END
+
+  const showErrors = (modal) => {
+    modal.querySelector('.govuk-error-message').classList.remove('govuk-!-display-none')
+    modal.querySelector('.govuk-form-group').classList.add('govuk-form-group--error')
+    modal.querySelector('select').classList.add('govuk-select--error')
+  }
+
+  document.querySelectorAll('.modal.outcome').forEach(modal => {
+
+    modal.addEventListener('show.bs.modal', event => {
+      hideErrors(event.target)
+      // disable scrolling on the background
+      document.documentElement.style.overflow = 'hidden'
+    })
+
+    modal.addEventListener('shown.bs.modal', event => {
+      const outcomeModal = event.target
+      const outcomeModalForm = outcomeModal.querySelector('form')
+      const targetHearingIdInput = outcomeModalForm.querySelector('input[name=targetHearingId]')
+      targetHearingIdInput.value = event.relatedTarget.dataset.hearingid
+      const selectInput = outcomeModalForm.querySelector('select')
+      selectInput.focus()
+    })
+
+    modal.addEventListener('hidden.bs.modal', event => {
+      const outcomeModal = event.target
+      // reset the form
+      hideErrors(outcomeModal)
+      outcomeModal.querySelector('select').value = ''
+      document.documentElement.style.removeProperty('overflow')
+    })
+
+    modal.querySelector('form').addEventListener('submit', event => {
+      const modalForm = event.target
+      const selectInput = modalForm.querySelector('select')
+      if (selectInput.value === '') {
+        event.preventDefault()
+        showErrors(modalForm)
+      }
+    })
+
+    modal.querySelector('form select').addEventListener('change', event => {
+      const modalForm = event.target.form;
+      if (event.target.value !== '') {
+        hideErrors(modalForm)
+      }
+    })
+  })
+  // ---- Case Workflow add/edit hearing outcome END
 
   // ---- Assign Modal START
   const assignOutcomeModal = document.querySelector("#assign-outcome-modal")
@@ -201,7 +211,7 @@
 
       const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
       const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
-      
+
       reassigntargetDefendantIdInput.value = target.dataset.defendantid
       reassigntargetCourtCodeInput.value = target.dataset.courtcode
       reassignOutcomeForm.setAttribute('action', submitLink)
@@ -232,7 +242,7 @@
 
       const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
       const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
-      
+
       reassignResultedtargetDefendantIdInput.value = target.dataset.defendantid
       reassignResultedtargetCourtCodeInput.value = target.dataset.courtcode
       reassignResultedOutcomeForm.setAttribute('action', submitLink)

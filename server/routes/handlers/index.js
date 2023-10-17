@@ -52,6 +52,7 @@ const caseSearchHandler = require('./getCaseSearchHandler')({ searchCases }, get
 const cancelHearingNoteDraftHandler = require('./getCancelHearingNoteDraftHandler')({ deleteHearingNoteDraft })
 
 const addHearingOutcomeHandler = require('./getAddHearingOutcomeHandler')({ addHearingOutcome })
+const editHearingOutcomeHandler = require('./getEditHearingOutcomeHandler')({ addHearingOutcome })
 
 const autoSaveCaseCommentHandler = require('./getAutoSaveCaseCommentHandler')({ saveDraftCaseComment })
 
@@ -78,6 +79,7 @@ module.exports = {
   autoSaveHearingNoteEditHandler,
   caseSearchHandler,
   addHearingOutcomeHandler,
+  editHearingOutcomeHandler,
   autoSaveCaseCommentHandler,
   cancelCaseCommentDraftHandler,
   updateCaseCommentHandler,
