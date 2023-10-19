@@ -259,17 +259,20 @@ module.exports = function Index ({ authenticationMiddleware }) {
         return moment(b.created).unix() - moment(a.created).unix()
       })
     })
+
     templateValues.enableCaseHistory = settings.enableCaseHistory
     templateValues.enableCaseComments = settings.enableCaseComments
     templateValues.enableCaseProgress = settings.enableCaseProgress
     templateValues.currentUserUuid = res.locals.user.uuid
     const context = { court: courtCode, username: res.locals.user.username, sourceType: templateValues.data.source }
+    const hearingOutcomesEnabled = featuresToggles.hearingOutcomes.isEnabled(context)
+    templateValues.params.hearingOutcomesEnabled = hearingOutcomesEnabled
     templateValues.features = {
       caseComments: featuresToggles.caseComments.isEnabled(context),
       caseProgress: featuresToggles.caseProgress.isEnabled(context),
       hearingNotes: featuresToggles.hearingNotes.isEnabled(context),
       caseProgressNextAppearanceBadge: featuresToggles.caseProgressNextAppearanceBadge.isEnabled(context),
-      hearingOutcomesEnabled: featuresToggles.hearingOutcomes.isEnabled(context)
+      hearingOutcomesEnabled
     }
     templateValues.outcomeTypes = outcomeTypes
     session.confirmedMatch = undefined

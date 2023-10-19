@@ -37,4 +37,17 @@ Feature: Outcomes List
     Then I should be on the "Hearing outcomes" page
 
     When I click the "Resulted cases" link
-    Then I should see the URL with "resulted-cases" 
+    Then I should see the URL with "resulted-cases"
+
+  Scenario: Should be able to see and navigate to hearing outcomes from case summary page
+    Given I am an authenticated user
+
+    When I navigate to the "cases" route
+    Then I should be on the "Case list" page
+
+    When I click the "English Madden" link
+    And I should see the Primary navigation "Outcomes" link
+    When I click on the "Outcomes" link in the Primary navigation
+    Then I should be on the "Hearing outcomes" page
+
+    And There should be no a11y violations
