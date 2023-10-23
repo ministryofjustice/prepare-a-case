@@ -120,3 +120,20 @@ Specify the hmpps-user-preferences URL with `USER_PREFERENCE_SERVICE_URL`
 ## Dependencies
 * `hmpps-auth` - for authentication
 * `redis` - session store and token caching
+
+# Setting up maintenance/holding page during downtime
+
+Before starting to release the changes that involve downtime please use the below command to enable the maintenance page.
+Please verify and update the namespace in the command before running.
+
+```kubectl set env deployment -n court-probation-dev prepare-a-case MAINTENANCE_MODE=true```
+
+The pods will be restarted after running the command. Ensure the pod restarts are complete before checking the maintenance page.
+
+After the release is complete, please disable the maintenance page by running the below command.
+
+```kubectl set env deployment -n court-probation-dev prepare-a-case MAINTENANCE_MODE=false```
+
+The pods will be restarted after running the command. Ensure the pod restarts are complete before checking the application is working correctly.
+
+Please note that the above environment variable changes are temporary and will be overwritten by any subsequent prepare-a-case deployments and the maintenance page will be disabled.
