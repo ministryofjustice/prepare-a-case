@@ -1,21 +1,27 @@
-<div id="assign-outcome-modal" class="modal-container" role="dialog" tabindex="-1">
-    <div class="modal-content govuk-!-padding-3" role="document">
-        <button class="modal-close govuk-!-font-size-16" aria-label="Close">X</button>
-        <div class="modal-body govuk-grid-row">
-            <div class="govuk-grid-column-full govuk-!-margin-bottom-5">
-                <h2 class="govuk-heading-m">Do you want to result this case now?</h2>
-                <p class="govuk-body">You can view this case but it has not been assigned to you to result.</p>
-                <form id="assign-outcome-form-row" method="post" action="summary/add-hearing-outcome">
-                  <input type="hidden" name="targetDefendantId" id="targetDefendantId"
-                               value=""/>
-                  <input type="hidden" name="targetCourtCode" id="targetCourtCode"
-                               value=""/>
-                  <div class="govuk-button-group">
-                      <button class="govuk-button" type="submit" data-module="govuk-button" id="assign-outcome-submit">Assign to me</button>
-                      <a class="govuk-link govuk-!-margin-left-5" id="assign-outcome-view" href="#">View without assigning</a>
-                  </div>
-                </form>
+<div class="modal assign-outcome" id="assign-outcome-modal" tabindex="-1" aria-labelledby="assign-outcome-modal-label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <p class="modal-title govuk-heading-m" id="assign-outcome-modal-label">Do you want to result this case now?</p>
+                <button type="button" class="btn-close govuk-!-font-size-16" data-bs-dismiss="modal" aria-label="Close">X</button>
             </div>
+
+            <div class="modal-body">
+                <p class="govuk-body">You can view this case but it has not been assigned to you to result.</p>
+            </div>
+
+
+            <form class="assign-outcome-form" method="post" action="">
+                <input type="hidden" name="targetDefendantId" value=""/>
+                <input type="hidden" name="targetCourtCode" value=""/>
+                <div class="modal-footer govuk-button-group">
+                    <button class="govuk-button" type="submit" data-module="govuk-button">Assign to me</button>
+                    <a class="govuk-link govuk-!-margin-right-7 assign-outcome-view" href="#">View without assigning</a>
+                </div>
+            </form>
+
         </div>
+
     </div>
 </div>

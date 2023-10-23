@@ -102,6 +102,16 @@
     }
   })
 
+  document.addEventListener('show.bs.modal', event => {
+    // disable scrolling on the background
+    document.documentElement.style.overflow = 'hidden'
+  });
+
+  document.addEventListener('hidden.bs.modal', event => {
+    // enable scrolling on the background if required
+    document.documentElement.style.removeProperty('overflow')
+  })
+
   // ---- Case Workflow add/edit hearing outcome START
   const hideErrors = (modal) => {
     modal.querySelector('.govuk-error-message').classList.add('govuk-!-display-none')
@@ -119,8 +129,6 @@
 
     modal.addEventListener('show.bs.modal', event => {
       hideErrors(event.target)
-      // disable scrolling on the background
-      document.documentElement.style.overflow = 'hidden'
     })
 
     modal.addEventListener('shown.bs.modal', event => {
@@ -137,7 +145,6 @@
       // reset the form
       hideErrors(outcomeModal)
       outcomeModal.querySelector('select').value = ''
-      document.documentElement.style.removeProperty('overflow')
     })
 
     modal.querySelector('form').addEventListener('submit', event => {
@@ -158,99 +165,25 @@
   })
   // ---- Case Workflow add/edit hearing outcome END
 
-  // ---- Assign Modal START
-  const assignOutcomeModal = document.querySelector("#assign-outcome-modal")
-
-  if(assignOutcomeModal) {
-    const assignOutcomeModalCloseButton = assignOutcomeModal.getElementsByClassName("modal-close")[0]
-    const assignOutcomeForm = assignOutcomeModal.querySelector("#assign-outcome-form-row")
-    const assignOutcomeViewLink = assignOutcomeModal.querySelector("#assign-outcome-view")
-    const targetDefendantIdInput = assignOutcomeForm.querySelector('#targetDefendantId')
-    const targetCourtCodeInput = assignOutcomeForm.querySelector('#targetCourtCode')
-
-    assignOutcomeModalCloseButton.onclick = () => {
-      assignOutcomeModal.style.display = "none"
-    }
-
-    document.querySelector('#hearing-outcome')?.addEventListener('click', (event) => {
-      const target = event.target
-      if (!target.classList.contains('pac-assign')) return
-
-      event.preventDefault()
+  // ---- Assign/Reassign/Resulted Modal START
+  document.querySelectorAll('.modal.assign-outcome').forEach(modal => {
+    modal.addEventListener('show.bs.modal', event => {
+      const target = event.relatedTarget
+      const assignOutcomeForm = modal.querySelector('form')
+      const assignOutcomeViewLink = modal.querySelector(".assign-outcome-view")
+      const targetDefendantIdInput = assignOutcomeForm.querySelector('input[name=targetDefendantId]')
+      const targetCourtCodeInput = assignOutcomeForm.querySelector('input[name=targetCourtCode]')
 
       const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
       const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
-      
+
       targetDefendantIdInput.value = target.dataset.defendantid
       targetCourtCodeInput.value = target.dataset.courtcode
       assignOutcomeForm.setAttribute('action', submitLink)
       assignOutcomeViewLink.href = viewLink
-      assignOutcomeModal.style.display = "block"
     })
-  }
+  })
   // ---- Assign Modal End
-
-  // ---- Reassign Modal START
-  const reassignOutcomeModal = document.querySelector("#reassign-outcome-modal")
-
-  if(reassignOutcomeModal) {
-    const reassignOutcomeModalCloseButton = reassignOutcomeModal.getElementsByClassName("modal-close")[0]
-    const reassignOutcomeForm = reassignOutcomeModal.querySelector("#reassign-outcome-form-row")
-    const reassignOutcomeViewLink = reassignOutcomeModal.querySelector("#reassign-outcome-view")
-    const reassigntargetDefendantIdInput = reassignOutcomeForm.querySelector('#targetDefendantId')
-    const reassigntargetCourtCodeInput = reassignOutcomeForm.querySelector('#targetCourtCode')
-
-    reassignOutcomeModalCloseButton.onclick = () => {
-      reassignOutcomeModal.style.display = "none"
-    }
-
-    document.querySelector('#hearing-outcome-in-progress')?.addEventListener('click', (event) => {
-      const target = event.target
-      if (!target.classList.contains('pac-reassign')) return
-      event.preventDefault()
-
-      const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
-      const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
-
-      reassigntargetDefendantIdInput.value = target.dataset.defendantid
-      reassigntargetCourtCodeInput.value = target.dataset.courtcode
-      reassignOutcomeForm.setAttribute('action', submitLink)
-      reassignOutcomeViewLink.href = viewLink
-      reassignOutcomeModal.style.display = "block"
-    })
-  }
-  // ---- Reassign Modal End
-
-  // ---- Reassign Resulted Modal START
-  const reassignResultedOutcomeModal = document.querySelector("#reassign-resulted-outcome-modal")
-
-  if(reassignResultedOutcomeModal) {
-    const reassignResultedOutcomeModalCloseButton = reassignResultedOutcomeModal.getElementsByClassName("modal-close")[0]
-    const reassignResultedOutcomeForm = reassignResultedOutcomeModal.querySelector("#reassign-resulted-outcome-form-row")
-    const reassignResultedOutcomeViewLink = reassignResultedOutcomeModal.querySelector("#reassign-outcome-view")
-    const reassignResultedtargetDefendantIdInput = reassignResultedOutcomeForm.querySelector('#targetDefendantId')
-    const reassignResultedtargetCourtCodeInput = reassignResultedOutcomeForm.querySelector('#targetCourtCode')
-
-    reassignResultedOutcomeModalCloseButton.onclick = () => {
-      reassignResultedOutcomeModal.style.display = "none"
-    }
-
-    document.querySelector('#hearing-outcome-resulted')?.addEventListener('click', (event) => {
-      const target = event.target
-      if (!target.classList.contains('pac-reassign-resulted')) return
-      event.preventDefault()
-
-      const viewLink = `/${target.dataset.courtcode}/hearing/${target.dataset.hearingid}/defendant/${target.dataset.defendantid}/summary`
-      const submitLink = `/${target.dataset.courtcode}/outcomes/hearing/${target.dataset.hearingid}/assign`
-
-      reassignResultedtargetDefendantIdInput.value = target.dataset.defendantid
-      reassignResultedtargetCourtCodeInput.value = target.dataset.courtcode
-      reassignResultedOutcomeForm.setAttribute('action', submitLink)
-      reassignResultedOutcomeViewLink.href = viewLink
-      reassignResultedOutcomeModal.style.display = "block"
-    })
-  }
-  // ---- Reassign Resulted Modal End
 
   // --- case comments edit START
   document.querySelector('#caseComments')?.addEventListener('click', (event) => {
