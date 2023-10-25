@@ -208,6 +208,7 @@
     <script src="/moj/all.js"></script>
     <script src="/govuk/all.js"></script>
     <script>window.GOVUKFrontend.initAll()</script>
+    <script src="/javascripts/external-{{ appVersion }}.min.js"></script>
     {% if analyticsCookies === 'accept' %}
     <script nonce="{{ nonce }}">
       // Feature detects Navigation Timing API support.
@@ -224,7 +225,6 @@
         });
       }
     </script>
-    <script src="/javascripts/external-{{ appVersion }}.min.js"></script>
     {% endif %}
 {% endblock %}
 
