@@ -11,8 +11,8 @@
     "url": "https://github.com/ministryofjustice/prepare-a-case.git"
   },
   "engines": {
-    "node": ">=16.17.0 <18.0.0",
-    "npm": ">=8.0.0"
+    "node": "^20",
+    "npm": "^10"
   },
   "scripts": {
     "start-feature": "PORT=3007 NODE_ENV=development node $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",

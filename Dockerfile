@@ -1,4 +1,4 @@
-FROM node:16.17.0-alpine3.16
+FROM node:20.9.0-alpine3.16
 
 MAINTAINER MoJ Digital, Probation in Court <probation-in-court-team@digital.justice.gov.uk>
 ARG BUILD_NUMBER
