@@ -1,0 +1,27 @@
+{
+  "id": "8b2a2585-6791-4a07-a4a0-90f55ef9dbf8",
+  "priority": 2,
+  "request": {
+    "method": "GET",
+    "urlPath": "/courts/B34JS/hearing-outcomes",
+    "queryParameters": {
+      "state": {
+        "equalTo": "IN_PROGRESS"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "cases": [],
+      "countsByState": {
+        "toResultCount": 0,
+        "inProgressCount": 0,
+        "resultedCount": 0
+      }
+    }
+  }
+}
