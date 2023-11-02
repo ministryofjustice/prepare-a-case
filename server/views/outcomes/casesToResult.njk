@@ -120,7 +120,7 @@
     {% if params.filtersApplied %}
       <span class="govuk-heading-m">0 cases</span>
     {% endif %}
-    <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "No case list information available." }}</p>
+    <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "There are no cases to be resulted." }}</p>
   {% endif %}
 
 {% endblock %}
