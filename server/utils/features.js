@@ -47,12 +47,12 @@ const features = {
     allOf(
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableHearingOutcomes'),
-      enabledForCourts('B20EB', 'B20EB')
+      enabledForCourts('B20EB', 'B23HS')
     ),
     allOf(
       isEnv('prod'),
       mainFeatureToggleEnabled('enableHearingOutcomes'),
-      enabledForCourts('B20EB', 'B20EB')
+      enabledForCourts('B20EB', 'B23HS')
     )
   ),
   advancedFilters: isEnv('dev', 'preprod', 'prod')
