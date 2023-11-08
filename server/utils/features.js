@@ -47,7 +47,12 @@ const features = {
     allOf(
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableHearingOutcomes'),
-      enabledForUsers(...settings.caseTrackingPrePilotUsers)
+      enabledForCourts('B20EB', 'B20EB')
+    ),
+    allOf(
+      isEnv('prod'),
+      mainFeatureToggleEnabled('enableHearingOutcomes'),
+      enabledForCourts('B20EB', 'B20EB')
     )
   ),
   advancedFilters: isEnv('dev', 'preprod', 'prod')
