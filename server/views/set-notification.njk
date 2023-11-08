@@ -1,3 +1,7 @@
+{% block javascripts %}
+    <script type="text/javascript" src="/javascripts/set-notification-{{ appVersion }}.min.js" nonce="{{ nonce }}"></script>
+{% endblock %}
+
 {% extends "partials/layout.njk" %}
 
 {% set title = "Set notification" %}
@@ -9,12 +13,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if currentNotification | length %}
-        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-        {{ govukNotificationBanner({
-          html: "<span class='govuk-notification-banner__heading'>" + currentNotification | escape + "</span>"
-        }) }}
-      {% endif %}
+      <iframe id="render" style="border: none; width: 100%;" src="/set-notification-preview"></iframe>
 
       <h1 class="govuk-heading-l">Set notification banner</h1>
       <p class="govuk-body">This will display a notification banner on the main case list page for all users.</p>
@@ -27,10 +26,13 @@
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
       {{ govukInput({
-        label: { text: "Notification banner text" },
+        label: { text: "Notification banner html" },
         id: "notification",
         name: "notification",
-        value: currentNotification
+        value: currentNotification,
+          errorMessage: {
+            html: "<span id='notification-error-text'></span>"
+          }
       }) }}
 
       {% from "govuk/components/select/macro.njk" import govukSelect %}
@@ -73,7 +75,7 @@
         ]
       }) }}
 
-      <button type="submit" class="govuk-button">Set notification text</button>
+      <button type="submit" class="govuk-button">Set notification html</button>
 
     </div>
   </div>

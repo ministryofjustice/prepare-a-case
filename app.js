@@ -60,45 +60,49 @@ module.exports = function createApp ({ signInService, userService }) {
     return app
   }
 
-  app.use(helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: [
-          '\'self\'',
-          'https://www.google-analytics.com',
-          'www.google-analytics.com'
-        ],
-        objectSrc: ['\'none\''],
-        frameSrc: ['https://www.youtube.com'],
-        scriptSrc: [
-          '\'self\'',
-          'www.google-analytics.com',
-          'https://www.google-analytics.com',
-          'https://www.googletagmanager.com',
-          'js.monitor.azure.com',
-          '\'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA=\'',
-          '\'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ=\'',
-          '\'sha256-Ex+PXm59nVbu/S+FH/u8FLio5zO5YfFPo0/jH0uw19k=\'',
-          '\'sha256-QIG/FBh5vORMkpviiAyUOvMgp6XvwQIEagSXO2FUmyo=\'',
-          `'nonce-${config.nonce}'`
-        ],
-        imgSrc: [
-          '\'self\'',
-          'https://www.googletagmanager.com',
-          'https://www.google-analytics.com',
-          'www.google-analytics.com'
-        ],
-        upgradeInsecureRequests: [],
-        connectSrc: [
-          '\'self\'',
-          'www.google-analytics.com',
-          'https://www.google-analytics.com',
-          'js.monitor.azure.com',
-          'dc.services.visualstudio.com'
-        ]
+  app.use((req, res, next) => {
+    res.locals.nonce = config.nonce()
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: [
+            '\'self\'',
+            'https://www.google-analytics.com',
+            'www.google-analytics.com'
+          ],
+          objectSrc: ['\'none\''],
+          frameSrc: ['https://www.youtube.com', '\'self\''],
+          styleSrc: ['\'self\'', '\'unsafe-inline\''],
+          scriptSrc: [
+            '\'self\'',
+            'www.google-analytics.com',
+            'https://www.google-analytics.com',
+            'https://www.googletagmanager.com',
+            'js.monitor.azure.com',
+            '\'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA=\'',
+            '\'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ=\'',
+            '\'sha256-Ex+PXm59nVbu/S+FH/u8FLio5zO5YfFPo0/jH0uw19k=\'',
+            '\'sha256-QIG/FBh5vORMkpviiAyUOvMgp6XvwQIEagSXO2FUmyo=\'',
+            `'nonce-${res.locals.nonce}'`
+          ],
+          imgSrc: [
+            '\'self\'',
+            'https://www.googletagmanager.com',
+            'https://www.google-analytics.com',
+            'www.google-analytics.com'
+          ],
+          upgradeInsecureRequests: [],
+          connectSrc: [
+            '\'self\'',
+            'www.google-analytics.com',
+            'https://www.google-analytics.com',
+            'js.monitor.azure.com',
+            'dc.services.visualstudio.com'
+          ]
+        }
       }
-    }
-  }))
+    })(req, res, next)
+  })
 
   const client = redis.createClient({
     port: config.redis.port,
@@ -137,7 +141,6 @@ module.exports = function createApp ({ signInService, userService }) {
     res.setHeader('Cache-Control', 'no-cache, no-store')
     res.setHeader('Pragma', 'no-cache')
     req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
-    res.locals.nonce = config.nonce
     res.locals.appVersion = config.appVersion
     req.redisClient = {
       getAsync: promisify(client.get).bind(client),

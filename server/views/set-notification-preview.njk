@@ -1,0 +1,8 @@
+{% extends "partials/layout-preview.njk" %}
+
+{% block content %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+  {{ govukNotificationBanner({
+      html: "<span class='govuk-notification-banner__heading' id='preview-render'>" + currentNotification | safe + "</span>"
+  }) }}
+{% endblock %}
