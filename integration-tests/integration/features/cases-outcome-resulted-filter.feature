@@ -5,7 +5,7 @@ Feature: Resulted Cases List filters
 
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
-    When I navigate to the "outcomes/resulted" route
+    When I navigate to the "outcomes/resulted-cases" route
     Then I should be on the "Hearing outcomes" page
 
     And I should see the following table headings
