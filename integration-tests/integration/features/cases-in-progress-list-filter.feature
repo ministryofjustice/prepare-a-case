@@ -114,3 +114,25 @@ Feature: Cases In progress List filters
       | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
 
     And I should see the "hearingDate" query have the value "DESC"
+
+  Scenario: Display no matching cases message when no cases are returned due to applied filters
+    Given I am an authenticated user
+    When I navigate to the "outcomes/in-progress" route
+    Then I should be on the "Hearing outcomes" page
+
+    And I should see the following table headings
+      | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
+
+    And I should see the following table rows
+      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
+      | Olive Tree     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+
+    When I click the "Outcome type" filter button
+    And I select the "Committed to Crown" filter
+    And I click the "Outcome type" filter button
+    And I click the "Apply filters" button
+
+    And I should see a count of "0 cases"
+    Then I should see the body text "There are no matching cases."
+    And There should be no a11y violations

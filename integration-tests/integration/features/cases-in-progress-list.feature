@@ -85,5 +85,5 @@ Scenario: Ensure the correct messages and results are shown when no cases are in
     Given I am an authenticated user
     When I navigate to the Northampton Court "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
-    Then I should see the body text "There are no cases being resulted."
+    Then I should see the body text "There are no cases in progress."
     And There should be no a11y violations
