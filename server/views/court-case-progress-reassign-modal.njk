@@ -1,22 +1,26 @@
-<div id="reassign-outcome-modal" class="modal-container" role="dialog" tabindex="-1" data-cy="reassign-outcome-modal">
-    <div class="modal-content govuk-!-padding-3" role="document">
-        <button class="modal-close govuk-!-font-size-16" aria-label="Close">X</button>
-        <div class="modal-body govuk-grid-row">
-            <div class="govuk-grid-column-full govuk-!-margin-bottom-5">
-                <h2 class="govuk-heading-m">This case is assigned to someone else</h2>
+<div class="modal assign-outcome" id="reassign-outcome-modal"  tabindex="-1" aria-labelledby="reassign-outcome-modal-label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" data-cy="reassign-outcome-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" role="document">
+
+            <div class="modal-header">
+                <h2 class="modal-title govuk-heading-m" id="reassign-outcome-modal-label">This case is assigned to someone else</h2>
+                <button type="button" class="btn-close govuk-!-font-size-16" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+
+            <div class="modal-body">
                 <p class="govuk-body">If you need to check some details, open as read only.</p>
                 <p class="govuk-body">If the person assigned to it cannot finish resulting it, you should assign it to yourself to result it.</p>
-                <form id="reassign-outcome-form-row" method="post" action="summary/add-hearing-outcome">
-                  <input type="hidden" name="targetDefendantId" id="targetDefendantId"
-                               value=""/>
-                  <input type="hidden" name="targetCourtCode" id="targetCourtCode"
-                               value=""/>
-                  <div class="govuk-button-group">
-                      <button class="govuk-button" type="submit" data-module="govuk-button" id="reassign-outcome-submit">Assign to me</button>
-                      <a class="govuk-link govuk-!-margin-left-5" id="reassign-outcome-view" href="#">Open as read only</a>
-                  </div>
-                </form>
             </div>
+
+            <form class="assign-outcome-form" method="post" action="">
+                <input type="hidden" name="targetDefendantId" value=""/>
+                <input type="hidden" name="targetCourtCode" value=""/>
+                <div class="modal-footer govuk-button-group">
+                    <button class="govuk-button" type="submit" data-module="govuk-button">Assign to me</button>
+                    <a class="govuk-link govuk-!-margin-right-7 assign-outcome-view" href="#">Open as read only</a>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
