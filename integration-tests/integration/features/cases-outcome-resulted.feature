@@ -1,4 +1,4 @@
-Feature: Cases to Result List
+Feature: Resulted Cases List
   In order to view the list of cases to result
   As an authenticated user
   I need to see a list of cases that need resulting
