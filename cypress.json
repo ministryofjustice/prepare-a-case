@@ -22,5 +22,7 @@
   },
   "videoUploadOnPasses": false,
   "taskTimeout": 60000,
-  "projectId": "2ew2jc"
+  "projectId": "2ew2jc",
+  "viewportHeight": 1080,
+  "viewportWidth": 1920
 }
