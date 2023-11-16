@@ -6,6 +6,9 @@
     "queryParameters": {
       "state": {
         "equalTo": "NEW"
+      },
+      "outcomeType": {
+        "doesNotMatch": "PROBATION_SENTENCE"
       }
     }
   },
