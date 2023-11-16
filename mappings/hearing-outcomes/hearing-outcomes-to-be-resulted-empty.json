@@ -6,7 +6,7 @@
     "urlPath": "/courts/B34JS/hearing-outcomes",
     "queryParameters": {
       "state": {
-        "equalTo": "RESULTED"
+        "equalTo": "NEW"
       }
     }
   },
