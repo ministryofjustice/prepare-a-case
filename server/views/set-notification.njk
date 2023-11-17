@@ -9,11 +9,11 @@
 {% block navigation %}{% endblock %}
 {% block cookieBanner %}{% endblock %}
 {% block content %}
-<form name="notificationForm" id="notificationForm" method="post" novalidate>
+<form name="notificationForm" id="notificationForm" class="hide-errors" method="post" novalidate>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <iframe id="render" style="border: none; width: 100%;" src="/set-notification-preview"></iframe>
+      <iframe id="render" aria-label="render-preview" data-cy="render-frame" style="border: none; width: 100%;" src="/set-notification-preview"></iframe>
 
       <h1 class="govuk-heading-l">Set notification banner</h1>
       <p class="govuk-body">This will display a notification banner on the main case list page for all users.</p>
@@ -27,11 +27,15 @@
       {% from "govuk/components/input/macro.njk" import govukInput %}
       {{ govukInput({
         label: { text: "Notification banner html" },
+        attributes: {
+          "data-cy": "notification-input"
+        },
         id: "notification",
         name: "notification",
         value: currentNotification,
           errorMessage: {
-            html: "FIX THE ERROR MESSAGE BELOW.<br /><span class='govuk-!-font-size-16'>Once this is done you will be able to click the submit button.</span><br /><br /><span id='notification-error-text'></span>"
+            html: "FIX THE ERROR MESSAGE BELOW.<br /><span class='govuk-!-font-size-16'>Once this is done you will be able to click the submit button.</span><br /><br /><span id='notification-error-text'></span>",
+            classes: "govuk-!-display-none"
           }
       }) }}
 
@@ -75,7 +79,7 @@
         ]
       }) }}
 
-      <button type="submit" class="govuk-button">Set notification html</button>
+      <button type="submit" class="govuk-button" data-cy="notification-submit">Set notification html</button>
 
     </div>
   </div>

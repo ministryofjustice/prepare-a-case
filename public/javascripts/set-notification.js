@@ -45,6 +45,7 @@
     iframe.contentWindow.document.querySelector('.govuk-notification-banner').addEventListener('click', ev => ev.preventDefault())
     const ev = new Event('input', { bubbles: true })
     input.dispatchEvent(ev)
+    form.classList.remove('hide-errors')
   });
 
 
