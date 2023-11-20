@@ -1,4 +1,4 @@
-Feature: Cases to Result List
+Feature: Resulted Cases List
   In order to view the list of cases to result
   As an authenticated user
   I need to see a list of cases that need resulting
@@ -74,3 +74,10 @@ Feature: Cases to Result List
     When I click the "reassign-resulted-outcome-modal" modal "Open as read only" link
     Then I should be on the "Case summary" page
     And I should not see govuk notification banner
+
+  Scenario: Ensure the correct messages and results are shown when no cases are resulted
+    Given I am an authenticated user
+    When I navigate to the Northampton Court "outcomes/resulted-cases" route
+    Then I should be on the "Hearing outcomes" page
+    Then I should see the body text "There are no resulted cases."
+    And There should be no a11y violations

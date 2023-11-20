@@ -23,7 +23,7 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
 
   const flaggedFilters = flagFilters(queryParams, filters)
 
-  const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).pop()
+  const filtersApplied = flaggedFilters.map(filterObj => filterObj.items.filter(item => item.checked).length).some(length => length > 0)
 
   const templateValues = {
     params: {

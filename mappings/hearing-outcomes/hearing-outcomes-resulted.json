@@ -7,6 +7,9 @@
     "queryParameters": {
       "state": {
         "equalTo": "RESULTED"
+      },
+      "outcomeType": {
+        "doesNotMatch": "COMMITTED_TO_CROWN"
       }
     }
   },

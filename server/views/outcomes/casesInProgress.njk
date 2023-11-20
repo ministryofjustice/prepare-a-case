@@ -138,7 +138,10 @@
       {{ govukTable(tableData) }}
     {% endblock %}
   {% else %}
-    <p class="govuk-body">{{ "There are no cases that match these criteria." if params.filtersApplied else "No cases in progress available." }}</p>
+  {% if params.filtersApplied %}
+      <span class="govuk-heading-m">0 cases</span>
+    {% endif %}
+    <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "There are no cases in progress." }}</p>
   {% endif %}
 
 {% endblock %}

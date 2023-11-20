@@ -28,3 +28,10 @@ Feature: Cases to Result List
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     And There should be no a11y violations
+
+  Scenario: Ensure the correct messages and results are shown when no cases are to be resulted
+    Given I am an authenticated user
+    When I navigate to the Northampton Court "outcomes" route
+    Then I should be on the "Hearing outcomes" page
+    Then I should see the body text "There are no cases to be resulted."
+    And There should be no a11y violations

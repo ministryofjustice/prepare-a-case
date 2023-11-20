@@ -90,6 +90,10 @@ When('I navigate to the {string} route', $route => {
   cy.visit(`/B14LO/${$route}`, { failOnStatusCode: false })
 })
 
+When('I navigate to the Northampton Court {string} route', $route => {
+  cy.visit(`/B34JS/${$route}`, { failOnStatusCode: false })
+})
+
 When('I navigate to the {string} route for today', $route => {
   cy.visit(`/B14LO/${$route}/${moment().format('YYYY-MM-DD')}`)
 })

@@ -50,7 +50,7 @@ describe('getResultedCasesHandler', () => {
         params: {
           ...params,
           filters,
-          filtersApplied: 0,
+          filtersApplied: false,
           casesInProgressCount: 5,
           casesToResultCount: 2
         },
