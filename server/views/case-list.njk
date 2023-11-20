@@ -198,7 +198,7 @@
     {% if params.notification and params.notification | length %}
         {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
         {{ govukNotificationBanner({
-            html: "<span class='govuk-notification-banner__heading'>" + params.notification | escape + "</span>"
+            html: "<span class='govuk-notification-banner__heading'>" + params.notification | safe + "</span>"
         }) }}
     {% endif %}
     {% if  params.caseSearchEnabled %}
