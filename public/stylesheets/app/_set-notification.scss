@@ -1,0 +1,11 @@
+.hide-errors {
+
+  .govuk-input--error {
+    border-color: $govuk-input-border-colour;
+  }
+
+  .govuk-form-group--error {
+    padding-left: 0;
+    border-left: none;
+  }
+}
