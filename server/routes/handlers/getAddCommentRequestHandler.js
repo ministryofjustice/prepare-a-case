@@ -6,14 +6,10 @@ const getAddCaseCommentHandler = caseService => async (req, res) => {
   if (!comment) {
     session.caseCommentBlankError = true
   } else {
-    try {
-      await caseService.addCaseComment(caseId, comment, res.locals.user.name)
-    } catch (err) {
-      trackEvent('PiCCaseCommentFailure', {
-        court: courtCode,
-        caseId,
-        userNameEmpty: res.locals.user.name === null
-      })
+    await caseService.addCaseComment(caseId, comment, res.locals.user.name)
+
+    if (!res.locals.user.name) {
+      trackEvent('PiCAddCaseCommentNoName', res.locals.user)
     }
 
     trackEvent('PiCCaseCommentSuccess', {

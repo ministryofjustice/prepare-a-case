@@ -4,13 +4,9 @@ const getAddHearingNoteHandler = caseService => async (req, res) => {
   const { params: { courtCode, hearingId, defendantId }, body: { note, hearingId: targetHearingId } } = req
 
   if (note) {
-    try {
-      await caseService.addHearingNote(targetHearingId, note, res.locals.user.name)
-      if (!res.locals.user.name) {
-        trackEvent('PiCAddHearingNoteNoName', res.locals.user)
-      }
-    } catch (err) {
-      trackEvent('PiCAddHearingNoteError', err)
+    await caseService.addHearingNote(targetHearingId, note, res.locals.user.name)
+    if (!res.locals.user.name) {
+      trackEvent('PiCAddHearingNoteNoName', res.locals.user)
     }
   }
 
