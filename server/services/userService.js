@@ -1,4 +1,5 @@
 const logger = require('../../log')
+const trackEvent = require('../utils/analytics')
 
 module.exports = function createUserService (authClientBuilder) {
   async function getUser (context) {
@@ -7,6 +8,9 @@ module.exports = function createUserService (authClientBuilder) {
 
       // Get the user record from Auth to determine whether this is an auth-only or Nomis account
       const user = await authClient.getUser()
+      if (!user.name) {
+        trackEvent('PiCgetUserNameNull', user)
+      }
 
       return {
         ...user,
@@ -14,6 +18,7 @@ module.exports = function createUserService (authClientBuilder) {
       }
     } catch (error) {
       logger.error('Error during getUser: ', error.stack)
+      trackEvent('PiCgetUserError', error)
       throw error
     }
   }

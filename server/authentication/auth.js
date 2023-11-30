@@ -2,6 +2,7 @@ const passport = require('passport')
 const { Strategy } = require('passport-oauth2')
 const config = require('../../config')
 const { generateOauthClientToken } = require('./clientCredentials')
+const trackEvent = require('../utils/analytics')
 
 function authenticationMiddleware () {
   return (req, res, next) => {
@@ -36,8 +37,12 @@ function init (signInService) {
       customHeaders: { Authorization: generateOauthClientToken() }
     },
     (accessToken, refreshToken, params, profile, done) => {
-      const user = signInService.getUser(accessToken, refreshToken, params.expires_in, params.user_name)
-      return done(null, user)
+      try {
+        const user = signInService.getUser(accessToken, refreshToken, params.expires_in, params.user_name)
+        return done(null, user)
+      } catch (err) {
+        trackEvent('PiCsignInServiceError', err)
+      }
     }
   )
 
