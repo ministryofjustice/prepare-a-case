@@ -30,14 +30,16 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
       ...params,
       filters: flaggedFilters,
       filtersApplied,
-      casesInProgressCount: response?.cases?.length || 0,
+      casesInProgressCount: response?.countsByState?.inProgressCount || 0,
       casesToResultCount: response?.countsByState?.toResultCount || 0
     },
     title,
     currentUserUuid: res.locals.user.uuid,
     moveToResultedSuccess: session.moveToResultedSuccess,
     data: response.cases || [],
-    displayFilters: response.cases?.length || filtersApplied
+    displayFilters: response.cases?.length || filtersApplied,
+    totalPages: response.totalPages,
+    totalElements: response.totalElements
   }
   session.moveToResultedSuccess = undefined
 
