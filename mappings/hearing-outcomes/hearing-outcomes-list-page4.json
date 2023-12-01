@@ -1,0 +1,44 @@
+{
+  "id": "7b89013c-f2ac-49b4-9f6d-0d5943ca73d6",
+  "priority": 4,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
+    "queryParameters": {
+      "page": {
+        "equalTo": "4"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "totalPages": 4,
+      "totalElements": 7,
+      "cases": [
+        {
+          "hearingOutcomeType": "REPORT_REQUESTED",
+          "hearingOutcomeDescription": "Report requested",
+          "hearingId": "7e0f9cb9-b492-4657-9028-a86de1301e25",
+          "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
+          "hearingDate": "2023-07-05T09:30:00",
+          "probationStatus": "Current",
+          "offences": [
+            "Offence title one",
+            "Offence title two",
+            "Loooooooooooooooooooooooooooooooooong offence title three"
+          ],
+          "defendantName": "Gill Arnold Page4"
+        }
+      ],
+      "countsByState": {
+        "toResultCount": 7,
+        "inProgressCount": 5,
+        "resultedCount": 9
+      }
+    }
+  }
+}
