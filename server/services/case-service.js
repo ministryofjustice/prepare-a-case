@@ -4,6 +4,7 @@ const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
 const { prepareCourtRoomFilters } = require('../routes/helpers')
 const features = require('../utils/features')
+const { settings } = require('../../config')
 
 const isHttpSuccess = response => {
   return response && response.status / 100 === 2
@@ -208,6 +209,9 @@ const createCaseService = (apiUrl) => {
           paramMap.append('order', sort.value)
         })
       }
+
+      paramMap.set('page', `${filters?.page || 1}`)
+      paramMap.set('size', `${settings.hearingOutcomesPageSize}`)
 
       const urlString = `${apiUrl}/courts/${courtCode}/hearing-outcomes?${paramMap}`
 

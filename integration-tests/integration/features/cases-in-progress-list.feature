@@ -18,7 +18,7 @@ Feature: Cases in Progress List
     
     And I should see a tab with text "Cases to result (8)"
 
-    And I should see a tab with text "In progress (3)"
+    And I should see a tab with text "In progress (15)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
@@ -27,6 +27,9 @@ Feature: Cases in Progress List
       | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
       | Olive Tree     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+
+    And I should see 2 numbered pagination links from 1 to 2 followed by a link Next
+    And I should see the pagination numbers 1 to 2 of 3 results
 
     And There should be no a11y violations
 

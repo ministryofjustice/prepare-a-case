@@ -1,29 +1,12 @@
 {
-  "id": "94b0434e-f2f2-43ed-88af-6d73627735a1",
+  "id": "eecdce81-3306-4202-b782-80272c81c128",
   "priority": 4,
   "request": {
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
-      "page":{
-        "equalTo": "1"
-      },
-      "outcomeType": {
-        "or": [
-          {
-            "and": [
-              {
-                "equalTo": "REPORT_REQUESTED"
-              },
-              {
-                "equalTo": "ADJOURNED"
-              }
-            ]
-          },
-          {
-            "absent": true
-          }
-        ]
+      "page": {
+        "equalTo": "2"
       }
     }
   },
@@ -48,7 +31,7 @@
             "Offence title two",
             "Loooooooooooooooooooooooooooooooooong offence title three"
           ],
-          "defendantName": "Gill Arnold"
+          "defendantName": "Gill Arnold Page2"
         },
         {
           "hearingOutcomeType": "ADJOURNED",
@@ -62,7 +45,7 @@
             "Theft from the person of another",
             "Attempt theft from the person of another"
           ],
-          "defendantName": "English Madden"
+          "defendantName": "English Madden Page2"
         }
       ],
       "countsByState": {
