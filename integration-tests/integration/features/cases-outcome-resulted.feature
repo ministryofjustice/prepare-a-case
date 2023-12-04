@@ -33,54 +33,54 @@ Feature: Resulted Cases List
 
     And I should see 2 numbered pagination links from 1 to 2 followed by a link Next
     And I should see the pagination numbers 1 to 2 of 3 results
-#
-#    When I click the "Outcome type" filter button
-#    And I select the "Adjourned" filter
-#    And I click the "Apply filters" button
-#    Then I should see the "Adjourned" filter tag
-#    And I click the clear "Adjourned" filter tag
-#
-#    When I click the "Assigned to" filter button
-#    And I select the "Johnny Ball" filter
-#    And I click the "Assigned to" filter button
-#    And I click the "Apply filters" button
-#    Then I should see the "Johnny Ball" filter tag
-#
-#    And There should be no a11y violations
-#
-#  Scenario: Clicking on a resulted case should allow the user to assign to themselves and move to In Progress
-#    Given I am an authenticated user
-#    When I navigate to the "outcomes/resulted-cases" route
-#    Then I should be on the "Hearing outcomes" page
-#
-#    When I click the "Hazel Nutt" link
-#    Then I should "see" the "reassign-resulted-outcome-modal" modal popup to assign hearing outcome
-#    And the "reassign-resulted-outcome-modal" modal popup should have text heading "This case has been resulted"
-#    And the "reassign-resulted-outcome-modal" modal popup should have text paragraph "If you need to check some details, open as read only."
-#    And the "reassign-resulted-outcome-modal" modal popup should have text paragraph "To result it again, assign it to yourself."
-#    And the "reassign-resulted-outcome-modal" modal popup should have the button "Assign to me"
-#    And the "reassign-resulted-outcome-modal" modal popup should have the link "Open as read only"
-#    And the "reassign-resulted-outcome-modal" modal popup should have the close button
-#
-#    When I click the "Assign to me" button
-#    Then I should be on the "Case summary" page
-#    And I should see govuk notification banner with header "Success" and message "You are assigned to result this case. It has moved to the in progress tab."
-#
-#  Scenario: Clicking on a Outcome should allow the user to view the case without assigning to themselves
-#    Given I am an authenticated user
-#    When I navigate to the "outcomes/resulted-cases" route
-#    Then I should be on the "Hearing outcomes" page
-#
-#    When I click the "Hazel Nutt" link
-#    Then I should "see" the "reassign-resulted-outcome-modal" modal popup to assign hearing outcome
-#
-#    When I click the "reassign-resulted-outcome-modal" modal "Open as read only" link
-#    Then I should be on the "Case summary" page
-#    And I should not see govuk notification banner
-#
-#  Scenario: Ensure the correct messages and results are shown when no cases are resulted
-#    Given I am an authenticated user
-#    When I navigate to the Northampton Court "outcomes/resulted-cases" route
-#    Then I should be on the "Hearing outcomes" page
-#    Then I should see the body text "There are no resulted cases."
-#    And There should be no a11y violations
+
+    When I click the "Outcome type" filter button
+    And I select the "Adjourned" filter
+    And I click the "Apply filters" button
+    Then I should see the "Adjourned" filter tag
+    And I click the clear "Adjourned" filter tag
+
+    When I click the "Assigned to" filter button
+    And I select the "Johnny Ball" filter
+    And I click the "Assigned to" filter button
+    And I click the "Apply filters" button
+    Then I should see the "Johnny Ball" filter tag
+
+    And There should be no a11y violations
+
+  Scenario: Clicking on a resulted case should allow the user to assign to themselves and move to In Progress
+    Given I am an authenticated user
+    When I navigate to the "outcomes/resulted-cases" route
+    Then I should be on the "Hearing outcomes" page
+
+    When I click the "Hazel Nutt" link
+    Then I should "see" the "reassign-resulted-outcome-modal" modal popup to assign hearing outcome
+    And the "reassign-resulted-outcome-modal" modal popup should have text heading "This case has been resulted"
+    And the "reassign-resulted-outcome-modal" modal popup should have text paragraph "If you need to check some details, open as read only."
+    And the "reassign-resulted-outcome-modal" modal popup should have text paragraph "To result it again, assign it to yourself."
+    And the "reassign-resulted-outcome-modal" modal popup should have the button "Assign to me"
+    And the "reassign-resulted-outcome-modal" modal popup should have the link "Open as read only"
+    And the "reassign-resulted-outcome-modal" modal popup should have the close button
+
+    When I click the "Assign to me" button
+    Then I should be on the "Case summary" page
+    And I should see govuk notification banner with header "Success" and message "You are assigned to result this case. It has moved to the in progress tab."
+
+  Scenario: Clicking on a Outcome should allow the user to view the case without assigning to themselves
+    Given I am an authenticated user
+    When I navigate to the "outcomes/resulted-cases" route
+    Then I should be on the "Hearing outcomes" page
+
+    When I click the "Hazel Nutt" link
+    Then I should "see" the "reassign-resulted-outcome-modal" modal popup to assign hearing outcome
+
+    When I click the "reassign-resulted-outcome-modal" modal "Open as read only" link
+    Then I should be on the "Case summary" page
+    And I should not see govuk notification banner
+
+  Scenario: Ensure the correct messages and results are shown when no cases are resulted
+    Given I am an authenticated user
+    When I navigate to the Northampton Court "outcomes/resulted-cases" route
+    Then I should be on the "Hearing outcomes" page
+    Then I should see the body text "There are no resulted cases."
+    And There should be no a11y violations
