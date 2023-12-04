@@ -15,8 +15,8 @@
     "npm": ">=8.0.0"
   },
   "scripts": {
-    "start-feature": "PORT=3007 NODE_ENV=development NOTIFICATION_USERNAME=test NOTIFICATION_PASSWORD=test node $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
-    "start-feature:dev": "PORT=3007 NOMIS_AUTH_URL=http://localhost:9091/auth NODE_ENV=development NOTIFICATION_USERNAME=test NOTIFICATION_PASSWORD=test nodemon $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
+    "start-feature": "PORT=3007 NODE_ENV=development NOTIFICATION_USERNAME=test NOTIFICATION_PASSWORD=test ENABLE_CASE_COMMENTS=true ENABLE_CASE_PROGRESS=true ENABLE_APP_INSIGHTS=true ENABLE_HEARING_OUTCOMES=true HEARING_OUTCOMES_PAGE_SIZE=2 PAC_ENV=dev node $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
+    "start-feature:dev": "PORT=3007 NOMIS_AUTH_URL=http://localhost:9091/auth NODE_ENV=development NOTIFICATION_USERNAME=test NOTIFICATION_PASSWORD=test HEARING_OUTCOMES_PAGE_SIZE=2 nodemon $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
     "delete:reports": "rm ./test-results/cypress/* || true",
     "preint-test": "npm run delete:reports",
     "preint-test:dev": "npm run delete:reports",

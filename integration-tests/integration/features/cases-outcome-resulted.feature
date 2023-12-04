@@ -31,6 +31,9 @@ Feature: Resulted Cases List
       | Hazel Nutt     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Olive Tree \n on 11 Aug 2023 at 10:35  |
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Johnny Ball \n on 9 Sep 2023 at 14:16  |
 
+    And I should see 2 numbered pagination links from 1 to 2 followed by a link Next
+    And I should see the pagination numbers 1 to 2 of 3 results
+
     When I click the "Outcome type" filter button
     And I select the "Adjourned" filter
     And I click the "Apply filters" button
@@ -44,7 +47,7 @@ Feature: Resulted Cases List
     Then I should see the "Johnny Ball" filter tag
 
     And There should be no a11y violations
-  
+
   Scenario: Clicking on a resulted case should allow the user to assign to themselves and move to In Progress
     Given I am an authenticated user
     When I navigate to the "outcomes/resulted-cases" route

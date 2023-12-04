@@ -427,7 +427,7 @@ And('I see value {string} in the text input with id {string}', ($string, $id) =>
   cy.get(`#${$id}`).should('contain.value', $string)
 })
 
-And('I should see 5 numbered pagination links from {int} to {int} followed by a link Next', ($fromNum, $toNum) => {
+And('I should see {int} numbered pagination links from {int} to {int} followed by a link Next', ($pages, $fromNum, $toNum) => {
   const nav = cy.get('.moj-pagination .moj-pagination__list')
 
   for (let i = $fromNum; i <= $toNum; i++) {
@@ -442,8 +442,8 @@ And('I should see the pagination numbers {int} to {int} of {int} results', ($fro
   cy.get('.moj-pagination__results').should('contain.text', `Showing ${$fromNum} to ${$toNum} of ${$ofNum} results`)
 })
 
-And('I click the "Next" link in the pagination links', () => {
-  cy.get('.moj-pagination .moj-pagination__list .moj-pagination__item').contains('Next').click()
+And('I click the {string} link in the pagination links', ($link) => {
+  cy.get('.moj-pagination .moj-pagination__list .moj-pagination__item').contains($link).click()
 })
 
 Then('the page {int} should be loaded', ($pageNo) => {

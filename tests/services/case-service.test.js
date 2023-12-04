@@ -1,6 +1,7 @@
 /* global describe, beforeEach, afterEach, it, expect, jest, test */
 const moxios = require('moxios')
 const config = require('../../config')
+const settings = config.settings
 
 const {
   getCaseList,
@@ -438,12 +439,12 @@ describe('Case service', () => {
   describe('getOutcomesList', () => {
     const state = 'NEW'
     const courtCode = 'SHF'
-    const expected1 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}`
-    const expected2 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=ADJOURNED`
-    const expected3 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&sortBy=hearingDate&order=DESC`
-    const expected4 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=ADJOURNED&sortBy=hearingDate&order=ASC`
-    const expected5 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=REPORT_REQUESTED&sortBy=hearingDate&order=DESC`
-    const expected6 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED&sortBy=hearingDate&order=DESC`
+    const expected1 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&page=1&size=${settings.hearingOutcomesPageSize}`
+    const expected2 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=ADJOURNED&page=1&size=${settings.hearingOutcomesPageSize}`
+    const expected3 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&sortBy=hearingDate&order=DESC&page=1&size=${settings.hearingOutcomesPageSize}`
+    const expected4 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=ADJOURNED&sortBy=hearingDate&order=ASC&page=1&size=${settings.hearingOutcomesPageSize}`
+    const expected5 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=REPORT_REQUESTED&sortBy=hearingDate&order=DESC&page=1&size=${settings.hearingOutcomesPageSize}`
+    const expected6 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED&sortBy=hearingDate&order=DESC&page=1&size=${settings.hearingOutcomesPageSize}`
 
     test.each`
       courtCode    |  filters | sorts | state   | expected
@@ -472,7 +473,7 @@ describe('Case service', () => {
       return response
     })
     it('should return http error code in status when API call fails', async () => {
-      moxios.stubRequest(`${apiUrl}/courts/SHF/hearing-outcomes?state=NEW`, {
+      moxios.stubRequest(`${apiUrl}/courts/SHF/hearing-outcomes?state=NEW&page=1&size=${settings.hearingOutcomesPageSize}`, {
         status: 500,
         response: { isError: true, status: 500 }
       })
@@ -481,7 +482,7 @@ describe('Case service', () => {
         await getOutcomesList('SHF', [], [], 'NEW')
       } catch (e) {
         const response = e.response
-        expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/courts/SHF/hearing-outcomes?state=NEW`)
+        expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/courts/SHF/hearing-outcomes?state=NEW&page=1&size=${settings.hearingOutcomesPageSize}`)
         expect(response.status).toBe(500)
         expect(response.data.isError).toBe(true)
         return response

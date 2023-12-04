@@ -19,6 +19,8 @@
     },
     "status": 200,
     "jsonBody": {
+      "totalPages": 2,
+      "totalElements": 3,
       "cases": [
         {
           "hearingOutcomeType": "REPORT_REQUESTED",

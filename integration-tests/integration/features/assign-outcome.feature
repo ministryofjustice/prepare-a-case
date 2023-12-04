@@ -12,7 +12,7 @@ Feature: Outcomes List
     When I navigate to the "/B14LO/outcomes" base route
     Then I should be on the "Hearing outcomes" page
 
-    And I should see a tab with text "Cases to result (2)"
+    And I should see a tab with text "Cases to result (7)"
     And I should see a tab with text "In progress (5)"
 
     And I should see the following table headings
@@ -42,7 +42,7 @@ Feature: Outcomes List
     When I navigate to the "/B14LO/outcomes" base route
     Then I should be on the "Hearing outcomes" page
 
-    And I should see a tab with text "Cases to result (2)"
+    And I should see a tab with text "Cases to result (7)"
     And I should see a tab with text "In progress (5)"
 
     And I should see the following table headings
@@ -72,7 +72,7 @@ Feature: Outcomes List
     When I navigate to the "/B14LO/outcomes" base route
     Then I should be on the "Hearing outcomes" page
 
-    And I should see a tab with text "Cases to result (2)"
+    And I should see a tab with text "Cases to result (7)"
     And I should see a tab with text "In progress (5)"
 
     And I should see the following table headings
