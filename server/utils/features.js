@@ -3,7 +3,7 @@ const {
 } = require('./featureTogglePredicates')
 const { settings } = require('../../config')
 
-const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k', 'brn63n']
+const LIVERPOOL_PRE_PILOT_USERS = ['***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***']
 
 const PLYMOUTH_MAGS_COURT_CODE = 'B50KH'
 
