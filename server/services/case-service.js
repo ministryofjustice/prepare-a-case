@@ -38,7 +38,7 @@ const createCaseService = (apiUrl) => {
       if (subsection === 'added') {
         apiUrlBuilder.searchParams.append('recentlyAdded', 'true')
       }
-      if (subsection === false) {
+      if (subsection === false || subsection === null || subsection === undefined) {
         apiUrlBuilder.searchParams.append('hearingStatus', 'UNHEARD')
       }
       if (subsection === 'heard') {
