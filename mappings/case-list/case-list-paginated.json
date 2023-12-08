@@ -1,0 +1,1912 @@
+{
+    "id": "49b662db-caa3-4dba-8831-b72f3cbfcddc",
+    "priority": 4,
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/court/([A-Z0-9]{5})/cases",
+        "queryParameters": {
+            "date": {
+                "matches": "^(?!2020-01-01|2020-01-02|2020-01-03|2020-01-04)(\\d{4})-(\\d{2})-(\\d{2})$"
+            }
+        }
+    },
+    "response": {
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "status": 200,
+        "jsonBody": {
+            "cases": [
+                {
+                    "caseId": "696dbb88-f315-44aa-a9d8-30d9bafb5149",
+                    "hearingId": "7ac0d2a3-cde3-4c32-83f6-e188f9267488",
+                    "hearingType": "Trial",
+                    "crn": "X346204",
+                    "urn": "2U7177W27R7",
+                    "pnc": "2004/0046583U",
+                    "cro": "12345ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "1",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:36",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "previouslyKnownTerminationDate": "2022-09-30",
+                    "suspendedSentenceOrder": false,
+                    "breach": true,
+                    "preSentenceActivity": true,
+                    "offences": [
+                        {
+                            "offenceTitle": "Wound / inflict grievous bodily harm without intent",
+                            "offenceSummary": "Detailed summary of the test offence: Wound / inflict grievous bodily harm without intent",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 1,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Wound / inflict grievous bodily harm without intent",
+                            "offenceSummary": "Detailed summary of the test offence: Wound / inflict grievous bodily harm without intent",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 5,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Arthur Morgan",
+                    "name": {
+                        "forename1": "Arthur",
+                        "surname": "Morgan"
+                    },
+                    "defendantAddress": {
+                        "line1": "13 Wind Street",
+                        "line2": "Swansea",
+                        "line3": "Wales",
+                        "line4": "UK",
+                        "postcode": "SA1 1FU"
+                    },
+                    "defendantDob": "1975-01-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "7ac0d2a3-cde3-4c32-83f6-e188f9267488",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": true,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "48a2a4b6-a6ad-4836-95e9-a7187e33478a",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "bf4451d1-6fee-4906-8b55-c33df5cbcf1b",
+                    "hearingId": "fae411a5-1774-4772-8d68-b396581bc036",
+                    "hearingType": "Trial",
+                    "urn": "25L08P8L4OU",
+                    "pnc": "1965/0046583U",
+                    "cro": "199999ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "1",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:43",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "It's just been on the radio too often.",
+                            "act": "repetitious song playing.",
+                            "sequenceNumber": 1,
+                            "listNo": 4,
+                            "offenceCode": "CJO3523"
+                        }
+                    ],
+                    "defendantName": "Cyndi Craw LAUPER",
+                    "name": {
+                        "forename1": "Cyndi",
+                        "forename2": "Craw",
+                        "surname": "LAUPER"
+                    },
+                    "defendantAddress": {
+                        "line1": "Studio 54",
+                        "line5": "NEW YORK",
+                        "postcode": "NY1 1NY"
+                    },
+                    "defendantDob": "1965-01-01",
+                    "defendantSex": "NS",
+                    "defendantType": "PERSON",
+                    "defendantId": "fae411a5-1774-4772-8d68-b396581bc036",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "21b2184e-a59e-45ad-9233-fb7118a6d196",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "b8099ef5-5fe7-4fec-b233-289dda42de04",
+                    "hearingId": "d40ff664-59fd-4af8-b93f-c31f8c7935c5",
+                    "hearingType": "Trial",
+                    "crn": "X055129",
+                    "urn": "0M665MO790Y",
+                    "courtCode": "B14LO",
+                    "courtRoom": "1",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:47",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "suspendedSentenceOrder": false,
+                    "breach": false,
+                    "preSentenceActivity": false,
+                    "offences": [
+                        {
+                            "offenceTitle": "Wound / inflict grievous bodily harm without intent",
+                            "offenceSummary": "Detailed summary of the test offence: Wound / inflict grievous bodily harm without intent",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 8,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Putting hands in air like they just don't care",
+                            "offenceSummary": "Detailed summary of the test offence: Putting hands in air like they just don't care",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 9,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Joe Bloggs",
+                    "name": {
+                        "forename1": "Joe",
+                        "surname": "Bloggs"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1993-02-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "d40ff664-59fd-4af8-b93f-c31f8c7935c5",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": false,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "8a688c4a-e444-4f4a-abb9-982790bd4c78",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "bc66b343-7dfe-43c7-87a9-66489a997f81",
+                    "hearingId": "b6c3a160-1823-44b6-b11d-64860b9df730",
+                    "hearingType": "Trial",
+                    "urn": "O9PQQ6K0Y75",
+                    "pnc": "2023/4433736P",
+                    "cro": "200750/23F",
+                    "courtCode": "B14LO",
+                    "courtRoom": "2",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:29",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Wound / inflict grievous bodily harm without intent",
+                            "offenceSummary": "Detailed summary of the test offence: Wound / inflict grievous bodily harm without intent",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 8,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Putting hands in air like they just don't care",
+                            "offenceSummary": "Detailed summary of the test offence: Putting hands in air like they just don't care",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 6,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Cyril Hegmann",
+                    "name": {
+                        "forename1": "Cyril",
+                        "surname": "Hegmann"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1977-10-10",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "b6c3a160-1823-44b6-b11d-64860b9df730",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "9d9de5c3-4443-4235-adcc-36b05ce7603a",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "24dccb1b-9dd1-4712-be93-afe682bafbcd",
+                    "hearingId": "0ab815a0-057a-4f6e-a2f2-b448d2352b23",
+                    "hearingType": "Trial",
+                    "urn": "8282GV41P1W",
+                    "pnc": "2023/4433736P",
+                    "cro": "200750/23F",
+                    "courtCode": "B14LO",
+                    "courtRoom": "2",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:30",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "Detailed summary of the test offence: Repetitious song playing (Girls just want to have fun)",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 3,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Obstruct person executing search warrant for TV receiver",
+                            "offenceSummary": "Detailed summary of the test offence: Obstruct person executing search warrant for TV receiver",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 5,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Myrl Skiles",
+                    "name": {
+                        "forename1": "Myrl",
+                        "surname": "Skiles"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1977-10-10",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "0ab815a0-057a-4f6e-a2f2-b448d2352b23",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "86fbbe11-053c-42b4-800f-f60a9495fc78",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "a0d4fd70-17f9-4431-850d-bbb8c571b517",
+                    "hearingId": "cd01c96b-e1b4-41d9-a460-379fecae54fd",
+                    "hearingType": "Trial",
+                    "crn": "X346204",
+                    "urn": "F05151DW7Q3",
+                    "pnc": "2004/0046583U",
+                    "cro": "12345ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "2",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:39",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "previouslyKnownTerminationDate": "2022-09-30",
+                    "suspendedSentenceOrder": false,
+                    "breach": true,
+                    "preSentenceActivity": true,
+                    "offences": [
+                        {
+                            "offenceTitle": "Raising a bug on the release day.",
+                            "offenceSummary": "Detailed summary of the test offence: Raising a bug on the release day.",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 4,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Releasing to prod on Friday evening",
+                            "offenceSummary": "Detailed summary of the test offence: Releasing to prod on Friday evening",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 6,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Arthur Morgan",
+                    "name": {
+                        "forename1": "Arthur",
+                        "surname": "Morgan"
+                    },
+                    "defendantAddress": {
+                        "line1": "13 Wind Street",
+                        "line2": "Swansea",
+                        "line3": "Wales",
+                        "line4": "UK",
+                        "postcode": "SA1 1FU"
+                    },
+                    "defendantDob": "1975-01-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "cd01c96b-e1b4-41d9-a460-379fecae54fd",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": true,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "cc51b222-47b8-46d4-8017-eb2caf54356f",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "326cd24c-88cf-4c13-a1b9-5fd0df945e1c",
+                    "hearingId": "0f09ebf0-5f82-48d6-a0c6-5357c8e193be",
+                    "hearingType": "Trial",
+                    "urn": "24985SNH7E4",
+                    "pnc": "2023/4433736P",
+                    "cro": "200750/23F",
+                    "courtCode": "B14LO",
+                    "courtRoom": "2",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:52",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Raising a bug on the release day.",
+                            "offenceSummary": "Detailed summary of the test offence: Raising a bug on the release day.",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 5,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Use / install a television set without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Use / install a television set without a licence",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 6,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Enrico Labadie",
+                    "name": {
+                        "forename1": "Enrico",
+                        "surname": "Labadie"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1977-10-10",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "0f09ebf0-5f82-48d6-a0c6-5357c8e193be",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "a9ab7cab-5000-4b89-9dca-1ccce91af85f",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "80d2bcf9-1398-4ce3-8121-899800245d8f",
+                    "hearingId": "03fdfa3b-02b9-4092-a7a2-2b0f45de631e",
+                    "hearingType": "Trial",
+                    "crn": "X346204",
+                    "urn": "521K3028WBR",
+                    "pnc": "2004/0046583U",
+                    "cro": "12345ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "3",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:35",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "previouslyKnownTerminationDate": "2022-09-30",
+                    "suspendedSentenceOrder": false,
+                    "breach": true,
+                    "preSentenceActivity": true,
+                    "offences": [
+                        {
+                            "offenceTitle": "Putting hands in air like they just don't care",
+                            "offenceSummary": "Detailed summary of the test offence: Putting hands in air like they just don't care",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 1,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Use / install a television set without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Use / install a television set without a licence",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 1,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Arthur Morgan",
+                    "name": {
+                        "forename1": "Arthur",
+                        "surname": "Morgan"
+                    },
+                    "defendantAddress": {
+                        "line1": "13 Wind Street",
+                        "line2": "Swansea",
+                        "line3": "Wales",
+                        "line4": "UK",
+                        "postcode": "SA1 1FU"
+                    },
+                    "defendantDob": "1975-01-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "03fdfa3b-02b9-4092-a7a2-2b0f45de631e",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": true,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "4a2018a4-9a85-4193-b5e6-5baadf9db0cc",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "f4140848-b3e2-4a30-8de9-38f45f7cfc63",
+                    "hearingId": "5dbca322-4e51-4604-9f55-1d023a572f44",
+                    "hearingType": "Trial",
+                    "crn": "X346204",
+                    "urn": "986294Y7X76",
+                    "pnc": "2004/0046583U",
+                    "cro": "12345ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "4",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:37",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "previouslyKnownTerminationDate": "2022-09-30",
+                    "suspendedSentenceOrder": false,
+                    "breach": true,
+                    "preSentenceActivity": true,
+                    "offences": [
+                        {
+                            "offenceTitle": "Obstruct person executing search warrant for TV receiver",
+                            "offenceSummary": "Detailed summary of the test offence: Obstruct person executing search warrant for TV receiver",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 6,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Raising a bug on the release day.",
+                            "offenceSummary": "Detailed summary of the test offence: Raising a bug on the release day.",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 4,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Arthur Morgan",
+                    "name": {
+                        "forename1": "Arthur",
+                        "surname": "Morgan"
+                    },
+                    "defendantAddress": {
+                        "line1": "13 Wind Street",
+                        "line2": "Swansea",
+                        "line3": "Wales",
+                        "line4": "UK",
+                        "postcode": "SA1 1FU"
+                    },
+                    "defendantDob": "1975-01-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "5dbca322-4e51-4604-9f55-1d023a572f44",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": true,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "cbaf4643-c5c4-415b-9dc0-f09256e3d0b5",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "84565af0-7b08-4690-9ec6-f5cac60ec96a",
+                    "hearingId": "2985e300-2a7e-40b3-a64a-79171245fb4b",
+                    "hearingType": "Trial",
+                    "urn": "84Q78OE1XH9",
+                    "pnc": "2023/4433736P",
+                    "cro": "200750/23F",
+                    "courtCode": "B14LO",
+                    "courtRoom": "4",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:51",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Possess a television set with intent to install / use without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Possess a television set with intent to install / use without a licence",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 4,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "Detailed summary of the test offence: Repetitious song playing (Girls just want to have fun)",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 2,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Paul Grady",
+                    "name": {
+                        "forename1": "Paul",
+                        "surname": "Grady"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1977-10-10",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "2985e300-2a7e-40b3-a64a-79171245fb4b",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "cac5113b-0640-4453-abee-079234998e27",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "59857b6f-e72e-493c-ab5f-0d8fb00ecda6",
+                    "hearingId": "3816cdc4-d00b-4f2e-bd52-9b9cec078676",
+                    "hearingType": "Trial",
+                    "urn": "A54691I093D",
+                    "pnc": "2023/4433736P",
+                    "cro": "200750/23F",
+                    "courtCode": "B14LO",
+                    "courtRoom": "5",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:26",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "Detailed summary of the test offence: Repetitious song playing (Girls just want to have fun)",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 3,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Putting hands in air like they just don't care",
+                            "offenceSummary": "Detailed summary of the test offence: Putting hands in air like they just don't care",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 1,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Kamille Bechtelar",
+                    "name": {
+                        "forename1": "Kamille",
+                        "surname": "Bechtelar"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1977-10-10",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "3816cdc4-d00b-4f2e-bd52-9b9cec078676",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "42184721-a437-4fb0-86ed-52c4ba5ac7d6",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "b1ed552a-792c-4cc7-baa2-23bc2386f9e7",
+                    "hearingId": "fcbd9d5a-7244-43ae-9147-609ee0151881",
+                    "hearingType": "Trial",
+                    "urn": "11P4JP7V785",
+                    "pnc": "2023/4433736P",
+                    "cro": "200750/23F",
+                    "courtCode": "B14LO",
+                    "courtRoom": "5",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:32",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Obstruct person executing search warrant for TV receiver",
+                            "offenceSummary": "Detailed summary of the test offence: Obstruct person executing search warrant for TV receiver",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 5,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Possess a television set with intent to install / use without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Possess a television set with intent to install / use without a licence",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 6,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Wayne Leuschke",
+                    "name": {
+                        "forename1": "Wayne",
+                        "surname": "Leuschke"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1977-10-10",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "fcbd9d5a-7244-43ae-9147-609ee0151881",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "bbf2fd76-ff8d-4528-9f70-4d8214614d03",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "f7df2f63-a03c-4b5b-971c-ad2be6e70c70",
+                    "hearingId": "09125126-49f4-408f-9cbe-0e13addaa579",
+                    "hearingType": "Trial",
+                    "crn": "X346204",
+                    "urn": "7172VPJ1162",
+                    "pnc": "2004/0046583U",
+                    "cro": "12345ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "5",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:38",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "previouslyKnownTerminationDate": "2022-09-30",
+                    "suspendedSentenceOrder": false,
+                    "breach": true,
+                    "preSentenceActivity": true,
+                    "offences": [
+                        {
+                            "offenceTitle": "Possess a television set with intent to install / use without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Possess a television set with intent to install / use without a licence",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 9,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "Detailed summary of the test offence: Repetitious song playing (Girls just want to have fun)",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 3,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Arthur Morgan",
+                    "name": {
+                        "forename1": "Arthur",
+                        "surname": "Morgan"
+                    },
+                    "defendantAddress": {
+                        "line1": "13 Wind Street",
+                        "line2": "Swansea",
+                        "line3": "Wales",
+                        "line4": "UK",
+                        "postcode": "SA1 1FU"
+                    },
+                    "defendantDob": "1975-01-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "09125126-49f4-408f-9cbe-0e13addaa579",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": true,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "18ad3dd0-d5d1-412d-a705-a044c4fabad9",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "74dce9f2-78e1-4340-8edd-fb804d2e8510",
+                    "hearingId": "0620b496-4b83-433a-a9b6-4f46de78f3e1",
+                    "hearingType": "Trial",
+                    "crn": "X346204",
+                    "urn": "233JR249PT3",
+                    "pnc": "2004/0046583U",
+                    "cro": "12345ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "5",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:40",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "previouslyKnownTerminationDate": "2022-09-30",
+                    "suspendedSentenceOrder": false,
+                    "breach": true,
+                    "preSentenceActivity": true,
+                    "offences": [
+                        {
+                            "offenceTitle": "Use / install a television set without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Use / install a television set without a licence",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 7,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Possess a television set with intent to install / use without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Possess a television set with intent to install / use without a licence",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 9,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Arthur Morgan",
+                    "name": {
+                        "forename1": "Arthur",
+                        "surname": "Morgan"
+                    },
+                    "defendantAddress": {
+                        "line1": "13 Wind Street",
+                        "line2": "Swansea",
+                        "line3": "Wales",
+                        "line4": "UK",
+                        "postcode": "SA1 1FU"
+                    },
+                    "defendantDob": "1975-01-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "0620b496-4b83-433a-a9b6-4f46de78f3e1",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": true,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "323643f4-2a70-438d-86a6-cfebc6d5e89c",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "785f7da6-e1d0-4e83-9e4d-fc1643f61d80",
+                    "hearingId": "8e5570ae-6524-481d-bfe0-ec22cce35a9a",
+                    "hearingType": "Trial",
+                    "urn": "B92075824F9",
+                    "pnc": "2023/4433736P",
+                    "cro": "200750/23F",
+                    "courtCode": "B14LO",
+                    "courtRoom": "6",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:31",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Wound / inflict grievous bodily harm without intent",
+                            "offenceSummary": "Detailed summary of the test offence: Wound / inflict grievous bodily harm without intent",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 1,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Wound / inflict grievous bodily harm without intent",
+                            "offenceSummary": "Detailed summary of the test offence: Wound / inflict grievous bodily harm without intent",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 2,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Llewellyn Haag",
+                    "name": {
+                        "forename1": "Llewellyn",
+                        "surname": "Haag"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1977-10-10",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "8e5570ae-6524-481d-bfe0-ec22cce35a9a",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "01658df0-2e49-483b-bc4d-50b52f8741b8",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "8fdd2b3f-d257-4b7b-824d-f53b5d57eb11",
+                    "hearingId": "45f9fcd5-6030-44ce-b805-6f13f568d3e0",
+                    "hearingType": "Trial",
+                    "urn": "731DFI22R44",
+                    "pnc": "1965/0046583U",
+                    "cro": "199999ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "6",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:42",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "It's just been on the radio too often.",
+                            "act": "repetitious song playing.",
+                            "sequenceNumber": 1,
+                            "listNo": 4,
+                            "offenceCode": "CJO3523"
+                        }
+                    ],
+                    "defendantName": "Cyndi Craw LAUPER",
+                    "name": {
+                        "forename1": "Cyndi",
+                        "forename2": "Craw",
+                        "surname": "LAUPER"
+                    },
+                    "defendantAddress": {
+                        "line1": "Studio 54",
+                        "line5": "NEW YORK",
+                        "postcode": "NY1 1NY"
+                    },
+                    "defendantDob": "1965-01-01",
+                    "defendantSex": "NS",
+                    "defendantType": "PERSON",
+                    "defendantId": "45f9fcd5-6030-44ce-b805-6f13f568d3e0",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "984f4673-f435-4a43-a4ff-cf31522e0ab0",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "cf272006-4be9-4453-8b36-314de5093a12",
+                    "hearingId": "4220b6dd-5273-4bb1-987f-20227503baba",
+                    "hearingType": "Trial",
+                    "urn": "K77O21X7D20",
+                    "pnc": "1965/0046583U",
+                    "cro": "199999ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "7",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:44",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "It's just been on the radio too often.",
+                            "act": "repetitious song playing.",
+                            "sequenceNumber": 1,
+                            "listNo": 4,
+                            "offenceCode": "CJO3523"
+                        }
+                    ],
+                    "defendantName": "Cyndi Craw LAUPER",
+                    "name": {
+                        "forename1": "Cyndi",
+                        "forename2": "Craw",
+                        "surname": "LAUPER"
+                    },
+                    "defendantAddress": {
+                        "line1": "Studio 54",
+                        "line5": "NEW YORK",
+                        "postcode": "NY1 1NY"
+                    },
+                    "defendantDob": "1965-01-01",
+                    "defendantSex": "NS",
+                    "defendantType": "PERSON",
+                    "defendantId": "4220b6dd-5273-4bb1-987f-20227503baba",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "46eb2404-50fe-41cc-8836-d9d9bd348891",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "e41efb80-480d-467e-ba53-e7351f62e1b4",
+                    "hearingId": "37fdd0c1-b2be-472c-bfdf-a295580eb5f8",
+                    "hearingType": "Trial",
+                    "crn": "X055129",
+                    "urn": "FV15JW6F31B",
+                    "courtCode": "B14LO",
+                    "courtRoom": "7",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:47",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "suspendedSentenceOrder": false,
+                    "breach": false,
+                    "preSentenceActivity": false,
+                    "offences": [
+                        {
+                            "offenceTitle": "Raising a bug on the release day.",
+                            "offenceSummary": "Detailed summary of the test offence: Raising a bug on the release day.",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 3,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Making up test data last thing on a Friday",
+                            "offenceSummary": "Detailed summary of the test offence: Making up test data last thing on a Friday",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 8,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Joe Bloggs",
+                    "name": {
+                        "forename1": "Joe",
+                        "surname": "Bloggs"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1993-02-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "37fdd0c1-b2be-472c-bfdf-a295580eb5f8",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": false,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "c403cecd-f57f-47f1-96ac-a7fd19c9d478",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "a299d3e6-4145-46e7-8c85-7592e904cc13",
+                    "hearingId": "aa8c0e79-0682-4af2-b302-da9d49936956",
+                    "hearingType": "Trial",
+                    "urn": "DY7O3010162",
+                    "pnc": "2023/4433736P",
+                    "cro": "200750/23F",
+                    "courtCode": "B14LO",
+                    "courtRoom": "8",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T09:33:59",
+                    "session": "MORNING",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Possess a television set with intent to install / use without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Possess a television set with intent to install / use without a licence",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 9,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Wound / inflict grievous bodily harm without intent",
+                            "offenceSummary": "Detailed summary of the test offence: Wound / inflict grievous bodily harm without intent",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 4,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Coralie Miller",
+                    "name": {
+                        "forename1": "Coralie",
+                        "surname": "Miller"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1977-10-10",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "aa8c0e79-0682-4af2-b302-da9d49936956",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "057d183e-79c4-4996-935c-af561036a096",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "c13bbe1b-fd41-48f7-a4bd-1e360abd27d0",
+                    "hearingId": "43a18dbc-257c-467e-a1ce-3722772a7a88",
+                    "hearingType": "Trial",
+                    "crn": "X346204",
+                    "urn": "7L5TF14926A",
+                    "pnc": "2004/0046583U",
+                    "cro": "12345ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "8",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T09:34:08",
+                    "session": "MORNING",
+                    "probationStatus": "Current",
+                    "previouslyKnownTerminationDate": "2022-09-30",
+                    "suspendedSentenceOrder": false,
+                    "breach": true,
+                    "preSentenceActivity": true,
+                    "offences": [
+                        {
+                            "offenceTitle": "Releasing to prod on Friday evening",
+                            "offenceSummary": "Detailed summary of the test offence: Releasing to prod on Friday evening",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 5,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Possess a television set with intent to install / use without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Possess a television set with intent to install / use without a licence",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 8,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Arthur Morgan",
+                    "name": {
+                        "forename1": "Arthur",
+                        "surname": "Morgan"
+                    },
+                    "defendantAddress": {
+                        "line1": "13 Wind Street",
+                        "line2": "Swansea",
+                        "line3": "Wales",
+                        "line4": "UK",
+                        "postcode": "SA1 1FU"
+                    },
+                    "defendantDob": "1975-01-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "43a18dbc-257c-467e-a1ce-3722772a7a88",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": true,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "9b585118-6c10-4428-9f71-bf48151b8e72",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "b947db6e-1439-42de-92d0-f5800d7d82f6",
+                    "hearingId": "e28842a5-6884-4baa-b3e5-a9f825f8a038",
+                    "hearingType": "Trial",
+                    "urn": "7HD8BO3X8J5",
+                    "pnc": "1965/0046583U",
+                    "cro": "199999ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "8",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:43",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "It's just been on the radio too often.",
+                            "act": "repetitious song playing.",
+                            "sequenceNumber": 1,
+                            "listNo": 4,
+                            "offenceCode": "CJO3523"
+                        }
+                    ],
+                    "defendantName": "Cyndi Craw LAUPER",
+                    "name": {
+                        "forename1": "Cyndi",
+                        "forename2": "Craw",
+                        "surname": "LAUPER"
+                    },
+                    "defendantAddress": {
+                        "line1": "Studio 54",
+                        "line5": "NEW YORK",
+                        "postcode": "NY1 1NY"
+                    },
+                    "defendantDob": "1965-01-01",
+                    "defendantSex": "NS",
+                    "defendantType": "PERSON",
+                    "defendantId": "e28842a5-6884-4baa-b3e5-a9f825f8a038",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "1418b8f4-91bc-468d-b86f-b3100bc6bf96",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "b17c728c-4bae-4d96-8825-bb10ae73ac9a",
+                    "hearingId": "59ef7ab6-c74e-4da7-b159-913b2af6b593",
+                    "hearingType": "Trial",
+                    "urn": "6RK6864N0L6",
+                    "pnc": "2023/4433736P",
+                    "cro": "200750/23F",
+                    "courtCode": "B14LO",
+                    "courtRoom": "9",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T09:34:05",
+                    "session": "MORNING",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Releasing to prod on Friday evening",
+                            "offenceSummary": "Detailed summary of the test offence: Releasing to prod on Friday evening",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 9,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "Detailed summary of the test offence: Repetitious song playing (Girls just want to have fun)",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 2,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Wilhelmine Schuppe",
+                    "name": {
+                        "forename1": "Wilhelmine",
+                        "surname": "Schuppe"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1993-02-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "59ef7ab6-c74e-4da7-b159-913b2af6b593",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "e2e9dcfa-2a01-4894-a26a-9fe4ebb28927",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "dc826323-8e1a-45e6-8fd2-78d231bc2f94",
+                    "hearingId": "f8fd8bfe-0ead-4e8e-963b-04addeccf325",
+                    "hearingType": "Trial",
+                    "urn": "43V84J08V3J",
+                    "pnc": "2023/4433736P",
+                    "cro": "200750/23F",
+                    "courtCode": "B14LO",
+                    "courtRoom": "9",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:30",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "Detailed summary of the test offence: Repetitious song playing (Girls just want to have fun)",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 4,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Possess a television set with intent to install / use without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Possess a television set with intent to install / use without a licence",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 7,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Jeromy Ryan",
+                    "name": {
+                        "forename1": "Jeromy",
+                        "surname": "Ryan"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1977-10-10",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "f8fd8bfe-0ead-4e8e-963b-04addeccf325",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "cea60ab6-c161-422b-9bc8-7be625d861c5",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "b2bd1b25-cd61-4c6c-bac0-a6bc3fc89303",
+                    "hearingId": "5cd007ac-4cd2-4842-8477-ba46050e99dc",
+                    "hearingType": "Trial",
+                    "crn": "X346204",
+                    "urn": "9U92BB48L8C",
+                    "pnc": "2004/0046583U",
+                    "cro": "12345ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "9",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:38",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "previouslyKnownTerminationDate": "2022-09-30",
+                    "suspendedSentenceOrder": false,
+                    "breach": true,
+                    "preSentenceActivity": true,
+                    "offences": [
+                        {
+                            "offenceTitle": "Use / install a television set without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Use / install a television set without a licence",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 1,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Possess a television set with intent to install / use without a licence",
+                            "offenceSummary": "Detailed summary of the test offence: Possess a television set with intent to install / use without a licence",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 1,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Arthur Morgan",
+                    "name": {
+                        "forename1": "Arthur",
+                        "surname": "Morgan"
+                    },
+                    "defendantAddress": {
+                        "line1": "13 Wind Street",
+                        "line2": "Swansea",
+                        "line3": "Wales",
+                        "line4": "UK",
+                        "postcode": "SA1 1FU"
+                    },
+                    "defendantDob": "1975-01-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "5cd007ac-4cd2-4842-8477-ba46050e99dc",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": true,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "9eff1735-42ce-441e-b872-bb08a78dd0f8",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "940e9dee-1c86-4e59-8913-10214c9cbedc",
+                    "hearingId": "67a2dd3f-cfde-4e17-91f5-a61432139799",
+                    "hearingType": "Trial",
+                    "urn": "27ZO2V4ZU2K",
+                    "pnc": "1965/0046583U",
+                    "cro": "199999ABCDEF",
+                    "courtCode": "B14LO",
+                    "courtRoom": "9",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:44",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "It's just been on the radio too often.",
+                            "act": "repetitious song playing.",
+                            "sequenceNumber": 1,
+                            "listNo": 4,
+                            "offenceCode": "CJO3523"
+                        }
+                    ],
+                    "defendantName": "Cyndi Craw LAUPER",
+                    "name": {
+                        "forename1": "Cyndi",
+                        "forename2": "Craw",
+                        "surname": "LAUPER"
+                    },
+                    "defendantAddress": {
+                        "line1": "Studio 54",
+                        "line5": "NEW YORK",
+                        "postcode": "NY1 1NY"
+                    },
+                    "defendantDob": "1965-01-01",
+                    "defendantSex": "NS",
+                    "defendantType": "PERSON",
+                    "defendantId": "67a2dd3f-cfde-4e17-91f5-a61432139799",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "8a5990b6-6f1a-4af0-9589-c44333976b99",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                },
+                {
+                    "caseId": "a5ee804c-641e-4df7-9473-85fb49f7bc60",
+                    "hearingId": "46294c18-a3b0-492c-b747-4aff8d96d40b",
+                    "hearingType": "Trial",
+                    "crn": "X055129",
+                    "urn": "2Z726848576",
+                    "courtCode": "B14LO",
+                    "courtRoom": "9",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:46",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "suspendedSentenceOrder": false,
+                    "breach": false,
+                    "preSentenceActivity": false,
+                    "offences": [
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "Detailed summary of the test offence: Repetitious song playing (Girls just want to have fun)",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 1,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Wound / inflict grievous bodily harm without intent",
+                            "offenceSummary": "Detailed summary of the test offence: Wound / inflict grievous bodily harm without intent",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 9,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Joe Bloggs",
+                    "name": {
+                        "forename1": "Joe",
+                        "surname": "Bloggs"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1993-02-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "46294c18-a3b0-492c-b747-4aff8d96d40b",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": false,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "634acdda-cb20-4179-bc59-6674a580ae8e",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "976a25cd-09fb-4a50-a5d3-e273acd136d9",
+                    "hearingId": "7e891cb8-a7fb-479f-a2f3-5e08f67b3a9f",
+                    "hearingType": "Trial",
+                    "crn": "X055129",
+                    "urn": "I67564878CR",
+                    "courtCode": "B14LO",
+                    "courtRoom": "9",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:48",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "suspendedSentenceOrder": false,
+                    "breach": false,
+                    "preSentenceActivity": false,
+                    "offences": [
+                        {
+                            "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
+                            "offenceSummary": "Detailed summary of the test offence: Repetitious song playing (Girls just want to have fun)",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 5,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Obstruct person executing search warrant for TV receiver",
+                            "offenceSummary": "Detailed summary of the test offence: Obstruct person executing search warrant for TV receiver",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 9,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Joe Bloggs",
+                    "name": {
+                        "forename1": "Joe",
+                        "surname": "Bloggs"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1993-02-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "7e891cb8-a7fb-479f-a2f3-5e08f67b3a9f",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": false,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "fa4a72ad-f236-44da-afbe-e8a491cb385e",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "24b700ec-2d61-4c53-8449-704052fb90d8",
+                    "hearingId": "4e438357-463c-4a23-a7a0-0be6f2c41f23",
+                    "hearingType": "Trial",
+                    "crn": "X055129",
+                    "urn": "433541YZZ6X",
+                    "courtCode": "B14LO",
+                    "courtRoom": "9",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:48",
+                    "session": "AFTERNOON",
+                    "probationStatus": "Current",
+                    "suspendedSentenceOrder": false,
+                    "breach": false,
+                    "preSentenceActivity": false,
+                    "offences": [
+                        {
+                            "offenceTitle": "Putting hands in air like they just don't care",
+                            "offenceSummary": "Detailed summary of the test offence: Putting hands in air like they just don't care",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 1,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Wound / inflict grievous bodily harm without intent",
+                            "offenceSummary": "Detailed summary of the test offence: Wound / inflict grievous bodily harm without intent",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 5,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Joe Bloggs",
+                    "name": {
+                        "forename1": "Joe",
+                        "surname": "Bloggs"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1993-02-01",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "4e438357-463c-4a23-a7a0-0be6f2c41f23",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 1,
+                    "awaitingPsr": false,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "88ae60bb-77a4-488f-b5ce-a79e82bd2625",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "CURRENT"
+                },
+                {
+                    "caseId": "46e184a2-d467-48d0-912b-821073c9fb10",
+                    "hearingId": "f8f2789a-ba88-4ef5-b3b0-ce1733fe8e6a",
+                    "hearingType": "Trial",
+                    "urn": "Z0Y7R3Y9P56",
+                    "pnc": "2023/4433736P",
+                    "cro": "200750/23F",
+                    "courtCode": "B14LO",
+                    "courtRoom": "9",
+                    "source": "COMMON_PLATFORM",
+                    "sessionStartTime": "2023-11-29T16:53:50",
+                    "session": "AFTERNOON",
+                    "probationStatus": "No record",
+                    "offences": [
+                        {
+                            "offenceTitle": "Wound / inflict grievous bodily harm without intent",
+                            "offenceSummary": "Detailed summary of the test offence: Wound / inflict grievous bodily harm without intent",
+                            "act": "Contrary to Section 4A(1) and (5) of the Public Order Act 1986.",
+                            "sequenceNumber": 1,
+                            "listNo": 1,
+                            "offenceCode": "PU86116",
+                            "plea": {
+                                "pleaValue": "NOT_GUILTY",
+                                "pleaDate": "2023-07-05"
+                            }
+                        },
+                        {
+                            "offenceTitle": "Wound / inflict grievous bodily harm without intent",
+                            "offenceSummary": "Detailed summary of the test offence: Wound / inflict grievous bodily harm without intent",
+                            "act": "Contrary to Section 15A(1) and (3) of the Sexual Offences Act 2003",
+                            "sequenceNumber": 2,
+                            "listNo": 5,
+                            "offenceCode": "SX03224"
+                        }
+                    ],
+                    "defendantName": "Stanton Hodkiewicz",
+                    "name": {
+                        "forename1": "Stanton",
+                        "surname": "Hodkiewicz"
+                    },
+                    "defendantAddress": {
+                        "line1": "10",
+                        "line2": "Ching street",
+                        "line3": "Chong Road",
+                        "line4": "Great Yarmouth",
+                        "postcode": "NR30 2HG"
+                    },
+                    "defendantDob": "1977-10-10",
+                    "defendantSex": "M",
+                    "defendantType": "PERSON",
+                    "defendantId": "f8f2789a-ba88-4ef5-b3b0-ce1733fe8e6a",
+                    "createdToday": false,
+                    "removed": false,
+                    "numberOfPossibleMatches": 0,
+                    "caseComments": [],
+                    "hearingEventType": "ConfirmedOrUpdated",
+                    "confirmedOffender": false,
+                    "personId": "7da7f12f-c432-40cc-83ba-de2d615f4a4d",
+                    "caseMarkers": [
+                        {
+                            "markerTypeDescription": "Vulnerable or intimidated victim"
+                        }
+                    ],
+                    "probationStatusActual": "UNCONFIRMED_NO_RECORD"
+                }
+            ],
+            "totalPages": 2,
+            "page": 1,
+            "totalElements": 40,
+            "possibleMatchesCount": 0,
+            "recentlyAddedCount": 4,
+            "courtRoomFilters": null
+        }
+    }
+}

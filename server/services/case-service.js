@@ -34,8 +34,15 @@ const createCaseService = (apiUrl) => {
       apiUrlBuilder.searchParams.append('VERSION2', 'true')
       apiUrlBuilder.searchParams.append('page', page || '1')
       apiUrlBuilder.searchParams.append('limit', limit)
+
       if (subsection === 'added') {
         apiUrlBuilder.searchParams.append('recentlyAdded', 'true')
+      }
+      if (subsection === false) {
+        apiUrlBuilder.searchParams.append('hearingStatus', 'UNHEARD')
+      }
+      if (subsection === 'heard') {
+        apiUrlBuilder.searchParams.append('hearingStatus', 'HEARD')
       }
 
       if (selectedFilters) {
