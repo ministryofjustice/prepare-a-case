@@ -121,7 +121,7 @@
         {{ govukTable(tableData) }}
       {% endblock %}
     {% include "outcomes/outcomes-paging-partial.njk" %}
-  {% else %}
+    {% else %}
       {% if params.filtersApplied %}
         <span class="govuk-heading-m">0 cases</span>
       {% endif %}
