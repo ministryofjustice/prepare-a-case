@@ -46,6 +46,18 @@ env:
         name: prepare-a-case
         key: NOTIFICATION_PASSWORD
 
+  - name: CASE_TRACKING_PRE_PILOT_USERS
+    valueFrom:
+      secretKeyRef:
+        name: liverpool-pre-pilot-users
+        key: CASE_TRACKING_PRE_PILOT_USERS
+
+  - name: LIVERPOOL_PRE_PILOT_USERS
+    valueFrom:
+      secretKeyRef:
+        name: case-tracking-pre-pilot-users
+        key: LIVERPOOL_PRE_PILOT_USERS
+
   - name: NOMIS_AUTH_URL
     value: {{ .Values.env.NOMIS_AUTH_URL | quote }}
 
