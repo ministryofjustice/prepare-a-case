@@ -514,7 +514,7 @@ describe('Case service', () => {
       }
 
       // (courtCode, date, selectedFilters, subsection, page, limit)
-      const resp = await getPagedCaseList('SHF', '2020-01-01', selectedFilters, false, 1, 20)
+      const resp = await getPagedCaseList('SHF', '2020-01-01', selectedFilters, false, 1, 20, true)
       expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
       expect(resp.filters[1]).toStrictEqual({
         id: 'courtRoom',
@@ -553,7 +553,7 @@ describe('Case service', () => {
       }
 
       // (courtCode, date, selectedFilters, subsection, page, limit)
-      const resp = await getPagedCaseList('SHF', '2020-01-01', selectedFilters, 'heard', 1, 20)
+      const resp = await getPagedCaseList('SHF', '2020-01-01', selectedFilters, 'heard', 1, 20, true)
       expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
       expect(resp.filters[1]).toStrictEqual({
         id: 'courtRoom',

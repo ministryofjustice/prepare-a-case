@@ -147,15 +147,13 @@
             title: 'Hearing outcome still to be added',
             a11yTitle: 'View outcome still to be added case list',
             link: '/' + params.courtCode + '/cases/' + params.date,
-            current: params.subsection === '',
-            count: params.caseCount
+            current: params.subsection === ''
         },
         {
             title: 'Hearing outcome added',
             a11yTitle: 'View outcome added case list',
             link: '/' + params.courtCode + '/cases/' + params.date + '/heard',
-            current: params.subsection === 'heard',
-            count: params.heardCount
+            current: params.subsection === 'heard'
         }
     ] -%}
 {% else %}
