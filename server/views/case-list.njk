@@ -172,7 +172,7 @@
 {% for recentlyAdded in range(startNum, endNum + 1) -%}
     {{ recentlyAddedPageItems.push({
         text: recentlyAdded,
-        href: '/' + params.courtCode + '/cases/' + params.date + '/added' + '?page=' + recentlyAdded,
+        href: '/' + params.courtCode + '/cases/' + params.date + '/' + params.subsection + '?page=' + recentlyAdded,
         selected: currentPage === recentlyAdded
     }) }}
 {%- endfor %}
@@ -190,7 +190,7 @@
 {% else %}
     {% set recentlyAddedPreviousLink = {
         text: 'Previous',
-        href: '/' + params.courtCode + '/cases/' + params.date + '/added' + '?page=' + (currentPage - 1)
+        href: '/' + params.courtCode + '/cases/' + params.date + '/' + params.subsection + '?page=' + (currentPage - 1)
     } %}
 {% endif %}
 {% if currentPage === totalPages %}
@@ -198,7 +198,7 @@
 {% else %}
     {% set recentlyAddedNextLink = {
         text: 'Next',
-        href: '/' + params.courtCode + '/cases/' + params.date +  '/added' + '?page=' +  (currentPage + 1)
+        href: '/' + params.courtCode + '/cases/' + params.date +  '/' + params.subsection + '?page=' +  (currentPage + 1)
     } %}
 {% endif %}
 
@@ -312,6 +312,7 @@
     {% endif %}
 
     {% if totalPages > 1 %}
+        {%- set showSubsectionLinks = (params.subsection === 'added' or params.subsection === 'heard') -%}
         {% block pagination %}
             {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
             {{ mojPagination({
@@ -320,9 +321,9 @@
                     to: params.to,
                     count: params.caseCount
                 },
-                previous: recentlyAddedPreviousLink if params.subsection === 'added' else previousLink,
-                next: recentlyAddedNextLink if params.subsection === 'added' else nextLink,
-                items: recentlyAddedPageItems if params.subsection === 'added' else pageItems
+                previous: recentlyAddedPreviousLink if showSubsectionLinks else previousLink,
+                next: recentlyAddedNextLink if showSubsectionLinks else nextLink,
+                items: recentlyAddedPageItems if showSubsectionLinks else pageItems
             }) }}
         {% endblock %}
     {% endif %}
