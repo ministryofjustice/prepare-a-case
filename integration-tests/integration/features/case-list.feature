@@ -20,7 +20,8 @@ Feature: Case list
     And I should see link "Review defendants with possible NDelius records" with href "/B14LO/match/bulk/"
     And I should see the matching inset text "2 defendants partially match existing records and need review"
 
-    And I should see a tab with text "Case list"
+    And I should see a tab with text "Hearing outcome still to be added"
+    And I should see a tab with text "Hearing outcome added"
     And I should see a tab with text "Recently added (21)"
     And I should see a tab with text "Removed cases (1)"
 
@@ -80,7 +81,8 @@ Feature: Case list
     And I should see link "Review defendants with possible NDelius records" with href "/B14LO/match/bulk/"
     And I should see the matching inset text "2 defendants partially match existing records and need review"
 
-    And I should see a tab with text "Case list"
+    And I should see a tab with text "Hearing outcome still to be added"
+    And I should see a tab with text "Hearing outcome added"
     And I should see a tab with text "Recently added (21)"
     And I should see a tab with text "Removed cases (1)"
 

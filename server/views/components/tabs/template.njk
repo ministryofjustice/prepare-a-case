@@ -1,16 +1,14 @@
-<div class="govuk-!-margin-bottom-5">
-    <h2 class="govuk-tabs__title">Case lists</h2>
-    <nav aria-label="Case list navigation">
-        <ul class="govuk-tabs__list">
+<h2 class="govuk-tabs__title">Case lists</h2>
+<nav aria-label="Case list navigation">
+    <ul class="govuk-tabs__list">
 
-            {% for item in params.items %}
-            <li class="govuk-tabs__list-item{% if item.current %} govuk-tabs__list-item--selected{% endif %}">
-                <a href="{{ item.link }}" class="govuk-link govuk-link--no-visited-state govuk-tabs__tab" aria-label="{{ item.a11yTitle }}{{ ' (' + item.count + ')' if item.count >= 0 }}"{% if item.current %} aria-current="location"{% endif %}>
-                    {{ item.title }} {{ '(' + item.count + ')' if item.count >= 0 }}
-                </a>
-            </li>
-            {% endfor %}
+        {% for item in params.items %}
+        <li class="govuk-tabs__list-item{% if item.current %} govuk-tabs__list-item--selected{% endif %}">
+            <a href="{{ item.link }}" class="govuk-link govuk-link--no-visited-state govuk-tabs__tab" aria-label="{{ item.a11yTitle }}{{ ' (' + item.count + ')' if item.count >= 0 }}"{% if item.current %} aria-current="location"{% endif %}>
+                {{ item.title }} {{ '(' + item.count + ')' if item.count >= 0 }}
+            </a>
+        </li>
+        {% endfor %}
 
-        </ul>
-    </nav>
-</div>
+    </ul>
+</nav>

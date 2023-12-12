@@ -1,5 +1,5 @@
 {%- set moment = params.moment -%}
-{%- set displayFilters = params.subsection === '' and (params.caseCount or params.filtersApplied) -%}
+{%- set displayFilters = (params.subsection === '' or params.subsection === 'heard') and (params.caseCount or params.filtersApplied) -%}
 
 {% block javascripts %}
     {% if displayFilters %}
@@ -140,12 +140,33 @@
     {% set title = "Removed cases" %}
 {% endif %}
 
-{%- set listTabs = [{
-    title: 'Case list',
-    a11yTitle: 'View current case list',
-    link: '/' + params.courtCode + '/cases/' + params.date,
-    current: params.subsection === ''
-}] -%}
+
+{% if params.hearingOutcomesEnabled %}
+    {% set listTabs = [
+        {
+            title: 'Hearing outcome still to be added',
+            a11yTitle: 'View outcome still to be added case list',
+            link: '/' + params.courtCode + '/cases/' + params.date,
+            current: params.subsection === ''
+        },
+        {
+            title: 'Hearing outcome added',
+            a11yTitle: 'View outcome added case list',
+            link: '/' + params.courtCode + '/cases/' + params.date + '/heard',
+            current: params.subsection === 'heard'
+        }
+    ] -%}
+{% else %}
+
+    {% set listTabs = [{
+        title: 'Case list',
+        a11yTitle: 'View current case list',
+        link: '/' + params.courtCode + '/cases/' + params.date,
+        current: params.subsection === ''
+    }]
+    %}
+
+{% endif %}
 
 {% set recentlyAddedPageItems = [] %}
 {% for recentlyAdded in range(startNum, endNum + 1) -%}
@@ -253,16 +274,14 @@
         }) }}
     {% endif %}
 
-    {%- from "components/tabs/macro.njk" import pacTabs -%}
 
     {%- if params.date !== today %}
-        {% set listTabs = [listTabs | first] %}
+        {% if params.hearingOutcomesEnabled %}
+            {% set listTabs = listTabs.splice(0,2) %}
+        {% else %}
+            {% set listTabs = listTabs.splice(0,1) %}
+        {% endif %}
     {% endif -%}
-
-    {{ pacTabs({
-        items: listTabs,
-        controls: "case-list"
-    }) }}
 
     {% if displayFilters %}
         {%- from "components/filter/macro.njk" import pacFilter -%}
@@ -271,9 +290,17 @@
         }) }}
     {% endif %}
 
+    {%- from "components/tabs/macro.njk" import pacTabs -%}
+
+    {{ pacTabs({
+        items: listTabs,
+        controls: "case-list"
+    }) }}
+
+    <div class="govuk-tabs__panel">
     {% if tableData.rows | length %}
         {% block table %}
-            <span class="govuk-heading-m">{{ params.caseCount }} case{{ 's' if params.caseCount > 1 }} {% if params.subsection !== "" %} {% if params.subsection === "added" %}added to {% else %}removed from {% endif%} today's case list.{% endif %}</span>
+            <span class="govuk-heading-m">{{ params.caseCount }} case{{ 's' if params.caseCount > 1 }} {% if params.subsection !== "" and params.subsection !== "heard" %} {% if params.subsection === "added" %}added to {% elseif params.subsection === "removed" %}removed from {% endif%} today's case list.{% endif %}</span>
             {%- from "govuk/components/table/macro.njk" import govukTable -%}
             {{ govukTable(tableData) }}
         {% endblock %}
@@ -299,5 +326,6 @@
             }) }}
         {% endblock %}
     {% endif %}
+    </div>
 
 {% endblock %}

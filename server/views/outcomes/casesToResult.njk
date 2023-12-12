@@ -94,13 +94,6 @@
 {% block content %}
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-6" aria-label="{{ title }}">{{ title }}</h1>
 
-  {%- from "components/tabs/macro.njk" import pacTabs -%}
-
-  {{ pacTabs({
-      items: listTabs,
-      controls: "outcomes"
-  }) }}
-
   {% if displayFilters %}
     {%- from "components/filter/macro.njk" import pacFilter -%}
     {{ pacFilter({
@@ -111,17 +104,26 @@
 
   {% include "court-case-progress-assign-modal.njk" %}
 
-  {% if tableData.rows | length %}
-    {% block table %}
-      {%- from "govuk/components/table/macro.njk" import govukTable -%}
-      {{ govukTable(tableData) }}
-    {% endblock %}
+  {%- from "components/tabs/macro.njk" import pacTabs -%}
+
+  {{ pacTabs({
+    items: listTabs,
+    controls: "outcomes"
+  }) }}
+
+  <div class="govuk-tabs__panel">
+    {% if tableData.rows | length %}
+      {% block table %}
+        {%- from "govuk/components/table/macro.njk" import govukTable -%}
+        {{ govukTable(tableData) }}
+      {% endblock %}
     {% include "outcomes/outcomes-paging-partial.njk" %}
-  {% else %}
-    {% if params.filtersApplied %}
-      <span class="govuk-heading-m">0 cases</span>
+    {% else %}
+      {% if params.filtersApplied %}
+        <span class="govuk-heading-m">0 cases</span>
+      {% endif %}
+      <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "There are no cases to be resulted." }}</p>
     {% endif %}
-    <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "There are no cases to be resulted." }}</p>
-  {% endif %}
+  </div>
 
 {% endblock %}

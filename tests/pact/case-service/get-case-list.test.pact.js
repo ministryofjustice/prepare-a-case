@@ -40,7 +40,7 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
     })
 
     it('should validate the WireMock mocks against the JSON schema', () => {
-      validateMocks(process.env.INIT_CWD + '/mappings/case-list', schema, ['case-list-error.json'])
+      validateMocks(process.env.INIT_CWD + '/mappings/case-list', schema, ['case-list-error.json', 'case-list-paginated.json'])
     })
   })
 })
