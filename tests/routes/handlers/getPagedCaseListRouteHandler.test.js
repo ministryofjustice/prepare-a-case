@@ -23,7 +23,7 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 10, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 20, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('error', { status: 500 })
   })
@@ -48,7 +48,7 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 10, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 20, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
@@ -96,7 +96,7 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 10, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 20, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
