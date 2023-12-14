@@ -3,9 +3,7 @@ import 'cypress-axe'
 import { And, Then } from 'cypress-cucumber-preprocessor/steps'
 
 And('I should see {int} previous hearings headers', $int => {
-  cy.get('.app-summary-card').within(() => {
-    cy.get('header').should('have.length', $int)
-  })
+  cy.get('.app-summary-card header').should('have.length', $int)
 })
 
 And('I click delete hearing note with id {string} on hearing {string}', ($noteId, $hearingId) => {
@@ -118,9 +116,7 @@ And('I should see the following hearings with the hearing type label, hearing de
 })
 
 And('I should see a bottom border on all notes within a hearing', () => {
-  cy.get('.app-summary-card').within(() => {
-    cy.get('[data-test="note-td"]').should('have.css', 'border-bottom', '1px solid rgb(177, 180, 182)')
-  })
+  cy.get('.app-summary-card [data-test="note-td"]').should('have.css', 'border-bottom', '1px solid rgb(177, 180, 182)')
 })
 
 And('the note with the id {string} on hearing {string} is filled with the text {string}', ($noteId, $hearingId) => {
