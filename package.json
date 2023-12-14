@@ -20,7 +20,7 @@
     "delete:reports": "rm ./test-results/cypress/* || true",
     "preint-test": "npm run delete:reports",
     "preint-test:dev": "npm run delete:reports",
-    "int-test": "npx cypress run --browser chrome",
+    "int-test": "npx cypress run",
     "int-test:ui": "npx cypress open",
     "lint": "npx standard",
     "css-build": "bash ./bin/build-css",
