@@ -491,7 +491,7 @@ describe('Case service', () => {
   })
   describe('server side paging', () => {
     it('should invoke api url correctly for unheard cases', async () => {
-      const expectedUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&limit=20&hearingStatus=UNHEARD&probationStatus=CURRENT&probationStatus=NO_RECORD&courtRoom=01&courtRoom=Courtroom+01&courtRoom=Crown+court+1-3&courtRoom=02&source=COMMON_PLATFORM&session=MORNING&breach=true`
+      const expectedUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&size=20&hearingStatus=UNHEARD&probationStatus=CURRENT&probationStatus=NO_RECORD&courtRoom=01&courtRoom=Courtroom+01&courtRoom=Crown+court+1-3&courtRoom=02&source=COMMON_PLATFORM&session=MORNING&breach=true`
       moxios.stubRequest(expectedUrl, {
         status: 200,
         response: {
@@ -530,7 +530,7 @@ describe('Case service', () => {
       })
     })
     it('should invoke api url correctly for heard cases', async () => {
-      const expectedUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&limit=20&hearingStatus=HEARD&probationStatus=CURRENT&probationStatus=NO_RECORD&courtRoom=01&courtRoom=Courtroom+01&courtRoom=Crown+court+1-3&courtRoom=02&source=COMMON_PLATFORM&session=MORNING&breach=true`
+      const expectedUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&size=20&hearingStatus=HEARD&probationStatus=CURRENT&probationStatus=NO_RECORD&courtRoom=01&courtRoom=Courtroom+01&courtRoom=Crown+court+1-3&courtRoom=02&source=COMMON_PLATFORM&session=MORNING&breach=true`
       moxios.stubRequest(expectedUrl, {
         status: 200,
         response: {

@@ -18,7 +18,7 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
   const currentDate = date || getBaseDateString()
   const context = { court: courtCode, username: res.locals.user.username }
   const hearingOutcomesEnabled = features.hearingOutcomes.isEnabled(context)
-  const response = await caseService.getPagedCaseList(courtCode, currentDate, selectedFilters, subsection || (!date && session.currentView), page, limit, hearingOutcomesEnabled)
+  const response = await caseService.getPagedCaseList(courtCode, currentDate, selectedFilters, subsection || (!date && session.currentView), page, settings.casesPerPage, hearingOutcomesEnabled)
   if (response.isError) {
     trackEvent(
       'PiCPrepareACaseErrorTrace',
