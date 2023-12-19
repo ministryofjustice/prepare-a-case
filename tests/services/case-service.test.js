@@ -1,6 +1,7 @@
 /* global describe, beforeEach, afterEach, it, expect, jest, test */
 const moxios = require('moxios')
 const config = require('../../config')
+const settings = config.settings
 
 const {
   getCaseList,
@@ -438,12 +439,12 @@ describe('Case service', () => {
   describe('getOutcomesList', () => {
     const state = 'NEW'
     const courtCode = 'SHF'
-    const expected1 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}`
-    const expected2 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=ADJOURNED`
-    const expected3 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&sortBy=hearingDate&order=DESC`
-    const expected4 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=ADJOURNED&sortBy=hearingDate&order=ASC`
-    const expected5 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=REPORT_REQUESTED&sortBy=hearingDate&order=DESC`
-    const expected6 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED&sortBy=hearingDate&order=DESC`
+    const expected1 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&page=1&size=${settings.hearingOutcomesPageSize}`
+    const expected2 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=ADJOURNED&page=1&size=${settings.hearingOutcomesPageSize}`
+    const expected3 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&sortBy=hearingDate&order=DESC&page=1&size=${settings.hearingOutcomesPageSize}`
+    const expected4 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=ADJOURNED&sortBy=hearingDate&order=ASC&page=1&size=${settings.hearingOutcomesPageSize}`
+    const expected5 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=REPORT_REQUESTED&sortBy=hearingDate&order=DESC&page=1&size=${settings.hearingOutcomesPageSize}`
+    const expected6 = `${apiUrl}/courts/${courtCode}/hearing-outcomes?state=${state}&outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED&sortBy=hearingDate&order=DESC&page=1&size=${settings.hearingOutcomesPageSize}`
 
     test.each`
       courtCode    |  filters | sorts | state   | expected
@@ -472,7 +473,7 @@ describe('Case service', () => {
       return response
     })
     it('should return http error code in status when API call fails', async () => {
-      moxios.stubRequest(`${apiUrl}/courts/SHF/hearing-outcomes?state=NEW`, {
+      moxios.stubRequest(`${apiUrl}/courts/SHF/hearing-outcomes?state=NEW&page=1&size=${settings.hearingOutcomesPageSize}`, {
         status: 500,
         response: { isError: true, status: 500 }
       })
@@ -481,7 +482,7 @@ describe('Case service', () => {
         await getOutcomesList('SHF', [], [], 'NEW')
       } catch (e) {
         const response = e.response
-        expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/courts/SHF/hearing-outcomes?state=NEW`)
+        expect(moxios.requests.mostRecent().url).toBe(`${apiUrl}/courts/SHF/hearing-outcomes?state=NEW&page=1&size=${settings.hearingOutcomesPageSize}`)
         expect(response.status).toBe(500)
         expect(response.data.isError).toBe(true)
         return response
@@ -489,8 +490,8 @@ describe('Case service', () => {
     })
   })
   describe('server side paging', () => {
-    it('should invoke api url correctly', async () => {
-      const expectedUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&limit=20&probationStatus=CURRENT&probationStatus=NO_RECORD&courtRoom=01&courtRoom=Courtroom+01&courtRoom=Crown+court+1-3&courtRoom=02&source=COMMON_PLATFORM&session=MORNING&breach=true`
+    it('should invoke api url correctly for unheard cases', async () => {
+      const expectedUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&size=20&hearingStatus=UNHEARD&probationStatus=CURRENT&probationStatus=NO_RECORD&courtRoom=01&courtRoom=Courtroom+01&courtRoom=Crown+court+1-3&courtRoom=02&source=COMMON_PLATFORM&session=MORNING&breach=true`
       moxios.stubRequest(expectedUrl, {
         status: 200,
         response: {
@@ -513,7 +514,46 @@ describe('Case service', () => {
       }
 
       // (courtCode, date, selectedFilters, subsection, page, limit)
-      const resp = await getPagedCaseList('SHF', '2020-01-01', selectedFilters, undefined, 1, 20)
+      const resp = await getPagedCaseList('SHF', '2020-01-01', selectedFilters, false, 1, 20, true)
+      expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
+      expect(resp.filters[1]).toStrictEqual({
+        id: 'courtRoom',
+        label: 'Courtroom',
+        items: [
+          { label: '1', value: ['01', 'Courtroom 01'], checked: true },
+          { label: '2', value: ['02'], checked: true },
+          { label: '7', value: ['07'], checked: false },
+          { label: '8', value: ['08'], checked: false },
+          { label: 'Crown court 1-3', value: 'Crown court 1-3', checked: true },
+          { label: 'Crown court 5-6', value: 'Crown court 5-6', checked: false }
+        ]
+      })
+    })
+    it('should invoke api url correctly for heard cases', async () => {
+      const expectedUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&size=20&hearingStatus=HEARD&probationStatus=CURRENT&probationStatus=NO_RECORD&courtRoom=01&courtRoom=Courtroom+01&courtRoom=Crown+court+1-3&courtRoom=02&source=COMMON_PLATFORM&session=MORNING&breach=true`
+      moxios.stubRequest(expectedUrl, {
+        status: 200,
+        response: {
+          cases: [],
+          possibleMatchesCount: 2,
+          recentlyAddedCount: 5,
+          courtRoomFilters: ['07', '01', 'Crown court 5-6', '08', 'Courtroom 01', '02', 'Crown court 1-3'],
+          page: 1,
+          totalPages: 2,
+          totalElements: 130
+        }
+      })
+
+      const selectedFilters = {
+        probationStatus: ['CURRENT', 'NO_RECORD'],
+        courtRoom: ['01,Courtroom 01', 'Crown court 1-3', '02'],
+        source: 'COMMON_PLATFORM',
+        session: 'MORNING',
+        breach: true
+      }
+
+      // (courtCode, date, selectedFilters, subsection, page, limit)
+      const resp = await getPagedCaseList('SHF', '2020-01-01', selectedFilters, 'heard', 1, 20, true)
       expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
       expect(resp.filters[1]).toStrictEqual({
         id: 'courtRoom',

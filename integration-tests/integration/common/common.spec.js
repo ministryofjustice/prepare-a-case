@@ -90,6 +90,10 @@ When('I navigate to the {string} route', $route => {
   cy.visit(`/B14LO/${$route}`, { failOnStatusCode: false })
 })
 
+When('I navigate to the Northampton Court {string} route', $route => {
+  cy.visit(`/B34JS/${$route}`, { failOnStatusCode: false })
+})
+
 When('I navigate to the {string} route for today', $route => {
   cy.visit(`/B14LO/${$route}/${moment().format('YYYY-MM-DD')}`)
 })
@@ -365,7 +369,7 @@ And('I should see the text {string} in a table cell', $string => {
 })
 
 And('I should see the link {string} in a table row', $string => {
-  cy.get('.govuk-table__row').within(() => {
+  cy.get('.govuk-table').within(() => {
     cy.get('.govuk-link').contains($string).should('exist')
   })
 })
@@ -423,7 +427,7 @@ And('I see value {string} in the text input with id {string}', ($string, $id) =>
   cy.get(`#${$id}`).should('contain.value', $string)
 })
 
-And('I should see 5 numbered pagination links from {int} to {int} followed by a link Next', ($fromNum, $toNum) => {
+And('I should see {int} numbered pagination links from {int} to {int} followed by a link Next', ($pages, $fromNum, $toNum) => {
   const nav = cy.get('.moj-pagination .moj-pagination__list')
 
   for (let i = $fromNum; i <= $toNum; i++) {
@@ -438,8 +442,8 @@ And('I should see the pagination numbers {int} to {int} of {int} results', ($fro
   cy.get('.moj-pagination__results').should('contain.text', `Showing ${$fromNum} to ${$toNum} of ${$ofNum} results`)
 })
 
-And('I click the "Next" link in the pagination links', () => {
-  cy.get('.moj-pagination .moj-pagination__list .moj-pagination__item').contains('Next').click()
+And('I click the {string} link in the pagination links', ($link) => {
+  cy.get('.moj-pagination .moj-pagination__list .moj-pagination__item').contains($link).click()
 })
 
 Then('the page {int} should be loaded', ($pageNo) => {
@@ -482,7 +486,7 @@ And('I should see a count of {string}', $string => {
 })
 
 And('I should see the following summary list', $data => {
-  cy.get('.govuk-summary-list').within(() => {
+  cy.get('.govuk-summary-list').first().within(() => {
     $data.raw().forEach((text, index) => {
       cy.get(index % 2 === 0 ? '.govuk-summary-list__key' : '.govuk-summary-list__value').eq(index).contains(text[index % 2])
     })
@@ -507,13 +511,13 @@ And('I should see the Primary navigation', () => {
 })
 
 And('I should see the Primary navigation {string} link', $string => {
-  cy.get('.moj-primary-navigation').within(() => {
+  cy.get('nav.moj-primary-navigation').within(() => {
     cy.get('.moj-primary-navigation__link').contains($string)
   })
 })
 
 When('I click on the {string} link in the Primary navigation', $string => {
-  cy.get('.moj-primary-navigation').within(() => {
+  cy.get('nav.moj-primary-navigation').within(() => {
     cy.get('.moj-primary-navigation__link').contains($string).click()
   })
 })
@@ -585,7 +589,7 @@ And('I should see the link {string} {string} open a reassign modal', ($string, $
   const expected = $expected.toLowerCase()
   expect(['will', 'will not']).to.include(expected)
 
-  cy.get('.govuk-table__row').within(() => {
+  cy.get('.govuk-table').within(() => {
     cy.get('.govuk-link').contains($string).should('have.attr', 'class')
       .and(`${expected === 'will not' ? 'not.' : ''}contain`, 'pac-reassign')
   })

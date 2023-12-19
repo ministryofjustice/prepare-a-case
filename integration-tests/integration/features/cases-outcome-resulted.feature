@@ -1,4 +1,4 @@
-Feature: Cases to Result List
+Feature: Resulted Cases List
   In order to view the list of cases to result
   As an authenticated user
   I need to see a list of cases that need resulting
@@ -31,6 +31,9 @@ Feature: Cases to Result List
       | Hazel Nutt     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Olive Tree \n on 11 Aug 2023 at 10:35  |
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Johnny Ball \n on 9 Sep 2023 at 14:16  |
 
+    And I should see 2 numbered pagination links from 1 to 2 followed by a link Next
+    And I should see the pagination numbers 1 to 2 of 3 results
+
     When I click the "Outcome type" filter button
     And I select the "Adjourned" filter
     And I click the "Apply filters" button
@@ -44,7 +47,7 @@ Feature: Cases to Result List
     Then I should see the "Johnny Ball" filter tag
 
     And There should be no a11y violations
-  
+
   Scenario: Clicking on a resulted case should allow the user to assign to themselves and move to In Progress
     Given I am an authenticated user
     When I navigate to the "outcomes/resulted-cases" route
@@ -74,3 +77,10 @@ Feature: Cases to Result List
     When I click the "reassign-resulted-outcome-modal" modal "Open as read only" link
     Then I should be on the "Case summary" page
     And I should not see govuk notification banner
+
+  Scenario: Ensure the correct messages and results are shown when no cases are resulted
+    Given I am an authenticated user
+    When I navigate to the Northampton Court "outcomes/resulted-cases" route
+    Then I should be on the "Hearing outcomes" page
+    Then I should see the body text "There are no resulted cases."
+    And There should be no a11y violations

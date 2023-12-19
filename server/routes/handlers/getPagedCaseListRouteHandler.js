@@ -16,7 +16,9 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
   const selectedFilters = session.selectedFilters
   const currentNotification = await getAsync('case-list-notification')
   const currentDate = date || getBaseDateString()
-  const response = await caseService.getPagedCaseList(courtCode, currentDate, selectedFilters, subsection || (!date && session.currentView), page, limit)
+  const context = { court: courtCode, username: res.locals.user.username }
+  const hearingOutcomesEnabled = features.hearingOutcomes.isEnabled(context)
+  const response = await caseService.getPagedCaseList(courtCode, currentDate, selectedFilters, subsection || (!date && session.currentView), page, settings.casesPerPage, hearingOutcomesEnabled)
   if (response.isError) {
     trackEvent(
       'PiCPrepareACaseErrorTrace',
@@ -34,10 +36,8 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
   const startCount = ((parseInt(page, 10) - 1) || 0) * limit
   const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
 
-  const context = { court: courtCode, username: res.locals.user.username }
   const pastCaseNavigationEnabled = features.pastCasesNavigation.isEnabled(context)
   const caseSearchEnabled = features.searchFeature.isEnabled(context)
-  const hearingOutcomesEnabled = features.hearingOutcomes.isEnabled(context)
 
   const templateValues = {
     title: 'Cases',

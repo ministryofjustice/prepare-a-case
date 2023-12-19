@@ -21,7 +21,7 @@ const getResultedCasesHandler = caseService => async (req, res) => {
 
   const flaggedFilters = flagFilters(req.query, filters)
 
-  const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).pop()
+  const filtersApplied = flaggedFilters.map(filterObj => filterObj.items.filter(item => item.checked).length).some(length => length > 0)
 
   const templateValues = {
     params: {
@@ -34,7 +34,9 @@ const getResultedCasesHandler = caseService => async (req, res) => {
     title,
     currentUserUuid: res.locals.user.uuid,
     data: cases || [],
-    displayFilters: response.cases?.length || filtersApplied
+    displayFilters: response.cases?.length || filtersApplied,
+    totalPages: response.totalPages,
+    totalElements: response.totalElements
   }
 
   res.render('outcomes/resultedCases', templateValues)

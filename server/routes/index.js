@@ -1,10 +1,30 @@
 const express = require('express')
 const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
-const { settings, notification, session: { cookieOptions }, features: { sendPncAndCroWithOffenderUpdates } } = require('../../config')
+const {
+  settings,
+  notification,
+  session: { cookieOptions },
+  features: { sendPncAndCroWithOffenderUpdates }
+} = require('../../config')
 const { updateSelectedCourts } = require('../services/user-preference-service')
-const { getCaseList, getMatchDetails, deleteOffender, updateOffender, getCaseHistory } = require('../services/case-service')
-const { getDetails, getProbationRecord, getConviction, getProbationStatusDetails, getSentenceDetails, getBreachDetails, getRiskDetails, getCustodyDetails } = require('../services/community-service')
+const {
+  getCaseList,
+  getMatchDetails,
+  deleteOffender,
+  updateOffender,
+  getCaseHistory
+} = require('../services/case-service')
+const {
+  getDetails,
+  getProbationRecord,
+  getConviction,
+  getProbationStatusDetails,
+  getSentenceDetails,
+  getBreachDetails,
+  getRiskDetails,
+  getCustodyDetails
+} = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
 const featuresToggles = require('../utils/features')
 const getNextHearing = require('../utils/getNextHearing')
@@ -90,7 +110,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
     res.render('set-notification', { currentNotification })
   }))
 
-  router.post('/set-notification', body('notification').trim().escape(), catchErrors(async (req, res) => {
+  router.get('/set-notification-preview', catchErrors(async (req, res) => {
+    const { redisClient: { getAsync } } = req
+    const currentNotification = await getAsync('case-list-notification')
+    res.render('set-notification-preview', { currentNotification })
+  }))
+
+  router.post('/set-notification', body('notification').trim(), catchErrors(async (req, res) => {
     const { redisClient: { setAsync } } = req
     await setAsync('case-list-notification', req.body.notification, 'EX', 60 * 60 * (parseInt(req.body.expires, 10)))
     res.redirect(302, '/set-notification')
@@ -232,7 +258,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const outcomeTypeItems = getOutcomeTypesListFilters().items
     const outcomeTypes = [
       ...[{ value: '', text: 'Outcome type' }],
-      ...outcomeTypeItems.map(item => { return { text: item.label, value: item.value } })
+      ...outcomeTypeItems.filter(item => item.value !== 'NO_OUTCOME').map(item => { return { text: item.label, value: item.value } })
     ]
 
     const { session, path, params: { courtCode } } = req

@@ -42,6 +42,7 @@ module.exports = {
     assetCache: '30d',
     scriptCache: '24h',
     caseSearchResultPageSize: get('CASE_SEARCH_PAGE_SIZE', 20),
+    hearingOutcomesPageSize: get('HEARING_OUTCOMES_PAGE_SIZE', 20),
     availableCourts: [
       { code: 'B63AD', name: 'Aberystwyth Magistrates Court' },
       { code: 'B44AG', name: 'Aldershot Magistrates\' Court' },
@@ -242,7 +243,7 @@ module.exports = {
   maintenanceModeEnabled: getBooleanParam('MAINTENANCE_MODE'),
   domain: `${get('INGRESS_URL', `http://localhost:${port}`)}`,
   https: production,
-  nonce: crypto.randomBytes(16).toString('base64'),
+  nonce: () => crypto.randomBytes(16).toString('base64'),
   googleAnalyticsKey: get('GOOGLE_ANALYTICS_KEY', null),
   instrumentationKey: get('APPINSIGHTS_INSTRUMENTATIONKEY', null),
   notification: {

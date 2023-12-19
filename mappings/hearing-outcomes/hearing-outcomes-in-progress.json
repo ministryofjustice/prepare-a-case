@@ -7,6 +7,9 @@
     "queryParameters": {
       "state": {
         "equalTo": "IN_PROGRESS"
+      },
+      "outcomeType": {
+        "doesNotMatch": "COMMITTED_TO_CROWN"
       }
     }
   },
@@ -16,6 +19,8 @@
     },
     "status": 200,
     "jsonBody": {
+      "totalPages": 2,
+      "totalElements": 3,
       "cases": [
         {
           "hearingOutcomeType": "REPORT_REQUESTED",

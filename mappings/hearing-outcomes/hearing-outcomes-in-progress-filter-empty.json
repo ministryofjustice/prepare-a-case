@@ -1,0 +1,30 @@
+{
+  "id": "a8607150-d2ea-405a-b4de-77f43f5aaf12",
+  "priority": 4,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
+    "queryParameters": {
+      "state": {
+        "equalTo": "IN_PROGRESS"
+      },
+      "outcomeType": {
+        "equalTo": "COMMITTED_TO_CROWN"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "cases": [],
+      "countsByState": {
+        "toResultCount": 0,
+        "inProgressCount": 0,
+        "resultedCount": 0
+      }
+    }
+  }
+}

@@ -3,9 +3,11 @@ const {
 } = require('./featureTogglePredicates')
 const { settings } = require('../../config')
 
-const LIVERPOOL_PRE_PILOT_USERS = ['***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***']
+const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k', 'brn63n']
 
 const PLYMOUTH_MAGS_COURT_CODE = 'B50KH'
+
+const PILOT_COURTS = ['B20EB', 'B23HS']
 
 const features = {
   searchFeature: enabledForAll(),
@@ -17,7 +19,10 @@ const features = {
     ),
     allOf(
       isEnv('preprod'),
-      enabledForUsers(...settings.caseTrackingPrePilotUsers)
+      anyOf(
+        enabledForUsers(...settings.caseTrackingPrePilotUsers),
+        enabledForCourts(...PILOT_COURTS)
+      )
     ),
     allOf(
       isEnv('prod'),
@@ -29,7 +34,8 @@ const features = {
         allOf(
           enabledForCourts('B05PK'),
           enabledForUsers(...settings.caseTrackingPrePilotUsers, ...LIVERPOOL_PRE_PILOT_USERS)
-        )
+        ),
+        enabledForCourts(...PILOT_COURTS)
       )
     )
   ),
@@ -47,7 +53,12 @@ const features = {
     allOf(
       isEnv('preprod'),
       mainFeatureToggleEnabled('enableHearingOutcomes'),
-      enabledForUsers(...settings.caseTrackingPrePilotUsers)
+      enabledForCourts(...PILOT_COURTS)
+    ),
+    allOf(
+      isEnv('prod'),
+      mainFeatureToggleEnabled('enableHearingOutcomes'),
+      enabledForCourts(...PILOT_COURTS)
     )
   ),
   advancedFilters: isEnv('dev', 'preprod', 'prod')

@@ -8,6 +8,10 @@ const getAddCaseCommentHandler = caseService => async (req, res) => {
   } else {
     await caseService.addCaseComment(caseId, comment, res.locals.user.name)
 
+    if (!res.locals.user.name) {
+      trackEvent('PiCAddCaseCommentNoName', res.locals.user)
+    }
+
     trackEvent('PiCCaseCommentSuccess', {
       court: courtCode,
       caseId

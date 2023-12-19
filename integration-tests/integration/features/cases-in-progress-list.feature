@@ -18,7 +18,7 @@ Feature: Cases in Progress List
     
     And I should see a tab with text "Cases to result (8)"
 
-    And I should see a tab with text "In progress (3)"
+    And I should see a tab with text "In progress (15)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
@@ -27,6 +27,9 @@ Feature: Cases in Progress List
       | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
       | Olive Tree     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+
+    And I should see 2 numbered pagination links from 1 to 2 followed by a link Next
+    And I should see the pagination numbers 1 to 2 of 3 results
 
     And There should be no a11y violations
 
@@ -80,3 +83,10 @@ Scenario: Clicking on a case the user is not assigned to should allow the user t
     When I click the "Assign to me" button
     Then I should be on the "Case summary" page
     And I should see govuk notification banner with header "Success" and message "You are assigned to result this case. It has moved to the in progress tab."
+
+Scenario: Ensure the correct messages and results are shown when no cases are in progress
+    Given I am an authenticated user
+    When I navigate to the Northampton Court "outcomes/in-progress" route
+    Then I should be on the "Hearing outcomes" page
+    Then I should see the body text "There are no cases in progress."
+    And There should be no a11y violations

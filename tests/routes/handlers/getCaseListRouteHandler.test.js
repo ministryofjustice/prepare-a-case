@@ -10,7 +10,8 @@ describe('getCaseListRouteHandler', () => {
     params: { courtCode: 'ABC', date: '2020-11-11', limit: 10 },
     query: { page: 1 },
     session: {},
-    path: '/SHF/cases'
+    path: '/SHF/cases',
+    locals: { username: 'testuser' }
   }
 
   it('should render error page when getCaseList returns errors', async () => {

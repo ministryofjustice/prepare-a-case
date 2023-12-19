@@ -5,6 +5,9 @@
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
+      "page":{
+        "equalTo": "1"
+      },
       "outcomeType": {
         "or": [
           {
@@ -30,6 +33,8 @@
     },
     "status": 200,
     "jsonBody": {
+      "totalPages": 4,
+      "totalElements": 7,
       "cases": [
         {
           "hearingOutcomeType": "REPORT_REQUESTED",
@@ -61,7 +66,7 @@
         }
       ],
       "countsByState": {
-        "toResultCount": 2,
+        "toResultCount": 7,
         "inProgressCount": 5,
         "resultedCount": 9
       }
