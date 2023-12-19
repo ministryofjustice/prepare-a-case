@@ -27,15 +27,24 @@ const createCaseService = (apiUrl) => {
       const res = await request(`${apiUrl}/defendant/${defendantId}/matchesDetail`) || { data: {} }
       return res.data
     },
-    getPagedCaseList: async (courtCode, date, selectedFilters, subsection, page, limit) => {
+    getPagedCaseList: async (courtCode, date, selectedFilters, subsection, page, pageSize, hearingOutcomesEnabled) => {
       const apiUrlBuilder = new URL(`${apiUrl}/court/${courtCode}/cases`)
 
       apiUrlBuilder.searchParams.append('date', date)
       apiUrlBuilder.searchParams.append('VERSION2', 'true')
       apiUrlBuilder.searchParams.append('page', page || '1')
-      apiUrlBuilder.searchParams.append('limit', limit)
+      apiUrlBuilder.searchParams.append('size', pageSize)
+
       if (subsection === 'added') {
         apiUrlBuilder.searchParams.append('recentlyAdded', 'true')
+      }
+      if (hearingOutcomesEnabled) {
+        if (subsection === false || subsection === null || subsection === undefined) {
+          apiUrlBuilder.searchParams.append('hearingStatus', 'UNHEARD')
+        }
+        if (subsection === 'heard') {
+          apiUrlBuilder.searchParams.append('hearingStatus', 'HEARD')
+        }
       }
 
       if (selectedFilters) {

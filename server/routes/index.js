@@ -258,7 +258,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const outcomeTypeItems = getOutcomeTypesListFilters().items
     const outcomeTypes = [
       ...[{ value: '', text: 'Outcome type' }],
-      ...outcomeTypeItems.map(item => { return { text: item.label, value: item.value } })
+      ...outcomeTypeItems.filter(item => item.value !== 'NO_OUTCOME').map(item => { return { text: item.label, value: item.value } })
     ]
 
     const { session, path, params: { courtCode } } = req

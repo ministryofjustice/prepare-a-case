@@ -369,7 +369,7 @@ And('I should see the text {string} in a table cell', $string => {
 })
 
 And('I should see the link {string} in a table row', $string => {
-  cy.get('.govuk-table__row').within(() => {
+  cy.get('.govuk-table').within(() => {
     cy.get('.govuk-link').contains($string).should('exist')
   })
 })
@@ -486,7 +486,7 @@ And('I should see a count of {string}', $string => {
 })
 
 And('I should see the following summary list', $data => {
-  cy.get('.govuk-summary-list').within(() => {
+  cy.get('.govuk-summary-list').first().within(() => {
     $data.raw().forEach((text, index) => {
       cy.get(index % 2 === 0 ? '.govuk-summary-list__key' : '.govuk-summary-list__value').eq(index).contains(text[index % 2])
     })
@@ -511,13 +511,13 @@ And('I should see the Primary navigation', () => {
 })
 
 And('I should see the Primary navigation {string} link', $string => {
-  cy.get('.moj-primary-navigation').within(() => {
+  cy.get('nav.moj-primary-navigation').within(() => {
     cy.get('.moj-primary-navigation__link').contains($string)
   })
 })
 
 When('I click on the {string} link in the Primary navigation', $string => {
-  cy.get('.moj-primary-navigation').within(() => {
+  cy.get('nav.moj-primary-navigation').within(() => {
     cy.get('.moj-primary-navigation__link').contains($string).click()
   })
 })
@@ -589,7 +589,7 @@ And('I should see the link {string} {string} open a reassign modal', ($string, $
   const expected = $expected.toLowerCase()
   expect(['will', 'will not']).to.include(expected)
 
-  cy.get('.govuk-table__row').within(() => {
+  cy.get('.govuk-table').within(() => {
     cy.get('.govuk-link').contains($string).should('have.attr', 'class')
       .and(`${expected === 'will not' ? 'not.' : ''}contain`, 'pac-reassign')
   })
