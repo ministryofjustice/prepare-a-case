@@ -1,5 +1,5 @@
 /* global describe, beforeEach, afterEach, it, expect, jest */
-const axios = require('axios')
+const axios = require('axios').default
 const { health } = require('../../../server/routes/middleware/healthcheck')
 
 const mockNext = jest.fn()

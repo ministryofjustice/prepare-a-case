@@ -1,5 +1,5 @@
 const fs = require('fs')
-const axios = require('axios')
+const axios = require('axios').default
 const { promisify } = require('util')
 const { Service } = require('axios-middleware')
 const config = require('./config')
