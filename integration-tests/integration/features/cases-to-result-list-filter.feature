@@ -187,3 +187,35 @@ Feature: Cases to Result List filters
     And I should see a count of "0 cases"
     Then I should see the body text "There are no matching cases."
     And There should be no a11y violations
+
+
+  Scenario: A user wants to filter the list by courtroom
+    Given I am an authenticated user
+    When I navigate to the "outcomes" route
+    Then I should be on the "Hearing outcomes" page
+
+    And I should see the following table headings
+      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+
+    And I should see the following table rows
+      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+
+    When I click the "Courtroom" filter button
+    And I select the "1" filter
+    And I click the "Courtroom" filter button
+    And I click the "Apply filters" button
+
+    And I should see the following table headings
+      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+
+    And I should see the following table 1 rows
+      | Court Room Stub Loaded  | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+
+    And I should see the "courtRoom" query have the value "01,1,Courtroom 1"
+
+    When I click the clear "1" filter tag
+
+    Then I should see the following table rows
+      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |

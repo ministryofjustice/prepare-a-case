@@ -36,6 +36,7 @@ Feature: Resulted Cases List
 
     When I click the "Outcome type" filter button
     And I select the "Adjourned" filter
+    And I click the "Outcome type" filter button
     And I click the "Apply filters" button
     Then I should see the "Adjourned" filter tag
     And I click the clear "Adjourned" filter tag

@@ -7,9 +7,6 @@
     "queryParameters": {
       "state": {
         "equalTo": "IN_PROGRESS"
-      },
-      "outcomeType": {
-        "doesNotMatch": "COMMITTED_TO_CROWN"
       }
     }
   },
@@ -20,7 +17,7 @@
     "status": 200,
     "jsonBody": {
       "totalPages": 2,
-      "totalElements": 3,
+      "totalElements": 15,
       "cases": [
         {
           "hearingOutcomeType": "REPORT_REQUESTED",
@@ -75,8 +72,8 @@
         "toResultCount": 8,
         "inProgressCount": 15,
         "resultedCount": 9
-      }
-
+      },
+      "courtRoomFilters": ["02", "01", "1", "Courtroom 1", "2", "Crown Court 3-1"]
     }
   }
 }

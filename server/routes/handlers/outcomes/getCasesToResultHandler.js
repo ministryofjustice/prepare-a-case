@@ -22,7 +22,7 @@ const getCasesToResultHandler = caseService => async (req, res) => {
 
   const filters = flagFilters(queryParams, [getOutcomeTypesListFilters(), courtRoomFilter])
 
-  const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).pop()
+  const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).some(length => length > 0)
 
   const templateValues = {
     params: {

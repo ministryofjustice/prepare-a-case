@@ -162,7 +162,7 @@ jobs:
           command: npm run minify-js-css
       - run:
           name: Run wiremock
-          command: java -jar wiremock-jre8-standalone-2.35.0.jar --global-response-templating --port 9091
+          command: java -jar wiremock-standalone-3.3.1.jar --global-response-templating --port 9091
           background: true
       - run:
           name: Run the app
