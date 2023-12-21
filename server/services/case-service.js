@@ -198,12 +198,24 @@ const createCaseService = (apiUrl) => {
 
       const filtersCopy = {
         outcomeType: filters?.outcomeType,
-        assignedToUuid: filters?.assignedToUuid
+        assignedToUuid: filters?.assignedToUuid,
+        courtRoom: filters?.courtRoom
       }
 
       Object.keys(filtersCopy).forEach(key => {
-        const values = filtersCopy[key]
+        let values = filtersCopy[key]
         if (values) {
+          if (key === 'courtRoom') {
+            // courtroom can be csv of courtrooms
+            if (Array.isArray(values)) {
+              const courtRooms = []
+              values = values.forEach(c => courtRooms.push(...c.split(',')))
+              values = courtRooms
+            } else {
+              values = values.split(',')
+            }
+            filtersCopy[key] = values
+          }
           if (Array.isArray(values)) {
             values.forEach(val => paramMap.append(key, val))
           } else {

@@ -1,6 +1,7 @@
 const getOutcomeTypesListFilters = require('../../../utils/getOutcomeTypesListFilters')
 const getHearingOutcomeAssignedToFilters = require('../../../utils/getHearingOutcomeAssignedToFilters')
 const flagFilters = require('../../../utils/flagFilters')
+const { prepareCourtRoomFilters } = require('../../helpers')
 
 const getCasesInProgressHandler = caseService => async (req, res) => {
   const {
@@ -14,7 +15,13 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
 
   const cases = response.cases
 
-  const filters = [getOutcomeTypesListFilters()]
+  const courtRoomFilter = {
+    id: 'courtRoom',
+    label: 'Courtroom',
+    items: prepareCourtRoomFilters(response.courtRoomFilters)
+  }
+
+  const filters = [getOutcomeTypesListFilters(), courtRoomFilter]
   const assignedToFilter = getHearingOutcomeAssignedToFilters(cases, queryParams)
 
   if (assignedToFilter) {
@@ -30,7 +37,7 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
       ...params,
       filters: flaggedFilters,
       filtersApplied,
-      casesInProgressCount: response?.countsByState?.inProgressCount || 0,
+      casesInProgressCount: response?.totalElements || 0,
       casesToResultCount: response?.countsByState?.toResultCount || 0
     },
     title,

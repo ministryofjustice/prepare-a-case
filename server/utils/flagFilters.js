@@ -1,27 +1,15 @@
-module.exports = function (selectedFilters, filters) {
-  // Ensure selected filters are type Array
+module.exports = function (selectedFilters, caseListFilters) {
   if (selectedFilters) {
-    Object.keys(selectedFilters).forEach(item => {
-      if (typeof selectedFilters[item] === 'string') {
-        selectedFilters[item] = new Array(selectedFilters[item])
-      }
+    caseListFilters.filter(caseListFilter => !!selectedFilters[caseListFilter.id]).forEach(caseListFilter => {
+      const selectedValues = selectedFilters[caseListFilter.id]
+      const isCourt = caseListFilter.id === 'courtRoom'
+      const multipleSelection = Array.isArray(selectedValues)
+      caseListFilter.items.forEach(item => {
+        // courtrooms can be arrays here and in selected filters they are csv so convert array to csv for comparison
+        const compareItemValue = isCourt && Array.isArray(item.value) ? item.value.join(',') : item.value
+        item.checked = item.checked || (multipleSelection ? selectedValues.includes(compareItemValue) : selectedValues === compareItemValue)
+      })
     })
   }
-  const flaggedFilters = JSON.parse(JSON.stringify(filters))
-
-  // Flag selected filters
-  flaggedFilters.forEach(item => {
-    item.items.forEach(obj => {
-      if (obj) {
-        Object.keys(obj).forEach(() => {
-          if (selectedFilters && selectedFilters[item.id]) {
-            selectedFilters[item.id].forEach(selection => {
-              obj.checked = obj.checked || obj.value === selection
-            })
-          }
-        })
-      }
-    })
-  })
-  return flaggedFilters
+  return caseListFilters
 }

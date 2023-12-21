@@ -112,6 +112,8 @@ describe('Routes', () => {
 
   jest.spyOn(helpers, 'getOrderTitle').mockImplementation(() => { return 'title' })
 
+  jest.spyOn(helpers, 'prepareCourtRoomFilters').mockImplementation(() => { return [] })
+
   beforeEach(() => {
     app = require('../../app')
     app = appSetup(viewRoute)

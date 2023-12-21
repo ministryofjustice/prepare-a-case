@@ -1,5 +1,6 @@
 const getOutcomeTypesListFilters = require('../../../utils/getOutcomeTypesListFilters')
 const flagFilters = require('../../../utils/flagFilters')
+const { prepareCourtRoomFilters } = require('../../helpers')
 const getCasesToResultHandler = caseService => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
@@ -13,7 +14,13 @@ const getCasesToResultHandler = caseService => async (req, res) => {
     return
   }
 
-  const filters = flagFilters(queryParams, [getOutcomeTypesListFilters()])
+  const courtRoomFilter = {
+    id: 'courtRoom',
+    label: 'Courtroom',
+    items: prepareCourtRoomFilters(response.courtRoomFilters)
+  }
+
+  const filters = flagFilters(queryParams, [getOutcomeTypesListFilters(), courtRoomFilter])
 
   const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).pop()
 
@@ -23,7 +30,7 @@ const getCasesToResultHandler = caseService => async (req, res) => {
       filters,
       filtersApplied,
       casesInProgressCount: response?.countsByState?.inProgressCount || 0,
-      casesToResultCount: response.countsByState?.toResultCount
+      casesToResultCount: response.totalElements
     },
     title,
     data: response.cases || [],
