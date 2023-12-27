@@ -9,5 +9,11 @@ module.exports = {
     'pact/logs/*',
     'pact/pacts/*'
   ],
+  transformIgnorePatterns: [
+    'node_modules/(?!axios)'
+  ],
+  moduleNameMapper: {
+    axios: 'axios/dist/node/axios.cjs'
+  },
   testTimeout: 20000
 }
