@@ -24,3 +24,20 @@ Feature: Resulted Cases List filters
     And I should see a count of "0 cases"
     Then I should see the body text "There are no matching cases."
     And There should be no a11y violations
+
+  Scenario: Court room filter should be displayed and functional
+    Given I am an authenticated user
+    When I navigate to the "outcomes/resulted-cases" route
+    Then I should be on the "Hearing outcomes" page
+
+    And I should see the following table headings
+      | Defendant | Outcome type | Probation status | Offence | Hearing date |  Resulted by |
+
+    When I click the "Courtroom" filter button
+    And I select the "1" filter
+    And I click the "Courtroom" filter button
+    And I click the "Apply filters" button
+
+    And I should see the "courtRoom" query have the value "01,1,Courtroom 1"
+
+    When I click the clear "1" filter tag

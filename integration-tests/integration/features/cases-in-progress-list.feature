@@ -29,7 +29,7 @@ Feature: Cases in Progress List
       | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
     And I should see 2 numbered pagination links from 1 to 2 followed by a link Next
-    And I should see the pagination numbers 1 to 2 of 3 results
+    And I should see the pagination numbers 1 to 2 of 15 results
 
     And There should be no a11y violations
 
@@ -37,7 +37,7 @@ Feature: Cases in Progress List
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
-  
+
     When I click the Move to resulted button for defendant "English Madden"
     Then I should see govuk notification banner with header "Success" and message "You have moved English Madden's case to resulted cases."
 
