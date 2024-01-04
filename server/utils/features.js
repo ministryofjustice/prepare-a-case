@@ -3,10 +3,7 @@ const {
 } = require('./featureTogglePredicates')
 const { settings } = require('../../config')
 
-const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k', 'brn63n']
-
 const PLYMOUTH_MAGS_COURT_CODE = 'B50KH'
-
 const PILOT_COURTS = ['B20EB', 'B23HS']
 
 const features = {
@@ -33,7 +30,7 @@ const features = {
         ),
         allOf(
           enabledForCourts('B05PK'),
-          enabledForUsers(...settings.caseTrackingPrePilotUsers, ...LIVERPOOL_PRE_PILOT_USERS)
+          enabledForUsers(...settings.caseTrackingPrePilotUsers, ...settings.liverpoolPrePilotUsers)
         ),
         enabledForCourts(...PILOT_COURTS)
       )
