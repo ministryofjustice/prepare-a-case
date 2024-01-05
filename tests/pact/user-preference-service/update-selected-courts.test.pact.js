@@ -3,7 +3,7 @@ const { pactWith } = require('jest-pact')
 const { Matchers } = require('@pact-foundation/pact')
 
 const { update } = require('../../../server/services/utils/request')
-const selectedCourtsMock = require('../../../mappings/preferences/default-courts.json')
+const selectedCourtsMock = require('../../../wiremock/mappings/hmpps-user-preferences/default-courts.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'hmpps-user-preferences' }, provider => {
   describe('PUT /preferences/courts', () => {

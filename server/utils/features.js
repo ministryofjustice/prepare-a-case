@@ -1,7 +1,7 @@
 const {
   allOf, mainFeatureToggleEnabled, enabledForCourts, enabledForUsers, isEnv, anyOf, enabledForAll
 } = require('./featureTogglePredicates')
-const { settings } = require('../../config')
+const { settings } = require('../config')
 
 const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddicknps', 'qml95k', 'brn63n']
 

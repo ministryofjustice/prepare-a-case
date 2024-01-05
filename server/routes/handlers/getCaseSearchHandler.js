@@ -1,6 +1,6 @@
-const log = require('../../../log')
+const log = require('../../log')
 const trackEvent = require('../../utils/analytics')
-const { settings } = require('../../../config')
+const { settings } = require('../../config')
 const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req, res) => {
   const term = req.query.term
   const { searchType: type, error } = getCaseSearchType(term)

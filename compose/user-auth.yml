@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+
+  hmpps-auth:
+    image: quay.io/hmpps/hmpps-auth:latest
+    container_name: hmpps-auth
+    networks:
+      - hmpps
+    ports:
+      - "9091:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/auth/health"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - APPLICATION_AUTHENTICATION_UI_ALLOWLIST=0.0.0.0/0
+      - SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true

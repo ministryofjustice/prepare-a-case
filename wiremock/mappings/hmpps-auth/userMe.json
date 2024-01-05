@@ -1,0 +1,17 @@
+{
+  "id": "ffa953b9-ca70-49a2-b722-e52a0bcef004",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/auth/api/user/me"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json;charset=UTF-8"
+    },
+    "status": 200,
+    "jsonBody": {
+      "uuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
+      "name": "Display Name"
+    }
+  }
+}

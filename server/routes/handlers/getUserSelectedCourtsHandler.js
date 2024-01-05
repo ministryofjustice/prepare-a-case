@@ -1,4 +1,4 @@
-const { settings } = require('../../../config')
+const { settings } = require('../../config')
 const trackEvent = require('../../utils/analytics')
 
 const getUserSelectedCourtsHandler = (getUserSelectedCourts) => async (req, res) => {

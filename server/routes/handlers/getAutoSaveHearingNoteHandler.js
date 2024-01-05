@@ -1,4 +1,4 @@
-const logger = require('../../../log')
+const logger = require('../../log')
 const trackEvent = require('../../utils/analytics')
 
 const getAutoSaveHearingNoteHandler = ({ saveDraftHearingNote }) => async (req, res) => {

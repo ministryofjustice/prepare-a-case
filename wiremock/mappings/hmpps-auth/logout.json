@@ -1,0 +1,14 @@
+{
+  "id": "ffa953b9-ca70-49a2-b722-e52a0bcef001",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/auth/logout.*"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "text/html"
+    },
+    "status": 200,
+    "body": "<html><body>Login page<h1>Sign in</h1></body></html>"
+  }
+}

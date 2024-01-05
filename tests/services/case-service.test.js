@@ -1,6 +1,6 @@
 /* global describe, beforeEach, afterEach, it, expect, jest, test */
 const moxios = require('moxios')
-const config = require('../../config')
+const config = require('../../server/config')
 const settings = config.settings
 
 const {

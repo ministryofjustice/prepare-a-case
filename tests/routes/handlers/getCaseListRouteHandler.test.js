@@ -1,6 +1,6 @@
 /* global jest, describe, it, expect */
 
-const { settings } = require('../../../config')
+const { settings } = require('../../../server/config')
 
 describe('getCaseListRouteHandler', () => {
   const { caseServiceMock: caseService, mockResponse } = require('./test-helpers')

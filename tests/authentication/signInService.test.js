@@ -1,6 +1,6 @@
 /* global describe, beforeEach, afterEach, it, expect, jest, test */
 const nock = require('nock')
-const config = require('../../config')
+const config = require('../../server/config')
 const signInService = require('../../server/authentication/signInService')
 
 describe('signInService', () => {

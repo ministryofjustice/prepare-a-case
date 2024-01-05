@@ -1,5 +1,5 @@
 const { request, update } = require('./utils/request')
-const config = require('../../config')
+const config = require('../config')
 const apiUrl = config.apis.userPreferenceService.url
 
 const getUserSelectedCourts = async (userId) => {

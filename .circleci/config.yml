@@ -1,18 +1,5 @@
 version: 2.1
 commands:
-  set_app_version:
-    description: "Set app version string"
-    steps:
-      - run:
-          name: create app version string
-          command: |
-            DATE=$(date '+%Y-%m-%d')
-            VERSION=${DATE}.${CIRCLE_BUILD_NUM}
-            echo "Created version string: ${VERSION}"
-            echo "export VERSION=$VERSION" >> $BASH_ENV
-      - mem/remember:
-          env_var: APP_VERSION
-          value: "${VERSION}"
   setup-live:
     description: "Install tools and configure kubectl"
     steps:
@@ -45,8 +32,6 @@ commands:
           env_var: APP_VERSION
       - checkout:
           path: ~/git
-      - attach_workspace:
-          at: ~/app
       - deploy:
           name: Deploy to << parameters.env >>
           command: |
@@ -65,14 +50,7 @@ executors:
     working_directory: ~/app
   builder:
     docker:
-      - image: cimg/node:20.9-browsers
-    working_directory: ~/app
-  integration-tests:
-    docker:
-      - image: cimg/node:20.9-browsers
-      - image: cimg/redis:5.0.14
-        environment:
-          ALLOW_EMPTY_PASSWORD=yes
+      - image: cimg/base:current
     working_directory: ~/app
 
 orbs:
@@ -87,128 +65,88 @@ _snyk_options: &snyk_options
   fail-on-issues: true
 
 jobs:
-  build:
+  set_app_version:
     executor: builder
     steps:
-      - checkout
-      - set_app_version
-      - attach_workspace:
-          at: ~/app
-      - restore_cache:
-          keys:
-            - dependencies-cache-{{ checksum "package.json" }}
-            - dependencies-cache
       - run:
-          name: Install dependencies
-          command: npm ci
-      - run:
-          name: Build css
-          command: npm run css-build
-      - run:
-          name: Minify js and css
-          command: npm run minify-js-css
-      - save_cache:
-          key: dependencies-cache-{{ checksum "package.json" }}
-          paths:
-            - ~/.cache
-      - persist_to_workspace:
-          root: ~/app
-          paths: .
-
-  lint:
-    executor: builder
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/app
-      - restore_cache:
-          key: dependencies-cache-{{ checksum "package.json" }}
-      - run:
-          name: Lint
-          halt_build_on_fail: false
-          command: npm run lint
-
-  test:
-    executor: builder
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/app
-      - restore_cache:
-          key: dependencies-cache-{{ checksum "package.json" }}
-      - run:
-          name: Unit tests
-          command: npm run unit-test
-      - store_test_results:
-          path: test-results
-      - store_artifacts:
-          path: coverage
-
-  integration_test:
-    executor: integration-tests
-    steps:
-      - checkout
-      - mem/recall:
+          name: create app version string
+          command: |
+            DATE=$(date '+%Y-%m-%d')
+            VERSION=${DATE}.${CIRCLE_BUILD_NUM}
+            echo "Created version string: ${VERSION}"
+            echo "export VERSION=$VERSION" >> $BASH_ENV
+      - mem/remember:
           env_var: APP_VERSION
-      - attach_workspace:
-          at: ~/app
-      - restore_cache:
-          key: dependencies-cache-{{ checksum "package.json" }}
+          value: "${VERSION}"
+
+  test_lint_unit_pact:
+    executor: builder
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
-          name: Build css
-          command: npm run css-build
+          name: Build Development Image
+          command: docker build --target=ci -t prepare-a-case-app -f Dockerfile .
       - run:
-          name: Minify js and css
-          command: npm run minify-js-css
+          name: Lint Test
+          command: docker run -it prepare-a-case-app /usr/src/app/node_modules/.bin/standard
       - run:
-          name: Run wiremock
-          command: java -jar wiremock-standalone-3.3.1.jar --global-response-templating --port 9091
+          name: Unit Test
+          command: docker run -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
+      #- run:
+      #    name: Pact Test
+      #    halt_build_on_fail: false
+      #    command: docker run -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit
+
+  test_integration:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: medium
+    steps:
+      - checkout
+      - run:
+          name: Fake local env file
+          command: echo "" > .env
+      - run:
+          name: Start X11 virtual framebuffer server (if not running)
+          command: Xvfb :99 || true
           background: true
       - run:
-          name: Run the app
-          command: npm run start-feature
-          background: true
+          name: Start services
+          command: DISPLAY=:99 ENABLE_HEARING_OUTCOMES=true docker compose up -d --wait
       - run:
-          name: Wait for node app to start
-          command: sleep 5
+          name: Log services
+          command: docker compose logs -f -t > services.log
+          background: true
       - run:
           name: Run integration tests
-          halt_build_on_fail: false
-          command: npm run int-test
-      - store_test_results:
-          path: test-results
+          command: docker exec -it prepare-a-case-cypress cypress run --browser chrome --config-file=cypress/cypress.config.js
       - store_artifacts:
-          path: integration-tests/videos
-      - store_artifacts:
-          path: integration-tests/screenshots
-
-  pact:
+          path: integration-tests/output
+      - store_artifacts:    
+          path: services.log
+  pact_push:
     environment:
       PACT_BROKER_DISABLE_SSL_VERIFICATION: "true"
     executor: builder
     steps:
       - checkout
-      - mem/recall:
-          env_var: APP_VERSION
-      - attach_workspace:
-          at: ~/app
-      - restore_cache:
-          key: dependencies-cache-{{ checksum "package.json" }}
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Build Development Image
+          command: docker build --target=ci -t prepare-a-case-app -f Dockerfile .
       - run:
           name: Generate pact files
           halt_build_on_fail: false
-          command: npm run pact-test
+          command: docker run -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --ci
       - store_artifacts:
           path: 'pact/pacts'
       - run:
           name: Upload pact files to broker
-          command: |
-            npx pact-broker publish pact/pacts \
-              --broker-base-url $PACT_BROKER_BASE_URL \
-              --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH \
-              -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD
-
-  build_docker:
+          command: docker run -it prepare-a-case-app pact-broker publish pact/pacts --broker-base-url $PACT_BROKER_BASE_URL --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD"
+  build:
     executor: deployer
     parameters:
       main:
@@ -218,14 +156,12 @@ jobs:
       - checkout
       - mem/recall:
           env_var: APP_VERSION
-      - attach_workspace:
-          at: ~/app
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
           name: Build docker image
           command: |
-            docker build --pull \
+            docker build --target=production --pull \
                --rm=false . \
                --tag "hmpps/prepare-a-case:$APP_VERSION" \
                --label "maintainer=info@digital.justice.gov.uk" \
@@ -306,65 +242,34 @@ workflows:
 
   build-test-and-deploy:
     jobs:
-      - app_scan:
-          filters:
-            branches:
-              ignore: main
-      - app_scan:
-          name: app_scan_main
+      #- app_scan
+      - test_lint_unit_pact:
+          context: [hmpps-common-vars]
+      - test_integration:
+          context: [hmpps-common-vars]
+      - set_app_version:
           filters:
             branches:
               only: main
-          main: true
+      #- pact_push:
+      #    context: [hmpps-common-vars]
+      #    requires:
+      #      - set_app_version
       - build:
+          name: build
           context: [hmpps-common-vars]
-          filters:
-            tags:
-              ignore: /.*/
-      - lint:
-          requires:
-            - build
-      - test:
-          requires:
-            - build
-      - integration_test:
-          requires:
-            - build
-      - pact:
-          context: [hmpps-common-vars]
-          requires:
-            - build
-      - build_docker:
-          context: [ hmpps-common-vars ]
-          requires:
-            - build
-          filters:
-            branches:
-              ignore: main
-      - build_docker:
-          name: build_docker_main
-          context: [ hmpps-common-vars ]
-          requires:
-            - build
-          filters:
-            branches:
-              only: main
           main: true
+          requires:
+            - set_app_version
       - image_scan:
           requires:
-            - build_docker_main
-          filters:
-            branches:
-              only: main
+            - build
       - deploy_dev:
           context:
             - court-probation-live-dev
             - hmpps-common-vars
           requires:
-            - build_docker_main
-          filters:
-            branches:
-              only: main
+            - image_scan
       - request-preprod-approval:
           type: approval
           requires:

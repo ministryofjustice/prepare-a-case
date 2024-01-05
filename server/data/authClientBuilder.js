@@ -1,8 +1,8 @@
 const superagent = require('superagent')
 const Agent = require('agentkeepalive')
 const { HttpsAgent } = require('agentkeepalive')
-const logger = require('../../log')
-const config = require('../../config')
+const logger = require('../log')
+const config = require('../config')
 
 const timeoutSpec = {
   response: config.apis.oauth2.timeout.response,

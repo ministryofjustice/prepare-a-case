@@ -1,7 +1,30 @@
-#!/bin/bash
+#!/usr/bin/env node
 
-./node_modules/node-sass/bin/node-sass \
-  --include-path 'node_modules/govuk-frontend' \
-  --include-path 'node_modules/@ministryofjustice/frontend' \
-  public/stylesheets/style.scss \
-  public/stylesheets/style.css
+const sass = require('sass')
+const fs = require('fs')
+const process = require('process')
+const { resolve } = require('path')
+
+const paths = {
+  src: resolve(__dirname, '../public/src/stylesheets'),
+  build: resolve(__dirname, '../public/build/stylesheets'),
+  root: resolve(__dirname, '../'),
+}
+const version = process.env.APP_VERSION || 'dev-build'
+
+const result = sass.compile(resolve(paths.src, 'style.scss'), {
+  loadPaths: [
+    paths.src,
+    paths.root
+  ],
+  logger: {
+    // swallow govuk-frontend deprecated warnings, until they become errors out of our control
+    warn: () => {}
+  }
+})
+
+fs.writeFile(resolve(paths.build, `style-${version}.min.css`), result.css, error => {
+  if (error) {
+    throw new Error(error)
+  }
+})

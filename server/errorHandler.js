@@ -1,4 +1,4 @@
-const logger = require('../log.js')
+const logger = require('./log')
 const trackEvent = require('./utils/analytics.js')
 
 const moment = require('moment')

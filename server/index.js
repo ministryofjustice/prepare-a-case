@@ -2,7 +2,7 @@
 // In particular, applicationinsights automatically collects bunyan logs
 const appInsightsClient = require('./utils/azure-appinsights')
 
-const createApp = require('../app')
+const createApp = require('./app')
 const authClientBuilder = require('./data/authClientBuilder')
 const createSignInService = require('./authentication/signInService')
 const createUserService = require('./services/userService')

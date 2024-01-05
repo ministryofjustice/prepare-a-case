@@ -1,5 +1,5 @@
 const moment = require('moment')
-const { settings } = require('../../../config')
+const { settings } = require('../../config')
 
 // Method to allow Nunjucks groupby filter to group by nested Object value
 function getPath (path) {
