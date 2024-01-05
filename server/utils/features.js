@@ -10,7 +10,6 @@ const PLYMOUTH_MAGS_COURT_CODE = 'B50KH'
 const PILOT_COURTS = ['B20EB', 'B23HS']
 
 const features = {
-  caseComments: enabledForAll(),
   caseProgress: enabledForAll(),
   hearingNotes: anyOf(
     allOf(
