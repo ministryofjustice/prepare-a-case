@@ -33,24 +33,19 @@ describe('featureConfigPredicates', () => {
 
   describe('mainFeatureToggleEnabled', () => {
     settings.enableCaseProgress = false
-    settings.enableCaseComments = false
     settings.enablePastCasesNavigation = false
 
     it('should return false when main feature toggles are disabled', () => {
       settings.enableCaseProgress = false
-      settings.enableCaseComments = false
       settings.enablePastCasesNavigation = false
       expect(mainFeatureToggleEnabled('enableCaseProgress').isEnabled()).toBe(false)
-      expect(mainFeatureToggleEnabled('enableCaseComments').isEnabled()).toBe(false)
       expect(mainFeatureToggleEnabled('enablePastCasesNavigation').isEnabled()).toBe(false)
     })
 
     it('should return true when main feature toggles are enabled', () => {
       settings.enableCaseProgress = true
-      settings.enableCaseComments = true
       settings.enablePastCasesNavigation = true
       expect(mainFeatureToggleEnabled('enableCaseProgress').isEnabled()).toBe(true)
-      expect(mainFeatureToggleEnabled('enableCaseComments').isEnabled()).toBe(true)
       expect(mainFeatureToggleEnabled('enablePastCasesNavigation').isEnabled()).toBe(true)
     })
   })
