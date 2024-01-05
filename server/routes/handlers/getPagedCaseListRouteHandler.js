@@ -37,7 +37,6 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
   const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
 
   const pastCaseNavigationEnabled = features.pastCasesNavigation.isEnabled(context)
-  const caseSearchEnabled = features.searchFeature.isEnabled(context)
 
   const templateValues = {
     title: 'Cases',
@@ -56,7 +55,6 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
       totalDays: pastCaseNavigationEnabled ? settings.casesTotalDays : 7,
       casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
       enablePastCasesNavigation: settings.enablePastCasesNavigation,
-      caseSearchEnabled,
       subsection: subsection || (!date && session.currentView) || '',
       filtersApplied: !!selectedFilters && Object.keys(selectedFilters).length
     },

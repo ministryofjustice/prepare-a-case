@@ -76,8 +76,7 @@ describe('getCaseListRouteHandler', () => {
           totalDays: 13,
           casesPastDays: 6,
           unmatchedRecords: 2,
-          enablePastCasesNavigation: true,
-          caseSearchEnabled: true
+          enablePastCasesNavigation: true
         },
         hearingOutcomesEnabled: false
       })
@@ -129,8 +128,7 @@ describe('getCaseListRouteHandler', () => {
           totalDays: 13,
           casesPastDays: 6,
           unmatchedRecords: 2,
-          enablePastCasesNavigation: false,
-          caseSearchEnabled: true
+          enablePastCasesNavigation: false
         },
         hearingOutcomesEnabled: false
       })
