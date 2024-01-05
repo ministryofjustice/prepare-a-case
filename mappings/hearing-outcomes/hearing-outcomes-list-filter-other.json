@@ -5,11 +5,8 @@
     "method": "GET",
     "urlPathPattern": "/courts/([A-Z0-9]{5})/hearing-outcomes",
     "queryParameters": {
-      "sortBy": {
-        "equalTo": "hearingDate"
-      },
-      "order": {
-        "equalTo": "DESC"
+      "state": {
+        "equalTo": "NEW"
       },
       "outcomeType": {
         "equalTo": "OTHER"
@@ -22,7 +19,8 @@
     },
     "status": 200,
     "jsonBody": {
-      "cases": []
+      "cases": [],
+      "courtRoomFilters": ["02", "01", "1", "Courtroom 1", "2", "Crown Court 3-1"]
     }
   }
 }

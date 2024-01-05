@@ -52,7 +52,8 @@
         "toResultCount": 7,
         "inProgressCount": 15,
         "resultedCount": 50
-      }
+      },
+      "courtRoomFilters": ["02", "01", "1", "Courtroom 1", "2", "Crown Court 3-1"]
     }
   }
 }

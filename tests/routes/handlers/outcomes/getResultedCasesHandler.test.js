@@ -31,7 +31,8 @@ describe('getResultedCasesHandler', () => {
       countsByState: {
         toResultCount: 2,
         inProgressCount: 5
-      }
+      },
+      courtRoomFilters: ['01']
     }
     caseServiceMock.getOutcomesList.mockResolvedValueOnce(apiResponse)
 
@@ -42,7 +43,16 @@ describe('getResultedCasesHandler', () => {
 
     const assignedToFilters = getAssignedToFilters(apiResponse.cases)
 
-    const filters = [outcomeTYpeFilter, assignedToFilters]
+    const filters = [outcomeTYpeFilter, {
+      id: 'courtRoom',
+      label: 'Courtroom',
+      items: [
+        {
+          label: '1',
+          value: ['01']
+        }
+      ]
+    }, assignedToFilters]
     // Then
     expect(caseServiceMock.getOutcomesList).toHaveBeenCalledWith(courtCode, query, params.sorts, params.state)
     expect(mockResponse.render).toHaveBeenCalledWith('outcomes/resultedCases',
