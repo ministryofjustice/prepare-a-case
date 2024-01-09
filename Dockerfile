@@ -10,7 +10,7 @@ RUN ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && echo "$TZ" > /etc/timezo
 ENV BUILD_NUMBER ${BUILD_NUMBER:-1_0_0}
 ENV GIT_REF ${GIT_REF:-dummy}
 
-RUN apk add --no-cache g++ make python3 bash
+RUN apk add --no-cache g++ make python3
 RUN mkdir -p /app
 WORKDIR /app
 
