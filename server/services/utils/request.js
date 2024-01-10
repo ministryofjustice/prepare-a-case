@@ -1,4 +1,4 @@
-const axios = require('axios')
+const axios = require('axios').default
 const { settings: { defaultTimeout } } = require('../../../config')
 
 const request = async (url, queryParams) => {
