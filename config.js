@@ -32,7 +32,6 @@ module.exports = {
     caseSearchUsers: getCsvParamAsArray('CASE_SEARCH_USERS'),
     pacEnvironment: get('PAC_ENV', 'UNKNOWN'),
     enablePastCasesNavigation: getBooleanParam('ENABLE_PAST_CASES_NAVIGATION'),
-    enableCaseProgress: getBooleanParam('ENABLE_CASE_PROGRESS'),
     enableAppInsights: getBooleanParam('ENABLE_APP_INSIGHTS'),
     enableHearingOutcomes: getBooleanParam('ENABLE_HEARING_OUTCOMES'),
     enableServerSidePaging: getBooleanParam('ENABLE_SERVERSIDE_PAGING'),

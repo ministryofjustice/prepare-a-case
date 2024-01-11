@@ -1,5 +1,5 @@
 const {
-  allOf, mainFeatureToggleEnabled, enabledForSourceTypes, enabledForCourts, enabledForUsers, isEnv, anyOf, enabledForAll
+  allOf, mainFeatureToggleEnabled, enabledForCourts, enabledForUsers, isEnv, anyOf, enabledForAll
 } = require('./featureTogglePredicates')
 const { settings } = require('../../config')
 
@@ -10,7 +10,6 @@ const PLYMOUTH_MAGS_COURT_CODE = 'B50KH'
 const PILOT_COURTS = ['B20EB', 'B23HS']
 
 const features = {
-  caseProgress: enabledForAll(),
   hearingNotes: anyOf(
     allOf(
       isEnv('dev')
@@ -42,7 +41,6 @@ const features = {
     isEnv('dev', 'preprod', 'prod')
   ),
   pastCasesNavigation: enabledForAll(),
-  caseProgressNextAppearanceBadge: enabledForSourceTypes('COMMON_PLATFORM', 'LIBRA'),
   hearingOutcomes: anyOf(
     allOf(
       isEnv('dev'),

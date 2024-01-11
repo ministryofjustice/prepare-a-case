@@ -224,12 +224,7 @@
         <div class="govuk-grid-column-one-third"></div>
     </div>
 
-    {% if features.caseProgress %}
-        {% include "court-case-progress.njk" %}
-    {% endif %}
-
-
+    {% include "court-case-progress.njk" %}
     {% include "court-case-comments.njk" %}
-
 
 {% endblock %}
