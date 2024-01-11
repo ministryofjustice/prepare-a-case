@@ -20,5 +20,11 @@ module.exports = {
   testMatch: [
     '/**/?(*.)(spec|test).{js,jsx,mjs}',
     '!/**/integration/**'
-  ]
+  ],
+  transformIgnorePatterns: [
+    'node_modules/(?!axios)'
+  ],
+  moduleNameMapper: {
+    axios: 'axios/dist/node/axios.cjs'
+  }
 }
