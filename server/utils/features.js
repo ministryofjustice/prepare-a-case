@@ -56,8 +56,7 @@ const features = {
       mainFeatureToggleEnabled('enableHearingOutcomes'),
       enabledForCourts(...PILOT_COURTS)
     )
-  ),
-  advancedFilters: isEnv('dev', 'preprod', 'prod')
+  )
 }
 
 module.exports = features

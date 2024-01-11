@@ -3,7 +3,6 @@ const getCaseListFilters = require('../utils/getCaseListFilters')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../../config')
 const { prepareCourtRoomFilters } = require('../routes/helpers')
-const features = require('../utils/features')
 const { settings } = require('../../config')
 
 const isHttpSuccess = response => {
@@ -94,20 +93,18 @@ const createCaseService = (apiUrl) => {
         }
       ]
 
-      if (features.advancedFilters.isEnabled({})) {
-        caseListFilters.push(
-          {
-            id: 'source',
-            label: 'Source',
-            items: [{ label: 'Common Platform', value: 'COMMON_PLATFORM' }, { label: 'Libra', value: 'LIBRA' }]
-          },
-          {
-            id: 'breach',
-            label: 'Flag',
-            items: [{ label: 'Breach', value: 'true' }]
-          }
-        )
-      }
+      caseListFilters.push(
+        {
+          id: 'source',
+          label: 'Source',
+          items: [{ label: 'Common Platform', value: 'COMMON_PLATFORM' }, { label: 'Libra', value: 'LIBRA' }]
+        },
+        {
+          id: 'breach',
+          label: 'Flag',
+          items: [{ label: 'Breach', value: 'true' }]
+        }
+      )
 
       if (selectedFilters) {
         caseListFilters.filter(caseListFilter => !!selectedFilters[caseListFilter.id]).forEach(caseListFilter => {
