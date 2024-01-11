@@ -35,7 +35,7 @@
                             <div class="govuk-grid-row">
                                 <div class="govuk-grid-column-full">
                                     <span class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-display-inline">{{ hearing.hearingTypeLabel }}</span>
-                                    {% if features.caseProgressNextAppearanceBadge and hearing.hearingId === data.nextAppearanceHearingId %}
+                                    {% if hearing.hearingId === data.nextAppearanceHearingId %}
                                         <span class="moj-badge moj-badge--blue pac-badge govuk-!-display-inline govuk-!-margin-left-3">NEXT APPEARANCE</span>
                                     {% endif %}
                                 </div>
