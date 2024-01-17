@@ -3,8 +3,8 @@ const superagent = require('superagent')
 /** @type {any} */
 const Agent = require('agentkeepalive')
 const { HttpsAgent } = require('agentkeepalive')
-const log = require('../../log')
-const config = require('../../config')
+const log = require('../log')
+const config = require('../config')
 const fiveMinutesBefore = require('../utils/fiveMinutesBefore')
 
 const oauthUrl = `${config.apis.oauth2.url}/oauth/token`
@@ -22,7 +22,9 @@ const keepaliveAgent = oauthUrl.startsWith('https') ? new HttpsAgent(agentOption
 
 async function oauthTokenRequest (oauthRequest) {
   const oauthResult = await getOauthToken(oauthRequest)
-  log.info(`Oauth request for grant type '${oauthRequest.grant_type}', result status: ${oauthResult.status}`)
+  if (!config.settings.reduceStdoutNoise) {
+    log.info(`Oauth request for grant type '${oauthRequest.grant_type}', result status: ${oauthResult.status}`)
+  }
 
   const token = oauthResult.body.access_token
   const refreshToken = oauthResult.body.refresh_token
@@ -52,7 +54,9 @@ function getOauthToken (requestSpec) {
 function signInService () {
   return {
     getUser (token, refreshToken, expiresIn, username) {
-      log.info(`User profile for: ${username}`)
+      if (!config.settings.reduceStdoutNoise) {
+        log.info(`User profile for: ${username}`)
+      }
 
       return {
         token,
@@ -63,7 +67,9 @@ function signInService () {
     },
 
     async getRefreshedToken (user) {
-      log.info(`Refreshing token for : ${user.username}`)
+      if (!config.settings.reduceStdoutNoise) {
+        log.info(`Refreshing token for : ${user.username}`)
+      }
 
       const oauthRequest = { grant_type: 'refresh_token', refresh_token: user.refreshToken }
 

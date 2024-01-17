@@ -1,0 +1,39 @@
+version: '3.1'
+services:
+
+  hmpps-user-preferences:
+    image: quay.io/hmpps/hmpps-user-preferences:latest
+    container_name: hmpps-user-preferences
+    environment:
+      - SPRING_PROFILES_ACTIVE=postgres,dev
+      - SPRING_DATASOURCE_USER=appuser
+      - SPRING_DATASOURCE_PASSWORD=dev
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://hmpps-user-preferences:5432/postgres
+    depends_on:
+      hmpps-user-preferences:
+        condition: service_healthy
+    networks:
+      - hmpps
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/auth/health"]
+
+  hmpps-user-preferences-db:
+    image: "postgis/postgis"
+    user: postgres
+    container_name: hmpps-user-preferences-db
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: dev
+    networks:
+      - hmpps
+    volumes:
+      - hmpps-user-preferences:/var/lib/postgresql/data/
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appuser"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  hmpps-user-preferences:
+

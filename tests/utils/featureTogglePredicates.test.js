@@ -1,6 +1,6 @@
 /* global describe, it, expect, jest */
 const { enabledForUsers, enabledForCourts, disabledForAll, enabledForAll, allOf, anyOf, isEnv, mainFeatureToggleEnabled } = require('../../server/utils/featureTogglePredicates')
-const { settings } = require('../../config')
+const { settings } = require('../../server/config')
 
 describe('featureConfigPredicates', () => {
   describe('enabledForCourts', () => {

@@ -7,6 +7,15 @@ const helpers = require('../../server/routes/helpers')
 const appSetup = require('../testUtils/appSetup')
 const { authenticationMiddleware } = require('../testUtils/mockAuthentication')
 const getOutcomeTypesListFilters = require('../../server/utils/getOutcomeTypesListFilters')
+const { env } = require('process')
+
+const ENABLE_SERVERSIDE_PAGING = env.ENABLE_SERVERSIDE_PAGING
+
+/*
+ * WARN: this implementation is poor, the service should be configured with the env not pulling the env from config (which comes from process).
+ * Both feature on and off should be tested.
+ */
+const getCaseListTargetFunction = ENABLE_SERVERSIDE_PAGING ? caseService.getPagedCaseList : caseService.getCaseList
 
 let roles
 // This needs mocking early, before 'requiring' jwt-decode
@@ -47,6 +56,13 @@ describe('Routes', () => {
 
   jest.spyOn(caseService, 'getCaseList').mockImplementation(function () {
     return {
+      cases: []
+    }
+  })
+
+  jest.spyOn(caseService, 'getPagedCaseList').mockImplementation(function () {
+    return {
+      totalElements: 1,
       cases: []
     }
   })
@@ -115,7 +131,7 @@ describe('Routes', () => {
   jest.spyOn(helpers, 'prepareCourtRoomFilters').mockImplementation(() => { return [] })
 
   beforeEach(() => {
-    app = require('../../app')
+    app = require('../../server/app')
     app = appSetup(viewRoute)
     defaultFilters = [getOutcomeTypesListFilters()]
     defaultSort = [{ id: 'hearingDate', value: 'NONE' }]
@@ -166,34 +182,56 @@ describe('Routes', () => {
   it('case list route should display Monday\'s case list when viewing the empty case list on Sunday', async () => {
     mockDate.set('2020-11-15')
     const response = await request(app).get('/B14LO/cases')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-11-16', undefined, undefined)
+    if (ENABLE_SERVERSIDE_PAGING) {
+      expect(getCaseListTargetFunction).toHaveBeenCalledWith('B14LO', '2020-11-16', undefined, undefined, undefined, 20, true)
+    } else {
+      expect(getCaseListTargetFunction).toHaveBeenCalledWith('B14LO', '2020-11-16', undefined, undefined)
+    }
+
     mockDate.reset()
     return response
   })
 
+  // WARN: this test is incomplete!
   it('empty case list route should show case list for today\'s date', async () => {
     mockDate.set('2020-11-12')
     const response = await request(app).get('/B14LO/cases')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-11-12', undefined, undefined)
+    if (ENABLE_SERVERSIDE_PAGING) {
+      expect(getCaseListTargetFunction).toHaveBeenCalledWith('B14LO', '2020-11-12', undefined, undefined, undefined, 20, true)
+    } else {
+      expect(getCaseListTargetFunction).toHaveBeenCalledWith('B14LO', '2020-11-12', undefined, undefined)
+    }
     mockDate.reset()
     return response
   })
 
   it('case list route should call the case service to fetch case list data', async () => {
     const response = await request(app).get('/B14LO/cases/2020-01-01')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, false)
+    if (ENABLE_SERVERSIDE_PAGING) {
+      expect(getCaseListTargetFunction).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, false, undefined, 20, true)
+    } else {
+      expect(getCaseListTargetFunction).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, false)
+    }
     return response
   })
 
   it('case list route should call the case service to fetch recently added case list data', async () => {
     const response = await request(app).get('/B14LO/cases/2020-01-01/added')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, 'added')
+    if (ENABLE_SERVERSIDE_PAGING) {
+      expect(getCaseListTargetFunction).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, 'added', undefined, 20, true)
+    } else {
+      expect(getCaseListTargetFunction).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, 'added')
+    }
     return response
   })
 
   it('case list route should call the case service to fetch recently removed case list data', async () => {
     const response = await request(app).get('/B14LO/cases/2020-01-01/removed')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, 'removed')
+    if (ENABLE_SERVERSIDE_PAGING) {
+      expect(getCaseListTargetFunction).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, 'removed', undefined, 20, true)
+    } else {
+      expect(getCaseListTargetFunction).toHaveBeenCalledWith('B14LO', '2020-01-01', undefined, 'removed')
+    }
     return response
   })
 

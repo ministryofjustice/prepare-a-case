@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+const { minify } = require('terser')
+const fs = require('fs')
+const process = require('process')
+const { resolve, extname, basename } = require('path')
+
+const paths = {
+  src: resolve(__dirname, '../public/src/javascripts'),
+  build: resolve(__dirname, '../public/build/javascripts')
+}
+const version = process.env.APP_VERSION || 'dev-build'
+
+// minifies individual feature files
+const options = {
+  sourceMap: process.env.NODE_ENV !== 'production'
+}
+fs.readdirSync(paths.src)
+  // only js files
+  .filter(file => extname(file) === '.js')
+  // and not minified
+  .filter(file => file.slice(-7) !== '.min.js')
+  .map(async (file) => {
+    const data = fs.readFileSync(resolve(paths.src, file), { encoding: 'utf8' })
+    const { code } = await minify(data, options)
+    fs.writeFileSync(resolve(paths.build, basename(file, '.js') + `-${version}.min.js`), code)
+    return code
+  })

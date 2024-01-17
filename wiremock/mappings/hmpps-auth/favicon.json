@@ -1,0 +1,11 @@
+{
+  "id": "ffa953b9-ca70-49a2-b722-e52a0bcef005",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/favicon.ico"
+  },
+  "response": {
+    "status": 200,
+    "body": ""
+  }
+}

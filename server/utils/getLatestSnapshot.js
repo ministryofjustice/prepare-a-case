@@ -1,5 +1,5 @@
 const moment = require('moment')
-const config = require('../../config')
+const config = require('../config')
 
 /**
  * @typedef {import('moment')} moment

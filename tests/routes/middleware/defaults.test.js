@@ -1,7 +1,7 @@
 /* global describe, it, expect, jest */
 const moment = require('moment')
 const { defaults, getPath, getMonthsAndDays, addBusinessDays } = require('../../../server/routes/middleware/defaults')
-const { nonce } = require('../../../config')
+const { nonce } = require('../../../server/config')
 
 const reqObj = {
   params: {

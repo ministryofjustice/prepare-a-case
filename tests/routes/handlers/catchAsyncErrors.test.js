@@ -1,6 +1,6 @@
 /* global describe, it, expect, jest */
 
-jest.mock('../../../log')
+jest.mock('../../../server/log')
 
 describe('catchAsyncErrors', () => {
   const nextMock = jest.fn()
@@ -31,7 +31,7 @@ describe('catchAsyncErrors', () => {
   }
 
   const subject = require('../../../server/routes/handlers/catchAsyncErrors')
-  const loggerMock = require('../../../log')
+  const loggerMock = require('../../../server/log')
 
   it('should catch, log and progress the error to express when handler throws an error', async () => {
     handlerMock.mockRejectedValueOnce(testError)

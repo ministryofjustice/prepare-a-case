@@ -1,6 +1,6 @@
 /* global describe, afterEach, it, expect, jest */
 const moment = require('moment')
-const config = require('../../config')
+const config = require('../../server/config')
 const getLatestSnapshot = require('../../server/utils/getLatestSnapshot')
 
 describe('Get latest snapshot', () => {

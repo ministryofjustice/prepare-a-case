@@ -6,12 +6,7 @@ module.exports = {
   coverageDirectory: './coverage',
   rootDir: '../',
   collectCoverageFrom: [
-    '**/*.js',
-    '!**/node_modules/**',
-    '!**/mock_validation/**',
-    '!**/integration-tests/**',
-    '!**/coverage/**',
-    '!**/tests/**'
+    'server/**/*.js'
   ],
   reporters: [
     'default',
@@ -20,11 +15,5 @@ module.exports = {
   testMatch: [
     '/**/?(*.)(spec|test).{js,jsx,mjs}',
     '!/**/integration/**'
-  ],
-  transformIgnorePatterns: [
-    'node_modules/(?!axios)'
-  ],
-  moduleNameMapper: {
-    axios: 'axios/dist/node/axios.cjs'
-  }
+  ]
 }

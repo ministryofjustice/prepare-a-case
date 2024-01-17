@@ -1,4 +1,4 @@
-const logger = require('../../log')
+const logger = require('../log')
 
 module.exports = function ReminderRecorder (appInsightsClient) {
   const client = appInsightsClient || {

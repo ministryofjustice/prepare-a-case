@@ -6,7 +6,7 @@ const {
   notification,
   session: { cookieOptions },
   features: { sendPncAndCroWithOffenderUpdates }
-} = require('../../config')
+} = require('../config')
 const { updateSelectedCourts } = require('../services/user-preference-service')
 const {
   getCaseList,
@@ -66,7 +66,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.use((req, res, next) => {
     const { path, url, cookies } = req
     res.locals.analyticsCookies = req.cookies && req.cookies.analyticsCookies
-
     if (cookies && cookies.currentCourt) {
       res.cookie('currentCourt', cookies.currentCourt, cookieOptions)
     }

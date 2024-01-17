@@ -1,5 +1,5 @@
 const getBaseDateString = require('../../utils/getBaseDateString')
-const { settings } = require('../../../config')
+const { settings } = require('../../config')
 const features = require('../../utils/features')
 const trackEvent = require('../../utils/analytics.js')
 

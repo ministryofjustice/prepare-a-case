@@ -5,32 +5,21 @@
   "author": "MoJ D&T Probation in Court <probation-in-court-team@digital.justice.gov.uk>",
   "license": "MIT",
   "private": true,
-  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ministryofjustice/prepare-a-case.git"
   },
-  "engines": {
-    "node": "^20",
-    "npm": "^10"
-  },
   "scripts": {
-    "start-feature": "PORT=3007 NODE_ENV=development NOTIFICATION_USERNAME=test NOTIFICATION_PASSWORD=test ENABLE_CASE_COMMENTS=true ENABLE_CASE_PROGRESS=true ENABLE_APP_INSIGHTS=true ENABLE_HEARING_OUTCOMES=true HEARING_OUTCOMES_PAGE_SIZE=2 PAC_ENV=dev node $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
-    "start-feature:dev": "PORT=3007 NOMIS_AUTH_URL=http://localhost:9091/auth NODE_ENV=development NOTIFICATION_USERNAME=test NOTIFICATION_PASSWORD=test ENABLE_HEARING_OUTCOMES=true HEARING_OUTCOMES_PAGE_SIZE=2 nodemon $NODE_DEBUG_OPTION ./bin/www | bunyan -o short",
-    "delete:reports": "rm ./test-results/cypress/* || true",
-    "preint-test": "npm run delete:reports",
-    "preint-test:dev": "npm run delete:reports",
-    "int-test": "npx cypress run",
-    "int-test:ui": "npx cypress open",
-    "lint": "npx standard",
-    "css-build": "bash ./bin/build-css",
-    "minify-js-css": "bash ./bin/minify-js-css",
-    "start": "npm run css-build && npm run minify-js-css && node ./bin/www",
-    "start:watch": "npx nodemon --exec npm run start --scripts-prepend-node-path",
-    "unit-test": "npx jest --config=./tests/jest.config.js --ci --forceExit",
-    "pact-test": "rm -rf pact && npx jest --config=./tests/jest.pact.config.js --ci",
-    "record-build-info": "node ./bin/record-build-info",
-    "prepare": "husky install"
+    "start": "DISPLAY= docker compose up",
+    "start:detached": "npm run start -- --wait -d",
+    "stop": "docker compose down",
+    "build": "docker compose pull && docker compose build",
+    "test": "npm run test:lint && npm run test:unit && npm run test:pact && npm run test:int",
+    "test:lint": "docker exec -it prepare-a-case-app /usr/src/app/node_modules/.bin/standard",
+    "test:lint:fix": "npm run test:lint -- --fix",
+    "test:unit": "docker exec -it -e ENABLE_HEARING_OUTCOMES=false prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit",
+    "test:pact": "docker exec -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit",
+    "test:int": "docker exec -it prepare-a-case-cypress cypress run --browser chrome --config-file=cypress/cypress.config.js"
   },
   "config": {
     "pact_do_not_track": true
@@ -47,10 +36,9 @@
   },
   "standard": {
     "ignore": [
+      "/bin",
       "/public/**/*.js",
-      "/integration-tests/config",
-      "/integration-tests/plugins",
-      "/integration-tests/support"
+      "/integration-tests"
     ]
   },
   "jest-junit": {
@@ -63,18 +51,14 @@
     "ancestorSeparator": " › ",
     "usePathForSuiteName": true
   },
-  "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true,
-    "stepDefinitions": "integration-tests/integration/"
-  },
   "dependencies": {
     "@ministryofjustice/frontend": "1.4.1",
-    "accessible-autocomplete": "2.0.4",
+    "accessible-autocomplete": "^2.0.4",
     "agentkeepalive": "^4.2.1",
-    "applicationinsights": "2.3.3",
-    "applicationinsights-native-metrics": "0.0.7",
+    "applicationinsights": "2.9.2",
+    "applicationinsights-native-metrics": "0.0.10",
     "axios": "1.1.0",
-    "axios-middleware": "0.3.1",
+    "axios-middleware": "0.4.0",
     "bootstrap": "^5.3.2",
     "bunyan": "1.8.15",
     "bunyan-format": "0.2.1",
@@ -82,7 +66,6 @@
     "connect-redis": "6.1.3",
     "cookie-parser": "1.4.6",
     "cookie-session": "2.0.0",
-    "csurf": "1.11.0",
     "debug": "4.3.4",
     "dotenv": "16.0.0",
     "express": "4.18.1",
@@ -92,39 +75,28 @@
     "helmet": "4.6.0",
     "jsonwebtoken": "9.0.0",
     "jwt-decode": "3.1.2",
-    "modal-vanilla": "^0.12.0",
     "moment": "2.29.4",
-    "morgan": "1.10.0",
-    "nunjucks": "3.2.3",
-    "passport": "0.6.0",
-    "passport-oauth2": "1.6.1",
-    "qs": "^6.9.7",
+    "nunjucks": "^3.2.4",
+    "passport": "^0.7.0",
+    "passport-oauth2": "^1.7.0",
     "redis": "3.1.2",
-    "semver": "^7.5.2",
     "superagent": "7.1.3"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "8.1.2",
-    "@pact-foundation/pact": "9.17.3",
+    "@pact-foundation/pact": "^12.1.2",
     "ajv": "8.11.0",
     "ajv-errors": "3.0.0",
-    "axe-core": "^4.4.1",
-    "cypress": "^13.6.1",
-    "cypress-axe": "^1.5.0",
-    "cypress-cucumber-preprocessor": "4.3.1",
-    "husky": "8.0.1",
-    "jest": "27.5.1",
+    "jest": "^29.7.0",
     "jest-junit": "13.2.0",
-    "jest-pact": "0.9.3",
-    "minify": "8.0.4",
+    "jest-pact": "^0.11.0",
     "mockdate": "3.0.5",
     "moxios": "0.4.0",
     "nock": "^13.2.4",
-    "node-sass": "^9.0.0",
-    "nodemon": "^2.0.19",
-    "redis-mock": "0.56.3",
+    "nodemon": "^3.0.2",
+    "sass": "^1.69.7",
     "standard": "17.0.0",
     "supertest": "6.2.2",
+    "terser": "^5.26.0",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   }

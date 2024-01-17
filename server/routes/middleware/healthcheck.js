@@ -1,5 +1,5 @@
 const axios = require('axios').default
-const { apis: { courtCaseService }, settings: { healthTimeout } } = require('../../../config')
+const { apis: { courtCaseService }, settings: { healthTimeout } } = require('../../config')
 
 const health = async (req, res, next) => {
   function unhealthy () {
@@ -14,6 +14,7 @@ const health = async (req, res, next) => {
       unhealthy()
     }
   } catch (e) {
+    // TODO: WARN: errors other than http response get swallowed here!
     unhealthy()
   }
 }

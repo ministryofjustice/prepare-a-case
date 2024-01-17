@@ -1,7 +1,7 @@
 const { request, requestFile } = require('./utils/request')
-const config = require('../../config')
+const config = require('../config')
 const apiUrl = config.apis.courtCaseService.url
-const logger = require('../../log')
+const logger = require('../log')
 
 const getConviction = async (crn, convictionId) => {
   const res = await request(`${apiUrl}/offender/${crn}/convictions/${convictionId}`) || { data: {} }

@@ -1,8 +1,8 @@
 const superagent = require('superagent')
 const Agent = require('agentkeepalive')
 const { HttpsAgent } = require('agentkeepalive')
-const logger = require('../../log.js')
-const config = require('../../config')
+const logger = require('../log')
+const config = require('../config')
 
 const agentOptions = {
   maxSockets: config.apis.oauth2.agent.maxSockets,

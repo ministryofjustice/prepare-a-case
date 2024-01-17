@@ -1,0 +1,44 @@
+version: '3.1'
+services:
+
+  court-case-service:
+    image: docker.io/mojdigitalstudio/court-case-service:latest
+    container_name: court-case-service
+    networks:
+      - hmpps
+    depends_on:
+      course-case-service-db:
+        condition: service_healthy
+      hmpps-auth:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/auth/health"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - HMPPS_AUTH_URL=http://hmpps-auth:8080/auth
+      - SPRING_DATASOURCE_USER=appuser
+      - SPRING_DATASOURCE_PASSWORD=dev
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://course-case-service-db:5432/postgres
+
+  course-case-service-db:
+    image: "postgis/postgis"
+    user: postgres
+    container_name: course-case-service-db
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: dev
+    networks:
+      - hmpps
+    volumes:
+      - course-case-service-db:/var/lib/postgresql/data/
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appuser"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  course-case-service-db:
+

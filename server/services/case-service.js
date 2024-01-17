@@ -1,9 +1,9 @@
 const { request, update, httpDelete, create } = require('./utils/request')
 const getCaseListFilters = require('../utils/getCaseListFilters')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
-const config = require('../../config')
+const config = require('../config')
 const { prepareCourtRoomFilters } = require('../routes/helpers')
-const { settings } = require('../../config')
+const { settings } = require('../config')
 
 const isHttpSuccess = response => {
   return response && response.status / 100 === 2
