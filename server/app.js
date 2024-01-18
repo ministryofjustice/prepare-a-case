@@ -33,7 +33,7 @@ module.exports = function createApp ({ signInService, userService }) {
   const app = express()
 
   if (!config.settings.reduceStdoutNoise) {
-    const data = fs.readFileSync('banner.txt', 'utf8')
+    const data = fs.readFileSync(path.join(__dirname, 'banner.txt'), 'utf8')
     console.log(data.toString())
     console.info(`Starting Prepare a Case ${config.appVersion} using NodeJS ${nodeVersion} on ${hostName}`)
   }
