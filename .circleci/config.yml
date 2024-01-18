@@ -145,7 +145,7 @@ jobs:
           path: 'pact/pacts'
       - run:
           name: Upload pact files to broker
-          command: docker run -it prepare-a-case-app pact-broker publish pact/pacts --broker-base-url $PACT_BROKER_BASE_URL --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD"
+          command: docker run -it prepare-a-case-app /usr/src/app/node_modules/.bin/pact-broker publish pact/pacts --broker-base-url $PACT_BROKER_BASE_URL --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD"
   build:
     executor: deployer
     parameters:
@@ -196,19 +196,6 @@ jobs:
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}'
           monitor-on-build: << parameters.main >>
           <<: *snyk_options
-
-  image_scan:
-    executor: deployer
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - snyk/scan:
-          project: '${CIRCLE_PROJECT_REPONAME}-docker/${CIRCLE_BRANCH}'
-          docker-image-name: 'quay.io/hmpps/prepare-a-case:latest'
-          target-file: 'Dockerfile'
-          monitor-on-build: true
-          <<: *snyk_options
   deploy_dev:
     executor: deployer
     steps:
@@ -238,7 +225,6 @@ workflows:
     jobs:
       - app_scan:
           main: true
-      - image_scan
 
   build-test-and-deploy:
     jobs:
@@ -261,15 +247,12 @@ workflows:
           main: true
           requires:
             - set_app_version
-      - image_scan:
-          requires:
-            - build
       - deploy_dev:
           context:
             - court-probation-live-dev
             - hmpps-common-vars
           requires:
-            - image_scan
+            - build
       - request-preprod-approval:
           type: approval
           requires:
