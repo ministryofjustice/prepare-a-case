@@ -119,11 +119,35 @@ const createCaseService = (apiUrl) => {
         })
       }
 
+      const allCases = []
+      const addedCases = []
+      const removedCases = []
+      let unmatchedRecords = 0
+      if (response.data.cases) {
+        response.data.cases.forEach($case => {
+          if ($case.probationStatus.toLowerCase() === 'possible ndelius record' && $case.numberOfPossibleMatches > 0) {
+            unmatchedRecords++
+          }
+          if ($case.createdToday) {
+            allCases.push($case)
+            addedCases.push($case)
+          } else if ($case.removed) {
+            removedCases.push($case)
+          } else {
+            allCases.push($case)
+          }
+        })
+      }
+
       return {
         ...response.data,
+        addedCount: addedCases.length,
+        removedCount: removedCases.length,
+        unmatchedRecords,
         filters: caseListFilters
       }
     },
+
     getCaseList: async (courtCode, date, selectedFilters, subsection) => {
       const latestSnapshot = getLatestSnapshot(date).format('YYYY-MM-DDTHH:mm:00.000')
       const response = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
@@ -179,10 +203,10 @@ const createCaseService = (apiUrl) => {
         totalCount: allCases.length,
         addedCount: addedCases.length,
         removedCount: removedCases.length,
+        cases: filteredCases,
+        snapshot: latestSnapshot,
         unmatchedRecords,
         filters,
-        cases: filteredCases,
-        snapshot: latestSnapshot
       }
     },
 

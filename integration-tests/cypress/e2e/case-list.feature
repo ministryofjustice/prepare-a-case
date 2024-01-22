@@ -25,7 +25,7 @@ Feature: Case list
     And I should see a tab with text "Recently added (21)"
     And I should see a tab with text "Removed cases (1)"
 
-    And I should see a count of "207 cases"
+    And I should see a count of "29 cases"
 
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |

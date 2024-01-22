@@ -36,7 +36,7 @@
                     "source": "COMMON_PLATFORM",
                     "sessionStartTime": "2023-11-29T16:53:36",
                     "session": "AFTERNOON",
-                    "probationStatus": "Current",
+                    "probationStatus": "Possible ndelius record",
                     "previouslyKnownTerminationDate": "2022-09-30",
                     "suspendedSentenceOrder": false,
                     "breach": true,
@@ -106,7 +106,7 @@
                     "source": "COMMON_PLATFORM",
                     "sessionStartTime": "2023-11-29T16:53:43",
                     "session": "AFTERNOON",
-                    "probationStatus": "No record",
+                    "probationStatus": "Possible ndelius record",
                     "offences": [
                         {
                             "offenceTitle": "Repetitious song playing (Girls just want to have fun)",
@@ -134,7 +134,7 @@
                     "defendantId": "fae411a5-1774-4772-8d68-b396581bc036",
                     "createdToday": false,
                     "removed": false,
-                    "numberOfPossibleMatches": 0,
+                    "numberOfPossibleMatches": 1,
                     "caseComments": [],
                     "hearingEventType": "ConfirmedOrUpdated",
                     "confirmedOffender": false,

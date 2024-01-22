@@ -12,7 +12,7 @@ const getCaseListHandler = caseService => async (req, res) => {
     params
   } = req
 
-  const page = parseInt(req.params.page, 10) || 1
+  const page = parseInt(req.query.page, 10) || 1
 
   const selectedFilters = session.selectedFilters
   const currentNotification = await getAsync('case-list-notification')
@@ -52,8 +52,9 @@ const getCaseListHandler = caseService => async (req, res) => {
       from: startCount,
       to: endCount,
       caseCount,
-      addedCount: response.recentlyAddedCount,
-      unmatchedRecords: response.possibleMatchesCount,
+      totalPages: response.totalPages,
+      addedCount: response.addedCount,
+      unmatchedRecords: response.unmatchedRecords,
       totalDays: pastCaseNavigationEnabled ? settings.casesTotalDays : 7,
       casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
       enablePastCasesNavigation: settings.enablePastCasesNavigation,
@@ -68,6 +69,7 @@ const getCaseListHandler = caseService => async (req, res) => {
   session.caseListDate = currentDate
   session.currentCaseListViewLink = `${path}?page=${templateValues.params.page}`
   session.backLink = session.currentCaseListViewLink
+
   res.render('case-list', templateValues)
 }
 

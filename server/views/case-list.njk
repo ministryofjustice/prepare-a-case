@@ -1,3 +1,4 @@
+
 {%- set moment = params.moment -%}
 {%- set displayFilters = (params.subsection === '' or params.subsection === 'heard') and (params.caseCount or params.filtersApplied) -%}
 
@@ -92,8 +93,8 @@
 {% set currentPage = params.page %}
 {% set startNum = currentPage - ((maxPagesDisplay - 1) / 2) %}
 {% set endNum = currentPage + ((maxPagesDisplay - 1) / 2) %}
-{% set totalPages = (params.caseCount / params.limit) | round(0, "ceil") %}
-
+{% set totalPages = params.totalPages %}
+q
 {% if startNum < 1 or totalPages <= maxPagesDisplay %}
     {% set startNum = 1 %}
     {% set endNum = maxPagesDisplay %}
@@ -310,7 +311,6 @@
         <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "No case list information available." }}</p>
     {% endif %}
 
-    {% if totalPages > 1 %}
         {%- set showSubsectionLinks = (params.subsection === 'added' or params.subsection === 'heard') -%}
         {% block pagination %}
             {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
@@ -325,7 +325,7 @@
                 items: recentlyAddedPageItems if showSubsectionLinks else pageItems
             }) }}
         {% endblock %}
-    {% endif %}
+    
     </div>
 
 {% endblock %}
