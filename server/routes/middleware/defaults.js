@@ -47,7 +47,6 @@ const defaults = (req, res, next) => {
   const courtData = courtLookup(req.params.courtCode)
   req.params = {
     ...req.params,
-    limit: settings.casesPerPage,
     moment,
     getMonthsAndDays,
     addBusinessDays,

@@ -2,12 +2,12 @@
 
 const { settings } = require('../../../server/config')
 
-describe('getPagedCaseListRouteHandler', () => {
+describe('getCaseListHandler', () => {
   const { caseServiceMock: caseService, mockResponse } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/getPagedCaseListRouteHandler')(caseService)
+  const subject = require('../../../server/routes/handlers/getCaseListHandler')(caseService)
   const mockRequest = {
     redisClient: { getAsync: jest.fn() },
-    params: { courtCode: 'ABC', date: '2020-11-11', limit: 10 },
+    params: { courtCode: 'ABC', date: '2020-11-11' },
     query: { page: 1 },
     session: {},
     path: '/SHF/cases'
@@ -23,7 +23,7 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 20, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 10, true)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('error', { status: 500 })
   })
@@ -48,14 +48,14 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 20, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 10, true)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
         title: 'Cases',
         data: [{}, {}, {}, {}],
         params: {
-          hearingOutcomesEnabled: false,
+          hearingOutcomesEnabled: true,
           addedCount: 2,
           caseCount: 4,
           courtCode: 'ABC',
@@ -63,7 +63,6 @@ describe('getPagedCaseListRouteHandler', () => {
           filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
           filtersApplied: false,
           from: 0,
-          limit: 10,
           notification: '',
           page: 1,
           subsection: '',
@@ -73,7 +72,7 @@ describe('getPagedCaseListRouteHandler', () => {
           unmatchedRecords: 2,
           enablePastCasesNavigation: true
         },
-        hearingOutcomesEnabled: false
+        hearingOutcomesEnabled: true
       })
   })
 
@@ -95,14 +94,14 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 20, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 10, true)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
         title: 'Cases',
         data: [{}, {}, {}, {}],
         params: {
-          hearingOutcomesEnabled: false,
+          hearingOutcomesEnabled: true,
           addedCount: 2,
           caseCount: 4,
           courtCode: 'ABC',
@@ -110,7 +109,6 @@ describe('getPagedCaseListRouteHandler', () => {
           filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
           filtersApplied: false,
           from: 0,
-          limit: 10,
           notification: '',
           page: 1,
           subsection: '',
@@ -120,7 +118,7 @@ describe('getPagedCaseListRouteHandler', () => {
           unmatchedRecords: 2,
           enablePastCasesNavigation: false
         },
-        hearingOutcomesEnabled: false
+        hearingOutcomesEnabled: true
       })
   })
 })

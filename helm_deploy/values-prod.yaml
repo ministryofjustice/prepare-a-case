@@ -31,7 +31,6 @@ env:
   ENABLE_HEARING_OUTCOMES: true
   CASE_TRACKING_PRE_PILOT_USERS: ZAP37S,BEVERLEYWILLMOTTNPS,ZRX14Y,wyi97r,mdy87w,sarahclarkenps,bethanylilleynps,jenniferrawlingsnps,maxholgatenps,wjf65j,xzu68s,CZE89A,serenacannannps,qgd46q,santoshchakrabartnps
   CASE_SEARCH_USERS: all
-  ENABLE_SERVERSIDE_PAGING: true
 
 whitelist:
   office: "217.33.148.210/32"

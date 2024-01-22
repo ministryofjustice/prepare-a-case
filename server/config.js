@@ -26,7 +26,7 @@ module.exports = {
     defaultTimeout: get('DEFAULT_TIMEOUT', 6000),
     healthTimeout: 2000,
     reduceStdoutNoise: get('REDUCE_STDOUT_NOISE', false),
-    casesPerPage: get('CASES_PER_PAGE', 20),
+    casesPerPage: Number(get('CASES_PER_PAGE', 20)),
     casesTotalDays: get('CASES_TOTAL_DAYS', 13),
     casesPastDays: get('CASES_PAST_DAYS', 6),
     caseTrackingPrePilotUsers: getCsvParamAsArray('CASE_TRACKING_PRE_PILOT_USERS'),
@@ -35,7 +35,6 @@ module.exports = {
     enablePastCasesNavigation: getBooleanParam('ENABLE_PAST_CASES_NAVIGATION'),
     enableAppInsights: getBooleanParam('ENABLE_APP_INSIGHTS'),
     enableHearingOutcomes: getBooleanParam('ENABLE_HEARING_OUTCOMES'),
-    enableServerSidePaging: getBooleanParam('ENABLE_SERVERSIDE_PAGING'),
     casesExcludedDays: get('CASES_EXCLUDED_DAYS', '0'), // Coma delimited String of days to exclude, incremental from 0 (Sunday)
     snapshotTimes: get('CASE_SNAPSHOT_TIMES', '00:00,08:45,09:45'), // Coma delimited string of snapshot times, earliest - latest
     assetCache: '30d',

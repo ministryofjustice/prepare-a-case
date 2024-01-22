@@ -30,7 +30,6 @@ env:
   ENABLE_HEARING_OUTCOMES: true
   CASE_TRACKING_PRE_PILOT_USERS: joana.aguia,tony.howard,tfe58u,ravishankar.challapalli
   CASE_SEARCH_USERS: all
-  ENABLE_SERVERSIDE_PAGING: true
 
 whitelist:
   office: "217.33.148.210/32"

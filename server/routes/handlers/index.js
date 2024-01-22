@@ -1,7 +1,6 @@
 // A central file where all the handlers are created with necessary dependencies injected
 
 const {
-  getCaseList,
   getPagedCaseList,
   getCase,
   addCaseComment,
@@ -21,7 +20,7 @@ const { getProbationRecord } = require('../../services/community-service')
 const { getUserSelectedCourts } = require('../../services/user-preference-service')
 const getCaseSearchType = require('../../utils/getCaseSearchType')
 
-const getCaseListHandler = require('./getCaseListRouteHandler')({ getCaseList })
+const getCaseListHandler = require('./getCaseListHandler')({ getPagedCaseList })
 
 const getCaseAndTemplateValues = require('./getCaseTemplateValuesHelper')({ getCase })
 
@@ -60,8 +59,6 @@ const cancelCaseCommentDraftHandler = require('./getCancelCaseCommentDraftHandle
 
 const updateCaseCommentHandler = require('./getUpdateCommentRequestHandler')({ updateCaseComment })
 
-const pagedCaseListRouteHandler = require('./getPagedCaseListRouteHandler')({ getPagedCaseList })
-
 module.exports = {
   getCaseListHandler,
   getCaseAndTemplateValues,
@@ -82,6 +79,5 @@ module.exports = {
   editHearingOutcomeHandler,
   autoSaveCaseCommentHandler,
   cancelCaseCommentDraftHandler,
-  updateCaseCommentHandler,
-  pagedCaseListRouteHandler
+  updateCaseCommentHandler
 }

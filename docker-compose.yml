@@ -86,6 +86,7 @@ services:
       - ENABLE_CASE_PROGRESS=${ENABLE_CASE_PROGRESS:-true}
       - ENABLE_HEARING_OUTCOMES=${ENABLE_HEARING_OUTCOMES:-true}
       - ENABLE_PAST_CASES_NAVIGATION=${ENABLE_PAST_CASES_NAVIGATION:-false}
+      - CASES_PER_PAGE=${CASES_PER_PAGE:-10}
     env_file:
       - .env
     networks:

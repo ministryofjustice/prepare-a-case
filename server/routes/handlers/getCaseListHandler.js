@@ -3,15 +3,16 @@ const { settings } = require('../../config')
 const features = require('../../utils/features')
 const trackEvent = require('../../utils/analytics.js')
 
-const getPagedCaseListRouteHandler = caseService => async (req, res) => {
+const getCaseListHandler = caseService => async (req, res) => {
   const {
     redisClient: { getAsync },
-    params: { courtCode, date, limit, subsection },
-    query: { page },
+    params: { courtCode, date, subsection },
     session,
     path,
     params
   } = req
+
+  const page = parseInt(req.params.page, 10) || 1
 
   const selectedFilters = session.selectedFilters
   const currentNotification = await getAsync('case-list-notification')
@@ -23,7 +24,7 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
     trackEvent(
       'PiCPrepareACaseErrorTrace',
       {
-        operation: ' getPagedCaseListRouteHandler [caseService.getPagedCaseList]',
+        operation: ' getCaseListHandler [caseService.getPagedCaseList]',
         req,
         response
       }
@@ -33,8 +34,9 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
   }
 
   const caseCount = response.totalElements
-  const startCount = ((parseInt(page, 10) - 1) || 0) * limit
-  const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
+
+  const startCount = ((parseInt(page, 10) - 1) || 0) * settings.casesPerPage
+  const endCount = Math.min(startCount + parseInt(settings.casesPerPage, 10), caseCount)
 
   const pastCaseNavigationEnabled = features.pastCasesNavigation.isEnabled(context)
 
@@ -46,7 +48,7 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
       date: currentDate,
       notification: currentNotification || '',
       filters: response.filters,
-      page: parseInt(page, 10) || 1,
+      page,
       from: startCount,
       to: endCount,
       caseCount,
@@ -69,4 +71,4 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
   res.render('case-list', templateValues)
 }
 
-module.exports = getPagedCaseListRouteHandler
+module.exports = getCaseListHandler

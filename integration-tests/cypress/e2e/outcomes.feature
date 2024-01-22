@@ -38,7 +38,7 @@ Feature: Outcomes List
     Given I am an authenticated user
     When I navigate to the "cases" route
     Then I should be on the "Case list" page
-    When I click the "English Madden" link
+    When I click the "Joe Bloggs" link
     And I should see the Primary navigation "Outcomes" link
     When I click on the "Outcomes" link in the Primary navigation
     Then I should be on the "Hearing outcomes" page
