@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "http://example.com/example.json",
+  "$id": "/hearing/{hearingId}/defendant/{defendantId}",
   "type": "object",
   "title": "The root schema",
   "description": "The root schema comprises the entire JSON document.",
@@ -12,6 +12,7 @@
     "caseNo",
     "courtCode",
     "courtRoom",
+    "files",
     "sessionStartTime",
     "session",
     "probationStatus",
@@ -59,6 +60,53 @@
       "title": "The caseNo schema",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
+    },
+    "files": {
+      "$id": "#/properties/files",
+      "type": "array",
+      "items": {
+        "$id": "#/properties/files/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/files/items/anyOf/0",
+            "type": "object",
+            "required": [
+              "id",
+              "file",
+              "datetime"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "A uuid probably"
+              },
+              "file": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "size"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "size": {
+                    "type": "number",
+                    "title": "In bytes"
+                  }
+                },
+                 "additionalProperties": false
+              },
+              "datetime": {
+                "type": "string",
+                "title": "In ISO format only",
+                "format": "date-time"
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
     },
     "crn": {
       "$id": "#/properties/crn",
