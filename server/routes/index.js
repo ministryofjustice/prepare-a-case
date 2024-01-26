@@ -13,7 +13,8 @@ const {
   getMatchDetails,
   deleteOffender,
   updateOffender,
-  getCaseHistory
+  getCaseHistory,
+  files: caseFiles
 } = require('../services/case-service')
 const {
   getDetails,
@@ -252,6 +253,39 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/publish-edited-note', defaults, catchErrors(autoSaveHearingNoteEditHandler))
 
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/delete', defaults, catchErrors(async (req, res) => {
+    const { params: { hearingId, defendantId, fileId } } = req
+    const { data } = await caseFiles.delete(hearingId, defendantId, fileId)
+    res.json(data)
+  }))
+
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/raw', (req, res, next) => {
+    const { params: { hearingId, defendantId, fileId } } = req
+    caseFiles.getRaw(
+      req,
+      res,
+      next,
+      proxyRes => {
+        if (proxyRes.statusCode >= 400) {
+          throw new Error(`${proxyRes.statusCode} - unable to download file.`)
+        }
+      },
+      hearingId,
+      defendantId,
+      fileId
+    )
+  })
+
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files', (req, res, next) => {
+    const { params: { hearingId, defendantId } } = req
+    const formatter = data => {
+      // date formatter
+      data.datetime = moment(data.datetime).format('D MMMM YYYY')
+      return data
+    }
+    caseFiles.post(req, res, next, formatter, hearingId, defendantId)
+  })
+
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
     // build outcome types list for select controls
     const outcomeTypeItems = getOutcomeTypesListFilters().items
@@ -284,6 +318,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
         return moment(b.created).unix() - moment(a.created).unix()
       })
     })
+
+    templateValues.data.files
+      .forEach(file => {
+        file.datetime = moment(file.datetime).format('D MMMM YYYY')
+      })
+
+    templateValues.config = { ...settings.case }
 
     templateValues.enableCaseHistory = settings.enableCaseHistory
     templateValues.currentUserUuid = res.locals.user.uuid

@@ -23,6 +23,40 @@ const getCsvParamAsArray = param => get(param, '')?.split(',').map(value => valu
 
 module.exports = {
   settings: {
+    case: {
+      files: {
+        mime: {
+          allow: [
+          ]
+        },
+        extension: {
+          allow: [
+            '.csv',
+            '.doc',
+            '.docx',
+            '.jpg',
+            '.jpeg',
+            '.xml',
+            '.ods',
+            '.odt',
+            '.pdf',
+            '.png',
+            '.ppt',
+            '.pptx',
+            '.rdf',
+            '.rtf',
+            '.txt',
+            '.xls',
+            '.xlsx',
+            '.xml',
+            '.zip'
+          ]
+        },
+        select: {
+          max: 10
+        }
+      }
+    },
     defaultTimeout: get('DEFAULT_TIMEOUT', 6000),
     healthTimeout: 2000,
     reduceStdoutNoise: get('REDUCE_STDOUT_NOISE', false),
