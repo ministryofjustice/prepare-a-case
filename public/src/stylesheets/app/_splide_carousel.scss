@@ -1,0 +1,51 @@
+@import "node_modules/@splidejs/splide/src/css/template/default";
+
+.splide {
+
+  &__track {
+    margin: 0 10px;
+  }
+
+  &__arrow {
+    background-color: govuk-colour('blue');
+    opacity: 1;
+    border-radius: 0;
+    height: 4em;
+    min-width: 30px;
+    transform: none;
+    margin-bottom: 0;
+    top: auto;
+    position: initial;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    @extend .govuk-body;
+    @extend .govuk-\!-font-size-19;
+    padding: 10px 0;
+    @include govuk-media-query($until: tablet){
+      min-width: 50px;
+    }
+
+    svg {
+        fill: govuk-colour("white");
+    }
+
+    &--prev {
+      left: 0;
+    }
+    &--next {
+      right: 0;
+    }
+  }
+
+  &__slide {
+    margin-bottom: 4px;
+  }
+
+}
+
+
+.splide.is-focus-in .splide__slide:focus {
+  outline: 3px solid rgba(255,0,0,0);
+}

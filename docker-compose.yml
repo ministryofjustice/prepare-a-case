@@ -49,6 +49,8 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
       - '6379:6379'
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ] # ping redis and write to a key to ensure service is up
 
   app:
     build: 
@@ -85,16 +87,20 @@ services:
       - ENABLE_CASE_COMMENTS=${ENABLE_CASE_COMMENTS:-true}
       - ENABLE_CASE_PROGRESS=${ENABLE_CASE_PROGRESS:-true}
       - ENABLE_HEARING_OUTCOMES=${ENABLE_HEARING_OUTCOMES:-true}
-      - ENABLE_PAST_CASES_NAVIGATION=${ENABLE_PAST_CASES_NAVIGATION:-false}
+      - ENABLE_PAST_CASES_NAVIGATION=${ENABLE_PAST_CASES_NAVIGATION:-true}
     env_file:
       - .env
     networks:
       - hmpps
     depends_on:
-      - redis
-      - court-case-service
-      - hmpps-auth
-      - hmpps-user-preferences
+      redis:
+        condition: service_healthy
+      hmpps-auth:
+        condition: service_started
+      court-case-service:
+        condition: service_started
+      hmpps-user-preferences:
+        condition: service_started
     ports:
       - '3007:3007'
     restart: always
@@ -107,12 +113,13 @@ services:
     container_name: prepare-a-case-cypress
     environment:
       - CYPRESS_FAIL_FAST_ENABLED=true
+      - CYPRESS_CASES_TOTAL_DAYS=${CASES_TOTAL_DAYS:-28}
       - DISPLAY=${DISPLAY}
     working_dir: /e2e
     command: ["open", "-C", "cypress/cypress.config.js"]
     volumes:
       #mac
-      #- /tmp/.X11-unix:/tmp/.X11-unix
+      - /tmp/.X11-unix:/tmp/.X11-unix
       #linux
       #- ~/.Xauthority:/root/.Xauthority:rw
       #end

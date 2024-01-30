@@ -27,8 +27,8 @@ module.exports = {
     healthTimeout: 2000,
     reduceStdoutNoise: get('REDUCE_STDOUT_NOISE', false),
     casesPerPage: get('CASES_PER_PAGE', 20),
-    casesTotalDays: get('CASES_TOTAL_DAYS', 13),
-    casesPastDays: get('CASES_PAST_DAYS', 6),
+    casesTotalDays: get('CASES_TOTAL_DAYS', 28),
+    casesPastDays: get('CASES_PAST_DAYS', 14),
     caseTrackingPrePilotUsers: getCsvParamAsArray('CASE_TRACKING_PRE_PILOT_USERS'),
     caseSearchUsers: getCsvParamAsArray('CASE_SEARCH_USERS'),
     pacEnvironment: get('PAC_ENV', 'UNKNOWN'),
@@ -36,7 +36,7 @@ module.exports = {
     enableAppInsights: getBooleanParam('ENABLE_APP_INSIGHTS'),
     enableHearingOutcomes: getBooleanParam('ENABLE_HEARING_OUTCOMES'),
     enableServerSidePaging: getBooleanParam('ENABLE_SERVERSIDE_PAGING'),
-    casesExcludedDays: get('CASES_EXCLUDED_DAYS', '0'), // Coma delimited String of days to exclude, incremental from 0 (Sunday)
+    casesExcludedDays: get('CASES_EXCLUDED_DAYS', '-1'), // Coma delimited String of days to exclude, incremental from 0 (Sunday) - fallback to -1 to exclude no days
     snapshotTimes: get('CASE_SNAPSHOT_TIMES', '00:00,08:45,09:45'), // Coma delimited string of snapshot times, earliest - latest
     assetCache: '30d',
     scriptCache: '24h',

@@ -1,13 +1,49 @@
-<nav class="pac-days-navigation govuk-!-margin-top-4 govuk-!-margin-bottom-4" aria-label="Date navigation">
-    {% for days in range(0, params.totalDays) %}
-        {%- set thisDate = params.addBusinessDays(params.startDate, days) -%}
-        {%- set isToday = params.today == thisDate.format('yyyy-MM-DD') -%}
-        {%- set isCurrentDate = params.currentDate.isSame(thisDate.format('yyyy-MM-DD')) -%}
-        <{{ "span" if isCurrentDate else "a" }} class="pac-days-navigation-item{{ " pac-days-navigation-item__link" if not isCurrentDate }}{{ " calendar-nav-link-today" if params.enablePastCasesNavigation and isToday and not isCurrentDate }}"{% if not isCurrentDate %} href="{{ params.baseUrl + '/' + thisDate.format('yyyy-MM-DD') }}"{% else %} aria-current="date"{% endif %} aria-label="{{ thisDate.format('dddd D')}}">
+{% set startIndex = 0 %}
+{% for days in range(0, params.totalDays) %}
+    {%- set thisDate = params.addBusinessDays(params.startDate, days) -%}
+    {%- set isCurrentDate = params.currentDate.isSame(thisDate.format('yyyy-MM-DD')) -%}
+    {%- if isCurrentDate -%}
+        {%- set startIndex = days -%}
+    {%- endif -%}
+{% endfor %}
 
-            <span>{{ thisDate.format('ddd') }}</span>
-            <span class="govuk-!-font-size-24 govuk-!-font-weight-bold">{{ thisDate.format('D') }}</span>
+<section class="splide pac-days-navigation" aria-label="Date navigation" role="region" aria-roledescription="carousel" data-splide='{ "perPage":"{{ params.totalDays/2 }}", "perMove":"{{ params.totalDays/4 }}", "start": "{{ startIndex }}"}'>
 
-        </{{ "span" if isCurrentDate else "a" }}>
-    {% endfor %}
-</nav>
+    <button class="splide__arrow splide__arrow--prev" aria-label="Previous">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false">
+            <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
+        </svg>
+    </button>
+
+    <div class="splide__track">
+        <nav class="splide__list">
+
+            {% for days in range(0, params.totalDays) %}
+                {%- set thisDate = params.addBusinessDays(params.startDate, days) -%}
+                {% set isSunday = thisDate.day() === 0 %}
+                {%- set isToday = params.today == thisDate.format('yyyy-MM-DD') -%}
+                {%- set isCurrentDate = params.currentDate.isSame(thisDate.format('yyyy-MM-DD')) -%}
+                {%- if isCurrentDate -%}
+                    {%- set startIndex = days -%}
+                {%- endif -%}
+                {%- set isCurrentDateOrSunday = isCurrentDate or isSunday -%}
+
+                <{{ "span" if isCurrentDateOrSunday else "a" }} class="splide__slide pac-days-navigation-item{{ " pac-days-navigation-item__link" if not isCurrentDateOrSunday }}{{ " calendar-nav-link-today" if params.enablePastCasesNavigation and isToday and not isCurrentDate }}{{ " calendar-nav-link__disabled" if isSunday }}"{% if not isCurrentDateOrSunday %} href="{{ params.baseUrl + '/' + thisDate.format('yyyy-MM-DD') }}"{% elseif isCurrentDate %} aria-current="date"{% endif %} aria-label="{{ thisDate.format('dddd D')}}" role="group" aria-roledescription="slide">
+
+                    <span>{{ thisDate.format('ddd') }}</span>
+                    <span class="govuk-!-font-size-24 govuk-!-font-weight-bold">{{ thisDate.format('D') }}</span>
+
+                </{{ "span" if isCurrentDateOrSunday else "a" }}>
+            {% endfor %}
+        </nav>
+    </div>
+
+    <button class="splide__arrow splide__arrow--next" aria-label="Next">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false">
+            <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"></path>
+        </svg>
+    </button>
+
+    <div class="splide__arrows"></div>
+
+</section>
