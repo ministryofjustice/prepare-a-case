@@ -92,7 +92,7 @@ describe('getPagedCaseListRouteHandler', () => {
       totalElements: 4
     })
 
-    settings.enablePastCasesNavigation = false
+    jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
 
     // When
     await subject(mockRequest, mockResponse)

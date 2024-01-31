@@ -46,8 +46,8 @@ describe('getCaseListRouteHandler', () => {
       snapshot: '2020-10-10'
     })
 
-    settings.enablePastCasesNavigation = true
-    settings.pacEnvironment = 'dev'
+    jest.replaceProperty(settings, 'enablePastCasesNavigation', true)
+    jest.replaceProperty(settings, 'pacEnvironment', 'dev')
 
     // When
     await subject(mockRequest, mockResponse)
@@ -99,7 +99,7 @@ describe('getCaseListRouteHandler', () => {
       snapshot: '2020-10-10'
     })
 
-    settings.enablePastCasesNavigation = false
+    jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
 
     // When
     await subject(mockRequest, mockResponse)

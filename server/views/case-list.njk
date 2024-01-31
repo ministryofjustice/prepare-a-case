@@ -82,21 +82,7 @@
 {% set isSunday = moment().day() === 0 %}
 {% set dateFormat = 'dddd D MMMM' %}
 {% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
-
-{% if currentDate.isBetween(moment().subtract(params.casesPastDays + 1, 'days'), moment().add(params.casesPastDays, 'days'), 'day', '[]') %}
-    {% set renderMiddleDate = moment() %}
-{% else %}
-
-    {# TODO: logic needs fixing here, but spent enough time on it already #}
-    {% if currentDate.isBefore(moment(), 'day') %}
-        {% set renderMiddleDate = params.addBusinessDays(moment(), -params.totalDays) %}
-    {% else %}
-        {% set renderMiddleDate = params.addBusinessDays(moment(), params.totalDays) %}
-    {% endif %}
-
-{% endif %}
-
-{% set useStartDate = renderMiddleDate.clone().subtract(params.casesPastDays, 'days') %}
+{% set useStartDate = moment().subtract(params.casesPastDays, 'days') %}
 
 {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
 {% set yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD') %}

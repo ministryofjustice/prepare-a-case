@@ -114,14 +114,14 @@ jobs:
           background: true
       - run:
           name: Start services
-          command: DISPLAY=:99 ENABLE_HEARING_OUTCOMES=true docker compose up -d --wait
+          command: ENABLE_HEARING_OUTCOMES=true docker compose up -d --wait
       - run:
           name: Log services
           command: docker compose logs -f -t > services.log
           background: true
       - run:
           name: Run integration tests
-          command: docker exec -it prepare-a-case-cypress cypress run --browser chrome --config-file=cypress/cypress.config.js
+          command: DISPLAY=:99 docker compose -f compose/docker-compose.cypress-run.yml up --abort-on-container-exit
       - store_artifacts:
           path: integration-tests/output
       - store_artifacts:    

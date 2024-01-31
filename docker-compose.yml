@@ -105,24 +105,3 @@ services:
       - '3007:3007'
     restart: always
 
-  cypress:
-    build: 
-      context: .
-      dockerfile: ./integration-tests/Dockerfile
-    network_mode: host
-    container_name: prepare-a-case-cypress
-    environment:
-      - CYPRESS_FAIL_FAST_ENABLED=true
-      - CYPRESS_CASES_TOTAL_DAYS=${CASES_TOTAL_DAYS:-28}
-      - DISPLAY=${DISPLAY}
-    working_dir: /e2e
-    command: ["open", "-C", "cypress/cypress.config.js"]
-    volumes:
-      #mac
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      #linux
-      #- ~/.Xauthority:/root/.Xauthority:rw
-      #end
-      - ./server:/e2e/server
-      - ./integration-tests/cypress:/e2e/cypress
-      - ./integration-tests/output:/e2e/output
