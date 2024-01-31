@@ -1,6 +1,11 @@
-/* global jest, describe, it, expect */
+/* global jest, describe, it, beforeEach, expect */
 
 const { settings } = require('../../../server/config')
+
+beforeEach(() => {
+  jest.replaceProperty(settings, 'casesTotalDays', 13)
+  jest.replaceProperty(settings, 'casesPastDays', 6)
+})
 
 describe('getCaseListRouteHandler', () => {
   const { caseServiceMock: caseService, mockResponse } = require('./test-helpers')

@@ -1,7 +1,7 @@
 /* global describe, it, expect, jest */
 const moment = require('moment')
 const { defaults, getPath, getMonthsAndDays, addBusinessDays } = require('../../../server/routes/middleware/defaults')
-const { nonce } = require('../../../server/config')
+const { settings, nonce } = require('../../../server/config')
 
 const reqObj = {
   params: {
@@ -46,12 +46,14 @@ describe('Default values middleware', () => {
     })
 
     it('should skip Sundays from the calculation when adding days', () => {
+      jest.replaceProperty(settings, 'casesExcludedDays', '0')
       const startDate = moment('2020-07-11', 'YYYY-MM-DD') // Saturday
       const endDate = moment('2020-07-13', 'YYYY-MM-DD') // Monday
       expect(addBusinessDays(startDate, 1).format('YYYY-MM-DD')).toEqual(endDate.format('YYYY-MM-DD'))
     })
 
     it('should skip Sundays from the calculation when removing days', () => {
+      jest.replaceProperty(settings, 'casesExcludedDays', '0')
       const startDate = moment('2020-07-13', 'YYYY-MM-DD') // Monday
       const endDate = moment('2020-07-11', 'YYYY-MM-DD') // Saturday
       expect(addBusinessDays(startDate, -1).format('YYYY-MM-DD')).toEqual(endDate.format('YYYY-MM-DD'))

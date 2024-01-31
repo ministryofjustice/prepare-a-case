@@ -19,7 +19,7 @@
     "test:lint:fix": "npm run test:lint -- --fix",
     "test:unit": "docker exec -it -e ENABLE_HEARING_OUTCOMES=false prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit",
     "test:pact": "docker exec -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit",
-    "test:int": "docker exec -it prepare-a-case-cypress cypress run --browser chrome --config-file=cypress/cypress.config.js"
+    "test:int": "docker exec -it prepare-a-case-cypress cypress run --config-file=cypress/cypress.config.js"
   },
   "config": {
     "pact_do_not_track": true
