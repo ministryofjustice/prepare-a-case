@@ -1,5 +1,8 @@
-module.exports = () => {
-  const outcomeTypes = [
+/* global describe, it, expect */
+const getOutcomeTypesListFilters = require('../../server/utils/getOutcomeTypesListFilters')
+
+describe('getOutcomeTypesListFilters', () => {
+  const expectedOutcomeTypes = [
     { label: 'Probation sentence', value: 'PROBATION_SENTENCE' },
     { label: 'Non-probation sentence', value: 'NON_PROBATION_SENTENCE' },
     { label: 'Report requested', value: 'REPORT_REQUESTED' },
@@ -10,5 +13,9 @@ module.exports = () => {
     { label: 'Other', value: 'OTHER' }
   ]
 
-  return { id: 'outcomeType', label: 'Outcome type', items: outcomeTypes }
-}
+  it('Should return list of outcome types', () => {
+    const outcomeTypes = getOutcomeTypesListFilters()
+
+    expect(outcomeTypes).toEqual({ id: 'outcomeType', label: 'Outcome type', items: expectedOutcomeTypes })
+  })
+})
