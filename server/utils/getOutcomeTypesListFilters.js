@@ -6,7 +6,7 @@ module.exports = () => {
     { label: 'Adjourned', value: 'ADJOURNED' },
     { label: 'Committed to Crown', value: 'COMMITTED_TO_CROWN' },
     { label: 'Crown plus PSR', value: 'CROWN_PLUS_PSR' },
-    { label: 'No Outcome', value: 'NO_OUTCOME' },
+    { label: 'No outcome', value: 'NO_OUTCOME' },
     { label: 'Other', value: 'OTHER' }
   ]
 
