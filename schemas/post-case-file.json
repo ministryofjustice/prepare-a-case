@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "/hearing/{hearingId}/defendant/{defendantId}/file",
+  "type": "object",
+  "examples": [
+    {
+      "id": "some-uuid-here",
+      "file": {
+        "name": "document1.pdf",
+        "size": 123456789
+      },
+      "datetime": "2000-01-01T00:00:00Z"
+    }
+  ],
+  "required": [
+    "id",
+    "file",
+    "datetime"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "datetime": {
+      "title": "ISO format",
+      "type": "string",
+      "format": "date-time"
+    },
+    "file": {
+      "type": "object",
+      "required": [
+        "name",
+        "size"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "size": {
+          "type": "number",
+          "title": "In bytes"
+        }
+      }
+    }
+  }
+}
