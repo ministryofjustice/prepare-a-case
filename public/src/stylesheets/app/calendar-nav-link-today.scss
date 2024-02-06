@@ -1,5 +1,10 @@
 .calendar-nav-link-today {
   border-style:solid;
   border-width: thin;
-  border-color:#1d70b8 ;
+  border-color: #1d70b8;
+}
+
+.calendar-nav-link__disabled {
+  color: govuk-colour("dark-grey");
+  background-color: govuk-colour("white");
 }

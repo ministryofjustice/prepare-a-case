@@ -4,9 +4,9 @@ Then('I should see the current day as {string}', $string => {
   cy.get('.qa-case-list-day').eq(0).contains($string)
 })
 
-Then('I should see {int} days navigation bar', ($int) => {
+Then('I should see {string} days navigation bar', $string => {
   cy.get('.pac-days-navigation').should('exist')
-  cy.get('.pac-days-navigation-item').should('have.length', $int)
+  cy.get('.pac-days-navigation-item').should('have.length', Cypress.env($string))
 })
 
 Then('I should not see days navigation bar', () => {

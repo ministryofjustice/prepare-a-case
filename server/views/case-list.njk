@@ -78,12 +78,12 @@
 
 {% endfor %}
 
+{% set today = moment().format('YYYY-MM-DD') %}
 {% set isSunday = moment().day() === 0 %}
 {% set dateFormat = 'dddd D MMMM' %}
-{% set pastDate = moment().subtract(params.casesPastDays + 1, 'days') %}
-{% set useStartDate = pastDate if not isSunday else pastDate.subtract(1, 'days') %}
 {% set currentDate = moment(params.date, 'YYYY-MM-DD') %}
-{% set today = moment().format('YYYY-MM-DD') %}
+{% set useStartDate = moment().subtract(params.casesPastDays, 'days') %}
+
 {% set tomorrow = moment().add(1, 'days').format('YYYY-MM-DD') %}
 {% set yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD') %}
 {% set withinDateRange = currentDate.isBetween(useStartDate, params.addBusinessDays(useStartDate, params.totalDays - 1), 'day', '[]') %}
@@ -244,11 +244,10 @@
 
     {% if withinDateRange %}
         {%- from "components/days-navigation/macro.njk" import pacDaysNavigation -%}
-        {% set totalDays = (params.totalDays - 1) if isSunday else params.totalDays %}
         {{ pacDaysNavigation({
             baseUrl:  '/' + params.courtCode + '/cases',
             addBusinessDays: params.addBusinessDays,
-            totalDays: totalDays,
+            totalDays: params.totalDays,
             startDate: useStartDate,
             currentDate: currentDate,
             today: today,

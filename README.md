@@ -19,12 +19,9 @@ Build, install and run with the API mocked and JS/CSS rebuilding on-the-fly usin
 
 ```
 docker compose build
-DISPLAY= docker compose up --build
-DISPLAY= docker compose up
+docker compose up --build
+docker compose up
 ```
-
-Note the DISPLAY= .This is required to prevent passing your X DISPLAY (on Mac and Linux) into Docker, which Cypress requires for CI.
-The intention is to wire Cypress for interactive UI mode in the future which will use the same env key. 
 
 These commands are aliased as
 
@@ -112,14 +109,26 @@ npm run test:int
 
 If you want to target one test you can temporarily slide that name.feature into the cypress.config.js!
 
-TBC - CURRENTLY INTERACTIVE IS NOT AVAILABLE AND WILL BE FIXED IN THE NEAR FUTURE
+### Run Integration tests with UI
+
+
 
 Cypress interactive UI needs a bit more work to get the X DISPLAY piping from docker.
 
+By default, your DISPLAY=0:0 is used, which usually translates as the first screen on the first graphical output device. 
+If you need to use something else you can do something like ```DISPLAY=0:1 docker compose up```.
+
+#### Mac Users
 For Mac install XQuartz ```https://www.xquartz.org/?ref=cypress-io.ghost.io```
 
-By default your DISPLAY=0:0 is used, which usually translates as the first screen on the first graphical output device. 
-If you need to use something else you can do something like ```DISPLAY=0:1 docker compose up```. 
+Once you have XQuartz installed, open it and go to the preferences. Under the security tab, make sure "Allow connections from network clients" is checked. A reboot may be required at this point.
+
+Then open a terminal and run the following command:
+
+```
+npm run test:int:ui
+```
+
 
 ## Environment variables
 

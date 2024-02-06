@@ -10,7 +10,7 @@
     "url": "https://github.com/ministryofjustice/prepare-a-case.git"
   },
   "scripts": {
-    "start": "DISPLAY= docker compose up",
+    "start": "docker compose up",
     "start:detached": "npm run start -- --wait -d",
     "stop": "docker compose down",
     "build": "docker compose pull && docker compose build",
@@ -19,7 +19,8 @@
     "test:lint:fix": "npm run test:lint -- --fix",
     "test:unit": "docker exec -it -e ENABLE_HEARING_OUTCOMES=false prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit",
     "test:pact": "docker exec -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit",
-    "test:int": "docker exec -it prepare-a-case-cypress cypress run --browser chrome --config-file=cypress/cypress.config.js"
+    "test:int": "DISPLAY= docker compose -f compose/docker-compose.cypress-run.yml up --abort-on-container-exit",
+    "test:int:ui": "/usr/X11/bin/xhost + 127.0.0.1 && DISPLAY=host.docker.internal:0 docker compose -f compose/docker-compose.cypress-ui.yml up --abort-on-container-exit"
   },
   "config": {
     "pact_do_not_track": true
@@ -53,6 +54,7 @@
   },
   "dependencies": {
     "@ministryofjustice/frontend": "1.4.1",
+    "@splidejs/splide": "^4.1.4",
     "accessible-autocomplete": "^2.0.4",
     "agentkeepalive": "^4.2.1",
     "applicationinsights": "2.9.2",

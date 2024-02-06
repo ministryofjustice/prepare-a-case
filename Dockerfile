@@ -50,4 +50,4 @@ ENTRYPOINT ["node"]
 FROM base as development
 RUN npm i -g concurrently
 ENTRYPOINT ["concurrently"]
-CMD [ "\"./node_modules/.bin/webpack --config ./public/config/webpack.config.js --watch\"", "\"./node_modules/.bin/nodemon --watch ./server ./bin/www\"", "\"./node_modules/.bin/nodemon --ext scss --watch ./public/src/stylesheets ./bin/build-css\"", "\"./node_modules/.bin/nodemon --ext js --watch ./public/src/javascripts ./bin/build-js\""]
+CMD [ "\"./node_modules/.bin/webpack --config ./public/config/webpack.config.js\"", "\"./node_modules/.bin/nodemon --watch ./server ./bin/www\"", "\"./node_modules/.bin/nodemon --ext scss --watch ./public/src/stylesheets ./bin/build-css\"", "\"./node_modules/.bin/nodemon --ext js --watch ./public/src/javascripts ./bin/build-js\""]

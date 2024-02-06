@@ -1,6 +1,11 @@
-/* global jest, describe, it, expect */
+/* global jest, describe, it, expect, beforeEach */
 
 const { settings } = require('../../../server/config')
+
+beforeEach(() => {
+  jest.replaceProperty(settings, 'casesTotalDays', 13)
+  jest.replaceProperty(settings, 'casesPastDays', 6)
+})
 
 describe('getPagedCaseListRouteHandler', () => {
   const { caseServiceMock: caseService, mockResponse } = require('./test-helpers')
@@ -39,8 +44,8 @@ describe('getPagedCaseListRouteHandler', () => {
       totalElements: 4
     })
 
-    settings.enablePastCasesNavigation = true
-    settings.pacEnvironment = 'dev'
+    jest.replaceProperty(settings, 'enablePastCasesNavigation', true)
+    jest.replaceProperty(settings, 'pacEnvironment', 'dev')
 
     // When
     await subject(mockRequest, mockResponse)
@@ -87,7 +92,7 @@ describe('getPagedCaseListRouteHandler', () => {
       totalElements: 4
     })
 
-    settings.enablePastCasesNavigation = false
+    jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
 
     // When
     await subject(mockRequest, mockResponse)
