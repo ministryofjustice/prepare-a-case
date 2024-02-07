@@ -63,11 +63,7 @@
         {% endif %}
     {% endblock %}
 </head>
-<body class="govuk-template__body">
-
-<script>
-  document.body.classList.add('js-enabled')
-</script>
+<body class="govuk-template__body govuk-frontend-supported">
 
 <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
@@ -205,10 +201,8 @@
 {% block javascripts %}{% endblock %}
 
 {% block bodyEnd %}
-    <script src="/moj/all.js"></script>
-    <script src="/govuk/all.js"></script>
-    <script>window.GOVUKFrontend.initAll()</script>
-    <script src="/javascripts/external-{{ appVersion }}.min.js"></script>
+
+    <script type="module" src="/javascripts/external-{{ appVersion }}.min.js"></script>
     {% if analyticsCookies === 'accept' %}
     <script nonce="{{ nonce }}">
       // Feature detects Navigation Timing API support.

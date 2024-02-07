@@ -6,6 +6,7 @@ const casesInProgressHandler = require('./getCasesInProgressHandler')({ getOutco
 const getResultedCasesHandler = require('./getResultedCasesHandler')({ getOutcomesList })
 const assignHearingOutcomeRouteHandler = require('./getAssignUserToOutcomeRequestHandler')({ assignHearingOutcome })
 const getMoveToResultedHandler = require('./getMoveToResultedHandler')({ updateHearingOutcomeToResulted })
+const postActionsHandler = require('./postActionsHandler')({ updateHearingOutcomeToResulted })
 
 const { defaults } = require('../../middleware/defaults')
 const catchErrors = require('../catchAsyncErrors')
@@ -14,6 +15,7 @@ const outcomesMiddleware = require('../../middleware/outcomesMiddleware')
 const outcomesRouter = express.Router({ mergeParams: true })
 
 outcomesRouter.get('/', defaults, outcomesMiddleware('NEW'), catchErrors(casesToResultHandler))
+outcomesRouter.post('/', defaults, outcomesMiddleware('NEW'), catchErrors(postActionsHandler))
 outcomesRouter.get('/in-progress', defaults, outcomesMiddleware('IN_PROGRESS'), catchErrors(casesInProgressHandler))
 outcomesRouter.get('/resulted-cases', defaults, outcomesMiddleware('RESULTED'), catchErrors(getResultedCasesHandler))
 outcomesRouter.get('/:hearingId/move-to-resulted', defaults, catchErrors(getMoveToResultedHandler))

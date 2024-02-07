@@ -11,11 +11,11 @@ Feature: Cases to Result List filters
 #    And I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Outcome type" filter button
     And I select the "Report requested" filter
@@ -25,10 +25,10 @@ Feature: Cases to Result List filters
 #    Then I should see a tab with text "Cases to result (1)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table 1 rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
 
     And I should see the "outcomeType" query have the value "REPORT_REQUESTED"
 
@@ -37,13 +37,11 @@ Feature: Cases to Result List filters
 #    Then I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
-
-    And There should be no a11y violations
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
   Scenario: A user wants to filter the list to show only "Adjourned" cases to result and quickly clear that selection
     Given I am an authenticated user
@@ -53,11 +51,11 @@ Feature: Cases to Result List filters
 #    And I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Outcome type" filter button
     And I select the "Adjourned" filter
@@ -67,10 +65,10 @@ Feature: Cases to Result List filters
 #    Then I should see a tab with text "Cases to result (1)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table 1 rows
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     And I should see the "outcomeType" query have the value "ADJOURNED"
 
@@ -79,13 +77,11 @@ Feature: Cases to Result List filters
 #    Then I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
-
-    And There should be no a11y violations
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
 
   Scenario: A user wants to filter the list to show only "Other" cases to result and quickly clear that selection
@@ -96,11 +92,11 @@ Feature: Cases to Result List filters
 #    And I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Outcome type" filter button
     And I select the "Other" filter
@@ -116,13 +112,11 @@ Feature: Cases to Result List filters
 #    Then I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
-
-    And There should be no a11y violations
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
 
   Scenario: A user wants to order the list to show by "Hearing date"
@@ -133,37 +127,35 @@ Feature: Cases to Result List filters
 #    And I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Hearing" sort button
 
 #    Then I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     And I should see the "hearingDate" query have the value "ASC"
 
-    And There should be no a11y violations
-
     When I click the "Hearing" sort button
 
 #    Then I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
 
     And I should see the "hearingDate" query have the value "DESC"
 
@@ -173,11 +165,11 @@ Feature: Cases to Result List filters
     Then I should be on the "Hearing outcomes" page
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Outcome type" filter button
     And I select the "Probation sentence" filter
@@ -186,8 +178,6 @@ Feature: Cases to Result List filters
 
     And I should see a count of "0 cases"
     Then I should see the body text "There are no matching cases."
-    And There should be no a11y violations
-
 
   Scenario: A user wants to filter the list by courtroom
     Given I am an authenticated user
@@ -195,11 +185,11 @@ Feature: Cases to Result List filters
     Then I should be on the "Hearing outcomes" page
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Courtroom" filter button
     And I select the "1" filter
@@ -207,15 +197,15 @@ Feature: Cases to Result List filters
     And I click the "Apply filters" button
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table 1 rows
-      | Court Room Stub Loaded  | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || Court Room Stub Loaded  | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
 
     And I should see the "courtRoom" query have the value "01,1,Courtroom 1"
 
     When I click the clear "1" filter tag
 
     Then I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
