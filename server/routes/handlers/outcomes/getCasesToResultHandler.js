@@ -25,8 +25,10 @@ const getCasesToResultHandler = caseService => async (req, res) => {
     items: prepareCourtRoomFilters(response.courtRoomFilters)
   }
 
+  const outcomeTypesListFilters = await getOutcomeTypesListFilters()
+
   const filters = flagFilters(queryParams, [
-    await getOutcomeTypesListFilters(),
+    outcomeTypesListFilters,
     courtRoomFilter
   ])
 
