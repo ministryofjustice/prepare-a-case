@@ -8,7 +8,12 @@ const getCasesToResultHandler = caseService => async (req, res) => {
     query: queryParams
   } = req
 
-  const response = await caseService.getOutcomesList(courtCode, queryParams, sorts, state)
+  const response = await caseService.getOutcomesList(
+    courtCode,
+    queryParams,
+    sorts,
+    state
+  )
   if (response && response.isError !== undefined && response.isError) {
     res.render('error', { status: response.status || 500 })
     return
@@ -20,9 +25,14 @@ const getCasesToResultHandler = caseService => async (req, res) => {
     items: prepareCourtRoomFilters(response.courtRoomFilters)
   }
 
-  const filters = flagFilters(queryParams, [getOutcomeTypesListFilters(), courtRoomFilter])
+  const filters = flagFilters(queryParams, [
+    await getOutcomeTypesListFilters(),
+    courtRoomFilter
+  ])
 
-  const filtersApplied = filters.map(filterObj => filterObj.items.filter(item => item.checked).length).some(length => length > 0)
+  const filtersApplied = filters
+    .map(filterObj => filterObj.items.filter(item => item.checked).length)
+    .some(length => length > 0)
 
   const templateValues = {
     params: {
