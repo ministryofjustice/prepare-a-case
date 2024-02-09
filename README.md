@@ -33,12 +33,7 @@ npm run build
 With node being inside a docker container so to are the `node_modules` and if you make a change to package.json you will
 need to rebuild the docker container. Rebuilding the containers can be is fairly slow but you shouldn't need to do it day-to-day.
 
-Note that changes to wiremocks will not auto refresh, you'll need to restart the specific wiremock container.
-
-```
-docker compose restart hmpps-user-preferences
-docker compose restart hmpps-auth
-docker compose restart court-case-service
+Note that changes to wiremocks will auto refresh.
 ```
 
 To override the API mocks with development service(s) running on your local machine use something like
