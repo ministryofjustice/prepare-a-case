@@ -365,10 +365,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors(async (req, res) => {
       // build outcome types list for select controls
-      const outcomeTypeItems = await getOutcomeTypesListFilters().items
+      const outcomeTypesListFilters = await getOutcomeTypesListFilters()
+
       const outcomeTypes = [
         ...[{ value: '', text: 'Outcome type' }],
-        ...outcomeTypeItems
+        ...outcomeTypesListFilters.items
           .filter(item => item.value !== 'NO_OUTCOME')
           .map(item => {
             return { text: item.label, value: item.value }

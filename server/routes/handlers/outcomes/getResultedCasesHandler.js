@@ -25,10 +25,6 @@ const getResultedCasesHandler = caseService => async (req, res) => {
   }
 
   const outcomeTypesListFilters = await getOutcomeTypesListFilters()
-  console.log(
-    '🚀 ~ getResultedCasesHandler ~ outcomeTypesListFilters:',
-    outcomeTypesListFilters
-  )
 
   const filters = [outcomeTypesListFilters, courtRoomFilter]
 
