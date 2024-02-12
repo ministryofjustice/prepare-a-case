@@ -68,19 +68,19 @@ services:
       - ./wiremock:/usr/src/app/wiremock
     environment:
       - REDIS_HOST=redis
-      - PORT=3007
+      - PORT=3000
       - PAC_ENV=dev
       - NODE_ENV=development
       - ENABLE_APP_INSIGHTS=false
-      - API_CLIENT_ID=prepare-a-case-for-court
-      - API_CLIENT_SECRET=clientsecret
+      - API_CLIENT_ID=${API_CLIENT_ID:-prepare-a-case-for-court}
+      - API_CLIENT_SECRET=${API_CLIENT_SECRET:-clientsecret}
       - APP_VERSION=dev-build
-      - NOMIS_AUTH_URL=http://hmpps-auth:8080/auth
-      - NOMIS_AUTH_URL_REDIRECT=http://localhost:9091/auth
-      - NOMIS_DISABLE_OAUTH_STATE=true
+      - NOMIS_AUTH_URL=${NOMIS_AUTH_URL:-http://hmpps-auth:8080/auth}
+      - NOMIS_AUTH_URL_REDIRECT=${NOMIS_AUTH_URL:-http://localhost:9091/auth}
+      - NOMIS_DISABLE_OAUTH_STATE=${NOMIS_DISABLE_OAUTH_STATE:-true}
       - REDUCE_STDOUT_NOISE=true
-      - USER_PREFERENCE_SERVICE_URL=http://hmpps-user-preferences:8080
-      - COURT_CASE_SERVICE_URL=http://court-case-service:8080
+      - USER_PREFERENCE_SERVICE_URL=${USER_PREFERENCE_SERVICE_URL:-http://hmpps-user-preferences:8080}
+      - COURT_CASE_SERVICE_URL=${COURT_CASE_SERVICE_URL:-http://court-case-service:8080}
       - NOTIFICATION_USERNAME=test 
       - NOTIFICATION_PASSWORD=test 
       - HEARING_OUTCOMES_PAGE_SIZE=${HEARING_OUTCOMES_PAGE_SIZE:-2}
@@ -102,6 +102,6 @@ services:
       hmpps-user-preferences:
         condition: service_started
     ports:
-      - '3007:3007'
+      - '3000:3000'
     restart: always
 

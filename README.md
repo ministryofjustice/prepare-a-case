@@ -53,12 +53,21 @@ have data matching the other services it replies on. To do run the standard ```d
 You can do this by including the following in a root .env file.
 
 ```
-API_CLIENT_SECRET={client-secret} 
-COURT_CASE_SERVICE_URL=http://court-case-service-dev.apps.live-1.cloud-platform.service.justice.gov.uk 
+COURT_CASE_SERVICE_URL=https://prepare-a-case-dev.apps.live-1.cloud-platform.service.justice.gov.uk
 NOMIS_AUTH_URL=https://sign-in-dev.hmpps.service.justice.gov.uk/auth
+NOMIS_DISABLE_OAUTH_STATE=false
+API_CLIENT_ID=prepare-a-case-for-court-1
+API_CLIENT_SECRET=********
 ```
 
-Feature flags can also be enabled by the same method. Note that several are turned on by default to allow for integration tests to pass.
+The API_CLIENT_ID and API_CLIENT_SECRET is held in kubernetes env. You can either get the values from another developer or fetch them.
+
+```
+kubectl -n court-probation-dev get pods
+kubectl -n court-probation-dev exec podnamehere -- printenv
+```
+
+Feature flags can also be enabled by way of the .env file. Note that several are turned on by default to allow for integration tests to pass.
 You may need to specifically turn them off.
 
 ```
