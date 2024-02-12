@@ -1,6 +1,5 @@
 /* global describe, it, expect, jest */
 const getOutcomeTypesListFilters = require('../../server/utils/getOutcomeTypesListFilters')
-const caseService = require('../../server/services/case-service')
 
 const outcomeTypes = [
   { label: 'Probation sentence', value: 'PROBATION_SENTENCE' },
