@@ -17,11 +17,13 @@ Feature: What's new
 
     Then I should see the heading "What's new"
     And I should see the following level 2 headings
+      | 8 February 2024 |
       | 25 August 2023  |
       | 27 July 2023    |
       | 7 February 2023 |
       | 24 January 2023 |
     And I should see the following level 3 headings
+      | View case lists earlier                       |
       | New filters on the case list                  |
       | Speed improvements                            |
       | Search for a defendant                        |
