@@ -106,52 +106,7 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
-            <h2 class="govuk-heading-m">Appearance</h2>
-            <p class="govuk-body">Court {{ courtRoom | courtRoomDisplay }}, {{ data.session | lower }} session,
-                {{ moment(data.sessionStartTime).format('dddd D MMMM') }}.</p>
-
-            {% if data.source | length %}
-                <p class="govuk-caption-m govuk-!-margin-top-3">Source:
-                {{ data.source | replace("_", " ") | title }} {% if data.source | lower === "libra" %} <br/> Case number: {{ data.caseNo }} {% endif %} <br/> URN: {{ data.urn }}
-                </p>
-            {% endif %}
-
-            <h2 class="govuk-heading-m govuk-!-margin-top-9">Offences</h2>
-
-            {% set offences = [] %}
-            {% for offence in data.offences %}
-                {{ offences.push(data.offences) | length }}
-            {% endfor %}
-            {% if offences | length < 2 %}
-                {% for offence in data.offences %}
-                    <p class="govuk-body govuk-!-font-weight-bold">{{ offence.offenceTitle }}</p>
-                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.offenceSummary }}</p>
-                    <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
-                {% endfor %}
-                {% elif offences | length > 1 %}
-                <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{ params.caseId }}">
-                    {% for offence in data.offences %}
-                        <div class="govuk-accordion__section">
-                            <div class="govuk-accordion__section-header">
-                                <h2 class="govuk-accordion__section-heading">
-                                <span class="govuk-accordion__section-button"
-                                      id="accordion-{{ params.caseId }}-heading-{{ loop.index }}">
-                                    <span class="pac-accordion-section-heading">{{ offence.offenceTitle }}</span>
-                                </span>
-                                </h2>
-                            </div>
-                            <div id="accordion-{{ params.caseId }}-content-{{ loop.index }}"
-                                 class="govuk-accordion__section-content"
-                                 aria-labelledby="accordion-{{ params.caseId }}-heading-{{ loop.index }}">
-                                <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.offenceSummary }}</p>
-                                <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
-            <h2 class="govuk-heading-m govuk-!-margin-top-9">
+            <h2 class="govuk-heading-m">
                 Defendant details
             </h2>
 
@@ -219,6 +174,51 @@
                     </dd>
                 </div>
             </dl>
+
+            <h2 class="govuk-heading-m">Appearance</h2>
+            <p class="govuk-body">Court {{ courtRoom | courtRoomDisplay }}, {{ data.session | lower }} session,
+                {{ moment(data.sessionStartTime).format('dddd D MMMM') }}.</p>
+
+            {% if data.source | length %}
+                <p class="govuk-caption-m govuk-!-margin-top-3">Source:
+                {{ data.source | replace("_", " ") | title }} {% if data.source | lower === "libra" %} <br/> Case number: {{ data.caseNo }} {% endif %} <br/> URN: {{ data.urn }}
+                </p>
+            {% endif %}
+
+            <h2 class="govuk-heading-m govuk-!-margin-top-9">Offences</h2>
+
+            {% set offences = [] %}
+            {% for offence in data.offences %}
+                {{ offences.push(data.offences) | length }}
+            {% endfor %}
+            {% if offences | length < 2 %}
+                {% for offence in data.offences %}
+                    <p class="govuk-body govuk-!-font-weight-bold">{{ offence.offenceTitle }}</p>
+                    <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.offenceSummary }}</p>
+                    <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
+                {% endfor %}
+                {% elif offences | length > 1 %}
+                <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-{{ params.caseId }}">
+                    {% for offence in data.offences %}
+                        <div class="govuk-accordion__section">
+                            <div class="govuk-accordion__section-header">
+                                <h2 class="govuk-accordion__section-heading">
+                                <span class="govuk-accordion__section-button"
+                                      id="accordion-{{ params.caseId }}-heading-{{ loop.index }}">
+                                    <span class="pac-accordion-section-heading">{{ offence.offenceTitle }}</span>
+                                </span>
+                                </h2>
+                            </div>
+                            <div id="accordion-{{ params.caseId }}-content-{{ loop.index }}"
+                                 class="govuk-accordion__section-content"
+                                 aria-labelledby="accordion-{{ params.caseId }}-heading-{{ loop.index }}">
+                                <p class="govuk-body govuk-!-margin-bottom-0">{{ offence.offenceSummary }}</p>
+                                <p class="govuk-caption-m govuk-!-margin-top-3">{{ offence.act }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
 
         </div>
         <div class="govuk-grid-column-one-third"></div>
