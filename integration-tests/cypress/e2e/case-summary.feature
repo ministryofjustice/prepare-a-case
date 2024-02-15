@@ -43,7 +43,7 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
     And I should see the following level 2 headings
-      | Mann Carroll | Appearance | Offences |
+      | Mann Carroll | Defendant details | Appearance | Offences |
 
     And I should see the body text "Court 2-3, afternoon session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -71,7 +71,7 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see the body text "Probation status: Possible NDelius record"
     And I should see the following level 2 headings
-      | Guadalupe Hess | possible NDelius records found | Appearance | Offences |
+      | Guadalupe Hess | possible NDelius records found | Defendant details | Appearance | Offences |
 
     And I should see the body text "Court 7, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -97,7 +97,7 @@ Feature: Case summary
     Then I should see the body text "Probation status: No record"
     And I should not see the case level navigation
     And I should see the following level 2 headings
-      | Kara Ayers | Appearance | Offences |
+      | Kara Ayers | Defendant details | Appearance | Offences |
 
     And I should see the body text "Court Crown Court 3-1, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -130,7 +130,7 @@ Feature: Case summary
     Then I should see the body text "Probation status: Previously known"
     And I should see a straight line divide
     And I should see the following level 2 headings
-      | Webb Mitchell | Appearance | Offences |
+      | Webb Mitchell | Defendant details | Appearance | Offences |
 
     And I should see the body text "Court 8, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -165,7 +165,7 @@ Feature: Case summary
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
     And I should see the following level 2 headings
-      | Mann Carroll | Appearance | Offences |
+      | Mann Carroll | Defendant details | Appearance | Offences |
 
     And I should see the body text "Court 2-3, afternoon session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -198,7 +198,7 @@ Feature: Case summary
     And I should see the body text "Probation status: Current (PSR)"
     And I should see a straight line divide
     And I should see the following level 2 headings
-      | Lenore Marquez | Appearance | Offences |
+      | Lenore Marquez | Defendant details | Appearance | Offences |
 
     And I should see the body text "Court 6, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -233,7 +233,7 @@ Feature: Case summary
     And I should see the body text "Probation status: Current (Breach)"
     And I should see a straight line divide
     And I should see the following level 2 headings
-      | Olsen Alexander | Appearance | Offences |
+      | Olsen Alexander | Defendant details | Appearance | Offences |
 
     And I should see the body text "Court 9, morning session, $LONG_TODAY."
     And I should see the body text "Theft from a shop" in bold
