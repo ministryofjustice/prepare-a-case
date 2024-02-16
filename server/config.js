@@ -23,40 +23,6 @@ const getCsvParamAsArray = param => get(param, '')?.split(',').map(value => valu
 
 module.exports = {
   settings: {
-    case: {
-      files: {
-        mime: {
-          allow: [
-          ]
-        },
-        extension: {
-          allow: [
-            '.csv',
-            '.doc',
-            '.docx',
-            '.jpg',
-            '.jpeg',
-            '.xml',
-            '.ods',
-            '.odt',
-            '.pdf',
-            '.png',
-            '.ppt',
-            '.pptx',
-            '.rdf',
-            '.rtf',
-            '.txt',
-            '.xls',
-            '.xlsx',
-            '.xml',
-            '.zip'
-          ]
-        },
-        select: {
-          max: 10
-        }
-      }
-    },
     defaultTimeout: get('DEFAULT_TIMEOUT', 6000),
     healthTimeout: 2000,
     reduceStdoutNoise: get('REDUCE_STDOUT_NOISE', false),
@@ -70,6 +36,7 @@ module.exports = {
     enableAppInsights: getBooleanParam('ENABLE_APP_INSIGHTS'),
     enableHearingOutcomes: getBooleanParam('ENABLE_HEARING_OUTCOMES'),
     enableServerSidePaging: getBooleanParam('ENABLE_SERVERSIDE_PAGING'),
+    enableCaseDefendantDocuments: getBooleanParam('ENABLE_CASE_DEFENDANT_DOCUMENTS'),
     casesExcludedDays: get('CASES_EXCLUDED_DAYS', '-1'), // Coma delimited String of days to exclude, incremental from 0 (Sunday) - fallback to -1 to exclude no days
     snapshotTimes: get('CASE_SNAPSHOT_TIMES', '00:00,08:45,09:45'), // Coma delimited string of snapshot times, earliest - latest
     assetCache: '30d',
@@ -236,7 +203,41 @@ module.exports = {
       { code: 'B60OW', name: 'Wrexham Magistrates\' Court' },
       { code: 'B52OZ', name: 'Yeovil Magistrates\' Court' },
       { code: 'B12PA', name: 'York Magistrates\' Court' }
-    ]
+    ],
+    case: {
+      files: {
+        mime: {
+          allow: [
+          ]
+        },
+        extension: {
+          allow: [
+            '.csv',
+            '.doc',
+            '.docx',
+            '.jpg',
+            '.jpeg',
+            '.xml',
+            '.ods',
+            '.odt',
+            '.pdf',
+            '.png',
+            '.ppt',
+            '.pptx',
+            '.rdf',
+            '.rtf',
+            '.txt',
+            '.xls',
+            '.xlsx',
+            '.xml',
+            '.zip'
+          ]
+        },
+        select: {
+          max: 10
+        }
+      }
+    }
   },
   redis: {
     host: process.env.REDIS_HOST,
