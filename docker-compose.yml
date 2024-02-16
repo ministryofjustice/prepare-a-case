@@ -4,23 +4,26 @@ networks:
 
 services:
   hmpps-auth:
-    image: wiremock/wiremock
+    build:
+      context: .
+      dockerfile: ./wiremock/Dockerfile
     container_name: hmpps-auth
     networks:
       - hmpps
     volumes:
       - ./wiremock/mappings/hmpps-auth:/home/wiremock/mappings
-    entrypoint: ["/docker-entrypoint.sh", "--disable-request-logging", "--disable-banner", "--global-response-templating"] #"--verbose"
     restart: always
+
     ports:
       - "9091:8080"
 
   hmpps-user-preferences:
-    image: wiremock/wiremock
+    build:
+      context: .
+      dockerfile: ./wiremock/Dockerfile
     container_name: hmpps-user-preferences
     networks:
       - hmpps
-    entrypoint: ["/docker-entrypoint.sh", "--disable-request-logging", "--disable-banner", "--global-response-templating"]
     volumes:
       - ./wiremock/mappings/hmpps-user-preferences:/home/wiremock/mappings
     restart: always
@@ -28,11 +31,12 @@ services:
       - "9093:8080"
 
   court-case-service:
-    image: wiremock/wiremock
+    build:
+      context: .
+      dockerfile: ./wiremock/Dockerfile
     container_name: court-case-service
     networks:
       - hmpps
-    entrypoint: ["/docker-entrypoint.sh", "--disable-request-logging", "--disable-banner", "--global-response-templating"]
     volumes:
       - ./wiremock/mappings/court-case-service:/home/wiremock/mappings
       - ./wiremock/__files:/home/wiremock/__files
