@@ -94,7 +94,7 @@ services:
       - hmpps
     depends_on:
       redis:
-        condition: service_healthy
+        condition: service_started
       hmpps-auth:
         condition: service_started
       court-case-service:
