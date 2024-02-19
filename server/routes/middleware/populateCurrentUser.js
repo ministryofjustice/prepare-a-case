@@ -22,7 +22,7 @@ module.exports = userService => async (req, res, next) => {
     const user = res.locals.user && (await userService.getUser(res.locals.user))
     if (user) {
       res.locals.user = { ...user, ...res.locals.user }
-      await setAsync(`${res.locals.user.username}.INFO`, JSON.stringify(res.locals.user), 'EX', 60 * 60 * 24)
+      await setAsync(`${res.locals.user.username}.INFO`, JSON.stringify(res.locals.user), 'EX', 60 * 60 * 8)
     }
   } catch (error) {
     logger.error(error, `Failed to retrieve user for: ${res.locals.user}`)
