@@ -4,7 +4,7 @@ networks:
 
 services:
   hmpps-auth:
-    image: wiremock/wiremock
+    image: wiremock/wiremock:3.3.1
     container_name: hmpps-auth
     networks:
       - hmpps
@@ -16,7 +16,7 @@ services:
       - "9091:8080"
 
   hmpps-user-preferences:
-    image: wiremock/wiremock
+    image: wiremock/wiremock:3.3.1
     container_name: hmpps-user-preferences
     networks:
       - hmpps
@@ -28,7 +28,7 @@ services:
       - "9093:8080"
 
   court-case-service:
-    image: wiremock/wiremock
+    image: wiremock/wiremock:3.3.1
     container_name: court-case-service
     networks:
       - hmpps
