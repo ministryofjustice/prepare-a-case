@@ -76,32 +76,32 @@
         p => p.id === filterButtonId
       )
 
-      filterButtons[targetButtonIndex].classList.add(filterButtonOpenClass)
-      filterButtons[targetButtonIndex].active = true
-      filterSections[targetButtonIndex].classList.remove(mojHiddenClass)
+      const targetButtonElement = filterButtons[targetButtonIndex]
+      const targetSectionElement = filterSections[targetButtonIndex]
+
+      targetButtonElement.classList.add(filterButtonOpenClass)
+      targetButtonElement.active = true
+      targetSectionElement.classList.remove(mojHiddenClass)
 
       filterButtonArray.splice(targetButtonIndex, 1)
       filterSectionsArray.splice(targetButtonIndex, 1)
 
+      closeFilters(filterButtonArray, filterSectionsArray)
+    }
+
+    function closeFilters (filterButtonArray, filterSectionArray) {
       filterButtonArray.forEach(element => {
         element.classList.remove(filterButtonOpenClass)
         element.active = false
       })
 
-      filterSectionsArray.forEach(element => {
+      filterSectionArray.forEach(element => {
         element.classList.add(mojHiddenClass)
       })
     }
 
     function closeAllFilters () {
-      Array.from(filterButtons).forEach(element => {
-        element.classList.remove(filterButtonOpenClass)
-        element.active = false
-      })
-
-      Array.from(filterSections).forEach(element => {
-        element.classList.add(mojHiddenClass)
-      })
+      closeFilters(Array.from(filterButtons), Array.from(filterSections))
     }
 
     Array.prototype.forEach.call(main, function (element) {
