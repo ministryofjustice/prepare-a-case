@@ -131,7 +131,7 @@
       const button = document.getElementById(
         'button-' + e.target.name.substring(e.target.name.indexOf('-') + 1)
       )
-      const anySelected = false
+      let anySelected = false
       const checkboxesInGroup = document.querySelectorAll(
         '[id^="checkbox-' + e.target.name + '"]'
       )
