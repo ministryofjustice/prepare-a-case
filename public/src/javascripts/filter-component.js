@@ -37,8 +37,8 @@
         filterContainerClass
       )
 
-      if (!e.target.active && isFilterButton) {
-        openFilterMenu(e.target.id)
+      if (isFilterButton) {
+        e.target.active ? closeAllFilters() : openFilterMenu(e.target.id)
       } else if (!isInsideFilterContainer) {
         closeAllFilters()
       }
