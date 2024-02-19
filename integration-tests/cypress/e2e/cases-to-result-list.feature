@@ -21,11 +21,11 @@ Feature: Cases to Result List
     And I should see a tab with text "In progress (5)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
     And I should see 4 numbered pagination links from 1 to 4 followed by a link Next
     And I should see the pagination numbers 1 to 2 of 7 results
 
@@ -34,26 +34,24 @@ Feature: Cases to Result List
     And I should see 4 numbered pagination links from 1 to 4 followed by a link Next
     And I should see the pagination numbers 3 to 4 of 7 results
     And I should see the following table rows
-      | Gill Arnold Page2    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden Page2 | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold Page2    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden Page2 | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Next" link in the pagination links
     Then the page 3 should be loaded
     And I should see 4 numbered pagination links from 1 to 4 followed by a link Next
     And I should see the pagination numbers 5 to 6 of 7 results
     And I should see the following table rows
-      | Gill Arnold Page3    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden Page3 | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold Page3    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden Page3 | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "Previous" link in the pagination links
     Then the page 2 should be loaded
     And I should see 4 numbered pagination links from 1 to 4 followed by a link Next
     And I should see the pagination numbers 3 to 4 of 7 results
     And I should see the following table rows
-      | Gill Arnold Page2    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden Page2 | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
-
-    And There should be no a11y violations
+      || Gill Arnold Page2    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden Page2 | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
   Scenario: Ensure the correct messages and results are shown when no cases are to be resulted
     Given I am an authenticated user

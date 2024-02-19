@@ -1,6 +1,8 @@
 {%- set moment = params.moment -%}
 {%- set displayFilters = (params.subsection === '' or params.subsection === 'heard') and (params.caseCount or params.filtersApplied) -%}
 
+{%- from "components/tabs/macro.njk" import pacTabs -%}
+
 {% block javascripts %}
     {% if displayFilters %}
         <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
@@ -288,43 +290,45 @@
         }) }}
     {% endif %}
 
-    {%- from "components/tabs/macro.njk" import pacTabs -%}
+    <div class="govuk-tabs" data-module="govuk-tabs">
+        
+        {{ pacTabs({
+            items: listTabs,
+            nonce: res.locals.nonce,
+            controls: "case-list"
+        }) }}
 
-    {{ pacTabs({
-        items: listTabs,
-        controls: "case-list"
-    }) }}
+        <div class="govuk-tabs__panel">
+            {% if tableData.rows | length %}
+                {% block table %}
+                    <span class="govuk-heading-m">{{ params.caseCount }} case{{ 's' if params.caseCount > 1 }} {% if params.subsection !== "" and params.subsection !== "heard" %} {% if params.subsection === "added" %}added to {% elseif params.subsection === "removed" %}removed from {% endif%} today's case list.{% endif %}</span>
+                    {%- from "govuk/components/table/macro.njk" import govukTable -%}
+                    {{ govukTable(tableData) }}
+                {% endblock %}
+            {% else %}
+                {% if params.filtersApplied %}
+                    <span class="govuk-heading-m">0 cases</span>
+                {% endif %}
+                <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "No case list information available." }}</p>
+            {% endif %}
 
-    <div class="govuk-tabs__panel">
-    {% if tableData.rows | length %}
-        {% block table %}
-            <span class="govuk-heading-m">{{ params.caseCount }} case{{ 's' if params.caseCount > 1 }} {% if params.subsection !== "" and params.subsection !== "heard" %} {% if params.subsection === "added" %}added to {% elseif params.subsection === "removed" %}removed from {% endif%} today's case list.{% endif %}</span>
-            {%- from "govuk/components/table/macro.njk" import govukTable -%}
-            {{ govukTable(tableData) }}
-        {% endblock %}
-    {% else %}
-        {% if params.filtersApplied %}
-            <span class="govuk-heading-m">0 cases</span>
-        {% endif %}
-        <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "No case list information available." }}</p>
-    {% endif %}
-
-    {% if totalPages > 1 %}
-        {%- set showSubsectionLinks = (params.subsection === 'added' or params.subsection === 'heard') -%}
-        {% block pagination %}
-            {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
-            {{ mojPagination({
-                results: {
-                    from: params.from + 1,
-                    to: params.to,
-                    count: params.caseCount
-                },
-                previous: recentlyAddedPreviousLink if showSubsectionLinks else previousLink,
-                next: recentlyAddedNextLink if showSubsectionLinks else nextLink,
-                items: recentlyAddedPageItems if showSubsectionLinks else pageItems
-            }) }}
-        {% endblock %}
-    {% endif %}
+            {% if totalPages > 1 %}
+                {%- set showSubsectionLinks = (params.subsection === 'added' or params.subsection === 'heard') -%}
+                {% block pagination %}
+                    {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+                    {{ mojPagination({
+                        results: {
+                            from: params.from + 1,
+                            to: params.to,
+                            count: params.caseCount
+                        },
+                        previous: recentlyAddedPreviousLink if showSubsectionLinks else previousLink,
+                        next: recentlyAddedNextLink if showSubsectionLinks else nextLink,
+                        items: recentlyAddedPageItems if showSubsectionLinks else pageItems
+                    }) }}
+                {% endblock %}
+            {% endif %}
+        </div>
     </div>
 
 {% endblock %}

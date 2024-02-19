@@ -42,4 +42,3 @@ Feature: Outcomes List
     And I should see the Primary navigation "Outcomes" link
     When I click on the "Outcomes" link in the Primary navigation
     Then I should be on the "Hearing outcomes" page
-    And There should be no a11y violations

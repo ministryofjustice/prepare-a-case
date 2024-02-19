@@ -5,7 +5,8 @@ const getCasesToResultHandler = caseService => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
     params,
-    query: queryParams
+    query: queryParams,
+    session
   } = req
 
   const response = await caseService.getOutcomesList(courtCode, queryParams, sorts, state)
@@ -36,8 +37,11 @@ const getCasesToResultHandler = caseService => async (req, res) => {
     data: response.cases || [],
     displayFilters: response.cases?.length || filtersApplied,
     totalPages: response.totalPages,
-    totalElements: response.totalElements
+    totalElements: response.totalElements,
+    outcomeActionAssign: session.outcomeActionAssign
   }
+
+  delete session.outcomeActionAssign
 
   res.render('outcomes/casesToResult', templateValues)
 }

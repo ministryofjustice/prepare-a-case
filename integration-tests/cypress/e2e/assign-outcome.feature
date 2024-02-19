@@ -15,11 +15,11 @@ Feature: Outcomes List
     And I should see a tab with text "In progress (5)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "English Madden" link
     Then I should "see" the modal popup to assign hearing outcome
@@ -45,11 +45,11 @@ Feature: Outcomes List
     And I should see a tab with text "In progress (5)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "English Madden" link
     Then I should "see" the modal popup to assign hearing outcome
@@ -75,11 +75,11 @@ Feature: Outcomes List
     And I should see a tab with text "In progress (5)"
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      || Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      || Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 |
+      || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "English Madden" link
     Then I should "see" the modal popup to assign hearing outcome

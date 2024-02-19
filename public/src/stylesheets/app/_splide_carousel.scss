@@ -2,6 +2,12 @@
 
 .splide {
 
+  button:disabled {
+    background-color: govuk-colour("dark-grey");
+    cursor: not-allowed !important;
+    opacity: 0.5 !important;
+  }
+
   &__track {
     margin: 0 10px;
   }
