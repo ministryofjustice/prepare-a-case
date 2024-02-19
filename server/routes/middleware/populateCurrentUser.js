@@ -11,7 +11,11 @@ module.exports = userService => async (req, res, next) => {
         logger.info('Get user credentials from Redis cache.')
       }
       res.locals.user = { ...JSON.parse(getReply), ...res.locals.user }
-      return next()
+      if (!res.locals.user.name || !res.locals.user.userId) {
+        logger.warn('Error getting user credentials from Redis cache.', getReply)
+      } else {
+        return next()
+      }
     }
   }
   try {
