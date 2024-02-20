@@ -1,0 +1,67 @@
+.common_file_uploader {
+
+  display:inline-block;
+  @extend %govuk-body-s;
+
+  .error {
+    color:$govuk-error-colour;
+  };
+
+  template {
+    display:none;
+  };
+
+  >ul {
+    margin:govuk-spacing(-3) govuk-spacing(-6);
+    padding:0;
+    list-style-type: none;
+    display:table;
+    width:100%;
+    border-collapse:separate;
+    border-spacing:govuk-spacing(6) govuk-spacing(3);
+    >li {
+      display:table-row;
+      >* {
+        display:table-cell;
+        text-wrap: nowrap;
+        white-space: nowrap;
+      }
+      >a {
+        @extend %govuk-link
+      }
+    }
+  }
+
+  >form {
+    >fieldset {
+      margin: govuk-spacing(6) 0;
+      padding: govuk-spacing(6);
+      border: 1px dashed $govuk-input-border-colour;
+      >div {
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        >* {
+          margin:0;
+        }
+        >*:not(:last-child) {
+          margin-right:govuk-spacing(3);
+        }
+      }
+      >input[type="file"] {
+        display:none;
+      }
+      >ul {
+        margin:0;
+        list-style-type: none;
+        padding:0;
+        >li {
+          margin-top: govuk-spacing(3);
+          &:first-of-type {
+            margin-top: govuk-spacing(6);
+          }
+        }
+      }
+    }
+  }
+}

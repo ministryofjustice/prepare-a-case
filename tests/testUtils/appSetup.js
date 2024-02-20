@@ -1,5 +1,4 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const cookieSession = require('cookie-session')
 const path = require('path')
 const nunjucksSetup = require('../../server/utils/nunjucksSetup')
@@ -27,8 +26,8 @@ module.exports = route => {
     next()
   })
   app.use(cookieSession({ keys: [''] }))
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(express.json())
+  app.use(express.urlencoded({ extended: false }))
   app.use('/', route)
   app.use(error => console.log(error))
   return app

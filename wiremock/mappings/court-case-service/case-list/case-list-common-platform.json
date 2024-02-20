@@ -35,6 +35,7 @@
             "preSentenceActivity": false,
             "awaitingPsr": false,
             "source": "COMMON_PLATFORM",
+            "files": [],
             "offences": [
               {
                 "offenceTitle": "Theft from the person of another",

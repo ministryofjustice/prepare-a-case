@@ -70,6 +70,12 @@ Given('I am an authenticated user', () => {
   cy.get('#loginForm').should('not.exist')
 })
 
+// ids shouldn't matter, use for generic features
+Given('I am on the case summary page', () => {
+  cy.visit('/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary')
+  cy.get('title').contains(`Case summary - `)
+})
+
 When('I navigate to the {string} route for today', $route => {
   cy.visit(`/B14LO/${$route}/${moment().format('YYYY-MM-DD')}`)
 })

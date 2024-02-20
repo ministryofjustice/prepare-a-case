@@ -88,13 +88,14 @@ services:
       - ENABLE_CASE_PROGRESS=${ENABLE_CASE_PROGRESS:-true}
       - ENABLE_HEARING_OUTCOMES=${ENABLE_HEARING_OUTCOMES:-true}
       - ENABLE_PAST_CASES_NAVIGATION=${ENABLE_PAST_CASES_NAVIGATION:-true}
+      - ENABLE_CASE_DEFENDANT_DOCUMENTS=${ENABLE_CASE_DEFENDANT_DOCUMENTS:-true}
     env_file:
       - .env
     networks:
       - hmpps
     depends_on:
       redis:
-        condition: service_started
+        condition: service_healthy
       hmpps-auth:
         condition: service_started
       court-case-service:
