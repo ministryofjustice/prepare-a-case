@@ -321,6 +321,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       })
     })
 
+    templateValues.data.files ||= [] // TODO: compatibility until the backend has caught up, remove when so
     templateValues.data.files
       .forEach(file => {
         file.datetime = moment(file.datetime).format('D MMMM YYYY')
