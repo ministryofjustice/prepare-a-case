@@ -6,7 +6,7 @@ const casesInProgressHandler = require('./getCasesInProgressHandler')({ getOutco
 const getResultedCasesHandler = require('./getResultedCasesHandler')({ getOutcomesList })
 const assignHearingOutcomeRouteHandler = require('./getAssignUserToOutcomeRequestHandler')({ assignHearingOutcome })
 const getMoveToResultedHandler = require('./getMoveToResultedHandler')({ updateHearingOutcomeToResulted })
-const postActionsHandler = require('./postActionsHandler')({ updateHearingOutcomeToResulted })
+const postActionsHandler = require('./postActionsHandler')({ assignHearingOutcome })
 
 const { defaults } = require('../../middleware/defaults')
 const catchErrors = require('../catchAsyncErrors')
