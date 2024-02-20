@@ -41,7 +41,7 @@ services:
       - "9092:8080"
 
   redis:
-    image: 'bitnami/redis:5.0'
+    image: 'bitnami/redis:7.2.4'
     networks:
       - hmpps
     container_name: prepare-a-case-redis
