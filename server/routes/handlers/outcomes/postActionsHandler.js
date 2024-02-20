@@ -16,7 +16,7 @@ module.exports = caseService => async (req, res) => {
     case 'assign':
       items = typeof hearingId === 'string' ? [hearingId] : hearingId
       await Promise.all(items
-        .map(caseService.updateHearingOutcomeToResulted))
+        .map(hearingId => caseService.assignHearingOutcome(hearingId, res.locals.user.name)))
       session.outcomeActionAssign = items.length
       delete req.body
       return casesToResultHandler(req, res)
