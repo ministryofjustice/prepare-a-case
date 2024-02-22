@@ -307,13 +307,13 @@ const createCaseService = (apiUrl) => {
     addCaseComment: async (caseId, comment, author) => await create(`${apiUrl}/cases/${caseId}/comments`, { caseId, comment, author }),
     updateCaseComment: async (caseId, commentId, comment, author) => await update(`${apiUrl}/cases/${caseId}/comments/${commentId}`, { caseId, comment, author }),
     deleteCaseComment: async (caseId, commentId) => await httpDelete(`${apiUrl}/cases/${caseId}/comments/${commentId}`),
-    addHearingNote: async (hearingId, note, author) => await create(`${apiUrl}/hearing/${hearingId}/notes`, { hearingId, note, author }),
-    saveDraftHearingNote: async (hearingId, note, author) => await update(`${apiUrl}/hearing/${hearingId}/notes/draft`, { hearingId, note, author }),
-    updateHearingNote: async (hearingId, note, noteId, author) => await update(`${apiUrl}/hearing/${hearingId}/notes/${noteId}`, { hearingId, note, author, noteId }),
-    deleteHearingNote: async (hearingId, noteId) => await httpDelete(`${apiUrl}/hearing/${hearingId}/notes/${noteId}`),
+    addHearingNote: async (hearingId, note, author) => await create(`${apiUrl}/hearing/${hearingId}/defendants/{defendantId}/notes`, { hearingId, note, author }),
+    saveDraftHearingNote: async (hearingId, note, author) => await update(`${apiUrl}/hearing/${hearingId}/defendants/{defendantId}/notes/draft`, { hearingId, note, author }),
+    updateHearingNote: async (hearingId, note, noteId, author) => await update(`${apiUrl}/hearing/${hearingId}/defendants/{defendantId}/notes/${noteId}`, { hearingId, note, author, noteId }),
+    deleteHearingNote: async (hearingId, noteId) => await httpDelete(`${apiUrl}/hearing/${hearingId}/defendants/{defendantId}/notes/${noteId}`),
     deleteHearingNoteDraft: async (hearingId) => {
       try {
-        await httpDelete(`${apiUrl}/hearing/${hearingId}/notes/draft`)
+        await httpDelete(`${apiUrl}/hearing/${hearingId}/defendants/{defendantId}/notes/draft`)
       } catch (e) {
         if (e.response?.status === 404) {
           return // if the note draft has never been saved, delete would return 404 which we should be ignoring it.
