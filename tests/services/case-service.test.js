@@ -3,6 +3,9 @@ const moxios = require('moxios')
 const config = require('../../server/config')
 const settings = config.settings
 
+const proxy = require('express-http-proxy')
+jest.mock('express-http-proxy')
+
 const {
   getCaseList,
   getPagedCaseList,
@@ -22,7 +25,8 @@ const {
   deleteCaseCommentDraft,
   assignHearingOutcome,
   updateHearingOutcomeToResulted,
-  getOutcomeTypes
+  getOutcomeTypes,
+  files
 } = require('../../server/services/case-service')
 const getOutcomeListSorts = require('../../server/utils/getOutcomesSorts')
 
@@ -36,6 +40,121 @@ describe('Case service', () => {
   afterEach(() => {
     moxios.uninstall()
     jest.clearAllMocks()
+  })
+
+  describe('Files', () => {
+    it('should delete a file', async () => {
+      moxios.stubRequest(
+        `${apiUrl}/hearing/hearingId/defendant/defendantId/files/fileId`,
+        {
+          status: 200,
+          response: {
+            cases: []
+          }
+        }
+      )
+      const response = await files.delete('hearingId', 'defendantId', 'fileId')
+      expect(moxios.requests.mostRecent().url).toBe(
+        `${apiUrl}/hearing/hearingId/defendant/defendantId/files/fileId`
+      )
+      return response
+    })
+
+    it('should upload a file', () => {
+      const mockReq = {}
+      const mockRes = {}
+      const mockNext = () => {}
+      const responseFormatter = data => data
+
+      proxy.mockImplementationOnce((url, config) => {
+        expect(url).toBe(apiUrl)
+        expect(config.proxyReqPathResolver()).toBe(
+          '/hearing/hearingId/defendant/defendantId/files'
+        )
+
+        const mockProxyRes = {
+          statusCode: 200,
+          rawHeaders: ['application/json']
+        }
+        const mockJson = 'true'
+        let mockProxyData = Buffer.from(mockJson)
+
+        // ===200
+        expect(config.userResDecorator(mockProxyRes, mockProxyData)).toBe(
+          mockJson
+        )
+
+        // bad json
+        mockProxyData = Buffer.from('{[dd')
+        expect(() =>
+          config.userResDecorator(mockProxyRes, mockProxyData)
+        ).toThrow()
+
+        // bad header
+        mockProxyData = Buffer.from(mockJson)
+        mockProxyRes.rawHeaders = []
+        expect(() =>
+          config.userResDecorator(mockProxyRes, mockProxyData)
+        ).toThrow()
+
+        // >=400
+        mockProxyRes.statusCode = 403
+        expect(config.userResDecorator(mockProxyRes, mockProxyData)).toBe(
+          mockProxyData
+        )
+
+        // everything else
+        mockProxyRes.statusCode = 203
+        expect(() =>
+          config.userResDecorator(mockProxyRes, mockProxyData)
+        ).toThrow()
+
+        return (myReq, myRes, myNext) => {
+          expect(myReq).toBe(mockReq)
+          expect(myRes).toBe(mockRes)
+          expect(myNext).toBe(mockNext)
+        }
+      })
+
+      files.post(
+        mockReq,
+        mockRes,
+        mockNext,
+        responseFormatter,
+        'hearingId',
+        'defendantId'
+      )
+    })
+
+    it('should download a file', async () => {
+      const mockReq = {}
+      const mockRes = {}
+      const mockNext = () => {}
+      const skipper = () => {}
+
+      proxy.mockImplementationOnce((url, config) => {
+        expect(url).toBe(apiUrl)
+        expect(config.proxyReqPathResolver()).toBe(
+          '/hearing/hearingId/defendant/defendantId/files/fileId/raw'
+        )
+        expect(config.skipToNextHandlerFilter).toBe(skipper)
+        return (myReq, myRes, myNext) => {
+          expect(myReq).toBe(mockReq)
+          expect(myRes).toBe(mockRes)
+          expect(myNext).toBe(mockNext)
+        }
+      })
+
+      files.getRaw(
+        mockReq,
+        mockRes,
+        mockNext,
+        skipper,
+        'hearingId',
+        'defendantId',
+        'fileId'
+      )
+    })
   })
 
   it('should call the API to request case list data', async () => {

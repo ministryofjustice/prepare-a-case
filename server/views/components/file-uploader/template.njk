@@ -1,0 +1,52 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+<div class="common_file_uploader">
+  <ul>
+    <template data-id="error">
+      <span class="error">[[file.name]]</span>
+      <span class="error">[[http.text]]</span>
+      <span class="error">[[http.code]]</span>
+    </template>
+    <template data-id="inprogress">
+      <span>[[file.name]]</span>
+      <span><span data-percentage></span>%</span>
+    </template>
+    <template data-id="success">
+      <a href="{{ url }}/[[id]]/raw" target="_blank">[[file.name]]</a>
+      <span>[[datetime]]</span>
+      <a href="{{ url }}/[[id]]/delete" data-event-click-confirm>Delete</a>
+    </template>
+    {% for item in files %}
+      <li data-item-exists>
+        <a href="{{ url }}/{{item.id}}/raw" target="_blank">{{ item.file.name }}</a>
+        <span>{{ item.datetime }}</span>
+        <a href="{{ url }}/{{item.id}}/delete" data-event-click-confirm>Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <form method="post" action="{{ url }}">
+    <fieldset>
+      <div>
+        <span>Drag and drop files here or</span>
+        {{ govukButton({
+          text: "Choose files",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+      {% set accept = config.mime.allow %}
+      {% for ext in config.extension.allow %}
+        {% set accept = (accept.push(ext), accept) %}
+      {% endfor %}
+      <input type="file" class="govuk-button--secondary" data-maxselect="{{ config.select.max }}" accept="{{ accept | join(',') }}" multiple></input>
+      <ul class="container_todo">
+        <template data-id="todo_item">
+          <span>[[file.name]]</span>
+        </template>
+      </ul>
+    </fieldset>
+    <div>
+      <input type="submit" class="govuk-button" value="Upload files" />
+    </div>
+  </form>
+</div>
+

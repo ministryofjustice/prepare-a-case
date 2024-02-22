@@ -7,7 +7,7 @@
     "response": {
       "headers": {
         "Content-Type": "text/html",
-        "Location": "http://localhost:3007/login/callback?code=codexxxx"
+        "Location": "http://localhost:3000/login/callback?code=codexxxx"
       },
       "status": 302,
       "body": "<html><body>Login page<h1>Sign in</h1></body></html>"

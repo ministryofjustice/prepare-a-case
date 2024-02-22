@@ -19,7 +19,7 @@ module.exports = {
   taskTimeout: 20000,
   projectId: '2ew2jc',
   e2e: {
-    baseUrl: 'http://localhost:3007',
+    baseUrl: 'http://localhost:3000',
     specPattern: './cypress/e2e/**/*.feature',
     excludeSpecPattern: ['*.js', '*.md'],
     supportFile: false,

@@ -70,6 +70,12 @@ Given('I am an authenticated user', () => {
   cy.get('#loginForm').should('not.exist')
 })
 
+// ids shouldn't matter, use for generic features
+Given('I am on the case summary page', () => {
+  cy.visit('/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary')
+  cy.get('title').contains(`Case summary - `)
+})
+
 When('I navigate to the {string} route for today', $route => {
   cy.visit(`/B14LO/${$route}/${moment().format('YYYY-MM-DD')}`)
 })
@@ -162,7 +168,9 @@ Then('I should see the following level 3 headings', $data => {
 
 Then('I should see the following table headings', $data => {
   $data.raw()[0].forEach((text, index) => {
-    cy.get('.govuk-table__header').eq(index).contains(text)
+    if (text) {
+      cy.get('.govuk-table__header').eq(index).contains(text)
+    }
   })
 })
 
@@ -179,6 +187,9 @@ Then('I should see the following table rows', $data => {
   $data.raw().forEach((row, index) => {
     cy.get('.govuk-table__body > .govuk-table__row').eq(index).within(() => {
       row.forEach((text, colIndex) => {
+        if (!text) {
+          return
+        }
         const safeText = text.split(' ').map(part => {
           if (part.includes('{')) {
             cy.get('.govuk-table__cell').eq(colIndex).within(() => {
@@ -329,8 +340,12 @@ Then('I should see radio buttons with the following IDs', $data => {
   })
 })
 
-Then('I click the element with id {string}', $id => {
-  cy.get(`#${$id}`).click()
+Then('I click the element with id {string}', id => {
+  cy.get(`#${id}`).click()
+})
+
+Then('I check the element with id {string}', id => {
+  cy.get(`#${id}`).check({ force: true })
 })
 
 Then('I click the {string} summary link', $string => {

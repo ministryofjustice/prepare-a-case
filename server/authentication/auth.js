@@ -34,7 +34,7 @@ function init (signInService) {
       clientID: config.apis.oauth2.apiClientId,
       clientSecret: config.apis.oauth2.apiClientSecret,
       callbackURL: `${config.domain}/login/callback`,
-      state: !env.NOMIS_DISABLE_OAUTH_STATE,
+      state: env.NOMIS_DISABLE_OAUTH_STATE !== 'true',
       customHeaders: { Authorization: generateOauthClientToken() }
     },
     (accessToken, refreshToken, profile, done) => {

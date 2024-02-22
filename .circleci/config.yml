@@ -114,7 +114,7 @@ jobs:
           background: true
       - run:
           name: Start services
-          command: ENABLE_HEARING_OUTCOMES=true docker compose up -d --wait
+          command: docker compose up -d --wait
       - run:
           name: Log services
           command: docker compose logs -f -t > services.log

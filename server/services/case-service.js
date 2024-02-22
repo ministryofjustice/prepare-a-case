@@ -4,6 +4,7 @@ const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../config')
 const { prepareCourtRoomFilters } = require('../routes/helpers')
 const { settings } = require('../config')
+const proxy = require('express-http-proxy')
 
 const isHttpSuccess = response => {
   return response && response.status / 100 === 2
@@ -243,6 +244,40 @@ const createCaseService = apiUrl => {
         cases: filteredCases,
         snapshot: latestSnapshot
       }
+    },
+
+    files: {
+      delete: (hearingId, defendantId, fileId) => httpDelete(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files/${fileId}`),
+      post: (req, res, next, responseFormatter, hearingId, defendantId) => proxy(
+        apiUrl,
+        {
+          proxyReqPathResolver: () => {
+            return `/hearing/${hearingId}/defendant/${defendantId}/files`
+          },
+          userResDecorator: (proxyRes, proxyResData) => {
+            // anything 400+ will be forwarded to next() by the proxy however this still runs so we need to handle
+            if (proxyRes.statusCode >= 400) {
+              return proxyResData
+            }
+            if (proxyRes.statusCode === 200) {
+              if (!proxyRes.rawHeaders.includes('application/json')) {
+                throw new TypeError(`Non JSON response for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`)
+              }
+              return JSON.stringify(responseFormatter(JSON.parse(proxyResData.toString('utf8'))))
+            }
+            throw new TypeError(`Invalid response status code for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`)
+          }
+        }
+      )(req, res, next),
+      getRaw: (req, res, next, skipToNextHandlerFilter, hearingId, defendantId, fileId) => proxy(
+        apiUrl,
+        {
+          proxyReqPathResolver: () => {
+            return `/hearing/${hearingId}/defendant/${defendantId}/files/${fileId}/raw`
+          },
+          skipToNextHandlerFilter
+        }
+      )(req, res, next)
     },
 
     getOutcomesList: async (courtCode, filters, sorts, state) => {

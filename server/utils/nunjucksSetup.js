@@ -4,7 +4,7 @@ const filters = require('./nunjucksFilters')
 
 module.exports = (app, path) => {
   const env = nunjucks.configure([
-    path.join(__dirname, '../../node_modules/govuk-frontend/'),
+    path.join(__dirname, '../../node_modules/govuk-frontend/dist/'),
     path.join(__dirname, '../../node_modules/@ministryofjustice/frontend/'),
     path.join(__dirname, '../../server/views')
   ], {

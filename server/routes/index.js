@@ -13,7 +13,8 @@ const {
   getMatchDetails,
   deleteOffender,
   updateOffender,
-  getCaseHistory
+  getCaseHistory,
+  files: caseFiles
 } = require('../services/case-service')
 const {
   getDetails,
@@ -360,16 +361,68 @@ module.exports = function Index ({ authenticationMiddleware }) {
     catchErrors(autoSaveHearingNoteEditHandler)
   )
 
+  if (settings.enableCaseDefendantDocuments) {
+    router.get(
+      '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/delete',
+      defaults,
+      catchErrors(async (req, res) => {
+        const {
+          params: { hearingId, defendantId, fileId }
+        } = req
+        const { data } = await caseFiles.delete(hearingId, defendantId, fileId)
+        res.json(data)
+      })
+    )
+
+    router.get(
+      '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/raw',
+      (req, res, next) => {
+        const {
+          params: { hearingId, defendantId, fileId }
+        } = req
+        caseFiles.getRaw(
+          req,
+          res,
+          next,
+          proxyRes => {
+            if (proxyRes.statusCode >= 400) {
+              throw new Error(
+                `${proxyRes.statusCode} - unable to download file.`
+              )
+            }
+          },
+          hearingId,
+          defendantId,
+          fileId
+        )
+      }
+    )
+
+    router.post(
+      '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files',
+      (req, res, next) => {
+        const {
+          params: { hearingId, defendantId }
+        } = req
+        const formatter = data => {
+          // date formatter
+          data.datetime = moment(data.datetime).format('D MMMM YYYY')
+          return data
+        }
+        caseFiles.post(req, res, next, formatter, hearingId, defendantId)
+      }
+    )
+  }
+
   router.get(
     '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary',
     defaults,
     catchErrors(async (req, res) => {
       // build outcome types list for select controls
-      const outcomeTypesListFilters = await getOutcomeTypesListFilters()
-
+      const outcomeTypeItems = getOutcomeTypesListFilters().items
       const outcomeTypes = [
         ...[{ value: '', text: 'Outcome type' }],
-        ...outcomeTypesListFilters.items
+        ...outcomeTypeItems
           .filter(item => item.value !== 'NO_OUTCOME')
           .map(item => {
             return { text: item.label, value: item.value }
@@ -416,6 +469,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
         })
       })
 
+      templateValues.data.files ||= [] // TODO: compatibility until the backend has caught up, remove when so
+      templateValues.data.files.forEach(file => {
+        file.datetime = moment(file.datetime).format('D MMMM YYYY')
+      })
+
+      templateValues.config = { ...settings.case }
+
       templateValues.enableCaseHistory = settings.enableCaseHistory
       templateValues.currentUserUuid = res.locals.user.uuid
       const context = {
@@ -428,7 +488,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
       templateValues.params.hearingOutcomesEnabled = hearingOutcomesEnabled
       templateValues.features = {
         hearingNotes: featuresToggles.hearingNotes.isEnabled(context),
-        hearingOutcomesEnabled
+        hearingOutcomesEnabled,
+        caseDefendantDocuments: settings.enableCaseDefendantDocuments
       }
       templateValues.outcomeTypes = outcomeTypes
       session.confirmedMatch = undefined

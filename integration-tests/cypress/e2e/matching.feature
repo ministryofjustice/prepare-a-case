@@ -168,7 +168,7 @@ Feature: Matching defendants to nDelius records
     When I click the "Review records" link
     Then I should be on the "Review possible NDelius records" page
 
-    And I click the element with id "defendant-1"
+    And I check the element with id "defendant-1"
     And I click the "Confirm record" button
 
     Then I should be on the "Defendants with possible NDelius records" page
@@ -183,7 +183,7 @@ Feature: Matching defendants to nDelius records
 
     Then I should be on the "Review possible NDelius records" page
 
-    When I click the element with id "defendant-1"
+    When I check the element with id "defendant-1"
     And I click the "Confirm record" button
 
     Then I should be on the "Case summary" page
@@ -199,7 +199,7 @@ Feature: Matching defendants to nDelius records
     When I click the "Review records" link
     Then I should be on the "Review possible NDelius records" page
 
-    And I click the element with id "defendant-1"
+    And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "confirm they have no record" link
 
@@ -240,7 +240,7 @@ Feature: Matching defendants to nDelius records
     When I click the "Review records" link
     Then I should be on the "Review possible NDelius records" page
 
-    And I click the element with id "defendant-1"
+    And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
@@ -268,7 +268,7 @@ Feature: Matching defendants to nDelius records
     When I click the "Review records" link
     Then I should be on the "Review possible NDelius records" page
 
-    And I click the element with id "defendant-1"
+    And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
@@ -289,7 +289,7 @@ Feature: Matching defendants to nDelius records
     When I click the "Review records" link
     Then I should be on the "Review possible NDelius records" page
 
-    And I click the element with id "defendant-1"
+    And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
@@ -310,7 +310,7 @@ Feature: Matching defendants to nDelius records
     When I click the "Review records" link
     Then I should be on the "Review possible NDelius records" page
 
-    And I click the element with id "defendant-1"
+    And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
@@ -331,7 +331,7 @@ Feature: Matching defendants to nDelius records
     When I click the "Review records" link
     Then I should be on the "Review possible NDelius records" page
 
-    And I click the element with id "defendant-1"
+    And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
@@ -360,7 +360,7 @@ Feature: Matching defendants to nDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730" base route
 
-    And I click the element with id "defendant-1"
+    And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
@@ -419,7 +419,7 @@ Feature: Matching defendants to nDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85" base route
 
-    And I click the element with id "defendant-1"
+    And I check the element with id "defendant-1"
     And I click the "Confirm record" button
 
     Then I should be on the "Review possible NDelius records" page

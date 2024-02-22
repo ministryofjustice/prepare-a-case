@@ -1,0 +1,15 @@
+{
+  "id": "b01f2b40-422c-48f5-a7e7-6ef5860e0faa",
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/hearing/a395526d-b805-4c52-8f61-3c41bca15537/defendant/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/files"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 413,
+    "jsonBody": {
+    }
+  }
+}
