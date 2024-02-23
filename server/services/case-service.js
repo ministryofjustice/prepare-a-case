@@ -207,8 +207,8 @@ const createCaseService = apiUrl => {
         subsection === 'added'
           ? addedCases
           : subsection === 'removed'
-          ? removedCases
-          : allCases
+            ? removedCases
+            : allCases
 
       function applyFilter (filterObj) {
         filteredCases = filteredCases.filter(courtCase => {
