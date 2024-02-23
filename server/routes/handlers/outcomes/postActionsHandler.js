@@ -5,18 +5,19 @@ module.exports = caseService => async (req, res) => {
   const {
     body: {
       action,
-      hearingId
+      defendantHearingId
     },
     session
   } = req
 
-  let items
+  const items = (typeof defendantHearingId === 'string' ? [defendantHearingId] : defendantHearingId)
+    .map(defendantHearingId => defendantHearingId.split('_'))
 
   switch (action) {
     case 'assign':
-      items = typeof hearingId === 'string' ? [hearingId] : hearingId
       await Promise.all(items
-        .map(hearingId => caseService.assignHearingOutcome(hearingId, res.locals.user.name)))
+        // WARN: the defendantID should be consumed by this function - backend bug!
+        .map(([defendantId, hearingId]) => caseService.assignHearingOutcome(hearingId, res.locals.user.name)))
       session.outcomeActionAssign = items.length
       delete req.body
       return casesToResultHandler(req, res)
