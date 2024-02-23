@@ -10,24 +10,41 @@ const isHttpSuccess = response => {
   return response && response.status / 100 === 2
 }
 
-const getInternalServerErrorResponse = res => ({ isError: true, status: res?.status || 500 })
+const getInternalServerErrorResponse = res => ({
+  isError: true,
+  status: res?.status || 500
+})
 
-const defaultFilterMatcher = (courtCase, filterObj, item) => courtCase[filterObj.id] ? courtCase[filterObj.id].toString().toLowerCase() === item.value.toString().toLowerCase() : false
+const defaultFilterMatcher = (courtCase, filterObj, item) =>
+  courtCase[filterObj.id]
+    ? courtCase[filterObj.id].toString().toLowerCase() ===
+      item.value.toString().toLowerCase()
+    : false
 
 const allowedSortValues = ['ASC', 'DESC']
 const allowedStates = ['NEW', 'IN_PROGRESS', 'RESULTED']
 
-const createCaseService = (apiUrl) => {
+const createCaseService = apiUrl => {
   return {
-    getCaseHistory: async (caseId) => {
+    getCaseHistory: async caseId => {
       const res = await request(`${apiUrl}/cases/${caseId}`)
       return res.data
     },
-    getMatchDetails: async (defendantId) => {
-      const res = await request(`${apiUrl}/defendant/${defendantId}/matchesDetail`) || { data: {} }
+    getMatchDetails: async defendantId => {
+      const res = (await request(
+        `${apiUrl}/defendant/${defendantId}/matchesDetail`
+      )) || { data: {} }
       return res.data
     },
-    getPagedCaseList: async (courtCode, date, selectedFilters, subsection, page, pageSize, hearingOutcomesEnabled) => {
+    getPagedCaseList: async (
+      courtCode,
+      date,
+      selectedFilters,
+      subsection,
+      page,
+      pageSize,
+      hearingOutcomesEnabled
+    ) => {
       const apiUrlBuilder = new URL(`${apiUrl}/court/${courtCode}/cases`)
 
       apiUrlBuilder.searchParams.append('date', date)
@@ -39,7 +56,11 @@ const createCaseService = (apiUrl) => {
         apiUrlBuilder.searchParams.append('recentlyAdded', 'true')
       }
       if (hearingOutcomesEnabled) {
-        if (subsection === false || subsection === null || subsection === undefined) {
+        if (
+          subsection === false ||
+          subsection === null ||
+          subsection === undefined
+        ) {
           apiUrlBuilder.searchParams.append('hearingStatus', 'UNHEARD')
         }
         if (subsection === 'heard') {
@@ -54,7 +75,11 @@ const createCaseService = (apiUrl) => {
             entry[1].forEach(value => {
               if (entry[0] === 'courtRoom') {
                 // courtRoom can be csv so append each room separately
-                value.split(',').forEach(courtRoom => apiUrlBuilder.searchParams.append(entry[0], courtRoom))
+                value
+                  .split(',')
+                  .forEach(courtRoom =>
+                    apiUrlBuilder.searchParams.append(entry[0], courtRoom)
+                  )
               } else {
                 apiUrlBuilder.searchParams.append(entry[0], value)
               }
@@ -79,7 +104,10 @@ const createCaseService = (apiUrl) => {
             { value: 'PREVIOUSLY_KNOWN', label: 'Previously known' },
             { value: 'NOT_SENTENCED', label: 'Pre-sentence record' },
             { value: 'NO_RECORD', label: 'No record' },
-            { value: 'Possible NDelius record', label: 'Possible NDelius record' }
+            {
+              value: 'Possible NDelius record',
+              label: 'Possible NDelius record'
+            }
           ]
         },
         {
@@ -90,7 +118,10 @@ const createCaseService = (apiUrl) => {
         {
           id: 'session',
           label: 'Session',
-          items: [{ value: 'MORNING', label: 'Morning' }, { value: 'AFTERNOON', label: 'Afternoon' }]
+          items: [
+            { value: 'MORNING', label: 'Morning' },
+            { value: 'AFTERNOON', label: 'Afternoon' }
+          ]
         }
       ]
 
@@ -98,7 +129,10 @@ const createCaseService = (apiUrl) => {
         {
           id: 'source',
           label: 'Source',
-          items: [{ label: 'Common Platform', value: 'COMMON_PLATFORM' }, { label: 'Libra', value: 'LIBRA' }]
+          items: [
+            { label: 'Common Platform', value: 'COMMON_PLATFORM' },
+            { label: 'Libra', value: 'LIBRA' }
+          ]
         },
         {
           id: 'breach',
@@ -108,16 +142,25 @@ const createCaseService = (apiUrl) => {
       )
 
       if (selectedFilters) {
-        caseListFilters.filter(caseListFilter => !!selectedFilters[caseListFilter.id]).forEach(caseListFilter => {
-          const selectedValues = selectedFilters[caseListFilter.id]
-          const isCourt = caseListFilter.id === 'courtRoom'
-          const multipleSelection = Array.isArray(selectedValues)
-          caseListFilter.items.forEach(item => {
-            // courtrooms can be arrays here and in selected filters they are csv so convert array to csv for comparison
-            const compareItemValue = isCourt && Array.isArray(item.value) ? item.value.join(',') : item.value
-            item.checked = item.checked || (multipleSelection ? selectedValues.includes(compareItemValue) : selectedValues === compareItemValue)
+        caseListFilters
+          .filter(caseListFilter => !!selectedFilters[caseListFilter.id])
+          .forEach(caseListFilter => {
+            const selectedValues = selectedFilters[caseListFilter.id]
+            const isCourt = caseListFilter.id === 'courtRoom'
+            const multipleSelection = Array.isArray(selectedValues)
+            caseListFilter.items.forEach(item => {
+              // courtrooms can be arrays here and in selected filters they are csv so convert array to csv for comparison
+              const compareItemValue =
+                isCourt && Array.isArray(item.value)
+                  ? item.value.join(',')
+                  : item.value
+              item.checked =
+                item.checked ||
+                (multipleSelection
+                  ? selectedValues.includes(compareItemValue)
+                  : selectedValues === compareItemValue)
+            })
           })
-        })
       }
 
       return {
@@ -126,8 +169,12 @@ const createCaseService = (apiUrl) => {
       }
     },
     getCaseList: async (courtCode, date, selectedFilters, subsection) => {
-      const latestSnapshot = getLatestSnapshot(date).format('YYYY-MM-DDTHH:mm:00.000')
-      const response = await request(`${apiUrl}/court/${courtCode}/cases?date=${date}`)
+      const latestSnapshot = getLatestSnapshot(date).format(
+        'YYYY-MM-DDTHH:mm:00.000'
+      )
+      const response = await request(
+        `${apiUrl}/court/${courtCode}/cases?date=${date}`
+      )
       if (!isHttpSuccess(response)) {
         return getInternalServerErrorResponse(response)
       }
@@ -139,7 +186,10 @@ const createCaseService = (apiUrl) => {
       let unmatchedRecords = 0
       if (data && data.cases) {
         data.cases.forEach($case => {
-          if ($case.probationStatus.toLowerCase() === 'possible ndelius record' && $case.numberOfPossibleMatches > 0) {
+          if (
+            $case.probationStatus.toLowerCase() === 'possible ndelius record' &&
+            $case.numberOfPossibleMatches > 0
+          ) {
             unmatchedRecords++
           }
           if ($case.createdToday) {
@@ -153,7 +203,12 @@ const createCaseService = (apiUrl) => {
         })
       }
 
-      let filteredCases = subsection === 'added' ? addedCases : subsection === 'removed' ? removedCases : allCases
+      let filteredCases =
+        subsection === 'added'
+          ? addedCases
+          : subsection === 'removed'
+          ? removedCases
+          : allCases
 
       function applyFilter (filterObj) {
         filteredCases = filteredCases.filter(courtCase => {
@@ -162,7 +217,11 @@ const createCaseService = (apiUrl) => {
           filterObj.items.forEach(item => {
             if (item && item.checked) {
               notFiltered = false
-              matched = matched || (filterObj.matcher ? filterObj.matcher(courtCase, item) : defaultFilterMatcher(courtCase, filterObj, item))
+              matched =
+                matched ||
+                (filterObj.matcher
+                  ? filterObj.matcher(courtCase, item)
+                  : defaultFilterMatcher(courtCase, filterObj, item))
             }
           })
           return notFiltered || matched
@@ -188,10 +247,12 @@ const createCaseService = (apiUrl) => {
     },
 
     files: {
-      delete: (hearingId, defendantId, fileId) => httpDelete(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files/${fileId}`),
-      post: (req, res, next, responseFormatter, hearingId, defendantId) => proxy(
-        apiUrl,
-        {
+      delete: (hearingId, defendantId, fileId) =>
+        httpDelete(
+          `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files/${fileId}`
+        ),
+      post: (req, res, next, responseFormatter, hearingId, defendantId) =>
+        proxy(apiUrl, {
           proxyReqPathResolver: () => {
             return `/hearing/${hearingId}/defendant/${defendantId}/files`
           },
@@ -202,23 +263,34 @@ const createCaseService = (apiUrl) => {
             }
             if (proxyRes.statusCode === 200) {
               if (!proxyRes.rawHeaders.includes('application/json')) {
-                throw new TypeError(`Non JSON response for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`)
+                throw new TypeError(
+                  `Non JSON response for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`
+                )
               }
-              return JSON.stringify(responseFormatter(JSON.parse(proxyResData.toString('utf8'))))
+              return JSON.stringify(
+                responseFormatter(JSON.parse(proxyResData.toString('utf8')))
+              )
             }
-            throw new TypeError(`Invalid response status code for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`)
+            throw new TypeError(
+              `Invalid response status code for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`
+            )
           }
-        }
-      )(req, res, next),
-      getRaw: (req, res, next, skipToNextHandlerFilter, hearingId, defendantId, fileId) => proxy(
-        apiUrl,
-        {
+        })(req, res, next),
+      getRaw: (
+        req,
+        res,
+        next,
+        skipToNextHandlerFilter,
+        hearingId,
+        defendantId,
+        fileId
+      ) =>
+        proxy(apiUrl, {
           proxyReqPathResolver: () => {
             return `/hearing/${hearingId}/defendant/${defendantId}/files/${fileId}/raw`
           },
           skipToNextHandlerFilter
-        }
-      )(req, res, next)
+        })(req, res, next)
     },
 
     getOutcomesList: async (courtCode, filters, sorts, state) => {
@@ -257,10 +329,15 @@ const createCaseService = (apiUrl) => {
       })
 
       if (sorts && sorts.length) {
-        sorts.filter(sort => sort.value !== 'NONE' && allowedSortValues.includes(sort.value)).forEach(sort => {
-          paramMap.append('sortBy', sort.id)
-          paramMap.append('order', sort.value)
-        })
+        sorts
+          .filter(
+            sort =>
+              sort.value !== 'NONE' && allowedSortValues.includes(sort.value)
+          )
+          .forEach(sort => {
+            paramMap.append('sortBy', sort.id)
+            paramMap.append('order', sort.value)
+          })
       }
 
       paramMap.set('page', `${filters?.page || 1}`)
@@ -275,14 +352,19 @@ const createCaseService = (apiUrl) => {
       return response.data
     },
 
-    updateHearingOutcomeToResulted: async (hearingId) => {
+    updateHearingOutcomeToResulted: async hearingId => {
       const urlString = `${apiUrl}/hearing/${hearingId}/outcome/result`
       await create(urlString)
     },
 
     searchCases: async (term, type, page, pageSize) => {
       try {
-        return await request(`${apiUrl}/search`, { term, type, page, size: pageSize })
+        return await request(`${apiUrl}/search`, {
+          term,
+          type,
+          page,
+          size: pageSize
+        })
       } catch (e) {
         if (e.response && e.response.status === 404) {
           return { data: {} }
@@ -292,28 +374,61 @@ const createCaseService = (apiUrl) => {
     },
 
     getCase: async (hearingId, defendantId) => {
-      const res = await request(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`)
+      const res = await request(
+        `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`
+      )
       if (!isHttpSuccess(res)) {
         return getInternalServerErrorResponse(res)
       }
       return res.data
     },
     updateOffender: async (defendantId, offenderData) => {
-      return await update(`${apiUrl}/defendant/${defendantId}/offender`, offenderData)
+      return await update(
+        `${apiUrl}/defendant/${defendantId}/offender`,
+        offenderData
+      )
     },
-    deleteOffender: async (defendantId) => {
+    deleteOffender: async defendantId => {
       return await httpDelete(`${apiUrl}/defendant/${defendantId}/offender`)
     },
-    addCaseComment: async (caseId, comment, author) => await create(`${apiUrl}/cases/${caseId}/comments`, { caseId, comment, author }),
-    updateCaseComment: async (caseId, commentId, comment, author) => await update(`${apiUrl}/cases/${caseId}/comments/${commentId}`, { caseId, comment, author }),
-    deleteCaseComment: async (caseId, commentId) => await httpDelete(`${apiUrl}/cases/${caseId}/comments/${commentId}`),
-    addHearingNote: async (hearingId, note, author) => await create(`${apiUrl}/hearing/${hearingId}/defendants/{defendantId}/notes`, { hearingId, note, author }),
-    saveDraftHearingNote: async (hearingId, note, author) => await update(`${apiUrl}/hearing/${hearingId}/defendants/{defendantId}/notes/draft`, { hearingId, note, author }),
-    updateHearingNote: async (hearingId, note, noteId, author) => await update(`${apiUrl}/hearing/${hearingId}/defendants/{defendantId}/notes/${noteId}`, { hearingId, note, author, noteId }),
-    deleteHearingNote: async (hearingId, noteId) => await httpDelete(`${apiUrl}/hearing/${hearingId}/defendants/{defendantId}/notes/${noteId}`),
-    deleteHearingNoteDraft: async (hearingId) => {
+    addCaseComment: async (caseId, comment, author) =>
+      await create(`${apiUrl}/cases/${caseId}/comments`, {
+        caseId,
+        comment,
+        author
+      }),
+    updateCaseComment: async (caseId, commentId, comment, author) =>
+      await update(`${apiUrl}/cases/${caseId}/comments/${commentId}`, {
+        caseId,
+        comment,
+        author
+      }),
+    deleteCaseComment: async (caseId, commentId) =>
+      await httpDelete(`${apiUrl}/cases/${caseId}/comments/${commentId}`),
+    addHearingNote: async (hearingId, note, author, defendantId) =>
+      await create(
+        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes`,
+        { hearingId, note, author }
+      ),
+    saveDraftHearingNote: async (hearingId, note, author, defendantId) =>
+      await update(
+        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/draft`,
+        { hearingId, note, author }
+      ),
+    updateHearingNote: async (hearingId, note, noteId, author, defendantId) =>
+      await update(
+        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/${noteId}`,
+        { hearingId, note, author, noteId }
+      ),
+    deleteHearingNote: async (hearingId, noteId, defendantId) =>
+      await httpDelete(
+        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/${noteId}`
+      ),
+    deleteHearingNoteDraft: async (hearingId, defendantId) => {
       try {
-        await httpDelete(`${apiUrl}/hearing/${hearingId}/defendants/{defendantId}/notes/draft`)
+        await httpDelete(
+          `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/draft`
+        )
       } catch (e) {
         if (e.response?.status === 404) {
           return // if the note draft has never been saved, delete would return 404 which we should be ignoring it.
@@ -321,10 +436,21 @@ const createCaseService = (apiUrl) => {
         throw e
       }
     },
-    addHearingOutcome: async (hearingId, hearingOutcomeType) => await update(`${apiUrl}/hearing/${hearingId}/outcome`, { hearingOutcomeType }),
-    assignHearingOutcome: async (hearingId, assignedTo) => await update(`${apiUrl}/hearing/${hearingId}/outcome/assign`, { assignedTo }),
-    saveDraftCaseComment: async (caseId, comment, author) => await update(`${apiUrl}/cases/${caseId}/comments/draft`, { caseId, comment, author }),
-    deleteCaseCommentDraft: async (caseId) => {
+    addHearingOutcome: async (hearingId, hearingOutcomeType) =>
+      await update(`${apiUrl}/hearing/${hearingId}/outcome`, {
+        hearingOutcomeType
+      }),
+    assignHearingOutcome: async (hearingId, assignedTo) =>
+      await update(`${apiUrl}/hearing/${hearingId}/outcome/assign`, {
+        assignedTo
+      }),
+    saveDraftCaseComment: async (caseId, comment, author) =>
+      await update(`${apiUrl}/cases/${caseId}/comments/draft`, {
+        caseId,
+        comment,
+        author
+      }),
+    deleteCaseCommentDraft: async caseId => {
       try {
         await httpDelete(`${apiUrl}/cases/${caseId}/comments/draft`)
       } catch (e) {
