@@ -247,10 +247,12 @@ const createCaseService = apiUrl => {
     },
 
     files: {
-      delete: (hearingId, defendantId, fileId) => httpDelete(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files/${fileId}`),
-      post: (req, res, next, responseFormatter, hearingId, defendantId) => proxy(
-        apiUrl,
-        {
+      delete: (hearingId, defendantId, fileId) =>
+        httpDelete(
+          `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files/${fileId}`
+        ),
+      post: (req, res, next, responseFormatter, hearingId, defendantId) =>
+        proxy(apiUrl, {
           proxyReqPathResolver: () => {
             return `/hearing/${hearingId}/defendant/${defendantId}/files`
           },
@@ -261,23 +263,34 @@ const createCaseService = apiUrl => {
             }
             if (proxyRes.statusCode === 200) {
               if (!proxyRes.rawHeaders.includes('application/json')) {
-                throw new TypeError(`Non JSON response for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`)
+                throw new TypeError(
+                  `Non JSON response for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`
+                )
               }
-              return JSON.stringify(responseFormatter(JSON.parse(proxyResData.toString('utf8'))))
+              return JSON.stringify(
+                responseFormatter(JSON.parse(proxyResData.toString('utf8')))
+              )
             }
-            throw new TypeError(`Invalid response status code for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`)
+            throw new TypeError(
+              `Invalid response status code for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`
+            )
           }
-        }
-      )(req, res, next),
-      getRaw: (req, res, next, skipToNextHandlerFilter, hearingId, defendantId, fileId) => proxy(
-        apiUrl,
-        {
+        })(req, res, next),
+      getRaw: (
+        req,
+        res,
+        next,
+        skipToNextHandlerFilter,
+        hearingId,
+        defendantId,
+        fileId
+      ) =>
+        proxy(apiUrl, {
           proxyReqPathResolver: () => {
             return `/hearing/${hearingId}/defendant/${defendantId}/files/${fileId}/raw`
           },
           skipToNextHandlerFilter
-        }
-      )(req, res, next)
+        })(req, res, next)
     },
 
     getOutcomesList: async (courtCode, filters, sorts, state) => {
@@ -392,30 +405,30 @@ const createCaseService = apiUrl => {
       }),
     deleteCaseComment: async (caseId, commentId) =>
       await httpDelete(`${apiUrl}/cases/${caseId}/comments/${commentId}`),
-    addHearingNote: async (hearingId, note, author) =>
-      await create(`${apiUrl}/hearing/${hearingId}/notes`, {
-        hearingId,
-        note,
-        author
-      }),
-    saveDraftHearingNote: async (hearingId, note, author) =>
-      await update(`${apiUrl}/hearing/${hearingId}/notes/draft`, {
-        hearingId,
-        note,
-        author
-      }),
-    updateHearingNote: async (hearingId, note, noteId, author) =>
-      await update(`${apiUrl}/hearing/${hearingId}/notes/${noteId}`, {
-        hearingId,
-        note,
-        author,
-        noteId
-      }),
-    deleteHearingNote: async (hearingId, noteId) =>
-      await httpDelete(`${apiUrl}/hearing/${hearingId}/notes/${noteId}`),
-    deleteHearingNoteDraft: async hearingId => {
+    addHearingNote: async (hearingId, note, author, defendantId) =>
+      await create(
+        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes`,
+        { hearingId, note, author }
+      ),
+    saveDraftHearingNote: async (hearingId, note, author, defendantId) =>
+      await update(
+        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/draft`,
+        { hearingId, note, author }
+      ),
+    updateHearingNote: async (hearingId, note, noteId, author, defendantId) =>
+      await update(
+        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/${noteId}`,
+        { hearingId, note, author, noteId }
+      ),
+    deleteHearingNote: async (hearingId, noteId, defendantId) =>
+      await httpDelete(
+        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/${noteId}`
+      ),
+    deleteHearingNoteDraft: async (hearingId, defendantId) => {
       try {
-        await httpDelete(`${apiUrl}/hearing/${hearingId}/notes/draft`)
+        await httpDelete(
+          `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/draft`
+        )
       } catch (e) {
         if (e.response?.status === 404) {
           return // if the note draft has never been saved, delete would return 404 which we should be ignoring it.

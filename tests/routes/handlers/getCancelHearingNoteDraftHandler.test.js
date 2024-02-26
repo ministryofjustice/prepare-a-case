@@ -1,11 +1,11 @@
 /* global describe, it, expect, jest */
 
 describe('getCancelHearingNoteDraftHandler', () => {
-  const {
-    caseServiceMock,
-    mockResponse
-  } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/getCancelHearingNoteDraftHandler')(caseServiceMock)
+  const { caseServiceMock, mockResponse } = require('./test-helpers')
+  const subject =
+    require('../../../server/routes/handlers/getCancelHearingNoteDraftHandler')(
+      caseServiceMock
+    )
   const defendantId = 'test-defendant-id'
   const hearingId = 'test-hearing-id'
   const targetHearingId = 'target-hearing-id'
@@ -25,7 +25,12 @@ describe('getCancelHearingNoteDraftHandler', () => {
     await subject(mockRequest, mockResponse)
 
     // Then
-    expect(caseServiceMock.deleteHearingNoteDraft).toHaveBeenCalledWith(targetHearingId)
-    expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#case-progress-hearing-${targetHearingId}`)
+    expect(caseServiceMock.deleteHearingNoteDraft).toHaveBeenCalledWith(
+      targetHearingId,
+      'test-defendant-id'
+    )
+    expect(mockResponse.redirect).toHaveBeenCalledWith(
+      `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#case-progress-hearing-${targetHearingId}`
+    )
   })
 })

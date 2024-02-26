@@ -35,7 +35,7 @@ Scenario: success banner shows correctly
   When I navigate to the "outcomes" route
   And I check a checkbox for a case record
   And I click to assign the case
-  Then I see a success banner stating "You are assigned to result 1 case. They have moved to the in-progress tab."
+  Then I see a success banner stating "You are assigned to result 1 case. They have moved to the in progress tab."
 
 #AC006 - NOT IMPLEMENTED - The logic is handled by the page reload and so tested elsewhere.
 #Scenario: outcomes tally updates

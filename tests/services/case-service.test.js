@@ -439,20 +439,22 @@ describe('Case service', () => {
   })
 
   it('should call the API to delete a hearing note', async () => {
-    const endpoint = `${apiUrl}/hearing/2e0afeb7-95d2-42f4-80e6-ccf96b282730/notes/12345`
+    const endpoint = `${apiUrl}/hearing/2e0afeb7-95d2-42f4-80e6-ccf96b282730/defendants/some-defendant-id/notes/12345`
     moxios.stubRequest(endpoint, {
       status: 200
     })
 
     const hearingId = '2e0afeb7-95d2-42f4-80e6-ccf96b282730'
     const noteId = 12345
-    const response = await deleteHearingNote(hearingId, noteId)
+    const defendantId = 'some-defendant-id'
+
+    const response = await deleteHearingNote(hearingId, noteId, defendantId)
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
     return response
   })
 
   it('should call the API to save draft hearing note', async () => {
-    const endpoint = `${apiUrl}/hearing/2e0afeb7-95d2-42f4-80e6-ccf96b282730/notes/draft`
+    const endpoint = `${apiUrl}/hearing/2e0afeb7-95d2-42f4-80e6-ccf96b282730/defendants/some-defendant-id/notes/draft`
     moxios.stubRequest(endpoint, {
       status: 200
     })
@@ -460,7 +462,14 @@ describe('Case service', () => {
     const hearingId = '2e0afeb7-95d2-42f4-80e6-ccf96b282730'
     const note = 'note'
     const author = 'Author'
-    const response = await saveDraftHearingNote(hearingId, note, author)
+    const defendantId = 'some-defendant-id'
+
+    const response = await saveDraftHearingNote(
+      hearingId,
+      note,
+      author,
+      defendantId
+    )
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
     expect(mostRecent.config.data).toBe(
@@ -471,7 +480,8 @@ describe('Case service', () => {
 
   it('should call the API to update hearing note', async () => {
     const noteId = 123
-    const endpoint = `${apiUrl}/hearing/2e0afeb7-95d2-42f4-80e6-ccf96b282730/notes/${noteId}`
+    const defendantId = 'some-defendant-id'
+    const endpoint = `${apiUrl}/hearing/2e0afeb7-95d2-42f4-80e6-ccf96b282730/defendants/${defendantId}/notes/${noteId}`
     moxios.stubRequest(endpoint, {
       status: 200
     })
@@ -479,7 +489,13 @@ describe('Case service', () => {
     const hearingId = '2e0afeb7-95d2-42f4-80e6-ccf96b282730'
     const note = 'note'
     const author = 'Author'
-    const response = await updateHearingNote(hearingId, note, noteId, author)
+    const response = await updateHearingNote(
+      hearingId,
+      note,
+      noteId,
+      author,
+      defendantId
+    )
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
     expect(mostRecent.config.data).toBe(
@@ -528,12 +544,13 @@ describe('Case service', () => {
 
   it('should ignore 404 from the API call to delete draft', async () => {
     const hearingId = 'id-one'
-    const endpoint = `${apiUrl}/hearing/${hearingId}/notes/draft`
+    const defendantId = 'some-defendant-id'
+    const endpoint = `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/draft`
     moxios.stubRequest(endpoint, {
       status: 404
     })
 
-    const response = await deleteHearingNoteDraft(hearingId)
+    const response = await deleteHearingNoteDraft(hearingId, defendantId)
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
     return response
@@ -541,13 +558,15 @@ describe('Case service', () => {
 
   it('should throw non 404 from the API call to delete draft', async () => {
     const hearingId = 'id-one'
-    const endpoint = `${apiUrl}/hearing/${hearingId}/notes/draft`
+    const defendantId = 'some-defendant-id'
+
+    const endpoint = `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/draft`
     moxios.stubRequest(endpoint, {
       status: 401
     })
 
     const response = await expect(
-      async () => await deleteHearingNoteDraft(hearingId)
+      async () => await deleteHearingNoteDraft(hearingId, defendantId)
     ).rejects.toThrow('Request failed with status code 401')
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
@@ -556,11 +575,14 @@ describe('Case service', () => {
 
   it('should invoke API to delete hearing note draft for given hearing', async () => {
     const hearingId = 'id-one'
-    const endpoint = `${apiUrl}/hearing/${hearingId}/notes/draft`
+    const defendantId = 'some-defendant-id'
+
+    const endpoint = `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/draft`
+
     moxios.stubRequest(endpoint, {
       status: 200
     })
-    const response = await deleteHearingNoteDraft(hearingId)
+    const response = await deleteHearingNoteDraft(hearingId, defendantId)
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
     return response

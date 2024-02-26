@@ -69,11 +69,11 @@
   {% set summaryLink = '/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary' %}
   {%- set tableRow = [
     { html: govukCheckboxes({
-      name: "hearingId",
+      name: "defendantHearingId",
       classes: "common_checker_toggle_item govuk-checkboxes--small",
       items: [{
-        id: "id-" + item.hearingId,
-        value: item.hearingId,
+        id: "id_" + item.defendantId + '_' + item.hearingId,
+        value: item.defendantId + '_' + item.hearingId,
         html: " "
       }]}) 
     },
@@ -118,7 +118,7 @@
     {% set name = "case" if outcomeActionAssign == 1 else "cases" %}
     {% set html %}
       <p class="govuk-notification-banner__heading">
-        You are assigned to result {{outcomeActionAssign}} {{ name }}. They have moved to the in-progress tab.
+        You are assigned to result {{outcomeActionAssign}} {{ name }}. They have moved to the in progress tab.
       </p>
     {% endset %}
     {{ govukNotificationBanner({
@@ -152,7 +152,7 @@
       {{ mojButtonMenu({
         items: [
           {
-            text: "Assign to Me",
+            text: "Assign to me",
             name: "action",
             value: "assign",
             classes: "common_checker_toggle_action govuk-button--secondary"
