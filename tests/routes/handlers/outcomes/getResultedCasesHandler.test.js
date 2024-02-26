@@ -2,6 +2,17 @@
 const getOutcomeTypesListFilters = require('../.././../../server/utils/getOutcomeTypesListFilters')
 const getAssignedToFilters = require('../.././../../server/utils/getHearingOutcomeAssignedToFilters')
 
+jest.mock('../.././../../server/utils/getOutcomeTypesListFilters', () => {
+  return jest.fn(() => ({
+    id: 'outcomeType',
+    label: 'Outcome type',
+    items: [
+      { label: 'Probation sentence', value: 'PROBATION_SENTENCE' },
+      { label: 'Non-probation sentence', value: 'NON_PROBATION_SENTENCE' },
+      { label: 'Report requested', value: 'REPORT_REQUESTED' }]
+  }))
+})
+
 describe('getResultedCasesHandler', () => {
   const { caseServiceMock, mockResponse } = require('../test-helpers')
   const subject =
@@ -44,15 +55,16 @@ describe('getResultedCasesHandler', () => {
     }
     caseServiceMock.getOutcomesList.mockResolvedValueOnce(apiResponse)
 
+    console.log('--------------------case', caseServiceMock.getOutcomeTypes)
     // When
     await subject(mockRequest, mockResponse)
 
-    const outcomeTYpeFilter = await getOutcomeTypesListFilters()
+    const outcomeTypeFilter = await getOutcomeTypesListFilters()
 
     const assignedToFilters = getAssignedToFilters(apiResponse.cases)
 
     const filters = [
-      outcomeTYpeFilter,
+      outcomeTypeFilter,
       {
         id: 'courtRoom',
         label: 'Courtroom',
