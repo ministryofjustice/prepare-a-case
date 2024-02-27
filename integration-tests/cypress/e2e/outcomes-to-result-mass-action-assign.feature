@@ -30,12 +30,20 @@ Scenario: action button defaults to disabled
   Then the option 'Assign to Me' in the Action menu is disabled
 
 #AC005
-Scenario: success banner shows correctly
+Scenario: success banner shows correctly for singular assign
   Given I am an authenticated user
   When I navigate to the "outcomes" route
   And I check a checkbox for a case record
   And I click to assign the case
-  Then I see a success banner stating "You are assigned to result 1 case. They have moved to the in progress tab."
+  Then I see a success banner stating "You are assigned to result English Madden. Their case has moved to the in progress tab."
+
+#AC005b
+Scenario: success banner shows correctly for multiple assigns
+  Given I am an authenticated user
+  When I navigate to the "outcomes" route
+  And I check the mass-action checkbox
+  And I click to assign the case
+  Then I see a success banner stating "You are assigned to result 2 cases. They have moved to the in progress tab."
 
 #AC006 - NOT IMPLEMENTED - The logic is handled by the page reload and so tested elsewhere.
 #Scenario: outcomes tally updates

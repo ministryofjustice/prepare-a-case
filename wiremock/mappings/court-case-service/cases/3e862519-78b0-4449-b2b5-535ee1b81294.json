@@ -1,0 +1,105 @@
+{
+  "id": "3e862519-78b0-4449-b2b5-535ee1b81294",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/hearing/7e0f9cb9-b492-4657-9028-a86de1301e25/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "caseId": "3e862519-78b0-4449-b2b5-535ee1b81294",
+      "hearingId": "7e0f9cb9-b492-4657-9028-a86de1301e25",
+      "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
+      "caseNo": "351196424",
+      "courtCode": "SHF",
+      "courtRoom": "06",
+      "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+      "listNo": "2nd",
+      "pnc": "A/987930B",
+      "crn": "E654321",
+      "probationStatus": "Current",
+      "session": "MORNING",
+      "previouslyKnownTerminationDate": "",
+      "suspendedSentenceOrder": false,
+      "breach": true,
+      "preSentenceActivity": false,
+      "awaitingPsr": false,
+      "source": "LIBRA",
+      "urn": "01WW0298121",
+      "files": [],
+      "offences": [
+        {
+          "offenceTitle": "Attempt theft from the person of another",
+          "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Clemons Barron.",
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 1
+        },
+        {
+          "offenceTitle": "Theft from the person of another",
+          "offenceSummary": "On 24/03/2016 at Leeds stole PLAYSTATION 4 to the value of 300.00, belonging to Hull Obrien.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 2
+        },
+        {
+          "offenceTitle": "Attempt theft from the person of another",
+          "offenceSummary": "On 05/09/2016 at Aberdeen attempted to steal FLAT SCREEN TV to the value of 750.00, belonging to Howard Ashley.",
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 3
+        },
+        {
+          "offenceTitle": "Attempt theft from the person of another",
+          "offenceSummary": "On 05/09/2016 at Glasgow attempted to steal GAMES CONSOLES to the value of 750.00, belonging to Conner Powell.",
+          "act": "Contrary to section 1(1) of the Criminal Attempts Act 1981.",
+          "sequenceNumber": 4
+        }
+      ],
+      "defendantSex": "M",
+      "defendantName": "English Madden",
+      "defendantAddress": {
+        "line1": "38",
+        "line2": "Clarendon Road",
+        "postcode": "ad21 5dr",
+        "line3": "Glasgow"
+      },
+      "defendantDob": "1979-08-18",
+      "createdToday": true,
+      "removed": false,
+      "numberOfPossibleMatches": 0,
+      "hearings": [
+        {
+          "hearingId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a10",
+          "court": "North Shields",
+          "courtRoom": "2",
+          "session": "MORNING",
+          "hearingTypeLabel": "5th hearing",
+          "hearingDateTime": "2019-05-14T09:00:00",
+          "hearingOutcome": {
+            "hearingOutcomeType": "REPORT_REQUESTED",
+            "hearingOutcomeDescription": "Report requested",
+            "outcomeDate": "2023-01-09T09:09:09",
+            "state": "RESULTED"
+          },
+          "notes":[
+            {
+              "noteId": 1234560,
+              "note": "Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
+              "created": "2022-07-09T17:13:09",
+              "author": "Jane Smith",
+              "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
+            },
+            {
+              "noteId": 987650,
+              "note": "Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.",
+              "created": "2022-08-09T17:16:14",
+              "author": "John Doe",
+              "createdByUuid": "7ca04ed7-8275-45b2-afb4-4ff51432d1ea"
+            }
+          ]
+        }
+        ]
+    }
+  }
+}
