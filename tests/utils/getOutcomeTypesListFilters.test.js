@@ -13,14 +13,16 @@ const outcomeTypes = [
 ]
 
 jest.mock('../../server/services/case-service', () => ({
-  getOutcomeTypes: jest.fn(() => ({
-    types: outcomeTypes
-  }))
+  getOutcomeTypes: jest.fn(() => (
+    outcomeTypes
+  ))
 }))
 
 describe('getOutcomeTypesListFilters', () => {
   it('Should return list of outcome types', async () => {
     const outcomeTypesListFilters = await getOutcomeTypesListFilters()
+
+    console.log(outcomeTypesListFilters.items)
 
     expect(outcomeTypesListFilters).toEqual({
       id: 'outcomeType',
