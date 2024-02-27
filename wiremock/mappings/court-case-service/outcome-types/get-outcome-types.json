@@ -2,7 +2,7 @@
     "id": "564cbe3d-be7e-4c9d-bd80-04741eb5513d",
     "request": {
       "method": "GET",
-      "url": "/outcomes/types"
+      "url": "/hearing-outcome-types"
     },
     "response": {
       "headers": {

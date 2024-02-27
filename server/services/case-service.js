@@ -461,7 +461,7 @@ const createCaseService = apiUrl => {
       }
     },
     getOutcomeTypes: async () => {
-      const res = await request(`${apiUrl}/outcomes/types`)
+      const res = await request(`${apiUrl}/hearing-outcome-types`)
       if (!isHttpSuccess(res)) {
         return getInternalServerErrorResponse(res)
       }

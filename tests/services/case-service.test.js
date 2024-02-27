@@ -842,7 +842,7 @@ describe('Case service', () => {
 
   describe('getOutcomeTypes', () => {
     it('returns the outcome types', () => {
-      const url = `${apiUrl}/outcomes/types`
+      const url = `${apiUrl}/hearing-outcome-types`
       const response = {
         status: 200,
         types: ['Outcome type', 'Probation sentence']
@@ -855,7 +855,7 @@ describe('Case service', () => {
     })
 
     it('returns internal server error', async () => {
-      const url = `${apiUrl}/outcomes/types`
+      const url = `${apiUrl}/hearing-outcome-types`
       const response = {
         status: 500,
         types: ['Outcome type', 'Probation sentence']
