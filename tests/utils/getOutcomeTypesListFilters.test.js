@@ -22,8 +22,6 @@ describe('getOutcomeTypesListFilters', () => {
   it('Should return list of outcome types', async () => {
     const outcomeTypesListFilters = await getOutcomeTypesListFilters()
 
-    console.log(outcomeTypesListFilters.items)
-
     expect(outcomeTypesListFilters).toEqual({
       id: 'outcomeType',
       label: 'Outcome type',

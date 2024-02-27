@@ -24,8 +24,6 @@ const getResultedCasesHandler = caseService => async (req, res) => {
     items: prepareCourtRoomFilters(response.courtRoomFilters)
   }
 
-  // console.log('!!!!!!!!!filters', getOutcomeTypesListFilters)
-  console.log('!!!!!!!!!filters2', getOutcomeTypesListFilters())
   const outcomeTypesListFilters = await getOutcomeTypesListFilters()
 
   const filters = [outcomeTypesListFilters, courtRoomFilter]

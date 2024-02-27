@@ -55,7 +55,6 @@ describe('getResultedCasesHandler', () => {
     }
     caseServiceMock.getOutcomesList.mockResolvedValueOnce(apiResponse)
 
-    console.log('--------------------case', caseServiceMock.getOutcomeTypes)
     // When
     await subject(mockRequest, mockResponse)
 
