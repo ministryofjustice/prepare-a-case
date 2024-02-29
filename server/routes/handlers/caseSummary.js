@@ -7,7 +7,6 @@ const {
 } = require('../../config')
 
 const caseSummaryHandler = utils => async (req, res) => {
-  console.log('flash message', req.flash('test'))
   if (req.method === 'POST') {
     return caseSummaryPostHandler(utils)(req, res)
   }
@@ -80,8 +79,7 @@ const caseSummaryPostHandler = utils => async (req, res) => {
   const { action } = req.body
   const templateValues = await utils.getCaseAndTemplateValues(req)
 
-  req.flash('test', 'test message')
-  handleButtonAction(templateValues, action, res)
+  handleButtonAction(templateValues, action, res, req)
 }
 
 const getHearingOutcome = (hearingId, hearings) => {
@@ -90,8 +88,8 @@ const getHearingOutcome = (hearingId, hearings) => {
   return hearing ? hearing.hearingOutcome : null
 }
 
-const handleButtonAction = (templateValues, action, res) => {
-  const { caseId, hearingId, defendantId, crn, courtCode } = templateValues.data
+const handleButtonAction = (templateValues, action, res, req) => {
+  const { caseId, hearingId, defendantId, crn, courtCode, defendantName } = templateValues.data
 
   switch (action) {
     case 'unlinkNdelius':
@@ -99,9 +97,8 @@ const handleButtonAction = (templateValues, action, res) => {
     case 'linkNdelius':
       return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)
     case 'moveToResulted':
-      console.log('moveToResulted')
-      res.redirect('/hearing/7e0f9cb9-b492-4657-9028-a86de1301e25/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary')
-      break
+      req.flash('moved-to-resulted', `You have moved ${defendantName}'s case to resulted cases.`)
+      res.redirect('/B14LO/outcomes/in-progress')
   }
 }
 

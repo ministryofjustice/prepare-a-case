@@ -11,6 +11,8 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     query: queryParams
   } = req
 
+  const flashMessage = req.flash('moved-to-resulted')
+
   const response = await caseService.getOutcomesList(courtCode, queryParams, sorts, state)
 
   const cases = response.cases
@@ -46,7 +48,8 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     data: response.cases || [],
     displayFilters: response.cases?.length || filtersApplied,
     totalPages: response.totalPages,
-    totalElements: response.totalElements
+    totalElements: response.totalElements,
+    flashMessage
   }
   session.moveToResultedSuccess = undefined
 

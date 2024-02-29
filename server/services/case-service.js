@@ -349,8 +349,6 @@ const createCaseService = apiUrl => {
       if (!isHttpSuccess(response)) {
         return getInternalServerErrorResponse(response)
       }
-
-      console.log('🚀 ~ getOutcomesList: ~ data:', response.data)
       return response.data
     },
 
@@ -376,9 +374,6 @@ const createCaseService = apiUrl => {
     },
 
     getCase: async (hearingId, defendantId) => {
-      console.log('🚀 ~ getCase: ~ defendantId:', defendantId)
-      console.log('🚀 ~ getCase: ~ hearingId:', hearingId)
-      console.log('🚀 ~ getCase: ~ ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}:', `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`)
       const res = await request(
         `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`
       )

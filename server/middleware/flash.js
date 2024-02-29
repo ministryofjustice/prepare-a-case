@@ -1,8 +1,5 @@
 module.exports = function () {
   return (req, res, next) => {
-    console.log('🚀 ~ return ~ req:', req)
-    console.log('🚀 ~ return ~ res:', res)
-    console.log('🚀 ~ return ~ next:', next)
     if (req.flash) return next()
     req.flash = flash
     next()
