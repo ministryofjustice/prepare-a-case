@@ -95,6 +95,9 @@ env:
   - name: ENABLE_HEARING_OUTCOMES
     value: {{ .Values.env.ENABLE_HEARING_OUTCOMES | quote }}
 
+  - name: ENABLE_WORKFLOW: true
+    value: {{ .Values.env.ENABLE_WORKFLOW | quote }}
+
   - name: ENABLE_CASE_PROGRESS
     value: {{ .Values.env.ENABLE_CASE_PROGRESS | quote }}
 

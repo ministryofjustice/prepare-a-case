@@ -36,6 +36,14 @@
             "awaitingPsr": false,
             "source": "COMMON_PLATFORM",
             "files": [],
+            "workflow": {
+              "tasks": [
+                {
+                  "id": "prep",
+                  "state": "IN_PROGRESS"
+                }
+              ]
+            },
             "offences": [
               {
                 "offenceTitle": "Theft from the person of another",
@@ -74,6 +82,14 @@
             "preSentenceActivity": false,
             "awaitingPsr": false,
             "source": "COMMON_PLATFORM",
+            "workflow": {
+              "tasks": [
+                {
+                  "id": "prep",
+                  "state": "IN_PROGRESS"
+                }
+              ]
+            },
             "offences": [
               {
                 "offenceTitle": "Assault by beating",
@@ -117,6 +133,14 @@
             "preSentenceActivity": false,
             "awaitingPsr": false,
             "source": "COMMON_PLATFORM",
+            "workflow": {
+              "tasks": [
+                {
+                  "id": "prep",
+                  "state": "IN_PROGRESS"
+                }
+              ]
+            },
             "offences": [
               {
                 "offenceTitle": "Assault by beating",
@@ -155,6 +179,14 @@
             "preSentenceActivity": false,
             "awaitingPsr": false,
             "source": "COMMON_PLATFORM",
+            "workflow": {
+              "tasks": [
+                {
+                  "id": "prep",
+                  "state": "IN_PROGRESS"
+                }
+              ]
+            },
             "offences": [
               {
                 "offenceTitle": "Attempt theft from the person of another",
@@ -198,6 +230,14 @@
             "preSentenceActivity": false,
             "awaitingPsr": false,
             "source": "COMMON_PLATFORM",
+            "workflow": {
+              "tasks": [
+                {
+                  "id": "prep",
+                  "state": "IN_PROGRESS"
+                }
+              ]
+            },
             "offences": [
               {
                 "offenceTitle": "Attempt theft from the person of another",

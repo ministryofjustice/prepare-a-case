@@ -35,7 +35,8 @@
               "probationStatus",
               "offences",
               "defendantName",
-              "defendantAddress"
+              "defendantAddress",
+              "workflow"
             ],
             "properties": {
               "caseId": {
@@ -175,6 +176,42 @@
                 "title": "The awaitingPsr schema",
                 "description": "An explanation about the purpose of this instance.",
                 "default": false
+              },
+              "workflow": {
+                "typeof": "object",
+                "required": [
+                  "tasks"
+                ],
+                "properties": {
+                  "tasks": {
+                    "type": "array",
+                    "items" : {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "id",
+                            "state"
+                          ],
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "const": "prep"
+                            },
+                            "state": {
+                              "type": "string",
+                              "oneOf": [
+                                "NOT_STARTED",
+                                "IN_PROGRESS",
+                                "COMPLETE"
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
               },
               "offences": {
                 "$id": "#/properties/cases/items/anyOf/0/properties/offences",

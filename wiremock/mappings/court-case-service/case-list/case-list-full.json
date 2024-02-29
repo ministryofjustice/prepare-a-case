@@ -35,6 +35,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "IN_PROGRESS"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -86,6 +94,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "COMPLETE"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -139,6 +155,14 @@
           "preSentenceActivity": false,
           "awaitingPsr": false,
           "source": "COMMON_PLATFORM",
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -189,6 +213,14 @@
           "preSentenceActivity": false,
           "awaitingPsr": false,
           "source": "LIBRA",
+           "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -213,7 +245,6 @@
         },
         {
           "caseId": "07fe9ad9-ee10-4460-9683-a81d5316334e",
-          "hearingId": "x01c8c1d-e552-494e-bc90-d475740c64d8",
           "defendantId": "43314cc3-cec6-4a77-9ecd-34554f581c85",
           "hearingId": "ca37749f-d020-4cb0-b7fa-d08f632f2f31",
           "caseNo": "4172564047",
@@ -232,6 +263,14 @@
           "preSentenceActivity": false,
           "awaitingPsr": false,
           "source": "LIBRA",
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -292,6 +331,14 @@
           "preSentenceActivity": false,
           "awaitingPsr": false,
           "source": "LIBRA",
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -343,6 +390,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -401,6 +456,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -443,6 +506,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -493,6 +564,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -543,6 +622,14 @@
           "breach": true,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -578,6 +665,14 @@
           "breach": true,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -619,6 +714,14 @@
           "preSentenceActivity": false,
           "awaitingPsr": false,
           "source": "COMMON_PLATFORM",
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -685,6 +788,14 @@
           "preSentenceActivity": false,
           "awaitingPsr": false,
           "source": "COMMON_PLATFORM",
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -750,6 +861,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -785,6 +904,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -820,6 +947,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -860,6 +995,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -915,6 +1058,14 @@
           "breach": true,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -970,6 +1121,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -1015,6 +1174,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -1072,6 +1239,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -1109,6 +1284,14 @@
           "breach": false,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -1161,6 +1344,14 @@
           "breach": true,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -1201,6 +1392,14 @@
           "breach": true,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -1253,6 +1452,14 @@
           "breach": true,
           "preSentenceActivity": false,
           "awaitingPsr": false,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -1302,7 +1509,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -1338,6 +1553,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -1387,7 +1610,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -1427,7 +1658,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -1483,6 +1722,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -1532,7 +1779,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -1567,7 +1822,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2013-01-01",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -1602,7 +1865,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -1638,6 +1909,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -1687,7 +1966,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -1727,7 +2014,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -1767,7 +2062,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -1803,6 +2106,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -1853,6 +2164,14 @@
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -1888,6 +2207,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -1937,7 +2264,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -1978,6 +2313,14 @@
           "previouslyKnownTerminationDate": "2018-11-16",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -2017,7 +2360,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -2068,6 +2419,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -2113,6 +2472,14 @@
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -2147,7 +2514,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -2192,7 +2567,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -2242,7 +2625,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -2298,6 +2689,14 @@
           "previouslyKnownTerminationDate": "2016-10-01",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -2343,6 +2742,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -2377,7 +2784,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -2412,7 +2827,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -2463,6 +2886,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -2518,6 +2949,14 @@
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -2563,6 +3002,14 @@
           "previouslyKnownTerminationDate": "2014-01-01",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -2607,7 +3054,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -2652,7 +3107,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -2692,7 +3155,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -2748,6 +3219,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -2783,6 +3262,14 @@
           "previouslyKnownTerminationDate": "2013-01-01",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -2828,6 +3315,14 @@
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -2863,6 +3358,14 @@
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -2902,7 +3405,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2012-01-01",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -2952,7 +3463,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -3003,6 +3522,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -3057,7 +3584,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -3097,7 +3632,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -3137,7 +3680,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2016-01-01",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -3183,6 +3734,14 @@
           "previouslyKnownTerminationDate": "2017-01-01",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -3222,7 +3781,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -3267,7 +3834,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -3317,7 +3892,15 @@
           "session": "AFTERNOON",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -3362,7 +3945,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -3402,7 +3993,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -3452,7 +4051,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -3498,6 +4105,14 @@
           "previouslyKnownTerminationDate": "2013-01-01",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -3547,7 +4162,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -3582,7 +4205,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -3637,7 +4268,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -3687,7 +4326,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2006-11-11",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -3733,6 +4380,14 @@
           "previouslyKnownTerminationDate": "2006-11-11",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -3772,7 +4427,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -3807,7 +4470,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -3847,7 +4518,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -3887,7 +4566,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -3922,7 +4609,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -3963,6 +4658,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -4002,7 +4705,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -4043,6 +4754,14 @@
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -4087,7 +4806,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2013-01-01",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -4122,7 +4849,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -4162,7 +4897,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -4212,7 +4955,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -4253,6 +5004,14 @@
           "previouslyKnownTerminationDate": "2010-01-01",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -4287,7 +5046,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -4337,7 +5104,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -4377,7 +5152,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -4417,7 +5200,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -4472,7 +5263,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -4517,7 +5316,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -4573,6 +5380,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -4623,6 +5438,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -4678,6 +5501,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -4717,7 +5548,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -4767,7 +5606,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -4822,7 +5669,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -4862,7 +5717,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -4917,7 +5780,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -4952,7 +5823,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -4997,7 +5876,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -5042,7 +5929,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -5082,7 +5977,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-11-12",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -5138,6 +6041,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -5178,6 +6089,14 @@
           "previouslyKnownTerminationDate": "2011-11-12",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -5227,7 +6146,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -5282,7 +6209,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -5318,6 +6253,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -5362,7 +6305,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2013-11-12",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -5402,7 +6353,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -5452,7 +6411,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -5497,7 +6464,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -5532,7 +6507,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -5587,7 +6570,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2018-11-12",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -5632,7 +6623,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -5682,7 +6681,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -5733,6 +6740,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -5772,7 +6787,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -5808,6 +6831,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -5852,7 +6883,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -5907,7 +6946,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -5942,7 +6989,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -5982,7 +7037,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -6022,7 +7085,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -6058,6 +7129,14 @@
           "previouslyKnownTerminationDate": "2011-11-12",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -6097,7 +7176,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -6137,7 +7224,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -6178,6 +7273,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -6217,7 +7320,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -6257,7 +7368,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -6313,6 +7432,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -6347,7 +7474,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -6382,7 +7517,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -6432,7 +7575,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2018-11-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -6483,6 +7634,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -6527,7 +7686,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -6577,7 +7744,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -6627,7 +7802,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -6683,6 +7866,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -6737,7 +7928,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -6787,7 +7986,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -6837,7 +8044,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -6878,6 +8093,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -6928,6 +8151,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -6972,7 +8203,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -7007,7 +8246,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -7062,7 +8309,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -7108,6 +8363,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -7163,6 +8426,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -7212,7 +8483,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -7262,7 +8541,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -7298,6 +8585,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -7338,6 +8633,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -7377,7 +8680,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -7422,7 +8733,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -7472,7 +8791,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -7507,7 +8834,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -7552,7 +8887,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -7602,7 +8945,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -7657,7 +9008,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -7708,6 +9067,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -7763,6 +9130,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -7798,6 +9173,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -7832,7 +9215,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -7877,7 +9268,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -7922,7 +9321,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -7977,7 +9384,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -8027,7 +9442,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-11-12",
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -8073,6 +9496,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -8113,6 +9544,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -8153,6 +9592,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -8187,7 +9634,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -8222,7 +9677,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -8262,7 +9725,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-01-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -8302,7 +9773,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -8358,6 +9837,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -8397,7 +9884,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -8438,7 +9933,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -8494,7 +9997,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -8541,6 +10052,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -8581,7 +10100,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -8638,6 +10165,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -8688,7 +10223,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -8744,7 +10287,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -8780,7 +10331,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2010-11-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -8832,6 +10391,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -8888,6 +10455,14 @@
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -8938,7 +10513,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -8994,7 +10577,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -9046,6 +10637,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Attempt theft from the person of another",
@@ -9101,7 +10700,15 @@
           "session": "AFTERNOON",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -9138,6 +10745,14 @@
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": true,
           "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from the person of another",
@@ -9178,7 +10793,15 @@
           "session": "AFTERNOON",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -9235,7 +10858,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -9286,7 +10917,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": "2019-11-12",
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
@@ -9332,7 +10971,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -9373,7 +11020,15 @@
           "session": "MORNING",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": true,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Theft from a shop",
@@ -9414,7 +11069,15 @@
           "session": "AFTERNOON",
           "previouslyKnownTerminationDate": null,
           "suspendedSentenceOrder": false,
-          "breach": false,
+          "breach": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "NOT_STARTED"
+              }
+            ]
+          },
           "offences": [
             {
               "offenceTitle": "Assault by beating",
