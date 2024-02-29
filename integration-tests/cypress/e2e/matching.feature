@@ -430,7 +430,10 @@ Feature: Matching defendants to nDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
 
-    And I click the "Link NDelius record" button
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Link NDelius Record"
+    And I click the "Link NDelius Record" MOJ menu button
     Then I should be on the "Link an NDelius record to the defendant" page
     And I should see back link "Back" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
     And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
@@ -441,7 +444,10 @@ Feature: Matching defendants to nDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
 
-    And I click the "Link NDelius record" button
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Link NDelius Record"
+    And I click the "Link NDelius Record" MOJ menu button
     Then I should be on the "Link an NDelius record to the defendant" page
 
     And There should be no a11y violations
@@ -451,7 +457,10 @@ Feature: Matching defendants to nDelius records
     When I navigate to the "/B14LO/hearing/3f80d674-d964-4781-927a-99c78bc340e2/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary" base route
 
     Then I should be on the "Case summary" page
-    When I click the "Unlink NDelius record" button
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Unlink NDelius Record"
+    When I click the "Unlink NDelius Record" MOJ menu button
 
     Then I should be on the "Unlink NDelius record from the defendant" page
     When I click the "Unlink record from defendant" button
@@ -466,7 +475,10 @@ Feature: Matching defendants to nDelius records
     When I navigate to the "/B14LO/hearing/3f80d674-d964-4781-927a-99c78bc340e2/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary" base route
 
     Then I should be on the "Case summary" page
-    When I click the "Unlink NDelius record" button
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Unlink NDelius Record"
+    When I click the "Unlink NDelius Record" MOJ menu button
 
     Then I should be on the "Unlink NDelius record from the defendant" page
     When I click the "Back" link

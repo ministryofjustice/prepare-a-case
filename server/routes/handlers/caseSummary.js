@@ -76,16 +76,15 @@ const caseSummaryHandler = utils => async (req, res) => {
 }
 
 const caseSummaryPostHandler = utils => async (req, res) => {
-  console.log('🚀 ~ caseSummaryPostHandler ~ res.body:', req.body)
   const { action } = req.body
   const templateValues = await utils.getCaseAndTemplateValues(req)
-  // console.log(templateValues)
+
   handleButtonAction(templateValues, action, res)
-  // res.redirect(`/${req.body.unlinkNdelius}`)
 }
 
 const handleButtonAction = (templateValues, action, res) => {
   const { caseId, hearingId, defendantId, crn, courtCode } = templateValues.data
+
   switch (action) {
     case 'unlinkNdelius':
       return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/unlink/${crn}`)
@@ -111,7 +110,7 @@ const getActionButtons = (templateValues) => {
 
   if (probationStatus === 'No record') {
     buttons.push(createButton('Link NDelius Record', 'linkNdelius'))
-  } else if (crn.length > 0 && !hideUnlinkButton) {
+  } else if ((crn && crn.length) > 0 && !hideUnlinkButton) {
     buttons.push(createButton('Unlink NDelius Record', 'unlinkNdelius'))
   }
   //   createButton('Move to resulted', 'moveToResulted')

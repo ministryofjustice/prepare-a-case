@@ -112,7 +112,9 @@ Feature: Case summary
       | Date of birth | 31 October 1980                   |
       | Address       | 22 Waldorf Court Cardiff AD21 5DR |
 
-    And I should see a button with the label "Link NDelius record"
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Link NDelius Record"
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with an existing probation record
@@ -145,7 +147,9 @@ Feature: Case summary
       | Phone number  | 020 789 789 789 (Work)              |
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
 
-    And I should see a button with the label "Unlink NDelius record"
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
 
@@ -214,7 +218,9 @@ Feature: Case summary
       | Phone number  | Unavailable                        |
       | Address       | 38 Clarendon Road Glasgow AD21 5DR |
 
-    And I should see a button with the label "Unlink NDelius record"
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
 
@@ -246,7 +252,9 @@ Feature: Case summary
       | Date of birth | 6 June 1996                     |
       | Address       | 99 Ralph Avenue London AD21 5DR |
 
-    And I should see a button with the label "Unlink NDelius record"
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
 
