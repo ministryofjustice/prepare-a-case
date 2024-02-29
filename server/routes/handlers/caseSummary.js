@@ -8,7 +8,7 @@ const {
 
 const caseSummaryHandler = utils => async (req, res) => {
   if (req.method === 'POST') {
-    return caseSummaryPostHandler(req, res)
+    return caseSummaryPostHandler(utils)(req, res)
   }
   // build outcome types list for select controls
   const outcomeTypeItems = utils.getOutcomeTypesListFilters().items
@@ -48,14 +48,7 @@ const caseSummaryHandler = utils => async (req, res) => {
       file.datetime = moment(file.datetime).format('D MMMM YYYY')
     })
 
-  templateValues.data.actionButtonItems = [
-    {
-      text: 'Unlink NDelius Record',
-      name: 'unlinkNdelius',
-      value: `${courtCode}/case/${templateValues.data.caseId}/hearing/${templateValues.data.hearingId}/match/defendant/${templateValues.data.defendantId}/unlink/${templateValues.data.crn}`,
-      classes: 'common_checker_toggle_action govuk-button--secondary'
-    }
-  ]
+  templateValues.data.actionButtonItems = getActionButtons(templateValues)
 
   templateValues.config = { ...settings.case }
 
@@ -76,12 +69,54 @@ const caseSummaryHandler = utils => async (req, res) => {
   session.matchDate = undefined
   session.backLink = path
   session.caseCommentBlankError = undefined
+
+  // templateValues.data.probationStatus = 'No record'
+
   res.render('case-summary', templateValues)
 }
 
-const caseSummaryPostHandler = async (req, res) => {
+const caseSummaryPostHandler = utils => async (req, res) => {
   console.log('🚀 ~ caseSummaryPostHandler ~ res.body:', req.body)
-  res.redirect(`/${req.body.unlinkNdelius}`)
+  const { action } = req.body
+  const templateValues = await utils.getCaseAndTemplateValues(req)
+  // console.log(templateValues)
+  handleButtonAction(templateValues, action, res)
+  // res.redirect(`/${req.body.unlinkNdelius}`)
+}
+
+const handleButtonAction = (templateValues, action, res) => {
+  const { caseId, hearingId, defendantId, crn, courtCode } = templateValues.data
+  switch (action) {
+    case 'unlinkNdelius':
+      return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/unlink/${crn}`)
+    case 'linkNdelius':
+      return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)
+    case 'moveToResulted':
+      console.log('moveToResulted')
+      break
+  }
+}
+
+const getActionButtons = (templateValues) => {
+  const { hideUnlinkButton } = templateValues
+  const { probationStatus, crn } = templateValues.data
+  const buttons = []
+
+  const createButton = (text, value) => ({
+    text,
+    name: 'action',
+    value,
+    classes: 'common_checker_toggle_action govuk-button--secondary'
+  })
+
+  if (probationStatus === 'No record') {
+    buttons.push(createButton('Link NDelius Record', 'linkNdelius'))
+  } else if (crn.length > 0 && !hideUnlinkButton) {
+    buttons.push(createButton('Unlink NDelius Record', 'unlinkNdelius'))
+  }
+  //   createButton('Move to resulted', 'moveToResulted')
+
+  return buttons.length > 0 ? buttons : null
 }
 
 module.exports = caseSummaryHandler

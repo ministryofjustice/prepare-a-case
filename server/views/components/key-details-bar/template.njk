@@ -68,12 +68,14 @@
         {% endset -%}
 
         {% if not params.manualMatch %}
-            <form method="post">
-                {{ mojButtonMenu({
-                items: params.actionButtonItems
-                }) }}
-            </form>
-            {{ ndeliusButton | safe }}
+            {% if params.actionButtonItems %}
+                <form method="post">
+                    {{ mojButtonMenu({
+                    items: params.actionButtonItems
+                    }) }}
+                </form>
+                {{ ndeliusButton | safe }}
+            {% endif %}
         {% endif %}
 
     </div>
