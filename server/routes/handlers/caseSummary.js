@@ -7,6 +7,7 @@ const {
 } = require('../../config')
 
 const caseSummaryHandler = utils => async (req, res) => {
+  console.log('flash message', req.flash('test'))
   if (req.method === 'POST') {
     return caseSummaryPostHandler(utils)(req, res)
   }
@@ -79,7 +80,14 @@ const caseSummaryPostHandler = utils => async (req, res) => {
   const { action } = req.body
   const templateValues = await utils.getCaseAndTemplateValues(req)
 
+  req.flash('test', 'test message')
   handleButtonAction(templateValues, action, res)
+}
+
+const getHearingOutcome = (hearingId, hearings) => {
+  const hearing = hearings.find(p => p.hearingId === hearingId)
+
+  return hearing ? hearing.hearingOutcome : null
 }
 
 const handleButtonAction = (templateValues, action, res) => {
@@ -92,13 +100,15 @@ const handleButtonAction = (templateValues, action, res) => {
       return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)
     case 'moveToResulted':
       console.log('moveToResulted')
+      res.redirect('/hearing/7e0f9cb9-b492-4657-9028-a86de1301e25/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary')
       break
   }
 }
 
 const getActionButtons = (templateValues) => {
   const { hideUnlinkButton } = templateValues
-  const { probationStatus, crn } = templateValues.data
+  const { probationStatus, crn, hearingId, hearings } = templateValues.data
+  const hearingOutcome = getHearingOutcome(hearingId, hearings)
   const buttons = []
 
   const createButton = (text, value) => ({
@@ -113,7 +123,9 @@ const getActionButtons = (templateValues) => {
   } else if ((crn && crn.length) > 0 && !hideUnlinkButton) {
     buttons.push(createButton('Unlink NDelius Record', 'unlinkNdelius'))
   }
-  //   createButton('Move to resulted', 'moveToResulted')
+  if (hearingOutcome && hearingOutcome.state === 'IN_PROGRESS') {
+    buttons.push(createButton('Move to resulted', 'moveToResulted'))
+  }
 
   return buttons.length > 0 ? buttons : null
 }

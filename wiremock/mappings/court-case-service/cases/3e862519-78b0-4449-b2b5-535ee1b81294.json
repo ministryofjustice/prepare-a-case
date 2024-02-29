@@ -70,7 +70,7 @@
       "numberOfPossibleMatches": 0,
       "hearings": [
         {
-          "hearingId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a10",
+          "hearingId": "7e0f9cb9-b492-4657-9028-a86de1301e25",
           "court": "North Shields",
           "courtRoom": "2",
           "session": "MORNING",
@@ -80,7 +80,7 @@
             "hearingOutcomeType": "REPORT_REQUESTED",
             "hearingOutcomeDescription": "Report requested",
             "outcomeDate": "2023-01-09T09:09:09",
-            "state": "RESULTED"
+            "state": "IN_PROGRESS"
           },
           "notes":[
             {

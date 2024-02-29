@@ -21,6 +21,7 @@ const authorisationMiddleware = require('./routes/middleware/authorisationMiddle
 const errorHandler = require('./errorHandler')
 const log = require('./log')
 const nunjucksSetup = require('./utils/nunjucksSetup')
+const flash = require('./middleware/flash')
 const nodeVersion = process.version
 const os = require('os')
 const hostName = os.hostname()
@@ -124,6 +125,8 @@ module.exports = function createApp ({ signInService, userService }) {
       rolling: true
     })
   )
+
+  app.use(flash())
 
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
