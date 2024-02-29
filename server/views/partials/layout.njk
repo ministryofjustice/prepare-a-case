@@ -198,8 +198,6 @@
     }) }}
 {% endblock %}
 
-{% block javascripts %}{% endblock %}
-
 {% block bodyEnd %}
 
     <script type="module" src="/javascripts/external-{{ appVersion }}.min.js"></script>
@@ -220,6 +218,8 @@
       }
     </script>
     {% endif %}
+    {% block javascripts %}{% endblock %}
+
 {% endblock %}
 
 </body>
