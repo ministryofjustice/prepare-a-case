@@ -14,6 +14,7 @@ describe('getCasesInProgressHandler', () => {
   const mockRequest = {
     params: { courtCode },
     session: {},
+    flash: () => {},
     query
   }
 
