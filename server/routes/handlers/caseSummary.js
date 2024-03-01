@@ -76,12 +76,6 @@ const caseSummaryHandler = utils => async (req, res) => {
   session.backLink = path
   session.caseCommentBlankError = undefined
 
-  // templateValues.data.probationStatus = 'No record'
-  // assignedToUuid
-  // res.locals.user.uuid
-
-  // "assignedToUuid": "d85eef94-d166-4ff7-86b7-67eae70acc8e",
-
   res.render('case-summary', templateValues)
 }
 
