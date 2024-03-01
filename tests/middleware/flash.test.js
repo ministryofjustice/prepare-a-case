@@ -1,5 +1,4 @@
-/* global describe, beforeEach, afterEach, it, expect */
-const { middleware } = require('yargs')
+/* global describe, beforeEach, it, expect */
 const flash = require('../../server/middleware/flash')
 
 describe('Flash middleware', () => {
