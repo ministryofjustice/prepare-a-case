@@ -40,33 +40,6 @@
 
         </div>
 
-        {% set ndeliusButton %}
-            {% if params.probationStatus == 'No record' %}
-                <div class="pac-key-details-bar-flex__child pac-key-details-bar-flex__child__right govuk-!-margin-right-0">
-                    <form method="get" action="/{{ params.courtCode }}/case/{{ params.caseId }}/hearing/{{ params.hearingId }}/match/defendant/{{ params.defendantId }}/manual">
-                        <button class="govuk-button govuk-button--secondary pac-key-details-bar__button"
-                                data-module="govuk-button" type="submit">Link NDelius record
-                        </button>
-                    </form>
-                </div>
-            {% elif params.crn | length and not params.hideUnlinkButton %}
-                <div class="pac-key-details-bar-flex__child pac-key-details-bar-flex__child__right govuk-!-margin-right-0">
-                    <form method="get"
-                        action="/{{ params.courtCode }}/case/{{ params.caseId }}/hearing/{{ params.hearingId }}/match/defendant/{{ params.defendantId }}/unlink/{{ params.crn }}">
-                        <button class="govuk-button govuk-button--secondary pac-key-details-bar__button"
-                                data-module="govuk-button" type="submit">Unlink NDelius record
-                        </button>
-                    </form>
-                </div>
-            {% endif %}
-        {% endset -%}
-
-        {% set ndeliusButtonValue %}
-            {% if params.probationStatus == 'No record' %}
-            {% elif params.crn | length and not params.hideUnlinkButton %}
-            {% endif %}
-        {% endset -%}
-
         {% if not params.manualMatch %}
             {% if params.actionButtonItems %}
                 <form method="post">
