@@ -48,6 +48,11 @@ const caseSummaryHandler = utils => async (req, res) => {
       file.datetime = moment(file.datetime).format('D MMMM YYYY')
     })
 
+  templateValues.data.assignedToCurrentUser = isAssignedToUser(
+    res.locals.user.uuid,
+    getHearingOutcome(templateValues.data.hearingId, templateValues.data.hearings)
+  )
+
   templateValues.data.actionButtonItems = getActionButtons(templateValues)
 
   templateValues.config = { ...settings.case }
@@ -63,6 +68,7 @@ const caseSummaryHandler = utils => async (req, res) => {
     caseDefendantDocuments: settings.enableCaseDefendantDocuments
   }
   templateValues.outcomeTypes = outcomeTypes
+
   session.confirmedMatch = undefined
   session.matchName = undefined
   session.matchType = 'defendant'
@@ -71,6 +77,10 @@ const caseSummaryHandler = utils => async (req, res) => {
   session.caseCommentBlankError = undefined
 
   // templateValues.data.probationStatus = 'No record'
+  // assignedToUuid
+  // res.locals.user.uuid
+
+  // "assignedToUuid": "d85eef94-d166-4ff7-86b7-67eae70acc8e",
 
   res.render('case-summary', templateValues)
 }
@@ -82,8 +92,13 @@ const caseSummaryPostHandler = utils => async (req, res) => {
   handleButtonAction(templateValues, action, res, req)
 }
 
+const isAssignedToUser = (userUuid, hearingOutcome) => {
+  if (!hearingOutcome || !hearingOutcome.assignedToUuid) return false
+  return hearingOutcome.assignedToUuid === userUuid
+}
+
 const getHearingOutcome = (hearingId, hearings) => {
-  const hearing = hearings.find(p => p.hearingId === hearingId)
+  const hearing = hearings && hearings.find(p => p.hearingId === hearingId)
 
   return hearing ? hearing.hearingOutcome : null
 }
@@ -104,15 +119,16 @@ const handleButtonAction = (templateValues, action, res, req) => {
 
 const getActionButtons = (templateValues) => {
   const { hideUnlinkButton } = templateValues
-  const { probationStatus, crn, hearingId, hearings } = templateValues.data
+  const { probationStatus, crn, hearingId, hearings, assignedToCurrentUser } = templateValues.data
   const hearingOutcome = getHearingOutcome(hearingId, hearings)
   const buttons = []
 
-  const createButton = (text, value) => ({
+  const createButton = (text, value, enabled = true) => ({
     text,
     name: 'action',
     value,
-    classes: 'common_checker_toggle_action govuk-button--secondary'
+    classes: 'common_checker_toggle_action govuk-button--secondary',
+    disabled: !enabled
   })
 
   if (probationStatus === 'No record') {
@@ -120,8 +136,8 @@ const getActionButtons = (templateValues) => {
   } else if ((crn && crn.length) > 0 && !hideUnlinkButton) {
     buttons.push(createButton('Unlink NDelius Record', 'unlinkNdelius'))
   }
-  if (hearingOutcome && hearingOutcome.state === 'IN_PROGRESS') {
-    buttons.push(createButton('Move to resulted', 'moveToResulted'))
+  if (hearingOutcome) {
+    buttons.push(createButton('Move to resulted', 'moveToResulted', assignedToCurrentUser && hearingOutcome.state === 'IN_PROGRESS'))
   }
 
   return buttons.length > 0 ? buttons : null

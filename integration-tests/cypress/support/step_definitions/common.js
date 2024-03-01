@@ -320,6 +320,10 @@ Then('I should see an MOJ menu button with the label {string}', $string => {
   cy.get('.moj-button-menu__item').contains($string).should('exist')
 })
 
+Then('I should see a disabled MOJ menu button with the label {string}', $string => {
+  cy.get('.moj-button-menu__item').contains($string).should('be.disabled')
+})
+
 When('I click the {string} MOJ menu button', $string => {
   cy.get('.moj-button-menu__item').contains($string).click()
 })
