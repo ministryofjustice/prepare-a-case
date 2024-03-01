@@ -731,25 +731,24 @@ Scenario: Move a case to resulted
   When I navigate to the "outcomes/in-progress" route
   Then I should be on the "Hearing outcomes" page
 
-  When I click the "Gill Arnold" link
+  When I click the "Rock Stone" link
   And I click the "Open as read only" link
-  # click an in progress case
-  # and  that case is assigned to me
 
   And I should see a button with the label "Actions"
   And I click the "Actions" button
   And I should see an MOJ menu button with the label "Move to resulted"
   And I click the "Move to resulted" MOJ menu button
   Then I should be on the "Hearing outcomes" page
-  And I should see govuk notification banner with header "Success" and message "You have moved English Madden's case to resulted cases."
+  And I should see govuk notification banner with header "Success" and message "You have moved Rock Stone's case to resulted cases."
 
 Scenario: Move a case to resulted is disabled when not in progress
   Given I am an authenticated user
 
-  When I navigate to the "outcomes/in-progress" route
+  When I navigate to the "outcomes" route
   Then I should be on the "Hearing outcomes" page
 
   When I click the "English Madden" link
+  And I click the "View without assigning" link
 
   And I should see a button with the label "Actions"
   And I click the "Actions" button
