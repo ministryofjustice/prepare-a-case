@@ -12,7 +12,7 @@ commands:
             echo -n "${KUBE_ENV_CACERT}" | base64 -d > /tmp/cluster_ca.crt
             kubectl config set-cluster "${KUBE_ENV_NAME}" \
               --certificate-authority="/tmp/cluster_ca.crt" \
-              --server="https://${KUBE_ENV_NAME}"
+              --server="${KUBE_ENV_API}"
             kubectl config set-credentials circleci \
               --token="${KUBE_ENV_TOKEN}"
             kubectl config set-context circleci \
