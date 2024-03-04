@@ -253,6 +253,10 @@ const createCaseService = apiUrl => {
         ),
       post: (req, res, next, responseFormatter, hearingId, defendantId) =>
         proxy(apiUrl, {
+          proxyReqOptDecorator: proxyReqOpts => {
+            proxyReqOpts.headers.Authorization = `Bearer ${req.user.token}`
+            return proxyReqOpts
+          },
           proxyReqPathResolver: () => {
             return `/hearing/${hearingId}/defendant/${defendantId}/files`
           },
