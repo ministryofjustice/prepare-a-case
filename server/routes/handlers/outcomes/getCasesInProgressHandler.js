@@ -11,7 +11,12 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     query: queryParams
   } = req
 
-  const response = await caseService.getOutcomesList(courtCode, queryParams, sorts, state)
+  const response = await caseService.getOutcomesList(
+    courtCode,
+    queryParams,
+    sorts,
+    state
+  )
 
   const cases = response.cases
 
@@ -21,8 +26,13 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     items: prepareCourtRoomFilters(response.courtRoomFilters)
   }
 
-  const filters = [getOutcomeTypesListFilters(), courtRoomFilter]
-  const assignedToFilter = getHearingOutcomeAssignedToFilters(cases, queryParams)
+  const outcomeTypesListFilters = await getOutcomeTypesListFilters()
+
+  const filters = [outcomeTypesListFilters, courtRoomFilter]
+  const assignedToFilter = getHearingOutcomeAssignedToFilters(
+    cases,
+    queryParams
+  )
 
   if (assignedToFilter) {
     filters.push(assignedToFilter)
@@ -30,7 +40,9 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
 
   const flaggedFilters = flagFilters(queryParams, filters)
 
-  const filtersApplied = flaggedFilters.map(filterObj => filterObj.items.filter(item => item.checked).length).some(length => length > 0)
+  const filtersApplied = flaggedFilters
+    .map(filterObj => filterObj.items.filter(item => item.checked).length)
+    .some(length => length > 0)
 
   const templateValues = {
     params: {
