@@ -747,7 +747,7 @@ Scenario: Move a case to resulted is disabled when not in progress
   When I navigate to the "outcomes" route
   Then I should be on the "Hearing outcomes" page
 
-  When I click the "English Madden" link
+  When I click the "Some User" link
   And I click the "View without assigning" link
 
   And I should see a button with the label "Actions"
