@@ -43,7 +43,7 @@ Scenario: success banner shows correctly for multiple assigns
   When I navigate to the "outcomes" route
   And I check the mass-action checkbox
   And I click to assign the case
-  Then I see a success banner stating "You are assigned to result 2 cases. They have moved to the in progress tab."
+  Then I see a success banner stating "You are assigned to result 3 cases. They have moved to the in progress tab."
 
 #AC006 - NOT IMPLEMENTED - The logic is handled by the page reload and so tested elsewhere.
 #Scenario: outcomes tally updates
