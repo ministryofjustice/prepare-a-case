@@ -45,7 +45,7 @@ describe('Case service', () => {
   describe('Files', () => {
     it('should delete a file', async () => {
       moxios.stubRequest(
-        `${apiUrl}/hearing/hearingId/defendant/defendantId/files/fileId`,
+        `${apiUrl}/hearing/hearingId/defendant/defendantId/file/fileId`,
         {
           status: 200,
           response: {
@@ -55,7 +55,7 @@ describe('Case service', () => {
       )
       const response = await files.delete('hearingId', 'defendantId', 'fileId')
       expect(moxios.requests.mostRecent().url).toBe(
-        `${apiUrl}/hearing/hearingId/defendant/defendantId/files/fileId`
+        `${apiUrl}/hearing/hearingId/defendant/defendantId/file/fileId`
       )
       return response
     })
@@ -69,7 +69,7 @@ describe('Case service', () => {
       proxy.mockImplementationOnce((url, config) => {
         expect(url).toBe(apiUrl)
         expect(config.proxyReqPathResolver()).toBe(
-          '/hearing/hearingId/defendant/defendantId/files'
+          '/hearing/hearingId/defendant/defendantId/file'
         )
 
         const mockProxyRes = {
@@ -135,7 +135,7 @@ describe('Case service', () => {
       proxy.mockImplementationOnce((url, config) => {
         expect(url).toBe(apiUrl)
         expect(config.proxyReqPathResolver()).toBe(
-          '/hearing/hearingId/defendant/defendantId/files/fileId/raw'
+          '/hearing/hearingId/defendant/defendantId/file/fileId/raw'
         )
         expect(config.skipToNextHandlerFilter).toBe(skipper)
         return (myReq, myRes, myNext) => {
