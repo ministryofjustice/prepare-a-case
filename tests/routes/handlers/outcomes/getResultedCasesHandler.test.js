@@ -2,17 +2,33 @@
 const getOutcomeTypesListFilters = require('../.././../../server/utils/getOutcomeTypesListFilters')
 const getAssignedToFilters = require('../.././../../server/utils/getHearingOutcomeAssignedToFilters')
 
+jest.mock('../.././../../server/utils/getOutcomeTypesListFilters', () => {
+  return jest.fn(() => ({
+    id: 'outcomeType',
+    label: 'Outcome type',
+    items: [
+      { label: 'Probation sentence', value: 'PROBATION_SENTENCE' },
+      { label: 'Non-probation sentence', value: 'NON_PROBATION_SENTENCE' },
+      { label: 'Report requested', value: 'REPORT_REQUESTED' }]
+  }))
+})
+
 describe('getResultedCasesHandler', () => {
-  const {
-    caseServiceMock,
-    mockResponse
-  } = require('../test-helpers')
-  const subject = require('../../../../server/routes/handlers/outcomes/getResultedCasesHandler')(caseServiceMock)
+  const { caseServiceMock, mockResponse } = require('../test-helpers')
+  const subject =
+    require('../../../../server/routes/handlers/outcomes/getResultedCasesHandler')(
+      caseServiceMock
+    )
   const courtCode = 'B007'
 
-  const params = { title: 'Resulted cases', sorts: { sorts: 'hearingDate', order: 'ASC' }, courtCode, state: 'RESULTED', casesInProgressCount: 2 }
-  const query = {
+  const params = {
+    title: 'Resulted cases',
+    sorts: { sorts: 'hearingDate', order: 'ASC' },
+    courtCode,
+    state: 'RESULTED',
+    casesInProgressCount: 2
   }
+  const query = {}
   const mockRequest = {
     redisClient: { getAsync: jest.fn() },
     params,
@@ -24,10 +40,13 @@ describe('getResultedCasesHandler', () => {
   it('should invoke get hearing outcomes for RESULTED state', async () => {
     // Given
     const apiResponse = {
-      cases: [{ assignedToUuid: 'uuid-one', assignedTo: 'AUthor One' }, {
-        assignedToUuid: 'uuid-two',
-        assignedTo: 'Author Two'
-      }],
+      cases: [
+        { assignedToUuid: 'uuid-one', assignedTo: 'AUthor One' },
+        {
+          assignedToUuid: 'uuid-two',
+          assignedTo: 'Author Two'
+        }
+      ],
       countsByState: {
         toResultCount: 2,
         inProgressCount: 5
@@ -39,35 +58,43 @@ describe('getResultedCasesHandler', () => {
     // When
     await subject(mockRequest, mockResponse)
 
-    const outcomeTYpeFilter = getOutcomeTypesListFilters()
+    const outcomeTypeFilter = await getOutcomeTypesListFilters()
 
     const assignedToFilters = getAssignedToFilters(apiResponse.cases)
 
-    const filters = [outcomeTYpeFilter, {
-      id: 'courtRoom',
-      label: 'Courtroom',
-      items: [
-        {
-          label: '1',
-          value: ['01']
-        }
-      ]
-    }, assignedToFilters]
-    // Then
-    expect(caseServiceMock.getOutcomesList).toHaveBeenCalledWith(courtCode, query, params.sorts, params.state)
-    expect(mockResponse.render).toHaveBeenCalledWith('outcomes/resultedCases',
+    const filters = [
+      outcomeTypeFilter,
       {
-        params: {
-          ...params,
-          filters,
-          filtersApplied: false,
-          casesInProgressCount: 5,
-          casesToResultCount: 2
-        },
-        title: params.title,
-        currentUserUuid: '78be7d32-d6be-4429-b469-f2b0ba232033',
-        data: apiResponse.cases,
-        displayFilters: 2
-      })
+        id: 'courtRoom',
+        label: 'Courtroom',
+        items: [
+          {
+            label: '1',
+            value: ['01']
+          }
+        ]
+      },
+      assignedToFilters
+    ]
+    // Then
+    expect(caseServiceMock.getOutcomesList).toHaveBeenCalledWith(
+      courtCode,
+      query,
+      params.sorts,
+      params.state
+    )
+    expect(mockResponse.render).toHaveBeenCalledWith('outcomes/resultedCases', {
+      params: {
+        ...params,
+        filters,
+        filtersApplied: false,
+        casesInProgressCount: 5,
+        casesToResultCount: 2
+      },
+      title: params.title,
+      currentUserUuid: '78be7d32-d6be-4429-b469-f2b0ba232033',
+      data: apiResponse.cases,
+      displayFilters: 2
+    })
   })
 })

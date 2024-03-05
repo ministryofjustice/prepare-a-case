@@ -253,6 +253,10 @@ const createCaseService = apiUrl => {
         ),
       post: (req, res, next, responseFormatter, hearingId, defendantId) =>
         proxy(apiUrl, {
+          proxyReqOptDecorator: proxyReqOpts => {
+            proxyReqOpts.headers.Authorization = `Bearer ${req.user.token}`
+            return proxyReqOpts
+          },
           proxyReqPathResolver: () => {
             return `/hearing/${hearingId}/defendant/${defendantId}/files`
           },
@@ -286,6 +290,10 @@ const createCaseService = apiUrl => {
         fileId
       ) =>
         proxy(apiUrl, {
+          proxyReqOptDecorator: proxyReqOpts => {
+            proxyReqOpts.headers.Authorization = `Bearer ${req.user.token}`
+            return proxyReqOpts
+          },
           proxyReqPathResolver: () => {
             return `/hearing/${hearingId}/defendant/${defendantId}/files/${fileId}/raw`
           },
@@ -459,6 +467,13 @@ const createCaseService = apiUrl => {
         }
         throw e
       }
+    },
+    getOutcomeTypes: async () => {
+      const res = await request(`${apiUrl}/hearing-outcome-types`)
+      if (!isHttpSuccess(res)) {
+        return getInternalServerErrorResponse(res)
+      }
+      return res.data
     }
   }
 }

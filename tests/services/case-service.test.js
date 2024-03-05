@@ -25,6 +25,7 @@ const {
   deleteCaseCommentDraft,
   assignHearingOutcome,
   updateHearingOutcomeToResulted,
+  getOutcomeTypes,
   files
 } = require('../../server/services/case-service')
 const getOutcomeListSorts = require('../../server/utils/getOutcomesSorts')
@@ -836,6 +837,41 @@ describe('Case service', () => {
 
       await updateHearingOutcomeToResulted(hearingId)
       expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
+    })
+  })
+
+  describe('getOutcomeTypes', () => {
+    it('returns the outcome types', () => {
+      const url = `${apiUrl}/hearing-outcome-types`
+      const response = {
+        status: 200,
+        types: ['Outcome type', 'Probation sentence']
+      }
+      moxios.stubRequest(url, response)
+
+      getOutcomeTypes()
+
+      expect(moxios.requests.mostRecent().url).toBe(url)
+    })
+
+    it('returns internal server error', async () => {
+      const url = `${apiUrl}/hearing-outcome-types`
+      const response = {
+        status: 500,
+        types: ['Outcome type', 'Probation sentence']
+      }
+      moxios.stubRequest(url, response)
+
+      try {
+        await getOutcomeTypes()
+      } catch (e) {
+        const response = e.response
+
+        expect(moxios.requests.mostRecent().url).toBe(url)
+        expect(response.status).toBe(500)
+
+        return response
+      }
     })
   })
 })

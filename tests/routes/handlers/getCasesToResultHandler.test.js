@@ -1,4 +1,15 @@
-/* global describe, it, expect */
+/* global describe, it, expect, jest */
+
+jest.mock('.././../../server/utils/getOutcomeTypesListFilters', () => {
+  return jest.fn(() => ({
+    id: 'outcomeType',
+    label: 'Outcome type',
+    items: [
+      { label: 'Probation sentence', value: 'PROBATION_SENTENCE' },
+      { label: 'Non-probation sentence', value: 'NON_PROBATION_SENTENCE' },
+      { label: 'Report requested', value: 'REPORT_REQUESTED' }]
+  }))
+})
 
 describe('getCasesToResultHandler', () => {
   const {
