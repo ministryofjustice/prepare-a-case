@@ -11,7 +11,9 @@ const caseSummaryHandler = utils => async (req, res) => {
     return caseSummaryPostHandler(utils)(req, res)
   }
   // build outcome types list for select controls
-  const outcomeTypeItems = utils.getOutcomeTypesListFilters().items
+  const outcomeTypeList = await utils.getOutcomeTypesListFilters()
+  const outcomeTypeItems = outcomeTypeList.items
+
   const outcomeTypes = [
     ...[{ value: '', text: 'Outcome type' }],
     ...outcomeTypeItems.filter(item => item.value !== 'NO_OUTCOME').map(item => { return { text: item.label, value: item.value } })
