@@ -2,7 +2,7 @@
   "id": "b01f2b40-422c-48f5-a7e7-6ef5860e0faa",
   "request": {
     "method": "POST",
-    "urlPathPattern": "/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/files"
+    "urlPathPattern": "/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/file"
   },
   "response": {
     "headers": {
