@@ -266,7 +266,7 @@ const createCaseService = apiUrl => {
             if (proxyRes.statusCode >= 400) {
               return proxyResData
             }
-            if (proxyRes.statusCode === 200) {
+            if (proxyRes.statusCode === 201) {
               if (!proxyRes.rawHeaders.includes('application/json')) {
                 throw new TypeError(
                   `Non JSON response for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/file`
