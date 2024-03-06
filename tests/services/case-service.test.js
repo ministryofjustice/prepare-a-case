@@ -73,7 +73,7 @@ describe('Case service', () => {
         )
 
         const mockProxyRes = {
-          statusCode: 200,
+          statusCode: 201,
           rawHeaders: ['application/json']
         }
         const mockJson = 'true'
