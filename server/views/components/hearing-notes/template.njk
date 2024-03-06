@@ -1,3 +1,5 @@
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
 <div class="app-summary-card__body govuk-!-padding-top-0 govuk-!-padding-right-3 govuk-!-padding-left-3">
     {% set draftNote = '' %}
 
@@ -16,7 +18,15 @@
                         <div class="hearing-note-display">
 
                             <div class="govuk-grid-row">
-                                <span class="govuk-grid-column-full hearing-note-display-text">{{ previousNote.note }}</span>
+                                <span class="govuk-grid-column-full hearing-note-display-text">
+                                    {% if previousNote.legacy %}
+                                    {{ govukWarningText({
+                                        text: "This note was added to a case with more than one defendant. Delete the note if it is not relevant to this defendant.",
+                                        iconFallbackText: "Warning"
+                                    }) }}
+                                    {% endif %}
+                                    {{ previousNote.note }}
+                                </span>
                             </div>
                             <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-3 hearing-note-links">
                                 <span class="govuk-!-margin-left-3">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}
