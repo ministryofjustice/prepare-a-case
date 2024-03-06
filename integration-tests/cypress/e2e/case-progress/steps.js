@@ -22,11 +22,17 @@ Then('I should see below notes on hearing {string} with author datetime and note
   $data.raw().forEach((dataRow, index) => {
     cy.get(`#case-progress-hearing-${$hearingId} .hearing-note-container`).eq(index).within(() => {
       const noteText = cy.get('.hearing-note-display-text')
-      noteText.should('have.text', dataRow[2])
+      noteText.should('include.text', dataRow[2])
       cy.get('.hearing-note-links').should('include.text', `${dataRow[0]} on ${dataRow[1]}`)
       cy.get('.note-edit-link').should('have.text', 'Edit')
       cy.get('.note-delete-link').should('have.text', 'Delete')
     })
+  })
+})
+
+Then('I should see a warning banner on hearing {string} with text {string}', ($hearingId, $string) => {
+  cy.get(`#case-progress-hearing-${$hearingId} .hearing-note-container`).eq(0).within(() => {
+    cy.get('.govuk-warning-text').contains($string).should('exist');
   })
 })
 
