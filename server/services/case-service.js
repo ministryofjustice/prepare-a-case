@@ -36,7 +36,20 @@ const createCaseService = apiUrl => {
       )) || { data: {} }
       return res.data
     },
-    getPagedCaseList: async (
+    getCaseListForBulkMatching: async (
+      courtCode,
+      date
+    ) => {
+      const apiUrlBuilder = new URL(`${apiUrl}/court/${courtCode}/cases`)
+
+      apiUrlBuilder.searchParams.append('date', date)
+      apiUrlBuilder.searchParams.append('VERSION2', 'true')
+      apiUrlBuilder.searchParams.append('page', '1')
+      apiUrlBuilder.searchParams.append('size', '1000') // to fetch all cases wiht possible NDelius records and ignore paging
+      apiUrlBuilder.searchParams.append('probationStatus', 'Possible NDelius record')
+
+    },
+      getPagedCaseList: async (
       courtCode,
       date,
       selectedFilters,
@@ -168,6 +181,8 @@ const createCaseService = apiUrl => {
         filters: caseListFilters
       }
     },
+    // TODO this should be avoided / deleted
+    // Deprecated
     getCaseList: async (courtCode, date, selectedFilters, subsection) => {
       const latestSnapshot = getLatestSnapshot(date).format(
         'YYYY-MM-DDTHH:mm:00.000'
