@@ -2,7 +2,7 @@
     "id": "6ae53c9f-6bf3-4da4-93d9-da1e86556b4a",
     "request": {
       "method": "GET",
-      "urlPathPattern": "/hearing/8c128fdc-0676-4583-8395-6809625825db/defendant/0bafeb20-e879-4f52-bc20-0d4473a725c2"
+      "urlPath": "/hearing/8c128fdc-0676-4583-8395-6809625825db/defendant/0bafeb20-e879-4f52-bc20-0d4473a725c2"
     },
     "response": {
       "headers": {
