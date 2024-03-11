@@ -10,7 +10,8 @@
 } %}
 
 {% for item in data %}
-    {% if (item.probationStatus | string | lower == "possible ndelius record") and (item.numberOfPossibleMatches | int > 0) %}
+{#    below check is unnecessary as the endpoint now only returns cases with possible NDelius records #}
+{#    {% if (item.probationStatus | string | lower == "possible ndelius record") and (item.numberOfPossibleMatches | int > 0) %}#}
         {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
         {%- set tableRow = [
             { text: defendantFullName | escape | apostropheInName | properCase | removeTitle },
@@ -18,7 +19,7 @@
             { text: ('<a href="/' + params.courtCode + '/case/' + item.caseId + '/hearing/' + (item.hearingId | escape) + '/match/defendant/' + (item.defendantId | escape) +'" class="pac-defendant-link govuk-link govuk-link--no-visited-state">Review records</a>') | safe }
         ] -%}
         {{ tableData.rows.push(tableRow) }}
-    {% endif %}
+{#    {% endif %}#}
 {% endfor %}
 
 {% block backlink %}
