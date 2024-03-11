@@ -316,6 +316,18 @@ Then('I should see a button with the label {string}', $string => {
   cy.get('.govuk-button').contains($string).should('exist')
 })
 
+Then('I should see an MOJ menu button with the label {string}', $string => {
+  cy.get('.moj-button-menu__item').contains($string).should('exist')
+})
+
+Then('I should see a disabled MOJ menu button with the label {string}', $string => {
+  cy.get('.moj-button-menu__item').contains($string).should('be.disabled')
+})
+
+When('I click the {string} MOJ menu button', $string => {
+  cy.get('.moj-button-menu__item').contains($string).click()
+})
+
 Then('I should see a link with text Cancel to cancel a draft comment', () => {
   cy.get('#caseComments').within(() => {
     cy.get('.comment-draft-cancel-link').contains('Cancel').should('exist')

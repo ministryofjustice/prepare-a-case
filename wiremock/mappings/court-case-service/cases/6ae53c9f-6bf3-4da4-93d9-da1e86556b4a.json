@@ -1,0 +1,89 @@
+{
+    "id": "6ae53c9f-6bf3-4da4-93d9-da1e86556b4a",
+    "request": {
+      "method": "GET",
+      "url": "/hearing/8c128fdc-0676-4583-8395-6809625825db/defendant/0bafeb20-e879-4f52-bc20-0d4473a725c2"
+    },
+    "response": {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "status": 200,
+      "jsonBody": {
+        "caseId": "6ae53c9f-6bf3-4da4-93d9-da1e86556b4a",
+        "hearingId": "8c128fdc-0676-4583-8395-6809625825db",
+        "defendantId": "0bafeb20-e879-4f52-bc20-0d4473a725c2",
+        "caseNo": "351196425",
+        "courtCode": "SHF",
+        "courtRoom": "06",
+        "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+        "listNo": "2nd",
+        "pnc": "A/987930B",
+        "crn": "E654321",
+        "probationStatus": "Current",
+        "session": "MORNING",
+        "previouslyKnownTerminationDate": "",
+        "suspendedSentenceOrder": false,
+        "breach": true,
+        "preSentenceActivity": false,
+        "awaitingPsr": false,
+        "source": "LIBRA",
+        "urn": "01WW0298121",
+        "files": [],
+        "offences": [
+          {
+            "offenceTitle": "Kicking barrels",
+            "offenceSummary": "On 05/09/2016 at Hoxxes IV kicked barrels into the drop pod.",
+            "act": "Contrary to section 1(1) of the No kicking barrels Act 1981.",
+            "sequenceNumber": 1
+          }
+        ],
+        "defendantSex": "M",
+        "defendantName": "Rock Stone",
+        "defendantAddress": {
+          "line1": "2",
+          "line2": "Space Rig",
+          "postcode": "de39 7ok",
+          "line3": "Space"
+        },
+        "defendantDob": "1979-08-18",
+        "createdToday": true,
+        "removed": false,
+        "numberOfPossibleMatches": 0,
+        "hearings": [
+          {
+            "hearingId": "8c128fdc-0676-4583-8395-6809625825db",
+            "court": "North Shields",
+            "courtRoom": "2",
+            "session": "MORNING",
+            "hearingTypeLabel": "5th hearing",
+            "hearingDateTime": "2019-05-14T09:00:00",
+            "hearingOutcome": {
+              "hearingOutcomeType": "REPORT_REQUESTED",
+              "hearingOutcomeDescription": "Report requested",
+              "outcomeDate": "2023-01-09T09:09:09",
+              "assignedToUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
+              "state": "IN_PROGRESS"
+            },
+            "notes":[
+              {
+                "noteId": 1234560,
+                "note": "Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office.",
+                "created": "2022-07-09T17:13:09",
+                "author": "Jane Smith",
+                "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
+              },
+              {
+                "noteId": 987650,
+                "note": "Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.",
+                "created": "2022-08-09T17:16:14",
+                "author": "John Doe",
+                "createdByUuid": "7ca04ed7-8275-45b2-afb4-4ff51432d1ea"
+              }
+            ]
+          }
+          ]
+      }
+    }
+  }
+  
