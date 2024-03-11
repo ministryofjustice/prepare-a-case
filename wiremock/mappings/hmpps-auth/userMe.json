@@ -11,7 +11,8 @@
     "status": 200,
     "jsonBody": {
       "uuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
-      "name": "Display Name"
+      "name": "Display Name",
+      "userId": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
     }
   }
 }
