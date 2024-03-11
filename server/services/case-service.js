@@ -361,8 +361,8 @@ const createCaseService = apiUrl => {
       return response.data
     },
 
-    updateHearingOutcomeToResulted: async hearingId => {
-      const urlString = `${apiUrl}/hearing/${hearingId}/outcome/result`
+    updateHearingOutcomeToResulted: async (hearingId, defendantId) => {
+      const urlString = `${apiUrl}/hearing/${hearingId}/defendant/{defendantId}/outcome/result`
       await create(urlString)
     },
 
@@ -445,12 +445,12 @@ const createCaseService = apiUrl => {
         throw e
       }
     },
-    addHearingOutcome: async (hearingId, hearingOutcomeType) =>
-      await update(`${apiUrl}/hearing/${hearingId}/outcome`, {
+    addHearingOutcome: async (hearingId, defendantId, hearingOutcomeType) =>
+      await update(`${apiUrl}/hearing/${hearingId}/defendant/{defendantId}/outcome`, {
         hearingOutcomeType
       }),
-    assignHearingOutcome: async (hearingId, assignedTo) =>
-      await update(`${apiUrl}/hearing/${hearingId}/outcome/assign`, {
+    assignHearingOutcome: async (hearingId, defendantId, assignedTo) =>
+      await update(`${apiUrl}/hearing/${hearingId}/defendant/{defendantId}/outcome/assign`, {
         assignedTo
       }),
     saveDraftCaseComment: async (caseId, comment, author) =>
