@@ -2,7 +2,7 @@ module.exports = {
   testEnvironment: 'node',
   verbose: true,
   clearMocks: true,
-  collectCoverage: true,
+  collectCoverage: false,
   coverageDirectory: './coverage',
   rootDir: '../',
   collectCoverageFrom: [

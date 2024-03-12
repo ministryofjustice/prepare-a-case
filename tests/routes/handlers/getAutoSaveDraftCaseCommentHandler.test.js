@@ -1,11 +1,12 @@
 /* global describe, it, expect, jest */
 
-describe('getUpdateCommentRequestHandler', () => {
+describe('ggetAutoSaveDraftCaseCommentHandler', () => {
   const {
     caseServiceMock,
     mockResponse
   } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/getUpdateCommentRequestHandler')(caseServiceMock)
+  caseServiceMock.saveDraftCaseComment = jest.fn(() => ({ status: 200, data: 'some-data' }))
+  const subject = require('../../../server/routes/handlers/getAutoSaveCaseCommentHandler')(caseServiceMock)
   const testDefendantId = 'test-defendant-id'
   const testCaseId = 'test-defendant-id'
   const testHearingId = 'test-hearing-id'
@@ -14,7 +15,7 @@ describe('getUpdateCommentRequestHandler', () => {
   const mockRequest = {
     redisClient: { getAsync: jest.fn() },
     params: { defendantId: testDefendantId, hearingId: testHearingId, courtCode },
-    body: { caseId: testCaseId, comment: 'A comment update', commentId: 123 },
+    body: { caseId: testCaseId, comment: 'A comment update' },
     path: '/test/path',
     session: {}
   }
@@ -24,7 +25,7 @@ describe('getUpdateCommentRequestHandler', () => {
     await subject(mockRequest, mockResponse)
 
     // Then
-    expect(caseServiceMock.updateCaseComment).toHaveBeenLastCalledWith(testCaseId, 'test-defendant-id', 123, 'A comment update', 'Adam Sandler')
-    expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/hearing/${testHearingId}/defendant/${testDefendantId}/summary#caseComments`)
+    expect(caseServiceMock.saveDraftCaseComment).toHaveBeenLastCalledWith(testCaseId, 'test-defendant-id', 'A comment update', 'Adam Sandler')
+    expect(mockResponse.send).toHaveBeenCalledWith('some-data', 200)
   })
 })

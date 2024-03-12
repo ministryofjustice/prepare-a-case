@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="42" failures="0" errors="0" time="0.616">
+  <testsuite name="Case service" errors="0" failures="0" skipped="41" timestamp="2024-03-11T23:25:48" time="0.556" tests="42">
+    <testcase classname="Case service › Files-should delete a file" name="Case service › Files-should delete a file" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › Files-should upload a file" name="Case service › Files-should upload a file" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › Files-should download a file" name="Case service › Files-should download a file" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to request case list data" name="Case service-should call the API to request case list data" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should return http error code in status when API call fails" name="Case service-should return http error code in status when API call fails" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to request case detail data" name="Case service-should call the API to request case detail data" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should return error code when API call to request case data failed" name="Case service-should return error code when API call to request case data failed" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should filter the case list by probation status" name="Case service-should filter the case list by probation status" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should filter the case list by court room" name="Case service-should filter the case list by court room" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should filter the case list by court room ignoring 0 prefix" name="Case service-should filter the case list by court room ignoring 0 prefix" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should filter the case list by session" name="Case service-should filter the case list by session" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to request match details data" name="Case service-should call the API to request match details data" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to update offender data" name="Case service-should call the API to update offender data" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to delete offender data" name="Case service-should call the API to delete offender data" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should return error response when API call to get case list fails with 500 status" name="Case service-should return error response when API call to get case list fails with 500 status" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to create comment" name="Case service-should call the API to create comment" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to delete a comment" name="Case service-should call the API to delete a comment" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to delete a hearing note" name="Case service-should call the API to delete a hearing note" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to save draft hearing note" name="Case service-should call the API to save draft hearing note" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to update hearing note" name="Case service-should call the API to update hearing note" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to search by term and type" name="Case service-should call the API to search by term and type" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should call the API to search by CRN and return empty data on 404" name="Case service-should call the API to search by CRN and return empty data on 404" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should ignore 404 from the API call to delete draft" name="Case service-should ignore 404 from the API call to delete draft" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should throw non 404 from the API call to delete draft" name="Case service-should throw non 404 from the API call to delete draft" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should invoke API to delete hearing note draft for given hearing" name="Case service-should invoke API to delete hearing note draft for given hearing" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should invoke API to delete case comment draft for a given case" name="Case service-should invoke API to delete case comment draft for a given case" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should ignore 404 from API to delete case comment draft" name="Case service-should ignore 404 from API to delete case comment draft" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service-should throw non 404 from the API call to delete draft comment" name="Case service-should throw non 404 from the API call to delete draft comment" time="0.052">
+    </testcase>
+    <testcase classname="Case service-should invoke API to add hearing outcome" name="Case service-should invoke API to add hearing outcome" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;page=1&amp;size=20 when getOutcomesList(SHF, null, null, NEW)" name="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;page=1&amp;size=20 when getOutcomesList(SHF, null, null, NEW)" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;outcomeType=ADJOURNED&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;outcomeType&quot;: [Array]}, null, NEW)" name="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;outcomeType=ADJOURNED&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;outcomeType&quot;: [Array]}, null, NEW)" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;sortBy=hearingDate&amp;order=DESC&amp;page=1&amp;size=20 when getOutcomesList(SHF, null, [[Object]], NEW)" name="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;sortBy=hearingDate&amp;order=DESC&amp;page=1&amp;size=20 when getOutcomesList(SHF, null, [[Object]], NEW)" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;outcomeType=ADJOURNED&amp;sortBy=hearingDate&amp;order=ASC&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;outcomeType&quot;: [Array]}, [[Object]], NEW)" name="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;outcomeType=ADJOURNED&amp;sortBy=hearingDate&amp;order=ASC&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;outcomeType&quot;: [Array]}, [[Object]], NEW)" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;outcomeType=REPORT_REQUESTED&amp;sortBy=hearingDate&amp;order=DESC&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;outcomeType&quot;: [Array]}, [[Object]], NEW)" name="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;outcomeType=REPORT_REQUESTED&amp;sortBy=hearingDate&amp;order=DESC&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;outcomeType&quot;: [Array]}, [[Object]], NEW)" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;outcomeType=REPORT_REQUESTED&amp;outcomeType=ADJOURNED&amp;sortBy=hearingDate&amp;order=DESC&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;outcomeType&quot;: [Array]}, [[Object]], NEW)" name="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;outcomeType=REPORT_REQUESTED&amp;outcomeType=ADJOURNED&amp;sortBy=hearingDate&amp;order=DESC&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;outcomeType&quot;: [Array]}, [[Object]], NEW)" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;outcomeTypeUnknown&quot;: [Array]}, [[Object]], NEW)" name="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;outcomeTypeUnknown&quot;: [Array]}, [[Object]], NEW)" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;outcomeType=REPORT_REQUESTED&amp;outcomeType=ADJOURNED&amp;courtRoom=01&amp;courtRoom=Courtroom-01&amp;courtRoom=2&amp;sortBy=hearingDate&amp;order=DESC&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;courtRoom&quot;: [Array], &quot;outcomeType&quot;: [Array]}, [[Object]], NEW)" name="Case service › getOutcomesList-calls API with http://localhost:9091/courts/SHF/hearing-outcomes?state=NEW&amp;outcomeType=REPORT_REQUESTED&amp;outcomeType=ADJOURNED&amp;courtRoom=01&amp;courtRoom=Courtroom-01&amp;courtRoom=2&amp;sortBy=hearingDate&amp;order=DESC&amp;page=1&amp;size=20 when getOutcomesList(SHF, {&quot;courtRoom&quot;: [Array], &quot;outcomeType&quot;: [Array]}, [[Object]], NEW)" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › getOutcomesList-should return http error code in status when API call fails" name="Case service › getOutcomesList-should return http error code in status when API call fails" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › server side paging-should invoke api url correctly for unheard cases" name="Case service › server side paging-should invoke api url correctly for unheard cases" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › server side paging-should invoke api url correctly for heard cases" name="Case service › server side paging-should invoke api url correctly for heard cases" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › assignHearingOutcome-should invoke API to assign hearing outcome" name="Case service › assignHearingOutcome-should invoke API to assign hearing outcome" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Case service › updateHearingOutcomeToResulted-given hearing id, when updateHearingOutcomeToResulted is invoked, should invoke api correctly" name="Case service › updateHearingOutcomeToResulted-given hearing id, when updateHearingOutcomeToResulted is invoked, should invoke api correctly" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+</testsuites>

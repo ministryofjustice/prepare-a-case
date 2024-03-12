@@ -23,7 +23,7 @@ describe('getCancelCaseCommentDraftHandler', () => {
     await subject(mockRequest, mockResponse)
 
     // Then
-    expect(caseServiceMock.deleteCaseCommentDraft).toHaveBeenLastCalledWith(testCaseId)
+    expect(caseServiceMock.deleteCaseCommentDraft).toHaveBeenLastCalledWith(testCaseId, 'test-defendant-id')
     expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/hearing/${testHearingId}/defendant/${testDefendantId}/summary#caseComments`)
   })
 })

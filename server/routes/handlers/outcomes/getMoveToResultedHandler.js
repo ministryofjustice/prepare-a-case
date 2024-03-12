@@ -1,8 +1,8 @@
 const trackEvent = require('../../../utils/analytics')
 const getMoveToResultedHandler = caseService => async (req, res) => {
-  const { params: { courtCode, hearingId }, session } = req
+  const { params: { courtCode, hearingId, defendantId }, session } = req
 
-  await caseService.updateHearingOutcomeToResulted(hearingId)
+  await caseService.updateHearingOutcomeToResulted(hearingId, defendantId)
 
   trackEvent(
     'PiCPrepareACaseHearingOutcomes',

@@ -408,7 +408,7 @@ describe('Case service', () => {
   })
 
   it('should call the API to create comment', async () => {
-    const endpoint = `${apiUrl}/cases/2e0afeb7-95d2-42f4-80e6-ccf96b282730/comments`
+    const endpoint = `${apiUrl}/cases/2e0afeb7-95d2-42f4-80e6-ccf96b282730/defendants/some-defendant-id/comments`
     moxios.stubRequest(endpoint, {
       status: 201
     })
@@ -416,7 +416,8 @@ describe('Case service', () => {
     const caseId = '2e0afeb7-95d2-42f4-80e6-ccf96b282730'
     const comment = 'A comment'
     const author = 'Adam Sandler'
-    const response = await addCaseComment(caseId, comment, author)
+    const defendantId = 'some-defendant-id'
+    const response = await addCaseComment(caseId, defendantId, comment, author)
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
     expect(moxios.requests.mostRecent().config.data).toBe(
       JSON.stringify({ caseId, comment, author })
@@ -425,14 +426,15 @@ describe('Case service', () => {
   })
 
   it('should call the API to delete a comment', async () => {
-    const endpoint = `${apiUrl}/cases/2e0afeb7-95d2-42f4-80e6-ccf96b282730/comments/12345`
+    const endpoint = `${apiUrl}/cases/2e0afeb7-95d2-42f4-80e6-ccf96b282730/defendants/some-defendant-id/comments/12345`
     moxios.stubRequest(endpoint, {
       status: 200
     })
 
     const caseId = '2e0afeb7-95d2-42f4-80e6-ccf96b282730'
     const commentId = 12345
-    const response = await deleteCaseComment(caseId, commentId)
+    const defendantId = 'some-defendant-id'
+    const response = await deleteCaseComment(caseId, defendantId, commentId)
     expect(moxios.requests.mostRecent().url).toBe(endpoint)
     return response
   })
@@ -589,11 +591,12 @@ describe('Case service', () => {
 
   it('should invoke API to delete case comment draft for a given case', async () => {
     const caseId = 'id-one'
-    const endpoint = `${apiUrl}/cases/${caseId}/comments/draft`
+    const defendantId = 'some-defendant-id'
+    const endpoint = `${apiUrl}/cases/${caseId}/defendants/some-defendant-id/comments/draft`
     moxios.stubRequest(endpoint, {
       status: 200
     })
-    const response = await deleteCaseCommentDraft(caseId)
+    const response = await deleteCaseCommentDraft(caseId, defendantId)
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
     return response
@@ -601,11 +604,12 @@ describe('Case service', () => {
 
   it('should ignore 404 from API to delete case comment draft', async () => {
     const caseId = 'id-one'
-    const endpoint = `${apiUrl}/cases/${caseId}/comments/draft`
+    const defendantId = 'some-defendant-id'
+    const endpoint = `${apiUrl}/cases/${caseId}/defendants/some-defendant-id/comments/draft`
     moxios.stubRequest(endpoint, {
       status: 404
     })
-    const response = await deleteCaseCommentDraft(caseId)
+    const response = await deleteCaseCommentDraft(caseId, defendantId)
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
     return response
@@ -613,13 +617,14 @@ describe('Case service', () => {
 
   it('should throw non 404 from the API call to delete draft comment', async () => {
     const caseId = 'id-one'
-    const endpoint = `${apiUrl}/cases/${caseId}/comments/draft`
+    const defendantId = 'some-defendant-id'
+    const endpoint = `${apiUrl}/cases/${caseId}/defendants/some-defendant-id/comments/draft`
     moxios.stubRequest(endpoint, {
       status: 401
     })
 
     const response = await expect(
-      async () => await deleteCaseCommentDraft(caseId)
+      async () => await deleteCaseCommentDraft(caseId, defendantId)
     ).rejects.toThrow('Request failed with status code 401')
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
@@ -628,12 +633,13 @@ describe('Case service', () => {
 
   it('should invoke API to add hearing outcome', async () => {
     const hearingId = 'id-one'
-    const endpoint = `${apiUrl}/hearing/${hearingId}/outcome`
+    const defendantId = 'some-defendant-id'
+    const endpoint = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id/outcome`
     moxios.stubRequest(endpoint, {
       status: 200
     })
     const hearingOutcomeType = 'REPORT_REQUESTED'
-    const response = await addHearingOutcome(hearingId, hearingOutcomeType)
+    const response = await addHearingOutcome(hearingId, defendantId, hearingOutcomeType)
     const mostRecent = moxios.requests.mostRecent()
     expect(mostRecent.url).toBe(endpoint)
     expect(mostRecent.config.data).toBe(JSON.stringify({ hearingOutcomeType }))
@@ -813,12 +819,13 @@ describe('Case service', () => {
   describe('assignHearingOutcome', () => {
     it('should invoke API to assign hearing outcome', async () => {
       const hearingId = 'id-one'
-      const endpoint = `${apiUrl}/hearing/${hearingId}/outcome/assign`
+      const defendantId = 'some-defendant-id'
+      const endpoint = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id/outcome/assign`
       moxios.stubRequest(endpoint, {
         status: 200
       })
       const assignedTo = 'Adam Sandler'
-      const response = await assignHearingOutcome(hearingId, assignedTo)
+      const response = await assignHearingOutcome(hearingId, defendantId, assignedTo)
       const mostRecent = moxios.requests.mostRecent()
       expect(mostRecent.url).toBe(endpoint)
       expect(mostRecent.config.data).toBe(JSON.stringify({ assignedTo }))
@@ -829,12 +836,13 @@ describe('Case service', () => {
   describe('updateHearingOutcomeToResulted', () => {
     it('given hearing id, when updateHearingOutcomeToResulted is invoked, should invoke api correctly', async () => {
       const hearingId = 'test-hearing-id'
-      const expectedUrl = `${apiUrl}/hearing/${hearingId}/outcome/result`
+      const defendantId = 'some-defendant-id'
+      const expectedUrl = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id/outcome/result`
       moxios.stubRequest(expectedUrl, {
         status: 200
       })
 
-      await updateHearingOutcomeToResulted(hearingId)
+      await updateHearingOutcomeToResulted(hearingId, defendantId)
       expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
     })
   })

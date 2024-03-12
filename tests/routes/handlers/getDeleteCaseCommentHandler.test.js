@@ -27,7 +27,7 @@ describe('getDeleteCaseCommentHandler', () => {
     await subject(mockRequest, mockResponse)
 
     // Then
-    expect(caseServiceMock.deleteCaseComment).toHaveBeenCalledWith(caseId, commentId)
+    expect(caseServiceMock.deleteCaseComment).toHaveBeenCalledWith(caseId, 'test-defendant-id', commentId)
     expect(mockResponse.redirect).toHaveBeenCalledWith(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseComments`)
   })
 })
