@@ -3,7 +3,7 @@
   "priority": 5,
   "request": {
     "method": "PUT",
-    "urlPathPattern": "/cases/.*/comments/(0|[1-9][0-9]*)"
+    "urlPathPattern": "/cases/.*/defendants/.*/comments/(0|[1-9][0-9]*)"
   },
   "response": {
     "status": 200
