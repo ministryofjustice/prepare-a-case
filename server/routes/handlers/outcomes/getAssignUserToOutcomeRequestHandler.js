@@ -1,9 +1,9 @@
 const trackEvent = require('../../../utils/analytics')
 
 const getAssignUserToOutcomeRequestHandler = caseService => async (req, res) => {
-  const { params: { hearingId }, session, body: { targetDefendantId: defendantId, targetCourtCode: courtCode } } = req
+  const { params: { hearingId, defendantId }, session, body: { targetDefendantId, targetCourtCode: courtCode } } = req
 
-  await caseService.assignHearingOutcome(hearingId, res.locals.user.name)
+  await caseService.assignHearingOutcome(hearingId, defendantId, res.locals.user.name)
 
   session.assignHearingOutcomeSuccess = true
 
@@ -11,7 +11,7 @@ const getAssignUserToOutcomeRequestHandler = caseService => async (req, res) => 
     trackEvent('PiCAssignUserToOutcomeNoName', res.locals.user)
   }
 
-  res.redirect(`/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`)
+  res.redirect(`/${courtCode}/hearing/${hearingId}/defendant/${targetDefendantId}/summary`)
 }
 
 module.exports = getAssignUserToOutcomeRequestHandler

@@ -361,8 +361,8 @@ const createCaseService = apiUrl => {
       return response.data
     },
 
-    updateHearingOutcomeToResulted: async hearingId => {
-      const urlString = `${apiUrl}/hearing/${hearingId}/outcome/result`
+    updateHearingOutcomeToResulted: async (hearingId, defendantId) => {
+      const urlString = `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/result`
       await create(urlString)
     },
 
@@ -400,20 +400,21 @@ const createCaseService = apiUrl => {
     deleteOffender: async defendantId => {
       return await httpDelete(`${apiUrl}/defendant/${defendantId}/offender`)
     },
-    addCaseComment: async (caseId, comment, author) =>
-      await create(`${apiUrl}/cases/${caseId}/comments`, {
+    addCaseComment: async (caseId, defendantId, comment, author) =>
+      await create(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments`, {
         caseId,
         comment,
         author
       }),
-    updateCaseComment: async (caseId, commentId, comment, author) =>
-      await update(`${apiUrl}/cases/${caseId}/comments/${commentId}`, {
+    updateCaseComment: async (caseId, defendantId, commentId, comment, author) =>
+      await update(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/${commentId}`, {
         caseId,
         comment,
         author
       }),
-    deleteCaseComment: async (caseId, commentId) =>
-      await httpDelete(`${apiUrl}/cases/${caseId}/comments/${commentId}`),
+    deleteCaseComment: async (caseId, defendantId, commentId) => {
+      await httpDelete(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/${commentId}`)
+    },
     addHearingNote: async (hearingId, note, author, defendantId) =>
       await create(
         `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes`,
@@ -445,23 +446,23 @@ const createCaseService = apiUrl => {
         throw e
       }
     },
-    addHearingOutcome: async (hearingId, hearingOutcomeType) =>
-      await update(`${apiUrl}/hearing/${hearingId}/outcome`, {
+    addHearingOutcome: async (hearingId, defendantId, hearingOutcomeType) =>
+      await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome`, {
         hearingOutcomeType
       }),
-    assignHearingOutcome: async (hearingId, assignedTo) =>
-      await update(`${apiUrl}/hearing/${hearingId}/outcome/assign`, {
+    assignHearingOutcome: async (hearingId, defendantId, assignedTo) =>
+      await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/assign`, {
         assignedTo
       }),
-    saveDraftCaseComment: async (caseId, comment, author) =>
-      await update(`${apiUrl}/cases/${caseId}/comments/draft`, {
+    saveDraftCaseComment: async (caseId, defendantId, comment, author) =>
+      await update(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/draft`, {
         caseId,
         comment,
         author
       }),
-    deleteCaseCommentDraft: async caseId => {
+    deleteCaseCommentDraft: async (caseId, defendantId) => {
       try {
-        await httpDelete(`${apiUrl}/cases/${caseId}/comments/draft`)
+        await httpDelete(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/draft`)
       } catch (e) {
         if (e.response?.status === 404) {
           return // if the comment draft has never been saved, delete would return 404 which we should be ignoring it.

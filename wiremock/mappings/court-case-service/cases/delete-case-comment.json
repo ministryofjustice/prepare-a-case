@@ -3,7 +3,7 @@
   "priority": 1,
   "request": {
     "method": "DELETE",
-    "urlPathPattern": "/cases/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/comments/(0|[1-9][0-9]*)"
+    "urlPathPattern": "/cases/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendants/.*/comments/(0|[1-9][0-9]*)"
   },
   "response": {
     "status": 200

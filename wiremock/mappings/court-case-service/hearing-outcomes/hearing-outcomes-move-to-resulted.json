@@ -2,7 +2,7 @@
   "id": "8cbaed69-88e3-4dae-bbfa-69fb9b701ed2",
   "request": {
     "method": "POST",
-    "urlPathPattern": "/hearing/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/outcome/result"
+    "urlPathPattern": "/hearing/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/defendant/.*/outcome/result"
   },
   "response": {
     "status": 200
