@@ -112,7 +112,9 @@ Feature: Case summary
       | Date of birth | 31 October 1980                   |
       | Address       | 22 Waldorf Court Cardiff AD21 5DR |
 
-    And I should see a button with the label "Link NDelius record"
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Link NDelius Record"
     And There should be no a11y violations
 
   Scenario: View the case summary for the given defendant with an existing probation record
@@ -145,7 +147,9 @@ Feature: Case summary
       | Phone number  | 020 789 789 789 (Work)              |
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
 
-    And I should see a button with the label "Unlink NDelius record"
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
 
@@ -214,7 +218,9 @@ Feature: Case summary
       | Phone number  | Unavailable                        |
       | Address       | 38 Clarendon Road Glasgow AD21 5DR |
 
-    And I should see a button with the label "Unlink NDelius record"
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
 
@@ -246,7 +252,9 @@ Feature: Case summary
       | Date of birth | 6 June 1996                     |
       | Address       | 99 Ralph Avenue London AD21 5DR |
 
-    And I should see a button with the label "Unlink NDelius record"
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
 
@@ -717,3 +725,31 @@ Feature: Case summary
 
     And There should be no a11y violations
 
+Scenario: Move a case to resulted
+  Given I am an authenticated user
+
+  When I navigate to the "outcomes/in-progress" route
+  Then I should be on the "Hearing outcomes" page
+
+  When I click the "Rock Stone" link
+  And I click the "Open as read only" link
+
+  And I should see a button with the label "Actions"
+  And I click the "Actions" button
+  And I should see an MOJ menu button with the label "Move to resulted"
+  And I click the "Move to resulted" MOJ menu button
+  Then I should be on the "Hearing outcomes" page
+  And I should see govuk notification banner with header "Success" and message "You have moved Rock Stone's case to resulted cases."
+
+Scenario: Move a case to resulted is disabled when not in progress
+  Given I am an authenticated user
+
+  When I navigate to the "outcomes" route
+  Then I should be on the "Hearing outcomes" page
+
+  When I click the "Some User" link
+  And I click the "View without assigning" link
+
+  And I should see a button with the label "Actions"
+  And I click the "Actions" button
+  And I should see a disabled MOJ menu button with the label "Move to resulted"

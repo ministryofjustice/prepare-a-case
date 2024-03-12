@@ -27,9 +27,6 @@ const {
   getCustodyDetails
 } = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
-const featuresToggles = require('../utils/features')
-const getNextHearing = require('../utils/getNextHearing')
-const getOutcomeTypesListFilters = require('../utils/getOutcomeTypesListFilters')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
@@ -52,11 +49,15 @@ const {
   autoSaveCaseCommentHandler,
   cancelCaseCommentDraftHandler,
   updateCaseCommentHandler,
-  pagedCaseListRouteHandler
+  pagedCaseListRouteHandler,
+  caseSummaryHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')
-const { deleteHearingNoteConfirmationHandler, deleteHearingNoteHandler } = require('./handlers')
+const {
+  deleteHearingNoteConfirmationHandler,
+  deleteHearingNoteHandler
+} = require('./handlers')
 const features = require('../utils/features')
 
 module.exports = function Index ({ authenticationMiddleware }) {
@@ -87,40 +88,74 @@ module.exports = function Index ({ authenticationMiddleware }) {
     if (cookies && cookies.court) {
       res.clearCookie('court')
     }
-    res.redirect(302, cookies && cookies.currentCourt ? `/${cookies.currentCourt}/cases` : '/my-courts/setup')
+    res.redirect(
+      302,
+      cookies && cookies.currentCourt
+        ? `/${cookies.currentCourt}/cases`
+        : '/my-courts/setup'
+    )
   })
 
-  router.get('/set-notification', catchErrors(async (req, res) => {
-    const { redisClient: { getAsync } } = req
-    const currentNotification = await getAsync('case-list-notification')
-    const reject = () => {
-      res.setHeader('www-authenticate', 'Basic')
-      res.sendStatus(401)
-    }
+  router.get(
+    '/set-notification',
+    catchErrors(async (req, res) => {
+      const {
+        redisClient: { getAsync }
+      } = req
+      const currentNotification = await getAsync('case-list-notification')
+      const reject = () => {
+        res.setHeader('www-authenticate', 'Basic')
+        res.sendStatus(401)
+      }
 
-    const authorization = req.headers.authorization
-    if (!authorization) {
-      return reject()
-    }
+      const authorization = req.headers.authorization
+      if (!authorization) {
+        return reject()
+      }
 
-    const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
-    if (username !== notification.username || password !== notification.password) {
-      return reject()
-    }
-    res.render('set-notification', { currentNotification })
-  }))
+      const [username, password] = Buffer.from(
+        authorization.replace('Basic ', ''),
+        'base64'
+      )
+        .toString()
+        .split(':')
+      if (
+        username !== notification.username ||
+        password !== notification.password
+      ) {
+        return reject()
+      }
+      res.render('set-notification', { currentNotification })
+    })
+  )
 
-  router.get('/set-notification-preview', catchErrors(async (req, res) => {
-    const { redisClient: { getAsync } } = req
-    const currentNotification = await getAsync('case-list-notification')
-    res.render('set-notification-preview', { currentNotification })
-  }))
+  router.get(
+    '/set-notification-preview',
+    catchErrors(async (req, res) => {
+      const {
+        redisClient: { getAsync }
+      } = req
+      const currentNotification = await getAsync('case-list-notification')
+      res.render('set-notification-preview', { currentNotification })
+    })
+  )
 
-  router.post('/set-notification', body('notification').trim(), catchErrors(async (req, res) => {
-    const { redisClient: { setAsync } } = req
-    await setAsync('case-list-notification', req.body.notification, 'EX', 60 * 60 * (parseInt(req.body.expires, 10)))
-    res.redirect(302, '/set-notification')
-  }))
+  router.post(
+    '/set-notification',
+    body('notification').trim(),
+    catchErrors(async (req, res) => {
+      const {
+        redisClient: { setAsync }
+      } = req
+      await setAsync(
+        'case-list-notification',
+        req.body.notification,
+        'EX',
+        60 * 60 * parseInt(req.body.expires, 10)
+      )
+      res.redirect(302, '/set-notification')
+    })
+  )
 
   router.get('/case-search', defaults, catchErrors(caseSearchHandler))
 
@@ -130,7 +165,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get('/accessibility-statement', (req, res) => {
     const { session } = req
-    res.render('accessibility-statement', { params: { backLink: session.backLink } })
+    res.render('accessibility-statement', {
+      params: { backLink: session.backLink }
+    })
   })
 
   router.get('/privacy-notice', (req, res) => {
@@ -161,506 +198,766 @@ module.exports = function Index ({ authenticationMiddleware }) {
           }
         }
       }
-      res.cookie('analyticsCookies', req.body.cookies)
+      res
+        .cookie('analyticsCookies', req.body.cookies)
         .redirect(302, redirectUrl)
     }
   })
 
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, caseSummaryHandler)
+
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, caseSummaryHandler)
+
   router.get('/my-courts', catchErrors(getUserSelectedCourtsHandler))
 
-  router.get('/my-courts/:state', catchErrors(async (req, res) => {
-    const { params: { state }, query: { error, remove, save }, session } = req
-    let formError = error
-    let serverError = false
-    if (save) {
-      if (session.courts && session.courts.length) {
-        const updatedCourts = await updateSelectedCourts(res.locals.user.userId, session.courts)
-        if (updatedCourts.status >= 400) {
-          serverError = true
-        } else {
-          return res.redirect(302, '/my-courts')
-        }
-      } else {
-        formError = true
-      }
-    }
-    if (remove && session.courts && session.courts.includes(remove)) {
-      session.courts.splice(session.courts.indexOf(remove), 1)
-      return res.redirect(req.path)
-    }
-    res.render('edit-courts', {
-      formError,
-      serverError,
-      state,
-      params: {
-        availableCourts: settings.availableCourts,
-        chosenCourts: session.courts
-      }
-    })
-  }))
-
-  router.post('/my-courts/:state', catchErrors((req, res) => {
-    const { params: { state }, session, body: { court } } = req
-    if (!court) {
-      return res.redirect(302, `/my-courts/${state}?error=true`)
-    }
-    session.courts = session.courts || []
-    if (court && !session.courts.includes(court)) {
-      session.courts.push(court)
-    }
-    res.redirect(req.path)
-  }))
-
-  router.get('/select-court/:courtCode', catchErrors((req, res) => {
-    const { params: { courtCode } } = req
-
-    res.status(201)
-      .cookie('currentCourt', courtCode, cookieOptions)
-      .redirect(302, `/${courtCode}/cases`)
-  }))
-
-  router.get('/:courtCode/cases/:caseId/history', defaults, catchErrors(async (req, res) => {
-    const data = await getCaseHistory(req.params.caseId)
-    res.render('case-history', { caseId: data.caseId, params: req.params, data: JSON.stringify(data, null, 2) })
-  }))
-
-  router.get('/:courtCode/cases/:date?/:subsection?', defaults, catchErrors((req, res) => {
-    const { params: { courtCode, version1 } } = req
-    const context = { court: courtCode, username: res.locals.user.username }
-    const serverSidePagingEnabled = features.serverSidePaging.isEnabled(context)
-
-    if (serverSidePagingEnabled && !version1) {
-      return pagedCaseListRouteHandler(req, res)
-    }
-    return getCaseListHandler(req, res)
-  }))
-
-  router.post('/:courtCode/cases/:date?/:subsection?', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, date, subsection }, session, body } = req
-    const currentDate = date || getBaseDateString()
-    session.selectedFilters = body
-    session.courtCode = courtCode
-    res.redirect(302, `/${courtCode}/cases/${currentDate}${subsection ? '/' + subsection : ''}`)
-  }))
-
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', catchErrors(async (req, res) => {
-    const { params: { courtCode, hearingId, defendantId }, session } = req
-    session.showAllPreviousOrders = hearingId
-    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/record#previousOrders`)
-  }))
-
-  router.put('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/auto-save-new-note', defaults, catchErrors(autoSaveHearingNoteHandler))
-
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/publish-edited-note', defaults, catchErrors(autoSaveHearingNoteEditHandler))
-
-  if (settings.enableCaseDefendantDocuments) {
-    router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/delete', defaults, catchErrors(async (req, res) => {
-      const { params: { hearingId, defendantId, fileId } } = req
-      const { data } = await caseFiles.delete(hearingId, defendantId, fileId)
-      res.json(data)
-    }))
-
-    router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/raw', (req, res, next) => {
-      const { params: { hearingId, defendantId, fileId } } = req
-      caseFiles.getRaw(
-        req,
-        res,
-        next,
-        proxyRes => {
-          if (proxyRes.statusCode >= 400) {
-            throw new Error(`${proxyRes.statusCode} - unable to download file.`)
+  router.get(
+    '/my-courts/:state',
+    catchErrors(async (req, res) => {
+      const {
+        params: { state },
+        query: { error, remove, save },
+        session
+      } = req
+      let formError = error
+      let serverError = false
+      if (save) {
+        if (session.courts && session.courts.length) {
+          const updatedCourts = await updateSelectedCourts(
+            res.locals.user.userId,
+            session.courts
+          )
+          if (updatedCourts.status >= 400) {
+            serverError = true
+          } else {
+            return res.redirect(302, '/my-courts')
           }
-        },
-        hearingId,
-        defendantId,
-        fileId
+        } else {
+          formError = true
+        }
+      }
+      if (remove && session.courts && session.courts.includes(remove)) {
+        session.courts.splice(session.courts.indexOf(remove), 1)
+        return res.redirect(req.path)
+      }
+      res.render('edit-courts', {
+        formError,
+        serverError,
+        state,
+        params: {
+          availableCourts: settings.availableCourts,
+          chosenCourts: session.courts
+        }
+      })
+    })
+  )
+
+  router.post(
+    '/my-courts/:state',
+    catchErrors((req, res) => {
+      const {
+        params: { state },
+        session,
+        body: { court }
+      } = req
+      if (!court) {
+        return res.redirect(302, `/my-courts/${state}?error=true`)
+      }
+      session.courts = session.courts || []
+      if (court && !session.courts.includes(court)) {
+        session.courts.push(court)
+      }
+      res.redirect(req.path)
+    })
+  )
+
+  router.get(
+    '/select-court/:courtCode',
+    catchErrors((req, res) => {
+      const {
+        params: { courtCode }
+      } = req
+
+      res
+        .status(201)
+        .cookie('currentCourt', courtCode, cookieOptions)
+        .redirect(302, `/${courtCode}/cases`)
+    })
+  )
+
+  router.get(
+    '/:courtCode/cases/:caseId/history',
+    defaults,
+    catchErrors(async (req, res) => {
+      const data = await getCaseHistory(req.params.caseId)
+      res.render('case-history', {
+        caseId: data.caseId,
+        params: req.params,
+        data: JSON.stringify(data, null, 2)
+      })
+    })
+  )
+
+  router.get(
+    '/:courtCode/cases/:date?/:subsection?',
+    defaults,
+    catchErrors((req, res) => {
+      const {
+        params: { courtCode, version1 }
+      } = req
+      const context = { court: courtCode, username: res.locals.user.username }
+      const serverSidePagingEnabled =
+        features.serverSidePaging.isEnabled(context)
+
+      if (serverSidePagingEnabled && !version1) {
+        return pagedCaseListRouteHandler(req, res)
+      }
+      return getCaseListHandler(req, res)
+    })
+  )
+
+  router.post(
+    '/:courtCode/cases/:date?/:subsection?',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, date, subsection },
+        session,
+        body
+      } = req
+      const currentDate = date || getBaseDateString()
+      session.selectedFilters = body
+      session.courtCode = courtCode
+      res.redirect(
+        302,
+        `/${courtCode}/cases/${currentDate}${
+          subsection ? '/' + subsection : ''
+        }`
       )
     })
+  )
 
-    router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files', (req, res, next) => {
-      const { params: { hearingId, defendantId } } = req
-      const formatter = data => {
-        // date formatter
-        data.datetime = moment(data.datetime).format('D MMMM YYYY')
-        return data
-      }
-      caseFiles.post(req, res, next, formatter, hearingId, defendantId)
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/record',
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, hearingId, defendantId },
+        session
+      } = req
+      session.showAllPreviousOrders = hearingId
+      res.redirect(
+        302,
+        `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/record#previousOrders`
+      )
     })
+  )
+
+  router.put(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/auto-save-new-note',
+    defaults,
+    catchErrors(autoSaveHearingNoteHandler)
+  )
+
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/publish-edited-note',
+    defaults,
+    catchErrors(autoSaveHearingNoteEditHandler)
+  )
+
+  if (settings.enableCaseDefendantDocuments) {
+    router.get(
+      '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/delete',
+      defaults,
+      catchErrors(async (req, res) => {
+        const {
+          params: { hearingId, defendantId, fileId }
+        } = req
+        const { data } = await caseFiles.delete(hearingId, defendantId, fileId)
+        res.json(data)
+      })
+    )
+
+    router.get(
+      '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/raw',
+      (req, res, next) => {
+        const {
+          params: { hearingId, defendantId, fileId }
+        } = req
+        caseFiles.getRaw(
+          req,
+          res,
+          next,
+          proxyRes => {
+            if (proxyRes.statusCode >= 400) {
+              throw new Error(
+                `${proxyRes.statusCode} - unable to download file.`
+              )
+            }
+          },
+          hearingId,
+          defendantId,
+          fileId
+        )
+      }
+    )
+
+    router.post(
+      '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files',
+      (req, res, next) => {
+        const {
+          params: { hearingId, defendantId }
+        } = req
+        const formatter = data => {
+          // date formatter
+          data.datetime = moment(data.datetime).format('D MMMM YYYY')
+          return data
+        }
+        caseFiles.post(req, res, next, formatter, hearingId, defendantId)
+      }
+    )
   }
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(async (req, res) => {
-    // build outcome types list for select controls
-    const outcomeTypeItems = getOutcomeTypesListFilters().items
-    const outcomeTypes = [
-      ...[{ value: '', text: 'Outcome type' }],
-      ...outcomeTypeItems.filter(item => item.value !== 'NO_OUTCOME').map(item => { return { text: item.label, value: item.value } })
-    ]
+  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, caseSummaryHandler)
 
-    const { session, path, params: { courtCode } } = req
-    const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Case summary'
-    templateValues.session = {
-      ...session
-    }
-    session.deleteCommentSuccess = undefined
-    session.deleteHearingNoteSuccess = undefined
-    session.addHearingOutcomeSuccess = undefined
-    session.editHearingOutcomeSuccess = undefined
-    session.assignHearingOutcomeSuccess = undefined
-    templateValues.data.caseComments = templateValues.data.caseComments?.sort((a, b) => {
-      return moment(b.created).unix() - moment(a.created).unix()
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, caseSummaryHandler)
+
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/showPreviousComments',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, hearingId, defendantId },
+        session,
+        body: { caseId }
+      } = req
+      session.showPreviousComments = caseId
+      res.redirect(
+        302,
+        `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`
+      )
     })
-    templateValues.data.nextAppearanceHearingId = templateValues.data.hearings &&
-      getNextHearing(templateValues.data.hearings, moment(), templateValues.data.source)?.hearingId
-    templateValues.data.hearings = templateValues.data.hearings?.sort((a, b) => {
-      return moment(b.hearingDateTime).unix() - moment(a.hearingDateTime).unix()
+  )
+
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/hideOlderComments',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, hearingId, defendantId },
+        session
+      } = req
+      session.showPreviousComments = undefined
+      res.redirect(
+        302,
+        `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`
+      )
     })
-    templateValues.data.hearings?.forEach(hearing => {
-      hearing.notes = hearing.notes?.sort((a, b) => {
-        return moment(b.created).unix() - moment(a.created).unix()
-      })
+  )
+
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/hearings/showPreviousHearings',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, hearingId, defendantId },
+        session,
+        body: { caseId }
+      } = req
+      session.showPreviousHearings = caseId
+      res.redirect(
+        302,
+        `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseHearingsHeading`
+      )
     })
+  )
 
-    templateValues.data.files ||= [] // TODO: compatibility until the backend has caught up, remove when so
-    templateValues.data.files
-      .forEach(file => {
-        file.datetime = moment(file.datetime).format('D MMMM YYYY')
-      })
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/hearings/hideOlderHearings',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, hearingId, defendantId },
+        session
+      } = req
+      session.showPreviousHearings = undefined
+      res.redirect(
+        302,
+        `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseHearingsHeading`
+      )
+    })
+  )
 
-    templateValues.config = { ...settings.case }
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete',
+    defaults,
+    catchErrors(deleteCaseCommentConfirmationHandler)
+  )
 
-    templateValues.enableCaseHistory = settings.enableCaseHistory
-    templateValues.currentUserUuid = res.locals.user.uuid
-    const context = { court: courtCode, username: res.locals.user.username, sourceType: templateValues.data.source }
-    const hearingOutcomesEnabled = featuresToggles.hearingOutcomes.isEnabled(context)
-    templateValues.params.hearingOutcomesEnabled = hearingOutcomesEnabled
-    templateValues.features = {
-      hearingNotes: featuresToggles.hearingNotes.isEnabled(context),
-      hearingOutcomesEnabled,
-      caseDefendantDocuments: settings.enableCaseDefendantDocuments
-    }
-    templateValues.outcomeTypes = outcomeTypes
-    session.confirmedMatch = undefined
-    session.matchName = undefined
-    session.matchType = 'defendant'
-    session.matchDate = undefined
-    session.backLink = path
-    session.caseCommentBlankError = undefined
-    res.render('case-summary', templateValues)
-  }))
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete',
+    defaults,
+    catchErrors(deleteCaseCommentHandler)
+  )
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/showPreviousComments', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, hearingId, defendantId }, session, body: { caseId } } = req
-    session.showPreviousComments = caseId
-    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
-  }))
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments',
+    defaults,
+    catchErrors(addCaseCommentRequestHandler)
+  )
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/hideOlderComments', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, hearingId, defendantId }, session } = req
-    session.showPreviousComments = undefined
-    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#previousComments`)
-  }))
+  router.put(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/auto-save-new-comment',
+    defaults,
+    catchErrors(autoSaveCaseCommentHandler)
+  )
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/hearings/showPreviousHearings', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, hearingId, defendantId }, session, body: { caseId } } = req
-    session.showPreviousHearings = caseId
-    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseHearingsHeading`)
-  }))
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:caseId/cancel-draft-comment',
+    defaults,
+    catchErrors(cancelCaseCommentDraftHandler)
+  )
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/hearings/hideOlderHearings', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, hearingId, defendantId }, session } = req
-    session.showPreviousHearings = undefined
-    res.redirect(302, `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseHearingsHeading`)
-  }))
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/publish-edited-comment',
+    defaults,
+    catchErrors(updateCaseCommentHandler)
+  )
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(deleteCaseCommentConfirmationHandler))
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes',
+    defaults,
+    catchErrors(addHearingNoteRequestHandler)
+  )
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:commentId/delete', defaults, catchErrors(deleteCaseCommentHandler))
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/add-hearing-outcome',
+    defaults,
+    catchErrors(addHearingOutcomeHandler)
+  )
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/edit-hearing-outcome',
+    defaults,
+    catchErrors(editHearingOutcomeHandler)
+  )
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments', defaults, catchErrors(addCaseCommentRequestHandler))
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete',
+    defaults,
+    catchErrors(deleteHearingNoteConfirmationHandler)
+  )
 
-  router.put('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/auto-save-new-comment', defaults, catchErrors(autoSaveCaseCommentHandler))
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/:targetHearingId/cancel-draft-note',
+    defaults,
+    catchErrors(cancelHearingNoteDraftHandler)
+  )
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/:caseId/cancel-draft-comment', defaults, catchErrors(cancelCaseCommentDraftHandler))
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete',
+    defaults,
+    catchErrors(deleteHearingNoteHandler)
+  )
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/comments/publish-edited-comment', defaults, catchErrors(updateCaseCommentHandler))
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/record',
+    defaults,
+    catchErrors(getProbationRecordHandler)
+  )
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes', defaults, catchErrors(addHearingNoteRequestHandler))
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId?',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { convictionId }
+      } = req
+      const templateValues = await getCaseAndTemplateValues(req)
 
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/add-hearing-outcome', defaults, catchErrors(addHearingOutcomeHandler))
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/edit-hearing-outcome', defaults, catchErrors(editHearingOutcomeHandler))
+      const {
+        data: { crn }
+      } = templateValues
+      let communityResponse = await getConviction(crn, convictionId)
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete', defaults, catchErrors(deleteHearingNoteConfirmationHandler))
-
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/:targetHearingId/cancel-draft-note', defaults, catchErrors(cancelHearingNoteDraftHandler))
-
-  router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/notes/delete', defaults, catchErrors(deleteHearingNoteHandler))
-
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record', defaults, catchErrors(getProbationRecordHandler))
-
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId?', defaults, catchErrors(async (req, res) => {
-    const { params: { convictionId } } = req
-    const templateValues = await getCaseAndTemplateValues(req)
-
-    const { data: { crn } } = templateValues
-    let communityResponse = await getConviction(crn, convictionId)
-
-    if (communityResponse) {
-      const { active } = communityResponse
-      if (active) {
-        const sentenceDetails = await getSentenceDetails(crn, convictionId)
-        const custodyDetails = await getCustodyDetails(crn, convictionId)
-        communityResponse = {
-          ...communityResponse,
-          sentenceDetails,
-          custodyDetails
+      if (communityResponse) {
+        const { active } = communityResponse
+        if (active) {
+          const sentenceDetails = await getSentenceDetails(crn, convictionId)
+          const custodyDetails = await getCustodyDetails(crn, convictionId)
+          communityResponse = {
+            ...communityResponse,
+            sentenceDetails,
+            custodyDetails
+          }
         }
       }
-    }
 
-    templateValues.data.communityData = communityResponse || {}
+      templateValues.data.communityData = communityResponse || {}
 
-    templateValues.title = getOrderTitle(communityResponse)
+      templateValues.title = getOrderTitle(communityResponse)
 
-    res.render('case-summary-record-order', templateValues)
-  }))
+      res.render('case-summary-record-order', templateValues)
+    })
+  )
 
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/breach/:breachId', defaults, catchErrors(async (req, res) => {
-    const templateValues = await getCaseAndTemplateValues(req)//
-    templateValues.title = 'Breach details'
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/breach/:breachId',
+    defaults,
+    catchErrors(async (req, res) => {
+      const templateValues = await getCaseAndTemplateValues(req) //
+      templateValues.title = 'Breach details'
 
-    const { params: { convictionId, breachId } } = req
-    const { data: { crn } } = templateValues
-    const communityResponse = await getProbationRecord(crn)
+      const {
+        params: { convictionId, breachId }
+      } = req
+      const {
+        data: { crn }
+      } = templateValues
+      const communityResponse = await getProbationRecord(crn)
 
-    const breachData = communityResponse.convictions
-      .find(conviction => conviction.convictionId.toString() === convictionId.toString())
-      .breaches.find(breach => breach.breachId.toString() === breachId.toString())
+      const breachData = communityResponse.convictions
+        .find(
+          conviction =>
+            conviction.convictionId.toString() === convictionId.toString()
+        )
+        .breaches.find(
+          breach => breach.breachId.toString() === breachId.toString()
+        )
 
-    const breachDetails = await getBreachDetails(crn, convictionId, breachId)
-    templateValues.data.communityData = {
-      ...breachData,
-      ...breachDetails
-    }
-    res.render('case-summary-record-order-breach', templateValues)
-  }))
-
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/licence-details', defaults, catchErrors(async (req, res) => {
-    const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Licence conditions details'
-
-    const { data: { crn } } = templateValues
-    const communityResponse = await getProbationRecord(crn)
-
-    templateValues.data.communityData = communityResponse || {}
-    res.render('case-summary-record-order-licence', templateValues)
-  }))
-
-  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/risk', defaults, catchErrors(async (req, res) => {
-    const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Risk register'
-
-    const { data: { crn } } = templateValues
-
-    templateValues.data.riskData = await getRiskDetails(crn)
-
-    templateValues.params = {
-      ...templateValues.params
-    }
-
-    res.render('case-summary-risk', templateValues)
-  }))
-
-  router.get('/:courtCode/match/bulk/:date', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, date }, session, params } = req
-    const response = await getCaseList(courtCode, date)
-    const templateValues = {
-      title: 'Defendants with possible NDelius records',
-      session: {
-        ...session
-      },
-      params: {
-        ...params
-      },
-      data: response.cases
-    }
-    session.confirmedMatch = undefined
-    session.matchType = 'bulk'
-    session.matchDate = date
-    session.courtCode = courtCode
-    res.render('match-records', templateValues)
-  }))
-
-  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId', defaults, catchErrors(async (req, res) => {
-    const { params: { defendantId }, session, path } = req
-    const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Review possible NDelius records'
-    const { data: { defendantName } } = templateValues
-    const response = await getMatchDetails(defendantId)
-    templateValues.session = {
-      ...session
-    }
-    templateValues.data = {
-      ...templateValues.data,
-      matchData: response && response.offenderMatchDetails
-    }
-    session.confirmedMatch = undefined
-    session.matchName = defendantName
-    session.formError = false
-    session.serverError = false
-    session.backLink = path
-    res.render('match-defendant', templateValues)
-  }))
-
-  router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
-    let redirectUrl
-    const tryAgainRedirect = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}`
-    if (!crn) {
-      session.confirmedMatch = undefined
-      session.formError = true
-      redirectUrl = tryAgainRedirect
-    } else {
-      let response
-      try {
-        response = await updateCaseDetails(caseId, hearingId, defendantId, crn)
-      } catch (e) {
-        response = e.response
+      const breachDetails = await getBreachDetails(crn, convictionId, breachId)
+      templateValues.data.communityData = {
+        ...breachData,
+        ...breachDetails
       }
+      res.render('case-summary-record-order-breach', templateValues)
+    })
+  )
+
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/licence-details',
+    defaults,
+    catchErrors(async (req, res) => {
+      const templateValues = await getCaseAndTemplateValues(req)
+      templateValues.title = 'Licence conditions details'
+
+      const {
+        data: { crn }
+      } = templateValues
+      const communityResponse = await getProbationRecord(crn)
+
+      templateValues.data.communityData = communityResponse || {}
+      res.render('case-summary-record-order-licence', templateValues)
+    })
+  )
+
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/risk',
+    defaults,
+    catchErrors(async (req, res) => {
+      const templateValues = await getCaseAndTemplateValues(req)
+      templateValues.title = 'Risk register'
+
+      const {
+        data: { crn }
+      } = templateValues
+
+      templateValues.data.riskData = await getRiskDetails(crn)
+
+      templateValues.params = {
+        ...templateValues.params
+      }
+
+      res.render('case-summary-risk', templateValues)
+    })
+  )
+
+  router.get(
+    '/:courtCode/match/bulk/:date',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, date },
+        session,
+        params
+      } = req
+      const response = await getCaseList(courtCode, date)
+      const templateValues = {
+        title: 'Defendants with possible NDelius records',
+        session: {
+          ...session
+        },
+        params: {
+          ...params
+        },
+        data: response.cases
+      }
+      session.confirmedMatch = undefined
+      session.matchType = 'bulk'
+      session.matchDate = date
+      session.courtCode = courtCode
+      res.render('match-records', templateValues)
+    })
+  )
+
+  router.get(
+    '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { defendantId },
+        session,
+        path
+      } = req
+      const templateValues = await getCaseAndTemplateValues(req)
+      templateValues.title = 'Review possible NDelius records'
+      const {
+        data: { defendantName }
+      } = templateValues
+      const response = await getMatchDetails(defendantId)
+      templateValues.session = {
+        ...session
+      }
+      templateValues.data = {
+        ...templateValues.data,
+        matchData: response && response.offenderMatchDetails
+      }
+      session.confirmedMatch = undefined
+      session.matchName = defendantName
+      session.formError = false
+      session.serverError = false
+      session.backLink = path
+      res.render('match-defendant', templateValues)
+    })
+  )
+
+  router.post(
+    '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, caseId, defendantId, hearingId },
+        body: { crn },
+        session
+      } = req
+      let redirectUrl
+      const tryAgainRedirect = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}`
+      if (!crn) {
+        session.confirmedMatch = undefined
+        session.formError = true
+        redirectUrl = tryAgainRedirect
+      } else {
+        let response
+        try {
+          response = await updateCaseDetails(
+            caseId,
+            hearingId,
+            defendantId,
+            crn
+          )
+        } catch (e) {
+          response = e.response
+        }
+        if (response.status === 200) {
+          session.confirmedMatch = {
+            name: session.matchName,
+            matchType: 'Known'
+          }
+          redirectUrl = `/${getMatchedUrl(
+            session.matchType,
+            session.matchDate,
+            hearingId,
+            defendantId,
+            courtCode
+          )}`
+        } else {
+          session.serverError = true
+          redirectUrl = tryAgainRedirect
+        }
+      }
+      res.redirect(302, redirectUrl)
+    })
+  )
+
+  router.get(
+    '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/nomatch/:unlink?',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, defendantId, hearingId, unlink },
+        session
+      } = req
+      let redirectUrl
+      const response = await unlinkOffender(defendantId)
       if (response.status === 200) {
         session.confirmedMatch = {
           name: session.matchName,
-          matchType: 'Known'
+          matchType: unlink ? 'unlinked' : 'No record'
         }
-        redirectUrl = `/${getMatchedUrl(session.matchType, session.matchDate, hearingId, defendantId, courtCode)}`
+        redirectUrl = `/${getMatchedUrl(
+          session.matchType,
+          session.matchDate,
+          hearingId,
+          defendantId,
+          courtCode
+        )}`
+      } else {
+        req.session.serverError = true
+        redirectUrl = `/${courtCode}/hearing/${hearingId}/match/defendant/${defendantId}`
+      }
+      res.redirect(302, redirectUrl)
+    })
+  )
+
+  router.get(
+    '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual',
+    defaults,
+    catchErrors(async (req, res) => {
+      const { session } = req
+      const templateValues = await getCaseAndTemplateValues(req)
+      templateValues.title = 'Link an NDelius record to the defendant'
+      templateValues.session = {
+        ...session
+      }
+      templateValues.data = {
+        ...templateValues.data
+      }
+
+      templateValues.data.manualMatch = true
+
+      res.render('match-manual', templateValues)
+    })
+  )
+
+  router.post(
+    '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual',
+    body('crn').trim().escape(),
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, caseId, defendantId, hearingId },
+        body: { crn },
+        session
+      } = req
+      session.serverError = false
+      session.formError = false
+      session.formInvalid = false
+      session.crnInvalid = false
+      session.confirmedMatch = undefined
+      session.matchName = undefined
+      let redirectUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`
+      if (!crn) {
+        session.formError = true
+      } else if (!req.body.crn.match(/^[A-Za-z][0-9]{6}$/)) {
+        session.formError = true
+        session.formInvalid = true
+      } else {
+        let detailResponse
+        try {
+          detailResponse = await getDetails(crn)
+        } catch (e) {
+          detailResponse = e.response
+        }
+        if (detailResponse.status >= 400) {
+          session.crn = req.body.crn
+          session.status = detailResponse.status
+          session.formError = true
+          session.crnInvalid = true
+        } else {
+          redirectUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/confirm/${crn}`
+        }
+      }
+      res.redirect(302, redirectUrl)
+    })
+  )
+
+  router.get(
+    '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm/:crn',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { crn },
+        session
+      } = req
+      const templateValues = await getCaseAndTemplateValues(req)
+      const detailResponse = await getDetails(crn)
+      const probationStatusDetails = await getProbationStatusDetails(crn)
+      templateValues.title = 'Link an NDelius record to the defendant'
+      templateValues.details = {
+        ...detailResponse,
+        probationStatus:
+          probationStatusDetails.status &&
+          probationStatusDetails.status.replace('_', ' ')
+      }
+      templateValues.session = {
+        ...session
+      }
+      session.matchName = templateValues.data.defendantName
+      res.render('match-manual', templateValues)
+    })
+  )
+
+  router.post(
+    '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm',
+    body('crn').trim().escape(),
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, caseId, defendantId, hearingId },
+        body: { crn },
+        session
+      } = req
+      session.serverError = false
+      let redirectUrl
+      const response = await updateCaseDetails(
+        caseId,
+        hearingId,
+        defendantId,
+        crn
+      )
+      if (response.status === 200) {
+        session.confirmedMatch = {
+          name: session.matchName,
+          matchType: 'linked',
+          probationStatus: response.data.probationStatus
+        }
+        redirectUrl = `/${getMatchedUrl(
+          session.matchType,
+          session.matchDate,
+          hearingId,
+          defendantId,
+          courtCode
+        )}`
       } else {
         session.serverError = true
-        redirectUrl = tryAgainRedirect
+        redirectUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/confirm`
       }
-    }
-    res.redirect(302, redirectUrl)
-  }))
+      res.redirect(302, redirectUrl)
+    })
+  )
 
-  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/nomatch/:unlink?', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, defendantId, hearingId, unlink }, session } = req
-    let redirectUrl
-    const response = await unlinkOffender(defendantId)
-    if (response.status === 200) {
-      session.confirmedMatch = {
-        name: session.matchName,
-        matchType: unlink ? 'unlinked' : 'No record'
+  router.get(
+    '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/unlink/:crn',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { courtCode, defendantId, crn, hearingId },
+        session
+      } = req
+      const templateValues = await getCaseAndTemplateValues(req)
+      const detailResponse = await getDetails(crn)
+      templateValues.title = 'Unlink NDelius record from the defendant'
+      templateValues.hideSubnav = true
+      templateValues.backText = 'Back'
+      templateValues.backLink = `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`
+      templateValues.hideUnlinkButton = true
+      templateValues.params = {
+        ...templateValues.params
       }
-      redirectUrl = `/${getMatchedUrl(session.matchType, session.matchDate, hearingId, defendantId, courtCode)}`
-    } else {
-      req.session.serverError = true
-      redirectUrl = `/${courtCode}/hearing/${hearingId}/match/defendant/${defendantId}`
-    }
-    res.redirect(302, redirectUrl)
-  }))
-
-  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual', defaults, catchErrors(async (req, res) => {
-    const { session } = req
-    const templateValues = await getCaseAndTemplateValues(req)
-    templateValues.title = 'Link an NDelius record to the defendant'
-    templateValues.session = {
-      ...session
-    }
-    templateValues.data = {
-      ...templateValues.data
-    }
-
-    templateValues.data.manualMatch = true
-
-    res.render('match-manual', templateValues)
-  }))
-
-  router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual', body('crn').trim().escape(), defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
-    session.serverError = false
-    session.formError = false
-    session.formInvalid = false
-    session.crnInvalid = false
-    session.confirmedMatch = undefined
-    session.matchName = undefined
-    let redirectUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`
-    if (!crn) {
-      session.formError = true
-    } else if (!req.body.crn.match(/^[A-Za-z][0-9]{6}$/)) {
-      session.formError = true
-      session.formInvalid = true
-    } else {
-      let detailResponse
-      try {
-        detailResponse = await getDetails(crn)
-      } catch (e) {
-        detailResponse = e.response
+      templateValues.details = {
+        ...detailResponse
       }
-      if (detailResponse.status >= 400) {
-        session.crn = req.body.crn
-        session.status = detailResponse.status
-        session.formError = true
-        session.crnInvalid = true
-      } else {
-        redirectUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/confirm/${crn}`
-      }
-    }
-    res.redirect(302, redirectUrl)
-  }))
-
-  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm/:crn', defaults, catchErrors(async (req, res) => {
-    const { params: { crn }, session } = req
-    const templateValues = await getCaseAndTemplateValues(req)
-    const detailResponse = await getDetails(crn)
-    const probationStatusDetails = await getProbationStatusDetails(crn)
-    templateValues.title = 'Link an NDelius record to the defendant'
-    templateValues.details = {
-      ...detailResponse,
-      probationStatus: probationStatusDetails.status && probationStatusDetails.status.replace('_', ' ')
-    }
-    templateValues.session = {
-      ...session
-    }
-    session.matchName = templateValues.data.defendantName
-    res.render('match-manual', templateValues)
-  }))
-
-  router.post('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/confirm', body('crn').trim().escape(), defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, caseId, defendantId, hearingId }, body: { crn }, session } = req
-    session.serverError = false
-    let redirectUrl
-    const response = await updateCaseDetails(caseId, hearingId, defendantId, crn)
-    if (response.status === 200) {
-      session.confirmedMatch = {
-        name: session.matchName,
-        matchType: 'linked',
-        probationStatus: response.data.probationStatus
-      }
-      redirectUrl = `/${getMatchedUrl(session.matchType, session.matchDate, hearingId, defendantId, courtCode)}`
-    } else {
-      session.serverError = true
-      redirectUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/confirm`
-    }
-    res.redirect(302, redirectUrl)
-  }))
-
-  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/unlink/:crn', defaults, catchErrors(async (req, res) => {
-    const { params: { courtCode, defendantId, crn, hearingId }, session } = req
-    const templateValues = await getCaseAndTemplateValues(req)
-    const detailResponse = await getDetails(crn)
-    templateValues.title = 'Unlink NDelius record from the defendant'
-    templateValues.hideSubnav = true
-    templateValues.backText = 'Back'
-    templateValues.backLink = `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`
-    templateValues.hideUnlinkButton = true
-    templateValues.params = {
-      ...templateValues.params
-    }
-    templateValues.details = {
-      ...detailResponse
-    }
-    session.matchName = templateValues.data.defendantName
-    res.render('match-unlink', templateValues)
-  }))
+      session.matchName = templateValues.data.defendantName
+      res.render('match-unlink', templateValues)
+    })
+  )
 
   router.use('/:courtCode/outcomes', outcomesRouter)
 
@@ -669,13 +966,27 @@ module.exports = function Index ({ authenticationMiddleware }) {
     const probationStatusDetails = await getProbationStatusDetails(crn)
     return await updateOffender(defendantId, {
       probationStatus: probationStatusDetails.status,
-      crn: offenderDetail && offenderDetail.otherIds ? offenderDetail.otherIds.crn : undefined,
-      previouslyKnownTerminationDate: probationStatusDetails.previouslyKnownTerminationDate,
+      crn:
+        offenderDetail && offenderDetail.otherIds
+          ? offenderDetail.otherIds.crn
+          : undefined,
+      previouslyKnownTerminationDate:
+        probationStatusDetails.previouslyKnownTerminationDate,
       breach: probationStatusDetails.inBreach,
       preSentenceActivity: probationStatusDetails.preSentenceActivity,
       awaitingPsr: probationStatusDetails.awaitingPsr,
-      pnc: sendPncAndCroWithOffenderUpdates && offenderDetail && offenderDetail.otherIds ? offenderDetail.otherIds.pncNumber : undefined,
-      cro: sendPncAndCroWithOffenderUpdates && offenderDetail && offenderDetail.otherIds ? offenderDetail.otherIds.croNumber : undefined
+      pnc:
+        sendPncAndCroWithOffenderUpdates &&
+        offenderDetail &&
+        offenderDetail.otherIds
+          ? offenderDetail.otherIds.pncNumber
+          : undefined,
+      cro:
+        sendPncAndCroWithOffenderUpdates &&
+        offenderDetail &&
+        offenderDetail.otherIds
+          ? offenderDetail.otherIds.croNumber
+          : undefined
     })
   }
 
@@ -683,8 +994,21 @@ module.exports = function Index ({ authenticationMiddleware }) {
     return await deleteOffender(defendantId)
   }
 
-  function getMatchedUrl ($matchType, $matchDate, $hearingId, $defendantId, $courtCode) {
-    return $matchType === 'bulk' ? $courtCode + '/match/bulk/' + $matchDate : $courtCode + '/hearing/' + $hearingId + '/defendant/' + $defendantId + '/summary'
+  function getMatchedUrl (
+    $matchType,
+    $matchDate,
+    $hearingId,
+    $defendantId,
+    $courtCode
+  ) {
+    return $matchType === 'bulk'
+      ? $courtCode + '/match/bulk/' + $matchDate
+      : $courtCode +
+          '/hearing/' +
+          $hearingId +
+          '/defendant/' +
+          $defendantId +
+          '/summary'
   }
 
   return router

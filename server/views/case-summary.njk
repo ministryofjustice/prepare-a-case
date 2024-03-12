@@ -177,13 +177,15 @@
                 </div>
             </dl>
 
-            <section id="section-files" class="govuk-!-margin-bottom-4">
-                <h2 class="govuk-heading-m govuk-!-margin-top-9">
-                    Case documents
-                </h2>
-                <p class="govuk-body">Upload documents to attach them to this case.</p>
-                {{ pacFileUploader('summary/files', data.files, config.files) }}
-            </section>
+            {% if features.caseDefendantDocuments %}
+                <section id="section-files" class="govuk-!-margin-bottom-4">
+                    <h2 class="govuk-heading-m govuk-!-margin-top-9">
+                        Case documents
+                    </h2>
+                    <p class="govuk-body">Upload documents to attach them to this case.</p>
+                    {{ pacFileUploader('summary/files', data.files, config.files) }}
+                </section>
+            {% endif %}
 
             <h2 class="govuk-heading-m">Appearance</h2>
             <p class="govuk-body">Court {{ courtRoom | courtRoomDisplay }}, {{ data.session | lower }} session,

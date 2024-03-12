@@ -25,6 +25,7 @@ const {
   deleteCaseCommentDraft,
   assignHearingOutcome,
   updateHearingOutcomeToResulted,
+  getOutcomeTypes,
   files
 } = require('../../server/services/case-service')
 const getOutcomeListSorts = require('../../server/utils/getOutcomesSorts')
@@ -44,7 +45,7 @@ describe('Case service', () => {
   describe('Files', () => {
     it('should delete a file', async () => {
       moxios.stubRequest(
-        `${apiUrl}/hearing/hearingId/defendant/defendantId/files/fileId`,
+        `${apiUrl}/hearing/hearingId/defendant/defendantId/file/fileId`,
         {
           status: 200,
           response: {
@@ -54,7 +55,7 @@ describe('Case service', () => {
       )
       const response = await files.delete('hearingId', 'defendantId', 'fileId')
       expect(moxios.requests.mostRecent().url).toBe(
-        `${apiUrl}/hearing/hearingId/defendant/defendantId/files/fileId`
+        `${apiUrl}/hearing/hearingId/defendant/defendantId/file/fileId`
       )
       return response
     })
@@ -68,11 +69,11 @@ describe('Case service', () => {
       proxy.mockImplementationOnce((url, config) => {
         expect(url).toBe(apiUrl)
         expect(config.proxyReqPathResolver()).toBe(
-          '/hearing/hearingId/defendant/defendantId/files'
+          '/hearing/hearingId/defendant/defendantId/file'
         )
 
         const mockProxyRes = {
-          statusCode: 200,
+          statusCode: 201,
           rawHeaders: ['application/json']
         }
         const mockJson = 'true'
@@ -134,7 +135,7 @@ describe('Case service', () => {
       proxy.mockImplementationOnce((url, config) => {
         expect(url).toBe(apiUrl)
         expect(config.proxyReqPathResolver()).toBe(
-          '/hearing/hearingId/defendant/defendantId/files/fileId/raw'
+          '/hearing/hearingId/defendant/defendantId/file/fileId/raw'
         )
         expect(config.skipToNextHandlerFilter).toBe(skipper)
         return (myReq, myRes, myNext) => {
@@ -844,6 +845,41 @@ describe('Case service', () => {
 
       await updateHearingOutcomeToResulted(hearingId, defendantId)
       expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
+    })
+  })
+
+  describe('getOutcomeTypes', () => {
+    it('returns the outcome types', () => {
+      const url = `${apiUrl}/hearing-outcome-types`
+      const response = {
+        status: 200,
+        types: ['Outcome type', 'Probation sentence']
+      }
+      moxios.stubRequest(url, response)
+
+      getOutcomeTypes()
+
+      expect(moxios.requests.mostRecent().url).toBe(url)
+    })
+
+    it('returns internal server error', async () => {
+      const url = `${apiUrl}/hearing-outcome-types`
+      const response = {
+        status: 500,
+        types: ['Outcome type', 'Probation sentence']
+      }
+      moxios.stubRequest(url, response)
+
+      try {
+        await getOutcomeTypes()
+      } catch (e) {
+        const response = e.response
+
+        expect(moxios.requests.mostRecent().url).toBe(url)
+        expect(response.status).toBe(500)
+
+        return response
+      }
     })
   })
 })

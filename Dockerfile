@@ -37,16 +37,7 @@ USER 2000
 ENTRYPOINT [ "node" ]
 CMD [ "./bin/www" ]
 
-## only used for CI (in development they are mounted)
-FROM base as ci
-COPY ./server ./server
-COPY ./tests ./tests
-COPY ./schemas ./schemas
-## next statement used by PACT not wiremock!
-COPY ./wiremock ./wiremock
-ENTRYPOINT ["node"]
-
-## only use for development and integration tests
+## only use for development and ci
 FROM base as development
 RUN npm i -g concurrently
 ENTRYPOINT ["concurrently"]

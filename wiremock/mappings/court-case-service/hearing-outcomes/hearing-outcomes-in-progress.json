@@ -66,6 +66,20 @@
             "Attempt theft from the person of another"
           ],
           "defendantName": "English Madden"
+        },
+        {
+          "hearingOutcomeType": "ADJOURNED",
+          "hearingOutcomeDescription": "Adjourned",
+          "hearingId": "8c128fdc-0676-4583-8395-6809625825db",
+          "defendantId": "0bafeb20-e879-4f52-bc20-0d4473a725c2",
+          "hearingDate": "2024-10-05T09:30:00",
+          "probationStatus": "Previously known",
+          "assignedTo": "Johnny Ball",
+          "assignedToUuid": "4439f49b-6005-4b7c-9899-4942bda39714",
+          "offences": [
+            "Kicking Barrels"
+          ],
+          "defendantName": "Rock Stone"
         }
       ],
       "countsByState": {

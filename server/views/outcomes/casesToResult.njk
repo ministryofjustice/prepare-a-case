@@ -115,14 +115,17 @@
 
   {% if outcomeActionAssign %}
     {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-    {% set name = "case" if outcomeActionAssign == 1 else "cases" %}
-    {% set html %}
-      <p class="govuk-notification-banner__heading">
-        You are assigned to result {{outcomeActionAssign}} {{ name }}. They have moved to the in progress tab.
-      </p>
-    {% endset %}
+    {% if outcomeActionAssign is string %}
+      {% set html %}
+        You are assigned to result {{outcomeActionAssign}}. Their case has moved to the in progress tab.
+      {% endset %}
+    {% else %} 
+      {% set html %}
+        You are assigned to result {{outcomeActionAssign}} cases. They have moved to the in progress tab.
+      {% endset %}
+    {% endif %}
     {{ govukNotificationBanner({
-      html: html,
+      html: '<p class="govuk-notification-banner__heading">' + html + '</p>',
       type: 'success'
     }) }}
   {% endif %}

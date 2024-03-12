@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             xhr.addEventListener('loadend', () => {
 
-              if (xhr.status === 200) {
+              if (xhr.status === 201) {
                 const { datetime, id } = JSON.parse(xhr.response)
                 element.innerHTML = templates.success.innerHTML
                   .replace(/\[\[file\.name\]\]/g, file.name)

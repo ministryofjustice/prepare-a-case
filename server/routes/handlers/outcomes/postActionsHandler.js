@@ -1,4 +1,4 @@
-const { getOutcomesList } = require('../../../services/case-service')
+const { getOutcomesList, getCase } = require('../../../services/case-service')
 const casesToResultHandler = require('./getCasesToResultHandler')({ getOutcomesList })
 
 module.exports = caseService => async (req, res) => {
@@ -18,7 +18,12 @@ module.exports = caseService => async (req, res) => {
       await Promise.all(items
         // WARN: the defendantID should be consumed by this function - backend bug!
         .map(([defendantId, hearingId]) => caseService.assignHearingOutcome(hearingId, res.locals.user.name)))
-      session.outcomeActionAssign = items.length
+
+      // load the defender name if there's only the one
+      session.outcomeActionAssign = (items.length === 1)
+        ? (await getCase(items[0][1], items[0][0])).defendantName
+        : items.length
+
       delete req.body
       return casesToResultHandler(req, res)
   }

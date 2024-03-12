@@ -42,3 +42,4 @@ whitelist:
   cloudplatform-live1-2: "3.8.51.207/32"
   cloudplatform-live1-3: "35.177.252.54/32"
   global-protect: "35.176.93.186/32"
+  global-protect-2: "51.149.250.0/24"

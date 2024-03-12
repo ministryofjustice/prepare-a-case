@@ -32,7 +32,7 @@ services:
     container_name: court-case-service
     networks:
       - hmpps
-    entrypoint: ["/docker-entrypoint.sh", "--disable-request-logging", "--disable-banner", "--global-response-templating"]
+    entrypoint: ["/docker-entrypoint.sh", "--disable-request-logging", "--disable-banner", "--global-response-templating", "--verbose"]
     volumes:
       - ./wiremock/mappings/court-case-service:/home/wiremock/mappings
       - ./wiremock/__files:/home/wiremock/__files

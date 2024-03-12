@@ -249,22 +249,27 @@ const createCaseService = apiUrl => {
     files: {
       delete: (hearingId, defendantId, fileId) =>
         httpDelete(
-          `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files/${fileId}`
+          `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/file/${fileId}`
         ),
       post: (req, res, next, responseFormatter, hearingId, defendantId) =>
         proxy(apiUrl, {
+          parseReqBody: false,
+          proxyReqOptDecorator: proxyReqOpts => {
+            proxyReqOpts.headers.Authorization = `Bearer ${req.user.token}`
+            return proxyReqOpts
+          },
           proxyReqPathResolver: () => {
-            return `/hearing/${hearingId}/defendant/${defendantId}/files`
+            return `/hearing/${hearingId}/defendant/${defendantId}/file`
           },
           userResDecorator: (proxyRes, proxyResData) => {
             // anything 400+ will be forwarded to next() by the proxy however this still runs so we need to handle
             if (proxyRes.statusCode >= 400) {
               return proxyResData
             }
-            if (proxyRes.statusCode === 200) {
+            if (proxyRes.statusCode === 201) {
               if (!proxyRes.rawHeaders.includes('application/json')) {
                 throw new TypeError(
-                  `Non JSON response for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`
+                  `Non JSON response for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/file`
                 )
               }
               return JSON.stringify(
@@ -272,7 +277,7 @@ const createCaseService = apiUrl => {
               )
             }
             throw new TypeError(
-              `Invalid response status code for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/files`
+              `Invalid response status code for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/file`
             )
           }
         })(req, res, next),
@@ -286,8 +291,12 @@ const createCaseService = apiUrl => {
         fileId
       ) =>
         proxy(apiUrl, {
+          proxyReqOptDecorator: proxyReqOpts => {
+            proxyReqOpts.headers.Authorization = `Bearer ${req.user.token}`
+            return proxyReqOpts
+          },
           proxyReqPathResolver: () => {
-            return `/hearing/${hearingId}/defendant/${defendantId}/files/${fileId}/raw`
+            return `/hearing/${hearingId}/defendant/${defendantId}/file/${fileId}/raw`
           },
           skipToNextHandlerFilter
         })(req, res, next)
@@ -460,6 +469,13 @@ const createCaseService = apiUrl => {
         }
         throw e
       }
+    },
+    getOutcomeTypes: async () => {
+      const res = await request(`${apiUrl}/hearing-outcome-types`)
+      if (!isHttpSuccess(res)) {
+        return getInternalServerErrorResponse(res)
+      }
+      return res.data
     }
   }
 }

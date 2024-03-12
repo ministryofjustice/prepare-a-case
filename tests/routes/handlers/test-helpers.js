@@ -16,7 +16,8 @@ const caseServiceMock = {
   updateCaseComment: jest.fn(),
   assignHearingOutcome: jest.fn(),
   updateHearingOutcomeToResulted: jest.fn(),
-  saveDraftCaseComment: jest.fn()
+  saveDraftCaseComment: jest.fn(),
+  getOutcomeTypes: jest.fn()
 }
 
 const communityServiceMock = {

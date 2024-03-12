@@ -99,6 +99,20 @@
 
 {% block content %}
 
+  {% if flashMessage | length %}
+    {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+    {% set html %}
+      <p class="govuk-notification-banner__heading">
+        {{flashMessage}}
+      </p>
+    {% endset %}
+    {{ govukNotificationBanner({
+      html: html,
+      type: 'success'
+    }) }}
+  {% endif %}
+
+
   {% if moveToResultedSuccess | length %}
     {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
     {% set html %}
