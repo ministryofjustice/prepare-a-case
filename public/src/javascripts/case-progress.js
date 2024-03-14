@@ -135,7 +135,9 @@
       const outcomeModal = event.target
       const outcomeModalForm = outcomeModal.querySelector('form')
       const targetHearingIdInput = outcomeModalForm.querySelector('input[name=targetHearingId]')
+      const targetDefendantIdInput = outcomeModalForm.querySelector('input[name=targetDefendantId]')
       targetHearingIdInput.value = event.relatedTarget.dataset.hearingid
+      targetDefendantIdInput.value = event.relatedTarget.dataset.defendantid
       const selectInput = outcomeModalForm.querySelector('select')
       selectInput.focus()
     })
