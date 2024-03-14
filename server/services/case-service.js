@@ -413,7 +413,6 @@ const createCaseService = apiUrl => {
         author
       }),
     deleteCaseComment: async (caseId, defendantId, commentId) => {
-      //                         /cases/${caseId}/defendants/${defendantId}/comments/${commentId}
       await httpDelete(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/${commentId}`)
     },
     addHearingNote: async (hearingId, note, author, defendantId) =>
