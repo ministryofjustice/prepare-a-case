@@ -51,7 +51,7 @@
                                 {% if showAddHearingOutcomeButton %}
                                     <div class="govuk-grid-column-one-third">
                                         <button class="govuk-button btn-send-hearing-outcome govuk-!-margin-bottom-0"
-                                                data-hearingid="{{ hearing.hearingId }}" data-module="govuk-button" data-bs-toggle="modal" data-bs-target="#add-hearing-outcome-modal">Send outcome to admin
+                                                data-hearingid="{{ hearing.hearingId }}" data-defendantId="{{ data.defendantId }}" data-module="govuk-button" data-bs-toggle="modal" data-bs-target="#add-hearing-outcome-modal">Send outcome to admin
                                         </button>
                                     </div>
                                 {% endif %}
