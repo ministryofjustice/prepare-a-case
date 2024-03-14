@@ -38,7 +38,6 @@ describe('postCasesToResultHandler (postActionsHandler)', () => {
 
   it('should call assign hearing outcome on post', async () => {
     await subject(mockRequest, mockResponse)
-    console.log('🚀 ~ it ~ should call assign hearing outcome on post:')
 
     expect(caseService.assignHearingOutcome).toHaveBeenCalled()
     expect(caseService.assignHearingOutcome).toHaveBeenCalledWith(
