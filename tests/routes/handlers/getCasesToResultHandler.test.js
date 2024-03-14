@@ -11,6 +11,11 @@ jest.mock('.././../../server/utils/getOutcomeTypesListFilters', () => {
   }))
 })
 
+jest.mock('../../../server/services/case-service', () => ({
+  ...jest.requireActual('../../../server/services/case-service'),
+  getCase: jest.fn(() => ({ defendantName: 'some-name' }))
+}))
+
 describe('getCasesToResultHandler', () => {
   const {
     mockResponse,

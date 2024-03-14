@@ -16,8 +16,7 @@ module.exports = caseService => async (req, res) => {
   switch (action) {
     case 'assign':
       await Promise.all(items
-        // WARN: the defendantID should be consumed by this function - backend bug!
-        .map(([defendantId, hearingId]) => caseService.assignHearingOutcome(hearingId, res.locals.user.name)))
+        .map(([defendantId, hearingId]) => caseService.assignHearingOutcome(hearingId, defendantId, res.locals.user.name)))
 
       // load the defender name if there's only the one
       session.outcomeActionAssign = (items.length === 1)

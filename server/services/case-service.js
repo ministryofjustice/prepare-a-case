@@ -450,10 +450,11 @@ const createCaseService = apiUrl => {
       await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome`, {
         hearingOutcomeType
       }),
-    assignHearingOutcome: async (hearingId, defendantId, assignedTo) =>
+    assignHearingOutcome: async (hearingId, defendantId, assignedTo) => {
       await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/assign`, {
         assignedTo
-      }),
+      })
+    },
     saveDraftCaseComment: async (caseId, defendantId, comment, author) =>
       await update(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/draft`, {
         caseId,
