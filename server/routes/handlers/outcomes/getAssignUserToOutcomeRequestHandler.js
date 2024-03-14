@@ -1,9 +1,9 @@
 const trackEvent = require('../../../utils/analytics')
 
 const getAssignUserToOutcomeRequestHandler = caseService => async (req, res) => {
-  const { params: { hearingId, defendantId }, session, body: { targetDefendantId, targetCourtCode: courtCode } } = req
+  const { params: { hearingId }, session, body: { targetDefendantId, targetCourtCode: courtCode } } = req
 
-  await caseService.assignHearingOutcome(hearingId, defendantId, res.locals.user.name)
+  await caseService.assignHearingOutcome(hearingId, targetDefendantId, res.locals.user.name)
 
   session.assignHearingOutcomeSuccess = true
 

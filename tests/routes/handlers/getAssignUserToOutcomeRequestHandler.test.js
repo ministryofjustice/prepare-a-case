@@ -7,13 +7,12 @@ describe('getAssignUserToOutcomeRequestHandler', () => {
   } = require('./test-helpers')
   const subject = require('../../../server/routes/handlers/outcomes/getAssignUserToOutcomeRequestHandler')(caseServiceMock)
   const testHearingId = 'test-hearing-id'
-  const defendantId = 'test-defendant-id'
   const targetDefendantId = 'test-target-defendant-id'
   const targetCourtCode = 'B007'
 
   const mockRequest = {
     redisClient: { getAsync: jest.fn() },
-    params: { hearingId: testHearingId, defendantId },
+    params: { hearingId: testHearingId },
     body: { targetCourtCode, targetDefendantId },
     path: '/test/path',
     session: {}
@@ -24,7 +23,7 @@ describe('getAssignUserToOutcomeRequestHandler', () => {
     await subject(mockRequest, mockResponse)
 
     // Then
-    expect(caseServiceMock.assignHearingOutcome).toHaveBeenCalledWith(testHearingId, 'test-defendant-id', 'Adam Sandler')
+    expect(caseServiceMock.assignHearingOutcome).toHaveBeenCalledWith(testHearingId, 'test-target-defendant-id', 'Adam Sandler')
     expect(mockResponse.redirect).toHaveBeenCalledWith(`/${targetCourtCode}/hearing/${testHearingId}/defendant/${targetDefendantId}/summary`)
     expect(mockRequest.session.assignHearingOutcomeSuccess).toBe(true)
   })
