@@ -66,7 +66,7 @@
     { text:  govukButton({
       text: 'Move to resulted',
       classes: ('' if assignedToCurrentUser else "govuk-button--secondary"),
-      href: (item.hearingId + '/move-to-resulted?defendantName=' + item.defendantName) if assignedToCurrentUser else '',
+      href: ('/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/move-to-resulted?defendantName=' + item.defendantName) if assignedToCurrentUser else '',
       disabled: not assignedToCurrentUser
     }) }
   ] -%}
