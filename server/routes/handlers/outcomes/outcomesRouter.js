@@ -18,7 +18,7 @@ outcomesRouter.get('/', defaults, outcomesMiddleware('NEW'), catchErrors(casesTo
 outcomesRouter.post('/', defaults, outcomesMiddleware('NEW'), catchErrors(postActionsHandler))
 outcomesRouter.get('/in-progress', defaults, outcomesMiddleware('IN_PROGRESS'), catchErrors(casesInProgressHandler))
 outcomesRouter.get('/resulted-cases', defaults, outcomesMiddleware('RESULTED'), catchErrors(getResultedCasesHandler))
-outcomesRouter.get('/:hearingId/move-to-resulted', defaults, catchErrors(getMoveToResultedHandler))
+outcomesRouter.get('/hearing/:hearingId/defendant/:defendantId/move-to-resulted', defaults, catchErrors(getMoveToResultedHandler))
 outcomesRouter.post('/hearing/:hearingId/assign', defaults, catchErrors(assignHearingOutcomeRouteHandler))
 
 module.exports = outcomesRouter
