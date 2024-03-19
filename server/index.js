@@ -3,17 +3,12 @@
 const appInsightsClient = require('./utils/azure-appinsights')
 
 const createApp = require('./app')
-const authClientBuilder = require('./data/authClientBuilder')
 const createSignInService = require('./authentication/signInService')
-const createUserService = require('./services/userService')
 
 require('./services/eventPublisher')(appInsightsClient)
 
-const userService = createUserService(authClientBuilder)
-
 const app = createApp({
-  signInService: createSignInService(),
-  userService
+  signInService: createSignInService()
 })
 
 module.exports = app

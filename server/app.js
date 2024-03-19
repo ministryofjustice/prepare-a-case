@@ -16,7 +16,6 @@ const createRouter = require('./routes')
 const createAttachmentsRouter = require('./routes/attachments')
 const healthcheckFactory = require('./services/healthcheck')
 const auth = require('./authentication/auth')
-const populateCurrentUser = require('./routes/middleware/populateCurrentUser')
 const authorisationMiddleware = require('./routes/middleware/authorisationMiddleware')
 const errorHandler = require('./errorHandler')
 const log = require('./log')
@@ -29,7 +28,7 @@ const hostName = os.hostname()
 const { authenticationMiddleware } = auth
 const catchErrors = require('./routes/handlers/catchAsyncErrors')
 
-module.exports = function createApp ({ signInService, userService }) {
+module.exports = function createApp ({ signInService }) {
   const service = new Service(axios)
   const app = express()
 
@@ -207,8 +206,7 @@ module.exports = function createApp ({ signInService, userService }) {
     let axiosHeaders = {}
 
     if (req.user && req.originalUrl !== '/logout') {
-      const timeToRefresh = new Date() > req.user.refreshTime
-      if (timeToRefresh) {
+      if (req.user.refreshTime && new Date() > req.user.refreshTime) {
         try {
           const newToken = await signInService.getRefreshedToken(req.user)
           req.user.token = newToken.token
@@ -280,9 +278,6 @@ module.exports = function createApp ({ signInService, userService }) {
     }
     res.redirect(authLogoutUrl)
   }))
-
-  const currentUserInContext = populateCurrentUser(userService)
-  app.use(currentUserInContext)
 
   app.use(authorisationMiddleware)
 

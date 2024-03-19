@@ -5,7 +5,8 @@ using something like https://jwt.io/#debugger-io
     "user_name": "ITAG_USER",
     "scope": ["read", "write"],
     "auth_source": "delius",
-    "uuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
+    "name": "Joe Bloggs",
+    "user_uuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
     "authorities": [
       "ROLE_PREPARE_A_CASE"
     ],
