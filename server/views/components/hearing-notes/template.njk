@@ -20,10 +20,15 @@
                             <div class="govuk-grid-row">
                                 <span class="govuk-grid-column-full hearing-note-display-text">
                                     {% if previousNote.legacy %}
-                                    {{ govukWarningText({
-                                        text: "This note was added to a case with more than one defendant. Delete the note if it is not relevant to this defendant.",
-                                        iconFallbackText: "Warning"
-                                    }) }}
+                                    <div class="govuk-warning-text hearing-note-warning-container">
+                                        <div class="hearing-note-warning-warning">
+                                        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                                        </div>
+                                        <strong class="govuk-warning-text__text">
+                                            <span class="govuk-visually-hidden">Warning</span>
+                                            This note was added to a case with more than one defendant. Delete the note if it is not relevant to this defendant.
+                                        </strong>
+                                    </div>
                                     {% endif %}
                                     {{ previousNote.note }}
                                 </span>

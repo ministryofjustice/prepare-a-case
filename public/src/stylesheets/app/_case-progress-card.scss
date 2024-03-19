@@ -110,3 +110,16 @@
     font-weight: unset!important;
   }
 }
+
+.hearing-note-warning {
+
+  &-container {
+    display: flex;
+  }
+
+  &-warning {
+    display: flex;
+    align-items: center;
+  }
+
+}
