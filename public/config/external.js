@@ -7,6 +7,7 @@ import '../src/javascripts/caselist-date-carousel'
 // govuk() - will break tabs which is why it wasn't previously enabled
 window.$ = $
 moj()
+govuk()
 
 document.body.classList.add('js-enabled')
 
