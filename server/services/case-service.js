@@ -246,6 +246,17 @@ const createCaseService = apiUrl => {
       }
     },
 
+    workflow: {
+      tasks: {
+        state: {
+          set: (taskId, state, { hearingId, defendantId }) =>
+            update(`${apiUrl}/workflow/tasks/${taskId}/state?hearing=${hearingId}&defendant=${defendantId}`, {
+              state
+            })
+        }
+      }
+    },
+
     files: {
       delete: (hearingId, defendantId, fileId) =>
         httpDelete(
