@@ -41,15 +41,30 @@ docker compose restart hmpps-auth
 docker compose restart court-case-service
 ```
 
-To override the API mocks with development service(s) running on your local machine use something like
+To override the API mocks with development service(s) running on your local machine you can use...
 
 ```
-docker compose build -f docker-compose.yml -f compose/user-auth.yml -f compose/user-preferences.yml -f compose/court-case-service.yml
+docker compose -f docker-compose.yml -f compose/user-auth.yml -f compose/user-preferences.yml -f compose/court-case-service.yml up --build
 ```
 
-It would be nice if you could swap out just one service but in reality they have dependencies based on the seed data 
-that was included with them. For this reason you may be better working against the cloud dev API image, as this will 
-have data matching the other services it replies on. To do run the standard ```docker compose up``` but instead swap out some env variables. 
+To run a local branch of the court-case-service you can use the following. Note this isn't ideal because it's starting to enroach on the innards of the court-case-service internals. You may be better trying to start that stack as a separate entity and allowing it to connect to auth and prepare-a-case via URL ENV override. Pro's and cons!
+
+if you do the following you'll need to build the court-case-service first using `./gradlew build`, which will then allow the DockerFile to be built. To do this you'll need Java 17 installed `brew install openjdk@17` and `export JAVA_HOME=`/usr/libexec/java_home -v 17` (on mac). This is subject to change.
+
+```
+docker compose -f docker-compose.yml -f compose/user-auth.yml -f compose/user-preferences.yml -f compose/court-case-service.yml -f compose/court-case-service-local.yml up --build
+```
+
+If you created containers previously you may have network not found issues, removing the old containers will fix it.
+
+In both cases the oauth service will run locally and you will need to use the following login credentials...
+
+```
+Username: 'PREPARE_A_CASE_USER'
+Password: 'password123456'
+```
+
+To point to cloud development services run the standard ```docker compose up``` but instead swap out some env variables. 
 You can do this by including the following in a root .env file.
 
 ```
@@ -120,8 +135,6 @@ If you want to target one test you can temporarily slide that name.feature into 
 
 ### Run Integration tests with UI
 
-
-
 Cypress interactive UI needs a bit more work to get the X DISPLAY piping from docker.
 
 By default, your DISPLAY=0:0 is used, which usually translates as the first screen on the first graphical output device. 
@@ -138,7 +151,6 @@ Then open a terminal and run the following command:
 npm run test:int:ui
 ```
 
-
 ## Environment variables
 
 ### HMPPS Authentication service
@@ -153,19 +165,6 @@ NOMIS_AUTH_URL_REDIRECT=http://localhost:9091/auth
 
 If NOMIS_AUTH_URL_REDIRECT is not specified it will inherit from NOMIS_AUTH_URL, however once it's set (by say the default docker-compose.yml)
 and you want to target an external URL (such as cloud dev oauth) then you should overwrite both (with the same value).
-
-### Court case service
-
-Specify the court-case-service URL with `COURT_CASE_SERVICE_URL`
-
-### Cases per page
-Default: 20
-
-Specify the number of cases to display, per page with `CASES_PER_PAGE`
-
-### HMPPS User Preferences service
-
-Specify the hmpps-user-preferences URL with `USER_PREFERENCE_SERVICE_URL`
 
 # Setting up maintenance/holding page during downtime
 

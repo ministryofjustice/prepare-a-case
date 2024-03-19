@@ -1,0 +1,14 @@
+version: '3.7'
+networks:
+  hmpps:
+
+services:
+
+  court-case-service:
+    extends:
+      file: ./compose/court-case-service.yml
+      service: court-case-service
+    image: ''
+    build: 
+      context: ../court-case-service
+      dockerfile: ../court-case-service/Dockerfile
