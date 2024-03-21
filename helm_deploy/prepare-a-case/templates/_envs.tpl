@@ -110,4 +110,7 @@ env:
   - name: CASE_TRACKING_PRE_PILOT_USERS
     value: {{ .Values.env.CASE_TRACKING_PRE_PILOT_USERS | quote }}
 
+  - name: ENABLE_MOVE_TO_RESULTED_ACTION
+    value: {{ .Values.env.ENABLE_MOVE_TO_RESULTED_ACTION | quote}}
+
 {{- end -}}

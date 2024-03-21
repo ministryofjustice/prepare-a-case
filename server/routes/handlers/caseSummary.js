@@ -132,7 +132,7 @@ const getActionButtons = (templateValues) => {
   } else if ((crn && crn.length) > 0 && !hideUnlinkButton) {
     buttons.push(createButton('Unlink NDelius Record', 'unlinkNdelius'))
   }
-  if (hearingOutcome) {
+  if (hearingOutcome && settings.enableMoveToResultedAction) {
     buttons.push(createButton('Move to resulted', 'moveToResulted', assignedToCurrentUser && hearingOutcome.state === 'IN_PROGRESS'))
   }
 
