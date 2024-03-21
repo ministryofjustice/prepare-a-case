@@ -24,7 +24,7 @@
                                         <span class="govuk-notification-banner__title govuk-body govuk-!-font-size-16 hearing-outcome-display-date govuk-!-padding-left-2">Sent to admin on {{ hearing.hearingOutcome.outcomeDate | hearingNoteTimeFormat }}</span>
                                     </div>
                                     {% if hearing.hearingOutcome.state !== 'RESULTED' and hearing.hearingOutcome.state !== '' %}
-                                        <a href="#" class="govuk-notification-banner__title govuk-!-font-size-16 hearing-outcome-edit govuk-!-padding-left-2" data-bs-toggle="modal" data-bs-target="#{{ "add" if hearing.hearingOutcome.state === 'NEW' else "edit" }}-hearing-outcome-modal" data-hearingid="{{ hearing.hearingId }}">Edit</a>
+                                        <a href="#" class="govuk-body govuk-notification-banner__title govuk-!-font-size-16 hearing-outcome-edit govuk-!-padding-left-2" data-bs-toggle="modal" data-bs-target="#{{ "add" if hearing.hearingOutcome.state === 'NEW' else "edit" }}-hearing-outcome-modal" data-hearingid="{{ hearing.hearingId }}" data-defendantid="{{ data.defendantId }}">Edit</a>
                                     {% endif %}
                                 </div>
                             </div>
