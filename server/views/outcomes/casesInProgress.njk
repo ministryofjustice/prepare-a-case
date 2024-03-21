@@ -117,7 +117,7 @@
     {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
     {% set html %}
       <p class="govuk-notification-banner__heading">
-        You have moved {{ moveToResultedSuccess }}'s case to resulted cases.
+        You have moved {{ moveToResultedSuccess | apostropheInName | properCase | removeTitle }}'s case to resulted cases.
       </p>
     {% endset %}
     {{ govukNotificationBanner({
