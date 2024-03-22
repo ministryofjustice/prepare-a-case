@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append('file', file)
             xhr.upload.addEventListener('progress', event => {
               if (event.lengthComputable) {
-                setItemProgressPercentage(element, Math.round(event.loaded/event.total))
+                setItemProgressPercentage(element, Math.ceil(event.loaded/event.total * 100))
               }
             })
             xhr.addEventListener('loadend', () => {
