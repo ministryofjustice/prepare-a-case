@@ -117,7 +117,7 @@
     {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
     {% if outcomeActionAssign is string %}
       {% set html %}
-        You are assigned to result {{outcomeActionAssign}}. Their case has moved to the in progress tab.
+        You are assigned to result {{ outcomeActionAssign | removeTitle | apostropheInName | properCase }}. Their case has moved to the in progress tab.
       {% endset %}
     {% else %} 
       {% set html %}
