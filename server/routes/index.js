@@ -363,58 +363,56 @@ module.exports = function Index ({ authenticationMiddleware }) {
     catchErrors(autoSaveHearingNoteEditHandler)
   )
 
-  if (settings.enableCaseDefendantDocuments) {
-    router.get(
-      '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/delete',
-      defaults,
-      catchErrors(async (req, res) => {
-        const {
-          params: { hearingId, defendantId, fileId }
-        } = req
-        const { data } = await caseFiles.delete(hearingId, defendantId, fileId)
-        res.json(data)
-      })
-    )
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/delete',
+    defaults,
+    catchErrors(async (req, res) => {
+      const {
+        params: { hearingId, defendantId, fileId }
+      } = req
+      const { data } = await caseFiles.delete(hearingId, defendantId, fileId)
+      res.json(data)
+    })
+  )
 
-    router.get(
-      '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/raw',
-      (req, res, next) => {
-        const {
-          params: { hearingId, defendantId, fileId }
-        } = req
-        caseFiles.getRaw(
-          req,
-          res,
-          next,
-          proxyRes => {
-            if (proxyRes.statusCode >= 400) {
-              throw new Error(
-                `${proxyRes.statusCode} - unable to download file.`
-              )
-            }
-          },
-          hearingId,
-          defendantId,
-          fileId
-        )
-      }
-    )
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files/:fileId/raw',
+    (req, res, next) => {
+      const {
+        params: { hearingId, defendantId, fileId }
+      } = req
+      caseFiles.getRaw(
+        req,
+        res,
+        next,
+        proxyRes => {
+          if (proxyRes.statusCode >= 400) {
+            throw new Error(
+              `${proxyRes.statusCode} - unable to download file.`
+            )
+          }
+        },
+        hearingId,
+        defendantId,
+        fileId
+      )
+    }
+  )
 
-    router.post(
-      '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files',
-      (req, res, next) => {
-        const {
-          params: { hearingId, defendantId }
-        } = req
-        const formatter = data => {
-          // date formatter
-          data.datetime = moment(data.datetime).format('D MMMM YYYY')
-          return data
-        }
-        caseFiles.post(req, res, next, formatter, hearingId, defendantId)
+  router.post(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/files',
+    (req, res, next) => {
+      const {
+        params: { hearingId, defendantId }
+      } = req
+      const formatter = data => {
+        // date formatter
+        data.datetime = moment(data.datetime).format('D MMMM YYYY')
+        return data
       }
-    )
-  }
+      caseFiles.post(req, res, next, formatter, hearingId, defendantId)
+    }
+  )
 
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, caseSummaryHandler)
 
