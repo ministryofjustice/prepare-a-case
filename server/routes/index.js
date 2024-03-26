@@ -414,7 +414,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
   )
 
-
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, caseSummaryHandler)
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, caseSummaryHandler)
