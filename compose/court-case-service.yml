@@ -1,4 +1,7 @@
-version: '3.1'
+version: '3.7'
+networks:
+  hmpps:
+
 services:
 
   court-case-service:
@@ -7,38 +10,56 @@ services:
     networks:
       - hmpps
     depends_on:
-      course-case-service-db:
+      court-case-service-db:
         condition: service_healthy
       hmpps-auth:
         condition: service_healthy
     ports:
       - "8080:8080"
+    entrypoint: ["/bin/sh", "/app/run.sh"]
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/auth/health"]
     environment:
-      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_PROFILES_ACTIVE=postgres,local
       - HMPPS_AUTH_URL=http://hmpps-auth:8080/auth
       - SPRING_DATASOURCE_USER=appuser
-      - SPRING_DATASOURCE_PASSWORD=dev
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://course-case-service-db:5432/postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://court-case-service-db:5432/postgres
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI=http://hmpps-auth:8080/auth/.well-known/jwks.json
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://hmpps-auth:8080/auth/issuer
 
-  course-case-service-db:
-    image: "postgis/postgis"
-    user: postgres
-    container_name: course-case-service-db
+  court-case-service-db:
+    image: postgres:14.4
+    container_name: court-case-service-db
     environment:
       POSTGRES_USER: appuser
-      POSTGRES_PASSWORD: dev
+      POSTGRES_PASSWORD: postgres
     networks:
       - hmpps
+    command: ["postgres", "-c", "log_statement=all", "-c", "log_destination=stderr"]
     volumes:
-      - course-case-service-db:/var/lib/postgresql/data/
+      - court-case-service-db:/var/lib/postgresql/data/
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U appuser"]
       interval: 10s
       timeout: 5s
       retries: 5
 
+  prison-api:
+    image: quay.io/hmpps/prison-api:latest
+    networks:
+      - hmpps
+    container_name: prison-api
+    depends_on:
+      - hmpps-auth
+    ports:
+      - "8091:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+    environment:
+      - SERVER_PORT=8080
+      - SPRING_PROFILES_ACTIVE=nomis-hsqldb
+
 volumes:
-  course-case-service-db:
+  court-case-service-db:
 

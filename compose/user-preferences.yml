@@ -1,4 +1,7 @@
-version: '3.1'
+version: '3.7'
+networks:
+  hmpps:
+
 services:
 
   hmpps-user-preferences:
@@ -7,27 +10,31 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=postgres,dev
       - SPRING_DATASOURCE_USER=appuser
-      - SPRING_DATASOURCE_PASSWORD=dev
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://hmpps-user-preferences:5432/postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://hmpps-user-preferences-db:5432/postgres
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI=http://hmpps-auth:8080/auth/.well-known/jwks.json
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://hmpps-auth:8080/auth/issuer
     depends_on:
-      hmpps-user-preferences:
+      hmpps-user-preferences-db:
+        condition: service_healthy
+      hmpps-auth:
         condition: service_healthy
     networks:
       - hmpps
+    entrypoint: ["java", "-javaagent:/app/agent.jar", "-jar", "/app/app.jar"]
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/auth/health"]
 
   hmpps-user-preferences-db:
-    image: "postgis/postgis"
-    user: postgres
+    image: postgres
     container_name: hmpps-user-preferences-db
     environment:
       POSTGRES_USER: appuser
-      POSTGRES_PASSWORD: dev
+      POSTGRES_PASSWORD: postgres
     networks:
       - hmpps
     volumes:
-      - hmpps-user-preferences:/var/lib/postgresql/data/
+      - hmpps-user-preferences-db:/var/lib/postgresql/data/
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U appuser"]
       interval: 10s
@@ -35,5 +42,5 @@ services:
       retries: 5
 
 volumes:
-  hmpps-user-preferences:
+  hmpps-user-preferences-db:
 
