@@ -67,7 +67,7 @@ const caseSummaryHandler = utils => async (req, res) => {
   templateValues.features = {
     hearingNotes: featuresToggles.hearingNotes.isEnabled(context),
     hearingOutcomesEnabled,
-    caseDefendantDocuments: settings.enableCaseDefendantDocuments
+    caseDefendantDocuments: hearingOutcomesEnabled
   }
   templateValues.outcomeTypes = outcomeTypes
 
