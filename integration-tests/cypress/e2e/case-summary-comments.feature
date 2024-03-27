@@ -50,7 +50,7 @@ Feature: Case comments
     And I should see the following comments with the comment, author and date commented on
       | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 | Do not show delete link | Do not show edit link | Not Legacy |
       | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     | Do not show delete link | Do not show edit link | Not Legacy |
-      | Comment Eight     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        | Not Legacy |
+      | Comment Eight     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        | Legacy     |
       | PSR completed     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        | Not Legacy |
       | Comment One       | Adam Sandler on 9 August 2022, 17:17        | Show delete link        | Show edit link        | Not Legacy |
       | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17    | Show delete link        | Show edit link        | Not Legacy |
