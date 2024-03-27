@@ -96,7 +96,8 @@
           "comment": "Comment One",
           "created": "2022-08-09T17:17:09",
           "author": "Adam Sandler",
-          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
+          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
+          "legacy": false
         },
         {
           "commentId": 1234561,
@@ -104,7 +105,8 @@
           "comment": "Comment Two",
           "created": "2022-08-09T17:17:09",
           "author": "Adam Sandler Two",
-          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
+          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
+          "legacy": false
         },
         {
           "commentId": 1234551,
@@ -112,7 +114,8 @@
           "comment": "Comment Three\r\nline one\r\nline two\r\n\r\nline three",
           "created": "2022-08-19T17:17:09",
           "author": "Adam Sandler Three",
-          "createdByUuid": "7ca04ed7-8275-45b2-afb4-4ff51432d1ea"
+          "createdByUuid": "7ca04ed7-8275-45b2-afb4-4ff51432d1ea",
+          "legacy": false
         },
         {
           "commentId": 1234560,
@@ -120,7 +123,8 @@
           "comment": "Comment Four",
           "created": "2022-08-09T17:17:09",
           "author": "Adam Sandler Four",
-          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
+          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
+          "legacy": false
         },
         {
           "commentId": 1234461,
@@ -128,7 +132,8 @@
           "comment": "Comment Five",
           "created": "2022-08-09T17:17:09",
           "author": "Adam Sandler 5",
-          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
+          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
+          "legacy": false
         },
         {
           "commentId": 1224561,
@@ -136,7 +141,8 @@
           "comment": "Comment Six",
           "created": "2022-08-19T17:17:09",
           "author": "Adam Sandler 6",
-          "createdByUuid": "7ca04ed7-8275-45b2-afb4-4ff51432d1ea"
+          "createdByUuid": "7ca04ed7-8275-45b2-afb4-4ff51432d1ea",
+          "legacy": false
         },
         {
           "commentId": 1234541,
@@ -144,7 +150,8 @@
           "comment": "Comment Seven",
           "created": "2022-08-09T17:17:09",
           "author": "Author Two",
-          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
+          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
+          "legacy": false
         },
         {
           "commentId": 1235561,
@@ -152,7 +159,8 @@
           "comment": "Comment Eight",
           "created": "2022-08-19T17:17:09",
           "author": "Author Two",
-          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
+          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
+          "legacy": true
         },
         {
           "commentId": 1233361,
@@ -160,7 +168,8 @@
           "comment": "PSR completed",
           "created": "2022-08-09T17:17:09",
           "author": "Author Two",
-          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
+          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
+          "legacy": false
         },
         {
           "commentId": 1224564,
@@ -168,7 +177,8 @@
           "comment": "PSR completed",
           "created": "2022-08-19T17:17:09",
           "author": "Author Two",
-          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb"
+          "createdByUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
+          "legacy": false
         }
       ],
       "hearings": [
