@@ -63,6 +63,19 @@
                         <td class="govuk-table__cell">
                             <div class="case-comment-display-container" id="case-comment-display-{{ comment.commentId }}">
                                 <div class="govuk-grid-row">
+                                    {% if comment.legacy %}
+                                        <div class="govuk-warning-text case-comment-warning-container">
+                                            <div class="case-comment-warning-icon">
+                                                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                                            </div>
+                                            <strong class="govuk-warning-text__text">
+                                                <span class="govuk-visually-hidden">Warning</span>
+                                                This note was added to a case with more than one defendant. Delete the note if it is not relevant to this defendant.
+                                            </strong>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="govuk-grid-row">
                                     <div id="case-comments-comment-display-{{ comment.commentId }}" class="govuk-grid-column-full govuk-!-padding-bottom-3 case-comments-comment-display">{{ comment.comment }}</div>
                                 </div>
                                 <div class="govuk-grid-row">
