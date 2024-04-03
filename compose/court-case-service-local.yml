@@ -5,9 +5,6 @@ networks:
 services:
 
   court-case-service:
-    extends:
-      file: ./compose/court-case-service.yml
-      service: court-case-service
     image: ''
     build: 
       context: ../court-case-service
