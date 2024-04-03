@@ -248,7 +248,7 @@ describe('Routes', () => {
       expect(getCaseListTargetFunction).toHaveBeenCalledWith(
         'B14LO',
         '2020-11-16',
-        undefined,
+        {},
         undefined,
         undefined,
         20,
@@ -258,7 +258,7 @@ describe('Routes', () => {
       expect(getCaseListTargetFunction).toHaveBeenCalledWith(
         'B14LO',
         '2020-11-16',
-        undefined,
+        {},
         undefined
       )
     }
@@ -275,7 +275,7 @@ describe('Routes', () => {
       expect(getCaseListTargetFunction).toHaveBeenCalledWith(
         'B14LO',
         '2020-11-12',
-        undefined,
+        {},
         undefined,
         undefined,
         20,
@@ -285,7 +285,7 @@ describe('Routes', () => {
       expect(getCaseListTargetFunction).toHaveBeenCalledWith(
         'B14LO',
         '2020-11-12',
-        undefined,
+        {},
         undefined
       )
     }
@@ -299,7 +299,7 @@ describe('Routes', () => {
       expect(getCaseListTargetFunction).toHaveBeenCalledWith(
         'B14LO',
         '2020-01-01',
-        undefined,
+        {},
         false,
         undefined,
         20,
@@ -309,7 +309,7 @@ describe('Routes', () => {
       expect(getCaseListTargetFunction).toHaveBeenCalledWith(
         'B14LO',
         '2020-01-01',
-        undefined,
+        {},
         false
       )
     }
@@ -322,7 +322,7 @@ describe('Routes', () => {
       expect(getCaseListTargetFunction).toHaveBeenCalledWith(
         'B14LO',
         '2020-01-01',
-        undefined,
+        {},
         'added',
         undefined,
         20,
@@ -332,7 +332,7 @@ describe('Routes', () => {
       expect(getCaseListTargetFunction).toHaveBeenCalledWith(
         'B14LO',
         '2020-01-01',
-        undefined,
+        {},
         'added'
       )
     }
@@ -345,7 +345,7 @@ describe('Routes', () => {
       expect(getCaseListTargetFunction).toHaveBeenCalledWith(
         'B14LO',
         '2020-01-01',
-        undefined,
+        {},
         'removed',
         undefined,
         20,
@@ -355,7 +355,7 @@ describe('Routes', () => {
       expect(getCaseListTargetFunction).toHaveBeenCalledWith(
         'B14LO',
         '2020-01-01',
-        undefined,
+        {},
         'removed'
       )
     }
@@ -748,6 +748,7 @@ describe('Routes', () => {
       return request(app)
         .get('/B14LO/outcomes?hearingDate=ASC&outcomeType=ADJOURNED')
         .then(response => {
+          console.log(response)
           expect(response.statusCode).toEqual(200)
           defaultFilters.map(filter => {
             filter.items.map(item => {

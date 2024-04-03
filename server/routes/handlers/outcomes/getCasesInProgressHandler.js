@@ -11,8 +11,6 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     query: queryParams
   } = req
 
-  console.log('🚀 ~ getCasesInProgressHandler ~ queryParams:', queryParams)
-
   const flashMessage = req.flash('moved-to-resulted')
 
   const response = await caseService.getOutcomesList(
