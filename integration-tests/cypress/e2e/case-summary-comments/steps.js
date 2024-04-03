@@ -43,6 +43,11 @@ Then('I should see the following comments with the comment, author and date comm
         } else {
           cy.get('.case-comment-edit').should('not.exist')
         }
+        if (dataRow[4] === 'Legacy') {
+          cy.get('.case-comment-warning-container').should('exist')
+        } else {
+          cy.get('.case-comment-warning-container').should('not.exist')
+        }
       })
     })
   })

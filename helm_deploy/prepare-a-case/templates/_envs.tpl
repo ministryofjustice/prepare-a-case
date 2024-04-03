@@ -89,9 +89,6 @@ env:
   - name: ENABLE_CASE_COMMENTS
     value: {{ .Values.env.ENABLE_CASE_COMMENTS | quote }}
 
-  - name: ENABLE_CASE_DEFENDANT_DOCUMENTS
-    value: {{ .Values.env.ENABLE_CASE_DEFENDANT_DOCUMENTS | quote }}
-
   - name: ENABLE_HEARING_OUTCOMES
     value: {{ .Values.env.ENABLE_HEARING_OUTCOMES | quote }}
 
