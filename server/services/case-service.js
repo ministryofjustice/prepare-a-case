@@ -22,7 +22,7 @@ const defaultFilterMatcher = (courtCase, filterObj, item) =>
     : false
 
 const allowedSortValues = ['ASC', 'DESC']
-const allowedStates = ['NEW', 'IN_PROGRESS', 'RESULTED']
+const allowedStates = ['NEW', 'IN_PROGRESS', 'RESULTED', 'ON_HOLD']
 
 const createCaseService = apiUrl => {
   return {
@@ -303,6 +303,7 @@ const createCaseService = apiUrl => {
     },
 
     getOutcomesList: async (courtCode, filters, sorts, state) => {
+      console.log('🚀 ~ getOutcomesList: ~ state:', state)
       const paramMap = new URLSearchParams()
 
       if (state && allowedStates.includes(state)) {
@@ -354,6 +355,7 @@ const createCaseService = apiUrl => {
 
       const urlString = `${apiUrl}/courts/${courtCode}/hearing-outcomes?${paramMap}`
 
+      console.log('🚀 ~ getOutcomesList: ~ urlString:', urlString)
       const response = await request(urlString)
       if (!isHttpSuccess(response)) {
         return getInternalServerErrorResponse(response)

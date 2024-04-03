@@ -1,7 +1,5 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
 {%- set moment = params.moment -%}
-
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{%- from "moj/components/button-menu/macro.njk" import mojButtonMenu -%}
 
 {% block javascripts %}
   {% if displayFilters %}
@@ -9,28 +7,18 @@
     <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
   {% endif %}
   <script type="text/javascript" src="/javascripts/case-progress-{{ appVersion }}.min.js"></script>
-  <script type="text/javascript" src="/javascripts/checker_toggle-{{ appVersion }}.min.js"></script>
 {% endblock %}
 
 {% set tableData = {
   attributes: {
-    'id': 'hearing-outcome'
+    'id': 'hearing-outcome-in-progress'
   },
   head:
   [
-    { html: govukCheckboxes({
-      name: "common_checker_toggle_apply",
-      classes: "common_checker_toggle_apply govuk-checkboxes--small",
-      items: [{
-        value: "",
-        html: " "
-      }]}) 
-    },
     { text: "Defendant" },
     { text: "Outcome type" },
     { text: "Probation status" },
-    { text: "Offence" },
-
+    { text: "Offence", "classes": "govuk-!-width-one-third" },
     { 
       text: ('
       <button id="button-hearing-outcome-sort" type="button" class="pac-sort-button" data-sort="' + params.hearingDateSort + '"
@@ -39,9 +27,10 @@
     ') | safe,
       format: 'numeric',
       attributes: {
-        "aria-sort": params.hearingDateSort
-      }
+      "aria-sort": params.hearingDateSort
     }
+    },
+    { text: "Action" }
   ],
   rows: []
 } %}
@@ -63,37 +52,33 @@
     {{ offences.push('</ol>') }}
   {% endif %}
 
+
   {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
   {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
   {% set crnDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
-  {% set summaryLink = '/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary' %}
+  {% set assignedToCurrentUser = currentUserUuid === item.assignedToUuid %}
   {%- set tableRow = [
-    { html: govukCheckboxes({
-      name: "defendantHearingId",
-      classes: "common_checker_toggle_item govuk-checkboxes--small",
-      items: [{
-        id: "id_" + item.defendantId + '_' + item.hearingId,
-        value: item.defendantId + '_' + item.hearingId,
-        html: " "
-      }]}) 
-    },
-    { text: ('<a href="' + summaryLink + '" class="pac-defendant-link pac-assign govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" data-bs-toggle="modal" data-bs-target="#assign-outcome-modal" aria-label="' + a11yTitle + '" data-hearingid="' + item.hearingId + '" data-defendantid="' + item.defendantId + '" data-courtcode="' + params.courtCode + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
+    { text: ('<a href="/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state' + (' pac-reassign' | safe if not assignedToCurrentUser ) + '" aria-label="' + a11yTitle + '"' + ('data-hearingid="' + item.hearingId + '" data-defendantid="' + item.defendantId + '" data-courtcode="' + params.courtCode + '" data-bs-toggle="modal" data-bs-target="#reassign-outcome-modal"' | safe if not assignedToCurrentUser) + '>' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
     { text: item.hearingOutcomeDescription | safe },
     { text: ('<div>' + ('<span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span>' | safe if notMatched ) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched)) | safe },
     { text: offences | join('') | safe },
-    { text: moment(item.hearingDate, 'YYYY-MM-DD').format("D MMM YYYY"), format: 'numeric' }
+    { text: moment(item.hearingDate, 'YYYY-MM-DD').format("D MMM YYYY"), format: 'numeric' },
+    { text:  govukButton({
+      text: 'Move to resulted',
+      classes: ('' if assignedToCurrentUser else "govuk-button--secondary"),
+      href: ('hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/move-to-resulted?defendantName=' + item.defendantName) if assignedToCurrentUser else '',
+      disabled: not assignedToCurrentUser
+    }) }
   ] -%}
   {{ tableData.rows.push(tableRow) }}
 
 {% endfor %}
-
 
 {%- set listTabs = [
   {
     title: 'Cases to result',
     a11yTitle: 'View cases to result',
     link: '/' + params.courtCode + '/outcomes/',
-    current: true,
     count: params.casesToResultCount
   },
   {
@@ -106,6 +91,7 @@
     title: 'On hold',
     a11yTitle: 'View case outcomes on hold',
     link: '/' + params.courtCode + '/outcomes/on-hold',
+    current: true,
     count: params.casesInProgressCount
   },
   {
@@ -119,23 +105,32 @@
 
 {% block content %}
 
-  {% if outcomeActionAssign %}
+  {% if flashMessage | length %}
     {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-    {% if outcomeActionAssign is string %}
-      {% set html %}
-        You are assigned to result {{ outcomeActionAssign | removeTitle | apostropheInName | properCase }}. Their case has moved to the in progress tab.
-      {% endset %}
-    {% else %} 
-      {% set html %}
-        You are assigned to result {{outcomeActionAssign}} cases. They have moved to the in progress tab.
-      {% endset %}
-    {% endif %}
+    {% set html %}
+      <p class="govuk-notification-banner__heading">
+        {{flashMessage}}
+      </p>
+    {% endset %}
     {{ govukNotificationBanner({
-      html: '<p class="govuk-notification-banner__heading">' + html + '</p>',
+      html: html,
       type: 'success'
     }) }}
   {% endif %}
 
+
+  {% if moveToResultedSuccess | length %}
+    {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+    {% set html %}
+      <p class="govuk-notification-banner__heading">
+        You have moved {{ moveToResultedSuccess | apostropheInName | properCase | removeTitle }}'s case to resulted cases.
+      </p>
+    {% endset %}
+    {{ govukNotificationBanner({
+      html: html,
+      type: 'success'
+    }) }}
+  {% endif %}
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-6" aria-label="{{ title }}">{{ title }}</h1>
 
   {% if displayFilters %}
@@ -146,7 +141,7 @@
     }) }}
   {% endif %}
 
-  {% include "court-case-progress-assign-modal.njk" %}
+  {% include "court-case-progress-reassign-modal.njk" %}
 
   {%- from "components/tabs/macro.njk" import pacTabs -%}
 
@@ -155,22 +150,8 @@
     controls: "outcomes"
   }) }}
 
-  <form class="govuk-tabs__panel common_checker_toggle govuk-checkboxes govuk-checkboxes--small" action="?page={{params.currentPage}}" method="POST">
-
-    <div style="float: right">
-      {{ mojButtonMenu({
-        items: [
-          {
-            text: "Assign to me",
-            name: "action",
-            value: "assign",
-            classes: "common_checker_toggle_action govuk-button--secondary"
-          }
-        ]
-      }) }}
-    </div>
-     <h1 class="govuk-heading-l">Cases to result</h1>
-
+  <div class="govuk-tabs__panel">
+    <h1 class="govuk-heading-l">In progress</h1>
     {% if tableData.rows | length %}
       {% block table %}
         {%- from "govuk/components/table/macro.njk" import govukTable -%}
@@ -178,11 +159,11 @@
       {% endblock %}
     {% include "outcomes/outcomes-paging-partial.njk" %}
     {% else %}
-      {% if params.filtersApplied %}
+    {% if params.filtersApplied %}
         <span class="govuk-heading-m">0 cases</span>
       {% endif %}
-      <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "There are no cases to be resulted." }}</p>
+      <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "There are no cases in progress." }}</p>
     {% endif %}
-  </form>
+  </div>
 
 {% endblock %}
