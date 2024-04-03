@@ -69,7 +69,6 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
     data: response.cases.slice(startCount, endCount) || [],
     hearingOutcomesEnabled
   }
-  console.log('🚀 ~ getCaseListRouteHandler ~ templateValues:', templateValues.params.baseUrl)
   session.currentView = subsection
 
   session.caseListDate = currentDate
