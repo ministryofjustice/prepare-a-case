@@ -11,6 +11,8 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     query: queryParams
   } = req
 
+  console.log('🚀 ~ getCasesInProgressHandler ~ queryParams:', queryParams)
+
   const flashMessage = req.flash('moved-to-resulted')
 
   const response = await caseService.getOutcomesList(
@@ -67,5 +69,4 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
 
   res.render('outcomes/casesInProgress', templateValues)
 }
-
 module.exports = getCasesInProgressHandler

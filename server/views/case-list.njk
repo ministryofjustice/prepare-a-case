@@ -111,7 +111,7 @@
 {% for i in range(startNum, endNum + 1) -%}
     {{ pageItems.push({
         text: i,
-        href: '/' + params.courtCode + '/cases/' + params.date + '?page=' + i,
+        href: params.baseUrl + '&page=' + i,
         selected: currentPage === i
     }) }}
 {%- endfor %}
@@ -121,7 +121,7 @@
 {% else %}
     {% set previousLink = {
         text: 'Previous',
-        href: '/' + params.courtCode + '/cases/' + params.date + '?page=' + (currentPage - 1)
+        href:  params.baseUrl + '&page=' + (currentPage - 1)
     } %}
 {% endif %}
 
@@ -130,7 +130,7 @@
 {% else %}
     {% set nextLink = {
         text: 'Next',
-        href: '/' + params.courtCode + '/cases/' + params.date + '?page=' + (currentPage + 1)
+        href: params.baseUrl + '&page=' + (currentPage + 1)
     } %}
 {% endif %}
 
