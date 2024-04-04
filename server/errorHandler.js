@@ -9,14 +9,6 @@ exports.notFound = (req, res, next) => {
   next(error)
 }
 
-exports.authError = (error, req, res, next) => {
-  if ([401, 403]
-    .includes(error.status)) {
-    return res.redirect('/logout')
-  }
-  next(error)
-}
-
 exports.developmentErrors = (error, req, res, next) => {
   logger.error(error)
   error.stack = error.stack || ''

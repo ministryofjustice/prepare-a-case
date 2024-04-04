@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     const { authorities: roles, name, user_id: userId, user_uuid: uuid, user_name: username } = jwtDecode(res.locals.user.token)
     Object.assign(res.locals.user, { name, uuid, username, userId })
     if (!roles.includes(config.apis.oauth2.role)) {
-      log.warn(`User does not have required role ${config.apis.oauth2.role}. Ensure Delius user has role 'CWBT200'.`)
+      log.warn(`User does not have required role ${config.apis.oauth2.role}`)
       return res.redirect('/autherror')
     }
     return next()
