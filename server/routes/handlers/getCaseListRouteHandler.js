@@ -6,9 +6,15 @@ const queryParamBuilder = require('../../utils/queryParamBuilder.js')
 
 const createBaseUrl = (params, queryParams) => {
   const { page, ...remainder } = queryParams
-  return `/${params.courtCode}/cases/${params.date}?${queryParamBuilder(remainder)}`
+  const builtQueryParamString = queryParamBuilder(remainder)
+  const questionMark = builtQueryParamString.length > 0
+  return `/${params.courtCode}/cases/${params.date}?${queryParamBuilder(remainder)}${questionMark ? '&' : ''}`
 }
 
+const getPagelessQueryParams = params => {
+  const { page, ...remainder } = params
+  return remainder
+}
 const getCaseListRouteHandler = caseService => async (req, res) => {
   const {
     redisClient: { getAsync },
@@ -62,7 +68,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
       casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
       enablePastCasesNavigation: settings.enablePastCasesNavigation,
       subsection: subsection || (!date && session.currentView) || '',
-      filtersApplied: !!response.filters && Object.keys(response.filters).length,
+      filtersApplied: !!getPagelessQueryParams(queryParams) && Object.keys(getPagelessQueryParams(queryParams)).length,
       snapshot: response.snapshot,
       baseUrl: createBaseUrl(params, queryParams)
     },

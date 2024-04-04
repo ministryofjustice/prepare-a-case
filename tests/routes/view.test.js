@@ -748,7 +748,6 @@ describe('Routes', () => {
       return request(app)
         .get('/B14LO/outcomes?hearingDate=ASC&outcomeType=ADJOURNED')
         .then(response => {
-          console.log(response)
           expect(response.statusCode).toEqual(200)
           defaultFilters.map(filter => {
             filter.items.map(item => {

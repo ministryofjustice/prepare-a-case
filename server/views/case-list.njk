@@ -3,6 +3,8 @@
 
 {%- from "components/tabs/macro.njk" import pacTabs -%}
 
+
+
 {% block javascripts %}
     {% if displayFilters %}
         <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
@@ -111,7 +113,7 @@
 {% for i in range(startNum, endNum + 1) -%}
     {{ pageItems.push({
         text: i,
-        href: params.baseUrl + '&page=' + i,
+        href: params.baseUrl + 'page=' + i,
         selected: currentPage === i
     }) }}
 {%- endfor %}
@@ -121,7 +123,7 @@
 {% else %}
     {% set previousLink = {
         text: 'Previous',
-        href:  params.baseUrl + '&page=' + (currentPage - 1)
+        href:  params.baseUrl + 'page=' + (currentPage - 1)
     } %}
 {% endif %}
 
@@ -130,7 +132,7 @@
 {% else %}
     {% set nextLink = {
         text: 'Next',
-        href: params.baseUrl + '&page=' + (currentPage + 1)
+        href: params.baseUrl + 'page=' + (currentPage + 1)
     } %}
 {% endif %}
 
@@ -282,6 +284,9 @@
             {% set listTabs = listTabs.splice(0,1) %}
         {% endif %}
     {% endif -%}
+
+    hello
+{{params.filtersApplied | safe}}
 
     {% if displayFilters %}
         {%- from "components/filter/macro.njk" import pacFilter -%}
