@@ -68,7 +68,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
       casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
       enablePastCasesNavigation: settings.enablePastCasesNavigation,
       subsection: subsection || (!date && session.currentView) || '',
-      filtersApplied: !!getPagelessQueryParams(queryParams) && Object.keys(getPagelessQueryParams(queryParams)).length,
+      filtersApplied: !!getPagelessQueryParams(queryParams) && Object.keys(getPagelessQueryParams(queryParams)).length > 0,
       snapshot: response.snapshot,
       baseUrl: createBaseUrl(params, queryParams)
     },

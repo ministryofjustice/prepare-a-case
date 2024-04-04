@@ -171,7 +171,7 @@ describe('getCaseListRouteHandler', () => {
           courtCode: 'ABC',
           date: '2020-11-11',
           filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
-          filtersApplied: false,
+          filtersApplied: true,
           from: 0,
           limit: 10,
           notification: '',
@@ -185,7 +185,7 @@ describe('getCaseListRouteHandler', () => {
           casesPastDays: 6,
           unmatchedRecords: 2,
           enablePastCasesNavigation: false,
-          baseUrl: '/ABC/cases/2020-11-11?someQueryParam=some-param-value'
+          baseUrl: '/ABC/cases/2020-11-11?someQueryParam=some-param-value&'
         },
         hearingOutcomesEnabled: false
       })
