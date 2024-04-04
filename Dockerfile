@@ -40,5 +40,6 @@ CMD [ "./bin/www" ]
 ## only use for development and ci
 FROM base as development
 RUN npm i -g concurrently
+EXPOSE 9229
 ENTRYPOINT ["concurrently"]
-CMD [ "\"./node_modules/.bin/webpack --config ./public/config/webpack.config.js\"", "\"./node_modules/.bin/nodemon --watch ./server ./bin/www\"", "\"./node_modules/.bin/nodemon --ext scss --watch ./public/src/stylesheets ./bin/build-css\"", "\"./node_modules/.bin/nodemon --ext js --watch ./public/src/javascripts ./bin/build-js\""]
+CMD [ "\"./node_modules/.bin/webpack --config ./public/config/webpack.config.js\"", "\"./node_modules/.bin/nodemon --watch ./server --inspect=0.0.0.0 ./bin/www\"", "\"./node_modules/.bin/nodemon --ext scss --watch ./public/src/stylesheets ./bin/build-css\"", "\"./node_modules/.bin/nodemon --ext js --watch ./public/src/javascripts ./bin/build-js\""]
