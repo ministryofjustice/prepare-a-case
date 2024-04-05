@@ -85,7 +85,7 @@ const caseSummaryPostHandler = utils => async (req, res) => {
   const { action } = req.body
   const templateValues = await utils.getCaseAndTemplateValues(req)
 
-  handleButtonAction(templateValues, action, res, req)
+  handleButtonAction(templateValues, action, res, req, utils)
 }
 
 const isAssignedToUser = (userUuid, hearingOutcome) => {
@@ -99,8 +99,11 @@ const getHearingOutcome = (hearingId, hearings) => {
   return hearing ? hearing.hearingOutcome : null
 }
 
-const handleButtonAction = (templateValues, action, res, req) => {
-  const { caseId, hearingId, defendantId, crn, courtCode, defendantName } = templateValues.data
+const handleButtonAction = (templateValues, action, res, req, utils) => {
+  const { caseId, hearingId, defendantId, crn, defendantName } = templateValues.data
+  const { courtCode } = templateValues.params
+  const { apostropheInName, properCase, removeTitle } = utils.nunjucksFilters
+  const formattedName = removeTitle(properCase(apostropheInName(defendantName)))
 
   switch (action) {
     case 'unlinkNdelius':
@@ -108,8 +111,8 @@ const handleButtonAction = (templateValues, action, res, req) => {
     case 'linkNdelius':
       return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)
     case 'moveToResulted':
-      req.flash('moved-to-resulted', `You have moved ${defendantName}'s case to resulted cases.`)
-      res.redirect('/B14LO/outcomes/in-progress')
+      req.flash('moved-to-resulted', `You have moved ${formattedName}'s case to resulted cases.`)
+      res.redirect(`/${courtCode}/outcomes/in-progress`)
   }
 }
 
