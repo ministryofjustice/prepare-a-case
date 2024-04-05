@@ -99,7 +99,7 @@ const getHearingOutcome = (hearingId, hearings) => {
   return hearing ? hearing.hearingOutcome : null
 }
 
-const handleButtonAction = (templateValues, action, res, _req, utils) => {
+const handleButtonAction = (templateValues, action, res, req, utils) => {
   const { caseId, hearingId, defendantId, crn, defendantName } = templateValues.data
   const { courtCode } = templateValues.params
   const { apostropheInName, properCase, removeTitle } = utils.nunjucksFilters
@@ -111,7 +111,7 @@ const handleButtonAction = (templateValues, action, res, _req, utils) => {
     case 'linkNdelius':
       return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)
     case 'moveToResulted':
-      _req.flash('moved-to-resulted', `You have moved ${formattedName}'s case to resulted cases.`)
+      req.flash('moved-to-resulted', `You have moved ${formattedName}'s case to resulted cases.`)
       res.redirect(`/${courtCode}/outcomes/in-progress`)
   }
 }
