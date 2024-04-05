@@ -111,7 +111,6 @@ const handleButtonAction = (templateValues, action, res, _req, utils) => {
     case 'linkNdelius':
       return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)
     case 'moveToResulted':
-      // apostropheInName | properCase | removeTitle
       _req.flash('moved-to-resulted', `You have moved ${formattedName}'s case to resulted cases.`)
       res.redirect(`/${courtCode}/outcomes/in-progress`)
   }
