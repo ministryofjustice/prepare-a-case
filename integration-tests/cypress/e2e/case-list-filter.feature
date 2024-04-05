@@ -291,7 +291,7 @@ Feature: Case list filters
     And I click the "Flag" filter button
     And I click the "Apply filters" button
 
-    Then I should see a count of "63 cases"
+    Then I should see a count of "187 cases"
 
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |

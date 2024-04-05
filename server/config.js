@@ -37,6 +37,7 @@ module.exports = {
     enableHearingOutcomes: getBooleanParam('ENABLE_HEARING_OUTCOMES'),
     enableServerSidePaging: getBooleanParam('ENABLE_SERVERSIDE_PAGING'),
     enableMoveToResultedAction: getBooleanParam('ENABLE_MOVE_TO_RESULTED_ACTION'),
+    enableWorkflow: getBooleanParam('ENABLE_WORKFLOW'),
     casesExcludedDays: get('CASES_EXCLUDED_DAYS', '-1'), // Coma delimited String of days to exclude, incremental from 0 (Sunday) - fallback to -1 to exclude no days
     snapshotTimes: get('CASE_SNAPSHOT_TIMES', '00:00,08:45,09:45'), // Coma delimited string of snapshot times, earliest - latest
     assetCache: '30d',
