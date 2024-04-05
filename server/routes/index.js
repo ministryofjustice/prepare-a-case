@@ -15,7 +15,8 @@ const {
   deleteOffender,
   updateOffender,
   getCaseHistory,
-  files: caseFiles
+  files: caseFiles,
+  workflow
 } = require('../services/case-service')
 const {
   getDetails,
@@ -634,6 +635,19 @@ module.exports = function Index ({ authenticationMiddleware }) {
       res.render('case-summary-record-order-breach', templateValues)
     })
   )
+
+  if (settings.enableWorkflow) {
+    router.post('/workflow/tasks/:taskId/state', defaults, catchErrors(async (req, res) => {
+      const {
+        params: { taskId },
+        query: { hearing: hearingId, defendant: defendantId },
+        body: { state }
+      } = req
+
+      await workflow.tasks.state.set(taskId, state, { hearingId, defendantId })
+      res.json({})
+    }))
+  }
 
   router.get(
     '/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/licence-details',

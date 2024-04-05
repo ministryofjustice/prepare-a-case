@@ -3,6 +3,8 @@ const { settings } = require('../../config')
 const features = require('../../utils/features')
 const trackEvent = require('../../utils/analytics.js')
 const queryParamBuilder = require('../../utils/queryParamBuilder.js')
+const workflow = require('../../utils/workflow')
+
 
 const createBaseUrl = (params, queryParams) => {
   const { page, ...remainder } = queryParams
@@ -40,6 +42,25 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
     res.render('error', { status: response.status || 500 })
     return
   }
+
+  /* PIC-3622 prep status data mapper - workflow start */
+  if (settings.enableWorkflow) {
+    response.cases
+      .forEach((myCase, i) => {
+        const { workflow: myWorkflow } = myCase
+        if (!myWorkflow) {
+          throw new TypeError(`Array[${i}] missing workflow key`)
+        }
+        if (!myWorkflow.tasks) {
+          throw new TypeError(`Array[${i}] missing workflow.tasks key`)
+        }
+        myWorkflow.tasks = {
+          prep: workflow.tasks.get('prep').states.getById(myWorkflow.tasks
+            .find(({ id }) => id === 'prep').state)
+        }
+      })
+  }
+
   const caseCount = response.cases.length
   const startCount = ((parseInt(queryParams.page, 10) - 1) || 0) * limit
   const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
@@ -52,6 +73,14 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
     title: 'Cases',
     params: {
       ...params,
+      workflow: {
+        enabled: settings.enableWorkflow,
+        tasks: {
+          prep: {
+            items: workflow.tasks.get('prep').states.getAllOrderBySequence
+          }
+        }
+      },
       hearingOutcomesEnabled,
       date: currentDate,
       notification: currentNotification || '',

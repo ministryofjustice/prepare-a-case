@@ -2,6 +2,40 @@
 
 const { settings } = require('../../../server/config')
 
+const mockCase = () => ({
+  workflow: {
+    tasks: [{
+      id: 'prep',
+      state: 'COMPLETE'
+    }]
+  }
+})
+
+const mockCaseResult = () => ({
+  workflow: {
+    tasks: {
+      prep: {
+        cssClass: 'govuk-tag--green',
+        id: 'COMPLETE',
+        lang: {
+          en: {
+            title: 'Complete'
+          }
+        }
+      }
+    }
+  }
+})
+
+const workflow = {
+  enabled: true,
+  tasks: {
+    prep: {
+      items: require('../../../server/utils/workflow').tasks.get('prep').states.getAllOrderBySequence
+    }
+  }
+}
+
 beforeEach(() => {
   jest.replaceProperty(settings, 'casesTotalDays', 13)
   jest.replaceProperty(settings, 'casesPastDays', 6)
@@ -42,7 +76,7 @@ describe('getCaseListRouteHandler', () => {
       removedCount: 2,
       unmatchedRecords: 2,
       filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
-      cases: [{}, {}, {}, {}],
+      cases: [mockCase(), mockCase(), mockCase(), mockCase()],
       snapshot: '2020-10-10'
     })
 
@@ -60,8 +94,9 @@ describe('getCaseListRouteHandler', () => {
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
         title: 'Cases',
-        data: [{}, {}, {}, {}],
+        data: [mockCaseResult(), mockCaseResult(), mockCaseResult(), mockCaseResult()],
         params: {
+          workflow,
           hearingOutcomesEnabled: false,
           addedCount: 2,
           caseCount: 4,
@@ -96,7 +131,7 @@ describe('getCaseListRouteHandler', () => {
       removedCount: 2,
       unmatchedRecords: 2,
       filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
-      cases: [{}, {}, {}, {}],
+      cases: [mockCase(), mockCase(), mockCase(), mockCase()],
       snapshot: '2020-10-10'
     })
 
@@ -113,8 +148,9 @@ describe('getCaseListRouteHandler', () => {
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
         title: 'Cases',
-        data: [{}, {}, {}, {}],
+        data: [mockCaseResult(), mockCaseResult(), mockCaseResult(), mockCaseResult()],
         params: {
+          workflow,
           hearingOutcomesEnabled: false,
           addedCount: 2,
           caseCount: 4,
