@@ -18,6 +18,10 @@ describe('getPagedCaseListRouteHandler', () => {
     path: '/SHF/cases'
   }
 
+  const mockCase = {
+    hearingPrepStatus: 'NOT_STARTED'
+  }
+
   it('should render error page when getPagedCaseList returns errors', async () => {
     // Given
     caseService.getPagedCaseList.mockReturnValueOnce({ isError: true, status: 500 })
@@ -40,7 +44,7 @@ describe('getPagedCaseListRouteHandler', () => {
       possibleMatchesCount: 2,
       recentlyAddedCount: 2,
       filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
-      cases: [{}, {}, {}, {}],
+      cases: [mockCase, mockCase, mockCase, mockCase],
       totalElements: 4
     })
 
@@ -58,7 +62,7 @@ describe('getPagedCaseListRouteHandler', () => {
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
         title: 'Cases',
-        data: [{}, {}, {}, {}],
+        data: [mockCase, mockCase, mockCase, mockCase],
         params: {
           hearingOutcomesEnabled: false,
           addedCount: 2,
@@ -88,7 +92,7 @@ describe('getPagedCaseListRouteHandler', () => {
       possibleMatchesCount: 2,
       recentlyAddedCount: 2,
       filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
-      cases: [{}, {}, {}, {}],
+      cases: [mockCase, mockCase, mockCase, mockCase],
       totalElements: 4
     })
 
@@ -105,7 +109,7 @@ describe('getPagedCaseListRouteHandler', () => {
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
         title: 'Cases',
-        data: [{}, {}, {}, {}],
+        data: [mockCase, mockCase, mockCase, mockCase],
         params: {
           hearingOutcomesEnabled: false,
           addedCount: 2,
