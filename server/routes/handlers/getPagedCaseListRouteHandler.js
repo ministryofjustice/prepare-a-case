@@ -2,6 +2,7 @@ const getBaseDateString = require('../../utils/getBaseDateString')
 const { settings } = require('../../config')
 const features = require('../../utils/features')
 const trackEvent = require('../../utils/analytics.js')
+const workflow = require('../../utils/workflow')
 
 const getPagedCaseListRouteHandler = caseService => async (req, res) => {
   const {
@@ -18,6 +19,7 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
   const currentDate = date || getBaseDateString()
   const context = { court: courtCode, username: res.locals.user.username }
   const hearingOutcomesEnabled = features.hearingOutcomes.isEnabled(context)
+  const workflowEnabled = features.workflow.isEnabled(context)
   const response = await caseService.getPagedCaseList(courtCode, currentDate, selectedFilters, subsection || (!date && session.currentView), page, settings.casesPerPage, hearingOutcomesEnabled)
   if (response.isError) {
     trackEvent(
@@ -38,10 +40,46 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
 
   const pastCaseNavigationEnabled = features.pastCasesNavigation.isEnabled(context)
 
+  // God I hate myself for this...
+
+  response.cases.forEach(cases => (cases.workflow = {
+    tasks: [
+      {
+        id: 'prep',
+        state: cases.hearingPrepStatus
+      }
+    ]
+  }))
+
+  if (workflowEnabled) {
+    response.cases
+      .forEach((myCase, i) => {
+        const { workflow: myWorkflow } = myCase
+        if (!myWorkflow) {
+          throw new TypeError(`Array[${i}] missing workflow key`)
+        }
+        if (!myWorkflow.tasks) {
+          throw new TypeError(`Array[${i}] missing workflow.tasks key`)
+        }
+        myWorkflow.tasks = {
+          prep: workflow.tasks.get('prep').states.getById(myWorkflow.tasks
+            .find(({ id }) => id === 'prep').state)
+        }
+      })
+  }
+
   const templateValues = {
     title: 'Cases',
     params: {
       ...params,
+      workflow: {
+        enabled: workflowEnabled,
+        tasks: {
+          prep: {
+            items: workflow.tasks.get('prep').states.getAllOrderBySequence
+          }
+        }
+      },
       hearingOutcomesEnabled,
       date: currentDate,
       notification: currentNotification || '',

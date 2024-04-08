@@ -256,7 +256,7 @@ const createCaseService = apiUrl => {
               `${apiUrl}/workflow/${workflowId}/tasks/${taskId}/state`
               however ccs implemented the pattern as below
             */
-            update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/prep-status/${state}`)
+            update(`${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/prep-status/${state}`)
         }
       }
     },
