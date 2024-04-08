@@ -5,7 +5,6 @@ const trackEvent = require('../../utils/analytics.js')
 const queryParamBuilder = require('../../utils/queryParamBuilder.js')
 const workflow = require('../../utils/workflow')
 
-
 const createBaseUrl = (params, queryParams) => {
   const { page, ...remainder } = queryParams
   const builtQueryParamString = queryParamBuilder(remainder)
