@@ -39,6 +39,7 @@ const workflow = {
 beforeEach(() => {
   jest.replaceProperty(settings, 'casesTotalDays', 13)
   jest.replaceProperty(settings, 'casesPastDays', 6)
+  jest.replaceProperty(settings, 'enableWorkflow', true)
 })
 
 describe('getCaseListRouteHandler', () => {
@@ -185,7 +186,7 @@ describe('getCaseListRouteHandler', () => {
       removedCount: 2,
       unmatchedRecords: 2,
       filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
-      cases: [{}, {}, {}, {}],
+      cases: [mockCase(), mockCase(), mockCase(), mockCase()],
       snapshot: '2020-10-10'
     })
 
@@ -195,15 +196,13 @@ describe('getCaseListRouteHandler', () => {
     mockRequest.query = { ...mockRequest.query, someQueryParam: 'some-param-value' }
     await subject(mockRequest, mockResponse)
 
-    const expectedWorkflow = { ...workflow, enabled: false }
     // Then
-    console.log('🚀 ~ it ~ expectedWorkflow:', expectedWorkflow)
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
         title: 'Cases',
-        data: [{}, {}, {}, {}],
+        data: [mockCaseResult(), mockCaseResult(), mockCaseResult(), mockCaseResult()],
         params: {
-          workflow: expectedWorkflow,
+          workflow,
           hearingOutcomesEnabled: false,
           addedCount: 2,
           caseCount: 4,
