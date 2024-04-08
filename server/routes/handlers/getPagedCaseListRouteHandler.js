@@ -42,14 +42,14 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
 
   // God I hate myself for this...
 
-  response.cases.forEach(cases => cases.workflow = {
+  response.cases.forEach(cases => (cases.workflow = {
     tasks: [
       {
         id: 'prep',
         state: cases.hearingPrepStatus
       }
     ]
-  })
+  }))
 
   if (workflowEnabled) {
     response.cases

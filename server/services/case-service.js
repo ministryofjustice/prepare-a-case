@@ -255,7 +255,6 @@ const createCaseService = apiUrl => {
               (which would ideally be)
               `${apiUrl}/workflow/${workflowId}/tasks/${taskId}/state`
               however ccs implemented the pattern as below
-              /hearing/{hearingId}/defendants/{defendantId}/prep-status/{prepStatus}
             */
             update(`${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/prep-status/${state}`)
         }
