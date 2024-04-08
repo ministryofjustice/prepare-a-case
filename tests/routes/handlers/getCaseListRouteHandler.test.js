@@ -195,12 +195,15 @@ describe('getCaseListRouteHandler', () => {
     mockRequest.query = { ...mockRequest.query, someQueryParam: 'some-param-value' }
     await subject(mockRequest, mockResponse)
 
+    const expectedWorkflow = { ...workflow, enabled: false }
     // Then
+    console.log('🚀 ~ it ~ expectedWorkflow:', expectedWorkflow)
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
         title: 'Cases',
         data: [{}, {}, {}, {}],
         params: {
+          workflow: expectedWorkflow,
           hearingOutcomesEnabled: false,
           addedCount: 2,
           caseCount: 4,
