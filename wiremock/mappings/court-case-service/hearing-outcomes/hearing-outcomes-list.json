@@ -82,7 +82,8 @@
       "countsByState": {
         "toResultCount": 7,
         "inProgressCount": 5,
-        "resultedCount": 9
+        "resultedCount": 9,
+        "onHoldCount": 55
       },
       "courtRoomFilters": ["02", "01", "1", "Courtroom 1", "2", "Crown Court 3-1"]
     }

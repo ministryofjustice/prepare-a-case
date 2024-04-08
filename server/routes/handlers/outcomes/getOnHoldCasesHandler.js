@@ -46,7 +46,8 @@ const getOnHoldCasesHandler = caseService => async (req, res) => {
       filters: flaggedFilters,
       filtersApplied,
       casesInProgressCount: response?.countsByState?.inProgressCount || 0,
-      casesToResultCount: response?.countsByState?.toResultCount || 0
+      casesToResultCount: response?.countsByState?.toResultCount || 0,
+      casesOnHoldCount: response?.countsByState?.onHoldCount || 0
     },
     title,
     currentUserUuid: res.locals.user.uuid,

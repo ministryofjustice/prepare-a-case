@@ -26,8 +26,8 @@
             "defendantId": "81b6e516-4e9d-4c92-a38b-68e159cfd6c4",
             "hearingDate": "2023-07-05T09:30:00",
             "probationStatus": "Current",
-            "assignedTo": "Mr Holder",
-            "assignedToUuid": "d85eef94-d166-4ff7-86b7-67eae70acc8e",
+            "assignedTo": "Mr Holder",      
+            "assignedToUuid": "b2679ef7-084d-4f7f-81dd-2d44aae74cbb",
             "offences": [
               "Im",
               "On",
@@ -39,7 +39,8 @@
         "countsByState": {
           "toResultCount": 8,
           "inProgressCount": 15,
-          "resultedCount": 9
+          "resultedCount": 9,
+          "onHoldCount": 55
         },
         "courtRoomFilters": ["02", "01", "1", "Courtroom 1", "2", "Crown Court 3-1"]
       }
