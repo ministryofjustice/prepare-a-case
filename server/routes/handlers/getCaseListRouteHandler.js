@@ -2,20 +2,33 @@ const getBaseDateString = require('../../utils/getBaseDateString')
 const { settings } = require('../../config')
 const features = require('../../utils/features')
 const trackEvent = require('../../utils/analytics.js')
+const queryParamBuilder = require('../../utils/queryParamBuilder.js')
 const workflow = require('../../utils/workflow')
 
+const createBaseUrl = (params, queryParams) => {
+  const { page, ...remainder } = queryParams
+  const builtQueryParamString = queryParamBuilder(remainder)
+  const questionMark = builtQueryParamString.length > 0
+  return `/${params.courtCode}/cases/${params.date}?${queryParamBuilder(remainder)}${questionMark ? '&' : ''}`
+}
+
+const getPagelessQueryParams = params => {
+  const { page, ...remainder } = params
+  return remainder
+}
 const getCaseListRouteHandler = caseService => async (req, res) => {
   const {
     redisClient: { getAsync },
     params: { courtCode, date, limit, subsection },
-    query: { page },
+    query: queryParams,
     session,
     path,
     params
   } = req
   const currentNotification = await getAsync('case-list-notification')
   const currentDate = date || getBaseDateString()
-  const response = await caseService.getCaseList(courtCode, currentDate, session.selectedFilters, subsection || (!date && session.currentView))
+  const response = await caseService.getCaseList(courtCode, currentDate, queryParams, subsection || (!date && session.currentView))
+
   if (response.isError) {
     trackEvent(
       'PiCPrepareACaseErrorTrace',
@@ -48,7 +61,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
   }
 
   const caseCount = response.cases.length
-  const startCount = ((parseInt(page, 10) - 1) || 0) * limit
+  const startCount = ((parseInt(queryParams.page, 10) - 1) || 0) * limit
   const endCount = Math.min(startCount + parseInt(limit, 10), caseCount)
 
   const context = { court: courtCode, username: res.locals.user.username }
@@ -71,7 +84,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
       date: currentDate,
       notification: currentNotification || '',
       filters: response.filters,
-      page: parseInt(page, 10) || 1,
+      page: parseInt(queryParams.page, 10) || 1,
       from: startCount,
       to: endCount,
       totalCount: response.totalCount,
@@ -83,8 +96,9 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
       casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
       enablePastCasesNavigation: settings.enablePastCasesNavigation,
       subsection: subsection || (!date && session.currentView) || '',
-      filtersApplied: !!session.selectedFilters && Object.keys(session.selectedFilters).length,
-      snapshot: response.snapshot
+      filtersApplied: !!getPagelessQueryParams(queryParams) && Object.keys(getPagelessQueryParams(queryParams)).length > 0,
+      snapshot: response.snapshot,
+      baseUrl: createBaseUrl(params, queryParams)
     },
     data: response.cases.slice(startCount, endCount) || [],
     hearingOutcomesEnabled
