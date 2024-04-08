@@ -41,6 +41,22 @@ const features = {
     isEnv('dev', 'preprod', 'prod')
   ),
   pastCasesNavigation: enabledForAll(),
+  workflow: anyOf(
+    allOf(
+      isEnv('dev'),
+      mainFeatureToggleEnabled('enableWorkflow')
+    ),
+    allOf(
+      isEnv('preprod'),
+      mainFeatureToggleEnabled('enableWorkflow'),
+      enabledForCourts(...PILOT_COURTS)
+    ),
+    allOf(
+      isEnv('prod'),
+      mainFeatureToggleEnabled('enableWorkflow'),
+      enabledForCourts(...PILOT_COURTS)
+    )
+  ),
   hearingOutcomes: anyOf(
     allOf(
       isEnv('dev'),
