@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "PUT",
-    "urlPathPattern": "/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/prep-status/[A-Z_]*"
+    "urlPathPattern": "/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendants/8597a10b-d330-43e5-80c3-27ce3b46979f/prep-status/[A-Z_]*"
   },
   "response": {
     "headers": {
