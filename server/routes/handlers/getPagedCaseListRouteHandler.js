@@ -4,12 +4,20 @@ const features = require('../../utils/features')
 const trackEvent = require('../../utils/analytics.js')
 const workflow = require('../../utils/workflow')
 const queryParamBuilder = require('../../utils/queryParamBuilder.js')
+const moment = require('moment')
+
+const getTodaysDate = () => {
+  return moment(new Date()).format('YYYY-MM-DD')
+}
 
 const createBaseUrl = (params, queryParams) => {
   const { page, ...remainder } = queryParams
   const builtQueryParamString = queryParamBuilder(remainder)
   const questionMark = builtQueryParamString.length > 0
-  return `/${params.courtCode}/cases/${params.date}?${queryParamBuilder(remainder)}${questionMark ? '&' : ''}`
+
+  const date = params.date ? params.date : getTodaysDate()
+
+  return `/${params.courtCode}/cases/${date}?${queryParamBuilder(remainder)}${questionMark ? '&' : ''}`
 }
 
 const getPagelessQueryParams = params => {
