@@ -1,6 +1,7 @@
 const moment = require('moment')
 const getNextHearing = require('../../utils/getNextHearing')
 const featuresToggles = require('../../utils/features')
+const trackEvent = require('../../utils/analytics')
 
 const {
   settings
@@ -82,9 +83,27 @@ const caseSummaryHandler = utils => async (req, res) => {
 }
 
 const caseSummaryPostHandler = utils => async (req, res) => {
+  const { params: { courtCode, hearingId, defendantId }, session } = req
   const { action } = req.body
   const templateValues = await utils.getCaseAndTemplateValues(req)
+  
+  if (action === 'moveToResulted') {
+    await utils.updateHearingOutcomeToResulted(hearingId, defendantId)
 
+    trackEvent(
+      'PiCPrepareACaseHearingOutcomes',
+      {
+        operation: 'updateHearingOutcomeToResultedFromDefendantSummary',
+        hearingId,
+        courtCode,
+        userId: res.locals.user.userId
+      }
+    )
+
+    session.moveToResultedSuccess = req.query.defendantName
+
+    res.redirect(`/${courtCode}/outcomes/in-progress`)
+  }
   handleButtonAction(templateValues, action, res, req, utils)
 }
 
@@ -109,10 +128,7 @@ const handleButtonAction = (templateValues, action, res, req, utils) => {
     case 'unlinkNdelius':
       return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/unlink/${crn}`)
     case 'linkNdelius':
-      return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)
-    case 'moveToResulted':
-      req.flash('moved-to-resulted', `You have moved ${formattedName}'s case to resulted cases.`)
-      res.redirect(`/${courtCode}/outcomes/in-progress`)
+      return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)      
   }
 }
 
