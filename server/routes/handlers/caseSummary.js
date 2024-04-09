@@ -83,30 +83,10 @@ const caseSummaryHandler = utils => async (req, res) => {
 }
 
 const caseSummaryPostHandler = utils => async (req, res) => {
-  const { params: { courtCode, hearingId, defendantId }, session } = req
   const { action } = req.body
   const templateValues = await utils.getCaseAndTemplateValues(req)
-  const { apostropheInName, properCase, removeTitle } = utils.nunjucksFilters
-  const {defendantName } = templateValues.data
 
-  if (action === 'moveToResulted') {
-    await utils.updateHearingOutcomeToResulted(hearingId, defendantId)
-
-    trackEvent(
-      'PiCPrepareACaseHearingOutcomes',
-      {
-        operation: 'updateHearingOutcomeToResultedFromDefendantSummary',
-        hearingId,
-        courtCode,
-        userId: res.locals.user.userId
-      }
-    )
-
-    session.moveToResultedSuccess = removeTitle(properCase(apostropheInName(defendantName)))
-
-    res.redirect(`/${courtCode}/outcomes/in-progress`)
-  }
-  handleButtonAction(templateValues, action, res, req, utils)
+  await handleButtonAction(templateValues, action, res, req, utils)
 }
 
 const isAssignedToUser = (userUuid, hearingOutcome) => {
@@ -120,16 +100,41 @@ const getHearingOutcome = (hearingId, hearings) => {
   return hearing ? hearing.hearingOutcome : null
 }
 
-const handleButtonAction = (templateValues, action, res, req, utils) => {
+const handleButtonAction = async (templateValues, action, res, req, utils) => {
   const { caseId, hearingId, defendantId, crn } = templateValues.data
   const { courtCode } = templateValues.params
-  
+
   switch (action) {
     case 'unlinkNdelius':
       return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/unlink/${crn}`)
     case 'linkNdelius':
       return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)
+    case 'moveToResulted':
+      await moveToResulted(res, req, utils, templateValues)
   }
+}
+
+const moveToResulted = async (res, req, utils, templateValues) => {
+  const { params: { courtCode, hearingId, defendantId } } = req
+  const { apostropheInName, properCase, removeTitle } = utils.nunjucksFilters
+  const { defendantName } = templateValues.data
+
+  await utils.updateHearingOutcomeToResulted(hearingId, defendantId)
+
+  trackEvent(
+    'PiCPrepareACaseHearingOutcomes',
+    {
+      operation: 'updateHearingOutcomeToResultedFromDefendantSummary',
+      hearingId,
+      courtCode,
+      userId: res.locals.user.userId
+    }
+  )
+
+  const formattedName = removeTitle(properCase(apostropheInName(defendantName)))
+
+  req.flash('moved-to-resulted', `You have moved ${formattedName}'s case to resulted cases.`)
+  res.redirect(`/${courtCode}/outcomes/in-progress`)
 }
 
 const getActionButtons = (templateValues) => {
