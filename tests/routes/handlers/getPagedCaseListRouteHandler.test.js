@@ -23,6 +23,7 @@ describe('getPagedCaseListRouteHandler', () => {
   })
 
   const mockCaseResult = () => ({
+    hearingPrepStatus: 'COMPLETE',
     workflow: {
       tasks: {
         prep: {
