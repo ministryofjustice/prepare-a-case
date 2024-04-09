@@ -39,6 +39,7 @@ const workflow = {
 beforeEach(() => {
   jest.replaceProperty(settings, 'casesTotalDays', 13)
   jest.replaceProperty(settings, 'casesPastDays', 6)
+  jest.replaceProperty(settings, 'enableWorkflow', true)
 })
 
 describe('getCaseListRouteHandler', () => {
@@ -63,7 +64,7 @@ describe('getCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getCaseList).toHaveBeenCalled()
-    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false)
+    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { page: 1 }, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('error', { status: 500 })
   })
@@ -89,7 +90,7 @@ describe('getCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getCaseList).toHaveBeenCalled()
-    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false)
+    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { page: 1 }, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
@@ -116,7 +117,8 @@ describe('getCaseListRouteHandler', () => {
           totalDays: 13,
           casesPastDays: 6,
           unmatchedRecords: 2,
-          enablePastCasesNavigation: true
+          enablePastCasesNavigation: true,
+          baseUrl: '/ABC/cases/2020-11-11?'
         },
         hearingOutcomesEnabled: false
       })
@@ -142,7 +144,7 @@ describe('getCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getCaseList).toHaveBeenCalled()
-    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false)
+    expect(caseService.getCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { page: 1 }, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
@@ -169,7 +171,59 @@ describe('getCaseListRouteHandler', () => {
           totalDays: 13,
           casesPastDays: 6,
           unmatchedRecords: 2,
-          enablePastCasesNavigation: false
+          enablePastCasesNavigation: false,
+          baseUrl: '/ABC/cases/2020-11-11?'
+        },
+        hearingOutcomesEnabled: false
+      })
+  })
+
+  it('should add query params to base url (except page)', async () => {
+    // Given
+    caseService.getCaseList.mockReturnValueOnce({
+      totalCount: 4,
+      addedCount: 2,
+      removedCount: 2,
+      unmatchedRecords: 2,
+      filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
+      cases: [mockCase(), mockCase(), mockCase(), mockCase()],
+      snapshot: '2020-10-10'
+    })
+
+    jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
+
+    // When
+    mockRequest.query = { ...mockRequest.query, someQueryParam: 'some-param-value' }
+    await subject(mockRequest, mockResponse)
+
+    // Then
+    expect(mockResponse.render).toHaveBeenCalledWith('case-list',
+      {
+        title: 'Cases',
+        data: [mockCaseResult(), mockCaseResult(), mockCaseResult(), mockCaseResult()],
+        params: {
+          workflow,
+          hearingOutcomesEnabled: false,
+          addedCount: 2,
+          caseCount: 4,
+          courtCode: 'ABC',
+          date: '2020-11-11',
+          filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
+          filtersApplied: true,
+          from: 0,
+          limit: 10,
+          notification: '',
+          page: 1,
+          removedCount: 2,
+          snapshot: '2020-10-10',
+          subsection: '',
+          to: 4,
+          totalCount: 4,
+          totalDays: 13,
+          casesPastDays: 6,
+          unmatchedRecords: 2,
+          enablePastCasesNavigation: false,
+          baseUrl: '/ABC/cases/2020-11-11?someQueryParam=some-param-value&'
         },
         hearingOutcomesEnabled: false
       })

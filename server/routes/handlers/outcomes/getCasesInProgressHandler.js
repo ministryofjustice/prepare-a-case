@@ -67,5 +67,4 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
 
   res.render('outcomes/casesInProgress', templateValues)
 }
-
 module.exports = getCasesInProgressHandler

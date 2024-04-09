@@ -1,6 +1,7 @@
 const express = require('express')
 const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
+const queryParamBuilder = require('../utils/queryParamBuilder')
 const {
   settings,
   notification,
@@ -325,14 +326,19 @@ module.exports = function Index ({ authenticationMiddleware }) {
         session,
         body
       } = req
+
       const currentDate = date || getBaseDateString()
-      session.selectedFilters = body
+
       session.courtCode = courtCode
+
+      const redirectUrl = `/${courtCode}/cases/${currentDate}${
+        subsection ? '/' + subsection : ''
+      }`
+      const queryParams = queryParamBuilder(body)
+
       res.redirect(
         302,
-        `/${courtCode}/cases/${currentDate}${
-          subsection ? '/' + subsection : ''
-        }`
+        `${redirectUrl}?${queryParams}`
       )
     })
   )
