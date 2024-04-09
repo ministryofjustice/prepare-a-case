@@ -86,7 +86,9 @@ const caseSummaryPostHandler = utils => async (req, res) => {
   const { params: { courtCode, hearingId, defendantId }, session } = req
   const { action } = req.body
   const templateValues = await utils.getCaseAndTemplateValues(req)
-  
+  const { apostropheInName, properCase, removeTitle } = utils.nunjucksFilters
+  const {defendantName } = templateValues.data
+
   if (action === 'moveToResulted') {
     await utils.updateHearingOutcomeToResulted(hearingId, defendantId)
 
@@ -100,7 +102,7 @@ const caseSummaryPostHandler = utils => async (req, res) => {
       }
     )
 
-    session.moveToResultedSuccess = req.query.defendantName
+    session.moveToResultedSuccess = removeTitle(properCase(apostropheInName(defendantName)))
 
     res.redirect(`/${courtCode}/outcomes/in-progress`)
   }
@@ -119,16 +121,14 @@ const getHearingOutcome = (hearingId, hearings) => {
 }
 
 const handleButtonAction = (templateValues, action, res, req, utils) => {
-  const { caseId, hearingId, defendantId, crn, defendantName } = templateValues.data
+  const { caseId, hearingId, defendantId, crn } = templateValues.data
   const { courtCode } = templateValues.params
-  const { apostropheInName, properCase, removeTitle } = utils.nunjucksFilters
-  const formattedName = removeTitle(properCase(apostropheInName(defendantName)))
-
+  
   switch (action) {
     case 'unlinkNdelius':
       return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/unlink/${crn}`)
     case 'linkNdelius':
-      return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)      
+      return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)
   }
 }
 
