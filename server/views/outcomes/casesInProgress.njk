@@ -52,6 +52,24 @@
     {{ offences.push('</ol>') }}
   {% endif %}
 
+  {% set actionButtonHtml %}
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: 'Move to resulted',
+      classes: ('govuk-!-width-three-quarters' if assignedToCurrentUser else "govuk-button--secondary govuk-!-width-three-quarters"),
+      href: ('hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/move-to-resulted?defendantName=' + item.defendantName) if assignedToCurrentUser else '',
+      disabled: not assignedToCurrentUser
+    }) }}
+
+    {{ govukButton({
+      text: 'Put on hold',
+      classes: "govuk-button--secondary govuk-!-width-three-quarters",
+      href: ('hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/move-to-on-hold?defendantName=' + item.defendantName) if assignedToCurrentUser else '',
+      disabled: not assignedToCurrentUser
+    }) }}
+    </div>
+  {% endset %}
+
 
   {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
   {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
@@ -63,12 +81,7 @@
     { text: ('<div>' + ('<span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span>' | safe if notMatched ) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched)) | safe },
     { text: offences | join('') | safe },
     { text: moment(item.hearingDate, 'YYYY-MM-DD').format("D MMM YYYY"), format: 'numeric' },
-    { text:  govukButton({
-      text: 'Move to resulted',
-      classes: ('' if assignedToCurrentUser else "govuk-button--secondary"),
-      href: ('hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/move-to-resulted?defendantName=' + item.defendantName) if assignedToCurrentUser else '',
-      disabled: not assignedToCurrentUser
-    }) }
+    { text:  actionButtonHtml | safe }
   ] -%}
   {{ tableData.rows.push(tableRow) }}
 

@@ -16,6 +16,8 @@ const getOnHoldCasesHandler = caseService => async (req, res) => {
     state
   )
 
+  const flashMessage = req.flash('move-to-on-hold')
+
   const cases = response.cases
 
   const courtRoomFilter = {
@@ -54,7 +56,8 @@ const getOnHoldCasesHandler = caseService => async (req, res) => {
     data: cases || [],
     displayFilters: response.cases?.length || filtersApplied,
     totalPages: response.totalPages,
-    totalElements: response.totalElements
+    totalElements: response.totalElements,
+    flashMessage
   }
 
   res.render('outcomes/casesOnHold', templateValues)

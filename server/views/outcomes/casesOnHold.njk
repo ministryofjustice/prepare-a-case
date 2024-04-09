@@ -118,19 +118,6 @@
     }) }}
   {% endif %}
 
-
-  {% if moveToResultedSuccess | length %}
-    {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-    {% set html %}
-      <p class="govuk-notification-banner__heading">
-        You have moved {{ moveToResultedSuccess | apostropheInName | properCase | removeTitle }}'s case to resulted cases.
-      </p>
-    {% endset %}
-    {{ govukNotificationBanner({
-      html: html,
-      type: 'success'
-    }) }}
-  {% endif %}
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-6" aria-label="{{ title }}">{{ title }}</h1>
 
   {% if displayFilters %}
@@ -151,7 +138,7 @@
   }) }}
 
   <div class="govuk-tabs__panel">
-    <h1 class="govuk-heading-l">In progress</h1>
+    <h1 class="govuk-heading-l">On hold</h1>
     {% if tableData.rows | length %}
       {% block table %}
         {%- from "govuk/components/table/macro.njk" import govukTable -%}
@@ -162,7 +149,7 @@
     {% if params.filtersApplied %}
         <span class="govuk-heading-m">0 cases</span>
       {% endif %}
-      <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "There are no cases in progress." }}</p>
+      <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "There are no cases on hold." }}</p>
     {% endif %}
   </div>
 

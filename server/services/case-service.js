@@ -368,6 +368,11 @@ const createCaseService = apiUrl => {
       await create(urlString)
     },
 
+    updateHearingOutcomeToOnHold: async (hearingId, defendantId) => {
+      const urlString = `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/on-hold`
+      await create(urlString)
+    },
+
     searchCases: async (term, type, page, pageSize) => {
       try {
         return await request(`${apiUrl}/search`, {
