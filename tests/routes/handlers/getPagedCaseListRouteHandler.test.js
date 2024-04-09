@@ -2,12 +2,13 @@
 
 const { settings } = require('../../../server/config')
 
-beforeEach(() => {
-  jest.replaceProperty(settings, 'casesTotalDays', 13)
-  jest.replaceProperty(settings, 'casesPastDays', 6)
-})
-
 describe('getPagedCaseListRouteHandler', () => {
+  beforeEach(() => {
+    jest.replaceProperty(settings, 'casesTotalDays', 13)
+    jest.replaceProperty(settings, 'casesPastDays', 6)
+    jest.replaceProperty(settings, 'enableWorkflow', true)
+  })
+
   const { caseServiceMock: caseService, mockResponse } = require('./test-helpers')
   const subject = require('../../../server/routes/handlers/getPagedCaseListRouteHandler')(caseService)
   const mockRequest = {
@@ -58,7 +59,7 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 20, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', mockRequest.query, false, 1, 20, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('error', { status: 500 })
   })
@@ -82,7 +83,7 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 20, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', mockRequest.query, false, 1, 20, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
@@ -106,7 +107,8 @@ describe('getPagedCaseListRouteHandler', () => {
           totalDays: 13,
           casesPastDays: 6,
           unmatchedRecords: 2,
-          enablePastCasesNavigation: true
+          enablePastCasesNavigation: true,
+          baseUrl: '/ABC/cases/2020-11-11?'
         },
         hearingOutcomesEnabled: false
       })
@@ -130,7 +132,7 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', undefined, false, 1, 20, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', mockRequest.query, false, 1, 20, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
@@ -154,7 +156,8 @@ describe('getPagedCaseListRouteHandler', () => {
           totalDays: 13,
           casesPastDays: 6,
           unmatchedRecords: 2,
-          enablePastCasesNavigation: false
+          enablePastCasesNavigation: false,
+          baseUrl: '/ABC/cases/2020-11-11?'
         },
         hearingOutcomesEnabled: false
       })
