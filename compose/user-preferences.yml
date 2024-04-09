@@ -17,8 +17,7 @@ services:
     depends_on:
       hmpps-user-preferences-db:
         condition: service_healthy
-      hmpps-auth:
-        condition: service_healthy
+
     networks:
       - hmpps
     entrypoint: ["java", "-javaagent:/app/agent.jar", "-jar", "/app/app.jar"]

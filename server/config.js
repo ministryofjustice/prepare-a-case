@@ -22,6 +22,30 @@ const requiredInProduction = { requireInProduction: true }
 const getCsvParamAsArray = param => get(param, '')?.split(',').map(value => value.trim())
 
 module.exports = {
+  defaults: {
+    port: 3000,
+    middleware: [
+      'version',
+      'proxy',
+      'nunjucks',
+      'parsers',
+      'compression',
+      'cacheControl',
+      'contentSecurityPolicy',
+      'session',
+      'bannerFlash',
+      'publicResources',
+      'maintenanceMode',
+      'responseMetric',
+      'unauthorizedResources',
+      'roles',
+      'features',
+      'authorizedResources',
+      'badAuth',
+      'notFound',
+      'errors'
+    ]
+  },
   settings: {
     defaultTimeout: get('DEFAULT_TIMEOUT', 6000),
     healthTimeout: 2000,
@@ -287,5 +311,6 @@ module.exports = {
   },
   features: {
     sendPncAndCroWithOffenderUpdates: false
-  }
+  },
+  isProduction: production
 }

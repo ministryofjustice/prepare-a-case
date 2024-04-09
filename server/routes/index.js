@@ -7,7 +7,7 @@ const {
   session: { cookieOptions },
   features: { sendPncAndCroWithOffenderUpdates }
 } = require('../config')
-const { updateSelectedCourts } = require('../services/user-preference-service')
+const { updateSelectedCourts } = require('../services/userPreferences')
 const {
   getCaseList,
   getMatchDetails,
@@ -28,7 +28,7 @@ const {
 } = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
 
-const { health } = require('./middleware/healthcheck')
+
 const { defaults } = require('./middleware/defaults')
 const {
   getCaseListHandler,
@@ -60,14 +60,12 @@ const {
 } = require('./handlers')
 const features = require('../utils/features')
 
-module.exports = function Index ({ authenticationMiddleware }) {
+module.exports = function Index () {
   const router = express.Router()
-  router.use(authenticationMiddleware())
-  router.use(health)
 
   router.use((req, res, next) => {
     const { path, url, cookies } = req
-    res.locals.analyticsCookies = req.cookies && req.cookies.analyticsCookies
+    res.locals.analyticsCookies = req.cookies?.analyticsCookies
     if (cookies && cookies.currentCourt) {
       res.cookie('currentCourt', cookies.currentCourt, cookieOptions)
     }

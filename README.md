@@ -101,6 +101,8 @@ You may notice a lot of commands don't use ```npx``` - and this is with good rea
 
 ## For development
 
+Node Debugger is available. Open chrome://inspect and ensure port 9229 is added. You may need to refresh the page for it to appear.
+
 With the docker containers up several commands add additional testing functionality.
 
 To run all tests use ```npm test```

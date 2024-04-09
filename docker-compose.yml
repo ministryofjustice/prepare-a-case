@@ -104,5 +104,6 @@ services:
         condition: service_started
     ports:
       - '3000:3000'
+      - '9229:9229'
     restart: always
 

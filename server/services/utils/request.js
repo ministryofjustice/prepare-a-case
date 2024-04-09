@@ -1,22 +1,71 @@
-const axios = require('axios').default
-const { settings: { defaultTimeout } } = require('../../config')
+// A library for communicating with shared MoJ services using the oauth JWT token.
 
-const request = async (url, queryParams) => {
-  return await axios.get(url, { headers: { Accept: 'application/json' }, params: queryParams, timeout: defaultTimeout })
+// used for get, delete
+const fetchJSON = async (method, ServiceError, customHeaders, url, urlSearchParams) => {
+
+  const fullURL = url + (urlSearchParams? urlSearchParams.toString() : '')
+  try {
+    var response = await fetch(fullURL, {
+      method,
+      headers: { ...jsonHeaders, ...customHeaders } 
+    })
+    if (!response.ok) {
+      throw new Error("Response not ok!")
+    }
+    return {
+      meta: response.headers,
+      data: response.json()
+    }
+  } catch (e) {
+    const error = new ServiceError(e.message, { url:fullURL, headers }, response)
+    error.stack = e.stack
+    throw error
+  }
 }
 
-const requestFile = async url => await axios.get(url, { responseType: 'stream', timeout: defaultTimeout })
+// used for post, put, patch
+const sendJSON = async (method, ServiceError, customHeaders, url, json) => {
 
-const update = async (url, data) => await axios.put(url, data, { headers: { Accept: 'application/json' }, timeout: defaultTimeout })
+  try {
+    var response = await fetch(url, {
+      method,
+      headers: { ...jsonHeaders, ...customHeaders },
+      body: JSON.stringify(json)
+    })
+    if (!response.ok) {
+      throw new Error("Response not ok!")
+    }
+    return {
+      meta: response.headers,
+      data: response.json()
+    }
+  } catch (e) {
+    const error = new ServiceError(e.message, { url:fullURL, headers }, response)
+    error.stack = e.stack
+    throw error
+  }
+}
 
-const create = async (url, data) => await axios.post(url, data, { headers: { Accept: 'application/json' }, timeout: defaultTimeout })
+module.exports = ServiceError => {
 
-const httpDelete = async (url) => await axios.delete(url, { headers: { Accept: 'application/json' }, timeout: defaultTimeout })
+  const headers = {
+    Authorization: 'Bearer ' + token
+  }
+  const jsonHeaders = {
+    ...headers,
+    Accept: 'application/json'
+  }
 
-module.exports = {
-  request,
-  requestFile,
-  update,
-  httpDelete,
-  create
+  return {
+    getJSON: (customHeaders, url, urlSearchParams) => 
+      fetchJSON('GET', ServiceError, { ...jsonHeaders, ...customHeaders }, url, urlSearchParams),
+    deleteJSON: (customHeaders, url, urlSearchParams) => 
+      fetchJSON('DELETE', ServiceError, { ...jsonHeaders, ...customHeaders }, url, urlSearchParams),
+    putJSON: (customHeaders, url, json) => 
+      sendJSON('PUT', ServiceError, { ...jsonHeaders, ...customHeaders }, url, json),
+    postJSON: (customHeaders, url, json) => 
+      sendJSON('POST', ServiceError, { ...jsonHeaders, ...customHeaders }, url, json),
+    patchJSON: (customHeaders, url, json) => 
+      sendJSON('PATCH', ServiceError, { ...jsonHeaders, ...customHeaders }, url, json)
+  }
 }

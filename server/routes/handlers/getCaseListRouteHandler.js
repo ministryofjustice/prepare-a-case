@@ -15,6 +15,7 @@ const getCaseListRouteHandler = caseService => async (req, res) => {
   const currentNotification = await getAsync('case-list-notification')
   const currentDate = date || getBaseDateString()
   const response = await caseService.getCaseList(courtCode, currentDate, session.selectedFilters, subsection || (!date && session.currentView))
+
   if (response.isError) {
     trackEvent(
       'PiCPrepareACaseErrorTrace',

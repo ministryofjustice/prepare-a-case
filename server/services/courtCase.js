@@ -1,19 +1,194 @@
-const { request, update, httpDelete, create } = require('./utils/request')
+const apiUrl = require('../config').services.courtCase.url
+const CourtCaseServiceError = require('./utils/CourtCaseServiceError')
+const requestor = require('./utils/request')(CourtCaseServiceError)
+const proxy = require('express-http-proxy')
+
+
+module.exports = token => {
+
+  const { getJSON, putJSON, postJSON, deleteJSON } = requestor(token)
+
+  return {
+
+    getCaseHistory: caseId => 
+      getJSON({}, `${apiUrl}/cases/${caseId}`),
+
+    getMatchDetails: defendantId => 
+      getJSON({}, `${apiUrl}/defendant/${defendantId}/matchesDetail`),
+
+    files: {
+
+      delete: (hearingId, defendantId, fileId) =>
+        deleteJSON({}, `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/file/${fileId}`),
+
+      post: (req, res, next, responseFormatter, hearingId, defendantId) =>
+        proxy(apiUrl, {
+          parseReqBody: false,
+          proxyReqOptDecorator: proxyReqOpts => {
+            proxyReqOpts.headers.Authorization = `Bearer ${token}`
+            return proxyReqOpts
+          },
+          proxyReqPathResolver: () => {
+            return `/hearing/${hearingId}/defendant/${defendantId}/file`
+          },
+          userResDecorator: (proxyRes, proxyResData) => {
+            // anything 400+ will be forwarded to next() by the proxy however this still runs so we need to handle
+            if (proxyRes.statusCode >= 400) {
+              return proxyResData
+            }
+            if (proxyRes.statusCode === 201) {
+              if (!proxyRes.rawHeaders.includes('application/json')) {
+                throw new TypeError(
+                  `Non JSON response for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/file`
+                )
+              }
+              return JSON.stringify(
+                responseFormatter(JSON.parse(proxyResData.toString('utf8')))
+              )
+            }
+            throw new TypeError(
+              `Invalid response status code for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/file`
+            )
+          }
+        })(req, res, next),
+
+      getRaw: (
+        req,
+        res,
+        next,
+        skipToNextHandlerFilter,
+        hearingId,
+        defendantId,
+        fileId
+      ) =>
+        proxy(apiUrl, {
+          proxyReqOptDecorator: proxyReqOpts => {
+            proxyReqOpts.headers.Authorization = `Bearer ${token}`
+            return proxyReqOpts
+          },
+          proxyReqPathResolver: () => {
+            return `/hearing/${hearingId}/defendant/${defendantId}/file/${fileId}/raw`
+          },
+          skipToNextHandlerFilter
+        })(req, res, next)
+    },
+
+    getCase: (hearingId, defendantId) =>
+      getJSON({}, `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`),
+    
+    updateOffender: (defendantId, offenderData) =>
+      putJSON({}, `${apiUrl}/defendant/${defendantId}/offender`, offenderData),
+  
+    deleteOffender: defendantId => 
+      deleteJSON({}, `${apiUrl}/defendant/${defendantId}/offender`),
+  
+    addCaseComment: (caseId, defendantId, comment, author) =>
+      postJSON({}, `${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments`, {
+        caseId,
+        comment,
+        author
+      }),
+
+    updateCaseComment: (caseId, defendantId, commentId, comment, author) =>
+      putJSON({}, `${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/${commentId}`, {
+        caseId,
+        comment,
+        author
+      }),
+
+    deleteCaseComment: (caseId, defendantId, commentId) =>
+      deleteJSON({}, `${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/${commentId}`),
+
+    addHearingOutcome: (hearingId, defendantId, hearingOutcomeType) =>
+      putJSON({}, `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome`, {
+        hearingOutcomeType
+      }),
+
+    assignHearingOutcome: (hearingId, defendantId, assignedTo) =>
+      putJSON({}, `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/assign`, {
+        assignedTo
+      }),
+    
+    saveDraftCaseComment: (caseId, defendantId, comment, author) =>
+      putJSON({}, `${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/draft`, {
+        caseId,
+        comment,
+        author
+      }),
+
+    deleteCaseCommentDraft: async (caseId, defendantId) => {
+      try {
+        await deleteJSON({}, `${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/draft`)
+      } catch (e) {
+        if (e.response?.status === 404) {
+          return // if the comment draft has never been saved, delete would return 404 which we should be ignoring it.
+        }
+        throw e
+      }
+    },
+
+    getOutcomeTypes: () =>
+      getJSON({}, `${apiUrl}/hearing-outcome-types`),
+
+    addHearingNote:  (hearingId, note, author, defendantId) =>
+      postJSON({}, `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes`,
+        { hearingId, note, author }
+      ),
+
+    saveDraftHearingNote: (hearingId, note, author, defendantId) =>
+      putJSON({}, `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/draft`,
+        { hearingId, note, author }
+      ),
+
+    updateHearingNote: (hearingId, note, noteId, author, defendantId) =>
+      putJSON({}, `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/${noteId}`,
+        { hearingId, note, author, noteId }
+      ),
+
+    deleteHearingNote: (hearingId, noteId, defendantId) =>
+      deleteJSON({}, `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/${noteId}`),
+
+    deleteHearingNoteDraft: async (hearingId, defendantId) => {
+      try {
+        await deleteJSON({}, `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/draft`)
+      } catch (e) {
+        if (e.response?.status === 404) {
+          return // if the note draft has never been saved, delete would return 404 which we should be ignoring it.
+        }
+        throw e
+      }
+    },
+
+    updateHearingOutcomeToResulted: (hearingId, defendantId) =>
+      postJSON(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/result`),
+
+    searchCases: async (term, type, page, pageSize) => {
+      try {
+        return getJSON(`${apiUrl}/search`, {
+          term,
+          type,
+          page,
+          size: pageSize
+        })
+      } catch (e) {
+        // TODO: why are we doing this, why should the service generate a 404?
+        if (e.response?.status === 404) {
+          return { data: {} }
+        }
+        throw e
+      }
+    },
+
+}
+
+/* TODO - EVERYTHING BELOW! */
+
+
 const getCaseListFilters = require('../utils/getCaseListFilters')
 const getLatestSnapshot = require('../utils/getLatestSnapshot')
 const config = require('../config')
 const { prepareCourtRoomFilters } = require('../routes/helpers')
 const { settings } = require('../config')
-const proxy = require('express-http-proxy')
-
-const isHttpSuccess = response => {
-  return response && response.status / 100 === 2
-}
-
-const getInternalServerErrorResponse = res => ({
-  isError: true,
-  status: res?.status || 500
-})
 
 const defaultFilterMatcher = (courtCase, filterObj, item) =>
   courtCase[filterObj.id]
@@ -21,21 +196,11 @@ const defaultFilterMatcher = (courtCase, filterObj, item) =>
       item.value.toString().toLowerCase()
     : false
 
-const allowedSortValues = ['ASC', 'DESC']
-const allowedStates = ['NEW', 'IN_PROGRESS', 'RESULTED']
 
-const createCaseService = apiUrl => {
-  return {
-    getCaseHistory: async caseId => {
-      const res = await request(`${apiUrl}/cases/${caseId}`)
-      return res.data
-    },
-    getMatchDetails: async defendantId => {
-      const res = (await request(
-        `${apiUrl}/defendant/${defendantId}/matchesDetail`
-      )) || { data: {} }
-      return res.data
-    },
+const allowedSortValues = Object.freeze(['ASC', 'DESC'])
+const allowedStates = Object.freeze(['NEW', 'IN_PROGRESS', 'RESULTED'])
+
+
     getPagedCaseList: async (
       courtCode,
       date,
@@ -91,9 +256,6 @@ const createCaseService = apiUrl => {
       }
 
       const response = await request(apiUrlBuilder.href)
-      if (!isHttpSuccess(response)) {
-        return getInternalServerErrorResponse(response)
-      }
 
       const caseListFilters = [
         {
@@ -175,9 +337,7 @@ const createCaseService = apiUrl => {
       const response = await request(
         `${apiUrl}/court/${courtCode}/cases?date=${date}`
       )
-      if (!isHttpSuccess(response)) {
-        return getInternalServerErrorResponse(response)
-      }
+
       const { data } = response
       const filters = getCaseListFilters(data.cases, selectedFilters)
       const allCases = []
@@ -246,62 +406,6 @@ const createCaseService = apiUrl => {
       }
     },
 
-    files: {
-      delete: (hearingId, defendantId, fileId) =>
-        httpDelete(
-          `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/file/${fileId}`
-        ),
-      post: (req, res, next, responseFormatter, hearingId, defendantId) =>
-        proxy(apiUrl, {
-          parseReqBody: false,
-          proxyReqOptDecorator: proxyReqOpts => {
-            proxyReqOpts.headers.Authorization = `Bearer ${req.user.token}`
-            return proxyReqOpts
-          },
-          proxyReqPathResolver: () => {
-            return `/hearing/${hearingId}/defendant/${defendantId}/file`
-          },
-          userResDecorator: (proxyRes, proxyResData) => {
-            // anything 400+ will be forwarded to next() by the proxy however this still runs so we need to handle
-            if (proxyRes.statusCode >= 400) {
-              return proxyResData
-            }
-            if (proxyRes.statusCode === 201) {
-              if (!proxyRes.rawHeaders.includes('application/json')) {
-                throw new TypeError(
-                  `Non JSON response for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/file`
-                )
-              }
-              return JSON.stringify(
-                responseFormatter(JSON.parse(proxyResData.toString('utf8')))
-              )
-            }
-            throw new TypeError(
-              `Invalid response status code for ${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/file`
-            )
-          }
-        })(req, res, next),
-      getRaw: (
-        req,
-        res,
-        next,
-        skipToNextHandlerFilter,
-        hearingId,
-        defendantId,
-        fileId
-      ) =>
-        proxy(apiUrl, {
-          proxyReqOptDecorator: proxyReqOpts => {
-            proxyReqOpts.headers.Authorization = `Bearer ${req.user.token}`
-            return proxyReqOpts
-          },
-          proxyReqPathResolver: () => {
-            return `/hearing/${hearingId}/defendant/${defendantId}/file/${fileId}/raw`
-          },
-          skipToNextHandlerFilter
-        })(req, res, next)
-    },
-
     getOutcomesList: async (courtCode, filters, sorts, state) => {
       const paramMap = new URLSearchParams()
 
@@ -355,135 +459,9 @@ const createCaseService = apiUrl => {
       const urlString = `${apiUrl}/courts/${courtCode}/hearing-outcomes?${paramMap}`
 
       const response = await request(urlString)
-      if (!isHttpSuccess(response)) {
-        return getInternalServerErrorResponse(response)
-      }
+
       return response.data
     },
 
-    updateHearingOutcomeToResulted: async (hearingId, defendantId) => {
-      const urlString = `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/result`
-      await create(urlString)
-    },
-
-    searchCases: async (term, type, page, pageSize) => {
-      try {
-        return await request(`${apiUrl}/search`, {
-          term,
-          type,
-          page,
-          size: pageSize
-        })
-      } catch (e) {
-        if (e.response && e.response.status === 404) {
-          return { data: {} }
-        }
-        throw e
-      }
-    },
-
-    getCase: async (hearingId, defendantId) => {
-      const res = await request(
-        `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`
-      )
-      if (!isHttpSuccess(res)) {
-        return getInternalServerErrorResponse(res)
-      }
-      return res.data
-    },
-    updateOffender: async (defendantId, offenderData) => {
-      return await update(
-        `${apiUrl}/defendant/${defendantId}/offender`,
-        offenderData
-      )
-    },
-    deleteOffender: async defendantId => {
-      return await httpDelete(`${apiUrl}/defendant/${defendantId}/offender`)
-    },
-    addCaseComment: async (caseId, defendantId, comment, author) =>
-      await create(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments`, {
-        caseId,
-        comment,
-        author
-      }),
-    updateCaseComment: async (caseId, defendantId, commentId, comment, author) =>
-      await update(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/${commentId}`, {
-        caseId,
-        comment,
-        author
-      }),
-    deleteCaseComment: async (caseId, defendantId, commentId) => {
-      await httpDelete(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/${commentId}`)
-    },
-    addHearingNote: async (hearingId, note, author, defendantId) =>
-      await create(
-        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes`,
-        { hearingId, note, author }
-      ),
-    saveDraftHearingNote: async (hearingId, note, author, defendantId) =>
-      await update(
-        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/draft`,
-        { hearingId, note, author }
-      ),
-    updateHearingNote: async (hearingId, note, noteId, author, defendantId) =>
-      await update(
-        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/${noteId}`,
-        { hearingId, note, author, noteId }
-      ),
-    deleteHearingNote: async (hearingId, noteId, defendantId) =>
-      await httpDelete(
-        `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/${noteId}`
-      ),
-    deleteHearingNoteDraft: async (hearingId, defendantId) => {
-      try {
-        await httpDelete(
-          `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/notes/draft`
-        )
-      } catch (e) {
-        if (e.response?.status === 404) {
-          return // if the note draft has never been saved, delete would return 404 which we should be ignoring it.
-        }
-        throw e
-      }
-    },
-    addHearingOutcome: async (hearingId, defendantId, hearingOutcomeType) =>
-      await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome`, {
-        hearingOutcomeType
-      }),
-    assignHearingOutcome: async (hearingId, defendantId, assignedTo) => {
-      await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/assign`, {
-        assignedTo
-      })
-    },
-    saveDraftCaseComment: async (caseId, defendantId, comment, author) =>
-      await update(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/draft`, {
-        caseId,
-        comment,
-        author
-      }),
-    deleteCaseCommentDraft: async (caseId, defendantId) => {
-      try {
-        await httpDelete(`${apiUrl}/cases/${caseId}/defendants/${defendantId}/comments/draft`)
-      } catch (e) {
-        if (e.response?.status === 404) {
-          return // if the comment draft has never been saved, delete would return 404 which we should be ignoring it.
-        }
-        throw e
-      }
-    },
-    getOutcomeTypes: async () => {
-      const res = await request(`${apiUrl}/hearing-outcome-types`)
-      if (!isHttpSuccess(res)) {
-        return getInternalServerErrorResponse(res)
-      }
-      return res.data
-    }
   }
-}
-
-const defaultService = createCaseService(config.apis.courtCaseService.url)
-
-module.exports = {
-  ...defaultService,
-  createCaseService
 }

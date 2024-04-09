@@ -1,0 +1,28 @@
+{
+  "PREPARE_A_CASE": {
+    "required": true,
+    "features": [
+      
+    ]
+  },
+  "PREPARE_A_CASE_PILOT": {
+    "required": false,
+    "features": [
+      "CASE_DEFENDANT_FILES",
+      "CASE_DEFENDANT_COMMENTS"
+    ]
+  },
+  "PREPARE_A_CASE_BETA": {
+    "required": false,
+    "features": [
+
+    ]
+  },
+  "PREPARE_A_CASE_TEST": {
+    "required": false,
+    "features": [
+      "CASE_DEFENDANT_FILES",
+      "CASE_DEFENDANT_COMMENTS"
+    ]
+  }
+}
