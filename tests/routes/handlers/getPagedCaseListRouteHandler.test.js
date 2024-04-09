@@ -18,8 +18,33 @@ describe('getPagedCaseListRouteHandler', () => {
     path: '/SHF/cases'
   }
 
-  const mockCase = {
-    hearingPrepStatus: 'NOT_STARTED'
+  const mockCase = () => ({
+    hearingPrepStatus: 'COMPLETE'
+  })
+
+  const mockCaseResult = () => ({
+    workflow: {
+      tasks: {
+        prep: {
+          cssClass: 'govuk-tag--green',
+          id: 'COMPLETE',
+          lang: {
+            en: {
+              title: 'Complete'
+            }
+          }
+        }
+      }
+    }
+  })
+
+  const workflow = {
+    enabled: true,
+    tasks: {
+      prep: {
+        items: require('../../../server/utils/workflow').tasks.get('prep').states.getAllOrderBySequence
+      }
+    }
   }
 
   it('should render error page when getPagedCaseList returns errors', async () => {
@@ -40,11 +65,10 @@ describe('getPagedCaseListRouteHandler', () => {
   it('should successfully render case list returned by getPagedCaseList', async () => {
     // Given
     caseService.getPagedCaseList.mockReturnValueOnce({
-
       possibleMatchesCount: 2,
       recentlyAddedCount: 2,
       filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
-      cases: [mockCase, mockCase, mockCase, mockCase],
+      cases: [mockCase(), mockCase(), mockCase(), mockCase()],
       totalElements: 4
     })
 
@@ -62,9 +86,10 @@ describe('getPagedCaseListRouteHandler', () => {
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
         title: 'Cases',
-        data: [mockCase, mockCase, mockCase, mockCase],
+        data: [mockCaseResult(), mockCaseResult(), mockCaseResult(), mockCaseResult()],
         params: {
           hearingOutcomesEnabled: false,
+          workflow,
           addedCount: 2,
           caseCount: 4,
           courtCode: 'ABC',
@@ -92,7 +117,7 @@ describe('getPagedCaseListRouteHandler', () => {
       possibleMatchesCount: 2,
       recentlyAddedCount: 2,
       filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
-      cases: [mockCase, mockCase, mockCase, mockCase],
+      cases: [mockCase(), mockCase(), mockCase(), mockCase()],
       totalElements: 4
     })
 
@@ -109,9 +134,10 @@ describe('getPagedCaseListRouteHandler', () => {
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
         title: 'Cases',
-        data: [mockCase, mockCase, mockCase, mockCase],
+        data: [mockCaseResult(), mockCaseResult(), mockCaseResult(), mockCaseResult()],
         params: {
           hearingOutcomesEnabled: false,
+          workflow,
           addedCount: 2,
           caseCount: 4,
           courtCode: 'ABC',
