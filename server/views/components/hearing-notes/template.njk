@@ -30,7 +30,7 @@
                                         </strong>
                                     </div>
                                     {% endif %}
-                                    {{ previousNote.note }}
+                                    {{ previousNote.note | striptags(true) | escape | nl2br }}
                                 </span>
                             </div>
                             <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-3 hearing-note-links">
