@@ -246,6 +246,21 @@ const createCaseService = apiUrl => {
       }
     },
 
+    workflow: {
+      tasks: {
+        state: {
+          set: (taskId, state, { hearingId, defendantId }) =>
+            /* Note the original concept was workflow orientated using
+              `${apiUrl}/workflow/tasks/${taskId}/state?hearing=${hearingId}&defendant=${defendantId}`
+              (which would ideally be)
+              `${apiUrl}/workflow/${workflowId}/tasks/${taskId}/state`
+              however ccs implemented the pattern as below
+            */
+            update(`${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/prep-status/${state}`)
+        }
+      }
+    },
+
     files: {
       delete: (hearingId, defendantId, fileId) =>
         httpDelete(

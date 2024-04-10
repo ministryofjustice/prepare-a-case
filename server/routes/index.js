@@ -1,6 +1,7 @@
 const express = require('express')
 const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
+const queryParamBuilder = require('../utils/queryParamBuilder')
 const {
   settings,
   notification,
@@ -14,7 +15,8 @@ const {
   deleteOffender,
   updateOffender,
   getCaseHistory,
-  files: caseFiles
+  files: caseFiles,
+  workflow
 } = require('../services/case-service')
 const {
   getDetails,
@@ -324,14 +326,19 @@ module.exports = function Index ({ authenticationMiddleware }) {
         session,
         body
       } = req
+
       const currentDate = date || getBaseDateString()
-      session.selectedFilters = body
+
       session.courtCode = courtCode
+
+      const redirectUrl = `/${courtCode}/cases/${currentDate}${
+        subsection ? '/' + subsection : ''
+      }`
+      const queryParams = queryParamBuilder(body)
+
       res.redirect(
         302,
-        `/${courtCode}/cases/${currentDate}${
-          subsection ? '/' + subsection : ''
-        }`
+        `${redirectUrl}?${queryParams}`
       )
     })
   )
@@ -628,6 +635,19 @@ module.exports = function Index ({ authenticationMiddleware }) {
       res.render('case-summary-record-order-breach', templateValues)
     })
   )
+
+  if (settings.enableWorkflow) {
+    router.post('/workflow/tasks/:taskId/state', defaults, catchErrors(async (req, res) => {
+      const {
+        params: { taskId },
+        query: { hearing: hearingId, defendant: defendantId },
+        body: { state }
+      } = req
+
+      await workflow.tasks.state.set(taskId, state, { hearingId, defendantId })
+      res.json({})
+    }))
+  }
 
   router.get(
     '/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/licence-details',

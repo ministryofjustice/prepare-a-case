@@ -31,7 +31,7 @@ env:
   CASE_TRACKING_PRE_PILOT_USERS: joana.aguia,tony.howard,tfe58u,ravishankar.challapalli
   CASE_SEARCH_USERS: all
   ENABLE_SERVERSIDE_PAGING: true
-  ENABLE_MOVE_TO_RESULTED_ACTION: false
+  ENABLE_MOVE_TO_RESULTED_ACTION: true
 
 whitelist:
   office: "217.33.148.210/32"

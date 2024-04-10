@@ -22,3 +22,18 @@
   height: 220px;
   width: 90%;
 }
+
+.case-comment-warning {
+
+  &-container {
+    display: flex;
+    margin-left: 15px;
+    margin-bottom: 0;
+  }
+
+  &-icon {
+    display: flex;
+    align-items: center;
+  }
+
+}

@@ -31,16 +31,16 @@ Feature: Case comments
     Then I should see 10 previous comments
 
     And I should see the following comments with the comment, author and date commented on
-      | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 | Do not show delete link | Do not show edit link |
-      | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     | Do not show delete link | Do not show edit link |
-      | Comment Eight     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        |
-      | PSR completed     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        |
-      | Comment One       | Adam Sandler on 9 August 2022, 17:17        | Show delete link        | Show edit link        |
-      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17    | Show delete link        | Show edit link        |
-      | Comment Four      | Adam Sandler Four on 9 August 2022, 17:17   | Show delete link        | Show edit link        |
-      | Comment Five      | Adam Sandler 5 on 9 August 2022, 17:17      | Show delete link        | Show edit link        |
-      | Comment Seven     | Author Two on 9 August 2022, 17:17          | Show delete link        | Show edit link        |
-      |  PSR completed    | Author Two on 9 August 2022, 17:17          | Show delete link        | Show edit link        |
+      | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 | Do not show delete link | Do not show edit link | Not Legacy |
+      | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     | Do not show delete link | Do not show edit link | Not Legacy |
+      | Comment Eight     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        | Legacy     |
+      | PSR completed     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        | Not Legacy |
+      | Comment One       | Adam Sandler on 9 August 2022, 17:17        | Show delete link        | Show edit link        | Not Legacy |
+      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17    | Show delete link        | Show edit link        | Not Legacy |
+      | Comment Four      | Adam Sandler Four on 9 August 2022, 17:17   | Show delete link        | Show edit link        | Not Legacy |
+      | Comment Five      | Adam Sandler 5 on 9 August 2022, 17:17      | Show delete link        | Show edit link        | Not Legacy |
+      | Comment Seven     | Author Two on 9 August 2022, 17:17          | Show delete link        | Show edit link        | Not Legacy |
+      |  PSR completed    | Author Two on 9 August 2022, 17:17          | Show delete link        | Show edit link        | Not Legacy |
 
     And I should see a button with the label "Hide older comments"
 
@@ -48,12 +48,12 @@ Feature: Case comments
     Then I should see 6 previous comments
 
     And I should see the following comments with the comment, author and date commented on
-      | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 | Do not show delete link | Do not show edit link |
-      | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     | Do not show delete link | Do not show edit link |
-      | Comment Eight     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        |
-      | PSR completed     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        |
-      | Comment One       | Adam Sandler on 9 August 2022, 17:17        | Show delete link        | Show edit link        |
-      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17    | Show delete link        | Show edit link        |
+      | Comment Three     | Adam Sandler Three on 19 August 2022, 17:17 | Do not show delete link | Do not show edit link | Not Legacy |
+      | Comment Six       | Adam Sandler 6 on 19 August 2022, 17:17     | Do not show delete link | Do not show edit link | Not Legacy |
+      | Comment Eight     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        | Legacy     |
+      | PSR completed     | Author Two on 19 August 2022, 17:17         | Show delete link        | Show edit link        | Not Legacy |
+      | Comment One       | Adam Sandler on 9 August 2022, 17:17        | Show delete link        | Show edit link        | Not Legacy |
+      | Comment Two       | Adam Sandler Two on 9 August 2022, 17:17    | Show delete link        | Show edit link        | Not Legacy |
 
   Scenario: Delete a case comment successfully
     Given I am an authenticated user

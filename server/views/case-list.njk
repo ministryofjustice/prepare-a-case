@@ -3,9 +3,12 @@
 
 {%- from "components/tabs/macro.njk" import pacTabs -%}
 
+
+
 {% block javascripts %}
     {% if displayFilters %}
         <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
+        <script type="text/javascript" src="/javascripts/workflow-tasks-prep-status-selector-{{ appVersion }}.min.js"></script>
     {% endif %}
 {% endblock %}
 
@@ -23,6 +26,10 @@
 
 {%- if params.subsection === 'removed' %}
     {{ tableData.head.push({ text: "Libra case number", format: "numeric" }) }}
+{% endif -%}
+
+{%- if params.workflow.enabled %}
+    {{ tableData.head.push({ html: "Prep status" }) }}
 {% endif -%}
 
 {% for item in data %}
@@ -76,6 +83,27 @@
     {%- if params.subsection === 'removed' %}
         {{ tableRow.push({ text: item.caseNo, format: "numeric" }) }}
     {% endif -%}
+
+    {% if params.workflow.enabled %}
+
+        {% set html = '<select class="workflow-tasks-status-selector" aria-label="Prep Status" data-form-action="/workflow/tasks/prep/state?hearing=' + item.hearingId 
+            + '&defendant=' + item.defendantId + '" data-defendant-fullname="' 
+            + defendantFullName | escape | apostropheInName | properCase | removeTitle + '">' %}
+        
+        {% for prepItem in params.workflow.tasks.prep.items %}
+            {% set html = html + '<option value="' + prepItem.id + '" data-css-class="' + prepItem.cssClass + '"' %}
+            {% if prepItem == item.workflow.tasks.prep %}
+                {% set html = html + ' selected' %}
+            {% endif %}
+
+            {% set html = html + '>' + prepItem.lang.en.title + '</option>' %}
+        {% endfor %}
+
+        {% set html = html + '</select>' %}
+           
+        {{ tableRow.push({ html:html }) }}
+    {% endif %}
+
     {{ tableData.rows.push(tableRow) }}
 
 {% endfor %}
@@ -111,7 +139,7 @@
 {% for i in range(startNum, endNum + 1) -%}
     {{ pageItems.push({
         text: i,
-        href: '/' + params.courtCode + '/cases/' + params.date + '?page=' + i,
+        href: params.baseUrl + 'page=' + i,
         selected: currentPage === i
     }) }}
 {%- endfor %}
@@ -121,7 +149,7 @@
 {% else %}
     {% set previousLink = {
         text: 'Previous',
-        href: '/' + params.courtCode + '/cases/' + params.date + '?page=' + (currentPage - 1)
+        href:  params.baseUrl + 'page=' + (currentPage - 1)
     } %}
 {% endif %}
 
@@ -130,7 +158,7 @@
 {% else %}
     {% set nextLink = {
         text: 'Next',
-        href: '/' + params.courtCode + '/cases/' + params.date + '?page=' + (currentPage + 1)
+        href: params.baseUrl + 'page=' + (currentPage + 1)
     } %}
 {% endif %}
 
@@ -282,6 +310,7 @@
             {% set listTabs = listTabs.splice(0,1) %}
         {% endif %}
     {% endif -%}
+{{params.filtersApplied | safe}}
 
     {% if displayFilters %}
         {%- from "components/filter/macro.njk" import pacFilter -%}

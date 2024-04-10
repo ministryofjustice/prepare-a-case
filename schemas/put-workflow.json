@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "/workflow/tasks/{taskId}/state?hearing={hearingId}&defendant={defendantId}",
+  "type": "object",
+  "examples": [
+    {
+      "state": "NOT_STARTED"
+    }
+  ],
+  "required": [
+    "state"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "enum": [
+        "NOT_STARTED",
+        "IN_PROGRESS",
+        "COMPLETE"
+      ]
+    }
+  }
+}
