@@ -1,10 +1,5 @@
 ingress:
-  contextColour: green
-  annotations:
-    external-dns.alpha.kubernetes.io/aws-weight: "100"
   enabled: true
-  enable_whitelist: true
-  path: /
 
 image:
   repository: quay.io/hmpps/prepare-a-case
