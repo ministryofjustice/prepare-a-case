@@ -310,7 +310,6 @@
             {% set listTabs = listTabs.splice(0,1) %}
         {% endif %}
     {% endif -%}
-{{params.filtersApplied | safe}}
 
     {% if displayFilters %}
         {%- from "components/filter/macro.njk" import pacFilter -%}
