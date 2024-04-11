@@ -21,7 +21,7 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
       })
 
       const service = createCaseService(provider.mockService.baseUrl)
-      const response = await service.deleteCaseComment(caseId,defendantId, 1234)
+      const response = await service.deleteCaseComment(caseId, defendantId, 1234)
       expect(response.status).toEqual(200)
     })
   })
