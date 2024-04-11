@@ -5,7 +5,7 @@ networks:
 services:
 
   court-case-service:
-    image: docker.io/mojdigitalstudio/court-case-service:latest
+    image: quay.io/hmpps/court-case-service:latest
     container_name: court-case-service
     networks:
       - hmpps

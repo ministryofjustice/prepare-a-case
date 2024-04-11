@@ -1,0 +1,23 @@
+minReplicaCount: 2
+maxReplicaCount: 4
+
+ingress:
+  host: prepare-case-probation.service.justice.gov.uk
+  cert_secret: court-probation-cert-secret
+
+env:
+  PAC_ENV: prod
+  COURT_CASE_SERVICE_URL: https://court-case-service.apps.live-1.cloud-platform.service.justice.gov.uk
+  NOMIS_AUTH_URL: https://sign-in.hmpps.service.justice.gov.uk/auth
+  USER_PREFERENCE_SERVICE_URL: https://hmpps-user-preferences.hmpps.service.justice.gov.uk
+  CASE_SNAPSHOT_TIMES: "00:00,08:45,09:45"
+  CASE_TRACKING_PRE_PILOT_USERS: ZAP37S,BEVERLEYWILLMOTTNPS,ZRX14Y,wyi97r,mdy87w,sarahclarkenps,bethanylilleynps,jenniferrawlingsnps,maxholgatenps,wjf65j,xzu68s,CZE89A,serenacannannps,qgd46q,santoshchakrabartnps
+  ENABLE_MOVE_TO_RESULTED_ACTION: false
+
+resources:
+  cpu:
+    limit: 1000m
+    request: 50m
+  memory:
+    limit: 500Mi
+    request: 100Mi

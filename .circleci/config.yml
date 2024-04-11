@@ -39,9 +39,8 @@ commands:
               --install --wait --reset-values --timeout 360s \
               --namespace=${KUBE_ENV_NAMESPACE} \
               --description="${APP_VERSION} - ${CIRCLE_BUILD_URL}" \
-              --values ~/git/helm_deploy/values-<< parameters.env >>.yaml \
-              --values - \
-              --values ~/git/helm_deploy/prepare-a-case/values-live.yaml \
+              --values ~/git/helm_deploy/prepare-a-case/values.yaml \
+              --values ~/git/helm_deploy/prepare-a-case/values-<< parameters.env >>.yaml \
               --set image.tag="${APP_VERSION}"
 executors:
   deployer:

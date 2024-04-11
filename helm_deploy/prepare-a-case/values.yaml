@@ -1,0 +1,28 @@
+ingress:
+  contextColour: green
+  annotations:
+    external-dns.alpha.kubernetes.io/aws-weight: "100"
+  enabled: true
+  enable_whitelist: true
+  path: /
+
+image:
+  repository: quay.io/hmpps/prepare-a-case
+  tag: latest
+  pullPolicy: Always
+  port: 3000
+
+allowlist:
+  groups:
+    - internal
+
+env:
+  CASES_PER_PAGE: 20
+  ENABLE_PAST_CASES_NAVIGATION: true
+  ENABLE_CASE_COMMENTS: true
+  ENABLE_CASE_PROGRESS: true
+  ENABLE_APP_INSIGHTS: true
+  ENABLE_HEARING_OUTCOMES: true
+  CASE_SEARCH_USERS: all
+  ENABLE_SERVERSIDE_PAGING: true
+  ENABLE_MOVE_TO_RESULTED_ACTION: true
