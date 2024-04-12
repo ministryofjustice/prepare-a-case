@@ -33,6 +33,7 @@ env:
   CASE_SEARCH_USERS: all
   ENABLE_SERVERSIDE_PAGING: true
   ENABLE_MOVE_TO_RESULTED_ACTION: true
+  ENABLE_WORKFLOW: true
 
 whitelist:
   office: "217.33.148.210/32"
