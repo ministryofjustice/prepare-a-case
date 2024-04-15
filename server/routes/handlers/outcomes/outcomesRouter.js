@@ -9,7 +9,7 @@ const casesInProgressHandler = require('./getCasesInProgressHandler')({ getOutco
 const getResultedCasesHandler = require('./getResultedCasesHandler')({ getOutcomesList })
 const getOnHoldCasesHandler = require('./getOnHoldCasesHandler')({ getOutcomesList })
 const assignHearingOutcomeRouteHandler = require('./getAssignUserToOutcomeRequestHandler')({ assignHearingOutcome })
-const getMoveToResultedHandler = require('./getMoveToResultedHandler')({ updateHearingOutcomeToResulted })
+const getMoveToResultedHandler = require('./getMoveToResultedHandler')({ updateHearingOutcomeToResulted }, { nunjucksFilters })
 const getMoveToOnHoldHandler = require('./getMoveToOnHoldHandler')({ updateHearingOutcomeToOnHold }, { getCaseAndTemplateValues, nunjucksFilters })
 const postActionsHandler = require('./postActionsHandler')({ assignHearingOutcome })
 

@@ -16,7 +16,7 @@ const getOnHoldCasesHandler = caseService => async (req, res) => {
     state
   )
 
-  const flashMessage = req.flash('move-to-on-hold')
+  const flashMessage = req.flash('move-to-on-hold') ?? req.flash('moved-to-resulted')
 
   const cases = response.cases
 
