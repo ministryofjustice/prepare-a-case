@@ -119,6 +119,16 @@ Then('I should see the text heading message {string}', $string => {
 Then('I should see the text body message {string}', $string => {
   cy.get('.govuk-body-s').contains($string)
 })
+
 Then('I click the {string} button to be back on my page', $string => {
   cy.get('#close-btn').contains($string).click({ force: true })
+})
+
+Then('I should {string} line breaks on hearing note {string}', ($expected, $noteId) => {
+  expect(['see', 'not see']).to.include($expected)
+  cy.get(`#previous-note-${$noteId} .hearing-note-display`).eq(0).within(() => {
+    cy.get('.hearing-note-display-text').eq(0).within(() => {
+      cy.get('br').should(`${$expected === 'not see' ? 'not.' : ''}exist`)
+    })
+  })
 })
