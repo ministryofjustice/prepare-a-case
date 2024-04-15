@@ -1,7 +1,5 @@
 const fs = require('fs')
-const axios = require('axios').default
 const { promisify } = require('util')
-const { Service } = require('axios-middleware')
 const config = require('./config')
 const express = require('express')
 const compression = require('compression')
@@ -28,19 +26,27 @@ const hostName = os.hostname()
 const { authenticationMiddleware } = auth
 const catchErrors = require('./routes/handlers/catchAsyncErrors')
 
+const authLogoutUrl = `${config.apis.oauth2.redirect}/logout?client_id=${config.apis.oauth2.apiClientId}&redirect_uri=${config.domain}`
+
+const redisClient = redis.createClient({
+  port: config.redis.port,
+  password: config.redis.password,
+  host: config.redis.host,
+  tls: config.redis.tls_enabled === 'true' ? {} : false
+})
+
+const app = express()
+
+if (!config.settings.reduceStdoutNoise) {
+  const data = fs.readFileSync(path.join(__dirname, 'banner.txt'), 'utf8')
+  console.log(data.toString())
+  console.info(`Starting Prepare a Case ${config.appVersion} using NodeJS ${nodeVersion} on ${hostName}`)
+}
+
+nunjucksSetup(app, path)
+
 module.exports = function createApp ({ signInService }) {
-  const service = new Service(axios)
-  const app = express()
-
-  if (!config.settings.reduceStdoutNoise) {
-    const data = fs.readFileSync(path.join(__dirname, 'banner.txt'), 'utf8')
-    console.log(data.toString())
-    console.info(`Starting Prepare a Case ${config.appVersion} using NodeJS ${nodeVersion} on ${hostName}`)
-  }
-
   auth.init(signInService)
-
-  nunjucksSetup(app, path)
 
   // Configure Express for running behind proxies
   // https://expressjs.com/en/guide/behind-proxies.html
@@ -107,16 +113,9 @@ module.exports = function createApp ({ signInService }) {
     })(req, res, next)
   })
 
-  const client = redis.createClient({
-    port: config.redis.port,
-    password: config.redis.password,
-    host: config.redis.host,
-    tls: config.redis.tls_enabled === 'true' ? {} : false
-  })
-
   app.use(
     session({
-      store: new RedisStore({ client }),
+      store: new RedisStore({ client: redisClient }),
       cookie: { secure: config.https, sameSite: 'lax', maxAge: config.session.expiry * 60 * 1000 },
       secret: config.session.secret,
       resave: false, // redis implements touch so shouldn't need this
@@ -147,8 +146,8 @@ module.exports = function createApp ({ signInService }) {
     req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
     res.locals.appVersion = config.appVersion
     req.redisClient = {
-      getAsync: promisify(client.get).bind(client),
-      setAsync: promisify(client.set).bind(client)
+      getAsync: promisify(redisClient.get).bind(redisClient),
+      setAsync: promisify(redisClient.set).bind(redisClient)
     }
     const startTime = new Date()
     if (!config.settings.reduceStdoutNoise) {
@@ -179,12 +178,11 @@ module.exports = function createApp ({ signInService }) {
 
   app.use(compression())
 
-  function addTemplateVariables (req, res, next) {
+  // template variables (TODO: pointless!)
+  app.use((req, res, next) => {
     res.locals.user = req.user
     next()
-  }
-
-  app.use(addTemplateVariables)
+  })
 
   // reduce noise during dev
   const healthcheck = healthcheckFactory(config.apis.oauth2.url, config.apis.courtCaseService.url, config.apis.userPreferenceService.url)
@@ -201,56 +199,12 @@ module.exports = function createApp ({ signInService }) {
     })
   })
 
-  // JWT token refresh
-  app.use(async (req, res, next) => {
-    let axiosHeaders = {}
-
-    if (req.user && req.originalUrl !== '/logout') {
-      if (req.user.refreshTime && new Date() > req.user.refreshTime) {
-        try {
-          const newToken = await signInService.getRefreshedToken(req.user)
-          req.user.token = newToken.token
-          req.user.refreshToken = newToken.refreshToken
-          if (!config.settings.reduceStdoutNoise) {
-            log.info(`existing refreshTime in the past by ${new Date().getTime() - req.user.refreshTime}`)
-            log.info(
-              `updating time by ${newToken.refreshTime - req.user.refreshTime} from ${req.user.refreshTime} to ${
-                newToken.refreshTime
-              }`
-            )
-          }
-          req.user.refreshTime = newToken.refreshTime
-        } catch (error) {
-          log.error(`Token refresh error: ${req.user.username}`, error.stack)
-          return res.redirect('/logout')
-        }
-      }
-
-      axiosHeaders = {
-        Authorization: `Bearer ${req.user.token}`
-      }
-    }
-    service.reset()
-    service.register({
-      onRequest (config) {
-        config.headers = {
-          ...config.headers,
-          ...axiosHeaders
-        }
-        return config
-      }
-    })
-    return next()
-  })
-
   // Update a value in the cookie so that the set-cookie will be sent.
   // Only changes every minute so that it's not sent with every request.
   app.use((req, res, next) => {
     req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
     next()
   })
-
-  const authLogoutUrl = `${config.apis.oauth2.redirect}/logout?client_id=${config.apis.oauth2.apiClientId}&redirect_uri=${config.domain}`
 
   app.get('/autherror', (req, res) => {
     res.status(401)
@@ -294,6 +248,8 @@ module.exports = function createApp ({ signInService }) {
       authenticationMiddleware
     })
   )
+
+  app.use(errorHandler.authError)
 
   app.use(errorHandler.notFound)
 
