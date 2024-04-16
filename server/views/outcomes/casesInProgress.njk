@@ -53,6 +53,7 @@
   {% endif %}
 
   {% set actionButtonHtml %}
+  {% set assignedToCurrentUser = currentUserUuid === item.assignedToUuid %}
   <div class="govuk-button-group">
     {{ govukButton({
       text: 'Move to resulted',
@@ -74,14 +75,13 @@
   {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
   {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
   {% set crnDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
-  {% set assignedToCurrentUser = currentUserUuid === item.assignedToUuid %}
   {%- set tableRow = [
     { text: ('<a href="/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state' + (' pac-reassign' | safe if not assignedToCurrentUser ) + '" aria-label="' + a11yTitle + '"' + ('data-hearingid="' + item.hearingId + '" data-defendantid="' + item.defendantId + '" data-courtcode="' + params.courtCode + '" data-bs-toggle="modal" data-bs-target="#reassign-outcome-modal"' | safe if not assignedToCurrentUser) + '>' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
     { text: item.hearingOutcomeDescription | safe },
     { text: ('<div>' + ('<span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span>' | safe if notMatched ) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched)) | safe },
     { text: offences | join('') | safe },
     { text: moment(item.hearingDate, 'YYYY-MM-DD').format("D MMM YYYY"), format: 'numeric' },
-    { text:  actionButtonHtml | safe }
+    { text: actionButtonHtml | safe}
   ] -%}
   {{ tableData.rows.push(tableRow) }}
 
