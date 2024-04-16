@@ -60,6 +60,7 @@ const outcomesMiddleware = state => async (req, res, next) => {
   })
 
   const pagingBaseUrl = getBaseUrl(state)
+  console.log('🚀 ~ outcomesMiddleware ~ pagingBaseUrl:', pagingBaseUrl)
 
   req.params = {
     ...params,

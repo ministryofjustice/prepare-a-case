@@ -64,6 +64,7 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     totalElements: response.totalElements,
     flashMessage
   }
+  console.log('🚀 ~ getCasesInProgressHandler ~ templateValues.params.params:', templateValues.pagingBaseUrl)
   session.moveToResultedSuccess = undefined
 
   res.render('outcomes/casesInProgress', templateValues)

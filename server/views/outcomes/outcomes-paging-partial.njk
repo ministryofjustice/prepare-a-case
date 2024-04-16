@@ -19,7 +19,7 @@
     {% for i in range(startNum, endNum + 1) -%}
         {% set pageItems = (pageItems.push({
             text: i + '',
-            href: params.pagingBaseUrl + '&page=' + i,
+            href: params.pagingBaseUrl + '?page=' + i,
             selected: params.currentPage === i
         }), pageItems) %}
     {%- endfor %}
@@ -28,7 +28,7 @@
     {% else %}
         {% set previousLink = {
             text: 'Previous',
-            href: params.pagingBaseUrl + '&page=' + (params.currentPage - 1)
+            href: params.pagingBaseUrl + '?page=' + (params.currentPage - 1)
         } %}
     {% endif %}
 
@@ -38,7 +38,7 @@
     {% else %}
         {% set nextLink = {
             text: 'Next',
-            href: params.pagingBaseUrl + '&page=' + (params.currentPage + 1)
+            href: params.pagingBaseUrl + '?page=' + (params.currentPage + 1)
         } %}
     {% endif %}
 
