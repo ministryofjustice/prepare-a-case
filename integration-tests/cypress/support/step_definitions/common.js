@@ -472,7 +472,8 @@ Then('I click the {string} link in the pagination links', ($link) => {
 
 Then('the page {int} should be loaded', ($pageNo) => {
   cy.location().should(location => {
-    const urlParams = new URLSearchParams(location.href)
+    const url = new URL(location.href)
+    const urlParams = new URLSearchParams(url.search)
     expect(urlParams.get('page')).eq(`${$pageNo}`)
   })
 })
