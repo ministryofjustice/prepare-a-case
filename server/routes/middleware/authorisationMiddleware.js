@@ -20,6 +20,7 @@ module.exports = (req, res, next) => {
     service.register({
       onRequest (config) {
         config.headers = {
+          ...config.headers,
           Authorization: `Bearer ${res.locals.user.token}`
         }
         return config
