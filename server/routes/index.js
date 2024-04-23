@@ -303,17 +303,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     '/:courtCode/cases/:date?/:subsection?',
     defaults,
     catchErrors((req, res) => {
-      const {
-        params: { courtCode, version1 }
-      } = req
-      const context = { court: courtCode, username: res.locals.user.username }
-      const serverSidePagingEnabled =
-        features.serverSidePaging.isEnabled(context)
-
-      if (serverSidePagingEnabled && !version1) {
-        return pagedCaseListRouteHandler(req, res)
-      }
-      return getCaseListHandler(req, res)
+      return pagedCaseListRouteHandler(req, res)
     })
   )
 

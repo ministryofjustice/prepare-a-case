@@ -1,0 +1,56 @@
+{
+    "id": "49b662db-caa3-4dba-8831-b72f3cbfcddf",
+    "priority": 2,
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/court/([A-Z0-9]{5})/cases",
+        "queryParameters": {
+            "date": {
+                "matches": "^(?!2020-01-01|2020-01-02|2020-01-03|2020-01-04)(\\d{4})-(\\d{2})-(\\d{2})$"
+            },
+            "hearingStatus": {
+              "matches": "^(?:HEARD|UNHEARD)$"
+            },
+            "VERSION2": {
+              "matches": "true"
+            },
+            "session": {
+                "matches": "MORNING"
+            },
+            "courtRoom": {
+              "matches": "01"
+            },
+            "probationStatus": {
+              "matches": "CURRENT"
+            },
+            "source": {
+              "matches": "COMMON_PLATFORM"
+            },
+            "breach": {
+              "matches": "true"
+            }
+        }
+    },
+    "response": {
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "status": 200,
+        "jsonBody": {
+            "cases": [],
+            "totalPages": 2,
+            "page": 1,
+            "totalElements": 1,
+            "possibleMatchesCount": 0,
+            "recentlyAddedCount": 4,
+            "courtRoomFilters": [
+              "07",
+              "01",
+              "Crown court 5-6",
+              "08",
+              "02",
+              "Crown court 1-3"
+            ]
+        }
+    }
+}

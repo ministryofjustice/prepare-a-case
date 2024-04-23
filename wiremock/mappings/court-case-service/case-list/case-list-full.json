@@ -3,7 +3,7 @@
   "priority": 5,
   "request": {
     "method": "GET",
-    "urlPathPattern": "/court/([A-Z0-9]{5})/cases",
+    "urlPathPattern": "/court/([A-Z0-9]{5})/casesd",
     "queryParameters": {
       "date": {
         "matches": "^(?!2020-01-01|2020-01-02|2020-01-03|2020-01-04)(\\d{4})-(\\d{2})-(\\d{2})$"

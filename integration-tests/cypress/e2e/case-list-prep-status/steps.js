@@ -21,6 +21,7 @@ When('I set the prep status for select {int} to {string} the change invokes a {i
     .trigger('change')
 
   cy.wait('@submit').then(interception => {
+    console.log("🚀 ~ cy.wait ~ nterception.response.statusCode:", interception.response.statusCode)
     expect(interception.request.body).to.include('state')
     expect(interception.response.statusCode).to.eq(responseCode)
   })

@@ -82,6 +82,7 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
         if (!myWorkflow.tasks) {
           throw new TypeError(`Array[${i}] missing workflow.tasks key`)
         }
+
         myWorkflow.tasks = {
           prep: workflow.tasks.get('prep').states.getById(myWorkflow.tasks
             .find(({ id }) => id === 'prep').state)
@@ -111,6 +112,7 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
       caseCount,
       addedCount: response.recentlyAddedCount,
       unmatchedRecords: response.possibleMatchesCount,
+      removedCount: response.removedCount,
       totalDays: pastCaseNavigationEnabled ? settings.casesTotalDays : 7,
       casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
       enablePastCasesNavigation: settings.enablePastCasesNavigation,

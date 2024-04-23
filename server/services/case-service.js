@@ -91,6 +91,7 @@ const createCaseService = apiUrl => {
       }
 
       const response = await request(apiUrlBuilder.href)
+      console.log('🚀 ~ createCaseService ~ apiUrlBuilder.href:', apiUrlBuilder.href)
       if (!isHttpSuccess(response)) {
         return getInternalServerErrorResponse(response)
       }
@@ -162,6 +163,7 @@ const createCaseService = apiUrl => {
             })
           })
       }
+      console.log('🚀 ~ createCaseService ~ response.data:', response.data.cases[0].workflow)
 
       return {
         ...response.data,
