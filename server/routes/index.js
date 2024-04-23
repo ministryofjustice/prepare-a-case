@@ -33,7 +33,6 @@ const { getOrderTitle } = require('./helpers')
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
 const {
-  getCaseListHandler,
   getCaseAndTemplateValues,
   getProbationRecordHandler,
   getUserSelectedCourtsHandler,
@@ -60,7 +59,6 @@ const {
   deleteHearingNoteConfirmationHandler,
   deleteHearingNoteHandler
 } = require('./handlers')
-const features = require('../utils/features')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
