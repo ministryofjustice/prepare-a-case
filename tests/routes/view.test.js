@@ -161,7 +161,11 @@ describe('Routes', () => {
     return []
   })
 
+  let enabledHearingOutcomes
+
   beforeAll(async () => {
+    enabledHearingOutcomes = features.hearingOutcomes.isEnabled
+    features.hearingOutcomes.isEnabled = () => true
     caseService.getOutcomeTypes.mockReturnValue({
       types: [
         { label: 'Probation sentence', value: 'PROBATION_SENTENCE' },
@@ -177,6 +181,7 @@ describe('Routes', () => {
   })
 
   afterAll(() => {
+    enabledHearingOutcomes = features.hearingOutcomes.isEnabled = enabledHearingOutcomes
     jest.clearAllMocks()
   })
 
