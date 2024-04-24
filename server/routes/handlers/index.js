@@ -1,7 +1,6 @@
 // A central file where all the handlers are created with necessary dependencies injected
 
 const {
-  getCaseList,
   getPagedCaseList,
   getCase,
   addCaseComment,
