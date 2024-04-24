@@ -24,8 +24,6 @@ const getCaseSearchType = require('../../utils/getCaseSearchType')
 const getOutcomeTypesListFilters = require('../../utils/getOutcomeTypesListFilters')
 const nunjucksFilters = require('../../utils/nunjucksFilters')
 
-const getCaseListHandler = require('./getCaseListRouteHandler')({ getCaseList })
-
 const getCaseAndTemplateValues = require('./getCaseTemplateValuesHelper')({ getCase })
 
 const getProbationRecordHandler = require('./getProbationRecordRouteHandler')({ getProbationRecord }, getCaseAndTemplateValues)
@@ -68,7 +66,6 @@ const pagedCaseListRouteHandler = require('./getPagedCaseListRouteHandler')({ ge
 const caseSummaryHandler = require('./caseSummary')({ getOutcomeTypesListFilters, getCaseAndTemplateValues, nunjucksFilters, updateHearingOutcomeToResulted })
 
 module.exports = {
-  getCaseListHandler,
   getCaseAndTemplateValues,
   getProbationRecordHandler,
   getUserSelectedCourtsHandler,

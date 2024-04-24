@@ -36,10 +36,6 @@ const features = {
       )
     )
   ),
-  serverSidePaging: allOf(
-    mainFeatureToggleEnabled('enableServerSidePaging'),
-    isEnv('dev', 'preprod', 'prod')
-  ),
   pastCasesNavigation: enabledForAll(),
   workflow: anyOf(
     allOf(
