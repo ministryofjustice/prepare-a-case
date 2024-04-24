@@ -57,6 +57,7 @@
                 "preSentenceActivity": false,
                 "awaitingPsr": false,
                 "source": "LIBRA",
+                "hearingPrepStatus": "NOT_STARTED",
                  "workflow": {
                   "tasks": [
                     {

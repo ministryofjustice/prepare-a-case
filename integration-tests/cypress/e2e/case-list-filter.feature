@@ -4,6 +4,12 @@ Feature: Case list filters
   As an authenticated user
   I want to be able to apply filters to a case list view
 
+  Scenario: A11y
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+    And There should be no a11y violations
+
   Scenario: Apply multiple filters
     Given I am an authenticated user
     When I navigate to the "cases" route for today
@@ -62,8 +68,6 @@ Feature: Case list filters
     And I should see the following table rows
       | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
 
-    And There should be no a11y violations
-
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
     When I navigate to the "cases" route for today
@@ -100,5 +104,3 @@ Feature: Case list filters
 
     And I should see a count of "0 cases"
     Then I should see the body text "There are no matching cases."
-    
-    # And There should be no a11y violations
