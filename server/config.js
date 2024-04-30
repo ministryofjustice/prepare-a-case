@@ -35,7 +35,6 @@ module.exports = {
     enablePastCasesNavigation: getBooleanParam('ENABLE_PAST_CASES_NAVIGATION'),
     enableAppInsights: getBooleanParam('ENABLE_APP_INSIGHTS'),
     enableHearingOutcomes: getBooleanParam('ENABLE_HEARING_OUTCOMES'),
-    enableServerSidePaging: getBooleanParam('ENABLE_SERVERSIDE_PAGING'),
     enableMoveToResultedAction: getBooleanParam('ENABLE_MOVE_TO_RESULTED_ACTION'),
     enableWorkflow: getBooleanParam('ENABLE_WORKFLOW'),
     casesExcludedDays: get('CASES_EXCLUDED_DAYS', '-1'), // Coma delimited String of days to exclude, incremental from 0 (Sunday) - fallback to -1 to exclude no days

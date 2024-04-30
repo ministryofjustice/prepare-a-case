@@ -162,4 +162,34 @@ describe('getPagedCaseListRouteHandler', () => {
         hearingOutcomesEnabled: false
       })
   })
+
+  it('should add query params to base url (except page)', async () => {
+    // Given
+    caseService.getPagedCaseList.mockReturnValueOnce({
+      possibleMatchesCount: 2,
+      recentlyAddedCount: 2,
+      filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
+      cases: [mockCase(), mockCase(), mockCase(), mockCase()],
+      totalElements: 4
+    })
+
+    jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
+
+    // When
+    mockRequest.query = { ...mockRequest.query, someQueryParam: 'some-param-value' }
+    await subject(mockRequest, mockResponse)
+
+    // Then
+    expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
+    expect(caseService.getPagedCaseList).toHaveBeenCalled()
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', mockRequest.query, false, 1, 20, false)
+    expect(mockResponse.render).toHaveBeenCalled()
+    expect(mockResponse.render).toHaveBeenCalledWith('case-list', expect.anything())
+
+    expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
+      params: {
+        baseUrl: '/ABC/cases/2020-11-11?someQueryParam=some-param-value&'
+      }
+    })
+  })
 })
