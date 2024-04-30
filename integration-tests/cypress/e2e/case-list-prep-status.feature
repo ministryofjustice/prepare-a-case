@@ -29,7 +29,7 @@ Feature: Case list Prep
   # AC004
   Scenario: setting prep status fails
     When I set the prep status for select 2 to "Ongoing" the change invokes a 404
-    Then I see a window.alert with message "Error: Unable to change the prep status for Mann Carroll. Try again"
+    Then I see a window.alert with message "Error: Unable to change the admin prep status for Mann Carroll. Try again"
     And select 2 has a state of "Complete"
 
   # AC005 - tested as part of AC003

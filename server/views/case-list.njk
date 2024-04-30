@@ -29,7 +29,7 @@
 {% endif -%}
 
 {%- if params.workflow.enabled %}
-    {{ tableData.head.push({ html: "Prep status" }) }}
+    {{ tableData.head.push({ html: "Admin prep status" }) }}
 {% endif -%}
 
 {% for item in data %}
@@ -86,7 +86,7 @@
 
     {% if params.workflow.enabled %}
 
-        {% set html = '<select class="workflow-tasks-status-selector" aria-label="Prep Status" data-form-action="/workflow/tasks/prep/state?hearing=' + item.hearingId 
+        {% set html = '<select class="workflow-tasks-status-selector" aria-label="Admin prep status" data-form-action="/workflow/tasks/prep/state?hearing=' + item.hearingId 
             + '&defendant=' + item.defendantId + '" data-defendant-fullname="' 
             + defendantFullName | escape | apostropheInName | properCase | removeTitle + '">' %}
         

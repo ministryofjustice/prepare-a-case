@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
           apply()
         } catch (e) {
           root.selectedIndex = currentSelectedIndex
-          window.alert(`Error: Unable to change the prep status for ${root.dataset['defendantFullname']}. Try again`)
+          window.alert(`Error: Unable to change the admin prep status for ${root.dataset['defendantFullname']}. Try again`)
         }
       })
       
