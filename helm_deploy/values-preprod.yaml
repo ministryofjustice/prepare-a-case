@@ -31,6 +31,7 @@ env:
   CASE_TRACKING_PRE_PILOT_USERS: joana.aguia,tony.howard,tfe58u,ravishankar.challapalli
   CASE_SEARCH_USERS: all
   ENABLE_MOVE_TO_RESULTED_ACTION: true
+  ENABLE_WORKFLOW: true
 
 whitelist:
   office: "217.33.148.210/32"
