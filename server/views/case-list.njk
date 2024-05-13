@@ -3,110 +3,12 @@
 
 {%- from "components/tabs/macro.njk" import pacTabs -%}
 
-
-
 {% block javascripts %}
     {% if displayFilters %}
         <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
     {% endif %}
     <script type="text/javascript" src="/javascripts/workflow-tasks-prep-status-selector-{{ appVersion }}.min.js"></script>
 {% endblock %}
-
-{% set tableData = {
-    head: [
-        { text: "Defendant" },
-        { text: "Probation status" },
-        { text: "Offence" },
-        { text: "Listing" },
-        { text: "Session" },
-        { text: "Court", format: "numeric" }
-    ],
-    rows: []
-} %}
-
-{%- if params.subsection === 'removed' %}
-    {{ tableData.head.push({ text: "Libra case number", format: "numeric" }) }}
-{% endif -%}
-
-{%- if params.workflow.enabled %}
-    {{ tableData.head.push({ html: "Admin prep status" }) }}
-{% endif -%}
-
-{% for item in data %}
-
-    {% set offences = [] %}
-    {% set courtRoom = item.courtRoom | courtRoomDisplay %}
-
-    {% set notMatched = item.probationStatus | string | lower == "possible ndelius record" %}
-    {% if item.offences | length === 1 %}
-        {% for offence in item.offences %}
-            {{ offences.push(offence.offenceTitle | escape) }}
-        {% endfor %}
-    {% elif item.offences | length %}
-        {{ offences.push('<ol class="govuk-list govuk-list--number govuk-!-margin-bottom-0">') }}
-        {% for offence in item.offences %}
-            {{ offences.push('<li>' + offence.offenceTitle | escape + '</li>') }}
-        {% endfor %}
-        {{ offences.push('</ol>') }}
-    {% endif %}
-
-    {% set listing = [] %}
-    {% set updatedListing = [] %}
-    {% if item.source === "COMMON_PLATFORM" %}
-        {% for cpListNo in item.offences %}
-            {{ updatedListing.push(cpListNo.listNo) }}
-        {% endfor %}
-        {% if updatedListing | unique | length === 1 %}
-            {{ listing.push(updatedListing | first | ordinalNumber | escape) }}
-        {% else %}
-            {{ listing.push('<ol class="govuk-list govuk-!-margin-bottom-0">') }}
-            {% for number in updatedListing %}
-                {{ listing.push('<li>' + number | ordinalNumber | escape + '</li>' ) }}
-            {% endfor %}
-            {{ listing.push('</ol>') }}
-        {% endif %}
-    {% else %}
-        {{ listing.push(item.listNo) }}
-    {% endif %}
-
-    {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
-    {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
-    {% set crnDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
-    {%- set tableRow = [
-        { text: ('<a href="/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" aria-label="' + a11yTitle + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
-        { text: ('<div>' + ('<span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span>' | safe if notMatched ) + ('<span class="moj-badge moj-badge--black pac-badge">Psr</span>' | safe if item.awaitingPsr) + ('<span class="moj-badge moj-badge--black pac-badge">Breach</span>' | safe if item.breach) + ('<span class="moj-badge moj-badge--black pac-badge">Sso</span>' | safe if item.suspendedSentenceOrder) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched) + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format("D MMMM YYYY") | escape + '</span>' if item.previouslyKnownTerminationDate and item.probationStatus == 'Previously known')) | safe },
-        { text: offences | join('') | safe },
-        { text: listing | join('') | safe },
-        { text: item.session | capitalize },
-        { text: courtRoom, format: "numeric"}
-    ] -%}
-    {%- if params.subsection === 'removed' %}
-        {{ tableRow.push({ text: item.caseNo, format: "numeric" }) }}
-    {% endif -%}
-
-    {% if params.workflow.enabled %}
-
-        {% set html = '<select class="workflow-tasks-status-selector" aria-label="Admin prep status" data-form-action="/workflow/tasks/prep/state?hearing=' + item.hearingId 
-            + '&defendant=' + item.defendantId + '" data-defendant-fullname="' 
-            + defendantFullName | escape | apostropheInName | properCase | removeTitle + '">' %}
-        
-        {% for prepItem in params.workflow.tasks.prep.items %}
-            {% set html = html + '<option value="' + prepItem.id + '" data-css-class="' + prepItem.cssClass + '"' %}
-            {% if prepItem == item.workflow.tasks.prep %}
-                {% set html = html + ' selected' %}
-            {% endif %}
-
-            {% set html = html + '>' + prepItem.lang.en.title + '</option>' %}
-        {% endfor %}
-
-        {% set html = html + '</select>' %}
-           
-        {{ tableRow.push({ html:html }) }}
-    {% endif %}
-
-    {{ tableData.rows.push(tableRow) }}
-
-{% endfor %}
 
 {% set today = moment().format('YYYY-MM-DD') %}
 {% set isSunday = moment().day() === 0 %}
@@ -118,49 +20,8 @@
 {% set yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD') %}
 {% set withinDateRange = currentDate.isBetween(useStartDate, params.addBusinessDays(useStartDate, params.totalDays - 1), 'day', '[]') %}
 
-{% set maxPagesDisplay = 5 %}
-{% set currentPage = params.page %}
-{% set startNum = currentPage - ((maxPagesDisplay - 1) / 2) %}
-{% set endNum = currentPage + ((maxPagesDisplay - 1) / 2) %}
-{% set totalPages = (params.caseCount / params.limit) | round(0, "ceil") %}
 
-{% if startNum < 1 or totalPages <= maxPagesDisplay %}
-    {% set startNum = 1 %}
-    {% set endNum = maxPagesDisplay %}
-    {% elif endNum > totalPages %}
-    {% set startNum = totalPages - (maxPagesDisplay - 1) %}
-{% endif %}
 
-{% if endNum > totalPages %}
-    {% set endNum = totalPages %}
-{% endif %}
-
-{% set pageItems = [] %}
-{% for i in range(startNum, endNum + 1) -%}
-    {{ pageItems.push({
-        text: i,
-        href: params.baseUrl + 'page=' + i,
-        selected: currentPage === i
-    }) }}
-{%- endfor %}
-
-{% if currentPage === 1 %}
-    {% set previousLink = null %}
-{% else %}
-    {% set previousLink = {
-        text: 'Previous',
-        href:  params.baseUrl + 'page=' + (currentPage - 1)
-    } %}
-{% endif %}
-
-{% if currentPage === totalPages %}
-    {% set nextLink = null %}
-{% else %}
-    {% set nextLink = {
-        text: 'Next',
-        href: params.baseUrl + 'page=' + (currentPage + 1)
-    } %}
-{% endif %}
 
 {% if params.subsection === '' %}
     {% set title = "Case list" %}
@@ -199,11 +60,11 @@
 {% endif %}
 
 {% set recentlyAddedPageItems = [] %}
-{% for recentlyAdded in range(startNum, endNum + 1) -%}
+{% for recentlyAdded in range(pagination.startNum, pagination.endNum + 1) -%}
     {{ recentlyAddedPageItems.push({
         text: recentlyAdded,
         href: '/' + params.courtCode + '/cases/' + params.date + '/' + params.subsection + '?page=' + recentlyAdded,
-        selected: currentPage === recentlyAdded
+        selected: pagination.currentPage === recentlyAdded
     }) }}
 {%- endfor %}
 {% if params.addedCount > 0 %}
@@ -215,20 +76,13 @@
         count: params.addedCount
     }) }}
 {% endif %}
-{% if currentPage === 1 %}
-    {% set previousLink = null %}
-{% else %}
-    {% set recentlyAddedPreviousLink = {
-        text: 'Previous',
-        href: '/' + params.courtCode + '/cases/' + params.date + '/' + params.subsection + '?page=' + (currentPage - 1)
-    } %}
-{% endif %}
-{% if currentPage === totalPages %}
+
+{% if pagination.currentPage === pagination.totalPages %}
     {% set nextLink = null %}
 {% else %}
     {% set recentlyAddedNextLink = {
         text: 'Next',
-        href: '/' + params.courtCode + '/cases/' + params.date +  '/' + params.subsection + '?page=' +  (currentPage + 1)
+        href: '/' + params.courtCode + '/cases/' + params.date +  '/' + params.subsection + '?page=' +  (pagination.currentPage + 1)
     } %}
 {% endif %}
 
@@ -340,7 +194,7 @@
                 <p class="govuk-body">{{ "There are no matching cases." if params.filtersApplied else "No case list information available." }}</p>
             {% endif %}
 
-            {% if totalPages > 1 %}
+            {% if pagination.totalPages > 1 %}
                 {%- set showSubsectionLinks = (params.subsection === 'added' or params.subsection === 'heard') -%}
                 {% block pagination %}
                     {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
