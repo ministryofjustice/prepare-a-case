@@ -2,6 +2,22 @@ const getOutcomeListSorts = require('../../utils/getOutcomesSorts')
 const features = require('../../utils/features')
 const log = require('../../log')
 const { settings } = require('../../config')
+
+const getBaseUrl = (state) => {
+  switch (state) {
+    case 'NEW':
+      return ''
+    case 'IN_PROGRESS':
+      return 'in-progress'
+    case 'RESULTED':
+      return 'resulted-cases'
+    case 'ON_HOLD':
+      return 'on-hold'
+    default:
+      return ''
+  }
+}
+
 const outcomesMiddleware = state => async (req, res, next) => {
   const context = { court: req.params.courtCode, username: res.locals.user.username }
 
@@ -43,7 +59,7 @@ const outcomesMiddleware = state => async (req, res, next) => {
     }
   })
 
-  const pagingBaseUrl = `${state === 'NEW' ? '' : (state === 'IN_PROGRESS' ? 'in-progress' : 'resulted-cases')}?${paramMap.toString()}`
+  const pagingBaseUrl = getBaseUrl(state)
 
   req.params = {
     ...params,

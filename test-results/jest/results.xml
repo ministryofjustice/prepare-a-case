@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="0.513">
+  <testsuite name="getResultedCasesHandler" errors="0" failures="0" skipped="0" timestamp="2024-04-15T08:29:06" time="0.439" tests="1">
+    <testcase classname="getResultedCasesHandler-should invoke get hearing outcomes for RESULTED state" name="getResultedCasesHandler-should invoke get hearing outcomes for RESULTED state" time="0.002">
+    </testcase>
+  </testsuite>
+</testsuites>

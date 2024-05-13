@@ -89,7 +89,8 @@ describe('getResultedCasesHandler', () => {
         filters,
         filtersApplied: false,
         casesInProgressCount: 5,
-        casesToResultCount: 2
+        casesToResultCount: 2,
+        casesOnHoldCount: 0
       },
       title: params.title,
       currentUserUuid: '78be7d32-d6be-4429-b469-f2b0ba232033',

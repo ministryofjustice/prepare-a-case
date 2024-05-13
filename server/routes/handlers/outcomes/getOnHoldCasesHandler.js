@@ -3,22 +3,20 @@ const getHearingOutcomeAssignedToFilters = require('../../../utils/getHearingOut
 const flagFilters = require('../../../utils/flagFilters')
 const { prepareCourtRoomFilters } = require('../../helpers')
 
-const getCasesInProgressHandler = caseService => async (req, res) => {
+const getOnHoldCasesHandler = caseService => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
-    params,
-    session,
-    query: queryParams
+    params
   } = req
-
-  const flashMessage = req.flash('moved-to-resulted')
 
   const response = await caseService.getOutcomesList(
     courtCode,
-    queryParams,
+    req.query,
     sorts,
     state
   )
+
+  const flashMessage = req.flash('move-to-on-hold') ?? req.flash('moved-to-resulted')
 
   const cases = response.cases
 
@@ -31,16 +29,14 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
   const outcomeTypesListFilters = await getOutcomeTypesListFilters()
 
   const filters = [outcomeTypesListFilters, courtRoomFilter]
-  const assignedToFilter = getHearingOutcomeAssignedToFilters(
-    cases,
-    queryParams
-  )
+
+  const assignedToFilter = getHearingOutcomeAssignedToFilters(cases, req.query)
 
   if (assignedToFilter) {
     filters.push(assignedToFilter)
   }
 
-  const flaggedFilters = flagFilters(queryParams, filters)
+  const flaggedFilters = flagFilters(req.query, filters)
 
   const filtersApplied = flaggedFilters
     .map(filterObj => filterObj.items.filter(item => item.checked).length)
@@ -51,21 +47,20 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
       ...params,
       filters: flaggedFilters,
       filtersApplied,
-      casesInProgressCount: response?.totalElements || 0,
+      casesInProgressCount: response?.countsByState?.inProgressCount || 0,
       casesToResultCount: response?.countsByState?.toResultCount || 0,
       casesOnHoldCount: response?.countsByState?.onHoldCount || 0
     },
     title,
     currentUserUuid: res.locals.user.uuid,
-    moveToResultedSuccess: session.moveToResultedSuccess,
-    data: response.cases || [],
+    data: cases || [],
     displayFilters: response.cases?.length || filtersApplied,
     totalPages: response.totalPages,
     totalElements: response.totalElements,
     flashMessage
   }
-  session.moveToResultedSuccess = undefined
 
-  res.render('outcomes/casesInProgress', templateValues)
+  res.render('outcomes/casesOnHold', templateValues)
 }
-module.exports = getCasesInProgressHandler
+
+module.exports = getOnHoldCasesHandler

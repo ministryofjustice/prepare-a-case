@@ -22,7 +22,7 @@ const defaultFilterMatcher = (courtCase, filterObj, item) =>
     : false
 
 const allowedSortValues = ['ASC', 'DESC']
-const allowedStates = ['NEW', 'IN_PROGRESS', 'RESULTED']
+const allowedStates = ['NEW', 'IN_PROGRESS', 'RESULTED', 'ON_HOLD']
 
 const createCaseService = apiUrl => {
   return {
@@ -378,6 +378,11 @@ const createCaseService = apiUrl => {
 
     updateHearingOutcomeToResulted: async (hearingId, defendantId) => {
       const urlString = `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/result`
+      await create(urlString)
+    },
+
+    updateHearingOutcomeToOnHold: async (hearingId, defendantId) => {
+      const urlString = `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/on-hold`
       await create(urlString)
     },
 

@@ -43,7 +43,8 @@ const getCasesToResultHandler = caseService => async (req, res) => {
       filters,
       filtersApplied,
       casesInProgressCount: response?.countsByState?.inProgressCount || 0,
-      casesToResultCount: response.totalElements
+      casesToResultCount: response.totalElements,
+      casesOnHoldCount: response?.countsByState?.onHoldCount || 0
     },
     title,
     data: response.cases || [],

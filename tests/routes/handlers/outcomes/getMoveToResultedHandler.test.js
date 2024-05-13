@@ -5,7 +5,14 @@ describe('getMoveToResultedHandler', () => {
     caseServiceMock,
     mockResponse
   } = require('../test-helpers')
-  const subject = require('../../../../server/routes/handlers/outcomes/getMoveToResultedHandler')(caseServiceMock)
+  const utilsMock = {
+    nunjucksFilters: {
+      removeTitle: jest.fn(x => x),
+      properCase: jest.fn(x => x),
+      apostropheInName: jest.fn(x => x)
+    }
+  }
+  const subject = require('../../../../server/routes/handlers/outcomes/getMoveToResultedHandler')(caseServiceMock, utilsMock)
   const hearingId = 'test-hearing-id'
   const defendantId = 'test-defendant-id'
   const courtCode = 'B1007'
@@ -15,7 +22,8 @@ describe('getMoveToResultedHandler', () => {
     params: { hearingId, courtCode, defendantId },
     path: '/test/path',
     query: { defendantName },
-    session: {}
+    session: {},
+    flash: jest.fn()
   }
 
   it('should invoke update hearing outcome to resulted and redirect to in-progress hearing outcomes tab', async () => {
@@ -25,6 +33,16 @@ describe('getMoveToResultedHandler', () => {
     // Then
     expect(caseServiceMock.updateHearingOutcomeToResulted).toHaveBeenCalledWith(hearingId, defendantId)
     expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/outcomes/in-progress`)
-    expect(mockRequest.session.moveToResultedSuccess).toBe(defendantName)
+    expect(mockRequest.flash).toHaveBeenCalledWith('moved-to-resulted', "You have moved Joe Blogs's case to resulted cases.")
+  })
+
+  it('should invoke update hearing outcome to resulted and redirect to on-hold hearing outcomes tab', async () => {
+    // When
+    await subject({ ...mockRequest, query: { ...mockRequest.query, redirectPage: 'on-hold' } }, mockResponse)
+
+    // Then
+    expect(caseServiceMock.updateHearingOutcomeToResulted).toHaveBeenCalledWith(hearingId, defendantId)
+    expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/outcomes/on-hold`)
+    expect(mockRequest.flash).toHaveBeenCalledWith('moved-to-resulted', "You have moved Joe Blogs's case to resulted cases.")
   })
 })
