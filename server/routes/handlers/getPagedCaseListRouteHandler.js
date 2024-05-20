@@ -76,7 +76,9 @@ const constructTableData = (params, data) => {
         listing.push(escapeHtml(ordinalNumber(updatedListing[0])))
       } else {
         listing.push('<ol class="govuk-list govuk-!-margin-bottom-0">')
-        listing.push(`<li>${escapeHtml(ordinalNumber(updatedListing[0]))}</li>`)
+        updatedListing.forEach(listingItem => {
+          listing.push(`<li>${escapeHtml(ordinalNumber(listingItem))}</li>`)
+        })
         listing.push('</ol>')
       }
     } else {
@@ -90,7 +92,7 @@ const constructTableData = (params, data) => {
 
     const getBadge = () => {
       let badgeColour = 'black'
-      let badgeText = ''
+      let badgeText = 'No record'
 
       if (notMatched) {
         badgeColour = 'red'
@@ -109,7 +111,26 @@ const constructTableData = (params, data) => {
         badgeText = 'Sso'
       }
 
-      return `<div><span class="moj-badge moj-badge--${badgeColour} pac-badge">${badgeText}</span></div>`
+      return `<span class="moj-badge moj-badge--${badgeColour} pac-badge">${badgeText}</span>`
+    }
+
+    const getProbationStatusHtml = () => {
+      let probationStatusHtml = getBadge()
+      if (notMatched) {
+        probationStatusHtml += capitalizeFirstLetter(item.probationStatus.toString())
+      }
+
+      console.log("🚀 ~ getProbationStatusHtml ~ item.previouslyKnownTerminationDate:", item.previouslyKnownTerminationDate)
+      console.log("🚀 ~ getProbationStatusHtml ~ item.probationStatus:", item.probationStatus)
+
+
+      if (item.previouslyKnownTerminationDate && item.probationStatus == 'Previously known') {
+        console.log("🚀 ~ getProbationStatusHtml ~ probationStatusHtml:", 'here')
+        probationStatusHtml += '<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format("D MMMM YYYY") + '</span>';
+      }
+
+      console.log("🚀 ~ getProbationStatusHtml ~ probationStatusHtml:", probationStatusHtml)
+      return `<div>${probationStatusHtml}</div>`
     }
 
     const constructSummaryUrl = (courtCode, hearingId, defendantId) => {
@@ -124,7 +145,8 @@ const constructTableData = (params, data) => {
 
     const tableRow = [
       { html: constructDefendantNameLink(a11yTitle, sanitisedDefendantFullName, crnDisplay, params.courtCode, item.hearingId, item.defendantId) },
-      { html: (getBadge() + notMatched ? '' : capitalizeFirstLetter(item.probationStatus.toString()) + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + (item.previouslyKnownTerminationDate && item.probationStatus == 'Previously known') ? escapeHtml(moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format('D MMMM YYYY')) + '</span>' : '')) },
+      // { html: (getBadge() + notMatched ? '' : capitalizeFirstLetter(item.probationStatus.toString()) + ('<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + (item.previouslyKnownTerminationDate && item.probationStatus == 'Previously known') ? escapeHtml(moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format('D MMMM YYYY')) + '</span>' : '')) },
+      { html: getProbationStatusHtml() },
       { html: offences.join('') },
       { html: listing.join('') },
       { text: capitalizeFirstLetter(item.session) },
@@ -238,7 +260,7 @@ const getPaginationObject = (pageParams) => {
   const recentlyAddedPageItems = []
   let previousLink
   let recentlyAddedPreviousLink
-  let recentlyaddedNextLink
+  let recentlyAddedNextLink
   let nextLink
 
   if (startNum < 1 || totalPages <= maximumPages) {
@@ -261,7 +283,7 @@ const getPaginationObject = (pageParams) => {
 
     recentlyAddedPageItems.push({
       text: i,
-      href: '/' + params.courtCode + '/cases/' + params.date + '/' + params.subsection + '?page=' + i,
+      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + i,
       selected: currentPage === i
     })
   }
@@ -284,7 +306,7 @@ const getPaginationObject = (pageParams) => {
       href: pageParams.baseUrl + 'page=' + (currentPage + 1)
     }
 
-    recentlyaddedNextLink = {
+    recentlyAddedNextLink = {
       text: 'Next',
       href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage + 1)
     }
@@ -297,10 +319,11 @@ const getPaginationObject = (pageParams) => {
     endNum,
     totalPages,
     pageItems,
+    recentlyAddedPageItems,
     previousLink,
     recentlyAddedPreviousLink,
     nextLink,
-    recentlyaddedNextLink
+    recentlyAddedNextLink
 
   }
 }
