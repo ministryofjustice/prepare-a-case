@@ -92,7 +92,7 @@ const constructTableData = (params, data) => {
 
     const getBadge = () => {
       let badgeColour = 'black'
-      let badgeText = 'No record'
+      let badgeText = ''
 
       if (notMatched) {
         badgeColour = 'red'
@@ -111,7 +111,7 @@ const constructTableData = (params, data) => {
         badgeText = 'Sso'
       }
 
-      return `<span class="moj-badge moj-badge--${badgeColour} pac-badge">${badgeText}</span>`
+      return badgeText ? `<span class="moj-badge moj-badge--${badgeColour} pac-badge">${badgeText}</span>` : ''
     }
 
     const getProbationStatusHtml = () => {
@@ -123,6 +123,9 @@ const constructTableData = (params, data) => {
       console.log("🚀 ~ getProbationStatusHtml ~ item.previouslyKnownTerminationDate:", item.previouslyKnownTerminationDate)
       console.log("🚀 ~ getProbationStatusHtml ~ item.probationStatus:", item.probationStatus)
 
+      if (!notMatched) {
+        probationStatusHtml += capitalizeFirstLetter(item.probationStatus.toString())
+      }
 
       if (item.previouslyKnownTerminationDate && item.probationStatus == 'Previously known') {
         console.log("🚀 ~ getProbationStatusHtml ~ probationStatusHtml:", 'here')
