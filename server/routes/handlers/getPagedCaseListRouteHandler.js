@@ -111,7 +111,7 @@ const constructTableData = (params, data) => {
         badgeText = 'Sso'
       }
 
-      return badgeText ? `<span class="moj-badge moj-badge--${badgeColour} pac-badge">${badgeText}</span>` : ''
+      return badgeText ? `<div><span class="moj-badge moj-badge--${badgeColour} pac-badge">${badgeText}</span></div>` : ''
     }
 
     const getProbationStatusHtml = () => {
@@ -128,12 +128,10 @@ const constructTableData = (params, data) => {
       }
 
       if (item.previouslyKnownTerminationDate && item.probationStatus == 'Previously known') {
-        console.log("🚀 ~ getProbationStatusHtml ~ probationStatusHtml:", 'here')
         probationStatusHtml += '<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format("D MMMM YYYY") + '</span>';
       }
 
-      console.log("🚀 ~ getProbationStatusHtml ~ probationStatusHtml:", probationStatusHtml)
-      return `<div>${probationStatusHtml}</div>`
+      return probationStatusHtml
     }
 
     const constructSummaryUrl = (courtCode, hearingId, defendantId) => {
