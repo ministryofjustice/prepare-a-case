@@ -105,5 +105,18 @@ module.exports = {
       return 'Not available'
     }
     return moment(dateString).format('dddd D MMMM YYYY')
+  },
+
+  escapeHtml: unsafe => {
+    return unsafe
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;')
+  },
+
+  capitalizeFirstLetter: string => {
+    return string.charAt(0).toUpperCase() + string.slice(1)
   }
 }
