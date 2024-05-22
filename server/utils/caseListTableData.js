@@ -37,7 +37,7 @@ const getProbationStatusHtml = (item, notMatched) => {
     probationStatusHtml += capitalizeFirstLetter(item.probationStatus.toString())
   }
 
-  if (item.previouslyKnownTerminationDate && item.probationStatus == 'Previously known') {
+  if (item.previouslyKnownTerminationDate && item.probationStatus === 'Previously known') {
     probationStatusHtml += '<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended ' + moment(item.previouslyKnownTerminationDate, 'YYYY-MM-DD').format('D MMMM YYYY') + '</span>'
   }
 

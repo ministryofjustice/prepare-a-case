@@ -5,7 +5,6 @@ const trackEvent = require('../../utils/analytics.js')
 const workflow = require('../../utils/workflow')
 const queryParamBuilder = require('../../utils/queryParamBuilder.js')
 const moment = require('moment')
-const nunjucksFilters = require('../../../server/utils/nunjucksFilters.js')
 const { constructTableData } = require('../../utils/caseListTableData.js')
 
 const getTodaysDate = () => {
@@ -172,28 +171,6 @@ const getPaginationObject = (pageParams) => {
   }
 }
 
-const getDatesObject = (pageParams) => {
-  const today = moment().format('YYYY-MM-DD')
-  const isSunday = moment().day() === 0
-  const dateFormat = 'dddd D MMMM'
-  const currentDate = moment(params.date, 'YYYY-MM-DD')
-  const useStartDate = moment().subtract(params.casesPastDays, 'days')
-  const tomorrow = moment().add(1, 'days').format('YYYY-MM-DD')
-  const yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD')
-  const withinDateRange = currentDate.isBetween(useStartDate, params.addBusinessDays(useStartDate, params.totalDays - 1), 'day', '[]')
-
-  return {
-    today,
-    isSunday,
-    dateFormat,
-    currentDate,
-    useStartDate,
-    tomorrow,
-    yesterday,
-    withinDateRange
-  }
-}
-
 const getPagedCaseListRouteHandler = caseService => async (req, res) => {
   const {
     redisClient: { getAsync },
@@ -289,7 +266,6 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
   }
 
   const templateValues = {
-    title: 'Cases',
     params: pageParams,
     data: response.cases,
     tableData: constructTableData(pageParams, response.cases),

@@ -1,4 +1,4 @@
-/* global describe, it, expect, jest */
+/* global describe, it, expect */
 const caseListTableData = require('../../server/utils/caseListTableData.js')
 
 describe('caseListTableData', () => {
