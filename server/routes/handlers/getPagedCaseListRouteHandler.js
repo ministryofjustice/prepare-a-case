@@ -274,6 +274,7 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
     listTabs: getPageTabs(pageParams),
     pagination: getPaginationObject(pageParams)
   }
+
   session.currentView = subsection
 
   session.caseListDate = currentDate
