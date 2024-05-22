@@ -39,7 +39,7 @@ const getPageTitle = (params) => {
 }
 
 const getPageTabs = (params) => {
-  const pageTabs = [];
+  const pageTabs = []
 
   const getPageLink = (subsection) => {
     const subsectionLink = subsection ? `/${subsection}` : ''
@@ -296,7 +296,7 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
     hearingOutcomesEnabled,
     title: getPageTitle(pageParams),
     listTabs: getPageTabs(pageParams),
-    pagination: getPaginationObject(pageParams),
+    pagination: getPaginationObject(pageParams)
   }
   session.currentView = subsection
 
