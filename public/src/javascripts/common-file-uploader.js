@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
           accept: picker.getAttribute('accept').split(',')
         }
       }
- 
+
       // existing files
       Array.from(root.querySelectorAll('*[data-item-exists]'))
         .forEach(actionDeleteConfirm)
@@ -155,10 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       /* Adds files from different data sources */
       const addFiles = files => {
-        pool.upload.length = 0;
-        pool.upload.push(...files)
+        pool.upload.length = 0
         submitDisable(!files.length)
-        wipe.todo();
+        wipe.todo()
         Array.from(files)
           .slice(0, config.select.max)
           .filter(({ name, type }) => 
@@ -173,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
               .replace(/\[\[file\.name\]\]/g, file.name)
             templates.todo_item.after(element)
             pool.todo.push(element)
+            pool.upload.push(file)
           })
       }
 
