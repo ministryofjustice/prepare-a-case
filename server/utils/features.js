@@ -7,7 +7,7 @@ const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddi
 
 const PLYMOUTH_MAGS_COURT_CODE = 'B50KH'
 
-const PILOT_COURTS = ['B20EB', 'B23HS', 'B44MA', 'B43JC']
+const PILOT_COURTS = ['B20EB', 'B23HS', 'B44MA', 'B43JC', 'B43KB', 'B43KQ', 'B43OX', 'B44KM', 'B44BA', 'B43LV']
 
 const features = {
   hearingNotes: anyOf(
@@ -36,11 +36,23 @@ const features = {
       )
     )
   ),
-  serverSidePaging: allOf(
-    mainFeatureToggleEnabled('enableServerSidePaging'),
-    isEnv('dev', 'preprod', 'prod')
-  ),
   pastCasesNavigation: enabledForAll(),
+  workflow: anyOf(
+    allOf(
+      isEnv('dev'),
+      mainFeatureToggleEnabled('enableWorkflow')
+    ),
+    allOf(
+      isEnv('preprod'),
+      mainFeatureToggleEnabled('enableWorkflow'),
+      enabledForCourts(...PILOT_COURTS)
+    ),
+    allOf(
+      isEnv('prod'),
+      mainFeatureToggleEnabled('enableWorkflow'),
+      enabledForCourts(...PILOT_COURTS)
+    )
+  ),
   hearingOutcomes: anyOf(
     allOf(
       isEnv('dev'),

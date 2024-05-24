@@ -237,7 +237,6 @@ workflows:
             - set_app_version
       - deploy_dev:
           context:
-            - court-probation-live-dev
             - hmpps-common-vars
           requires:
             - build

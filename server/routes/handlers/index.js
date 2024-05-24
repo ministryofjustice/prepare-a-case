@@ -1,7 +1,6 @@
 // A central file where all the handlers are created with necessary dependencies injected
 
 const {
-  getCaseList,
   getPagedCaseList,
   getCase,
   addCaseComment,
@@ -15,14 +14,14 @@ const {
   addHearingOutcome,
   saveDraftCaseComment,
   deleteCaseCommentDraft,
-  updateCaseComment
+  updateCaseComment,
+  updateHearingOutcomeToResulted
 } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
 const { getUserSelectedCourts } = require('../../services/user-preference-service')
 const getCaseSearchType = require('../../utils/getCaseSearchType')
 const getOutcomeTypesListFilters = require('../../utils/getOutcomeTypesListFilters')
-
-const getCaseListHandler = require('./getCaseListRouteHandler')({ getCaseList })
+const nunjucksFilters = require('../../utils/nunjucksFilters')
 
 const getCaseAndTemplateValues = require('./getCaseTemplateValuesHelper')({ getCase })
 
@@ -62,10 +61,10 @@ const cancelCaseCommentDraftHandler = require('./getCancelCaseCommentDraftHandle
 const updateCaseCommentHandler = require('./getUpdateCommentRequestHandler')({ updateCaseComment })
 
 const pagedCaseListRouteHandler = require('./getPagedCaseListRouteHandler')({ getPagedCaseList })
-const caseSummaryHandler = require('./caseSummary')({ getOutcomeTypesListFilters, getCaseAndTemplateValues })
+
+const caseSummaryHandler = require('./caseSummary')({ getOutcomeTypesListFilters, getCaseAndTemplateValues, nunjucksFilters, updateHearingOutcomeToResulted })
 
 module.exports = {
-  getCaseListHandler,
   getCaseAndTemplateValues,
   getProbationRecordHandler,
   getUserSelectedCourtsHandler,

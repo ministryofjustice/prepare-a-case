@@ -36,7 +36,7 @@ Then('I should see a warning banner on hearing {string} with text {string}', ($h
   })
 })
 
-Then('I click Add a note on hearing with id {string}', ($hearingId) => {
+Then('I click Add a hearing note on hearing with id {string}', ($hearingId) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get('.govuk-details__summary-text').click()
   })
@@ -44,14 +44,14 @@ Then('I click Add a note on hearing with id {string}', ($hearingId) => {
 
 Then('I should see {string} link on hearing with id {string}', ($title, $hearingId) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
-    cy.get('.govuk-details__summary-text').should('have.text', 'Add a note')
+    cy.get('.govuk-details__summary-text').should('have.text', 'Add a hearing note')
   })
 })
 
-Then('I should see a text area wih label Add note on hearing with id {string}', $hearingId => {
+Then('I should see a text area wih label Add information specific to this hearing on hearing with id {string}', $hearingId => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get('.govuk-details__text').within(() => {
-      cy.get('label').should('contain.text', 'Add note')
+      cy.get('label').should('contain.text', 'Add information specific to this hearing')
       cy.get('textarea').should('exist')
     })
   })
@@ -88,7 +88,7 @@ Then('I should see the following hearings with the hearing type label, hearing d
       })
       const caseProgressCardBody = cy.get('.app-summary-card__body').eq(0)
       caseProgressCardBody.within(() => {
-        cy.get('summary > span').contains('Add a note')
+        cy.get('summary > span').contains('Add a hearing note')
       })
     })
   })
@@ -119,6 +119,16 @@ Then('I should see the text heading message {string}', $string => {
 Then('I should see the text body message {string}', $string => {
   cy.get('.govuk-body-s').contains($string)
 })
+
 Then('I click the {string} button to be back on my page', $string => {
   cy.get('#close-btn').contains($string).click({ force: true })
+})
+
+Then('I should {string} line breaks on hearing note {string}', ($expected, $noteId) => {
+  expect(['see', 'not see']).to.include($expected)
+  cy.get(`#previous-note-${$noteId} .hearing-note-display`).eq(0).within(() => {
+    cy.get('.hearing-note-display-text').eq(0).within(() => {
+      cy.get('br').should(`${$expected === 'not see' ? 'not.' : ''}exist`)
+    })
+  })
 })

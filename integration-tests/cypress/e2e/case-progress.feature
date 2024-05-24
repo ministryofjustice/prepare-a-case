@@ -15,10 +15,10 @@ Feature: Case progress
 
     And I should see the level 2 heading "Case progress"
     And I should see 6 previous hearings headers
-    And I should see "Add a note" link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
+    And I should see "Add a hearing note" link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
 
-    When I click Add a note on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
-    Then I should see a text area wih label Add note on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
+    When I click Add a hearing note on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
+    Then I should see a text area wih label Add information specific to this hearing on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     And I should see a Save button on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     And I should see a Cancel link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
 
@@ -134,4 +134,30 @@ Feature: Case progress
       | Jane Smith  | 9 July 2022, 17:13    | Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office. |
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" should have a draft note with text "This is a draft note"
     And I should see a warning banner on hearing "1f93aa0a-7e46-4885-a1cb-f25a4be33a00" with text "This note was added to a case with more than one defendant. Delete the note if it is not relevant to this defendant."
+
+  Scenario: Display hearing notes with line breaks
+    Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
+
+    When I navigate to the "/B14LO/hearing/7e0f9cb9-b492-4657-9028-a86de1301e25/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary" base route
+    Then I should be on the "Case summary" page
+    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
+    And I should see the caption text "URN: 01WW0298121"
+
+    And I should see the level 2 heading "Case progress"
+    And I should "see" line breaks on hearing note "754270"
+
+  Scenario: Display hearing notes without line breaks
+    Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
+
+    When I navigate to the "/B14LO/hearing/7e0f9cb9-b492-4657-9028-a86de1301e25/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary" base route
+    Then I should be on the "Case summary" page
+    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
+    And I should see the caption text "URN: 01WW0298121"
+
+    And I should see the level 2 heading "Case progress"
+    And I should "not see" line breaks on hearing note "987650"
 

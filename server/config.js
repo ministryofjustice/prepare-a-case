@@ -35,9 +35,8 @@ module.exports = {
     enablePastCasesNavigation: getBooleanParam('ENABLE_PAST_CASES_NAVIGATION'),
     enableAppInsights: getBooleanParam('ENABLE_APP_INSIGHTS'),
     enableHearingOutcomes: getBooleanParam('ENABLE_HEARING_OUTCOMES'),
-    enableServerSidePaging: getBooleanParam('ENABLE_SERVERSIDE_PAGING'),
-    enableCaseDefendantDocuments: getBooleanParam('ENABLE_CASE_DEFENDANT_DOCUMENTS'),
     enableMoveToResultedAction: getBooleanParam('ENABLE_MOVE_TO_RESULTED_ACTION'),
+    enableWorkflow: getBooleanParam('ENABLE_WORKFLOW'),
     casesExcludedDays: get('CASES_EXCLUDED_DAYS', '-1'), // Coma delimited String of days to exclude, incremental from 0 (Sunday) - fallback to -1 to exclude no days
     snapshotTimes: get('CASE_SNAPSHOT_TIMES', '00:00,08:45,09:45'), // Coma delimited string of snapshot times, earliest - latest
     assetCache: '30d',
@@ -248,7 +247,7 @@ module.exports = {
   },
   session: {
     secret: get('SESSION_SECRET', 'prepare-a-case-insecure-default-session', requiredInProduction),
-    expiry: get('WEB_SESSION_TIMEOUT_IN_MINUTES', 120),
+    expiry: get('WEB_SESSION_TIMEOUT_IN_MINUTES', 60 * 12),
     cookieOptions: { maxAge: 365 * 24 * 60 * 60 * 1000 }
   },
   apis: {

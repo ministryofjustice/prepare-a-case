@@ -1,6 +1,7 @@
 const moment = require('moment')
 const getNextHearing = require('../../utils/getNextHearing')
 const featuresToggles = require('../../utils/features')
+const trackEvent = require('../../utils/analytics')
 
 const {
   settings
@@ -85,7 +86,7 @@ const caseSummaryPostHandler = utils => async (req, res) => {
   const { action } = req.body
   const templateValues = await utils.getCaseAndTemplateValues(req)
 
-  handleButtonAction(templateValues, action, res, req)
+  await handleButtonAction(templateValues, action, res, req, utils)
 }
 
 const isAssignedToUser = (userUuid, hearingOutcome) => {
@@ -99,8 +100,9 @@ const getHearingOutcome = (hearingId, hearings) => {
   return hearing ? hearing.hearingOutcome : null
 }
 
-const handleButtonAction = (templateValues, action, res, req) => {
-  const { caseId, hearingId, defendantId, crn, courtCode, defendantName } = templateValues.data
+const handleButtonAction = async (templateValues, action, res, req, utils) => {
+  const { caseId, hearingId, defendantId, crn } = templateValues.data
+  const { courtCode } = templateValues.params
 
   switch (action) {
     case 'unlinkNdelius':
@@ -108,9 +110,31 @@ const handleButtonAction = (templateValues, action, res, req) => {
     case 'linkNdelius':
       return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)
     case 'moveToResulted':
-      req.flash('moved-to-resulted', `You have moved ${defendantName}'s case to resulted cases.`)
-      res.redirect('/B14LO/outcomes/in-progress')
+      await moveToResulted(res, req, utils, templateValues)
   }
+}
+
+const moveToResulted = async (res, req, utils, templateValues) => {
+  const { params: { courtCode, hearingId, defendantId } } = req
+  const { apostropheInName, properCase, removeTitle } = utils.nunjucksFilters
+  const { defendantName } = templateValues.data
+
+  await utils.updateHearingOutcomeToResulted(hearingId, defendantId)
+
+  trackEvent(
+    'PiCPrepareACaseHearingOutcomes',
+    {
+      operation: 'updateHearingOutcomeToResultedFromDefendantSummary',
+      hearingId,
+      courtCode,
+      userId: res.locals.user.userId
+    }
+  )
+
+  const formattedName = removeTitle(properCase(apostropheInName(defendantName)))
+
+  req.flash('moved-to-resulted', `You have moved ${formattedName}'s case to resulted cases.`)
+  res.redirect(`/${courtCode}/outcomes/in-progress`)
 }
 
 const getActionButtons = (templateValues) => {

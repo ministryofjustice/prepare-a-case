@@ -89,11 +89,11 @@ env:
   - name: ENABLE_CASE_COMMENTS
     value: {{ .Values.env.ENABLE_CASE_COMMENTS | quote }}
 
-  - name: ENABLE_CASE_DEFENDANT_DOCUMENTS
-    value: {{ .Values.env.ENABLE_CASE_DEFENDANT_DOCUMENTS | quote }}
-
   - name: ENABLE_HEARING_OUTCOMES
     value: {{ .Values.env.ENABLE_HEARING_OUTCOMES | quote }}
+
+  - name: ENABLE_WORKFLOW
+    value: {{ .Values.env.ENABLE_WORKFLOW | quote }}
 
   - name: ENABLE_CASE_PROGRESS
     value: {{ .Values.env.ENABLE_CASE_PROGRESS | quote }}
@@ -103,9 +103,6 @@ env:
 
   - name: PAC_ENV
     value: {{ .Values.env.PAC_ENV | quote }}
-
-  - name: ENABLE_SERVERSIDE_PAGING
-    value: {{ .Values.env.ENABLE_SERVERSIDE_PAGING | quote }}
 
   - name: CASE_TRACKING_PRE_PILOT_USERS
     value: {{ .Values.env.CASE_TRACKING_PRE_PILOT_USERS | quote }}

@@ -1,0 +1,107 @@
+{
+    "id": "49b662db-caa3-4dba-8831-b72f3cbfcdde",
+    "priority": 2,
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/court/([A-Z0-9]{5})/cases",
+        "queryParameters": {
+            "date": {
+                "matches": "^(?!2020-01-01|2020-01-02|2020-01-03|2020-01-04)(\\d{4})-(\\d{2})-(\\d{2})$"
+            },
+            "hearingStatus": {
+              "matches": "^(?:HEARD|UNHEARD)$"
+            },
+            "VERSION2": {
+              "matches": "true"
+            },
+            "session": {
+                "matches": "AFTERNOON"
+            },
+            "courtRoom": {
+              "matches": "01"
+            },
+            "probationStatus": {
+              "matches": "CURRENT"
+            },
+            "source": {
+              "matches": "COMMON_PLATFORM"
+            },
+            "breach": {
+              "matches": "true"
+            }
+        }
+    },
+    "response": {
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "status": 200,
+        "jsonBody": {
+            "cases": [
+              {
+                "caseId": "f76f1dfe-c41e-4242-b5fa-865d7dd2ce57",
+                "hearingId": "3f80d674-d964-4781-927a-99c78bc340e2",
+                "defendantId": "062c670d-fdf6-441f-99e1-d2ce0c3a3846",
+                "caseNo": "2608860141",
+                "courtCode": "SHF",
+                "courtRoom": "10",
+                "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+                "listNo": "3rd",
+                "crn": "D541487",
+                "pnc": "A/1234560BA",
+                "probationStatus": "Previously known",
+                "session": "AFTERNOON",
+                "previouslyKnownTerminationDate": "2010-01-01",
+                "suspendedSentenceOrder": false,
+                "breach": false,
+                "preSentenceActivity": false,
+                "awaitingPsr": false,
+                "source": "LIBRA",
+                "hearingPrepStatus": "NOT_STARTED",
+                 "workflow": {
+                  "tasks": [
+                    {
+                      "id": "prep",
+                      "state": "NOT_STARTED"
+                    }
+                  ]
+                },
+                "offences": [
+                  {
+                    "offenceTitle": "Theft from the person of another",
+                    "offenceSummary": "On 24/03/2016 at Bangor stole LAPTOP to the value of 300.00, belonging to Booker Becker.",
+                    "act": "Contrary to section 1(1) and 7 of the Theft Act 1968."
+                  },
+                  {
+                    "offenceTitle": "Assault by beating",
+                    "offenceSummary": "On 01/01/2016 at Birmingham assaulted Mcbride Barnes by beating him.",
+                    "act": "Contrary to section 39 of the Criminal Justice Act 1988."
+                  }
+                ],
+                "defendantSex": "F",
+                "defendantName": "Ms Charlene Hammond",
+                "defendantAddress": {
+                  "line1": "70",
+                  "line2": "Guider Avenue",
+                  "postcode": "ad21 5dr",
+                  "line3": "Leeds"
+                },
+                "defendantDob": "1980-09-13"
+              }
+            ],
+            "totalPages": 2,
+            "page": 1,
+            "totalElements": 1,
+            "possibleMatchesCount": 0,
+            "recentlyAddedCount": 4,
+            "courtRoomFilters": [
+              "07",
+              "01",
+              "Crown court 5-6",
+              "08",
+              "02",
+              "Crown court 1-3"
+            ]
+        }
+    }
+}
