@@ -109,7 +109,5 @@ env:
 
   - name: ENABLE_MOVE_TO_RESULTED_ACTION
     value: {{ .Values.env.ENABLE_MOVE_TO_RESULTED_ACTION | quote}}
-  
-  - name: DEFAULT_TIMEOUT
-    value: {{ .Values.env.DEFAULT_TIMEOUT | quote }}
+
 {{- end -}}
