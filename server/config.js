@@ -23,7 +23,7 @@ const getCsvParamAsArray = param => get(param, '')?.split(',').map(value => valu
 
 module.exports = {
   settings: {
-    defaultTimeout: get('DEFAULT_TIMEOUT', 6000),
+    defaultTimeout: get('DEFAULT_TIMEOUT', 20000),
     healthTimeout: 2000,
     reduceStdoutNoise: get('REDUCE_STDOUT_NOISE', false),
     casesPerPage: get('CASES_PER_PAGE', 20),
