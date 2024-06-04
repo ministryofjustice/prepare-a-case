@@ -43,8 +43,14 @@ whitelist:
   cloudplatform-live1-3: "35.177.252.54/32"
   ark-internet-1: "194.33.192.0/25"
   ark-internet-2: "194.33.196.0/25"
-  moj-official-aws-prod: "51.149.250.0/24"
   global-protect: "35.176.93.186/32"
+  moj-official-prod: "51.149.250.0/24"
+  moj-official-ark-c-expo-e: "51.149.249.0/29"
+  moj-official-ark-f-expo-e: "51.149.249.32/29"
+  vodafone-dia-1: "194.33.200.0/21"
+  vodafone-dia-2: "194.33.216.0/24"
+  vodafone-dia-4: "194.33.218.0/24"
+  palo-alto-prisma: "128.77.75.64/26"
 
 resources:
   cpu:
