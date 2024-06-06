@@ -18,7 +18,7 @@ const getInternalServerErrorResponse = res => ({
 const defaultFilterMatcher = (courtCase, filterObj, item) =>
   courtCase[filterObj.id]
     ? courtCase[filterObj.id].toString().toLowerCase() ===
-      item.value.toString().toLowerCase()
+    item.value.toString().toLowerCase()
     : false
 
 const allowedSortValues = ['ASC', 'DESC']
@@ -210,7 +210,7 @@ const createCaseService = apiUrl => {
             ? removedCases
             : allCases
 
-      function applyFilter (filterObj) {
+      function applyFilter(filterObj) {
         filteredCases = filteredCases.filter(courtCase => {
           let notFiltered = true
           let matched = false
@@ -376,8 +376,8 @@ const createCaseService = apiUrl => {
       return response.data
     },
 
-    updateHearingOutcomeToResulted: async (hearingId, defendantId) => {
-      const urlString = `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/result`
+    updateHearingOutcomeToResulted: async (hearingId, defendantId, correlationId) => {
+      const urlString = `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/result?correlationId=${correlationId}`
       await create(urlString)
     },
 
