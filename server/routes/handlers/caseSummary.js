@@ -2,6 +2,7 @@ const moment = require('moment')
 const getNextHearing = require('../../utils/getNextHearing')
 const featuresToggles = require('../../utils/features')
 const trackEvent = require('../../utils/analytics')
+const { v4: uuidv4 } = require('uuid')
 
 const {
   settings
@@ -35,7 +36,7 @@ const caseSummaryHandler = utils => async (req, res) => {
     return moment(b.created).unix() - moment(a.created).unix()
   })
   templateValues.data.nextAppearanceHearingId = templateValues.data.hearings &&
-      getNextHearing(templateValues.data.hearings, moment(), templateValues.data.source)?.hearingId
+    getNextHearing(templateValues.data.hearings, moment(), templateValues.data.source)?.hearingId
   templateValues.data.hearings = templateValues.data.hearings?.sort((a, b) => {
     return moment(b.hearingDateTime).unix() - moment(a.hearingDateTime).unix()
   })
@@ -118,8 +119,9 @@ const moveToResulted = async (res, req, utils, templateValues) => {
   const { params: { courtCode, hearingId, defendantId } } = req
   const { apostropheInName, properCase, removeTitle } = utils.nunjucksFilters
   const { defendantName } = templateValues.data
+  const correlationId = uuidv4()
 
-  await utils.updateHearingOutcomeToResulted(hearingId, defendantId)
+  await utils.updateHearingOutcomeToResulted(hearingId, defendantId, correlationId)
 
   trackEvent(
     'PiCPrepareACaseHearingOutcomes',
@@ -127,6 +129,8 @@ const moveToResulted = async (res, req, utils, templateValues) => {
       operation: 'updateHearingOutcomeToResultedFromDefendantSummary',
       hearingId,
       courtCode,
+      defendantId,
+      correlationId,
       userId: res.locals.user.userId
     }
   )

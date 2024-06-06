@@ -63,7 +63,7 @@ describe('Case service', () => {
     it('should upload a file', () => {
       const mockReq = {}
       const mockRes = {}
-      const mockNext = () => {}
+      const mockNext = () => { }
       const responseFormatter = data => data
 
       proxy.mockImplementationOnce((url, config) => {
@@ -129,8 +129,8 @@ describe('Case service', () => {
     it('should download a file', async () => {
       const mockReq = {}
       const mockRes = {}
-      const mockNext = () => {}
-      const skipper = () => {}
+      const mockNext = () => { }
+      const skipper = () => { }
 
       proxy.mockImplementationOnce((url, config) => {
         expect(url).toBe(apiUrl)
@@ -838,12 +838,12 @@ describe('Case service', () => {
     it('given hearing id, when updateHearingOutcomeToResulted is invoked, should invoke api correctly', async () => {
       const hearingId = 'test-hearing-id'
       const defendantId = 'some-defendant-id'
-      const expectedUrl = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id/outcome/result`
+      const expectedUrl = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id/outcome/result?correlationId=1234`
       moxios.stubRequest(expectedUrl, {
         status: 200
       })
 
-      await updateHearingOutcomeToResulted(hearingId, defendantId)
+      await updateHearingOutcomeToResulted(hearingId, defendantId, '1234')
       expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
     })
   })

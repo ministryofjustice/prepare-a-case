@@ -23,7 +23,7 @@ describe('getMoveToResultedHandler', () => {
     await subject(mockRequest, mockResponse)
 
     // Then
-    expect(caseServiceMock.updateHearingOutcomeToResulted).toHaveBeenCalledWith(hearingId, defendantId)
+    expect(caseServiceMock.updateHearingOutcomeToResulted).toHaveBeenCalledWith(hearingId, defendantId, expect.anything())
     expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/outcomes/in-progress`)
     expect(mockRequest.session.moveToResultedSuccess).toBe(defendantName)
   })
