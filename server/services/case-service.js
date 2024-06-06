@@ -210,7 +210,7 @@ const createCaseService = apiUrl => {
             ? removedCases
             : allCases
 
-      function applyFilter(filterObj) {
+      function applyFilter (filterObj) {
         filteredCases = filteredCases.filter(courtCase => {
           let notFiltered = true
           let matched = false
