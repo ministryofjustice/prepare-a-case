@@ -14,7 +14,7 @@ const getMoveToResultedHandler = caseService => async (req, res) => {
       courtCode,
       defendantId,
       correlationId,
-      userId: res.locals.user.userId
+      userId: res.locals.user.uuid
     }
   )
 
