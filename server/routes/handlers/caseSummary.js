@@ -131,8 +131,7 @@ const moveToResulted = async (res, req, utils, templateValues) => {
       courtCode,
       defendantId,
       correlationId,
-      userId: res.locals.user.userId
-    }
+      userId: res.locals.user.uuid
   )
 
   const formattedName = removeTitle(properCase(apostropheInName(defendantName)))
