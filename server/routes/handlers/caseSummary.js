@@ -121,7 +121,6 @@ const moveToResulted = async (res, req, utils, templateValues) => {
   const { defendantName } = templateValues.data
   const correlationId = uuidv4()
 
-
   try {
     await utils.updateHearingOutcomeToResulted(hearingId, defendantId, correlationId)
     const formattedName = removeTitle(properCase(apostropheInName(defendantName)))

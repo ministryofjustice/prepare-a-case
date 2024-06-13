@@ -27,8 +27,6 @@ const getMoveToResultedHandler = caseService => async (req, res) => {
     }
   )
 
-
-
   res.redirect(`/${courtCode}/outcomes/in-progress`)
 }
 
