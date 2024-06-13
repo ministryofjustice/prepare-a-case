@@ -121,7 +121,19 @@ const moveToResulted = async (res, req, utils, templateValues) => {
   const { defendantName } = templateValues.data
   const correlationId = uuidv4()
 
-  await utils.updateHearingOutcomeToResulted(hearingId, defendantId, correlationId)
+
+  try {
+    await utils.updateHearingOutcomeToResulted(hearingId, defendantId, correlationId)
+    const formattedName = removeTitle(properCase(apostropheInName(defendantName)))
+
+    req.flash('moved-to-resulted', `You have moved ${formattedName}'s case to resulted cases.`)
+  } catch (e) {
+    if (e.response.status === 403 || e.response.status === 401) {
+      req.flash('global-error', 'Request was unsuccessful. Check that you are still assigned to the case you are trying to result.')
+    } else {
+      req.flash('global-error', e.message)
+    }
+  }
 
   trackEvent(
     'PiCPrepareACaseHearingOutcomes',
@@ -135,9 +147,6 @@ const moveToResulted = async (res, req, utils, templateValues) => {
     }
   )
 
-  const formattedName = removeTitle(properCase(apostropheInName(defendantName)))
-
-  req.flash('moved-to-resulted', `You have moved ${formattedName}'s case to resulted cases.`)
   res.redirect(`/${courtCode}/outcomes/in-progress`)
 }
 

@@ -11,7 +11,17 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     query: queryParams
   } = req
 
+  const getGlobalErrors = () => {
+    let errors = req.flash('global-error')
+
+    if (typeof errors === 'string') {
+      errors = [errors]
+    }
+    return errors ? errors.map((error) => ({ text: error })) : undefined
+  }
+
   const flashMessage = req.flash('moved-to-resulted')
+  const globalErrors = getGlobalErrors()
 
   const response = await caseService.getOutcomesList(
     courtCode,
@@ -61,7 +71,8 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     displayFilters: response.cases?.length || filtersApplied,
     totalPages: response.totalPages,
     totalElements: response.totalElements,
-    flashMessage
+    flashMessage,
+    globalErrors
   }
   session.moveToResultedSuccess = undefined
 
