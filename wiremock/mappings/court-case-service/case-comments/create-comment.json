@@ -2,12 +2,13 @@
   "id": "e5552927-3236-42c2-8d3c-508b7a1e53f0",
   "request": {
     "method": "PUT",
-    "urlPathPattern": "/cases/e5552927-3236-42c2-8d3c-508b7a1e53f0/comments",
+    "urlPathPattern": "/cases/e5552927-3236-42c2-8d3c-508b7a1e53f0/defendants/062c670d-fdf6-441f-99e1-d2ce0c3a3846/comments",
     "bodyPatterns": [
       {
         "equalToJson": {
           "author": "${json-unit.any-string}",
           "caseId": "f76f1dfe-c41e-4242-b5fa-865d7dd2ce57",
+          "defendantId": "062c670d-fdf6-441f-99e1-d2ce0c3a3846",
           "comment": "${json-unit.any-string}"
         }
       }

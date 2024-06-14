@@ -5,10 +5,12 @@ const { validateSchema, validateMocks } = require('../../testUtils/schemaValidat
 const schema = require('../../../schemas/post-case-comment-schema.schema.json')
 
 pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provider => {
-  describe('POST /cases/{caseId}/comments', () => {
+  describe('POST /cases/{caseId}/defendants/{defendantId}/comments', () => {
     const caseId = 'f76f1dfe-c41e-4242-b5fa-865d7dd2ce57'
+    const defendantId = '062c670d-fdf6-441f-99e1-d2ce0c3a3846'
     const requestBody = {
       caseId,
+      defendantId,
       comment: 'A comment',
       author: 'Adam Sandler'
     }
@@ -29,11 +31,11 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
         commentId: 12234
       }
       await provider.addInteraction({
-        state: 'a case exists with the given case id',
+        state: 'a case exists with the given case id and defendant id',
         uponReceiving: 'a request to create a case comment',
         withRequest: {
           method: 'POST',
-          path: `/cases/${caseId}/comments`,
+          path: `/cases/${caseId}/defendants/${defendantId}/comments`,
           headers: {
             'Content-Type': 'application/json'
           },
@@ -49,7 +51,7 @@ pactWith({ consumer: 'prepare-a-case', provider: 'court-case-service' }, provide
       })
 
       const caseService = createCaseService(provider.mockService.baseUrl)
-      const response = await caseService.addCaseComment(caseId, 'A comment', 'Adam Sandler')
+      const response = await caseService.addCaseComment(caseId, defendantId, 'A comment', 'Adam Sandler')
       expect(response.status).toEqual(201)
       expect(response.data).toEqual(addCommentResponse)
     })

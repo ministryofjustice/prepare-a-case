@@ -7,7 +7,8 @@
   "required": [
     "author",
     "comment",
-    "caseId"
+    "caseId",
+    "defendantId"
   ],
   "properties": {
     "author": {
@@ -28,6 +29,13 @@
       "$id": "#/properties/caseComments/items/anyOf/0/properties/caseId",
       "type": "string",
       "title": "The case id",
+      "description": "An explanation about the purpose of this instance.",
+      "default": ""
+    },
+    "defendantId": {
+      "$id": "#/properties/caseComments/items/anyOf/0/properties/defendantId",
+      "type": "string",
+      "title": "The defendant id",
       "description": "An explanation about the purpose of this instance.",
       "default": ""
     },
