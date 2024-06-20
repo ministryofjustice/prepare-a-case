@@ -131,7 +131,8 @@ const moveToResulted = async (res, req, utils, templateValues) => {
       courtCode,
       defendantId,
       correlationId,
-      userId: res.locals.user.uuid
+      userId: res.locals.user.uuid,
+      user: res.locals.user
     }
   )
 
