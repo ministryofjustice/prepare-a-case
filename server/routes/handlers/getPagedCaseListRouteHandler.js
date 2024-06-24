@@ -5,6 +5,7 @@ const trackEvent = require('../../utils/analytics.js')
 const workflow = require('../../utils/workflow')
 const queryParamBuilder = require('../../utils/queryParamBuilder.js')
 const moment = require('moment')
+const { constructTableData } = require('../../utils/caseListTableData.js')
 
 const getTodaysDate = () => {
   return moment(new Date()).format('YYYY-MM-DD')
@@ -23,6 +24,151 @@ const createBaseUrl = (params, queryParams) => {
 const getPagelessQueryParams = params => {
   const { page, ...remainder } = params
   return remainder
+}
+
+const getPageTitle = (params) => {
+  switch (params.subsection) {
+    case 'added':
+      return 'Recently added cases'
+    case 'removed':
+      return 'Removed cases'
+    default:
+      return 'Case list'
+  }
+}
+
+const getPageTabs = (params) => {
+  const pageTabs = []
+
+  const getPageLink = (subsection) => {
+    const subsectionLink = subsection ? `/${subsection}` : ''
+    return `/${params.courtCode}/cases/${params.date}${subsectionLink}`
+  }
+
+  if (params.hearingOutcomesEnabled) {
+    pageTabs.push(...[
+      {
+        title: 'Hearing outcome still to be added',
+        a11yTitle: 'View outcome still to be added case list',
+        link: getPageLink(),
+        current: params.subsection === ''
+      },
+      {
+        title: 'Hearing outcome added',
+        a11yTitle: 'View outcome added case list',
+        link: getPageLink('heard'),
+        current: params.subsection === 'heard'
+      }
+    ])
+  } else {
+    pageTabs.push({
+      title: 'Case list',
+      a11yTitle: 'View current case list',
+      link: getPageLink(),
+      current: params.subsection === ''
+    })
+  }
+
+  if (params.addedCount > 0) {
+    pageTabs.push({
+      title: 'Recently added',
+      a11yTitle: 'View list of recently added cases',
+      link: getPageLink('added'),
+      current: params.subsection === 'added',
+      count: params.addedCount
+    })
+  }
+
+  if (params.removedCount > 0) {
+    pageTabs.push({
+      title: 'Removed cases',
+      a11yTitle: 'View list of removed cases',
+      link: getPageLink('removed'),
+      current: params.subsection === 'removed',
+      count: params.removedCount
+    })
+  }
+
+  return pageTabs
+}
+
+const getPaginationObject = (pageParams) => {
+  const maximumPages = 4
+  const currentPage = pageParams.page
+  let startNum = pageParams.page - ((maximumPages - 1) / 2)
+  let endNum = pageParams.page + ((maximumPages - 1) / 2)
+  const totalPages = Math.round(Math.ceil((pageParams.caseCount / pageParams.limit)))
+
+  const pageItems = []
+  const recentlyAddedPageItems = []
+  let previousLink
+  let recentlyAddedPreviousLink
+  let recentlyAddedNextLink
+  let nextLink
+
+  if (startNum < 1 || totalPages <= maximumPages) {
+    startNum = 1
+    endNum = maximumPages
+  } else if (endNum > totalPages) {
+    startNum = totalPages - (maximumPages - 1)
+  }
+
+  if (endNum > totalPages) {
+    endNum = totalPages
+  }
+
+  for (let i = startNum; i <= endNum; i++) {
+    pageItems.push({
+      text: i,
+      href: pageParams.baseUrl + 'page=' + i,
+      selected: currentPage === i
+    })
+
+    recentlyAddedPageItems.push({
+      text: i,
+      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + i,
+      selected: currentPage === i
+    })
+  }
+
+  if (currentPage !== 1) {
+    previousLink = {
+      text: 'Previous',
+      href: pageParams.baseUrl + 'page=' + (currentPage - 1)
+    }
+
+    recentlyAddedPreviousLink = {
+      text: 'Previous',
+      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage - 1)
+    }
+  }
+
+  if (currentPage < totalPages) {
+    nextLink = {
+      text: 'Next',
+      href: pageParams.baseUrl + 'page=' + (currentPage + 1)
+    }
+
+    recentlyAddedNextLink = {
+      text: 'Next',
+      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage + 1)
+    }
+  }
+
+  return {
+    maxPagesDisplay: maximumPages,
+    currentPage,
+    startNum,
+    endNum,
+    totalPages,
+    pageItems,
+    recentlyAddedPageItems,
+    previousLink,
+    recentlyAddedPreviousLink,
+    nextLink,
+    recentlyAddedNextLink
+
+  }
 }
 
 const getPagedCaseListRouteHandler = caseService => async (req, res) => {
@@ -90,39 +236,45 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
       })
   }
 
-  const templateValues = {
-    title: 'Cases',
-    params: {
-      ...params,
-      workflow: {
-        enabled: workflowEnabled,
-        tasks: {
-          prep: {
-            items: workflow.tasks.get('prep').states.getAllOrderBySequence
-          }
+  const pageParams = {
+    ...params,
+    workflow: {
+      enabled: workflowEnabled,
+      tasks: {
+        prep: {
+          items: workflow.tasks.get('prep').states.getAllOrderBySequence
         }
-      },
-      hearingOutcomesEnabled,
-      date: currentDate,
-      notification: currentNotification || '',
-      filters: response.filters,
-      page: parseInt(queryParams.page, 10) || 1,
-      from: startCount,
-      to: endCount,
-      caseCount,
-      addedCount: response.recentlyAddedCount,
-      unmatchedRecords: response.possibleMatchesCount,
-      removedCount: response.removedCount,
-      totalDays: pastCaseNavigationEnabled ? settings.casesTotalDays : 7,
-      casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
-      enablePastCasesNavigation: settings.enablePastCasesNavigation,
-      subsection: subsection || (!date && session.currentView) || '',
-      filtersApplied: !!getPagelessQueryParams(queryParams) && Object.keys(getPagelessQueryParams(queryParams)).length > 0,
-      baseUrl: createBaseUrl({ courtCode, date }, queryParams)
+      }
     },
-    data: response.cases,
-    hearingOutcomesEnabled
+    hearingOutcomesEnabled,
+    date: currentDate,
+    notification: currentNotification || '',
+    filters: response.filters,
+    page: parseInt(queryParams.page, 10) || 1,
+    from: startCount,
+    to: endCount,
+    caseCount,
+    addedCount: response.recentlyAddedCount,
+    unmatchedRecords: response.possibleMatchesCount,
+    removedCount: response.removedCount,
+    totalDays: pastCaseNavigationEnabled ? settings.casesTotalDays : 7,
+    casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
+    enablePastCasesNavigation: settings.enablePastCasesNavigation,
+    subsection: subsection || (!date && session.currentView) || '',
+    filtersApplied: !!getPagelessQueryParams(queryParams) && Object.keys(getPagelessQueryParams(queryParams)).length > 0,
+    baseUrl: createBaseUrl({ courtCode, date }, queryParams)
   }
+
+  const templateValues = {
+    params: pageParams,
+    data: response.cases,
+    tableData: constructTableData(pageParams, response.cases),
+    hearingOutcomesEnabled,
+    title: getPageTitle(pageParams),
+    listTabs: getPageTabs(pageParams),
+    pagination: getPaginationObject(pageParams)
+  }
+
   session.currentView = subsection
 
   session.caseListDate = currentDate
