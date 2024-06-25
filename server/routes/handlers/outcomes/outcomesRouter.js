@@ -1,11 +1,11 @@
 const express = require('express')
 
-const { getOutcomesList, assignHearingOutcome, updateHearingOutcomeToResulted } = require('../../../services/case-service')
+const { getOutcomesList, assignHearingOutcome, updateHearingOutcomeToResulted, getCase } = require('../../../services/case-service')
 const casesToResultHandler = require('./getCasesToResultHandler')({ getOutcomesList })
 const casesInProgressHandler = require('./getCasesInProgressHandler')({ getOutcomesList })
 const getResultedCasesHandler = require('./getResultedCasesHandler')({ getOutcomesList })
 const assignHearingOutcomeRouteHandler = require('./getAssignUserToOutcomeRequestHandler')({ assignHearingOutcome })
-const getMoveToResultedHandler = require('./getMoveToResultedHandler')({ updateHearingOutcomeToResulted })
+const getMoveToResultedHandler = require('./getMoveToResultedHandler')({ updateHearingOutcomeToResulted, getCase })
 const postActionsHandler = require('./postActionsHandler')({ assignHearingOutcome })
 
 const { defaults } = require('../../middleware/defaults')

@@ -162,11 +162,22 @@
     {% block backlink %}{% endblock %}
 </nav>
 
+{% if globalErrors %}
+<div class="govuk-width-container" style="margin-top: 7px">
+    {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+    {{ govukErrorSummary({
+    titleText: "There is a problem",
+    errorList: globalErrors
+    }) }}
+</div>
+{% endif %}
+
 <div class="govuk-width-container">
     <main class="govuk-main-wrapper" id="main-content" role="main">
         {% block content %}{% endblock %}
     </main>
-</div>
+
 
 {% block footer %}
     {%- from "govuk/components/footer/macro.njk" import govukFooter -%}

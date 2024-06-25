@@ -10,7 +10,7 @@ exports.notFound = (req, res, next) => {
 }
 
 exports.authError = (error, req, res, next) => {
-  if ([401, 403]
+  if ([401]
     .includes(error.status)) {
     return res.redirect('/logout')
   }

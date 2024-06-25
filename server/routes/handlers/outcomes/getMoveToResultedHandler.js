@@ -4,7 +4,16 @@ const getMoveToResultedHandler = caseService => async (req, res) => {
   const { params: { courtCode, hearingId, defendantId }, session } = req
   const correlationId = uuidv4()
 
-  await caseService.updateHearingOutcomeToResulted(hearingId, defendantId, correlationId)
+  try {
+    await caseService.updateHearingOutcomeToResulted(hearingId, defendantId, correlationId)
+    session.moveToResultedSuccess = req.query.defendantName
+  } catch (e) {
+    if (e.response.status === 403 || e.response.status === 401) {
+      req.flash('global-error', 'Request was unsuccessful. Check that you are still assigned to the case you are trying to result.')
+    } else {
+      req.flash('global-error', e.message)
+    }
+  }
 
   trackEvent(
     'PiCPrepareACaseHearingOutcomes',
@@ -18,8 +27,6 @@ const getMoveToResultedHandler = caseService => async (req, res) => {
       user: res.locals.user
     }
   )
-
-  session.moveToResultedSuccess = req.query.defendantName
 
   res.redirect(`/${courtCode}/outcomes/in-progress`)
 }
