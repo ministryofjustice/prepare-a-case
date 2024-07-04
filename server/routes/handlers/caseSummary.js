@@ -1,8 +1,6 @@
 const moment = require('moment')
 const getNextHearing = require('../../utils/getNextHearing')
 const featuresToggles = require('../../utils/features')
-const trackEvent = require('../../utils/analytics')
-const { v4: uuidv4 } = require('uuid')
 
 const {
   settings
@@ -95,22 +93,6 @@ const getHearingOutcome = (hearingId, hearings) => {
   const hearing = hearings && hearings.find(p => p.hearingId === hearingId)
 
   return hearing ? hearing.hearingOutcome : null
-}
-
-trackEvent(
-  'PiCPrepareACaseHearingOutcomes',
-  {
-    operation: 'updateHearingOutcomeToResultedFromDefendantSummary',
-    hearingId,
-    courtCode,
-    defendantId,
-    correlationId,
-    userId: res.locals.user.uuid,
-    user: res.locals.user
-  }
-)
-
-res.redirect(`/${courtCode}/outcomes/in-progress`)
 }
 
 const getActionButtons = (templateValues) => {
