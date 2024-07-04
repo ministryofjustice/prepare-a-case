@@ -8,11 +8,10 @@ const longDateFormat = 'dddd D MMMM'
 const displayDateFormat = 'D MMM YYYY'
 
 // to log a11y violations
-function terminalLog (violations) {
+function terminalLog(violations) {
   cy.task(
     'log',
-    `${violations.length} accessibility violation${
-      violations.length === 1 ? '' : 's'
+    `${violations.length} accessibility violation${violations.length === 1 ? '' : 's'
     } ${violations.length === 1 ? 'was' : 'were'} detected`
   )
   // pluck specific keys to keep the table readable
@@ -28,7 +27,7 @@ function terminalLog (violations) {
   cy.task('table', violationData)
 }
 
-function correctDates ($string) {
+function correctDates($string) {
   if ($string.includes('$TODAY')) {
     $string = $string.replace('$TODAY', moment().format(shortDateFormat))
   }
@@ -318,6 +317,10 @@ Then('I should see a button with the label {string}', $string => {
 
 Then('I should see an MOJ menu button with the label {string}', $string => {
   cy.get('.moj-button-menu__item').contains($string).should('exist')
+})
+
+Then('I should not see an MOJ button with the label {string}', $string => {
+  cy.get('.moj-button-menu__item').contains($string).should('not.exist')
 })
 
 Then('I should see a disabled MOJ menu button with the label {string}', $string => {
