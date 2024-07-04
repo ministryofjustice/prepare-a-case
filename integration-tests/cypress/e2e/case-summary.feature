@@ -725,31 +725,31 @@ Feature: Case summary
 
     And There should be no a11y violations
 
-Scenario: Move a case to resulted
-  Given I am an authenticated user
+  Scenario: Move a case to resulted
+    Given I am an authenticated user
 
-  When I navigate to the "outcomes/in-progress" route
-  Then I should be on the "Hearing outcomes" page
+    When I navigate to the "outcomes/in-progress" route
+    Then I should be on the "Hearing outcomes" page
 
-  When I click the "Rock Stone" link
-  And I click the "Open as read only" link
+    When I click the "Rock Stone" link
+    And I click the "Open as read only" link
 
-  And I should see a button with the label "Actions"
-  And I click the "Actions" button
-  And I should see an MOJ menu button with the label "Move to resulted"
-  And I click the "Move to resulted" MOJ menu button
-  Then I should be on the "Hearing outcomes" page
-  And I should see govuk notification banner with header "Success" and message "You have moved Rock Stone's case to resulted cases."
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should see an MOJ menu button with the label "Move to resulted"
+    And I click the "Move to resulted" MOJ menu button
+    Then I should be on the "Hearing outcomes" page
+    And I should see govuk notification banner with header "Success" and message "You have moved Rock Stone's case to resulted cases."
 
-Scenario: Move a case to resulted is disabled when not in progress
-  Given I am an authenticated user
+  Scenario: Move a case to resulted is disabled when not in progress
+    Given I am an authenticated user
 
-  When I navigate to the "outcomes" route
-  Then I should be on the "Hearing outcomes" page
+    When I navigate to the "outcomes" route
+    Then I should be on the "Hearing outcomes" page
 
-  When I click the "Some User" link
-  And I click the "View without assigning" link
+    When I click the "Some User" link
+    And I click the "View without assigning" link
 
-  And I should see a button with the label "Actions"
-  And I click the "Actions" button
-  And I should see a disabled MOJ menu button with the label "Move to resulted"
+    And I should see a button with the label "Actions"
+    And I click the "Actions" button
+    And I should not see an MOJ button with the label "Move to resulted"

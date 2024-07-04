@@ -80,7 +80,6 @@ const caseSummaryHandler = utils => async (req, res) => {
 
   res.render('case-summary', templateValues)
 }
-
 const caseSummaryPostHandler = utils => async (req, res) => {
 }
 
@@ -102,14 +101,16 @@ const getActionButtons = (templateValues) => {
   const hearingOutcome = getHearingOutcome(hearingId, hearings)
   const buttons = []
 
-  const createButton = (text, value, href, enabled = true) => ({
-    text,
-    name: 'action',
-    value,
-    classes: 'common_checker_toggle_action govuk-button--secondary',
-    disabled: !enabled,
-    href
-  })
+  const createButton = (text, value, href, enabled = true) => {
+    return {
+      text,
+      name: 'action',
+      value,
+      classes: 'common_checker_toggle_action govuk-button--secondary',
+      disabled: !enabled,
+      href
+    }
+  }
 
   if (probationStatus === 'No record') {
     const linkRecordLink = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`
@@ -118,9 +119,9 @@ const getActionButtons = (templateValues) => {
     const unlinkRecordLink = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/unlink/${crn}`
     buttons.push(createButton('Unlink NDelius Record', 'unlinkNdelius', unlinkRecordLink))
   }
-  if (hearingOutcome && settings.enableMoveToResultedAction) {
+  if (hearingOutcome && settings.enableMoveToResultedAction && assignedToCurrentUser && hearingOutcome.state === 'IN_PROGRESS') {
     const resultedLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/move-to-resulted?defendantName=${defendantName}`
-    buttons.push(createButton('Move to resulted', 'moveToResulted', resultedLink, assignedToCurrentUser && hearingOutcome.state === 'IN_PROGRESS'))
+    buttons.push(createButton('Move to resulted', 'moveToResulted', resultedLink))
   }
 
   return buttons.length > 0 ? buttons : null
