@@ -42,11 +42,9 @@
 
         {% if not params.manualMatch %}
             {% if params.actionButtonItems %}
-                <form method="post">
                     {{ mojButtonMenu({
                     items: params.actionButtonItems
                     }) }}
-                </form>
             {% endif %}
         {% endif %}
 

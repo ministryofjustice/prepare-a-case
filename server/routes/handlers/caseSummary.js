@@ -84,10 +84,6 @@ const caseSummaryHandler = utils => async (req, res) => {
 }
 
 const caseSummaryPostHandler = utils => async (req, res) => {
-  const { action } = req.body
-  const templateValues = await utils.getCaseAndTemplateValues(req)
-
-  await handleButtonAction(templateValues, action, res, req, utils)
 }
 
 const isAssignedToUser = (userUuid, hearingOutcome) => {
@@ -101,76 +97,48 @@ const getHearingOutcome = (hearingId, hearings) => {
   return hearing ? hearing.hearingOutcome : null
 }
 
-const handleButtonAction = async (templateValues, action, res, req, utils) => {
-  const { caseId, hearingId, defendantId, crn } = templateValues.data
-  const { courtCode } = templateValues.params
-
-  switch (action) {
-    case 'unlinkNdelius':
-      return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/unlink/${crn}`)
-    case 'linkNdelius':
-      return res.redirect(`/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`)
-    case 'moveToResulted':
-      await moveToResulted(res, req, utils, templateValues)
+trackEvent(
+  'PiCPrepareACaseHearingOutcomes',
+  {
+    operation: 'updateHearingOutcomeToResultedFromDefendantSummary',
+    hearingId,
+    courtCode,
+    defendantId,
+    correlationId,
+    userId: res.locals.user.uuid,
+    user: res.locals.user
   }
-}
+)
 
-const moveToResulted = async (res, req, utils, templateValues) => {
-  const { params: { courtCode, hearingId, defendantId } } = req
-  const { apostropheInName, properCase, removeTitle } = utils.nunjucksFilters
-  const { defendantName } = templateValues.data
-  const correlationId = uuidv4()
-
-  try {
-    await utils.updateHearingOutcomeToResulted(hearingId, defendantId, correlationId)
-    const formattedName = removeTitle(properCase(apostropheInName(defendantName)))
-
-    req.flash('moved-to-resulted', `You have moved ${formattedName}'s case to resulted cases.`)
-  } catch (e) {
-    if (e.response.status === 403 || e.response.status === 401) {
-      req.flash('global-error', 'Request was unsuccessful. Check that you are still assigned to the case you are trying to result.')
-    } else {
-      req.flash('global-error', e.message)
-    }
-  }
-
-  trackEvent(
-    'PiCPrepareACaseHearingOutcomes',
-    {
-      operation: 'updateHearingOutcomeToResultedFromDefendantSummary',
-      hearingId,
-      courtCode,
-      defendantId,
-      correlationId,
-      userId: res.locals.user.uuid,
-      user: res.locals.user
-    }
-  )
-
-  res.redirect(`/${courtCode}/outcomes/in-progress`)
+res.redirect(`/${courtCode}/outcomes/in-progress`)
 }
 
 const getActionButtons = (templateValues) => {
   const { hideUnlinkButton } = templateValues
-  const { probationStatus, crn, hearingId, hearings, assignedToCurrentUser } = templateValues.data
+  const { probationStatus, crn, hearingId, hearings, assignedToCurrentUser, defendantId, defendantName, caseId } = templateValues.data
+  const { courtCode } = templateValues.params
   const hearingOutcome = getHearingOutcome(hearingId, hearings)
   const buttons = []
 
-  const createButton = (text, value, enabled = true) => ({
+  const createButton = (text, value, href, enabled = true) => ({
     text,
     name: 'action',
     value,
     classes: 'common_checker_toggle_action govuk-button--secondary',
-    disabled: !enabled
+    disabled: !enabled,
+    href
   })
 
   if (probationStatus === 'No record') {
-    buttons.push(createButton('Link NDelius Record', 'linkNdelius'))
+    const linkRecordLink = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/manual`
+    buttons.push(createButton('Link NDelius Record', 'linkNdelius', linkRecordLink))
   } else if ((crn && crn.length) > 0 && !hideUnlinkButton) {
-    buttons.push(createButton('Unlink NDelius Record', 'unlinkNdelius'))
+    const unlinkRecordLink = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}/unlink/${crn}`
+    buttons.push(createButton('Unlink NDelius Record', 'unlinkNdelius', unlinkRecordLink))
   }
   if (hearingOutcome && settings.enableMoveToResultedAction) {
-    buttons.push(createButton('Move to resulted', 'moveToResulted', assignedToCurrentUser && hearingOutcome.state === 'IN_PROGRESS'))
+    const resultedLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/move-to-resulted?defendantName=${defendantName}`
+    buttons.push(createButton('Move to resulted', 'moveToResulted', resultedLink, assignedToCurrentUser && hearingOutcome.state === 'IN_PROGRESS'))
   }
 
   return buttons.length > 0 ? buttons : null
