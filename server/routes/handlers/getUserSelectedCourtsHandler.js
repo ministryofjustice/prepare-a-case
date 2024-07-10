@@ -3,7 +3,7 @@ const trackEvent = require('../../utils/analytics')
 
 const getUserSelectedCourtsHandler = (getUserSelectedCourts) => async (req, res) => {
   const { session } = req
-  const userSelectedCourts = await getUserSelectedCourts(res.locals.user.userId)
+  const userSelectedCourts = await getUserSelectedCourts(res.locals.user.username)
   if (userSelectedCourts.isError) {
     trackEvent(
       'PiCPrepareACaseErrorTrace',
@@ -11,7 +11,7 @@ const getUserSelectedCourtsHandler = (getUserSelectedCourts) => async (req, res)
         operation: 'getUserSelectedCourtsHandler [getUserSelectedCourts]',
         req,
         userSelectedCourts,
-        userId: res.locals.user.userId
+        username: res.locals.user.username
       }
     )
     res.render('error', { status: userSelectedCourts.status || 500 })

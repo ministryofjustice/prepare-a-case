@@ -60,7 +60,7 @@ const {
   deleteHearingNoteHandler
 } = require('./handlers')
 
-module.exports = function Index ({ authenticationMiddleware }) {
+module.exports = function Index({ authenticationMiddleware }) {
   const router = express.Router()
   router.use(authenticationMiddleware())
   router.use(health)
@@ -223,7 +223,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       if (save) {
         if (session.courts && session.courts.length) {
           const updatedCourts = await updateSelectedCourts(
-            res.locals.user.userId,
+            res.locals.user.username,
             session.courts
           )
           if (updatedCourts.status >= 400) {
@@ -319,9 +319,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
       session.courtCode = courtCode
 
-      const redirectUrl = `/${courtCode}/cases/${currentDate}${
-        subsection ? '/' + subsection : ''
-      }`
+      const redirectUrl = `/${courtCode}/cases/${currentDate}${subsection ? '/' + subsection : ''
+        }`
       const queryParams = queryParamBuilder(body)
 
       res.redirect(
@@ -967,7 +966,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.use('/:courtCode/outcomes', outcomesRouter)
 
-  async function updateCaseDetails (caseId, hearingId, defendantId, crn) {
+  async function updateCaseDetails(caseId, hearingId, defendantId, crn) {
     const offenderDetail = await getDetails(crn)
     const probationStatusDetails = await getProbationStatusDetails(crn)
     return await updateOffender(defendantId, {
@@ -983,24 +982,24 @@ module.exports = function Index ({ authenticationMiddleware }) {
       awaitingPsr: probationStatusDetails.awaitingPsr,
       pnc:
         sendPncAndCroWithOffenderUpdates &&
-        offenderDetail &&
-        offenderDetail.otherIds
+          offenderDetail &&
+          offenderDetail.otherIds
           ? offenderDetail.otherIds.pncNumber
           : undefined,
       cro:
         sendPncAndCroWithOffenderUpdates &&
-        offenderDetail &&
-        offenderDetail.otherIds
+          offenderDetail &&
+          offenderDetail.otherIds
           ? offenderDetail.otherIds.croNumber
           : undefined
     })
   }
 
-  async function unlinkOffender (defendantId) {
+  async function unlinkOffender(defendantId) {
     return await deleteOffender(defendantId)
   }
 
-  function getMatchedUrl (
+  function getMatchedUrl(
     $matchType,
     $matchDate,
     $hearingId,
@@ -1010,11 +1009,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     return $matchType === 'bulk'
       ? $courtCode + '/match/bulk/' + $matchDate
       : $courtCode +
-          '/hearing/' +
-          $hearingId +
-          '/defendant/' +
-          $defendantId +
-          '/summary'
+      '/hearing/' +
+      $hearingId +
+      '/defendant/' +
+      $defendantId +
+      '/summary'
   }
 
   return router
