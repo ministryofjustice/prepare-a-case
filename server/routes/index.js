@@ -60,7 +60,7 @@ const {
   deleteHearingNoteHandler
 } = require('./handlers')
 
-module.exports = function Index({ authenticationMiddleware }) {
+module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
   router.use(authenticationMiddleware())
   router.use(health)
@@ -966,7 +966,7 @@ module.exports = function Index({ authenticationMiddleware }) {
 
   router.use('/:courtCode/outcomes', outcomesRouter)
 
-  async function updateCaseDetails(caseId, hearingId, defendantId, crn) {
+  async function updateCaseDetails (caseId, hearingId, defendantId, crn) {
     const offenderDetail = await getDetails(crn)
     const probationStatusDetails = await getProbationStatusDetails(crn)
     return await updateOffender(defendantId, {
@@ -995,11 +995,11 @@ module.exports = function Index({ authenticationMiddleware }) {
     })
   }
 
-  async function unlinkOffender(defendantId) {
+  async function unlinkOffender (defendantId) {
     return await deleteOffender(defendantId)
   }
 
-  function getMatchedUrl(
+  function getMatchedUrl (
     $matchType,
     $matchDate,
     $hearingId,
