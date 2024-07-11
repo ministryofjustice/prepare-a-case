@@ -8,7 +8,7 @@ describe('getUserSelectedCourtsHandler', () => {
     locals:
       {
         user: {
-          userId: 'user-one'
+          username: 'user-one'
         }
       },
     render: jest.fn()
