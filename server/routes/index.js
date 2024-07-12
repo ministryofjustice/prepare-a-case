@@ -10,7 +10,7 @@ const {
 } = require('../config')
 const { updateSelectedCourts } = require('../services/user-preference-service')
 const {
-  getCaseList,
+  getCaseListForBulkMatching,
   getMatchDetails,
   deleteOffender,
   updateOffender,
@@ -683,7 +683,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         session,
         params
       } = req
-      const response = await getCaseList(courtCode, date)
+      const response = await getCaseListForBulkMatching(courtCode, date)
       const templateValues = {
         title: 'Defendants with possible NDelius records',
         session: {
