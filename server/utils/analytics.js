@@ -1,6 +1,6 @@
 const appInsights = require('applicationinsights')
 
-if (process.env.APPINSIGHTS_INSTRUMENTATIONKEY && process.env.ENABLE_APP_INSIGHTS) {
+if (process.env.APPINSIGHTS_INSTRUMENTATIONKEY) {
   appInsights.setup(process.env.APPINSIGHTS_INSTRUMENTATIONKEY).start()
 }
 

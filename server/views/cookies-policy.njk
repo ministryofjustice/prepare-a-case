@@ -65,86 +65,47 @@
             }) }}
 
             <h2 class="govuk-heading-m">Analytics cookies (optional)</h2>
-            {% if appInsights %}
                 <p class="govuk-body">With your permission, we use Microsoft's Application Insights to collect data about how you use
                     Prepare a case
                     for sentence. This information helps us to improve our service.</p>
                 <p class="govuk-body">Microsoft is not allowed to use or share our analytics data with anyone.</p>
                 <p class="govuk-body">Application Insights stores anonymised information about:</p>
-            {% else %}
-                <p class="govuk-body">With your permission, we use Google Analytics to collect data about how you use
-                    Prepare a case
-                    for sentence. This information helps us to improve our service.</p>
-                <p class="govuk-body">Google is not allowed to use or share our analytics data with anyone.</p>
-                <p class="govuk-body">Google Analytics stores anonymised information about:</p>
-            {% endif %}
             <ul class="govuk-list govuk-list--bullet">
                 <li>the pages you visit on Prepare a case for sentence and how long you spend on them</li>
                 <li>the device and browser you are using to view the service</li>
                 <li>any errors you see while using the service</li>
             </ul>
             {% from "govuk/components/table/macro.njk" import govukTable %}
-            {% if appInsights %}
-                {{ govukTable({
-                    firstCellIsHeader: true,
-                    head: [
-                        {
-                            text: "Name",
-                            classes: 'app-custom-class'
-                        },
-                        {
-                            text: "Purpose",
-                            classes: 'app-custom-class'
-                        },
-                        {
-                            text: "Expires",
-                            classes: 'app-custom-class'
-                        }
+            {{ govukTable({
+                firstCellIsHeader: true,
+                head: [
+                    {
+                        text: "Name",
+                        classes: 'app-custom-class'
+                    },
+                    {
+                        text: "Purpose",
+                        classes: 'app-custom-class'
+                    },
+                    {
+                        text: "Expires",
+                        classes: 'app-custom-class'
+                    }
+                ],
+                rows: [
+                    [
+                        { text: "ai_user" },
+                        { text: "Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service." },
+                        { text: "1 year" }
                     ],
-                    rows: [
-                        [
-                            { text: "ai_user" },
-                            { text: "Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service." },
-                            { text: "1 year" }
-                        ],
-                        [
-                            { text: "ai_session" },
-                            { text: "Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service." },
-                            { text: "3 days" }
-                        ]
+                    [
+                        { text: "ai_session" },
+                        { text: "Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service." },
+                        { text: "3 days" }
                     ]
-                }) }}
-            {% else %}
-                {{ govukTable({
-                    firstCellIsHeader: true,
-                    head: [
-                        {
-                            text: "Name",
-                            classes: 'app-custom-class'
-                        },
-                        {
-                            text: "Purpose",
-                            classes: 'app-custom-class'
-                        },
-                        {
-                            text: "Expires",
-                            classes: 'app-custom-class'
-                        }
-                    ],
-                    rows: [
-                        [
-                            { text: "_ga" },
-                            { text: "Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service." },
-                            { text: "2 years" }
-                        ],
-                        [
-                            { text: "_gid" },
-                            { text: "Checks if you’ve visited Prepare a case for sentence before. This helps us count how many people use the service." },
-                            { text: "24 hours" }
-                        ]
-                    ]
-                }) }}
-            {% endif %}
+                ]
+            }) }}
+            
 
             {% from "govuk/components/radios/macro.njk" import govukRadios %}
             {% from "govuk/components/button/macro.njk" import govukButton %}
