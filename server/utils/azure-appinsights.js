@@ -17,7 +17,7 @@ if (process.env.APPINSIGHTS_INSTRUMENTATIONKEY) {
   module.exports = null
 }
 
-function addUserDataToRequests(envelope, contextObjects) {
+function addUserDataToRequests (envelope, contextObjects) {
   const isRequest = envelope.data.baseType === appInsights.Contracts.TelemetryTypeString.Request
   if (isRequest) {
     const { username } = contextObjects?.['http.ServerRequest']?.res?.locals?.user || {}
@@ -26,7 +26,7 @@ function addUserDataToRequests(envelope, contextObjects) {
       // eslint-disable-next-line no-param-reassign
       envelope.data.baseData.properties = {
         username,
-        ...properties,
+        ...properties
       }
     }
   }

@@ -1,5 +1,5 @@
 const nunjucks = require('nunjucks')
-const { googleAnalyticsKey, instrumentationKey, settings } = require('../config')
+const { instrumentationKey } = require('../config')
 const filters = require('./nunjucksFilters')
 
 module.exports = (app, path) => {

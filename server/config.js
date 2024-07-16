@@ -278,7 +278,6 @@ module.exports = {
   domain: `${get('INGRESS_URL', `http://localhost:${port}`)}`,
   https: production,
   nonce: () => crypto.randomBytes(16).toString('base64'),
-  googleAnalyticsKey: get('GOOGLE_ANALYTICS_KEY', null),
   instrumentationKey: get('APPINSIGHTS_INSTRUMENTATIONKEY', null),
   notification: {
     username: get('NOTIFICATION_USERNAME', null, requiredInProduction),
