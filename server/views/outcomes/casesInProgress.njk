@@ -65,7 +65,7 @@
     { text: moment(item.hearingDate, 'YYYY-MM-DD').format("D MMM YYYY"), format: 'numeric' },
     { text:  govukButton({
       text: 'Move to resulted',
-      classes: ('' if assignedToCurrentUser else "govuk-button--secondary"),
+      classes: ('' if assignedToCurrentUser else "govuk-button--secondary action-button"),
       href: ('hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/move-to-resulted?defendantName=' + item.defendantName) if assignedToCurrentUser else '',
       disabled: not assignedToCurrentUser
     }) }

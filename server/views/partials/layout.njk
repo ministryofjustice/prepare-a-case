@@ -59,6 +59,7 @@
           gtag('js', new Date());
           gtag('config', '{{ googleAnalyticsKey }}');
         </script>
+        <script type="text/javascript" src="/javascripts/button-dev-build.min.js"></script>
         
         {% endif %}
     {% endblock %}
@@ -229,7 +230,8 @@
       }
     </script>
     {% endif %}
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+    {% endblock %}
 
 {% endblock %}
 

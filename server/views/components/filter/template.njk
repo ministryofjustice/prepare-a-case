@@ -1,3 +1,4 @@
+{%- from "components/button/macro.njk" import button -%}
 {%- set formName = params.formName or 'pacFilterForm' -%}
 
 <section class="pac-filter-card govuk-!-margin-bottom-6" data-test="pac-filter-card">
@@ -56,7 +57,7 @@
             </div>
         {% endfor %}
 
-        <button type="submit" class="govuk-button pac-apply-filters-button">Apply filters</button>
+        <button type="submit" class="govuk-button action-button pac-apply-filters-button">Apply filters</button>
 
         {%- set hasSelected = false -%}
         {% for filter in params.filters %}

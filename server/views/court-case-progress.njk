@@ -50,7 +50,7 @@
                                 </div>
                                 {% if showAddHearingOutcomeButton %}
                                     <div class="govuk-grid-column-one-third">
-                                        <button class="govuk-button btn-send-hearing-outcome govuk-!-margin-bottom-0"
+                                        <button class="govuk-button action-button btn-send-hearing-outcome govuk-!-margin-bottom-0"
                                                 data-hearingid="{{ hearing.hearingId }}" data-defendantId="{{ data.defendantId }}" data-module="govuk-button" data-bs-toggle="modal" data-bs-target="#add-hearing-outcome-modal">Send outcome to admin
                                         </button>
                                     </div>
@@ -74,11 +74,11 @@
 
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
                 {% if data.hearings | length > limitPreviousHearings %}
-                    <button type="submit" id="showPreviousHearings" class="govuk-button govuk-button--secondary">Show all previous hearings
+                    <button type="submit" id="showPreviousHearings" class="govuk-button action-button govuk-button--secondary">Show all previous hearings
                     </button>
                 {% endif %}
                 {% if session.showPreviousHearings === data.caseId %}
-                    <button type="submit" id="showHideOlderHearings" class="govuk-button govuk-button--secondary">Hide older hearings
+                    <button type="submit" id="showHideOlderHearings" class="govuk-button action-button govuk-button--secondary">Hide older hearings
                     </button>
                 {% endif %}
             </form>

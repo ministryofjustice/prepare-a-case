@@ -56,7 +56,7 @@
                                             <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
                                             <input type="hidden" name="noteId" value="{{ previousNote.noteId }}"/>
                                             <div class="govuk-button-group">
-                                                <button class="govuk-button case-comments-save-button hearing-note-edit-done"
+                                                <button class="govuk-button action-button case-comments-save-button hearing-note-edit-done"
                                                         data-module="govuk-button">Save
                                                 </button>
                                                 <a class="govuk-link govuk-!-margin-left-5 note-edit-cancel-link"
@@ -89,7 +89,7 @@
                                         id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5"
                                         aria-describedby="note-box">{{ draftNote }}</textarea>
                                 <div class="govuk-button-group">
-                                    <button class="govuk-button case-comments-save-button" type="submit" data-module="govuk-button">
+                                    <button class="govuk-button action-button case-comments-save-button" type="submit" data-module="govuk-button">
                                         Save
                                     </button>
                                     <a class="govuk-link note-draft-cancel-link"
