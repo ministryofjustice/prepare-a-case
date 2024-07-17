@@ -33,7 +33,6 @@ module.exports = {
     caseSearchUsers: getCsvParamAsArray('CASE_SEARCH_USERS'),
     pacEnvironment: get('PAC_ENV', 'UNKNOWN'),
     enablePastCasesNavigation: getBooleanParam('ENABLE_PAST_CASES_NAVIGATION'),
-    enableAppInsights: getBooleanParam('ENABLE_APP_INSIGHTS'),
     enableHearingOutcomes: getBooleanParam('ENABLE_HEARING_OUTCOMES'),
     enableMoveToResultedAction: getBooleanParam('ENABLE_MOVE_TO_RESULTED_ACTION'),
     enableWorkflow: getBooleanParam('ENABLE_WORKFLOW'),
@@ -279,7 +278,6 @@ module.exports = {
   domain: `${get('INGRESS_URL', `http://localhost:${port}`)}`,
   https: production,
   nonce: () => crypto.randomBytes(16).toString('base64'),
-  googleAnalyticsKey: get('GOOGLE_ANALYTICS_KEY', null),
   instrumentationKey: get('APPINSIGHTS_INSTRUMENTATIONKEY', null),
   notification: {
     username: get('NOTIFICATION_USERNAME', null, requiredInProduction),
