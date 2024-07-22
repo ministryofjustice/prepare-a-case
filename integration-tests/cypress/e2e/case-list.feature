@@ -94,7 +94,7 @@ Feature: Case list
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
     And I should see the following table rows
-      | Kara Ayers     | No record                 | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
 
     And I should see link "Robert Hardin" with href "/hearing/bbe36cfc-dc6f-421f-bac2-d4ae987d618f/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary"
     And I should see link "Vance Landry" with href "/hearing/6046236a-5517-4445-a349-73f8f653b23a/defendant/903ecefd-8697-4d0e-bf01-f892f9dee7e7/summary"
@@ -124,7 +124,7 @@ Feature: Case list
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
     And I should see the following table rows
-      | Kara Ayers     | No record                 | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
 
     And I should see link "Sara Ortega" with href "/hearing/228fdfe6-0056-47ce-974d-b0ba9cc6d6f8/defendant/c8fe5f8a-57f2-43a0-b5fb-73562036f080/summary"
     And I should see link "Pamela Stanton" with href "/hearing/f9a66faa-a758-46d3-928c-8666367f6649/defendant/b8ea0ada-bc7f-4aed-99e3-1b3146274df6/summary"
@@ -158,7 +158,7 @@ Feature: Case list
       | Defendant | Probation status | Offence | Listing | Session | Court | Libra case number |
 
     And I should see the following table rows
-      | Kara Ayers     | No record                 | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
 
     And I should see link "Geoff McTaggart" with href "/hearing/bae9a472-d1fc-403d-b639-a65d304089a2/defendant/523137c4-4dfe-40a4-aa99-9cbe64bf0476/summary"
 
