@@ -37,7 +37,7 @@
                 <textarea class="govuk-textarea case-notes" data-caseid="{{ data.caseId }}"
                           id="case-comment" name="comment" rows="5" aria-labelledby="comments-hint">{{ draftComment }}</textarea>
                 <div class="govuk-button-group">
-                    <button type="submit" id="save-comments" class="govuk-button case-comments-save-button"
+                    <button type="submit" id="save-comments" class="govuk-button action-button case-comments-save-button"
                             data-module="govuk-button">Save
                     </button>
                     <a class="govuk-link comment-draft-cancel-link"
@@ -98,7 +98,7 @@
                                     <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
                                     <input type="hidden" name="commentId" value="{{ comment.commentId }}"/>
                                     <div class="govuk-button-group">
-                                        <button type="submit" class="govuk-button case-comments-save-button"
+                                        <button type="submit" class="govuk-button action-button case-comments-save-button"
                                                 data-module="govuk-button">Save
                                         </button>
                                         <a href="#" data-commentid="{{ comment.commentId }}" class="govuk-link case-comment-edit-cancel">Cancel</a>
@@ -115,11 +115,11 @@
                   action="summary/comments/{{ "hideOlderComments" if session.showPreviousComments === data.caseId else "showPreviousComments" }}">
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
                 {% if data.caseComments | length - draftCommentOffset > limitPreviousComments %}
-                    <button type="submit" class="govuk-button govuk-button--secondary">Show all previous comments
+                    <button type="submit" class="govuk-button action-button govuk-button--secondary">Show all previous comments
                     </button>
                 {% endif %}
                 {% if session.showPreviousComments === data.caseId %}
-                    <button type="submit" class="govuk-button govuk-button--secondary">Hide older comments
+                    <button type="submit" class="govuk-button action-button govuk-button--secondary">Hide older comments
                     </button>
                 {% endif %}
             </form>
