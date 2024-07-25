@@ -15,9 +15,9 @@ Feature: Case progress
 
     And I should see the level 2 heading "Case progress"
     And I should see 6 previous hearings headers
-    And I should see "Add a hearing note" link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
+    And I should see "Expand to add a hearing note" link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
 
-    When I click Add a hearing note on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
+    When I click Expand to add a hearing note on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     Then I should see a text area wih label Add information specific to this hearing on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     And I should see a Save button on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     And I should see a Cancel link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
