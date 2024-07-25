@@ -269,6 +269,7 @@ const createCaseService = apiUrl => {
       post: (req, res, next, responseFormatter, hearingId, defendantId) =>
         proxy(apiUrl, {
           parseReqBody: false,
+          timeout: 12500,
           proxyReqOptDecorator: proxyReqOpts => {
             proxyReqOpts.headers.Authorization = `Bearer ${req.user.token}`
             return proxyReqOpts
