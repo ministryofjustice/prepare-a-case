@@ -36,7 +36,7 @@ Then('I should see a warning banner on hearing {string} with text {string}', ($h
   })
 })
 
-Then('I click Add a hearing note on hearing with id {string}', ($hearingId) => {
+Then('I click Expand to add a hearing note on hearing with id {string}', ($hearingId) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get('.govuk-details__summary-text').click()
   })
@@ -44,7 +44,7 @@ Then('I click Add a hearing note on hearing with id {string}', ($hearingId) => {
 
 Then('I should see {string} link on hearing with id {string}', ($title, $hearingId) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
-    cy.get('.govuk-details__summary-text').should('have.text', 'Add a hearing note')
+    cy.get('.govuk-details__summary-text').should('have.text', 'Expand to add a hearing note')
   })
 })
 
@@ -88,7 +88,7 @@ Then('I should see the following hearings with the hearing type label, hearing d
       })
       const caseProgressCardBody = cy.get('.app-summary-card__body').eq(0)
       caseProgressCardBody.within(() => {
-        cy.get('summary > span').contains('Add a hearing note')
+        cy.get('summary > span').contains('Expand to add a hearing note')
       })
     })
   })
