@@ -38,10 +38,10 @@
                           id="case-comment" name="comment" rows="5" aria-labelledby="comments-hint">{{ draftComment }}</textarea>
                 <div class="govuk-button-group">
                     <button type="submit" id="save-comments" class="govuk-button action-button case-comments-save-button"
-                            data-module="govuk-button">Save
+                            data-module="govuk-button">Save<span class="govuk-visually-hidden"> comment</span>
                     </button>
                     <a class="govuk-link comment-draft-cancel-link"
-                       href="summary/comments/{{ data.caseId }}/cancel-draft-comment">Cancel</a>
+                       href="summary/comments/{{ data.caseId }}/cancel-draft-comment">Cancel<span class="govuk-visually-hidden"> saving comment</span></a>
                 </div>
                 <input type="hidden" name="caseId" value="{{ data.caseId }}"/>
             </form>

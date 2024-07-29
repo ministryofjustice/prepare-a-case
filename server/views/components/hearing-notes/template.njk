@@ -90,10 +90,10 @@
                                         aria-describedby="note-box">{{ draftNote }}</textarea>
                                 <div class="govuk-button-group">
                                     <button class="govuk-button action-button case-comments-save-button" type="submit" data-module="govuk-button">
-                                        Save
+                                        Save<span class="govuk-visually-hidden"> note</span>
                                     </button>
                                     <a class="govuk-link note-draft-cancel-link"
-                                    href="summary/notes/{{ params.hearing.hearingId }}/cancel-draft-note">Cancel</a>
+                                    href="summary/notes/{{ params.hearing.hearingId }}/cancel-draft-note">Cancel<span class="govuk-visually-hidden"> saving note</span></a>
                                 </div>
                             </div>
                         </details>

@@ -69,6 +69,12 @@ Then('I should see a Cancel link on hearing with id {string}', $hearingId => {
   })
 })
 
+Then('I should see a Cancel saving note link on hearing with id {string}', $hearingId => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.govuk-details__text a').should('have.text', 'Cancel saving note')
+  })
+})
+
 Then('I should see the following hearings with the hearing type label, hearing details and next appearance badge if applicable', $data => {
   $data.raw().forEach((dataRow, index) => {
     cy.get('.app-summary-card').eq(index).within(() => {

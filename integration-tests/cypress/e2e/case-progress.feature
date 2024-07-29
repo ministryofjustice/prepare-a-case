@@ -20,7 +20,7 @@ Feature: Case progress
     When I click Expand to add a hearing note on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     Then I should see a text area wih label Add information specific to this hearing on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     And I should see a Save button on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
-    And I should see a Cancel link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
+    And I should see a Cancel saving note link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
 
   Scenario: View hearing note on the case summary page
     Given I am an authenticated user
