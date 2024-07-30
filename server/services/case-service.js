@@ -307,6 +307,7 @@ const createCaseService = apiUrl => {
         fileId
       ) =>
         proxy(apiUrl, {
+          timeout: 12500,
           proxyReqOptDecorator: proxyReqOpts => {
             proxyReqOpts.headers.Authorization = `Bearer ${req.user.token}`
             return proxyReqOpts
