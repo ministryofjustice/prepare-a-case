@@ -93,6 +93,25 @@ ENABLE_CASE_PROGRESS=true
 
 Fair warning, the feature flags are a bit of a mess. Some need to be on for unit tests to work and then off for integration tests to work.
 
+## For running the whole stack locally via one docker compose
+
+To run PAC and Court Case Service (CCS) locally simply execute the following:
+
+```
+docker compose -f docker-compose-full.yml up
+```
+
+Before executing the command make sure you have a .env file in the project route containing:
+
+```
+COURT_CASE_SERVICE_URL=http://host.docker.internal:8080
+NOMIS_AUTH_URL=https://sign-in-dev.hmpps.service.justice.gov.uk/auth
+API_CLIENT_ID=prepare-a-case-for-court-1
+API_CLIENT_SECRET=********
+```
+
+Note that this will spin up nomis-oauth2 container so when logging in you will need your own username and password
+
 ## Continuous Integration
 
 The project is configured to use one Dockerfile throughout and relies exclusively on Docker. This means you don't need to have NodeJS installed locally.
