@@ -1,13 +1,27 @@
 const getOutcomeTypesListFilters = require('../../../utils/getOutcomeTypesListFilters')
 const flagFilters = require('../../../utils/flagFilters')
 const { prepareCourtRoomFilters } = require('../../helpers')
-const getCasesToResultHandler = caseService => async (req, res) => {
+
+const getPagelessQueryParams = params => {
+  const { page, ...remainder } = params
+  return remainder
+}
+
+const getCasesToResultHandler = (caseService, userPreferenceService) => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
     params,
     query: queryParams,
     session
   } = req
+
+  let filterParams = getPagelessQueryParams(queryParams);
+
+  if (Object.keys(filterParams).length <= 0) {
+    filterParams = await userPreferenceService.getFilters(res.locals.user.username, 'outcomesFilters')
+  } else {
+    await userPreferenceService.setFilters(res.locals.user.username, 'outcomesFilters', filterParams)
+  }
 
   const response = await caseService.getOutcomesList(
     courtCode,
@@ -28,7 +42,7 @@ const getCasesToResultHandler = caseService => async (req, res) => {
 
   const outcomeTypesListFilters = await getOutcomeTypesListFilters()
 
-  const filters = flagFilters(queryParams, [
+  const filters = flagFilters(filterParams, [
     outcomeTypesListFilters,
     courtRoomFilter
   ])
@@ -36,6 +50,7 @@ const getCasesToResultHandler = caseService => async (req, res) => {
   const filtersApplied = filters
     .map(filterObj => filterObj.items.filter(item => item.checked).length)
     .some(length => length > 0)
+
 
   const templateValues = {
     params: {

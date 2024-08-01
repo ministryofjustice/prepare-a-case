@@ -3,13 +3,26 @@ const getHearingOutcomeAssignedToFilters = require('../../../utils/getHearingOut
 const flagFilters = require('../../../utils/flagFilters')
 const { prepareCourtRoomFilters } = require('../../helpers')
 
-const getCasesInProgressHandler = caseService => async (req, res) => {
+const getPagelessQueryParams = params => {
+  const { page, ...remainder } = params
+  return remainder
+}
+
+const getCasesInProgressHandler = (caseService, userPreferenceService) => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
     params,
     session,
     query: queryParams
   } = req
+
+  let filterParams = getPagelessQueryParams(queryParams);
+
+  if (Object.keys(filterParams).length <= 0) {
+    filterParams = await userPreferenceService.getFilters(res.locals.user.username, 'outcomesFilters')
+  } else {
+    await userPreferenceService.setFilters(res.locals.user.username, 'outcomesFilters', filterParams)
+  }
 
   const getGlobalErrors = () => {
     let errors = req.flash('global-error')
@@ -50,7 +63,7 @@ const getCasesInProgressHandler = caseService => async (req, res) => {
     filters.push(assignedToFilter)
   }
 
-  const flaggedFilters = flagFilters(queryParams, filters)
+  const flaggedFilters = flagFilters(filterParams, filters)
 
   const filtersApplied = flaggedFilters
     .map(filterObj => filterObj.items.filter(item => item.checked).length)

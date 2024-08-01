@@ -3,11 +3,24 @@ const getHearingOutcomeAssignedToFilters = require('../../../utils/getHearingOut
 const flagFilters = require('../../../utils/flagFilters')
 const { prepareCourtRoomFilters } = require('../../helpers')
 
-const getResultedCasesHandler = caseService => async (req, res) => {
+const getPagelessQueryParams = params => {
+  const { page, ...remainder } = params
+  return remainder
+}
+
+const getResultedCasesHandler = (caseService, userPreferenceService) => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
     params
   } = req
+
+  let filterParams = getPagelessQueryParams(req.query);
+
+  if (Object.keys(filterParams).length <= 0) {
+    filterParams = await userPreferenceService.getFilters(res.locals.user.username, 'outcomesFilters')
+  } else {
+    await userPreferenceService.setFilters(res.locals.user.username, 'outcomesFilters', filterParams)
+  }
 
   const response = await caseService.getOutcomesList(
     courtCode,
@@ -28,13 +41,13 @@ const getResultedCasesHandler = caseService => async (req, res) => {
 
   const filters = [outcomeTypesListFilters, courtRoomFilter]
 
-  const assignedToFilter = getHearingOutcomeAssignedToFilters(cases, req.query)
+  const assignedToFilter = getHearingOutcomeAssignedToFilters(cases, filterParams)
 
   if (assignedToFilter) {
     filters.push(assignedToFilter)
   }
 
-  const flaggedFilters = flagFilters(req.query, filters)
+  const flaggedFilters = flagFilters(filterParams, filters)
 
   const filtersApplied = flaggedFilters
     .map(filterObj => filterObj.items.filter(item => item.checked).length)

@@ -1,9 +1,10 @@
 const express = require('express')
 
 const { getOutcomesList, assignHearingOutcome, updateHearingOutcomeToResulted, getCase } = require('../../../services/case-service')
-const casesToResultHandler = require('./getCasesToResultHandler')({ getOutcomesList })
-const casesInProgressHandler = require('./getCasesInProgressHandler')({ getOutcomesList })
-const getResultedCasesHandler = require('./getResultedCasesHandler')({ getOutcomesList })
+const { getFilters, setFilters } = require('../../../services/user-preference-service')
+const casesToResultHandler = require('./getCasesToResultHandler')({ getOutcomesList }, { getFilters, setFilters })
+const casesInProgressHandler = require('./getCasesInProgressHandler')({ getOutcomesList }, { getFilters, setFilters })
+const getResultedCasesHandler = require('./getResultedCasesHandler')({ getOutcomesList }, { getFilters, setFilters })
 const assignHearingOutcomeRouteHandler = require('./getAssignUserToOutcomeRequestHandler')({ assignHearingOutcome })
 const getMoveToResultedHandler = require('./getMoveToResultedHandler')({ updateHearingOutcomeToResulted, getCase })
 const postActionsHandler = require('./postActionsHandler')({ assignHearingOutcome })
