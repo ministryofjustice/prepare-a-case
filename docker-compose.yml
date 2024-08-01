@@ -16,16 +16,13 @@ services:
       - "9091:8080"
 
   hmpps-user-preferences:
-    image: wiremock/wiremock:3.3.1
+    build: hmpps-user-preferences
     container_name: hmpps-user-preferences
     networks:
       - hmpps
-    entrypoint: ["/docker-entrypoint.sh", "--disable-request-logging", "--disable-banner", "--global-response-templating"]
-    volumes:
-      - ./wiremock/mappings/hmpps-user-preferences:/home/wiremock/mappings
     restart: always
     ports:
-      - "9093:8080"
+      - "9093:3000"
 
   court-case-service:
     image: wiremock/wiremock:3.3.1
@@ -79,7 +76,7 @@ services:
       - NOMIS_AUTH_URL_REDIRECT=${NOMIS_AUTH_URL:-http://localhost:9091/auth}
       - NOMIS_DISABLE_OAUTH_STATE=${NOMIS_DISABLE_OAUTH_STATE:-true}
       - REDUCE_STDOUT_NOISE=true
-      - USER_PREFERENCE_SERVICE_URL=${USER_PREFERENCE_SERVICE_URL:-http://hmpps-user-preferences:8080}
+      - USER_PREFERENCE_SERVICE_URL=${USER_PREFERENCE_SERVICE_URL:-http://hmpps-user-preferences:3000}
       - COURT_CASE_SERVICE_URL=${COURT_CASE_SERVICE_URL:-http://court-case-service:8080}
       - NOTIFICATION_USERNAME=test 
       - NOTIFICATION_PASSWORD=test 

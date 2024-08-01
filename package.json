@@ -39,7 +39,8 @@
     "ignore": [
       "/bin",
       "/public/**/*.js",
-      "/integration-tests"
+      "/integration-tests",
+      "/hmpps-user-preferences"
     ]
   },
   "jest-junit": {
