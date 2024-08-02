@@ -10,7 +10,8 @@ describe('getPagedCaseListRouteHandler', () => {
   })
 
   const { caseServiceMock: caseService, mockResponse } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/getPagedCaseListRouteHandler')(caseService)
+  const userPreferenceService = { getFilters: jest.fn(), setFilters: jest.fn() }
+  const subject = require('../../../server/routes/handlers/getPagedCaseListRouteHandler')(caseService, userPreferenceService)
   const mockRequest = {
     redisClient: { getAsync: jest.fn() },
     params: { courtCode: 'ABC', date: '2020-11-11', limit: 10 },
