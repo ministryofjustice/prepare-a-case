@@ -35,7 +35,7 @@ const getFilters = async (userId, filterType) => {
     const filters = {}
     let validDate
     let valid = false
-    const today = new Date();
+    const today = new Date()
 
     const splitItem = item => {
       return item.split('=')

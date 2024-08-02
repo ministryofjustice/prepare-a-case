@@ -189,7 +189,6 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
     await userPreferenceService.setFilters(res.locals.user.username, 'caseFilters', selectedFilters)
   }
 
-
   const currentNotification = await getAsync('case-list-notification')
   const currentDate = date || getBaseDateString()
   const context = { court: courtCode, username: res.locals.user.username }

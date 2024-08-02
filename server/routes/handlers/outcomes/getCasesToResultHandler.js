@@ -15,7 +15,7 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
     session
   } = req
 
-  let filterParams = getPagelessQueryParams(queryParams);
+  let filterParams = getPagelessQueryParams(queryParams)
 
   if (Object.keys(filterParams).length <= 0) {
     filterParams = await userPreferenceService.getFilters(res.locals.user.username, 'outcomesFilters')
@@ -50,7 +50,6 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
   const filtersApplied = filters
     .map(filterObj => filterObj.items.filter(item => item.checked).length)
     .some(length => length > 0)
-
 
   const templateValues = {
     params: {

@@ -16,7 +16,7 @@ const getCasesInProgressHandler = (caseService, userPreferenceService) => async 
     query: queryParams
   } = req
 
-  let filterParams = getPagelessQueryParams(queryParams);
+  let filterParams = getPagelessQueryParams(queryParams)
 
   if (Object.keys(filterParams).length <= 0) {
     filterParams = await userPreferenceService.getFilters(res.locals.user.username, 'outcomesFilters')
