@@ -1,7 +1,6 @@
 /* global jest, describe, it, expect, beforeEach */
 
 const { settings } = require('../../../server/config')
-const { setFilters } = require('../../../server/services/user-preference-service')
 
 describe('getPagedCaseListRouteHandler', () => {
   beforeEach(() => {
