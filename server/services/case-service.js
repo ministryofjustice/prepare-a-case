@@ -91,6 +91,7 @@ const createCaseService = apiUrl => {
       }
 
       const response = await request(apiUrlBuilder.href)
+      console.log('🚀 ~ createCaseService ~ response:', response)
       if (!isHttpSuccess(response)) {
         return getInternalServerErrorResponse(response)
       }

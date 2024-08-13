@@ -15,9 +15,11 @@ jest.mock('../.././../../server/utils/getOutcomeTypesListFilters', () => {
 
 describe('getResultedCasesHandler', () => {
   const { caseServiceMock, mockResponse } = require('../test-helpers')
+  const userPreferenceService = { getFilters: jest.fn(), setFilters: jest.fn() }
   const subject =
     require('../../../../server/routes/handlers/outcomes/getResultedCasesHandler')(
-      caseServiceMock
+      caseServiceMock,
+      userPreferenceService
     )
   const courtCode = 'B007'
 

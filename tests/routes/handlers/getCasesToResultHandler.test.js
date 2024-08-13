@@ -21,7 +21,8 @@ describe('getCasesToResultHandler', () => {
     mockResponse,
     caseServiceMock: caseService
   } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/outcomes/getCasesToResultHandler')(caseService)
+  const userPreferenceService = { getFilters: jest.fn(), setFilters: jest.fn() }
+  const subject = require('../../../server/routes/handlers/outcomes/getCasesToResultHandler')(caseService, userPreferenceService)
   const courtCode = 'B007'
 
   const query = {

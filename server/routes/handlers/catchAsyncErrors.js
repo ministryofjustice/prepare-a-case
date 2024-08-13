@@ -4,6 +4,7 @@ const catchAsyncErrors = (handler) => async (req, res, next) => {
   try {
     await handler(req, res)
   } catch (e) {
+    console.log('🚀 ~ catchAsyncErrors ~ e:', e)
     if (e.config && e.config.headers && e.config.headers.Authorization) {
       e.config.headers.Authorization = '***'
     }

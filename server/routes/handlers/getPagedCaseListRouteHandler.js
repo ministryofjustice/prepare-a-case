@@ -44,7 +44,6 @@ const getPageTabs = (params) => {
     const subsectionLink = subsection ? `/${subsection}` : ''
     return `/${params.courtCode}/cases/${params.date}${subsectionLink}`
   }
-
   if (params.hearingOutcomesEnabled) {
     pageTabs.push(...[
       {
@@ -192,7 +191,7 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
   const currentNotification = await getAsync('case-list-notification')
   const currentDate = date || getBaseDateString()
   const context = { court: courtCode, username: res.locals.user.username }
-  const hearingOutcomesEnabled = features.hearingOutcomes.isEnabled(context)
+  const hearingOutcomesEnabled = false; features.hearingOutcomes.isEnabled(context)
   const workflowEnabled = features.workflow.isEnabled(context)
   const response = await caseService.getPagedCaseList(courtCode, currentDate, selectedFilters, subsection || (!date && session.currentView), queryParams.page, settings.casesPerPage, hearingOutcomesEnabled)
   if (response.isError) {
@@ -216,6 +215,7 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
 
   // God I hate myself for this...
 
+  console.log('🚀 ~ getPagedCaseListRouteHandler ~ response.status:', response.status)
   response.cases.forEach(cases => (cases.workflow = {
     tasks: [
       {
