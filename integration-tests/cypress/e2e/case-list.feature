@@ -7,6 +7,7 @@ Feature: Case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
     Then I should be on the "Case list" page
+    When I clear the filters
 
     And I should see the phase banner
     And I should see the tag "Feedback"
@@ -72,6 +73,7 @@ Feature: Case list
     When I navigate to the "cases" route for today
 
     Then I should be on the "Case list" page
+    When I clear the filters
 
     # Repeat some tests to ensure UI is consistent on subsequent pages
     And I should see the caption with the court name "Sheffield Magistrates' Court"

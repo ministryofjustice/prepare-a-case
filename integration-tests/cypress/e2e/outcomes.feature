@@ -3,7 +3,7 @@ Feature: Outcomes List
   As an authenticated user
   I want to click on the Outcomes link in the Primary navigation
   So that I can go to the Outcomes page.
-  
+
   Scenario: Clicking on the Outcomes link should take me to the Outcomes page
     Given I am an authenticated user
     When I navigate to the "cases" route for today
@@ -27,7 +27,7 @@ Feature: Outcomes List
     When I click the "In progress" link
     Then I should see the URL with "in-progress"
 
- Scenario: View the Resulted Cases tab on the Outcomes page
+  Scenario: View the Resulted Cases tab on the Outcomes page
     Given I am an authenticated user
     When I navigate to the "outcomes" route
     Then I should be on the "Hearing outcomes" page
@@ -38,6 +38,7 @@ Feature: Outcomes List
     Given I am an authenticated user
     When I navigate to the "cases" route
     Then I should be on the "Case list" page
+    When I clear the filters
     When I click the "English Madden" link
     And I should see the Primary navigation "Outcomes" link
     When I click on the "Outcomes" link in the Primary navigation
