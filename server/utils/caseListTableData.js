@@ -58,7 +58,7 @@ const constructTableData = (params, data) => {
     rows: []
   }
 
-  if (params.subsection) {
+  if (params.subsection === 'removed') {
     tableData.head.push({ text: 'Libra case number', format: 'numeric' })
   }
 
@@ -133,8 +133,8 @@ const constructTableData = (params, data) => {
 
     if (params.workflow.enabled) {
       let html = '<select class="workflow-tasks-status-selector" aria-label="Admin prep status" data-form-action="/workflow/tasks/prep/state?hearing=' + item.hearingId +
-                '&defendant=' + item.defendantId + '" data-defendant-fullname="' +
-                sanitisedDefendantFullName + '">'
+        '&defendant=' + item.defendantId + '" data-defendant-fullname="' +
+        sanitisedDefendantFullName + '">'
 
       params.workflow.tasks.prep.items.forEach(prepItem => {
         html = html + '<option value="' + prepItem.id + '" data-css-class="' + prepItem.cssClass + '"'
