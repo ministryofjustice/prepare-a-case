@@ -135,7 +135,6 @@
       const checkbox = document.getElementById(e.target.dataset['controls'])
       checkbox.click()
       const form = document.getElementById('pac-filter-form')
-      console.log("🚀 ~ clearFilter ~ form:", form)
       var formData = new FormData(form);
       // output as an object
       console.log(Object.fromEntries(formData));

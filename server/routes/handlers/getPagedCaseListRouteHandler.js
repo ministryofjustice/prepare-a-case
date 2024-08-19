@@ -215,7 +215,6 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
 
   // God I hate myself for this...
 
-  console.log('🚀 ~ getPagedCaseListRouteHandler ~ response.status:', response.status)
   response.cases.forEach(cases => (cases.workflow = {
     tasks: [
       {

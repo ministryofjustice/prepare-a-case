@@ -76,7 +76,7 @@ const getFilters = async (userId, filterType) => {
 
   const [userPreferenceFilters, valid] = deconstructPersistentFilters(preferences)
 
-  if (valid) {
+  if (valid && config.features.persistFilters === 'true') {
     return userPreferenceFilters
   }
 

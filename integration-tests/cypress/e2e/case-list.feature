@@ -44,9 +44,9 @@ Feature: Case list
     And I should not see pagination link "Previous"
     And I should not see pagination link "1"
     And I should see pagination page "1" highlighted
-    And I should see pagination link "2" with href "?page=2"
-    And I should see pagination link "3" with href "?page=3"
-    And I should see pagination link "Next" with href "?page=2"
+    And I should see pagination link "2" with href "page=2"
+    And I should see pagination link "3" with href "page=3"
+    And I should see pagination link "Next" with href "page=2"
     And I should see pagination text "Showing 1 to 20 of 80 results"
     And There should be no a11y violations
 
@@ -102,13 +102,13 @@ Feature: Case list
     And I should see link "Vance Landry" with href "/hearing/6046236a-5517-4445-a349-73f8f653b23a/defendant/903ecefd-8697-4d0e-bf01-f892f9dee7e7/summary"
 
     And I should see pagination
-    And I should see pagination link "Previous" with href "?page=1"
-    And I should see pagination link "1" with href "?page=1"
+    And I should see pagination link "Previous" with href "page=1"
+    And I should see pagination link "1" with href "page=1"
     And I should not see pagination link "2"
     And I should see pagination page "2" highlighted
-    And I should see pagination link "3" with href "?page=3"
-    And I should see pagination link "4" with href "?page=4"
-    And I should see pagination link "Next" with href "?page=3"
+    And I should see pagination link "3" with href "page=3"
+    And I should see pagination link "4" with href "page=4"
+    And I should see pagination link "Next" with href "page=3"
     And I should see pagination text "Showing 21 to 40 of 80 results"
     And There should be no a11y violations
 

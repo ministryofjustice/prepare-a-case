@@ -88,5 +88,6 @@ Feature: Cases in Progress List
     Given I am an authenticated user
     When I navigate to the Northampton Court "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
+    When I clear the filters
     Then I should see the body text "There are no cases in progress."
     And There should be no a11y violations

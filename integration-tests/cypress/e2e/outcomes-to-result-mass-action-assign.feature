@@ -1,3 +1,4 @@
+@current
 Feature: Case mass action (assign to)
   As an authenticated user
   I want to mass action several outcomes to assign them to me

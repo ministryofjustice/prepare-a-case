@@ -304,11 +304,9 @@ When('I click the {string} link', $string => {
 })
 
 When('I clear the filters', () => {
-  const clearAll = cy.get('.govuk-link').contains('Clear all')
-
-  if (clearAll) {
-    clearAll.click({ force: true })
-  }
+  cy.url().then((url) => {
+    cy.visit(url + '?clearFilters=true')
+  })
 })
 
 When('I click the {string} header navigation link', $string => {
