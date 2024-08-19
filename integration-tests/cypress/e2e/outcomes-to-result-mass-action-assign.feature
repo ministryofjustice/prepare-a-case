@@ -1,4 +1,3 @@
-@current
 Feature: Case mass action (assign to)
   As an authenticated user
   I want to mass action several outcomes to assign them to me
@@ -7,7 +6,6 @@ Feature: Case mass action (assign to)
   Scenario: can check a checkbox
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    When I clear the filters
     And I check a checkbox for a case record
     Then the checkbox is checked
 
@@ -15,7 +13,6 @@ Feature: Case mass action (assign to)
   Scenario: can quick check all checkboxes
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    When I clear the filters
     And I check the mass-action checkbox
     Then checkboxes for all cases are checked
 
@@ -23,7 +20,6 @@ Feature: Case mass action (assign to)
   Scenario: action button becomes enabled
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    When I clear the filters
     And I check a checkbox for a case record
     Then the option 'Assign to Me' in the Action menu is enabled
 
@@ -31,14 +27,12 @@ Feature: Case mass action (assign to)
   Scenario: action button defaults to disabled
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    When I clear the filters
     Then the option 'Assign to Me' in the Action menu is disabled
 
   #AC005
   Scenario: success banner shows correctly for singular assign
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    When I clear the filters
     And I check a checkbox for a case record
     And I click to assign the case
     Then I see a success banner stating "You are assigned to result English Madden. Their case has moved to the in progress tab."
@@ -47,7 +41,6 @@ Feature: Case mass action (assign to)
   Scenario: success banner shows correctly for multiple assigns
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    \When I clear the filters
     And I check the mass-action checkbox
     And I click to assign the case
     Then I see a success banner stating "You are assigned to result 3 cases. They have moved to the in progress tab."
@@ -72,7 +65,6 @@ Feature: Case mass action (assign to)
   Scenario: check-all selects and deselects
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    When I clear the filters
     And I check the mass-action checkbox
     Then checkboxes for all cases are checked
     And I uncheck the mass-action checkbox
