@@ -137,7 +137,6 @@
       const form = document.getElementById('pac-filter-form')
       var formData = new FormData(form);
       // output as an object
-      console.log(Object.fromEntries(formData));
       if (isLastFilter(form)) {
         appendClearFiltersValueToForm(form)
       }
@@ -178,7 +177,6 @@
 
   function configureResetButton() {
     function resetFilters(e) {
-      console.log('Reset filters button clicked')
       e.stopPropagation()
       const form = document.getElementById('pac-filter-form')
       const checkboxes = document.getElementsByClassName('pac-filter-checkbox')
