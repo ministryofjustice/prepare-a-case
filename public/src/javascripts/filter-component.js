@@ -1,7 +1,7 @@
-;(function setupFilterComponent () {
+; (function setupFilterComponent() {
   'use strict'
 
-  function resizeFilterSections () {
+  function resizeFilterSections() {
     const filterButtons = document.getElementsByClassName('pac-filter-button')
     const filterSections = document.getElementsByClassName(
       'pac-filter-selection'
@@ -16,7 +16,7 @@
     })
   }
 
-  function configureFilterButtons () {
+  function configureFilterButtons() {
     const filterSelectionClass = 'pac-filter-selection'
     const filterButtonClass = 'pac-filter-button'
     const filterButtonOpenClass = 'pac-filter-button--open'
@@ -27,7 +27,7 @@
     const filterSections = document.getElementsByClassName(filterSelectionClass)
     const main = document.getElementsByClassName('govuk-main-wrapper')
 
-    function toggleFilter (e) {
+    function toggleFilter(e) {
       e.stopPropagation()
 
       const isFilterButton =
@@ -46,7 +46,7 @@
       }
     }
 
-    function elementHasParentWithClass (element, targetClass) {
+    function elementHasParentWithClass(element, targetClass) {
       const parents = getAllParents(element)
       let hasTarget = false
       parents.forEach(element => {
@@ -58,7 +58,7 @@
       return hasTarget
     }
 
-    function getAllParents (element) {
+    function getAllParents(element) {
       let a = element
       const elements = []
       while (a) {
@@ -69,7 +69,7 @@
       return Array.from(elements)
     }
 
-    function openFilterMenu (filterButtonId) {
+    function openFilterMenu(filterButtonId) {
       const filterButtonArray = Array.from(filterButtons)
       const filterSectionsArray = Array.from(filterSections)
       const targetButtonIndex = filterButtonArray.findIndex(
@@ -89,7 +89,7 @@
       closeFilters(filterButtonArray, filterSectionsArray)
     }
 
-    function closeFilters (filterButtonArray, filterSectionArray) {
+    function closeFilters(filterButtonArray, filterSectionArray) {
       filterButtonArray.forEach(element => {
         element.classList.remove(filterButtonOpenClass)
         element.active = false
@@ -100,7 +100,7 @@
       })
     }
 
-    function closeAllFilters () {
+    function closeAllFilters() {
       closeFilters(Array.from(filterButtons), Array.from(filterSections))
     }
 
@@ -109,12 +109,38 @@
     })
   }
 
-  function configureClearTags () {
-    function clearFilter (e) {
+  function appendClearFiltersValueToForm(form) {
+    var input = document.createElement("input");
+    input.setAttribute("type", "hidden");
+    input.setAttribute("name", "clearFilters");
+    input.setAttribute("value", "true");
+    form.appendChild(input);
+    return form;
+  }
+
+  function isLastFilter(form) {
+    var formData = new FormData(form);
+
+    // hearingDate seems to always exist - so if its 'None' then ignore it for this check
+    if (formData.get('hearingDate') && formData.get('hearingDate') === 'NONE') {
+      formData.delete('hearingDate')
+    }
+
+    return Object.keys(Object.fromEntries(formData)).length <= 1 ? true : false
+  }
+
+  function configureClearTags() {
+    function clearFilter(e) {
       e.stopPropagation()
       const checkbox = document.getElementById(e.target.dataset['controls'])
       checkbox.click()
-      document.getElementById('pac-filter-form').submit()
+      const form = document.getElementById('pac-filter-form')
+      var formData = new FormData(form);
+      // output as an object
+      if (isLastFilter(form)) {
+        appendClearFiltersValueToForm(form)
+      }
+      form.submit();
     }
 
     const clearTags = document.getElementsByClassName(
@@ -125,8 +151,8 @@
     })
   }
 
-  function configureCheckboxes () {
-    function checkboxClick (e) {
+  function configureCheckboxes() {
+    function checkboxClick(e) {
       e.stopPropagation()
       const button = document.getElementById(
         'button-' + e.target.name.substring(e.target.name.indexOf('-') + 1)
@@ -149,8 +175,8 @@
     })
   }
 
-  function configureResetButton () {
-    function resetFilters (e) {
+  function configureResetButton() {
+    function resetFilters(e) {
       e.stopPropagation()
       const form = document.getElementById('pac-filter-form')
       const checkboxes = document.getElementsByClassName('pac-filter-checkbox')
@@ -159,6 +185,9 @@
           element.click()
         }
       })
+
+      appendClearFiltersValueToForm(form);
+
       form.submit()
     }
 

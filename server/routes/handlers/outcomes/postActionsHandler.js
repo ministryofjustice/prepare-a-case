@@ -1,5 +1,6 @@
 const { getOutcomesList, getCase } = require('../../../services/case-service')
-const casesToResultHandler = require('./getCasesToResultHandler')({ getOutcomesList })
+const { getFilters, setFilters } = require('../../../services/user-preference-service')
+const casesToResultHandler = require('./getCasesToResultHandler')({ getOutcomesList }, { getFilters, setFilters })
 
 module.exports = caseService => async (req, res) => {
   const {

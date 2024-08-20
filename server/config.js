@@ -284,6 +284,7 @@ module.exports = {
     password: get('NOTIFICATION_PASSWORD', null, requiredInProduction)
   },
   features: {
-    sendPncAndCroWithOffenderUpdates: false
+    sendPncAndCroWithOffenderUpdates: false,
+    persistFilters: get('PERSIST_FILTERS', 'true')
   }
 }

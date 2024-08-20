@@ -303,6 +303,12 @@ When('I click the {string} link', $string => {
   cy.get($string === 'Back' ? '.govuk-back-link' : '.govuk-link').contains($string).click()
 })
 
+When('I clear the filters', () => {
+  cy.url().then((url) => {
+    cy.visit(url + '?clearFilters=true')
+  })
+})
+
 When('I click the {string} header navigation link', $string => {
   cy.get('.moj-header__navigation-link').contains($string).click()
 })
@@ -531,6 +537,10 @@ Then('I should not see govuk notification banner', () => {
 
 Then('I should see the Primary navigation', () => {
   cy.get('.moj-primary-navigation').should('exist')
+})
+
+Then('I should clear the filters', () => {
+  cy.get()
 })
 
 Then('I should see the Primary navigation {string} link', $string => {

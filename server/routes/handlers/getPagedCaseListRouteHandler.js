@@ -44,7 +44,6 @@ const getPageTabs = (params) => {
     const subsectionLink = subsection ? `/${subsection}` : ''
     return `/${params.courtCode}/cases/${params.date}${subsectionLink}`
   }
-
   if (params.hearingOutcomesEnabled) {
     pageTabs.push(...[
       {
@@ -171,7 +170,7 @@ const getPaginationObject = (pageParams) => {
   }
 }
 
-const getPagedCaseListRouteHandler = caseService => async (req, res) => {
+const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => async (req, res) => {
   const {
     redisClient: { getAsync },
     params: { courtCode, date, limit, subsection },
@@ -181,7 +180,14 @@ const getPagedCaseListRouteHandler = caseService => async (req, res) => {
     params
   } = req
 
-  const selectedFilters = queryParams
+  let selectedFilters = getPagelessQueryParams(queryParams)
+
+  if (Object.keys(selectedFilters).length <= 0) {
+    selectedFilters = await userPreferenceService.getFilters(res.locals.user.username, 'caseFilters')
+  } else {
+    await userPreferenceService.setFilters(res.locals.user.username, 'caseFilters', selectedFilters)
+  }
+
   const currentNotification = await getAsync('case-list-notification')
   const currentDate = date || getBaseDateString()
   const context = { court: courtCode, username: res.locals.user.username }

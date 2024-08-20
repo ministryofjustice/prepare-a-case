@@ -7,6 +7,7 @@ Feature: Case list Prep
     Given I am an authenticated user
     When I navigate to the "cases" route for today
     Then I should be on the "Case list" page
+    When I clear the filters
 
   # AC001 - NOT TESTED, THE BACKEND SETS THE DEFAULT STATE
   # Scenario: default state
@@ -19,8 +20,8 @@ Feature: Case list Prep
   Scenario: correct options show
     Then any prep status drop down should have items
       | Not started |
-      | Ongoing |
-      | Complete |
+      | Ongoing     |
+      | Complete    |
 
   # AC003
   Scenario: setting prep status works
@@ -32,9 +33,9 @@ Feature: Case list Prep
     Then I see a window.alert with message "Error: Unable to change the admin prep status for Mann Carroll. Try again"
     And select 2 has a state of "Complete"
 
-  # AC005 - tested as part of AC003
-  # Scenario: network send occurs
-  #  Given I am an authenticated user
-  #  When I navigate to the "cases" route for today
-  #  Then I should be on the "Case list" page
-  #  When I can set the prep status for select "2" to any option
+# AC005 - tested as part of AC003
+# Scenario: network send occurs
+#  Given I am an authenticated user
+#  When I navigate to the "cases" route for today
+#  Then I should be on the "Case list" page
+#  When I can set the prep status for select "2" to any option

@@ -10,7 +10,8 @@ describe('getPagedCaseListRouteHandler', () => {
   })
 
   const { caseServiceMock: caseService, mockResponse } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/getPagedCaseListRouteHandler')(caseService)
+  const userPreferenceService = { getFilters: jest.fn(), setFilters: jest.fn() }
+  const subject = require('../../../server/routes/handlers/getPagedCaseListRouteHandler')(caseService, userPreferenceService)
   const mockRequest = {
     redisClient: { getAsync: jest.fn() },
     params: { courtCode: 'ABC', date: '2020-11-11', limit: 10 },
@@ -61,13 +62,15 @@ describe('getPagedCaseListRouteHandler', () => {
     // Given
     caseService.getPagedCaseList.mockReturnValueOnce({ isError: true, status: 500 })
 
+    mockRequest.query = { ...mockRequest.query, someFilter: 'someFilterValue' }
+
     // When
     await subject(mockRequest, mockResponse)
 
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', mockRequest.query, false, 1, 20, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, 20, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('error', { status: 500 })
   })
@@ -86,12 +89,13 @@ describe('getPagedCaseListRouteHandler', () => {
     jest.replaceProperty(settings, 'pacEnvironment', 'dev')
 
     // When
+    mockRequest.query = { ...mockRequest.query, someFilter: 'someFilterValue' }
     await subject(mockRequest, mockResponse)
 
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', mockRequest.query, false, 1, 20, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, 20, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
@@ -106,7 +110,7 @@ describe('getPagedCaseListRouteHandler', () => {
           courtCode: 'ABC',
           date: '2020-11-11',
           filters: [{ label: 'Probation status' }, { label: 'Courtroom' }, { label: 'Session' }],
-          filtersApplied: false,
+          filtersApplied: true,
           from: 0,
           limit: 10,
           notification: '',
@@ -117,7 +121,7 @@ describe('getPagedCaseListRouteHandler', () => {
           casesPastDays: 6,
           unmatchedRecords: 2,
           enablePastCasesNavigation: true,
-          baseUrl: '/ABC/cases/2020-11-11?'
+          baseUrl: '/ABC/cases/2020-11-11?someFilter=someFilterValue&'
         },
         listTabs: [
           {
@@ -140,7 +144,7 @@ describe('getPagedCaseListRouteHandler', () => {
           startNum: 1,
           endNum: 1,
           totalPages: 1,
-          pageItems: [{ text: 1, href: '/ABC/cases/2020-11-11?page=1', selected: true }],
+          pageItems: [{ text: 1, href: '/ABC/cases/2020-11-11?someFilter=someFilterValue&page=1', selected: true }],
           recentlyAddedPageItems: [{ text: 1, href: '/ABC/cases/2020-11-11/?page=1', selected: true }],
           previousLink: undefined,
           recentlyAddedPreviousLink: undefined,
@@ -237,12 +241,13 @@ describe('getPagedCaseListRouteHandler', () => {
     jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
 
     // When
+    mockRequest.query = { ...mockRequest.query, someFilter: 'someFilterValue' }
     await subject(mockRequest, mockResponse)
 
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', mockRequest.query, false, 1, 20, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, 20, false)
     expect(mockResponse.render).toHaveBeenCalled()
 
     expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
@@ -265,19 +270,19 @@ describe('getPagedCaseListRouteHandler', () => {
     jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
 
     // When
-    mockRequest.query = { ...mockRequest.query, someQueryParam: 'some-param-value' }
+    mockRequest.query = { ...mockRequest.query, someFilter: 'someFilterValue' }
     await subject(mockRequest, mockResponse)
 
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', mockRequest.query, false, 1, 20, false)
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, 20, false)
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list', expect.anything())
 
     expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
       params: {
-        baseUrl: '/ABC/cases/2020-11-11?someQueryParam=some-param-value&'
+        baseUrl: '/ABC/cases/2020-11-11?someFilter=someFilterValue&'
       }
     })
   })

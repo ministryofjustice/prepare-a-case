@@ -18,7 +18,7 @@ const {
   updateHearingOutcomeToResulted
 } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
-const { getUserSelectedCourts } = require('../../services/user-preference-service')
+const { getUserSelectedCourts, getPreferences, updatePreferences, getFilters, setFilters } = require('../../services/user-preference-service')
 const getCaseSearchType = require('../../utils/getCaseSearchType')
 const getOutcomeTypesListFilters = require('../../utils/getOutcomeTypesListFilters')
 const nunjucksFilters = require('../../utils/nunjucksFilters')
@@ -60,7 +60,7 @@ const cancelCaseCommentDraftHandler = require('./getCancelCaseCommentDraftHandle
 
 const updateCaseCommentHandler = require('./getUpdateCommentRequestHandler')({ updateCaseComment })
 
-const pagedCaseListRouteHandler = require('./getPagedCaseListRouteHandler')({ getPagedCaseList })
+const pagedCaseListRouteHandler = require('./getPagedCaseListRouteHandler')({ getPagedCaseList }, { getPreferences, updatePreferences, getFilters, setFilters })
 
 const caseSummaryHandler = require('./caseSummary')({ getOutcomeTypesListFilters, getCaseAndTemplateValues, nunjucksFilters, updateHearingOutcomeToResulted })
 

@@ -7,6 +7,7 @@ Feature: Case summary
     Given I am an authenticated user
     When I navigate to the "cases" route
     Then I should be on the "Case list" page
+    When I clear the filters
 
     And I should see the phase banner
     And I should see the tag "Feedback"
@@ -265,6 +266,7 @@ Feature: Case summary
 
     When I navigate to the "cases" route
     Then I should be on the "Case list" page
+    When I clear the filters
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Webb Mitchell" link
     Then I should be on the "Case summary" page
@@ -294,7 +296,7 @@ Feature: Case summary
 
     When I navigate to the "cases" route
     Then I should be on the "Case list" page
-
+    When I clear the filters
     When I click the "Lenore Marquez" link
     And I click the sub navigation with "Probation record" text
     Then I should see the level 2 heading "Current orders (3)"
@@ -342,7 +344,7 @@ Feature: Case summary
 
     When I navigate to the "cases" route
     Then I should be on the "Case list" page
-
+    When I clear the filters
     When I click the "English Madden" link
     And I click the sub navigation with "Probation record" text
     Then I should see the level 2 heading "Current orders (1)"
@@ -359,6 +361,7 @@ Feature: Case summary
 
     When I navigate to the "cases" route
     Then I should be on the "Case list" page
+    When I clear the filters
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Latoya Kirkland" link
     Then I should be on the "Case summary" page

@@ -16,7 +16,8 @@ describe('getCasesInProgressHandler', () => {
     mockResponse,
     caseServiceMock: caseService
   } = require('./test-helpers')
-  const subject = require('../../../server/routes/handlers/outcomes/getCasesInProgressHandler')(caseService)
+  const userPreferenceService = { getFilters: jest.fn(), setFilters: jest.fn() }
+  const subject = require('../../../server/routes/handlers/outcomes/getCasesInProgressHandler')(caseService, userPreferenceService)
   const courtCode = 'B007'
 
   const query = {
@@ -25,7 +26,7 @@ describe('getCasesInProgressHandler', () => {
   const mockRequest = {
     params: { courtCode },
     session: {},
-    flash: () => {},
+    flash: () => { },
     query
   }
 
