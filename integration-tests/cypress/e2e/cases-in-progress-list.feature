@@ -8,6 +8,7 @@ Feature: Cases in Progress List
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
+    When I clear the filters
 
     And I should see the Primary navigation
     And I should see the Primary navigation "Cases" link
@@ -37,6 +38,7 @@ Feature: Cases in Progress List
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
+    When I clear the filters
 
     When I click the Move to resulted button for defendant "English Madden"
     Then I should see govuk notification banner with header "Success" and message "You have moved English Madden's case to resulted cases."
@@ -45,6 +47,7 @@ Feature: Cases in Progress List
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
+    When I clear the filters
 
     And I should see the link "Gill Arnold" in a table row
     And I should see the link "Gill Arnold" "will" open a reassign modal
@@ -59,6 +62,7 @@ Feature: Cases in Progress List
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
+    When I clear the filters
 
     And I should see the link "English Madden" in a table row
     And I should see the link "English Madden" "will not" open a reassign modal
@@ -70,6 +74,7 @@ Feature: Cases in Progress List
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
+    When I clear the filters
 
     When I click the "Olive Tree" link
     Then I should "see" the "reassign-outcome-modal" modal popup to assign hearing outcome
@@ -89,5 +94,6 @@ Feature: Cases in Progress List
     When I navigate to the Northampton Court "outcomes/in-progress" route
     Then I should be on the "Hearing outcomes" page
     When I clear the filters
+
     Then I should see the body text "There are no cases in progress."
     And There should be no a11y violations

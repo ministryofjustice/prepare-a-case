@@ -9,12 +9,12 @@ Feature: Resulted Cases List filters
     Then I should be on the "Hearing outcomes" page
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |  Resulted by |
+      | Defendant | Outcome type | Probation status | Offence | Hearing date | Resulted by |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Joe Blogs \n on 11 Sep 2023 at 09:50   |
-      | Hazel Nutt     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Olive Tree \n on 11 Aug 2023 at 10:35  |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Johnny Ball \n on 9 Sep 2023 at 14:16  |
+      | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Joe Blogs \n on 11 Sep 2023 at 09:50  |
+      | Hazel Nutt     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Olive Tree \n on 11 Aug 2023 at 10:35 |
+      | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Johnny Ball \n on 9 Sep 2023 at 14:16 |
 
     When I click the "Outcome type" filter button
     And I select the "Committed to Crown" filter
@@ -29,9 +29,10 @@ Feature: Resulted Cases List filters
     Given I am an authenticated user
     When I navigate to the "outcomes/resulted-cases" route
     Then I should be on the "Hearing outcomes" page
+    When I clear the filters
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |  Resulted by |
+      | Defendant | Outcome type | Probation status | Offence | Hearing date | Resulted by |
 
     When I click the "Courtroom" filter button
     And I select the "1" filter

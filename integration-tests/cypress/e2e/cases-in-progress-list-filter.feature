@@ -16,9 +16,9 @@ Feature: Cases In progress List filters
       | Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
-      | Olive Tree     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
+      | Olive Tree     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
     When I click the "Outcome type" filter button
     And I select the "Adjourned" filter
@@ -29,7 +29,7 @@ Feature: Cases In progress List filters
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
     And I should see the following table 1 rows
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | English Madden | Adjourned | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
     And I should see the "outcomeType" query have the value "ADJOURNED"
 
@@ -39,9 +39,9 @@ Feature: Cases In progress List filters
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
-      | Olive Tree     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
+      | Olive Tree     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
     And There should be no a11y violations
 
@@ -54,9 +54,9 @@ Feature: Cases In progress List filters
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
-      | Olive Tree     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
+      | Olive Tree     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
     When I click the "Outcome type" filter button
     And I select the "Other" filter
@@ -71,9 +71,9 @@ Feature: Cases In progress List filters
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
-      | Olive Tree     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
+      | Olive Tree     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
     And There should be no a11y violations
 
@@ -86,9 +86,9 @@ Feature: Cases In progress List filters
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
-      | Olive Tree     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
+      | Olive Tree     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
     When I click the "Hearing" sort button
 
@@ -96,9 +96,9 @@ Feature: Cases In progress List filters
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
-      | Olive Tree     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
+      | Olive Tree     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
     And I should see the "hearingDate" query have the value "ASC"
 
@@ -110,8 +110,8 @@ Feature: Cases In progress List filters
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
     And I should see the following table rows
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
+      | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
 
     And I should see the "hearingDate" query have the value "DESC"
 
@@ -124,9 +124,9 @@ Feature: Cases In progress List filters
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested   | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
-      | Olive Tree     | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
-      | English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
+      | Olive Tree     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
     When I click the "Outcome type" filter button
     And I select the "Committed to Crown" filter
@@ -141,9 +141,10 @@ Feature: Cases In progress List filters
     Given I am an authenticated user
     When I navigate to the "outcomes/resulted-cases" route
     Then I should be on the "Hearing outcomes" page
+    When I clear the filters
 
     And I should see the following table headings
-      | Defendant | Outcome type | Probation status | Offence | Hearing date |  Resulted by |
+      | Defendant | Outcome type | Probation status | Offence | Hearing date | Resulted by |
 
     When I click the "Courtroom" filter button
     And I select the "1" filter
