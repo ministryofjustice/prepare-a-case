@@ -25,7 +25,7 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
 
   const response = await caseService.getOutcomesList(
     courtCode,
-    queryParams,
+    { ...filterParams, ...queryParams },
     sorts,
     state
   )
