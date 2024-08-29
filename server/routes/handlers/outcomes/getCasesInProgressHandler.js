@@ -38,7 +38,7 @@ const getCasesInProgressHandler = (caseService, userPreferenceService) => async 
 
   const response = await caseService.getOutcomesList(
     courtCode,
-    queryParams,
+    { ...filterParams, ...queryParams },
     sorts,
     state
   )
