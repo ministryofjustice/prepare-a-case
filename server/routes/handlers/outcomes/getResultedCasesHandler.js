@@ -12,7 +12,7 @@ const getResultedCasesHandler = (caseService, userPreferenceService) => async (r
   const {
     params: { courtCode, title, sorts, state },
     params,
-    query: queryParams,
+    query: queryParams
   } = req
 
   let filterParams = getPagelessQueryParams(queryParams)
