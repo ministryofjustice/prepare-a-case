@@ -138,7 +138,6 @@ Feature: Case list
     And I should see pagination link "2" with href "added?page=2"
     And I should see pagination link "Next" with href "added?page=2"
     And I should see pagination text "Showing 1 to 20 of 80 results"
-    And I should not see filters
     And There should be no a11y violations
 
     # Test state held in session
@@ -164,7 +163,6 @@ Feature: Case list
 
     And I should see link "Geoff McTaggart" with href "/hearing/bae9a472-d1fc-403d-b639-a65d304089a2/defendant/523137c4-4dfe-40a4-aa99-9cbe64bf0476/summary"
 
-    And I should not see filters
     And There should be no a11y violations
 
     # Test state held in session
@@ -183,7 +181,7 @@ Feature: Case list
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should not see that any defendants have possible NDelius records
 
-    And I should not see filters
+
     And I should not see the table list
     And I should see the body text "No case list information available."
     And I should not see pagination

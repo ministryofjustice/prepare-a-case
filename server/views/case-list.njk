@@ -1,12 +1,9 @@
 {%- set moment = params.moment -%}
-{%- set displayFilters = (params.subsection === '' or params.subsection === 'heard') and (params.caseCount or params.filtersApplied) -%}
 
 {%- from "components/tabs/macro.njk" import pacTabs -%}
 
 {% block javascripts %}
-    {% if displayFilters %}
-        <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
-    {% endif %}
+    <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
     <script type="text/javascript" src="/javascripts/workflow-tasks-prep-status-selector-{{ appVersion }}.min.js"></script>
 {% endblock %}
 
@@ -24,7 +21,6 @@
 {% extends "partials/layout.njk" %}
 
 {% block content %}
-
     {% if params.notification and params.notification | length %}
         {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
         {{ govukNotificationBanner({
@@ -90,12 +86,10 @@
         {% endif %}
     {% endif -%}
 
-    {% if displayFilters %}
-        {%- from "components/filter/macro.njk" import pacFilter -%}
-        {{ pacFilter({
-            filters: params.filters
-        }) }}
-    {% endif %}
+    {%- from "components/filter/macro.njk" import pacFilter -%}
+    {{ pacFilter({
+        filters: params.filters
+    }) }}
 
     <div class="govuk-tabs" data-module="govuk-tabs">
         

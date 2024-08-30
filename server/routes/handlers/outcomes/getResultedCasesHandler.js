@@ -65,7 +65,6 @@ const getResultedCasesHandler = (caseService, userPreferenceService) => async (r
     title,
     currentUserUuid: res.locals.user.uuid,
     data: cases || [],
-    displayFilters: response.cases?.length || filtersApplied,
     totalPages: response.totalPages,
     totalElements: response.totalElements
   }

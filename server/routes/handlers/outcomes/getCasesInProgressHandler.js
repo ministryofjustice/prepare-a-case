@@ -81,7 +81,6 @@ const getCasesInProgressHandler = (caseService, userPreferenceService) => async 
     currentUserUuid: res.locals.user.uuid,
     moveToResultedSuccess: session.moveToResultedSuccess,
     data: response.cases || [],
-    displayFilters: response.cases?.length || filtersApplied,
     totalPages: response.totalPages,
     totalElements: response.totalElements,
     flashMessage,

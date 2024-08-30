@@ -95,8 +95,7 @@ describe('getResultedCasesHandler', () => {
       },
       title: params.title,
       currentUserUuid: '78be7d32-d6be-4429-b469-f2b0ba232033',
-      data: apiResponse.cases,
-      displayFilters: 2
+      data: apiResponse.cases
     })
   })
 })

@@ -1,11 +1,8 @@
 {%- set moment = params.moment -%}
-{%- set displayFilters = params.casesToResultCount or params.filtersApplied -%}
 
 {% block javascripts %}
-  {% if displayFilters %}
     <script type="text/javascript" src="/javascripts/hearing-outcomes-date-sort-component-{{ appVersion }}.min.js"></script>
     <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
-  {% endif %}
   <script type="text/javascript" src="/javascripts/case-progress-{{ appVersion }}.min.js"></script>
 {% endblock %}
 
@@ -95,13 +92,13 @@
 {% block content %}
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-6" aria-label="{{ title }}">{{ title }}</h1>
 
-  {% if displayFilters %}
+
     {%- from "components/filter/macro.njk" import pacFilter -%}
     {{ pacFilter({
       filters: params.filters,
       hiddenInputs: params.sorts
     }) }}
-  {% endif %}
+
 
   {% include "court-case-progress-reassign-resulted-modal.njk" %}
 

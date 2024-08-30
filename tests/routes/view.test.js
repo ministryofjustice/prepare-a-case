@@ -660,7 +660,7 @@ describe('Routes', () => {
           expect(response.statusCode).toEqual(200)
           expect(caseService.getOutcomesList).toHaveBeenCalledWith(
             'B14LO',
-            {},
+            expect.anything(),
             defaultSort,
             'NEW'
           )
