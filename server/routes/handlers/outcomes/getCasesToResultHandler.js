@@ -61,7 +61,6 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
     },
     title,
     data: response.cases || [],
-    displayFilters: response.cases?.length || filtersApplied,
     totalPages: response.totalPages,
     totalElements: response.totalElements,
     outcomeActionAssign: session.outcomeActionAssign
