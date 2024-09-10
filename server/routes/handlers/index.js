@@ -64,6 +64,12 @@ const pagedCaseListRouteHandler = require('./getPagedCaseListRouteHandler')({ ge
 
 const caseSummaryHandler = require('./caseSummary')({ getOutcomeTypesListFilters, getCaseAndTemplateValues, nunjucksFilters, updateHearingOutcomeToResulted })
 
+const setNotificationHandler =  require('./notifications/setNotification')()
+
+const setNotificationPreviewHandler =  require('./notifications/setNotificationPreview')()
+
+const setNotificationPostHandler = require('./notifications/setNotificationPost')()
+
 module.exports = {
   getCaseAndTemplateValues,
   getProbationRecordHandler,
@@ -85,5 +91,8 @@ module.exports = {
   cancelCaseCommentDraftHandler,
   updateCaseCommentHandler,
   pagedCaseListRouteHandler,
-  caseSummaryHandler
+  caseSummaryHandler,
+  setNotificationHandler,
+  setNotificationPreviewHandler,
+  setNotificationPostHandler
 }
