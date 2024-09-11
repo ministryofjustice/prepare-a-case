@@ -53,8 +53,8 @@ const {
   pagedCaseListRouteHandler,
   caseSummaryHandler,
   setNotificationHandler,
-  setNotificationPreviewHandler,
-  setNotificationPostHandler
+  setNotificationPostHandler,
+  setNotificationPreviewHandler
 } = require('../routes/handlers')
 const catchErrors = require('./handlers/catchAsyncErrors')
 const moment = require('moment')

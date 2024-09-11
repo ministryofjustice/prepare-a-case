@@ -1,6 +1,6 @@
 const { notification } = require('../../../config')
 
-const setNotificationHandler = () => async (req, res) => {
+const get = () => async (req, res) => {
   const {
     redisClient: { getAsync }
   } = req
@@ -30,4 +30,17 @@ const setNotificationHandler = () => async (req, res) => {
   res.render('set-notification', { currentNotification })
 }
 
-module.exports = setNotificationHandler
+const post = () => async (req, res) => {
+  const {
+    redisClient: { setAsync }
+  } = req
+  await setAsync(
+    'case-list-notification',
+    req.body.notification,
+    'EX',
+    60 * 60 * parseInt(req.body.expires, 10)
+  )
+  res.redirect(302, '/set-notification')
+}
+
+module.exports = { get, post }
