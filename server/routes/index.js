@@ -4,7 +4,6 @@ const getBaseDateString = require('../utils/getBaseDateString')
 const queryParamBuilder = require('../utils/queryParamBuilder')
 const {
   settings,
-  notification,
   session: { cookieOptions },
   features: { sendPncAndCroWithOffenderUpdates }
 } = require('../config')
@@ -98,9 +97,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
         : '/my-courts/setup'
     )
   })
-  
+
   // Notifications
-  
+
   router.get('/set-notification', catchErrors(setNotificationHandler))
 
   router.get('/set-notification-preview', catchErrors(setNotificationPreviewHandler))

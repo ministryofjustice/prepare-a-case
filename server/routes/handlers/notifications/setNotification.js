@@ -5,7 +5,7 @@ const get = () => async (req, res) => {
     redisClient: { getAsync }
   } = req
   const currentNotification = await getAsync('case-list-notification')
-  
+
   const reject = () => {
     res.setHeader('www-authenticate', 'Basic')
     res.sendStatus(401)
