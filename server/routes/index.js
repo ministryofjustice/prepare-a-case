@@ -60,6 +60,96 @@ const {
   deleteHearingNoteHandler
 } = require('./handlers')
 
+const getPaginationObject = (pageParams) => {
+  const maximumPages = 4
+  const currentPage = pageParams.page
+  let startNum = pageParams.page - ((maximumPages - 1) / 2)
+  let endNum = pageParams.page + ((maximumPages - 1) / 2)
+  const totalPages = Math.round(Math.ceil((pageParams.matchingRecordsCount / pageParams.limit)))
+
+  const startCount = ((parseInt(pageParams.page, 10) - 1) || 0) * pageParams.limit
+  const endCount = Math.min(startCount + parseInt(pageParams.limit, 10), pageParams.matchingRecordsCount)
+
+  const pageItems = []
+  const recentlyAddedPageItems = []
+  let previousLink
+  let recentlyAddedPreviousLink
+  let recentlyAddedNextLink
+  let nextLink
+
+  if (startNum < 1 || totalPages <= maximumPages) {
+    startNum = 1
+    endNum = maximumPages
+  } else if (endNum > totalPages) {
+    startNum = totalPages - (maximumPages - 1)
+  }
+
+  if (endNum > totalPages) {
+    endNum = totalPages
+  }
+
+  for (let i = startNum; i <= endNum; i++) {
+    pageItems.push({
+      text: i,
+      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${i}`,
+      selected: currentPage === i
+    })
+
+    recentlyAddedPageItems.push({
+      text: i,
+      // href: '/' + pageParams.courtCode + '/case/' + pageParams.caseId + '/hearing/' + pageParams.hearingId + '/match/defendant/' + pageParams.defendantId + '?page=' + i,
+      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${i}`,
+      selected: currentPage === i
+    })
+  }
+
+  if (currentPage !== 1) {
+    previousLink = {
+      text: 'Previous',
+      // href: pageParams.baseUrl + 'page=' + (currentPage - 1)
+      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${currentPage - 1}`
+    }
+
+    recentlyAddedPreviousLink = {
+      text: 'Previous 2',
+      // href: '/' + pageParams.courtCode + '/case/' + pageParams.caseId + '/hearing/' + pageParams.hearingId + '/match/defendant/' + pageParams.defendantId + '?page=' + (currentPage - 1)
+      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${currentPage - 1}`
+    }
+  }
+
+  if (currentPage < totalPages) {
+    nextLink = {
+      text: 'Next',
+      // href: `${pageParams.baseUrl}?page=${(currentPage + 1)}`
+      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${currentPage + 1}`
+    }
+
+    recentlyAddedNextLink = {
+      text: 'Next 2',
+      // href: '/' + pageParams.courtCode + '/case/' + pageParams.caseId + '/hearing/' + pageParams.hearingId + '/match/defendant/' + pageParams.defendantId + '?page=' + (currentPage + 1)
+      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${currentPage + 1}`
+    }
+  }
+
+  return {
+    maxPagesDisplay: maximumPages,
+    currentPage,
+    startNum,
+    endNum,
+    totalPages,
+    pageItems,
+    recentlyAddedPageItems,
+    previousLink,
+    recentlyAddedPreviousLink,
+    nextLink,
+    recentlyAddedNextLink,
+    from: startCount,
+    to: endCount,
+    matchingRecordsCount: pageParams.matchingRecordsCount
+
+  }
+}
+
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
   router.use(authenticationMiddleware())
@@ -707,28 +797,56 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors(async (req, res) => {
       const {
-        params: { defendantId },
+        params: { courtCode, caseId, hearingId, defendantId },
         session,
-        path
+        path,
+        query: queryParams
       } = req
+
       const templateValues = await getCaseAndTemplateValues(req)
       templateValues.title = 'Review possible NDelius records'
-      const {
-        data: { defendantName }
-      } = templateValues
+
+      const { data: { defendantName } } = templateValues
       const response = await getMatchDetails(defendantId)
-      templateValues.session = {
-        ...session
+
+      // Define base URL for pagination links
+      const baseUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}`
+
+      const matchingRecordsCount = response.offenderMatchDetails.length
+      const currentPage = parseInt(queryParams.page, 10) || 1
+      const limit = 5
+
+      // Calculate start and end index for slicing data
+      const start = (currentPage - 1) * limit
+      const end = Math.min(start + limit, matchingRecordsCount)
+
+      // Slice the data for the current page
+      const paginatedMatchData = response.offenderMatchDetails.slice(start, end)
+
+      const pageParams = {
+        baseUrl,
+        matchingRecordsCount,
+        page: currentPage,
+        limit,
+        courtCode,
+        caseId,
+        hearingId,
+        defendantId
       }
+
       templateValues.data = {
         ...templateValues.data,
-        matchData: response && response.offenderMatchDetails
+        matchData: paginatedMatchData, // Use paginated data
+        pagination: getPaginationObject(pageParams)
       }
+
       session.confirmedMatch = undefined
       session.matchName = defendantName
       session.formError = false
       session.serverError = false
       session.backLink = path
+
+      // Render the template with paginated data
       res.render('match-defendant', templateValues)
     })
   )
