@@ -53,7 +53,7 @@
 
   {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
   {{ govukInsetText({
-    text: "Details that match the defendant are highlighted."
+    text: "Details that match the defendant are highlighted. 1"
   }) }}
 
   <form name="matchDefendant" id="matchDefendant" method="post">
@@ -103,7 +103,7 @@
           {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
           {% call govukFieldset({
             legend: {
-              text: data.matchData | length + " NDelius " + recordPluralised +  " found",
+              text: data.pagination.matchingRecordsCount + " possible NDelius " + recordPluralised,
               classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4",
               isPageHeading: false
             }
@@ -206,6 +206,21 @@
         </div>
 
       </div>
+      {% if data.pagination.totalPages > 1 %}
+        {% block paginationBlock %}
+          {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+          {{ mojPagination({
+            results: {
+              from: data.pagination.from + 1,
+              to: data.pagination.to,
+              count: data.pagination.matchingRecordsCount
+            },
+            previous: data.pagination.recentlyAddedPreviousLink if showSubsectionLinks else data.pagination.previousLink,
+            next: data.pagination.recentlyAddedNextLink if showSubsectionLinks else data.pagination.nextLink,
+            items: data.pagination.recentlyAddedPageItems if showSubsectionLinks else data.pagination.pageItems
+          }) }}
+        {% endblock %}
+      {% endif %}
     </div>
 
     {% from "govuk/components/details/macro.njk" import govukDetails %}

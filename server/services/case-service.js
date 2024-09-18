@@ -34,6 +34,10 @@ const createCaseService = apiUrl => {
       const res = (await request(
         `${apiUrl}/defendant/${defendantId}/matchesDetail`
       )) || { data: {} }
+      // Sort offenderMatchDetails based on matchProbability in descending order
+      if (res.data.offenderMatchDetails) {
+        res.data.offenderMatchDetails.sort((a, b) => b.matchProbability - a.matchProbability)
+      }
       return res.data
     },
     getPagedCaseList: async (
