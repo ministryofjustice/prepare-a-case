@@ -40,6 +40,8 @@ module.exports = {
     snapshotTimes: get('CASE_SNAPSHOT_TIMES', '00:00,08:45,09:45'), // Coma delimited string of snapshot times, earliest - latest
     assetCache: '30d',
     scriptCache: '24h',
+    matchingRecordsToBeShownPerPage: 5,
+    minimumMatchProbability: 0.0,
     caseSearchResultPageSize: get('CASE_SEARCH_PAGE_SIZE', 20),
     hearingOutcomesPageSize: get('HEARING_OUTCOMES_PAGE_SIZE', 20),
     availableCourts: [

@@ -34,6 +34,20 @@ const createCaseService = apiUrl => {
       const res = (await request(
         `${apiUrl}/defendant/${defendantId}/matchesDetail`
       )) || { data: {} }
+      // Sort offenderMatchDetails based on matchProbability in descending order
+      if (res.data.offenderMatchDetails) {
+        res.data.offenderMatchDetails.sort((a, b) => {
+          const probA = parseFloat(a.matchProbability ?? 0)
+          const probB = parseFloat(b.matchProbability ?? 0)
+          return probB - probA // Descending order
+        })
+
+        // Filter out details where matchProbability is less than settings.minimumMatchProbability
+        res.data.offenderMatchDetails = res.data.offenderMatchDetails.filter(detail => {
+          const matchProb = parseFloat(detail.matchProbability ?? 0)
+          return matchProb >= parseFloat(settings.minimumMatchProbability)
+        })
+      }
       return res.data
     },
     getPagedCaseList: async (

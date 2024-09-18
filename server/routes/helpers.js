@@ -59,10 +59,76 @@ const prepareCourtRoomFilters = (allCourtRooms) => {
   return courtRooms
 }
 
+const getPaginationObject = (pageParams) => {
+  const maximumPages = 4
+
+  const { page: currentPage, matchingRecordsCount, limit, courtCode, caseId, hearingId, defendantId } = pageParams
+
+  let startNum = currentPage - ((maximumPages - 1) / 2)
+  let endNum = currentPage + ((maximumPages - 1) / 2)
+  const totalPages = Math.round(Math.ceil((matchingRecordsCount / limit)))
+
+  const startCount = ((currentPage - 1) || 0) * limit
+  const endCount = Math.min(startCount + limit, matchingRecordsCount)
+
+  const pageItems = []
+  let previousLink
+  let nextLink
+
+  if (startNum < 1 || totalPages <= maximumPages) {
+    startNum = 1
+    endNum = maximumPages
+  } else if (endNum > totalPages) {
+    startNum = totalPages - (maximumPages - 1)
+  }
+
+  if (endNum > totalPages) {
+    endNum = totalPages
+  }
+
+  for (let i = startNum; i <= endNum; i++) {
+    pageItems.push({
+      text: i,
+      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${i}`,
+      selected: currentPage === i
+    })
+  }
+
+  if (currentPage !== 1) {
+    previousLink = {
+      text: 'Previous',
+      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage - 1}`
+    }
+  }
+
+  if (currentPage < totalPages) {
+    nextLink = {
+      text: 'Next',
+      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage + 1}`
+    }
+  }
+
+  return {
+    maxPagesDisplay: maximumPages,
+    currentPage,
+    startNum,
+    endNum,
+    totalPages,
+    pageItems,
+    previousLink,
+    nextLink,
+    from: startCount,
+    to: endCount,
+    matchingRecordsCount
+
+  }
+}
+
 module.exports = {
   getPsrRequestedConvictions,
   getLastSentencedConvictionPSR,
   getNormalisedCourtRoom,
   prepareCourtRoomFilters,
-  getOrderTitle
+  getOrderTitle,
+  getPaginationObject
 }
