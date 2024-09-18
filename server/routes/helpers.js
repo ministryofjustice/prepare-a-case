@@ -59,10 +59,74 @@ const prepareCourtRoomFilters = (allCourtRooms) => {
   return courtRooms
 }
 
+const getPaginationObject = (pageParams) => {
+  const maximumPages = 4
+  const currentPage = pageParams.page
+  let startNum = pageParams.page - ((maximumPages - 1) / 2)
+  let endNum = pageParams.page + ((maximumPages - 1) / 2)
+  const totalPages = Math.round(Math.ceil((pageParams.matchingRecordsCount / pageParams.limit)))
+
+  const startCount = ((parseInt(pageParams.page, 10) - 1) || 0) * pageParams.limit
+  const endCount = Math.min(startCount + parseInt(pageParams.limit, 10), pageParams.matchingRecordsCount)
+
+  const pageItems = []
+  let previousLink
+  let nextLink
+
+  if (startNum < 1 || totalPages <= maximumPages) {
+    startNum = 1
+    endNum = maximumPages
+  } else if (endNum > totalPages) {
+    startNum = totalPages - (maximumPages - 1)
+  }
+
+  if (endNum > totalPages) {
+    endNum = totalPages
+  }
+
+  for (let i = startNum; i <= endNum; i++) {
+    pageItems.push({
+      text: i,
+      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${i}`,
+      selected: currentPage === i
+    })
+  }
+
+  if (currentPage !== 1) {
+    previousLink = {
+      text: 'Previous',
+      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${currentPage - 1}`
+    }
+  }
+
+  if (currentPage < totalPages) {
+    nextLink = {
+      text: 'Next',
+      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${currentPage + 1}`
+    }
+  }
+
+  return {
+    maxPagesDisplay: maximumPages,
+    currentPage,
+    startNum,
+    endNum,
+    totalPages,
+    pageItems,
+    previousLink,
+    nextLink,
+    from: startCount,
+    to: endCount,
+    matchingRecordsCount: pageParams.matchingRecordsCount
+
+  }
+}
+
 module.exports = {
   getPsrRequestedConvictions,
   getLastSentencedConvictionPSR,
   getNormalisedCourtRoom,
   prepareCourtRoomFilters,
-  getOrderTitle
+  getOrderTitle,
+  getPaginationObject
 }

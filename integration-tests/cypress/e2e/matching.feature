@@ -47,7 +47,7 @@ Feature: Matching defendants to nDelius records
     And I should see the inset text "Details that match the defendant are highlighted."
 
     Then I should see the level 3 heading "Defendant details"
-    And I should see the legend "3 NDelius records found"
+    And I should see the legend "6 possible NDelius records"
 
     And I should see the following table headings
       | Name | Date of birth | Address | PNC |
@@ -59,7 +59,40 @@ Feature: Matching defendants to nDelius records
     And I should see the following table 2 headings
       | Name | Alias |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
     And I should see the following table 2 rows
-      | Guadalupe Flowerlupe Paratroop Hess                            |
+      | Guadalupe Flowerlupe Paratroop Hess 4                          |
+      | Para Flowerlupe                                                |
+      | 18 February 1989                                               |
+      | 43 Hunterfly Place, Birmingham, Birmingham, AD21 5DR           |
+      | D/9874483AB                                                    |
+      | V178959                                                        |
+      | Current                                                        |
+      | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
+    And I should see the following table 3 headings
+      | Name | Aliases |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
+    And I should see the following table 3 rows
+      | Guadalupe Paul Hess 5                                                                 |
+      | Para Flowerlupe, Some Midone Midtwo Flowerlupe, Para Flowerlupe +1 other name matched |
+      | 18 February 1989                                                                      |
+      | Dunroamin, Leicestershire, LE2 3NA                                                    |
+      | Unavailable                                                                           |
+      | C178227                                                                               |
+      | Previously known                                                                      |
+      | 27 November 2017 - CJA Standard Determinate Custody (12 Months)                       |
+    And I should see the following table 4 headings
+      | Name | Aliases |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
+    And I should see the following table 4 rows
+      | Guadalupe Flowerlupe Hess 6                                                                  |
+      | Para Flowerlupe, Someone Midone Midtwo Flowerlupe, Sometwo Flowerlupe +2 other names matched |
+      | 18 February 1998                                                                             |
+      | Dunroamin, Leicestershire, LE2 3NA                                                           |
+      | Unavailable                                                                                  |
+      | B333356                                                                                      |
+      | Previously known                                                                             |
+      | 13 January 2015 - CJA Standard Determinate Custody (6 Months)                                |
+    And I should see the following table 5 headings
+      | Name | Alias |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
+    And I should see the following table 5 rows
+      | Guadalupe Flowerlupe Paratroop Hess 1                          |
       | Para Flowerlupe                                                |
       | 18 February 1989                                               |
       | 43 Hunterfly Place, Birmingham, Birmingham, AD21 5DR           |
@@ -67,30 +100,8 @@ Feature: Matching defendants to nDelius records
       | V178657                                                        |
       | Current                                                        |
       | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
-    And I should see the following table 3 headings
-      | Name | Aliases |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
-    And I should see the following table 3 rows
-      | Guadalupe Paul Hess                                                                     |
-      | Para Flowerlupe, Some Midone Midtwo Flowerlupe, Para Flowerlupe +1 other name matched  |
-      | 18 February 1989                                                                        |
-      | Dunroamin, Leicestershire, LE2 3NA                                                      |
-      | Unavailable                                                                             |
-      | C178657                                                                                 |
-      | Previously known                                                                        |
-      | 27 November 2017 - CJA Standard Determinate Custody (12 Months)                         |
-    And I should see the following table 4 headings
-      | Name | Aliases |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
-    And I should see the following table 4 rows
-      | Guadalupe Flowerlupe Hess                                                                     |
-      | Para Flowerlupe, Someone Midone Midtwo Flowerlupe, Sometwo Flowerlupe +2 other names matched |
-      | 18 February 1998                                                                              |
-      | Dunroamin, Leicestershire, LE2 3NA                                                            |
-      | Unavailable                                                                                   |
-      | B123456                                                                                       |
-      | Previously known                                                                              |
-      | 13 January 2015 - CJA Standard Determinate Custody (6 Months)                                 |
     And I should see radio buttons with the following IDs
-      | defendant-1 | defendant-2 | defendant-3 |
+      | defendant-1 | defendant-2 | defendant-3 | defendant-4 | defendant-5 |
 
     And There should be no a11y violations
 
@@ -114,7 +125,7 @@ Feature: Matching defendants to nDelius records
     And I should see the inset text "Details that match the defendant are highlighted."
 
     Then I should see the level 3 heading "Defendant details"
-    And I should see the legend "2 NDelius records found"
+    And I should see the legend "2 possible NDelius records"
 
     And I should see the following table headings
       | Name | Date of birth | Address | PNC |
@@ -168,7 +179,7 @@ Feature: Matching defendants to nDelius records
     When I click the "Review records" link
     Then I should be on the "Review possible NDelius records" page
 
-    And I check the element with id "defendant-1"
+    And I check the element with id "defendant-4"
     And I click the "Confirm record" button
 
     Then I should be on the "Defendants with possible NDelius records" page
@@ -183,7 +194,7 @@ Feature: Matching defendants to nDelius records
 
     Then I should be on the "Review possible NDelius records" page
 
-    When I check the element with id "defendant-1"
+    When I check the element with id "defendant-4"
     And I click the "Confirm record" button
 
     Then I should be on the "Case summary" page

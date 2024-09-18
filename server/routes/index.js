@@ -27,7 +27,7 @@ const {
   getRiskDetails,
   getCustodyDetails
 } = require('../services/community-service')
-const { getOrderTitle } = require('./helpers')
+const { getOrderTitle, getPaginationObject } = require('./helpers')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
@@ -656,22 +656,46 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors(async (req, res) => {
       const {
-        params: { defendantId },
+        params: { courtCode, caseId, hearingId, defendantId },
         session,
-        path
+        path,
+        query: queryParams
       } = req
+
       const templateValues = await getCaseAndTemplateValues(req)
       templateValues.title = 'Review possible NDelius records'
-      const {
-        data: { defendantName }
-      } = templateValues
+
+      const { data: { defendantName } } = templateValues
       const response = await getMatchDetails(defendantId)
+
+      const matchingRecordsCount = response.offenderMatchDetails.length
+      const currentPage = parseInt(queryParams.page, 10) || 1
+      const limit = 5
+
+      // Calculate start and end index for slicing data
+      const start = (currentPage - 1) * limit
+      const end = Math.min(start + limit, matchingRecordsCount)
+
+      // Slice the data for the current page
+      const paginatedMatchData = response.offenderMatchDetails.slice(start, end)
+
+      const pageParams = {
+        matchingRecordsCount,
+        page: currentPage,
+        limit,
+        courtCode,
+        caseId,
+        hearingId,
+        defendantId
+      }
+
       templateValues.session = {
         ...session
       }
       templateValues.data = {
         ...templateValues.data,
-        matchData: response && response.offenderMatchDetails
+        matchData: paginatedMatchData,
+        pagination: getPaginationObject(pageParams)
       }
       session.confirmedMatch = undefined
       session.matchName = defendantName

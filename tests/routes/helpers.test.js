@@ -3,7 +3,8 @@ const {
   getPsrRequestedConvictions,
   getNormalisedCourtRoom,
   prepareCourtRoomFilters,
-  getLastSentencedConvictionPSR, getOrderTitle
+  getLastSentencedConvictionPSR, getOrderTitle,
+  getPaginationObject
 } = require('../../server/routes/helpers')
 
 const convictions = [
@@ -230,6 +231,113 @@ describe('helpers', () => {
     ])('given court room list %s, should return court room filters %s', (courtRooms, expected) => {
       const actual = prepareCourtRoomFilters(courtRooms)
       expect(actual).toStrictEqual(expected)
+    })
+  })
+
+  describe('getPaginationObject', () => {
+    describe('getPaginationObject', () => {
+      it('should calculate pagination with all default values', () => {
+        const pageParams = {
+          page: 1,
+          matchingRecordsCount: 20,
+          limit: 5,
+          courtCode: 'COURT01',
+          caseId: 'CASE123',
+          hearingId: 'HEARING123',
+          defendantId: 'DEFENDANT123'
+        }
+        const result = getPaginationObject(pageParams)
+
+        expect(result).toMatchObject({
+          maxPagesDisplay: 4,
+          currentPage: 1,
+          startNum: 1,
+          endNum: 4,
+          totalPages: 4,
+          from: 0,
+          to: 5,
+          matchingRecordsCount: 20,
+          pageItems: [
+            { text: 1, href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=1', selected: true },
+            { text: 2, href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=2', selected: false },
+            { text: 3, href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=3', selected: false },
+            { text: 4, href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=4', selected: false }
+          ],
+          previousLink: undefined,
+          nextLink: {
+            text: 'Next',
+            href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=2'
+          }
+        })
+      })
+
+      it('should handle cases where total pages are less than maximumPages', () => {
+        const pageParams = {
+          page: 1,
+          matchingRecordsCount: 8,
+          limit: 5,
+          courtCode: 'COURT01',
+          caseId: 'CASE123',
+          hearingId: 'HEARING123',
+          defendantId: 'DEFENDANT123'
+        }
+        const result = getPaginationObject(pageParams)
+
+        expect(result).toMatchObject({
+          maxPagesDisplay: 4,
+          currentPage: 1,
+          startNum: 1,
+          endNum: 2,
+          totalPages: 2,
+          from: 0,
+          to: 5,
+          matchingRecordsCount: 8,
+          pageItems: [
+            { text: 1, href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=1', selected: true },
+            { text: 2, href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=2', selected: false }
+          ],
+          previousLink: undefined,
+          nextLink: {
+            text: 'Next',
+            href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=2'
+          }
+        })
+      })
+
+      it('should handle pages beyond total pages', () => {
+        const pageParams = {
+          page: 5,
+          matchingRecordsCount: 20,
+          limit: 5,
+          courtCode: 'COURT01',
+          caseId: 'CASE123',
+          hearingId: 'HEARING123',
+          defendantId: 'DEFENDANT123'
+        }
+        const result = getPaginationObject(pageParams)
+
+        expect(result).toMatchObject({
+          maxPagesDisplay: 4,
+          currentPage: 5,
+          startNum: 1,
+          endNum: 4,
+          totalPages: 4,
+          from: 20,
+          to: 20,
+          matchingRecordsCount: 20,
+          pageItems: [
+            { text: 1, href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=1', selected: false },
+            { text: 2, href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=2', selected: false },
+            { text: 3, href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=3', selected: false },
+            { text: 4, href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=4', selected: false }
+          ],
+          previousLink: {
+            text: 'Previous',
+            href: '/COURT01/case/CASE123/hearing/HEARING123/match/defendant/DEFENDANT123?page=4'
+          },
+          nextLink: undefined
+        })
+      })
     })
   })
 })
