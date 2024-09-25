@@ -668,13 +668,34 @@ module.exports = function Index ({ authenticationMiddleware }) {
       const { data: { defendantName } } = templateValues
       const response = await getMatchDetails(defendantId)
 
-      const matchingRecordsCount = response.offenderMatchDetails.length
-      const currentPage = parseInt(queryParams.page, 10) || 1
-      const limit = 5
+      // Check if offenderMatchDetails is an array
+      const { offenderMatchDetails } = response
+      if (!Array.isArray(offenderMatchDetails)) {
+        return res.render('error', {
+          ...templateValues,
+          message: 'Unexpected data format received from the server.'
+        })
+      }
+
+      const matchingRecordsCount = offenderMatchDetails.length
+      if (matchingRecordsCount === 0) {
+        return res.render('no-match', {
+          ...templateValues,
+          message: 'No match details found for the defendant.'
+        })
+      }
+
+      // Parse page number and ensure it's a positive integer
+      let currentPage = parseInt(queryParams.page, 10)
+      if (isNaN(currentPage) || currentPage < 1) {
+        currentPage = 1
+      }
+
+      const recordsPerPage = settings.matchingRecordsToBeShownPerPage
 
       // Calculate start and end index for slicing data
-      const start = (currentPage - 1) * limit
-      const end = Math.min(start + limit, matchingRecordsCount)
+      const start = (currentPage - 1) * recordsPerPage
+      const end = Math.min(start + recordsPerPage, matchingRecordsCount)
 
       // Slice the data for the current page
       const paginatedMatchData = response.offenderMatchDetails.slice(start, end)
@@ -682,7 +703,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       const pageParams = {
         matchingRecordsCount,
         page: currentPage,
-        limit,
+        recordsPerPage,
         courtCode,
         caseId,
         hearingId,
