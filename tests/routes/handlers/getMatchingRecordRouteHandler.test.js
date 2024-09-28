@@ -71,12 +71,11 @@ describe('getMatchingRecordRouteHandler', () => {
 
     // Then
     expect(mockResponse.render).toHaveBeenCalledWith('error', {
-      ...mockTemplateValues,
-      message: 'Unexpected data format received from the server.'
+      status: 500
     })
   })
 
-  it('should render no-match page when no match details are found', async () => {
+  it('should render error when no match details are found', async () => {
     // Given
     getCaseAndTemplateValuesMock.mockReturnValueOnce(mockTemplateValues)
     getMatchDetailsMock.mockReturnValueOnce({ offenderMatchDetails: [] }) // No matches
@@ -85,9 +84,8 @@ describe('getMatchingRecordRouteHandler', () => {
     await getMatchingRecordRouteHandler(mockRequest, mockResponse)
 
     // Then
-    expect(mockResponse.render).toHaveBeenCalledWith('no-match', {
-      ...mockTemplateValues,
-      message: 'No match details found for the defendant.'
+    expect(mockResponse.render).toHaveBeenCalledWith('error', {
+      status: 500
     })
   })
 
