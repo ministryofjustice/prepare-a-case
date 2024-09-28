@@ -61,13 +61,15 @@ const prepareCourtRoomFilters = (allCourtRooms) => {
 
 const getPaginationObject = (pageParams) => {
   const maximumPages = 4
-  const currentPage = pageParams.page
-  let startNum = pageParams.page - ((maximumPages - 1) / 2)
-  let endNum = pageParams.page + ((maximumPages - 1) / 2)
-  const totalPages = Math.round(Math.ceil((pageParams.matchingRecordsCount / pageParams.limit)))
 
-  const startCount = ((parseInt(pageParams.page, 10) - 1) || 0) * pageParams.limit
-  const endCount = Math.min(startCount + parseInt(pageParams.limit, 10), pageParams.matchingRecordsCount)
+  const { page: currentPage, matchingRecordsCount, limit, courtCode, caseId, hearingId, defendantId } = pageParams;
+
+  let startNum = currentPage - ((maximumPages - 1) / 2)
+  let endNum = currentPage + ((maximumPages - 1) / 2)
+  const totalPages = Math.round(Math.ceil((matchingRecordsCount / limit)))
+
+  const startCount = ((currentPage - 1) || 0) * limit
+  const endCount = Math.min(startCount + limit , matchingRecordsCount)
 
   const pageItems = []
   let previousLink
@@ -87,7 +89,7 @@ const getPaginationObject = (pageParams) => {
   for (let i = startNum; i <= endNum; i++) {
     pageItems.push({
       text: i,
-      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${i}`,
+      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${i}`,
       selected: currentPage === i
     })
   }
@@ -95,14 +97,14 @@ const getPaginationObject = (pageParams) => {
   if (currentPage !== 1) {
     previousLink = {
       text: 'Previous',
-      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${currentPage - 1}`
+      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage - 1}`
     }
   }
 
   if (currentPage < totalPages) {
     nextLink = {
       text: 'Next',
-      href: `/${pageParams.courtCode}/case/${pageParams.caseId}/hearing/${pageParams.hearingId}/match/defendant/${pageParams.defendantId}?page=${currentPage + 1}`
+      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage + 1}`
     }
   }
 
@@ -117,7 +119,7 @@ const getPaginationObject = (pageParams) => {
     nextLink,
     from: startCount,
     to: endCount,
-    matchingRecordsCount: pageParams.matchingRecordsCount
+    matchingRecordsCount: matchingRecordsCount
 
   }
 }
