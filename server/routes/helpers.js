@@ -62,14 +62,14 @@ const prepareCourtRoomFilters = (allCourtRooms) => {
 const getPaginationObject = (pageParams) => {
   const maximumPages = 4
 
-  const { page: currentPage, matchingRecordsCount, limit, courtCode, caseId, hearingId, defendantId } = pageParams;
+  const { page: currentPage, matchingRecordsCount, limit, courtCode, caseId, hearingId, defendantId } = pageParams
 
   let startNum = currentPage - ((maximumPages - 1) / 2)
   let endNum = currentPage + ((maximumPages - 1) / 2)
   const totalPages = Math.round(Math.ceil((matchingRecordsCount / limit)))
 
   const startCount = ((currentPage - 1) || 0) * limit
-  const endCount = Math.min(startCount + limit , matchingRecordsCount)
+  const endCount = Math.min(startCount + limit, matchingRecordsCount)
 
   const pageItems = []
   let previousLink
@@ -119,7 +119,7 @@ const getPaginationObject = (pageParams) => {
     nextLink,
     from: startCount,
     to: endCount,
-    matchingRecordsCount: matchingRecordsCount
+    matchingRecordsCount
 
   }
 }
