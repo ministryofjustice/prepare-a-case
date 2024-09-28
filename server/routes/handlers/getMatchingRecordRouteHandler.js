@@ -15,20 +15,11 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
 
   const response = await getMatchDetails(defendantId)
 
-  // Check if offenderMatchDetails is an array
   const { offenderMatchDetails } = response
-  if (!Array.isArray(offenderMatchDetails)) {
-    return res.render('error', {
-      ...templateValues,
-      message: 'Unexpected data format received from the server.'
-    })
-  }
 
-  const matchingRecordsCount = offenderMatchDetails.length
-  if (matchingRecordsCount === 0) {
-    return res.render('no-match', {
-      ...templateValues,
-      message: 'No match details found for the defendant.'
+  if (!Array.isArray(offenderMatchDetails) || offenderMatchDetails.length === 0) {
+    return res.render('error', {
+      status: response.status || 500
     })
   }
 
@@ -42,13 +33,13 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
 
   // Calculate start and end index for slicing data
   const start = (currentPage - 1) * recordsPerPage
-  const end = Math.min(start + recordsPerPage, matchingRecordsCount)
+  const end = Math.min(start + recordsPerPage, offenderMatchDetails.length)
 
   // Slice the data for the current page
   const paginatedMatchData = response.offenderMatchDetails.slice(start, end)
 
   const pageParams = {
-    matchingRecordsCount,
+    matchingRecordsCount: offenderMatchDetails.length,
     page: currentPage,
     recordsPerPage,
     courtCode,

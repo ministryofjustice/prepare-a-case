@@ -35,9 +35,10 @@ describe('getMatchingRecordRouteHandler', () => {
   }
 
   jest.mock('../../../server/config', () => ({ settings: settingsMock }))
+  jest.mock('../../../server/routes/helpers') // Mock the module
   const { getPaginationObject } = require('../../../server/routes/helpers')
 
-  it.skip('should render match-defendant template with paginated data', async () => {
+  it('should render match-defendant template with paginated data', async () => {
     // Given
     getCaseAndTemplateValuesMock.mockReturnValueOnce(mockTemplateValues)
     getMatchDetailsMock.mockReturnValueOnce(mockMatchingDetailsResponse)
@@ -71,12 +72,11 @@ describe('getMatchingRecordRouteHandler', () => {
 
     // Then
     expect(mockResponse.render).toHaveBeenCalledWith('error', {
-      ...mockTemplateValues,
-      message: 'Unexpected data format received from the server.'
+      status: 500
     })
   })
 
-  it('should render no-match page when no match details are found', async () => {
+  it('should render error when no match details are found', async () => {
     // Given
     getCaseAndTemplateValuesMock.mockReturnValueOnce(mockTemplateValues)
     getMatchDetailsMock.mockReturnValueOnce({ offenderMatchDetails: [] }) // No matches
@@ -85,17 +85,19 @@ describe('getMatchingRecordRouteHandler', () => {
     await getMatchingRecordRouteHandler(mockRequest, mockResponse)
 
     // Then
-    expect(mockResponse.render).toHaveBeenCalledWith('no-match', {
-      ...mockTemplateValues,
-      message: 'No match details found for the defendant.'
+    expect(mockResponse.render).toHaveBeenCalledWith('error', {
+      status: 500
     })
   })
 
-  it.skip('should default to page 1 when page query param is invalid', async () => {
+  it('should default to page 1 when page query param is invalid', async () => {
     // Given
     mockRequest.query.page = 'invalid' // Invalid page number
     getCaseAndTemplateValuesMock.mockReturnValueOnce(mockTemplateValues)
     getMatchDetailsMock.mockReturnValueOnce(mockMatchingDetailsResponse)
+
+    // Mock the getPaginationObject to return something or spy on it
+    getPaginationObject.mockReturnValueOnce({ page: 1 })
 
     // When
     await getMatchingRecordRouteHandler(mockRequest, mockResponse)

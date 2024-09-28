@@ -35,7 +35,7 @@ const createCaseService = apiUrl => {
         `${apiUrl}/defendant/${defendantId}/matchesDetail`
       )) || { data: {} }
       // Sort offenderMatchDetails based on matchProbability in descending order
-      if (res.data.offenderMatchDetails) {
+      if (Array.isArray(res.data.offenderMatchDetails)) {
         res.data.offenderMatchDetails.sort((a, b) => {
           const probA = parseFloat(a.matchProbability ?? 0)
           const probB = parseFloat(b.matchProbability ?? 0)
@@ -47,6 +47,8 @@ const createCaseService = apiUrl => {
           const matchProb = parseFloat(detail.matchProbability ?? 0)
           return matchProb >= parseFloat(settings.minimumMatchProbability)
         })
+      } else {
+        res.data.offenderMatchDetails = [] // Set to an empty array if it's not an array
       }
       return res.data
     },

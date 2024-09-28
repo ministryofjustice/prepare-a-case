@@ -441,6 +441,90 @@ describe('Case service', () => {
     expect(response.offenderMatchDetails).toEqual([])
   })
 
+  it('should return an empty array if offenderMatchDetails is not an array', async () => {
+    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
+    moxios.stubRequest(endpoint, {
+      status: 200,
+      response: {
+        offenderMatchDetails: 'invalid data' // not an array
+      }
+    })
+
+    const response = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    expect(response.offenderMatchDetails).toEqual([])
+  })
+
+  it('should return an empty array if offenderMatchDetails is missing from the response', async () => {
+    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
+    moxios.stubRequest(endpoint, {
+      status: 200,
+      response: {
+        // offenderMatchDetails is missing
+      }
+    })
+
+    const response = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    expect(response.offenderMatchDetails).toEqual([])
+  })
+
+  it('should return an empty array if offenderMatchDetails is an empty array', async () => {
+    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
+    moxios.stubRequest(endpoint, {
+      status: 200,
+      response: {
+        offenderMatchDetails: [] // empty array
+      }
+    })
+
+    const response = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    expect(response.offenderMatchDetails).toEqual([])
+  })
+
+  it('should treat invalid matchProbability values inside offenderMatchDetails as 0', async () => {
+    settings.minimumMatchProbability = 0.5
+
+    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
+    moxios.stubRequest(endpoint, {
+      status: 200,
+      response: {
+        offenderMatchDetails: [
+          { matchProbability: 'invalid' }, // invalid string
+          { matchProbability: {} }, // invalid object
+          { matchProbability: [] }, // invalid array
+          { matchProbability: 0.6 }
+        ]
+      }
+    })
+
+    const response = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    expect(response.offenderMatchDetails).toEqual([
+      { matchProbability: 0.6 } // Only valid matchProbability values remain
+    ])
+  })
+
+  it('should return an empty array if offenderMatchDetails is null or undefined', async () => {
+    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
+    moxios.stubRequest(endpoint, {
+      status: 200,
+      response: {
+        offenderMatchDetails: null // explicitly null
+      }
+    })
+
+    const response = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    expect(response.offenderMatchDetails).toEqual([])
+
+    moxios.stubRequest(endpoint, {
+      status: 200,
+      response: {
+        offenderMatchDetails: undefined // explicitly undefined
+      }
+    })
+
+    const response2 = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
+    expect(response2.offenderMatchDetails).toEqual([])
+  })
+
   it('should call the API to update offender data', async () => {
     const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/offender`
     moxios.stubRequest(endpoint, {
