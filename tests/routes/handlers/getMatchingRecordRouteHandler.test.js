@@ -35,9 +35,10 @@ describe('getMatchingRecordRouteHandler', () => {
   }
 
   jest.mock('../../../server/config', () => ({ settings: settingsMock }))
+  jest.mock('../../../server/routes/helpers'); // Mock the module
   const { getPaginationObject } = require('../../../server/routes/helpers')
 
-  it.skip('should render match-defendant template with paginated data', async () => {
+  it('should render match-defendant template with paginated data', async () => {
     // Given
     getCaseAndTemplateValuesMock.mockReturnValueOnce(mockTemplateValues)
     getMatchDetailsMock.mockReturnValueOnce(mockMatchingDetailsResponse)
@@ -89,17 +90,20 @@ describe('getMatchingRecordRouteHandler', () => {
     })
   })
 
-  it.skip('should default to page 1 when page query param is invalid', async () => {
+  it('should default to page 1 when page query param is invalid', async () => {
     // Given
-    mockRequest.query.page = 'invalid' // Invalid page number
-    getCaseAndTemplateValuesMock.mockReturnValueOnce(mockTemplateValues)
-    getMatchDetailsMock.mockReturnValueOnce(mockMatchingDetailsResponse)
+    mockRequest.query.page = 'invalid'; // Invalid page number
+    getCaseAndTemplateValuesMock.mockReturnValueOnce(mockTemplateValues);
+    getMatchDetailsMock.mockReturnValueOnce(mockMatchingDetailsResponse);
+
+    // Mock the getPaginationObject to return something or spy on it
+    getPaginationObject.mockReturnValueOnce({ page: 1 });
 
     // When
-    await getMatchingRecordRouteHandler(mockRequest, mockResponse)
+    await getMatchingRecordRouteHandler(mockRequest, mockResponse);
 
     // Then
-    expect(getPaginationObject).toHaveBeenCalledWith(expect.objectContaining({ page: 1 })) // page should default to 1
-    expect(mockResponse.render).toHaveBeenCalledWith('match-defendant', expect.any(Object))
+    expect(getPaginationObject).toHaveBeenCalledWith(expect.objectContaining({ page: 1 })); // page should default to 1
+    expect(mockResponse.render).toHaveBeenCalledWith('match-defendant', expect.any(Object));
   })
 })
