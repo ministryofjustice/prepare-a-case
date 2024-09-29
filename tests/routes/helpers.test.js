@@ -240,7 +240,7 @@ describe('helpers', () => {
         const pageParams = {
           page: 1,
           matchingRecordsCount: 20,
-          limit: 5,
+          recordsPerPage: 5,
           courtCode: 'COURT01',
           caseId: 'CASE123',
           hearingId: 'HEARING123',
@@ -275,7 +275,7 @@ describe('helpers', () => {
         const pageParams = {
           page: 1,
           matchingRecordsCount: 8,
-          limit: 5,
+          recordsPerPage: 5,
           courtCode: 'COURT01',
           caseId: 'CASE123',
           hearingId: 'HEARING123',
@@ -308,7 +308,7 @@ describe('helpers', () => {
         const pageParams = {
           page: 5,
           matchingRecordsCount: 20,
-          limit: 5,
+          recordsPerPage: 5,
           courtCode: 'COURT01',
           caseId: 'CASE123',
           hearingId: 'HEARING123',
@@ -346,7 +346,7 @@ describe('helpers', () => {
       const pageParams = {
         page: 1,
         matchingRecordsCount: 20,
-        limit: 5,
+        recordsPerPage: 5,
         courtCode: 'COURT01',
         caseId: 'CASE123',
         hearingId: 'HEARING123',
@@ -378,11 +378,11 @@ describe('helpers', () => {
       })
     })
 
-    it.skip('should calculate pagination with a higher current page value', () => {
+    it('should calculate pagination with a higher current page value', () => {
       const pageParams = {
         page: 3,
         matchingRecordsCount: 30,
-        limit: 5,
+        recordsPerPage: 5,
         courtCode: 'COURT02',
         caseId: 'CASE456',
         hearingId: 'HEARING456',
@@ -421,7 +421,7 @@ describe('helpers', () => {
       const pageParams = {
         page: 1,
         matchingRecordsCount: 8,
-        limit: 5,
+        recordsPerPage: 5,
         courtCode: 'COURT03',
         caseId: 'CASE789',
         hearingId: 'HEARING789',
@@ -455,7 +455,7 @@ describe('helpers', () => {
       const pageParams = {
         page: 5,
         matchingRecordsCount: 20,
-        limit: 5,
+        recordsPerPage: 5,
         courtCode: 'COURT04',
         caseId: 'CASE012',
         hearingId: 'HEARING012',

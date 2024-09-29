@@ -64,8 +64,8 @@ const getPaginationObject = (pageParams) => {
 
   const { page: currentPage, matchingRecordsCount, recordsPerPage, courtCode, caseId, hearingId, defendantId } = pageParams
 
-  let startNum = currentPage - ((maximumPages - 1) / 2)
-  let endNum = currentPage + ((maximumPages - 1) / 2)
+  let startNum = Math.round(Math.ceil(currentPage - ((maximumPages - 1) / 2)))
+  let endNum = currentPage + Math.round(Math.ceil(((maximumPages - 1) / 2)))
   const totalPages = Math.round(Math.ceil((matchingRecordsCount / recordsPerPage)))
 
   const startCount = ((currentPage - 1) || 0) * recordsPerPage
