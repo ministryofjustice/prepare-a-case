@@ -59,29 +59,29 @@ Feature: Matching defendants to nDelius records
     And I should see the following table 2 headings
       | Name | Alias |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
     And I should see the following table 2 rows
-      | Guadalupe Flowerlupe Paratroop Hess 4                          |
+      | Guadalupe Flowerlupe Hess 10                                   |
+      | Para Flowerlupe                                                |
+      | 18 February 1998                                               |
+      | Dunroamin, Leicestershire, LE2 3NA                             |
+      | Unavailable                                                    |
+      | B333356                                                        |
+      | Previously known                                               |
+      | 13 January 2015 - CJA Standard Determinate Custody (6 Months)  |
+    And I should see the following table 3 headings
+      | Name | Aliases |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
+    And I should see the following table 3 rows
+      | Guadalupe Flowerlupe Hess 4                                    |
       | Para Flowerlupe                                                |
       | 18 February 1989                                               |
-      | 43 Hunterfly Place, Birmingham, Birmingham, AD21 5DR           |
+      | Dunroamin, Leicestershire, LE2 3NA                             |
       | D/9874483AB                                                    |
       | V178959                                                        |
       | Current                                                        |
       | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
-    And I should see the following table 3 headings
-      | Name | Aliases |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
-    And I should see the following table 3 rows
-      | Guadalupe Paul Hess 5                                                                 |
-      | Para Flowerlupe, Some Midone Midtwo Flowerlupe, Para Flowerlupe +1 other name matched |
-      | 18 February 1989                                                                      |
-      | Dunroamin, Leicestershire, LE2 3NA                                                    |
-      | Unavailable                                                                           |
-      | C178227                                                                               |
-      | Previously known                                                                      |
-      | 27 November 2017 - CJA Standard Determinate Custody (12 Months)                       |
     And I should see the following table 4 headings
       | Name | Aliases |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
     And I should see the following table 4 rows
-      | Guadalupe Flowerlupe Hess 6                                                                  |
+      | Guadalupe Flowerlupe Hess 9                                                                  |
       | Para Flowerlupe, Someone Midone Midtwo Flowerlupe, Sometwo Flowerlupe +2 other names matched |
       | 18 February 1998                                                                             |
       | Dunroamin, Leicestershire, LE2 3NA                                                           |
@@ -92,14 +92,25 @@ Feature: Matching defendants to nDelius records
     And I should see the following table 5 headings
       | Name | Alias |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
     And I should see the following table 5 rows
-      | Guadalupe Flowerlupe Paratroop Hess 1                          |
-      | Para Flowerlupe                                                |
-      | 18 February 1989                                               |
-      | 43 Hunterfly Place, Birmingham, Birmingham, AD21 5DR           |
-      | D/9874483AB                                                    |
-      | V178657                                                        |
-      | Current                                                        |
-      | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
+      | Guadalupe Flowerlupe Hess 8                                   |
+      | Para Flowerlupe                                               |
+      | 18 February 1998                                              |
+      | Dunroamin, Leicestershire, LE2 3NA                            |
+      | Unavailable                                                   |
+      | B333356                                                       |
+      | Previously known                                              |
+      | 13 January 2015 - CJA Standard Determinate Custody (6 Months) |
+    And I should see the following table 6 headings
+      | Name | Alias |  Date of birth | Address | PNC | CRN | Probation status | Most recent event |
+    And I should see the following table 6 rows
+      | Guadalupe Flowerlupe Hess 7                                   |
+      | Para Flowerlupe                                               |
+      | 18 February 1998                                              |
+      | Dunroamin, Leicestershire, LE2 3NA                            |
+      | Unavailable                                                   |
+      | B333356                                                       |
+      | Previously known                                              |
+      | 13 January 2015 - CJA Standard Determinate Custody (6 Months) |
     And I should see radio buttons with the following IDs
       | defendant-1 | defendant-2 | defendant-3 | defendant-4 | defendant-5 |
 
@@ -137,14 +148,6 @@ Feature: Matching defendants to nDelius records
     And I should see the following table 2 headings
       | Name | Date of birth | Address | PNC | CRN | Probation status | Most recent event |
     And I should see the following table 2 rows
-      | Felicia Consuela Villarreal                                    |
-      | 26 August 1971                                                 |
-      | 20 Main Street Shangri La, Leicester, Leicestershire, LE2 1BG  |
-      | A/1234560BA                                                    |
-      | V178657                                                        |
-      | Current                                                        |
-      | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
-    And I should see the following table 3 rows
       | Felecia Conswela Vilareel                                       |
       | 26 August 1969                                                  |
       | Dunroamin, Leicestershire, LE2 3NA                              |
@@ -152,6 +155,14 @@ Feature: Matching defendants to nDelius records
       | C178657                                                         |
       | Previously known                                                |
       | 27 November 2017 - CJA Standard Determinate Custody (12 Months) |
+    And I should see the following table 3 rows
+      | Felicia Consuela Villarreal                                    |
+      | 26 August 1971                                                 |
+      | 20 Main Street Shangri La, Leicester, Leicestershire, LE2 1BG  |
+      | A/1234560BA                                                    |
+      | V178657                                                        |
+      | Current                                                        |
+      | 27 November 2017 - CJA Standard Determinate Custody (6 Months) |
 
     And I should see radio buttons with the following IDs
       | defendant-1 | defendant-2 |

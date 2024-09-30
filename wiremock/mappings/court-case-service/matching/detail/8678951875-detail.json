@@ -1,0 +1,30 @@
+{
+  "id": "b3e38b25-2bf3-422c-bc84-822ea3a5bf15",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/offender/B333356/detail"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "otherIds": {
+        "crn": "B333356",
+        "pncNumber": "A/1234560BA",
+        "croNumber": "CRO654321",
+        "offenderId": 198765
+      },
+      "title": "Mr",
+      "forename": "Guadalupe",
+      "middleNames": [
+        "Bob",
+        "Geoff"
+      ],
+      "surname": "Hess",
+      "dateOfBirth": "1989-02-18",
+      "probationStatus": "PREVIOUSLY_KNOWN"
+    }
+  }
+}
