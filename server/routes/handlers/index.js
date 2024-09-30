@@ -15,7 +15,8 @@ const {
   saveDraftCaseComment,
   deleteCaseCommentDraft,
   updateCaseComment,
-  updateHearingOutcomeToResulted, getMatchDetails
+  updateHearingOutcomeToResulted,
+  getMatchDetails
 } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
 const { getUserSelectedCourts, getPreferences, updatePreferences, getFilters, setFilters } = require('../../services/user-preference-service')
