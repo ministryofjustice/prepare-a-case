@@ -48,7 +48,7 @@ const createCaseService = apiUrl => {
           return matchProb >= parseFloat(settings.minimumMatchProbability)
         })
       } else {
-        res.data.offenderMatchDetails = [] // Set to an empty array if it's not an array
+        res.data.offenderMatchDetails = []
       }
       return res.data
     },
