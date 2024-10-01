@@ -1,3 +1,4 @@
+const { settings } = require('../config')
 const getPsrRequestedConvictions = communityResponse => {
   return communityResponse.convictions?.filter(conviction => conviction.active && conviction.awaitingPsr && conviction.psrReports && conviction.psrReports.length)
     .map(conviction => {
@@ -60,7 +61,7 @@ const prepareCourtRoomFilters = (allCourtRooms) => {
 }
 
 const getPaginationObject = (pageParams) => {
-  const maximumPages = 4
+  const maximumPages = settings.maximumPages
 
   const { page: currentPage, matchingRecordsCount, recordsPerPage, courtCode, caseId, hearingId, defendantId } = pageParams
 

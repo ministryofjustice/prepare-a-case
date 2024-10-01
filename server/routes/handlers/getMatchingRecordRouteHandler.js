@@ -23,7 +23,6 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
     })
   }
 
-  // Parse page number and ensure it's a positive integer
   let currentPage = parseInt(queryParams.page, 10)
   if (isNaN(currentPage) || currentPage < 1) {
     currentPage = 1
@@ -31,11 +30,9 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
 
   const recordsPerPage = settings.matchingRecordsToBeShownPerPage
 
-  // Calculate start and end index for slicing data
   const start = (currentPage - 1) * recordsPerPage
   const end = Math.min(start + recordsPerPage, offenderMatchDetails.length)
 
-  // Slice the data for the current page
   const paginatedMatchData = response.offenderMatchDetails.slice(start, end)
 
   const pageParams = {
