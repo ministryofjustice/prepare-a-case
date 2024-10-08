@@ -29,6 +29,15 @@
   width: 45%;
 }
 
+.pac-\!-grid-column-sticky-45 {
+  width: 45%;
+  padding: 10px 0;
+  position: sticky;
+  top: 20px;
+  overflow: auto;
+  position: sticky;
+}
+
 .pac-\!-grid-column--max-700 {
   max-width: 700px;
 }

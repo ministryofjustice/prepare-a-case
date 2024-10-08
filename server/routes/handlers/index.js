@@ -15,7 +15,8 @@ const {
   saveDraftCaseComment,
   deleteCaseCommentDraft,
   updateCaseComment,
-  updateHearingOutcomeToResulted
+  updateHearingOutcomeToResulted,
+  getMatchDetails
 } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
 const { getUserSelectedCourts, getPreferences, updatePreferences, getFilters, setFilters } = require('../../services/user-preference-service')
@@ -26,6 +27,8 @@ const nunjucksFilters = require('../../utils/nunjucksFilters')
 const getCaseAndTemplateValues = require('./getCaseTemplateValuesHelper')({ getCase })
 
 const getProbationRecordHandler = require('./getProbationRecordRouteHandler')({ getProbationRecord }, getCaseAndTemplateValues)
+
+const getMatchingRecordHandler = require('./getMatchingRecordRouteHandler')(getMatchDetails, getCaseAndTemplateValues)
 
 const getUserSelectedCourtsHandler = require('./getUserSelectedCourtsHandler')(getUserSelectedCourts)
 
@@ -64,9 +67,16 @@ const pagedCaseListRouteHandler = require('./getPagedCaseListRouteHandler')({ ge
 
 const caseSummaryHandler = require('./caseSummary')({ getOutcomeTypesListFilters, getCaseAndTemplateValues, nunjucksFilters, updateHearingOutcomeToResulted })
 
+const setNotificationHandler = require('./notifications/setNotification').get()
+
+const setNotificationPostHandler = require('./notifications/setNotification').post()
+
+const setNotificationPreviewHandler = require('./notifications/setNotificationPreview')()
+
 module.exports = {
   getCaseAndTemplateValues,
   getProbationRecordHandler,
+  getMatchingRecordHandler,
   getUserSelectedCourtsHandler,
   outcomesRouter,
   addCaseCommentRequestHandler,
@@ -85,5 +95,8 @@ module.exports = {
   cancelCaseCommentDraftHandler,
   updateCaseCommentHandler,
   pagedCaseListRouteHandler,
-  caseSummaryHandler
+  caseSummaryHandler,
+  setNotificationHandler,
+  setNotificationPostHandler,
+  setNotificationPreviewHandler
 }

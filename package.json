@@ -102,7 +102,7 @@
     "standard": "17.0.0",
     "supertest": "6.2.2",
     "terser": "^5.26.0",
-    "webpack": "^5.89.0",
+    "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4"
   }
 }

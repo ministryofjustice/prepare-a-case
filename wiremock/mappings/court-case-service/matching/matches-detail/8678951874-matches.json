@@ -37,7 +37,8 @@
             "text": "CJA Standard Determinate Custody",
             "length": 6,
             "lengthUnits": "Months"
-          }
+          },
+          "matchProbability": "0.55"
         }
       ]
     }
