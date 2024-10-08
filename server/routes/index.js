@@ -10,7 +10,6 @@ const {
 const { updateSelectedCourts } = require('../services/user-preference-service')
 const {
   getCaseList,
-  getMatchDetails,
   deleteOffender,
   updateOffender,
   getCaseHistory,
@@ -34,6 +33,7 @@ const { defaults } = require('./middleware/defaults')
 const {
   getCaseAndTemplateValues,
   getProbationRecordHandler,
+  getMatchingRecordHandler,
   getUserSelectedCourtsHandler,
   outcomesRouter,
   addCaseCommentRequestHandler,
@@ -654,32 +654,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.get(
     '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId',
     defaults,
-    catchErrors(async (req, res) => {
-      const {
-        params: { defendantId },
-        session,
-        path
-      } = req
-      const templateValues = await getCaseAndTemplateValues(req)
-      templateValues.title = 'Review possible NDelius records'
-      const {
-        data: { defendantName }
-      } = templateValues
-      const response = await getMatchDetails(defendantId)
-      templateValues.session = {
-        ...session
-      }
-      templateValues.data = {
-        ...templateValues.data,
-        matchData: response && response.offenderMatchDetails
-      }
-      session.confirmedMatch = undefined
-      session.matchName = defendantName
-      session.formError = false
-      session.serverError = false
-      session.backLink = path
-      res.render('match-defendant', templateValues)
-    })
+    catchErrors(getMatchingRecordHandler)
   )
 
   router.post(

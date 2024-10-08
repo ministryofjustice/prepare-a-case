@@ -58,11 +58,11 @@
 
   <form name="matchDefendant" id="matchDefendant" method="post">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-half pac-!-grid-column-45 govuk-!-padding-right-9">
+      <div class="govuk-grid-column-one-half pac-!-grid-column-sticky-45 govuk-!-padding-right-9">
 
         <h3 class="govuk-heading-m">Defendant details</h3>
 
-        <div class="pac-inset-block">
+        <div class="pac-inset-sticky-block">
           <table class="govuk-table pac-table--no-borders govuk-!-margin-0">
             <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
@@ -95,6 +95,7 @@
         </div>
 
       </div>
+
       <div class="govuk-grid-column-one-half pac-!-grid-column-55 pac-!-border-left govuk-!-padding-left-9">
 
         <div class="govuk-form-group {{ "govuk-form-group--error" if session.formError }} govuk-!-margin-bottom-0">
@@ -103,7 +104,7 @@
           {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
           {% call govukFieldset({
             legend: {
-              text: data.matchData | length + " NDelius " + recordPluralised +  " found",
+              text: data.pagination.matchingRecordsCount + " possible NDelius " + recordPluralised,
               classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4",
               isPageHeading: false
             }
@@ -197,6 +198,7 @@
 
                   </label>
                 </div>
+              <p class="govuk-body govuk-!-margin-bottom-9"></p>
               {% endfor %}
 
             </div>
@@ -206,6 +208,21 @@
         </div>
 
       </div>
+      {% if data.pagination.totalPages > 1 %}
+        {% block paginationBlock %}
+          {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+          {{ mojPagination({
+            results: {
+              from: data.pagination.from + 1,
+              to: data.pagination.to,
+              count: data.pagination.matchingRecordsCount
+            },
+            previous: data.pagination.previousLink,
+            next: data.pagination.nextLink,
+            items: data.pagination.pageItems
+          }) }}
+        {% endblock %}
+      {% endif %}
     </div>
 
     {% from "govuk/components/details/macro.njk" import govukDetails %}
