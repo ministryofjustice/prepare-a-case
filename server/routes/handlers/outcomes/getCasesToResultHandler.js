@@ -1,6 +1,9 @@
 const getOutcomeTypesListFilters = require('../../../utils/getOutcomeTypesListFilters')
 const flagFilters = require('../../../utils/flagFilters')
+const trackEvent = require('../../../utils/analytics.js')
 const { prepareCourtRoomFilters } = require('../../helpers')
+
+const FILTER_CATEGORY_NAME = 'outcomesFilters'
 
 const getPagelessQueryParams = params => {
   const { page, ...remainder } = params
@@ -18,9 +21,19 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
   let filterParams = getPagelessQueryParams(queryParams)
 
   if (Object.keys(filterParams).length <= 0) {
-    filterParams = await userPreferenceService.getFilters(res.locals.user.username, 'outcomesFilters')
+    filterParams = await userPreferenceService.getFilters(res.locals.user.username, FILTER_CATEGORY_NAME)
+    trackEvent('PiCPrepareACaseFilters', {
+      filterType: FILTER_CATEGORY_NAME,
+      action: 'Loaded from user preference service',
+      filters: filterParams
+    })
   } else {
-    await userPreferenceService.setFilters(res.locals.user.username, 'outcomesFilters', filterParams)
+    await userPreferenceService.setFilters(res.locals.user.username, FILTER_CATEGORY_NAME, filterParams)
+    trackEvent('PiCPrepareACaseFilters', {
+      filterType: FILTER_CATEGORY_NAME,
+      action: 'Saved into user preference service',
+      filters: filterParams
+    })
   }
 
   const response = await caseService.getOutcomesList(

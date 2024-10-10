@@ -16,6 +16,7 @@ const updateSelectedCourts = async (userId, courts) => {
 
 const getPreferences = async (userId, preference) => {
   const res = await request(`${apiUrl}/users/${userId}/preferences/${preference}`)
+
   if (res) {
     return res.status >= 400 ? { isError: true, status: res.status || 500 } : res.data
   }
@@ -60,7 +61,6 @@ const getFilters = async (userId, filterType) => {
         }
       }
     })
-
     if (
       validDate &&
       validDate.getDate() === today.getDate() &&
@@ -73,9 +73,7 @@ const getFilters = async (userId, filterType) => {
   }
 
   const preferences = await getPreferences(userId, filterType)
-
   const [userPreferenceFilters, valid] = deconstructPersistentFilters(preferences)
-
   if (valid && config.features.persistFilters === 'true') {
     return userPreferenceFilters
   }
