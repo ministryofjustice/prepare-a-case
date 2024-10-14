@@ -7,7 +7,7 @@ const LIVERPOOL_PRE_PILOT_USERS = ['TaylorColinoNPS', 'debbieleenps', 'emmacaddi
 
 const PLYMOUTH_MAGS_COURT_CODE = 'B50KH'
 
-const PILOT_COURTS = ['B20EB', 'B23HS', 'B44MA', 'B43JC', 'B43KB', 'B43KQ', 'B43OX', 'B44KM', 'B44BA', 'B43LV', 'B44JK']
+const PILOT_COURTS = ['B20EB', 'B23HS', 'B44MA', 'B43JC', 'B43KB', 'B43KQ', 'B43OX', 'B44KM', 'B44BA', 'B43LV', 'B44JK', PLYMOUTH_MAGS_COURT_CODE]
 
 const features = {
   hearingNotes: anyOf(
