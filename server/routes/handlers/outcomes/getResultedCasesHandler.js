@@ -21,14 +21,14 @@ const getResultedCasesHandler = (caseService, userPreferenceService) => async (r
   let filterParams = getPagelessQueryParams(queryParams)
 
   if (Object.keys(filterParams).length <= 0) {
-    filterParams = await userPreferenceService.getFilters(res.locals.user.username, FILTER_CATEGORY_NAME)
+    filterParams = await userPreferenceService.getFilters(res.locals.user.username, FILTER_CATEGORY_NAME, courtCode)
     trackEvent('PiCPrepareACaseFilters', {
       filterType: FILTER_CATEGORY_NAME,
       action: 'Loaded from user preference service',
       filters: filterParams
     })
   } else {
-    await userPreferenceService.setFilters(res.locals.user.username, FILTER_CATEGORY_NAME, filterParams)
+    await userPreferenceService.setFilters(res.locals.user.username, FILTER_CATEGORY_NAME, courtCode, filterParams)
     trackEvent('PiCPrepareACaseFilters', {
       filterType: FILTER_CATEGORY_NAME,
       action: 'Saved into user preference service',

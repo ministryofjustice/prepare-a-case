@@ -185,14 +185,14 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
   let selectedFilters = getPagelessQueryParams(queryParams)
 
   if (Object.keys(selectedFilters).length <= 0) {
-    selectedFilters = await userPreferenceService.getFilters(res.locals.user.username, FILTER_CATEGORY_NAME)
+    selectedFilters = await userPreferenceService.getFilters(res.locals.user.username, FILTER_CATEGORY_NAME, courtCode)
     trackEvent('PiCPrepareACaseFilters', {
       filterType: FILTER_CATEGORY_NAME,
       action: 'Loaded from user preference service',
       filters: selectedFilters
     })
   } else {
-    await userPreferenceService.setFilters(res.locals.user.username, FILTER_CATEGORY_NAME, selectedFilters)
+    await userPreferenceService.setFilters(res.locals.user.username, FILTER_CATEGORY_NAME, courtCode, selectedFilters)
     trackEvent('PiCPrepareACaseFilters', {
       filterType: FILTER_CATEGORY_NAME,
       action: 'Saved into user preference service',
