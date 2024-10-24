@@ -42,7 +42,7 @@ module.exports = {
     scriptCache: '24h',
     matchingRecordsToBeShownPerPage: 5,
     maximumPages: 4,
-    minimumMatchProbability: 0.5,
+    minimumMatchProbability: 0.0,
     caseSearchResultPageSize: get('CASE_SEARCH_PAGE_SIZE', 20),
     hearingOutcomesPageSize: get('HEARING_OUTCOMES_PAGE_SIZE', 20),
     availableCourts: [
