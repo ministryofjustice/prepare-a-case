@@ -47,7 +47,7 @@ Feature: Matching defendants to nDelius records
     And I should see the inset text "Details that match the defendant are highlighted."
 
     Then I should see the level 3 heading "Defendant details"
-    And I should see the legend "6 possible NDelius records"
+    And I should see the legend "10 possible NDelius records"
 
     And I should see the following table headings
       | Name | Date of birth | Address | PNC |
@@ -112,7 +112,7 @@ Feature: Matching defendants to nDelius records
       | Previously known                                              |
       | 13 January 2015 - CJA Standard Determinate Custody (6 Months) |
     And I should see radio buttons with the following IDs
-      | defendant-1 | defendant-2 | defendant-3 | defendant-4 | defendant-5 |
+      | defendant-1 | defendant-2 | defendant-3 | defendant-4 | defendant-5 |defendant-5
 
     And There should be no a11y violations
 
