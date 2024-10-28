@@ -2,6 +2,13 @@
 
 const { settings } = require('../../../server/config')
 
+jest.mock('../../../server/utils/nunjucksComponents', () => {
+  return {
+    getFilterComponent: jest.fn(),
+    populateTemplateValuesWithComponent: (input) => { return input }
+  }
+})
+
 describe('getPagedCaseListRouteHandler', () => {
   beforeEach(() => {
     jest.replaceProperty(settings, 'casesTotalDays', 13)

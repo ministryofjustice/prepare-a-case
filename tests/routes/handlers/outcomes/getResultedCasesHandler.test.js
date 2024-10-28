@@ -13,6 +13,13 @@ jest.mock('../.././../../server/utils/getOutcomeTypesListFilters', () => {
   }))
 })
 
+jest.mock('../.././../../server/utils/nunjucksComponents', () => {
+  return {
+    getFilterComponent: jest.fn(),
+    populateTemplateValuesWithComponent: (input) => { return input }
+  }
+})
+
 describe('getResultedCasesHandler', () => {
   const { caseServiceMock, mockResponse } = require('../test-helpers')
   const userPreferenceService = { getFilters: jest.fn(), setFilters: jest.fn() }
