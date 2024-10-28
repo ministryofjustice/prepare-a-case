@@ -4,11 +4,10 @@
 {%- from "moj/components/button-menu/macro.njk" import mojButtonMenu -%}
 
 {% block javascripts %}
+    <script type="text/javascript" src="{{components.filterComponent.javascript}}"></script>
     <script type="text/javascript" src="/javascripts/hearing-outcomes-date-sort-component-{{ appVersion }}.min.js"></script>
-    <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
-
-  <script type="text/javascript" src="/javascripts/case-progress-{{ appVersion }}.min.js"></script>
-  <script type="text/javascript" src="/javascripts/checker_toggle-{{ appVersion }}.min.js"></script>
+    <script type="text/javascript" src="/javascripts/case-progress-{{ appVersion }}.min.js"></script>
+    <script type="text/javascript" src="/javascripts/checker_toggle-{{ appVersion }}.min.js"></script>
 {% endblock %}
 
 {% set tableData = {
@@ -132,11 +131,7 @@
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-6" aria-label="{{ title }}">{{ title }}</h1>
 
 
-  {%- from "components/filter/macro.njk" import pacFilter -%}
-  {{ pacFilter({
-    filters: params.filters,
-    hiddenInputs: params.sorts
-  }) }}
+  {{ components.filterComponent.html | safe}}
 
 
   {% include "court-case-progress-assign-modal.njk" %}

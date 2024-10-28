@@ -2,6 +2,7 @@ const getOutcomeTypesListFilters = require('../../../utils/getOutcomeTypesListFi
 const getHearingOutcomeAssignedToFilters = require('../../../utils/getHearingOutcomeAssignedToFilters')
 const flagFilters = require('../../../utils/flagFilters')
 const { prepareCourtRoomFilters } = require('../../helpers')
+const { getFilterComponent, populateTemplateValuesWithComponent } = require('../../../utils/nunjucksComponents.js')
 
 const getPagelessQueryParams = params => {
   const { page, ...remainder } = params
@@ -54,7 +55,7 @@ const getResultedCasesHandler = (caseService, userPreferenceService) => async (r
     .map(filterObj => filterObj.items.filter(item => item.checked).length)
     .some(length => length > 0)
 
-  const templateValues = {
+  let templateValues = {
     params: {
       ...params,
       filters: flaggedFilters,
@@ -68,6 +69,8 @@ const getResultedCasesHandler = (caseService, userPreferenceService) => async (r
     totalPages: response.totalPages,
     totalElements: response.totalElements
   }
+
+  templateValues = populateTemplateValuesWithComponent(templateValues, 'filterComponent', getFilterComponent(templateValues))
 
   res.render('outcomes/resultedCases', templateValues)
 }

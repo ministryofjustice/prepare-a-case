@@ -1,7 +1,8 @@
 
-(function setupDateSortComponent () {
+(function setupDateSortComponent() {
 
   var pacFilterForm = document.getElementById('pac-filter-form');
+  var pacFilterCard = document.getElementById('pac-filter-card');
 
   if (pacFilterForm) {
 
@@ -26,12 +27,12 @@
 
       // This is a hack to intercept the form submit when called outside scope (e.g. clear filters)
       var tmp = pacFilterForm.submit;
-      pacFilterForm.submit = function() {
+      pacFilterForm.submit = function () {
         var sortInput = document.getElementById('hidden-hearingDate');
         // test value of sortInput
         if (sortInput.value === 'NONE') {
           // remove from the form
-          pacFilterForm.removeChild(sortInput);
+          pacFilterCard.removeChild(sortInput);
         }
         tmp.apply(pacFilterForm);
       }
