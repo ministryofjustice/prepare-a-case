@@ -1,81 +1,16 @@
 {%- from "components/button/macro.njk" import button -%}
 {%- set formName = params.formName or 'pacFilterForm' -%}
 
-<section class="pac-filter-card govuk-!-margin-bottom-6" data-test="pac-filter-card">
-    <form name="pac-filter-form" id="pac-filter-form" method="post">
 
-        {% for hidden in params.hiddenInputs %}
-            <input type="hidden" id="hidden-{{ hidden.id }}" name="{{ hidden.id }}" value="{{ hidden.value }}" />
-        {% endfor %}
+<form name="pac-filter-form" id="pac-filter-form" method="post">
+    <section id="pac-filter-card" class="pac-filter-card" data-test="pac-filter-card">
 
-        <h2 class="govuk-heading-s">Filters</h2>
-
-        {% for filter in params.filters %}
-
-            {%- set hasSelected = false -%}
-            {% for item in filter.items %}
-                {% if item.checked %}
-                    {% set hasSelected = true %}
-                {% endif %}
+            {% for hidden in params.hiddenInputs %}
+                <input type="hidden" id="hidden-{{ hidden.id }}" name="{{ hidden.id }}" value="{{ hidden.value }}" />
             {% endfor %}
 
-            <div class="pac-filter-container">
-                <button id="button-{{ filter.id }}" type="button"
-                        class="pac-filter-button{% if hasSelected %} pac-filter-button--selected{% endif %}"
-                        data-controls="filter-{{ filter.id }}-selection"
-                        aria-controls="filter-{{ filter.id }}-selection"
-                        aria-expanded="false">{{ filter.label }}
-                </button>
+            <h2 class="govuk-heading-m">Filter the case list</h2>
 
-                <div id="filter-{{ filter.id }}-selection" class="pac-filter-selection moj-js-hidden">
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend moj-js-hidden">
-                                Probation
-                                record
-                            </legend>
-                            <div class="govuk-checkboxes govuk-checkboxes--small">
-
-                                {% for item in filter.items %}
-                                    <div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input pac-filter-checkbox"
-                                               id="checkbox-{{ filter.id }}-{{ loop.index }}"
-                                               name="{{ filter.id }}"
-                                               data-test="{{ item.label }}"
-                                               type="checkbox"
-                                               value="{{ item.value or item.label }}"{% if item.checked %} checked{% endif %}>
-                                        <label class="govuk-label govuk-checkboxes__label"
-                                               for="checkbox-{{ filter.id }}-{{ loop.index }}">{{ item.label }}</label>
-                                    </div>
-                                {% endfor %}
-
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-
-            </div>
-        {% endfor %}
-
-        <button type="submit" class="govuk-button action-button pac-apply-filters-button">Apply filters</button>
-
-        {%- set hasSelected = false -%}
-        {% for filter in params.filters %}
-            {% for item in filter.items %}
-                {% if item.checked %}
-                    {% set hasSelected = true %}
-                {% endif %}
-            {% endfor %}
-        {% endfor %}
-
-        <fieldset class="govuk-fieldset pac-selected-filters{% if not hasSelected %} moj-js-hidden{% endif %}">
-            <legend class="govuk-fieldset__legend">
-                <h2 class="govuk-body govuk-!-margin-bottom-0 govuk-!-font-weight-bold">
-                    Applied filters
-                    <a href="#" id="reset-filters"
-                       class="govuk-link govuk-link--no-visited-state govuk-body-s govuk-!-margin-left-2">Clear all</a>
-                </h2>
-            </legend>
             {% for filter in params.filters %}
 
                 {%- set hasSelected = false -%}
@@ -84,20 +19,94 @@
                         {% set hasSelected = true %}
                     {% endif %}
                 {% endfor %}
-                <div id="pac-filters-applied-{{ filter.id }}"
-                     class="pac-filters-applied--container{% if not hasSelected %} moj-js-hidden{% endif %}">
-                    <label class="govuk-label govuk-!-margin-top-2 govuk-!-margin-bottom-0 pac-selected-filters--label"
-                           for="filters">
-                        {{ filter.label }}
-                    </label>
-                    {% for item in filter.items %}
-                        {% if item.checked %}
-                            <button class="moj-filter__tag pac-filter__tag" type="button" aria-label="Remove {{ item.label }}"
-                                    data-controls="checkbox-{{ filter.id }}-{{ loop.index }}">{{ item.label }}</button>
-                        {% endif %}
-                    {% endfor %}
+
+                <div class="pac-filter-container">
+                    <button id="button-{{ filter.id }}" type="button"
+                            class="pac-filter-button {% if hasSelected %} pac-filter-button--selected{% endif %}"
+                            data-controls="filter-{{ filter.id }}-selection"
+                            aria-controls="filter-{{ filter.id }}-selection"
+                            aria-expanded="false"
+                            aria-label="{{filter.label}} filter">
+                            {{ filter.label }}
+                    </button>
+
+                    <div id="filter-{{ filter.id }}-selection" class="pac-filter-selection moj-js-hidden">
+                        <div class="govuk-form-group">
+                            <fieldset class="govuk-fieldset">
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend moj-js-hidden">
+                                    Probation
+                                    record
+                                </legend>
+                                <div class="govuk-checkboxes govuk-checkboxes--small">
+
+                                    {% for item in filter.items %}
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input pac-filter-checkbox"
+                                                id="checkbox-{{ filter.id }}-{{ loop.index }}"
+                                                name="{{ filter.id }}"
+                                                data-test="{{ item.label }}"
+                                                type="checkbox"
+                                                value="{{ item.value or item.label }}"{% if item.checked %} checked{% endif %}>
+                                            <label class="govuk-label govuk-checkboxes__label"
+                                                for="checkbox-{{ filter.id }}-{{ loop.index }}"
+                                                aria-label="{{item.label}} filter">{{ item.label }}</label>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
                 </div>
             {% endfor %}
-        </fieldset>
-    </form>
-</section>
+
+            {%- set hasSelected = false -%}
+            {% for filter in params.filters %}
+                {% for item in filter.items %}
+                    {% if item.checked %}
+                        {% set hasSelected = true %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+
+            <fieldset class="govuk-fieldset pac-selected-filters{% if not hasSelected %} moj-js-hidden{% endif %}">
+                <legend class="govuk-fieldset__legend">
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-0 govuk-!-margin-top-4 govuk-!-font-weight-bold">
+                        Selected filters
+                        <a href="#" id="reset-filters"
+                        class="govuk-link govuk-link--no-visited-state govuk-body-s govuk-!-margin-left-2">Clear all</a>
+                    </h3>
+                </legend>
+                {% for filter in params.filters %}
+
+                    {%- set hasSelected = false -%}
+                    {% for item in filter.items %}
+                        {% if item.checked %}
+                            {% set hasSelected = true %}
+                        {% endif %}
+                    {% endfor %}
+                    <div id="pac-filters-applied-{{ filter.id }}"
+                        class="pac-filters-applied--container{% if not hasSelected %} moj-js-hidden{% endif %}">
+                        <h4 class="govuk-label govuk-!-margin-top-2 govuk-!-margin-bottom-0 pac-selected-filters--label"
+                            for="filters">
+                            {{ filter.label }}
+                        </h4>
+                        <div id="pac-filters-applied-{{ filter.id }}-filters" class="pac-filters-applied--filters">
+                            {% for item in filter.items %}
+                                {% if item.checked %}
+                                    <button class="moj-filter__tag pac-filter__tag" type="button" aria-label="Remove {{filter.label}} {{ item.label }} filter"
+                                            data-controls="checkbox-{{ filter.id }}-{{ loop.index }}">{{ item.label }}</button>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </fieldset>
+
+            
+    </section>
+    <section class="pac-filter-card-bottom govuk-!-margin-bottom-6" data-test="pac-filter-card">
+        <button type="submit" class="govuk-button action-button pac-apply-filters-button">Apply filters</button>
+    </section>
+</form>

@@ -4,6 +4,7 @@ const features = require('../../utils/features')
 const trackEvent = require('../../utils/analytics.js')
 const workflow = require('../../utils/workflow')
 const queryParamBuilder = require('../../utils/queryParamBuilder.js')
+const { getFilterComponent, populateTemplateValuesWithComponent } = require('../../utils/nunjucksComponents.js')
 const moment = require('moment')
 const { constructTableData } = require('../../utils/caseListTableData.js')
 
@@ -271,7 +272,7 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
     baseUrl: createBaseUrl({ courtCode, date }, queryParams)
   }
 
-  const templateValues = {
+  let templateValues = {
     params: pageParams,
     data: response.cases,
     tableData: constructTableData(pageParams, response.cases),
@@ -286,6 +287,9 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
   session.caseListDate = currentDate
   session.currentCaseListViewLink = `${path}?page=${templateValues.params.page}`
   session.backLink = session.currentCaseListViewLink
+
+  templateValues = populateTemplateValuesWithComponent(templateValues, 'filterComponent', getFilterComponent(templateValues))
+
   res.render('case-list', templateValues)
 }
 

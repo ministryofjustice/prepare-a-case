@@ -11,6 +11,13 @@ jest.mock('.././../../server/utils/getOutcomeTypesListFilters', () => {
   }))
 })
 
+jest.mock('.././../../server/utils/nunjucksComponents.js', () => {
+  return {
+    getFilterComponent: jest.fn(),
+    populateTemplateValuesWithComponent: jest.fn()
+  }
+})
+
 describe('getCasesInProgressHandler', () => {
   const {
     mockResponse,

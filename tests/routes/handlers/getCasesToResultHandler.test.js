@@ -16,6 +16,13 @@ jest.mock('../../../server/services/case-service', () => ({
   getCase: jest.fn(() => ({ defendantName: 'some-name' }))
 }))
 
+jest.mock('.././../../server/utils/nunjucksComponents', () => {
+  return {
+    getFilterComponent: jest.fn(),
+    populateTemplateValuesWithComponent: jest.fn()
+  }
+})
+
 describe('getCasesToResultHandler', () => {
   const {
     mockResponse,

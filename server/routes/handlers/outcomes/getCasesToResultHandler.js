@@ -1,6 +1,7 @@
 const getOutcomeTypesListFilters = require('../../../utils/getOutcomeTypesListFilters')
 const flagFilters = require('../../../utils/flagFilters')
 const { prepareCourtRoomFilters } = require('../../helpers')
+const { getFilterComponent, populateTemplateValuesWithComponent } = require('../../../utils/nunjucksComponents.js')
 
 const getPagelessQueryParams = params => {
   const { page, ...remainder } = params
@@ -51,7 +52,7 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
     .map(filterObj => filterObj.items.filter(item => item.checked).length)
     .some(length => length > 0)
 
-  const templateValues = {
+  let templateValues = {
     params: {
       ...params,
       filters,
@@ -67,6 +68,8 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
   }
 
   delete session.outcomeActionAssign
+
+  templateValues = populateTemplateValuesWithComponent(templateValues, 'filterComponent', getFilterComponent(templateValues))
 
   res.render('outcomes/casesToResult', templateValues)
 }

@@ -3,7 +3,7 @@
 {%- from "components/tabs/macro.njk" import pacTabs -%}
 
 {% block javascripts %}
-    <script type="text/javascript" src="/javascripts/filter-component-{{ appVersion }}.min.js"></script>
+    <script type="text/javascript" src="{{components.filterComponent.javascript}}"></script>
     <script type="text/javascript" src="/javascripts/workflow-tasks-prep-status-selector-{{ appVersion }}.min.js"></script>
 {% endblock %}
 
@@ -86,10 +86,7 @@
         {% endif %}
     {% endif -%}
 
-    {%- from "components/filter/macro.njk" import pacFilter -%}
-    {{ pacFilter({
-        filters: params.filters
-    }) }}
+    {{ components.filterComponent.html | safe}}
 
     <div class="govuk-tabs" data-module="govuk-tabs">
         
