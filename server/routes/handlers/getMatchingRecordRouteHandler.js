@@ -1,5 +1,7 @@
 const { settings } = require('../../config')
 const { getPaginationObject } = require('../helpers')
+const trackEvent = require('../../utils/analytics')
+
 const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) => async (req, res) => {
   const {
     params: { courtCode, caseId, hearingId, defendantId },
@@ -14,6 +16,10 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
   const { data: { defendantName } } = templateValues
 
   const response = await getMatchDetails(defendantId)
+
+  if (settings.enableMatcherLogging) { 
+    trackEvent('PiCMatcherLogging', response)
+  }
 
   const { offenderMatchDetails } = response
 
