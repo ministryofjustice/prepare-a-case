@@ -289,5 +289,6 @@ module.exports = {
   features: {
     sendPncAndCroWithOffenderUpdates: false,
     persistFilters: get('PERSIST_FILTERS', 'true')
-  }
+  },
+  enableMatcherLogging: getBooleanParam('ENABLE_MATCHER_LOGGING')
 }
