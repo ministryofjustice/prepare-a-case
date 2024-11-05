@@ -114,6 +114,6 @@ env:
     value: {{ .Values.env.DEFAULT_TIMEOUT | quote }}
 
   - name: ENABLE_MATCHER_LOGGING
-    value: {{ .Values.env.ENABLE_APP_INSIGHTS | quote }}
+    value: {{ .Values.env.ENABLE_MATCHER_LOGGING | quote }}
 
 {{- end -}}
