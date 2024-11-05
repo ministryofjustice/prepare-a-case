@@ -17,7 +17,7 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
 
   const response = await getMatchDetails(defendantId)
 
-  if (settings.enableMatcherLogging) { 
+  if (settings.enableMatcherLogging) {
     trackEvent('PiCMatcherLogging', response)
   }
 
