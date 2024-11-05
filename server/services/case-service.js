@@ -5,6 +5,7 @@ const config = require('../config')
 const { prepareCourtRoomFilters } = require('../routes/helpers')
 const { settings } = require('../config')
 const proxy = require('express-http-proxy')
+const trackEvent = require('../utils/analytics')
 
 const isHttpSuccess = response => {
   return response && response.status / 100 === 2
@@ -31,9 +32,13 @@ const createCaseService = apiUrl => {
       return res.data
     },
     getMatchDetails: async defendantId => {
-      const res = (await request(
+      const res = await request(
         `${apiUrl}/defendant/${defendantId}/matchesDetail`
-      )) || { data: {} }
+      ) || { data: {} }
+
+      if (settings.enableMatcherLogging) {
+        trackEvent('PiCMatcherLoggingServiceFirst', res)
+      }
       // Sort offenderMatchDetails based on matchProbability in descending order
       if (Array.isArray(res.data.offenderMatchDetails)) {
         res.data.offenderMatchDetails.sort((a, b) => {
@@ -50,6 +55,11 @@ const createCaseService = apiUrl => {
       } else {
         res.data.offenderMatchDetails = []
       }
+
+      if (settings.enableMatcherLogging) {
+        trackEvent('PiCMatcherLoggingServiceLast', res)
+      }
+
       return res.data
     },
     getPagedCaseList: async (

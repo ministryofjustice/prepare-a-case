@@ -45,6 +45,7 @@ module.exports = {
     minimumMatchProbability: 0.5,
     caseSearchResultPageSize: get('CASE_SEARCH_PAGE_SIZE', 20),
     hearingOutcomesPageSize: get('HEARING_OUTCOMES_PAGE_SIZE', 20),
+    enableMatcherLogging: getBooleanParam('ENABLE_MATCHER_LOGGING'),
     availableCourts: [
       { code: 'B63AD', name: 'Aberystwyth Magistrates Court' },
       { code: 'B44AG', name: 'Aldershot Magistrates\' Court' },
