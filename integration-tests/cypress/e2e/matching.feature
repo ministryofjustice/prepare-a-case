@@ -1,4 +1,3 @@
-#***
 Feature: Matching defendants to nDelius records
   In order to match defendants to probation records
   As an authenticated user
