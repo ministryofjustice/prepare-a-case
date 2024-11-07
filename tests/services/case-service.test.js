@@ -359,7 +359,7 @@ describe('Case service', () => {
     return response
   })
 
-  it('should sort offenderMatchDetails by matchProbability in descending order and filter out entry lesser than 0.5', async () => {
+  it('should sort offenderMatchDetails by matchProbability in descending order and NOT filter out any entry', async () => {
     const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
     moxios.stubRequest(endpoint, {
       status: 200,
@@ -368,7 +368,7 @@ describe('Case service', () => {
           { matchProbability: 0.8 },
           { matchProbability: 0.9 },
           { matchProbability: 0.7 },
-          { matchProbability: 0.2 } // filtered out
+          { matchProbability: 0.2 }
         ]
       }
     })
@@ -377,69 +377,9 @@ describe('Case service', () => {
     expect(response.offenderMatchDetails).toEqual([
       { matchProbability: 0.9 },
       { matchProbability: 0.8 },
-      { matchProbability: 0.7 }
-    ])
-  })
-
-  it('should filter offenderMatchDetails with matchProbability less than settings.minimumMatchProbability', async () => {
-    settings.minimumMatchProbability = 0.5
-
-    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
-    moxios.stubRequest(endpoint, {
-      status: 200,
-      response: {
-        offenderMatchDetails: [
-          { matchProbability: 0.4 },
-          { matchProbability: 0.7 },
-          { matchProbability: 0.5 }
-        ]
-      }
-    })
-
-    const response = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
-    expect(response.offenderMatchDetails).toEqual([
       { matchProbability: 0.7 },
-      { matchProbability: 0.5 }
+      { matchProbability: 0.2 }
     ])
-  })
-
-  it('should handle undefined or null matchProbability values as 0', async () => {
-    settings.minimumMatchProbability = 0.5
-
-    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
-    moxios.stubRequest(endpoint, {
-      status: 200,
-      response: {
-        offenderMatchDetails: [
-          { matchProbability: undefined },
-          { matchProbability: null },
-          { matchProbability: 0.7 }
-        ]
-      }
-    })
-
-    const response = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
-    expect(response.offenderMatchDetails).toEqual([
-      { matchProbability: 0.7 }
-    ])
-  })
-
-  it('should return an empty array if no offenderMatchDetails meet the minimumMatchProbability', async () => {
-    settings.minimumMatchProbability = 0.8
-
-    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
-    moxios.stubRequest(endpoint, {
-      status: 200,
-      response: {
-        offenderMatchDetails: [
-          { matchProbability: 0.2 },
-          { matchProbability: 0.5 }
-        ]
-      }
-    })
-
-    const response = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
-    expect(response.offenderMatchDetails).toEqual([])
   })
 
   it('should return an empty array if offenderMatchDetails is not an array', async () => {
@@ -479,28 +419,6 @@ describe('Case service', () => {
 
     const response = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
     expect(response.offenderMatchDetails).toEqual([])
-  })
-
-  it('should treat invalid matchProbability values inside offenderMatchDetails as 0', async () => {
-    settings.minimumMatchProbability = 0.5
-
-    const endpoint = `${apiUrl}/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/matchesDetail`
-    moxios.stubRequest(endpoint, {
-      status: 200,
-      response: {
-        offenderMatchDetails: [
-          { matchProbability: 'invalid' }, // invalid string
-          { matchProbability: {} }, // invalid object
-          { matchProbability: [] }, // invalid array
-          { matchProbability: 0.6 }
-        ]
-      }
-    })
-
-    const response = await getMatchDetails('2e0afeb7-95d2-42f4-80e6-ccf96b282730')
-    expect(response.offenderMatchDetails).toEqual([
-      { matchProbability: 0.6 } // Only valid matchProbability values remain
-    ])
   })
 
   it('should return an empty array if offenderMatchDetails is null or undefined', async () => {

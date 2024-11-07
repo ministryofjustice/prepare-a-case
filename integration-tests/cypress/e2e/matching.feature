@@ -47,7 +47,7 @@ Feature: Matching defendants to nDelius records
     And I should see the inset text "Details that match the defendant are highlighted."
 
     Then I should see the level 3 heading "Defendant details"
-    And I should see the legend "6 possible NDelius records"
+    And I should see the legend "10 possible NDelius records"
 
     And I should see the following table headings
       | Name | Date of birth | Address | PNC |
