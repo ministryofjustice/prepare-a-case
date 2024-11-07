@@ -42,10 +42,10 @@ const createCaseService = apiUrl => {
       // Sort offenderMatchDetails based on matchProbability in descending order
       if (Array.isArray(res.data.offenderMatchDetails)) {
         res.data.offenderMatchDetails.sort((a, b) => {
-          const probA = (a.matchProbability != null && !isNaN(parseFloat(a.matchProbability)))
+          const probA = !isNaN(parseFloat(a.matchProbability))
             ? parseFloat(a.matchProbability)
             : 0
-          const probB = (b.matchProbability != null && !isNaN(parseFloat(b.matchProbability)))
+          const probB = !isNaN(parseFloat(b.matchProbability))
             ? parseFloat(b.matchProbability)
             : 0
           return probB - probA // Descending order
