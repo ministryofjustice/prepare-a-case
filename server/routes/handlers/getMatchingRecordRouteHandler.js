@@ -15,7 +15,8 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
 
   const { data: { defendantName } } = templateValues
 
-  const response = await getMatchDetails(defendantId, queryParams.showAllMatches)
+  const showAllMatches = Boolean(queryParams.showAllMatches)
+  const response = await getMatchDetails(defendantId, showAllMatches)
 
   if (settings.enableMatcherLogging) {
     trackEvent('PiCMatcherLogging', response)
@@ -30,7 +31,6 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
   }
 
   let currentPage = parseInt(queryParams.page, 10)
-  const showAllMatches = Boolean(queryParams.showAllMatches)
   if (isNaN(currentPage) || currentPage < 1) {
     currentPage = 1
   }
