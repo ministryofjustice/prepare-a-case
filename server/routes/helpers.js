@@ -103,10 +103,11 @@ const getPaginationObject = (pageParams) => {
     }
   }
 
+  const allMatchesShown = showAllMatches ? '&showAllMatches=True' : ''
   if (currentPage < totalPages) {
     nextLink = {
       text: 'Next',
-      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage + 1}${showAllMatches ? '&showAllMatches=True' : ''}`
+      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage + 1}${allMatchesShown}`
     }
   }
 
