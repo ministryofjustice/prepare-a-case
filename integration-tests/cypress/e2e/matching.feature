@@ -47,7 +47,7 @@ Feature: Matching defendants to nDelius records
     And I should see the inset text "Details that match the defendant are highlighted."
 
     Then I should see the level 3 heading "Defendant details"
-    And I should see the legend "10 possible NDelius records"
+    And I should see the legend "6 possible NDelius records"
 
     And I should see the following table headings
       | Name | Date of birth | Address | PNC |
@@ -227,6 +227,23 @@ Feature: Matching defendants to nDelius records
 
     Then I should be on the "Defendants with possible NDelius records" page
     And I should see the match confirmation banner message "You have successfully confirmed Guadalupe Hess has no NDelius record."
+
+    And There should be no a11y violations
+
+  Scenario: Confirm no existing defendant record Show more matched
+    Given I am an authenticated user
+    When I navigate to the "/B14LO/match/bulk" base route for today
+    Then I should be on the "Defendants with possible NDelius records" page
+
+    When I click the "Review records" link
+    Then I should be on the "Review possible NDelius records" page
+
+    And I check the element with id "defendant-1"
+    And I click the "Can't see the correct record?" summary link
+    And I click the "Show more matches" link
+
+    Then I should be on the "Review possible NDelius records" page
+    And I should see the legend "10 possible NDelius records"
 
     And There should be no a11y violations
 

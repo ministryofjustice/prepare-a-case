@@ -15,7 +15,7 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
 
   const { data: { defendantName } } = templateValues
 
-  const response = await getMatchDetails(defendantId)
+  const response = await getMatchDetails(defendantId, queryParams.showAllMatches)
 
   if (settings.enableMatcherLogging) {
     trackEvent('PiCMatcherLogging', response)
@@ -30,6 +30,7 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
   }
 
   let currentPage = parseInt(queryParams.page, 10)
+  const showAllMatches = Boolean(queryParams.showAllMatches)
   if (isNaN(currentPage) || currentPage < 1) {
     currentPage = 1
   }
@@ -57,7 +58,8 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
   templateValues.data = {
     ...templateValues.data,
     matchData: paginatedMatchData,
-    pagination: getPaginationObject(pageParams)
+    pagination: getPaginationObject(pageParams),
+    showAllMatches
   }
   session.confirmedMatch = undefined
   session.matchName = defendantName
