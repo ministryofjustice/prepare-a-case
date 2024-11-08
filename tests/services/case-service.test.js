@@ -377,8 +377,7 @@ describe('Case service', () => {
     expect(response.offenderMatchDetails).toEqual([
       { matchProbability: 0.9 },
       { matchProbability: 0.8 },
-      { matchProbability: 0.7 },
-      { matchProbability: 0.2 }
+      { matchProbability: 0.7 }
     ])
   })
 
