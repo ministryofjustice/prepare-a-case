@@ -1,5 +1,5 @@
 const { settings } = require('../../config')
-const { getPaginationObject } = require('../helpers')
+const { getPaginationObject, getBackUrl } = require('../helpers')
 const trackEvent = require('../../utils/analytics')
 
 const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) => async (req, res) => {
@@ -59,7 +59,8 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
     ...templateValues.data,
     matchData: paginatedMatchData,
     pagination: getPaginationObject(pageParams),
-    showAllMatches
+    showAllMatches,
+    backUrl: getBackUrl(session, hearingId, defendantId)
   }
   session.confirmedMatch = undefined
   session.matchName = defendantName

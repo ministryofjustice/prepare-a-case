@@ -60,6 +60,29 @@ const prepareCourtRoomFilters = (allCourtRooms) => {
   return courtRooms
 }
 
+const getBackUrl = (session, hearingId, defendantId) => {
+  let backUrl
+
+  if (session.matchType === 'bulk') {
+    backUrl = `/${session.courtCode}/match/${session.matchType}/${session.matchDate}`
+  } else {
+    backUrl = `/${session.courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`
+  }
+
+  return backUrl
+}
+
+const getMatchedUrl = (matchType, matchDate, hearingId, defendantId, courtCode) => {
+  return matchType === 'bulk'
+    ? courtCode + '/match/bulk/' + matchDate
+    : courtCode +
+    '/hearing/' +
+    hearingId +
+    '/defendant/' +
+    defendantId +
+    '/summary'
+}
+
 const getPaginationObject = (pageParams) => {
   const maximumPages = settings.maximumPages
 
@@ -133,5 +156,7 @@ module.exports = {
   getNormalisedCourtRoom,
   prepareCourtRoomFilters,
   getOrderTitle,
-  getPaginationObject
+  getPaginationObject,
+  getBackUrl,
+  getMatchedUrl
 }

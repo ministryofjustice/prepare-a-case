@@ -2,6 +2,8 @@ const express = require('express')
 const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const queryParamBuilder = require('../utils/queryParamBuilder')
+const { getMatchedUrl } = require('./helpers')
+
 const {
   settings,
   session: { cookieOptions },
@@ -34,6 +36,8 @@ const {
   getCaseAndTemplateValues,
   getProbationRecordHandler,
   getMatchingRecordHandler,
+  getCancelMatchRouteHandler,
+  postDefendantMatchRouteHandler,
   getUserSelectedCourtsHandler,
   outcomesRouter,
   addCaseCommentRequestHandler,
@@ -657,52 +661,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
     catchErrors(getMatchingRecordHandler)
   )
 
+  router.get('/:courtCode/match/cancel', defaults, catchErrors(getCancelMatchRouteHandler))
+
   router.post(
     '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId',
     defaults,
-    catchErrors(async (req, res) => {
-      const {
-        params: { courtCode, caseId, defendantId, hearingId },
-        body: { crn },
-        session
-      } = req
-      let redirectUrl
-      const tryAgainRedirect = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}`
-      if (!crn) {
-        session.confirmedMatch = undefined
-        session.formError = true
-        redirectUrl = tryAgainRedirect
-      } else {
-        let response
-        try {
-          response = await updateCaseDetails(
-            caseId,
-            hearingId,
-            defendantId,
-            crn
-          )
-        } catch (e) {
-          response = e.response
-        }
-        if (response.status === 200) {
-          session.confirmedMatch = {
-            name: session.matchName,
-            matchType: 'Known'
-          }
-          redirectUrl = `/${getMatchedUrl(
-            session.matchType,
-            session.matchDate,
-            hearingId,
-            defendantId,
-            courtCode
-          )}`
-        } else {
-          session.serverError = true
-          redirectUrl = tryAgainRedirect
-        }
-      }
-      res.redirect(302, redirectUrl)
-    })
+    catchErrors(postDefendantMatchRouteHandler(updateCaseDetails))
   )
 
   router.get(
@@ -921,23 +885,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   async function unlinkOffender (defendantId) {
     return await deleteOffender(defendantId)
-  }
-
-  function getMatchedUrl (
-    $matchType,
-    $matchDate,
-    $hearingId,
-    $defendantId,
-    $courtCode
-  ) {
-    return $matchType === 'bulk'
-      ? $courtCode + '/match/bulk/' + $matchDate
-      : $courtCode +
-      '/hearing/' +
-      $hearingId +
-      '/defendant/' +
-      $defendantId +
-      '/summary'
   }
 
   return router
