@@ -50,8 +50,7 @@ describe('postDefendantMatchRouteHandler', () => {
       name: 'John Doe',
       matchType: 'Known'
     })
-    expect(mockResponse.redirect).toHaveBeenCalledWith(302, '/test-url')
-    expect(getMatchedUrl).toHaveBeenCalledWith('bulk', '2024-11-11', 'test-hearing-id', 'test-defendant-id', 'test-court')
+    expect(mockResponse.redirect).toHaveBeenCalledWith(302, '/test-court/case/test-case-id/hearing/test-hearing-id/match/defendant/test-defendant-id')
   })
 
   it('should set session.serverError and redirect to try again URL if updateCaseDetails fails', async () => {
