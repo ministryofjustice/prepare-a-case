@@ -1,4 +1,5 @@
 const trackEvent = require('../../utils/analytics')
+const { settings } = require('../../config')
 
 const getCancelMatchRouteHandler = (req, res) => {
   const { courtCode } = req.params
@@ -9,12 +10,9 @@ const getCancelMatchRouteHandler = (req, res) => {
         ? `/${courtCode}/match/${matchType}/${matchDate}`
         : `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`
 
-  trackEvent('PiCMatcherCancelLinkClicked', {
-    action: 'Cancel match defendant',
-    courtCode,
-    matchType,
-    backUrl
-  })
+  if (settings.enableMatcherLogging) {
+    trackEvent('PiCMatcherCancelLinkClicked', courtCode, matchType, matchDate, hearingId, defendantId)
+  }
 
   res.redirect(backUrl)
 }

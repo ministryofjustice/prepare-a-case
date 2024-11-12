@@ -18,10 +18,6 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
   const showAllMatches = Boolean(queryParams.showAllMatches)
   const response = await getMatchDetails(defendantId, showAllMatches)
 
-  if (settings.enableMatcherLogging) {
-    trackEvent('PiCMatcherLogging', response)
-  }
-
   const { offenderMatchDetails } = response
 
   if (!Array.isArray(offenderMatchDetails) || offenderMatchDetails.length === 0) {
@@ -50,6 +46,15 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
     caseId,
     hearingId,
     defendantId
+  }
+
+  if (settings.enableMatcherLogging) {
+    trackEvent('PiCMatcherLogging', response)
+    trackEvent('PiCMatcherRecordsCount', offenderMatchDetails.length)
+
+    if (currentPage > 1) {
+      trackEvent('PiCMatcherLaterPagesClicked')
+    }
   }
 
   templateValues.session = {

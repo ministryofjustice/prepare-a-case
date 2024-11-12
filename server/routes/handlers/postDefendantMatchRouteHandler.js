@@ -1,4 +1,6 @@
 const { getMatchedUrl } = require('../helpers')
+const { settings } = require('../../config')
+const trackEvent = require('../../utils/analytics')
 const postDefendantMatchRouteHandler = (updateCaseDetails) => async (req, res) => {
   const {
     params: { courtCode, caseId, defendantId, hearingId },
@@ -22,6 +24,17 @@ const postDefendantMatchRouteHandler = (updateCaseDetails) => async (req, res) =
           matchType: 'Known',
           matchProbability
         }
+        console.log('Selected matchProbability ', matchProbability[0])
+
+        if (settings.enableMatcherLogging) {
+          trackEvent('PiCMatcherLogging', response)
+          if (matchProbability[0] <= 0.5) {
+            trackEvent('PiCMatcherLessRelevantMatchSelected', caseId, hearingId, defendantId, crn)
+          } else {
+            trackEvent('PiCMatcherMoreRelevantMatchSelected', caseId, hearingId, defendantId, crn)
+          }
+        }
+
         redirectUrl = `/${getMatchedUrl(session.matchType, session.matchDate, hearingId, defendantId, courtCode)}`
       } else {
         session.serverError = true
