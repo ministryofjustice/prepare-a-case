@@ -28,11 +28,11 @@ const getCaseAndTemplateValues = require('./getCaseTemplateValuesHelper')({ getC
 
 const getProbationRecordHandler = require('./getProbationRecordRouteHandler')({ getProbationRecord }, getCaseAndTemplateValues)
 
-const getMatchingRecordHandler = require('./getMatchingRecordRouteHandler')(getMatchDetails, getCaseAndTemplateValues)
+const getMatchingRecordHandler = require('./matchRecords/matchingRecordRouteHandler')(getMatchDetails, getCaseAndTemplateValues)
 
-const getCancelMatchRouteHandler = require('./getCancelMatchRouteHandler')
+const getCancelMatchRouteHandler = require('./matchRecords/cancelMatchRouteHandler')
 
-const postDefendantMatchRouteHandler = require('./postDefendantMatchRouteHandler')
+const postDefendantMatchRouteHandler = require('./matchRecords/defendantMatchRouteHandler')
 
 const getUserSelectedCourtsHandler = require('./getUserSelectedCourtsHandler')(getUserSelectedCourts)
 

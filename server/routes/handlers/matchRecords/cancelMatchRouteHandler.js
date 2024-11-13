@@ -1,7 +1,7 @@
-const trackEvent = require('../../utils/analytics')
-const { settings } = require('../../config')
+const trackEvent = require('../../../utils/analytics')
+const { settings } = require('../../../config')
 
-const getCancelMatchRouteHandler = (req, res) => {
+const cancelMatchRouteHandler = (req, res) => {
   const { courtCode } = req.params
   const { matchType, matchDate, hearingId, defendantId } = req.session
 
@@ -17,4 +17,4 @@ const getCancelMatchRouteHandler = (req, res) => {
   res.redirect(backUrl)
 }
 
-module.exports = getCancelMatchRouteHandler
+module.exports = cancelMatchRouteHandler

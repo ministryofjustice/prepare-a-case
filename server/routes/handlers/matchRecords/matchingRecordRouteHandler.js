@@ -1,8 +1,8 @@
-const { settings } = require('../../config')
-const { getPaginationObject, getBackUrl } = require('../helpers')
-const trackEvent = require('../../utils/analytics')
+const { settings } = require('../../../config')
+const { getPaginationObject, getBackUrl } = require('../../helpers')
+const trackEvent = require('../../../utils/analytics')
 
-const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) => async (req, res) => {
+const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) => async (req, res) => {
   const {
     params: { courtCode, caseId, hearingId, defendantId },
     session,
@@ -75,4 +75,4 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
   res.render('match-defendant', templateValues)
 }
 
-module.exports = getMatchingRecordRouteHandler
+module.exports = matchingRecordRouteHandler

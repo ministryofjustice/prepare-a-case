@@ -7,7 +7,7 @@ describe('getMatchingRecordRouteHandler', () => {
     render: jest.fn()
   }
 
-  const getMatchingRecordRouteHandler = require('../../../server/routes/handlers/getMatchingRecordRouteHandler')(getMatchDetailsMock, getCaseAndTemplateValuesMock)
+  const getMatchingRecordRouteHandler = require('../../../server/routes/handlers/matchRecords/matchingRecordRouteHandler')(getMatchDetailsMock, getCaseAndTemplateValuesMock)
 
   const mockRequest = {
     params: { courtCode: 'test-court', caseId: 'test-case-id', hearingId: 'test-hearing-id', defendantId: 'test-defendant-id' },

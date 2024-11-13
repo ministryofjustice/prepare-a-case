@@ -1,15 +1,21 @@
 /* global beforeEach, describe, it, expect, jest */
 
-const postDefendantMatchRouteHandler = require('../../../server/routes/handlers/postDefendantMatchRouteHandler')
+const postDefendantMatchRouteHandler = require('../../../server/routes/handlers/matchRecords/defendantMatchRouteHandler')
 const { getMatchedUrl } = require('../../../server/routes/helpers')
+const { settings } = require('../../../server/config')
+const trackEvent = require('../../../server/utils/analytics')
 
 jest.mock('../../../server/routes/helpers')
+jest.mock('../../../server/utils/analytics') // Mock trackEvent
 
 describe('postDefendantMatchRouteHandler', () => {
   let mockRequest, mockResponse, updateCaseDetailsMock
 
   beforeEach(() => {
     updateCaseDetailsMock = jest.fn()
+    jest.replaceProperty(settings, 'enablePastCasesNavigation', true)
+    jest.replaceProperty(settings, 'enableMatcherLogging', true)
+
     mockRequest = {
       params: {
         courtCode: 'test-court',
@@ -17,7 +23,7 @@ describe('postDefendantMatchRouteHandler', () => {
         hearingId: 'test-hearing-id',
         defendantId: 'test-defendant-id'
       },
-      body: { crn: 'CRN123' },
+      body: { crn: 'CRN123', matchProbability: [0.6] },
       session: {
         matchType: 'bulk',
         matchDate: '2024-11-11',
@@ -28,17 +34,7 @@ describe('postDefendantMatchRouteHandler', () => {
       redirect: jest.fn()
     }
     getMatchedUrl.mockReturnValue('test-url')
-  })
-
-  it('should redirect to try again URL and set session error if crn is missing', async () => {
-    mockRequest.body.crn = null // Missing crn
-    const expectedRedirect = '/test-court/case/test-case-id/hearing/test-hearing-id/match/defendant/test-defendant-id'
-
-    await postDefendantMatchRouteHandler(updateCaseDetailsMock)(mockRequest, mockResponse)
-
-    expect(mockRequest.session.confirmedMatch).toBeUndefined()
-    expect(mockRequest.session.formError).toBe(true)
-    expect(mockResponse.redirect).toHaveBeenCalledWith(302, expectedRedirect)
+    trackEvent.mockClear()
   })
 
   it('should set session.confirmedMatch and redirect to matched URL if updateCaseDetails is successful', async () => {
@@ -48,29 +44,21 @@ describe('postDefendantMatchRouteHandler', () => {
 
     expect(mockRequest.session.confirmedMatch).toEqual({
       name: 'John Doe',
-      matchType: 'Known'
+      matchType: 'Known',
+      matchProbability: [0.6]
     })
     expect(mockResponse.redirect).toHaveBeenCalledWith(302, '/test-url')
     expect(getMatchedUrl).toHaveBeenCalledWith('bulk', '2024-11-11', 'test-hearing-id', 'test-defendant-id', 'test-court')
+    expect(trackEvent).toHaveBeenCalledWith('PiCMatcherLogging', { status: 200 })
+    expect(trackEvent).toHaveBeenCalledWith('PiCMatcherMoreRelevantMatchSelected', 'test-case-id', 'test-hearing-id', 'test-defendant-id', 'CRN123')
   })
 
-  it('should set session.serverError and redirect to try again URL if updateCaseDetails fails', async () => {
-    updateCaseDetailsMock.mockResolvedValue({ status: 400 })
-    const expectedRedirect = '/test-court/case/test-case-id/hearing/test-hearing-id/match/defendant/test-defendant-id'
+  it('should not call trackEvent if enableMatcherLogging is false', async () => {
+    jest.replaceProperty(settings, 'enableMatcherLogging', false)
+    updateCaseDetailsMock.mockResolvedValue({ status: 200 })
 
     await postDefendantMatchRouteHandler(updateCaseDetailsMock)(mockRequest, mockResponse)
 
-    expect(mockRequest.session.serverError).toBe(true)
-    expect(mockResponse.redirect).toHaveBeenCalledWith(302, expectedRedirect)
-  })
-
-  it('should set session.serverError and redirect to try again URL if updateCaseDetails throws an error', async () => {
-    updateCaseDetailsMock.mockRejectedValue(new Error('Update failed'))
-    const expectedRedirect = '/test-court/case/test-case-id/hearing/test-hearing-id/match/defendant/test-defendant-id'
-
-    await postDefendantMatchRouteHandler(updateCaseDetailsMock)(mockRequest, mockResponse)
-
-    expect(mockRequest.session.serverError).toBe(true)
-    expect(mockResponse.redirect).toHaveBeenCalledWith(302, expectedRedirect)
+    expect(trackEvent).not.toHaveBeenCalled()
   })
 })

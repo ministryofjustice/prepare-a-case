@@ -1,7 +1,7 @@
-const { getMatchedUrl } = require('../helpers')
-const { settings } = require('../../config')
-const trackEvent = require('../../utils/analytics')
-const postDefendantMatchRouteHandler = (updateCaseDetails) => async (req, res) => {
+const { getMatchedUrl } = require('../../helpers')
+const { settings } = require('../../../config')
+const trackEvent = require('../../../utils/analytics')
+const defendantMatchRouteHandler = (updateCaseDetails) => async (req, res) => {
   const {
     params: { courtCode, caseId, defendantId, hearingId },
     body: { crn, matchProbability },
@@ -49,4 +49,4 @@ const postDefendantMatchRouteHandler = (updateCaseDetails) => async (req, res) =
   res.redirect(302, redirectUrl)
 }
 
-module.exports = postDefendantMatchRouteHandler
+module.exports = defendantMatchRouteHandler
