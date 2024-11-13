@@ -24,7 +24,6 @@ const defendantMatchRouteHandler = (updateCaseDetails) => async (req, res) => {
           matchType: 'Known',
           matchProbability
         }
-        console.log('Selected matchProbability ', matchProbability[0])
 
         if (settings.enableMatcherLogging) {
           trackEvent('PiCMatcherLogging', response)
