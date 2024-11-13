@@ -150,6 +150,12 @@ describe('Routes', () => {
     return []
   })
 
+  jest.spyOn(helpers, 'getMatchedUrl').mockImplementation((matchType, matchDate, hearingId, defendantId, courtCode) => {
+    return matchType === 'bulk'
+      ? `${courtCode}/match/bulk/${matchDate}`
+      : `${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`
+  })
+
   let enabledHearingOutcomes
 
   beforeAll(async () => {

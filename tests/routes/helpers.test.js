@@ -4,7 +4,9 @@ const {
   getNormalisedCourtRoom,
   prepareCourtRoomFilters,
   getLastSentencedConvictionPSR, getOrderTitle,
-  getPaginationObject
+  getPaginationObject,
+  getBackUrl,
+  getMatchedUrl
 } = require('../../server/routes/helpers')
 
 const convictions = [
@@ -485,6 +487,63 @@ describe('helpers', () => {
         },
         nextLink: undefined
       })
+    })
+  })
+
+  describe('getBackUrl', () => {
+    it('should return the bulk match URL when matchType is bulk', () => {
+      const session = {
+        matchType: 'bulk',
+        courtCode: 'ABC',
+        matchDate: '2024-11-10'
+      }
+      const expectedUrl = '/ABC/match/bulk/2024-11-10'
+
+      const result = getBackUrl(session)
+
+      expect(result).toBe(expectedUrl)
+    })
+
+    it('should return the hearing summary URL for non-bulk matchType', () => {
+      const session = {
+        matchType: 'single',
+        courtCode: 'XYZ'
+      }
+      const hearingId = '12345'
+      const defendantId = '67890'
+      const expectedUrl = '/XYZ/hearing/12345/defendant/67890/summary'
+
+      const result = getBackUrl(session, hearingId, defendantId)
+
+      expect(result).toBe(expectedUrl)
+    })
+  })
+
+  describe('getMatchedUrl', () => {
+    it('should return the bulk match URL when matchType is "bulk"', () => {
+      const matchType = 'bulk'
+      const matchDate = '2024-11-11'
+      const hearingId = '12345'
+      const defendantId = '67890'
+      const courtCode = 'ABC'
+
+      const expectedUrl = 'ABC/match/bulk/2024-11-11'
+      const result = getMatchedUrl(matchType, matchDate, hearingId, defendantId, courtCode)
+
+      expect(result).toBe(expectedUrl)
+    })
+
+    it('should return the hearing summary URL when matchType is not "bulk"', () => {
+      const matchType = 'single'
+      const matchDate = '2024-11-11'
+      const hearingId = '12345'
+      const defendantId = '67890'
+      const courtCode = 'XYZ'
+
+      const expectedUrl = 'XYZ/hearing/12345/defendant/67890/summary'
+      const result = getMatchedUrl(matchType, matchDate, hearingId, defendantId, courtCode)
+
+      expect(result).toBe(expectedUrl)
     })
   })
 })

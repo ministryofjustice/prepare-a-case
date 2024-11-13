@@ -1,8 +1,8 @@
-const { settings } = require('../../config')
-const { getPaginationObject } = require('../helpers')
-const trackEvent = require('../../utils/analytics')
+const { settings } = require('../../../config')
+const { getPaginationObject, getBackUrl } = require('../../helpers')
+const trackEvent = require('../../../utils/analytics')
 
-const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) => async (req, res) => {
+const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) => async (req, res) => {
   const {
     params: { courtCode, caseId, hearingId, defendantId },
     session,
@@ -17,10 +17,6 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
 
   const showAllMatches = Boolean(queryParams.showAllMatches)
   const response = await getMatchDetails(defendantId, showAllMatches)
-
-  if (settings.enableMatcherLogging) {
-    trackEvent('PiCMatcherLogging', response)
-  }
 
   const { offenderMatchDetails } = response
 
@@ -52,6 +48,15 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
     defendantId
   }
 
+  if (settings.enableMatcherLogging) {
+    trackEvent('PiCMatcherLogging', response)
+    trackEvent('PiCMatcherRecordsCount', offenderMatchDetails.length)
+
+    if (currentPage > 1) {
+      trackEvent('PiCMatcherLaterPagesClicked')
+    }
+  }
+
   templateValues.session = {
     ...session
   }
@@ -59,7 +64,8 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
     ...templateValues.data,
     matchData: paginatedMatchData,
     pagination: getPaginationObject(pageParams),
-    showAllMatches
+    showAllMatches,
+    backUrl: getBackUrl(session, hearingId, defendantId)
   }
   session.confirmedMatch = undefined
   session.matchName = defendantName
@@ -69,4 +75,4 @@ const getMatchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues
   res.render('match-defendant', templateValues)
 }
 
-module.exports = getMatchingRecordRouteHandler
+module.exports = matchingRecordRouteHandler
