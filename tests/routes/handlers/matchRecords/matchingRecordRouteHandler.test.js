@@ -7,7 +7,7 @@ describe('getMatchingRecordRouteHandler', () => {
     render: jest.fn()
   }
 
-  const getMatchingRecordRouteHandler = require('../../../server/routes/handlers/matchRecords/matchingRecordRouteHandler')(getMatchDetailsMock, getCaseAndTemplateValuesMock)
+  const getMatchingRecordRouteHandler = require('../../../../server/routes/handlers/matchRecords/matchingRecordRouteHandler')(getMatchDetailsMock, getCaseAndTemplateValuesMock)
 
   const mockRequest = {
     params: { courtCode: 'test-court', caseId: 'test-case-id', hearingId: 'test-hearing-id', defendantId: 'test-defendant-id' },
@@ -34,16 +34,16 @@ describe('getMatchingRecordRouteHandler', () => {
     matchingRecordsToBeShownPerPage: 10
   }
 
-  jest.mock('../../../server/config', () => ({ settings: settingsMock }))
-  jest.mock('../../../server/routes/helpers') // Mock the module
-  const { getPaginationObject } = require('../../../server/routes/helpers')
+  jest.mock('../../../../server/config', () => ({ settings: settingsMock }))
+  jest.mock('../../../../server/routes/helpers') // Mock the module
+  const { getPaginationObject } = require('../../../../server/routes/helpers')
 
   it('should render match-defendant template with paginated data', async () => {
     // Given
     getCaseAndTemplateValuesMock.mockReturnValueOnce(mockTemplateValues)
     getMatchDetailsMock.mockReturnValueOnce(mockMatchingDetailsResponse)
     const paginationObject = { /* pagination details */ }
-    jest.spyOn(require('../../../server/routes/helpers'), 'getPaginationObject').mockReturnValue(paginationObject)
+    jest.spyOn(require('../../../../server/routes/helpers'), 'getPaginationObject').mockReturnValue(paginationObject)
 
     // When
     await getMatchingRecordRouteHandler(mockRequest, mockResponse)

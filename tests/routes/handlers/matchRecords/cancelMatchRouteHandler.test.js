@@ -1,10 +1,10 @@
 /* global beforeEach, describe, it, expect, jest */
 
-const getCancelMatchRouteHandler = require('../../../server/routes/handlers/matchRecords/cancelMatchRouteHandler')
-const trackEvent = require('../../../server/utils/analytics')
-const { settings } = require('../../../server/config')
+const getCancelMatchRouteHandler = require('../../../../server/routes/handlers/matchRecords/cancelMatchRouteHandler')
+const trackEvent = require('../../../../server/utils/analytics')
+const { settings } = require('../../../../server/config')
 
-jest.mock('../../../server/utils/analytics')
+jest.mock('../../../../server/utils/analytics')
 
 describe('getCancelMatchRouteHandler', () => {
   let mockRequest, mockResponse

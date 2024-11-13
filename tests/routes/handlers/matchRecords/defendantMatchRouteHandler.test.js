@@ -1,12 +1,12 @@
 /* global beforeEach, describe, it, expect, jest */
 
-const postDefendantMatchRouteHandler = require('../../../server/routes/handlers/matchRecords/defendantMatchRouteHandler')
-const { getMatchedUrl } = require('../../../server/routes/helpers')
-const { settings } = require('../../../server/config')
-const trackEvent = require('../../../server/utils/analytics')
+const postDefendantMatchRouteHandler = require('../../../../server/routes/handlers/matchRecords/defendantMatchRouteHandler')
+const { getMatchedUrl } = require('../../../../server/routes/helpers')
+const { settings } = require('../../../../server/config')
+const trackEvent = require('../../../../server/utils/analytics')
 
-jest.mock('../../../server/routes/helpers')
-jest.mock('../../../server/utils/analytics') // Mock trackEvent
+jest.mock('../../../../server/routes/helpers')
+jest.mock('../../../../server/utils/analytics') // Mock trackEvent
 
 describe('postDefendantMatchRouteHandler', () => {
   let mockRequest, mockResponse, updateCaseDetailsMock
