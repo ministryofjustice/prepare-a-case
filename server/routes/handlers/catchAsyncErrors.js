@@ -14,6 +14,8 @@ const catchAsyncErrors = (handler) => async (req, res, next) => {
       status = e.response?.status || status
       message = e.response?.data?.developerMessage
       logger.error({ type: 'API Error', code: e.code, URL: e.config?.url, method: e.config?.method, httpStatus: status, message }, e.toString())
+    } else {
+      logger.info('Non-API Error : ', e)
     }
     next({ ...e, status })
   }

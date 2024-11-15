@@ -505,7 +505,7 @@ describe('Routes', () => {
 
   it('bulk matching route should call the case service to fetch case data', async () => {
     const response = await request(app).get('/B14LO/match/bulk/2020-01-01')
-    expect(caseService.getCaseList).toHaveBeenCalledWith('B14LO', '2020-01-01')
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('B14LO', '2020-01-01')
     return response
   })
 
