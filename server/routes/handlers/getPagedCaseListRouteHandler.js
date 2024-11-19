@@ -8,6 +8,8 @@ const { getFilterComponent, populateTemplateValuesWithComponent } = require('../
 const moment = require('moment')
 const { constructTableData } = require('../../utils/caseListTableData.js')
 
+const FILTER_CATEGORY_NAME = 'caseFilters'
+
 const getTodaysDate = () => {
   return moment(new Date()).format('YYYY-MM-DD')
 }
@@ -184,9 +186,19 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
   let selectedFilters = getPagelessQueryParams(queryParams)
 
   if (Object.keys(selectedFilters).length <= 0) {
-    selectedFilters = await userPreferenceService.getFilters(res.locals.user.username, 'caseFilters')
+    selectedFilters = await userPreferenceService.getFilters(res.locals.user.username, FILTER_CATEGORY_NAME, courtCode)
+    trackEvent('PiCPrepareACaseFilters', {
+      filterType: FILTER_CATEGORY_NAME,
+      action: 'Loaded from user preference service',
+      filters: selectedFilters
+    })
   } else {
-    await userPreferenceService.setFilters(res.locals.user.username, 'caseFilters', selectedFilters)
+    await userPreferenceService.setFilters(res.locals.user.username, FILTER_CATEGORY_NAME, courtCode, selectedFilters)
+    trackEvent('PiCPrepareACaseFilters', {
+      filterType: FILTER_CATEGORY_NAME,
+      action: 'Saved into user preference service',
+      filters: selectedFilters
+    })
   }
 
   const currentNotification = await getAsync('case-list-notification')
