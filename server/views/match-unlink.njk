@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block caseContent %}
+{%- from "components/button-group/macro.njk" import buttonGroup -%}
 <h1 class="govuk-heading-l">{{ title }}</h1>
 
 <p class="govuk-body">Unlink an NDelius record if the defendant is unknown to probation or has been linked to the wrong record.</p>
@@ -45,8 +46,7 @@
                 </div>
             </dl>
 
-            <button class="govuk-button action-button">Unlink record from defendant</button>
-            <p class="govuk-body"><a href="{{ backLink }}" class="govuk-link govuk-link--no-visited-state">Cancel</a></p>
+            {{buttonGroup("Unlink record from defendant", backLink)}}
         </form>
 
     </div>
