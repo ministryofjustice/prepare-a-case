@@ -11,7 +11,7 @@ const {
 } = require('../config')
 const { updateSelectedCourts } = require('../services/user-preference-service')
 const {
-  getPagedCaseList,
+  getCaseList,
   deleteOffender,
   updateOffender,
   getCaseHistory,
@@ -636,7 +636,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         session,
         params
       } = req
-      const response = await getPagedCaseList(courtCode, date, null, null, 1, 20, false)
+      const response = await getCaseList(courtCode, date, null, null, 1, 20, false)
       const templateValues = {
         title: 'Defendants with possible NDelius records',
         session: {
