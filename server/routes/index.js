@@ -636,7 +636,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         session,
         params
       } = req
-      const response = await getCaseList(courtCode, date, null, null, 1, 20, false)
+      const response = await getCaseList(courtCode, date)
       const templateValues = {
         title: 'Defendants with possible NDelius records',
         session: {
