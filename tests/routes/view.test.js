@@ -519,7 +519,7 @@ describe('Routes', () => {
       '2e0afeb7-95d2-42f4-80e6-ccf96b282730'
     )
     expect(caseService.getMatchDetails).toHaveBeenCalledWith(
-      '2e0afeb7-95d2-42f4-80e6-ccf96b282730', false
+      '2e0afeb7-95d2-42f4-80e6-ccf96b282730'
     )
     return response
   })

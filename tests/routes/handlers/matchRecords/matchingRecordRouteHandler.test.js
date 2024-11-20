@@ -50,7 +50,7 @@ describe('getMatchingRecordRouteHandler', () => {
 
     // Then
     expect(getCaseAndTemplateValuesMock).toHaveBeenCalledWith(mockRequest)
-    expect(getMatchDetailsMock).toHaveBeenCalledWith(mockRequest.params.defendantId, false)
+    expect(getMatchDetailsMock).toHaveBeenCalledWith(mockRequest.params.defendantId)
     expect(mockResponse.render).toHaveBeenCalledWith('match-defendant', {
       ...mockTemplateValues,
       session: {},
