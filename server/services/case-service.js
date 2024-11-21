@@ -202,7 +202,7 @@ const createCaseService = apiUrl => {
         'YYYY-MM-DDTHH:mm:00.000'
       )
       const response = await request(
-        `${apiUrl}/court/${courtCode}/cases?date=${date}&VERSION2=true`
+        `${apiUrl}/court/${courtCode}/cases?date=${date}`
       )
       if (!isHttpSuccess(response)) {
         return getInternalServerErrorResponse(response)
