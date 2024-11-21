@@ -31,11 +31,10 @@ const createCaseService = apiUrl => {
       const res = await request(`${apiUrl}/cases/${caseId}`)
       return res.data
     },
-    getMatchDetails: async (defendantId, showAllMatches) => {
-      showAllMatches = Boolean(showAllMatches)
-      const res = (await request(
+    getMatchDetails: async defendantId => {
+      const res = await request(
         `${apiUrl}/defendant/${defendantId}/matchesDetail`
-      ) || { data: {} })
+      ) || { data: {} }
 
       if (settings.enableMatcherLogging) {
         trackEvent('PiCMatcherLoggingServiceFirst', res)
@@ -43,18 +42,14 @@ const createCaseService = apiUrl => {
       // Sort offenderMatchDetails based on matchProbability in descending order
       if (Array.isArray(res.data.offenderMatchDetails)) {
         res.data.offenderMatchDetails.sort((a, b) => {
-          const probA = parseFloat(a.matchProbability ?? 0)
-          const probB = parseFloat(b.matchProbability ?? 0)
+          const probA = !isNaN(parseFloat(a.matchProbability))
+            ? parseFloat(a.matchProbability)
+            : 0
+          const probB = !isNaN(parseFloat(b.matchProbability))
+            ? parseFloat(b.matchProbability)
+            : 0
           return probB - probA // Descending order
         })
-
-        if (!showAllMatches) {
-          // Filter out details where matchProbability is less than settings.minimumMatchProbability
-          res.data.offenderMatchDetails = res.data.offenderMatchDetails.filter(detail => {
-            const matchProb = parseFloat(detail.matchProbability ?? 0)
-            return matchProb >= parseFloat(settings.minimumMatchProbability)
-          })
-        }
       } else {
         res.data.offenderMatchDetails = []
       }

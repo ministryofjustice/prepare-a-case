@@ -15,8 +15,7 @@ const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) =
 
   const { data: { defendantName } } = templateValues
 
-  const showAllMatches = Boolean(queryParams.showAllMatches)
-  const response = await getMatchDetails(defendantId, showAllMatches)
+  const response = await getMatchDetails(defendantId)
 
   const { offenderMatchDetails } = response
 
@@ -64,7 +63,6 @@ const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) =
     ...templateValues.data,
     matchData: paginatedMatchData,
     pagination: getPaginationObject(pageParams),
-    showAllMatches,
     backUrl: getBackUrl(session, hearingId, defendantId)
   }
   session.confirmedMatch = undefined

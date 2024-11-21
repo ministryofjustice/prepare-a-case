@@ -86,7 +86,7 @@ const getMatchedUrl = (matchType, matchDate, hearingId, defendantId, courtCode) 
 const getPaginationObject = (pageParams) => {
   const maximumPages = settings.maximumPages
 
-  const { page: currentPage, matchingRecordsCount, recordsPerPage, courtCode, caseId, hearingId, defendantId, showAllMatches } = pageParams
+  const { page: currentPage, matchingRecordsCount, recordsPerPage, courtCode, caseId, hearingId, defendantId } = pageParams
 
   let startNum = Math.round(Math.ceil(currentPage - ((maximumPages - 1) / 2)))
   let endNum = currentPage + Math.round(Math.ceil(((maximumPages - 1) / 2)))
@@ -111,10 +111,9 @@ const getPaginationObject = (pageParams) => {
   }
 
   for (let i = startNum; i <= endNum; i++) {
-    const href = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${i}`
     pageItems.push({
       text: i,
-      href: showAllMatches ? `${href}&showAllMatches=True` : href,
+      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${i}`,
       selected: currentPage === i
     })
   }
@@ -122,15 +121,14 @@ const getPaginationObject = (pageParams) => {
   if (currentPage !== 1) {
     previousLink = {
       text: 'Previous',
-      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage - 1}${showAllMatches ? '&showAllMatches=True' : ''}`
+      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage - 1}`
     }
   }
 
-  const allMatchesShown = showAllMatches ? '&showAllMatches=True' : ''
   if (currentPage < totalPages) {
     nextLink = {
       text: 'Next',
-      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage + 1}${allMatchesShown}`
+      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage + 1}`
     }
   }
 
