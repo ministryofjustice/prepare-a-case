@@ -14,7 +14,7 @@ describe('caseListTableData', () => {
       expect(badge).toEqual('<div><span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span></div>')
     })
 
-    it('should get awaitingPsr badge', () => {
+    it('should get awaiting PSR badge', () => {
       const badge = caseListTableData.getBadge(
         {
           awaitingPsr: true,
@@ -22,7 +22,7 @@ describe('caseListTableData', () => {
           suspendedSentenceOrder: false
         }, false)
 
-      expect(badge).toEqual('<div><span class="moj-badge moj-badge--black pac-badge">Psr</span></div>')
+      expect(badge).toEqual('<div><span class="moj-badge moj-badge--black pac-badge">PSR</span></div>')
     })
 
     it('should get breach badge', () => {
@@ -44,7 +44,7 @@ describe('caseListTableData', () => {
           suspendedSentenceOrder: true
         }, false)
 
-      expect(badge).toEqual('<div><span class="moj-badge moj-badge--black pac-badge">Sso</span></div>')
+      expect(badge).toEqual('<div><span class="moj-badge moj-badge--black pac-badge">SSO</span></div>')
     })
   })
 
