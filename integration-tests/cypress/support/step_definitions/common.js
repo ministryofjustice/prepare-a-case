@@ -208,6 +208,34 @@ Then('I should see the following table rows', $data => {
   })
 })
 
+Then('I should see the following table rows by row index', $data => {
+  $data.raw().forEach((tableRow) => {
+    const tableRowIndex = tableRow[0]
+    const rowData = tableRow.slice(1)
+    rowData.forEach((text, colIndex) => {
+      cy.get('.govuk-table__body > .govuk-table__row').eq(Number(tableRowIndex)).within(() => {
+          if (!text) {
+            return
+          }
+          const safeText = text.split(' ').map(part => {
+            if (part.includes('{')) {
+              cy.get('.govuk-table__cell').eq(colIndex).within(() => {
+                cy.get('.pac-badge').contains(part.replace(/{|}|/g, '')).should('exist')
+              })
+              return undefined
+            } else {
+              return part
+            }
+          })
+          const checkText = safeText.join(' ').trim()
+          if (checkText !== '') {
+            cy.get('.govuk-table__cell').eq(colIndex).contains(correctDates(checkText).replaceAll(' \n ', ''))
+          }
+        })
+      })
+    })
+  })
+
 Then('I should see the following table {int} rows', ($int, $data) => {
   cy.get('.govuk-table').eq($int - 1).within(() => {
     $data.raw().forEach((row, index) => {
