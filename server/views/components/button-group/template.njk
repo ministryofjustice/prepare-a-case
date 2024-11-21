@@ -1,0 +1,9 @@
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+<div class="govuk-button-group page-button-group">
+    {{govukButton({text: buttonText, type: "submit"})}}
+    {% if cancelLink %}
+        <a href="{{cancelLink}}" class="govuk-link govuk-link--no-visited-state">Cancel</a>
+    {% endif %}
+</div>

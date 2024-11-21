@@ -502,6 +502,14 @@ Feature: Matching defendants to nDelius records
     When I click the "Unlink NDelius Record" MOJ menu button
 
     Then I should be on the "Unlink NDelius record from the defendant" page
+    Then I should see the following summary list
+      | Name             | Charlene Hammond  |
+      | Date of birth    | 13 September 1980 |
+      | CRN              | D541487           |
+      | PNC              | A/1234560BA       |
+      | Probation status | Previously known  |
+    Then I should have a button group with a button labeled "Unlink record from defendant"
+    Then I should have a button group with a Cancel link with href "/B14LO/hearing/3f80d674-d964-4781-927a-99c78bc340e2/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary"
     When I click the "Unlink record from defendant" button
 
     Then I should be on the "Case summary" page
