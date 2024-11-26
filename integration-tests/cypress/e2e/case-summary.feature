@@ -17,7 +17,7 @@ Feature: Case summary
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Kara Ayers" link
     Then I should be on the "Case summary" page
-    And I should see the level 2 heading "Kara Ayers"
+    And I should see a level 1 heading with text "Kara Ayers"
     And I should see back link "Back to cases" with href "/B14LO/cases?page=1"
     And I should see the caption text "Source: Libra"
     And I should see the caption text "Case number: 8678951874"
@@ -43,8 +43,10 @@ Feature: Case summary
     And I should see the caption text "URN: 01WW0298121"
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
-    And I should see the following level 2 headings
-      | Mann Carroll | Defendant details | Case documents | Appearance | Offences |
+    And I should see a level 1 heading with text "Mann Carroll"
+    And I should see a "l" sized level 2 heading with text "Case summary"
+    And I should see the following "m" sized level 3 headings
+     | Defendant details | Case documents | Appearance | Offences | Case progress | Comments |
 
     And I should see the body text "Court 2-3, afternoon session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -71,8 +73,11 @@ Feature: Case summary
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see the body text "Probation status: Possible NDelius record"
-    And I should see the following level 2 headings
-      | Guadalupe Hess | possible NDelius records found | Defendant details | Case documents | Appearance | Offences |
+    And I should see a level 1 heading with text "Guadalupe Hess"
+    And I should see a "l" sized level 2 heading with text "Case summary"
+    And I should see a "m" sized level 2 heading with text "possible NDelius records found"
+    And I should see the following "m" sized level 3 headings
+      | Defendant details | Case documents | Appearance | Offences | Case progress | Comments |
 
     And I should see the body text "Court 7, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -97,8 +102,10 @@ Feature: Case summary
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     Then I should see the body text "Probation status: No record"
     And I should not see the case level navigation
-    And I should see the following level 2 headings
-      | Kara Ayers | Defendant details | Case documents | Appearance | Offences |
+    And I should see a level 1 heading with text "Kara Ayers"
+    And I should see a "l" sized level 2 heading with text "Case summary"
+    And I should see the following "m" sized level 3 headings
+      | Defendant details | Case documents | Appearance | Offences | Case progress | Comments |
 
     And I should see the body text "Court Crown Court 3-1, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -132,8 +139,10 @@ Feature: Case summary
     Then I should see the body text "PNC: A/8404713BA"
     Then I should see the body text "Probation status: Previously known"
     And I should see a straight line divide
-    And I should see the following level 2 headings
-      | Webb Mitchell | Defendant details | Case documents | Appearance | Offences |
+    And I should see a level 1 heading with text "Webb Mitchell"
+    And I should see a "l" sized level 2 heading with text "Case summary"
+    And I should see the following "m" sized level 3 headings
+      | Defendant details | Case documents | Appearance | Offences | Case progress | Comments |
 
     And I should see the body text "Court 8, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -169,8 +178,10 @@ Feature: Case summary
     And I should see the caption text "URN: 01WW0298121"
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
-    And I should see the following level 2 headings
-      | Mann Carroll | Defendant details | Case documents | Appearance | Offences |
+    And I should see a level 1 heading with text "Mann Carroll"
+    And I should see a "l" sized level 2 heading with text "Case summary"
+    And I should see the following "m" sized level 3 headings
+      | Defendant details | Case documents | Appearance | Offences | Case progress | Comments |
 
     And I should see the body text "Court 2-3, afternoon session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -202,8 +213,10 @@ Feature: Case summary
     And I should see the body text "PNC: A/1234560BA"
     And I should see the body text "Probation status: Current (PSR)"
     And I should see a straight line divide
-    And I should see the following level 2 headings
-      | Lenore Marquez | Defendant details | Case documents | Appearance | Offences |
+    And I should see a level 1 heading with text "Lenore Marquez"
+    And I should see a "l" sized level 2 heading with text "Case summary"
+    And I should see the following "m" sized level 3 headings
+      | Defendant details | Case documents | Appearance | Offences | Case progress | Comments |
 
     And I should see the body text "Court 6, morning session, $LONG_TODAY."
     Then I should see the following list of charges in an accordion component
@@ -239,8 +252,10 @@ Feature: Case summary
     And I should see the body text "PNC: D/9874483AB"
     And I should see the body text "Probation status: Current (Breach)"
     And I should see a straight line divide
-    And I should see the following level 2 headings
-      | Olsen Alexander | Defendant details | Case documents | Appearance | Offences |
+    And I should see a level 1 heading with text "Olsen Alexander"
+    And I should see a "l" sized level 2 heading with text "Case summary"
+    And I should see the following "m" sized level 3 headings
+      | Defendant details | Case documents | Appearance | Offences | Case progress | Comments |
 
     And I should see the body text "Court 9, morning session, $LONG_TODAY."
     And I should see the body text "Theft from a shop" in bold
@@ -272,9 +287,9 @@ Feature: Case summary
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases?page=1"
     When I click the sub navigation with "Probation record" text
-    Then I should see the level 2 heading "Pre-sentence report requested (2)"
-    Then I should see the level 2 heading "Current orders (1)"
-    Then I should see the level 2 heading "Previous orders (4)"
+    Then I should see a level 2 heading with text "Pre-sentence report requested (2)"
+    Then I should see a level 2 heading with text "Current orders (1)"
+    Then I should see a level 2 heading with text "Previous orders (4)"
     And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
     And I should see the hint text "Offence committed on 10 November 2017"
     And I should see the body text "Report requested on 5 July 2021"
@@ -285,8 +300,10 @@ Feature: Case summary
       | Status      | Complete (8 July 2021)     |
     And I should see the body text "Noise offences - 82200"
     And I should see the hint text "Offence committed on 6 January 2021"
-    And I should see the following level 2 headings
-      | Webb Mitchell | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
+    And I should see a level 1 heading with text "Webb Mitchell"
+    And I should see a "l" sized level 1 heading with text "Probation record"
+    And I should see the following "m" sized level 2 headings
+      | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
     And There should be no a11y violations
 
   Scenario: View the probation record section of the case summary for a current offender
@@ -299,20 +316,22 @@ Feature: Case summary
     When I clear the filters
     When I click the "Lenore Marquez" link
     And I click the sub navigation with "Probation record" text
-    Then I should see the level 2 heading "Current orders (3)"
+    Then I should see a level 2 heading with text "Current orders (3)"
     And I should see link "ORA Community Order (18 Months)" with href "record/1403337513"
     And I should see the text "Curfew Arrangement" within element with class "qa-current-licence-conditions-1"
     And I should see the text "Curfew Arrangement" within element with class "qa-current-pss-requirements-2"
     And I should see the body text "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
     And I should see the hint text "Started on 20 May 2019"
 
-    And I should see the level 2 heading "Previous orders (11)"
+    And I should see a level 2 heading with text "Previous orders (11)"
     And I should see link "CJA - Std Determinate Custody" with href "record/636401162"
     And I should see the text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801" within element with class "qa-previous-order-1-offence"
     And I should see the text "Ended on 23 Jan 2018" within element with class "qa-previous-order-1-end-date"
+    And I should see a level 1 heading with text "Lenore Marquez"
+    And I should see a "l" sized level 1 heading with text "Probation record"
+    And I should see the following "m" sized level 2 headings
+      | Pre-sentence report requested | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
 
-    And I should see the following level 2 headings
-      | Lenore Marquez | Pre-sentence report requested | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
     And I should see the body text "Angel Extravaganza"
     And I should see the hint text "Allocated on 12 Aug 2017"
     And I should see the body text "Email: d@none.com"
@@ -366,7 +385,10 @@ Feature: Case summary
     When I click the "Latoya Kirkland" link
     Then I should be on the "Case summary" page
     And I should see back link "Back to cases" with href "/B14LO/cases?page=1"
-    And I should see the level 2 heading "Latoya Kirkland"
+    And I should see a level 1 heading with text "Latoya Kirkland"
+    And I should see a "l" sized level 2 heading with text "Case summary"
+    And I should see the following "m" sized level 3 headings
+      | Defendant details | Case documents | Appearance | Offences | Case progress | Comments |
     When I click the sub navigation with "Probation record" text
     Then I should see the heading "You are restricted from viewing this record"
 
@@ -380,7 +402,10 @@ Feature: Case summary
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
-    And I should see the level 2 heading "Lenore Marquez"
+    And I should see a level 1 heading with text "Lenore Marquez"
+    And I should see a "l" sized level 1 heading with text "Probation record"
+    And I should see the following "m" sized level 2 headings
+      | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
 
     When I click the "ORA Community Order (18 Months)" link
     Then I should be on the "ORA Community Order (18 Months)" page
@@ -509,7 +534,10 @@ Feature: Case summary
 
     When I navigate to the "/B14LO/hearing/8d187ea4-d24d-4806-a5c7-1626919c44bb/defendant/9f60bdb8-0978-404c-bd89-addc3f5388a7/record" base route
     Then I should be on the "Probation record" page
-    And I should see the level 2 heading "Olsen Alexander"
+    And I should see a level 1 heading with text "Olsen Alexander"
+    And I should see a "l" sized level 1 heading with text "Probation record"
+    And I should see the following "m" sized level 2 headings
+      | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
 
     And I should see medium heading with text "Last pre-sentence report"
     And I should see the body text "Pre-Sentence Report - Fast"
@@ -609,7 +637,10 @@ Feature: Case summary
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
-    And I should see the level 2 heading "Lenore Marquez"
+    And I should see a level 1 heading with text "Lenore Marquez"
+    And I should see a "l" sized level 1 heading with text "Probation record"
+    And I should see the following "m" sized level 2 headings
+      | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
 
     When I click the "CJA - Std Determinate Custody" link
     Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
@@ -632,7 +663,7 @@ Feature: Case summary
   Scenario: View the case details of a defendant to see a list of current charges and the associated summary/description
     Given I am an authenticated user
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/summary" base route
-    Then I should see the level 2 heading "Offences"
+    And I should see a level 1 heading with text "Lenore Marquez"
     And If the total number of charges is greater than one
     Then I should see the following list of charges in an accordion component
       | Attempt theft from the person of another |
@@ -650,7 +681,7 @@ Feature: Case summary
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
-    And I should see the level 2 heading "Lenore Marquez"
+    And I should see a level 1 heading with text "Lenore Marquez"
 
     When I click the "ORA Community Order (18 Months)" link
     Then I should be on the "ORA Community Order (18 Months)" page
@@ -664,7 +695,7 @@ Feature: Case summary
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
-    And I should see the level 2 heading "Lenore Marquez"
+    And I should see a level 1 heading with text "Lenore Marquez"
 
     When I click the "CJA - Std Determinate Custody" link
     Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
