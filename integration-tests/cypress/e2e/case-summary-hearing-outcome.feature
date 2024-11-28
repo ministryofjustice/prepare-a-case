@@ -20,7 +20,7 @@ Feature: Case progress - Hearing outcome
       | Date of birth | 31 October 1980 (41 years old)                                        |
       | Address       | 22 Waldorf Court Cardiff AD21 5DR                                     |
 
-    And I should see the level 2 heading "Case progress"
+    And I should see a "m" sized level 3 heading with text "Case progress"
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" should have hearing outcome "Adjourned" sent to admin on "Monday 24 April 2023"
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e5" should have hearing outcome "Report requested" sent to admin on "Tuesday 9 May 2023"
 
@@ -32,7 +32,7 @@ Feature: Case progress - Hearing outcome
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
     Then I should be on the "Case summary" page
 
-    And I should see the level 2 heading "Case progress"
+    And I should see a "m" sized level 3 heading with text "Case progress"
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3" should have button "Send outcome to admin"
     And hearing "1f93aa0a-7e46-4885-a1cb-f25a4be33a00" should have button "Send outcome to admin"
 
@@ -103,7 +103,7 @@ Feature: Case progress - Hearing outcome
     When I navigate to the "/B14LO/hearing/9b9a6ab6-ef6d-485a-a8b4-b79b67e5b1f8/defendant/82bfc40d-389a-46ba-81e1-0829a5fbf6c8/summary" base route
     Then I should be on the "Case summary" page
 
-    And I should see the level 2 heading "Case progress"
+    And I should see a "m" sized level 3 heading with text "Case progress"
     And hearing "1f93aa0a-7e46-4885-a1cb-f25a4be33a10" should not have link "Edit"
 
   Scenario: Edit hearing outcome modal popup
@@ -114,7 +114,7 @@ Feature: Case progress - Hearing outcome
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
     Then I should be on the "Case summary" page
 
-    And I should see the level 2 heading "Case progress"
+    And I should see a "m" sized level 3 heading with text "Case progress"
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" should have link "Edit"
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e5" should have link "Edit"
 

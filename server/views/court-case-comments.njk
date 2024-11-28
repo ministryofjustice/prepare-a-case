@@ -1,7 +1,7 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds" id="caseComments">
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-        <h2 class="govuk-heading-m">Comments</h2>
+        <h3 class="govuk-heading-m">Comments</h3>
         {% if session.deleteCommentSuccess === data.caseId %}
             {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
             {% set html %}

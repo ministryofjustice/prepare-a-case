@@ -137,34 +137,6 @@ Then('I should be on the {string} page', $title => {
   cy.get('title').contains(`${$title} - `)
 })
 
-Then('I should see medium heading with text {string}', $string => {
-  cy.get('.govuk-heading-m').contains($string).should('exist')
-})
-
-Then('I should see the heading {string}', $title => {
-  cy.get('h1').contains($title)
-})
-
-Then('I should see the level 2 heading {string}', $title => {
-  cy.get('h2').contains($title)
-})
-
-Then('I should see the level 3 heading {string}', $title => {
-  cy.get('h3').contains($title)
-})
-
-Then('I should see the following level 2 headings', $data => {
-  $data.raw()[0].forEach((text, index) => {
-    cy.get('h2').eq(index).contains(text)
-  })
-})
-
-Then('I should see the following level 3 headings', $data => {
-  $data.raw()[0].forEach((text, index) => {
-    cy.get('h3').eq(index).contains(text)
-  })
-})
-
 Then('I should see the following table headings', $data => {
   $data.raw()[0].forEach((text, index) => {
     if (text) {
@@ -172,7 +144,7 @@ Then('I should see the following table headings', $data => {
     }
   })
 })
-
+  
 Then('I should see the following table {int} headings', ($index, $data) => {
   cy.get('.govuk-table').eq($index - 1).within(() => {
     $data.raw()[0].forEach((text, index) => {
@@ -252,10 +224,6 @@ Then('I should see the following table {int} rows', ($int, $data) => {
 
 Then('I should logout', () => {
   cy.get('.moj-header__navigation-link').click()
-})
-
-Then('I should not see the heading level {int} with text {string}', ($level, $text) => {
-  cy.get(`h${$level}`).contains($text).should('not.exist')
 })
 
 Then('I should see the caption {string}', $caption => {

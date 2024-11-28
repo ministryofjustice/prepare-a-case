@@ -13,7 +13,7 @@ Feature: Case progress
     Then I should be on the "Case summary" page
     And I should see the caption text "URN: 01WW0298121"
 
-    And I should see the level 2 heading "Case progress"
+    And I should see a "m" sized level 3 heading with text "Case progress"
     And I should see 6 previous hearings headers
     And I should see "Expand to add a hearing note" link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
 
@@ -37,7 +37,7 @@ Feature: Case progress
       | Date of birth | 31 October 1980 (41 years old)                                        |
       | Address       | 22 Waldorf Court Cardiff AD21 5DR                                     |
 
-    And I should see the level 2 heading "Case progress"
+    And I should see a "m" sized level 3 heading with text "Case progress"
     And I should see 6 previous hearings headers
 
     And I should see the following hearings with the hearing type label, hearing details and next appearance badge if applicable
@@ -88,7 +88,7 @@ Feature: Case progress
       | Date of birth | 31 October 1980 (41 years old)                                        |
       | Address       | 22 Waldorf Court Cardiff AD21 5DR                                     |
 
-    And I should see the level 2 heading "Case progress"
+    And I should see a "m" sized level 3 heading with text "Case progress"
     And I should see 6 previous hearings headers
 
     When I click delete hearing note with id "1288880" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
@@ -127,7 +127,7 @@ Feature: Case progress
       | Date of birth | 31 October 1980 (41 years old)                                        |
       | Address       | 22 Waldorf Court Cardiff AD21 5DR                                     |
 
-    And I should see the level 2 heading "Case progress"
+    And I should see a "m" sized level 3 heading with text "Case progress"
     And I should see 6 previous hearings headers
     And I should see below notes on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" with author datetime and note with edit and delete links
       | John Doe    | 9 August 2022, 17:16  | Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.   |
@@ -145,7 +145,7 @@ Feature: Case progress
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
-    And I should see the level 2 heading "Case progress"
+    And I should see a "m" sized level 3 heading with text "Case progress"
     And I should "see" line breaks on hearing note "754270"
 
   Scenario: Display hearing notes without line breaks
@@ -158,6 +158,6 @@ Feature: Case progress
     And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
-    And I should see the level 2 heading "Case progress"
+    And I should see a "m" sized level 3 heading with text "Case progress"
     And I should "not see" line breaks on hearing note "987650"
 
