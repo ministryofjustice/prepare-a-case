@@ -11,7 +11,7 @@ const getBadge = (item, notMatched) => {
   }
 
   if (item.awaitingPsr) {
-    badgeText = 'Psr'
+    badgeText = 'PSR'
   }
 
   if (item.breach) {
@@ -19,7 +19,7 @@ const getBadge = (item, notMatched) => {
   }
 
   if (item.suspendedSentenceOrder) {
-    badgeText = 'Sso'
+    badgeText = 'SSO'
   }
 
   return badgeText ? `<div><span class="moj-badge moj-badge--${badgeColour} pac-badge">${badgeText}</span></div>` : ''

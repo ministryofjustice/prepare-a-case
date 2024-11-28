@@ -31,10 +31,14 @@ Feature: Case list
     And I should see the following table headings
       | Defendant | Probation status | Offence | Listing | Session | Court |
 
-    And I should see the following table rows
-      | Kara Ayers     | No record                 | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
-      | Mann Carroll   | {Psr} Pre-sentence record | Assault by beating                       | 3rd | Morning | 2               |
-      | Guadalupe Hess | {Possible}                | Assault by beating                       |     | Morning | Crown Court 3-1 |
+    And I should see the following table rows by row index
+      | 0  | Kara Ayers       | No record                 | Attempt theft from the person of another | 1st | Morning   | Crown Court 3-1 |
+      | 1  | Mann Carroll     | {PSR} Pre-sentence record | Assault by beating                       | 3rd | Morning   | 2               |
+      | 2  | Guadalupe Hess   | {Possible}                | Assault by beating                       |     | Morning   | Crown Court 3-1 |
+      | 3  | Charlene Hammond | Previously known          | Theft from the person of another         | 3rd | Afternoon | 10              |
+      | 10 | Olsen Alexander  | {SSO} Current             | Theft from a shop                        | 2nd | Morning   | 2               |
+      | 11 | English Madden   | {Breach} Current          | Attempt theft from the person of another | 2nd | Morning   | 6               |
+
 
     And I should see link "Kara Ayers" with href "/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
     And I should see link "Mann Carroll" with href "/hearing/a395526d-b805-4c52-8f61-3c41bca15537/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary"
