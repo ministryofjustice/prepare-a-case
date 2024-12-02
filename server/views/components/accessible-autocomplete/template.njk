@@ -9,14 +9,23 @@
       {{ params.errorMessage }}
     </span>
   {% endif %}
-  <div class="autocomplete-wrapper">
-    <select id="{{ params.id }}" name="{{ params.name if params.name else params.id }}">
-      {% if params.instruction %}
-        <option value="">{{ params.instruction }}</option>
-      {% endif %}
-      {% for option in params.options %}
-        <option value="{{ option.value }}">{{ option.text }}</option>
-      {% endfor %}
-    </select>
-  </div>
+  <select id="{{ params.id }}" name="{{ params.name if params.name else params.id }}">
+    {% if params.instruction %}
+      <option value="">{{ params.instruction }}</option>
+    {% endif %}
+    {% for option in params.options %}
+      <option value="{{ option.value }}">{{ option.text }}</option>
+    {% endfor %}
+  </select>
 </div>
+{% block javascripts %}
+  <script src="/assets/accessible-autocomplete.min.js"></script>
+  <script nonce="{{ params.nonce }}">
+    accessibleAutocomplete.enhanceSelectElement({
+      defaultValue: '',
+      selectElement: document.querySelector('#{{ params.id }}'),
+      inputClasses: 'govuk-input{{" govuk-input--error" if params.error}}',
+      id: '{{ params.id }}'
+    })
+  </script>
+{% endblock %}
