@@ -1,5 +1,5 @@
 const nunjucks = require('nunjucks')
-const { instrumentationKey } = require('../config')
+const { instrumentationKey, features } = require('../config')
 const filters = require('./nunjucksFilters')
 
 module.exports = (app, path) => {
@@ -17,4 +17,5 @@ module.exports = (app, path) => {
     .forEach(([name, filter]) => env.addFilter(name, filter))
 
   env.addGlobal('instrumentationKey', instrumentationKey)
+  env.addGlobal('clickAnalytics', features.clickAnalytics)
 }

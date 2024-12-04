@@ -288,6 +288,7 @@ module.exports = {
   },
   features: {
     sendPncAndCroWithOffenderUpdates: false,
-    persistFilters: get('PERSIST_FILTERS', 'true')
+    persistFilters: get('PERSIST_FILTERS', 'true'),
+    clickAnalytics: get('ENABLE_CLICK_ANALYTICS', 'false')
   }
 }
