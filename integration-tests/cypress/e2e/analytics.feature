@@ -9,4 +9,4 @@ Feature: Application Insights snippet inclusion
       | trackEvent             |
       | trackException         |
       | trackPageView          |
-   
+    And the "ClickAnalytics" plugin should be initialized

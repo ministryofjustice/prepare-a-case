@@ -14,3 +14,9 @@ Then('the "appInsights" object should have properties and methods', function($da
     })
   }
 })
+
+Then('the "ClickAnalytics" plugin should be initialized', function() {
+  cy.window().its('clickPluginInstance.isInitialized').then(isInitialized => {
+    expect(isInitialized()).to.be.true
+  })
+})
