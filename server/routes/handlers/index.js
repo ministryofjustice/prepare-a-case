@@ -19,7 +19,7 @@ const {
   getMatchDetails
 } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
-const { getUserSelectedCourts, getPreferences, updatePreferences, getFilters, setFilters } = require('../../services/user-preference-service')
+const { getPreferences, updatePreferences, getFilters, setFilters } = require('../../services/user-preference-service')
 const getCaseSearchType = require('../../utils/getCaseSearchType')
 const getOutcomeTypesListFilters = require('../../utils/getOutcomeTypesListFilters')
 const nunjucksFilters = require('../../utils/nunjucksFilters')
@@ -33,8 +33,6 @@ const getMatchingRecordHandler = require('./matchRecords/matchingRecordRouteHand
 const getCancelMatchRouteHandler = require('./matchRecords/cancelMatchRouteHandler')
 
 const postDefendantMatchRouteHandler = require('./matchRecords/defendantMatchRouteHandler')
-
-const getUserSelectedCourtsHandler = require('./getUserSelectedCourtsHandler')(getUserSelectedCourts)
 
 const outcomesRouter = require('./outcomes')
 
@@ -83,7 +81,6 @@ module.exports = {
   getMatchingRecordHandler,
   getCancelMatchRouteHandler,
   postDefendantMatchRouteHandler,
-  getUserSelectedCourtsHandler,
   outcomesRouter,
   addCaseCommentRequestHandler,
   deleteCaseCommentConfirmationHandler,
