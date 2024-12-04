@@ -3,7 +3,7 @@ const applicationVersion = require('../application-version')
 const { settings } = require('../config')
 
 const { packageData, buildNumber } = applicationVersion
-if (process.env.APPINSIGHTS_INSTRUMENTATIONKEY) {
+if (process.env.APPLICATIONINSIGHTS_CCONNECTION_STRING) {
   if (!settings.reduceStdoutNoise) {
     // eslint-disable-next-line no-console
     console.log('Enabling azure application insights')
