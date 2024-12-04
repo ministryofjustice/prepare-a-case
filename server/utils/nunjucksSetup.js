@@ -18,6 +18,6 @@ module.exports = (app, path) => {
 
   env.addGlobal('instrumentationKey', instrumentationKey)
   env.addGlobal('clickAnalytics', features.clickAnalytics)
-  env.addGlobal('connectionString',  connectionString)
+  env.addGlobal('connectionString', connectionString)
   env.addGlobal('appVersion', appVersion)
 }

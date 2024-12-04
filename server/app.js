@@ -74,7 +74,7 @@ module.exports = function createApp ({ signInService }) {
       contentSecurityPolicy: {
         directives: {
           defaultSrc: [
-            '\'self\'',
+            '\'self\''
           ],
           objectSrc: ['\'none\''],
           frameSrc: ['https://www.youtube.com', '\'self\''],
