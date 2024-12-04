@@ -75,8 +75,6 @@ module.exports = function createApp ({ signInService }) {
         directives: {
           defaultSrc: [
             '\'self\'',
-            'https://www.google-analytics.com',
-            'www.google-analytics.com'
           ],
           objectSrc: ['\'none\''],
           frameSrc: ['https://www.youtube.com', '\'self\''],
@@ -84,9 +82,6 @@ module.exports = function createApp ({ signInService }) {
           scriptSrc: [
             '\'self\'',
             '\'unsafe-eval\'',
-            'www.google-analytics.com',
-            'https://www.google-analytics.com',
-            'https://www.googletagmanager.com',
             'js.monitor.azure.com',
             '\'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA=\'',
             '\'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ=\'',
@@ -95,16 +90,11 @@ module.exports = function createApp ({ signInService }) {
             `'nonce-${res.locals.nonce}'`
           ],
           imgSrc: [
-            '\'self\'',
-            'https://www.googletagmanager.com',
-            'https://www.google-analytics.com',
-            'www.google-analytics.com'
+            '\'self\''
           ],
           upgradeInsecureRequests: [],
           connectSrc: [
             '\'self\'',
-            'www.google-analytics.com',
-            'https://www.google-analytics.com',
             'js.monitor.azure.com',
             'dc.services.visualstudio.com'
           ]
