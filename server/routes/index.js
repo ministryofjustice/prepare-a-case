@@ -9,7 +9,6 @@ const {
   session: { cookieOptions },
   features: { sendPncAndCroWithOffenderUpdates }
 } = require('../config')
-const { updateSelectedCourts } = require('../services/user-preference-service')
 const {
   getCaseList,
   deleteOffender,
@@ -38,7 +37,6 @@ const {
   getMatchingRecordHandler,
   getCancelMatchRouteHandler,
   postDefendantMatchRouteHandler,
-  getUserSelectedCourtsHandler,
   outcomesRouter,
   addCaseCommentRequestHandler,
   deleteCaseCommentConfirmationHandler,
@@ -66,6 +64,8 @@ const {
   deleteHearingNoteHandler
 } = require('./handlers')
 
+const { registerManageCourtsRoutes, manageCourtsRoute } = require('./manage-courts/routes')
+
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
   router.use(authenticationMiddleware())
@@ -88,6 +88,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     }
   })
 
+  registerManageCourtsRoutes(router)
+
   router.get('/', (req, res) => {
     const { cookies } = req
     // @FIXME: Cookie check and removal to be removed at a later date
@@ -98,7 +100,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       302,
       cookies && cookies.currentCourt
         ? `/${cookies.currentCourt}/cases`
-        : '/my-courts/setup'
+        : `${manageCourtsRoute}/setup`
     )
   })
 
@@ -160,70 +162,6 @@ module.exports = function Index ({ authenticationMiddleware }) {
   router.post('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(caseSummaryHandler))
 
   router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/summary', defaults, catchErrors(caseSummaryHandler))
-
-  router.get('/my-courts', catchErrors(getUserSelectedCourtsHandler))
-
-  router.get(
-    '/my-courts/:state',
-    catchErrors(async (req, res) => {
-      const {
-        params: { state },
-        query: { error, remove, save },
-        session
-      } = req
-      let formError = error
-      let serverError = false
-      if (save) {
-        if (session.courts && session.courts.length) {
-          const updatedCourts = await updateSelectedCourts(
-            res.locals.user.username,
-            session.courts
-          )
-          if (updatedCourts.status >= 400) {
-            serverError = true
-          } else {
-            return res.redirect(302, '/my-courts')
-          }
-        } else {
-          formError = true
-        }
-      }
-      if (remove && session.courts && session.courts.includes(remove)) {
-        session.courts.splice(session.courts.indexOf(remove), 1)
-        return res.redirect(req.path)
-      }
-      const nonce = res.locals.nonce
-      res.render('edit-courts', {
-        formError,
-        serverError,
-        state,
-        params: {
-          availableCourts: settings.availableCourts,
-          chosenCourts: session.courts,
-          nonce
-        }
-      })
-    })
-  )
-
-  router.post(
-    '/my-courts/:state',
-    catchErrors((req, res) => {
-      const {
-        params: { state },
-        session,
-        body: { court }
-      } = req
-      if (!court) {
-        return res.redirect(302, `/my-courts/${state}?error=true`)
-      }
-      session.courts = session.courts || []
-      if (court && !session.courts.includes(court)) {
-        session.courts.push(court)
-      }
-      res.redirect(req.path)
-    })
-  )
 
   router.get(
     '/select-court/:courtCode',
