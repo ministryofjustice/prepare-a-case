@@ -28,12 +28,6 @@ env:
         name: prepare-a-case
         key: SESSION_SECRET
 
-  - name: GOOGLE_ANALYTICS_KEY
-    valueFrom:
-      secretKeyRef:
-        name: prepare-a-case
-        key: GOOGLE_ANALYTICS_KEY
-
   - name: NOTIFICATION_USERNAME
     valueFrom:
       secretKeyRef:
