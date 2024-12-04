@@ -116,4 +116,7 @@ env:
   - name: ENABLE_MATCHER_LOGGING
     value: {{ .Values.env.ENABLE_MATCHER_LOGGING | quote }}
 
+  - name: ENABLE_CLICK_ANALYTICS
+    value: {{ .Values.env.ENABLE_MATCHER_LOGGING | quote }}
+
 {{- end -}}
