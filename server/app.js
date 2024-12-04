@@ -96,7 +96,8 @@ module.exports = function createApp ({ signInService }) {
           connectSrc: [
             '\'self\'',
             'js.monitor.azure.com',
-            'dc.services.visualstudio.com'
+            'dc.services.visualstudio.com',
+            'https://northeurope-0.in.applicationinsights.azure.com'
           ]
         }
       }
@@ -122,8 +123,9 @@ module.exports = function createApp ({ signInService }) {
   app.use('/assets', [
     express.static(path.join(__dirname, '../node_modules/govuk-frontend/dist/govuk/assets'), { maxage: config.settings.assetCache }),
     express.static(path.join(__dirname, '../node_modules/@ministryofjustice/frontend/moj/assets'), { maxage: config.settings.assetCache }),
-    express.static(path.join(__dirname, '../node_modules/accessible-autocomplete/dist'), { maxage: config.settings.assetCache }),
-    express.static(path.join(__dirname, '../node_modules/@microsoft/applicationinsights-web/dist/es5'), { maxage: config.settings.assetCache })
+    express.static(path.join(__dirname, '../node_modules/accessible-autocomplete/dist'), { maxage: config.settings.scriptCache }),
+    express.static(path.join(__dirname, '../node_modules/@microsoft/applicationinsights-web/dist/es5'), { maxage: config.settings.scriptCache }),
+    express.static(path.join(__dirname, '../node_modules/@microsoft/applicationinsights-clickanalytics-js/dist/es5'), { maxage: config.settings.scriptCache })
   ])
   app.use('/moj', express.static(path.join(__dirname, '../node_modules/@ministryofjustice/frontend/moj'), { maxage: config.settings.scriptCache }))
   app.use('/govuk', express.static(path.join(__dirname, '../node_modules/govuk-frontend/dist/govuk'), { maxage: config.settings.scriptCache }))
