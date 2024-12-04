@@ -16,12 +16,6 @@ env:
         name: prepare-a-case
         key: API_CLIENT_SECRET
 
-  - name: APPINSIGHTS_INSTRUMENTATIONKEY
-    valueFrom:
-      secretKeyRef:
-        name: prepare-a-case
-        key: APPINSIGHTS_INSTRUMENTATIONKEY
-
   - name: SESSION_SECRET
     valueFrom:
       secretKeyRef:
