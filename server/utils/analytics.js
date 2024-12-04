@@ -1,6 +1,6 @@
 const appInsights = require('applicationinsights')
 
-if (process.env.APPINSIGHTS_INSTRUMENTATIONKEY) {
+if (process.env.APPLICATIONINSIGHTS_CONNECTION_STRING) {
   appInsights.setup().setDistributedTracingMode(appInsights.DistributedTracingModes.AI_AND_W3C).start()
 }
 

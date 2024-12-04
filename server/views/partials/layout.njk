@@ -36,35 +36,35 @@
                     {% if clickAnalytics %}
                         <script type="text/javascript" src="/assets/applicationinsights-clickanalytics-js.min.js"  nonce="{{ nonce }}"></script>
                         <script type="text/javascript" nonce="{{ nonce }}">
-                        var clickPluginInstance = new Microsoft.ApplicationInsights.ClickAnalyticsPlugin();
-                        // Click Analytics configuration
-                        var clickPluginConfig = {
-                            autoCapture : true,
-                            dataTags: {
-                                useDefaultContentNameOrId: true
+                            var clickPluginInstance = new Microsoft.ApplicationInsights.ClickAnalyticsPlugin();
+                            // Click Analytics configuration
+                            var clickPluginConfig = {
+                                autoCapture : true,
+                                dataTags: {
+                                    useDefaultContentNameOrId: true
+                                }
                             }
-                        }
-                        var snippet = {
-                            config: {
-                                connectionString: "{{ connectionString }}",
-                                extensions: [
-                                    clickPluginInstance
-                                ],
-                                extensionConfig: {
-                                    [clickPluginInstance.identifier] : clickPluginConfig
-                                },
-                                autoTrackPageVisitTime: true
+                            var snippet = {
+                                config: {
+                                    connectionString: "{{ connectionString }}",
+                                    extensions: [
+                                        clickPluginInstance
+                                    ],
+                                    extensionConfig: {
+                                        [clickPluginInstance.identifier] : clickPluginConfig
+                                    },
+                                    autoTrackPageVisitTime: true
+                                }
                             }
-                        }
                         </script>
                     {% else %}
                         <script type="text/javascript" nonce="{{ nonce }}">
-                        var snippet = {
-                            config: {
-                                connectionString: "{{ connectionString }}",
-                                autoTrackPageVisitTime: true
+                            var snippet = {
+                                config: {
+                                    connectionString: "{{ connectionString }}",
+                                    autoTrackPageVisitTime: true
+                                }
                             }
-                        }
                         </script>
                     {% endif %}
                     <script type="text/javascript" nonce="{{ nonce }}">
