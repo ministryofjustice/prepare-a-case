@@ -112,5 +112,11 @@ env:
 
   - name: ENABLE_CLICK_ANALYTICS
     value: {{ .Values.env.ENABLE_CLICK_ANALYTICS | quote }}
+  
+  - name: APPINSIGHTS_CONNECTION_STRING
+  valueFrom:
+    secretKeyRef:
+      name: applicationinsights-connection-string
+      key: applicationinsights_connection_string
 
 {{- end -}}
