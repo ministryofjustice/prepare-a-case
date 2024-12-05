@@ -1,7 +1,7 @@
 const appInsights = require('applicationinsights')
 
-if (process.env.APPINSIGHTS_INSTRUMENTATIONKEY) {
-  appInsights.setup(process.env.APPINSIGHTS_INSTRUMENTATIONKEY).start()
+if (process.env.APPLICATIONINSIGHTS_CONNECTION_STRING) {
+  appInsights.setup().setDistributedTracingMode(appInsights.DistributedTracingModes.AI_AND_W3C).start()
 }
 
 const trackEvent = (name, properties) => {

@@ -74,9 +74,7 @@ module.exports = function createApp ({ signInService }) {
       contentSecurityPolicy: {
         directives: {
           defaultSrc: [
-            '\'self\'',
-            'https://www.google-analytics.com',
-            'www.google-analytics.com'
+            '\'self\''
           ],
           objectSrc: ['\'none\''],
           frameSrc: ['https://www.youtube.com', '\'self\''],
@@ -84,9 +82,6 @@ module.exports = function createApp ({ signInService }) {
           scriptSrc: [
             '\'self\'',
             '\'unsafe-eval\'',
-            'www.google-analytics.com',
-            'https://www.google-analytics.com',
-            'https://www.googletagmanager.com',
             'js.monitor.azure.com',
             '\'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA=\'',
             '\'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ=\'',
@@ -95,18 +90,14 @@ module.exports = function createApp ({ signInService }) {
             `'nonce-${res.locals.nonce}'`
           ],
           imgSrc: [
-            '\'self\'',
-            'https://www.googletagmanager.com',
-            'https://www.google-analytics.com',
-            'www.google-analytics.com'
+            '\'self\''
           ],
           upgradeInsecureRequests: [],
           connectSrc: [
             '\'self\'',
-            'www.google-analytics.com',
-            'https://www.google-analytics.com',
             'js.monitor.azure.com',
-            'dc.services.visualstudio.com'
+            'dc.services.visualstudio.com',
+            'https://northeurope-0.in.applicationinsights.azure.com'
           ]
         }
       }
@@ -132,7 +123,9 @@ module.exports = function createApp ({ signInService }) {
   app.use('/assets', [
     express.static(path.join(__dirname, '../node_modules/govuk-frontend/dist/govuk/assets'), { maxage: config.settings.assetCache }),
     express.static(path.join(__dirname, '../node_modules/@ministryofjustice/frontend/moj/assets'), { maxage: config.settings.assetCache }),
-    express.static(path.join(__dirname, '../node_modules/accessible-autocomplete/dist'), { maxage: config.settings.assetCache })
+    express.static(path.join(__dirname, '../node_modules/accessible-autocomplete/dist'), { maxage: config.settings.scriptCache }),
+    express.static(path.join(__dirname, '../node_modules/@microsoft/applicationinsights-web/dist/es5'), { maxage: config.settings.scriptCache }),
+    express.static(path.join(__dirname, '../node_modules/@microsoft/applicationinsights-clickanalytics-js/dist/es5'), { maxage: config.settings.scriptCache })
   ])
   app.use('/moj', express.static(path.join(__dirname, '../node_modules/@ministryofjustice/frontend/moj'), { maxage: config.settings.scriptCache }))
   app.use('/govuk', express.static(path.join(__dirname, '../node_modules/govuk-frontend/dist/govuk'), { maxage: config.settings.scriptCache }))

@@ -16,23 +16,11 @@ env:
         name: prepare-a-case
         key: API_CLIENT_SECRET
 
-  - name: APPINSIGHTS_INSTRUMENTATIONKEY
-    valueFrom:
-      secretKeyRef:
-        name: prepare-a-case
-        key: APPINSIGHTS_INSTRUMENTATIONKEY
-
   - name: SESSION_SECRET
     valueFrom:
       secretKeyRef:
         name: prepare-a-case
         key: SESSION_SECRET
-
-  - name: GOOGLE_ANALYTICS_KEY
-    valueFrom:
-      secretKeyRef:
-        name: prepare-a-case
-        key: GOOGLE_ANALYTICS_KEY
 
   - name: NOTIFICATION_USERNAME
     valueFrom:
@@ -115,5 +103,14 @@ env:
 
   - name: ENABLE_MATCHER_LOGGING
     value: {{ .Values.env.ENABLE_MATCHER_LOGGING | quote }}
+
+  - name: ENABLE_CLICK_ANALYTICS
+    value: {{ .Values.env.ENABLE_CLICK_ANALYTICS | quote }}
+  
+  - name: APPLICATIONINSIGHTS_CONNECTION_STRING
+  valueFrom:
+    secretKeyRef:
+      name: applicationinsights-connection-string
+      key: applicationinsights_connection_string
 
 {{- end -}}

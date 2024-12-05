@@ -281,13 +281,14 @@ module.exports = {
   domain: `${get('INGRESS_URL', `http://localhost:${port}`)}`,
   https: production,
   nonce: () => crypto.randomBytes(16).toString('base64'),
-  instrumentationKey: get('APPINSIGHTS_INSTRUMENTATIONKEY', null),
+  connectionString: get('APPLICATIONINSIGHTS_CONNECTION_STRING', null),
   notification: {
     username: get('NOTIFICATION_USERNAME', null, requiredInProduction),
     password: get('NOTIFICATION_PASSWORD', null, requiredInProduction)
   },
   features: {
     sendPncAndCroWithOffenderUpdates: false,
-    persistFilters: get('PERSIST_FILTERS', 'true')
+    persistFilters: get('PERSIST_FILTERS', 'true'),
+    clickAnalytics: get('ENABLE_CLICK_ANALYTICS', 'false')
   }
 }
