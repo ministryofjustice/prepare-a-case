@@ -1,8 +1,8 @@
 /* global jest, describe, it, expect */
-const getUserSelectedCourtsHandler = require('../../../server/routes/handlers/getUserSelectedCourtsHandler')
-const { settings } = require('../../../server/config')
+const getUserSelectedCourtsHandler = require('../../../../server/routes/manage-courts/handlers/getUserSelectedCourts')
+const { settings } = require('../../../../server/config')
 
-describe('getUserSelectedCourtsHandler', () => {
+describe('getUserSelectedCourts Handler', () => {
   const getUserSelectedCourtsMock = jest.fn()
   const mockResponse = {
     locals:
