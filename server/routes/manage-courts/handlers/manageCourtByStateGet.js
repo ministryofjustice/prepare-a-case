@@ -10,10 +10,12 @@ const getManageCourtByState = (baseRoute, updateSelectedCourts) => async (req, r
   let serverError = false
   if (save) {
     if (session.courts && session.courts.length) {
+      console.log('Here')
       const updatedCourts = await updateSelectedCourts(
         res.locals.user.username,
         session.courts
       )
+      console.log(updatedCourts)
       if (updatedCourts.status >= 400) {
         serverError = true
       } else {
