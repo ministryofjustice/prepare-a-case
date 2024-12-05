@@ -1,6 +1,6 @@
 const { settings } = require('../../../config')
 
-const getManageCourtByState = (baseRoute, updateSelectedCourts) => async (req, res) => {
+const get = (baseRoute, updateSelectedCourts) => async (req, res) => {
   const {
     params: { state },
     query: { error, remove, save },
@@ -10,12 +10,10 @@ const getManageCourtByState = (baseRoute, updateSelectedCourts) => async (req, r
   let serverError = false
   if (save) {
     if (session.courts && session.courts.length) {
-      console.log('Here')
       const updatedCourts = await updateSelectedCourts(
         res.locals.user.username,
         session.courts
       )
-      console.log(updatedCourts)
       if (updatedCourts.status >= 400) {
         serverError = true
       } else {
@@ -42,4 +40,23 @@ const getManageCourtByState = (baseRoute, updateSelectedCourts) => async (req, r
   })
 }
 
-module.exports = getManageCourtByState
+const post = (baseRoute) => async (req, res) => {
+  const {
+    params: { state },
+    session,
+    body: { court }
+  } = req
+  if (!court) {
+    return res.redirect(302, `${baseRoute}/${state}?error=true`)
+  }
+  session.courts = session.courts || []
+  if (court && !session.courts.includes(court)) {
+    session.courts.push(court)
+  }
+  res.redirect(req.path)
+}
+
+module.exports = {
+  get,
+  post
+}

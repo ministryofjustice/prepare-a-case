@@ -2,16 +2,16 @@ const baseRoute = '/my-courts'
 
 const catchErrors = require('../handlers/catchAsyncErrors')
 const { getUserSelectedCourts, updateSelectedCourts } = require('../../services/user-preference-service')
-const getUserSelectedCourtsHandler = require('./handlers/getUserSelectedCourts')(getUserSelectedCourts)
-const getManageCourtByStateHandler = require('./handlers/manageCourtByStateGet')(baseRoute, updateSelectedCourts)
-const postManageCourtByStateHandler = require('./handlers/manageCourtByStatePost')(baseRoute)
+const userSelectedCourts = require('./handlers/userSelectedCourts').get(getUserSelectedCourts)
+const courtByStateGet = require('./handlers/manageCourtByState').get(baseRoute, updateSelectedCourts)
+const courtByStatePost = require('./handlers/manageCourtByState').post(baseRoute)
 
 const registerRoutes = (router) => {
-  router.get(baseRoute, catchErrors(getUserSelectedCourtsHandler))
+  router.get(baseRoute, catchErrors(userSelectedCourts))
 
-  router.get(`${baseRoute}/:state`, catchErrors(getManageCourtByStateHandler))
+  router.get(`${baseRoute}/:state`, catchErrors(courtByStateGet))
 
-  router.post(`${baseRoute}/:state`, catchErrors(postManageCourtByStateHandler))
+  router.post(`${baseRoute}/:state`, catchErrors(courtByStatePost))
 }
 
 module.exports = {
