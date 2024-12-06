@@ -58,7 +58,7 @@
     "@microsoft/applicationinsights-web": "^3.3.2",
     "@ministryofjustice/frontend": "^2.1.0",
     "@splidejs/splide": "^4.1.4",
-    "accessible-autocomplete": "^2.0.4",
+    "accessible-autocomplete": "^3.0.1",
     "agentkeepalive": "^4.2.1",
     "applicationinsights": "2.9.2",
     "applicationinsights-native-metrics": "0.0.10",

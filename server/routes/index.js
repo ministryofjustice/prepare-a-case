@@ -192,13 +192,15 @@ module.exports = function Index ({ authenticationMiddleware }) {
         session.courts.splice(session.courts.indexOf(remove), 1)
         return res.redirect(req.path)
       }
+      const nonce = res.locals.nonce
       res.render('edit-courts', {
         formError,
         serverError,
         state,
         params: {
           availableCourts: settings.availableCourts,
-          chosenCourts: session.courts
+          chosenCourts: session.courts,
+          nonce
         }
       })
     })

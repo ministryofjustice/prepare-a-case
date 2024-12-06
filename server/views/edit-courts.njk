@@ -14,16 +14,6 @@
   }) }}
 {%- endfor -%}
 
-{% block javascripts %}
-  <script src="/assets/accessible-autocomplete.min.js"></script>
-  <script>
-    accessibleAutocomplete.enhanceSelectElement({
-      defaultValue: '',
-      selectElement: document.querySelector('#pac-select-court')
-    })
-  </script>
-{% endblock %}
-
 {% block content %}
   <form method="post" name="selectCourt" novalidate>
 
@@ -47,7 +37,7 @@
         errorList: [
           {
             text: "You must add a court",
-            href: "#pac-select-court-error"
+            href: "#pac-select-court"
           }
         ]
       }) }}
@@ -68,7 +58,7 @@
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">{{ court.name }}</dt>
                   <dd class="govuk-summary-list__actions">
-                  <a href="?remove={{ court.code }}" class="govuk-link govuk-link--no-visited-state">Remove</a>
+                  <a href="?remove={{ court.code }}" class="govuk-link govuk-link--no-visited-state">Remove<span class="govuk-visually-hidden"> {{ court.name }}<span></a>
                   </dd>
                 </div>
             {% endif %}
@@ -90,7 +80,8 @@
           instruction: 'Select a court',
           options: courtOptions,
           error: formError,
-          errorMessage: 'You must add a court'
+          errorMessage: 'You must add a court',
+          nonce: nonce
         }) }}
 
         <button type="submit" class="govuk-button action-button govuk-button--secondary govuk-!-margin-top-4 govuk-!-margin-bottom-0">
@@ -99,12 +90,12 @@
 
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
 
-        <p class="govuk-body">
-          <a href="?save=true" class="govuk-button">Save {{ "list" if not isOnboarding }} and continue</a>
+        <div class="govuk-button-group">
+          <a href="?save=true" class="govuk-button" role="button">Save {{ "list" if not isOnboarding }} and continue</a>
           {% if not isOnboarding %}
-            <a href="/my-courts" class="govuk-link govuk-link--no-visited-state govuk-!-margin-left-6">Cancel</a>
+            <a href="/my-courts" class="govuk-link govuk-link--no-visited-state">Cancel</a>
           {% endif %}
-        </p>
+        </div>
 
       </div>
     </div>
