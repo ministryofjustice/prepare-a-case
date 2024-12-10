@@ -112,5 +112,17 @@ env:
       secretKeyRef:
         name: applicationinsights-connection-string
         key: applicationinsights_connection_string
+  
+  - name: LIVERPOOL_PRE_PILOT_USERS
+    valueFrom:
+      secretKeyRef:
+        name: liverpool-pre-pilot-users
+        key: liverpool_pre_pilot_users
+
+  - name: CASE_TRACKING_PRE_PILOT_USERS
+    valueFrom:
+      secretKeyRef:
+        name: case-tracking-pre-pilot-users
+        key: case_tracking_pre_pilot_users
 
 {{- end -}}
