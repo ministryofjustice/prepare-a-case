@@ -258,7 +258,7 @@ Feature: Case summary
       | Defendant details | Case documents | Appearance | Offences | Case progress | Comments |
 
     And I should see the body text "Court 9, morning session, $LONG_TODAY."
-    And I should see the body text "Theft from a shop" in bold
+    And I should see the following singular charge with title "Theft from a shop"
     And I should see the body text "On 01/01/2015 at Tetratrex, Leeds, stole ROBOTS to the value of £987.00, belonging to Young Bryant."
     And I should see the caption text "Contrary to section 1(1) and 7 of the Theft Act 1968."
 

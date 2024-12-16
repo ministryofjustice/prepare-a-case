@@ -61,10 +61,14 @@ Then('If the total number of charges is greater than one', () => {
   cy.get('.govuk-accordion').should('exist')
 })
 
+Then('I should see the following singular charge with title {string}', (title) => {
+  cy.get('h4.govuk-body').should('exist').contains(title).should('have.attr', 'class').and('include', 'govuk-!-font-weight-bold')
+})
+
 Then('I should see the following list of charges in an accordion component', $data => {
   cy.get('.govuk-accordion').within(() => {
     $data.raw().flat().forEach((text, index) => {
-      cy.get('.govuk-accordion__section-button').eq(index).contains(text)
+      cy.get('h4 .govuk-accordion__section-button').eq(index).contains(text)
     })
   })
 })
