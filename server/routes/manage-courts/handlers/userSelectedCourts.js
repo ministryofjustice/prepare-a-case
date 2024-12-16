@@ -1,7 +1,7 @@
-const { settings } = require('../../config')
-const trackEvent = require('../../utils/analytics')
+const { settings } = require('../../../config')
+const trackEvent = require('../../../utils/analytics')
 
-const getUserSelectedCourtsHandler = (getUserSelectedCourts) => async (req, res) => {
+const get = (getUserSelectedCourts) => async (req, res) => {
   const { session } = req
   const userSelectedCourts = await getUserSelectedCourts(res.locals.user.username)
   if (userSelectedCourts.isError) {
@@ -26,4 +26,6 @@ const getUserSelectedCourtsHandler = (getUserSelectedCourts) => async (req, res)
   })
 }
 
-module.exports = getUserSelectedCourtsHandler
+module.exports = {
+  get
+}
