@@ -1,5 +1,7 @@
 {% extends "partials/case-details.njk" %}
 
+{% from "components/active-orders/macro.njk" import activeOrdersBlock %}
+
 {%- set moment = params.moment -%}
 {%- set communityData = data.communityData -%}
 {%- set psrRequestedConvictions = data.psrRequestedConvictions -%}
@@ -107,6 +109,10 @@
             {% endif %}
 
             {% if activeOrders | length %}
+                {{ activeOrdersBlock(activeOrders, moment, displayDateFormat, false)}}
+            {% endif %}
+
+            {# {% if activeOrders | length %}
                 <h2 class="govuk-heading-m">Current orders <span
                             class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ activeOrders | length }})</span>
                 </h2>
@@ -168,7 +174,7 @@
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"/>
 
                 {% endfor -%}
-            {% endif %}
+            {% endif %} #}
 
     {% if previousOrders | length %}
       {% if params.showAllPreviousOrders === params.hearingId %}
