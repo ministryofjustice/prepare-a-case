@@ -129,7 +129,32 @@
   {{ components.filterComponent.html | safe}}
 
 
-  {% include "court-case-progress-reassign-modal.njk" %}
+  {%- from "components/modal/macro.njk" import modal -%}
+  {% set bodyContent %}
+    <p class="govuk-body">If you need to check some details, open as read only.</p>
+    <p class="govuk-body">If the person assigned to it cannot finish resulting it, you should assign it to yourself to result it.</p>
+  {% endset %}
+  {% set formContent %}
+    <input type="hidden" name="targetDefendantId" value=""/>
+    <input type="hidden" name="targetCourtCode" value=""/>
+  {% endset %}
+  {{ modal({
+      id: "reassign-outcome-modal",
+      classList: ["assign-outcome"],
+      titleText: "This case is assigned to someone else",
+      bodyContent: bodyContent,
+      form: {
+        method: "post",
+        content: formContent,
+        buttons: {
+          submit: { text: "Assign to me" },
+          secondary: { text: "Open as read only", classList: ["assign-outcome-view"] }
+        }
+      }
+    }
+  ) }}
+  {# TODO #}
+  {# {% include "court-case-progress-reassign-modal.njk" %} #}
 
   {%- from "components/tabs/macro.njk" import pacTabs -%}
 
