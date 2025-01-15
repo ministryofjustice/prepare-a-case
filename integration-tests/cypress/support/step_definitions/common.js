@@ -299,6 +299,10 @@ When('I click the {string} link', $string => {
   cy.get($string === 'Back' ? '.govuk-back-link' : '.govuk-link').contains($string).click()
 })
 
+When('I click the {string} link with id {string}', ($string, $id) => {
+  cy.get(`#${$id}`).contains($string).click()
+})
+
 When('I clear the filters', () => {
   cy.url().then((url) => {
     cy.visit(url + '?clearFilters=true')

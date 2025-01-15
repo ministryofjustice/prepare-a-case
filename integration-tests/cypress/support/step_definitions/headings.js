@@ -33,7 +33,6 @@ Then('I should see a {string} sized level {int} heading with text {string}', ($s
 })
 
 Then('I should see the following level {int} headings', ($level, $data) => {
-    cy.debug($level, $data)
     $data.raw()[0].forEach((text) => {
         cy.get(`h${$level}`).contains(text)
       })

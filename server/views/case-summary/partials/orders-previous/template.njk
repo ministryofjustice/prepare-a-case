@@ -1,0 +1,31 @@
+{% from "components/summary-card/macro.njk" import summaryCard %}
+
+<div id="previousOrders">
+    <form name="previousOrders" id="previousOrders" method="post">
+        <h2 id="activeOrdersTitle" class="govuk-heading-m">
+            Previous orders
+            <span class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ orders | length }})</span>
+        </h2>
+        <ul class="govuk-list pac-list--none">
+            {% for order in orders.slice(0, limitOrders) %}
+                {% set id = "previousOrder" + loop.index0%}
+            {% set actionId = id + "-view"%}
+                {% set descriptionValue %}
+                    <p class="govuk-body">{{order.offences[0].description }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1">Started on {{ moment(order.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                {% endset %}
+                <li>
+                    {{ summaryCard(
+                        id,
+                        order.sentence.description + (' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' if order.sentence.length ),
+                        [{ id: actionId, href: "record/" + order.convictionId, text: "View record", visuallyHidden: "for " + order.sentence.description }],
+                        [{ key: "Description", value: descriptionValue }]
+                    ) }}
+                </li>
+            {% endfor %}
+        </ul>
+        {% if orders | length > limitOrders %}
+            <button type="submit" class="govuk-button action-button govuk-button--secondary">Show all previous orders</button>
+        {% endif %}
+    </form>
+</div>

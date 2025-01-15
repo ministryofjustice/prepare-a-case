@@ -1,0 +1,8 @@
+<dl class="govuk-summary-list">
+    {% for row in rows %}
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">{{ row.key }}</dt>
+            <dd class="govuk-summary-list__value">{{ row.value | safe }}</dd>
+        </div>
+    {% endfor %}
+</dl>
