@@ -22,14 +22,14 @@ Feature: Outcomes List
       || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "English Madden" link
-    Then I should "see" the modal popup to assign hearing outcome
-    And the modal popup should have text heading "Do you want to result this case now?"
-    And the modal popup should have text paragraph "You can view this case but it has not been assigned to you to result."
-    And the modal popup should have the button "Assign to me"
-    And the modal popup should have the link "View without assigning"
-    And the modal popup should have the close button
+    Then I should "see" the "assign-outcome-modal" modal
+    And the "assign-outcome-modal" modal should have the text heading "Do you want to result this case now?"
+    And the "assign-outcome-modal" modal should have the text paragraph "You can view this case but it has not been assigned to you to result."
+    And the "assign-outcome-modal" modal should have the button "Assign to me"
+    And the "assign-outcome-modal" modal should have the link as button "View without assigning"
+    And the "assign-outcome-modal" modal should have the Cancel link as button
 
-    When I click "Assign to me"
+    When I click the "assign-outcome-modal" modal "Assign to me" button
     Then I should be on the "Case summary" page
     And I should see govuk notification banner with header "Success" and message "You are assigned to result this case. It has moved to the in progress tab."
 
@@ -52,14 +52,14 @@ Feature: Outcomes List
       || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "English Madden" link
-    Then I should "see" the modal popup to assign hearing outcome
-    And the modal popup should have text heading "Do you want to result this case now?"
-    And the modal popup should have text paragraph "You can view this case but it has not been assigned to you to result."
-    And the modal popup should have the button "Assign to me"
-    And the modal popup should have the link "View without assigning"
-    And the modal popup should have the close button
+    Then I should "see" the "assign-outcome-modal" modal
+    And the "assign-outcome-modal" modal should have the text heading "Do you want to result this case now?"
+    And the "assign-outcome-modal" modal should have the text paragraph "You can view this case but it has not been assigned to you to result."
+    And the "assign-outcome-modal" modal should have the button "Assign to me"
+    And the "assign-outcome-modal" modal should have the link as button "View without assigning"
+    And the "assign-outcome-modal" modal should have the Cancel link as button
 
-    When I click "View without assigning"
+    When I click the "assign-outcome-modal" modal "View without assigning" link as button
     Then I should be on the "Case summary" page
     And I should not see govuk notification banner
 
@@ -82,7 +82,7 @@ Feature: Outcomes List
       || English Madden | Adjourned          | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
     When I click the "English Madden" link
-    Then I should "see" the modal popup to assign hearing outcome
+    Then I should "see" the "assign-outcome-modal" modal
 
-    And I click button "X" on hearing outcome modal popup
-    Then I should "NOT see" the modal popup to assign hearing outcome
+    When I click the Cancel option on the "assign-outcome-modal" modal
+    Then I should "NOT see" the "assign-outcome-modal" modal

@@ -24,7 +24,7 @@ Feature: Case progress - Hearing outcome
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" should have hearing outcome "Adjourned" sent to admin on "Monday 24 April 2023"
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e5" should have hearing outcome "Report requested" sent to admin on "Tuesday 9 May 2023"
 
-  Scenario: Add hearing outcome modal popup
+  Scenario: Add hearing outcome modal
     Given I am an authenticated user
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
@@ -37,9 +37,9 @@ Feature: Case progress - Hearing outcome
     And hearing "1f93aa0a-7e46-4885-a1cb-f25a4be33a00" should have button "Send outcome to admin"
 
     When I click "Send outcome to admin" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
-    Then I should "see" the modal popup to "add" hearing outcome
-    And the "add" modal popup should have text paragraph "Choose an outcome and send this case to admin"
-    And the "add" modal popup should have a select input with items
+    Then I should "see" the "add-hearing-outcome-modal" modal
+    And the "add-hearing-outcome-modal" modal should have the text heading "Choose an outcome and send this case to admin"
+    And the "add-hearing-outcome-modal" modal should have a select input with items
       | Outcome type            |
       | Probation sentence      |
       | Non-probation sentence  |
@@ -48,8 +48,8 @@ Feature: Case progress - Hearing outcome
       | Committed to Crown      |
       | Crown plus PSR          |
       | Other                   |
-    And the "add" modal popup should have the button "Send to admin"
-    And the "add" modal popup should have the close button
+    And the "add-hearing-outcome-modal" modal should have the button "Send to admin"
+    And the "add-hearing-outcome-modal" modal should have the Cancel link as button
     And There should be no a11y violations
 
   Scenario: Add hearing outcome
@@ -61,13 +61,13 @@ Feature: Case progress - Hearing outcome
     Then I should be on the "Case summary" page
 
     When I click "Send outcome to admin" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
-    Then I should "see" the modal popup to "add" hearing outcome
+    Then I should "see" the "add-hearing-outcome-modal" modal
 
-    When I select "Report requested" from select options on "add" modal
-    And I click button "Send to admin" on hearing "add" outcome modal popup
+    When I select the "Report requested" option from the select on the "add-hearing-outcome-modal" modal
+    And I click the "add-hearing-outcome-modal" modal "Send to admin" button
     Then I should see govuk notification banner with header "Success" and message "Outcome sent to admin"
 
-  Scenario: Close hearing outcome modal popup
+  Scenario: Close hearing outcome modal
     Given I am an authenticated user
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
@@ -76,10 +76,10 @@ Feature: Case progress - Hearing outcome
     Then I should be on the "Case summary" page
 
     When I click "Send outcome to admin" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
-    Then I should "see" the modal popup to "add" hearing outcome
+    Then I should "see" the "add-hearing-outcome-modal" modal
 
-    And I click button "X" on hearing "add" outcome modal popup
-    Then I should "NOT see" the modal popup to "add" hearing outcome
+    And I click the Cancel option on the "add-hearing-outcome-modal" modal
+    Then I should "NOT see" the "add-hearing-outcome-modal" modal
 
   Scenario: Hearing outcome - send to admin without selecting outcome
     Given I am an authenticated user
@@ -90,10 +90,10 @@ Feature: Case progress - Hearing outcome
     Then I should be on the "Case summary" page
 
     When I click "Send outcome to admin" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
-    Then I should "see" the modal popup to "add" hearing outcome
+    Then I should "see" the "add-hearing-outcome-modal" modal
 
-    When I click button "Send to admin" on hearing "add" outcome modal popup
-    Then the "add" modal popup should have text paragraph "Choose an outcome type for this hearing before sending to admin"
+    When I click the "add-hearing-outcome-modal" modal "Send to admin" button
+    Then the "add-hearing-outcome-modal" modal should have the error message "Choose an outcome type for this hearing before sending to admin"
 
   Scenario: No Edit hearing link on resulted case
     Given I am an authenticated user
@@ -106,7 +106,7 @@ Feature: Case progress - Hearing outcome
     And I should see a "m" sized level 3 heading with text "Case progress"
     And hearing "1f93aa0a-7e46-4885-a1cb-f25a4be33a10" should not have link "Edit"
 
-  Scenario: Edit hearing outcome modal popup
+  Scenario: Edit hearing outcome modal
     Given I am an authenticated user
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
@@ -119,9 +119,11 @@ Feature: Case progress - Hearing outcome
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e5" should have link "Edit"
 
     When I click "Edit" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7"
-    Then I should "see" the modal popup to "edit" hearing outcome
-    And the "edit" modal popup should have text paragraph "This case is in progress on the outcomes page, which means an admin might already be resulting it based on the original outcome type you selected"
-    And the "edit" modal popup should have a select input with items
+    Then I should "see" the "edit-hearing-outcome-modal" modal
+    And the "edit-hearing-outcome-modal" modal should have the text heading "This case is already being resulted"
+    And the "edit-hearing-outcome-modal" modal should have the text paragraph "This case is in progress on the outcomes page, which means an admin might already be resulting it based on the original outcome type you selected"
+    And the "edit-hearing-outcome-modal" modal should have a select input with label "You can choose an outcome and resend this case to admin"
+    And the "edit-hearing-outcome-modal" modal should have a select input with items
       | Outcome type            |
       | Probation sentence      |
       | Non-probation sentence  |
@@ -130,8 +132,8 @@ Feature: Case progress - Hearing outcome
       | Committed to Crown      |
       | Crown plus PSR          |
       | Other                   |
-    And the "edit" modal popup should have the button "Update outcome"
-    And the "edit" modal popup should have the close button
+    And the "edit-hearing-outcome-modal" modal should have the button "Update outcome"
+    And the "edit-hearing-outcome-modal" modal should have the Cancel link as button
     And There should be no a11y violations
 
   Scenario: Edit hearing outcome
@@ -143,10 +145,10 @@ Feature: Case progress - Hearing outcome
     Then I should be on the "Case summary" page
 
     When I click "Edit" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7"
-    Then I should "see" the modal popup to "edit" hearing outcome
+    Then I should "see" the "edit-hearing-outcome-modal" modal
 
-    When I select "Report requested" from select options on "edit" modal
-    And I click button "Update outcome" on hearing "edit" outcome modal popup
+    When I select the "Report requested" option from the select on the "edit-hearing-outcome-modal" modal
+    And I click the "edit-hearing-outcome-modal" modal "Update outcome" button
     Then I should see govuk notification banner with header "Success" and message "Updated outcome sent"
 
   Scenario: Close hearing outcome modal popup
@@ -158,10 +160,10 @@ Feature: Case progress - Hearing outcome
     Then I should be on the "Case summary" page
 
     When I click "Edit" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7"
-    Then I should "see" the modal popup to "edit" hearing outcome
+    Then I should "see" the "edit-hearing-outcome-modal" modal
 
-    And I click button "X" on hearing "edit" outcome modal popup
-    Then I should "NOT see" the modal popup to "edit" hearing outcome
+    And I click the Cancel option on the "edit-hearing-outcome-modal" modal
+    Then I should "NOT see" the "edit-hearing-outcome-modal" modal
 
   Scenario: Hearing outcome - send to admin without selecting outcome
     Given I am an authenticated user
@@ -172,10 +174,10 @@ Feature: Case progress - Hearing outcome
     Then I should be on the "Case summary" page
 
     When I click "Edit" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7"
-    Then I should "see" the modal popup to "edit" hearing outcome
+    Then I should "see" the "edit-hearing-outcome-modal" modal
 
-    When I click button "Update outcome" on hearing "edit" outcome modal popup
-    Then the "edit" modal popup should have text paragraph "Choose an outcome type for this hearing before sending to admin"
+    When I click the "edit-hearing-outcome-modal" modal "Update outcome" button
+    Then the "edit-hearing-outcome-modal" modal should have the error message "Choose an outcome type for this hearing before sending to admin"
 
   Scenario: Add hearing outcome modal popup from Edit link
     Given I am an authenticated user
@@ -186,9 +188,9 @@ Feature: Case progress - Hearing outcome
     Then I should be on the "Case summary" page
 
     When I click "Edit" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e5"
-    Then I should "see" the modal popup to "add" hearing outcome
-    And the "add" modal popup should have text paragraph "Choose an outcome and send this case to admin"
-    And the "add" modal popup should have a select input with items
+    Then I should "see" the "add-hearing-outcome-modal" modal
+    And the "add-hearing-outcome-modal" modal should have the text heading "Choose an outcome and send this case to admin"
+    And the "add-hearing-outcome-modal" modal should have a select input with items
       | Outcome type            |
       | Probation sentence      |
       | Non-probation sentence  |
@@ -197,5 +199,5 @@ Feature: Case progress - Hearing outcome
       | Committed to Crown      |
       | Crown plus PSR          |
       | Other                   |
-    And the "add" modal popup should have the button "Send to admin"
-    And the "add" modal popup should have the close button
+    And the "add-hearing-outcome-modal" modal should have the button "Send to admin"
+    And the "add-hearing-outcome-modal" modal should have the Cancel link as button

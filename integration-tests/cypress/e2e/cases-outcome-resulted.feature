@@ -57,13 +57,13 @@ Feature: Resulted Cases List
     When I clear the filters
 
     When I click the "Hazel Nutt" link
-    Then I should "see" the "reassign-resulted-outcome-modal" modal popup to assign hearing outcome
-    And the "reassign-resulted-outcome-modal" modal popup should have text heading "This case has been resulted"
-    And the "reassign-resulted-outcome-modal" modal popup should have text paragraph "If you need to check some details, open as read only."
-    And the "reassign-resulted-outcome-modal" modal popup should have text paragraph "To result it again, assign it to yourself."
-    And the "reassign-resulted-outcome-modal" modal popup should have the button "Assign to me"
-    And the "reassign-resulted-outcome-modal" modal popup should have the link "Open as read only"
-    And the "reassign-resulted-outcome-modal" modal popup should have the close button
+    Then I should "see" the "reassign-resulted-outcome-modal" modal
+    And the "reassign-resulted-outcome-modal" modal should have the text heading "This case has been resulted"
+    And the "reassign-resulted-outcome-modal" modal should have the text paragraph "If you need to check some details, open as read only."
+    And the "reassign-resulted-outcome-modal" modal should have the text paragraph "To result it again, assign it to yourself."
+    And the "reassign-resulted-outcome-modal" modal should have the button "Assign to me"
+    And the "reassign-resulted-outcome-modal" modal should have the link as button "Open as read only"
+    And the "reassign-resulted-outcome-modal" modal should have the Cancel link as button
 
     When I click the "Assign to me" button
     Then I should be on the "Case summary" page
@@ -76,9 +76,9 @@ Feature: Resulted Cases List
     When I clear the filters
 
     When I click the "Hazel Nutt" link
-    Then I should "see" the "reassign-resulted-outcome-modal" modal popup to assign hearing outcome
+    Then I should "see" the "reassign-resulted-outcome-modal" modal
 
-    When I click the "reassign-resulted-outcome-modal" modal "Open as read only" link
+    When I click the "reassign-resulted-outcome-modal" modal "Open as read only" link as button
     Then I should be on the "Case summary" page
     And I should not see govuk notification banner
 

@@ -1,4 +1,6 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{%- from "components/modal/macro.njk" import modal -%}
+
 {%- set moment = params.moment -%}
 
 {% block javascripts %}
@@ -129,7 +131,6 @@
   {{ components.filterComponent.html | safe}}
 
 
-  {%- from "components/modal/macro.njk" import modal -%}
   {% set bodyContent %}
     <p class="govuk-body">If you need to check some details, open as read only.</p>
     <p class="govuk-body">If the person assigned to it cannot finish resulting it, you should assign it to yourself to result it.</p>
@@ -141,7 +142,7 @@
   {{ modal({
       id: "reassign-outcome-modal",
       classList: ["assign-outcome"],
-      titleText: "This case is assigned to someone else",
+      heading: "This case is assigned to someone else",
       bodyContent: bodyContent,
       form: {
         method: "post",
@@ -153,8 +154,6 @@
       }
     }
   ) }}
-  {# TODO #}
-  {# {% include "court-case-progress-reassign-modal.njk" %} #}
 
   {%- from "components/tabs/macro.njk" import pacTabs -%}
 

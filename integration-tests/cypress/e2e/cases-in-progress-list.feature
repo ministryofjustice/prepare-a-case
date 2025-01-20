@@ -50,13 +50,13 @@ Feature: Cases in Progress List
     When I clear the filters
 
     And I should see the link "Gill Arnold" in a table row
-    And I should see the link "Gill Arnold" "will" open a reassign modal
+    And I should see the link "Gill Arnold" "will" open a modal with the "pac-reassign" trigger
 
     When I click the "Gill Arnold" link
-    Then I should "see" the "reassign-outcome-modal" modal popup to assign hearing outcome
+    Then I should "see" the "reassign-outcome-modal" modal
 
-    And I click button "X" on "reassign-outcome-modal" modal popup
-    Then I should "NOT see" the "reassign-outcome-modal" modal popup to assign hearing outcome
+    And I click the Cancel option on the "reassign-outcome-modal" modal
+    Then I should "NOT see" the "reassign-outcome-modal" modal
 
   Scenario: Clicking on a case the user is assigned to should not show a modal and take you directly to the Case Summary
     Given I am an authenticated user
@@ -65,7 +65,7 @@ Feature: Cases in Progress List
     When I clear the filters
 
     And I should see the link "English Madden" in a table row
-    And I should see the link "English Madden" "will not" open a reassign modal
+    And I should see the link "English Madden" "will not" open a modal with the "pac-reassign" trigger
 
     When I click the "English Madden" link
     Then I should be on the "Case summary" page
@@ -77,13 +77,13 @@ Feature: Cases in Progress List
     When I clear the filters
 
     When I click the "Olive Tree" link
-    Then I should "see" the "reassign-outcome-modal" modal popup to assign hearing outcome
-    And the "reassign-outcome-modal" modal popup should have text heading "This case is assigned to someone else"
-    And the "reassign-outcome-modal" modal popup should have text paragraph "If you need to check some details, open as read only."
-    And the "reassign-outcome-modal" modal popup should have text paragraph "If the person assigned to it cannot finish resulting it, you should assign it to yourself to result it."
-    And the "reassign-outcome-modal" modal popup should have the button "Assign to me"
-    And the "reassign-outcome-modal" modal popup should have the link "Open as read only"
-    And the "reassign-outcome-modal" modal popup should have the close button
+    Then I should "see" the "reassign-outcome-modal" modal
+    And the "reassign-outcome-modal" modal should have the text heading "This case is assigned to someone else"
+    And the "reassign-outcome-modal" modal should have the text paragraph "If you need to check some details, open as read only."
+    And the "reassign-outcome-modal" modal should have the text paragraph "If the person assigned to it cannot finish resulting it, you should assign it to yourself to result it."
+    And the "reassign-outcome-modal" modal should have the button "Assign to me"
+    And the "reassign-outcome-modal" modal should have the link as button "Open as read only"
+    And the "reassign-outcome-modal" modal should have the Cancel link as button
 
     When I click the "Assign to me" button
     Then I should be on the "Case summary" page

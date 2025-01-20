@@ -117,6 +117,7 @@
     modal.querySelector('.govuk-error-message').classList.add('govuk-!-display-none')
     modal.querySelector('.govuk-form-group').classList.remove('govuk-form-group--error')
     modal.querySelector('select').classList.remove('govuk-select--error')
+    modal.querySelector('.action-button').disabled = false;
   }
 
   const showErrors = (modal) => {

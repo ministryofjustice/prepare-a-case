@@ -1,28 +1,28 @@
 <div class="modal {{ params.classList | join(" ") }}" id="{{ params.id }}" tabindex="-1" aria-labelledby="{{params.id}}-label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered {{ params.size if params.size else '' }}">
         <div class="modal-content" role="document">
             <div class="modal-header">
-                <h2 class="modal-title govuk-heading-m" id="{{ params.id }}-label">{{ params.titleText }}</h2>
+                <h2 class="modal-title govuk-heading-m" id="{{ params.id }}-label">{{ params.heading | safe }}</h2>
             </div>
-            {% if params.bodyContent %}
-                <div class="modal-body">
-                    {{ params.bodyContent | safe }}
-                </div>
-            {% endif%}
-            {% if params.form %}
-                <form id="{{ params.id }}-form" class="modal-form" method="{{ params.form.method }}" action="{{ params.form.action }}">
-                    {{ params.form.content | safe }}
-                    <div class="modal-footer govuk-button-group govuk-!-margin-0">
-                        {% if params.form.buttons.submit %}
-                            <button data-prevent-double-click="true" class="govuk-button action-button" type="submit" data-module="govuk-button">{{ params.form.buttons.submit.text }}</button>
-                        {% endif %}
-                        {% if params.form.buttons.secondary %}
-                            <a role="button" class="govuk-button govuk-button--secondary {{ params.form.buttons.secondary.classList | join(" ") }}">{{ params.form.buttons.secondary.text }}</a>
-                        {% endif %}
-                        <a role="button" class="govuk-link govuk-link--no-visited-state" data-bs-dismiss="modal" href="#">Cancel</a>
-                    </div>
-                </form>
-            {% endif %}
+            <div class="modal-body">
+                {% if params.bodyContent %}
+                        {{ params.bodyContent | safe }}
+                {% endif%}
+                {% if params.form %}
+                    <form id="{{ params.id }}-form" class="modal-form" method="{{ params.form.method }}" action="{{ params.form.action }}">
+                        {{ params.form.content | safe }}
+                        <div class="modal-footer govuk-button-group govuk-!-margin-0">
+                            {% if params.form.buttons.submit %}
+                                <button id="{{ params.form.buttons.submit.id }}" data-prevent-double-click="true" class="govuk-button action-button" type="submit" data-module="govuk-button">{{ params.form.buttons.submit.text }}</button>
+                            {% endif %}
+                            {% if params.form.buttons.secondary %}
+                                <a role="button" class="govuk-button govuk-button--secondary {{ params.form.buttons.secondary.classList | join(" ") }}">{{ params.form.buttons.secondary.text }}</a>
+                            {% endif %}
+                            <a role="button" class="govuk-link govuk-link--no-visited-state" data-bs-dismiss="modal" href="#">Cancel</a>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
