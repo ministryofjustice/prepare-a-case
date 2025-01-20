@@ -85,16 +85,3 @@ When('I click the {string} modal {string} link as button', ($id, $string) => {
 When('I click the Cancel option on the {string} modal', ($id) => {
   cy.get(`#${$id} a`).contains('Cancel').click()
 })
-
-
-
-
-
-
-
-
-Then('the {string} modal should have the link {string}', ($id, $string) => {
-  cy.get(`[data-cy=${$id}]`).within(() => {
-    cy.get('a').contains($string).should('exist')
-  })
-})

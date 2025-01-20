@@ -34,7 +34,7 @@
                     }
                 }
             })}}
-            {# {% include "court-case-progress-hearing-outcome-modal.njk" %} #}
+            
             {% set editHeading %}
                 {{ govukWarningText({
                     html: '<span class="govuk-heading-m govuk-!-margin-bottom-0">This case is already being resulted</span>',
@@ -82,7 +82,6 @@
                     }
                 }
             })}}
-            {# {% include "court-case-progress-hearing-outcome-edit-modal.njk" %} #}
         {% endif %}
         {% if data.hearings | length %}
             {% if session.showPreviousHearings === data.caseId %}
