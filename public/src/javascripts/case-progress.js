@@ -117,13 +117,17 @@
     modal.querySelector('.govuk-error-message').classList.add('govuk-!-display-none')
     modal.querySelector('.govuk-form-group').classList.remove('govuk-form-group--error')
     modal.querySelector('select').classList.remove('govuk-select--error')
+    modal.querySelector('select').removeAttribute('aria-describedby')
     modal.querySelector('.action-button').disabled = false;
   }
 
   const showErrors = (modal) => {
+    console.log(modal.querySelector('p.govuk-error-message').id)
     modal.querySelector('.govuk-error-message').classList.remove('govuk-!-display-none')
+    modal.querySelector('.govuk-error-message').removeAttribute('aria-hidden')
     modal.querySelector('.govuk-form-group').classList.add('govuk-form-group--error')
     modal.querySelector('select').classList.add('govuk-select--error')
+    modal.querySelector('select').setAttribute('aria-describedby', modal.querySelector('p.govuk-error-message').id)
   }
 
   document.querySelectorAll('.modal.outcome').forEach(modal => {
