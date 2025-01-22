@@ -1,0 +1,26 @@
+{% from "components/summary-list/macro.njk" import summaryList %}
+
+<div id="{{id}}" class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper">
+        <h3 class="govuk-summary-card__title">{{ title | safe }}</h3>
+        {% if actions | length %}
+            <ul class="govuk-summary-card__actions">
+                {% for action in actions %}
+                    <li class="govuk-summary-card__action">
+                        <a class="govuk-link govuk-link--no-visited-state" href="{{ action.href }}" id="{{ action.id }}">
+                            {{ action.text }}
+                            {% if action.visuallyHidden %}
+                                <span class="govuk-visually-hidden">{{ action.visuallyHidden }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    {% if rows | length %}
+        <div class="govuk-summary-card__content">
+            {{ summaryList(rows) }}
+        </div>
+    {% endif %}
+</div>

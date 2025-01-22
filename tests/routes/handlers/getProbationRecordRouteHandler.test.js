@@ -47,7 +47,7 @@ describe('getProbationRecordRouteHandler', () => {
     // Then
     expect(getCaseAndTemplateValuesMock).toHaveBeenLastCalledWith(mockRequest)
     expect(communityServiceMock.getProbationRecord).toHaveBeenLastCalledWith(testCase.crn, true)
-    expect(mockResponse.render).toHaveBeenCalledWith('case-summary-record', {
+    expect(mockResponse.render).toHaveBeenCalledWith('case-summary/case-summary-record', {
       ...testTemplateValues,
       params: { ...testTemplateValues.params, showAllPreviousOrders: true },
       data: { ...testTemplateValues.data, communityData: testCommunityResponse },

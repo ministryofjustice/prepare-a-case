@@ -1,0 +1,74 @@
+{% from "components/summary-card/macro.njk" import summaryCard %}
+
+<div id="activeOrders">
+    <h2 id="activeOrdersTitle" class="govuk-heading-m">
+        Current orders
+        <span class="govuk-caption-l govuk-!-font-weight-bold govuk-!-display-inline-block">({{ orders | length }})</span>
+    </h2>
+    <ul class="govuk-list pac-list--none">
+        {% for order in orders %}
+            {% set id = "activeOrder" + loop.index0%}
+            {% set actionId = id + "-view"%}
+            {% set title %}
+                {{ order.sentence.description + (' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' if order.sentence.length) }}
+                {% if order.inBreach %}
+                    <span class="moj-badge moj-badge--black pac-badge govuk-!-margin-left-1">Breach</span>
+                {% endif %}
+            {% endset %}
+            {% set descriptionValue %}
+                <p class="govuk-body">{{order.offences[0].description }}</p>
+                <p class="govuk-hint govuk-!-margin-top-1">Started on {{ moment(order.sentence.startDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+            {% endset %}
+            {% set rows = [{ key: "Description", value: descriptionValue }] %}
+            {% if order.requirements and order.requirements | length %}
+                {% set requirementsValue %}
+                    <ul class="govuk-list govuk-list--bullet qa-current-requirements-{{ loop.index0 }}">
+                        {%- for requirement in order.requirements %}
+                            {% set category = requirement.requirementTypeMainCategory.description or requirement.adRequirementTypeMainCategory.description %}
+                            {% set subCategory = requirement.requirementTypeSubCategory.description or requirement.adRequirementTypeSubCategory.description %}
+                            <li>
+                                {{ category  | replace("-", "–") }} {{ " – " + subCategory if category !== subCategory }}
+                                {{ ' – ' + requirement.length + ' ' + requirement.lengthUnit if requirement.length > 0 }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endset %}
+                {% set rows = (rows.push({ key: "Requirements", value: requirementsValue }), rows) %}
+            {% endif %}
+            {% if order.custodialType.description === "In Custody" %}
+                {% set rows = (rows.push({ key: "Status", value: "In custody"}), rows)%}
+            {% endif %}
+            {% if order.licenceConditions and order.licenceConditions | length %}
+                {% set licenseConditions %}
+                    <ul class="govuk-list govuk-list--bullet qa-current-licence-conditions-{{ loop.index0 }}">
+                        {%- for licenceCondition in order.licenceConditions %}
+                            <li>{{ licenceCondition.description }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endset %}
+                {% set rows = (rows.push({ key: "Status", value: "On license"}), rows)%}
+                {% set rows = (rows.push({ key: "Licence conditions", value: licenseConditions}), rows)%}
+            {% endif%}
+            {% if order.pssRequirements and order.pssRequirements | length %}
+                {% set pssRequirements %}
+                    <ul class="govuk-list govuk-list--bullet qa-current-pss-requirements-{{ loop.index0 }}">
+                        {%- for pssRequirement in order.pssRequirements %}
+                            <li>{{ pssRequirement.description  + (' – ' + pssRequirement.subTypeDescription  | replace("-", "–") if pssRequirement.subTypeDescription | length) }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endset %}
+                {% set rows = (rows.push({ key: "Status", value: "On post-sentence supervision (PSS)"}), rows)%}
+                {% set rows = (rows.push({ key: "PSS requirements", value: pssRequirements}), rows)%}
+            {% endif%}
+
+            <li>
+                {{ summaryCard(
+                    id,
+                    title,
+                    [{ id: actionId, href: "record/" + order.convictionId, text: "View record", visuallyHidden: "for " + order.sentence.description }],
+                    rows
+                ) }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -479,7 +479,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
       templateValues.title = getOrderTitle(communityResponse)
 
-      res.render('case-summary-record-order', templateValues)
+      res.render('case-summary/case-summary-record-order', templateValues)
     })
   )
 
@@ -512,7 +512,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         ...breachData,
         ...breachDetails
       }
-      res.render('case-summary-record-order-breach', templateValues)
+      res.render('case-summary/case-summary-record-order-breach', templateValues)
     })
   )
 
@@ -542,7 +542,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       const communityResponse = await getProbationRecord(crn)
 
       templateValues.data.communityData = communityResponse || {}
-      res.render('case-summary-record-order-licence', templateValues)
+      res.render('case-summary/case-summary-record-order-licence', templateValues)
     })
   )
 
@@ -563,7 +563,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         ...templateValues.params
       }
 
-      res.render('case-summary-risk', templateValues)
+      res.render('case-summary/case-summary-risk', templateValues)
     })
   )
 

@@ -316,22 +316,63 @@ Feature: Case summary
     When I clear the filters
     When I click the "Lenore Marquez" link
     And I click the sub navigation with "Probation record" text
-    Then I should see a level 2 heading with text "Current orders (3)"
-    And I should see link "ORA Community Order (18 Months)" with href "record/1403337513"
-    And I should see the text "Curfew Arrangement" within element with class "qa-current-licence-conditions-1"
-    And I should see the text "Curfew Arrangement" within element with class "qa-current-pss-requirements-2"
-    And I should see the body text "Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200"
-    And I should see the hint text "Started on 20 May 2019"
 
-    And I should see a level 2 heading with text "Previous orders (11)"
-    And I should see link "CJA - Std Determinate Custody" with href "record/636401162"
-    And I should see the text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801" within element with class "qa-previous-order-1-offence"
-    And I should see the text "Ended on 23 Jan 2018" within element with class "qa-previous-order-1-end-date"
-    And I should see a level 1 heading with text "Lenore Marquez"
+    Then I should see a level 1 heading with text "Lenore Marquez"
     And I should see a "l" sized level 1 heading with text "Probation record"
     And I should see the following "m" sized level 2 headings
       | Pre-sentence report requested | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
 
+    Then I should see a level 2 heading with text "Current orders (3)"
+    Then I should see a summary card with id "activeOrder0" and title "ORA Community Order (18 Months)"
+    And I should see a summary card with id "activeOrder0" and action
+      | View record | for ORA Community Order | record/1403337513 |
+    And I should see a summary card with id "activeOrder0" and summary list rows
+      | Description  | Stealing mail bags or postal packets or unlawfully taking away or opening mail bag - 04200 | Started on 20 May 2019 | | |
+      | Requirements | Unpaid Work – Regular – 60 Hours | Rehabilitation Activity Requirement (RAR) – 20 Days | Court – Accredited Programme – ASRO | Court – Accredited Programme – Building Better Relationships – BBR |
+    Then I should see a summary card with id "activeOrder1" and title "ORA Adult Custody (inc PSS) (12 Months)"
+    And I should see a summary card with id "activeOrder1" and action
+      | View record | for ORA Adult Custody (inc PSS) | record/1309234876 |
+    And I should see a summary card with id "activeOrder1" and summary list rows
+      | Description | Dangerous driving/Aid, abet cause or permit reckless driving - 80200 | Started on {6 months ago} | |
+      | Status | On license | | |
+      | Licence conditions | Alcohol | Curfew Arrangement | Participate or co-op with Programme or Activities |
+    Then I should see a summary card with id "activeOrder2" and title "ORA Adult Custody (inc PSS) (18 Months)"
+    And I should see a summary card with id "activeOrder2" and action
+      | View record | for ORA Adult Custody (inc PSS) | record/2360414697 |
+    And I should see a summary card with id "activeOrder2" and summary list rows
+      | Description | Aggravated burglary in a building other than a dwelling (including attempts) - 03100 | Started on {6 months ago} | |
+      | Status | On license | | |
+      | Licence conditions | Alcohol | Curfew Arrangement | Participate or co-op with Programme or Activities |
+      | Status | On post-sentence supervision (PSS) | | |
+      | PSS requirements | Standard 7 conditions | Specified Activity – ETE – High intensity | Curfew Arrangement |
+
+    And I should see a level 2 heading with text "Previous orders (11)"
+    Then I should see a summary card with id "previousOrder0" and title "CJA - Std Determinate Custody (18 Months)"
+    And I should see a summary card with id "previousOrder0" and action
+      | View record | CJA - Std Determinate Custody | record/636401162 |
+    And I should see a summary card with id "previousOrder0" and summary list rows
+      | Description | Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801 | Started on 23 Jan 2018 |
+    Then I should see a summary card with id "previousOrder1" and title "Adult Custody < 12m (18 Months)"
+    And I should see a summary card with id "previousOrder1" and action
+      | View record | Adult Custody < 12m | record/7925250000 |
+    And I should see a summary card with id "previousOrder1" and summary list rows
+      | Description | Arson endangering life - 05601 | Started on 27 Aug 2019 |
+    Then I should see a summary card with id "previousOrder2" and title "CJA - Indeterminate Public Prot. (18 Months)"
+    And I should see a summary card with id "previousOrder2" and action
+      | View record | CJA - Indeterminate Public Prot. | record/1475462502 |
+    And I should see a summary card with id "previousOrder2" and summary list rows
+      | Description | Common and other types of assault - 10500 | Started on 9 Aug 2017 |
+    Then I should see a summary card with id "previousOrder3" and title "ORA Community Order (18 Months)"
+    And I should see a summary card with id "previousOrder3" and action
+      | View record | ORA Community Order | record/1906091609 |
+    And I should see a summary card with id "previousOrder3" and summary list rows
+      | Description | (Assault PC (Indictable/Either way) - 00807) | Started on 4 Sep 2019 |
+    Then I should see a summary card with id "previousOrder4" and title "Life imprisonment (Adult) (18 Months)"
+    And I should see a summary card with id "previousOrder4" and action
+      | View record | Life imprisonment (Adult) | record/943466740 |
+    And I should see a summary card with id "previousOrder4" and summary list rows
+      | Description | High treason - 06200 | Started on 23 Jan 2018 |
+    
     And I should see the body text "Angel Extravaganza"
     And I should see the hint text "Allocated on 12 Aug 2017"
     And I should see the body text "Email: d@none.com"
@@ -348,12 +389,41 @@ Feature: Case summary
     And I should see the body text "OASys Assessment Layer 3"
     And I should see the hint text "Completed on 20 Jun 2018"
 
-    And I should see the following level 3 headings
-      | Requirements | Status | Licence conditions | Status | Licence conditions | Status | PSS requirements |
-
     And I should see 5 previous orders
     When I click the "Show all previous orders" button
     Then I should see 11 previous orders
+    
+    Then I should see a summary card with id "previousOrder5" and title "ORA Suspended Sentence Order (18 Months)"
+    And I should see a summary card with id "previousOrder5" and action
+      | View record | ORA Suspended Sentence Order | record/1081636758 |
+    And I should see a summary card with id "previousOrder5" and summary list rows
+      | Description | Aiding suicide - 07600 | Started on 4 Sep 2019 |
+    Then I should see a summary card with id "previousOrder6" and title "ORA Adult Custody (Not PSS) (18 Months)"
+    And I should see a summary card with id "previousOrder6" and action
+      | View record | ORA Adult Custody (Not PSS) | record/636401231 |
+    And I should see a summary card with id "previousOrder6" and summary list rows
+      | Description | Aiding suicide - 07600 | Started on 25 Dec 2017 |
+    Then I should see a summary card with id "previousOrder7" and title "ORA Adult Custody (Not PSS) (18 Months)"
+    And I should see a summary card with id "previousOrder7" and action
+      | View record | ORA Adult Custody (Not PSS) | record/1999409258 |
+    And I should see a summary card with id "previousOrder7" and summary list rows
+      | Description | Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801 | Started on 4 Aug 2018 |
+    Then I should see a summary card with id "previousOrder8" and title "Fine (18 Months)"
+    And I should see a summary card with id "previousOrder8" and action
+      | View record | Fine | record/2319221210 |
+    And I should see a summary card with id "previousOrder8" and summary list rows
+      | Description | Arson endangering life - 05601 | Started on 23 Jan 2018 |
+    Then I should see a summary card with id "previousOrder9" and title "ORA Adult Custody (Not PSS) (18 Months)"
+    And I should see a summary card with id "previousOrder9" and action
+      | View record | ORA Adult Custody (Not PSS) | record/754151578 |
+    And I should see a summary card with id "previousOrder9" and summary list rows
+      | Description | Acknowledging bail in false name - 08303 | Started on 21 Sep 2018 |
+    Then I should see a summary card with id "previousOrder10" and title "Fine"
+    And I should see a summary card with id "previousOrder10" and action
+      | View record | Fine | record/901046255 |
+    And I should see a summary card with id "previousOrder10" and summary list rows
+      | Description | Common and other types of assault - 10500 | Started on 23 Sep 2018 |
+
     And There should be no a11y violations
 
   Scenario: View the probation record section of the case summary for a current offender who is currently in custody
@@ -367,11 +437,13 @@ Feature: Case summary
     When I click the "English Madden" link
     And I click the sub navigation with "Probation record" text
     Then I should see the level 2 heading "Current orders (1)"
-    And I should see link "CJA - Std Determinate Custody (18 Months)" with href "record/345464567"
-    And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
-    And I should see the hint text "Started on 8 Mar 2017"
-    And I should see the text "Status" within element with class "govuk-heading-s"
-    And I should see the body text "In custody"
+    Then I should see a summary card with id "activeOrder0" and title "CJA - Std Determinate Custody (18 Months)"
+    And I should see a summary card with id "activeOrder0" and action
+      | View record | CJA - Std Determinate Custody | record/345464567 |
+    And I should see a summary card with id "activeOrder0" and summary list rows
+      | Description  | Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801 | Started on 8 Mar 2017 |
+      | Requirements | Rehabilitation Activity Requirement (RAR) – 20 Days | Court – Accredited Programme – Building Better Relationships – BBR – 20 Days |
+      | Status | In custody | |
 
     And There should be no a11y violations
 
@@ -407,7 +479,7 @@ Feature: Case summary
     And I should see the following "m" sized level 2 headings
       | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
 
-    When I click the "ORA Community Order (18 Months)" link
+    When I click the "View record" link with id "activeOrder0-view"
     Then I should be on the "ORA Community Order (18 Months)" page
     And I should see the heading "ORA Community Order (18 Months)"
     And I should see the level 2 heading "Attendance"
@@ -543,9 +615,9 @@ Feature: Case summary
     And I should see the body text "Pre-Sentence Report - Fast"
     And I should see the hint text "Completed less than 1 month ago"
 
-    And I should see link "ORA Community Order (18 Months)" with href "record/1361422142"
+    And I should see link "View record" with href "record/1361422142"
     And I should see the breach badge
-    When I click the "ORA Community Order (18 Months)" link
+    When I click the "View record" link with id "activeOrder0-view"
     Then I should be on the "ORA Community Order (18 Months)" page
     And I should see the heading "ORA Community Order (18 Months)"
 
@@ -642,7 +714,7 @@ Feature: Case summary
     And I should see the following "m" sized level 2 headings
       | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
 
-    When I click the "CJA - Std Determinate Custody" link
+    When I click the "View record" link with id "previousOrder0-view"
     Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
     And I should see the heading "CJA - Std Determinate Custody"
 
@@ -683,7 +755,7 @@ Feature: Case summary
     Then I should be on the "Probation record" page
     And I should see a level 1 heading with text "Lenore Marquez"
 
-    When I click the "ORA Community Order (18 Months)" link
+    When I click the "View record" link with id "activeOrder0-view"
     Then I should be on the "ORA Community Order (18 Months)" page
     And I should see the heading "ORA Community Order (18 Months)"
     And I should see the level 2 heading "Requirements"
@@ -697,7 +769,7 @@ Feature: Case summary
     Then I should be on the "Probation record" page
     And I should see a level 1 heading with text "Lenore Marquez"
 
-    When I click the "CJA - Std Determinate Custody" link
+    When I click the "View record" link with id "previousOrder0-view"
     Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
     And I should see the heading "CJA - Std Determinate Custody"
     And I should see the level 2 heading "Requirements"

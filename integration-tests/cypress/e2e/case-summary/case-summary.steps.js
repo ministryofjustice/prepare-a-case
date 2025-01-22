@@ -5,7 +5,7 @@ import { Then, When } from '@badeball/cypress-cucumber-preprocessor'
 
 Then('I should see {int} previous orders', $int => {
   cy.get('#previousOrders').within(() => {
-    cy.get('tr').should('have.length', $int)
+    cy.get('.govuk-summary-card').should('have.length', $int)
   })
 })
 

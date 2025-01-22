@@ -27,7 +27,7 @@ const getProbationRecordRouteHandler = (communityService, getCaseAndTemplateValu
   templateValues.data.psrRequestedConvictions = getPsrRequestedConvictions(communityResponse)
   templateValues.data.lastPsrWithSentence = getLastSentencedConvictionPSR(communityResponse)
 
-  res.render('case-summary-record', templateValues)
+  res.render('case-summary/case-summary-record', templateValues)
 }
 
 module.exports = getProbationRecordRouteHandler

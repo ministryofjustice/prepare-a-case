@@ -78,7 +78,7 @@ const caseSummaryHandler = utils => async (req, res) => {
   session.backLink = path
   session.caseCommentBlankError = undefined
 
-  res.render('case-summary', templateValues)
+  res.render('case-summary/case-summary', templateValues)
 }
 const caseSummaryPostHandler = utils => async (req, res) => {
 }
