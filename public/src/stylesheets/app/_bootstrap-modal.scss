@@ -173,7 +173,8 @@
   flex-wrap: wrap;
   align-items: center; // vertically center
   justify-content: flex-start; // put footer elements on the left
-  padding: calc(var(--#{$prefix}modal-padding) - var(--#{$prefix}modal-footer-gap) * .5);
+  padding-top: calc(var(--#{$prefix}modal-padding) - var(--#{$prefix}modal-footer-gap) * .5);
+  padding-bottom: calc(var(--#{$prefix}modal-padding) - var(--#{$prefix}modal-footer-gap) * .5);
   background-color: var(--#{$prefix}modal-footer-bg);
   border-top: var(--#{$prefix}modal-footer-border-width) solid var(--#{$prefix}modal-footer-border-color);
   @include border-bottom-radius(var(--#{$prefix}modal-inner-border-radius));
