@@ -1,9 +1,87 @@
+{%- from "components/modal/macro.njk" import modal -%}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
 <div class="govuk-grid-row" id="caseProgressComponent">
     <div class="govuk-grid-column-two-thirds">
         <h3 class="govuk-heading-m" id="caseHearingsHeading">Case progress</h3>
         {% if features.hearingOutcomesEnabled %}
-            {% include "court-case-progress-hearing-outcome-modal.njk" %}
-            {% include "court-case-progress-hearing-outcome-edit-modal.njk" %}
+            {% set outcomeFormContent %}
+                <input type="hidden" name="targetHearingId" value=""/>
+                <input type="hidden" name="targetDefendantId" value=""/>
+                {{ govukSelect({
+                    id: 'addHearingOutcomeType',
+                    name: 'hearingOutcomeType',
+                    errorMessage: {
+                        text: 'Choose an outcome type for this hearing before sending to admin'
+                    },
+                    items: outcomeTypes,
+                    attributes: {
+                        'aria-labelledby': 'add-hearing-outcome-modal-label'
+                    }
+                }) }}
+            {%  endset %}
+            {{ modal({
+                id: "add-hearing-outcome-modal",
+                classList: ["outcome"],
+                heading: "Choose an outcome and send this case to admin",
+                form: {
+                    method: "post",
+                    action: 'summary/add-hearing-outcome',
+                    content: outcomeFormContent,
+                    buttons: {
+                        submit: { id: "send-outcome-to-admin", text: "Send to admin" }
+                    }
+                }
+            })}}
+            
+            {% set editHeading %}
+                {{ govukWarningText({
+                    html: '<span class="govuk-heading-m govuk-!-margin-bottom-0">This case is already being resulted</span>',
+                    iconFallbackText: 'Warning',
+                    classes: 'govuk-!-margin-bottom-0 govuk-heading-m'
+                }) }}
+            {% endset %}
+            {% set editOutcomeFormContent %}
+                <input type="hidden" name="targetHearingId" value=""/>
+                <input type="hidden" name="targetDefendantId" value=""/>
+                <p class="govuk-body-m" id="edit-hearing-outcome-modal-label">
+                    This case is in progress on the outcomes page, which means an admin might already be resulting it based on the original outcome type you selected
+                </p>
+                {{ govukSelect({
+                    id: 'editHearingOutcomeType',
+                    name: 'hearingOutcomeType',
+                    label: {
+                        text: 'You can choose an outcome and resend this case to admin',
+                        classes: 'govuk-label--s govuk-!-margin-bottom-3'
+                    },
+                    errorMessage: {
+                        text: 'Choose an outcome type for this hearing before sending to admin'
+                    },
+                    items: outcomeTypes
+                }) }}
+                <p class="govuk-heading-s">
+                    Now you should:
+                </p>
+                <ul class="govuk-list govuk-list--bullet govuk-!-margin-left-1">
+                    <li>find out which admin is resulting this case by filtering the in progress tab on the outcomes page</li>
+                    <li>contact them to tell them the outcome type has changed.</li>
+                </ul>
+            {%  endset %}
+            {{ modal({
+                id: "edit-hearing-outcome-modal",
+                size: "modal-lg",
+                classList: ["outcome"],
+                heading: editHeading,
+                form: {
+                    method: "post",
+                    action: 'summary/edit-hearing-outcome',
+                    content: editOutcomeFormContent,
+                    buttons: {
+                        submit: { id: "update-outcome", text: "Update outcome" }
+                    }
+                }
+            })}}
         {% endif %}
         {% if data.hearings | length %}
             {% if session.showPreviousHearings === data.caseId %}

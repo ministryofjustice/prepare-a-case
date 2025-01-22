@@ -27,36 +27,6 @@ Then('hearing {string} should not have link "Edit"', ($hearingId) => {
   })
 })
 
-Then('I should {string} the modal popup to {string} hearing outcome', ($expected, $modal) => {
-  const expected = $expected.toLowerCase()
-  expect(['see', 'not see']).to.include(expected)
-  cy.get(`#${$modal}-hearing-outcome-modal`).should(`${expected === 'not see' ? 'not.' : ''}be.visible`)
-})
-
-Then('I should NOT see a modal popup to {string} hearing outcome', ($hearingId, $modal) => {
-  cy.get(`#${$modal}-hearing-outcome-modal`).should('not.exist')
-})
-
-Then('the {string} modal popup should have text paragraph {string}', ($modal, $pContent) => {
-  cy.get(`#${$modal}-hearing-outcome-modal p`).contains($pContent).should('be.visible')
-})
-
-Then('the {string} modal popup should have a select input with items', ($modal, $data) => {
-  cy.get(`#${$modal}-hearing-outcome-modal select option`).then(opts => {
-    const optionValues = [...opts].map(opt => opt.innerText.trim())
-    const expectedValues = $data.raw().map(d => d[0].trim())
-    expect(optionValues).to.deep.eq(expectedValues)
-  })
-})
-
-Then('the {string} modal popup should have the button {string}', ($modal, $btnText) => {
-  cy.get(`#${$modal}-hearing-outcome-modal button`).contains($btnText).should('exist')
-})
-
-Then('the {string} modal popup should have the close button', ($modal) => {
-  cy.get(`#${$modal}-hearing-outcome-modal button`).contains('X').should('exist')
-})
-
 When('I click "Send outcome to admin" for hearing {string}', ($hearingId) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get('.govuk-button').contains('Send outcome to admin').click()
@@ -67,16 +37,4 @@ When('I click "Edit" for hearing {string}', ($hearingId) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get('.hearing-outcome-edit').contains('Edit').click()
   })
-})
-
-When('I click button {string} on hearing {string} outcome modal popup', ($buttonText, $modal) => {
-  cy.get(`#${$modal}-hearing-outcome-modal button`).contains($buttonText).click()
-})
-
-When('I select "Report requested" from select options on {string} modal', ($modal) => {
-  cy.get(`#${$modal}-hearing-outcome-modal select`).select('Report requested')
-})
-
-Then('I click "Send to admin" button on {string} modal', ($modal) => {
-  cy.get(`#${$modal}-hearing-outcome-modal select`).contains('Send to admin').click()
 })

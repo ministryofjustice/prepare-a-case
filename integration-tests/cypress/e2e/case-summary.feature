@@ -838,7 +838,7 @@ Feature: Case summary
     Then I should be on the "Hearing outcomes" page
 
     When I click the "Rock Stone" link
-    And I click the "Open as read only" link
+    And I click the "Open as read only" button
 
     And I should see a button with the label "Actions"
     And I click the "Actions" button
@@ -854,7 +854,7 @@ Feature: Case summary
     Then I should be on the "Hearing outcomes" page
 
     When I click the "Some User" link
-    And I click the "View without assigning" link
+    And I click the "assign-outcome-modal" modal "View without assigning" link as button
 
     And I should see a button with the label "Actions"
     And I click the "Actions" button

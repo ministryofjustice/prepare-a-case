@@ -2,6 +2,7 @@
 
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {%- from "moj/components/button-menu/macro.njk" import mojButtonMenu -%}
+{%- from "components/modal/macro.njk" import modal -%}
 
 {% block javascripts %}
     <script type="text/javascript" src="{{components.filterComponent.javascript}}"></script>
@@ -133,8 +134,28 @@
 
   {{ components.filterComponent.html | safe}}
 
-
-  {% include "court-case-progress-assign-modal.njk" %}
+  {% set bodyContent %}
+    <p class="govuk-body">You can view this case but it has not been assigned to you to result.</p>
+  {% endset %}
+  {% set formContent %}
+      <input type="hidden" name="targetDefendantId" value=""/>
+      <input type="hidden" name="targetCourtCode" value=""/>
+  {%  endset %}
+  {{ modal({
+    id: "assign-outcome-modal",
+    size: "modal-lg",
+    classList: ["assign-outcome"],
+    heading: "Do you want to result this case now?",
+    bodyContent: bodyContent,
+    form: {
+      method: "post",
+      content: formContent,
+      buttons: {
+          submit: { text: "Assign to me" },
+          secondary: { text: "View without assigning", classList: ["assign-outcome-view"] }
+      }
+    }
+  })}}
 
   {%- from "components/tabs/macro.njk" import pacTabs -%}
 

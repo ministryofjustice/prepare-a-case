@@ -1,5 +1,7 @@
 {%- set moment = params.moment -%}
 
+{%- from "components/modal/macro.njk" import modal -%}
+
 {% block javascripts %}
     <script type="text/javascript" src="{{components.filterComponent.javascript}}"></script>
     <script type="text/javascript" src="/javascripts/hearing-outcomes-date-sort-component-{{ appVersion }}.min.js"></script>
@@ -95,8 +97,28 @@
 
   {{ components.filterComponent.html | safe}}
 
-
-  {% include "court-case-progress-reassign-resulted-modal.njk" %}
+  {% set bodyContent %}
+    <p class="govuk-body">If you need to check some details, open as read only.</p>
+    <p class="govuk-body">To result it again, assign it to yourself.</p>
+  {% endset %}
+  {% set formContent %}
+    <input type="hidden" name="targetDefendantId" value=""/>
+    <input type="hidden" name="targetCourtCode" value=""/>
+  {%  endset %}
+  {{ modal({
+    id: "reassign-resulted-outcome-modal",
+    classList: ["assign-outcome"],
+    heading: "This case has been resulted",
+    bodyContent: bodyContent,
+    form: {
+      method: "post",
+      content: formContent,
+      buttons: {
+          submit: { text: "Assign to me" },
+          secondary: { text: "Open as read only", classList: ["assign-outcome-view"] }
+      }
+    }
+  })}}
 
   {%- from "components/tabs/macro.njk" import pacTabs -%}
 

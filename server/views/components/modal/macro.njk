@@ -1,0 +1,27 @@
+{#####
+  * = required  
+
+  params: {
+    * id: id for the modal,
+    * size: optional size class for the modal
+    * classList: an array of classes to append to the modal,
+    * heading: text that will appears as the modal heading,
+      bodyContent: html that will appear in the body of the modal
+      form: {
+        * method: the desired form method,
+          content: html that will appear in the form of the modal,
+          buttons: {
+            submit: {
+              text: text for the form submit button
+            },
+            link: {
+              text: text for the secondary button,
+              classList:  an array of classes to append to the secondary button
+            }
+          }
+      }
+  }
+######}
+{% macro modal(params) %}
+  {%- include "./template.njk" -%}
+{% endmacro %}

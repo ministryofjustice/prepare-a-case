@@ -163,7 +163,7 @@
   // Enable `flex-grow: 1` so that the body take up as much space as possible
   // when there should be a fixed height on `.modal-dialog`.
   flex: 1 1 auto;
-  padding: var(--#{$prefix}modal-padding);
+  padding: 0 var(--#{$prefix}modal-padding) 0 var(--#{$prefix}modal-padding);
 }
 
 // Footer (for actions)
