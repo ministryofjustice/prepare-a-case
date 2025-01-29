@@ -351,27 +351,27 @@ Feature: Case summary
     And I should see a summary card with id "previousOrder0" and action
       | View record | CJA - Std Determinate Custody | record/636401162 |
     And I should see a summary card with id "previousOrder0" and summary list rows
-      | Description | Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801 | Started on 23 Jan 2018 |
+      | Description | Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801 | Ended on 23 Jan 2018 |
     Then I should see a summary card with id "previousOrder1" and title "Adult Custody < 12m (18 Months)"
     And I should see a summary card with id "previousOrder1" and action
       | View record | Adult Custody < 12m | record/7925250000 |
     And I should see a summary card with id "previousOrder1" and summary list rows
-      | Description | Arson endangering life - 05601 | Started on 27 Aug 2019 |
+      | Description | Arson endangering life - 05601 | Ended on 27 Aug 2019 |
     Then I should see a summary card with id "previousOrder2" and title "CJA - Indeterminate Public Prot. (18 Months)"
     And I should see a summary card with id "previousOrder2" and action
       | View record | CJA - Indeterminate Public Prot. | record/1475462502 |
     And I should see a summary card with id "previousOrder2" and summary list rows
-      | Description | Common and other types of assault - 10500 | Started on 9 Aug 2017 |
+      | Description | Common and other types of assault - 10500 | Ended on 9 Aug 2017 |
     Then I should see a summary card with id "previousOrder3" and title "ORA Community Order (18 Months)"
     And I should see a summary card with id "previousOrder3" and action
       | View record | ORA Community Order | record/1906091609 |
     And I should see a summary card with id "previousOrder3" and summary list rows
-      | Description | (Assault PC (Indictable/Either way) - 00807) | Started on 4 Sep 2019 |
+      | Description | (Assault PC (Indictable/Either way) - 00807) | Ended on 4 Sep 2019 |
     Then I should see a summary card with id "previousOrder4" and title "Life imprisonment (Adult) (18 Months)"
     And I should see a summary card with id "previousOrder4" and action
       | View record | Life imprisonment (Adult) | record/943466740 |
     And I should see a summary card with id "previousOrder4" and summary list rows
-      | Description | High treason - 06200 | Started on 23 Jan 2018 |
+      | Description | High treason - 06200 | Ended on 23 Jan 2018 |
     
     And I should see the body text "Angel Extravaganza"
     And I should see the hint text "Allocated on 12 Aug 2017"
@@ -397,32 +397,32 @@ Feature: Case summary
     And I should see a summary card with id "previousOrder5" and action
       | View record | ORA Suspended Sentence Order | record/1081636758 |
     And I should see a summary card with id "previousOrder5" and summary list rows
-      | Description | Aiding suicide - 07600 | Started on 4 Sep 2019 |
+      | Description | Aiding suicide - 07600 | Ended on 4 Sep 2019 |
     Then I should see a summary card with id "previousOrder6" and title "ORA Adult Custody (Not PSS) (18 Months)"
     And I should see a summary card with id "previousOrder6" and action
       | View record | ORA Adult Custody (Not PSS) | record/636401231 |
     And I should see a summary card with id "previousOrder6" and summary list rows
-      | Description | Aiding suicide - 07600 | Started on 25 Dec 2017 |
+      | Description | Aiding suicide - 07600 | Ended on 25 Dec 2017 |
     Then I should see a summary card with id "previousOrder7" and title "ORA Adult Custody (Not PSS) (18 Months)"
     And I should see a summary card with id "previousOrder7" and action
       | View record | ORA Adult Custody (Not PSS) | record/1999409258 |
     And I should see a summary card with id "previousOrder7" and summary list rows
-      | Description | Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801 | Started on 4 Aug 2018 |
+      | Description | Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801 | Ended on 4 Aug 2018 |
     Then I should see a summary card with id "previousOrder8" and title "Fine (18 Months)"
     And I should see a summary card with id "previousOrder8" and action
       | View record | Fine | record/2319221210 |
     And I should see a summary card with id "previousOrder8" and summary list rows
-      | Description | Arson endangering life - 05601 | Started on 23 Jan 2018 |
+      | Description | Arson endangering life - 05601 | Ended on 23 Jan 2018 |
     Then I should see a summary card with id "previousOrder9" and title "ORA Adult Custody (Not PSS) (18 Months)"
     And I should see a summary card with id "previousOrder9" and action
       | View record | ORA Adult Custody (Not PSS) | record/754151578 |
     And I should see a summary card with id "previousOrder9" and summary list rows
-      | Description | Acknowledging bail in false name - 08303 | Started on 21 Sep 2018 |
+      | Description | Acknowledging bail in false name - 08303 | Ended on 21 Sep 2018 |
     Then I should see a summary card with id "previousOrder10" and title "Fine"
     And I should see a summary card with id "previousOrder10" and action
       | View record | Fine | record/901046255 |
     And I should see a summary card with id "previousOrder10" and summary list rows
-      | Description | Common and other types of assault - 10500 | Started on 23 Sep 2018 |
+      | Description | Common and other types of assault - 10500 | Ended on 23 Sep 2018 |
 
     And There should be no a11y violations
 
