@@ -12,7 +12,7 @@
             {% set actionId = id + "-view"%}
                 {% set descriptionValue %}
                     <p class="govuk-body">{{order.offences[0].description }}</p>
-                    <p class="govuk-hint govuk-!-margin-top-1">Started on {{ moment(order.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
+                    <p class="govuk-hint govuk-!-margin-top-1">Ended on {{ moment(order.sentence.terminationDate, 'YYYY-MM-DD').format(displayDateFormat) }}</p>
                 {% endset %}
                 <li>
                     {{ summaryCard(
