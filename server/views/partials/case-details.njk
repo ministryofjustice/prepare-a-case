@@ -77,15 +77,21 @@
 
 {% endblock %}
 
+{% block subNav %}
+    {% if (subNavItems | length > 0) %}
+        {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
+        {{ mojSubNavigation({
+            classes: 'govuk-width-container',
+            label: 'Sub navigation',
+            items: subNavItems
+        })}}
+    {% endif %}
+{% endblock %}
+
+
 {% block content %}
 
     {% block message %}{% endblock %}
-
-    {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
-    {{ mojSubNavigation({
-        label: 'Sub navigation',
-        items: subNavItems
-    }) if subNavItems | length and not hideSubnav }}
 
     {% block caseContent %}{% endblock %}
 

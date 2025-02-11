@@ -181,6 +181,8 @@
     {% block backlink %}{% endblock %}
 </nav>
 
+{% block subNav %}{% endblock %}
+
 {% if globalErrors %}
 <div class="govuk-width-container" style="margin-top: 7px">
     {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
