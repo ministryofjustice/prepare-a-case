@@ -440,17 +440,20 @@ Then('I enter invalid search term into search input and click search then I shou
 })
 
 When('I enter search term {string} into search input and click search then I should see error {string}', ($searchTerm, $expectedError) => {
-  cy.get('#search-term').clear()
-  cy.get('#search-term').type($searchTerm)
+  const inputId = '#search-term'
+  cy.get(inputId).clear()
+  cy.get(inputId).type($searchTerm)
   cy.get('.govuk-button').contains('Search').click()
 
   if ($expectedError === 'NO_ERROR') {
     cy.get('.govuk-error-summary').should('not.exist')
     cy.get('.govuk-form-group--error .govuk-error-message').should('not.exist')
   } else {
+    cy.get('title').should('contain.text', 'Error:')
     cy.get('.govuk-error-summary').within(() => {
       cy.get('h2').should('contain.text', 'There is a problem')
       cy.get('a').should('have.text', $expectedError)
+      cy.get('a').should('have.attr', 'href', inputId)
     })
     cy.get('.govuk-form-group--error .govuk-error-message').should('contain.text', `Error:${$expectedError}`)
   }
