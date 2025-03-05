@@ -46,6 +46,15 @@ whitelist:
   ark-internet-2: "194.33.196.0/25"
   moj-official-aws-preprod: "51.149.251.0/24"
   global-protect: "35.176.93.186/32"
+  moj-official-tgw-prod: "51.149.250.0/24"
+  sheffield-office: "217.33.148.210/32"
+  global-protect-1: "18.130.148.126/32"
+  global-protect-3: "35.176.93.186/32"
+  global-protect-4: "35.176.148.126/32"
+  global-protect-prisma: "128.77.75.64/26"
+  petty-france-wifi: "213.121.161.112/28"
+  dom1-ark-2: "194.33.192.0/25"
+  dom1-ark-4: "194.33.196.0/25"
 
 resources:
   cpu:
