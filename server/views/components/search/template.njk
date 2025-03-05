@@ -1,3 +1,5 @@
+{% set inputId = "search-term" %}
+
 {% if params.searchError %}
     <div class="govuk-error-summary" data-module="govuk-error-summary">
         <div role="alert">
@@ -7,7 +9,7 @@
             <div class="govuk-error-summary__body">
                 <ul class="govuk-list govuk-error-summary__list">
                     <li>
-                        <a href="#error-validate-characters">{{ params.searchError }}</a>
+                        <a href="#{{inputId}}">{{ params.searchError }}</a>
                     </li>
                 </ul>
             </div>
@@ -25,8 +27,8 @@
         {% endif %}
         <form name="pac-search-form" id="pac-search-form" method="get" action="/case-search">
             <div class="search-group">
-                <label class="govuk-label govuk-!-margin-bottom-3" for="search-term">Enter the CRN or full name of the person you are searching for.</label>
-                <input class="govuk-input govuk-!-width-one-third" id="search-term" name="term" type="text" maxlength="650" value="{{ params.term }}">
+                <label class="govuk-label govuk-!-margin-bottom-3" for="{{inputId}}">Enter the CRN or full name of the person you are searching for.</label>
+                <input class="govuk-input govuk-!-width-one-third" id="{{inputId}}" name="term" type="text" maxlength="650" value="{{ params.term }}">
                 <button class="govuk-button action-button govuk-!-margin-bottom-1 govuk-!-margin-left-3" data-module="govuk-button" type="submit">Search</button>
             </div>
         </form>

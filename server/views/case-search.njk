@@ -1,6 +1,6 @@
 {% extends "partials/layout.njk" %}
 
-{% set title = "Search result" %}
+{% set title = "Error: Search result" if searchError else "Search result" %}
 
 {% set tableData = {
     head: [
