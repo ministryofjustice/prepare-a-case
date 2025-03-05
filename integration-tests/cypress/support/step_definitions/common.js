@@ -453,7 +453,7 @@ When('I enter search term {string} into search input and click search then I sho
     cy.get('.govuk-error-summary').within(() => {
       cy.get('h2').should('contain.text', 'There is a problem')
       cy.get('a').should('have.text', $expectedError)
-      cy.get('a').should('have.attr', 'href', `${inputId}`)
+      cy.get('a').should('have.attr', 'href', inputId)
     })
     cy.get('.govuk-form-group--error .govuk-error-message').should('contain.text', `Error:${$expectedError}`)
   }
