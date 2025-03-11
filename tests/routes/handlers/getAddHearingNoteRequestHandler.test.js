@@ -18,7 +18,8 @@ describe('getAddNoteRequestHandler', () => {
       courtCode
     },
     body: { hearingId: testHearingId, note: 'A note' },
-    path: '/test/path'
+    path: '/test/path',
+    session: {}
   }
 
   it('should invoke add hearing note and render case summary note', async () => {
@@ -26,6 +27,7 @@ describe('getAddNoteRequestHandler', () => {
     await subject(mockRequest, mockResponse)
 
     // Then
+    expect(mockRequest.session.addHearingNoteSuccess).toEqual(testHearingId)
     expect(caseServiceMock.addHearingNote).toHaveBeenCalledWith(
       testHearingId,
       'A note',
