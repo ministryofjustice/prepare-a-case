@@ -18,9 +18,12 @@ Feature: Case progress
     And I should see "Expand to add a hearing note" link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
 
     When I click Expand to add a hearing note on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
-    Then I should see a text area wih label Add information specific to this hearing on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
+    Then I should see a text area with label Add information specific to this hearing on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     And I should see a Save button on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     And I should see a Cancel saving note link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
+
+    When I click the Save button on hearing with id "2aa6f5e0-f842-4939-bc6a-01346abc09e7"
+    Then I should see govuk notification banner with header "Success" and message "You successfully added a note"
 
   Scenario: View hearing note on the case summary page
     Given I am an authenticated user
@@ -47,6 +50,8 @@ Feature: Case progress
       | 8th hearing         | Wednesday 14 August 2019, Court 2, morning session, Leicester     |                 |
       | 7th hearing         | Sunday 14 July 2019, Court 1, morning session, Leicester          |                 |
       | 5th hearing         | Tuesday 14 May 2019, Court 2, morning session, North Shields      |                 |
+
+    And I should see "Send outcome to admin" button on hearing with id "2aa6f5e0-f842-4939-bc6a-01346abc09e3" 
 
     And I should see a bottom border on all notes within a hearing
     And I should see a button with the label "Show all previous hearings"
@@ -111,6 +116,28 @@ Feature: Case progress
     Then I should be on the "Case summary" page
     And I should not see govuk notification banner
 
+  Scenario: Edit hearing note on the case summary page
+    Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
+
+    When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
+    Then I should be on the "Case summary" page
+    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
+    And I should see the caption text "URN: 01WW0298121"
+
+    And I should see the following summary list
+      | Name          | Kara Ayers                                                            |
+      | Gender        | Female                                                                |
+      | Date of birth | 31 October 1980 (41 years old)                                        |
+      | Address       | 22 Waldorf Court Cardiff AD21 5DR                                     |
+
+    And I should see a "m" sized level 3 heading with text "Case progress"
+    And I should see 6 previous hearings headers
+
+    When I click edit hearing note with id "1288880" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
+    Then hearing note with id "1288880" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3" should have a textarea with a save button and cancel link
+
   Scenario: Display hearing notes
     Given I am an authenticated user
     And I click the "Accept analytics cookies" button
@@ -129,6 +156,7 @@ Feature: Case progress
 
     And I should see a "m" sized level 3 heading with text "Case progress"
     And I should see 6 previous hearings headers
+    And I should see header on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" with outcome "Adjourned" date "Monday 24 April 2023" and edit link
     And I should see below notes on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" with author datetime and note with edit and delete links
       | John Doe    | 9 August 2022, 17:16  | Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.   |
       | Jane Smith  | 9 July 2022, 17:13    | Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office. |

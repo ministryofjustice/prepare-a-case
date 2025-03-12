@@ -82,16 +82,6 @@ Feature: Case comments
     Then I should be on the "Case summary" page
     And I should see govuk notification banner with header "Success" and message "You successfully deleted a comment"
 
-    Then I click "Delete" on the below comment located in table row 5
-      | Comment One     | Adam Sandler on 9 August 2022, 17:17 |
-    Then I should see the heading "Are you sure you want to delete this comment?"
-    And I should see the text "Added on the 9 August 2022, 17:17" within element with class "govuk-caption-m"
-    And I should see a button with the label "Delete comment"
-    And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary#previousComments"
-    Then I click the "Cancel" link
-    Then I should be on the "Case summary" page
-    And I should not see govuk notification banner
-
   Scenario: Cancel a delete comment attempt
     Given I am an authenticated user
     And I click the "Accept analytics cookies" button
@@ -123,18 +113,15 @@ Feature: Case comments
     When I enter a comment "a comment" in the comment box
     And I click the button to "Save" comment
     Then I should NOT see an error message
+    And I should see govuk notification banner with header "Success" and message "You successfully added a comment"
 
-  Scenario: Should be able to edit a comment
+  Scenario: Should be able to cancel an edit comment attempt
     Given I am an authenticated user
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
     Then I should be on the "Case summary" page
-
-    When I enter a comment "a comment" in the comment box
-    And I click the button to "Save" comment
-    Then I should NOT see an error message
 
     And I click "Edit" on the below comment located in table row 5
       | Comment One     | Adam Sandler on 9 August 2022, 17:17 |
