@@ -19,7 +19,7 @@ const getAddHearingNoteHandler = caseService => async (req, res) => {
       trackEvent('PiCAddHearingNoteNoName', res.locals.user)
     }
   }
-  
+
   res.redirect(
     `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#case-progress-hearing-${targetHearingId}`
   )
