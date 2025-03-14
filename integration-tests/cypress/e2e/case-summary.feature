@@ -301,7 +301,7 @@ Feature: Case summary
     And I should see the body text "Noise offences - 82200"
     And I should see the hint text "Offence committed on 6 January 2021"
     And I should see a level 1 heading with text "Webb Mitchell"
-    And I should see a "l" sized level 1 heading with text "Probation record"
+    And I should see a "l" sized level 2 heading with text "Probation record"
     And I should see the following "m" sized level 2 headings
       | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
     And There should be no a11y violations
@@ -318,7 +318,7 @@ Feature: Case summary
     And I click the sub navigation with "Probation record" text
 
     Then I should see a level 1 heading with text "Lenore Marquez"
-    And I should see a "l" sized level 1 heading with text "Probation record"
+    And I should see a "l" sized level 2 heading with text "Probation record"
     And I should see the following "m" sized level 2 headings
       | Pre-sentence report requested | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
 
@@ -462,7 +462,7 @@ Feature: Case summary
     And I should see the following "m" sized level 3 headings
       | Defendant details | Case documents | Appearance | Offences | Case progress | Comments |
     When I click the sub navigation with "Probation record" text
-    Then I should see the heading "You are restricted from viewing this record"
+    Then I should see a "l" sized level 2 heading with text "You are restricted from viewing this record"
 
     And I should see the body text "You cannot view probation information for this defendant due to restrictions on your NDelius account."
     And I should see the body text "If you think you should be able to view this case, contact your line manager."
@@ -475,7 +475,7 @@ Feature: Case summary
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
     And I should see a level 1 heading with text "Lenore Marquez"
-    And I should see a "l" sized level 1 heading with text "Probation record"
+    And I should see a "l" sized level 2 heading with text "Probation record"
     And I should see the following "m" sized level 2 headings
       | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
 
@@ -607,7 +607,7 @@ Feature: Case summary
     When I navigate to the "/B14LO/hearing/8d187ea4-d24d-4806-a5c7-1626919c44bb/defendant/9f60bdb8-0978-404c-bd89-addc3f5388a7/record" base route
     Then I should be on the "Probation record" page
     And I should see a level 1 heading with text "Olsen Alexander"
-    And I should see a "l" sized level 1 heading with text "Probation record"
+    And I should see a "l" sized level 2 heading with text "Probation record"
     And I should see the following "m" sized level 2 headings
       | Current orders | Previous orders | Offender manager | Last pre-sentence report | Last OASys assessment |
 
@@ -710,7 +710,7 @@ Feature: Case summary
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
     Then I should be on the "Probation record" page
     And I should see a level 1 heading with text "Lenore Marquez"
-    And I should see a "l" sized level 1 heading with text "Probation record"
+    And I should see a "l" sized level 2 heading with text "Probation record"
     And I should see the following "m" sized level 2 headings
       | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
 
@@ -824,7 +824,7 @@ Feature: Case summary
 
     When I click the "English Madden" link
     And I click the sub navigation with "Risk register" text
-    And I should see the heading "You are restricted from viewing this record"
+    And I should see a "l" sized level 2 heading with text "You are restricted from viewing this record"
 
     And I should see the body text "You cannot view probation information for this defendant due to restrictions on your NDelius account."
     And I should see the body text "If you think you should be able to view this case, contact your line manager."
