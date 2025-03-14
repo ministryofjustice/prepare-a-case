@@ -10,14 +10,6 @@ When('I click the button to {string} comment', $string => {
   cy.get('#save-comments').contains($string).click()
 })
 
-Then('I should see the comments textarea highlighted as error', () => {
-  cy.get('#comment').should('have.class', 'govuk-textarea--error')
-})
-
-Then('I should see an error message {string}', $string => {
-  cy.get('#comment-error').should('include.text', $string)
-})
-
 Then('I should NOT see an error message', $string => {
   cy.get('#comment-error').should('not.exist')
 })
@@ -67,7 +59,7 @@ Then('I click {string} on the below comment located in table row {int}', ($link,
   })
 })
 
-Then('I click {string} on the edit textarea in row {int}', ($string, $int) => {
+Then('I click "Cancel" on the edit textarea in row {int}', ($int) => {
   getCommentsRow($int).within(() => {
     cy.get('.govuk-table__cell').eq(0).within(() => {
       cy.get('.case-comment-edit-container').should('be.visible').within(() => {

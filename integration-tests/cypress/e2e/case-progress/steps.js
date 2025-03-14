@@ -12,9 +12,34 @@ Then('I click delete hearing note with id {string} on hearing {string}', ($noteI
   })
 })
 
+Then('I click edit hearing note with id {string} on hearing {string}', ($noteId, $hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get(`#previous-note-${$noteId}`).within(() => {
+      cy.get('.note-edit-link').click()
+    })
+  })
+})
+
+Then('hearing note with id {string} on hearing {string} should have a textarea with a save button and cancel link', ($noteId, $hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get(`#previous-note-${$noteId}`).within(() => {
+      cy.get('textarea').should('exist')
+      cy.get('.hearing-note-edit-done').should('exist').and('contain.text', 'Save')
+      cy.get('.note-edit-cancel-link').should('exist').and('contain.text', 'Cancel')
+    })
+  })
+})
+
 Then('hearing {string} should have a draft note with text {string}', ($hearingId, $draftNote) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get(`#note-box-${$hearingId}`).should('have.value', $draftNote)
+  })
+})
+
+Then('I should see header on hearing {string} with outcome {string} date {string} and edit link', ($hearingId, $outcome, $date) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.app-summary-card__banner').should('contain.text', $outcome).and('contain.text', `Sent to admin on ${$date}`)
+    cy.get('.hearing-outcome-edit').should('have.text', 'Edit')
   })
 })
 
@@ -29,6 +54,13 @@ Then('I should see below notes on hearing {string} with author datetime and note
     })
   })
 })
+
+Then('I should see "Send outcome to admin" button on hearing with id {string}', ($hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.btn-send-hearing-outcome').should('exist')
+  })
+})
+
 
 Then('I should see a warning banner on hearing {string} with text {string}', ($hearingId, $string) => {
   cy.get(`#case-progress-hearing-${$hearingId} .hearing-note-container`).eq(0).within(() => {
@@ -48,7 +80,7 @@ Then('I should see {string} link on hearing with id {string}', ($title, $hearing
   })
 })
 
-Then('I should see a text area wih label Add information specific to this hearing on hearing with id {string}', $hearingId => {
+Then('I should see a text area with label Add information specific to this hearing on hearing with id {string}', $hearingId => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get('.govuk-details__text').within(() => {
       cy.get('label').should('contain.text', 'Add information specific to this hearing')
@@ -63,9 +95,9 @@ Then('I should see a Save button on hearing with id {string}', $hearingId => {
   })
 })
 
-Then('I should see a Cancel link on hearing with id {string}', $hearingId => {
+Then('I click the Save button on hearing with id {string}', $hearingId => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
-    cy.get('.govuk-details__text a').should('have.text', 'Cancel')
+    cy.get('.govuk-details__text button').contains('Save').click()
   })
 })
 
@@ -102,32 +134,6 @@ Then('I should see the following hearings with the hearing type label, hearing d
 
 Then('I should see a bottom border on all notes within a hearing', () => {
   cy.get('.app-summary-card [data-test="note-td"]').should('have.css', 'border-bottom', '1px solid rgb(177, 180, 182)')
-})
-
-Then('the note with the id {string} on hearing {string} is filled with the text {string}', ($noteId, $hearingId) => {
-  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
-    cy.get(`#previous-note-${$noteId}`).should('exist')
-  })
-})
-
-Then('the user should be alerted with a popup', () => {
-  cy.get('.popup-toggle').should('exist')
-})
-
-Then('I should see a warning icon', () => {
-  cy.get('.govuk-warning-text__icon').should('exist')
-})
-
-Then('I should see the text heading message {string}', $string => {
-  cy.get('.govuk-warning-text__text').contains($string)
-})
-
-Then('I should see the text body message {string}', $string => {
-  cy.get('.govuk-body-s').contains($string)
-})
-
-Then('I click the {string} button to be back on my page', $string => {
-  cy.get('#close-btn').contains($string).click({ force: true })
 })
 
 Then('I should {string} line breaks on hearing note {string}', ($expected, $noteId) => {

@@ -26,7 +26,9 @@ const caseSummaryHandler = utils => async (req, res) => {
     ...session
   }
   session.deleteCommentSuccess = undefined
+  session.addCommentSuccess = undefined
   session.deleteHearingNoteSuccess = undefined
+  session.addHearingNoteSuccess = undefined
   session.addHearingOutcomeSuccess = undefined
   session.editHearingOutcomeSuccess = undefined
   session.assignHearingOutcomeSuccess = undefined
