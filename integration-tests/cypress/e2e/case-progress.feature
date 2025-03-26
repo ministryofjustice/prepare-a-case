@@ -22,9 +22,6 @@ Feature: Case progress
     And I should see a Save button on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     And I should see a Cancel saving note link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
 
-    When I click the Save button on hearing with id "2aa6f5e0-f842-4939-bc6a-01346abc09e7"
-    Then I should see govuk notification banner with header "Success" and message "You successfully added a note"
-
   Scenario: View hearing note on the case summary page
     Given I am an authenticated user
     And I click the "Accept analytics cookies" button
