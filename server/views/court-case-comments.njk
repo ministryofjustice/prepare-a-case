@@ -16,6 +16,22 @@
             }) }}
         {% endif %}
 
+<<<<<<< HEAD
+=======
+        {% if session.addCommentSuccess === data.caseId %}
+            {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+            {% set html %}
+                <span class="govuk-body-l">
+                        You successfully added a comment
+                    </span>
+            {% endset %}
+            {{ govukNotificationBanner({
+                html: html,
+                type: 'success'
+            }) }}
+        {% endif %}
+
+>>>>>>> origin/main
         <div class="govuk-form-group govuk-!-margin-bottom-7">
             <div id="comments-hint">
                 <p id="comments-hint-p1" class="govuk-body">

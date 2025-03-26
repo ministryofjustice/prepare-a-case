@@ -18,7 +18,7 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
 
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-7">{{ "You are restricted from viewing this record" if forbidden else "Risk register" }}</h1>
+            <h2 class="govuk-heading-l govuk-!-margin-bottom-7">{{ "You are restricted from viewing this record" if forbidden else "Risk register" }}</h2>
 
             {% if forbidden %}
                 <p class="govuk-body">{{ riskData.userMessage }}</p>
