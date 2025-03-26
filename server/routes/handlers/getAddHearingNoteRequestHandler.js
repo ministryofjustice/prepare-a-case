@@ -3,8 +3,7 @@ const trackEvent = require('../../utils/analytics')
 const getAddHearingNoteHandler = caseService => async (req, res) => {
   const {
     params: { courtCode, hearingId, defendantId },
-    body: { note, hearingId: targetHearingId },
-    session
+    body: { note, hearingId: targetHearingId }
   } = req
 
   if (note) {
@@ -14,7 +13,6 @@ const getAddHearingNoteHandler = caseService => async (req, res) => {
       res.locals.user.name,
       defendantId
     )
-    session.addHearingNoteSuccess = targetHearingId
     if (!res.locals.user.name) {
       trackEvent('PiCAddHearingNoteNoName', res.locals.user)
     }
