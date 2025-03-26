@@ -24,7 +24,6 @@ describe('getAddCommentRequestHandler', () => {
     await subject(mockRequest, mockResponse)
 
     // Then
-    expect(mockRequest.session.addCommentSuccess).toEqual(testCaseId)
     expect(caseServiceMock.addCaseComment).toHaveBeenLastCalledWith(testCaseId, 'test-defendant-id', 'A comment', 'Adam Sandler')
     expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/hearing/${testHearingId}/defendant/${testDefendantId}/summary#caseComments`)
   })

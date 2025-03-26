@@ -113,7 +113,6 @@ Feature: Case comments
     When I enter a comment "a comment" in the comment box
     And I click the button to "Save" comment
     Then I should NOT see an error message
-    And I should see govuk notification banner with header "Success" and message "You successfully added a comment"
 
   Scenario: Should be able to cancel an edit comment attempt
     Given I am an authenticated user
