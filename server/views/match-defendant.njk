@@ -207,22 +207,18 @@
         </div>
 
       </div>
-      {% if data.pagination.totalPages > 1 %}
-        {% block paginationBlock %}
-          {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
-          {{ mojPagination({
-            results: {
-              from: data.pagination.from + 1,
-              to: data.pagination.to,
-              count: data.pagination.matchingRecordsCount
-            },
-            previous: data.pagination.previousLink,
-            next: data.pagination.nextLink,
-            items: data.pagination.pageItems
-          }) }}
-        {% endblock %}
-      {% endif %}
     </div>
+
+    {% if data.pagination.totalPages > 1 %}
+      {% block paginationBlock %}
+        {% from "govuk/components/pagination/macro.njk" import govukPagination %}
+        {{ govukPagination({
+          previous: data.pagination.previousLink,
+          next: data.pagination.nextLink,
+          items: data.pagination.pageItems
+        }) }}
+      {% endblock %}
+    {% endif %}
 
     {% from "govuk/components/details/macro.njk" import govukDetails %}
     {%- set detailsText = "<p class=\"govuk-body\">If the defendant is unknown to probation, you must <a href=\"/" + params.courtCode + "/case/" + params.caseId + "/hearing/" + params.hearingId + "/match/defendant/" + params.defendantId + "/nomatch\" class=\"govuk-link govuk-link--no-visited-state\">confirm they have no record</a>.</p><p class=\"govuk-body\">If they have an NDelius record, you can <a href=\"/" + params.courtCode + "/case/" + params.caseId + "/hearing/" + params.hearingId + "/match/defendant/" + params.defendantId + "/manual\" class=\"govuk-link govuk-link--no-visited-state\">link it to them with a case reference number</a>.</p>" -%}

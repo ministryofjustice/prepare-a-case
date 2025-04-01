@@ -3,6 +3,7 @@ const getHearingOutcomeAssignedToFilters = require('../../../utils/getHearingOut
 const flagFilters = require('../../../utils/flagFilters')
 const { prepareCourtRoomFilters } = require('../../helpers')
 const { getFilterComponent, populateTemplateValuesWithComponent } = require('../../../utils/nunjucksComponents.js')
+const { getPagination } = require('../../../utils/pagination')
 
 const getPagelessQueryParams = params => {
   const { page, ...remainder } = params
@@ -70,6 +71,8 @@ const getCasesInProgressHandler = (caseService, userPreferenceService) => async 
     .map(filterObj => filterObj.items.filter(item => item.checked).length)
     .some(length => length > 0)
 
+  const baseUrl = params.pagingBaseUrl + '&'
+
   let templateValues = {
     params: {
       ...params,
@@ -85,7 +88,8 @@ const getCasesInProgressHandler = (caseService, userPreferenceService) => async 
     totalPages: response.totalPages,
     totalElements: response.totalElements,
     flashMessage,
-    globalErrors
+    globalErrors,
+    pagination: getPagination(params.currentPage, response.totalElements, params.limit, baseUrl)
   }
   session.moveToResultedSuccess = undefined
 

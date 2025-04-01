@@ -72,61 +72,12 @@
                     {{ govukTable(tableData) }}
             {% endblock %}
 
-            {% set maxPagesDisplay = 5 %}
-            {% set startNum = currentPage - ((maxPagesDisplay - 1) / 2) %}
-            {% set endNum = currentPage + ((maxPagesDisplay - 1) / 2) %}
-            {% set totalPages = (data.totalElements / pageSize) | round(0, "ceil") %}
-
-            {% if startNum < 1 or totalPages <= maxPagesDisplay %}
-                {% set startNum = 1 %}
-                {% set endNum = maxPagesDisplay %}
-                {% elif endNum > totalPages %}
-                {% set startNum = totalPages - (maxPagesDisplay - 1) %}
-            {% endif %}
-
-            {% if endNum > totalPages %}
-                {% set endNum = totalPages %}
-            {% endif %}
-
-            {% set pageItems = [] %}
-            {% for i in range(startNum, endNum + 1) -%}
-                {% set pageItems = (pageItems.push({
-                    text: i + '',
-                    href: '/case-search?term=' + term + '&page=' + i,
-                    selected: currentPage === i
-                }), pageItems) %}
-            {%- endfor %}
-            {% if currentPage === 1 %}
-                {% set previousLink = null %}
-            {% else %}
-                {% set previousLink = {
-                    text: 'Previous',
-                    href: '/case-search?term=' + term + '&page=' + (currentPage - 1)
-                } %}
-            {% endif %}
-
-            {% if currentPage === data.totalPages %}
-                {% set nextLink = null %}
-            {% else %}
-                {% set nextLink = {
-                    text: 'Next',
-                    href: '/case-search?term=' + term + '&page=' + (currentPage + 1)
-                } %}
-            {% endif %}
-
-            {% set toElementCount = (currentPage * pageSize) if (currentPage * pageSize) <= data.totalElements else data.totalElements %}
-
             {% block pagination %}
-                {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
-                {{ mojPagination({
-                    results: {
-                        from: (currentPage - 1) * pageSize + 1,
-                        to: toElementCount,
-                        count: data.totalElements
-                    },
-                    previous: previousLink,
-                    next: nextLink,
-                    items: pageItems
+                {% from "govuk/components/pagination/macro.njk" import govukPagination %}
+                {{ govukPagination({
+                    previous: pagination.previousLink,
+                    next: pagination.nextLink,
+                    items: pagination.pageItems
                 }) }}
             {% endblock %}
         {% endif %}
