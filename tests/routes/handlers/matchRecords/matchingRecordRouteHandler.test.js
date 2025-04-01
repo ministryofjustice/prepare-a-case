@@ -70,7 +70,7 @@ describe('getMatchingRecordRouteHandler', () => {
         pagination: {
           ...paginationObject,
           matchingRecordsCount: 2,
-          totalPages: 1,
+          totalPages: 1
         }
       }
     })

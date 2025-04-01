@@ -40,7 +40,7 @@ describe('caseSearchHandler', () => {
           }
         ],
         previousLink: null,
-        nextLink: null,
+        nextLink: null
       }
     })
   })

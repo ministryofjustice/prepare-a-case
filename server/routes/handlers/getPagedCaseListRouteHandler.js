@@ -96,24 +96,28 @@ const getPageTabs = (params) => {
 const getPaginationObject = (pageParams) => {
   const currentPage = pageParams.page
   const pagination = getPagination(currentPage, pageParams.caseCount, pageParams.limit, pageParams.baseUrl)
-  
+
   const recentlyAddedPageItems = []
   pagination.pageItems.forEach(x => {
     recentlyAddedPageItems.push({
       ...x,
-      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + x.number,
+      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + x.number
     })
   })
 
-  const recentlyAddedPreviousLink = pagination.previousLink !== null ? {
-    ...pagination.previousLink,
-    href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage - 1)
-  } : null
+  const recentlyAddedPreviousLink = pagination.previousLink !== null
+    ? {
+        ...pagination.previousLink,
+        href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage - 1)
+      }
+    : null
 
-  const recentlyAddedNextLink = pagination.nextLink !== null ? {
-    ...pagination.nextLink,
-    href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage + 1)
-  } : null
+  const recentlyAddedNextLink = pagination.nextLink !== null
+    ? {
+        ...pagination.nextLink,
+        href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage + 1)
+      }
+    : null
 
   const totalPages = Math.round(Math.ceil((pageParams.caseCount / pageParams.limit)))
 

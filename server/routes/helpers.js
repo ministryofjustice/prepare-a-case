@@ -1,4 +1,3 @@
-const { settings } = require('../config')
 const getPsrRequestedConvictions = communityResponse => {
   return communityResponse.convictions?.filter(conviction => conviction.active && conviction.awaitingPsr && conviction.psrReports && conviction.psrReports.length)
     .map(conviction => {

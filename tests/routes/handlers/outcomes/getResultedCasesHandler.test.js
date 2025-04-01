@@ -111,7 +111,7 @@ describe('getResultedCasesHandler', () => {
       pagination: {
         pageItems: [],
         previousLink: null,
-        nextLink: null,
+        nextLink: null
       }
     })
   })
