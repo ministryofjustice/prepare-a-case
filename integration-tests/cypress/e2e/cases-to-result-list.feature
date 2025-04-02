@@ -16,7 +16,7 @@ Feature: Cases to Result List
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://docs.google.com/forms/d/e/1FAIpQLScluoDOXsJ_XBO3iOp283JE9mN3vTVNgEJcPNDHQQvU-dbHuA/viewform?usp=sf_link"
 
-    And I should see a tab with text "Cases to result (7)"
+    And I should see a tab with text "Cases to result (80)"
 
     And I should see a tab with text "In progress (5)"
 
@@ -26,29 +26,44 @@ Feature: Cases to Result List
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
       |  | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
-    And I should see 4 numbered pagination links from 1 to 4 followed by a link Next
-    And I should see the pagination numbers 1 to 2 of 7 results
+    And I should see pagination page "1" highlighted
+    And I should see pagination link "2" with href "page=2"
+    And I should see pagination link "3" with href "page=3"
+    And I should see pagination link "4" with href "page=4"
+    And I should see pagination next link with href "page=2"
 
-    When I click the "Next" link in the pagination links
+    When I click pagination next link
     Then the page 2 should be loaded
-    And I should see 4 numbered pagination links from 1 to 4 followed by a link Next
-    And I should see the pagination numbers 3 to 4 of 7 results
+    And I should see pagination previous link with href "page=1"
+    And I should see pagination link "1" with href "page=1"
+    And I should see pagination page "2" highlighted
+    And I should see pagination link "3" with href "page=3"
+    And I should see pagination link "4" with href "page=4"
+    And I should see pagination next link with href "page=3"
     And I should see the following table rows
       |  | Gill Arnold Page2    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
       |  | English Madden Page2 | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
-    When I click the "Next" link in the pagination links
+    When I click pagination next link
     Then the page 3 should be loaded
-    And I should see 4 numbered pagination links from 1 to 4 followed by a link Next
-    And I should see the pagination numbers 5 to 6 of 7 results
+    And I should see pagination previous link with href "page=2"
+    And I should see pagination link "1" with href "page=1"
+    And I should see pagination link "2" with href "page=2"
+    And I should see pagination page "3" highlighted
+    And I should see pagination link "4" with href "page=4"
+    And I should see pagination next link with href "page=4"
     And I should see the following table rows
       |  | Gill Arnold Page3    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
       |  | English Madden Page3 | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
-    When I click the "Previous" link in the pagination links
+    When I click pagination previous link
     Then the page 2 should be loaded
-    And I should see 4 numbered pagination links from 1 to 4 followed by a link Next
-    And I should see the pagination numbers 3 to 4 of 7 results
+    And I should see pagination previous link with href "page=1"
+    And I should see pagination link "1" with href "page=1"
+    And I should see pagination page "2" highlighted
+    And I should see pagination link "3" with href "page=3"
+    And I should see pagination link "4" with href "page=4"
+    And I should see pagination next link with href "page=3"
     And I should see the following table rows
       |  | Gill Arnold Page2    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
       |  | English Madden Page2 | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 |

@@ -19,7 +19,7 @@ Feature: Cases in Progress List
 
     And I should see a tab with text "Cases to result (8)"
 
-    And I should see a tab with text "In progress (15)"
+    And I should see a tab with text "In progress (21)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
@@ -29,8 +29,11 @@ Feature: Cases in Progress List
       | Olive Tree     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
       | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
-    And I should see 2 numbered pagination links from 1 to 2 followed by a link Next
-    And I should see the pagination numbers 1 to 2 of 15 results
+    And I should see pagination
+    And I should not see pagination previous link
+    And I should see pagination page "1" highlighted
+    And I should see pagination link "2" with href "page=2"
+    And I should see pagination next link with href "page=2"
 
     And There should be no a11y violations
 

@@ -45,13 +45,11 @@ Feature: Case list
     And I should see secondary text "V654123"
 
     And I should see pagination
-    And I should not see pagination link "Previous"
-    And I should not see pagination link "1"
+    And I should not see pagination previous link
     And I should see pagination page "1" highlighted
     And I should see pagination link "2" with href "page=2"
     And I should see pagination link "3" with href "page=3"
-    And I should see pagination link "Next" with href "page=2"
-    And I should see pagination text "Showing 1 to 20 of 80 results"
+    And I should see pagination next link with href "page=2"
     And There should be no a11y violations
 
   Scenario: View specific offence data on the case list
@@ -106,14 +104,12 @@ Feature: Case list
     And I should see link "Vance Landry" with href "/hearing/6046236a-5517-4445-a349-73f8f653b23a/defendant/903ecefd-8697-4d0e-bf01-f892f9dee7e7/summary"
 
     And I should see pagination
-    And I should see pagination link "Previous" with href "page=1"
+    And I should see pagination previous link with href "page=1"
     And I should see pagination link "1" with href "page=1"
-    And I should not see pagination link "2"
     And I should see pagination page "2" highlighted
     And I should see pagination link "3" with href "page=3"
     And I should see pagination link "4" with href "page=4"
-    And I should see pagination link "Next" with href "page=3"
-    And I should see pagination text "Showing 21 to 40 of 80 results"
+    And I should see pagination next link with href "page=3"
     And There should be no a11y violations
 
   Scenario: View the recently added cases on the case list
@@ -136,12 +132,10 @@ Feature: Case list
     And I should see link "Pamela Stanton" with href "/hearing/f9a66faa-a758-46d3-928c-8666367f6649/defendant/b8ea0ada-bc7f-4aed-99e3-1b3146274df6/summary"
 
     And I should see pagination
-    And I should not see pagination link "Previous"
-    And I should not see pagination link "1"
+    And I should not see pagination previous link
     And I should see pagination page "1" highlighted
     And I should see pagination link "2" with href "added?page=2"
-    And I should see pagination link "Next" with href "added?page=2"
-    And I should see pagination text "Showing 1 to 20 of 80 results"
+    And I should see pagination next link with href "added?page=2"
     And There should be no a11y violations
 
     # Test state held in session
