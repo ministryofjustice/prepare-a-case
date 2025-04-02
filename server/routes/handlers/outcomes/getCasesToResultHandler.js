@@ -2,6 +2,7 @@ const getOutcomeTypesListFilters = require('../../../utils/getOutcomeTypesListFi
 const flagFilters = require('../../../utils/flagFilters')
 const { prepareCourtRoomFilters } = require('../../helpers')
 const { getFilterComponent, populateTemplateValuesWithComponent } = require('../../../utils/nunjucksComponents.js')
+const { getPagination } = require('../../../utils/pagination')
 
 const getPagelessQueryParams = params => {
   const { page, ...remainder } = params
@@ -52,6 +53,8 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
     .map(filterObj => filterObj.items.filter(item => item.checked).length)
     .some(length => length > 0)
 
+  const baseUrl = params.pagingBaseUrl + '&'
+
   let templateValues = {
     params: {
       ...params,
@@ -64,7 +67,8 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
     data: response.cases || [],
     totalPages: response.totalPages,
     totalElements: response.totalElements,
-    outcomeActionAssign: session.outcomeActionAssign
+    outcomeActionAssign: session.outcomeActionAssign,
+    pagination: getPagination(params.currentPage, response.totalElements, params.limit, baseUrl)
   }
 
   delete session.outcomeActionAssign

@@ -113,13 +113,8 @@
             {% if pagination.totalPages > 1 %}
                 {%- set showSubsectionLinks = (params.subsection === 'added' or params.subsection === 'heard') -%}
                 {% block paginationBlock %}
-                    {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
-                    {{ mojPagination({
-                        results: {
-                            from: params.from + 1,
-                            to: params.to,
-                            count: params.caseCount
-                        },
+                    {% from "govuk/components/pagination/macro.njk" import govukPagination %}
+                    {{ govukPagination({
                         previous: pagination.recentlyAddedPreviousLink if showSubsectionLinks else pagination.previousLink,
                         next: pagination.recentlyAddedNextLink if showSubsectionLinks else pagination.nextLink,
                         items: pagination.recentlyAddedPageItems if showSubsectionLinks else pagination.pageItems

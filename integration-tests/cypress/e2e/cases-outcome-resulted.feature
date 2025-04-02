@@ -32,8 +32,11 @@ Feature: Resulted Cases List
       | Hazel Nutt     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Olive Tree \n on 11 Aug 2023 at 10:35 |
       | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Johnny Ball \n on 9 Sep 2023 at 14:16 |
 
-    And I should see 2 numbered pagination links from 1 to 2 followed by a link Next
-    And I should see the pagination numbers 1 to 2 of 3 results
+    And I should see pagination
+    And I should not see pagination previous link
+    And I should see pagination page "1" highlighted
+    And I should see pagination link "2" with href "page=2"
+    And I should see pagination next link with href "page=2"
 
     When I click the "Outcome type" filter button
     And I select the "Adjourned" filter

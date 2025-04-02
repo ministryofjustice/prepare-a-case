@@ -20,7 +20,7 @@
     "status": 200,
     "jsonBody": {
       "totalPages": 2,
-      "totalElements": 3,
+      "totalElements": 21,
       "cases": [
         {
           "hearingOutcomeType": "REPORT_REQUESTED",

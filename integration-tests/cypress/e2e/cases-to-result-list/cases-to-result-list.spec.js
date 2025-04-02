@@ -1,9 +1,5 @@
 import { Then } from '@badeball/cypress-cucumber-preprocessor'
 
-Then('I should not see pagination', () => {
-  cy.get('.moj-pagination').should('not.exist')
-})
-
 Then('Defendant {string} should display the following {string} data', ($defendant, $header, $data) => {
   let headerIndex
   cy.contains('th', $header).invoke('index').then(index => {

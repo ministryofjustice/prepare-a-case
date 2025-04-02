@@ -35,7 +35,9 @@ describe('getResultedCasesHandler', () => {
     sorts: { sorts: 'hearingDate', order: 'ASC' },
     courtCode,
     state: 'RESULTED',
-    casesInProgressCount: 2
+    casesInProgressCount: 2,
+    currentPage: 1,
+    pagingBaseUrl: '/ABC/outcomes/resulted-cases'
   }
   const query = {}
   const mockRequest = {
@@ -49,6 +51,7 @@ describe('getResultedCasesHandler', () => {
   it('should invoke get hearing outcomes for RESULTED state', async () => {
     // Given
     const apiResponse = {
+      totalElements: 2,
       cases: [
         { assignedToUuid: 'uuid-one', assignedTo: 'AUthor One' },
         {
@@ -102,7 +105,14 @@ describe('getResultedCasesHandler', () => {
       },
       title: params.title,
       currentUserUuid: '78be7d32-d6be-4429-b469-f2b0ba232033',
-      data: apiResponse.cases
+      data: apiResponse.cases,
+      totalElements: 2,
+      totalPages: undefined,
+      pagination: {
+        pageItems: [],
+        previousLink: null,
+        nextLink: null
+      }
     })
   })
 })

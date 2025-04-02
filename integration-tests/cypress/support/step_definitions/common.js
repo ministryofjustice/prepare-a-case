@@ -463,25 +463,6 @@ Then('I see value {string} in the text input with id {string}', ($string, $id) =
   cy.get(`#${$id}`).should('contain.value', $string)
 })
 
-Then('I should see {int} numbered pagination links from {int} to {int} followed by a link Next', ($pages, $fromNum, $toNum) => {
-  const nav = cy.get('.moj-pagination .moj-pagination__list')
-
-  for (let i = $fromNum; i <= $toNum; i++) {
-    nav.within(() => {
-      cy.get('.moj-pagination__item').contains(`${i}`).should('exist')
-    })
-  }
-  cy.get('.moj-pagination__item').contains('Next').should('exist')
-})
-
-Then('I should see the pagination numbers {int} to {int} of {int} results', ($fromNum, $toNum, $ofNum) => {
-  cy.get('.moj-pagination__results').should('contain.text', `Showing ${$fromNum} to ${$toNum} of ${$ofNum} results`)
-})
-
-Then('I click the {string} link in the pagination links', ($link) => {
-  cy.get('.moj-pagination .moj-pagination__list .moj-pagination__item').contains($link).click()
-})
-
 Then('the page {int} should be loaded', ($pageNo) => {
   cy.location().should(location => {
     const urlParams = new URLSearchParams(location.href)
@@ -601,4 +582,60 @@ When('I click the {string} sort button', $string => {
 
 Then('I should see the {string} filter tag', $string => {
   cy.get('.pac-filter__tag').contains($string)
+})
+
+Then('I should see pagination', () => {
+  cy.get('.govuk-pagination').should('exist')
+})
+
+Then('I should not see pagination previous link', () => {
+  cy.get('.govuk-pagination__prev').should('not.exist')
+})
+
+Then('I should not see pagination next link', () => {
+  cy.get('.govuk-pagination__next').should('not.exist')
+})
+
+Then('I should see pagination page {string} highlighted', $string => {
+  cy.get('.govuk-pagination__item--current').contains($string).should('exist')
+})
+
+Then('I should see pagination link {string} with href {string}', ($string, $href) => {
+  cy.get('.govuk-pagination__link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+})
+
+Then('I should see pagination next link with href {string}', ($href) => {
+  cy.get('.govuk-pagination__next').within(() => {
+    cy.get('.govuk-pagination__link').should('have.attr', 'href').and('include', $href)
+ })
+})
+
+Then('I should see pagination previous link with href {string}', ($href) => {
+  cy.get('.govuk-pagination__prev').within(() => {
+    cy.get('.govuk-pagination__link').should('have.attr', 'href').and('include', $href)
+ })
+})
+
+Then('I should not see pagination', () => {
+  cy.get('.govuk-pagination').should('not.exist')
+})
+
+Then('I click pagination link {string}', $string => {
+  cy.get('.govuk-pagination__link').contains($string).click()
+})
+
+Then('I should see an ellipsis on the pagination', () => {
+  cy.get('.govuk-pagination__item--ellipses').should('exist')
+})
+
+Then('I should not see an ellipsis on the pagination', () => {
+  cy.get('.govuk-pagination__item--ellipses').should('not.exist')
+})
+
+Then('I click pagination next link', () => {
+  cy.get('.govuk-pagination__next').click()
+})
+
+Then('I click pagination previous link', () => {
+  cy.get('.govuk-pagination__prev').click()
 })

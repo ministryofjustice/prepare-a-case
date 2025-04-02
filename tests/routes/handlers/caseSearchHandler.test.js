@@ -12,7 +12,7 @@ describe('caseSearchHandler', () => {
     render: jest.fn()
   }
   const term = 'C123456'
-  const mockRequest = { query: { term, page: 2 }, cookies: { currentCourt: 'B12345' } }
+  const mockRequest = { query: { term, page: 1 }, cookies: { currentCourt: 'B12345' } }
 
   const getCaseSearchType = jest.fn()
   const handler = require('../../../server/routes/handlers/getCaseSearchHandler')({ searchCases: searchByCrnMock }, getCaseSearchType)
@@ -23,13 +23,25 @@ describe('caseSearchHandler', () => {
     searchByCrnMock.mockResolvedValueOnce({ data })
 
     await handler(mockRequest, mockResponse)
-    expect(searchByCrnMock).toHaveBeenCalledWith(term, 'CRN', 2, 20)
+    expect(searchByCrnMock).toHaveBeenCalledWith(term, 'CRN', 1, 20)
     expect(mockResponse.render).toHaveBeenCalledWith('case-search', {
       params: { ...mockRequest.params, courtCode: 'B12345' },
       data: { ...data },
       term,
-      currentPage: 2,
-      pageSize: 20
+      currentPage: 1,
+      pageSize: 20,
+      pagination: {
+        pageItems: [
+          {
+            current: true,
+            ellipsis: false,
+            href: '/case-search?term=C123456&page=1',
+            number: 1
+          }
+        ],
+        previousLink: null,
+        nextLink: null
+      }
     })
   })
 

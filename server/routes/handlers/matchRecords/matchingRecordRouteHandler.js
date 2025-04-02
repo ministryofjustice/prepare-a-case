@@ -1,6 +1,7 @@
 const { settings } = require('../../../config')
-const { getPaginationObject, getBackUrl } = require('../../helpers')
+const { getBackUrl } = require('../../helpers')
 const trackEvent = require('../../../utils/analytics')
+const { getPagination } = require('../../../utils/pagination')
 
 const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) => async (req, res) => {
   const {
@@ -37,16 +38,6 @@ const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) =
 
   const paginatedMatchData = response.offenderMatchDetails.slice(start, end)
 
-  const pageParams = {
-    matchingRecordsCount: offenderMatchDetails.length,
-    page: currentPage,
-    recordsPerPage,
-    courtCode,
-    caseId,
-    hearingId,
-    defendantId
-  }
-
   if (settings.enableMatcherLogging) {
     trackEvent('PiCMatcherLogging', response)
     trackEvent('PiCMatcherRecordsCount', offenderMatchDetails.length)
@@ -56,13 +47,21 @@ const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) =
     }
   }
 
+  const baseUrl = `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?`
+  const matchingRecordsCount = offenderMatchDetails.length
+  const totalPages = Math.round(Math.ceil((matchingRecordsCount / recordsPerPage)))
+
   templateValues.session = {
     ...session
   }
   templateValues.data = {
     ...templateValues.data,
     matchData: paginatedMatchData,
-    pagination: getPaginationObject(pageParams),
+    pagination: {
+      ...getPagination(currentPage, matchingRecordsCount, recordsPerPage, baseUrl),
+      totalPages,
+      matchingRecordsCount
+    },
     backUrl: getBackUrl(session, hearingId, defendantId)
   }
   session.confirmedMatch = undefined

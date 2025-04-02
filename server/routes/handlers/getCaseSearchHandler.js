@@ -1,6 +1,8 @@
 const log = require('../../log')
 const trackEvent = require('../../utils/analytics')
 const { settings } = require('../../config')
+const { getPagination } = require('../../utils/pagination')
+
 const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req, res) => {
   const term = req.query.term
   const { searchType: type, error } = getCaseSearchType(term)
@@ -23,6 +25,7 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
   if (term && type) {
     const pageSize = settings.caseSearchResultPageSize
     const data = await searchCases(term, type, page, pageSize)
+    const baseUrl = '/case-search?term=' + term + '&'
 
     trackingEvent.length = data?.data?.items?.length
 
@@ -37,7 +40,8 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
       },
       currentPage,
       pageSize,
-      term
+      term,
+      pagination: getPagination(currentPage, data.data.totalElements, pageSize, baseUrl)
     }
     res.render('case-search', templateValues)
   } else {

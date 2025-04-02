@@ -1,60 +1,10 @@
 {% if totalPages > 1 %}
-    {% set maxPagesDisplay = 5 %}
-    {% set startNum = params.currentPage - ((maxPagesDisplay - 1) / 2) %}
-    {% set endNum = params.currentPage + ((maxPagesDisplay - 1) / 2) %}
-    {% set totalPages = (totalElements / params.pageSize) | round(0, "ceil") %}
-
-    {% if startNum < 1 or totalPages <= maxPagesDisplay %}
-        {% set startNum = 1 %}
-        {% set endNum = maxPagesDisplay %}
-        {% elif endNum > totalPages %}
-        {% set startNum = totalPages - (maxPagesDisplay - 1) %}
-    {% endif %}
-
-    {% if endNum > totalPages %}
-        {% set endNum = totalPages %}
-    {% endif %}
-
-    {% set pageItems = [] %}
-    {% for i in range(startNum, endNum + 1) -%}
-        {% set pageItems = (pageItems.push({
-            text: i + '',
-            href: params.pagingBaseUrl + '&page=' + i,
-            selected: params.currentPage === i
-        }), pageItems) %}
-    {%- endfor %}
-    {% if params.currentPage === 1 %}
-        {% set previousLink = null %}
-    {% else %}
-        {% set previousLink = {
-            text: 'Previous',
-            href: params.pagingBaseUrl + '&page=' + (params.currentPage - 1)
-        } %}
-    {% endif %}
-
-    {% if params.currentPage === totalPages %}
-        {% set nextLink = null %}
-        {% set nextLink = null %}
-    {% else %}
-        {% set nextLink = {
-            text: 'Next',
-            href: params.pagingBaseUrl + '&page=' + (params.currentPage + 1)
-        } %}
-    {% endif %}
-
-    {% set toElementCount = (params.currentPage * params.pageSize) if (params.currentPage * params.pageSize) <= totalElements else totalElements %}
-
     {% block pagination %}
-        {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
-        {{ mojPagination({
-            results: {
-                from: (params.currentPage - 1) * params.pageSize + 1,
-                to: toElementCount,
-                count: totalElements
-            },
-            previous: previousLink,
-            next: nextLink,
-            items: pageItems
+        {% from "govuk/components/pagination/macro.njk" import govukPagination %}
+        {{ govukPagination({
+            previous: pagination.previousLink,
+            next: pagination.nextLink,
+            items: pagination.pageItems
         }) }}
     {% endblock %}
 {% endif %}
