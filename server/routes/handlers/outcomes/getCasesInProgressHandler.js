@@ -89,7 +89,7 @@ const getCasesInProgressHandler = (caseService, userPreferenceService) => async 
     totalElements: response.totalElements,
     flashMessage,
     globalErrors,
-    pagination: getPagination(params.currentPage, response.totalElements, params.limit, baseUrl)
+    pagination: getPagination(params.currentPage, response.totalElements, params.pageSize, baseUrl)
   }
   session.moveToResultedSuccess = undefined
 
