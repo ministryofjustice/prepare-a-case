@@ -1,4 +1,3 @@
-const { settings } = require('../config')
 const getPsrRequestedConvictions = communityResponse => {
   return communityResponse.convictions?.filter(conviction => conviction.active && conviction.awaitingPsr && conviction.psrReports && conviction.psrReports.length)
     .map(conviction => {
@@ -83,78 +82,12 @@ const getMatchedUrl = (matchType, matchDate, hearingId, defendantId, courtCode) 
     '/summary'
 }
 
-const getPaginationObject = (pageParams) => {
-  const maximumPages = settings.maximumPages
-
-  const { page: currentPage, matchingRecordsCount, recordsPerPage, courtCode, caseId, hearingId, defendantId } = pageParams
-
-  let startNum = Math.round(Math.ceil(currentPage - ((maximumPages - 1) / 2)))
-  let endNum = currentPage + Math.round(Math.ceil(((maximumPages - 1) / 2)))
-  const totalPages = Math.round(Math.ceil((matchingRecordsCount / recordsPerPage)))
-
-  const startCount = ((currentPage - 1) || 0) * recordsPerPage
-  const endCount = Math.min(startCount + recordsPerPage, matchingRecordsCount)
-
-  const pageItems = []
-  let previousLink
-  let nextLink
-
-  if (startNum < 1 || totalPages <= maximumPages) {
-    startNum = 1
-    endNum = maximumPages
-  } else if (endNum > totalPages) {
-    startNum = totalPages - (maximumPages - 1)
-  }
-
-  if (endNum > totalPages) {
-    endNum = totalPages
-  }
-
-  for (let i = startNum; i <= endNum; i++) {
-    pageItems.push({
-      text: i,
-      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${i}`,
-      selected: currentPage === i
-    })
-  }
-
-  if (currentPage !== 1) {
-    previousLink = {
-      text: 'Previous',
-      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage - 1}`
-    }
-  }
-
-  if (currentPage < totalPages) {
-    nextLink = {
-      text: 'Next',
-      href: `/${courtCode}/case/${caseId}/hearing/${hearingId}/match/defendant/${defendantId}?page=${currentPage + 1}`
-    }
-  }
-
-  return {
-    maxPagesDisplay: maximumPages,
-    currentPage,
-    startNum,
-    endNum,
-    totalPages,
-    pageItems,
-    previousLink,
-    nextLink,
-    from: startCount,
-    to: endCount,
-    matchingRecordsCount
-
-  }
-}
-
 module.exports = {
   getPsrRequestedConvictions,
   getLastSentencedConvictionPSR,
   getNormalisedCourtRoom,
   prepareCourtRoomFilters,
   getOrderTitle,
-  getPaginationObject,
   getBackUrl,
   getMatchedUrl
 }

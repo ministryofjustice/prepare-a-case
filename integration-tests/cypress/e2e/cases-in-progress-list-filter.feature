@@ -10,7 +10,7 @@ Feature: Cases In progress List filters
 
     And I should see a tab with text "Cases to result (8)"
 
-    And I should see a tab with text "In progress (15)"
+    And I should see a tab with text "In progress (21)"
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date |

@@ -146,17 +146,13 @@ describe('getPagedCaseListRouteHandler', () => {
           }
         ],
         pagination: {
-          maxPagesDisplay: 4,
-          currentPage: 1,
-          startNum: 1,
-          endNum: 1,
           totalPages: 1,
-          pageItems: [{ text: 1, href: '/ABC/cases/2020-11-11?someFilter=someFilterValue&page=1', selected: true }],
-          recentlyAddedPageItems: [{ text: 1, href: '/ABC/cases/2020-11-11/?page=1', selected: true }],
-          previousLink: undefined,
-          recentlyAddedPreviousLink: undefined,
-          nextLink: undefined,
-          recentlyAddedNextLink: undefined
+          pageItems: [{ number: 1, href: '/ABC/cases/2020-11-11?someFilter=someFilterValue&page=1', current: true, ellipsis: false }],
+          recentlyAddedPageItems: [{ number: 1, href: '/ABC/cases/2020-11-11/?page=1', current: true, ellipsis: false }],
+          previousLink: null,
+          recentlyAddedPreviousLink: null,
+          nextLink: null,
+          recentlyAddedNextLink: null
         },
         tableData: {
           head: [

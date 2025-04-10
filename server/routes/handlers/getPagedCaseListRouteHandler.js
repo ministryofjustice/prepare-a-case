@@ -7,6 +7,7 @@ const queryParamBuilder = require('../../utils/queryParamBuilder.js')
 const { getFilterComponent, populateTemplateValuesWithComponent } = require('../../utils/nunjucksComponents.js')
 const moment = require('moment')
 const { constructTableData } = require('../../utils/caseListTableData.js')
+const { getPagination } = require('../../utils/pagination')
 
 const getTodaysDate = () => {
   return moment(new Date()).format('YYYY-MM-DD')
@@ -93,81 +94,39 @@ const getPageTabs = (params) => {
 }
 
 const getPaginationObject = (pageParams) => {
-  const maximumPages = 4
   const currentPage = pageParams.page
-  let startNum = pageParams.page - ((maximumPages - 1) / 2)
-  let endNum = pageParams.page + ((maximumPages - 1) / 2)
+  const pagination = getPagination(currentPage, pageParams.caseCount, pageParams.limit, pageParams.baseUrl)
+
+  const recentlyAddedPageItems = []
+  pagination.pageItems.forEach(x => {
+    recentlyAddedPageItems.push({
+      ...x,
+      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + x.number
+    })
+  })
+
+  const recentlyAddedPreviousLink = pagination.previousLink !== null
+    ? {
+        ...pagination.previousLink,
+        href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage - 1)
+      }
+    : null
+
+  const recentlyAddedNextLink = pagination.nextLink !== null
+    ? {
+        ...pagination.nextLink,
+        href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage + 1)
+      }
+    : null
+
   const totalPages = Math.round(Math.ceil((pageParams.caseCount / pageParams.limit)))
 
-  const pageItems = []
-  const recentlyAddedPageItems = []
-  let previousLink
-  let recentlyAddedPreviousLink
-  let recentlyAddedNextLink
-  let nextLink
-
-  if (startNum < 1 || totalPages <= maximumPages) {
-    startNum = 1
-    endNum = maximumPages
-  } else if (endNum > totalPages) {
-    startNum = totalPages - (maximumPages - 1)
-  }
-
-  if (endNum > totalPages) {
-    endNum = totalPages
-  }
-
-  for (let i = startNum; i <= endNum; i++) {
-    pageItems.push({
-      text: i,
-      href: pageParams.baseUrl + 'page=' + i,
-      selected: currentPage === i
-    })
-
-    recentlyAddedPageItems.push({
-      text: i,
-      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + i,
-      selected: currentPage === i
-    })
-  }
-
-  if (currentPage !== 1) {
-    previousLink = {
-      text: 'Previous',
-      href: pageParams.baseUrl + 'page=' + (currentPage - 1)
-    }
-
-    recentlyAddedPreviousLink = {
-      text: 'Previous',
-      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage - 1)
-    }
-  }
-
-  if (currentPage < totalPages) {
-    nextLink = {
-      text: 'Next',
-      href: pageParams.baseUrl + 'page=' + (currentPage + 1)
-    }
-
-    recentlyAddedNextLink = {
-      text: 'Next',
-      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage + 1)
-    }
-  }
-
   return {
-    maxPagesDisplay: maximumPages,
-    currentPage,
-    startNum,
-    endNum,
+    ...pagination,
     totalPages,
-    pageItems,
     recentlyAddedPageItems,
-    previousLink,
     recentlyAddedPreviousLink,
-    nextLink,
     recentlyAddedNextLink
-
   }
 }
 

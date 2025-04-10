@@ -35,40 +35,12 @@ Then('I should see the next update as {string}', $string => {
   cy.get('.pac-next-update-stamp').contains($string)
 })
 
-Then('I should see pagination text {string}', $string => {
-  cy.get('.moj-pagination__results').contains($string)
-})
-
 Then('I should not see the table list', () => {
   cy.get('.govuk-table').should('not.exist')
 })
 
-Then('I should see pagination', () => {
-  cy.get('.moj-pagination').should('exist')
-})
-
-Then('I should see pagination link {string} with href {string}', ($string, $href) => {
-  cy.get('.moj-pagination__link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
-})
-
-Then('I should see pagination page {string} highlighted', $string => {
-  cy.get('.moj-pagination__item--active').contains($string).should('exist')
-})
-
-Then('I should not see pagination link {string}', $string => {
-  cy.get('.moj-pagination__link').contains($string).should('not.exist')
-})
-
-Then('I should not see pagination', () => {
-  cy.get('.moj-pagination').should('not.exist')
-})
-
 Then('I should not see filters', () => {
   cy.get('[data-test=pac-filter-card]').should('not.exist')
-})
-
-Then('I click pagination link {string}', $string => {
-  cy.get('.moj-pagination__link').contains($string).click()
 })
 
 Then('Defendant {string} should display the following {string} data', ($defendant, $header, $data) => {

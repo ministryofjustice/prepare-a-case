@@ -57,23 +57,46 @@ Feature: Case search
     When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
     Then I should see the level 3 heading "125 search results for C123456"
-    And I should see 5 numbered pagination links from 1 to 5 followed by a link Next
-    And I should see the pagination numbers 1 to 20 of 125 results
+    And I should see pagination
+    And I should not see pagination previous link
+    And I should see pagination page "1" highlighted
+    And I should see pagination link "2" with href "page=2"
+    And I should see an ellipsis on the pagination
+    And I should see pagination link "7" with href "page=7"
+    And I should see pagination next link with href "page=2"
 
-    When I click the "Next" link in the pagination links
+    When I click pagination next link
     Then the page 2 should be loaded
-    And I should see 5 numbered pagination links from 1 to 5 followed by a link Next
-    Then I should see the pagination numbers 21 to 40 of 125 results
+    And I should see pagination previous link with href "page=1"
+    And I should see pagination link "1" with href "page=1"
+    And I should see pagination page "2" highlighted
+    And I should see pagination link "3" with href "page=3"
+    And I should see an ellipsis on the pagination
+    And I should see pagination link "7" with href "page=7"
+    And I should see pagination next link with href "page=3"
 
-    When I click the "Next" link in the pagination links
-    Then the page 3 should be loaded
-    And I should see 5 numbered pagination links from 1 to 5 followed by a link Next
-    And I should see the pagination numbers 41 to 60 of 125 results
-
-    When I click the "Next" link in the pagination links
+    When I click pagination next link
+    Then I click pagination link "4"
     Then the page 4 should be loaded
-    And I should see the pagination numbers 61 to 80 of 125 results
-    And I should see 5 numbered pagination links from 2 to 6 followed by a link Next
+    And I should see pagination previous link with href "page=3"
+    And I should see pagination link "1" with href "page=1"
+    And I should see pagination link "2" with href "page=2"
+    And I should see pagination link "3" with href "page=3"
+    And I should see pagination page "4" highlighted
+    And I should see pagination link "5" with href "page=5"
+    And I should see pagination link "6" with href "page=6"
+    And I should see pagination link "7" with href "page=7"
+    And I should see pagination next link with href "page=5"
+    And I should not see an ellipsis on the pagination
+
+    When I click pagination link "7"
+    Then the page 7 should be loaded
+    And I should not see pagination next link
+    And I should see pagination page "7" highlighted
+    And I should see pagination link "6" with href "page=6"
+    And I should see an ellipsis on the pagination
+    And I should see pagination link "1" with href "page=1"
+    And I should see pagination previous link with href "page=6"
 
   Scenario: Should handle case search errors
     Given I am an authenticated user
