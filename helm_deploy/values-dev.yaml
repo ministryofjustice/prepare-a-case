@@ -54,3 +54,4 @@ whitelist:
   petty-france-wifi: "213.121.161.112/28"
   dom1-ark-2: "194.33.192.0/25"
   dom1-ark-4: "194.33.196.0/25"
+  dom1-ark-corsham: "194.33.196.0/24"

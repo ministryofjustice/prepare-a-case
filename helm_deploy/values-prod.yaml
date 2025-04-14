@@ -59,10 +59,7 @@ whitelist:
   moj-official-azure-landing-zone-public-egress-2: "20.49.214.228/32"
   moj-official-azure-landing-zone-public-egress-3: "20.26.11.71/32"
   moj-official-azure-landing-zone-public-egress-4: "20.26.11.108/32"
-  vodafone-dia-1: "194.33.200.0/21"
-  vodafone-dia-2: "194.33.216.0/24"
   vodafone-dia-3: "194.33.217.0/24"
-  vodafone-dia-4: "194.33.218.0/24"
 
 
 resources:
