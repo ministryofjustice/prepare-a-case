@@ -4,20 +4,20 @@ const getPagination = (currentPage, resultsCount, resultsPerPageLimit, baseUrl) 
 
   const pageItems = []
 
-  const addPageNumber = ({ number, current, ellipsis }) => {
+  const addPageNumber = ({ number, selected, type }) => {
     pageItems.push({
-      number,
+      text: number,
       href: baseUrl + 'page=' + number,
-      current,
-      ellipsis
+      selected,
+      type
     })
   }
 
   const pageSet = new Set([firstPage, firstPage + 1, currentPage - 1, currentPage, currentPage + 1, totalPages - 1, totalPages]
     .filter(x => x >= firstPage && x <= totalPages))
   pageSet.forEach(i => {
-    const ellipsis = (i > firstPage && i < currentPage - 2) || (i < totalPages && i > currentPage + 2)
-    addPageNumber({ number: i, current: currentPage === i, ellipsis })
+    const type = (i > firstPage && i < currentPage - 2) || (i < totalPages && i > currentPage + 2) ? 'dots' : null
+    addPageNumber({ number: i, selected: currentPage === i, type })
   })
 
   const previousLink = currentPage > firstPage

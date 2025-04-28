@@ -72,9 +72,16 @@
                     {{ govukTable(tableData) }}
             {% endblock %}
 
+            {% set toElementCount = (currentPage * pageSize) if (currentPage * pageSize) <= data.totalElements else data.totalElements %}
+
             {% block pagination %}
-                {% from "govuk/components/pagination/macro.njk" import govukPagination %}
-                {{ govukPagination({
+                {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+                {{ mojPagination({
+                    results: {
+                        from: (currentPage - 1) * pageSize + 1,
+                        to: toElementCount,
+                        count: data.totalElements
+                    },
                     previous: pagination.previousLink,
                     next: pagination.nextLink,
                     items: pagination.pageItems

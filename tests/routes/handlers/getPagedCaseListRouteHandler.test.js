@@ -147,8 +147,8 @@ describe('getPagedCaseListRouteHandler', () => {
         ],
         pagination: {
           totalPages: 1,
-          pageItems: [{ number: 1, href: '/ABC/cases/2020-11-11?someFilter=someFilterValue&page=1', current: true, ellipsis: false }],
-          recentlyAddedPageItems: [{ number: 1, href: '/ABC/cases/2020-11-11/?page=1', current: true, ellipsis: false }],
+          pageItems: [{ text: 1, href: '/ABC/cases/2020-11-11?someFilter=someFilterValue&page=1', selected: true, type: null }],
+          recentlyAddedPageItems: [{ text: 1, href: '/ABC/cases/2020-11-11/?page=1', selected: true, type: null }],
           previousLink: null,
           recentlyAddedPreviousLink: null,
           nextLink: null,

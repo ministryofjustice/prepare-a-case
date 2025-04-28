@@ -101,7 +101,7 @@ const getPaginationObject = (pageParams) => {
   pagination.pageItems.forEach(x => {
     recentlyAddedPageItems.push({
       ...x,
-      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + x.number
+      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + x.text
     })
   })
 
