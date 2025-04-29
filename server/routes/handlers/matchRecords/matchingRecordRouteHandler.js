@@ -60,7 +60,9 @@ const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) =
     pagination: {
       ...getPagination(currentPage, matchingRecordsCount, recordsPerPage, baseUrl),
       totalPages,
-      matchingRecordsCount
+      matchingRecordsCount,
+      from: start,
+      to: end
     },
     backUrl: getBackUrl(session, hearingId, defendantId)
   }

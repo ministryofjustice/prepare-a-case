@@ -46,10 +46,10 @@ describe('getMatchingRecordRouteHandler', () => {
       previousLink: null,
       pageItems: [
         {
-          current: true,
-          ellipsis: false,
+          selected: true,
+          type: null,
           href: '/test-court/case/test-case-id/hearing/test-hearing-id/match/defendant/test-defendant-id?page=1',
-          number: 1
+          text: 1
         }
       ]
     }
@@ -70,7 +70,9 @@ describe('getMatchingRecordRouteHandler', () => {
         pagination: {
           ...paginationObject,
           matchingRecordsCount: 2,
-          totalPages: 1
+          totalPages: 1,
+          from: 0,
+          to: 2
         }
       }
     })

@@ -33,10 +33,10 @@ describe('caseSearchHandler', () => {
       pagination: {
         pageItems: [
           {
-            current: true,
-            ellipsis: false,
+            selected: true,
+            type: null,
             href: '/case-search?term=C123456&page=1',
-            number: 1
+            text: 1
           }
         ],
         previousLink: null,

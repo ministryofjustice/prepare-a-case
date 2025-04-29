@@ -50,6 +50,7 @@ Feature: Case list
     And I should see pagination link "2" with href "page=2"
     And I should see pagination link "3" with href "page=3"
     And I should see pagination next link with href "page=2"
+    And I should see pagination text "Showing 1 to 20 of 80 results"
     And There should be no a11y violations
 
   Scenario: View specific offence data on the case list
@@ -110,6 +111,7 @@ Feature: Case list
     And I should see pagination link "3" with href "page=3"
     And I should see pagination link "4" with href "page=4"
     And I should see pagination next link with href "page=3"
+    And I should see pagination text "Showing 21 to 40 of 80 results"
     And There should be no a11y violations
 
   Scenario: View the recently added cases on the case list
@@ -136,6 +138,7 @@ Feature: Case list
     And I should see pagination page "1" highlighted
     And I should see pagination link "2" with href "added?page=2"
     And I should see pagination next link with href "added?page=2"
+    And I should see pagination text "Showing 1 to 20 of 80 results"
     And There should be no a11y violations
 
     # Test state held in session

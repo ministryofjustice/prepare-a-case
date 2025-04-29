@@ -57,6 +57,7 @@ Feature: Case search
     When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
     Then I should see the level 3 heading "125 search results for C123456"
+    And I should see pagination text "Showing 1 to 20 of 125 results"
     And I should see pagination
     And I should not see pagination previous link
     And I should see pagination page "1" highlighted
@@ -67,6 +68,7 @@ Feature: Case search
 
     When I click pagination next link
     Then the page 2 should be loaded
+    And I should see pagination text "Showing 21 to 40 of 125 results"
     And I should see pagination previous link with href "page=1"
     And I should see pagination link "1" with href "page=1"
     And I should see pagination page "2" highlighted
@@ -78,6 +80,7 @@ Feature: Case search
     When I click pagination next link
     Then I click pagination link "4"
     Then the page 4 should be loaded
+    And I should see pagination text "Showing 61 to 80 of 125 results"
     And I should see pagination previous link with href "page=3"
     And I should see pagination link "1" with href "page=1"
     And I should see pagination link "2" with href "page=2"

@@ -33,6 +33,7 @@ Feature: Resulted Cases List
       | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Johnny Ball \n on 9 Sep 2023 at 14:16 |
 
     And I should see pagination
+    And I should see pagination text "Showing 1 to 2 of 21 results"
     And I should not see pagination previous link
     And I should see pagination page "1" highlighted
     And I should see pagination link "2" with href "page=2"
