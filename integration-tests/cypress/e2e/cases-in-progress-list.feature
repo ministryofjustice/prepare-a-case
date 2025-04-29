@@ -31,6 +31,7 @@ Feature: Cases in Progress List
 
     And I should see pagination
     And I should not see pagination previous link
+    And I should see pagination text "Showing 1 to 2 of 21 results"
     And I should see pagination page "1" highlighted
     And I should see pagination link "2" with href "page=2"
     And I should see pagination next link with href "page=2"

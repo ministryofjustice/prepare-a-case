@@ -639,3 +639,7 @@ Then('I click pagination next link', () => {
 Then('I click pagination previous link', () => {
   cy.get('.moj-pagination__item--prev').click()
 })
+
+Then('I should see pagination text {string}', $string => {
+  cy.get('.moj-pagination__results').contains($string)
+})

@@ -26,6 +26,7 @@ Feature: Cases to Result List
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
       |  | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+    And I should see pagination text "Showing 1 to 2 of 80 results"
     And I should see pagination page "1" highlighted
     And I should see pagination link "2" with href "page=2"
     And I should see pagination link "3" with href "page=3"
@@ -34,6 +35,7 @@ Feature: Cases to Result List
 
     When I click pagination next link
     Then the page 2 should be loaded
+    And I should see pagination text "Showing 3 to 4 of 80 results"
     And I should see pagination previous link with href "page=1"
     And I should see pagination link "1" with href "page=1"
     And I should see pagination page "2" highlighted
@@ -46,6 +48,7 @@ Feature: Cases to Result List
 
     When I click pagination next link
     Then the page 3 should be loaded
+    And I should see pagination text "Showing 5 to 6 of 80 results"
     And I should see pagination previous link with href "page=2"
     And I should see pagination link "1" with href "page=1"
     And I should see pagination link "2" with href "page=2"
@@ -58,6 +61,7 @@ Feature: Cases to Result List
 
     When I click pagination previous link
     Then the page 2 should be loaded
+    And I should see pagination text "Showing 3 to 4 of 80 results"
     And I should see pagination previous link with href "page=1"
     And I should see pagination link "1" with href "page=1"
     And I should see pagination page "2" highlighted
