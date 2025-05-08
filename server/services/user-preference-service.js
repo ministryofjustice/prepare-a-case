@@ -16,6 +16,7 @@ const updateSelectedCourts = async (userId, courts) => {
 
 const getPreferences = async (userId, preference) => {
   const res = await request(`${apiUrl}/users/${userId}/preferences/${preference}`)
+
   if (res) {
     return res.status >= 400 ? { isError: true, status: res.status || 500 } : res.data
   }
@@ -26,7 +27,7 @@ const updatePreferences = async (userId, preference, values) => {
   return await update(`${apiUrl}/users/${userId}/preferences/${preference}`, { items: values })
 }
 
-const getFilters = async (userId, filterType) => {
+const getFilters = async (userId, filterType, courtCode) => {
   const deconstructPersistentFilters = userPreferences => {
     if (!userPreferences.items) {
       return {}
@@ -60,7 +61,6 @@ const getFilters = async (userId, filterType) => {
         }
       }
     })
-
     if (
       validDate &&
       validDate.getDate() === today.getDate() &&
@@ -72,10 +72,9 @@ const getFilters = async (userId, filterType) => {
     return [filters, valid]
   }
 
-  const preferences = await getPreferences(userId, filterType)
-
+  const courtFilterType = `${filterType}-${courtCode}`
+  const preferences = await getPreferences(userId, courtFilterType)
   const [userPreferenceFilters, valid] = deconstructPersistentFilters(preferences)
-
   if (valid && config.features.persistFilters === 'true') {
     return userPreferenceFilters
   }
@@ -83,7 +82,7 @@ const getFilters = async (userId, filterType) => {
   return {}
 }
 
-const setFilters = async (userId, filterType, filters) => {
+const setFilters = async (userId, filterType, courtCode, filters) => {
   const constructPersistentFilter = queryParams => {
     const queryArray = []
 
@@ -105,7 +104,8 @@ const setFilters = async (userId, filterType, filters) => {
   }
 
   const persistentFilters = constructPersistentFilter(filters)
-  await updatePreferences(userId, filterType, persistentFilters)
+  const courtFilterType = `${filterType}-${courtCode}`
+  await updatePreferences(userId, courtFilterType, persistentFilters)
 }
 
 module.exports = {
