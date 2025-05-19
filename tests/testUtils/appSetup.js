@@ -29,6 +29,5 @@ module.exports = route => {
   app.use(express.json())
   app.use(express.urlencoded({ extended: false }))
   app.use('/', route)
-  app.use(error => console.log(error))
   return app
 }
