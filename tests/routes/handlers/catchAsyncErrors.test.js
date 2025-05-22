@@ -31,7 +31,6 @@ describe('catchAsyncErrors', () => {
   }
 
   const subject = require('../../../server/routes/handlers/catchAsyncErrors')
-  const loggerMock = require('../../../server/log')
 
   it('should catch, log and progress the error to express when handler throws an error', async () => {
     handlerMock.mockRejectedValueOnce(testError)
