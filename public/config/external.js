@@ -40,8 +40,8 @@ function initAccordian(config) {
     $elements.forEach($element => {
       try {
         'defaults' in Component ? new Component($element, config) : new Component($element);
-      } catch (error) {
-        console.log(error);
+      } catch (_error) { 
+        console.log('Could not init govuk accordian')
       }
     });
   });
