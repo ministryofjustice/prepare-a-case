@@ -1,4 +1,4 @@
-const axios = require('axios').default
+const { instance: axios } = require('./authorisationMiddleware')
 const { apis: { courtCaseService }, settings: { healthTimeout } } = require('../../config')
 
 const health = async (req, res, next) => {
