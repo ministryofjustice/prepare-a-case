@@ -85,6 +85,10 @@ jobs:
     resource_class: medium
     steps:
       - checkout
+      - snyk/scan:
+          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}'
+          monitor-on-build: << parameters.main >>
+          <<: *snyk_options
       - run:
           name: Fake local env file
           command: echo "" > .env

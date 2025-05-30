@@ -5,7 +5,7 @@ const axios = require('axios')
 
 const instance = axios.create()
 
-function authorisationMiddleware(req, res, next) {
+function authorisationMiddleware (req, res, next) {
   instance.interceptors.request.clear()
   // Make sure only users with court admin role can access court app
   if (res.locals?.user?.token) {
