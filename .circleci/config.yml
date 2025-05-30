@@ -87,7 +87,6 @@ jobs:
       - checkout
       - snyk/scan:
           project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}'
-          monitor: true
           <<: *snyk_options
       - run:
           name: Fake local env file
