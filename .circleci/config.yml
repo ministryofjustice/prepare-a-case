@@ -169,6 +169,21 @@ jobs:
                   docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:latest
                   docker push quay.io/hmpps/prepare-a-case:$APP_VERSION
                   docker push quay.io/hmpps/prepare-a-case:latest
+  deploy_dev:
+    executor: deployer
+    steps:
+      - deploy_to_live_env:
+          env: "dev"
+  deploy_preprod:
+    executor: deployer
+    steps:
+      - deploy_to_live_env:
+          env: "preprod"
+  deploy_prod:
+    executor: deployer
+    steps:
+      - deploy_to_live_env:
+          env: "prod"
 
 workflows:
   version: 2
