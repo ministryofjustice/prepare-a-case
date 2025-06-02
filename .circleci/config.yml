@@ -112,9 +112,9 @@ jobs:
     resource_class: medium
     steps:
       - checkout
-      - check_outdated:
-          context:
-            - hmpps-common-vars
+      # - check_outdated:
+      #     context:
+      #       - hmpps-common-vars
       - hmpps/npm_security_audit:
           slack_channel: << pipeline.parameters.alerts-slack-channel >>
           context:
@@ -279,9 +279,9 @@ workflows:
               only:
                 - main
     jobs:
-      - check_outdated:
-          context:
-            - hmpps-common-vars
+      # - check_outdated:
+      #     context:
+      #       - hmpps-common-vars
       - hmpps/npm_security_audit:
           slack_channel: << pipeline.parameters.alerts-slack-channel >>
           context:
