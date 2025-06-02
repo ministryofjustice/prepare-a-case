@@ -1,5 +1,11 @@
 version: 2.1
 
+orbs:
+  helm: circleci/helm@1.2.0
+  kubernetes: circleci/kubernetes@1.3.0
+  mem: circleci/rememborb@0.0.2
+  hmpps: ministryofjustice/hmpps@11
+
 parameters:
   alerts-slack-channel:
     type: string
@@ -53,6 +59,7 @@ commands:
               --values - \
               --values ~/git/helm_deploy/prepare-a-case/values-live.yaml \
               --set image.tag="${APP_VERSION}"
+
 executors:
   deployer:
     docker:
@@ -63,14 +70,7 @@ executors:
       - image: cimg/base:current
     working_directory: ~/app
 
-orbs:
-  helm: circleci/helm@1.2.0
-  kubernetes: circleci/kubernetes@1.3.0
-  mem: circleci/rememborb@0.0.2
-  hmpps: ministryofjustice/hmpps@6.1.0
-
 jobs:
-
   check_outdated:
     executor:
       name: hmpps/node
@@ -113,27 +113,6 @@ jobs:
     resource_class: medium
     steps:
       - checkout
-      # - check_outdated:
-      #     context:
-      #       - hmpps-common-vars
-      # - hmpps/npm_security_audit:
-      #     slack_channel: << pipeline.parameters.alerts-slack-channel >>
-      #     context:
-      #       - hmpps-common-vars
-      - hmpps/trivy_latest_scan:
-          slack_channel: << pipeline.parameters.alerts-slack-channel >>
-          context:
-            - hmpps-common-vars
-      - hmpps/veracode_pipeline_scan:
-          slack_channel: << pipeline.parameters.alerts-slack-channel >>
-          context:
-            - veracode-credentials
-            - hmpps-common-vars
-      - hmpps/veracode_policy_scan:
-          slack_channel: << pipeline.parameters.alerts-slack-channel >>
-          context:
-            - veracode-credentials
-            - hmpps-common-vars
       - run:
           name: Fake local env file
           command: echo "" > .env
@@ -228,7 +207,6 @@ workflows:
 
   build-test-and-deploy:
     jobs:
-      #- app_scan
       - test_lint_unit_pact:
           context: [hmpps-common-vars]
       - set_app_version:
@@ -274,15 +252,15 @@ workflows:
   security:
     triggers:
       - schedule:
-          cron: "30 5 * * 1-5"
-          filters:
-            branches:
-              only:
-                - main
+          cron: "30 15 * * 1-5"
+          # filters:
+          #   branches:
+          #     only:
+          #       - main
     jobs:
-      # - check_outdated:
-      #     context:
-      #       - hmpps-common-vars
+      - check_outdated:
+          context:
+            - hmpps-common-vars
       - hmpps/npm_security_audit:
           slack_channel: << pipeline.parameters.alerts-slack-channel >>
           context:
