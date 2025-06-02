@@ -5,6 +5,10 @@ parameters:
     type: string
     default: probation_in_court_dev
 
+  node-version:
+    type: string
+    default: 20.17.0-browsers
+
 commands:
   setup-live:
     description: "Install tools and configure kubectl"
@@ -65,6 +69,29 @@ orbs:
   mem: circleci/rememborb@0.0.2
 
 jobs:
+
+  check_outdated:
+    executor:
+      name: hmpps/node
+      tag: << pipeline.parameters.node-version >>
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install-npm
+          command: 'npm ci --no-audit'
+      - run:
+          name: Check version
+          command: 'npm --version'
+      - run:
+          name: Run check
+          command: 'npm outdated typescript govuk-frontend'
+      - slack/notify:
+          event: fail
+          channel: << pipeline.parameters.alerts-slack-channel >>
+          template: basic_fail_1
+
   set_app_version:
     executor: builder
     steps:
@@ -197,17 +224,6 @@ jobs:
 
 workflows:
   version: 2
-  scheduled:
-    triggers:
-      - schedule:
-          cron: "0 7 * * 1-5"
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - app_scan:
-          main: true
 
   build-test-and-deploy:
     jobs:
