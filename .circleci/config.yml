@@ -245,10 +245,10 @@ workflows:
     triggers:
       - schedule:
           cron: "11 16 * * 1-5"
-          # filters:
-          #   branches:
-          #     only:
-          #       - main
+          filters:
+            branches:
+              only:
+                - PIC-4652/fix-security-vulnerabilities
     jobs:
       # - check_outdated:
       #     context:
