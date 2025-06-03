@@ -20,7 +20,8 @@
     "test:unit": "docker exec -it -e ENABLE_HEARING_OUTCOMES=false prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit",
     "test:pact": "docker exec -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit",
     "test:int": "DISPLAY= docker compose -f compose/docker-compose.cypress-run.yml up --abort-on-container-exit",
-    "test:int:ui": "/usr/X11/bin/xhost + 127.0.0.1 && DISPLAY=host.docker.internal:0 docker compose -f compose/docker-compose.cypress-ui.yml up --abort-on-container-exit"
+    "test:int:ui": "/usr/X11/bin/xhost + 127.0.0.1 && DISPLAY=host.docker.internal:0 docker compose -f compose/docker-compose.cypress-ui.yml up --abort-on-container-exit",
+    "security_audit": "npx audit-ci --config audit-ci.json"
   },
   "config": {
     "pact_do_not_track": true
