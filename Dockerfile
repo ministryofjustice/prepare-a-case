@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get -y install g++ make python3 && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm i

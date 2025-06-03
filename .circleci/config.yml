@@ -107,14 +107,14 @@ jobs:
           background: true
       - run:
           name: Lint Test
-          command: docker exec -it prepare-a-case-app /usr/src/app/node_modules/.bin/standard
+          command: docker exec -it prepare-a-case-app /app/node_modules/.bin/standard
       - run:
           name: Unit Test
-          command: docker exec -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
+          command: docker exec -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       #- run:
       #    name: Pact Test
       #    halt_build_on_fail: false
-      #    command: docker exec -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit
+      #    command: docker exec -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit
       - run:
           name: Run integration tests
           command: DISPLAY=:99 docker compose -f compose/docker-compose.cypress-run.yml up --abort-on-container-exit
@@ -136,12 +136,12 @@ jobs:
       - run:
           name: Generate pact files
           halt_build_on_fail: false
-          command: docker run -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --ci
+          command: docker run -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --ci
       - store_artifacts:
           path: 'pact/pacts'
       - run:
           name: Upload pact files to broker
-          command: docker run -it prepare-a-case-app /usr/src/app/node_modules/.bin/pact-broker publish pact/pacts --broker-base-url $PACT_BROKER_BASE_URL --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD"
+          command: docker run -it prepare-a-case-app /app/node_modules/.bin/pact-broker publish pact/pacts --broker-base-url $PACT_BROKER_BASE_URL --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD"
   build:
     executor: deployer
     parameters:

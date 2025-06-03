@@ -56,13 +56,13 @@ services:
       target: development
     container_name: prepare-a-case-app
     volumes:
-      - ./bin:/usr/src/app/bin
-      - ./server:/usr/src/app/server
-      - ./public:/usr/src/app/public
-      - ./tests:/usr/src/app/tests
-      - ./pact:/usr/src/app/pact
-      - ./schemas:/usr/src/app/schemas
-      - ./wiremock:/usr/src/app/wiremock
+      - ./bin:/app/bin
+      - ./server:/app/server
+      - ./public:/app/public
+      - ./tests:/app/tests
+      - ./pact:/app/pact
+      - ./schemas:/app/schemas
+      - ./wiremock:/app/wiremock
     environment:
       - REDIS_HOST=redis
       - PORT=3000
