@@ -111,6 +111,10 @@ jobs:
       - run:
           name: Unit Test
           command: docker exec -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
+      - hmpps/trivy_latest_scan:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - hmpps-common-vars
       #- run:
       #    name: Pact Test
       #    halt_build_on_fail: false
@@ -202,10 +206,6 @@ workflows:
     jobs:
       - test_lint_unit_pact:
           context: [hmpps-common-vars]
-      - hmpps/trivy_latest_scan:
-          slack_channel: << pipeline.parameters.alerts-slack-channel >>
-          context:
-            - hmpps-common-vars
       - set_app_version:
           filters:
             branches:
@@ -220,6 +220,10 @@ workflows:
           main: true
           requires:
             - set_app_version
+      # - hmpps/trivy_latest_scan:
+      #     slack_channel: << pipeline.parameters.alerts-slack-channel >>
+      #     context:
+      #       - hmpps-common-vars
       - deploy_dev:
           context:
             - hmpps-common-vars
