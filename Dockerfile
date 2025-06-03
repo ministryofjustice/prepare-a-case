@@ -1,11 +1,14 @@
 ## use slim not alpine otherwise PACT binarys wont load due to missing libs
-FROM node:22-alpine as base
+FROM node:20.10-slim as base
 
 ## common
 ENV TZ=Europe/London
 RUN ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && echo "$TZ" > /etc/timezone
-RUN apt-get update
-RUN apt-get -y install g++ make python3
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get -y install g++ make python3 && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
 WORKDIR /usr/src/app
 COPY package.json ./
 COPY package-lock.json ./
