@@ -259,11 +259,6 @@ workflows:
           context:
             - veracode-credentials
             - hmpps-common-vars
-      - hmpps/veracode_policy_scan:
-          slack_channel: << pipeline.parameters.alerts-slack-channel >>
-          context:
-            - veracode-credentials
-            - hmpps-common-vars
   security-weekly:
     triggers:
       - schedule:
