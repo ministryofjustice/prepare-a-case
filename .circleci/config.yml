@@ -216,6 +216,10 @@ workflows:
           main: true
           requires:
             - set_app_version
+      - hmpps/npm_security_audit:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - hmpps-common-vars
       - hmpps/trivy_latest_scan:
           slack_channel: << pipeline.parameters.alerts-slack-channel >>
           context:
@@ -270,11 +274,11 @@ workflows:
           slack_channel: << pipeline.parameters.alerts-slack-channel >>
           context:
             - hmpps-common-vars
-      # - hmpps/veracode_pipeline_scan:
-      #     slack_channel: << pipeline.parameters.alerts-slack-channel >>
-      #     context:
-      #       - veracode-credentials
-      #       - hmpps-common-vars
+      - hmpps/veracode_pipeline_scan:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - veracode-credentials
+            - hmpps-common-vars
   # security-weekly:
   #   triggers:
   #     - schedule:
