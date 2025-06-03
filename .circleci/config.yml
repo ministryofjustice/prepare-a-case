@@ -60,16 +60,11 @@ orbs:
   kubernetes: circleci/kubernetes@1.3.0
   mem: circleci/rememborb@0.0.2
   hmpps: ministryofjustice/hmpps@11
-  slack: circleci/slack@4.10.1
 
 parameters:
   alerts-slack-channel:
     type: string
     default: probation_in_court_dev
-
-  node-version:
-    type: string
-    default: 20.17.0-browsers
 
 jobs:
   set_app_version:
@@ -195,27 +190,6 @@ jobs:
     steps:
       - deploy_to_live_env:
           env: "prod"
-  check_outdated:
-    executor:
-      name: hmpps/node
-      tag: << pipeline.parameters.node-version >>
-    steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-      - run:
-          name: install-npm
-          command: 'npm ci --no-audit'
-      - run:
-          name: Check version
-          command: 'npm --version'
-      - run:
-          name: Run check
-          command: 'npm outdated typescript govuk-frontend'
-      - slack/notify:
-          event: fail
-          channel: << pipeline.parameters.alerts-slack-channel >>
-          template: basic_fail_1
 
 workflows:
   version: 2
@@ -238,9 +212,6 @@ workflows:
           main: true
           requires:
             - set_app_version
-      - check_outdated:
-          context:
-            - hmpps-common-vars              
       - deploy_dev:
           context:
             - hmpps-common-vars
@@ -275,9 +246,6 @@ workflows:
               only:
                 - main
     jobs:
-      # - check_outdated:
-      #     context:
-      #       - hmpps-common-vars
       - hmpps/npm_security_audit:
           slack_channel: << pipeline.parameters.alerts-slack-channel >>
           context:
