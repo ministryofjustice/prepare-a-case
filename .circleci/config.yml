@@ -194,6 +194,27 @@ jobs:
     steps:
       - deploy_to_live_env:
           env: "prod"
+  check_outdated:
+    executor:
+      name: hmpps/node
+      tag: << pipeline.parameters.node-version >>
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install-npm
+          command: 'npm ci --no-audit'
+      - run:
+          name: Check version
+          command: 'npm --version'
+      - run:
+          name: Run check
+          command: 'npm outdated typescript govuk-frontend'
+      - slack/notify:
+          event: fail
+          channel: << pipeline.parameters.alerts-slack-channel >>
+          template: basic_fail_1
 
 workflows:
   version: 2
@@ -216,19 +237,9 @@ workflows:
           main: true
           requires:
             - set_app_version
-      - hmpps/npm_security_audit:
-          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+      - check_outdated:
           context:
-            - hmpps-common-vars
-      - hmpps/trivy_latest_scan:
-          slack_channel: << pipeline.parameters.alerts-slack-channel >>
-          context:
-            - hmpps-common-vars
-      - hmpps/veracode_pipeline_scan:
-          slack_channel: << pipeline.parameters.alerts-slack-channel >>
-          context:
-            - veracode-credentials
-            - hmpps-common-vars
+            - hmpps-common-vars              
       - deploy_dev:
           context:
             - hmpps-common-vars
@@ -284,17 +295,17 @@ workflows:
           context:
             - veracode-credentials
             - hmpps-common-vars
-  # security-weekly:
-  #   triggers:
-  #     - schedule:
-  #         cron: "0 5 * * 1"
-  #         filters:
-  #           branches:
-  #             only:
-  #               - main
-  #   jobs:
-  #     - hmpps/veracode_policy_scan:
-  #         slack_channel: << pipeline.parameters.alerts-slack-channel >>
-  #         context:
-  #           - veracode-credentials
-  #           - hmpps-common-vars
+  security-weekly:
+    triggers:
+      - schedule:
+          cron: "0 5 * * 1"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - hmpps/veracode_policy_scan:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - veracode-credentials
+            - hmpps-common-vars
