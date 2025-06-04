@@ -2,6 +2,7 @@
 const moxios = require('moxios')
 const config = require('../../server/config')
 const settings = config.settings
+const { instance: axios } = require('../../server/routes/middleware/authorisationMiddleware')
 
 const proxy = require('express-http-proxy')
 jest.mock('express-http-proxy')
@@ -34,11 +35,11 @@ const apiUrl = config.apis.courtCaseService.url
 
 describe('Case service', () => {
   beforeEach(() => {
-    moxios.install()
+    moxios.install(axios)
   })
 
   afterEach(() => {
-    moxios.uninstall()
+    moxios.uninstall(axios)
     jest.clearAllMocks()
   })
 

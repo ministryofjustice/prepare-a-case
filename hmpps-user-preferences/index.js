@@ -41,11 +41,10 @@ app.put('/users/:userId/preferences/:preferenceName', (req, res) => {
                 console.error(err.message);
                 res.status(500).send('Internal server error');
             } else {
-                let putSql = 'INSERT INTO preference (hmpps_user_id, name, value) VALUES '
-                for (let i = 0; i < items.length; i++) {
-                    putSql += `('${userId}', '${preferenceName}', '${items[i]}')${i !== items.length - 1 ? ',' : ''}`
-                }
-                db.run(putSql, function (err) {
+                const placeholders = items.map(() => '(?, ?, ?)').join(', ')
+                const putSql = `INSERT INTO preference (hmpps_user_id, name, value) VALUES ${placeholders}`
+                const params = items.flatMap(item => [userId, preferenceName, item])
+                db.run(putSql, params, function (err) {
                     if (err) {
                         console.error(err.message);
                         res.status(500).send('Internal server error');

@@ -1,4 +1,5 @@
 version: 2.1
+
 commands:
   setup-live:
     description: "Install tools and configure kubectl"
@@ -43,6 +44,7 @@ commands:
               --values - \
               --values ~/git/helm_deploy/prepare-a-case/values-live.yaml \
               --set image.tag="${APP_VERSION}"
+
 executors:
   deployer:
     docker:
@@ -57,12 +59,12 @@ orbs:
   helm: circleci/helm@1.2.0
   kubernetes: circleci/kubernetes@1.3.0
   mem: circleci/rememborb@0.0.2
-  snyk: snyk/snyk@1.1.2
+  hmpps: ministryofjustice/hmpps@11
 
-_snyk_options: &snyk_options
-  organization: "digital-probation-services"
-  severity-threshold: "high" # note: this does not affect snyk 'monitor' commands
-  fail-on-issues: true
+parameters:
+  alerts-slack-channel:
+    type: string
+    default: probation_in_court_dev
 
 jobs:
   set_app_version:
@@ -101,14 +103,14 @@ jobs:
           background: true
       - run:
           name: Lint Test
-          command: docker exec -it prepare-a-case-app /usr/src/app/node_modules/.bin/standard
+          command: docker exec -it prepare-a-case-app /app/node_modules/.bin/standard
       - run:
           name: Unit Test
-          command: docker exec -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
+          command: docker exec -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       #- run:
       #    name: Pact Test
       #    halt_build_on_fail: false
-      #    command: docker exec -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit
+      #    command: docker exec -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit
       - run:
           name: Run integration tests
           command: DISPLAY=:99 docker compose -f compose/docker-compose.cypress-run.yml up --abort-on-container-exit
@@ -130,12 +132,12 @@ jobs:
       - run:
           name: Generate pact files
           halt_build_on_fail: false
-          command: docker run -it prepare-a-case-app /usr/src/app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --ci
+          command: docker run -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --ci
       - store_artifacts:
           path: 'pact/pacts'
       - run:
           name: Upload pact files to broker
-          command: docker run -it prepare-a-case-app /usr/src/app/node_modules/.bin/pact-broker publish pact/pacts --broker-base-url $PACT_BROKER_BASE_URL --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD"
+          command: docker run -it prepare-a-case-app /app/node_modules/.bin/pact-broker publish pact/pacts --broker-base-url $PACT_BROKER_BASE_URL --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD"
   build:
     executor: deployer
     parameters:
@@ -173,19 +175,6 @@ jobs:
                   docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:latest
                   docker push quay.io/hmpps/prepare-a-case:$APP_VERSION
                   docker push quay.io/hmpps/prepare-a-case:latest
-
-  app_scan:
-    executor: builder
-    parameters:
-      main:
-        type: boolean
-        default: false
-    steps:
-      - checkout
-      - snyk/scan:
-          project: '${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH}'
-          monitor-on-build: << parameters.main >>
-          <<: *snyk_options
   deploy_dev:
     executor: deployer
     steps:
@@ -204,21 +193,9 @@ jobs:
 
 workflows:
   version: 2
-  scheduled:
-    triggers:
-      - schedule:
-          cron: "0 7 * * 1-5"
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - app_scan:
-          main: true
 
   build-test-and-deploy:
     jobs:
-      #- app_scan
       - test_lint_unit_pact:
           context: [hmpps-common-vars]
       - set_app_version:
@@ -260,3 +237,39 @@ workflows:
             - hmpps-common-vars
           requires:
             - request-prod-approval
+  security:
+    triggers:
+      - schedule:
+          cron: "30 5 * * 1-5"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - hmpps/npm_security_audit:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - hmpps-common-vars
+      - hmpps/trivy_latest_scan:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - hmpps-common-vars
+      - hmpps/veracode_pipeline_scan:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - veracode-credentials
+            - hmpps-common-vars
+  security-weekly:
+    triggers:
+      - schedule:
+          cron: "0 5 * * 1"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - hmpps/veracode_policy_scan:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - veracode-credentials
+            - hmpps-common-vars

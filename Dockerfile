@@ -4,12 +4,16 @@ FROM node:20.10-slim as base
 ## common
 ENV TZ=Europe/London
 RUN ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && echo "$TZ" > /etc/timezone
-RUN apt-get update
-RUN apt-get -y install g++ make python3
-WORKDIR /usr/src/app
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get -y install g++ make python3 && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
+WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm i
+COPY . .
 EXPOSE 3000
 
 ## only used for production

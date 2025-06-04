@@ -1,6 +1,7 @@
 /* global describe, beforeEach, afterEach, it, expect, jest */
 const moxios = require('moxios')
 const config = require('../../server/config')
+const { instance: axios } = require('../../server/routes/middleware/authorisationMiddleware')
 
 const {
   getDetails,
@@ -15,12 +16,12 @@ const apiUrl = config.apis.courtCaseService.url
 
 describe('Community service', () => {
   beforeEach(() => {
-    moxios.install()
+    moxios.install(axios)
   })
 
   afterEach(() => {
     moxios.uninstall()
-    jest.clearAllMocks()
+    jest.clearAllMocks(axios)
   })
 
   it('should call the API to request offender conviction details data', async () => {

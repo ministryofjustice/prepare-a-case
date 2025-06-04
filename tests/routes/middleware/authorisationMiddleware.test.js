@@ -1,7 +1,6 @@
 /* global describe, expect, jest, test */
 const jwt = require('jsonwebtoken')
-
-const authorisationMiddleware = require('../../../server/routes/middleware/authorisationMiddleware')
+const { authorisationMiddleware } = require('../../../server/routes/middleware/authorisationMiddleware')
 
 const createToken = authorities => {
   const payload = {
