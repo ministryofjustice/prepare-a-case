@@ -212,6 +212,11 @@ workflows:
           main: true
           requires:
             - set_app_version
+      - hmpps/veracode_policy_scan:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - veracode-credentials
+            - hmpps-common-vars
       - deploy_dev:
           context:
             - hmpps-common-vars
