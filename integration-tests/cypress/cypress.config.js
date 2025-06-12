@@ -2,7 +2,7 @@ const { createEsbuildPlugin } = require('@badeball/cypress-cucumber-preprocessor
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor')
 const { NodeModulesPolyfillPlugin } = require('@esbuild-plugins/node-modules-polyfill')
 const { addCucumberPreprocessorPlugin } = require('@badeball/cypress-cucumber-preprocessor')
-const { stubPing } = require('./mockApis/wiremock')
+const { stubPing, resetStubs, stubOauthAuthorise, tokenStub, favicon, signOut } = require('./mockApis/wiremock')
 
 module.exports = {
   chromeWebSecurity: false,
@@ -30,6 +30,11 @@ module.exports = {
       require('cypress-fail-fast/plugin')(on, config)
       on('task', {
         stubPing,
+        resetStubs,
+        stubOauthAuthorise,
+        tokenStub,
+        favicon,
+        signOut,
         log(message) {
           console.log(message)
           return null

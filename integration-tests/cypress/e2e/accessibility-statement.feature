@@ -7,3 +7,6 @@ Feature: Accessibility statement
     Given I want to test wiremock
     When I do this
     Then I should see this
+
+  Scenario: View the accessibility statement page
+    Given I am an authenticated user

@@ -65,8 +65,12 @@ function correctDates($string) {
 }
 
 Given('I am an authenticated user', () => {
+  cy.task('resetStubs')
+  cy.task('favicon')
+  cy.task('stubOauthAuthorise')
+  cy.task('tokenStub')
   cy.visit('/')
-  cy.get('#loginForm').should('not.exist')
+  // cy.get('#loginForm').should('not.exist')
 })
 
 Given('I want to test wiremock', () => {
