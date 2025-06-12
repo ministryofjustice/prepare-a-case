@@ -7,11 +7,8 @@
         "cypress-axe": "^1.5.0",
         "cypress-fail-fast": "^7.1.0",
         "dotenv": "16.0.0",
-        "moment": "^2.30.1"
-    },
-    "stepDefinitions": [
-        "cypress/e2e/[filepath]/**/*.{js,ts}",
-        "cypress/e2e/[filepath].{js,ts}",
-        "cypress/support/step_definitions/**/*.{js,ts}"
-    ]
+        "moment": "^2.30.1",
+        "jsonwebtoken": "^9.0.2",
+        "superagent": "^10.2.1"
+    }
 }

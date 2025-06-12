@@ -2,6 +2,7 @@ const { createEsbuildPlugin } = require('@badeball/cypress-cucumber-preprocessor
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor')
 const { NodeModulesPolyfillPlugin } = require('@esbuild-plugins/node-modules-polyfill')
 const { addCucumberPreprocessorPlugin } = require('@badeball/cypress-cucumber-preprocessor')
+const { stubPing } = require('./mockApis/wiremock')
 
 module.exports = {
   chromeWebSecurity: false,
@@ -20,13 +21,15 @@ module.exports = {
   projectId: '2ew2jc',
   e2e: {
     baseUrl: 'http://localhost:3000',
-    specPattern: './cypress/e2e/**/*.feature',
+    specPattern: './**/*.feature', //TODOLM fix
     excludeSpecPattern: ['*.js', '*.md'],
     supportFile: false,
     setupNodeEvents: async (on, config) => {
+      config.env.stepDefinitions = 'integration-tests/cypress/support/step_definitions/**/*.js' //TODOLM fix
       await addCucumberPreprocessorPlugin(on, config)
       require('cypress-fail-fast/plugin')(on, config)
       on('task', {
+        stubPing,
         log(message) {
           console.log(message)
           return null
