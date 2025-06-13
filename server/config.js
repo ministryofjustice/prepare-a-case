@@ -255,14 +255,14 @@ module.exports = {
   },
   apis: {
     userPreferenceService: {
-      url: get('USER_PREFERENCE_SERVICE_URL', 'http://localhost:9091', requiredInProduction)
+      url: get('USER_PREFERENCE_SERVICE_URL', 'http://localhost:9090', requiredInProduction)
     },
     courtCaseService: {
-      url: get('COURT_CASE_SERVICE_URL', 'http://localhost:9091', requiredInProduction)
+      url: get('COURT_CASE_SERVICE_URL', 'http://localhost:9090', requiredInProduction)
     },
     oauth2: {
-      url: get('NOMIS_AUTH_URL', 'http://localhost:9091/auth'),
-      redirect: get('NOMIS_AUTH_URL_REDIRECT', get('NOMIS_AUTH_URL', 'http://localhost:9091/auth')),
+      url: get('NOMIS_AUTH_URL', 'http://localhost:9090/auth'),
+      redirect: get('NOMIS_AUTH_URL_REDIRECT', get('NOMIS_AUTH_URL', 'http://localhost:9090/auth')),
       timeout: {
         response: get('AUTH_ENDPOINT_TIMEOUT_RESPONSE', 10000),
         deadline: get('AUTH_ENDPOINT_TIMEOUT_DEADLINE', 10000)
