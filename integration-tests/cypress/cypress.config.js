@@ -2,7 +2,7 @@ const { createEsbuildPlugin } = require('@badeball/cypress-cucumber-preprocessor
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor')
 const { NodeModulesPolyfillPlugin } = require('@esbuild-plugins/node-modules-polyfill')
 const { addCucumberPreprocessorPlugin } = require('@badeball/cypress-cucumber-preprocessor')
-const { stubPing, resetStubs, stubOauthAuthorise, tokenStub, favicon, signOut } = require('./mockApis/wiremock')
+const { stubPing, resetStubs, stubOauthAuthorise, tokenStub, favicon, signOut, stubSignIn, stubVerifyToken, stubFont, getSignInUrl } = require('./mockApis/wiremock')
 
 module.exports = {
   chromeWebSecurity: false,
@@ -35,6 +35,10 @@ module.exports = {
         tokenStub,
         favicon,
         signOut,
+        stubVerifyToken,
+        getSignInUrl,
+        stubSignIn,
+        stubFont,
         log(message) {
           console.log(message)
           return null

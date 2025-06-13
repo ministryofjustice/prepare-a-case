@@ -6,30 +6,30 @@ const url = 'http://localhost:9091/__admin'
 const favicon = () =>
   superagent.post(`${url}/mappings`)
     .send({
-    request: {
-      method: 'GET',
-      urlPattern: '/favicon.ico',
-    },
-    response: {
-      status: 200,
-    },
-  })
+      request: {
+        method: 'GET',
+        urlPattern: '/favicon.ico',
+      },
+      response: {
+        status: 200,
+      },
+    })
 
 const signOut = () =>
   superagent.post(`${url}/mappings`)
     .send({
-    request: {
-      method: 'GET',
-      urlPattern: '/auth/logout.*',
-    },
-    response: {
-      status: 200,
-      headers: {
-        'Content-Type': 'text/html',
+      request: {
+        method: 'GET',
+        urlPattern: '/auth/logout.*',
       },
-      body: '<html><body>Login page<h1>Sign in</h1></body></html>',
-    },
-  })
+      response: {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html',
+        },
+        body: '<html><body>Login page<h1>Sign in</h1></body></html>',
+      },
+    })
 
 async function stubPing() {
   return superagent.post(`${url}/mappings`)
@@ -48,28 +48,48 @@ async function stubPing() {
     })
 }
 
+async function stubFont() {
+  return superagent.post(`${url}/mappings`)
+    .send({
+      request: {
+        method: 'GET',
+        urlPattern: '/__/fonts/*'
+      },
+      response: {
+        status: 200,
+      }
+    })
+}
+
 async function stubOauthAuthorise() {
   return superagent.post(`${url}/mappings`)
     .send({
       request: {
         method: 'GET',
-        // urlPath: '/auth/oauth/authorize',
-        urlPattern: '/auth/oauth/authorize\\?response_type=code&redirect_uri=(.+)&client_id=prepare-a-case-for-court'
+        urlPath: '/auth/oauth/authorize',
+        // urlPattern: '/auth/oauth/authorize?'
       },
       response: {
-        status: 302,
+        status: 200,
         headers: {
           'Content-Type': 'text/html',
           Location: 'http://localhost:3000/login/callback?code=codexxxx'
         },
-        body: '<html><body>Login page<h1>Sign in</h1></body></html>',
+        // body: '<html><body>Login page<h1>Sign in</h1></body></html>',
+        jsonBody: {
+          access_token: createToken({ roles: ['PREPARE-A-CASE'] }),
+          token_type: 'bearer',
+          user_name: 'USER1',
+          expires_in: 599,
+          scope: 'read',
+          internalUser: true,
+        },
       }
     })
 }
 
-//TODOLM remove token, use create token
-async function tokenStub() {
-  return superagent.post(`${url}/mappings`).send({
+const tokenStub = () =>
+  superagent.post(`${url}/mappings`).send({
     request: {
       method: 'POST',
       urlPattern: '/auth/oauth/token',
@@ -78,19 +98,18 @@ async function tokenStub() {
       status: 200,
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
+        Location: 'http://localhost:3000/login/callback?code=codexxxx',
       },
       jsonBody: {
-        access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJJVEFHX1VTRVIiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiYXV0aF9zb3VyY2UiOiJkZWxpdXMiLCJuYW1lIjoiSm9lIEJsb2dncyIsInVzZXJfdXVpZCI6ImIyNjc5ZWY3LTA4NGQtNGY3Zi04MWRkLTJkNDRhYWU3NGNiYiIsImF1dGhvcml0aWVzIjpbIlJPTEVfUFJFUEFSRV9BX0NBU0UiXSwianRpIjoiODNiNTBhMTAtY2NhNi00MWRiLTk4NWYtZTg3ZWZiMzAzZGRiIiwiZXhwIjo5OTk5OTk5OTk5LCJjbGllbnRfaWQiOiJwcmVwYXJlLWEtY2FzZS1mb3ItY291cnQifQ.p0rnBlhIRw5wgQtIGh2kLUF4GdoDdUuyB1z4Mtt7NTU',
-        token_type: 'Bearer',
+        access_token: createToken({ roles: ['PREPARE-A-CASE'] }),
+        token_type: 'bearer',
         user_name: 'USER1',
-        expires_in: 999999,
-        scope: 'read write',
+        expires_in: 599,
+        scope: 'read',
         internalUser: true,
-        refresh_token: 'refresh'
       },
     },
   })
-}
 
 const createToken = (userToken) => {
   // authorities in the session are always prefixed by ROLE.
@@ -108,7 +127,34 @@ const createToken = (userToken) => {
   return jwt.sign(payload, 'secret', { expiresIn: '1h' })
 }
 
+async function stubVerifyToken() {
+  return superagent.post(`${url}/mappings`).send({
+    request: {
+      method: 'POST',
+      urlPattern: '/verification/token/verify',
+    },
+    response: {
+      status: 200,
+      headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+      jsonBody: { active: true },
+    },
+  })
+}
+
+const getSignInUrl = () =>
+  superagent.post(`${url}/requests/find`).send({
+    method: 'GET',
+    urlPath: '/auth/oauth/authorize',
+  }).then(data => {
+    // const { requests } = data.body
+    // const stateValue = requests[requests.length - 1].queryParams.state.values[0]
+    // return `/sign-in/callback?code=codexxxx` //should be login/ ?
+  })
+
+const stubSignIn = () =>
+  Promise.all([favicon(), stubOauthAuthorise(), signOut(), tokenStub(), stubVerifyToken()])
+
 const resetStubs = () =>
   Promise.all([superagent.delete(`${url}/mappings`), superagent.delete(`${url}/requests`)])
 
-module.exports = { stubPing, resetStubs, stubOauthAuthorise, tokenStub, favicon, signOut }
+module.exports = { stubPing, resetStubs, stubOauthAuthorise, tokenStub, favicon, signOut, stubSignIn, stubVerifyToken, stubFont, getSignInUrl }

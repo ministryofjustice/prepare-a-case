@@ -3,11 +3,12 @@ services:
   wiremock:
     image: wiremock/wiremock
     networks:
-    - hmpps_int
+      - hmpps_int
     container_name: wiremock
     restart: always
     ports:
       - "9091:8080"
+    command: "--global-response-templating --verbose"
 
 networks:
   hmpps_int:
