@@ -101,6 +101,10 @@ jobs:
           name: Get wiremock
           command: curl -o wiremock.jar https://repo1.maven.org/maven2/org/wiremock/wiremock-standalone/3.9.1/wiremock-standalone-3.9.1.jar
       - run:
+          name: Run wiremock
+          command: java -jar wiremock.jar --port 9091
+          background: true
+      - run:
           name: Install Dependencies
           command: npm ci --no-audit
       - run:
