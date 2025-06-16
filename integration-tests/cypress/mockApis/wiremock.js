@@ -130,6 +130,7 @@ const createToken = (userToken) => {
     authorities,
     jti: '83b50a10-cca6-41db-985f-e87efb303ddb',
     client_id: 'clientid',
+    user_uuid: 'b2679ef7-084d-4f7f-81dd-2d44aae74cbb'
   }
 
   return jwt.sign(payload, 'secret', { expiresIn: '1h' })

@@ -66,25 +66,9 @@ function correctDates($string) {
 
 Given('I am an authenticated user', () => {
   cy.task('resetStubs')
-  // cy.task('tokenStub')
   cy.task('stubSignIn')
-  // cy.visit('/')
-  // cy.request('/')
-  // cy.task('getSignInUrl').then((url) => cy.visit(url))
-  // cy.get('#loginForm').should('not.exist')
-  cy.visit('/B14LO/cases')
-})
-
-Given('I want to test wiremock', () => {
-  cy.task('stubPing')
-})
-
-When('I do this', () => {
-  cy.visit('http://localhost:9091/ping')
-})
-
-Then('I should see this', () => {
-  cy.contains('pong from wiremock')
+  cy.visit('/')
+  cy.get('#loginForm').should('not.exist')
 })
 
 // ids shouldn't matter, use for generic features

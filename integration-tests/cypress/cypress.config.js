@@ -21,11 +21,18 @@ module.exports = {
   projectId: '2ew2jc',
   e2e: {
     baseUrl: 'http://localhost:3000',
-    specPattern: './**/*.feature', //TODOLM fix
+    specPattern: 'integration-tests/cypress/e2e/**/*.feature',
     excludeSpecPattern: ['*.js', '*.md'],
     supportFile: false,
     setupNodeEvents: async (on, config) => {
-      config.env.stepDefinitions = 'integration-tests/cypress/support/step_definitions/**/*.js' //TODOLM fix
+      config.env = {
+        stepDefinitions: [
+          'integration-tests/cypress/e2e/[filepath]/**/*.{js,ts}',
+          'integration-tests/cypress/e2e/[filepath].{js,ts}',
+          'integration-tests/cypress/support/step_definitions/**/*.{js,ts}'
+        ],
+        CASES_TOTAL_DAYS: 28
+      }
       await addCucumberPreprocessorPlugin(on, config)
       require('cypress-fail-fast/plugin')(on, config)
       on('task', {
