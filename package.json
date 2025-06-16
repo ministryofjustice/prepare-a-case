@@ -12,7 +12,6 @@
   "scripts": {
     "start": "docker compose up",
     "start:detached": "npm run start -- --wait -d",
-    "start:test": "dotenv -e feature.env -- npm start",
     "stop": "docker compose down",
     "build": "docker compose pull && docker compose build",
     "test": "npm run test:lint && npm run test:unit && npm run test:pact && npm run test:int",
@@ -23,6 +22,8 @@
     "test:int": "DISPLAY= docker compose -f compose/docker-compose.cypress-run.yml up --abort-on-container-exit",
     "test:int:ui": "/usr/X11/bin/xhost + 127.0.0.1 && DISPLAY=host.docker.internal:0 docker compose -f compose/docker-compose.cypress-ui.yml up --abort-on-container-exit",
     "security_audit": "npx audit-ci --config audit-ci.json",
+    "int-test-wiremock": "docker compose -f docker-compose-test.yml up",
+    "start:test": "dotenv -e feature.env -- npm start",
     "int-test": "cypress run --config video=false",
     "int-test-ui": "npx cypress open --config-file integration-tests/cypress/cypress.config.js --e2e --browser chrome"
   },
