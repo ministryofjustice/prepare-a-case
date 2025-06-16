@@ -94,16 +94,16 @@ jobs:
           name: Start X11 virtual framebuffer server (if not running)
           command: Xvfb :99 || true
           background: true
+      - run:
+          name: Start Wiremock
+          command: docker compose -f docker-compose-test.yml up -d --wait
       # - run:
-      #     name: Start Wiremock
-      #     command: docker compose -f docker-compose-test.yml up -d --wait
-      - run:
-          name: Get wiremock
-          command: curl -o wiremock.jar https://repo1.maven.org/maven2/org/wiremock/wiremock-standalone/3.9.1/wiremock-standalone-3.9.1.jar
-      - run:
-          name: Run wiremock
-          command: java -jar wiremock.jar --port 9091
-          background: true
+      #     name: Get wiremock
+      #     command: curl -o wiremock.jar https://repo1.maven.org/maven2/org/wiremock/wiremock-standalone/3.9.1/wiremock-standalone-3.9.1.jar
+      # - run:
+      #     name: Run wiremock
+      #     command: java -jar wiremock.jar --port 9091
+      #     background: true
       - run:
           name: Install Dependencies
           command: npm ci --no-audit
