@@ -1,9 +1,10 @@
+version: '3.7'
 services:
 
   wiremock:
     image: wiremock/wiremock
     networks:
-      - hmpps_int
+      - hmpps
     container_name: wiremock
     restart: always
     ports:
@@ -11,4 +12,9 @@ services:
     command: "--global-response-templating --verbose"
 
 networks:
-  hmpps_int:
+  hmpps:
+
+# you can use hmpps_int but then
+# you'll need to use
+# http://host.docker.internal:9091/auth/outh/token
+# as the token url

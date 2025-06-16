@@ -67,23 +67,14 @@ async function stubOauthAuthorise() {
       request: {
         method: 'GET',
         urlPath: '/auth/oauth/authorize',
-        // urlPattern: '/auth/oauth/authorize?'
       },
       response: {
-        status: 200,
+        status: 302,
         headers: {
           'Content-Type': 'text/html',
-          Location: 'http://localhost:3000/login/callback?code=codexxxx'
+          Location: 'http://localhost:3000/login/callback?code=asdfasdfasdf'
         },
-        // body: '<html><body>Login page<h1>Sign in</h1></body></html>',
-        jsonBody: {
-          access_token: createToken({ roles: ['PREPARE-A-CASE'] }),
-          token_type: 'bearer',
-          user_name: 'USER1',
-          expires_in: 599,
-          scope: 'read',
-          internalUser: true,
-        },
+        body: '<html><body>Login page<h1>Sign in</h1></body></html>'
       }
     })
 }
@@ -92,16 +83,13 @@ const tokenStub = () =>
   superagent.post(`${url}/mappings`).send({
     request: {
       method: 'POST',
-      urlPattern: '/auth/oauth/token',
-    },
+      urlPath: '/auth/oauth/token'
+     },
     response: {
       status: 200,
-      headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        Location: 'http://localhost:3000/login/callback?code=codexxxx',
-      },
       jsonBody: {
-        access_token: createToken({ roles: ['PREPARE-A-CASE'] }),
+        access_token: createToken({ roles: ['PREPARE_A_CASE'] }),
+        refresh_token: "nothing",
         token_type: 'bearer',
         user_name: 'USER1',
         expires_in: 599,
@@ -110,6 +98,26 @@ const tokenStub = () =>
       },
     },
   })
+
+const anotherToken = () =>
+    superagent.post(`${url}/mappings`).send({
+        request: {
+            method: 'POST',
+            urlPath: '/oauth/access_token'
+        },
+        response: {
+            status: 200,
+            jsonBody: {
+                access_token: createToken({ roles: ['PREPARE_A_CASE'] }),
+                refresh_token: "nothing",
+                token_type: 'bearer',
+                user_name: 'USER1',
+                expires_in: 599,
+                scope: 'read',
+                internalUser: true,
+            },
+        },
+    })
 
 const createToken = (userToken) => {
   // authorities in the session are always prefixed by ROLE.
@@ -148,13 +156,13 @@ const getSignInUrl = () =>
   }).then(data => {
     // const { requests } = data.body
     // const stateValue = requests[requests.length - 1].queryParams.state.values[0]
-    // return `/sign-in/callback?code=codexxxx` //should be login/ ?
+    return `/` //should be login/ ?
   })
 
 const stubSignIn = () =>
-  Promise.all([favicon(), stubOauthAuthorise(), signOut(), tokenStub(), stubVerifyToken()])
+  Promise.all([tokenStub(), favicon(), anotherToken(), stubOauthAuthorise(), signOut(), stubVerifyToken()])
 
 const resetStubs = () =>
   Promise.all([superagent.delete(`${url}/mappings`), superagent.delete(`${url}/requests`)])
 
-module.exports = { stubPing, resetStubs, stubOauthAuthorise, tokenStub, favicon, signOut, stubSignIn, stubVerifyToken, stubFont, getSignInUrl }
+module.exports = { stubPing, resetStubs, stubOauthAuthorise, anotherToken, tokenStub, favicon, signOut, stubSignIn, stubVerifyToken, stubFont, getSignInUrl }

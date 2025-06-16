@@ -66,10 +66,11 @@ function correctDates($string) {
 
 Given('I am an authenticated user', () => {
   cy.task('resetStubs')
+  // cy.task('tokenStub')
   cy.task('stubSignIn')
   // cy.visit('/')
-  cy.request('/')
-  cy.task('getSignInUrl').then((url) => cy.visit(url))
+  // cy.request('/')
+  // cy.task('getSignInUrl').then((url) => cy.visit(url))
   // cy.get('#loginForm').should('not.exist')
   cy.visit('/B14LO/cases')
 })

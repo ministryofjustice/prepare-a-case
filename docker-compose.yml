@@ -64,6 +64,7 @@ services:
       - ./pact:/app/pact
       - ./schemas:/app/schemas
       - ./wiremock:/app/wiremock
+      - ./integration-tests:/app/integrations-tests
     environment:
       - REDIS_HOST=redis
       - PORT=3000
