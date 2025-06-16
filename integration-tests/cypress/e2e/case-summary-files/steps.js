@@ -1,22 +1,20 @@
 import { Then, When } from '@badeball/cypress-cucumber-preprocessor'
 
 When('I select to upload a document', () => {
-
   cy.get('.common_file_uploader input[type=file]')
     .selectFile({
       contents: Cypress.Buffer.from('file contents'),
       fileName: 'file.doc',
-      lastModified: Date.now(),
+      lastModified: Date.now()
     }, { force: true })
 })
 
 When('I drag files into the upload area', () => {
-
   cy.get('.common_file_uploader fieldset')
     .selectFile({
       contents: Cypress.Buffer.from('file contents'),
       fileName: 'file.doc',
-      lastModified: Date.now(),
+      lastModified: Date.now()
     }, { action: 'drag-drop' })
 })
 
@@ -25,18 +23,15 @@ Then('I see an operating system dialogue window to select my files from', () => 
 })
 
 Then('I see the file in the todo area', () => {
-
   cy.get('.common_file_uploader .container_todo >li >span')
     .contains('file.doc')
 })
 
 When('I click the upload button', () => {
-
   cy.get('.common_file_uploader input[type=submit]').click()
 })
 
 Then('the file is moved from the todo area to the in-progress area', () => {
-
   cy.get('.common_file_uploader .container_todo >li').should('not.exist')
 })
 
@@ -46,14 +41,14 @@ Then('I see the progress of the file being uploaded', () => {
 
 When('I select to upload more than 10 documents', () => {
   cy.get('.common_file_uploader input[type=file]')
-    .selectFile(Array.apply(null,Array(15))
+    .selectFile(Array.apply(null, Array(15))
       .map((x, i) => ({
         contents: Cypress.Buffer.from('file contents'),
         fileName: 'file' + '' + '.doc',
         lastModified: Date.now()
       }))
     , { force: true }
-  )
+    )
 })
 
 Then('I see 10 files in the document upload area', () => {
@@ -65,14 +60,14 @@ Then('I see an error message advising me I can only upload 10 documents at a tim
 })
 
 When('I navigate to the "/B14LO/hearing/a395526d-b805-4c52-8f61-3c41bca15537/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary" base route')
-    
+
 When('I select to upload a document of more than 50mb', () => {
   // file size is irrelevant, mockwire response for this endpoint is forced
   cy.get('.common_file_uploader input[type=file]')
     .selectFile({
       contents: Cypress.Buffer.from('file contents'),
       fileName: 'file.doc',
-      lastModified: Date.now(),
+      lastModified: Date.now()
     }, { force: true })
 })
 
@@ -85,12 +80,12 @@ When('I select to upload a document that is not of an accepted file type', () =>
     .selectFile({
       contents: Cypress.Buffer.from('file contents'),
       fileName: 'file.abc',
-      lastModified: Date.now(),
+      lastModified: Date.now()
     }, { force: true })
 })
 
 Then('I see an error advising me the document is not of a type that is accepted by MoJ', () => {
-  // by default the list is filtered by the file picker and drag-drop. If the user overrides 
+  // by default the list is filtered by the file picker and drag-drop. If the user overrides
   // the http code for too large is passed through, so doesn't require testing.
   cy.get('.common_file_uploader .container_todo >li').should('have.length', 0)
 })

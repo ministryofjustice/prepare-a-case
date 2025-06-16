@@ -21,21 +21,21 @@ Then('I should not see the heading level {int} with text {string}', ($level, $te
 })
 
 Then('I should see a level {int} heading with text {string}', ($level, $text) => {
-    cy.get(`h${$level}`).contains($text).should('exist')
+  cy.get(`h${$level}`).contains($text).should('exist')
 })
 
 Then('I should see a {string} sized level {int} heading with text {string}', ($size, $level, $text) => {
-    cy.get(`h${$level}.govuk-heading-${$size}`).contains($text).should('exist')
+  cy.get(`h${$level}.govuk-heading-${$size}`).contains($text).should('exist')
 })
 
 Then('I should see the following level {int} headings', ($level, $data) => {
-    $data.raw()[0].forEach((text) => {
-        cy.get(`h${$level}`).contains(text)
-      })
+  $data.raw()[0].forEach((text) => {
+    cy.get(`h${$level}`).contains(text)
+  })
 })
 
 Then('I should see the following {string} sized level {int} headings', ($size, $level, $data) => {
-    $data.raw()[0].forEach((text) => {
-        cy.get(`h${$level}.govuk-heading-${$size}`).contains(text)
-      })
+  $data.raw()[0].forEach((text) => {
+    cy.get(`h${$level}.govuk-heading-${$size}`).contains(text)
+  })
 })

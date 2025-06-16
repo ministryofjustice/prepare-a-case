@@ -47,18 +47,18 @@ module.exports = {
         getSignInUrl,
         stubSignIn,
         stubFont,
-        log(message) {
+        log (message) {
           console.log(message)
           return null
         },
-        table(message) {
+        table (message) {
           console.table(message)
           return null
-        },
+        }
       })
       on(
-        "file:preprocessor", createBundler({
-          plugins: [NodeModulesPolyfillPlugin(), createEsbuildPlugin(config)],
+        'file:preprocessor', createBundler({
+          plugins: [NodeModulesPolyfillPlugin(), createEsbuildPlugin(config)]
         })
       )
       return config

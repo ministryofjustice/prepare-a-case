@@ -1,5 +1,5 @@
-const superagent = require('superagent')
 import jwt from 'jsonwebtoken'
+const superagent = require('superagent')
 
 const url = 'http://localhost:9091/__admin'
 
@@ -8,11 +8,11 @@ const favicon = () =>
     .send({
       request: {
         method: 'GET',
-        urlPattern: '/favicon.ico',
+        urlPattern: '/favicon.ico'
       },
       response: {
-        status: 200,
-      },
+        status: 200
+      }
     })
 
 const signOut = () =>
@@ -20,18 +20,18 @@ const signOut = () =>
     .send({
       request: {
         method: 'GET',
-        urlPattern: '/auth/logout.*',
+        urlPattern: '/auth/logout.*'
       },
       response: {
         status: 200,
         headers: {
-          'Content-Type': 'text/html',
+          'Content-Type': 'text/html'
         },
-        body: '<html><body>Login page<h1>Sign in</h1></body></html>',
-      },
+        body: '<html><body>Login page<h1>Sign in</h1></body></html>'
+      }
     })
 
-async function stubPing() {
+async function stubPing () {
   return superagent.post(`${url}/mappings`)
     .send({
       request: {
@@ -40,7 +40,7 @@ async function stubPing() {
       },
       response: {
         headers: {
-          'Content-Type': 'text/html',
+          'Content-Type': 'text/html'
         },
         status: 200,
         body: 'pong from wiremock'
@@ -48,7 +48,7 @@ async function stubPing() {
     })
 }
 
-async function stubFont() {
+async function stubFont () {
   return superagent.post(`${url}/mappings`)
     .send({
       request: {
@@ -56,17 +56,17 @@ async function stubFont() {
         urlPattern: '/__/fonts/*'
       },
       response: {
-        status: 200,
+        status: 200
       }
     })
 }
 
-async function stubOauthAuthorise() {
+async function stubOauthAuthorise () {
   return superagent.post(`${url}/mappings`)
     .send({
       request: {
         method: 'GET',
-        urlPath: '/auth/oauth/authorize',
+        urlPath: '/auth/oauth/authorize'
       },
       response: {
         status: 302,
@@ -84,40 +84,40 @@ const tokenStub = () =>
     request: {
       method: 'POST',
       urlPath: '/auth/oauth/token'
-     },
+    },
     response: {
       status: 200,
       jsonBody: {
         access_token: createToken({ roles: ['PREPARE_A_CASE'] }),
-        refresh_token: "nothing",
+        refresh_token: 'nothing',
         token_type: 'bearer',
         user_name: 'USER1',
         expires_in: 599,
         scope: 'read',
-        internalUser: true,
-      },
-    },
+        internalUser: true
+      }
+    }
   })
 
 const anotherToken = () =>
-    superagent.post(`${url}/mappings`).send({
-        request: {
-            method: 'POST',
-            urlPath: '/oauth/access_token'
-        },
-        response: {
-            status: 200,
-            jsonBody: {
-                access_token: createToken({ roles: ['PREPARE_A_CASE'] }),
-                refresh_token: "nothing",
-                token_type: 'bearer',
-                user_name: 'USER1',
-                expires_in: 599,
-                scope: 'read',
-                internalUser: true,
-            },
-        },
-    })
+  superagent.post(`${url}/mappings`).send({
+    request: {
+      method: 'POST',
+      urlPath: '/oauth/access_token'
+    },
+    response: {
+      status: 200,
+      jsonBody: {
+        access_token: createToken({ roles: ['PREPARE_A_CASE'] }),
+        refresh_token: 'nothing',
+        token_type: 'bearer',
+        user_name: 'USER1',
+        expires_in: 599,
+        scope: 'read',
+        internalUser: true
+      }
+    }
+  })
 
 const createToken = (userToken) => {
   // authorities in the session are always prefixed by ROLE.
@@ -136,28 +136,28 @@ const createToken = (userToken) => {
   return jwt.sign(payload, 'secret', { expiresIn: '1h' })
 }
 
-async function stubVerifyToken() {
+async function stubVerifyToken () {
   return superagent.post(`${url}/mappings`).send({
     request: {
       method: 'POST',
-      urlPattern: '/verification/token/verify',
+      urlPattern: '/verification/token/verify'
     },
     response: {
       status: 200,
       headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-      jsonBody: { active: true },
-    },
+      jsonBody: { active: true }
+    }
   })
 }
 
 const getSignInUrl = () =>
   superagent.post(`${url}/requests/find`).send({
     method: 'GET',
-    urlPath: '/auth/oauth/authorize',
+    urlPath: '/auth/oauth/authorize'
   }).then(data => {
     // const { requests } = data.body
     // const stateValue = requests[requests.length - 1].queryParams.state.values[0]
-    return `/` //should be login/ ?
+    return '/' // should be login/ ?
   })
 
 const stubSignIn = () =>

@@ -8,7 +8,7 @@ const longDateFormat = 'dddd D MMMM'
 const displayDateFormat = 'D MMM YYYY'
 
 // to log a11y violations
-function terminalLog(violations) {
+function terminalLog (violations) {
   cy.task(
     'log',
     `${violations.length} accessibility violation${violations.length === 1 ? '' : 's'
@@ -27,7 +27,7 @@ function terminalLog(violations) {
   cy.task('table', violationData)
 }
 
-function correctDates($string) {
+function correctDates ($string) {
   if ($string.includes('$TODAY')) {
     $string = $string.replace('$TODAY', moment().format(shortDateFormat))
   }
@@ -74,7 +74,7 @@ Given('I am an authenticated user', () => {
 // ids shouldn't matter, use for generic features
 Given('I am on the case summary page', () => {
   cy.visit('/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary')
-  cy.get('title').contains(`Case summary - `)
+  cy.get('title').contains('Case summary - ')
 })
 
 When('I navigate to the {string} route for today', $route => {
@@ -146,7 +146,7 @@ Then('I should see the following table headings', $data => {
     }
   })
 })
-  
+
 Then('I should see the following table {int} headings', ($index, $data) => {
   cy.get('.govuk-table').eq($index - 1).within(() => {
     $data.raw()[0].forEach((text, index) => {
@@ -154,7 +154,6 @@ Then('I should see the following table {int} headings', ($index, $data) => {
     })
   })
 })
-
 
 Then('I should see the following table rows', $data => {
   $data.raw().forEach((row, index) => {
@@ -188,27 +187,27 @@ Then('I should see the following table rows by row index', $data => {
     const rowData = tableRow.slice(1)
     rowData.forEach((text, colIndex) => {
       cy.get('.govuk-table__body > .govuk-table__row').eq(Number(tableRowIndex)).within(() => {
-          if (!text) {
-            return
-          }
-          const safeText = text.split(' ').map(part => {
-            if (part.includes('{')) {
-              cy.get('.govuk-table__cell').eq(colIndex).within(() => {
-                cy.get('.pac-badge').contains(part.replace(/{|}|/g, '')).should('exist')
-              })
-              return undefined
-            } else {
-              return part
-            }
-          })
-          const checkText = safeText.join(' ').trim()
-          if (checkText !== '') {
-            cy.get('.govuk-table__cell').eq(colIndex).contains(correctDates(checkText).replaceAll(' \n ', ''))
+        if (!text) {
+          return
+        }
+        const safeText = text.split(' ').map(part => {
+          if (part.includes('{')) {
+            cy.get('.govuk-table__cell').eq(colIndex).within(() => {
+              cy.get('.pac-badge').contains(part.replace(/{|}|/g, '')).should('exist')
+            })
+            return undefined
+          } else {
+            return part
           }
         })
+        const checkText = safeText.join(' ').trim()
+        if (checkText !== '') {
+          cy.get('.govuk-table__cell').eq(colIndex).contains(correctDates(checkText).replaceAll(' \n ', ''))
+        }
       })
     })
   })
+})
 
 Then('I should see the following table {int} rows', ($int, $data) => {
   cy.get('.govuk-table').eq($int - 1).within(() => {
@@ -609,13 +608,13 @@ Then('I should see pagination link {string} with href {string}', ($string, $href
 Then('I should see pagination next link with href {string}', ($href) => {
   cy.get('.moj-pagination__item--next').within(() => {
     cy.get('.moj-pagination__link').should('have.attr', 'href').and('include', $href)
- })
+  })
 })
 
 Then('I should see pagination previous link with href {string}', ($href) => {
   cy.get('.moj-pagination__item--prev').within(() => {
     cy.get('.moj-pagination__link').should('have.attr', 'href').and('include', $href)
- })
+  })
 })
 
 Then('I should not see pagination', () => {

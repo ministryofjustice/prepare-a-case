@@ -1,5 +1,5 @@
 /* global cy expect */
-import { When, Then} from '@badeball/cypress-cucumber-preprocessor'
+import { When, Then } from '@badeball/cypress-cucumber-preprocessor'
 
 const getIframe = () => {
   return cy
