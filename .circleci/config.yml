@@ -108,6 +108,11 @@ jobs:
           name: Install Dependencies
           command: npm ci --no-audit
       - run:
+          name: Install Test Dependencies
+          command: |
+            cd integration-tests
+            npm ci --no-audit
+      - run:
           name: Start services
           command: npx dotenv-cli -e feature.env -- docker compose up -d --wait
       - run:
