@@ -4,17 +4,14 @@ networks:
 
 services:
   hmpps-auth:
-    image: quay.io/hmpps/hmpps-auth:latest
+    image: wiremock/wiremock:3.3.1
+    container_name: hmpps-auth
     networks:
       - hmpps
-    container_name: hmpps-auth
+    entrypoint: ["/docker-entrypoint.sh", "--disable-request-logging", "--disable-banner", "--global-response-templating"] #"--verbose"
+    restart: always
     ports:
-      - "9090:8080"
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8080/auth/health" ]
-    environment:
-      - SPRING_PROFILES_ACTIVE=dev
-      - APPLICATION_AUTHENTICATION_UI_ALLOWLIST=0.0.0.0/0
+      - "9091:8080"
 
   hmpps-user-preferences:
     build: hmpps-user-preferences
