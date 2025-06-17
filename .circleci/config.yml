@@ -94,9 +94,9 @@ jobs:
           name: Start X11 virtual framebuffer server (if not running)
           command: Xvfb :99 || true
           background: true
-      # - run:
-      #     name: Install Dependencies
-      #     command: npm ci --no-audit
+      - run:
+          name: Install Dependencies
+          command: npm ci --no-audit
       - run:
           name: Install Test Dependencies
           command: |
