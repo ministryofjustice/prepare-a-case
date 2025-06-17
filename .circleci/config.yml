@@ -109,9 +109,6 @@ jobs:
           name: Log services
           command: docker compose logs -f -t > services.log
           background: true
-      # - run:
-      #     name: Wait for node app to start
-      #     command: sleep 5
       - run:
           name: Lint Test
           command: docker exec -it prepare-a-case-app /app/node_modules/.bin/standard

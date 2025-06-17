@@ -27,10 +27,10 @@ passport.deserializeUser((user, done) => {
 })
 
 function init (signInService) {
-  passport.use('passporta', new Strategy(
+  passport.use(new Strategy(
     {
       authorizationURL: `${config.apis.oauth2.redirect}/oauth/authorize`,
-      tokenURL: 'http://host.docker.internal:9091/auth/oauth/token',
+      tokenURL: `${config.apis.oauth2.url}/oauth/token`,
       clientID: config.apis.oauth2.apiClientId,
       clientSecret: config.apis.oauth2.apiClientSecret,
       callbackURL: `${config.domain}/login/callback`,

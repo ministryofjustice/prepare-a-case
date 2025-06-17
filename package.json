@@ -24,7 +24,7 @@
     "security_audit": "npx audit-ci --config audit-ci.json",
     "int-test-wiremock": "docker compose -f docker-compose-test.yml up",
     "start:test": "dotenv -e feature.env -- npm start",
-    "int-test": "cypress run --config video=false",
+    "int-test": "cypress run --config-file integration-tests/cypress/cypress.config.js video=false",
     "int-test-ui": "npx cypress open --config-file integration-tests/cypress/cypress.config.js --e2e --browser chrome"
   },
   "config": {

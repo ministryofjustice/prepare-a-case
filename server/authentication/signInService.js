@@ -7,7 +7,7 @@ const log = require('../log')
 const config = require('../config')
 const fiveMinutesBefore = require('../utils/fiveMinutesBefore')
 
-const oauthUrl = 'http://host.docker.internal/auth/oauth/token'
+const oauthUrl = `${config.apis.oauth2.url}/oauth/token`
 const timeoutSpec = {
   response: config.apis.oauth2.timeout.response,
   deadline: config.apis.oauth2.timeout.deadline
@@ -39,7 +39,7 @@ function getOauthToken (requestSpec) {
   const clientSecret = config.apis.oauth2.apiClientSecret
 
   return superagent
-    .post('http://host.docker.internal/auth/oauth/token')
+    .post(`${config.apis.oauth2.url}/oauth/token`)
     .auth(clientId, clientSecret)
     .set('content-type', 'application/x-www-form-urlencoded')
     .agent(keepaliveAgent)
