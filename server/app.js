@@ -220,7 +220,7 @@ module.exports = function createApp ({ signInService }) {
       authorizationURL: `${config.apis.oauth2.redirect}/oauth/authorize`,
       // this works below
       // tokenURL: `http://host.docker.internal:9091/auth/oauth/token`,
-      tokenURL: 'http://wiremock:8080/auth/oauth/token',
+      tokenURL: 'http://hmpps-auth:8080/auth/oauth/token', //change (was wiremock)
       clientID: config.apis.oauth2.apiClientId,
       clientSecret: config.apis.oauth2.apiClientSecret,
       callbackURL: `${config.domain}/login/callback`,

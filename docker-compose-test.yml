@@ -1,7 +1,7 @@
 version: '3.7'
 services:
 
-  wiremock:
+  hmpps-auth:
     image: wiremock/wiremock
     networks:
       - hmpps
@@ -10,6 +10,7 @@ services:
     ports:
       - "9091:8080"
     command: "--global-response-templating --verbose"
+    # entrypoint: ["/docker-entrypoint.sh", "--disable-request-logging", "--disable-banner", "--global-response-templating"] #"--verbose"
 
 networks:
   hmpps:
