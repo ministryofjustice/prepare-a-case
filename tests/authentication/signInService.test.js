@@ -1,8 +1,15 @@
 // /* global describe, beforeEach, afterEach, it, expect, jest, test */
+/* global describe, expect, test */
+
 // const nock = require('nock')
 // const config = require('../../server/config')
 // const signInService = require('../../server/authentication/signInService')
 
+describe('signInService', () => {
+  test('stub test', () => {
+    expect(true).toBe(true)
+  })
+})
 // describe('signInService', () => {
 //   let service
 //   let realDateNow
