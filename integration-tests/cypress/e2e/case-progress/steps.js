@@ -61,10 +61,9 @@ Then('I should see "Send outcome to admin" button on hearing with id {string}', 
   })
 })
 
-
 Then('I should see a warning banner on hearing {string} with text {string}', ($hearingId, $string) => {
   cy.get(`#case-progress-hearing-${$hearingId} .hearing-note-container`).eq(0).within(() => {
-    cy.get('.govuk-warning-text').contains($string).should('exist');
+    cy.get('.govuk-warning-text').contains($string).should('exist')
   })
 })
 

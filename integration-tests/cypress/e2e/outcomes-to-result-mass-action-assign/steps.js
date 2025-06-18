@@ -1,7 +1,6 @@
 import { Then, When } from '@badeball/cypress-cucumber-preprocessor'
 
 When('I check a checkbox for a case record', () => {
-
   cy.get('.common_checker_toggle_item input[type="checkbox"]')
     .first()
     .check({ force: true })

@@ -30,6 +30,22 @@ npm start
 npm run build
 ```
 
+Recommended to run locally with the real oauth service, using the following command:
+```
+docker compose -f docker-compose.yml -f compose/user-auth.yml up --build
+```
+
+or its alias:
+```
+npm run start:auth
+```
+
+The oauth service will run locally and you will need to use the following login credentials...
+```
+Username: 'PREPARE_A_CASE_USER'
+Password: 'password123456'
+```
+
 With node being inside a docker container so to are the `node_modules` and if you make a change to package.json you will
 need to rebuild the docker container. Rebuilding the containers can be is fairly slow but you shouldn't need to do it day-to-day.
 
@@ -56,13 +72,6 @@ docker compose -f docker-compose.yml -f compose/user-auth.yml -f compose/user-pr
 ```
 
 If you created containers previously you may have network not found issues, removing the old containers will fix it.
-
-In both cases the oauth service will run locally and you will need to use the following login credentials...
-
-```
-Username: 'PREPARE_A_CASE_USER'
-Password: 'password123456'
-```
 
 To point to cloud development services run the standard ```docker compose up``` but instead swap out some env variables. 
 You can do this by including the following in a root .env file.
@@ -148,28 +157,29 @@ npm run test:pact
 ```
 
 ### Run Integration tests
+
+Firstly, run the app with the auth wiremock:
 ```
-npm run test:int
+docker compose up
+```
+
+or the alias
+```
+npm run start
+```
+
+Then run the tests with:
+```
+npm run int-test
 ```
 
 If you want to target one test you can temporarily slide that name.feature into the cypress.config.js!
 
 ### Run Integration tests with UI
 
-Cypress interactive UI needs a bit more work to get the X DISPLAY piping from docker.
-
-By default, your DISPLAY=0:0 is used, which usually translates as the first screen on the first graphical output device. 
-If you need to use something else you can do something like ```DISPLAY=0:1 docker compose up```.
-
-#### Mac Users
-For Mac install XQuartz ```https://www.xquartz.org/?ref=cypress-io.ghost.io```
-
-Once you have XQuartz installed, open it and go to the preferences. Under the security tab, make sure "Allow connections from network clients" is checked. A reboot may be required at this point.
-
-Then open a terminal and run the following command:
-
+Run the app in test mode as above, then run the tests with:
 ```
-npm run test:int:ui
+npm run int-test-ui
 ```
 
 ## Environment variables

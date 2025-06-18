@@ -95,6 +95,14 @@ jobs:
           command: Xvfb :99 || true
           background: true
       - run:
+          name: Install Dependencies
+          command: npm ci --no-audit
+      - run:
+          name: Install Test Dependencies
+          command: |
+            cd integration-tests
+            npm ci --no-audit
+      - run:
           name: Start services
           command: docker compose up -d --wait
       - run:
@@ -107,17 +115,18 @@ jobs:
       - run:
           name: Unit Test
           command: docker exec -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
-      #- run:
-      #    name: Pact Test
-      #    halt_build_on_fail: false
-      #    command: docker exec -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit
       - run:
           name: Run integration tests
-          command: DISPLAY=:99 docker compose -f compose/docker-compose.cypress-run.yml up --abort-on-container-exit
+          command: >
+            npx cypress run
+            --config-file integration-tests/cypress/cypress.config.js video=false
+          environment:
+            DISPLAY: :99
       - store_artifacts:
-          path: integration-tests/output
+          path: output/screenshots
       - store_artifacts:    
           path: services.log
+
   pact_push:
     environment:
       PACT_BROKER_DISABLE_SSL_VERIFICATION: "true"
@@ -138,6 +147,7 @@ jobs:
       - run:
           name: Upload pact files to broker
           command: docker run -it prepare-a-case-app /app/node_modules/.bin/pact-broker publish pact/pacts --broker-base-url $PACT_BROKER_BASE_URL --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD"
+
   build:
     executor: deployer
     parameters:
@@ -175,16 +185,19 @@ jobs:
                   docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:latest
                   docker push quay.io/hmpps/prepare-a-case:$APP_VERSION
                   docker push quay.io/hmpps/prepare-a-case:latest
+
   deploy_dev:
     executor: deployer
     steps:
       - deploy_to_live_env:
           env: "dev"
+
   deploy_preprod:
     executor: deployer
     steps:
       - deploy_to_live_env:
           env: "preprod"
+
   deploy_prod:
     executor: deployer
     steps:
@@ -237,6 +250,7 @@ workflows:
             - hmpps-common-vars
           requires:
             - request-prod-approval
+
   security:
     triggers:
       - schedule:
@@ -259,6 +273,7 @@ workflows:
           context:
             - veracode-credentials
             - hmpps-common-vars
+
   security-weekly:
     triggers:
       - schedule:

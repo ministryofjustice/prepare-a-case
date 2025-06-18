@@ -67,7 +67,6 @@ When('I select the {string} option from the select on the {string} modal', ($opt
   cy.get(`#${$modal} select`).select($option)
 })
 
-
 When('I click the {string} modal {string} button', ($id, $buttonText) => {
   cy.get(`#${$id} button`).contains($buttonText).click()
 })

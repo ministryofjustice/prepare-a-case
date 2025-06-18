@@ -1,7 +1,7 @@
 
 import moment from 'moment'
 import { Then, When } from '@badeball/cypress-cucumber-preprocessor'
-//import { getMonthsAndDays } from '../../../server/routes/middleware/defaults'
+// import { getMonthsAndDays } from '../../../server/routes/middleware/defaults'
 
 Then('I should see {int} previous orders', $int => {
   cy.get('#previousOrders').within(() => {
@@ -24,7 +24,7 @@ When('I click the {string} risk tab', $string => {
 })
 
 Then('I should see the correctly calculated elapsed time between {string} and {string}', ($start, $end) => {
-  //cy.get('.qa-elapsed-time').contains(getMonthsAndDays(moment($start, 'YYYY-MM-DD'), moment($end, 'YYYY-MM-DD').isAfter() ? moment() : moment($end, 'YYYY-MM-DD')))
+  // cy.get('.qa-elapsed-time').contains(getMonthsAndDays(moment($start, 'YYYY-MM-DD'), moment($end, 'YYYY-MM-DD').isAfter() ? moment() : moment($end, 'YYYY-MM-DD')))
 })
 
 Then('I should see a straight line divide', () => {
