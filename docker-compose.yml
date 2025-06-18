@@ -72,7 +72,7 @@ services:
       - API_CLIENT_SECRET=${API_CLIENT_SECRET:-clientsecret}
       - APP_VERSION=dev-build
       - NOMIS_AUTH_URL=${NOMIS_AUTH_URL:-http://hmpps-auth:8080/auth}
-      - NOMIS_AUTH_URL_REDIRECT=${NOMIS_AUTH_URL_REDIRECT:-${NOMIS_AUTH_URL:-http://localhost:9091/auth}}
+      - NOMIS_AUTH_URL_REDIRECT=${NOMIS_AUTH_URL:-http://localhost:9091/auth}
       - NOMIS_DISABLE_OAUTH_STATE=${NOMIS_DISABLE_OAUTH_STATE:-true}
       - REDUCE_STDOUT_NOISE=true
       - USER_PREFERENCE_SERVICE_URL=${USER_PREFERENCE_SERVICE_URL:-http://hmpps-user-preferences:3000}
