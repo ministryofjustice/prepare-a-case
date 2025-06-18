@@ -123,7 +123,7 @@ jobs:
           environment:
             DISPLAY: :99
       - store_artifacts:
-          path: integration-tests/output
+          path: output/screenshots
       - store_artifacts:    
           path: services.log
 
