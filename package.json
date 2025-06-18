@@ -57,6 +57,7 @@
     "usePathForSuiteName": true
   },
   "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.1.0",
     "@microsoft/applicationinsights-clickanalytics-js": "^3.3.2",
     "@microsoft/applicationinsights-web": "^3.3.2",
     "@ministryofjustice/frontend": "^2.1.0",

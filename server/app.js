@@ -45,7 +45,7 @@ if (!config.settings.reduceStdoutNoise) {
 
 nunjucksSetup(app, path)
 
-module.exports = function createApp({ signInService }) {
+module.exports = function createApp ({ signInService }) {
   auth.init(signInService)
 
   // Configure Express for running behind proxies
