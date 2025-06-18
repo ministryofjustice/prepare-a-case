@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@badeball/cypress-cucumber-preprocessor": "^22.0.1",
+        "@badeball/cypress-cucumber-preprocessor": "^22.1.0",
         "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
         "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
         "cypress-axe": "^1.5.0",
