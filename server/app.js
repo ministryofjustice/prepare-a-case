@@ -25,10 +25,6 @@ const hostName = os.hostname()
 
 const { authenticationMiddleware } = auth
 const catchErrors = require('./routes/handlers/catchAsyncErrors')
-const { Strategy } = require('passport-oauth2')
-const { env } = require('process')
-const { generateOauthClientToken } = require('./authentication/clientCredentials')
-const trackEvent = require('./utils/analytics')
 
 const authLogoutUrl = `${config.apis.oauth2.redirect}/logout?client_id=${config.apis.oauth2.apiClientId}&redirect_uri=${config.domain}`
 
@@ -49,10 +45,8 @@ if (!config.settings.reduceStdoutNoise) {
 
 nunjucksSetup(app, path)
 
-module.exports = function createApp ({ signInService }) {
+module.exports = function createApp({ signInService }) {
   auth.init(signInService)
-
-  console.log('the signInService', signInService)
 
   // Configure Express for running behind proxies
   // https://expressjs.com/en/guide/behind-proxies.html
@@ -213,36 +207,9 @@ module.exports = function createApp ({ signInService }) {
     })
   })
 
-  // passport strategy wasn't pulled into the passport.authenticate(...) func
-  const strategy = new Strategy(
-    {
-      // baseSite: "http://host.docker.internal:9091",
-      authorizationURL: `${config.apis.oauth2.redirect}/oauth/authorize`,
-      // this works below
-      // tokenURL: `http://host.docker.internal:9091/auth/oauth/token`,
-      tokenURL: 'http://hmpps-auth:8080/auth/oauth/token', // change (was wiremock)
-      clientID: config.apis.oauth2.apiClientId,
-      clientSecret: config.apis.oauth2.apiClientSecret,
-      callbackURL: `${config.domain}/login/callback`,
-      state: env.NOMIS_DISABLE_OAUTH_STATE !== 'true',
-      // accessType: 'offline',
-      customHeaders: { Authorization: generateOauthClientToken() }
-    },
-    (accessToken, refreshToken, profile, done) => {
-      try {
-        const user = signInService.getUser(accessToken, refreshToken, profile.expires_in, profile.user_name)
-        return done(null, user)
-      } catch (err) {
-        console.log('failed to sign in abdi')
-        trackEvent('PiCsignInServiceError', err)
-        return done(err, null)
-      }
-    }
-  )
-  app.get('/login', passport.authenticate(strategy))
-  // authorize was working
-  // maybe because we are not passing a Strategy like in auth.js but instead we're passing 'oauth2'
-  app.get('/login/callback', (req, res, next) => passport.authenticate(strategy, {
+  app.get('/login', passport.authenticate('oauth2'))
+
+  app.get('/login/callback', (req, res, next) => passport.authenticate('oauth2', {
     successReturnToOrRedirect: req.session.returnTo || '/',
     failureRedirect: '/autherror'
   })(req, res, next))
