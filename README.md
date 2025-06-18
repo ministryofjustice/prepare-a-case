@@ -158,14 +158,14 @@ npm run test:pact
 
 ### Run Integration tests
 
-Firstly, run the app with the auth wiremock and the correct environment variables:
+Firstly, run the app with the auth wiremock:
 ```
-npx dotenv-cli -e feature.env -- docker compose up
+docker compose up
 ```
 
 or the alias
 ```
-npm run start:test
+npm run start
 ```
 
 Then run the tests with:

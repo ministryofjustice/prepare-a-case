@@ -104,7 +104,7 @@ jobs:
             npm ci --no-audit
       - run:
           name: Start services
-          command: npx dotenv-cli -e feature.env -- docker compose up -d --wait
+          command: docker compose up -d --wait
       - run:
           name: Log services
           command: docker compose logs -f -t > services.log

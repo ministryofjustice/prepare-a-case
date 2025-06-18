@@ -21,7 +21,6 @@
     "test:unit": "docker exec -it -e ENABLE_HEARING_OUTCOMES=false prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit",
     "test:pact": "docker exec -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit",
     "security_audit": "npx audit-ci --config audit-ci.json",
-    "start:test": "npx dotenv-cli -e feature.env -- npm start",
     "int-test": "cypress run --config-file integration-tests/cypress/cypress.config.js video=false",
     "int-test-ui": "npx cypress open --config-file integration-tests/cypress/cypress.config.js --e2e --browser chrome"
   },
@@ -75,7 +74,6 @@
     "cookie-parser": "1.4.7",
     "cookie-session": "2.0.0",
     "debug": "4.3.4",
-    "dotenv": "^16.0.0",
     "express": "4.21.2",
     "express-http-proxy": "^2.0.0",
     "express-session": "1.18.1",
@@ -96,7 +94,6 @@
     "ajv": "8.11.0",
     "ajv-errors": "3.0.0",
     "cypress": "^14.4.1",
-    "dotenv-cli": "^8.0.0",
     "jest": "^29.7.0",
     "jest-junit": "13.2.0",
     "jest-pact": "^0.11.0",
