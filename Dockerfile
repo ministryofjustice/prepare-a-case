@@ -12,6 +12,9 @@ RUN apt-get update && \
 WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
+
+ENV CYPRESS_INSTALL_BINARY=0
+
 RUN npm i
 COPY . .
 EXPOSE 3000
