@@ -7,7 +7,8 @@ const PLYMOUTH_MAGS_COURT_CODE = 'B50KH'
 
 const KSS_MAGS_COURTS = ['B47CL', 'B47EC', 'B47GL', 'B47HB', 'B47OV']
 
-const PILOT_COURTS = ['B20EB', 'B23HS', 'B44MA', 'B43JC', 'B43KB', 'B43KQ', 'B43OX', 'B44KM', 'B44BA', 'B43LV', 'B44JK', PLYMOUTH_MAGS_COURT_CODE, ...KSS_MAGS_COURTS]
+const PILOT_COURTS_FROM_CONFIG = settings.availableCourts.filter(c => c.pilotCourt).flatMap(c => c.code)
+const PILOT_COURTS = [...PILOT_COURTS_FROM_CONFIG, PLYMOUTH_MAGS_COURT_CODE, ...KSS_MAGS_COURTS]
 
 const features = {
   hearingNotes: anyOf(
