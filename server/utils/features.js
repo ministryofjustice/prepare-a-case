@@ -57,7 +57,7 @@ const features = {
   hearingOutcomes: anyOf(
     allOf(
       isEnv('dev'),
-      mainFeatureToggleEnabled('enableHearingOutcomes'),
+      mainFeatureToggleEnabled('enableHearingOutcomes')
     ),
     allOf(
       isEnv('preprod'),
