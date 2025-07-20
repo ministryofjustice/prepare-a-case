@@ -73,7 +73,7 @@
     "cookie-parser": "1.4.7",
     "cookie-session": "2.0.0",
     "debug": "4.3.4",
-    "dotenv": "16.0.0",
+    "dotenv": "16.6.1",
     "express": "4.21.2",
     "express-http-proxy": "^2.0.0",
     "express-session": "1.18.1",
