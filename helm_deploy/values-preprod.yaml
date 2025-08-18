@@ -44,6 +44,7 @@ whitelist:
   cloudplatform-live1-3: "35.177.252.54/32"
   ark-internet-1: "194.33.192.0/25"
   ark-internet-2: "194.33.196.0/25"
+  ark-dom1-corsham: "194.33.196.0/24"
   moj-official-aws-preprod: "51.149.251.0/24"
   global-protect: "35.176.93.186/32"
   moj-official-tgw-prod: "51.149.250.0/24"
