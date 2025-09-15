@@ -73,7 +73,6 @@ const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) =
   session.backLink = path
   session.defendantId = defendantId
   session.hearingId = hearingId
-  session.courtCode = courtCode
   res.render('match-defendant', templateValues)
 }
 
