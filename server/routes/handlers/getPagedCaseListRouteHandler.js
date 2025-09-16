@@ -39,58 +39,79 @@ const getPageTitle = (params) => {
   }
 }
 
+const TAB_CONFIGS = {
+  HEARING_OUTCOME_PENDING: {
+    key: 'hearing-outcome-pending',
+    title: 'Hearing outcome still to be added',
+    a11yTitle: 'View outcome still to be added case list',
+    subsection: '',
+    requiresFeature: 'hearingOutcomesEnabled',
+    showCondition: (params) => params.hearingOutcomesEnabled,
+    priority: 1
+  },
+  HEARING_OUTCOME_ADDED: {
+    key: 'hearing-outcome-added',
+    title: 'Hearing outcome added',
+    a11yTitle: 'View outcome added case list',
+    subsection: 'heard',
+    requiresFeature: 'hearingOutcomesEnabled',
+    showCondition: (params) => params.hearingOutcomesEnabled,
+    priority: 2
+  },
+  CASE_LIST: {
+    key: 'case-list',
+    title: 'Case list',
+    a11yTitle: 'View current case list',
+    subsection: '',
+    showCondition: (params) => !params.hearingOutcomesEnabled,
+    priority: 1
+  },
+  RECENTLY_ADDED: {
+    key: 'recently-added',
+    title: 'Recently added',
+    a11yTitle: 'View list of recently added cases',
+    subsection: 'added',
+    showCondition: (params) => params.addedCount > 0,
+    countProperty: 'addedCount',
+    priority: 10
+  },
+  REMOVED_CASES: {
+    key: 'removed-cases',
+    title: 'Removed cases',
+    a11yTitle: 'View list of removed cases',
+    subsection: 'removed',
+    showCondition: (params) => params.removedCount > 0,
+    countProperty: 'removedCount',
+    priority: 11
+  }
+}
+
+const getPageLink = (params, subsection) => {
+  const subsectionLink = subsection ? `/${subsection}` : ''
+  return `/${params.courtCode}/cases/${params.date}${subsectionLink}`
+}
+
+const createTabFromConfig = (config, params) => {
+  const tab = {
+    title: config.title,
+    a11yTitle: config.a11yTitle,
+    link: getPageLink(params, config.subsection),
+    current: params.subsection === config.subsection
+  }
+
+  // Add count if the tab has a count property
+  if (config.countProperty && params[config.countProperty]) {
+    tab.count = params[config.countProperty]
+  }
+
+  return tab
+}
+
 const getPageTabs = (params) => {
-  const pageTabs = []
-
-  const getPageLink = (subsection) => {
-    const subsectionLink = subsection ? `/${subsection}` : ''
-    return `/${params.courtCode}/cases/${params.date}${subsectionLink}`
-  }
-  if (params.hearingOutcomesEnabled) {
-    pageTabs.push(...[
-      {
-        title: 'Hearing outcome still to be added',
-        a11yTitle: 'View outcome still to be added case list',
-        link: getPageLink(),
-        current: params.subsection === ''
-      },
-      {
-        title: 'Hearing outcome added',
-        a11yTitle: 'View outcome added case list',
-        link: getPageLink('heard'),
-        current: params.subsection === 'heard'
-      }
-    ])
-  } else {
-    pageTabs.push({
-      title: 'Case list',
-      a11yTitle: 'View current case list',
-      link: getPageLink(),
-      current: params.subsection === ''
-    })
-  }
-
-  if (params.addedCount > 0) {
-    pageTabs.push({
-      title: 'Recently added',
-      a11yTitle: 'View list of recently added cases',
-      link: getPageLink('added'),
-      current: params.subsection === 'added',
-      count: params.addedCount
-    })
-  }
-
-  if (params.removedCount > 0) {
-    pageTabs.push({
-      title: 'Removed cases',
-      a11yTitle: 'View list of removed cases',
-      link: getPageLink('removed'),
-      current: params.subsection === 'removed',
-      count: params.removedCount
-    })
-  }
-
-  return pageTabs
+  return Object.values(TAB_CONFIGS)
+    .filter(config => config.showCondition(params))
+    .sort((a, b) => a.priority - b.priority)
+    .map(config => createTabFromConfig(config, params))
 }
 
 const getPaginationObject = (pageParams) => {
