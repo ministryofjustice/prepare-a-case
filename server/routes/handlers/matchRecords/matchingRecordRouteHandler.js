@@ -71,6 +71,8 @@ const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) =
   session.formError = false
   session.serverError = false
   session.backLink = path
+  session.defendantId = defendantId
+  session.hearingId = hearingId
   res.render('match-defendant', templateValues)
 }
 
