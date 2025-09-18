@@ -41,47 +41,37 @@ const getPageTitle = (params) => {
 
 const TAB_CONFIGS = [
   {
-    HEARING_OUTCOME_PENDING: {
-      key: 'hearing-outcome-pending',
-      title: 'Hearing outcome still to be added',
-      a11yTitle: 'View outcome still to be added case list',
-      subsection: '',
-      showCondition: (params) => params.hearingOutcomesEnabled
-    }
+    key: 'hearing-outcome-pending',
+    title: 'Hearing outcome still to be added',
+    a11yTitle: 'View outcome still to be added case list',
+    subsection: '',
+    showCondition: (params) => params.hearingOutcomesEnabled
   }, {
-    HEARING_OUTCOME_ADDED: {
-      key: 'hearing-outcome-added',
-      title: 'Hearing outcome added',
-      a11yTitle: 'View outcome added case list',
-      subsection: 'heard',
-      showCondition: (params) => params.hearingOutcomesEnabled
-    }
+    key: 'hearing-outcome-added',
+    title: 'Hearing outcome added',
+    a11yTitle: 'View outcome added case list',
+    subsection: 'heard',
+    showCondition: (params) => params.hearingOutcomesEnabled
   }, {
-    CASE_LIST: {
-      key: 'case-list',
-      title: 'Case list',
-      a11yTitle: 'View current case list',
-      subsection: '',
-      showCondition: (params) => !params.hearingOutcomesEnabled
-    }
+    key: 'case-list',
+    title: 'Case list',
+    a11yTitle: 'View current case list',
+    subsection: '',
+    showCondition: (params) => !params.hearingOutcomesEnabled
   }, {
-    RECENTLY_ADDED: {
-      key: 'recently-added',
-      title: 'Recently added',
-      a11yTitle: 'View list of recently added cases',
-      subsection: 'added',
-      showCondition: (params) => params.addedCount > 0,
-      countProperty: 'addedCount'
-    }
+    key: 'recently-added',
+    title: 'Recently added',
+    a11yTitle: 'View list of recently added cases',
+    subsection: 'added',
+    showCondition: (params) => params.addedCount > 0,
+    countProperty: 'addedCount'
   }, {
-    REMOVED_CASES: {
-      key: 'removed-cases',
-      title: 'Removed cases',
-      a11yTitle: 'View list of removed cases',
-      subsection: 'removed',
-      showCondition: (params) => params.removedCount > 0,
-      countProperty: 'removedCount'
-    }
+    key: 'removed-cases',
+    title: 'Removed cases',
+    a11yTitle: 'View list of removed cases',
+    subsection: 'removed',
+    showCondition: (params) => params.removedCount > 0,
+    countProperty: 'removedCount'
   }
 ]
 
