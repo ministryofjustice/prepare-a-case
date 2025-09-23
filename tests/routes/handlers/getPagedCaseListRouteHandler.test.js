@@ -17,10 +17,10 @@ describe('getPagedCaseListRouteHandler', () => {
   })
 
   const { caseServiceMock: caseService, mockResponse } = require('./test-helpers')
-  const userPreferenceService = { getFilters: jest.fn(), setFilters: jest.fn() }
+  const userPreferenceService = { getFilters: jest.fn().mockResolvedValue({}), setFilters: jest.fn().mockResolvedValue() }
   const subject = require('../../../server/routes/handlers/getPagedCaseListRouteHandler')(caseService, userPreferenceService)
   const mockRequest = {
-    redisClient: { getAsync: jest.fn() },
+    redisClient: { getAsync: jest.fn().mockResolvedValue(null) },
     params: { courtCode: 'ABC', date: '2020-11-11', limit: 10 },
     query: { page: 1 },
     session: {},
@@ -242,6 +242,7 @@ describe('getPagedCaseListRouteHandler', () => {
     })
 
     jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
+    jest.replaceProperty(settings, 'pacEnvironment', 'dev')
 
     // When
     mockRequest.query = { ...mockRequest.query, someFilter: 'someFilterValue' }
@@ -271,6 +272,7 @@ describe('getPagedCaseListRouteHandler', () => {
     })
 
     jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
+    jest.replaceProperty(settings, 'pacEnvironment', 'dev')
 
     // When
     mockRequest.query = { ...mockRequest.query, someFilter: 'someFilterValue' }

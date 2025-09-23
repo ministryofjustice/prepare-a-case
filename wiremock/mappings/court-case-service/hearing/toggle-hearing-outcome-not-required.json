@@ -1,0 +1,11 @@
+{
+    "id": "4de928ce-f7c6-4d0f-a7bd-9eae5c97aa63",
+    "priority": 5,
+    "request": {
+      "method": "PUT",
+      "urlPathPattern": "/hearing/.*/defendant/.*"
+    },
+    "response": {
+      "status": 200
+    }
+  }
