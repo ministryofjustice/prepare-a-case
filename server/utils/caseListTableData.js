@@ -66,6 +66,8 @@ const constructTableData = (params, data) => {
     tableData.head.push({ html: 'Admin prep status' })
   }
 
+  tableData.head.push({ html: 'Action' })
+
   data.forEach(item => {
     const offences = []
     const courtRoom = courtRoomDisplay(item.courtRoom)
@@ -150,6 +152,14 @@ const constructTableData = (params, data) => {
 
       tableRow.push({ html })
     }
+
+    const actionButtonHtml = `<form method="POST" action="/${params.courtCode}/hearing/${item.hearingId}/defendant/${item.defendantId}/mark-outcome-not-required" style="display: inline;">
+                                <button type="submit" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button">
+                                  Move to hearing outcome not required
+                                </button>
+                              </form>`
+
+    tableRow.push({ html: actionButtonHtml })
 
     tableData.rows.push(tableRow)
   })

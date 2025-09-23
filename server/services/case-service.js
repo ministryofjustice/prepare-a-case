@@ -518,6 +518,12 @@ const createCaseService = apiUrl => {
         return getInternalServerErrorResponse(res)
       }
       return res.data
+    },
+    toggleHearingOutcomeRequired: async (hearingId, defendantId, hearingOutcomeRequired) => {
+      await update(
+        `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`,
+        { hearingOutcomeRequired }
+      )
     }
   }
 }
