@@ -125,4 +125,16 @@ env:
   - name: USER_PREFERENCE_SERVICE_URL
     value: {{ .Values.env.USER_PREFERENCE_SERVICE_URL | quote }}
 
+  - name: FLIPT_URL
+    valueFrom:
+      secretKeyRef:
+        name: pic-flipt
+        key: url
+
+  - name: FLIPT_API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: pic-flipt
+        key: api-key
+
 {{- end -}}

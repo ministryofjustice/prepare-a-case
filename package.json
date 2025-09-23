@@ -56,6 +56,8 @@
     "usePathForSuiteName": true
   },
   "dependencies": {
+    "@flipt-io/flipt": "^1.2.0",
+    "@flipt-io/flipt-client-js": "^0.2.0",
     "@microsoft/applicationinsights-clickanalytics-js": "^3.3.2",
     "@microsoft/applicationinsights-web": "^3.3.2",
     "@ministryofjustice/frontend": "^2.1.0",

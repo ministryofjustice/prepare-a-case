@@ -1,7 +1,16 @@
+const dotenv = require('dotenv');
 require('dotenv').config()
 
+const fs = require('fs')
+const path = require('path')
 const crypto = require('crypto')
 const courts = require('./data/courts.json')
+
+const envPath = path.resolve(__dirname, './local.env')
+if(fs.existsSync(envPath)) {
+  console.log(envPath)
+  dotenv.config({ path: envPath, override: true }) 
+}
 
 const production = process.env.NODE_ENV === 'production'
 const port = process.env.PORT || 3000
@@ -81,7 +90,11 @@ module.exports = {
           max: 10
         }
       }
-    }
+    },
+  flipt: {
+    fliptUrl: get('FLIPT_URL', process.env.FLIPT_URL),
+    fliptToken: get('FLIPT_API_KEY', process.env.FLIPT_API_KEY)
+  }
   },
   redis: {
     host: process.env.REDIS_HOST,
