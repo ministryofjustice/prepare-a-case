@@ -129,12 +129,12 @@ env:
     valueFrom:
       secretKeyRef:
         name: pic-flipt
-        key: url
+        key: URL
 
   - name: FLIPT_API_KEY
     valueFrom:
       secretKeyRef:
         name: pic-flipt
-        key: api-key
+        key: API_KEY
 
 {{- end -}}
