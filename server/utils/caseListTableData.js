@@ -44,6 +44,29 @@ const getProbationStatusHtml = (item, notMatched) => {
   return probationStatusHtml
 }
 
+const getActionButtonHtml = (params, item) => {
+  let outcomeNotRequired, buttonText
+
+  if (params.subsection === '' || params.subsection === null || params.subsection === undefined) {
+    // "Hearing outcome still to be added" tab
+    outcomeNotRequired = 'true'
+    buttonText = 'Move to hearing outcome not required'
+  } else if (params.subsection === 'outcome-not-required') {
+    // "Outcome not required" tab
+    outcomeNotRequired = 'false'
+    buttonText = 'Move back to hearing outcome still to be added'
+  } else {
+    return ''
+  }
+
+  return `<form method="POST" action="/${params.courtCode}/hearing/${item.hearingId}/defendant/${item.defendantId}/toggle-hearing-outcome-required" style="display: inline;">
+            <input type="hidden" name="outcomeNotRequired" value="${outcomeNotRequired}">
+            <button type="submit" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button">
+              ${buttonText}
+            </button>
+          </form>`
+}
+
 const constructTableData = (params, data) => {
   const { courtRoomDisplay, escapeHtml, ordinalNumber, apostropheInName, properCase, removeTitle, capitalizeFirstLetter } = nunjucksFilters
   const tableData = {
@@ -66,7 +89,11 @@ const constructTableData = (params, data) => {
     tableData.head.push({ html: 'Admin prep status' })
   }
 
-  tableData.head.push({ html: 'Action' })
+  // Only show action column on hearing outcome tabs when hearing outcomes are enabled
+  const showActionColumn = params.hearingOutcomesEnabled && (params.subsection === '' || params.subsection === 'outcome-not-required')
+  if (showActionColumn) {
+    tableData.head.push({ html: 'Action' })
+  }
 
   data.forEach(item => {
     const offences = []
@@ -153,13 +180,10 @@ const constructTableData = (params, data) => {
       tableRow.push({ html })
     }
 
-    const actionButtonHtml = `<form method="POST" action="/${params.courtCode}/hearing/${item.hearingId}/defendant/${item.defendantId}/mark-outcome-not-required" style="display: inline;">
-                                <button type="submit" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button">
-                                  Move to hearing outcome not required
-                                </button>
-                              </form>`
-
-    tableRow.push({ html: actionButtonHtml })
+    if (showActionColumn) {
+      const actionButtonHtml = getActionButtonHtml(params, item)
+      tableRow.push({ html: actionButtonHtml })
+    }
 
     tableData.rows.push(tableRow)
   })
@@ -170,5 +194,6 @@ const constructTableData = (params, data) => {
 module.exports = {
   constructTableData,
   getBadge,
-  getProbationStatusHtml
+  getProbationStatusHtml,
+  getActionButtonHtml
 }

@@ -427,52 +427,55 @@ module.exports = function Index ({ authenticationMiddleware }) {
   )
 
   router.post(
-    '/:courtCode/hearing/:hearingId/defendant/:defendantId/mark-outcome-not-required',
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/toggle-hearing-outcome-required',
     defaults,
     catchErrors(async (req, res) => {
       const {
         params: { courtCode, hearingId, defendantId },
+        body: { outcomeNotRequired },
         session
       } = req
 
-      try {
-        // Call service to toggle hearing outcome requirement
-        const response = await caseService.toggleHearingOutcomeRequired(hearingId, defendantId, true)
+      const outcomeNotRequiredBool = outcomeNotRequired === 'true' || outcomeNotRequired === true || outcomeNotRequired === undefined
 
-        // Check if the service returned an error
+      try {
+        const response = await caseService.toggleHearingOutcomeRequired(hearingId, defendantId, outcomeNotRequiredBool)
+
         if (response && response.isError) {
-          console.error('Error toggling hearing outcome:', response.error || response.message)
-          trackEvent('PiCHearingOutcomeNotRequiredError', {
+          const action = outcomeNotRequiredBool ? 'not required' : 'required'
+          console.error(`Error toggling hearing outcome to ${action}:`, response.error || response.message)
+          trackEvent('PiCHearingOutcomeToggleError', {
             hearingId,
             defendantId,
+            outcomeNotRequired: outcomeNotRequiredBool,
             error: response.error || response.message,
             user: res.locals.user
           })
 
-          // Redirect to error page or back to case list with error
           const errorRedirectUrl = session.currentCaseListViewLink || `/${courtCode}/cases`
           return res.redirect(302, `${errorRedirectUrl}?error=true`)
         }
 
-        trackEvent('PiCHearingOutcomeNotRequiredSuccess', {
+        trackEvent('PiCHearingOutcomeToggleSuccess', {
           hearingId,
           defendantId,
+          outcomeNotRequired: outcomeNotRequiredBool,
           user: res.locals.user
         })
 
-        // After successful update, redirect back to the case list
         const redirectUrl = session.currentCaseListViewLink || `/${courtCode}/cases`
         res.redirect(302, redirectUrl)
       } catch (error) {
-        console.error('Exception when toggling hearing outcome:', error)
-        trackEvent('PiCHearingOutcomeNotRequiredException', {
+        const action = outcomeNotRequiredBool ? 'not required' : 'required'
+        console.error(`Exception when toggling hearing outcome to ${action}:`, error)
+        trackEvent('PiCHearingOutcomeToggleException', {
           hearingId,
           defendantId,
+          outcomeNotRequired: outcomeNotRequiredBool,
           error: error.message,
           user: res.locals.user
         })
 
-        // Redirect with error indication
         const errorRedirectUrl = session.currentCaseListViewLink || `/${courtCode}/cases`
         res.redirect(302, `${errorRedirectUrl}?error=true`)
       }

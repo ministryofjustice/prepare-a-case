@@ -1,0 +1,128 @@
+{
+  "id": "a70d8fbb-c11a-42b6-b623-b7c6bed53b27",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/court/([A-Z0-9]{5})/cases",
+    "queryParameters": {
+      "date": {
+        "matches": "2020-01-02"
+      },
+      "outcomeNotRequired": {
+        "equalTo": "true"
+      },
+      "VERSION2": {
+        "matches": "true"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "totalElements": 2,
+      "totalPages": 1,
+      "recentlyAddedCount": 0,
+      "possibleMatchesCount": 0,
+      "removedCount": 0,
+      "outcomeNotRequiredCount": 2,
+      "cases": [
+        {
+          "caseId": "46a7a502-70b2-4071-8996-e095717a26b8",
+          "hearingId": "8e0f9cb9-b492-4657-9028-a86de1301e26",
+          "defendantId": "91b6e516-4e9d-4c92-a38b-68e159cfd6c5",
+          "caseNo": "1574726181",
+          "crn": "C17000",
+          "courtCode": "SHF",
+          "courtRoom": "2",
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+          "listNo": "1st",
+          "pnc": "A/8504713BA",
+          "probationStatus": "Current",
+          "session": "MORNING",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "preSentenceActivity": false,
+          "awaitingPsr": false,
+          "source": "COMMON_PLATFORM",
+          "outcomeNotRequired": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "COMPLETED"
+              }
+            ]
+          },
+          "offences": [
+            {
+              "offenceTitle": "Minor traffic violation",
+              "offenceSummary": "On 15/06/2023 at Sheffield committed a minor traffic violation - failing to stop at red light.",
+              "act": "Contrary to section 36 of the Road Traffic Act 1988."
+            }
+          ],
+          "defendantSex": "F",
+          "defendantName": "Sarah Johnson",
+          "defendantAddress": {
+            "line1": "123",
+            "line2": "High Street",
+            "postcode": "S1 2AB",
+            "line3": "Sheffield",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "1985-03-15"
+        },
+        {
+          "caseId": "56a7a502-70b2-4071-8996-e095717a26b9",
+          "hearingId": "9e0f9cb9-b492-4657-9028-a86de1301e27",
+          "defendantId": "01b6e516-4e9d-4c92-a38b-68e159cfd6c6",
+          "caseNo": "1674726182",
+          "courtCode": "SHF",
+          "courtRoom": "3",
+          "crn": null,
+          "sessionStartTime": "{{now format='yyyy-MM-dd'}}T14:00:00",
+          "listNo": "2nd",
+          "pnc": "A/8604713BA",
+          "probationStatus": "No record",
+          "session": "AFTERNOON",
+          "previouslyKnownTerminationDate": null,
+          "suspendedSentenceOrder": false,
+          "breach": false,
+          "preSentenceActivity": false,
+          "awaitingPsr": false,
+          "source": "COMMON_PLATFORM",
+          "outcomeNotRequired": true,
+          "workflow": {
+            "tasks": [
+              {
+                "id": "prep",
+                "state": "COMPLETED"
+              }
+            ]
+          },
+          "offences": [
+            {
+              "offenceTitle": "Littering",
+              "offenceSummary": "On 20/07/2023 at Sheffield unlawfully deposited litter in a public place.",
+              "act": "Contrary to section 87 of the Environmental Protection Act 1990."
+            }
+          ],
+          "defendantSex": "M",
+          "defendantName": "Michael Brown",
+          "defendantAddress": {
+            "line1": "45",
+            "line2": "Oak Avenue",
+            "postcode": "S2 3CD",
+            "line3": "Sheffield",
+            "line4": null,
+            "line5": null
+          },
+          "defendantDob": "1978-11-22"
+        }
+      ]
+    }
+  }
+}
