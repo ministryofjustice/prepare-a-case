@@ -75,6 +75,7 @@ describe('caseListTableData', () => {
     const mockParams = {
       courtCode: 'TEST',
       subsection: '',
+      hearingOutcomesEnabled: true,
       workflow: {
         enabled: false
       }
@@ -115,12 +116,11 @@ describe('caseListTableData', () => {
     })
 
     it('should add case number header for removed subsection', () => {
-      const paramsWithRemoved = { ...mockParams, subsection: 'removed' }
+      const paramsWithRemoved = { ...mockParams, subsection: 'removed', hearingOutcomesEnabled: false }
       const tableData = caseListTableData.constructTableData(paramsWithRemoved, [])
 
-      expect(tableData.head).toHaveLength(8)
+      expect(tableData.head).toHaveLength(7)
       expect(tableData.head[6]).toEqual({ text: 'Libra case number', format: 'numeric' })
-      expect(tableData.head[7]).toEqual({ html: 'Action' })
     })
 
     it('should add workflow header when enabled', () => {
@@ -170,7 +170,7 @@ describe('caseListTableData', () => {
       const actionCell = row[row.length - 1]
 
       expect(actionCell.html).toContain('<form method="POST"')
-      expect(actionCell.html).toContain(`action="/${mockParams.courtCode}/hearing/${mockCase.hearingId}/defendant/${mockCase.defendantId}/mark-outcome-not-required"`)
+      expect(actionCell.html).toContain(`action="/${mockParams.courtCode}/hearing/${mockCase.hearingId}/defendant/${mockCase.defendantId}/toggle-hearing-outcome-required"`)
       expect(actionCell.html).toContain('Move to hearing outcome not required')
       expect(actionCell.html).toContain('govuk-button--secondary')
       expect(actionCell.html).toContain('type="submit"')
@@ -212,7 +212,7 @@ describe('caseListTableData', () => {
     })
 
     it('should add case number for removed subsection', () => {
-      const paramsWithRemoved = { ...mockParams, subsection: 'removed' }
+      const paramsWithRemoved = { ...mockParams, subsection: 'removed', hearingOutcomesEnabled: false }
       const caseWithCaseNo = { ...mockCase, caseNo: '12345' }
 
       const tableData = caseListTableData.constructTableData(paramsWithRemoved, [caseWithCaseNo])
@@ -220,7 +220,7 @@ describe('caseListTableData', () => {
 
       expect(row[6].text).toBe('12345')
       expect(row[6].format).toBe('numeric')
-      expect(row[7].html).toContain('mark-outcome-not-required') // Action button should be last
+      // No action button for removed subsection with hearing outcomes disabled
     })
 
     it('should construct multiple rows for multiple cases', () => {
