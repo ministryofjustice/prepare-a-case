@@ -78,13 +78,6 @@
     {% endif %}
 
 
-    {%- if params.date !== today %}
-        {% if params.hearingOutcomesEnabled %}
-            {% set listTabs = listTabs.splice(0,2) %}
-        {% else %}
-            {% set listTabs = listTabs.splice(0,1) %}
-        {% endif %}
-    {% endif -%}
 
     {{ components.filterComponent.html | safe}}
 
