@@ -15,6 +15,12 @@
     },
     "status": 200,
     "jsonBody": {
+      "totalElements": 5,
+      "totalPages": 1,
+      "recentlyAddedCount": 0,
+      "possibleMatchesCount": 0,
+      "removedCount": 0,
+      "outcomeNotRequiredCount": 2,
       "cases": [
         {
           "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",
@@ -35,6 +41,7 @@
           "preSentenceActivity": false,
           "awaitingPsr": false,
           "source": "COMMON_PLATFORM",
+          "outcomeNotRequired": true,
            "workflow": {
             "tasks": [
               {
@@ -157,7 +164,8 @@
             "line4": null,
             "line5": null
           },
-          "defendantDob": "1970-04-06"
+          "defendantDob": "1970-04-06",
+          "outcomeNotRequired": true
         },
         {
           "caseId": "36a7a502-70b2-4071-8996-e095717a26b7",

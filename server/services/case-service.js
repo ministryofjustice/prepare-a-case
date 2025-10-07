@@ -90,6 +90,9 @@ const createCaseService = apiUrl => {
         if (subsection === 'heard') {
           apiUrlBuilder.searchParams.append('hearingStatus', 'HEARD')
         }
+        if (subsection === 'outcome-not-required') {
+          apiUrlBuilder.searchParams.append('outcomeNotRequired', 'true')
+        }
       }
 
       if (selectedFilters) {
@@ -518,6 +521,12 @@ const createCaseService = apiUrl => {
         return getInternalServerErrorResponse(res)
       }
       return res.data
+    },
+    toggleHearingOutcomeRequired: async (hearingId, defendantId, hearingOutcomeRequired) => {
+      await update(
+        `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`,
+        { hearingOutcomeRequired }
+      )
     }
   }
 }

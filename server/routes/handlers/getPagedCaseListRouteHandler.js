@@ -34,6 +34,8 @@ const getPageTitle = (params) => {
       return 'Recently added cases'
     case 'removed':
       return 'Removed cases'
+    case 'outcome-not-required':
+      return 'Hearing outcome not required'
     default:
       return 'Case list'
   }
@@ -52,6 +54,13 @@ const TAB_CONFIGS = [
     a11yTitle: 'View outcome added case list',
     subsection: 'heard',
     showCondition: (params) => params.hearingOutcomesEnabled
+  }, {
+    key: 'hearing-outcome-not-required',
+    title: 'Outcome not required',
+    a11yTitle: 'View hearing outcome not required case list',
+    subsection: 'outcome-not-required',
+    showCondition: (params) => params.hearingOutcomesEnabled,
+    countProperty: 'outcomeNotRequiredCount'
   }, {
     key: 'case-list',
     title: 'Case list',
@@ -232,6 +241,7 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
     addedCount: response.recentlyAddedCount,
     unmatchedRecords: response.possibleMatchesCount,
     removedCount: response.removedCount,
+    outcomeNotRequiredCount: response.outcomeNotRequiredCount,
     totalDays: pastCaseNavigationEnabled ? settings.casesTotalDays : 7,
     casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
     enablePastCasesNavigation: settings.enablePastCasesNavigation,
