@@ -22,6 +22,7 @@ const caseSummaryHandler = utils => async (req, res) => {
   const { session, path, params: { courtCode } } = req
   const templateValues = await utils.getCaseAndTemplateValues(req)
   templateValues.title = 'Case summary'
+  templateValues.toggleOutcomeSuccessMessage = req.flash('toggle-outcome-success')
   templateValues.session = {
     ...session
   }
@@ -55,8 +56,6 @@ const caseSummaryHandler = utils => async (req, res) => {
     getHearingOutcome(templateValues.data.hearingId, templateValues.data.hearings)
   )
 
-  templateValues.data.actionButtonItems = getActionButtons(templateValues)
-
   templateValues.config = { ...settings.case }
 
   templateValues.enableCaseHistory = settings.enableCaseHistory
@@ -70,6 +69,7 @@ const caseSummaryHandler = utils => async (req, res) => {
     caseDefendantDocuments: hearingOutcomesEnabled
   }
   templateValues.outcomeTypes = outcomeTypes
+  templateValues.data.actionButtonItems = getActionButtons(templateValues)
 
   session.confirmedMatch = undefined
   session.matchName = undefined
@@ -96,8 +96,8 @@ const getHearingOutcome = (hearingId, hearings) => {
 
 const getActionButtons = (templateValues) => {
   const { hideUnlinkButton } = templateValues
-  const { probationStatus, crn, hearingId, hearings, assignedToCurrentUser, defendantId, defendantName, caseId } = templateValues.data
-  const { courtCode } = templateValues.params
+  const { probationStatus, crn, hearingId, hearings, assignedToCurrentUser, defendantId, defendantName, caseId, hearingOutcomeRequired } = templateValues.data
+  const { courtCode, hearingOutcomesEnabled } = templateValues.params
   const hearingOutcome = getHearingOutcome(hearingId, hearings)
   const buttons = []
 
@@ -122,6 +122,16 @@ const getActionButtons = (templateValues) => {
   if (hearingOutcome && settings.enableMoveToResultedAction && assignedToCurrentUser && hearingOutcome.state === 'IN_PROGRESS') {
     const resultedLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/move-to-resulted?defendantName=${defendantName}`
     buttons.push(createButton('Move to resulted', 'moveToResulted', resultedLink))
+  }
+  if (hearingOutcomesEnabled) {
+    if (hearingOutcomeRequired !== false) {
+      const outcomeNotRequiredLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/toggle-hearing-outcome-required?hearingOutcomeRequired=false&defendantName=${defendantName}`
+      buttons.push(createButton('Move to hearing outcome not required', 'outcomeNotRequired', outcomeNotRequiredLink))
+    }
+    if (hearingOutcomeRequired === false) {
+      const outcomeStillToBeAddedLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/toggle-hearing-outcome-required?hearingOutcomeRequired=true&defendantName=${defendantName}`
+      buttons.push(createButton('Move back to hearing outcome still to be added', 'outcomeStillToBeAdded', outcomeStillToBeAddedLink))
+    }
   }
 
   return buttons.length > 0 ? buttons : null
