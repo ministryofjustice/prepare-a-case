@@ -27,6 +27,7 @@
       "breach": false,
       "preSentenceActivity": false,
       "awaitingPsr": true,
+      "hearingOutcomeRequired": true,
       "source": "COMMON_PLATFORM",
       "urn": "01WW0298121",
       "files": [],

@@ -87,6 +87,19 @@
         }) }}
     {% endif %}
 
+    {% if toggleOutcomeSuccessMessage | length %}
+        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+        {% set html %}
+            <p class="govuk-notification-banner__heading">
+                {{ toggleOutcomeSuccessMessage }}
+            </p>
+        {% endset %}
+        {{ govukNotificationBanner({
+            html: html,
+            type: 'success'
+        }) }}
+    {% endif %}
+
     {% if data.probationStatus and data.probationStatus | string | lower === "possible ndelius record" %}
         {%- from "moj/components/banner/macro.njk" import mojBanner -%}
         {{ mojBanner({
