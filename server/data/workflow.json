@@ -30,6 +30,15 @@
             }
           },
           "cssClass": "govuk-tag--green"
+        },
+        {
+          "id": "NOT_REQUIRED",
+          "lang": {
+            "en": {
+              "title": "Not required"
+            }
+          },
+          "cssClass": "govuk-tag--orange"
         }
       ]
     }

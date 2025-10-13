@@ -1,0 +1,13 @@
+{
+  "id": "9f8e7d6c-5b4a-3210-fedc-ba0987654321",
+  "request": {
+    "method": "PUT",
+    "urlPathPattern": "/hearing/a395526d-b805-4c52-8f61-3c41bca15537/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200
+  }
+}
