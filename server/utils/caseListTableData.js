@@ -59,12 +59,9 @@ const getActionButtonHtml = (params, item) => {
     return ''
   }
 
-  return `<form method="POST" action="/${params.courtCode}/hearing/${item.hearingId}/defendant/${item.defendantId}/toggle-hearing-outcome-required" style="display: inline;">
-            <input type="hidden" name="outcomeNotRequired" value="${outcomeNotRequired}">
-            <button type="submit" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button">
-              ${buttonText}
-            </button>
-          </form>`
+  return `<a href="/${params.courtCode}/hearing/${item.hearingId}/defendant/${item.defendantId}/toggle-hearing-outcome-required?outcomeNotRequired=${outcomeNotRequired}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button" role="button" draggable="false">
+            ${buttonText}
+          </a>`
 }
 
 const constructTableData = (params, data) => {
