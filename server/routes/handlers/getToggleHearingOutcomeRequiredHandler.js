@@ -7,18 +7,18 @@ const getToggleHearingOutcomeRequiredHandler = (caseService) => async (req, res)
     session
   } = req
 
-  const outcomeNotRequiredBool = outcomeNotRequired === 'true' || outcomeNotRequired === true || outcomeNotRequired === undefined
+  const isOutcomeNotRequired = outcomeNotRequired === 'true' || outcomeNotRequired === true || outcomeNotRequired === undefined
 
   try {
-    const response = await caseService.toggleHearingOutcomeRequired(hearingId, defendantId, outcomeNotRequiredBool)
+    const response = await caseService.toggleHearingOutcomeRequired(hearingId, defendantId, isOutcomeNotRequired)
 
     if (response && response.isError) {
-      const action = outcomeNotRequiredBool ? 'not required' : 'required'
+      const action = isOutcomeNotRequired ? 'not required' : 'required'
       console.error(`Error toggling hearing outcome to ${action}:`, response.error || response.message)
       trackEvent('PiCHearingOutcomeToggleError', {
         hearingId,
         defendantId,
-        outcomeNotRequired: outcomeNotRequiredBool,
+        outcomeNotRequired: isOutcomeNotRequired,
         error: response.error || response.message,
         user: res.locals.user
       })
@@ -30,19 +30,19 @@ const getToggleHearingOutcomeRequiredHandler = (caseService) => async (req, res)
     trackEvent('PiCHearingOutcomeToggleSuccess', {
       hearingId,
       defendantId,
-      outcomeNotRequired: outcomeNotRequiredBool,
+      outcomeNotRequired: isOutcomeNotRequired,
       user: res.locals.user
     })
 
     const redirectUrl = session.currentCaseListViewLink || `/${courtCode}/cases`
     res.redirect(302, redirectUrl)
   } catch (error) {
-    const action = outcomeNotRequiredBool ? 'not required' : 'required'
+    const action = isOutcomeNotRequired ? 'not required' : 'required'
     console.error(`Exception when toggling hearing outcome to ${action}:`, error)
     trackEvent('PiCHearingOutcomeToggleException', {
       hearingId,
       defendantId,
-      outcomeNotRequired: outcomeNotRequiredBool,
+      outcomeNotRequired: isOutcomeNotRequired,
       error: error.message,
       user: res.locals.user
     })
