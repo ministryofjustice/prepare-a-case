@@ -177,22 +177,31 @@ describe('caseListTableData', () => {
       expect(row[5].format).toBe('numeric')
     })
 
-    it('should add action button with correct form action', () => {
-      // Only test action button if conditions are met for it to be shown
-      if (mockParams.hearingOutcomesEnabled && (mockParams.subsection === '' || mockParams.subsection === 'outcome-not-required')) {
-        const tableData = caseListTableData.constructTableData(mockParams, [mockCase])
-        const row = tableData.rows[0]
-        const actionCell = row[row.length - 1]
+    it('should add action button with correct link for empty subsection', () => {
+      const tableData = caseListTableData.constructTableData(mockParams, [mockCase])
+      const row = tableData.rows[0]
+      const actionCell = row[row.length - 1]
 
-        expect(actionCell.html).toContain('<form method="POST"')
-        expect(actionCell.html).toContain(`action="/${mockParams.courtCode}/hearing/${mockCase.hearingId}/defendant/${mockCase.defendantId}/toggle-hearing-outcome-required"`)
-        expect(actionCell.html).toContain('Move to hearing outcome not required')
-        expect(actionCell.html).toContain('govuk-button--secondary')
-        expect(actionCell.html).toContain('type="submit"')
-      } else {
-        // If action button shouldn't be shown, skip this test
-        expect(true).toBe(true)
-      }
+      expect(actionCell.html).toContain('<a href="')
+      expect(actionCell.html).toContain(`/${mockParams.courtCode}/hearing/${mockCase.hearingId}/defendant/${mockCase.defendantId}/toggle-hearing-outcome-required`)
+      expect(actionCell.html).toContain('outcomeNotRequired=true')
+      expect(actionCell.html).toContain('Move to hearing outcome not required')
+      expect(actionCell.html).toContain('govuk-button--secondary')
+      expect(actionCell.html).toContain('role="button"')
+    })
+
+    it('should add action button with correct link for outcome-not-required subsection', () => {
+      const paramsOutcomeNotRequired = { ...mockParams, subsection: 'outcome-not-required' }
+      const tableData = caseListTableData.constructTableData(paramsOutcomeNotRequired, [mockCase])
+      const row = tableData.rows[0]
+      const actionCell = row[row.length - 1]
+
+      expect(actionCell.html).toContain('<a href="')
+      expect(actionCell.html).toContain(`/${mockParams.courtCode}/hearing/${mockCase.hearingId}/defendant/${mockCase.defendantId}/toggle-hearing-outcome-required`)
+      expect(actionCell.html).toContain('outcomeNotRequired=false')
+      expect(actionCell.html).toContain('Move back to hearing outcome still to be added')
+      expect(actionCell.html).toContain('govuk-button--secondary')
+      expect(actionCell.html).toContain('role="button"')
     })
 
     it('should handle multiple offences', () => {
