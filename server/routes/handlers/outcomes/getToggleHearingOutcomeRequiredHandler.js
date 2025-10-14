@@ -2,12 +2,12 @@ const trackEvent = require('../../../utils/analytics')
 
 const getToggleHearingOutcomeRequiredHandler = caseService => async (req, res) => {
   const { params: { courtCode, hearingId, defendantId }, query } = req
-  const hearingOutcomeRequired = query.hearingOutcomeRequired === 'true'
+  const hearingOutcomeNotRequired = query.hearingOutcomeRequired !== 'true'
   const defendantName = query.defendantName
 
   try {
-    await caseService.toggleHearingOutcomeRequired(hearingId, defendantId, hearingOutcomeRequired)
-    if (hearingOutcomeRequired === false) {
+    await caseService.toggleHearingOutcomeRequired(hearingId, defendantId, hearingOutcomeNotRequired)
+    if (hearingOutcomeNotRequired === true) {
       req.flash('toggle-outcome-success', `You have moved ${defendantName} to the hearing outcome not required tab in cases`)
     } else {
       req.flash('toggle-outcome-success', `You have moved ${defendantName} to the hearing outcome still to be added tab in cases`)
@@ -27,7 +27,7 @@ const getToggleHearingOutcomeRequiredHandler = caseService => async (req, res) =
       hearingId,
       courtCode,
       defendantId,
-      hearingOutcomeRequired,
+      hearingOutcomeNotRequired,
       userId: res.locals.user.uuid,
       user: res.locals.user
     }

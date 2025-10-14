@@ -21,6 +21,7 @@ const caseSummaryHandler = utils => async (req, res) => {
 
   const { session, path, params: { courtCode } } = req
   const templateValues = await utils.getCaseAndTemplateValues(req)
+  // console.log("🚀 ~ caseSummaryHandler ~ templateValues:", templateValues)
   templateValues.title = 'Case summary'
   templateValues.toggleOutcomeSuccessMessage = req.flash('toggle-outcome-success')
   templateValues.session = {
@@ -96,7 +97,7 @@ const getHearingOutcome = (hearingId, hearings) => {
 
 const getActionButtons = (templateValues) => {
   const { hideUnlinkButton } = templateValues
-  const { probationStatus, crn, hearingId, hearings, assignedToCurrentUser, defendantId, defendantName, caseId, hearingOutcomeRequired } = templateValues.data
+  const { probationStatus, crn, hearingId, hearings, assignedToCurrentUser, defendantId, defendantName, caseId, hearingOutcomeNotRequired } = templateValues.data
   const { courtCode, hearingOutcomesEnabled } = templateValues.params
   const hearingOutcome = getHearingOutcome(hearingId, hearings)
   const buttons = []
@@ -124,11 +125,11 @@ const getActionButtons = (templateValues) => {
     buttons.push(createButton('Move to resulted', 'moveToResulted', resultedLink))
   }
   if (hearingOutcomesEnabled) {
-    if (hearingOutcomeRequired !== false) {
+    if (hearingOutcomeNotRequired === false) {
       const outcomeNotRequiredLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/toggle-hearing-outcome-required?hearingOutcomeRequired=false&defendantName=${defendantName}`
       buttons.push(createButton('Move to hearing outcome not required', 'outcomeNotRequired', outcomeNotRequiredLink))
     }
-    if (hearingOutcomeRequired === false) {
+    if (hearingOutcomeNotRequired !== false) {
       const outcomeStillToBeAddedLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/toggle-hearing-outcome-required?hearingOutcomeRequired=true&defendantName=${defendantName}`
       buttons.push(createButton('Move back to hearing outcome still to be added', 'outcomeStillToBeAdded', outcomeStillToBeAddedLink))
     }
