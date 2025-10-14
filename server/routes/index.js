@@ -63,6 +63,7 @@ const {
   deleteHearingNoteConfirmationHandler,
   deleteHearingNoteHandler
 } = require('./handlers')
+const getToggleHearingOutcomeRequiredHandler = require('./handlers/getToggleHearingOutcomeRequiredHandler')
 
 const { registerManageCourtsRoutes, manageCourtsRoute } = require('./manage-courts/routes')
 const caseService = require('../services/case-service')
@@ -424,6 +425,12 @@ module.exports = function Index ({ authenticationMiddleware }) {
     '/:courtCode/hearing/:hearingId/defendant/:defendantId/summary/edit-hearing-outcome',
     defaults,
     catchErrors(editHearingOutcomeHandler)
+  )
+
+  router.get(
+    '/:courtCode/hearing/:hearingId/defendant/:defendantId/toggle-hearing-outcome-required',
+    defaults,
+    catchErrors(getToggleHearingOutcomeRequiredHandler(caseService))
   )
 
   router.post(
