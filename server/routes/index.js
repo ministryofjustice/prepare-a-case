@@ -103,7 +103,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       302,
       cookies && cookies.currentCourt
         ? `/${cookies.currentCourt}/cases`
-        : `${manageCourtsRoute}/setup`
+        : `${manageCourtsRoute}`
     )
   })
 
