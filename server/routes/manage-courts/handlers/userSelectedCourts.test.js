@@ -12,7 +12,8 @@ describe('userSelectedCourts', () => {
             username: 'user-one'
           }
         },
-      render: jest.fn()
+      render: jest.fn(),
+      redirect: jest.fn()
     }
     const mockRequest = {
       session: {}
@@ -47,12 +48,7 @@ describe('userSelectedCourts', () => {
       await subject(mockRequest, mockResponse)
 
       expect(userSelectedCourtsMock).toHaveBeenCalledWith('user-one')
-      expect(mockResponse.render).toHaveBeenCalledWith('view-courts', {
-        params: {
-          availableCourts: settings.availableCourts,
-          chosenCourts: []
-        }
-      })
+      expect(mockResponse.redirect).toHaveBeenCalledWith(302, '/my-courts/setup')
     })
 
     it('should render error view when user preferences call fails', async () => {
