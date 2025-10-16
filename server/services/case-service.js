@@ -92,7 +92,7 @@ const createCaseService = apiUrl => {
           apiUrlBuilder.searchParams.append('hearingStatus', 'HEARD')
         }
         if (subsection === 'outcome-not-required') {
-          apiUrlBuilder.searchParams.append('outcomeNotRequired', 'true')
+          apiUrlBuilder.searchParams.append('hearingOutcomeNotRequired', 'true')
         }
       }
 
