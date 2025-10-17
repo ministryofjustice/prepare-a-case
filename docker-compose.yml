@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 networks:
   hmpps:
 
@@ -8,7 +8,12 @@ services:
     container_name: hmpps-auth
     networks:
       - hmpps
-    entrypoint: ["/docker-entrypoint.sh", "--disable-request-logging", "--disable-banner", "--global-response-templating"] #"--verbose"
+    entrypoint: [
+        "/docker-entrypoint.sh",
+        "--disable-request-logging",
+        "--disable-banner",
+        "--global-response-templating",
+      ] #"--verbose"
     restart: always
     ports:
       - "9091:8080"
@@ -27,7 +32,14 @@ services:
     container_name: court-case-service
     networks:
       - hmpps
-    entrypoint: ["/docker-entrypoint.sh", "--disable-request-logging", "--disable-banner", "--global-response-templating", "--verbose"]
+    entrypoint:
+      [
+        "/docker-entrypoint.sh",
+        "--disable-request-logging",
+        "--disable-banner",
+        "--global-response-templating",
+        "--verbose",
+      ]
     volumes:
       - ./wiremock/mappings/court-case-service:/home/wiremock/mappings
       - ./wiremock/__files:/home/wiremock/__files
@@ -36,19 +48,19 @@ services:
       - "9092:8080"
 
   redis:
-    image: 'bitnamilegacy/redis:7.2.4'
+    image: "bitnamilegacy/redis:7.2.4"
     networks:
       - hmpps
     container_name: prepare-a-case-redis
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
-      - '6379:6379'
+      - "6379:6379"
     healthcheck:
-      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ] # ping redis and write to a key to ensure service is up
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"] # ping redis and write to a key to ensure service is up
 
   app:
-    build: 
+    build:
       context: .
       dockerfile: ./Dockerfile
       target: development
@@ -77,8 +89,8 @@ services:
       - REDUCE_STDOUT_NOISE=true
       - USER_PREFERENCE_SERVICE_URL=${USER_PREFERENCE_SERVICE_URL:-http://hmpps-user-preferences:3000}
       - COURT_CASE_SERVICE_URL=${COURT_CASE_SERVICE_URL:-http://court-case-service:8080}
-      - NOTIFICATION_USERNAME=test 
-      - NOTIFICATION_PASSWORD=test 
+      - NOTIFICATION_USERNAME=${NOTIFICATION_USERNAME:-test}
+      - NOTIFICATION_PASSWORD=${NOTIFICATION_PASSWORD:-test}
       - HEARING_OUTCOMES_PAGE_SIZE=${HEARING_OUTCOMES_PAGE_SIZE:-2}
       - ENABLE_CASE_COMMENTS=${ENABLE_CASE_COMMENTS:-true}
       - ENABLE_CASE_PROGRESS=${ENABLE_CASE_PROGRESS:-true}
@@ -100,7 +112,6 @@ services:
       hmpps-user-preferences:
         condition: service_started
     ports:
-      - '3000:3000'
-      - '9229:9229'
+      - "3000:3000"
+      - "9229:9229"
     restart: always
-
