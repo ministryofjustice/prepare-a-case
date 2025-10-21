@@ -3,7 +3,7 @@ const trackEvent = require('../../utils/analytics')
 const getToggleHearingOutcomeRequiredHandler = (caseService) => async (req, res) => {
   const {
     params: { courtCode, hearingId, defendantId },
-    query: { outcomeNotRequired },
+    query: { outcomeNotRequired, defendantName },
     session
   } = req
 
@@ -23,8 +23,9 @@ const getToggleHearingOutcomeRequiredHandler = (caseService) => async (req, res)
         user: res.locals.user
       })
 
+      req.flash('global-error', 'Request was unsuccessful. Please try again.')
       const errorRedirectUrl = session.currentCaseListViewLink || `/${courtCode}/cases`
-      return res.redirect(302, `${errorRedirectUrl}?error=true`)
+      return res.redirect(302, errorRedirectUrl)
     }
 
     trackEvent('PiCHearingOutcomeToggleSuccess', {
@@ -33,6 +34,12 @@ const getToggleHearingOutcomeRequiredHandler = (caseService) => async (req, res)
       outcomeNotRequired: isOutcomeNotRequired,
       user: res.locals.user
     })
+
+    if (isOutcomeNotRequired === true) {
+      req.flash('toggle-outcome-success', defendantName ? `You have moved ${defendantName} to the hearing outcome not required tab` : 'Case moved to the hearing outcome not required tab')
+    } else {
+      req.flash('toggle-outcome-success', defendantName ? `You have moved ${defendantName} to the hearing outcome still to be added tab` : 'Case moved to the hearing outcome still to be added tab')
+    }
 
     const redirectUrl = session.currentCaseListViewLink || `/${courtCode}/cases`
     res.redirect(302, redirectUrl)
@@ -47,8 +54,9 @@ const getToggleHearingOutcomeRequiredHandler = (caseService) => async (req, res)
       user: res.locals.user
     })
 
+    req.flash('global-error', error.message || 'Request was unsuccessful. Please try again.')
     const errorRedirectUrl = session.currentCaseListViewLink || `/${courtCode}/cases`
-    res.redirect(302, `${errorRedirectUrl}?error=true`)
+    res.redirect(302, errorRedirectUrl)
   }
 }
 

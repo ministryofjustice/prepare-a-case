@@ -24,7 +24,8 @@ describe('getPagedCaseListRouteHandler', () => {
     params: { courtCode: 'ABC', date: '2020-11-11', limit: 10 },
     query: { page: 1 },
     session: {},
-    path: '/SHF/cases'
+    path: '/SHF/cases',
+    flash: jest.fn().mockReturnValue([])
   }
 
   const mockCase = () => ({
@@ -145,7 +146,9 @@ describe('getPagedCaseListRouteHandler', () => {
           head: expect.any(Array),
           rows: expect.any(Array)
         }),
-        hearingOutcomesEnabled: expect.any(Boolean)
+        hearingOutcomesEnabled: expect.any(Boolean),
+        toggleOutcomeSuccessMessage: [],
+        globalError: []
       })
   })
 

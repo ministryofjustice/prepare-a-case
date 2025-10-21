@@ -44,7 +44,7 @@ const getProbationStatusHtml = (item, notMatched) => {
   return probationStatusHtml
 }
 
-const getActionButtonHtml = (params, item) => {
+const getActionButtonHtml = (params, item, defendantName) => {
   let outcomeNotRequired, buttonText
 
   if (params.subsection === '' || params.subsection === null || params.subsection === undefined) {
@@ -59,7 +59,8 @@ const getActionButtonHtml = (params, item) => {
     return ''
   }
 
-  return `<a href="/${params.courtCode}/hearing/${item.hearingId}/defendant/${item.defendantId}/toggle-hearing-outcome-required?outcomeNotRequired=${outcomeNotRequired}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button" role="button" draggable="false">
+  const encodedDefendantName = encodeURIComponent(defendantName)
+  return `<a href="/${params.courtCode}/hearing/${item.hearingId}/defendant/${item.defendantId}/toggle-hearing-outcome-required?outcomeNotRequired=${outcomeNotRequired}&defendantName=${encodedDefendantName}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button" role="button" draggable="false">
             ${buttonText}
           </a>`
 }
@@ -178,7 +179,7 @@ const constructTableData = (params, data) => {
     }
 
     if (showActionColumn) {
-      const actionButtonHtml = getActionButtonHtml(params, item)
+      const actionButtonHtml = getActionButtonHtml(params, item, defendantFullName)
       tableRow.push({ html: actionButtonHtml })
     }
 
