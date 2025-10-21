@@ -56,7 +56,7 @@ const TAB_CONFIGS = [
     showCondition: (params) => params.hearingOutcomesEnabled
   }, {
     key: 'hearing-outcome-not-required',
-    title: 'Outcome not required',
+    title: 'Hearing outcome not required',
     a11yTitle: 'View hearing outcome not required case list',
     subsection: 'outcome-not-required',
     showCondition: (params) => params.hearingOutcomesEnabled,
@@ -257,7 +257,9 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
     hearingOutcomesEnabled,
     title: getPageTitle(pageParams),
     listTabs: getPageTabs(pageParams),
-    pagination: getPaginationObject(pageParams)
+    pagination: getPaginationObject(pageParams),
+    toggleOutcomeSuccessMessage: req.flash('toggle-outcome-success'),
+    globalError: req.flash('global-error')
   }
 
   session.currentView = subsection
