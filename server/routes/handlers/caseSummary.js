@@ -127,11 +127,11 @@ const getActionButtons = (templateValues) => {
   if (hearingOutcomesEnabled) {
     if (hearingOutcomeNotRequired === false) {
       const outcomeNotRequiredLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/toggle-hearing-outcome-required?hearingOutcomeRequired=false&defendantName=${defendantName}`
-      buttons.push(createButton('Move to hearing outcome not required', 'outcomeNotRequired', outcomeNotRequiredLink))
+      buttons.push(createButton('Move to Hearing outcome not required', 'outcomeNotRequired', outcomeNotRequiredLink))
     }
     if (hearingOutcomeNotRequired !== false) {
       const outcomeStillToBeAddedLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/toggle-hearing-outcome-required?hearingOutcomeRequired=true&defendantName=${defendantName}`
-      buttons.push(createButton('Move back to hearing outcome still to be added', 'outcomeStillToBeAdded', outcomeStillToBeAddedLink))
+      buttons.push(createButton('Move back to Hearing outcome still to be added', 'outcomeStillToBeAdded', outcomeStillToBeAddedLink))
     }
   }
 

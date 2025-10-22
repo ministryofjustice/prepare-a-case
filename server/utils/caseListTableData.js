@@ -50,11 +50,11 @@ const getActionButtonHtml = (params, item, defendantName) => {
   if (params.subsection === '' || params.subsection === null || params.subsection === undefined) {
     // "Hearing outcome still to be added" tab
     outcomeNotRequired = 'true'
-    buttonText = 'Move to hearing outcome not required'
+    buttonText = 'Move to Hearing outcome not required'
   } else if (params.subsection === 'outcome-not-required') {
     // "Outcome not required" tab
     outcomeNotRequired = 'false'
-    buttonText = 'Move back to hearing outcome still to be added'
+    buttonText = 'Move back to Hearing outcome still to be added'
   } else {
     return ''
   }
@@ -83,7 +83,7 @@ const constructTableData = (params, data) => {
     tableData.head.push({ text: 'Libra case number', format: 'numeric' })
   }
 
-  if (params.workflow.enabled) {
+  if (params.workflow.enabled && params.subsection !== 'outcome-not-required') {
     tableData.head.push({ html: 'Admin prep status' })
   }
 
@@ -158,7 +158,7 @@ const constructTableData = (params, data) => {
       tableRow.push({ text: item.caseNo, format: 'numeric' })
     }
 
-    if (params.workflow.enabled) {
+    if (params.workflow.enabled && params.subsection !== 'outcome-not-required') {
       let html = '<select class="workflow-tasks-status-selector" aria-label="Admin prep status" data-form-action="/workflow/tasks/prep/state?hearing=' + item.hearingId +
         '&defendant=' + item.defendantId + '" data-defendant-fullname="' +
         sanitisedDefendantFullName + '">'
