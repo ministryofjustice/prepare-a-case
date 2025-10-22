@@ -534,10 +534,16 @@ const createCaseService = apiUrl => {
         throw e
       }
     },
-    addHearingOutcome: async (hearingId, defendantId, hearingOutcomeType) =>
+    addHearingOutcome: async (hearingId, defendantId, hearingOutcomeType) => {
       await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome`, {
         hearingOutcomeType
-      }),
+      })
+      // Ensure the hearing is moved out of "outcome not required" tab when outcome is added
+      await update(
+        `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`,
+        { hearingOutcomeNotRequired: false }
+      )
+    },
     assignHearingOutcome: async (hearingId, defendantId, assignedTo) => {
       await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/assign`, {
         assignedTo

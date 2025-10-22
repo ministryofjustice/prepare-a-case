@@ -721,15 +721,33 @@ describe('Case service', () => {
   it('should invoke API to add hearing outcome', async () => {
     const hearingId = 'id-one'
     const defendantId = 'some-defendant-id'
-    const endpoint = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id/outcome`
-    moxios.stubRequest(endpoint, {
+    const outcomeEndpoint = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id/outcome`
+    const toggleEndpoint = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id`
+
+    moxios.stubRequest(outcomeEndpoint, {
       status: 200
     })
+    moxios.stubRequest(toggleEndpoint, {
+      status: 200
+    })
+
     const hearingOutcomeType = 'REPORT_REQUESTED'
     const response = await addHearingOutcome(hearingId, defendantId, hearingOutcomeType)
-    const mostRecent = moxios.requests.mostRecent()
-    expect(mostRecent.url).toBe(endpoint)
-    expect(mostRecent.config.data).toBe(JSON.stringify({ hearingOutcomeType }))
+
+    // Check both requests were made
+    const requests = moxios.requests
+    expect(requests.count()).toBe(2)
+
+    // First request should add the outcome
+    const firstRequest = requests.at(0)
+    expect(firstRequest.url).toBe(outcomeEndpoint)
+    expect(firstRequest.config.data).toBe(JSON.stringify({ hearingOutcomeType }))
+
+    // Second request should set hearingOutcomeNotRequired to false
+    const secondRequest = requests.at(1)
+    expect(secondRequest.url).toBe(toggleEndpoint)
+    expect(secondRequest.config.data).toBe(JSON.stringify({ hearingOutcomeNotRequired: false }))
+
     return response
   })
 
@@ -814,6 +832,23 @@ describe('Case service', () => {
         }
       })
 
+      // Stub the hearing outcome tab count requests
+      const unheardCountUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&size=1&hearingStatus=UNHEARD`
+      moxios.stubRequest(unheardCountUrl, {
+        status: 200,
+        response: {
+          totalElements: 50
+        }
+      })
+
+      const outcomeNotRequiredCountUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&size=1&hearingOutcomeNotRequired=true`
+      moxios.stubRequest(outcomeNotRequiredCountUrl, {
+        status: 200,
+        response: {
+          totalElements: 10
+        }
+      })
+
       const selectedFilters = {
         probationStatus: ['CURRENT', 'NO_RECORD'],
         courtRoom: ['01,Courtroom 01', 'Crown court 1-3', '02'],
@@ -832,7 +867,7 @@ describe('Case service', () => {
         20,
         true
       )
-      expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
+      expect(moxios.requests.at(0).url).toBe(expectedUrl)
       expect(resp.filters[1]).toStrictEqual({
         id: 'courtRoom',
         label: 'Courtroom',
