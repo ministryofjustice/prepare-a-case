@@ -36,9 +36,9 @@ const getToggleHearingOutcomeRequiredHandler = (caseService) => async (req, res)
     })
 
     if (isOutcomeNotRequired === true) {
-      req.flash('toggle-outcome-success', defendantName ? `You have moved ${defendantName} to the hearing outcome not required tab` : 'Case moved to the hearing outcome not required tab')
+      req.flash('toggle-outcome-success', defendantName ? `You have moved ${defendantName} to the Hearing outcome not required tab` : 'Case moved to the Hearing outcome not required tab')
     } else {
-      req.flash('toggle-outcome-success', defendantName ? `You have moved ${defendantName} to the hearing outcome still to be added tab` : 'Case moved to the hearing outcome still to be added tab')
+      req.flash('toggle-outcome-success', defendantName ? `You have moved ${defendantName} to the Hearing outcome still to be added tab` : 'Case moved to the Hearing outcome still to be added tab')
     }
 
     const redirectUrl = session.currentCaseListViewLink || `/${courtCode}/cases`

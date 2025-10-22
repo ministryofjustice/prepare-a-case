@@ -25,6 +25,44 @@ const defaultFilterMatcher = (courtCase, filterObj, item) =>
 const allowedSortValues = ['ASC', 'DESC']
 const allowedStates = ['NEW', 'IN_PROGRESS', 'RESULTED']
 
+const getHearingOutcomeTabCounts = async (apiUrl, courtCode, date, subsection, hearingOutcomesEnabled) => {
+  let hearingOutcomeStillToBeAddedCount = 0
+  let outcomeNotRequiredCount = 0
+
+  if (hearingOutcomesEnabled && (subsection === '' || subsection === false || subsection === null || subsection === undefined || subsection === 'outcome-not-required')) {
+    // Get count for "Hearing outcome still to be added" tab
+    const stillToBeAddedUrlBuilder = new URL(`${apiUrl}/court/${courtCode}/cases`)
+    stillToBeAddedUrlBuilder.searchParams.append('date', date)
+    stillToBeAddedUrlBuilder.searchParams.append('VERSION2', 'true')
+    stillToBeAddedUrlBuilder.searchParams.append('page', '1')
+    stillToBeAddedUrlBuilder.searchParams.append('size', '1')
+    stillToBeAddedUrlBuilder.searchParams.append('hearingStatus', 'UNHEARD')
+
+    const stillToBeAddedResponse = await request(stillToBeAddedUrlBuilder.href)
+    if (isHttpSuccess(stillToBeAddedResponse)) {
+      hearingOutcomeStillToBeAddedCount = stillToBeAddedResponse.data.totalElements
+    }
+
+    // Get count for "Hearing outcome not required" tab
+    const outcomeNotRequiredUrlBuilder = new URL(`${apiUrl}/court/${courtCode}/cases`)
+    outcomeNotRequiredUrlBuilder.searchParams.append('date', date)
+    outcomeNotRequiredUrlBuilder.searchParams.append('VERSION2', 'true')
+    outcomeNotRequiredUrlBuilder.searchParams.append('page', '1')
+    outcomeNotRequiredUrlBuilder.searchParams.append('size', '1')
+    outcomeNotRequiredUrlBuilder.searchParams.append('hearingOutcomeNotRequired', 'true')
+
+    const outcomeNotRequiredResponse = await request(outcomeNotRequiredUrlBuilder.href)
+    if (isHttpSuccess(outcomeNotRequiredResponse)) {
+      outcomeNotRequiredCount = outcomeNotRequiredResponse.data.totalElements
+    }
+  }
+
+  return {
+    hearingOutcomeStillToBeAddedCount,
+    outcomeNotRequiredCount
+  }
+}
+
 const createCaseService = apiUrl => {
   return {
     getCaseHistory: async caseId => {
@@ -123,6 +161,9 @@ const createCaseService = apiUrl => {
         return getInternalServerErrorResponse(response)
       }
 
+      // Get counts for both hearing outcome tabs
+      const { hearingOutcomeStillToBeAddedCount, outcomeNotRequiredCount } = await getHearingOutcomeTabCounts(apiUrl, courtCode, date, subsection, hearingOutcomesEnabled)
+
       const caseListFilters = [
         {
           id: 'probationStatus',
@@ -193,7 +234,9 @@ const createCaseService = apiUrl => {
 
       return {
         ...response.data,
-        filters: caseListFilters
+        filters: caseListFilters,
+        hearingOutcomeStillToBeAddedCount,
+        outcomeNotRequiredCount
       }
     },
     getCaseList: async (courtCode, date, selectedFilters, subsection) => {

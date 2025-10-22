@@ -8,9 +8,9 @@ const getToggleHearingOutcomeRequiredHandler = caseService => async (req, res) =
   try {
     await caseService.toggleHearingOutcomeRequired(hearingId, defendantId, hearingOutcomeNotRequired)
     if (hearingOutcomeNotRequired === true) {
-      req.flash('toggle-outcome-success', `You have moved ${defendantName} to the hearing outcome not required tab in cases`)
+      req.flash('toggle-outcome-success', `You have moved ${defendantName} to the Hearing outcome not required tab in Cases`)
     } else {
-      req.flash('toggle-outcome-success', `You have moved ${defendantName} to the hearing outcome still to be added tab in cases`)
+      req.flash('toggle-outcome-success', `You have moved ${defendantName} to the Hearing outcome still to be added tab in Cases`)
     }
   } catch (e) {
     if (e.response?.status === 403 || e.response?.status === 401) {

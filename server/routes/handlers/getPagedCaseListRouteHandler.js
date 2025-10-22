@@ -47,7 +47,8 @@ const TAB_CONFIGS = [
     title: 'Hearing outcome still to be added',
     a11yTitle: 'View outcome still to be added case list',
     subsection: '',
-    showCondition: (params) => params.hearingOutcomesEnabled
+    showCondition: (params) => params.hearingOutcomesEnabled,
+    countProperty: 'hearingOutcomeStillToBeAddedCount'
   }, {
     key: 'hearing-outcome-added',
     title: 'Hearing outcome added',
@@ -241,6 +242,7 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
     addedCount: response.recentlyAddedCount,
     unmatchedRecords: response.possibleMatchesCount,
     removedCount: response.removedCount,
+    hearingOutcomeStillToBeAddedCount: response.hearingOutcomeStillToBeAddedCount,
     outcomeNotRequiredCount: response.outcomeNotRequiredCount,
     totalDays: pastCaseNavigationEnabled ? settings.casesTotalDays : 7,
     casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,

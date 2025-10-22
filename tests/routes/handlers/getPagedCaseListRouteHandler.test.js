@@ -114,6 +114,7 @@ describe('getPagedCaseListRouteHandler', () => {
           workflow,
           addedCount: 2,
           removedCount: undefined,
+          hearingOutcomeStillToBeAddedCount: undefined,
           outcomeNotRequiredCount: undefined,
           caseCount: 4,
           courtCode: 'ABC',
