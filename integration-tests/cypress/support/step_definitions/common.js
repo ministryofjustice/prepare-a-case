@@ -1,5 +1,5 @@
 /* global cy expect */
-const { Given, Then, When } = require('@badeball/cypress-cucumber-preprocessor')
+const { Given, Then, When, After } = require('@badeball/cypress-cucumber-preprocessor')
 require('cypress-axe')
 const moment = require('moment')
 
@@ -63,6 +63,16 @@ function correctDates ($string) {
   }
   return $string
 }
+
+After ({ tags: '@cleanupCourt'}, () => {
+  cy.request({
+    method: 'DELETE',
+    url: 'http://localhost:9091/users/USER1/preferences/courts',
+    headers: { Accept: 'application/json' }
+   })
+  cy.clearCookies();
+  cy.clearLocalStorage();
+})
 
 Given('I am an authenticated user', () => {
   cy.task('resetStubs')

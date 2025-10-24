@@ -19,7 +19,7 @@ const get = (getUserSelectedCourts) => async (req, res) => {
   }
   session.courts = userSelectedCourts?.items || []
 
-  if (userSelectedCourts?.items.length === 0) {
+  if (userSelectedCourts?.items.length < 1) {
     res.redirect(
       302,
       '/my-courts/setup'
