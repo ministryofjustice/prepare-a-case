@@ -57,6 +57,21 @@ app.put('/users/:userId/preferences/:preferenceName', (req, res) => {
     }
 });
 
+app.delete('/users/:userId/preferences/:preferenceName', (req, res) => {
+    const { userId, preferenceName } = req.params;
+
+    const deleteSql = 'DELETE FROM preference WHERE hmpps_user_id = ? and name = ?'
+
+    db.run(deleteSql, [userId, preferenceName], function (err) {
+        if (err) {
+                console.error(err.message);
+                res.status(500).send('Internal server error');
+            } else {
+                res.status(200).send('Courts deleted')
+            }
+    })
+})
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server listening on port ${port}.`);

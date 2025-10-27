@@ -67,7 +67,7 @@ function correctDates ($string) {
 After ({ tags: '@cleanupCourt'}, () => {
   cy.request({
     method: 'DELETE',
-    url: 'http://localhost:9091/users/USER1/preferences/courts',
+    url: 'http://localhost:9093/users/USER1/preferences/courts',
     headers: { Accept: 'application/json' }
    })
   cy.clearCookies();
