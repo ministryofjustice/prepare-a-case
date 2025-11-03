@@ -18,6 +18,15 @@ const get = (getUserSelectedCourts) => async (req, res) => {
     return
   }
   session.courts = userSelectedCourts?.items || []
+
+  if (session.courts.length < 1) {
+    res.redirect(
+      302,
+      '/my-courts/setup'
+    )
+    return
+  }
+
   res.render('view-courts', {
     params: {
       availableCourts: settings.availableCourts,

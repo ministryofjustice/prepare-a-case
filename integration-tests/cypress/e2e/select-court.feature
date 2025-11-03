@@ -3,6 +3,7 @@ Feature: Select court
   As an authenticated user
   I want to be able to select my chosen court from a list of available courts
 
+@cleanupCourt
   Scenario: View the page with a list of available courts
     Given I am an authenticated user
     When I open the application
@@ -16,6 +17,7 @@ Feature: Select court
     And I should see the body text "Add and save the courts you work in to view case lists for those courts."
     And There should be no a11y violations
 
+@cleanupCourt
   Scenario: Click the Add button without selecting a court
     Given I am an authenticated user
     When I open the application
@@ -24,6 +26,7 @@ Feature: Select court
     Then I should see the error message "You must add a court"
     And There should be no a11y violations
 
+@cleanupCourt
   Scenario: Click the Save and continue button without selecting a court
     Given I am an authenticated user
     When I open the application
@@ -32,6 +35,7 @@ Feature: Select court
     Then I should see the error message "You must add a court"
     And There should be no a11y violations
 
+  @cleanupCourt
   Scenario: Select a court from the list of available courts using the autocomplete component
     Given I am an authenticated user
     When I open the application
@@ -46,6 +50,7 @@ Feature: Select court
     And I should see link "Sheffield Magistrates' Court" with href "/select-court/B14LO"
     And There should be no a11y violations
 
+  @cleanupCourt
   Scenario: Edit my selected courts
     Given I am an authenticated user
     When I open the application
@@ -70,6 +75,7 @@ Feature: Select court
     Then I should be on the "My courts" page
     And There should be no a11y violations
 
+  @cleanupCourt
   Scenario: View my court selection
     Given I am an authenticated user
     When I open the application
