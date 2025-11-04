@@ -25,42 +25,21 @@ const defaultFilterMatcher = (courtCase, filterObj, item) =>
 const allowedSortValues = ['ASC', 'DESC']
 const allowedStates = ['NEW', 'IN_PROGRESS', 'RESULTED']
 
-const getHearingOutcomeTabCounts = async (apiUrl, courtCode, date, subsection, hearingOutcomesEnabled) => {
-  let hearingOutcomeStillToBeAddedCount = 0
-  let outcomeNotRequiredCount = 0
-
-  if (hearingOutcomesEnabled && (subsection === '' || subsection === false || subsection === null || subsection === undefined || subsection === 'outcome-not-required')) {
-    // Get count for "Hearing outcome still to be added" tab
-    const stillToBeAddedUrlBuilder = new URL(`${apiUrl}/court/${courtCode}/cases`)
-    stillToBeAddedUrlBuilder.searchParams.append('date', date)
-    stillToBeAddedUrlBuilder.searchParams.append('VERSION2', 'true')
-    stillToBeAddedUrlBuilder.searchParams.append('page', '1')
-    stillToBeAddedUrlBuilder.searchParams.append('size', '1')
-    stillToBeAddedUrlBuilder.searchParams.append('hearingStatus', 'UNHEARD')
-
-    const stillToBeAddedResponse = await request(stillToBeAddedUrlBuilder.href)
-    if (isHttpSuccess(stillToBeAddedResponse)) {
-      hearingOutcomeStillToBeAddedCount = stillToBeAddedResponse.data.totalElements
-    }
-
-    // Get count for "Hearing outcome not required" tab
-    const outcomeNotRequiredUrlBuilder = new URL(`${apiUrl}/court/${courtCode}/cases`)
-    outcomeNotRequiredUrlBuilder.searchParams.append('date', date)
-    outcomeNotRequiredUrlBuilder.searchParams.append('VERSION2', 'true')
-    outcomeNotRequiredUrlBuilder.searchParams.append('page', '1')
-    outcomeNotRequiredUrlBuilder.searchParams.append('size', '1')
-    outcomeNotRequiredUrlBuilder.searchParams.append('hearingOutcomeNotRequired', 'true')
-
-    const outcomeNotRequiredResponse = await request(outcomeNotRequiredUrlBuilder.href)
-    if (isHttpSuccess(outcomeNotRequiredResponse)) {
-      outcomeNotRequiredCount = outcomeNotRequiredResponse.data.totalElements
+const retryWithExponentialBackoff = async (fn, maxRetries = 5, initialDelay = 1000) => {
+  let lastError
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await fn()
+    } catch (error) {
+      lastError = error
+      if (attempt < maxRetries) {
+        const delay = initialDelay * Math.pow(2, attempt)
+        console.log(`Retry attempt ${attempt + 1}/${maxRetries} after ${delay}ms delay`)
+        await new Promise(resolve => setTimeout(resolve, delay))
+      }
     }
   }
-
-  return {
-    hearingOutcomeStillToBeAddedCount,
-    outcomeNotRequiredCount
-  }
+  throw lastError
 }
 
 const createCaseService = apiUrl => {
@@ -161,9 +140,6 @@ const createCaseService = apiUrl => {
         return getInternalServerErrorResponse(response)
       }
 
-      // Get counts for both hearing outcome tabs
-      const { hearingOutcomeStillToBeAddedCount, outcomeNotRequiredCount } = await getHearingOutcomeTabCounts(apiUrl, courtCode, date, subsection, hearingOutcomesEnabled)
-
       const caseListFilters = [
         {
           id: 'probationStatus',
@@ -234,9 +210,7 @@ const createCaseService = apiUrl => {
 
       return {
         ...response.data,
-        filters: caseListFilters,
-        hearingOutcomeStillToBeAddedCount,
-        outcomeNotRequiredCount
+        filters: caseListFilters
       }
     },
     getCaseList: async (courtCode, date, selectedFilters, subsection) => {
@@ -538,11 +512,12 @@ const createCaseService = apiUrl => {
       await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome`, {
         hearingOutcomeType
       })
-      // Ensure the hearing is moved out of "outcome not required" tab when outcome is added
-      await update(
-        `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`,
-        { hearingOutcomeNotRequired: false }
-      )
+      await retryWithExponentialBackoff(async () => {
+        await update(
+          `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`,
+          { hearingOutcomeNotRequired: false }
+        )
+      })
     },
     assignHearingOutcome: async (hearingId, defendantId, assignedTo) => {
       await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/assign`, {
@@ -577,6 +552,12 @@ const createCaseService = apiUrl => {
         `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`,
         { hearingOutcomeNotRequired }
       )
+      // When moving back to "hearing outcome still to be added", reset admin prep status to NOT_STARTED
+      if (hearingOutcomeNotRequired === false) {
+        await retryWithExponentialBackoff(async () => {
+          await update(`${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/prep-status/NOT_STARTED`)
+        })
+      }
     }
   }
 }

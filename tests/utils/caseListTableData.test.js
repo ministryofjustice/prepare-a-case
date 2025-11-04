@@ -117,7 +117,7 @@ describe('caseListTableData', () => {
       // Action column should be present when hearingOutcomesEnabled is true and subsection is empty
       if (mockParams.hearingOutcomesEnabled && (mockParams.subsection === '' || mockParams.subsection === 'outcome-not-required')) {
         expect(tableData.head).toHaveLength(7)
-        expect(tableData.head[6]).toEqual({ html: 'Action' })
+        expect(tableData.head[6]).toEqual({ html: 'Action', attributes: { style: 'width: 200px' } })
       } else {
         expect(tableData.head).toHaveLength(6)
       }
@@ -151,7 +151,7 @@ describe('caseListTableData', () => {
       expect(tableData.head[6]).toEqual({ html: 'Admin prep status' })
 
       if (mockParams.hearingOutcomesEnabled && mockParams.subsection === '') {
-        expect(tableData.head[7]).toEqual({ html: 'Action' })
+        expect(tableData.head[7]).toEqual({ html: 'Action', attributes: { style: 'width: 200px' } })
       }
     })
 

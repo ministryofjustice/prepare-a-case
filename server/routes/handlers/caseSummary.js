@@ -97,10 +97,13 @@ const getHearingOutcome = (hearingId, hearings) => {
 
 const getActionButtons = (templateValues) => {
   const { hideUnlinkButton } = templateValues
-  const { probationStatus, crn, hearingId, hearings, assignedToCurrentUser, defendantId, defendantName, caseId, hearingOutcomeNotRequired } = templateValues.data
+  const { probationStatus, crn, hearingId, hearings, assignedToCurrentUser, defendantId, defendantName, name, caseId, hearingOutcomeNotRequired } = templateValues.data
   const { courtCode, hearingOutcomesEnabled } = templateValues.params
   const hearingOutcome = getHearingOutcome(hearingId, hearings)
   const buttons = []
+
+  // Format defendant name consistently with case list view
+  const formattedDefendantName = (name && name.forename1 && name.surname) ? `${name.forename1} ${name.surname}` : defendantName
 
   const createButton = (text, value, href, enabled = true) => {
     return {
@@ -121,16 +124,16 @@ const getActionButtons = (templateValues) => {
     buttons.push(createButton('Unlink NDelius Record', 'unlinkNdelius', unlinkRecordLink))
   }
   if (hearingOutcome && settings.enableMoveToResultedAction && assignedToCurrentUser && hearingOutcome.state === 'IN_PROGRESS') {
-    const resultedLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/move-to-resulted?defendantName=${defendantName}`
+    const resultedLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/move-to-resulted?defendantName=${encodeURIComponent(formattedDefendantName)}`
     buttons.push(createButton('Move to resulted', 'moveToResulted', resultedLink))
   }
   if (hearingOutcomesEnabled) {
     if (hearingOutcomeNotRequired === false) {
-      const outcomeNotRequiredLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/toggle-hearing-outcome-required?hearingOutcomeRequired=false&defendantName=${defendantName}`
+      const outcomeNotRequiredLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/toggle-hearing-outcome-required?hearingOutcomeRequired=false&defendantName=${encodeURIComponent(formattedDefendantName)}`
       buttons.push(createButton('Move to Hearing outcome not required', 'outcomeNotRequired', outcomeNotRequiredLink))
     }
     if (hearingOutcomeNotRequired !== false) {
-      const outcomeStillToBeAddedLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/toggle-hearing-outcome-required?hearingOutcomeRequired=true&defendantName=${defendantName}`
+      const outcomeStillToBeAddedLink = `/${courtCode}/outcomes/hearing/${hearingId}/defendant/${defendantId}/toggle-hearing-outcome-required?hearingOutcomeRequired=true&defendantName=${encodeURIComponent(formattedDefendantName)}`
       buttons.push(createButton('Move back to Hearing outcome still to be added', 'outcomeStillToBeAdded', outcomeStillToBeAddedLink))
     }
   }

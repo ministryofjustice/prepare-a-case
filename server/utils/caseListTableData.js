@@ -90,7 +90,7 @@ const constructTableData = (params, data) => {
   // Only show action column on hearing outcome tabs when hearing outcomes are enabled
   const showActionColumn = params.hearingOutcomesEnabled && (params.subsection === '' || params.subsection === 'outcome-not-required')
   if (showActionColumn) {
-    tableData.head.push({ html: 'Action' })
+    tableData.head.push({ html: 'Action', attributes: { style: 'width: 200px' } })
   }
 
   data.forEach(item => {
