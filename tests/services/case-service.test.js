@@ -27,6 +27,7 @@ const {
   assignHearingOutcome,
   updateHearingOutcomeToResulted,
   getOutcomeTypes,
+  toggleHearingOutcomeRequired,
   files
 } = require('../../server/services/case-service')
 const getOutcomeListSorts = require('../../server/utils/getOutcomesSorts')
@@ -718,7 +719,7 @@ describe('Case service', () => {
     return response
   })
 
-  it('should invoke API to add hearing outcome', async () => {
+  it('should invoke API to add hearing outcome and retry second update if needed', async () => {
     const hearingId = 'id-one'
     const defendantId = 'some-defendant-id'
     const outcomeEndpoint = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id/outcome`
@@ -743,12 +744,59 @@ describe('Case service', () => {
     expect(firstRequest.url).toBe(outcomeEndpoint)
     expect(firstRequest.config.data).toBe(JSON.stringify({ hearingOutcomeType }))
 
-    // Second request should set hearingOutcomeNotRequired to false
+    // Second request should set hearingOutcomeNotRequired to false (with retry logic)
     const secondRequest = requests.at(1)
     expect(secondRequest.url).toBe(toggleEndpoint)
     expect(secondRequest.config.data).toBe(JSON.stringify({ hearingOutcomeNotRequired: false }))
 
     return response
+  })
+
+  describe('toggleHearingOutcomeRequired', () => {
+    it('should call API to toggle hearing outcome not required to true', async () => {
+      const hearingId = 'hearing-123'
+      const defendantId = 'defendant-456'
+      const toggleEndpoint = `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`
+
+      moxios.stubRequest(toggleEndpoint, {
+        status: 200
+      })
+
+      await toggleHearingOutcomeRequired(hearingId, defendantId, true)
+
+      const requests = moxios.requests
+      expect(requests.count()).toBe(1)
+
+      const request = requests.at(0)
+      expect(request.url).toBe(toggleEndpoint)
+      expect(request.config.data).toBe(JSON.stringify({ hearingOutcomeNotRequired: true }))
+    })
+
+    it('should call API to toggle hearing outcome not required to false and reset prep status', async () => {
+      const hearingId = 'hearing-123'
+      const defendantId = 'defendant-456'
+      const toggleEndpoint = `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}`
+      const prepStatusEndpoint = `${apiUrl}/hearing/${hearingId}/defendants/${defendantId}/prep-status/NOT_STARTED`
+
+      moxios.stubRequest(toggleEndpoint, {
+        status: 200
+      })
+      moxios.stubRequest(prepStatusEndpoint, {
+        status: 200
+      })
+
+      await toggleHearingOutcomeRequired(hearingId, defendantId, false)
+
+      const requests = moxios.requests
+      expect(requests.count()).toBe(2)
+
+      const firstRequest = requests.at(0)
+      expect(firstRequest.url).toBe(toggleEndpoint)
+      expect(firstRequest.config.data).toBe(JSON.stringify({ hearingOutcomeNotRequired: false }))
+
+      const secondRequest = requests.at(1)
+      expect(secondRequest.url).toBe(prepStatusEndpoint)
+    })
   })
 
   describe('getOutcomesList', () => {
@@ -832,23 +880,6 @@ describe('Case service', () => {
         }
       })
 
-      // Stub the hearing outcome tab count requests
-      const unheardCountUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&size=1&hearingStatus=UNHEARD`
-      moxios.stubRequest(unheardCountUrl, {
-        status: 200,
-        response: {
-          totalElements: 50
-        }
-      })
-
-      const outcomeNotRequiredCountUrl = `${apiUrl}/court/SHF/cases?date=2020-01-01&VERSION2=true&page=1&size=1&hearingOutcomeNotRequired=true`
-      moxios.stubRequest(outcomeNotRequiredCountUrl, {
-        status: 200,
-        response: {
-          totalElements: 10
-        }
-      })
-
       const selectedFilters = {
         probationStatus: ['CURRENT', 'NO_RECORD'],
         courtRoom: ['01,Courtroom 01', 'Crown court 1-3', '02'],
@@ -867,7 +898,7 @@ describe('Case service', () => {
         20,
         true
       )
-      expect(moxios.requests.at(0).url).toBe(expectedUrl)
+      expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
       expect(resp.filters[1]).toStrictEqual({
         id: 'courtRoom',
         label: 'Courtroom',
