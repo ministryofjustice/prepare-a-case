@@ -66,7 +66,7 @@ const getActionButtonHtml = (params, item, defendantName) => {
 }
 
 const constructTableData = (params, data) => {
-  const { courtRoomDisplay, escapeHtml, ordinalNumber, apostropheInName, properCase, removeTitle, capitalizeFirstLetter } = nunjucksFilters
+  const { courtRoomDisplay, escapeHtml, ordinalNumber, capitalizeFirstLetter, formatDefendantName } = nunjucksFilters
   const tableData = {
     head: [
       { text: 'Defendant' },
@@ -130,8 +130,8 @@ const constructTableData = (params, data) => {
       listing.push(item.listNo)
     }
 
-    const defendantFullName = (item.name && item.name.forename1 && item.name.surname) ? `${item.name.forename1} ${item.name.surname}` : item.defendantName
-    const sanitisedDefendantFullName = escapeHtml(apostropheInName(properCase(removeTitle(defendantFullName))))
+    const formattedDefendantName = formatDefendantName(item)
+    const sanitisedDefendantFullName = escapeHtml(formattedDefendantName)
     const a11yTitle = `View case for defendant ${sanitisedDefendantFullName}`
     const crnDisplay = `<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">${item.crn ? item.crn : ''}</div>`
 
@@ -179,7 +179,7 @@ const constructTableData = (params, data) => {
     }
 
     if (showActionColumn) {
-      const actionButtonHtml = getActionButtonHtml(params, item, defendantFullName)
+      const actionButtonHtml = getActionButtonHtml(params, item, formattedDefendantName)
       tableRow.push({ html: actionButtonHtml })
     }
 
