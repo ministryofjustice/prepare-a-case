@@ -118,5 +118,13 @@ module.exports = {
 
   capitalizeFirstLetter: string => {
     return string.charAt(0).toUpperCase() + string.toLowerCase().slice(1)
+  },
+
+  formatDefendantName: (item) => {
+    const { properCase, removeTitle, apostropheInName } = module.exports
+    const defendantFullName = (item.name && item.name.forename1 && item.name.surname)
+      ? `${item.name.forename1} ${item.name.surname}`
+      : item.defendantName
+    return apostropheInName(properCase(removeTitle(defendantFullName)))
   }
 }

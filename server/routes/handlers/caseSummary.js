@@ -1,6 +1,7 @@
 const moment = require('moment')
 const getNextHearing = require('../../utils/getNextHearing')
 const featuresToggles = require('../../utils/features')
+const { formatDefendantName } = require('../../utils/nunjucksFilters')
 
 const {
   settings
@@ -103,7 +104,7 @@ const getActionButtons = (templateValues) => {
   const buttons = []
 
   // Format defendant name consistently with case list view
-  const formattedDefendantName = (name && name.forename1 && name.surname) ? `${name.forename1} ${name.surname}` : defendantName
+  const formattedDefendantName = formatDefendantName({ name, defendantName })
 
   const createButton = (text, value, href, enabled = true) => {
     return {
