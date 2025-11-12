@@ -60,7 +60,7 @@ const getActionButtonHtml = (params, item, defendantName) => {
   }
 
   const encodedDefendantName = encodeURIComponent(defendantName)
-  return `<a href="/${params.courtCode}/hearing/${item.hearingId}/defendant/${item.defendantId}/toggle-hearing-outcome-required?outcomeNotRequired=${outcomeNotRequired}&defendantName=${encodedDefendantName}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button" role="button" draggable="false">
+  return `<a href="/${params.courtCode}/hearing/${item.hearingId}/defendant/${item.defendantId}/toggle-hearing-outcome-required?outcomeNotRequired=${outcomeNotRequired}&defendantName=${encodedDefendantName}" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" data-module="govuk-button" data-outcome-toggle-button role="button" draggable="false">
             ${buttonText}
           </a>`
 }
