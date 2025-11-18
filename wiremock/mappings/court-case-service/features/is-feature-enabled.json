@@ -1,0 +1,12 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/feature-flags/evaluate"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "enabled": "false"
+    }
+  }
+}

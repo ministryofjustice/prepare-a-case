@@ -44,6 +44,14 @@ const retryWithExponentialBackoff = async (fn, maxRetries = 5, initialDelay = 10
 
 const createCaseService = apiUrl => {
   return {
+    isFeatureEnabled: async (flagKey, context) => {
+      const res = await create(`${apiUrl}/feature-flags/evaluate`, {
+        flagKey,
+        entityId: 'prepare-a-case',
+        context
+      })
+      return res.data.enabled
+    },
     getCaseHistory: async caseId => {
       const res = await request(`${apiUrl}/cases/${caseId}`)
       return res.data
