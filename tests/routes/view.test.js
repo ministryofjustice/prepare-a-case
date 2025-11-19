@@ -16,7 +16,6 @@ const createRouter = require('../../server/routes/index')
 
 const defaults = require('../../server/routes/middleware/defaults')
 const healthcheck = require('../../server/routes/middleware/healthcheck')
-const features = require('../../server/utils/features')
 
 const viewRoute = createRouter({
   authenticationMiddleware
@@ -155,8 +154,6 @@ describe('Routes', () => {
       ? `${courtCode}/match/bulk/${matchDate}`
       : `${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`
   })
-
-  let enabledHearingOutcomes
 
   beforeAll(async () => {
     caseService.isFeatureEnabled.mockReturnValue(true)
@@ -646,7 +643,6 @@ describe('Routes', () => {
   })
 
   describe('Hearing outcomes', () => {
-    let temp
 
     beforeAll(() => {
       caseService.isFeatureEnabled.mockReturnValue(true)
