@@ -1,5 +1,5 @@
 ## use slim not alpine otherwise PACT binarys wont load due to missing libs
-FROM node:22.21.0-slim as base
+FROM node:22-slim AS base
 
 ## common
 ENV TZ=Europe/London

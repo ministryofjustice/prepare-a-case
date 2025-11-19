@@ -643,7 +643,6 @@ describe('Routes', () => {
   })
 
   describe('Hearing outcomes', () => {
-
     beforeAll(() => {
       caseService.isFeatureEnabled.mockReturnValue(true)
     })
