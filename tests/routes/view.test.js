@@ -159,8 +159,7 @@ describe('Routes', () => {
   let enabledHearingOutcomes
 
   beforeAll(async () => {
-    enabledHearingOutcomes = features.hearingOutcomes.isEnabled
-    features.hearingOutcomes.isEnabled = () => true
+    caseService.isFeatureEnabled.mockReturnValue(true)
     caseService.getOutcomeTypes.mockReturnValue({
       types: [
         { label: 'Probation sentence', value: 'PROBATION_SENTENCE' },
@@ -176,7 +175,6 @@ describe('Routes', () => {
   })
 
   afterAll(() => {
-    enabledHearingOutcomes = features.hearingOutcomes.isEnabled = enabledHearingOutcomes
     jest.clearAllMocks()
   })
 
@@ -651,12 +649,11 @@ describe('Routes', () => {
     let temp
 
     beforeAll(() => {
-      temp = features.hearingOutcomes.isEnabled
-      features.hearingOutcomes.isEnabled = () => true
+      caseService.isFeatureEnabled.mockReturnValue(true)
     })
 
     afterAll(() => {
-      temp = features.hearingOutcomes.isEnabled = temp
+      jest.clearAllMocks()
     })
 
     it('outcomes list route should call the case service to fetch outcome list data', async () => {

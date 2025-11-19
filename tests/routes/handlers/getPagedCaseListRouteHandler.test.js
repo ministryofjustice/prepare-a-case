@@ -14,6 +14,7 @@ describe('getPagedCaseListRouteHandler', () => {
     jest.replaceProperty(settings, 'casesTotalDays', 13)
     jest.replaceProperty(settings, 'casesPastDays', 6)
     jest.replaceProperty(settings, 'enableWorkflow', true)
+    caseService.isFeatureEnabled.mockReturnValue(false)
   })
 
   const { caseServiceMock: caseService, mockResponse } = require('./test-helpers')
