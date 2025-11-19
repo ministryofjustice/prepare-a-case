@@ -18,7 +18,7 @@
     "test": "npm run test:lint && npm run test:unit && npm run test:pact && npm run test:int",
     "test:lint": "docker exec -it prepare-a-case-app /app/node_modules/.bin/standard",
     "test:lint:fix": "npm run test:lint -- --fix",
-    "test:unit": "docker exec -it -e prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit",
+    "test:unit": "docker exec -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit",
     "test:pact": "docker exec -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --detectOpenHandles --ci --forceExit",
     "security_audit": "npx audit-ci --config audit-ci.json",
     "int-test": "cypress run --config-file integration-tests/cypress/cypress.config.js video=false",
