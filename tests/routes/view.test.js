@@ -12,6 +12,11 @@ let roles
 // This needs mocking early, before 'requiring' jwt-decode
 jest.doMock('jwt-decode', () => jest.fn(() => ({ authorities: roles })))
 
+jest.mock('../../server/services/user-preference-service', () => ({
+  getFilters: jest.fn().mockResolvedValue({}),
+  setFilters: jest.fn().mockResolvedValue()
+}))
+
 const createRouter = require('../../server/routes/index')
 
 const defaults = require('../../server/routes/middleware/defaults')
@@ -251,7 +256,7 @@ describe('Routes', () => {
       {},
       undefined,
       undefined,
-      20,
+      '20',
       true
     )
 
@@ -270,7 +275,7 @@ describe('Routes', () => {
       {},
       undefined,
       undefined,
-      20,
+      '20',
       true
     )
 
@@ -287,7 +292,7 @@ describe('Routes', () => {
       {},
       false,
       undefined,
-      20,
+      '20',
       true
     )
 
@@ -303,7 +308,7 @@ describe('Routes', () => {
       {},
       'added',
       undefined,
-      20,
+      '20',
       true
     )
 
@@ -319,7 +324,7 @@ describe('Routes', () => {
       {},
       'removed',
       undefined,
-      20,
+      '20',
       true
     )
 

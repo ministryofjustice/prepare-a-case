@@ -144,7 +144,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     })
   })
 
-  router.post('/cookie-preference/:page(*)', (req, res) => {
+  const cookiePreferenceHandler = (req, res) => {
     const redirectUrl = req.params.page ? '/cookies-policy?saved=true' : '/'
     if (req.body.cookies) {
       if (req.body.cookies === 'reject') {
@@ -158,7 +158,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
         .cookie('analyticsCookies', req.body.cookies)
         .redirect(302, redirectUrl)
     }
-  })
+  }
+
+  router.post('/cookie-preference', cookiePreferenceHandler)
+  router.post('/cookie-preference/:page', cookiePreferenceHandler)
 
   router.get('/case-search', defaults, catchErrors(caseSearchHandler))
 
@@ -180,6 +183,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     })
   )
 
+  // More specific routes first
   router.get(
     '/:courtCode/cases/:caseId/history',
     defaults,
@@ -193,38 +197,38 @@ module.exports = function Index ({ authenticationMiddleware }) {
     })
   )
 
-  router.get(
-    '/:courtCode/cases/:date?/:subsection?',
-    defaults,
-    catchErrors((req, res) => {
-      return pagedCaseListRouteHandler(req, res)
-    })
-  )
+  const pagedCaseListGetHandler = catchErrors((req, res) => {
+    return pagedCaseListRouteHandler(req, res)
+  })
 
-  router.post(
-    '/:courtCode/cases/:date?/:subsection?',
-    defaults,
-    catchErrors(async (req, res) => {
-      const {
-        params: { courtCode, date, subsection },
-        session,
-        body
-      } = req
+  const pagedCaseListPostHandler = catchErrors(async (req, res) => {
+    const {
+      params: { courtCode, date, subsection },
+      session,
+      body
+    } = req
 
-      const currentDate = date || getBaseDateString()
+    const currentDate = date || getBaseDateString()
 
-      session.courtCode = courtCode
+    session.courtCode = courtCode
 
-      const redirectUrl = `/${courtCode}/cases/${currentDate}${subsection ? '/' + subsection : ''
-        }`
-      const queryParams = queryParamBuilder(body)
+    const redirectUrl = `/${courtCode}/cases/${currentDate}${subsection ? '/' + subsection : ''
+      }`
+    const queryParams = queryParamBuilder(body)
 
-      res.redirect(
-        302,
-        `${redirectUrl}?${queryParams}`
-      )
-    })
-  )
+    res.redirect(
+      302,
+      `${redirectUrl}?${queryParams}`
+    )
+  })
+
+  router.get('/:courtCode/cases', defaults, pagedCaseListGetHandler)
+  router.get('/:courtCode/cases/:date', defaults, pagedCaseListGetHandler)
+  router.get('/:courtCode/cases/:date/:subsection', defaults, pagedCaseListGetHandler)
+
+  router.post('/:courtCode/cases', defaults, pagedCaseListPostHandler)
+  router.post('/:courtCode/cases/:date', defaults, pagedCaseListPostHandler)
+  router.post('/:courtCode/cases/:date/:subsection', defaults, pagedCaseListPostHandler)
 
   router.post(
     '/:courtCode/hearing/:hearingId/defendant/:defendantId/record',
@@ -513,40 +517,38 @@ module.exports = function Index ({ authenticationMiddleware }) {
     catchErrors(getProbationRecordHandler)
   )
 
-  router.get(
-    '/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId?',
-    defaults,
-    catchErrors(async (req, res) => {
-      const {
-        params: { convictionId }
-      } = req
-      const templateValues = await getCaseAndTemplateValues(req)
+  const convictionHandler = catchErrors(async (req, res) => {
+    const {
+      params: { convictionId }
+    } = req
+    const templateValues = await getCaseAndTemplateValues(req)
 
-      const {
-        data: { crn }
-      } = templateValues
-      let communityResponse = await getConviction(crn, convictionId)
+    const {
+      data: { crn }
+    } = templateValues
+    let communityResponse = await getConviction(crn, convictionId)
 
-      if (communityResponse) {
-        const { active } = communityResponse
-        if (active) {
-          const sentenceDetails = await getSentenceDetails(crn, convictionId)
-          const custodyDetails = await getCustodyDetails(crn, convictionId)
-          communityResponse = {
-            ...communityResponse,
-            sentenceDetails,
-            custodyDetails
-          }
+    if (communityResponse) {
+      const { active } = communityResponse
+      if (active) {
+        const sentenceDetails = await getSentenceDetails(crn, convictionId)
+        const custodyDetails = await getCustodyDetails(crn, convictionId)
+        communityResponse = {
+          ...communityResponse,
+          sentenceDetails,
+          custodyDetails
         }
       }
+    }
 
-      templateValues.data.communityData = communityResponse || {}
+    templateValues.data.communityData = communityResponse || {}
 
-      templateValues.title = getOrderTitle(communityResponse)
+    templateValues.title = getOrderTitle(communityResponse)
 
-      res.render('case-summary/case-summary-record-order', templateValues)
-    })
-  )
+    res.render('case-summary/case-summary-record-order', templateValues)
+  })
+
+  router.get('/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId', defaults, convictionHandler)
 
   router.get(
     '/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/breach/:breachId',
@@ -674,35 +676,34 @@ module.exports = function Index ({ authenticationMiddleware }) {
     catchErrors(postDefendantMatchRouteHandler(updateCaseDetails))
   )
 
-  router.get(
-    '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/nomatch/:unlink?',
-    defaults,
-    catchErrors(async (req, res) => {
-      const {
-        params: { courtCode, defendantId, hearingId, unlink },
-        session
-      } = req
-      let redirectUrl
-      const response = await unlinkOffender(defendantId)
-      if (response.status === 200) {
-        session.confirmedMatch = {
-          name: session.matchName,
-          matchType: unlink ? 'unlinked' : 'No record'
-        }
-        redirectUrl = `/${getMatchedUrl(
-          session.matchType,
-          session.matchDate,
-          hearingId,
-          defendantId,
-          courtCode
-        )}`
-      } else {
-        req.session.serverError = true
-        redirectUrl = `/${courtCode}/hearing/${hearingId}/match/defendant/${defendantId}`
+  const nomatchHandler = catchErrors(async (req, res) => {
+    const {
+      params: { courtCode, defendantId, hearingId, unlink },
+      session
+    } = req
+    let redirectUrl
+    const response = await unlinkOffender(defendantId)
+    if (response.status === 200) {
+      session.confirmedMatch = {
+        name: session.matchName,
+        matchType: unlink ? 'unlinked' : 'No record'
       }
-      res.redirect(302, redirectUrl)
-    })
-  )
+      redirectUrl = `/${getMatchedUrl(
+        session.matchType,
+        session.matchDate,
+        hearingId,
+        defendantId,
+        courtCode
+      )}`
+    } else {
+      req.session.serverError = true
+      redirectUrl = `/${courtCode}/hearing/${hearingId}/match/defendant/${defendantId}`
+    }
+    res.redirect(302, redirectUrl)
+  })
+
+  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/nomatch', defaults, nomatchHandler)
+  router.get('/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/nomatch/:unlink', defaults, nomatchHandler)
 
   router.get(
     '/:courtCode/case/:caseId/hearing/:hearingId/match/defendant/:defendantId/manual',

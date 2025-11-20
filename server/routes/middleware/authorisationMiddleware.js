@@ -1,4 +1,4 @@
-const { jwtDecode } = require('jwt-decode')
+const jwtDecode = require('jwt-decode')
 const config = require('../../config')
 const log = require('../../log')
 const axios = require('axios')

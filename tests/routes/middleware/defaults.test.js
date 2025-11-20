@@ -13,7 +13,7 @@ const mockNext = jest.fn()
 describe('Default values middleware', () => {
   it('should return default values', async () => {
     await defaults(reqObj, { locals: { nonce: nonce() } }, mockNext)
-    expect(reqObj.params.limit).toEqual(20)
+    expect(reqObj.params.limit).toEqual('20')
     expect(reqObj.params.courtCode).toEqual('B14AV')
     expect(reqObj.params.courtName).toEqual('Barnsley Law Courts')
   })

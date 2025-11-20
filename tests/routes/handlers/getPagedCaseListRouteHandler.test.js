@@ -78,7 +78,7 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, 20, expect.any(Boolean))
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, '20', expect.any(Boolean))
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('error', { status: 500 })
   })
@@ -103,7 +103,7 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, 20, expect.any(Boolean))
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, '20', expect.any(Boolean))
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list',
       {
@@ -171,7 +171,7 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, 20, expect.any(Boolean))
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, '20', expect.any(Boolean))
     expect(mockResponse.render).toHaveBeenCalled()
 
     expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
@@ -201,7 +201,7 @@ describe('getPagedCaseListRouteHandler', () => {
     // Then
     expect(mockRequest.redisClient.getAsync).toHaveBeenCalledWith('case-list-notification')
     expect(caseService.getPagedCaseList).toHaveBeenCalled()
-    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, 20, expect.any(Boolean))
+    expect(caseService.getPagedCaseList).toHaveBeenCalledWith('ABC', '2020-11-11', { someFilter: 'someFilterValue' }, false, 1, '20', expect.any(Boolean))
     expect(mockResponse.render).toHaveBeenCalled()
     expect(mockResponse.render).toHaveBeenCalledWith('case-list', expect.anything())
 
