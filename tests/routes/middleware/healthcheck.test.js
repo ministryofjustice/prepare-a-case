@@ -39,7 +39,7 @@ describe('Health check middleware', () => {
     })
 
     it('should continue', () => {
-      expect(mockNext).toBeCalled()
+      expect(mockNext).toHaveBeenCalled()
     })
   })
 
@@ -50,8 +50,8 @@ describe('Health check middleware', () => {
     })
 
     it('should redirect', () => {
-      expect(mockNext).not.toBeCalled()
-      expect(resObj.render).toBeCalledWith('error', { status: 500 })
+      expect(mockNext).not.toHaveBeenCalled()
+      expect(resObj.render).toHaveBeenCalledWith('error', { status: 500 })
     })
   })
 
@@ -64,8 +64,8 @@ describe('Health check middleware', () => {
     })
 
     it('should redirect', () => {
-      expect(mockNext).not.toBeCalled()
-      expect(resObj.render).toBeCalledWith('error', { status: 500 })
+      expect(mockNext).not.toHaveBeenCalled()
+      expect(resObj.render).toHaveBeenCalledWith('error', { status: 500 })
     })
   })
 })

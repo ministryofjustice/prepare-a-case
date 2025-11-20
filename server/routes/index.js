@@ -144,7 +144,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     })
   })
 
-  router.post('/cookie-preference/:page?', (req, res) => {
+  router.post('/cookie-preference/:page(*)', (req, res) => {
     const redirectUrl = req.params.page ? '/cookies-policy?saved=true' : '/'
     if (req.body.cookies) {
       if (req.body.cookies === 'reject') {
