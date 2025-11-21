@@ -54,6 +54,25 @@ module.exports = function createApp ({ signInService }) {
 
   app.set('view engine', 'njk')
 
+  // Configure query parser to handle duplicate parameters as arrays
+  app.set('query parser', (str) => {
+    const params = new URLSearchParams(str)
+    const result = {}
+    for (const [key, value] of params.entries()) {
+      if (result[key]) {
+        // If key already exists, convert to array or append to existing array
+        if (Array.isArray(result[key])) {
+          result[key].push(value)
+        } else {
+          result[key] = [result[key], value]
+        }
+      } else {
+        result[key] = value
+      }
+    }
+    return result
+  })
+
   app.use(express.static(path.join(__dirname, '../public/build'), { maxage: config.settings.assetCache }))
 
   if (config.maintenanceModeEnabled) {
