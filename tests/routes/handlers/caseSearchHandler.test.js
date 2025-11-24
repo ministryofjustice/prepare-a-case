@@ -23,13 +23,13 @@ describe('caseSearchHandler', () => {
     searchByCrnMock.mockResolvedValueOnce({ data })
 
     await handler(mockRequest, mockResponse)
-    expect(searchByCrnMock).toHaveBeenCalledWith(term, 'CRN', 1, 20)
+    expect(searchByCrnMock).toHaveBeenCalledWith(term, 'CRN', 1, '20')
     expect(mockResponse.render).toHaveBeenCalledWith('case-search', {
       params: { ...mockRequest.params, courtCode: 'B12345' },
       data: { ...data },
       term,
       currentPage: 1,
-      pageSize: 20,
+      pageSize: '20',
       pagination: {
         pageItems: [
           {

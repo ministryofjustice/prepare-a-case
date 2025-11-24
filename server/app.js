@@ -6,7 +6,7 @@ const compression = require('compression')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const redis = require('redis')
-const RedisStore = require('connect-redis')(session)
+const RedisStore = require('connect-redis').default
 const helmet = require('helmet')
 const path = require('path')
 const passport = require('passport')
@@ -53,6 +53,18 @@ module.exports = function createApp ({ signInService }) {
   app.set('trust proxy', true)
 
   app.set('view engine', 'njk')
+
+  // Configure query parser to handle duplicate parameters as arrays
+  app.set('query parser', (str) => {
+    const params = new URLSearchParams(str)
+    const result = {}
+    const keys = new Set(params.keys())
+    for (const key of keys) {
+      const values = params.getAll(key)
+      result[key] = values.length === 1 ? values[0] : values
+    }
+    return result
+  })
 
   app.use(express.static(path.join(__dirname, '../public/build'), { maxage: config.settings.assetCache }))
 
