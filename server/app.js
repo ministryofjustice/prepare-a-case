@@ -58,17 +58,10 @@ module.exports = function createApp ({ signInService }) {
   app.set('query parser', (str) => {
     const params = new URLSearchParams(str)
     const result = {}
-    for (const [key, value] of params.entries()) {
-      if (result[key]) {
-        // If key already exists, convert to array or append to existing array
-        if (Array.isArray(result[key])) {
-          result[key].push(value)
-        } else {
-          result[key] = [result[key], value]
-        }
-      } else {
-        result[key] = value
-      }
+    const keys = new Set(params.keys())
+    for (const key of keys) {
+      const values = params.getAll(key)
+      result[key] = values.length === 1 ? values[0] : values
     }
     return result
   })
