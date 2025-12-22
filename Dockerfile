@@ -7,6 +7,7 @@ RUN ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && echo "$TZ" > /etc/timezo
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get -y install g++ make python3 && \
+    apt-get -y install --only-upgrade libpng16-16 && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 WORKDIR /app
@@ -40,6 +41,13 @@ RUN export APP_VERSION=${BUILD_NUMBER} && \
     ./bin/record-build-info
 RUN rm -rf node_modules && \
     npm ci --only=production --ignore-scripts
+
+# strip build toolchain + linux-libc-dev from final image
+RUN apt-get update && \
+    apt-get purge -y g++ make python3 linux-libc-dev && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
+
 USER 2000
 ENTRYPOINT [ "node" ]
 CMD [ "./bin/www" ]
