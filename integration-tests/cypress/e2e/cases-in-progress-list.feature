@@ -15,7 +15,7 @@ Feature: Cases in Progress List
 
     And I should see the phase banner
     And I should see the tag "Feedback"
-    And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/NMOI4O/"
+    And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
 
     And I should see a tab with text "Cases to result (8)"
 

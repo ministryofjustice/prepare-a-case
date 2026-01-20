@@ -15,7 +15,7 @@ Feature: Resulted Cases List
 
     And I should see the phase banner
     And I should see the tag "Feedback"
-    And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/NMOI4O/"
+    And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
 
     Then I click the "Resulted cases" link
 
