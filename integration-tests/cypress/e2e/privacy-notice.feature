@@ -11,7 +11,7 @@ Feature: Privacy notice
 
     And I should see the phase banner
     And I should see the tag "Feedback"
-    And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/NMOI4O/"
+    And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
     And I should see phase banner link "report a bug" with href "https://mojprod.service-now.com/moj_sp?id=sc_cat_item&sys_id=2659ea2b1b600a1425dc6351f54bcb7b"
 
     Then I should see the heading "Privacy notice"
