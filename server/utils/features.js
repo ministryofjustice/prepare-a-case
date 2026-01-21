@@ -53,22 +53,6 @@ const features = {
       mainFeatureToggleEnabled('enableWorkflow'),
       enabledForCourts(...PILOT_COURTS)
     )
-  ),
-  hearingOutcomes: anyOf(
-    allOf(
-      isEnv('dev'),
-      mainFeatureToggleEnabled('enableHearingOutcomes')
-    ),
-    allOf(
-      isEnv('preprod'),
-      mainFeatureToggleEnabled('enableHearingOutcomes'),
-      enabledForCourts(...PILOT_COURTS)
-    ),
-    allOf(
-      isEnv('prod'),
-      mainFeatureToggleEnabled('enableHearingOutcomes'),
-      enabledForCourts(...PILOT_COURTS)
-    )
   )
 }
 

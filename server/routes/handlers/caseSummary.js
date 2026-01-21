@@ -2,6 +2,7 @@ const moment = require('moment')
 const getNextHearing = require('../../utils/getNextHearing')
 const featuresToggles = require('../../utils/features')
 const { formatDefendantName } = require('../../utils/nunjucksFilters')
+const caseService = require('../../services/case-service')
 
 const {
   settings
@@ -63,7 +64,7 @@ const caseSummaryHandler = utils => async (req, res) => {
   templateValues.enableCaseHistory = settings.enableCaseHistory
   templateValues.currentUserUuid = res.locals.user.uuid
   const context = { court: courtCode, username: res.locals.user.username, sourceType: templateValues.data.source }
-  const hearingOutcomesEnabled = featuresToggles.hearingOutcomes.isEnabled(context)
+  const hearingOutcomesEnabled = await caseService.isFeatureEnabled('prepare-a-case-v2', { code: courtCode })
   templateValues.params.hearingOutcomesEnabled = hearingOutcomesEnabled
   templateValues.features = {
     hearingNotes: featuresToggles.hearingNotes.isEnabled(context),

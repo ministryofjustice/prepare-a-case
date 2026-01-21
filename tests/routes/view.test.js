@@ -16,7 +16,6 @@ const createRouter = require('../../server/routes/index')
 
 const defaults = require('../../server/routes/middleware/defaults')
 const healthcheck = require('../../server/routes/middleware/healthcheck')
-const features = require('../../server/utils/features')
 
 const viewRoute = createRouter({
   authenticationMiddleware
@@ -156,11 +155,8 @@ describe('Routes', () => {
       : `${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`
   })
 
-  let enabledHearingOutcomes
-
   beforeAll(async () => {
-    enabledHearingOutcomes = features.hearingOutcomes.isEnabled
-    features.hearingOutcomes.isEnabled = () => true
+    caseService.isFeatureEnabled.mockReturnValue(true)
     caseService.getOutcomeTypes.mockReturnValue({
       types: [
         { label: 'Probation sentence', value: 'PROBATION_SENTENCE' },
@@ -176,7 +172,6 @@ describe('Routes', () => {
   })
 
   afterAll(() => {
-    enabledHearingOutcomes = features.hearingOutcomes.isEnabled = enabledHearingOutcomes
     jest.clearAllMocks()
   })
 
@@ -648,15 +643,12 @@ describe('Routes', () => {
   })
 
   describe('Hearing outcomes', () => {
-    let temp
-
     beforeAll(() => {
-      temp = features.hearingOutcomes.isEnabled
-      features.hearingOutcomes.isEnabled = () => true
+      caseService.isFeatureEnabled.mockReturnValue(true)
     })
 
     afterAll(() => {
-      temp = features.hearingOutcomes.isEnabled = temp
+      jest.clearAllMocks()
     })
 
     it('outcomes list route should call the case service to fetch outcome list data', async () => {

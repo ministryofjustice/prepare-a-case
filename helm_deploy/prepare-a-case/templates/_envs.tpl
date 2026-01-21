@@ -55,9 +55,6 @@ env:
   - name: ENABLE_CLICK_ANALYTICS
     value: {{ .Values.env.ENABLE_CLICK_ANALYTICS | quote }}
 
-  - name: ENABLE_HEARING_OUTCOMES
-    value: {{ .Values.env.ENABLE_HEARING_OUTCOMES | quote }}
-
   - name: ENABLE_MATCHER_LOGGING
     value: {{ .Values.env.ENABLE_MATCHER_LOGGING | quote }}
 

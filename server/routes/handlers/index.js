@@ -16,7 +16,8 @@ const {
   deleteCaseCommentDraft,
   updateCaseComment,
   updateHearingOutcomeToResulted,
-  getMatchDetails
+  getMatchDetails,
+  isFeatureEnabled
 } = require('../../services/case-service')
 const { getProbationRecord } = require('../../services/community-service')
 const { getPreferences, updatePreferences, getFilters, setFilters } = require('../../services/user-preference-service')
@@ -65,7 +66,7 @@ const cancelCaseCommentDraftHandler = require('./getCancelCaseCommentDraftHandle
 
 const updateCaseCommentHandler = require('./getUpdateCommentRequestHandler')({ updateCaseComment })
 
-const pagedCaseListRouteHandler = require('./getPagedCaseListRouteHandler')({ getPagedCaseList }, { getPreferences, updatePreferences, getFilters, setFilters })
+const pagedCaseListRouteHandler = require('./getPagedCaseListRouteHandler')({ getPagedCaseList, isFeatureEnabled }, { getPreferences, updatePreferences, getFilters, setFilters })
 
 const caseSummaryHandler = require('./caseSummary')({ getOutcomeTypesListFilters, getCaseAndTemplateValues, nunjucksFilters, updateHearingOutcomeToResulted })
 

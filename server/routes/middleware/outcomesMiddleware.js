@@ -1,11 +1,11 @@
 const getOutcomeListSorts = require('../../utils/getOutcomesSorts')
-const features = require('../../utils/features')
+const caseService = require('../../services/case-service')
 const log = require('../../log')
 const { settings } = require('../../config')
 const outcomesMiddleware = state => async (req, res, next) => {
   const context = { court: req.params.courtCode, username: res.locals.user.username }
 
-  const hearingOutcomesEnabled = features.hearingOutcomes.isEnabled(context)
+  const hearingOutcomesEnabled = await caseService.isFeatureEnabled('prepare-a-case-v2', { code: req.params.courtCode })
 
   if (!hearingOutcomesEnabled) { // prevents anyone using the direct link
     log.warn('Hearing outcomes not enabled', context)

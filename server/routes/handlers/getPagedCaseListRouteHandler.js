@@ -168,7 +168,7 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
   const currentNotification = await getAsync('case-list-notification')
   const currentDate = date || getBaseDateString()
   const context = { court: courtCode, username: res.locals.user.username }
-  const hearingOutcomesEnabled = features.hearingOutcomes.isEnabled(context)
+  const hearingOutcomesEnabled = await caseService.isFeatureEnabled('prepare-a-case-v2', { code: courtCode })
   const workflowEnabled = features.workflow.isEnabled(context)
   const response = await caseService.getPagedCaseList(courtCode, currentDate, selectedFilters, subsection || (!date && session.currentView), queryParams.page, settings.casesPerPage, hearingOutcomesEnabled)
   if (response.isError) {
