@@ -8,12 +8,14 @@ Feature: Case list filters
     Given I am an authenticated user
     When I navigate to the "cases" route for today
     Then I should be on the "Case list" page
+    When I clear the filters
     And There should be no a11y violations
 
   Scenario: Apply multiple filters
     Given I am an authenticated user
     When I navigate to the "cases" route for today
     Then I should be on the "Case list" page
+    When I clear the filters
 
     And I should see a count of "80 cases"
 
@@ -68,10 +70,60 @@ Feature: Case list filters
     And I should see the following table rows
       | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
 
+  Scenario: Apply multiple filters, change courts, and not see any applied filters
+    Given I am an authenticated user
+
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+    When I clear the filters
+
+    And I should see a count of "80 cases"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Kara Ayers | No record | Attempt theft from the person of another | 1st | Morning | Crown Court 3-1 |
+
+    When I click the "Probation status" filter button
+    And I select the "Current" filter
+    And I click the "Probation status" filter button
+
+    When I click the "Courtroom" filter button
+    And I select the "1" filter
+    And I click the "Courtroom" filter button
+
+    When I click the "Session" filter button
+    And I select the "Afternoon" filter
+    And I click the "Session" filter button
+
+    When I click the "Source" filter button
+    And I select the "Common Platform" filter
+    And I click the "Source" filter button
+
+    When I click the "Flag" filter button
+    And I select the "Breach" filter
+    And I click the "Flag" filter button
+
+    And I click the "Apply filters" button
+
+    Then I should see a count of "1 case"
+
+    And I should see the following table headings
+      | Defendant | Probation status | Offence | Listing | Session | Court |
+
+    And I should see the following table rows
+      | Charlene Hammond | Previously known | Theft from the person of another | 3rd | Afternoon | 10 |
+
+    When I navigate to the "cases" route for today for court "B34JS"
+    Then I should be on the "Case list" page
+    Then I should see a count of "80 cases"
+
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
     When I navigate to the "cases" route for today
     Then I should be on the "Case list" page
+    When I clear the filters
 
     And I should see a count of "80 cases"
 

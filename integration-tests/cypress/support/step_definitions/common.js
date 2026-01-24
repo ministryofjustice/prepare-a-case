@@ -91,6 +91,10 @@ When('I navigate to the {string} route for today', $route => {
   cy.visit(`/B14LO/${$route}/${moment().format('YYYY-MM-DD')}`)
 })
 
+When('I navigate to the {string} route for today for court {string}', ($route, $courtCode) => {
+  cy.visit(`/${$courtCode}/${$route}/${moment().format('YYYY-MM-DD')}`)
+})
+
 Then('I should see the URL with {string}', $string => {
   cy.url().should('include', $string)
 })
