@@ -30,12 +30,9 @@
             <p class="govuk-body">For example, that means you should be able to:</p>
             <ul class="govuk-list govuk-list--bullet">
                 <li>change colours, contrast levels and fonts</li>
-                <li>zoom in up to 300% without the text spilling off the screen</li>
+                <li>zoom in up to 200% without the text spilling off the screen</li>
                 <li>get from the start of the service to the end using just a keyboard</li>
-                <li>get from the start of the service to the end using speech recognition software</li>
-                <li>listen to the service using a screen reader (including the most recent versions of JAWS, NVDA and
-                    VoiceOver)
-                </li>
+                <li>listen to the service using a screen reader</li>
             </ul>
             <p class="govuk-body">We’ve also made the text in the service as simple as possible to understand.</p>
             <p class="govuk-body"><a href="https://mcmw.abilitynet.org.uk/"
@@ -44,10 +41,8 @@
 
 
             <h2 class="govuk-heading-m">How accessible this service is</h2>
-            <p class="govuk-body">We know some parts of this service are not fully accessible:</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>some documents are in PDF or other non-HTML formats and are not accessible</li>
-            </ul>
+            <p class="govuk-body">We know some parts of this service are not fully accessible. For example,</p>
+            <p class="govuk-body">some documents are in PDF or other non-HTML formats and are not accessible.</p>
 
 
             <h2 class="govuk-heading-m">Feedback and contact information</h2>
@@ -55,11 +50,6 @@
                         href="mailto:prepareacaseforsentence@digital.justice.gov.uk"
                         class="govuk-link govuk-link--no-visited-state">prepareacaseforsentence@digital.justice.gov.uk</a>
             </p>
-            <p class="govuk-body">As part of providing this service, we may need to send you messages or documents.
-                We’ll
-                ask you how you want us to send messages or documents to you, but contact us if you need them in a
-                different
-                format. For example large print, audio recording or braille.</p>
 
 
             <h2 class="govuk-heading-m">Reporting accessibility
@@ -90,8 +80,8 @@
 
             <h3 class="govuk-heading-s">Compliance status</h3>
             <p class="govuk-body">This service is partially compliant with
-                <a href="https://www.w3.org/TR/WCAG21/" class="govuk-link govuk-link--no-visited-state">the Web Content
-                    Accessibility Guidelines version 2.1 AA standard</a>, due to the non-compliances listed below.</p>
+                <a href="https://www.w3.org/TR/WCAG22/" class="govuk-link govuk-link--no-visited-state">the Web Content
+                    Accessibility Guidelines version 2.2 AA standard</a>, due to the non-compliances listed below.</p>
 
 
             <h2 class="govuk-heading-m">Non accessible content</h2>
@@ -104,33 +94,32 @@
                 <li>PDFs and other documents are not accessible in a number of ways including missing text alternatives
                     and
                     missing document structure. This fails
-                    <a href="https://www.w3.org/TR/WCAG21/#non-text-content"
+                    <a href="https://www.w3.org/TR/WCAG22/#non-text-content"
                        class="govuk-link govuk-link--no-visited-state">WCAG 1.1.1 A (Non-text Content)</a> and
-                    <a href="https://www.w3.org/TR/WCAG21/#page-titled" class="govuk-link govuk-link--no-visited-state">WCAG
+                    <a href="https://www.w3.org/TR/WCAG22/#page-titled" class="govuk-link govuk-link--no-visited-state">WCAG
                         2.4.2 A (Page Titled)</a>. These documents are automatically extracted from an external service
-                    (NDelius). We are assessing how to fix this issue and when it may be fixed by.
+                    (NDelius) and are not within our control.
                 </li>
-                <li>The headings in the risk register and the orders list are not presented in a logical order for
-                    screen readers, this fails
-                    <a href="https://www.w3.org/TR/WCAG21/#info-and-relationships">WCAG 1.3.1 Info and Relationships</a>.
-                    We are working on fixing this and it should be solved by August 2022.
+                <li>The Hearing date column within Outcomes has arrows to sort dates into ascending or descending order, 
+                     but screen readers do not make this functionality clear. This fails 
+                     <a href="https://www.w3.org/TR/WCAG22/#non-text-content"
+                        class="govuk-link govuk-link--no-visited-state">WCAG 1.1.1 A (Non-text Content)</a> and
+                     <a href="https://www.w3.org/TR/WCAG22/#info-and-relationships" class="govuk-link govuk-link--no-visited-state">
+                     1.3.1 (Info and Relationships)</a>.
+                     We are working on fixing this and it should be resolved by December 2026.
+                </li>
+                <li>The screen reader JAWS may get stuck while the user is browsing Edit my courts. This fails 
+                    <a href="https://www.w3.org/TR/WCAG22/#perceivable"
+                        class="govuk-link govuk-link--no-visited-state">WCAG 2.2 Principle 1: Perceivable</a> and
+                    <a href="https://www.w3.org/TR/WCAG22/#operable" class="govuk-link govuk-link--no-visited-state">
+                        WCAG 2.2 Principle 2: Operable</a>.
+                    Users can use Tab to navigate to the next item. We are working on fixing this and it should be 
+                    resolved by December 2026.
                 </li>
                 <li>Some of the page titles in the service are not descriptive of the purpose of the page. They are also
                     duplicated in some cases. This fails
-                    <a href="https://www.w3.org/TR/WCAG21/#page-titled">WCAG 2.4.2 Page Titled</a>. We are working on
-                    fixing
-                    this and it should be solved by August 2022.
-                </li>
-                <li>The visual date labels in the date picker do not match the accessible names. This fails <a
-                            href="https://www.w3.org/TR/WCAG21/#label-in-name">WCAG 2.5.3 Label in Name</a>.We are
-                    working on fixing this and it should be solved by August 2022.
-                </li>
-                <li>When the case list is filtered, the visual design shows an ‘x’ in the corner of each added filter
-                    that can be used to remove that filter. This isn’t reflected in the accessible label so there is no
-                    easy way to remove filters for screen reader users. This fails <a
-                            href="https://www.w3.org/TR/WCAG21/#info-and-relationships">WCAG 1.3.1 Info and
-                        Relationships</a> and <a href="https://www.w3.org/TR/WCAG21/#headings-and-labels">WCAG 2.4.6
-                        Headings and Labels</a>. We are working on fixing this and it should be solved by August 2022.
+                    <a href="https://www.w3.org/TR/WCAG22/#page-titled">WCAG 2.4.2 Page Titled</a>.
+                    We are working on fixing this and it should be resolved by December 2026
                 </li>
             </ol>
 
@@ -156,11 +145,11 @@
 
             <h2 class="govuk-heading-m">Preparation of this
                 accessibility statement</h2>
-            <p class="govuk-body">This statement was prepared on Wednesday 31 March 2021. It was last reviewed on
-                Thursday 14 July 2022.</p>
+            <p class="govuk-body">This statement was prepared on Wednesday 31 March 2021. 
+                It was last reviewed on Thursday 8 January 2026.</p>
             <p class="govuk-body">This service was last tested on Friday 29 April 2022. The test was carried out by
                 the Digital Accessibility Centre.</p>
-            <p class="govuk-body pac-secondary-text">Last updated: Wednesday 14 July 2022</p>
+            <p class="govuk-body pac-secondary-text">Last updated: Tuesday 17 February 2026</p>
         </div>
     </div>
 {% endblock %}
