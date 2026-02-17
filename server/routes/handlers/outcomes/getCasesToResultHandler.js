@@ -16,6 +16,7 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
     query: queryParams,
     session
   } = req
+  session.originScreenUrl = req.originalUrl
 
   let filterParams = getPagelessQueryParams(queryParams)
 

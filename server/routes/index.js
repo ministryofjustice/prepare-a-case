@@ -197,6 +197,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     '/:courtCode/cases/:date?/:subsection?',
     defaults,
     catchErrors((req, res) => {
+      const {session} = req
+      session.originScreenUrl = req.originalUrl
       return pagedCaseListRouteHandler(req, res)
     })
   )
