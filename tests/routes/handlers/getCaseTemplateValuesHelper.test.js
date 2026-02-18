@@ -35,7 +35,7 @@ describe('getCaseTemplateValuesHelper', () => {
       backLink: session.backLink,
       params: mockRequest.params,
       caseListDate: session.caseListDate,
-      originScreenUrl:session.originScreenUrl,
+      originScreenUrl: session.originScreenUrl,
       data: {
         ...testCase
       }
@@ -61,7 +61,7 @@ describe('getCaseTemplateValuesHelper', () => {
       currentCaseListViewLink: session.currentCaseListViewLink,
       backLink: session.backLink,
       params: mockRequest.params,
-      originScreenUrl:session.originScreenUrl,
+      originScreenUrl: session.originScreenUrl,
       caseListDate: new Date().toJSON().replace(/T.*/, ''),
       data: {
         ...testCase

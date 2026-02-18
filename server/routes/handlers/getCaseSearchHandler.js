@@ -9,7 +9,7 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
   const { cookies, session } = req
   const page = req.query.page > 0 ? req.query.page : undefined
   if (session) {
-    session.originScreenUrl = req.originalUrl ?? ""
+    session.originScreenUrl = req.originalUrl ?? ''
   }
 
   const trackingEvent = {
