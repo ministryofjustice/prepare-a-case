@@ -198,7 +198,9 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors((req, res) => {
       const { session } = req
-      session.originScreenUrl = req.originalUrl
+      if (session) {
+        session.originScreenUrl = req.originalUrl ?? ''
+      }
       return pagedCaseListRouteHandler(req, res)
     })
   )
