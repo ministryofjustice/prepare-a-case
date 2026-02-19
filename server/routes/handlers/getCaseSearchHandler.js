@@ -6,11 +6,8 @@ const { getPagination } = require('../../utils/pagination')
 const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req, res) => {
   const term = req.query.term
   const { searchType: type, error } = getCaseSearchType(term)
-  const { cookies, session } = req
+  const { cookies } = req
   const page = req.query.page > 0 ? req.query.page : undefined
-  if (session) {
-    session.originScreenUrl = req.originalUrl ?? ''
-  }
 
   const trackingEvent = {
     term,
