@@ -1,4 +1,4 @@
-export const setOriginScreenUrl = async (req, res, next) => {
+const setOriginScreenUrl = async (req, res, next) => {
   // Capture the URL of the parent screen, so that back links work as users expect.
   // Regex Matches:
   // - /B14LO/outcomes/in-progress?page=3
@@ -9,4 +9,8 @@ export const setOriginScreenUrl = async (req, res, next) => {
     req.session.originScreenUrl = req.originalUrl ?? ''
   }
   next()
+}
+
+module.exports = {
+  setOriginScreenUrl
 }
