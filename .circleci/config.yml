@@ -148,6 +148,7 @@ jobs:
           name: Upload pact files to broker
           command: docker run -it prepare-a-case-app /app/node_modules/.bin/pact-broker publish pact/pacts --broker-base-url $PACT_BROKER_BASE_URL --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD"
 
+#todo: remove quay
   build:
     executor: deployer
     parameters:
