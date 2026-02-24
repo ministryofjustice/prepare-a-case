@@ -11,6 +11,9 @@ ENV BUILD_NUMBER=${BUILD_NUMBER:-dev} \
     GIT_BRANCH=${GIT_BRANCH:-dev} \
     CYPRESS_INSTALL_BINARY=0
 
+# Ensure junit output dir is writable for UID 2000 (CircleCI/Jest)
+RUN mkdir -p /app/test-results/jest && chown -R appuser:appgroup /app/test-results
+
 # Stage: build assets (production)
 FROM base AS build
 
@@ -75,7 +78,7 @@ RUN apk add --no-cache g++ make python3
 COPY package.json package-lock.json ./
 RUN npm ci
 
-COPY --chown=appuser:appgroup . .
+COPY . .
 
 RUN npm i -g concurrently
 EXPOSE 3000 9229
