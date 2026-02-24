@@ -75,7 +75,7 @@ RUN apk add --no-cache g++ make python3
 COPY package.json package-lock.json ./
 RUN npm ci
 
-COPY . .
+COPY --chown=appuser:appgroup . .
 
 RUN npm i -g concurrently
 EXPOSE 3000 9229
