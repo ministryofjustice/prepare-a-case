@@ -106,6 +106,12 @@ jobs:
           name: Start services
           command: docker compose up -d --wait
       - run:
+          name: Debug permissions (app container)
+          command: |
+            docker exec -it prepare-a-case-app sh -lc 'id'
+            docker exec -it prepare-a-case-app sh -lc 'ls -ld /app/public /app/test-results || true'
+            docker exec -it prepare-a-case-app sh -lc 'touch /app/public/_write_test && echo "can write" || echo "cannot write"'
+      - run:
           name: Log services
           command: docker compose logs -f -t > services.log
           background: true
