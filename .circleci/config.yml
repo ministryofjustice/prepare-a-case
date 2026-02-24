@@ -104,7 +104,7 @@ jobs:
             npm ci --no-audit
       - run:
           name: Start services
-          command: docker compose up -d --wait
+          command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait
       - run:
           name: Debug permissions (app container)
           command: |

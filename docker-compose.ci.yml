@@ -1,0 +1,5 @@
+services:
+  app:
+    build:
+      target: production
+    volumes: []   # removes all bind mounts

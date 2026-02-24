@@ -1,4 +1,4 @@
-# Stage: base image (shared)
+# Stage: base image
 FROM ghcr.io/ministryofjustice/hmpps-node:24-alpine AS base
 
 ARG BUILD_NUMBER
