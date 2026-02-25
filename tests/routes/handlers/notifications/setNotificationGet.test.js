@@ -3,8 +3,8 @@
 jest.mock('../../../../server/config', () => ({
   notification: {
     username: 'test',
-    password: 'test',
-  },
+    password: 'test'
+  }
 }))
 
 const { notification } = require('../../../../server/config')
@@ -17,13 +17,13 @@ describe('setNotification Get handler', () => {
     req = {
       headers: {},
       redisClient: {
-        getAsync: jest.fn(),
-      },
+        getAsync: jest.fn()
+      }
     }
     res = {
       setHeader: jest.fn(),
       sendStatus: jest.fn(),
-      render: jest.fn(),
+      render: jest.fn()
     }
     getAsyncMock = req.redisClient.getAsync
   })
@@ -58,7 +58,7 @@ describe('setNotification Get handler', () => {
     expect(getAsyncMock).toHaveBeenCalledWith('case-list-notification')
     expect(res.render).toHaveBeenCalledWith('set-notification', {
       title: 'Set notification',
-      currentNotification,
+      currentNotification
     })
   })
 
