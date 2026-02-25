@@ -245,6 +245,8 @@ describe('Routes', () => {
     mockDate.set('2020-11-15')
     const response = await request(app).get('/B14LO/cases')
 
+    expect(response).toBe({})
+
     expect(caseService.getPagedCaseList).toHaveBeenCalledWith(
       'B14LO',
       '2020-11-16',
