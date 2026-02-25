@@ -117,10 +117,10 @@ jobs:
           background: true
       - run:
           name: Lint Test
-          command: docker exec -it prepare-a-case-app /app/node_modules/.bin/standard
+          command: npx standard
       - run:
           name: Unit Test
-          command: docker exec -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
+          command: ENABLE_HEARING_OUTCOMES=false npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       - run:
           name: Run integration tests
           command: >
