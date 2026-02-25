@@ -121,8 +121,13 @@ jobs:
       #     command: docker exec -it prepare-a-case-app-ci /app/node_modules/.bin/standard
       - run:
           name: Unit Test
-          command: ENABLE_HEARING_OUTCOMES=false npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
+          # command: ENABLE_HEARING_OUTCOMES=false npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       #     command: docker exec -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app-ci /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
+          command: |
+            export PAC_ENV=dev
+            export NODE_ENV=test
+            export ENABLE_HEARING_OUTCOMES=false
+            npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       - run:
           name: Run integration tests
           command: >
