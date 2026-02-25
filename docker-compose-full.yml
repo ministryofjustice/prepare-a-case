@@ -136,7 +136,6 @@ services:
       - ./server:/app/server
       - ./public:/app/public
       - ./tests:/app/tests
-      - ./pact:/app/pact
       - ./schemas:/app/schemas
       - ./wiremock:/app/wiremock
     environment:
