@@ -69,6 +69,22 @@ EXPOSE 3000
 USER 2000
 CMD [ "node", "./bin/www" ]
 
+# Stage: CI (dev deps for lint/unit only)
+FROM base AS ci
+
+# Toolchain for native deps used by dev deps
+RUN apk add --no-cache --virtual .build-deps python3 build-base linux-headers
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY . .
+
+USER 2000
+
+# Keep container alive for docker exec in CI
+CMD ["sh", "-lc", "sleep infinity"]
+
 # Stage: development / CI
 FROM base AS development
 

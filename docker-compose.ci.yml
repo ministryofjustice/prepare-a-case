@@ -2,4 +2,14 @@ services:
   app:
     build:
       target: production
-    volumes: []   # removes all bind mounts
+    volumes: []   # remove bind mounts so built assets are used
+
+  app-ci:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: ci
+    container_name: prepare-a-case-app-ci
+    networks:
+      - hmpps
+    volumes: []
