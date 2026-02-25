@@ -126,6 +126,19 @@ jobs:
           command: |
             export PAC_ENV=dev
             export NODE_ENV=test
+            export ENABLE_APP_INSIGHTS=false
+            export REDUCE_STDOUT_NOISE=true
+
+            export NOMIS_DISABLE_OAUTH_STATE=true
+            export NOMIS_AUTH_URL=http://hmpps-auth:8080/auth
+            export USER_PREFERENCE_SERVICE_URL=http://hmpps-user-preferences:3000
+            export COURT_CASE_SERVICE_URL=http://court-case-service:8080
+
+            export API_CLIENT_ID=prepare-a-case-for-court
+            export API_CLIENT_SECRET=clientsecret
+            export APP_VERSION=dev-build
+            export PORT=3000
+            export REDIS_HOST=redis
             export ENABLE_HEARING_OUTCOMES=false
             npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       - run:
