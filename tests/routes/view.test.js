@@ -84,7 +84,6 @@ const viewRoute = createRouter({ authenticationMiddleware })
 let app
 let caseResponse = {}
 let communityResponse = {}
-let defaultFilters = []
 let defaultSort = []
 
 describe('Routes', () => {
@@ -191,7 +190,7 @@ describe('Routes', () => {
   beforeEach(async () => {
     app = buildTestApp(viewRoute)
 
-    defaultFilters = [await getOutcomeTypesListFilters()]
+    await getOutcomeTypesListFilters()
     defaultSort = [{ id: 'hearingDate', value: 'NONE' }]
   })
 
