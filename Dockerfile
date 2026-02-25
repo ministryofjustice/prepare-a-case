@@ -27,7 +27,7 @@ RUN test -n "$GIT_REF" || (echo "GIT_REF not set" && false)
 RUN test -n "$GIT_BRANCH" || (echo "GIT_BRANCH not set" && false)
 
 # Toolchain for native deps during install/build
-RUN apk add --no-cache --virtual .build-deps g++ make python3
+RUN apk add --no-cache --virtual .build-deps python3 build-base linux-headers
 
 COPY package.json package-lock.json ./
 RUN npm ci
