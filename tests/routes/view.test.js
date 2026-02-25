@@ -1,11 +1,11 @@
-/* global describe, beforeEach, afterEach, it, expect, jest, beforeAll, afterAll */
+/* global describe, beforeEach, afterEach, it, expect, jest, beforeAll */
 
 const request = require('supertest')
 const mockDate = require('mockdate')
 const appSetup = require('../testUtils/appSetup')
 const { authenticationMiddleware } = require('../testUtils/mockAuthentication')
 
-let roles = []
+const roles = []
 
 jest.mock('jwt-decode', () => jest.fn(() => ({ authorities: roles })))
 
@@ -75,7 +75,6 @@ const getOutcomeTypesListFilters = require('../../server/utils/getOutcomeTypesLi
 
 describe('Routes', () => {
   let app
-  let defaultFilters = []
   let defaultSort = []
   let caseResponse = {}
   let communityResponse = {}
@@ -109,7 +108,7 @@ describe('Routes', () => {
     communityService.getBreachDetails.mockReturnValue({ conviction: {} })
     communityService.getRiskDetails.mockReturnValue({ registrations: {} })
 
-    defaultFilters = [await getOutcomeTypesListFilters()]
+    await getOutcomeTypesListFilters()
     defaultSort = [{ id: 'hearingDate', value: 'NONE' }]
 
     jest.isolateModules(() => {
