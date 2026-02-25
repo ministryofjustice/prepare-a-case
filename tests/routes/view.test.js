@@ -735,7 +735,8 @@ describe('Routes', () => {
           '/B14LO/outcomes?outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED'
         )
         .then(response => {
-          expect(response.statusCode).toEqual(200)
+          expect(response).toBe({})
+          // expect(response.statusCode).toEqual(200)
           defaultFilters.map(filter => {
             filter.items.map(item => {
               item.checked =
