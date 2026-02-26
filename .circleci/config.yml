@@ -104,13 +104,8 @@ jobs:
             npm ci --no-audit
       - run:
           name: Start services
-          command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait
-      - run:
-          name: Debug permissions (app container)
-          command: |
-            docker exec -it prepare-a-case-app sh -lc 'id'
-            docker exec -it prepare-a-case-app sh -lc 'ls -ld /app/public /app/test-results || true'
-            docker exec -it prepare-a-case-app sh -lc 'touch /app/public/_write_test && echo "can write" || echo "cannot write"'
+          command: docker compose up -d --wait
+          # command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait
       - run:
           name: Log services
           command: docker compose logs -f -t > services.log
@@ -118,11 +113,8 @@ jobs:
       - run:
           name: Lint Test
           command: npx standard
-      #     command: docker exec -it prepare-a-case-app-ci /app/node_modules/.bin/standard
       - run:
           name: Unit Test
-          # command: ENABLE_HEARING_OUTCOMES=false npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
-      #     command: docker exec -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app-ci /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
           command: npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       - run:
           name: Run integration tests
