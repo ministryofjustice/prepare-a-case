@@ -123,37 +123,7 @@ jobs:
           name: Unit Test
           # command: ENABLE_HEARING_OUTCOMES=false npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       #     command: docker exec -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app-ci /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
-          command: |
-            export PAC_ENV=dev
-            # export NODE_ENV=test
-            export NODE_ENV=development
-            export ENABLE_APP_INSIGHTS=false
-            export REDUCE_STDOUT_NOISE=true
-
-            export NOMIS_DISABLE_OAUTH_STATE=true
-            export NOMIS_AUTH_URL=http://hmpps-auth:8080/auth
-            export USER_PREFERENCE_SERVICE_URL=http://hmpps-user-preferences:3000
-            export COURT_CASE_SERVICE_URL=http://court-case-service:8080
-            export NOMIS_AUTH_URL_REDIRECT=http://localhost:9091/auth
-
-            export API_CLIENT_ID=prepare-a-case-for-court
-            export API_CLIENT_SECRET=clientsecret
-            export APP_VERSION=dev-build
-            export PORT=3000
-            export REDIS_HOST=redis
-
-            export NOTIFICATION_USERNAME=test
-            export NOTIFICATION_PASSWORD=test
-
-            export HEARING_OUTCOMES_PAGE_SIZE=2
-            export ENABLE_CASE_COMMENTS=true
-            export ENABLE_CASE_PROGRESS=true
-            export ENABLE_WORKFLOW=true
-            export ENABLE_PAST_CASES_NAVIGATION=true
-            export ENABLE_MOVE_TO_RESULTED_ACTION=true
-
-            export ENABLE_HEARING_OUTCOMES=false
-            npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
+          command: npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       - run:
           name: Run integration tests
           command: >

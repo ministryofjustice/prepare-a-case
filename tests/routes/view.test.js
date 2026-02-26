@@ -7,6 +7,7 @@ const helpers = require('../../server/routes/helpers')
 const appSetup = require('../testUtils/appSetup')
 const { authenticationMiddleware } = require('../testUtils/mockAuthentication')
 const getOutcomeTypesListFilters = require('../../server/utils/getOutcomeTypesListFilters')
+const userPreferenceService = require('../../server/services/user-preference-service')
 
 let roles
 // This needs mocking early, before 'requiring' jwt-decode
@@ -26,6 +27,10 @@ jest.mock('../../server/routes/middleware/healthcheck')
 jest.mock('../../server/routes/helpers')
 jest.mock('../../server/services/case-service')
 jest.mock('../../server/services/community-service')
+jest.mock('../../server/services/user-preference-service', () => ({
+  getFilters: jest.fn().mockResolvedValue({}),
+  setFilters: jest.fn()
+}))
 
 let app
 let caseResponse = {}
@@ -181,7 +186,8 @@ describe('Routes', () => {
   })
 
   beforeEach(async () => {
-    // app = require('../../server/app')
+    userPreferenceService.getFilters.mockResolvedValue({})
+    userPreferenceService.setFilters.mockResolvedValue()
     app = appSetup(viewRoute)
     defaultFilters = [await getOutcomeTypesListFilters()]
     defaultSort = [{ id: 'hearingDate', value: 'NONE' }]
@@ -244,8 +250,6 @@ describe('Routes', () => {
   it("case list route should display Monday's case list when viewing the empty case list on Sunday", async () => {
     mockDate.set('2020-11-15')
     const response = await request(app).get('/B14LO/cases')
-
-    expect(response).toBe({})
 
     expect(caseService.getPagedCaseList).toHaveBeenCalledWith(
       'B14LO',
@@ -737,8 +741,7 @@ describe('Routes', () => {
           '/B14LO/outcomes?outcomeType=REPORT_REQUESTED&outcomeType=ADJOURNED'
         )
         .then(response => {
-          expect(response).toBe({})
-          // expect(response.statusCode).toEqual(200)
+          expect(response.statusCode).toEqual(200)
           defaultFilters.map(filter => {
             filter.items.map(item => {
               item.checked =
