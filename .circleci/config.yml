@@ -120,7 +120,7 @@ jobs:
           name: Verify built assets exist in running container
           command: |
             docker compose -f docker-compose.yml -f docker-compose.ci.yml ps
-            docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app sh -lc 'ls -la public/build/stylesheets && ls -la public/build/javascripts | head -n 50'
+            docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc 'ls -la public/build/stylesheets && ls -la public/build/javascripts | head -n 50'
       - run:
           name: Check container mounts (should NOT mount /app or /app/public)
           command: |
