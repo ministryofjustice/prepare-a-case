@@ -53,7 +53,8 @@ RUN export APP_VERSION=${BUILD_NUMBER} && \
     npx webpack --config ./public/config/webpack.config.js && \
     ./bin/record-build-info && \
     echo "=== BUILD OUTPUT ===" && \
-    ls -R public/build
+    ls -R public/build && \
+    test -n "$(find public/build -type f | head -n 1)"
 
 # Production deps only (same as old)
 RUN rm -rf node_modules && \
