@@ -109,7 +109,20 @@ jobs:
       - run:
           name: Start services
           # command: docker compose up -d --wait
-          command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait
+          command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --force-recreate --wait
+      - run:
+          name: Verify built assets exist in running container
+          command: |
+            docker compose -f docker-compose.yml -f docker-compose.ci.yml ps
+            docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app sh -lc 'ls -la public/build/stylesheets && ls -la public/build/javascripts | head -n 50'
+      - run:
+          name: Check container mounts (should NOT mount /app or /app/public)
+          command: |
+            docker inspect prepare-a-case-app --format '{{json .Mounts}}'
+      - run:
+          name: Show CSS link from homepage HTML
+          command: |
+            docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app sh -lc "wget -qO- http://localhost:3000 | grep -i '\.css' || true"
       - run:
           name: Log services
           command: docker compose logs -f -t > services.log
