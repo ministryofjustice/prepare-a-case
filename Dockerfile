@@ -1,23 +1,13 @@
-# HMPPS base (includes: appuser/appgroup UID/GID 2000, tzdata+ca-certs, TZ setup, apk upgrade, WORKDIR /app)
 FROM ghcr.io/ministryofjustice/hmpps-node:24-alpine AS base
 
-# Match prior behaviour
 ENV CYPRESS_INSTALL_BINARY=0
 
-# Build toolchain needed for npm install (native deps) and your webpack/css/js build steps
-# Use a virtual package so we can remove it later in the production stage (like your old apt purge)
-RUN apk add --no-cache --virtual .build-deps \
+RUN apk add --no-cache \
       python3 \
       make \
       g++ \
-      linux-headers
-
-# Runtime libs commonly needed on Alpine when moving from Debian/glibc-based images
-# (kept minimal; libc6-compat helps with some glibc-linked prebuilt binaries)
-RUN apk add --no-cache \
+      linux-headers \
       libc6-compat \
-      libstdc++ \
-      libgcc \
       libpng
 
 COPY package.json ./
@@ -28,24 +18,21 @@ COPY . .
 EXPOSE 3000
 
 
-## only used for production
 FROM base AS production
 
 LABEL org.opencontainers.image.authors="MoJ Digital, Probation in Court <probation-in-court-team@digital.justice.gov.uk>"
 
 ARG BUILD_NUMBER
 ARG GIT_REF
-ENV BUILD_NUMBER=${BUILD_NUMBER:-1_0_0} \
-    GIT_REF=${GIT_REF:-dummy} \
-    APP_VERSION=${BUILD_NUMBER:-1_0_0} \
-    NODE_ENV=production
 
-# Keep explicit copies as per old Dockerfile (even though base already has source)
+ENV BUILD_NUMBER=${BUILD_NUMBER:-1_0_0}
+ENV GIT_REF=${GIT_REF:-dummy}
+ENV APP_VERSION=${BUILD_NUMBER:-1_0_0}
+ENV NODE_ENV=production
+
 COPY ./server ./server
 COPY ./public ./public
 COPY ./bin ./bin
-
-RUN echo "=== PRODUCTION STAGE DEBUG MARKER ==="
 
 RUN export APP_VERSION=${BUILD_NUMBER} && \
     export BUILD_NUMBER=${BUILD_NUMBER} && \
@@ -53,24 +40,16 @@ RUN export APP_VERSION=${BUILD_NUMBER} && \
     ./bin/build-css && \
     ./bin/build-js && \
     npx webpack --config ./public/config/webpack.config.js && \
-    ./bin/record-build-info && \
-    echo "=== BUILD OUTPUT ===" && \
-    ls -R public/build && \
-    test -n "$(find public/build -type f | head -n 1)"
+    ./bin/record-build-info
 
-# Production deps only (same as old)
 RUN rm -rf node_modules && \
     npm ci --only=production --ignore-scripts
-
-# Strip build toolchain from the final image (Alpine equivalent of apt purge)
-RUN apk del .build-deps
 
 USER 2000
 ENTRYPOINT [ "node" ]
 CMD [ "./bin/www" ]
 
 
-## only use for development and ci
 FROM base AS development
 
 RUN npm i -g concurrently

@@ -108,59 +108,59 @@ jobs:
       #       docker compose -f docker-compose.yml -f docker-compose.ci.yml build --no-cache --progress=plain app
       - run:
           name: Start services
-          # command: docker compose up -d --wait
+          command: docker compose up -d --wait
           # command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --force-recreate --wait
-          command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait app-ci redis hmpps-auth court-case-service hmpps-user-preferences
-      - run:
-          name: App container logs
-          command: |
-            docker logs prepare-a-case-app --tail 300 || true
-            docker compose -f docker-compose.yml -f docker-compose.ci.yml ps || true
-      - run:
-          name: Debug - compose ps + container logs
-          command: |
-            docker compose -f docker-compose.yml -f docker-compose.ci.yml ps || true
-            echo "---- app logs (last 200 lines) ----"
-            docker logs prepare-a-case-app --tail 200 || true
-            echo "---- app-ci logs (last 200 lines) ----"
-            docker logs prepare-a-case-ci --tail 200 || true
-      - run:
-          name: Debug - is server listening (inside container)
-          command: |
-            docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc "ss -lntp || netstat -lntp || ps aux | grep node || true"
-      - run:
-          name: Debug - curl inside container + host
-          command: |
-            # inside container (bypasses host network)
-            docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc "apk add --no-cache curl >/dev/null 2>&1 || true; echo '--- internal HTTP ---'; curl -fsS -D- http://localhost:3000/ | head -n 40 || true"
-            # from CI host (what Cypress uses)
-            echo '--- host HTTP ---'
-            curl -fsS -D- http://localhost:3000/ | head -n 40 || true
-            echo '--- css links from HTML ---'
-            curl -fsS http://localhost:3000/ | grep -i '\.css' || true
-      - run:
-          name: Verify built assets exist in running container
-          command: |
-            docker compose -f docker-compose.yml -f docker-compose.ci.yml ps
-            docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc 'ls -la public/build/stylesheets && ls -la public/build/javascripts | head -n 50'
-      - run:
-          name: Check container mounts (should NOT mount /app or /app/public)
-          command: |
-            docker inspect prepare-a-case-app --format '{{json .Mounts}}'
-      - run:
-          name: Show CSS link from homepage HTML
-          command: |
-            docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc "wget -qO- http://localhost:3000 | grep -i '\.css' || true"
+          # command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait app-ci redis hmpps-auth court-case-service hmpps-user-preferences
+      # - run:
+      #     name: App container logs
+      #     command: |
+      #       docker logs prepare-a-case-app --tail 300 || true
+      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml ps || true
+      # - run:
+      #     name: Debug - compose ps + container logs
+      #     command: |
+      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml ps || true
+      #       echo "---- app logs (last 200 lines) ----"
+      #       docker logs prepare-a-case-app --tail 200 || true
+      #       echo "---- app-ci logs (last 200 lines) ----"
+      #       docker logs prepare-a-case-ci --tail 200 || true
+      # - run:
+      #     name: Debug - is server listening (inside container)
+      #     command: |
+      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc "ss -lntp || netstat -lntp || ps aux | grep node || true"
+      # - run:
+      #     name: Debug - curl inside container + host
+      #     command: |
+      #       # inside container (bypasses host network)
+      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc "apk add --no-cache curl >/dev/null 2>&1 || true; echo '--- internal HTTP ---'; curl -fsS -D- http://localhost:3000/ | head -n 40 || true"
+      #       # from CI host (what Cypress uses)
+      #       echo '--- host HTTP ---'
+      #       curl -fsS -D- http://localhost:3000/ | head -n 40 || true
+      #       echo '--- css links from HTML ---'
+      #       curl -fsS http://localhost:3000/ | grep -i '\.css' || true
+      # - run:
+      #     name: Verify built assets exist in running container
+      #     command: |
+      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml ps
+      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc 'ls -la public/build/stylesheets && ls -la public/build/javascripts | head -n 50'
+      # - run:
+      #     name: Check container mounts (should NOT mount /app or /app/public)
+      #     command: |
+      #       docker inspect prepare-a-case-app --format '{{json .Mounts}}'
+      # - run:
+      #     name: Show CSS link from homepage HTML
+      #     command: |
+      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc "wget -qO- http://localhost:3000 | grep -i '\.css' || true"
       - run:
           name: Log services
           command: docker compose logs -f -t > services.log
           background: true
-      - run:
-          name: Debug CSS inside container
-          command: |
-            docker compose ps
-            docker compose exec -T app-ci ls -R public | head -n 100
-            docker compose exec -T app-ci sh -lc "curl -sS http://localhost:3000 | grep -i css || true"
+      # - run:
+      #     name: Debug CSS inside container
+      #     command: |
+      #       docker compose ps
+      #       docker compose exec -T app-ci ls -R public | head -n 100
+      #       docker compose exec -T app-ci sh -lc "curl -sS http://localhost:3000 | grep -i css || true"
       - run:
           name: Lint Test
           command: npx standard
@@ -168,24 +168,24 @@ jobs:
           name: Unit Test
           command: npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       - run:
-          name: Debug - CSS URL on login page + status
-          command: |
-            sudo apt-get update -y >/dev/null
-            sudo apt-get install -y curl >/dev/null
+          # name: Debug - CSS URL on login page + status
+          # command: |
+          #   sudo apt-get update -y >/dev/null
+          #   sudo apt-get install -y curl >/dev/null
 
-            echo "---- Fetch /login HTML (first 80 lines) ----"
-            curl -fsS http://localhost:3000/login | head -n 80
+          #   echo "---- Fetch /login HTML (first 80 lines) ----"
+          #   curl -fsS http://localhost:3000/login | head -n 80
 
-            echo "---- Extract CSS hrefs ----"
-            curl -fsS http://localhost:3000/login | grep -Eo 'href="[^"]+\.css[^"]*"' || true
+          #   echo "---- Extract CSS hrefs ----"
+          #   curl -fsS http://localhost:3000/login | grep -Eo 'href="[^"]+\.css[^"]*"' || true
 
-            echo "---- Check known built CSS file directly ----"
-            curl -fsSI http://localhost:3000/build/stylesheets/style-1_0_0.min.css || true
+          #   echo "---- Check known built CSS file directly ----"
+          #   curl -fsSI http://localhost:3000/build/stylesheets/style-1_0_0.min.css || true
       - run:
           name: Run integration tests
           command: >
             npx cypress run
-            --config-file integration-tests/cypress/cypress.config.js video=false
+            --config-file integration-tests/cypress/cypress.config.js video=true
           environment:
             DISPLAY: :99
       - store_artifacts:
