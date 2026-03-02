@@ -167,7 +167,7 @@ jobs:
       - run:
           name: Unit Test
           command: npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
-      - run:
+      # - run:
           # name: Debug - CSS URL on login page + status
           # command: |
           #   sudo apt-get update -y >/dev/null
