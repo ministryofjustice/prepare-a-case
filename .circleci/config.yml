@@ -168,6 +168,20 @@ jobs:
           name: Unit Test
           command: npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       - run:
+          name: Debug - CSS URL on login page + status
+          command: |
+            sudo apt-get update -y >/dev/null
+            sudo apt-get install -y curl >/dev/null
+
+            echo "---- Fetch /login HTML (first 80 lines) ----"
+            curl -fsS http://localhost:3000/login | head -n 80
+
+            echo "---- Extract CSS hrefs ----"
+            curl -fsS http://localhost:3000/login | grep -Eo 'href="[^"]+\.css[^"]*"' || true
+
+            echo "---- Check known built CSS file directly ----"
+            curl -fsSI http://localhost:3000/build/stylesheets/style-1_0_0.min.css || true
+      - run:
           name: Run integration tests
           command: >
             npx cypress run
