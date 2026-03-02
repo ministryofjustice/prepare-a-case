@@ -109,7 +109,8 @@ jobs:
       - run:
           name: Start services
           # command: docker compose up -d --wait
-          command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --force-recreate --wait
+          # command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --force-recreate --wait
+          command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait app-ci redis hmpps-auth court-case-service hmpps-user-preferences
       - run:
           name: Verify built assets exist in running container
           command: |
