@@ -73,6 +73,7 @@ services:
       - ./schemas:/app/schemas
       - ./wiremock:/app/wiremock
       - ./integration-tests:/app/integration-tests
+    user: "0"
     environment:
       - REDIS_HOST=redis
       - PORT=3000
