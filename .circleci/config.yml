@@ -125,10 +125,10 @@ jobs:
           name: Check container mounts (should NOT mount /app or /app/public)
           command: |
             docker inspect prepare-a-case-app --format '{{json .Mounts}}'
-      # - run:
-      #     name: Show CSS link from homepage HTML
-      #     command: |
-      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app sh -lc "wget -qO- http://localhost:3000 | grep -i '\.css' || true"
+      - run:
+          name: Show CSS link from homepage HTML
+          command: |
+            docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app sh -lc "wget -qO- http://localhost:3000 | grep -i '\.css' || true"
       - run:
           name: Log services
           command: docker compose logs -f -t > services.log
