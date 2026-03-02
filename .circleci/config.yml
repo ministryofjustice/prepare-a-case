@@ -137,8 +137,8 @@ jobs:
           name: Debug CSS inside container
           command: |
             docker compose ps
-            docker compose exec -T app ls -R public | head -n 100
-            docker compose exec -T app sh -lc "curl -sS http://localhost:3000 | grep -i css || true"
+            docker compose exec -T app-ci ls -R public | head -n 100
+            docker compose exec -T app-ci sh -lc "curl -sS http://localhost:3000 | grep -i css || true"
       - run:
           name: Lint Test
           command: npx standard
