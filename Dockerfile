@@ -1,41 +1,49 @@
-# Stage: base image
+# HMPPS base (includes: appuser/appgroup UID/GID 2000, tzdata+ca-certs, TZ setup, apk upgrade, WORKDIR /app)
 FROM ghcr.io/ministryofjustice/hmpps-node:24-alpine AS base
 
-ARG BUILD_NUMBER
-ARG GIT_REF
-ARG GIT_BRANCH
+# Match prior behaviour
+ENV CYPRESS_INSTALL_BINARY=0
 
-# Dev-safe defaults; production enforcement happens in the build stage
-ENV BUILD_NUMBER=${BUILD_NUMBER:-dev} \
-    GIT_REF=${GIT_REF:-dev} \
-    GIT_BRANCH=${GIT_BRANCH:-dev} \
-    CYPRESS_INSTALL_BINARY=0
+# Build toolchain needed for npm install (native deps) and your webpack/css/js build steps
+# Use a virtual package so we can remove it later in the production stage (like your old apt purge)
+RUN apk add --no-cache --virtual .build-deps \
+      python3 \
+      make \
+      g++ \
+      linux-headers
 
-# Ensure junit output dir is writable for UID 2000 (CircleCI/Jest)
-RUN mkdir -p /app/test-results/jest && chown -R appuser:appgroup /app/test-results
+# Runtime libs commonly needed on Alpine when moving from Debian/glibc-based images
+# (kept minimal; libc6-compat helps with some glibc-linked prebuilt binaries)
+RUN apk add --no-cache \
+      libc6-compat \
+      libstdc++ \
+      libgcc \
+      libpng
 
-# Stage: build assets (production)
-FROM base AS build
-
-ARG BUILD_NUMBER
-ARG GIT_REF
-ARG GIT_BRANCH
-
-# Fail fast for production builds
-RUN test -n "$BUILD_NUMBER" || (echo "BUILD_NUMBER not set" && false)
-RUN test -n "$GIT_REF" || (echo "GIT_REF not set" && false)
-RUN test -n "$GIT_BRANCH" || (echo "GIT_BRANCH not set" && false)
-
-# Toolchain for native deps during install/build
-RUN apk add --no-cache --virtual .build-deps python3 build-base linux-headers
-
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm i
 
 COPY . .
+EXPOSE 3000
 
-ENV NODE_ENV=production \
-    APP_VERSION=${BUILD_NUMBER}
+
+## only used for production
+FROM base AS production
+
+LABEL org.opencontainers.image.authors="MoJ Digital, Probation in Court <probation-in-court-team@digital.justice.gov.uk>"
+
+ARG BUILD_NUMBER
+ARG GIT_REF
+ENV BUILD_NUMBER=${BUILD_NUMBER:-1_0_0} \
+    GIT_REF=${GIT_REF:-dummy} \
+    APP_VERSION=${BUILD_NUMBER:-1_0_0} \
+    NODE_ENV=production
+
+# Keep explicit copies as per old Dockerfile (even though base already has source)
+COPY ./server ./server
+COPY ./public ./public
+COPY ./bin ./bin
 
 RUN export APP_VERSION=${BUILD_NUMBER} && \
     export BUILD_NUMBER=${BUILD_NUMBER} && \
@@ -45,59 +53,24 @@ RUN export APP_VERSION=${BUILD_NUMBER} && \
     npx webpack --config ./public/config/webpack.config.js && \
     ./bin/record-build-info
 
-# Prod-only deps
+# Production deps only (same as old)
 RUN rm -rf node_modules && \
     npm ci --only=production --ignore-scripts
 
-# Stage: production runtime (copy production assets and dependencies)
-FROM base AS production
+# Strip build toolchain from the final image (Alpine equivalent of apt purge)
+RUN apk del .build-deps
 
-LABEL org.opencontainers.image.authors="MoJ Digital, Probation in Court <probation-in-court-team@digital.justice.gov.uk>"
-
-ENV NODE_ENV=production \
-    APP_VERSION=${BUILD_NUMBER}
-
-COPY --from=build --chown=appuser:appgroup /app/package.json /app/package-lock.json ./
-COPY --from=build --chown=appuser:appgroup /app/node_modules ./node_modules
-
-# Runtime files
-COPY --from=build --chown=appuser:appgroup /app/server ./server
-COPY --from=build --chown=appuser:appgroup /app/public ./public
-COPY --from=build --chown=appuser:appgroup /app/bin ./bin
-
-EXPOSE 3000
 USER 2000
-CMD [ "node", "./bin/www" ]
+ENTRYPOINT [ "node" ]
+CMD [ "./bin/www" ]
 
-# # Stage: CI (dev deps for lint/unit only)
-# FROM base AS ci
 
-# # Toolchain for native deps used by dev deps
-# RUN apk add --no-cache --virtual .build-deps python3 build-base linux-headers
-
-# COPY package.json package-lock.json ./
-# RUN npm ci
-
-# COPY . .
-
-# USER 2000
-
-# # Keep container alive for docker exec in CI
-# CMD ["sh", "-lc", "sleep infinity"]
-
-# Stage: development / CI
+## only use for development and ci
 FROM base AS development
 
-# Toolchain + deps for dev
-RUN apk add --no-cache g++ make python3
-
-COPY package.json package-lock.json ./
-RUN npm ci
-
-COPY . .
-
 RUN npm i -g concurrently
-EXPOSE 3000 9229
+
+EXPOSE 9229
 
 USER 2000
 ENTRYPOINT ["concurrently"]
