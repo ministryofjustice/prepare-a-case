@@ -9,7 +9,7 @@ services:
       - REDIS_HOST=redis
       - PORT=3000
       - PAC_ENV=dev
-      - NODE_ENV=production
+      - NODE_ENV=development
       - ENABLE_APP_INSIGHTS=false
       - API_CLIENT_ID=${API_CLIENT_ID:-prepare-a-case-for-court}
       - API_CLIENT_SECRET=${API_CLIENT_SECRET:-clientsecret}

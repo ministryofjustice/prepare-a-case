@@ -102,15 +102,20 @@ jobs:
           command: |
             cd integration-tests
             npm ci --no-audit
-      - run:
-          name: Build app image with plain logs
-          command: |
-            docker compose -f docker-compose.yml -f docker-compose.ci.yml build --no-cache --progress=plain app
+      # - run:
+      #     name: Build app image with plain logs
+      #     command: |
+      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml build --no-cache --progress=plain app
       - run:
           name: Start services
           # command: docker compose up -d --wait
           # command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --force-recreate --wait
           command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait app-ci redis hmpps-auth court-case-service hmpps-user-preferences
+      - run:
+          name: App container logs
+          command: |
+            docker logs prepare-a-case-app --tail 300 || true
+            docker compose -f docker-compose.yml -f docker-compose.ci.yml ps || true
       - run:
           name: Verify built assets exist in running container
           command: |
