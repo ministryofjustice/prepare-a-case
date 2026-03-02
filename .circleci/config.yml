@@ -103,6 +103,10 @@ jobs:
             cd integration-tests
             npm ci --no-audit
       - run:
+          name: Build app image with plain logs
+          command: |
+            docker compose -f docker-compose.yml -f docker-compose.ci.yml build --no-cache --progress=plain app
+      - run:
           name: Start services
           # command: docker compose up -d --wait
           command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait

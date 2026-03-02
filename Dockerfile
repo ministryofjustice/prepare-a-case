@@ -45,6 +45,8 @@ COPY ./server ./server
 COPY ./public ./public
 COPY ./bin ./bin
 
+RUN echo "=== PRODUCTION STAGE DEBUG MARKER ==="
+
 RUN export APP_VERSION=${BUILD_NUMBER} && \
     export BUILD_NUMBER=${BUILD_NUMBER} && \
     export GIT_REF=${GIT_REF} && \
