@@ -111,6 +111,23 @@ jobs:
           command: docker compose up -d --wait
           # command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --force-recreate --wait
           # command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait app-ci redis hmpps-auth court-case-service hmpps-user-preferences
+      - run:
+          name: Wait for CSS bundle to exist
+          command: |
+            echo "Waiting for CSS bundle..."
+            for i in $(seq 1 30); do
+              if docker compose exec -T app ls public/build/stylesheets | grep -q ".css"; then
+                echo "CSS found"
+                exit 0
+              fi
+              sleep 1
+            done
+            echo "CSS never appeared"
+            docker compose logs app | tail -n 100
+            exit 1
+      - run:
+          name: Show built CSS files
+          command: docker compose exec -T app ls -la public/build/stylesheets
       # - run:
       #     name: App container logs
       #     command: |
@@ -185,7 +202,7 @@ jobs:
           name: Run integration tests
           command: >
             npx cypress run
-            --config-file integration-tests/cypress/cypress.config.js video=true
+            --config-file integration-tests/cypress/cypress.config.js video=false
           environment:
             DISPLAY: :99
       - store_artifacts:
