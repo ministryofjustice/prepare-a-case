@@ -117,7 +117,7 @@ jobs:
             docker logs prepare-a-case-app --tail 300 || true
             docker compose -f docker-compose.yml -f docker-compose.ci.yml ps || true
       - run:
-          name: Debug: compose ps + container logs
+          name: Debug - compose ps + container logs
           command: |
             docker compose -f docker-compose.yml -f docker-compose.ci.yml ps || true
             echo "---- app logs (last 200 lines) ----"
@@ -125,11 +125,11 @@ jobs:
             echo "---- app-ci logs (last 200 lines) ----"
             docker logs prepare-a-case-ci --tail 200 || true
       - run:
-          name: Debug: is server listening (inside container)
+          name: Debug - is server listening (inside container)
           command: |
             docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc "ss -lntp || netstat -lntp || ps aux | grep node || true"
       - run:
-          name: Debug: curl inside container + host
+          name: Debug - curl inside container + host
           command: |
             # inside container (bypasses host network)
             docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc "apk add --no-cache curl >/dev/null 2>&1 || true; echo '--- internal HTTP ---'; curl -fsS -D- http://localhost:3000/ | head -n 40 || true"
