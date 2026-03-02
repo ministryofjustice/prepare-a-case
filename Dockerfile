@@ -51,7 +51,9 @@ RUN export APP_VERSION=${BUILD_NUMBER} && \
     ./bin/build-css && \
     ./bin/build-js && \
     npx webpack --config ./public/config/webpack.config.js && \
-    ./bin/record-build-info
+    ./bin/record-build-info && \
+    echo "=== BUILD OUTPUT ===" && \
+    ls -R public/build
 
 # Production deps only (same as old)
 RUN rm -rf node_modules && \
