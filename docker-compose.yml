@@ -73,7 +73,7 @@ services:
       - ./schemas:/app/schemas
       - ./wiremock:/app/wiremock
       - ./integration-tests:/app/integration-tests
-    user: "0"
+    # user: "0"
     environment:
       - REDIS_HOST=redis
       - PORT=3000
@@ -115,3 +115,12 @@ services:
       - "3000:3000"
       - "9229:9229"
     restart: always
+    entrypoint: ["sh", "-lc"]
+    command: >
+      mkdir -p /app/public/build/stylesheets /app/public/build/javascripts &&
+      chown -R 2000:2000 /app/public/build &&
+      exec concurrently
+      "\"./node_modules/.bin/webpack --config ./public/config/webpack.config.js\""
+      "\"./node_modules/.bin/nodemon --watch ./server --inspect=0.0.0.0 ./bin/www\""
+      "\"./node_modules/.bin/nodemon --ext scss --watch ./public/src/stylesheets ./bin/build-css\""
+      "\"./node_modules/.bin/nodemon --ext js --watch ./public/src/javascripts ./bin/build-js\""
