@@ -42,6 +42,8 @@ jobs:
     uses: ministryofjustice/hmpps-github-actions/.github/workflows/node_integration_tests.yml@v2 # WORKFLOW_VERSION
     needs: [node_build]
     secrets: inherit
+    with:
+      wiremock_port: 9191 # todo: only run one wiremock, currently two running
   helm_lint:
     strategy:
       matrix:
