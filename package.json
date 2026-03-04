@@ -23,8 +23,8 @@
     "int-test": "cypress run --config-file integration-tests/cypress/cypress.config.js video=false",
     "int-test-ui": "npx cypress open --config-file integration-tests/cypress/cypress.config.js --e2e --browser chrome",
     "lint": "standard",
-    "build": "mkdir -p build && echo ok > build/.keep",
-    "test:ci": "jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit"
+    "build": "mkdir -p build && echo \"built: $(date -u)\" > build/info.txt",
+    "test:ci": "mkdir -p test_results && jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit"
   },
   "config": {},
   "nodemonConfig": {
