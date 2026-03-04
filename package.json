@@ -22,7 +22,7 @@
     "security_audit": "npx audit-ci --config audit-ci.json",
     "int-test": "npx cypress run --config-file integration-tests/cypress/cypress.config.js video=false",
     "int-test-init:ci": "echo \"\" > .env && npm ci --no-audit && cd integration-tests && npm ci --no-audit",
-    "start-feature": "docker compose up -d --wait",
+    "start-feature": "docker compose up -d --wait && until curl -fsS http://localhost:3000; do sleep 2; done",
     "int-test-ui": "npx cypress open --config-file integration-tests/cypress/cypress.config.js --e2e --browser chrome",
     "lint": "standard",
     "build": "mkdir -p build && echo \"built: $(date -u)\" > build/info.txt",
