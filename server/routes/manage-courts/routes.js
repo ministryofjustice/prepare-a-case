@@ -16,5 +16,5 @@ const registerRoutes = (router) => {
 
 module.exports = {
   registerManageCourtsRoutes: registerRoutes,
-  manageCourtsRoute: baseRoute
+  manageCourtsRoute: baseRoute,
 }

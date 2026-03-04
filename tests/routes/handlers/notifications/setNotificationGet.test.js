@@ -23,7 +23,7 @@ describe('setNotification Get handler', () => {
     res = {
       setHeader: jest.fn(),
       sendStatus: jest.fn(),
-      render: jest.fn()
+      render: jest.fn(),
     }
     getAsyncMock = req.redisClient.getAsync
   })
