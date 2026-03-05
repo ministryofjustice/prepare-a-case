@@ -1,3 +1,4 @@
+# Stage: base image
 FROM ghcr.io/ministryofjustice/hmpps-node:24-alpine AS base
 
 ARG BUILD_NUMBER
@@ -14,6 +15,7 @@ ENV GIT_BRANCH=${GIT_BRANCH}
 
 ENV CYPRESS_INSTALL_BINARY=0
 
+# Stage: build
 FROM base AS build
 
 RUN apk add --no-cache \
@@ -45,23 +47,6 @@ RUN export APP_VERSION=${BUILD_NUMBER} && \
 # Keep only production deps
 RUN npm prune --omit=dev --no-audit --no-fund
 
-# Stage: production runtime (final)
-FROM base AS production
-
-# Runtime libs only (no compiler toolchain)
-RUN apk add --no-cache \
-      libc6-compat \
-      libpng
-
-COPY --from=build --chown=appuser:appgroup /app /app
-
-EXPOSE 3000
-ENV NODE_ENV=production
-USER 2000
-
-ENTRYPOINT [ "node" ]
-CMD [ "./bin/www" ]
-
 # Stage: development
 FROM base AS development
 
@@ -91,3 +76,20 @@ CMD [ \
   "\"./node_modules/.bin/nodemon --ext scss --watch ./public/src/stylesheets ./bin/build-css\"", \
   "\"./node_modules/.bin/nodemon --ext js --watch ./public/src/javascripts ./bin/build-js\"" \
 ]
+
+# Stage: production runtime
+FROM base AS production
+
+# Runtime libs only (no compiler toolchain)
+RUN apk add --no-cache \
+      libc6-compat \
+      libpng
+
+COPY --from=build --chown=appuser:appgroup /app /app
+
+EXPOSE 3000
+ENV NODE_ENV=production
+USER 2000
+
+ENTRYPOINT [ "node" ]
+CMD [ "./bin/www" ]
