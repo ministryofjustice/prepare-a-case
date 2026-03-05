@@ -22,7 +22,7 @@
     "security_audit": "npx audit-ci --config audit-ci.json",
     "int-test-init:ci": "echo \"\" > .env && npm ci --no-audit && cd integration-tests && npm ci --no-audit",
     "start-feature": "docker compose up -d --wait",
-    "int-test": "end=$((SECONDS+180)); until curl -fsS http://localhost:3000/health > /dev/null; do [ $SECONDS -ge $end ] && echo 'Timed out waiting for app' && exit 1; echo 'waiting for app'; sleep 3; done; npx cypress run --config-file integration-tests/cypress/cypress.config.js --config video=false",
+    "int-test": "end=$((SECONDS+180)); until curl -sS http://localhost:3000/health > /dev/null; do [ $SECONDS -ge $end ] && echo 'Timed out waiting for app' && exit 1; echo 'waiting for app'; sleep 3; done; npx cypress run --config-file integration-tests/cypress/cypress.config.js --config video=false",
     "int-test-ui": "npx cypress open --config-file integration-tests/cypress/cypress.config.js --e2e --browser chrome",
     "lint": "standard",
     "build": "mkdir -p build && echo \"built: $(date -u)\" > build/info.txt",
