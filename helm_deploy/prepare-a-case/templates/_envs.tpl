@@ -19,7 +19,7 @@ env:
   - name: APPLICATIONINSIGHTS_CONNECTION_STRING
     valueFrom:
       secretKeyRef:
-        name: applicationinsights-connection-string
+        name: hmpps-prepare-a-case-application-insights
         key: applicationinsights_connection_string
 
   - name: CASES_PER_PAGE
