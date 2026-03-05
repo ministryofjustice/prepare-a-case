@@ -1,4 +1,5 @@
 version: 2.1
+
 commands:
   setup-live:
     description: "Install tools and configure kubectl"
@@ -43,6 +44,7 @@ commands:
               --values - \
               --values ~/git/helm_deploy/prepare-a-case/values-live.yaml \
               --set image.tag="${APP_VERSION}"
+
 executors:
   deployer:
     docker:
@@ -52,12 +54,18 @@ executors:
     docker:
       - image: cimg/base:current
     working_directory: ~/app
+
 orbs:
   helm: circleci/helm@1.2.0
   kubernetes: circleci/kubernetes@1.3.0
   mem: circleci/rememborb@0.0.2
   hmpps: ministryofjustice/hmpps@11
-parameters: {}
+
+parameters:
+  alerts-slack-channel:
+    type: string
+    default: probation_in_court_dev
+
 jobs:
   set_app_version:
     executor: builder
@@ -72,6 +80,7 @@ jobs:
       - mem/remember:
           env_var: APP_VERSION
           value: "${VERSION}"
+
   test_lint_unit_pact:
     machine:
       image: ubuntu-2204:current
@@ -93,111 +102,34 @@ jobs:
           command: |
             cd integration-tests
             npm ci --no-audit
-      # - run:
-      #     name: Build app image with plain logs
-      #     command: |
-      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml build --no-cache --progress=plain app
       - run:
           name: Start services
           command: docker compose up -d --wait
           # command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --force-recreate --wait
           # command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait app-ci redis hmpps-auth court-case-service hmpps-user-preferences
       - run:
-          name: Wait for CSS bundle to exist
-          command: |
-            echo "Waiting for CSS bundle..."
-            for i in $(seq 1 30); do
-              if docker compose exec -T app ls public/build/stylesheets | grep -q ".css"; then
-                echo "CSS found"
-                exit 0
-              fi
-              sleep 1
-            done
-            echo "CSS never appeared"
-            docker compose logs app | tail -n 100
-            exit 1
-      - run:
-          name: Show built CSS files
-          command: docker compose exec -T app ls -la public/build/stylesheets
-      # - run:
-      #     name: App container logs
-      #     command: |
-      #       docker logs prepare-a-case-app --tail 300 || true
-      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml ps || true
-      # - run:
-      #     name: Debug - compose ps + container logs
-      #     command: |
-      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml ps || true
-      #       echo "---- app logs (last 200 lines) ----"
-      #       docker logs prepare-a-case-app --tail 200 || true
-      #       echo "---- app-ci logs (last 200 lines) ----"
-      #       docker logs prepare-a-case-ci --tail 200 || true
-      # - run:
-      #     name: Debug - is server listening (inside container)
-      #     command: |
-      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc "ss -lntp || netstat -lntp || ps aux | grep node || true"
-      # - run:
-      #     name: Debug - curl inside container + host
-      #     command: |
-      #       # inside container (bypasses host network)
-      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc "apk add --no-cache curl >/dev/null 2>&1 || true; echo '--- internal HTTP ---'; curl -fsS -D- http://localhost:3000/ | head -n 40 || true"
-      #       # from CI host (what Cypress uses)
-      #       echo '--- host HTTP ---'
-      #       curl -fsS -D- http://localhost:3000/ | head -n 40 || true
-      #       echo '--- css links from HTML ---'
-      #       curl -fsS http://localhost:3000/ | grep -i '\.css' || true
-      # - run:
-      #     name: Verify built assets exist in running container
-      #     command: |
-      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml ps
-      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc 'ls -la public/build/stylesheets && ls -la public/build/javascripts | head -n 50'
-      # - run:
-      #     name: Check container mounts (should NOT mount /app or /app/public)
-      #     command: |
-      #       docker inspect prepare-a-case-app --format '{{json .Mounts}}'
-      # - run:
-      #     name: Show CSS link from homepage HTML
-      #     command: |
-      #       docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app-ci sh -lc "wget -qO- http://localhost:3000 | grep -i '\.css' || true"
-      - run:
           name: Log services
           command: docker compose logs -f -t > services.log
           background: true
-      # - run:
-      #     name: Debug CSS inside container
-      #     command: |
-      #       docker compose ps
-      #       docker compose exec -T app-ci ls -R public | head -n 100
-      #       docker compose exec -T app-ci sh -lc "curl -sS http://localhost:3000 | grep -i css || true"
       - run:
           name: Lint Test
           command: npx standard
       - run:
           name: Unit Test
           command: npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
-          # - run:
-          # name: Debug - CSS URL on login page + status
-          # command: |
-          #   sudo apt-get update -y >/dev/null
-          #   sudo apt-get install -y curl >/dev/null
-          #   echo "---- Fetch /login HTML (first 80 lines) ----"
-          #   curl -fsS http://localhost:3000/login | head -n 80
-        #   echo "---- Extract CSS hrefs ----"
-        #   curl -fsS http://localhost:3000/login | grep -Eo 'href="[^"]+\.css[^"]*"' || true
       - run:
           name: Run integration tests
           command: >
-            npx cypress run --config-file integration-tests/cypress/cypress.config.js video=false
-
+            npx cypress run
+            --config-file integration-tests/cypress/cypress.config.js video=false
           environment:
             DISPLAY: :99
-        #   echo "---- Check known built CSS file directly ----"
-        #   curl -fsSI http://localhost:3000/build/stylesheets/style-1_0_0.min.css || true
       - store_artifacts:
           path: output/screenshots
-      - store_artifacts:
+      - store_artifacts:    
           path: services.log
-          #todo: remove quay
+
+#todo: remove quay
   build:
     executor: deployer
     parameters:
@@ -235,20 +167,102 @@ jobs:
                   docker tag hmpps/prepare-a-case:$APP_VERSION quay.io/hmpps/prepare-a-case:latest
                   docker push quay.io/hmpps/prepare-a-case:$APP_VERSION
                   docker push quay.io/hmpps/prepare-a-case:latest
+
   deploy_dev:
     executor: deployer
     steps:
       - deploy_to_live_env:
           env: "dev"
+
   deploy_preprod:
     executor: deployer
     steps:
       - deploy_to_live_env:
           env: "preprod"
+
   deploy_prod:
     executor: deployer
     steps:
       - deploy_to_live_env:
           env: "prod"
+
 workflows:
   version: 2
+
+  build-test-and-deploy:
+    jobs:
+      - test_lint_unit_pact:
+          context: [hmpps-common-vars]
+      - set_app_version:
+          filters:
+            branches:
+              only: main
+      - build:
+          name: build
+          context: [hmpps-common-vars]
+          main: true
+          requires:
+            - set_app_version
+      - deploy_dev:
+          context:
+            - hmpps-common-vars
+          requires:
+            - build
+      - request-preprod-approval:
+          type: approval
+          requires:
+            - deploy_dev
+      - deploy_preprod:
+          context:
+            - court-probation-live-preprod
+            - hmpps-common-vars
+          requires:
+            - request-preprod-approval
+      - request-prod-approval:
+          type: approval
+          requires:
+            - deploy_preprod
+      - deploy_prod:
+          context:
+            - court-probation-live-prod
+            - hmpps-common-vars
+          requires:
+            - request-prod-approval
+
+  security:
+    triggers:
+      - schedule:
+          cron: "30 5 * * 1-5"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - hmpps/npm_security_audit:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - hmpps-common-vars
+      - hmpps/trivy_latest_scan:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - hmpps-common-vars
+      - hmpps/veracode_pipeline_scan:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - veracode-credentials
+            - hmpps-common-vars
+
+  security-weekly:
+    triggers:
+      - schedule:
+          cron: "0 5 * * 1"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - hmpps/veracode_policy_scan:
+          slack_channel: << pipeline.parameters.alerts-slack-channel >>
+          context:
+            - veracode-credentials
+            - hmpps-common-vars
