@@ -65,7 +65,7 @@
     { "code": "B47HB", "name": "Horsham Magistrates' Court", "pilotCourt": false },
     { "code": "B16HE", "name": "Hull and Holderness Magistrates' Court", "pilotCourt": false },
     { "code": "B35HF", "name": "Huntingdon Law Courts", "pilotCourt": false },
-    { "code": "B37HI", "name": "Ipswich Magistrates' Court", "pilotCourt": false },
+    { "code": "B37HI", "name": "Ipswich Magistrates' Court", "pilotCourt": true },
     { "code": "B44JK", "name": "Isle of Wight Magistrates' Court", "pilotCourt": true },
     { "code": "B22HM", "name": "Kidderminster Magistrates' Court", "pilotCourt": true },
     { "code": "B36HN", "name": "King's Lynn Magistrates' Court", "pilotCourt": true },
