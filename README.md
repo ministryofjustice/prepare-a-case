@@ -151,11 +151,6 @@ You can also target one test file using something like
 npm run test:unit -- tests/routes/thefile.test.js --collectCoverage=false
 ```
 
-### Run PACT tests
-```
-npm run test:pact
-```
-
 ### Run Integration tests
 
 Firstly, run the app with the auth wiremock:
