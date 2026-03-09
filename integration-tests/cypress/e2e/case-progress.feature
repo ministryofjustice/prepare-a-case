@@ -81,7 +81,7 @@ Feature: Case progress
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
     Then I should be on the "Case summary" page
-    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
+    And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
     And I should see the following summary list
@@ -120,7 +120,7 @@ Feature: Case progress
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
     Then I should be on the "Case summary" page
-    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
+    And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
     And I should see the following summary list
@@ -142,7 +142,7 @@ Feature: Case progress
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
     Then I should be on the "Case summary" page
-    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
+    And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
     And I should see the following summary list
@@ -167,7 +167,7 @@ Feature: Case progress
 
     When I navigate to the "/B14LO/hearing/7e0f9cb9-b492-4657-9028-a86de1301e25/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary" base route
     Then I should be on the "Case summary" page
-    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
+    And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
     And I should see a "m" sized level 3 heading with text "Case progress"
@@ -180,7 +180,7 @@ Feature: Case progress
 
     When I navigate to the "/B14LO/hearing/7e0f9cb9-b492-4657-9028-a86de1301e25/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary" base route
     Then I should be on the "Case summary" page
-    And I should see back link "Back to cases" with href "/B14LO/cases/$TODAY"
+    And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
     And I should see a "m" sized level 3 heading with text "Case progress"
