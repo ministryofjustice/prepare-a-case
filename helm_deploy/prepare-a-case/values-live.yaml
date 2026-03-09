@@ -2,3 +2,6 @@ ingress:
   contextColour: green
   annotations:
     external-dns.alpha.kubernetes.io/aws-weight: "100"
+
+generic-prometheus-alerts:
+  targetApplication: prepare-a-case
