@@ -77,7 +77,7 @@ services:
       - ./schemas:/app/schemas
       - ./wiremock:/app/wiremock
       - ./integration-tests:/app/integration-tests
-    # user: "0" #todo: workaround to fix int tests, should be removed
+    user: "0" # ensures that int tests still pass following Dockerfile update. TODO: remove if possible
     environment:
       - REDIS_HOST=redis
       - PORT=3000

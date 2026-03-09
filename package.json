@@ -21,11 +21,11 @@
     "test:unit": "docker exec -it -e ENABLE_HEARING_OUTCOMES=false prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit",
     "security_audit": "npx audit-ci --config audit-ci.json",
     "int-test-init:ci": "echo \"\" > .env && npm ci --no-audit && cd integration-tests && npm ci --no-audit",
-    "start-feature": "docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --wait",
+    "start-feature": "docker compose up -d --wait",
     "int-test": "end=$(($(date +%s)+180)); until curl -sS http://localhost:3000/health > /dev/null; do [ $(date +%s) -ge $end ] && echo 'Timed out waiting for app' && exit 1; echo 'waiting for app'; sleep 3; done; npx cypress run --config-file integration-tests/cypress/cypress.config.js --config video=false",
     "int-test-ui": "npx cypress open --config-file integration-tests/cypress/cypress.config.js --e2e --browser chrome",
     "lint": "standard",
-    "build": "mkdir -p build && echo \"built: $(date -u)\" > build/info.txt",
+    "build": "mkdir -p build && echo ok > build/info.txt",
     "test:ci": "mkdir -p test_results && jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit"
   },
   "config": {},
