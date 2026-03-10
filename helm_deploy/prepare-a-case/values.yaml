@@ -1,0 +1,90 @@
+generic-service:
+  nameOverride: prepare-a-case
+  # productId: 'UNASSIGNED' # productId for the product that this belongs too, i.e. DPS001, see README.md for details
+
+  # the IRSA service account name for accessing AWS resources
+  serviceAccountName: "court-case-service"
+
+  image:
+    repository: quay.io/hmpps/prepare-a-case # todo: remove quay
+    tag: latest # override at deployment time
+    port: 3000
+    pullPolicy: Always
+  
+  service:
+    enabled: true
+    type: ClusterIP
+    port: 80
+
+  strategy:
+    type: RollingUpdate #same as default
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0 #same as default
+
+  ingress:
+    enabled: true
+    hosts:
+      - app-hostname.local    # override per environment
+    # tlsSecretName: hmpps-template-typescript-cert CCM overrides per env
+    path: /
+    modsecurity_enabled: true
+
+  livenessProbe:
+    httpGet:
+      path: /health
+      port: http
+    periodSeconds: 30
+    initialDelaySeconds: 90
+    timeoutSeconds: 20
+    failureThreshold: 10
+
+  readinessProbe:
+    httpGet:
+      path: /ping
+      port: http
+    periodSeconds: 20
+    initialDelaySeconds: 60
+    timeoutSeconds: 30
+    failureThreshold: 15
+
+
+  env:
+    # REDIS_ENABLED: 'true'
+    # REDIS_TLS_ENABLED: 'true'
+    # TOKEN_VERIFICATION_ENABLED: 'true'
+    # AUDIT_SQS_REGION: 'eu-west-2'
+    # AUDIT_SERVICE_NAME: 'UNASSIGNED' # Your audit service name
+    # port?
+
+  # Pre-existing kubernetes secrets to load as environment variables in the deployment.
+  # namespace_secrets:
+  #   [name of kubernetes secret]:
+  #     [name of environment variable as seen by app]: [key of kubernetes secret to load]
+
+  # namespace_secrets:
+  #   # These secrets are created by terraform.
+  #   hmpps-template-typescript-client-creds:
+  #     CLIENT_CREDS_CLIENT_ID: 'CLIENT_CREDS_CLIENT_ID'
+  #     CLIENT_CREDS_CLIENT_SECRET: 'CLIENT_CREDS_CLIENT_SECRET'
+  #   hmpps-template-typescript-auth-code:
+  #     AUTH_CODE_CLIENT_ID: 'AUTH_CODE_CLIENT_ID'
+  #     AUTH_CODE_CLIENT_SECRET: 'AUTH_CODE_CLIENT_SECRET'    
+  #   hmpps-template-typescript-session-secret:
+  #     SESSION_SECRET: 'SESSION_SECRET'
+  #   hmpps-template-typescript-elasticache-redis:
+  #     REDIS_HOST: 'primary_endpoint_address'
+  #     REDIS_AUTH_TOKEN: 'auth_token'
+  #   hmpps-template-typescript-application-insights:
+  #     APPLICATIONINSIGHTS_CONNECTION_STRING: "APPLICATIONINSIGHTS_CONNECTION_STRING"
+    # This secret will need to be created in your namespace (note it isn't in hmpps-templates-dev)
+    # IRSA configuration in your namespace will also be required, and then uncomment serviceAccountName above.
+    # sqs-hmpps-audit-secret:
+    #   AUDIT_SQS_QUEUE_URL: 'sqs_queue_url'
+
+  allowlist:
+    groups:
+      - internal
+
+generic-prometheus-alerts:
+  targetApplication: prepare-a-case
