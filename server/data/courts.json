@@ -77,7 +77,7 @@
     { "code": "B33HU", "name": "Leicester Magistrates' Court", "pilotCourt": false },
     { "code": "B32HX", "name": "Lincoln Magistrates' Court", "pilotCourt": false },
     { "code": "B05PK", "name": "Liverpool & Knowsley Magistrates' Court", "pilotCourt": false },
-    { "code": "B63IC", "name": "Llandrindod Wells Magistrates'", "pilotCourt": true },
+    { "code": "B63LW", "name": "Llandrindod Wells Magistrates'", "pilotCourt": true },
     { "code": "B60ID", "name": "Llandudno Magistrates' Court", "pilotCourt": true },
     { "code": "B63IE", "name": "Llanelli Law Courts", "pilotCourt": true },
     { "code": "B33II", "name": "Loughborough Magistrates' Court", "pilotCourt": false },
