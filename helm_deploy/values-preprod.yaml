@@ -5,7 +5,7 @@ minReplicaCount: 2
 maxReplicaCount: 4
 
 image:
-  repository: quay.io/hmpps/prepare-a-case
+  repository: ghcr.io/ministryofjustice/prepare-a-case
   tag: latest
   pullPolicy: Always
   port: 3000

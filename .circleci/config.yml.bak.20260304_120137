@@ -105,16 +105,18 @@ jobs:
       - run:
           name: Start services
           command: docker compose up -d --wait
+          # command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --force-recreate --wait
+          # command: docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build --wait app-ci redis hmpps-auth court-case-service hmpps-user-preferences
       - run:
           name: Log services
           command: docker compose logs -f -t > services.log
           background: true
       - run:
           name: Lint Test
-          command: docker exec -it prepare-a-case-app /app/node_modules/.bin/standard
+          command: npx standard
       - run:
           name: Unit Test
-          command: docker exec -e ENABLE_HEARING_OUTCOMES=false -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
+          command: npx jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit
       - run:
           name: Run integration tests
           command: >
@@ -127,27 +129,7 @@ jobs:
       - store_artifacts:    
           path: services.log
 
-  pact_push:
-    environment:
-      PACT_BROKER_DISABLE_SSL_VERIFICATION: "true"
-    executor: builder
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - run:
-          name: Build Development Image
-          command: docker build --target=ci -t prepare-a-case-app -f Dockerfile .
-      - run:
-          name: Generate pact files
-          halt_build_on_fail: false
-          command: docker run -it prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.pact.config.js --ci
-      - store_artifacts:
-          path: 'pact/pacts'
-      - run:
-          name: Upload pact files to broker
-          command: docker run -it prepare-a-case-app /app/node_modules/.bin/pact-broker publish pact/pacts --broker-base-url $PACT_BROKER_BASE_URL --consumer-app-version $CIRCLE_SHA1 --tag $CIRCLE_BRANCH -u $PACT_BROKER_USERNAME -p $PACT_BROKER_PASSWORD"
-
+#todo: remove quay
   build:
     executor: deployer
     parameters:
@@ -215,10 +197,6 @@ workflows:
           filters:
             branches:
               only: main
-      #- pact_push:
-      #    context: [hmpps-common-vars]
-      #    requires:
-      #      - set_app_version
       - build:
           name: build
           context: [hmpps-common-vars]
