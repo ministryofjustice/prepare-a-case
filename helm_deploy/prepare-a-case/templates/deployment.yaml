@@ -1,17 +1,3 @@
 #to delete
 
-
-spec:
-  template:
-    spec:
-      containers:
-        {{ if .Values.resources }} #for prod and preprod
-          resources:
-            limits:
-              cpu: {{ .Values.resources.cpu.limit }}
-              memory: {{ .Values.resources.memory.limit }}
-            requests:
-              cpu: {{ .Values.resources.cpu.request}}
-              memory: {{ .Values.resources.memory.request }}
-        {{ end }}
 {{ include "deployment.envs" . | nindent 10 }}

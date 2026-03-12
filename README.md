@@ -96,8 +96,6 @@ You may need to specifically turn them off.
 
 ```
 PAC_ENV=dev 
-ENABLE_CASE_COMMENTS=true 
-ENABLE_CASE_PROGRESS=true
 ```
 
 Fair warning, the feature flags are a bit of a mess. Some need to be on for unit tests to work and then off for integration tests to work.
