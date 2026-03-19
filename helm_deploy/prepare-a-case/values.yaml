@@ -23,6 +23,7 @@ generic-service:
     enabled: true
     path: /
     modsecurity_enabled: true
+    tlsSecretName: ""
 
   autoscaling:
     enabled: true
@@ -39,7 +40,7 @@ generic-service:
 
   readinessProbe:
     httpGet:
-      path: /ping
+      path: /health
       port: http
     periodSeconds: 20
     initialDelaySeconds: 60
@@ -51,7 +52,6 @@ generic-service:
     ENABLE_PAST_CASES_NAVIGATION: "true"
     ENABLE_HEARING_OUTCOMES: "true"
     ENABLE_WORKFLOW: "true"
-    CASE_SEARCH_USERS: "all"
     ENABLE_MOVE_TO_RESULTED_ACTION: "true"
     DEFAULT_TIMEOUT: "12500"
     REDIS_TLS_ENABLED: "true"
@@ -72,11 +72,6 @@ generic-service:
       REDIS_HOST: primary_endpoint_address
     case-tracking-pre-pilot-users:
       CASE_TRACKING_PRE_PILOT_USERS: case_tracking_pre_pilot_users
-
-  allowlist:
-    groups:
-      - moj_cloud_platform
-      - digital_staff_and_mojo
 
 generic-prometheus-alerts:
   targetApplication: prepare-a-case
