@@ -1,0 +1,120 @@
+{
+  "id": "f28fee9e-b3cc-4b57-8752-6b830180325c",
+  "request": {
+    "method": "GET",
+    "path": "/offender/X320741/convictions/2500295343",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "convictionId": "2500295343",
+      "active": true,
+      "inBreach": false,
+      "convictionDate": "2017-06-01",
+      "offences": [
+        {
+          "description": "Arson - 05600"
+        }
+      ],
+      "requirements": [
+        {
+          "requirementId": 2500083652,
+          "startDate": "2017-06-01",
+          "terminationDate": "2017-12-01",
+          "expectedStartDate": "2017-06-01",
+          "expectedEndDate": "2017-12-01",
+          "active": false,
+          "requirementTypeSubCategory": {
+            "code": "W01",
+            "description": "Regular"
+          },
+          "requirementTypeMainCategory": {
+            "code": "W",
+            "description": "Unpaid Work"
+          },
+          "terminationReason": {
+            "code": "74",
+            "description": "Hours Completed Outside 12 months (UPW only)"
+          },
+          "length": 60,
+          "lengthUnit": "Hours"
+        },
+        {
+          "requirementId": 2500007925,
+          "commencementDate": "2015-06-29",
+          "startDate": "2015-07-01",
+          "active": true,
+          "adRequirementTypeMainCategory": {
+            "code": "7",
+            "description": "Court - Accredited Programme"
+          },
+          "adRequirementTypeSubCategory": {
+            "code": "P12",
+            "description": "ASRO"
+          }
+        }
+      ],
+      "pssRequirements": [],
+      "licenceConditions": [
+        {
+          "description": "Curfew Arrangement",
+          "startDate": "2020-02-01",
+          "subTypeDescription": "ETE - High intensity",
+          "notes": "This is an example of licence condition notes"
+        },
+        {
+          "description": "Participate or co-op with Programme or Activities",
+          "startDate": "2020-02-01",
+          "subTypeDescription": "ETE - High intensity",
+          "notes": "This is an example of licence condition notes"
+        }
+      ],
+      "sentence": {
+        "description": "CJA - Community Order",
+        "length": 12,
+        "lengthUnits": "Months",
+        "lengthInDays": 364,
+        "terminationDate": "2017-12-01",
+        "startDate": "2017-06-01",
+        "endDate": "2018-05-31",
+        "terminationReason": "Completed - early good progress"
+      },
+      "endDate": "2018-05-31",
+      "documents": [
+        {
+          "documentId": "5058ca66-3751-4701-855a-86bf518d9392",
+          "documentName": "Event document 2.txt",
+          "author": "Andy Marke",
+          "type": "COURT_REPORT_DOCUMENT",
+          "createdAt": "2019-09-04T00:00:00",
+          "subType": {
+            "code": "CR02",
+            "description": "Court Report"
+          }
+        }
+      ],
+      "breaches": [
+        {
+          "breachId": 11131322,
+          "description": "Community Order",
+          "status": "Breach Initiated",
+          "started": "2020-10-20",
+          "statusDate": "2020-12-18"
+        },
+        {
+          "breachId": 11131321,
+          "description": "Community Order",
+          "status": "Breach Initiated",
+          "started": "2019-10-20",
+          "statusDate": "2019-12-18"
+        }
+      ]
+    }
+  }
+}
