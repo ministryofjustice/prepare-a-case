@@ -22,7 +22,7 @@ generic-service:
   ingress:
     enabled: true
     path: /
-    modsecurity_enabled: true
+    className: modsec
     tlsSecretName: ""
 
   autoscaling:
