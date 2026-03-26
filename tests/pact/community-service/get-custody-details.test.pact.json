@@ -1,0 +1,24 @@
+{
+  "id": "83d75f91-8e21-4b02-a8ca-ca92cb6e993d",
+  "request": {
+    "method": "GET",
+    "path": "/offender/E654321/convictions/345464567/sentence/custody",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "homeDetentionCurfewActualDate": "21 Aug 2021",
+      "homeDetentionCurfewEndDate": "21 Oct 2021",
+      "topupSupervisionStartDate": "21 Oct 2021",
+      "topupSupervisionExpiryDate": "21 Jan 2022",
+      "licenceExpiryDate": "21 Jan 2022",
+      "releaseDate": "21 Jan 2021"
+    }
+  }
+}
