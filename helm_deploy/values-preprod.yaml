@@ -29,10 +29,25 @@ generic-service:
     INGRESS_URL: "https://prepare-a-case-preprod.apps.live-1.cloud-platform.service.justice.gov.uk"
 
   allowlist:
-    moj-official-aws-preprod: "51.149.251.0/24"
-    groups:
-      - moj_cloud_platform
-      - digital_staff_and_mojo
+    moj-official-aws-preprod: "51.149.251.0/24" # this one is not part of a group
+    office: "217.33.148.210/32"
+    health-kick: "35.177.252.195/32" # todo: can this one be removed?
+    mojvpn: "81.134.202.29/32"
+    cloudplatform-live1-1: "35.178.209.113/32"
+    cloudplatform-live1-2: "3.8.51.207/32"
+    cloudplatform-live1-3: "35.177.252.54/32"
+    moj-official-tgw-prod: "51.149.250.0/24"
+    global-protect-1: "18.130.148.126/32"
+    global-protect-3: "35.176.93.186/32"
+    global-protect-4: "35.176.148.126/32"
+    global-protect-prisma: "128.77.75.64/26"
+    petty-france-wifi: "213.121.161.112/28"
+    dom1-ark-2: "194.33.192.0/25"
+    dom1-ark-4: "194.33.196.0/25"
+    # todo: can remove the above use the below after migrating to gha
+    # groups:
+    #   - moj_cloud_platform
+    #   - digital_staff_and_mojo
 
 generic-prometheus-alerts:
   alertSeverity: probation_in_court_alerts_preprod
