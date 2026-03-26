@@ -36,9 +36,6 @@ commands:
       - deploy:
           name: Deploy to << parameters.env >>
           command: |
-            cd ~/git/helm_deploy/prepare-a-case
-            helm dependency update .
-
             helm upgrade prepare-a-case ~/git/helm_deploy/prepare-a-case/. \
               --install --wait --reset-values --timeout 360s \
               --namespace=${KUBE_ENV_NAMESPACE} \
