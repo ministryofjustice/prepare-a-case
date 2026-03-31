@@ -123,7 +123,6 @@
     { "code": "B12LT", "name": "Skipton Magistrates' Court", "pilotCourt": false },
     { "code": "B10LX", "name": "South Tyneside Magistrates' Court", "pilotCourt": false },
     { "code": "B22OS", "name": "South Worcestershire Magistrates' Court", "pilotCourt": false },
-    { "code": "B42MB", "name": "Southend Magistrates' Court", "pilotCourt": false },
     { "code": "B41ME", "name": "St Albans Magistrates' Court", "pilotCourt": true },
     { "code": "B45MH", "name": "Staines Magistrates' Court", "pilotCourt": true },
     { "code": "B41MJ", "name": "Stevenage Magistrates' Court", "pilotCourt": true },
