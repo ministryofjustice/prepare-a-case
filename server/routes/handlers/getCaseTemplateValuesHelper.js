@@ -20,6 +20,7 @@ const getCaseTemplateValuesHelper = caseService => async req => {
   const caseListDate = session.caseListDate || getBaseDateString()
   return {
     currentCaseListViewLink: session.currentCaseListViewLink,
+    originScreenUrl: session.originScreenUrl,
     backLink: session.backLink,
     caseListDate,
     params: {
