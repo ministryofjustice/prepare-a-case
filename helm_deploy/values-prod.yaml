@@ -1,74 +1,63 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-minReplicaCount: 2
-maxReplicaCount: 4
+generic-service:
+  ingress:
+    hosts:
+        - prepare-case-probation.service.justice.gov.uk
+    tlsSecretName: court-probation-cert-secret
 
-image:
-  repository: quay.io/hmpps/prepare-a-case
-  tag: latest
-  pullPolicy: Always
-  port: 3000
+  autoscaling:
+    minReplicas: 2
+    maxReplicas: 4
 
-ingress:
-  enabled: true
-  enable_whitelist: true
-  host: prepare-case-probation.service.justice.gov.uk
-  cert_secret: court-probation-cert-secret
-  path: /
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 500Mi
+    requests:
+      cpu: 50m
+      memory: 100Mi
 
-env:
-  PAC_ENV: prod
-  COURT_CASE_SERVICE_URL: https://court-case-service.apps.live-1.cloud-platform.service.justice.gov.uk
-  CASES_PER_PAGE: 20
-  NOMIS_AUTH_URL: https://sign-in.hmpps.service.justice.gov.uk/auth
-  USER_PREFERENCE_SERVICE_URL: https://hmpps-user-preferences.hmpps.service.justice.gov.uk
-  CASE_SNAPSHOT_TIMES: "00:00,08:45,09:45"
-  ENABLE_PAST_CASES_NAVIGATION: true
-  ENABLE_CASE_COMMENTS: true
-  ENABLE_CASE_PROGRESS: true
-  ENABLE_APP_INSIGHTS: true
-  ENABLE_HEARING_OUTCOMES: true
-  CASE_SEARCH_USERS: all
-  ENABLE_MOVE_TO_RESULTED_ACTION: true
-  ENABLE_WORKFLOW: true
-  DEFAULT_TIMEOUT: 12500
-  ENABLE_MATCHER_LOGGING: false
-  ENABLE_CLICK_ANALYTICS: false
+  env:
+    PAC_ENV: "prod"
+    COURT_CASE_SERVICE_URL: "https://court-case-service.apps.live-1.cloud-platform.service.justice.gov.uk"
+    NOMIS_AUTH_URL: "https://sign-in.hmpps.service.justice.gov.uk/auth"
+    USER_PREFERENCE_SERVICE_URL: "https://hmpps-user-preferences.hmpps.service.justice.gov.uk"
+    CASE_SNAPSHOT_TIMES: "00:00,08:45,09:45"
+    ENABLE_MATCHER_LOGGING: "false"
+    ENABLE_CLICK_ANALYTICS: "false"
+    INGRESS_URL: "https://prepare-case-probation.service.justice.gov.uk"
 
-whitelist:
-  office: "217.33.148.210/32"
-  health-kick: "35.177.252.195/32"
-  mojvpn: "81.134.202.29/32"
-  cloudplatform-live1-1: "35.178.209.113/32"
-  cloudplatform-live1-2: "3.8.51.207/32"
-  cloudplatform-live1-3: "35.177.252.54/32"
-  ark-internet-1: "194.33.192.0/25"
-  ark-internet-2: "194.33.196.0/25"
-  global-protect: "35.176.93.186/32"
-  moj-official-prod: "51.149.250.0/24"
-  moj-official-ark-c-expo-e: "51.149.249.0/29"
-  moj-official-ark-f-expo-e: "51.149.249.32/29"
-  moj-official-ark-c-vodafone: "194.33.248.0/29"
-  moj-official-ark-f-vodafone: "194.33.249.0/29"
-  vodafone-dia-1: "194.33.200.0/21"
-  vodafone-dia-2: "194.33.216.0/24"
-  vodafone-dia-4: "194.33.218.0/24"
-  palo-alto-prisma: "128.77.75.64/26"
-  moj-official-azure-landing-zone-public-egress-1: "20.49.214.199/32"
-  moj-official-azure-landing-zone-public-egress-2: "20.49.214.228/32"
-  moj-official-azure-landing-zone-public-egress-3: "20.26.11.71/32"
-  moj-official-azure-landing-zone-public-egress-4: "20.26.11.108/32"
-  vodafone-dia-1: "194.33.200.0/21"
-  vodafone-dia-2: "194.33.216.0/24"
-  vodafone-dia-3: "194.33.217.0/24"
-  vodafone-dia-4: "194.33.218.0/24"
+  allowlist:
+    office: "217.33.148.210/32"
+    health-kick: "35.177.252.195/32" # todo: can this one be removed?
+    mojvpn: "81.134.202.29/32"
+    cloudplatform-live1-1: "35.178.209.113/32"
+    cloudplatform-live1-2: "3.8.51.207/32"
+    cloudplatform-live1-3: "35.177.252.54/32"
+    ark-internet-1: "194.33.192.0/25"
+    ark-internet-2: "194.33.196.0/25"
+    global-protect: "35.176.93.186/32"
+    moj-official-prod: "51.149.250.0/24"
+    moj-official-ark-c-expo-e: "51.149.249.0/29"
+    moj-official-ark-f-expo-e: "51.149.249.32/29"
+    moj-official-ark-c-vodafone: "194.33.248.0/29"
+    moj-official-ark-f-vodafone: "194.33.249.0/29"
+    vodafone-dia-1: "194.33.200.0/21"
+    vodafone-dia-2: "194.33.216.0/24"
+    vodafone-dia-4: "194.33.218.0/24"
+    palo-alto-prisma: "128.77.75.64/26"
+    moj-official-azure-landing-zone-public-egress-1: "20.49.214.199/32"
+    moj-official-azure-landing-zone-public-egress-2: "20.49.214.228/32"
+    moj-official-azure-landing-zone-public-egress-3: "20.26.11.71/32"
+    moj-official-azure-landing-zone-public-egress-4: "20.26.11.108/32"
+    vodafone-dia-3: "194.33.217.0/24"
+    # todo: can remove the above use the below after migrating to gha
+    # groups:
+    #   - moj_cloud_platform
+    #   - digital_staff_and_mojo
+    #   - probation
 
-
-resources:
-  cpu:
-    limit: 1000m
-    request: 50m
-  memory:
-    limit: 500Mi
-    request: 100Mi
+generic-prometheus-alerts:
+    alertSeverity: probation_in_court_alerts_prod
