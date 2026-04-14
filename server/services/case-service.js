@@ -423,8 +423,8 @@ const createCaseService = apiUrl => {
       return response.data
     },
 
-    updateHearingOutcomeToResulted: async (hearingId, defendantId, correlationId) => {
-      const urlString = `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/result?correlationId=${correlationId}`
+    updateHearingOutcomeToResulted: async (courtCode, hearingId, defendantId, correlationId) => {
+      const urlString = `${apiUrl}/courts/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/outcome/result?correlationId=${correlationId}`
       await create(urlString)
     },
 
@@ -508,8 +508,8 @@ const createCaseService = apiUrl => {
         throw e
       }
     },
-    addHearingOutcome: async (hearingId, defendantId, hearingOutcomeType) => {
-      await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome`, {
+    addHearingOutcome: async (courtCode, hearingId, defendantId, hearingOutcomeType) => {
+      await update(`${apiUrl}/courts/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/outcome`, {
         hearingOutcomeType
       })
       await retryWithExponentialBackoff(async () => {
