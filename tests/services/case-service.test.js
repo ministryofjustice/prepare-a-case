@@ -720,8 +720,8 @@ describe('Case service', () => {
   })
 
   it('should invoke API to add hearing outcome and retry second update if needed', async () => {
-    const courtCode = "B20BL"
-      const hearingId = 'id-one'
+    const courtCode = 'B20BL'
+    const hearingId = 'id-one'
     const defendantId = 'some-defendant-id'
     const outcomeEndpoint = `${apiUrl}/courts/${courtCode}/hearing/${hearingId}/defendant/some-defendant-id/outcome`
     const toggleEndpoint = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id`
@@ -972,7 +972,7 @@ describe('Case service', () => {
 
   describe('assignHearingOutcome', () => {
     it('should invoke API to assign hearing outcome', async () => {
-        const courtCode = "B20BL"
+      const courtCode = 'B20BL'
       const hearingId = 'id-one'
       const defendantId = 'some-defendant-id'
       const endpoint = `${apiUrl}/courts/${courtCode}/hearing/${hearingId}/defendant/some-defendant-id/outcome/assign`
@@ -990,7 +990,7 @@ describe('Case service', () => {
 
   describe('updateHearingOutcomeToResulted', () => {
     it('given hearing id, when updateHearingOutcomeToResulted is invoked, should invoke api correctly', async () => {
-        const courtCode = "B20BL"
+      const courtCode = 'B20BL'
       const hearingId = 'test-hearing-id'
       const defendantId = 'some-defendant-id'
       const expectedUrl = `${apiUrl}/courts/${courtCode}/hearing/${hearingId}/defendant/some-defendant-id/outcome/result?correlationId=1234`
