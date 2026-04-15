@@ -972,10 +972,9 @@ describe('Case service', () => {
 
   describe('assignHearingOutcome', () => {
     it('should invoke API to assign hearing outcome', async () => {
-      const courtCode = 'B20BL'
       const hearingId = 'id-one'
       const defendantId = 'some-defendant-id'
-      const endpoint = `${apiUrl}/courts/${courtCode}/hearing/${hearingId}/defendant/some-defendant-id/outcome/assign`
+      const endpoint = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id/outcome/assign`
       moxios.stubRequest(endpoint, {
         status: 200
       })
@@ -998,7 +997,7 @@ describe('Case service', () => {
         status: 200
       })
 
-      await updateHearingOutcomeToResulted(hearingId, defendantId, '1234')
+      await updateHearingOutcomeToResulted(courtCode, hearingId, defendantId, '1234')
       expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
     })
   })
