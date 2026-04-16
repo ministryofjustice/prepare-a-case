@@ -384,7 +384,7 @@ const createCaseService = apiUrl => {
             // courtroom can be csv of courtrooms
             if (Array.isArray(values)) {
               const courtRooms = []
-              values = values.forEach(c => courtRooms.push(...c.split(',')))
+              values.forEach(c => courtRooms.push(...c.split(',')))
               values = courtRooms
             } else {
               values = values.split(',')
