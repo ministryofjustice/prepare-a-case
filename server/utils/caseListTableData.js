@@ -145,17 +145,20 @@ const constructTableData = (params, data) => {
       return `<a href="${summaryUrl}" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" aria-label="${ariaLabel}">${sanitisedName}</a>${crn}`
     }
 
+    const sfoClass = item.seriousFurtherOffence ? 'pac-sfo-row' : ''
+    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div><span class="moj-badge moj-badge--purple pac-badge">Possible SFO</span></div>' : ''
+
     const tableRow = [
-      { html: constructDefendantNameLink(a11yTitle, sanitisedDefendantFullName, crnDisplay, params.courtCode, item.hearingId, item.defendantId) },
-      { html: getProbationStatusHtml(item, notMatched) },
-      { html: offences.join('') },
-      { html: listing.join('') },
-      { text: capitalizeFirstLetter(item.session) },
-      { text: courtRoom, format: 'numeric' }
+      { html: constructDefendantNameLink(a11yTitle, sanitisedDefendantFullName, crnDisplay, params.courtCode, item.hearingId, item.defendantId) + sfoBadgeHtml, classes: sfoClass },
+      { html: getProbationStatusHtml(item, notMatched), classes: sfoClass },
+      { html: offences.join(''), classes: sfoClass },
+      { html: listing.join(''), classes: sfoClass },
+      { text: capitalizeFirstLetter(item.session), classes: sfoClass },
+      { text: courtRoom, format: 'numeric', classes: sfoClass }
     ]
 
     if (params.subsection === 'removed') {
-      tableRow.push({ text: item.caseNo, format: 'numeric' })
+      tableRow.push({ text: item.caseNo, format: 'numeric', classes: sfoClass })
     }
 
     if (params.workflow.enabled && params.subsection !== 'outcome-not-required') {
@@ -175,12 +178,12 @@ const constructTableData = (params, data) => {
 
       html = html + '</selec>'
 
-      tableRow.push({ html })
+      tableRow.push({ html, classes: sfoClass })
     }
 
     if (showActionColumn) {
       const actionButtonHtml = getActionButtonHtml(params, item, formattedDefendantName)
-      tableRow.push({ html: actionButtonHtml })
+      tableRow.push({ html: actionButtonHtml, classes: sfoClass })
     }
 
     tableData.rows.push(tableRow)
