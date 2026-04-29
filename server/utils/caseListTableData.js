@@ -146,7 +146,7 @@ const constructTableData = (params, data) => {
     }
 
     const sfoClass = item.seriousFurtherOffence ? 'pac-sfo-row' : ''
-    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div><span class="moj-badge moj-badge--purple pac-badge">Possible SFO</span></div>' : ''
+    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div><img src="/images/flag.svg" alt="Possible SFO" title="Possible SFO" class="pac-sfo-badge"><span style="color:#D4351C;font-weight:bold;font-size:1rem;margin-left:4px;">Possible SFO</span></div>' : ''
 
     const tableRow = [
       { html: constructDefendantNameLink(a11yTitle, sanitisedDefendantFullName, crnDisplay, params.courtCode, item.hearingId, item.defendantId) + sfoBadgeHtml, classes: sfoClass },
