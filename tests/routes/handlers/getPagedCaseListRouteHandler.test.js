@@ -217,27 +217,27 @@ describe('getPagedCaseListRouteHandler', () => {
 
   it('should add query params to subsection base url (except page)', async () => {
   // Given
-  const mockRequest = createMockRequest({
-    params: { courtCode: 'ABC', date: '2020-11-11', limit: 10, subsection: 'outcome-not-required' },
-    query: { page: 1, someFilter: 'someFilterValue' },
-    path: '/ABC/cases/2020-11-11/outcome-not-required'
+    const mockRequest = createMockRequest({
+      params: { courtCode: 'ABC', date: '2020-11-11', limit: 10, subsection: 'outcome-not-required' },
+      query: { page: 1, someFilter: 'someFilterValue' },
+      path: '/ABC/cases/2020-11-11/outcome-not-required'
+    })
+
+    caseService.getPagedCaseList.mockReturnValueOnce(paginatedCaseListResponse())
+
+    jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
+    jest.replaceProperty(settings, 'pacEnvironment', 'dev')
+
+    // When
+    await subject(mockRequest, mockResponse)
+
+    // Then
+    expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
+      params: {
+        baseUrl: '/ABC/cases/2020-11-11/outcome-not-required?someFilter=someFilterValue&'
+      }
+    })
   })
-
-  caseService.getPagedCaseList.mockReturnValueOnce(paginatedCaseListResponse())
-
-  jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
-  jest.replaceProperty(settings, 'pacEnvironment', 'dev')
-
-  // When
-  await subject(mockRequest, mockResponse)
-
-  // Then
-  expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
-    params: {
-      baseUrl: '/ABC/cases/2020-11-11/outcome-not-required?someFilter=someFilterValue&'
-    }
-  })
-})
 
   it('should include subsection in baseUrl for hearing outcome not required tab', async () => {
     // Given
