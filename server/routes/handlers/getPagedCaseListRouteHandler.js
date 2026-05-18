@@ -19,8 +19,9 @@ const createBaseUrl = (params, queryParams) => {
   const questionMark = builtQueryParamString.length > 0
 
   const date = params.date ? params.date : getTodaysDate()
+  const subsection = params.subsection ? `/${params.subsection}` : ''
 
-  return `/${params.courtCode}/cases/${date}?${queryParamBuilder(remainder)}${questionMark ? '&' : ''}`
+  return `/${params.courtCode}/cases/${date}${subsection}?${builtQueryParamString}${questionMark ? '&' : ''}`
 }
 
 const getPagelessQueryParams = params => {
@@ -113,37 +114,11 @@ const getPageTabs = (params) => {
 const getPaginationObject = (pageParams) => {
   const currentPage = pageParams.page
   const pagination = getPagination(currentPage, pageParams.caseCount, pageParams.limit, pageParams.baseUrl)
-
-  const recentlyAddedPageItems = []
-  pagination.pageItems.forEach(x => {
-    recentlyAddedPageItems.push({
-      ...x,
-      href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + x.text
-    })
-  })
-
-  const recentlyAddedPreviousLink = pagination.previousLink !== null
-    ? {
-        ...pagination.previousLink,
-        href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage - 1)
-      }
-    : null
-
-  const recentlyAddedNextLink = pagination.nextLink !== null
-    ? {
-        ...pagination.nextLink,
-        href: '/' + pageParams.courtCode + '/cases/' + pageParams.date + '/' + pageParams.subsection + '?page=' + (currentPage + 1)
-      }
-    : null
-
   const totalPages = Math.round(Math.ceil((pageParams.caseCount / pageParams.limit)))
 
   return {
     ...pagination,
-    totalPages,
-    recentlyAddedPageItems,
-    recentlyAddedPreviousLink,
-    recentlyAddedNextLink
+    totalPages
   }
 }
 
@@ -219,6 +194,8 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
       })
   }
 
+  const resolvedSubsection = subsection || (!date && session.currentView) || ''
+
   const pageParams = {
     ...params,
     workflow: {
@@ -243,9 +220,9 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
     totalDays: pastCaseNavigationEnabled ? settings.casesTotalDays : 7,
     casesPastDays: pastCaseNavigationEnabled ? settings.casesPastDays : -1,
     enablePastCasesNavigation: settings.enablePastCasesNavigation,
-    subsection: subsection || (!date && session.currentView) || '',
+    subsection: resolvedSubsection,
     filtersApplied: !!getPagelessQueryParams(queryParams) && Object.keys(getPagelessQueryParams(queryParams)).length > 0,
-    baseUrl: createBaseUrl({ courtCode, date }, queryParams)
+    baseUrl: createBaseUrl({ courtCode, date, subsection: resolvedSubsection }, queryParams)
   }
 
   let templateValues = {
