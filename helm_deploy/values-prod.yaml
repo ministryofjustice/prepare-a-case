@@ -4,7 +4,7 @@
 generic-service:
   ingress:
     hosts:
-        - prepare-case-probation.service.justice.gov.uk
+      - prepare-case-probation.service.justice.gov.uk
     tlsSecretName: court-probation-cert-secret
 
   autoscaling:

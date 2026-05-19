@@ -46,7 +46,7 @@ commands:
               --values ~/git/helm_deploy/values-<< parameters.env >>.yaml \
               --values - \
               --values ~/git/helm_deploy/prepare-a-case/values.yaml \
-              --set image.tag="${APP_VERSION}"
+              --set generic-service.image.tag="${APP_VERSION}"
 
 executors:
   deployer:
