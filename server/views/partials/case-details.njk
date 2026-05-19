@@ -71,8 +71,8 @@
 
     {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
     {{ govukBackLink({
-        text: backText or "Back to cases",
-        href: currentCaseListViewLink or '/' + params.courtCode + '/cases/' + (caseListDate if caseListDate else "")
+        text: backText or "Back",
+        href: originScreenUrl or '/' + params.courtCode + '/cases/' + (caseListDate if caseListDate else "")
     }) }}
 
 {% endblock %}

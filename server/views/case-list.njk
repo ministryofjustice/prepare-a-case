@@ -131,7 +131,6 @@
             {% endif %}
 
             {% if pagination.totalPages > 1 %}
-                {%- set showSubsectionLinks = (params.subsection === 'added' or params.subsection === 'heard') -%}
                 {% block paginationBlock %}
                     {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
                     {{ mojPagination({
@@ -140,9 +139,9 @@
                             to: params.to,
                             count: params.caseCount
                         },
-                        previous: pagination.recentlyAddedPreviousLink if showSubsectionLinks else pagination.previousLink,
-                        next: pagination.recentlyAddedNextLink if showSubsectionLinks else pagination.nextLink,
-                        items: pagination.recentlyAddedPageItems if showSubsectionLinks else pagination.pageItems
+                        previous: pagination.previousLink,
+                        next: pagination.nextLink,
+                        items: pagination.pageItems
                     }) }}
                 {% endblock %}
             {% endif %}

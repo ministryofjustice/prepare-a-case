@@ -95,6 +95,7 @@
                   "breach": false,
                   "preSentenceActivity": false,
                   "awaitingPsr": true,
+                  "seriousFurtherOffence": true,
                   "hearingPrepStatus": "COMPLETE",
 "workflow": {
                     "tasks": [

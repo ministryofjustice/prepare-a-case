@@ -5,8 +5,9 @@ const axios = require('axios')
 
 const instance = axios.create()
 
+let authInterceptorId
+
 function authorisationMiddleware (req, res, next) {
-  instance.interceptors.request.clear()
   // Make sure only users with court admin role can access court app
   if (res.locals?.user?.token) {
     const { authorities: roles, name, user_id: userId, user_uuid: uuid, user_name: username } = jwtDecode(res.locals.user.token)
@@ -15,13 +16,19 @@ function authorisationMiddleware (req, res, next) {
       log.warn(`User does not have required role ${config.apis.oauth2.role}`)
       return res.redirect('/autherror')
     }
-    instance.interceptors.request.use(config => {
+
+    if (authInterceptorId !== undefined) {
+      instance.interceptors.request.eject(authInterceptorId)
+    }
+
+    authInterceptorId = instance.interceptors.request.use(config => {
       config.headers = {
         ...config.headers,
         Authorization: `Bearer ${res.locals.user.token}`
       }
       return config
     })
+
     return next()
   }
   // No session: get one created

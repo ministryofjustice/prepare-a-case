@@ -5,7 +5,7 @@ const getMoveToResultedHandler = caseService => async (req, res) => {
   const correlationId = uuidv4()
 
   try {
-    await caseService.updateHearingOutcomeToResulted(hearingId, defendantId, correlationId)
+    await caseService.updateHearingOutcomeToResulted(courtCode, hearingId, defendantId, correlationId)
     session.moveToResultedSuccess = req.query.defendantName
   } catch (e) {
     if (e.response.status === 403 || e.response.status === 401) {

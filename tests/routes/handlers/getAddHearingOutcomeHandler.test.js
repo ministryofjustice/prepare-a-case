@@ -26,7 +26,7 @@ describe('getAddNoteRequestHandler', () => {
     await subject(mockRequest, mockResponse)
 
     // Then
-    expect(caseServiceMock.addHearingOutcome).toHaveBeenCalledWith(targetHearingId, testDefendantId, hearingOutcomeType)
+    expect(caseServiceMock.addHearingOutcome).toHaveBeenCalledWith(courtCode, targetHearingId, testDefendantId, hearingOutcomeType)
     expect(mockResponse.redirect).toHaveBeenCalledWith(`/${courtCode}/hearing/${testHearingId}/defendant/${testDefendantId}/summary`)
     expect(mockRequest.session.addHearingOutcomeSuccess).toBe(true)
   })

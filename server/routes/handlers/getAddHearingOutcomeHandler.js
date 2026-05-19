@@ -3,7 +3,7 @@ const trackEvent = require('../../utils/analytics')
 const getAddHearingOutcomeHandler = ({ addHearingOutcome }) => {
   return async (req, res) => {
     const { params: { courtCode, hearingId, defendantId }, session, body: { hearingOutcomeType, targetHearingId, targetDefendantId } } = req
-    await addHearingOutcome(targetHearingId, targetDefendantId, hearingOutcomeType)
+    await addHearingOutcome(courtCode, targetHearingId, targetDefendantId, hearingOutcomeType)
     session.addHearingOutcomeSuccess = true
     trackEvent(
       'PiCPrepareACaseHearingOutcomes',

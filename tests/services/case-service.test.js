@@ -720,9 +720,10 @@ describe('Case service', () => {
   })
 
   it('should invoke API to add hearing outcome and retry second update if needed', async () => {
+    const courtCode = 'B20BL'
     const hearingId = 'id-one'
     const defendantId = 'some-defendant-id'
-    const outcomeEndpoint = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id/outcome`
+    const outcomeEndpoint = `${apiUrl}/courts/${courtCode}/hearing/${hearingId}/defendant/some-defendant-id/outcome`
     const toggleEndpoint = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id`
 
     moxios.stubRequest(outcomeEndpoint, {
@@ -733,7 +734,7 @@ describe('Case service', () => {
     })
 
     const hearingOutcomeType = 'REPORT_REQUESTED'
-    const response = await addHearingOutcome(hearingId, defendantId, hearingOutcomeType)
+    const response = await addHearingOutcome(courtCode, hearingId, defendantId, hearingOutcomeType)
 
     // Check both requests were made
     const requests = moxios.requests
@@ -988,14 +989,15 @@ describe('Case service', () => {
 
   describe('updateHearingOutcomeToResulted', () => {
     it('given hearing id, when updateHearingOutcomeToResulted is invoked, should invoke api correctly', async () => {
+      const courtCode = 'B20BL'
       const hearingId = 'test-hearing-id'
       const defendantId = 'some-defendant-id'
-      const expectedUrl = `${apiUrl}/hearing/${hearingId}/defendant/some-defendant-id/outcome/result?correlationId=1234`
+      const expectedUrl = `${apiUrl}/courts/${courtCode}/hearing/${hearingId}/defendant/some-defendant-id/outcome/result?correlationId=1234`
       moxios.stubRequest(expectedUrl, {
         status: 200
       })
 
-      await updateHearingOutcomeToResulted(hearingId, defendantId, '1234')
+      await updateHearingOutcomeToResulted(courtCode, hearingId, defendantId, '1234')
       expect(moxios.requests.mostRecent().url).toBe(expectedUrl)
     })
   })
