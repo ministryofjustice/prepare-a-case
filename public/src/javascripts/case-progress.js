@@ -12,13 +12,13 @@
     return cookie[name];
   }
 
-  function getAutoSaveHandler(textarea, url, inputDataFormatter) {
-    let timeoutId;
+  function getAutoSaveHandler(textarea, url, inputDataFormatter, timeoutId, xhr) {
     const noteEventListener = (event) => {
       // If a timer was already started, clear it.
       if (timeoutId) clearTimeout(timeoutId);
       // Set timer that will save comment when it fires.
       timeoutId = setTimeout(function () {
+        if (xhr) xhr.abort();
         // Make ajax call to save data.
         const xhr = new XMLHttpRequest()
         xhr.open('PUT', url, true)
@@ -41,15 +41,32 @@
     return noteEventListener
   }
 
+  let autoSaveNoteTimeoutId;
+  let autoSaveNoteXhr;
   const setupAutoSaveHearingNote = (textarea) => {
-    textarea.addEventListener('keyup', getAutoSaveHandler(textarea,  'summary/auto-save-new-note', (textarea, event) => ({ note: event.srcElement.value, hearingId: textarea.dataset.hearingid }) ))
+    textarea.addEventListener('keyup', getAutoSaveHandler(textarea, 'summary/auto-save-new-note', (textarea, event) => ({ note: event.srcElement.value, hearingId: textarea.dataset.hearingid }), autoSaveNoteTimeoutId, autoSaveNoteXhr))
   }
 
   document.querySelectorAll('.auto-save-text').forEach(setupAutoSaveHearingNote)
+  // Cancel any pending auto-save when the form is intentionally submitted
+  const hearingNoteForm = document.querySelector('.hearing-note-form');
+  hearingNoteForm?.addEventListener('submit', () => {
+    if (autoSaveNoteTimeoutId) clearTimeout(autoSaveNoteTimeoutId);
+    if (autoSaveNoteXhr) autoSaveNoteXhr.abort();
+  });
 
+  let autoSaveCommentTimeoutId;
+  let autoSaveCommentXhr;
   const caseCommentsTextArea = document.querySelector('#case-comment');
   caseCommentsTextArea?.addEventListener('keyup',
-    getAutoSaveHandler(caseCommentsTextArea,  'summary/comments/auto-save-new-comment', (textarea, event) => ({ comment: event.srcElement.value, caseId: textarea.dataset.caseid }) ))
+    getAutoSaveHandler(caseCommentsTextArea,  'summary/comments/auto-save-new-comment', (textarea, event) => ({ comment: event.srcElement.value, caseId: textarea.dataset.caseid }), autoSaveCommentTimeoutId, autoSaveCommentXhr ))
+  
+  // Cancel any pending auto-save when the form is intentionally submitted
+  const caseCommentForm = document.querySelector('#case-comment-form');
+  caseCommentForm?.addEventListener('submit', () => {
+    if (autoSaveCommentTimeoutId) clearTimeout(autoSaveCommentTimeoutId);
+    if (autoSaveCommentXhr) autoSaveCommentXhr.abort();
+  });
 
 
   // Edit note

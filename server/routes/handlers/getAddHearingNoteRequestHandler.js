@@ -13,6 +13,10 @@ const getAddHearingNoteHandler = caseService => async (req, res) => {
       res.locals.user.name,
       defendantId
     )
+
+    // Delete any draft so a late-arriving auto-save doesn't re-populate the textarea
+    await caseService.deleteHearingNoteDraft(targetHearingId, defendantId)
+
     if (!res.locals.user.name) {
       trackEvent('PiCAddHearingNoteNoName', res.locals.user)
     }
