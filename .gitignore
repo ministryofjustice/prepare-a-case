@@ -17,4 +17,3 @@ integration-tests/output/
 .vscode/launch.json
 .DS_Store
 output/test-results
-output/
