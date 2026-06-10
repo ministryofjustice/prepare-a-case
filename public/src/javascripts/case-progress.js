@@ -50,7 +50,9 @@
   }
   document.querySelectorAll('.auto-save-text').forEach(setupAutoSaveHearingNote)
   // Cancel any pending auto-save when the form is intentionally submitted
-  document.querySelector('.hearing-note-form')?.addEventListener('submit', () => noteAutoSave.cancel())
+  document.querySelectorAll('.hearing-note-form').forEach(form => {
+    form.addEventListener('submit', () => noteAutoSave.cancel())
+  })
 
   const commentAutoSave = createAutoSave('summary/comments/auto-save-new-comment')
   const caseCommentsTextArea = document.querySelector('#case-comment');
