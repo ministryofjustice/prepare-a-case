@@ -36,13 +36,13 @@ const postDefendantMatchRouteHandler = require('./matchRecords/defendantMatchRou
 
 const outcomesRouter = require('./outcomes')
 
-const addCaseCommentRequestHandler = require('./getAddCommentRequestHandler')({ addCaseComment })
+const addCaseCommentRequestHandler = require('./getAddCommentRequestHandler')({ addCaseComment, deleteCaseCommentDraft })
 
 const deleteCaseCommentConfirmationHandler = require('./getDeleteCaseCommentConfirmationHandler')(getCaseAndTemplateValues)
 
 const deleteCaseCommentHandler = require('./getDeleteCaseCommentHandler')({ deleteCaseComment })
 
-const addHearingNoteRequestHandler = require('./getAddHearingNoteRequestHandler')({ addHearingNote })
+const addHearingNoteRequestHandler = require('./getAddHearingNoteRequestHandler')({ addHearingNote, deleteHearingNoteDraft })
 
 const deleteHearingNoteConfirmationHandler = require('./getDeleteHearingNoteConfirmationHandler')(getCaseAndTemplateValues)
 

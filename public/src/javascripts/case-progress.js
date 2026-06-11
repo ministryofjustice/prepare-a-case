@@ -12,45 +12,55 @@
     return cookie[name];
   }
 
-  function getAutoSaveHandler(textarea, url, inputDataFormatter) {
+  function createAutoSave(url) {
     let timeoutId;
-    const noteEventListener = (event) => {
-      // If a timer was already started, clear it.
-      if (timeoutId) clearTimeout(timeoutId);
-      // Set timer that will save comment when it fires.
-      timeoutId = setTimeout(function () {
-        // Make ajax call to save data.
-        const xhr = new XMLHttpRequest()
-        xhr.open('PUT', url, true)
-        xhr.setRequestHeader('Content-Type', 'application/json')
-        xhr.setRequestHeader('x-csrf-token', window.csrfToken)
-        xhr.onload = function () {
-          if (this.status < 200 || this.status >= 400) {
-            console.log("Error status", this.status)
-          }
-        }
-        xhr.send(
-          JSON.stringify(
-            {
-              ...inputDataFormatter(textarea, event)
-            },
-          )
-        )
-      }, debounceTimer);
+    let xhr;
+    return {
+      schedule(data) {
+        // If a timer was already started, clear it.
+        if (timeoutId) clearTimeout(timeoutId);
+        // Set timer that will save comment when it fires.
+        timeoutId = setTimeout(function () {
+          if (xhr) xhr.abort()
+          // Make ajax call to save data.
+          xhr = new XMLHttpRequest()
+          xhr.open('PUT', url, true)
+          xhr.setRequestHeader('Content-Type', 'application/json')
+          xhr.setRequestHeader('x-csrf-token', window.csrfToken)
+          xhr.onload = function () {
+            if (this.status < 200 || this.status >= 400) {
+              console.log("Error status", this.status)
+            }
+          };
+          xhr.send(JSON.stringify(data))
+        }, debounceTimer)
+      },
+      cancel() {
+        if (timeoutId) clearTimeout(timeoutId)
+        if (xhr) xhr.abort()
+      }
     }
-    return noteEventListener
   }
 
+  const noteAutoSave = createAutoSave('summary/auto-save-new-note')
   const setupAutoSaveHearingNote = (textarea) => {
-    textarea.addEventListener('keyup', getAutoSaveHandler(textarea,  'summary/auto-save-new-note', (textarea, event) => ({ note: event.srcElement.value, hearingId: textarea.dataset.hearingid }) ))
+    textarea.addEventListener('keyup', (event) => {
+      noteAutoSave.schedule({ note: event.srcElement.value, hearingId: textarea.dataset.hearingid })
+    })
   }
-
   document.querySelectorAll('.auto-save-text').forEach(setupAutoSaveHearingNote)
+  // Cancel any pending auto-save when the form is intentionally submitted
+  document.querySelectorAll('.hearing-note-form').forEach(form => {
+    form.addEventListener('submit', () => noteAutoSave.cancel())
+  })
 
+  const commentAutoSave = createAutoSave('summary/comments/auto-save-new-comment')
   const caseCommentsTextArea = document.querySelector('#case-comment');
-  caseCommentsTextArea?.addEventListener('keyup',
-    getAutoSaveHandler(caseCommentsTextArea,  'summary/comments/auto-save-new-comment', (textarea, event) => ({ comment: event.srcElement.value, caseId: textarea.dataset.caseid }) ))
-
+  caseCommentsTextArea?.addEventListener('keyup', (event) => {
+    commentAutoSave.schedule({ comment: event.srcElement.value, caseId: caseCommentsTextArea.dataset.caseid })
+  })
+  // Cancel any pending auto-save when the form is intentionally submitted
+  document.querySelector('#case-comment-form')?.addEventListener('submit', () => commentAutoSave.cancel())
 
   // Edit note
 
