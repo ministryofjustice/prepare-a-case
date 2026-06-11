@@ -1,0 +1,77 @@
+generic-service:
+  nameOverride: prepare-a-case
+  productId: 'HMPPS522'
+
+  serviceAccountName: "court-case-service"
+
+  image:
+    repository: quay.io/hmpps/prepare-a-case # todo: remove quay
+    tag: latest
+    port: 3000
+    pullPolicy: Always
+  
+  service:
+    enabled: true
+    type: ClusterIP
+    port: 80
+
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+
+  ingress:
+    enabled: true
+    path: /
+    className: modsec
+    tlsSecretName: ""
+
+  autoscaling:
+    enabled: true
+    targetCPUUtilizationPercentage: 100
+
+  livenessProbe:
+    httpGet:
+      path: /health
+      port: http
+    periodSeconds: 30
+    initialDelaySeconds: 90
+    timeoutSeconds: 20
+    failureThreshold: 10
+
+  readinessProbe:
+    httpGet:
+      path: /health
+      port: http
+    periodSeconds: 20
+    initialDelaySeconds: 60
+    timeoutSeconds: 30
+    failureThreshold: 15
+
+  env:
+    CASES_PER_PAGE: "20"
+    ENABLE_PAST_CASES_NAVIGATION: "true"
+    ENABLE_HEARING_OUTCOMES: "true"
+    ENABLE_WORKFLOW: "true"
+    ENABLE_MOVE_TO_RESULTED_ACTION: "true"
+    DEFAULT_TIMEOUT: "12500"
+    REDIS_TLS_ENABLED: "true"
+
+  namespace_secrets:
+    prepare-a-case:
+      API_CLIENT_ID: API_CLIENT_ID
+      API_CLIENT_SECRET: API_CLIENT_SECRET
+      NOTIFICATION_PASSWORD: NOTIFICATION_PASSWORD
+      NOTIFICATION_USERNAME: NOTIFICATION_USERNAME
+      SESSION_SECRET: SESSION_SECRET
+    applicationinsights-connection-string:
+      APPLICATIONINSIGHTS_CONNECTION_STRING: applicationinsights_connection_string
+    liverpool-pre-pilot-users:
+      LIVERPOOL_PRE_PILOT_USERS: liverpool_pre_pilot_users
+    pac-elasticache-redis:
+      REDIS_AUTH_TOKEN: auth_token
+      REDIS_HOST: primary_endpoint_address
+    case-tracking-pre-pilot-users:
+      CASE_TRACKING_PRE_PILOT_USERS: case_tracking_pre_pilot_users
+
+generic-prometheus-alerts:
+  targetApplication: prepare-a-case
