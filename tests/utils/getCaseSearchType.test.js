@@ -5,6 +5,8 @@ describe('getCaseSearchType', () => {
     ['C123456', 'CRN'],
     ['Jeff Bloggs', 'NAME'],
     ['Bloggs', 'NAME'],
+    ['01WW0298121', 'URN'],
+    ['01AA1234567', 'URN'],
     [undefined, undefined],
     ['', undefined]
   ])('given search term %s should return case search type %s', (input, expected) => {
@@ -12,7 +14,7 @@ describe('getCaseSearchType', () => {
   })
 
   const CRN_ERROR = 'Enter a CRN in the format one letter followed by 6 numbers, for example A123456.'
-  const MISSING_CRN_ERROR = 'You must enter a CRN or a person’s name.'
+  const MISSING_CRN_ERROR = 'You must enter a CRN, URN or a person\u2019s name.'
   const ERROR_ONLY_ALPHANUMERIC = 'CRNs and names can only contain numbers 0 to 9, letters A to Z, hyphens and apostrophes.'
   it.each([
     ['C12345', CRN_ERROR],

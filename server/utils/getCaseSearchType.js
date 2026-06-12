@@ -9,12 +9,18 @@ const getCaseSearchType = searchTerm => {
       return { error: 'Name must be less than 650 characters' }
     }
     if (searchTermString.match(/\d/)) {
-      validations = searchTermString.match(/^[A-Za-z][0-9]{6}/) ? { searchType: 'CRN' } : { error: 'Enter a CRN in the format one letter followed by 6 numbers, for example A123456.' }
+      if (searchTermString.match(/^[A-Za-z][0-9]{6}/)) {
+        validations = { searchType: 'CRN' }
+      } else if (searchTermString.match(/^\d/)) {
+        validations = { searchType: 'URN' }
+      } else {
+        validations = { error: 'Enter a CRN in the format one letter followed by 6 numbers, for example A123456.' }
+      }
     } else {
       validations = { searchType: 'NAME' }
     }
   } else {
-    validations = { error: 'You must enter a CRN or a person’s name.' }
+    validations = { error: 'You must enter a CRN, URN or a person\u2019s name.' }
   }
 
   return validations
