@@ -7,6 +7,9 @@ describe('getCaseSearchType', () => {
     ['Bloggs', 'NAME'],
     ['01WW0298121', 'URN'],
     ['01AA1234567', 'URN'],
+    ['0123456789', 'URN'],
+    ['01AB0000001', 'URN'],
+    ['1234567', 'URN'],
     [undefined, undefined],
     ['', undefined]
   ])('given search term %s should return case search type %s', (input, expected) => {
@@ -23,12 +26,16 @@ describe('getCaseSearchType', () => {
     ['Joe blogs1', CRN_ERROR],
     [undefined, MISSING_CRN_ERROR],
     ['', MISSING_CRN_ERROR],
+    [' ', MISSING_CRN_ERROR],
     ['a'.repeat(651), 'Name must be less than 650 characters'],
     ['a'.repeat(650), undefined],
-    ['o’hara', ERROR_ONLY_ALPHANUMERIC],
+    ['o‘hara', ERROR_ONLY_ALPHANUMERIC],
     ['o\'hara', undefined],
     ['o-hara', undefined],
-    ['name & name', ERROR_ONLY_ALPHANUMERIC]
+    ['name & name', ERROR_ONLY_ALPHANUMERIC],
+    ['01WW0298121', undefined],
+    ['0123456789', undefined],
+    ['01AA1234567', undefined]
   ])('given search term %s should return error for invalid input', (input, expectedError) => {
     expect(getCaseSearchType(input).error).toEqual(expectedError)
   })
