@@ -1,10 +1,11 @@
 name: Regression Tests
 
 on:
-  # Run at 5:45pm UK time, Monday to Friday
+  # Run at 5:45pm UTC time, Monday to Friday
   schedule:
     - cron: '45 17 * * 1-5'
-      timezone: "Europe/London"
+      # GitHub added support for timezones in May 2026, but tooling is throwing errors.
+    # timezone: "Europe/London"
 
   # Allow manual trigger from GitHub Actions UI
   workflow_dispatch:
