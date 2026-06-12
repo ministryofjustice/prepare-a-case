@@ -48,7 +48,7 @@ jobs:
 
       - name: Run UI tests
         env:
-          PAC_AUT_URL: ${{ inputs.environment || secrets.PAC_AUT_URL }}
+          PAC_AUT_URL: ${{ github.event.inputs.environment || secrets.PAC_AUT_URL }}
           PAC_USERNAME: ${{ secrets.PAC_USERNAME }}
           PAC_PASSWORD: ${{ secrets.PAC_PASSWORD }}
           PAC_BROWSER_TYPE: "Headless"
