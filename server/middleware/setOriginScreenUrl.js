@@ -1,3 +1,5 @@
+const log = require('../log')
+
 const setOriginScreenUrl = async (req, res, next) => {
   // Capture the URL of the parent screen, so that back links work as users expect.
   // Regex Matches:
@@ -8,6 +10,12 @@ const setOriginScreenUrl = async (req, res, next) => {
   if (req.session && pattern.test(req.originalUrl)) {
     req.session.originScreenUrl = req.originalUrl ?? ''
   }
+
+  log.debug({
+    originalUrl: req.originalUrl,
+    matchesPattern: pattern.test(req.originalUrl)
+  }, 'setOriginScreenUrl - request URL debug')
+
   next()
 }
 
