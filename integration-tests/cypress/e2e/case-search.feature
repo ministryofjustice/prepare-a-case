@@ -1,7 +1,7 @@
 Feature: Case search
   In order to find cases pertaining to a defendant
   As an authenticated user
-  I want to search cases by CRN and see the list of cases
+  I want to search cases by CRN, URN and see the list of cases
 
   Scenario: Search for cases with the given CRN
     Given I am an authenticated user
@@ -9,7 +9,7 @@ Feature: Case search
     Then I should be on the "Case list" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
+    And I should see the text input label "Enter the CRN, URN or full name of the person you are searching for."
 
     When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
@@ -39,7 +39,7 @@ Feature: Case search
     Then I should be on the "Case list" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
+    And I should see the text input label "Enter the CRN, URN or full name of the person you are searching for."
 
     When I enter "none" into text input with id "search-term"
     And I click the "Search" button
@@ -52,7 +52,7 @@ Feature: Case search
     Then I should be on the "Case list" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
+    And I should see the text input label "Enter the CRN, URN or full name of the person you are searching for."
 
     When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
@@ -107,16 +107,26 @@ Feature: Case search
     Then I should be on the "Case list" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
+    And I should see the text input label "Enter the CRN, URN or full name of the person you are searching for."
 
     When I enter search term "A12345" into search input and click search then I should see error "Enter a CRN in the format one letter followed by 6 numbers, for example A123456."
     When I enter search term "A12345G" into search input and click search then I should see error "Enter a CRN in the format one letter followed by 6 numbers, for example A123456."
-    When I enter search term " " into search input and click search then I should see error "You must enter a CRN or a person’s name."
+    When I enter search term " " into search input and click search then I should see error "You must enter a CRN, URN or a person’s name."
     When I enter search term "o’hara" into search input and click search then I should see error "CRNs and names can only contain numbers 0 to 9, letters A to Z, hyphens and apostrophes."
     When I enter search term "o'hara" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "o-hara" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "A123456" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "Joe Blogs" into search input and click search then I should see error "NO_ERROR"
+    When I enter search term "01WW0298121" into search input and click search then I should see error "NO_ERROR"
 
+  Scenario: Search for cases with the given URN
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Case list" page
+    And I should see the level 2 heading "Search"
+    And I should see a button with the label "Search"
 
-
+    When I enter "01WW0298121" into text input with id "search-term"
+    And I click the "Search" button
+    Then I should see the level 3 heading "125 search results for 01WW0298121"
+    And I see value "01WW0298121" in the text input with id "search-term"

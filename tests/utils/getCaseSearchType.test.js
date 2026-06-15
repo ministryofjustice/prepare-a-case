@@ -5,6 +5,11 @@ describe('getCaseSearchType', () => {
     ['C123456', 'CRN'],
     ['Jeff Bloggs', 'NAME'],
     ['Bloggs', 'NAME'],
+    ['01WW0298121', 'URN'],
+    ['01AA1234567', 'URN'],
+    ['0123456789', 'URN'],
+    ['01AB0000001', 'URN'],
+    ['1234567', 'URN'],
     [undefined, undefined],
     ['', undefined]
   ])('given search term %s should return case search type %s', (input, expected) => {
@@ -12,7 +17,7 @@ describe('getCaseSearchType', () => {
   })
 
   const CRN_ERROR = 'Enter a CRN in the format one letter followed by 6 numbers, for example A123456.'
-  const MISSING_CRN_ERROR = 'You must enter a CRN or a person’s name.'
+  const MISSING_CRN_ERROR = 'You must enter a CRN, URN or a person\u2019s name.'
   const ERROR_ONLY_ALPHANUMERIC = 'CRNs and names can only contain numbers 0 to 9, letters A to Z, hyphens and apostrophes.'
   it.each([
     ['C12345', CRN_ERROR],
@@ -21,12 +26,16 @@ describe('getCaseSearchType', () => {
     ['Joe blogs1', CRN_ERROR],
     [undefined, MISSING_CRN_ERROR],
     ['', MISSING_CRN_ERROR],
+    [' ', MISSING_CRN_ERROR],
     ['a'.repeat(651), 'Name must be less than 650 characters'],
     ['a'.repeat(650), undefined],
-    ['o’hara', ERROR_ONLY_ALPHANUMERIC],
+    ['o‘hara', ERROR_ONLY_ALPHANUMERIC],
     ['o\'hara', undefined],
     ['o-hara', undefined],
-    ['name & name', ERROR_ONLY_ALPHANUMERIC]
+    ['name & name', ERROR_ONLY_ALPHANUMERIC],
+    ['01WW0298121', undefined],
+    ['0123456789', undefined],
+    ['01AA1234567', undefined]
   ])('given search term %s should return error for invalid input', (input, expectedError) => {
     expect(getCaseSearchType(input).error).toEqual(expectedError)
   })
