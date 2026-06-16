@@ -1,4 +1,3 @@
-## use slim not alpine otherwise PACT binarys wont load due to missing libs
 FROM node:20.10-slim as base
 
 ## common

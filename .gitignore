@@ -1,4 +1,3 @@
-pact/
 node_modules/
 .idea
 *.iml
@@ -17,3 +16,4 @@ integration-tests/output/
 .vscode/launch.json
 .DS_Store
 output/test-results
+*.tgz
