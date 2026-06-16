@@ -1,5 +1,3 @@
-const log = require('../log')
-
 const setOriginScreenUrl = async (req, res, next) => {
   // GET requests only – prevents invalid URLs being stored.
   if (req.method !== 'GET') {
