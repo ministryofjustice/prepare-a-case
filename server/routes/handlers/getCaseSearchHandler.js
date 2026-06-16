@@ -5,7 +5,9 @@ const { getPagination } = require('../../utils/pagination')
 
 const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req, res) => {
   const term = req.query.term
-  const { searchType: type, error } = getCaseSearchType(term)
+  const explicitSearchType = req.query.searchType
+  const { searchType: detectedType, error } = explicitSearchType === 'URN' ? { searchType: 'URN' } : getCaseSearchType(term)
+  const type = detectedType
   const { cookies } = req
   const page = req.query.page > 0 ? req.query.page : undefined
 
@@ -25,7 +27,7 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
   if (term && type) {
     const pageSize = settings.caseSearchResultPageSize
     const data = await searchCases(term, type, page, pageSize)
-    const baseUrl = '/case-search?term=' + term + '&'
+    const baseUrl = '/case-search?term=' + term + '&searchType=' + type + '&'
 
     trackingEvent.length = data?.data?.items?.length
 
@@ -41,6 +43,7 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
       currentPage,
       pageSize,
       term,
+      searchType: type,
       pagination: getPagination(currentPage, data.data.totalElements, pageSize, baseUrl)
     }
     res.render('case-search', templateValues)

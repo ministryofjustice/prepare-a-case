@@ -1,3 +1,10 @@
 .search-group {
   display: inline;
 }
+
+.pac-advanced-search {
+  background-color: govuk-colour("light-grey");
+  border-left: 4px solid $govuk-border-colour;
+  padding: govuk-spacing(4);
+  margin-top: govuk-spacing(2);
+}

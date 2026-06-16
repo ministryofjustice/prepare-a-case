@@ -28,9 +28,28 @@
         <form name="pac-search-form" id="pac-search-form" method="get" action="/case-search">
             <div class="search-group">
                 <label class="govuk-label govuk-!-margin-bottom-3" for="{{inputId}}">Enter the CRN or full name of the person you are searching for.</label>
-                <input class="govuk-input govuk-!-width-one-third" id="{{inputId}}" name="term" type="text" maxlength="650" value="{{ params.term }}">
+                <input class="govuk-input govuk-!-width-one-third" id="{{inputId}}" name="term" type="text" maxlength="650" value="{{ params.term if params.searchType !== 'URN' else '' }}">
                 <button class="govuk-button action-button govuk-!-margin-bottom-1 govuk-!-margin-left-3" data-module="govuk-button" type="submit">Search</button>
             </div>
         </form>
+
+<details class="govuk-details govuk-!-margin-top-2 govuk-!-margin-bottom-0" {{ 'open' if params.searchType === 'URN' else '' }}>
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Search by URN
+    </span>
+  </summary>
+  <div class="pac-advanced-search">
+    <form name="pac-search-form-urn" id="pac-search-form-urn" method="get" action="/case-search">
+      <input type="hidden" name="searchType" value="URN">
+      <div class="search-group">
+        <label class="govuk-label govuk-!-margin-bottom-3" for="search-term-urn">Enter the URN of the case you are searching for.</label>
+        <input class="govuk-input govuk-!-width-one-third" id="search-term-urn" name="term" type="text" maxlength="650" value="{{ params.term if params.searchType === 'URN' else '' }}">
+        <button class="govuk-button action-button govuk-!-margin-bottom-1 govuk-!-margin-left-3" data-module="govuk-button" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+</details>
+
     </div>
 </section>
