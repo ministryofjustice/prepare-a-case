@@ -68,11 +68,13 @@ const getToggleHearingOutcomeRequiredHandler = require('./handlers/getToggleHear
 const { registerManageCourtsRoutes, manageCourtsRoute } = require('./manage-courts/routes')
 const caseService = require('../services/case-service')
 const trackEvent = require('../utils/analytics')
+const { setOriginScreenUrl } = require('../middleware/setOriginScreenUrl')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
   router.use(authenticationMiddleware())
   router.use(health)
+  router.use(setOriginScreenUrl)
 
   router.use((req, res, next) => {
     const { path, url, cookies } = req
