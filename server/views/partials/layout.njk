@@ -149,8 +149,11 @@
 {% block navigation %}
     {%- set currentCourtHtml %}
         <aside>
-            <span class="qa-court-name govuk-body govuk-!-font-size-16 govuk-!-font-weight-bold">{{ params.courtName }}</span>
-        </aside>
+            <span class="qa-court-name govuk-body govuk-!-font-size-19 govuk-!-font-weight-bold">{{ params.courtName }}</span>
+            {% if not hideCourtLink %}
+                <a class="govuk-link govuk-link--no-visited-state govuk-body govuk-!-font-size-19 govuk-!-margin-left-3" href="/my-courts">My courts</a>
+            {% endif %}
+    </aside>
     {% endset -%}
     {%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
     
