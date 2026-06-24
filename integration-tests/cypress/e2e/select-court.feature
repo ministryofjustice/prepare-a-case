@@ -91,5 +91,5 @@ Feature: Select court
     When I click the "Sheffield Magistrates' Court" link
     Then I should be on the "Case list" page
     And I should see the caption with the court name "Sheffield Magistrates' Court"
-    And I should see the Primary navigation "My Courts" link
+    And I should see the Primary navigation "My courts" text
     And There should be no a11y violations
