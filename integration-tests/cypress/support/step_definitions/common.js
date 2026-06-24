@@ -272,6 +272,7 @@ Then('I should see the caption text {string}', $text => {
   cy.get('.govuk-caption-m').contains($text)
 })
 
+// TODO: the use of this makes tests brittle
 Then('I should see link {string} in position {int} with href {string}', ($string, $int, $href) => {
   cy.get('.govuk-link').eq($int - 1).contains($string).should('exist').should('have.attr', 'href').and('include', $href)
 })
