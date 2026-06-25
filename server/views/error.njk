@@ -11,6 +11,8 @@
   {% set title = "Error" %}
 {% endif %}
 
+{% block pageHeading %}{% endblock %}
+
 {% block content %}
   {% if status === 401  %}
     <h1 class="govuk-heading-l">Authorisation Error</h1>
