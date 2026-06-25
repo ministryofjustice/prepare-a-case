@@ -38,7 +38,7 @@ const getPageTitle = (params) => {
     case 'outcome-not-required':
       return 'Hearing outcome not required'
     default:
-      return 'Case list'
+      return 'Cases'
   }
 }
 

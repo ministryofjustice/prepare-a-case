@@ -23,7 +23,7 @@ const caseSummaryHandler = utils => async (req, res) => {
   const { session, path, params: { courtCode } } = req
   const templateValues = await utils.getCaseAndTemplateValues(req)
   // console.log("🚀 ~ caseSummaryHandler ~ templateValues:", templateValues)
-  templateValues.title = 'Case summary'
+  templateValues.title = 'Case summary' //todo
   templateValues.toggleOutcomeSuccessMessage = req.flash('toggle-outcome-success')
   templateValues.session = {
     ...session

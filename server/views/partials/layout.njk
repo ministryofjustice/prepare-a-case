@@ -160,9 +160,9 @@
     {% set navItems = [{
         text: 'Cases',
         href: '/' + params.courtCode + '/cases',
-        active: title === 'Case list'
+        active: title === 'Cases'
     }] %}
-
+    {# //todo needs fixed, possibly even to include the tabs if product confirm #}
     {%- if params.hearingOutcomesEnabled %}
         {% set navItems = (navItems.push({
             text: 'Outcomes',
@@ -199,6 +199,12 @@
 
 <div class="govuk-width-container">
     <main class="govuk-main-wrapper" id="main-content" role="main">
+        {% block pageHeading %}
+            <div class="govuk-width-container">
+                <span class="govuk-caption-xl">{{ mainTitle }}</span>
+                <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{ title }}</h1>
+            </div>
+        {% endblock %}
         {% block content %}{% endblock %}
     </main>
 </div>
