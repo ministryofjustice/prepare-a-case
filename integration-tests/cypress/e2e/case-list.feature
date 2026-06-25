@@ -6,7 +6,7 @@ Feature: Case list
   Scenario: View the case list with data containing 207 cases for the given day
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
 
     And I should see the phase banner
@@ -56,7 +56,7 @@ Feature: Case list
   Scenario: View specific offence data on the case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     And Defendant "Guadalupe Hess" should display the following "Offence" data
       | Assault by beating | Attempt theft from the person of another |
     And Defendant "Olsen Alexander" should display the following "Offence" data
@@ -65,7 +65,7 @@ Feature: Case list
   Scenario: View specific listing data on the case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     And Defendant "Latoya Kirkland" should display the following "Listing" data
       | 2nd | 4th | 6th | 8th | 10th |
     And Defendant "Dora Clayton" should display the following "Listing" data
@@ -75,7 +75,7 @@ Feature: Case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
 
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
 
     # Repeat some tests to ensure UI is consistent on subsequent pages
@@ -117,7 +117,7 @@ Feature: Case list
   Scenario: View the recently added cases on the case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
 
     When I click the "Recently added (21)" link
     Then I should be on the "Recently added cases" page
@@ -149,7 +149,7 @@ Feature: Case list
   Scenario: View the removed cases on the case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
 
     When I click the "Removed cases (1)" link
     Then I should be on the "Removed cases" page
@@ -175,7 +175,7 @@ Feature: Case list
     Given I am an authenticated user
 
     When I navigate to the "cases/2020-01-01" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     And I should see the current day as "Wednesday 1 January"
     And I should not see days navigation bar
 

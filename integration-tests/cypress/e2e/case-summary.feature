@@ -6,7 +6,7 @@ Feature: Case summary
   Scenario: View the case summary with no contact detail for a Libra case by clicking the link on the case list page
     Given I am an authenticated user
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
 
     And I should see the phase banner
@@ -280,7 +280,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Webb Mitchell" link
@@ -312,7 +312,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
     When I click the "Lenore Marquez" link
     And I click the sub navigation with "Probation record" text
@@ -432,7 +432,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
     When I click the "English Madden" link
     And I click the sub navigation with "Probation record" text
@@ -451,7 +451,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Latoya Kirkland" link
@@ -780,7 +780,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
 
     When I click the "Webb Mitchell" link
     And I click the sub navigation with "Risk register" text
@@ -802,7 +802,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
 
     When I click the "Olsen Alexander" link
     And I click the sub navigation with "Risk register" text
@@ -820,7 +820,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
 
     When I click the "English Madden" link
     And I click the sub navigation with "Risk register" text

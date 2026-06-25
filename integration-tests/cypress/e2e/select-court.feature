@@ -89,7 +89,7 @@ Feature: Select court
     When I click the "Cancel" link
     Then I should be on the "My courts" page
     When I click the "Sheffield Magistrates' Court" link
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should see the Primary navigation "My courts" text
     And There should be no a11y violations

@@ -7,7 +7,7 @@ Feature: Outcomes List
   Scenario: Clicking on the Outcomes link should take me to the Outcomes page
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     And I should see the Primary navigation
     And I should see the Primary navigation "Outcomes" link
     When I click on the "Outcomes" link in the Primary navigation
@@ -37,7 +37,7 @@ Feature: Outcomes List
   Scenario: Should be able to see and navigate to hearing outcomes from case summary page
     Given I am an authenticated user
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
     When I click the "English Madden" link
     And I should see the Primary navigation "Outcomes" link
