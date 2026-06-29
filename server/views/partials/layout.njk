@@ -209,15 +209,13 @@
     </main>
 </div>
 
+{% block beforeFooter %}{% endblock %}
+
 {% block footer %}
     {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
     {{ govukFooter({
         meta: {
             items: [
-                {
-                    href: "/user-guide",
-                    text: "User guide"
-                },
                 {
                     href: "/accessibility-statement",
                     text: "Accessibility statement"
