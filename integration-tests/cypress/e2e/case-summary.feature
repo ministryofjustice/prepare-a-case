@@ -121,7 +121,7 @@ Feature: Case summary
       | Address       | 22 Waldorf Court Cardiff AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Link NDelius Record"
     And There should be no a11y violations
 
@@ -158,7 +158,7 @@ Feature: Case summary
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
@@ -233,7 +233,7 @@ Feature: Case summary
       | Address       | 38 Clarendon Road Glasgow AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
@@ -269,7 +269,7 @@ Feature: Case summary
       | Address       | 99 Ralph Avenue London AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
@@ -841,7 +841,7 @@ Feature: Case summary
     And I click the "Open as read only" button
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Move to resulted"
     And I click the "Move to resulted" MOJ menu button
     Then I should be on the "Hearing outcomes" page
@@ -857,5 +857,5 @@ Feature: Case summary
     And I click the "assign-outcome-modal" modal "View without assigning" link as button
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should not see an MOJ button with the label "Move to resulted"

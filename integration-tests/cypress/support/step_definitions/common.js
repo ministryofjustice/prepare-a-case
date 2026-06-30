@@ -286,7 +286,7 @@ Then('Link with text {string} should not be visible', ($string) => {
 })
 
 Then('I should see footer link {string} with href {string}', ($string, $href) => {
-  cy.get('.govuk-footer__link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+  cy.get('footer').contains('a', $string).should('exist').should('have.attr', 'href').and('include', $href)
 })
 
 Then('I should see back link {string} with href {string}', ($string, $href) => {
@@ -327,6 +327,10 @@ When('I click the {string} header navigation link', $string => {
 
 When('I click the {string} button', $string => {
   cy.get('.govuk-button').contains($string).click()
+})
+
+When('I click the {string} button menu', $string => {
+  cy.contains($string).closest('button').click()
 })
 
 Then('I should see a button with the label {string}', $string => {
