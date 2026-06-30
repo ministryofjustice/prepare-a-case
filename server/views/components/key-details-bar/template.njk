@@ -43,7 +43,12 @@
         {% if not params.manualMatch %}
             {% if params.actionButtonItems %}
                     {{ mojButtonMenu({
-                    items: params.actionButtonItems
+                        alignMenu: "right",
+                        button: {
+                            text: "Actions",
+                            classes: "govuk-button--secondary"
+                        },
+                        items: params.actionButtonItems
                     }) }}
             {% endif %}
         {% endif %}

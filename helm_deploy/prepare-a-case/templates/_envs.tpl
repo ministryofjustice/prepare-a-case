@@ -124,5 +124,8 @@ env:
 
   - name: USER_PREFERENCE_SERVICE_URL
     value: {{ .Values.env.USER_PREFERENCE_SERVICE_URL | quote }}
+  
+  - name: PROBATION_FRONTEND_COMPONENTS_URL
+    value: {{ .Values.env.PROBATION_FRONTEND_COMPONENTS_URL | quote }}
 
 {{- end -}}

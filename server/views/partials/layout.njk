@@ -212,29 +212,11 @@
 {% block beforeFooter %}{% endblock %}
 
 {% block footer %}
-    {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
-    {{ govukFooter({
-        meta: {
-            items: [
-                {
-                    href: "/accessibility-statement",
-                    text: "Accessibility statement"
-                },
-                {
-                    href: "/cookies-policy",
-                    text: "Cookies"
-                 },
-                 {
-                    href: "/privacy-notice",
-                    text: "Privacy"
-                },
-                {
-                    href: "/whats-new",
-                    text: "What's new"
-                }
-            ]
-        }
-    }) }}
+{%- from "moj/components/domain-specific/probation/footer/macro.njk" import pdsFooter -%}
+
+{{ pdsFooter({
+  baseUrl: probationFrontendComponentsUrl
+}) }}
 {% endblock %}
 
 {% block bodyEnd %}
