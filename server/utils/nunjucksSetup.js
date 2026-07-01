@@ -1,5 +1,5 @@
 const nunjucks = require('nunjucks')
-const { features, connectionString, appVersion, probationFrontendComponentsUrl } = require('../config')
+const { features, connectionString, appVersion, probationFrontendComponentsUrl, settings } = require('../config')
 const filters = require('./nunjucksFilters')
 
 module.exports = (app, path) => {
@@ -20,4 +20,5 @@ module.exports = (app, path) => {
   env.addGlobal('connectionString', connectionString)
   env.addGlobal('appVersion', appVersion)
   env.addGlobal('probationFrontendComponentsUrl', probationFrontendComponentsUrl)
+  env.addGlobal('pacEnvironment', settings.pacEnvironment)
 }

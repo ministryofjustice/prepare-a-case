@@ -29,6 +29,14 @@ module.exports = {
     return name ? name.replace(pattern, '') : ''
   },
 
+  initialiseName: fullName => {
+    // this check is for the authError page
+    if (!fullName) return null
+
+    const array = fullName.split(' ')
+    return `${array[0][0]}. ${array.reverse()[0]}`
+  },
+
   markMatches: (matchString, sourceString) => {
     const sourceSplit = sourceString.split(' ').map(item => {
       return item.replace(',', '').toLowerCase()

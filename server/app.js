@@ -214,6 +214,8 @@ module.exports = function createApp ({ signInService }) {
     failureRedirect: '/autherror'
   })(req, res, next))
 
+  app.get('/sign-out', (req, res) => res.redirect('/logout'))
+
   app.use('/logout', catchErrors((req, res, next) => {
     if (req.user) {
       req.logout(err => {

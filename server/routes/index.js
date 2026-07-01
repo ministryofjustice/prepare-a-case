@@ -117,37 +117,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.post('/set-notification', body('notification').trim(), catchErrors(setNotificationPostHandler))
 
-  router.get('/user-guide', (req, res) => {
-    res.render('user-guide')
-  })
-
-  router.get('/accessibility-statement', (req, res) => {
-    const { session } = req
-    res.render('accessibility-statement', {
-      params: { backLink: session.backLink }
-    })
-  })
-
-  router.get('/privacy-notice', (req, res) => {
-    const { session } = req
-    res.render('privacy-notice', { params: { backLink: session.backLink } })
-  })
-
-  router.get('/whats-new', (req, res) => {
-    res.render('whats-new')
-  })
-
-  router.get('/cookies-policy', (req, res) => {
-    res.render('cookies-policy', {
-      params: {
-        saved: req.query.saved,
-        preference: req.cookies && req.cookies.analyticsCookies
-      }
-    })
-  })
-
   router.post('/cookie-preference/:page?', (req, res) => {
-    const redirectUrl = req.params.page ? '/cookies-policy?saved=true' : '/'
     if (req.body.cookies) {
       if (req.body.cookies === 'reject') {
         for (const [key] of Object.entries(req.cookies)) {
@@ -158,7 +128,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       }
       res
         .cookie('analyticsCookies', req.body.cookies)
-        .redirect(302, redirectUrl)
+        .redirect(302, '/')
     }
   })
 
