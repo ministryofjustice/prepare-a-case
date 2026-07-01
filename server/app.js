@@ -21,6 +21,7 @@ const nunjucksSetup = require('./utils/nunjucksSetup')
 const flash = require('./middleware/flash')
 const nodeVersion = process.version
 const os = require('os')
+const pdsComponents = require('@ministryofjustice/hmpps-probation-frontend-components').default
 const hostName = os.hostname()
 
 const { authenticationMiddleware } = auth
@@ -229,6 +230,26 @@ module.exports = function createApp ({ signInService }) {
   }))
 
   app.use(authorisationMiddleware)
+
+  const envMap = {
+    prod: 'PRODUCTION',
+    preprod: 'PRE-PRODUCTION',
+    dev: 'DEV'
+  }
+  const environmentName = envMap[config.settings.pacEnvironment] || 'DEV'
+  app.use(pdsComponents.getPageComponents({
+    pdsUrl: config.apis.probationApi.url,
+    environmentName,
+    logger: log
+  }))
+
+  //   It may be sufficient for you app to only request components for GET requests for example, in which case
+
+  //   app.get('*', pdsComponents.getPageComponents({
+  //     pdsUrl: config.apis.probationApi.url,
+  //     logger,
+  //   })
+  // )
 
   app.use(
     '/',

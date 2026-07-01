@@ -116,6 +116,10 @@ module.exports = {
       apiClientId: get('API_CLIENT_ID', 'prepare-a-case-for-court'),
       apiClientSecret: get('API_CLIENT_SECRET', 'clientsecret'),
       role: get('ROLE', 'ROLE_PREPARE_A_CASE')
+    },
+    probationApi: {
+      url: get('COMPONENT_API_URL', 'https://probation-frontend-components-dev.hmpps.service.justice.gov.uk', requiredInProduction),
+      healthPath: '/health/ping'
     }
   },
   appVersion: get('APP_VERSION', 'dev-build'),
@@ -124,7 +128,6 @@ module.exports = {
   https: production,
   nonce: () => crypto.randomBytes(16).toString('base64'),
   connectionString: get('APPLICATIONINSIGHTS_CONNECTION_STRING', null),
-  probationFrontendComponentsUrl: get('PROBATION_FRONTEND_COMPONENTS_URL', 'https://probation-frontend-components-dev.hmpps.service.justice.gov.uk'),
   notification: {
     username: get('NOTIFICATION_USERNAME', null, requiredInProduction),
     password: get('NOTIFICATION_PASSWORD', null, requiredInProduction)

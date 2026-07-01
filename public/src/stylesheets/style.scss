@@ -4,7 +4,8 @@ $moj-page-width: $govuk-page-width;
 @import "node_modules/accessible-autocomplete/src/autocomplete";
 @import "node_modules/govuk-frontend/dist/govuk/all";
 @import "node_modules/@ministryofjustice/frontend/moj/all";
-@import "node_modules/@ministryofjustice/frontend/moj/components/domain-specific/probation/footer/footer";
+@import 'node_modules/@ministryofjustice/hmpps-probation-frontend-components/dist/assets/footer';
+@import 'node_modules/@ministryofjustice/hmpps-probation-frontend-components/dist/assets/header';
 @import "app/all";
 
 .govuk-notification-banner__content > * {

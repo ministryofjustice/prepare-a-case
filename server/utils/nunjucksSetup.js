@@ -1,11 +1,14 @@
 const nunjucks = require('nunjucks')
-const { features, connectionString, appVersion, probationFrontendComponentsUrl, settings } = require('../config')
+const { features, connectionString, appVersion, apis, settings } = require('../config')
 const filters = require('./nunjucksFilters')
 
 module.exports = (app, path) => {
   const env = nunjucks.configure([
     path.join(__dirname, '../../node_modules/govuk-frontend/dist/'),
+    path.join(__dirname, '../../node_modules/govuk-frontend/dist/components'),
     path.join(__dirname, '../../node_modules/@ministryofjustice/frontend/'),
+    path.join(__dirname, '../../node_modules/@ministryofjustice/frontend/moj/components/'),
+    path.join(__dirname, '../../node_modules/@ministryofjustice/hmpps-probation-frontend-components/dist/assets/'),
     path.join(__dirname, '../../server/views')
   ], {
     autoescape: true,
@@ -19,6 +22,6 @@ module.exports = (app, path) => {
   env.addGlobal('clickAnalytics', features.clickAnalytics)
   env.addGlobal('connectionString', connectionString)
   env.addGlobal('appVersion', appVersion)
-  env.addGlobal('probationFrontendComponentsUrl', probationFrontendComponentsUrl)
+  env.addGlobal('probationFrontendComponentsUrl', apis.probationApi.url)
   env.addGlobal('pacEnvironment', settings.pacEnvironment)
 }
