@@ -55,7 +55,7 @@ jobs:
           PAC_ENVIRONMENT_TYPE: "local"
           PAC_SELENIUM_GRID: ${{ secrets.PAC_SELENIUM_GRID }}
         run: |
-          ./mvnw clean verify -Dcucumber.filter.tags="@test"
+          ./mvnw clean verify -Dcucumber.filter.tags="@Regression"
 
       - name: Upload Cucumber report
         if: always()
