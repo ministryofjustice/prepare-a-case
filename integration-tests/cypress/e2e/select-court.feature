@@ -7,7 +7,7 @@ Feature: Select court
   Scenario: View the page with a list of available courts
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see the heading "My courts"
 
     And I should see the phase banner
     And I should see the tag "Feedback"
@@ -21,7 +21,7 @@ Feature: Select court
   Scenario: Click the Add button without selecting a court
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see the heading "My courts"
     And I click the "Add" button
     Then I should see the error message "You must add a court"
     And There should be no a11y violations
@@ -30,7 +30,7 @@ Feature: Select court
   Scenario: Click the Save and continue button without selecting a court
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see the heading "My courts"
     And I click the "Save and continue" button
     Then I should see the error message "You must add a court"
     And There should be no a11y violations
@@ -39,7 +39,7 @@ Feature: Select court
   Scenario: Select a court from the list of available courts using the autocomplete component
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see the heading "My courts"
     When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
     And I click the "Add" button
     And I should see the following summary list text "Sheffield Magistrates' Court"
@@ -54,7 +54,7 @@ Feature: Select court
   Scenario: Edit my selected courts
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see the heading "My courts"
     When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
     And I click the "Add" button
     When I click the "Save and continue" button
@@ -79,16 +79,17 @@ Feature: Select court
   Scenario: View my court selection
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see the heading "My courts"
     When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
     And I click the "Add" button
     When I click the "Save and continue" button
     Then I should be on the "My courts" page
     Then I click the "Edit my courts" link
     Then I should be on the "Edit my courts" page
-    When I click the "My courts" header navigation link
+    When I click the "Cancel" link
     Then I should be on the "My courts" page
     When I click the "Sheffield Magistrates' Court" link
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     And I should see the caption with the court name "Sheffield Magistrates' Court"
+    And I should see the Primary navigation "My courts" text
     And There should be no a11y violations

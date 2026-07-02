@@ -126,7 +126,7 @@ describe('getPagedCaseListRouteHandler', () => {
     expect(mockResponse.render).toHaveBeenCalledWith('case-list', expect.anything())
 
     expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
-      title: 'Case list',
+      title: 'Cases',
       data: [mockCaseResult(), mockCaseResult(), mockCaseResult(), mockCaseResult()],
       params: {
         hearingOutcomesEnabled: expect.any(Boolean),

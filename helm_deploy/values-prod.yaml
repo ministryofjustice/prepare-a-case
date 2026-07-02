@@ -23,6 +23,8 @@ env:
   CASES_PER_PAGE: 20
   NOMIS_AUTH_URL: https://sign-in.hmpps.service.justice.gov.uk/auth
   USER_PREFERENCE_SERVICE_URL: https://hmpps-user-preferences.hmpps.service.justice.gov.uk
+  # TODO: include the below when migrating to generic service
+  COMPONENT_API_URL: https://probation-frontend-components-preprod.hmpps.service.justice.gov.uk
   CASE_SNAPSHOT_TIMES: "00:00,08:45,09:45"
   ENABLE_PAST_CASES_NAVIGATION: true
   ENABLE_CASE_COMMENTS: true

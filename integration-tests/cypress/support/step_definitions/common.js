@@ -272,6 +272,7 @@ Then('I should see the caption text {string}', $text => {
   cy.get('.govuk-caption-m').contains($text)
 })
 
+// TODO: the use of this makes tests brittle
 Then('I should see link {string} in position {int} with href {string}', ($string, $int, $href) => {
   cy.get('.govuk-link').eq($int - 1).contains($string).should('exist').should('have.attr', 'href').and('include', $href)
 })
@@ -285,7 +286,7 @@ Then('Link with text {string} should not be visible', ($string) => {
 })
 
 Then('I should see footer link {string} with href {string}', ($string, $href) => {
-  cy.get('.govuk-footer__link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+  cy.get('footer').contains('a', $string).should('exist').should('have.attr', 'href').and('include', $href)
 })
 
 Then('I should see back link {string} with href {string}', ($string, $href) => {
@@ -326,6 +327,10 @@ When('I click the {string} header navigation link', $string => {
 
 When('I click the {string} button', $string => {
   cy.get('.govuk-button').contains($string).click()
+})
+
+When('I click the {string} button menu', $string => {
+  cy.contains($string).closest('button').click()
 })
 
 Then('I should see a button with the label {string}', $string => {
@@ -541,6 +546,12 @@ Then('I should clear the filters', () => {
 Then('I should see the Primary navigation {string} link', $string => {
   cy.get('nav.moj-primary-navigation').within(() => {
     cy.get('.moj-primary-navigation__link').contains($string)
+  })
+})
+
+Then('I should see the Primary navigation {string} text', $string => {
+  cy.get('div.moj-primary-navigation').within(() => {
+    cy.get('.moj-primary-navigation__search').contains($string)
   })
 })
 

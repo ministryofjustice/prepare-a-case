@@ -124,5 +124,8 @@ env:
 
   - name: USER_PREFERENCE_SERVICE_URL
     value: {{ .Values.env.USER_PREFERENCE_SERVICE_URL | quote }}
+  
+  - name: COMPONENT_API_URL
+    value: {{ .Values.env.COMPONENT_API_URL | quote }}
 
 {{- end -}}

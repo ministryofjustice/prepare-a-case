@@ -92,7 +92,6 @@
 {% extends "../partials/layout.njk" %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6" aria-label="{{ title }}">{{ title }}</h1>
 
 
   {{ components.filterComponent.html | safe}}
@@ -128,7 +127,7 @@
   }) }}
 
   <div class="govuk-tabs__panel">
-     <h1 class="govuk-heading-l">Resulted cases</h1>
+     <h2 class="govuk-heading-l">Resulted cases</h2>
     {% if tableData.rows | length %}
       {% block table %}
         {%- from "govuk/components/table/macro.njk" import govukTable -%}
@@ -143,4 +142,12 @@
     {% endif %}
   </div>
 
+{% endblock %}
+
+{% block beforeFooter %}
+  <div class="govuk-width-container">
+      <p class="govuk-body">
+          <a href="https://justiceuk.sharepoint.com/sites/HMPPS_Group_CSA/" class="govuk-link govuk-link--no-visited-state">View user guide</a>
+      <p>
+  </div>
 {% endblock %}

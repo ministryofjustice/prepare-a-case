@@ -6,7 +6,7 @@ Feature: Case summary
   Scenario: View the case summary with no contact detail for a Libra case by clicking the link on the case list page
     Given I am an authenticated user
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
 
     And I should see the phase banner
@@ -121,7 +121,7 @@ Feature: Case summary
       | Address       | 22 Waldorf Court Cardiff AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Link NDelius Record"
     And There should be no a11y violations
 
@@ -158,7 +158,7 @@ Feature: Case summary
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
@@ -233,7 +233,7 @@ Feature: Case summary
       | Address       | 38 Clarendon Road Glasgow AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
@@ -269,7 +269,7 @@ Feature: Case summary
       | Address       | 99 Ralph Avenue London AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
@@ -280,7 +280,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Webb Mitchell" link
@@ -312,7 +312,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
     When I click the "Lenore Marquez" link
     And I click the sub navigation with "Probation record" text
@@ -432,7 +432,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
     When I click the "English Madden" link
     And I click the sub navigation with "Probation record" text
@@ -451,7 +451,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
     When I clear the filters
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Latoya Kirkland" link
@@ -481,7 +481,7 @@ Feature: Case summary
 
     When I click the "View record" link with id "activeOrder0-view"
     Then I should be on the "ORA Community Order (18 Months)" page
-    And I should see the heading "ORA Community Order (18 Months)"
+    And I should see the level 2 heading "ORA Community Order (18 Months)"
     And I should see the level 2 heading "Attendance"
 
     And I should see the following level 3 headings
@@ -619,7 +619,7 @@ Feature: Case summary
     And I should see the breach badge
     When I click the "View record" link with id "activeOrder0-view"
     Then I should be on the "ORA Community Order (18 Months)" page
-    And I should see the heading "ORA Community Order (18 Months)"
+    And I should see the level 2 heading "ORA Community Order (18 Months)"
 
     And I should see the body text "Abstracting electricity - 04300"
     And I should see the following level 3 headings
@@ -643,9 +643,9 @@ Feature: Case summary
       | Community Order/SSO Breach | Breach Summons Issued           | 26 Dec 2014 |
       | Community Order/SSO Breach | Completed - Amended & Continued | 26 Nov 2013 |
 
-    And I should see link "Community Order/SSO Breach" in position 3 with href "1361422142/breach/12345"
-    And I should see link "Community Order/SSO Breach" in position 4 with href "1361422142/breach/54321"
-    And I should see link "Community Order/SSO Breach" in position 5 with href "1361422142/breach/98765"
+    And I should see link "Community Order/SSO Breach" in position 4 with href "1361422142/breach/12345"
+    And I should see link "Community Order/SSO Breach" in position 5 with href "1361422142/breach/54321"
+    And I should see link "Community Order/SSO Breach" in position 6 with href "1361422142/breach/98765"
 
     And I should see the level 2 heading "Attendance"
 
@@ -716,7 +716,7 @@ Feature: Case summary
 
     When I click the "View record" link with id "previousOrder0-view"
     Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
-    And I should see the heading "CJA - Std Determinate Custody"
+    And I should see the level 2 heading "CJA - Std Determinate Custody"
 
     And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
 
@@ -757,7 +757,7 @@ Feature: Case summary
 
     When I click the "View record" link with id "activeOrder0-view"
     Then I should be on the "ORA Community Order (18 Months)" page
-    And I should see the heading "ORA Community Order (18 Months)"
+    And I should see the level 2 heading "ORA Community Order (18 Months)"
     And I should see the level 2 heading "Requirements"
     And I should see the following table headings
       | Requirement | Length |
@@ -771,7 +771,7 @@ Feature: Case summary
 
     When I click the "View record" link with id "previousOrder0-view"
     Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
-    And I should see the heading "CJA - Std Determinate Custody"
+    And I should see the level 2 heading "CJA - Std Determinate Custody"
     And I should see the level 2 heading "Requirements"
     And I should see the following table headings
       | Requirement | Length | Ended | Reason |
@@ -780,7 +780,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
 
     When I click the "Webb Mitchell" link
     And I click the sub navigation with "Risk register" text
@@ -802,7 +802,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
 
     When I click the "Olsen Alexander" link
     And I click the sub navigation with "Risk register" text
@@ -820,7 +820,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases" page
 
     When I click the "English Madden" link
     And I click the sub navigation with "Risk register" text
@@ -841,7 +841,7 @@ Feature: Case summary
     And I click the "Open as read only" button
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Move to resulted"
     And I click the "Move to resulted" MOJ menu button
     Then I should be on the "Hearing outcomes" page
@@ -857,5 +857,5 @@ Feature: Case summary
     And I click the "assign-outcome-modal" modal "View without assigning" link as button
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should not see an MOJ button with the label "Move to resulted"
