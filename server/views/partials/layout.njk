@@ -28,7 +28,7 @@
         <link type="text/css" rel="stylesheet" href="/stylesheets/style-{{ appVersion }}.min.css"/>
 
         {% for css in feComponents.cssIncludes %}
-            <link href="{{ css }}" nonce="{{ cspNonce }}" rel="stylesheet" />
+            <link href="{{ css }}" nonce="{{ nonce }}" rel="stylesheet" />
         {% endfor %}
 
         <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
@@ -222,13 +222,13 @@
 {% block bodyEnd %}
 
     <script type="module" src="/javascripts/external-{{ appVersion }}.min.js"></script>
+    {% for js in feComponents.jsIncludes %}
+        <script src="{{ js }}" nonce="{{ cspNonce }}"></script>
+    {% endfor %}
     {% block javascripts %}{% endblock %}
 
 {% endblock %}
 
-{% for js in feComponents.jsIncludes %}
-    <script src="{{ js }}" nonce="{{ cspNonce }}"></script>
-{% endfor %}
 
 </body>
 </html>

@@ -71,39 +71,38 @@ module.exports = function createApp ({ signInService }) {
 
   app.use((req, res, next) => {
     res.locals.nonce = config.nonce()
-    helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: [
-            '\'self\''
-          ],
-          objectSrc: ['\'none\''],
-          frameSrc: ['https://www.youtube.com', '\'self\''],
-          styleSrc: ['\'self\'', '\'unsafe-inline\''],
-          scriptSrc: [
-            '\'self\'',
-            '\'unsafe-eval\'',
-            'js.monitor.azure.com',
-            '\'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA=\'',
-            '\'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ=\'',
-            '\'sha256-Ex+PXm59nVbu/S+FH/u8FLio5zO5YfFPo0/jH0uw19k=\'',
-            '\'sha256-QIG/FBh5vORMkpviiAyUOvMgp6XvwQIEagSXO2FUmyo=\'',
-            `'nonce-${res.locals.nonce}'`
-          ],
-          imgSrc: [
-            '\'self\''
-          ],
-          upgradeInsecureRequests: [],
-          connectSrc: [
-            '\'self\'',
-            'js.monitor.azure.com',
-            'dc.services.visualstudio.com',
-            'https://northeurope-0.in.applicationinsights.azure.com'
-          ]
-        }
-      }
-    })(req, res, next)
+    next()
   })
+
+  app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        objectSrc: ["'none'"],
+        frameSrc: ['https://www.youtube.com', "'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: [
+          "'self'",
+          "'unsafe-eval'",
+          'js.monitor.azure.com',
+          "'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA='",
+          "'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ='",
+          "'sha256-Ex+PXm59nVbu/S+FH/u8FLio5zO5YfFPo0/jH0uw19k='",
+          "'sha256-QIG/FBh5vORMkpviiAyUOvMgp6XvwQIEagSXO2FUmyo='",
+          (req, res) => `'nonce-${res.locals.nonce}'`
+        ],
+        imgSrc: ["'self'"],
+        upgradeInsecureRequests: [],
+        connectSrc: [
+          "'self'",
+          'js.monitor.azure.com',
+          'dc.services.visualstudio.com',
+          'https://northeurope-0.in.applicationinsights.azure.com',
+          config.apis.probationApi.url
+        ]
+      }
+    }
+  }))
 
   app.use(
     session({
