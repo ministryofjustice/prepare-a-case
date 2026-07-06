@@ -33,7 +33,7 @@ const subsectionTitles = {
   added: 'Recently added',
   removed: 'Removed cases',
   'outcome-not-required': 'Hearing outcome not required',
-  heard: 'Hearing outcome added',
+  heard: 'Hearing outcome added'
 }
 
 const getPageTitle = (params) => {

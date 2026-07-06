@@ -16,7 +16,7 @@ const getPageHeading = () => 'Hearing outcomes'
 
 const getCasesInProgressHandler = (caseService, userPreferenceService) => async (req, res) => {
   const {
-    params: { courtCode, title, sorts, state },
+    params: { courtCode, sorts, state },
     params,
     session,
     query: queryParams
