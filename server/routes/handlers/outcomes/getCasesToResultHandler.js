@@ -9,6 +9,10 @@ const getPagelessQueryParams = params => {
   return remainder
 }
 
+const getPageTitle = () => `${getPageHeading()} - Cases to result`
+
+const getPageHeading = () => 'Hearing outcomes'
+
 const getCasesToResultHandler = (caseService, userPreferenceService) => async (req, res) => {
   const {
     params: { courtCode, title, sorts, state },
@@ -63,7 +67,8 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
       casesInProgressCount: response?.countsByState?.inProgressCount || 0,
       casesToResultCount: response.totalElements
     },
-    title,
+    title: getPageTitle(),
+    heading: getPageHeading(),
     data: response.cases || [],
     totalPages: response.totalPages,
     totalElements: response.totalElements,

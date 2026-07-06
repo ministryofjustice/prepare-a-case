@@ -199,13 +199,15 @@ module.exports = function createApp ({ signInService }) {
     next()
   })
 
-  app.get('/autherror', (req, res) => {
-    res.status(401)
-    return res.render('error', {
-      status: 401,
-      authURL: authLogoutUrl
+  app.get('/autherror',
+    pdsComponents.getPageComponents({ pdsUrl: config.apis.probationApi }),
+    (req, res) => {
+      res.status(401)
+      return res.render('error', {
+        status: 401,
+        authURL: authLogoutUrl
+      })
     })
-  })
 
   app.get('/login', passport.authenticate('oauth2'))
 

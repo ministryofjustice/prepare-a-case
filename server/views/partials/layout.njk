@@ -164,14 +164,13 @@
     {% set navItems = [{
         text: 'Cases',
         href: '/' + params.courtCode + '/cases',
-        active: title === 'Cases'
+        active: heading === 'Cases'
     }] %}
-    {# //todo needs fixed, possibly even to include the tabs if product confirm #}
     {%- if params.hearingOutcomesEnabled %}
         {% set navItems = (navItems.push({
             text: 'Outcomes',
             href: '/' + params.courtCode + '/outcomes',
-            active: title === 'Hearing outcomes'
+            active: heading === 'Hearing outcomes'
         }), navItems) %}
     {% endif -%}
 
@@ -206,7 +205,7 @@
         {% block pageHeading %}
             <div class="govuk-width-container">
                 <span class="govuk-caption-xl">{{ mainTitle }}</span>
-                <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{ title }}</h1>
+                <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{ heading if heading else title }}</h1>
             </div>
         {% endblock %}
         {% block content %}{% endblock %}
@@ -222,13 +221,9 @@
 {% block bodyEnd %}
 
     <script type="module" src="/javascripts/external-{{ appVersion }}.min.js"></script>
-    {% for js in feComponents.jsIncludes %}
-        <script src="{{ js }}" nonce="{{ cspNonce }}"></script>
-    {% endfor %}
     {% block javascripts %}{% endblock %}
 
 {% endblock %}
-
 
 </body>
 </html>

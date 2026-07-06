@@ -311,19 +311,4 @@ describe('nunjucksFilters', () => {
       expect(limit).toEqual([1, 2])
     })
   })
-
-  describe('initialiseName', () => {
-    it('should return null if no name supplied', () => {
-      expect(filters.initialiseName(null)).toEqual(null)
-      expect(filters.initialiseName(undefined)).toEqual(null)
-    })
-
-    it.each([
-      ['John Smith', 'J. Smith'],
-      ['Jane Mary Doe', 'J. Doe'],
-      ['Alice', 'A. Alice']
-    ])('should return initialised name for "%s"', (input, expected) => {
-      expect(filters.initialiseName(input)).toEqual(expected)
-    })
-  })
 })

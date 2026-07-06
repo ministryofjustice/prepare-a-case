@@ -2,10 +2,10 @@ $govuk-page-width: 1220px;
 $moj-page-width: $govuk-page-width;
 
 @import "node_modules/accessible-autocomplete/src/autocomplete";
-@import "node_modules/govuk-frontend/dist/govuk/all";
+@import "node_modules/govuk-frontend/dist/govuk/index";
 @import "node_modules/@ministryofjustice/frontend/moj/all";
-@import 'node_modules/@ministryofjustice/hmpps-probation-frontend-components/dist/assets/footer';
-@import 'node_modules/@ministryofjustice/hmpps-probation-frontend-components/dist/assets/header';
+@import "node_modules/@ministryofjustice/hmpps-probation-frontend-components/dist/assets/footer";
+@import "node_modules/@ministryofjustice/hmpps-probation-frontend-components/dist/assets/header";
 @import "app/all";
 
 .govuk-notification-banner__content > * {
@@ -14,4 +14,8 @@ $moj-page-width: $govuk-page-width;
 
 .moj-header__logo {
     color:#fff;
+}
+
+.moj-primary-navigation__container {
+  max-width: 1170px;
 }

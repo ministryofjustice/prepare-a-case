@@ -1,7 +1,7 @@
 import 'bootstrap/js/dist/modal'
 import $ from 'jquery/src/jquery'
-import { initAll as govuk } from 'govuk-frontend/dist/govuk/all.mjs'
-import { Accordion } from 'govuk-frontend/dist/govuk/all.mjs'
+import { initAll as govuk } from 'govuk-frontend'
+import { Accordion } from 'govuk-frontend'
 import { initAll as moj } from '@ministryofjustice/frontend/moj/all.mjs'
 import '../src/javascripts/caselist-date-carousel'
 
