@@ -31,7 +31,8 @@ describe('getResultedCasesHandler', () => {
   const courtCode = 'B007'
 
   const params = {
-    title: 'Resulted cases',
+    title: 'Hearing outcomes - Resulted cases',
+    heading: 'Hearing outcomes',
     sorts: { sorts: 'hearingDate', order: 'ASC' },
     courtCode,
     state: 'RESULTED',
@@ -108,6 +109,7 @@ describe('getResultedCasesHandler', () => {
       data: apiResponse.cases,
       totalElements: 2,
       totalPages: undefined,
+      heading: params.heading,
       pagination: {
         pageItems: [],
         previousLink: null,
