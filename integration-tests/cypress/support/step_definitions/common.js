@@ -611,30 +611,30 @@ Then('I should see pagination', () => {
 })
 
 Then('I should not see pagination previous link', () => {
-  cy.get('.moj-pagination__item--prev').should('not.exist')
+  cy.get('.govuk-pagination__prev').should('not.exist')
 })
 
 Then('I should not see pagination next link', () => {
-  cy.get('.moj-pagination__item--next').should('not.exist')
+  cy.get('.govuk-pagination__next').should('not.exist')
 })
 
 Then('I should see pagination page {string} highlighted', $string => {
-  cy.get('.moj-pagination__item--active').contains($string).should('exist')
+  cy.get('.govuk-pagination__item--current').contains($string).should('exist')
 })
 
 Then('I should see pagination link {string} with href {string}', ($string, $href) => {
-  cy.get('.moj-pagination__link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+  cy.get('.govuk-pagination__item').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
 })
 
 Then('I should see pagination next link with href {string}', ($href) => {
-  cy.get('.moj-pagination__item--next').within(() => {
-    cy.get('.moj-pagination__link').should('have.attr', 'href').and('include', $href)
+  cy.get('.govuk-pagination__next').within(() => {
+    cy.get('.govuk-pagination__link').should('have.attr', 'href').and('include', $href)
   })
 })
 
 Then('I should see pagination previous link with href {string}', ($href) => {
-  cy.get('.moj-pagination__item--prev').within(() => {
-    cy.get('.moj-pagination__link').should('have.attr', 'href').and('include', $href)
+  cy.get('.govuk-pagination__prev').within(() => {
+    cy.get('.govuk-pagination__link').should('have.attr', 'href').and('include', $href)
   })
 })
 
@@ -643,23 +643,23 @@ Then('I should not see pagination', () => {
 })
 
 Then('I click pagination link {string}', $string => {
-  cy.get('.moj-pagination__link').contains($string).click()
+  cy.get('.govuk-pagination__item').contains($string).click()
 })
 
 Then('I should see an ellipsis on the pagination', () => {
-  cy.get('.moj-pagination__item--dots').should('exist')
+  cy.get('.govuk-pagination__item--ellipsis').should('exist')
 })
 
 Then('I should not see an ellipsis on the pagination', () => {
-  cy.get('.moj-pagination__item--dots').should('not.exist')
+  cy.get('.govuk-pagination__item--ellipsis').should('not.exist')
 })
 
 Then('I click pagination next link', () => {
-  cy.get('.moj-pagination__item--next').click()
+  cy.get('.govuk-pagination__next').click()
 })
 
 Then('I click pagination previous link', () => {
-  cy.get('.moj-pagination__item--prev').click()
+  cy.get('.govuk-pagination__prev').click()
 })
 
 Then('I should see pagination text {string}', $string => {
