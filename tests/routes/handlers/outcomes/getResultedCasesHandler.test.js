@@ -117,4 +117,26 @@ describe('getResultedCasesHandler', () => {
       }
     })
   })
+
+  it('should render the correct heading and title', async () => {
+    // Given
+    caseServiceMock.getOutcomesList.mockResolvedValueOnce({
+      totalElements: 2,
+      cases: [{}, {}],
+      countsByState: { toResultCount: 2, inProgressCount: 5 },
+      courtRoomFilters: ['01']
+    })
+
+    // When
+    await subject(mockRequest, mockResponse)
+
+    // Then
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/resultedCases',
+      expect.objectContaining({
+        heading: 'Hearing outcomes',
+        title: 'Hearing outcomes - Resulted cases'
+      })
+    )
+  })
 })
