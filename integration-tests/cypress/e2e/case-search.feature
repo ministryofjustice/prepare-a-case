@@ -21,6 +21,7 @@ Feature: Case search
       | Adam Sandler  | Current  | Theft two from the person    | 16 December 2022 | No record       |
       | Adam Sandler  | Current  | Theft three from the person  | No record        | 23 January 2023 |
     And I see value "C123456" in the text input with id "search-term"
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
 
     When I enter "Jeff Bloggs" into text input with id "search-term"
     And I click the "Search" button
@@ -117,6 +118,7 @@ Feature: Case search
     When I enter search term "o-hara" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "A123456" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "Joe Blogs" into search input and click search then I should see error "NO_ERROR"
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
 
 
 

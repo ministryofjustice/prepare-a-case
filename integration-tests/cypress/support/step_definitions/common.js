@@ -555,6 +555,12 @@ Then('I should see the Primary navigation {string} text', $string => {
   })
 })
 
+Then('I should see the Primary navigation {string} link with href {string}', ($string, $href) => {
+  cy.get('div.moj-primary-navigation').within(() => {
+    cy.get('.moj-primary-navigation__search').contains('a', $string).should('have.attr', 'href').and('include', $href)
+  })
+})
+
 When('I click on the {string} link in the Primary navigation', $string => {
   cy.get('nav.moj-primary-navigation').within(() => {
     cy.get('.moj-primary-navigation__link').contains($string).click()

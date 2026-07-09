@@ -16,6 +16,8 @@ Feature: Resulted Cases List
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
+    And I should see link "View user guide" with href "https://justiceuk.sharepoint.com/sites/HMPPS_Group_CSA/"
 
     Then I click the "Resulted cases" link
 

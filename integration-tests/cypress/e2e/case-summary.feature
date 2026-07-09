@@ -17,6 +17,7 @@ Feature: Case summary
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Kara Ayers" link
     Then I should be on the "Case summary" page
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
     And I should see a level 1 heading with text "Kara Ayers"
     And I should see back link "Back" with href "/B14LO/cases?clearFilters=true"
     And I should see the caption text "Source: Libra"
