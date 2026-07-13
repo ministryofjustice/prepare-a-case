@@ -146,7 +146,7 @@ Then('I should see the caption with the court name {string}', $string => {
 })
 
 Then('I should be on the {string} page', $title => {
-  cy.get('title').contains(`${$title} - `)
+  cy.title().should('eq', $title)
 })
 
 Then('I should see the following table headings', $data => {
@@ -533,6 +533,18 @@ Then('I should see govuk notification banner with header {string} and message {s
 
 Then('I should not see govuk notification banner', () => {
   cy.get('.govuk-notification-banner').should('not.exist')
+})
+
+// Note: the fallback header will be rendered unless authenticating with dev
+Then('I should see the PDS Header with the {string} environment tag', ($env) => {
+  cy.get('.probation-common-fallback-header')
+    .find('strong.govuk-tag')
+    .should('contain.text', $env)
+})
+
+// Note: the fallback footer will be rendered unless authenticating with dev
+Then('I should see the PDS Footer', () => {
+  cy.get('.probation-common-fallback-footer').should('exist')
 })
 
 Then('I should see the Primary navigation', () => {

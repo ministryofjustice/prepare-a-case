@@ -13,6 +13,7 @@ Feature: Case search
 
     When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
+    Then I should see the PDS Header with the "DEV" environment tag
     Then I should see the level 3 heading "125 search results for C123456"
     And I should see the following table headings
       | Defendant | Probation status | Offence | Last hearing | Next hearing |
@@ -22,6 +23,7 @@ Feature: Case search
       | Adam Sandler  | Current  | Theft three from the person  | No record        | 23 January 2023 |
     And I see value "C123456" in the text input with id "search-term"
     And I should see the Primary navigation "My courts" link with href "/my-courts"
+    And I should see the PDS Footer
 
     When I enter "Jeff Bloggs" into text input with id "search-term"
     And I click the "Search" button

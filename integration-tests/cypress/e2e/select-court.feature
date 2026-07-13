@@ -9,6 +9,7 @@ Feature: Select court
     When I open the application
     Then I should see the heading "My courts"
 
+    And I should see the PDS Header with the "DEV" environment tag
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"

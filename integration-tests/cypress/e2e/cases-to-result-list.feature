@@ -9,6 +9,7 @@ Feature: Cases to Result List
     When I navigate to the "outcomes" route
     Then I should be on the "Hearing outcomes" page
 
+    And I should see the PDS Header with the "DEV" environment tag
     And I should see the Primary navigation
     And I should see the Primary navigation "Cases" link
 
@@ -17,6 +18,7 @@ Feature: Cases to Result List
     And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
     And I should see the Primary navigation "My courts" link with href "/my-courts"
     And I should see link "View user guide" with href "https://justiceuk.sharepoint.com/sites/HMPPS_Group_CSA/"
+    And I should see the PDS Footer
 
     And I should see a tab with text "Cases to result (80)"
 

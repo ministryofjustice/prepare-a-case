@@ -9,10 +9,12 @@ Feature: Case summary
     Then I should be on the "Cases" page
     When I clear the filters
 
+    And I should see the PDS Header with the "DEV" environment tag
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
     And I should see phase banner link "report a bug" with href "https://mojprod.service-now.com/moj_sp?id=sc_cat_item&sys_id=2659ea2b1b600a1425dc6351f54bcb7b"
+    And I should see the PDS Footer
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Kara Ayers" link

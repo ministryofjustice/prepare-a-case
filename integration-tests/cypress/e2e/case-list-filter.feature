@@ -7,13 +7,13 @@ Feature: Case list filters
   Scenario: A11y
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And There should be no a11y violations
 
   Scenario: Apply multiple filters
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
 
     And I should see a count of "80 cases"
 
@@ -71,7 +71,7 @@ Feature: Case list filters
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
 
     And I should see a count of "80 cases"
 
