@@ -6,7 +6,7 @@ Feature: Set Notification
   Scenario: View the set notification page
     Given I am an authenticated user
     When I navigate to the "/set-notification" protected route
-    Then I should be on the "Set notification" page
+    Then I should be on the "Set notification - Prepare a case for sentence" page
 
     And I should see the "Important" preview title
     And I should see the "" in the preview html

@@ -17,6 +17,8 @@ Feature: Matching defendants to nDelius records
     And I should see phase banner link "report a bug" with href "https://mojprod.service-now.com/moj_sp?id=sc_cat_item&sys_id=2659ea2b1b600a1425dc6351f54bcb7b"
     And I should see the Primary navigation "My courts" link with href "/my-courts"
     And I should see the PDS Footer
+    And I should see a level 1 heading with text "Defendants with possible NDelius records"
+    And I should see the caption "Prepare a case for sentence"
 
     And I should see the heading "Defendants with possible NDelius records"
 

@@ -7,7 +7,8 @@ Feature: Select court
   Scenario: View the page with a list of available courts
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "My courts"
+    Then I should see a level 1 heading with text "My courts"
+    And I should see the caption "Prepare a case for sentence"
 
     And I should see the PDS Header with the "DEV" environment tag
     And I should see the phase banner
@@ -22,7 +23,7 @@ Feature: Select court
   Scenario: Click the Add button without selecting a court
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "My courts"
+    Then I should see a level 1 heading with text "My courts"
     And I click the "Add" button
     Then I should see the error message "You must add a court"
     And There should be no a11y violations
@@ -31,7 +32,7 @@ Feature: Select court
   Scenario: Click the Save and continue button without selecting a court
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "My courts"
+    Then I should see a level 1 heading with text "My courts"
     And I click the "Save and continue" button
     Then I should see the error message "You must add a court"
     And There should be no a11y violations
@@ -40,7 +41,7 @@ Feature: Select court
   Scenario: Select a court from the list of available courts using the autocomplete component
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "My courts"
+    Then I should see a level 1 heading with text "My courts"
     When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
     And I click the "Add" button
     And I should see the following summary list text "Sheffield Magistrates' Court"
@@ -55,7 +56,7 @@ Feature: Select court
   Scenario: Edit my selected courts
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "My courts"
+    Then I should see a level 1 heading with text "My courts"
     When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
     And I click the "Add" button
     When I click the "Save and continue" button
@@ -80,7 +81,7 @@ Feature: Select court
   Scenario: View my court selection
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "My courts"
+    Then I should see a level 1 heading with text "My courts"
     When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
     And I click the "Add" button
     When I click the "Save and continue" button

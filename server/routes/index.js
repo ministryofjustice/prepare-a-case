@@ -515,7 +515,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
       templateValues.data.communityData = communityResponse || {}
 
-      templateValues.title = getOrderTitle(communityResponse)
+      const orderTitle = getOrderTitle(communityResponse)
+      const formattedName = removeTitle(properCase(apostropheInName(templateValues.data.defendantName)))
+      templateValues.title = formattedName + ' - ' + orderTitle
+      templateValues.heading = orderTitle
 
       res.render('case-summary/case-summary-record-order', templateValues)
     })
@@ -525,8 +528,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     '/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/breach/:breachId',
     defaults,
     catchErrors(async (req, res) => {
-      const templateValues = await getCaseAndTemplateValues(req) //
-      templateValues.title = 'Breach details'
+      const templateValues = await getCaseAndTemplateValues(req)
+      const formattedName = removeTitle(properCase(apostropheInName(templateValues.data.defendantName)))
+      const heading = 'Breach details'
+      templateValues.heading = heading
+      templateValues.title = formattedName + ' - ' + heading
 
       const {
         params: { convictionId, breachId }
@@ -572,7 +578,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors(async (req, res) => {
       const templateValues = await getCaseAndTemplateValues(req)
-      templateValues.title = 'Licence conditions details'
+      const formattedName = removeTitle(properCase(apostropheInName(templateValues.data.defendantName)))
+      const heading = 'Licence conditions details'
+      templateValues.heading = heading
+      templateValues.title = formattedName + ' - ' + heading
 
       const {
         data: { crn }

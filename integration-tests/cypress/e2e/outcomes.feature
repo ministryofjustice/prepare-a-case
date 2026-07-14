@@ -7,11 +7,13 @@ Feature: Outcomes List
   Scenario: Clicking on the Outcomes link should take me to the Outcomes page
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the Primary navigation
     And I should see the Primary navigation "Outcomes" link
     When I click on the "Outcomes" link in the Primary navigation
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Hearing outcomes"
+    And I should see the caption "Prepare a case for sentence"
     And I should see the PDS Header with the "DEV" environment tag
     And I should see the phase banner
     And I should see the tag "Feedback"
@@ -27,23 +29,23 @@ Feature: Outcomes List
   Scenario: View the In progress tab on the Outcomes page
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
     When I click the "In progress" link
     Then I should see the URL with "in-progress"
 
   Scenario: View the Resulted Cases tab on the Outcomes page
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
     When I click the "Resulted cases" link
     Then I should see the URL with "resulted-cases"
 
   Scenario: Should be able to see and navigate to hearing outcomes from case summary page
     Given I am an authenticated user
     When I navigate to the "cases" route
-    Then I should be on the "Cases" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     When I clear the filters
     When I click the "English Madden" link
     And I should see the Primary navigation "Outcomes" link
     When I click on the "Outcomes" link in the Primary navigation
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
