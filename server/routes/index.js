@@ -529,7 +529,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors(async (req, res) => {
       const templateValues = await getCaseAndTemplateValues(req)
-      const formattedName = rformatName(templateValues.data.defendantName)
+      const formattedName = formatName(templateValues.data.defendantName)
       const heading = 'Breach details'
       templateValues.heading = heading
       templateValues.title = formattedName + ' - ' + heading
