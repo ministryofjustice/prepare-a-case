@@ -53,6 +53,7 @@ module.exports = {
   },
 
   apostropheInName: name => {
+    if (!name) return ''
     const pattern = /\b(&#39;)\b/g
     return name.replace(pattern, "'")
   },
