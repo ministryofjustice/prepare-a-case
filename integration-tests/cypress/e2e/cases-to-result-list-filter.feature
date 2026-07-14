@@ -6,7 +6,7 @@ Feature: Cases to Result List filters
   Scenario: A user wants to filter the list to show only "Report Requested" cases to result and quickly clear that selection
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
     When I clear the filters
 
     #    And I should see a tab with text "Cases to result (2)"
@@ -47,7 +47,7 @@ Feature: Cases to Result List filters
   Scenario: A user wants to filter the list to show only "Adjourned" cases to result and quickly clear that selection
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
     When I clear the filters
 
     #    And I should see a tab with text "Cases to result (2)"
@@ -89,7 +89,7 @@ Feature: Cases to Result List filters
   Scenario: A user wants to filter the list to show only "Other" cases to result and quickly clear that selection
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
     When I clear the filters
 
     #    And I should see a tab with text "Cases to result (2)"
@@ -125,7 +125,7 @@ Feature: Cases to Result List filters
   Scenario: A user wants to order the list to show by "Hearing date"
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
     When I clear the filters
 
     #    And I should see a tab with text "Cases to result (2)"
@@ -166,7 +166,7 @@ Feature: Cases to Result List filters
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
     When I clear the filters
 
     And I should see the following table headings
@@ -187,7 +187,7 @@ Feature: Cases to Result List filters
   Scenario: A user wants to filter the list by courtroom
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
     When I clear the filters
 
     And I should see the following table headings

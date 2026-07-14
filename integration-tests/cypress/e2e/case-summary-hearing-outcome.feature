@@ -10,7 +10,7 @@ Feature: Case progress - Hearing outcome
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
@@ -30,7 +30,7 @@ Feature: Case progress - Hearing outcome
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
 
     And I should see a "m" sized level 3 heading with text "Case progress"
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3" should have button "Send outcome to admin"
@@ -58,7 +58,7 @@ Feature: Case progress - Hearing outcome
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
 
     When I click "Send outcome to admin" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
     Then I should "see" the "add-hearing-outcome-modal" modal
@@ -73,7 +73,7 @@ Feature: Case progress - Hearing outcome
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
 
     When I click "Send outcome to admin" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
     Then I should "see" the "add-hearing-outcome-modal" modal
@@ -87,7 +87,7 @@ Feature: Case progress - Hearing outcome
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
 
     When I click "Send outcome to admin" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
     Then I should "see" the "add-hearing-outcome-modal" modal
@@ -101,7 +101,7 @@ Feature: Case progress - Hearing outcome
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/9b9a6ab6-ef6d-485a-a8b4-b79b67e5b1f8/defendant/82bfc40d-389a-46ba-81e1-0829a5fbf6c8/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "English Madden - Case summary - Prepare a case for sentence" page
 
     And I should see a "m" sized level 3 heading with text "Case progress"
     And hearing "1f93aa0a-7e46-4885-a1cb-f25a4be33a10" should not have link "Edit"
@@ -112,7 +112,7 @@ Feature: Case progress - Hearing outcome
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
 
     And I should see a "m" sized level 3 heading with text "Case progress"
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" should have link "Edit"
@@ -142,7 +142,7 @@ Feature: Case progress - Hearing outcome
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
 
     When I click "Edit" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7"
     Then I should "see" the "edit-hearing-outcome-modal" modal
@@ -157,7 +157,7 @@ Feature: Case progress - Hearing outcome
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
 
     When I click "Edit" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7"
     Then I should "see" the "edit-hearing-outcome-modal" modal
@@ -171,7 +171,7 @@ Feature: Case progress - Hearing outcome
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
 
     When I click "Edit" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7"
     Then I should "see" the "edit-hearing-outcome-modal" modal
@@ -185,7 +185,7 @@ Feature: Case progress - Hearing outcome
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
 
     When I click "Edit" for hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e5"
     Then I should "see" the "add-hearing-outcome-modal" modal

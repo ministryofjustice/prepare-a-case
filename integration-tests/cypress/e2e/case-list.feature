@@ -17,6 +17,8 @@ Feature: Case list
     And I should see the Primary navigation "My courts" link with href "/my-courts"
     And I should see link "View user guide" with href "https://justiceuk.sharepoint.com/sites/HMPPS_Group_CSA/"
     And I should see the PDS Footer
+    And I should see a level 1 heading with text "Cases"
+    And I should see the caption "Prepare a case for sentence"
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should see the current day as "Today"

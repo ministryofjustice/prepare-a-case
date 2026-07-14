@@ -6,7 +6,7 @@ Feature: Resulted Cases List filters
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
     When I navigate to the "outcomes/resulted-cases" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Resulted cases - Prepare a case for sentence" page
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Resulted by |
@@ -28,7 +28,7 @@ Feature: Resulted Cases List filters
   Scenario: Court room filter should be displayed and functional
     Given I am an authenticated user
     When I navigate to the "outcomes/resulted-cases" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Resulted cases - Prepare a case for sentence" page
     When I clear the filters
 
     And I should see the following table headings

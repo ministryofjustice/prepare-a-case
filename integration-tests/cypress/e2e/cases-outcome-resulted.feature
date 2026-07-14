@@ -7,7 +7,7 @@ Feature: Resulted Cases List
   Scenario: Should navigate to hearing outcomes cases to resulted tab and see cases
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
     When I clear the filters
 
     And I should see the PDS Header with the "DEV" environment tag
@@ -20,6 +20,8 @@ Feature: Resulted Cases List
     And I should see the Primary navigation "My courts" link with href "/my-courts"
     And I should see link "View user guide" with href "https://justiceuk.sharepoint.com/sites/HMPPS_Group_CSA/"
     And I should see the PDS Footer
+    And I should see a level 1 heading with text "Hearing outcomes"
+    And I should see the caption "Prepare a case for sentence"
 
     Then I click the "Resulted cases" link
 
@@ -61,7 +63,7 @@ Feature: Resulted Cases List
   Scenario: Clicking on a resulted case should allow the user to assign to themselves and move to In Progress
     Given I am an authenticated user
     When I navigate to the "outcomes/resulted-cases" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Resulted cases - Prepare a case for sentence" page
     When I clear the filters
 
     When I click the "Hazel Nutt" link
@@ -74,25 +76,25 @@ Feature: Resulted Cases List
     And the "reassign-resulted-outcome-modal" modal should have the Cancel link as button
 
     When I click the "Assign to me" button
-    Then I should be on the "Case summary" page
+    Then I should be on the "English Madden - Case summary - Prepare a case for sentence" page
     And I should see govuk notification banner with header "Success" and message "You are assigned to result this case. It has moved to the in progress tab."
 
   Scenario: Clicking on a Outcome should allow the user to view the case without assigning to themselves
     Given I am an authenticated user
     When I navigate to the "outcomes/resulted-cases" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Resulted cases - Prepare a case for sentence" page
     When I clear the filters
 
     When I click the "Hazel Nutt" link
     Then I should "see" the "reassign-resulted-outcome-modal" modal
 
     When I click the "reassign-resulted-outcome-modal" modal "Open as read only" link as button
-    Then I should be on the "Case summary" page
+    Then I should be on the "English Madden - Case summary - Prepare a case for sentence" page
     And I should not see govuk notification banner
 
   Scenario: Ensure the correct messages and results are shown when no cases are resulted
     Given I am an authenticated user
     When I navigate to the Northampton Court "outcomes/resulted-cases" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Resulted cases - Prepare a case for sentence" page
     Then I should see the body text "There are no resulted cases."
     And There should be no a11y violations

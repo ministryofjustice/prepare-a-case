@@ -6,7 +6,7 @@ Feature: Cases In progress List filters
   Scenario: A user wants to filter the list to show only "Adjourned" cases to result and quickly clear that selection
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
 
     And I should see a tab with text "Cases to result (8)"
 
@@ -48,7 +48,7 @@ Feature: Cases In progress List filters
   Scenario: A user wants to filter the list to show only "Other" cases to result and quickly clear that selection
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
@@ -80,7 +80,7 @@ Feature: Cases In progress List filters
   Scenario: A user wants to order the list to show by "Hearing date"
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
@@ -118,7 +118,7 @@ Feature: Cases In progress List filters
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
 
     And I should see the following table headings
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
@@ -140,7 +140,7 @@ Feature: Cases In progress List filters
   Scenario: Court room filter should be displayed and functional
     Given I am an authenticated user
     When I navigate to the "outcomes/resulted-cases" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Resulted cases - Prepare a case for sentence" page
     When I clear the filters
 
     And I should see the following table headings

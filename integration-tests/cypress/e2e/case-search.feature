@@ -6,7 +6,7 @@ Feature: Case search
   Scenario: Search for cases with the given CRN
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
     And I should see the text input label "Enter the CRN or full name of the person you are searching for."
@@ -39,7 +39,7 @@ Feature: Case search
   Scenario: Should not show result table when search for given CRN does not return result
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
     And I should see the text input label "Enter the CRN or full name of the person you are searching for."
@@ -52,7 +52,7 @@ Feature: Case search
   Scenario: Case search results pagination
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
     And I should see the text input label "Enter the CRN or full name of the person you are searching for."
@@ -107,7 +107,7 @@ Feature: Case search
   Scenario: Should handle case search errors
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Cases" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
     And I should see the text input label "Enter the CRN or full name of the person you are searching for."

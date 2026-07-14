@@ -7,7 +7,7 @@ Feature: Cases to Result List
   Scenario: Clicking on the Outcomes link should take me to the Outcomes page
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
 
     And I should see the PDS Header with the "DEV" environment tag
     And I should see the Primary navigation
@@ -19,6 +19,8 @@ Feature: Cases to Result List
     And I should see the Primary navigation "My courts" link with href "/my-courts"
     And I should see link "View user guide" with href "https://justiceuk.sharepoint.com/sites/HMPPS_Group_CSA/"
     And I should see the PDS Footer
+    And I should see a level 1 heading with text "Hearing outcomes"
+    And I should see the caption "Prepare a case for sentence"
 
     And I should see a tab with text "Cases to result (80)"
 
@@ -79,6 +81,6 @@ Feature: Cases to Result List
   Scenario: Ensure the correct messages and results are shown when no cases are to be resulted
     Given I am an authenticated user
     When I navigate to the Northampton Court "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
     Then I should see the body text "There are no cases to be resulted."
     And There should be no a11y violations

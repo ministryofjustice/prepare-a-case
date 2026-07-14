@@ -10,6 +10,8 @@ Feature: Outcomes List
     Then I should not see the cookie banner
     When I navigate to the "/B14LO/outcomes" base route
     Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Hearing outcomes"
+    And I should see the caption "Prepare a case for sentence"
 
     And I should see a tab with text "Cases to result (80)"
     And I should see a tab with text "In progress (5)"
@@ -30,7 +32,7 @@ Feature: Outcomes List
     And the "assign-outcome-modal" modal should have the Cancel link as button
 
     When I click the "assign-outcome-modal" modal "Assign to me" button
-    Then I should be on the "Case summary - Prepare a case for sentence" page
+    Then I should be on the "English Madden - Case summary - Prepare a case for sentence" page
     And I should see govuk notification banner with header "Success" and message "You are assigned to result this case. It has moved to the in progress tab."
 
   Scenario: Clicking on a Outcome should allow the user to view the case without assigning to themselves
@@ -60,7 +62,7 @@ Feature: Outcomes List
     And the "assign-outcome-modal" modal should have the Cancel link as button
 
     When I click the "assign-outcome-modal" modal "View without assigning" link as button
-    Then I should be on the "Case summary - Prepare a case for sentence" page
+    Then I should be on the "English Madden - Case summary - Prepare a case for sentence" page
     And I should not see govuk notification banner
 
   Scenario: Close assign outcome modal popup

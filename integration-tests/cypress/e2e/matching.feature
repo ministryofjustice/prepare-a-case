@@ -211,7 +211,7 @@ Feature: Matching defendants to nDelius records
     When I check the element with id "defendant-4"
     And I click the "Confirm record" button
 
-    Then I should be on the "Case summary - Prepare a case for sentence" page
+    Then I should be on the "Guadalupe Hess - Case summary - Prepare a case for sentence" page
     And I should see the match confirmation banner message "You have successfully confirmed a record for Guadalupe Hess"
 
     And There should be no a11y violations
@@ -240,7 +240,7 @@ Feature: Matching defendants to nDelius records
 
     Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
     When I click the "Back" link
-    Then I should be on the "Case summary - Prepare a case for sentence" page
+    Then I should be on the "Guadalupe Hess - Case summary - Prepare a case for sentence" page
 
     And There should be no a11y violations
 
@@ -406,7 +406,7 @@ Feature: Matching defendants to nDelius records
       | Name | Date of birth | CRN | PNC | Probation status |
     When I click the "Link record to defendant" button
 
-    Then I should be on the "Case summary - Prepare a case for sentence" page
+    Then I should be on the "Guadalupe Hess - Case summary - Prepare a case for sentence" page
     And I should see the match confirmation banner message "You have successfully linked an NDelius record to Guadalupe Hess."
 
     And There should be no a11y violations
@@ -435,7 +435,7 @@ Feature: Matching defendants to nDelius records
     And I click the "Can't see the correct record?" summary link
     And I click the "confirm they have no record" link
 
-    Then I should be on the "Case summary - Prepare a case for sentence" page
+    Then I should be on the "Guadalupe Hess - Case summary - Prepare a case for sentence" page
     And I should see the match confirmation banner message "You have successfully confirmed Guadalupe Hess has no NDelius record."
 
     And There should be no a11y violations
@@ -481,7 +481,7 @@ Feature: Matching defendants to nDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/hearing/3f80d674-d964-4781-927a-99c78bc340e2/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary" base route
 
-    Then I should be on the "Case summary - Prepare a case for sentence" page
+    Then I should be on the "Charlene Hammond - Case summary - Prepare a case for sentence" page
     And I should see a button with the label "Actions"
     And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
@@ -498,7 +498,7 @@ Feature: Matching defendants to nDelius records
     Then I should have a button group with a Cancel link with href "/B14LO/hearing/3f80d674-d964-4781-927a-99c78bc340e2/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary"
     When I click the "Unlink record from defendant" button
 
-    Then I should be on the "Case summary - Prepare a case for sentence" page
+    Then I should be on the "Charlene Hammond - Case summary - Prepare a case for sentence" page
     And I should see the match confirmation banner message "You have successfully unlinked an NDelius record from Charlene Hammond."
 
     And There should be no a11y violations
@@ -507,7 +507,7 @@ Feature: Matching defendants to nDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/hearing/3f80d674-d964-4781-927a-99c78bc340e2/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary" base route
 
-    Then I should be on the "Case summary - Prepare a case for sentence" page
+    Then I should be on the "Charlene Hammond - Case summary - Prepare a case for sentence" page
     And I should see a button with the label "Actions"
     And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
@@ -516,6 +516,6 @@ Feature: Matching defendants to nDelius records
     Then I should be on the "Unlink NDelius record from the defendant - Prepare a case for sentence" page
     When I click the "Back" link
 
-    Then I should be on the "Case summary - Prepare a case for sentence" page
+    Then I should be on the "Charlene Hammond - Case summary - Prepare a case for sentence" page
 
     And There should be no a11y violations

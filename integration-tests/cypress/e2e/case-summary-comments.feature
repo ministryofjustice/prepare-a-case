@@ -10,7 +10,7 @@ Feature: Case comments
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
@@ -61,7 +61,7 @@ Feature: Case comments
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
@@ -79,7 +79,7 @@ Feature: Case comments
     And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary#previousComments"
 
     When I click the "Delete comment" button
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see govuk notification banner with header "Success" and message "You successfully deleted a comment"
 
   Scenario: Cancel a delete comment attempt
@@ -88,7 +88,7 @@ Feature: Case comments
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
@@ -99,7 +99,7 @@ Feature: Case comments
     And I should see a button with the label "Delete comment"
     And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary#previousComments"
     Then I click the "Cancel" link
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should not see govuk notification banner
 
   Scenario: Should not show error and successfully save comment
@@ -108,7 +108,7 @@ Feature: Case comments
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
 
     When I enter a comment "a comment" in the comment box
     And I click the button to "Save" comment
@@ -120,7 +120,7 @@ Feature: Case comments
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
 
     And I click "Edit" on the below comment located in table row 5
       | Comment One     | Adam Sandler on 9 August 2022, 17:17 |
