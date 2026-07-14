@@ -4,7 +4,7 @@
 
 {% block navigation %}{% endblock %}
 
-{% set title = "My courts" if isOnboarding else "Edit my courts" %}
+{% set title = "Which courts do you work in?" if isOnboarding else "Edit my courts" %}
 
 {%- set courtOptions = [] -%}
 {%- for court in params.availableCourts -%}
