@@ -69,6 +69,7 @@ const { registerManageCourtsRoutes, manageCourtsRoute } = require('./manage-cour
 const caseService = require('../services/case-service')
 const trackEvent = require('../utils/analytics')
 const { setOriginScreenUrl } = require('../middleware/setOriginScreenUrl')
+const { properCase, removeTitle, apostropheInName } = require('../utils/nunjucksFilters')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -588,7 +589,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors(async (req, res) => {
       const templateValues = await getCaseAndTemplateValues(req)
-      templateValues.title = 'Risk register'
+      const formattedName = removeTitle(properCase(apostropheInName(templateValues.data.defendantName)))
+      templateValues.title = formattedName + ' - ' + 'Risk register'
 
       const {
         data: { crn }
