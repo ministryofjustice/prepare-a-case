@@ -720,7 +720,6 @@ Feature: Case summary
 
     When I click the "View record" link with id "previousOrder0-view"
     Then I should be on the "Lenore Marquez - CJA - Std Determinate Custody (18 Months) - Prepare a case for sentence" page
-    Then I should be on the "Lenore Marquez - CJA - Std Determinate Custody (18 Months) - Prepare a case for sentence" page
 
     And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
 

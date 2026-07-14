@@ -73,6 +73,15 @@ module.exports = {
     return number + ordinal
   },
 
+  // Mimics what was being done in the template, which now needs to be done in the handler
+  // Looks like a dupe of formatDefendantName, but order of operations differs so results theoretically could too
+  // This method ensures no UI change whilst minimising risk of refactoring formatDefendantName
+  // TODO: in future, try and use only one for consistency
+  formatName: name => {
+    const { properCase, removeTitle, apostropheInName } = module.exports
+    return removeTitle(properCase(apostropheInName(name)))
+  },
+
   caseCommentTimeFormat: dateString => {
     if (!dateString) {
       return 'Not available'

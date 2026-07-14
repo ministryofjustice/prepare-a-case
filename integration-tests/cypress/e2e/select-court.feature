@@ -93,7 +93,7 @@ Feature: Select court
     When I click the "Cancel" link
     Then I should be on the "My courts - Prepare a case for sentence" page
     When I click the "Sheffield Magistrates' Court" link
-    Then I should be on the "Cases - Hearing outcome not required - Prepare a case for sentence" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should see the Primary navigation "My courts" link with href "/my-courts"
     And There should be no a11y violations

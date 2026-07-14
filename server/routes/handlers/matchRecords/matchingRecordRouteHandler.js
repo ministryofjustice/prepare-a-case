@@ -2,7 +2,7 @@ const { settings } = require('../../../config')
 const { getBackUrl } = require('../../helpers')
 const trackEvent = require('../../../utils/analytics')
 const { getPagination } = require('../../../utils/pagination')
-const { properCase, removeTitle, apostropheInName } = require('../../../utils/nunjucksFilters')
+const { formatName } = require('../../../utils/nunjucksFilters')
 
 const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) => async (req, res) => {
   const {
@@ -22,7 +22,7 @@ const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) =
       (name.forename3 ? ' ' + name.forename3 : '') +
       ' ' + name.surname
     : defendantName
-  const formattedName = removeTitle(properCase(apostropheInName(defendantFullName)))
+  const formattedName = formatName(defendantFullName)
   templateValues.heading = formattedName
   const subheading = 'Review possible NDelius records'
   templateValues.subheading = subheading

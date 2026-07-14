@@ -1,6 +1,6 @@
 const { getPsrRequestedConvictions, getLastSentencedConvictionPSR } = require('../helpers')
 const trackEvent = require('../../utils/analytics')
-const { properCase, removeTitle, apostropheInName } = require('../../utils/nunjucksFilters')
+const { formatName } = require('../../utils/nunjucksFilters')
 
 const getProbationRecordRouteHandler = (communityService, getCaseAndTemplateValues) => async (req, res) => {
   const { session } = req
@@ -18,7 +18,7 @@ const getProbationRecordRouteHandler = (communityService, getCaseAndTemplateValu
     return
   }
 
-  const formattedName = removeTitle(properCase(apostropheInName(templateValues.data.defendantName)))
+  const formattedName = formatName(templateValues.data.defendantName)
   templateValues.title = formattedName + ' - ' + 'Probation record'
 
   const crn = templateValues.data.crn

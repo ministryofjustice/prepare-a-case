@@ -244,14 +244,6 @@ module.exports = function createApp ({ signInService }) {
     logger: log
   }))
 
-  //   It may be sufficient for you app to only request components for GET requests for example, in which case
-
-  //   app.get('*', pdsComponents.getPageComponents({
-  //     pdsUrl: config.apis.probationApi.url,
-  //     logger,
-  //   })
-  // )
-
   app.use(
     '/',
     createRouter({

@@ -69,7 +69,7 @@ const { registerManageCourtsRoutes, manageCourtsRoute } = require('./manage-cour
 const caseService = require('../services/case-service')
 const trackEvent = require('../utils/analytics')
 const { setOriginScreenUrl } = require('../middleware/setOriginScreenUrl')
-const { properCase, removeTitle, apostropheInName } = require('../utils/nunjucksFilters')
+const { formatName } = require('../utils/nunjucksFilters')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -516,7 +516,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       templateValues.data.communityData = communityResponse || {}
 
       const orderTitle = getOrderTitle(communityResponse)
-      const formattedName = removeTitle(properCase(apostropheInName(templateValues.data.defendantName)))
+      const formattedName = formatName(templateValues.data.defendantName)
       templateValues.title = formattedName + ' - ' + orderTitle
       templateValues.heading = orderTitle
 
@@ -529,7 +529,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors(async (req, res) => {
       const templateValues = await getCaseAndTemplateValues(req)
-      const formattedName = removeTitle(properCase(apostropheInName(templateValues.data.defendantName)))
+      const formattedName = rformatName(templateValues.data.defendantName)
       const heading = 'Breach details'
       templateValues.heading = heading
       templateValues.title = formattedName + ' - ' + heading
@@ -578,7 +578,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors(async (req, res) => {
       const templateValues = await getCaseAndTemplateValues(req)
-      const formattedName = removeTitle(properCase(apostropheInName(templateValues.data.defendantName)))
+      const formattedName = formatName(templateValues.data.defendantName)
       const heading = 'Licence conditions details'
       templateValues.heading = heading
       templateValues.title = formattedName + ' - ' + heading
@@ -598,7 +598,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors(async (req, res) => {
       const templateValues = await getCaseAndTemplateValues(req)
-      const formattedName = removeTitle(properCase(apostropheInName(templateValues.data.defendantName)))
+      const formattedName = formatName(templateValues.data.defendantName)
       templateValues.title = formattedName + ' - ' + 'Risk register'
 
       const {
