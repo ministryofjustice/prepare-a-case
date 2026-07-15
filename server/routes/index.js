@@ -695,8 +695,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       const templateValues = await getCaseAndTemplateValues(req)
       if (session.matchType === 'bulk') {
         templateValues.title = MATCH_MANUAL_HEADING
-      }
-      else {
+      } else {
         const formattedName = formatName(templateValues.data.defendantName)
         templateValues.title = formattedName + ' - ' + MATCH_MANUAL_HEADING
       }
@@ -769,8 +768,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       const probationStatusDetails = await getProbationStatusDetails(crn)
       if (session.matchType === 'bulk') {
         templateValues.title = MATCH_MANUAL_HEADING
-      }
-      else {
+      } else {
         const formattedName = formatName(templateValues.data.defendantName)
         templateValues.title = formattedName + ' - ' + MATCH_MANUAL_HEADING
       }
