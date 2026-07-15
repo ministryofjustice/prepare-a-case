@@ -2,7 +2,7 @@ const express = require('express')
 const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const queryParamBuilder = require('../utils/queryParamBuilder')
-const { getMatchedUrl } = require('./helpers')
+const { getMatchedUrl, MATCH_MANUAL_HEADING } = require('./helpers')
 
 const {
   settings,
@@ -636,7 +636,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         data: response.cases
       }
       session.confirmedMatch = undefined
-      session.matchType = 'bulk'
+      session.matchType = 'bulk' // TODO: this design is bug-prone
       session.matchDate = date
       session.courtCode = courtCode
       res.render('match-records', templateValues)
@@ -693,7 +693,14 @@ module.exports = function Index ({ authenticationMiddleware }) {
     catchErrors(async (req, res) => {
       const { session } = req
       const templateValues = await getCaseAndTemplateValues(req)
-      templateValues.title = 'Link an NDelius record to the defendant'
+      if (session.matchType === 'bulk') {
+        templateValues.title = MATCH_MANUAL_HEADING
+      }
+      else {
+        const formattedName = formatName(templateValues.data.defendantName)
+        templateValues.title = formattedName + ' - ' + MATCH_MANUAL_HEADING
+      }
+      templateValues.heading = MATCH_MANUAL_HEADING
       templateValues.session = {
         ...session
       }
@@ -760,7 +767,14 @@ module.exports = function Index ({ authenticationMiddleware }) {
       const templateValues = await getCaseAndTemplateValues(req)
       const detailResponse = await getDetails(crn)
       const probationStatusDetails = await getProbationStatusDetails(crn)
-      templateValues.title = 'Link an NDelius record to the defendant'
+      if (session.matchType === 'bulk') {
+        templateValues.title = MATCH_MANUAL_HEADING
+      }
+      else {
+        const formattedName = formatName(templateValues.data.defendantName)
+        templateValues.title = formattedName + ' - ' + MATCH_MANUAL_HEADING
+      }
+      templateValues.heading = MATCH_MANUAL_HEADING
       templateValues.details = {
         ...detailResponse,
         probationStatus:
@@ -824,7 +838,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
       } = req
       const templateValues = await getCaseAndTemplateValues(req)
       const detailResponse = await getDetails(crn)
-      templateValues.title = 'Unlink NDelius record from the defendant'
+      const heading = 'Unlink NDelius record from the defendant'
+      templateValues.heading = heading
+      const formattedName = formatName(templateValues.data.defendantName)
+      templateValues.title = formattedName + ' - ' + heading
       templateValues.hideSubnav = true
       templateValues.backText = 'Back'
       templateValues.backLink = `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`

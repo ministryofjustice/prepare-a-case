@@ -22,7 +22,6 @@ const caseSummaryHandler = utils => async (req, res) => {
 
   const { session, path, params: { courtCode } } = req
   const templateValues = await utils.getCaseAndTemplateValues(req)
-  // console.log("🚀 ~ caseSummaryHandler ~ templateValues:", templateValues)
   const formattedName = formatName(templateValues.data.defendantName)
   templateValues.title = formattedName + ' - ' + 'Case summary'
   templateValues.toggleOutcomeSuccessMessage = req.flash('toggle-outcome-success')

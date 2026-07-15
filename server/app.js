@@ -200,7 +200,7 @@ module.exports = function createApp ({ signInService }) {
   })
 
   app.get('/autherror',
-    pdsComponents.getPageComponents({ pdsUrl: config.apis.probationApi }),
+    pdsComponents.getPageComponents({ pdsUrl: config.apis.probationApi.url }),
     (req, res) => {
       res.status(401)
       return res.render('error', {

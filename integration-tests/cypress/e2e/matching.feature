@@ -272,6 +272,7 @@ Feature: Matching defendants to nDelius records
     And I click the "link it to them with a case reference number" link
 
     Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     And I should see the body text "Use a case reference number (CRN) to link to an existing NDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
     And I should see the following summary list 1 with keys
@@ -300,10 +301,12 @@ Feature: Matching defendants to nDelius records
     And I click the "link it to them with a case reference number" link
 
     Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     When I enter "INVALID" into text input with id "crn"
     And I click the "Find record" button
 
     Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     Then I should see the error message "CRN must be in the correct format"
 
     And There should be no a11y violations
@@ -321,10 +324,12 @@ Feature: Matching defendants to nDelius records
     And I click the "link it to them with a case reference number" link
 
     Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     When I enter "B654321" into text input with id "crn"
     And I click the "Find record" button
 
     Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     Then I should see the error message "No records match the CRN"
 
     And There should be no a11y violations
@@ -342,10 +347,12 @@ Feature: Matching defendants to nDelius records
     And I click the "link it to them with a case reference number" link
 
     Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     When I enter "F611234" into text input with id "crn"
     And I click the "Find record" button
 
     Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     Then I should see the error message "You are restricted from viewing this NDelius record"
 
     And There should be no a11y violations
@@ -363,12 +370,14 @@ Feature: Matching defendants to nDelius records
     And I click the "link it to them with a case reference number" link
 
     Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     And I should not see the key details banner
     And I should see link "Cancel" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
     When I enter "C178657" into text input with id "crn"
     And I click the "Find record" button
 
     Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     And I should see the body text "Use a case reference number (CRN) to link to an existing NDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
     And I should see the following summary list 1 with keys
@@ -391,13 +400,16 @@ Feature: Matching defendants to nDelius records
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
-    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    Then I should be on the "Guadalupe Hess - Link an NDelius record to the defendant - Prepare a case for sentence" page
     And I should see the key details banner
+    And I should see the level 2 heading "Link an NDelius record to the defendant"
     And I should see link "Cancel" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
     When I enter "C178657" into text input with id "crn"
     And I click the "Find record" button
 
-    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    Then I should be on the "Guadalupe Hess - Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see the key details banner
+    And I should see the level 2 heading "Link an NDelius record to the defendant"
     And I should see back link "Back" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
     And I should see the body text "Use a case reference number (CRN) to link to an existing NDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
@@ -417,7 +429,7 @@ Feature: Matching defendants to nDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/confirm/C178657" base route
 
-    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    Then I should be on the "Guadalupe Hess - Link an NDelius record to the defendant - Prepare a case for sentence" page
     And I should see the body text "Use a case reference number (CRN) to link to an existing NDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
     And I should see the following summary list 1 with keys
@@ -425,7 +437,7 @@ Feature: Matching defendants to nDelius records
     And I should see the level 3 heading "NDelius record found"
     When I click the "search again" link
 
-    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    Then I should be on the "Guadalupe Hess - Link an NDelius record to the defendant - Prepare a case for sentence" page
     And I should see the level 3 heading "Enter the CRN of the existing record"
 
     And There should be no a11y violations
@@ -461,7 +473,7 @@ Feature: Matching defendants to nDelius records
     And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Link NDelius Record"
     And I click the "Link NDelius Record" MOJ menu button
-    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    Then I should be on the "Kara Ayers - Link an NDelius record to the defendant - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
     And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
 
@@ -475,7 +487,7 @@ Feature: Matching defendants to nDelius records
     And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Link NDelius Record"
     And I click the "Link NDelius Record" MOJ menu button
-    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    Then I should be on the "Kara Ayers - Link an NDelius record to the defendant - Prepare a case for sentence" page
 
     And There should be no a11y violations
 
@@ -489,7 +501,9 @@ Feature: Matching defendants to nDelius records
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
     When I click the "Unlink NDelius Record" MOJ menu button
 
-    Then I should be on the "Unlink NDelius record from the defendant - Prepare a case for sentence" page
+    Then I should be on the "Charlene Hammond - Unlink NDelius record from the defendant - Prepare a case for sentence" page
+    And I should see the key details banner
+    And I should see the level 2 heading "Unlink NDelius record from the defendant"
     Then I should see the following summary list
       | Name             | Charlene Hammond  |
       | Date of birth    | 13 September 1980 |
@@ -515,7 +529,9 @@ Feature: Matching defendants to nDelius records
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
     When I click the "Unlink NDelius Record" MOJ menu button
 
-    Then I should be on the "Unlink NDelius record from the defendant - Prepare a case for sentence" page
+    Then I should be on the "Charlene Hammond - Unlink NDelius record from the defendant - Prepare a case for sentence" page
+    And I should see the key details banner
+    And I should see the level 2 heading "Unlink NDelius record from the defendant"
     When I click the "Back" link
 
     Then I should be on the "Charlene Hammond - Case summary - Prepare a case for sentence" page

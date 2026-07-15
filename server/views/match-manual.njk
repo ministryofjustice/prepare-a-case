@@ -64,7 +64,8 @@
     (' ' + data.name.forename3 if data.name.forename3) +
     ' ' + data.name.surname) if data.name else data.defendantName %}
 
-  <h1 class="govuk-heading-l">{{ title }}</h1>
+  {% set headingLevel = "h1" if session.matchType === 'bulk' else "h2" %}
+  <{{ headingLevel }} class="govuk-heading-l">{{ heading }}</{{ headingLevel }}>
 
   <p class="govuk-body">Use a case reference number (CRN) to link to an existing NDelius record to the defendant.</p>
 
