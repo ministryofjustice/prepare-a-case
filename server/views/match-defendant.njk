@@ -201,6 +201,7 @@
         </div>
 
       </div>
+    </div>
     {% if data.pagination.totalPages > 1 %}
       {% block paginationBlock %}
         {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
@@ -216,7 +217,6 @@
         }) }}
       {% endblock %}
     {% endif %}
-    </div>
 
     {% from "govuk/components/details/macro.njk" import govukDetails %}
     {%- set detailsText = "<p class=\"govuk-body\">If the defendant is unknown to probation, you must <a href=\"/" + params.courtCode + "/case/" + params.caseId + "/hearing/" + params.hearingId + "/match/defendant/" + params.defendantId + "/nomatch\" class=\"govuk-link govuk-link--no-visited-state\">confirm they have no record</a>.</p><p class=\"govuk-body\">If they have an NDelius record, you can <a href=\"/" + params.courtCode + "/case/" + params.caseId + "/hearing/" + params.hearingId + "/match/defendant/" + params.defendantId + "/manual\" class=\"govuk-link govuk-link--no-visited-state\">link it to them with a case reference number</a>.</p>" -%}
