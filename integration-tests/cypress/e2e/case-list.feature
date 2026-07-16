@@ -6,13 +6,19 @@ Feature: Case list
   Scenario: View the case list with data containing 207 cases for the given day
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     When I clear the filters
 
+    And I should see the PDS Header with the "DEV" environment tag
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
     And I should see phase banner link "report a bug" with href "https://mojprod.service-now.com/moj_sp?id=sc_cat_item&sys_id=2659ea2b1b600a1425dc6351f54bcb7b"
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
+    And I should see link "View user guide" with href "https://justiceuk.sharepoint.com/sites/HMPPS_Group_CSA/"
+    And I should see the PDS Footer
+    And I should see a level 1 heading with text "Cases"
+    And I should see the caption "Prepare a case for sentence"
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     And I should see the current day as "Today"
@@ -50,13 +56,13 @@ Feature: Case list
     And I should see pagination link "2" with href "page=2"
     And I should see pagination link "3" with href "page=3"
     And I should see pagination next link with href "page=2"
-    And I should see pagination text "Showing 1 to 20 of 80 results"
+    And I should see pagination text "Showing 1 to 20 of 80 total results"
     And There should be no a11y violations
 
   Scenario: View specific offence data on the case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And Defendant "Guadalupe Hess" should display the following "Offence" data
       | Assault by beating | Attempt theft from the person of another |
     And Defendant "Olsen Alexander" should display the following "Offence" data
@@ -65,7 +71,7 @@ Feature: Case list
   Scenario: View specific listing data on the case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And Defendant "Latoya Kirkland" should display the following "Listing" data
       | 2nd | 4th | 6th | 8th | 10th |
     And Defendant "Dora Clayton" should display the following "Listing" data
@@ -75,7 +81,7 @@ Feature: Case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
 
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     When I clear the filters
 
     # Repeat some tests to ensure UI is consistent on subsequent pages
@@ -111,16 +117,16 @@ Feature: Case list
     And I should see pagination link "3" with href "page=3"
     And I should see pagination link "4" with href "page=4"
     And I should see pagination next link with href "page=3"
-    And I should see pagination text "Showing 21 to 40 of 80 results"
+    And I should see pagination text "Showing 21 to 40 of 80 total results"
     And There should be no a11y violations
 
   Scenario: View the recently added cases on the case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
 
     When I click the "Recently added (21)" link
-    Then I should be on the "Recently added cases" page
+    Then I should be on the "Cases - Recently added - Prepare a case for sentence" page
 
     Then I should see medium heading with text "80 cases added to today's case list."
 
@@ -138,21 +144,21 @@ Feature: Case list
     And I should see pagination page "1" highlighted
     And I should see pagination link "2" with href "added?page=2"
     And I should see pagination next link with href "added?page=2"
-    And I should see pagination text "Showing 1 to 20 of 80 results"
+    And I should see pagination text "Showing 1 to 20 of 80 total results"
     And There should be no a11y violations
 
     # Test state held in session
     When I navigate to the "cases" route
-    Then I should be on the "Recently added cases" page
+    Then I should be on the "Cases - Recently added - Prepare a case for sentence" page
     And I should see medium heading with text "80 cases added to today's case list."
 
   Scenario: View the removed cases on the case list
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
 
     When I click the "Removed cases (1)" link
-    Then I should be on the "Removed cases" page
+    Then I should be on the "Cases - Removed cases - Prepare a case for sentence" page
 
     Then I should see medium heading with text "80 cases removed from today's case list."
 
@@ -168,14 +174,14 @@ Feature: Case list
 
     # Test state held in session
     When I navigate to the "cases" route
-    Then I should be on the "Removed cases" page
+    Then I should be on the "Cases - Removed cases - Prepare a case for sentence" page
     And I should see medium heading with text "80 cases removed from today's case list."
 
   Scenario: View the case list with no data for the given day
     Given I am an authenticated user
 
     When I navigate to the "cases/2020-01-01" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the current day as "Wednesday 1 January"
     And I should not see days navigation bar
 

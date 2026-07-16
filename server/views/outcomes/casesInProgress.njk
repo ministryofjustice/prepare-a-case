@@ -125,7 +125,6 @@
       type: 'success'
     }) }}
   {% endif %}
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6" aria-label="{{ title }}">{{ title }}</h1>
 
 
   {{ components.filterComponent.html | safe}}
@@ -163,7 +162,7 @@
   }) }}
 
   <div class="govuk-tabs__panel">
-    <h1 class="govuk-heading-l">In progress</h1>
+    <h2 class="govuk-heading-l">In progress</h2>
     {% if tableData.rows | length %}
       {% block table %}
         {%- from "govuk/components/table/macro.njk" import govukTable -%}
@@ -178,4 +177,8 @@
     {% endif %}
   </div>
 
+{% endblock %}
+
+{% block beforeFooter %}
+  {% include "../partials/user-guide-link.njk" %}
 {% endblock %}

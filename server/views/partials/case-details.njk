@@ -8,17 +8,17 @@
     {{ subNavItems.push({
         text: 'Case summary',
         href: '/' + params.courtCode + '/hearing/' + data.hearingId + '/defendant/' + data.defendantId + '/summary',
-        active: title === 'Case summary'
+        active: 'Case summary' in title
     }) }}
     {{ subNavItems.push({
         text: 'Probation record',
         href: '/' + params.courtCode + '/hearing/' + data.hearingId + '/defendant/' + data.defendantId + '/record',
-        active: title === 'Probation record'
+        active: 'Probation record' in title
     }) }}
     {{ subNavItems.push({
         text: 'Risk register',
         href: '/' + params.courtCode + '/hearing/' + data.hearingId + '/defendant/' + data.defendantId + '/risk',
-        active: title === 'Risk register'
+        active: 'Risk register' in title
     }) }}
 {% endif %}
 
@@ -88,6 +88,7 @@
     {% endif %}
 {% endblock %}
 
+{% block pageHeading %}{% endblock %}
 
 {% block content %}
 

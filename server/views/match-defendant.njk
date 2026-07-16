@@ -36,13 +36,7 @@
     }) }}
   {% endif %}
 
-  {% set defendantFullName = (data.name.forename1 +
-    (' ' + data.name.forename2 if data.name.forename2) +
-    (' ' + data.name.forename3 if data.name.forename3) +
-    ' ' + data.name.surname) if data.name else data.defendantName %}
-
-  <h1 class="govuk-caption-l govuk-!-margin-top-0">{{ defendantFullName | apostropheInName | properCase | removeTitle }}</h1>
-  <h2 class="govuk-heading-l">Review possible NDelius records</h2>
+  <h2 class="govuk-heading-l">{{ subheading }}</h2>
   <p class="govuk-body">Compare details and confirm the correct record for the defendant.</p>
 
   {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
@@ -61,7 +55,7 @@
             <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">Name</th>
-              <td class="govuk-table__cell">{{ defendantFullName | apostropheInName | properCase | removeTitle }}</td>
+              <td class="govuk-table__cell">{{ data.defendantFullName | apostropheInName | properCase | removeTitle }}</td>
             </tr>
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">Date of birth</th>
@@ -126,7 +120,7 @@
                           <th scope="row" class="govuk-table__header pac-width-40">Name</th>
                           <td class="govuk-table__cell">
                             {% set matchName = item.forename + ' ' + (item.middleNames | join(' ') + ' ' if item.middleNames) + item.surname %}
-                            {{ matchName | apostropheInName | properCase | removeTitle | markMatches(defendantFullName) | safe }}
+                            {{ matchName | apostropheInName | properCase | removeTitle | markMatches(data.defendantFullName) | safe }}
                           </td>
                         </tr>
                         <input type="hidden" name="matchProbability" id="matchProbability" value="">
@@ -141,7 +135,7 @@
                               {% set aliasDisplayLimit = 3 if aliasesLength > 2 else aliasesLength %}
                               {% for i in range(0, aliasDisplayLimit) -%}
                                 {% set aliasName = aliases[i].firstName + ' ' + (aliases[i].middleNames | join(' ') + ' ' if aliases[i].middleNames) + aliases[i].surname -%}
-                                {% set markedAlias = aliasName | apostropheInName | properCase | removeTitle | markMatches(defendantFullName) | safe | emptyIfUnmarked -%}
+                                {% set markedAlias = aliasName | apostropheInName | properCase | removeTitle | markMatches(data.defendantFullName) | safe | emptyIfUnmarked -%}
                                 {{ ", " if (not loop.first and markedAlias)}} {{ markedAlias }}
                               {%- endfor %}
                               {{ [' +', aliasesLength - 3, ' other name', ('s' if aliasesLength > 4), ' matched' ] | join('') if aliasesLength > 3  }}
@@ -207,6 +201,7 @@
         </div>
 
       </div>
+    </div>
     {% if data.pagination.totalPages > 1 %}
       {% block paginationBlock %}
         {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
@@ -222,7 +217,6 @@
         }) }}
       {% endblock %}
     {% endif %}
-    </div>
 
     {% from "govuk/components/details/macro.njk" import govukDetails %}
     {%- set detailsText = "<p class=\"govuk-body\">If the defendant is unknown to probation, you must <a href=\"/" + params.courtCode + "/case/" + params.caseId + "/hearing/" + params.hearingId + "/match/defendant/" + params.defendantId + "/nomatch\" class=\"govuk-link govuk-link--no-visited-state\">confirm they have no record</a>.</p><p class=\"govuk-body\">If they have an NDelius record, you can <a href=\"/" + params.courtCode + "/case/" + params.caseId + "/hearing/" + params.hearingId + "/match/defendant/" + params.defendantId + "/manual\" class=\"govuk-link govuk-link--no-visited-state\">link it to them with a case reference number</a>.</p>" -%}

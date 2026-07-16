@@ -9,10 +9,10 @@
     }) }}
 
 {% endblock %}
-
+{% block pageHeading %}{% endblock %}
 {% block caseContent %}
 {%- from "components/button-group/macro.njk" import buttonGroup -%}
-<h1 class="govuk-heading-l">{{ title }}</h1>
+<h2 class="govuk-heading-l">{{ heading }}</h2>
 
 <p class="govuk-body">Unlink an NDelius record if the defendant is unknown to probation or has been linked to the wrong record.</p>
 <p class="govuk-body">Once unlinked you can link a different nDelius record to the defendant using a case reference number.</p>

@@ -152,6 +152,7 @@ services:
       - NOMIS_DISABLE_OAUTH_STATE=${NOMIS_DISABLE_OAUTH_STATE:-true}
       - REDUCE_STDOUT_NOISE=true
       - USER_PREFERENCE_SERVICE_URL=${USER_PREFERENCE_SERVICE_URL:-http://hmpps-user-preferences:8080}
+      - COMPONENT_API_URL=https://probation-frontend-components-dev.hmpps.service.justice.gov.uk
       - COURT_CASE_SERVICE_URL=${COURT_CASE_SERVICE_URL:-http://court-case-service:8080}
       - NOTIFICATION_USERNAME=test 
       - NOTIFICATION_PASSWORD=test 

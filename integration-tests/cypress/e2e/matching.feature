@@ -8,12 +8,17 @@ Feature: Matching defendants to nDelius records
     And I click the "Accept analytics cookies" button
     Then I should not see the cookie banner
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
+    And I should see the PDS Header with the "DEV" environment tag
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
     And I should see phase banner link "report a bug" with href "https://mojprod.service-now.com/moj_sp?id=sc_cat_item&sys_id=2659ea2b1b600a1425dc6351f54bcb7b"
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
+    And I should see the PDS Footer
+    And I should see a level 1 heading with text "Defendants with possible NDelius records"
+    And I should see the caption "Prepare a case for sentence"
 
     And I should see the heading "Defendants with possible NDelius records"
 
@@ -26,20 +31,20 @@ Feature: Matching defendants to nDelius records
       | Guadalupe Hess          | 3 | Review records |
       | Feli'Cia Villa'Rreali'Ty | 2 | Review records |
 
-    And I should see link "Review records" in position 3 with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
-    And I should see link "Review records" in position 4 with href "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85"
+    And I should see link "Review records" in position 4 with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
+    And I should see link "Review records" in position 5 with href "/B14LO/case/07fe9ad9-ee10-4460-9683-a81d5316334e/hearing/ca37749f-d020-4cb0-b7fa-d08f632f2f31/match/defendant/43314cc3-cec6-4a77-9ecd-34554f581c85"
 
     And There should be no a11y violations
 
   Scenario: View the list of possible NDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     And I should see the heading "Defendants with possible NDelius records"
 
     When I click the "Review records" link
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
 
     And I should see the heading "Guadalupe Paratroop Flowerlupe Hess"
     And I should see the level 2 heading "Review possible NDelius records"
@@ -119,7 +124,7 @@ Feature: Matching defendants to nDelius records
   Scenario: View the list of possible NDelius records highlighted
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     And I should see the heading "Defendants with possible NDelius records"
     And I should see the following table headings
@@ -172,10 +177,10 @@ Feature: Matching defendants to nDelius records
   Scenario: Display an error message if the user does not select a radio button when confirming a match
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     When I click the "Review records" link
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
 
     When I click the "Confirm record" button
     Then I should see the error message "Select an NDelius record"
@@ -185,15 +190,15 @@ Feature: Matching defendants to nDelius records
   Scenario: Confirm defendant record match from bulk match list
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     When I click the "Review records" link
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
 
     And I check the element with id "defendant-4"
     And I click the "Confirm record" button
 
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
     And I should see the match confirmation banner message "You have successfully confirmed a record for Guadalupe Hess"
 
     And There should be no a11y violations
@@ -203,12 +208,12 @@ Feature: Matching defendants to nDelius records
     When I navigate to the "/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
     And I click the "Review records" link
 
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
 
     When I check the element with id "defendant-4"
     And I click the "Confirm record" button
 
-    Then I should be on the "Case summary" page
+    Then I should be on the "Guadalupe Hess - Case summary - Prepare a case for sentence" page
     And I should see the match confirmation banner message "You have successfully confirmed a record for Guadalupe Hess"
 
     And There should be no a11y violations
@@ -216,16 +221,16 @@ Feature: Matching defendants to nDelius records
   Scenario: Confirm no existing defendant record match from bulk list
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     When I click the "Review records" link
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
 
     And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "confirm they have no record" link
 
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
     And I should see the match confirmation banner message "You have successfully confirmed Guadalupe Hess has no NDelius record."
 
     And There should be no a11y violations
@@ -235,38 +240,39 @@ Feature: Matching defendants to nDelius records
     When I navigate to the "/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
     And I click the "Review records" link
 
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
     When I click the "Back" link
-    Then I should be on the "Case summary" page
+    Then I should be on the "Guadalupe Hess - Case summary - Prepare a case for sentence" page
 
     And There should be no a11y violations
 
   Scenario: Click the back button on matching screen when starting the journey at match from bulk list
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     When I click the "Review records" link
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
 
     When I click the "Back" link
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     And There should be no a11y violations
 
   Scenario: Manually match a defendant and submit without entering a CRN
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     When I click the "Review records" link
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
 
     And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     And I should see the body text "Use a case reference number (CRN) to link to an existing NDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
     And I should see the following summary list 1 with keys
@@ -277,7 +283,7 @@ Feature: Matching defendants to nDelius records
     And I should see the text input hint "For example, A123456"
     When I click the "Find record" button
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
     Then I should see the error message "Enter a case reference number"
 
     And There should be no a11y violations
@@ -285,20 +291,22 @@ Feature: Matching defendants to nDelius records
   Scenario: Manually match a defendant and submit with an invalid CRN
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     When I click the "Review records" link
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
 
     And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     When I enter "INVALID" into text input with id "crn"
     And I click the "Find record" button
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     Then I should see the error message "CRN must be in the correct format"
 
     And There should be no a11y violations
@@ -306,20 +314,22 @@ Feature: Matching defendants to nDelius records
   Scenario: Manually match a defendant and submit with a valid but incorrect CRN
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     When I click the "Review records" link
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
 
     And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     When I enter "B654321" into text input with id "crn"
     And I click the "Find record" button
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     Then I should see the error message "No records match the CRN"
 
     And There should be no a11y violations
@@ -327,20 +337,22 @@ Feature: Matching defendants to nDelius records
   Scenario: Manually match a defendant and submit with a valid CRN with Limited Access Markers
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     When I click the "Review records" link
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
 
     And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     When I enter "F611234" into text input with id "crn"
     And I click the "Find record" button
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     Then I should see the error message "You are restricted from viewing this NDelius record"
 
     And There should be no a11y violations
@@ -348,22 +360,24 @@ Feature: Matching defendants to nDelius records
   Scenario: Manually match a defendant from the bulk list
     Given I am an authenticated user
     When I navigate to the "/B14LO/match/bulk" base route for today
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
 
     When I click the "Review records" link
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Guadalupe Paratroop Flowerlupe Hess - Review possible NDelius records - Prepare a case for sentence" page 
 
     And I check the element with id "defendant-1"
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     And I should not see the key details banner
     And I should see link "Cancel" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
     When I enter "C178657" into text input with id "crn"
     And I click the "Find record" button
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see a level 1 heading with text "Link an NDelius record to the defendant"
     And I should see the body text "Use a case reference number (CRN) to link to an existing NDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
     And I should see the following summary list 1 with keys
@@ -373,7 +387,7 @@ Feature: Matching defendants to nDelius records
       | Name | Date of birth | CRN | PNC | Probation status |
     When I click the "Link record to defendant" button
 
-    Then I should be on the "Defendants with possible NDelius records" page
+    Then I should be on the "Defendants with possible NDelius records - Prepare a case for sentence" page
     And I should see the match confirmation banner message "You have successfully linked an NDelius record to Guadalupe Hess."
 
     And There should be no a11y violations
@@ -386,13 +400,16 @@ Feature: Matching defendants to nDelius records
     And I click the "Can't see the correct record?" summary link
     And I click the "link it to them with a case reference number" link
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Guadalupe Hess - Link an NDelius record to the defendant - Prepare a case for sentence" page
     And I should see the key details banner
+    And I should see the level 2 heading "Link an NDelius record to the defendant"
     And I should see link "Cancel" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
     When I enter "C178657" into text input with id "crn"
     And I click the "Find record" button
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Guadalupe Hess - Link an NDelius record to the defendant - Prepare a case for sentence" page
+    And I should see the key details banner
+    And I should see the level 2 heading "Link an NDelius record to the defendant"
     And I should see back link "Back" with href "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730"
     And I should see the body text "Use a case reference number (CRN) to link to an existing NDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
@@ -403,7 +420,7 @@ Feature: Matching defendants to nDelius records
       | Name | Date of birth | CRN | PNC | Probation status |
     When I click the "Link record to defendant" button
 
-    Then I should be on the "Case summary" page
+    Then I should be on the "Guadalupe Hess - Case summary - Prepare a case for sentence" page
     And I should see the match confirmation banner message "You have successfully linked an NDelius record to Guadalupe Hess."
 
     And There should be no a11y violations
@@ -412,7 +429,7 @@ Feature: Matching defendants to nDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/case/d9628cdd-c3a1-4113-80ba-ef3f8d18df9d/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/match/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/confirm/C178657" base route
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Guadalupe Hess - Link an NDelius record to the defendant - Prepare a case for sentence" page
     And I should see the body text "Use a case reference number (CRN) to link to an existing NDelius record to the defendant."
     And I should see the level 2 heading "Defendant details"
     And I should see the following summary list 1 with keys
@@ -420,7 +437,7 @@ Feature: Matching defendants to nDelius records
     And I should see the level 3 heading "NDelius record found"
     When I click the "search again" link
 
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Guadalupe Hess - Link an NDelius record to the defendant - Prepare a case for sentence" page
     And I should see the level 3 heading "Enter the CRN of the existing record"
 
     And There should be no a11y violations
@@ -432,7 +449,7 @@ Feature: Matching defendants to nDelius records
     And I click the "Can't see the correct record?" summary link
     And I click the "confirm they have no record" link
 
-    Then I should be on the "Case summary" page
+    Then I should be on the "Guadalupe Hess - Case summary - Prepare a case for sentence" page
     And I should see the match confirmation banner message "You have successfully confirmed Guadalupe Hess has no NDelius record."
 
     And There should be no a11y violations
@@ -444,7 +461,7 @@ Feature: Matching defendants to nDelius records
     And I check the element with id "defendant-1"
     And I click the "Confirm record" button
 
-    Then I should be on the "Review possible NDelius records" page
+    Then I should be on the "Felicia Blob Popop Villareal - Review possible NDelius records - Prepare a case for sentence" page 
 
     And I should see the match confirmation banner message "Something went wrong - try again."
 
@@ -453,10 +470,10 @@ Feature: Matching defendants to nDelius records
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Link NDelius Record"
     And I click the "Link NDelius Record" MOJ menu button
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Kara Ayers - Link an NDelius record to the defendant - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
     And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
 
@@ -467,10 +484,10 @@ Feature: Matching defendants to nDelius records
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Link NDelius Record"
     And I click the "Link NDelius Record" MOJ menu button
-    Then I should be on the "Link an NDelius record to the defendant" page
+    Then I should be on the "Kara Ayers - Link an NDelius record to the defendant - Prepare a case for sentence" page
 
     And There should be no a11y violations
 
@@ -478,13 +495,15 @@ Feature: Matching defendants to nDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/hearing/3f80d674-d964-4781-927a-99c78bc340e2/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary" base route
 
-    Then I should be on the "Case summary" page
+    Then I should be on the "Charlene Hammond - Case summary - Prepare a case for sentence" page
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
     When I click the "Unlink NDelius Record" MOJ menu button
 
-    Then I should be on the "Unlink NDelius record from the defendant" page
+    Then I should be on the "Charlene Hammond - Unlink NDelius record from the defendant - Prepare a case for sentence" page
+    And I should see the key details banner
+    And I should see the level 2 heading "Unlink NDelius record from the defendant"
     Then I should see the following summary list
       | Name             | Charlene Hammond  |
       | Date of birth    | 13 September 1980 |
@@ -495,7 +514,7 @@ Feature: Matching defendants to nDelius records
     Then I should have a button group with a Cancel link with href "/B14LO/hearing/3f80d674-d964-4781-927a-99c78bc340e2/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary"
     When I click the "Unlink record from defendant" button
 
-    Then I should be on the "Case summary" page
+    Then I should be on the "Charlene Hammond - Case summary - Prepare a case for sentence" page
     And I should see the match confirmation banner message "You have successfully unlinked an NDelius record from Charlene Hammond."
 
     And There should be no a11y violations
@@ -504,15 +523,17 @@ Feature: Matching defendants to nDelius records
     Given I am an authenticated user
     When I navigate to the "/B14LO/hearing/3f80d674-d964-4781-927a-99c78bc340e2/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/summary" base route
 
-    Then I should be on the "Case summary" page
+    Then I should be on the "Charlene Hammond - Case summary - Prepare a case for sentence" page
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
     When I click the "Unlink NDelius Record" MOJ menu button
 
-    Then I should be on the "Unlink NDelius record from the defendant" page
+    Then I should be on the "Charlene Hammond - Unlink NDelius record from the defendant - Prepare a case for sentence" page
+    And I should see the key details banner
+    And I should see the level 2 heading "Unlink NDelius record from the defendant"
     When I click the "Back" link
 
-    Then I should be on the "Case summary" page
+    Then I should be on the "Charlene Hammond - Case summary - Prepare a case for sentence" page
 
     And There should be no a11y violations

@@ -10,7 +10,7 @@ Feature: Case progress
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see the caption text "URN: 01WW0298121"
 
     And I should see a "m" sized level 3 heading with text "Case progress"
@@ -28,7 +28,7 @@ Feature: Case progress
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see the caption text "URN: 01WW0298121"
 
     And I should see the following summary list
@@ -80,7 +80,7 @@ Feature: Case progress
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
@@ -100,7 +100,7 @@ Feature: Case progress
     And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary#case-progress-hearing-2aa6f5e0-f842-4939-bc6a-01346abc09e3"
 
     When I click the "Delete note" button
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see govuk notification banner with header "Success" and message "You successfully deleted a note"
 
     When I click delete hearing note with id "1234560" on hearing "1f93aa0a-7e46-4885-a1cb-f25a4be33a00"
@@ -110,7 +110,7 @@ Feature: Case progress
     And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary#case-progress-hearing-1f93aa0a-7e46-4885-a1cb-f25a4be33a00"
 
     When I click the "Cancel" link
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should not see govuk notification banner
 
   Scenario: Edit hearing note on the case summary page
@@ -119,7 +119,7 @@ Feature: Case progress
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
@@ -141,7 +141,7 @@ Feature: Case progress
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
@@ -166,7 +166,7 @@ Feature: Case progress
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/7e0f9cb9-b492-4657-9028-a86de1301e25/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "English Madden - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 
@@ -179,7 +179,7 @@ Feature: Case progress
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/7e0f9cb9-b492-4657-9028-a86de1301e25/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "English Madden - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "URN: 01WW0298121"
 

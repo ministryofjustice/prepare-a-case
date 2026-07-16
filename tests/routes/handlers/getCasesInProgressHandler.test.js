@@ -14,7 +14,7 @@ jest.mock('.././../../server/utils/getOutcomeTypesListFilters', () => {
 jest.mock('.././../../server/utils/nunjucksComponents.js', () => {
   return {
     getFilterComponent: jest.fn(),
-    populateTemplateValuesWithComponent: jest.fn()
+    populateTemplateValuesWithComponent: (input) => input
   }
 })
 
@@ -56,5 +56,27 @@ describe('getCasesInProgressHandler', () => {
     expect(caseService.getOutcomesList).toHaveBeenCalled()
     expect(caseService.getOutcomesList).toHaveBeenCalledWith(courtCode, query, undefined, undefined)
     expect(mockResponse.render).toHaveBeenCalled()
+  })
+
+  it('should render the correct heading and title', async () => {
+    // Given
+    caseService.getOutcomesList.mockReturnValueOnce({
+      totalElements: 4,
+      countsByState: { toResultCount: 2 },
+      courtRoomFilters: [],
+      cases: [{}, {}, {}, {}]
+    })
+
+    // When
+    await subject(mockRequest, mockResponse)
+
+    // Then
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/casesInProgress',
+      expect.objectContaining({
+        heading: 'Hearing outcomes',
+        title: 'Hearing outcomes - In progress'
+      })
+    )
   })
 })

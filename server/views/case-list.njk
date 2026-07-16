@@ -62,7 +62,7 @@
         courtCode: params.courtCode
     }) }}
 
-    <h1 class="qa-case-list-day govuk-heading-xl govuk-!-margin-bottom-6" aria-label="Case list for {{ currentDate.format(dateFormat) }}">
+    <h2 class="qa-case-list-day govuk-heading-l govuk-!-margin-bottom-6" aria-label="Case list for {{ currentDate.format(dateFormat) }}">
         {% if params.date === yesterday and not isSunday %}
             {{ currentDate.format(dateFormat) }} <span class="pac-secondary-text">(Yesterday)</span>
         {% elseif params.date === today %}
@@ -72,7 +72,7 @@
         {% else %}
             {{ currentDate.format(dateFormat) }}
         {% endif %}
-    </h1>
+    </h2>
 
     {% if withinDateRange %}
         {%- from "components/days-navigation/macro.njk" import pacDaysNavigation -%}
@@ -148,4 +148,8 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block beforeFooter %}
+    {% include "./partials/user-guide-link.njk" %}
 {% endblock %}

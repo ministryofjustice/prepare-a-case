@@ -29,18 +29,19 @@ const getPagelessQueryParams = params => {
   return remainder
 }
 
-const getPageTitle = (params) => {
-  switch (params.subsection) {
-    case 'added':
-      return 'Recently added cases'
-    case 'removed':
-      return 'Removed cases'
-    case 'outcome-not-required':
-      return 'Hearing outcome not required'
-    default:
-      return 'Case list'
-  }
+const subsectionTitles = {
+  added: 'Recently added',
+  removed: 'Removed cases',
+  'outcome-not-required': 'Hearing outcome not required',
+  heard: 'Hearing outcome added'
 }
+
+const getPageTitle = (params) => {
+  const subtitle = subsectionTitles[params.subsection] ?? (params.hearingOutcomesEnabled ? 'Hearing outcome still to be added' : 'Case list')
+  return `${getPageHeading()} - ${subtitle}`
+}
+
+const getPageHeading = () => 'Cases'
 
 const TAB_CONFIGS = [
   {
@@ -230,6 +231,7 @@ const getPagedCaseListRouteHandler = (caseService, userPreferenceService) => asy
     data: response.cases,
     tableData: constructTableData(pageParams, response.cases),
     hearingOutcomesEnabled,
+    heading: getPageHeading(),
     title: getPageTitle(pageParams),
     listTabs: getPageTabs(pageParams),
     pagination: getPaginationObject(pageParams),

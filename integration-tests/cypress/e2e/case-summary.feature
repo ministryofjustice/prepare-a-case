@@ -6,17 +6,20 @@ Feature: Case summary
   Scenario: View the case summary with no contact detail for a Libra case by clicking the link on the case list page
     Given I am an authenticated user
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     When I clear the filters
 
+    And I should see the PDS Header with the "DEV" environment tag
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
     And I should see phase banner link "report a bug" with href "https://mojprod.service-now.com/moj_sp?id=sc_cat_item&sys_id=2659ea2b1b600a1425dc6351f54bcb7b"
+    And I should see the PDS Footer
 
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Kara Ayers" link
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
     And I should see a level 1 heading with text "Kara Ayers"
     And I should see back link "Back" with href "/B14LO/cases?clearFilters=true"
     And I should see the caption text "Source: Libra"
@@ -37,7 +40,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/a395526d-b805-4c52-8f61-3c41bca15537/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Mann Carroll - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the caption text "Source: Common Platform"
     And I should see the caption text "URN: 01WW0298121"
@@ -70,7 +73,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/fdcfd5fa-95f4-45eb-a6d4-aa2fa2e4676e/defendant/2e0afeb7-95d2-42f4-80e6-ccf96b282730/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Guadalupe Hess - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see the body text "Probation status: Possible NDelius record"
     And I should see a level 1 heading with text "Guadalupe Hess"
@@ -98,7 +101,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Kara Ayers - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     Then I should see the body text "Probation status: No record"
     And I should not see the case level navigation
@@ -121,7 +124,7 @@ Feature: Case summary
       | Address       | 22 Waldorf Court Cardiff AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Link NDelius Record"
     And There should be no a11y violations
 
@@ -131,7 +134,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/37a5b7f9-e1e5-453b-a3cf-7246971ec71c/defendant/81b6e516-4e9d-4c92-a38b-68e159cfd6c4/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Webb Mitchell - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see sub navigation with the following links
       | Case summary | Probation record | Risk register |
@@ -158,7 +161,7 @@ Feature: Case summary
       | Address       | 49 Rochester Avenue Bangor AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
@@ -169,7 +172,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/a395526d-b805-4c52-8f61-3c41bca15537/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Mann Carroll - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     Then I should see the body text "CRN: V654123"
     Then I should see the body text "PNC: A/1234560BA"
@@ -205,7 +208,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Lenore Marquez - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see sub navigation with the following links
       | Case summary | Probation record |
@@ -233,7 +236,7 @@ Feature: Case summary
       | Address       | 38 Clarendon Road Glasgow AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
@@ -244,7 +247,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/8d187ea4-d24d-4806-a5c7-1626919c44bb/defendant/9f60bdb8-0978-404c-bd89-addc3f5388a7/summary" base route
-    Then I should be on the "Case summary" page
+    Then I should be on the "Olsen Alexander - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases/$TODAY"
     And I should see sub navigation with the following links
       | Case summary | Probation record |
@@ -269,7 +272,7 @@ Feature: Case summary
       | Address       | 99 Ralph Avenue London AD21 5DR |
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Unlink NDelius Record"
 
     And There should be no a11y violations
@@ -280,11 +283,11 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     When I clear the filters
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Webb Mitchell" link
-    Then I should be on the "Case summary" page
+    Then I should be on the "Webb Mitchell - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases?clearFilters=true"
     When I click the sub navigation with "Probation record" text
     Then I should see a level 2 heading with text "Pre-sentence report requested (2)"
@@ -312,7 +315,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     When I clear the filters
     When I click the "Lenore Marquez" link
     And I click the sub navigation with "Probation record" text
@@ -432,7 +435,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     When I clear the filters
     When I click the "English Madden" link
     And I click the sub navigation with "Probation record" text
@@ -451,11 +454,11 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     When I clear the filters
     And I should see the caption with the court name "Sheffield Magistrates' Court"
     When I click the "Latoya Kirkland" link
-    Then I should be on the "Case summary" page
+    Then I should be on the "Latoya Kirkland - Case summary - Prepare a case for sentence" page
     And I should see back link "Back" with href "/B14LO/cases?clearFilters=true"
     And I should see a level 1 heading with text "Latoya Kirkland"
     And I should see a "l" sized level 2 heading with text "Case summary"
@@ -473,15 +476,15 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
-    Then I should be on the "Probation record" page
+    Then I should be on the "Lenore Marquez - Probation record - Prepare a case for sentence" page
     And I should see a level 1 heading with text "Lenore Marquez"
     And I should see a "l" sized level 2 heading with text "Probation record"
     And I should see the following "m" sized level 2 headings
       | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
 
     When I click the "View record" link with id "activeOrder0-view"
-    Then I should be on the "ORA Community Order (18 Months)" page
-    And I should see the heading "ORA Community Order (18 Months)"
+    Then I should be on the "Lenore Marquez - ORA Community Order (18 Months) - Prepare a case for sentence" page
+    And I should see the level 2 heading "ORA Community Order (18 Months)"
     And I should see the level 2 heading "Attendance"
 
     And I should see the following level 3 headings
@@ -519,7 +522,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876" base route
-    Then I should be on the "ORA Adult Custody (inc PSS) (12 Months)" page
+    Then I should be on the "Lenore Marquez - ORA Adult Custody (inc PSS) (12 Months) - Prepare a case for sentence" page
 
     And I should see the text "Post-release status" within element with class "qa-start-title"
     And I should see the text "Licence started" within element with class "qa-end-title"
@@ -543,7 +546,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/9b9a6ab6-ef6d-485a-a8b4-b79b67e5b1f8/defendant/82bfc40d-389a-46ba-81e1-0829a5fbf6c8/record/345464567" base route
-    Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
+    Then I should be on the "English Madden - CJA - Std Determinate Custody (18 Months) - Prepare a case for sentence" page
 
     And I should see the text "Status" within element with class "qa-elapsed-title"
     And I should see the text "In custody" within element with class "qa-elapsed-time"
@@ -562,11 +565,11 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876" base route
-    Then I should be on the "ORA Adult Custody (inc PSS) (12 Months)" page
+    Then I should be on the "Lenore Marquez - ORA Adult Custody (inc PSS) (12 Months) - Prepare a case for sentence" page
 
     And I should see link "View licence conditions details" with href "/record/1309234876/licence-details"
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/1309234876/licence-details" base route
-    Then I should be on the "Licence conditions details" page
+    Then I should be on the "Lenore Marquez - Licence conditions details - Prepare a case for sentence" page
     And I should see the text "Alcohol" within element with class "govuk-heading-m"
     And I should see the following summary list 3 with keys
       | Condition | Start date | Notes |
@@ -581,7 +584,8 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record/2360414697" base route
-    Then I should be on the "ORA Adult Custody (inc PSS) (18 Months)" page
+    Then I should be on the "Lenore Marquez - ORA Adult Custody (inc PSS) (18 Months) - Prepare a case for sentence" page
+    
 
     And I should see the text "Post-release status" within element with class "qa-start-title"
     And I should see the text "PSS started" within element with class "qa-end-title"
@@ -605,7 +609,7 @@ Feature: Case summary
     Then I should not see the cookie banner
 
     When I navigate to the "/B14LO/hearing/8d187ea4-d24d-4806-a5c7-1626919c44bb/defendant/9f60bdb8-0978-404c-bd89-addc3f5388a7/record" base route
-    Then I should be on the "Probation record" page
+    Then I should be on the "Olsen Alexander - Probation record - Prepare a case for sentence" page
     And I should see a level 1 heading with text "Olsen Alexander"
     And I should see a "l" sized level 2 heading with text "Probation record"
     And I should see the following "m" sized level 2 headings
@@ -618,8 +622,8 @@ Feature: Case summary
     And I should see link "View record" with href "record/1361422142"
     And I should see the breach badge
     When I click the "View record" link with id "activeOrder0-view"
-    Then I should be on the "ORA Community Order (18 Months)" page
-    And I should see the heading "ORA Community Order (18 Months)"
+    Then I should be on the "Olsen Alexander - ORA Community Order (18 Months) - Prepare a case for sentence" page
+    And I should see the level 2 heading "ORA Community Order (18 Months)"
 
     And I should see the body text "Abstracting electricity - 04300"
     And I should see the following level 3 headings
@@ -643,9 +647,9 @@ Feature: Case summary
       | Community Order/SSO Breach | Breach Summons Issued           | 26 Dec 2014 |
       | Community Order/SSO Breach | Completed - Amended & Continued | 26 Nov 2013 |
 
-    And I should see link "Community Order/SSO Breach" in position 3 with href "1361422142/breach/12345"
-    And I should see link "Community Order/SSO Breach" in position 4 with href "1361422142/breach/54321"
-    And I should see link "Community Order/SSO Breach" in position 5 with href "1361422142/breach/98765"
+    And I should see link "Community Order/SSO Breach" in position 4 with href "1361422142/breach/12345"
+    And I should see link "Community Order/SSO Breach" in position 5 with href "1361422142/breach/54321"
+    And I should see link "Community Order/SSO Breach" in position 6 with href "1361422142/breach/98765"
 
     And I should see the level 2 heading "Attendance"
 
@@ -663,7 +667,7 @@ Feature: Case summary
     And I should see the text "30" within element with class "qa-upw-worked"
 
     When I click breach link 1
-    Then I should be on the "Breach details" page
+    Then I should be on the "Olsen Alexander - Breach details - Prepare a case for sentence" page
     And I should see the breach banner with text "This breach is not ready to prosecute"
     And I should see the level 2 heading "Community Order/SSO Breach"
     And I should see the level 3 heading "Notes"
@@ -683,7 +687,7 @@ Feature: Case summary
 
     When I click the "Back" link
     And I click breach link 2
-    Then I should be on the "Breach details" page
+    Then I should be on the "Olsen Alexander - Breach details - Prepare a case for sentence" page
     And I should see the breach banner with text "This breach is ready to prosecute"
     And I should see the level 3 heading "Notes"
     And I should see the body text "No notes have been added."
@@ -699,7 +703,7 @@ Feature: Case summary
 
     When I click the "Back" link
     And I click breach link 3
-    Then I should be on the "Breach details" page
+    Then I should be on the "Olsen Alexander - Breach details - Prepare a case for sentence" page
     And I should not see the breach banner message
 
     And There should be no a11y violations
@@ -708,15 +712,14 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
-    Then I should be on the "Probation record" page
+    Then I should be on the "Lenore Marquez - Probation record - Prepare a case for sentence" page
     And I should see a level 1 heading with text "Lenore Marquez"
     And I should see a "l" sized level 2 heading with text "Probation record"
     And I should see the following "m" sized level 2 headings
       | Pre-sentence report requested | Current orders | Previous orders | Last OASys assessment |
 
     When I click the "View record" link with id "previousOrder0-view"
-    Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
-    And I should see the heading "CJA - Std Determinate Custody"
+    Then I should be on the "Lenore Marquez - CJA - Std Determinate Custody (18 Months) - Prepare a case for sentence" page
 
     And I should see the body text "Burglary (dwelling) with intent to commit, or the commission of an offence triable only on indictment - 02801"
 
@@ -752,12 +755,12 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
-    Then I should be on the "Probation record" page
+    Then I should be on the "Lenore Marquez - Probation record - Prepare a case for sentence" page
     And I should see a level 1 heading with text "Lenore Marquez"
 
     When I click the "View record" link with id "activeOrder0-view"
-    Then I should be on the "ORA Community Order (18 Months)" page
-    And I should see the heading "ORA Community Order (18 Months)"
+    Then I should be on the "Lenore Marquez - ORA Community Order (18 Months) - Prepare a case for sentence" page
+    And I should see the level 2 heading "ORA Community Order (18 Months)"
     And I should see the level 2 heading "Requirements"
     And I should see the following table headings
       | Requirement | Length |
@@ -766,12 +769,12 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "/B14LO/hearing/4e10a261-2d0f-4b07-a684-e2b03ee54a4f/defendant/cf6ce65e-48f9-4b62-9d39-67fbfe68e9fc/record" base route
-    Then I should be on the "Probation record" page
+    Then I should be on the "Lenore Marquez - Probation record - Prepare a case for sentence" page
     And I should see a level 1 heading with text "Lenore Marquez"
 
     When I click the "View record" link with id "previousOrder0-view"
-    Then I should be on the "CJA - Std Determinate Custody (18 Months)" page
-    And I should see the heading "CJA - Std Determinate Custody"
+    Then I should be on the "Lenore Marquez - CJA - Std Determinate Custody (18 Months) - Prepare a case for sentence" page
+    And I should see the level 2 heading "CJA - Std Determinate Custody"
     And I should see the level 2 heading "Requirements"
     And I should see the following table headings
       | Requirement | Length | Ended | Reason |
@@ -780,7 +783,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
 
     When I click the "Webb Mitchell" link
     And I click the sub navigation with "Risk register" text
@@ -802,7 +805,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
 
     When I click the "Olsen Alexander" link
     And I click the sub navigation with "Risk register" text
@@ -820,7 +823,7 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "cases" route
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
 
     When I click the "English Madden" link
     And I click the sub navigation with "Risk register" text
@@ -835,27 +838,27 @@ Feature: Case summary
     Given I am an authenticated user
 
     When I navigate to the "outcomes/in-progress" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
 
     When I click the "Rock Stone" link
     And I click the "Open as read only" button
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should see an MOJ menu button with the label "Move to resulted"
     And I click the "Move to resulted" MOJ menu button
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
     And I should see govuk notification banner with header "Success" and message "You have moved Rock Stone's case to resulted cases."
 
   Scenario: Move a case to resulted is disabled when not in progress
     Given I am an authenticated user
 
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
 
     When I click the "Some User" link
     And I click the "assign-outcome-modal" modal "View without assigning" link as button
 
     And I should see a button with the label "Actions"
-    And I click the "Actions" button
+    And I click the "Actions" button menu
     And I should not see an MOJ button with the label "Move to resulted"

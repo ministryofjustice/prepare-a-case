@@ -19,7 +19,7 @@ jest.mock('../../../server/services/case-service', () => ({
 jest.mock('.././../../server/utils/nunjucksComponents', () => {
   return {
     getFilterComponent: jest.fn(),
-    populateTemplateValuesWithComponent: jest.fn()
+    populateTemplateValuesWithComponent: (input) => input
   }
 })
 
@@ -74,5 +74,27 @@ describe('getCasesToResultHandler', () => {
     expect(caseService.getOutcomesList).toHaveBeenCalled()
     expect(caseService.getOutcomesList).toHaveBeenCalledWith(courtCode, query, undefined, undefined)
     expect(mockResponse.render).toHaveBeenCalled()
+  })
+
+  it('should render the correct heading and title', async () => {
+    // Given
+    caseService.getOutcomesList.mockReturnValueOnce({
+      totalElements: 4,
+      countsByState: { inProgressCount: 2 },
+      courtRoomFilters: [],
+      cases: [{}, {}, {}, {}]
+    })
+
+    // When
+    await subject(mockRequest, mockResponse)
+
+    // Then
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/casesToResult',
+      expect.objectContaining({
+        heading: 'Hearing outcomes',
+        title: 'Hearing outcomes - Cases to result'
+      })
+    )
   })
 })

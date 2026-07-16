@@ -31,7 +31,8 @@ describe('getResultedCasesHandler', () => {
   const courtCode = 'B007'
 
   const params = {
-    title: 'Resulted cases',
+    title: 'Hearing outcomes - Resulted cases',
+    heading: 'Hearing outcomes',
     sorts: { sorts: 'hearingDate', order: 'ASC' },
     courtCode,
     state: 'RESULTED',
@@ -108,11 +109,34 @@ describe('getResultedCasesHandler', () => {
       data: apiResponse.cases,
       totalElements: 2,
       totalPages: undefined,
+      heading: params.heading,
       pagination: {
         pageItems: [],
         previousLink: null,
         nextLink: null
       }
     })
+  })
+
+  it('should render the correct heading and title', async () => {
+    // Given
+    caseServiceMock.getOutcomesList.mockResolvedValueOnce({
+      totalElements: 2,
+      cases: [{}, {}],
+      countsByState: { toResultCount: 2, inProgressCount: 5 },
+      courtRoomFilters: ['01']
+    })
+
+    // When
+    await subject(mockRequest, mockResponse)
+
+    // Then
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/resultedCases',
+      expect.objectContaining({
+        heading: 'Hearing outcomes',
+        title: 'Hearing outcomes - Resulted cases'
+      })
+    )
   })
 })

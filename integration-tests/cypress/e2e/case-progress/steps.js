@@ -132,7 +132,7 @@ Then('I should see the following hearings with the hearing type label, hearing d
 })
 
 Then('I should see a bottom border on all notes within a hearing', () => {
-  cy.get('.app-summary-card [data-test="note-td"]').should('have.css', 'border-bottom', '1px solid rgb(177, 180, 182)')
+  cy.get('.app-summary-card [data-test="note-td"]').should('have.css', 'border-bottom', '1px solid rgb(206, 206, 206)')
 })
 
 Then('I should {string} line breaks on hearing note {string}', ($expected, $noteId) => {

@@ -129,7 +129,6 @@
     }) }}
   {% endif %}
 
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6" aria-label="{{ title }}">{{ title }}</h1>
 
 
   {{ components.filterComponent.html | safe}}
@@ -168,6 +167,10 @@
 
     <div style="float: right">
       {{ mojButtonMenu({
+        button: {
+          text: "Actions",
+          classes: "govuk-button--secondary"
+        },
         items: [
           {
             text: "Assign to me",
@@ -178,7 +181,7 @@
         ]
       }) }}
     </div>
-     <h1 class="govuk-heading-l">Cases to result</h1>
+     <h2 class="govuk-heading-l">Cases to result</h2>
 
     {% if tableData.rows | length %}
       {% block table %}
@@ -194,4 +197,8 @@
     {% endif %}
   </form>
 
+{% endblock %}
+
+{% block beforeFooter %}
+  {% include "../partials/user-guide-link.njk" %}
 {% endblock %}

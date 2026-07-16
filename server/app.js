@@ -21,6 +21,7 @@ const nunjucksSetup = require('./utils/nunjucksSetup')
 const flash = require('./middleware/flash')
 const nodeVersion = process.version
 const os = require('os')
+const pdsComponents = require('@ministryofjustice/hmpps-probation-frontend-components').default
 const hostName = os.hostname()
 
 const { authenticationMiddleware } = auth
@@ -70,39 +71,38 @@ module.exports = function createApp ({ signInService }) {
 
   app.use((req, res, next) => {
     res.locals.nonce = config.nonce()
-    helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: [
-            '\'self\''
-          ],
-          objectSrc: ['\'none\''],
-          frameSrc: ['https://www.youtube.com', '\'self\''],
-          styleSrc: ['\'self\'', '\'unsafe-inline\''],
-          scriptSrc: [
-            '\'self\'',
-            '\'unsafe-eval\'',
-            'js.monitor.azure.com',
-            '\'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA=\'',
-            '\'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ=\'',
-            '\'sha256-Ex+PXm59nVbu/S+FH/u8FLio5zO5YfFPo0/jH0uw19k=\'',
-            '\'sha256-QIG/FBh5vORMkpviiAyUOvMgp6XvwQIEagSXO2FUmyo=\'',
-            `'nonce-${res.locals.nonce}'`
-          ],
-          imgSrc: [
-            '\'self\''
-          ],
-          upgradeInsecureRequests: [],
-          connectSrc: [
-            '\'self\'',
-            'js.monitor.azure.com',
-            'dc.services.visualstudio.com',
-            'https://northeurope-0.in.applicationinsights.azure.com'
-          ]
-        }
-      }
-    })(req, res, next)
+    next()
   })
+
+  app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        objectSrc: ["'none'"],
+        frameSrc: ['https://www.youtube.com', "'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: [
+          "'self'",
+          "'unsafe-eval'",
+          'js.monitor.azure.com',
+          "'sha256-6cE0E4X9g7PbRlMR/+GoyLM4W7mjVxZL4H6E8FgY8OA='",
+          "'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ='",
+          "'sha256-Ex+PXm59nVbu/S+FH/u8FLio5zO5YfFPo0/jH0uw19k='",
+          "'sha256-QIG/FBh5vORMkpviiAyUOvMgp6XvwQIEagSXO2FUmyo='",
+          (req, res) => `'nonce-${res.locals.nonce}'`
+        ],
+        imgSrc: ["'self'"],
+        upgradeInsecureRequests: [],
+        connectSrc: [
+          "'self'",
+          'js.monitor.azure.com',
+          'dc.services.visualstudio.com',
+          'https://northeurope-0.in.applicationinsights.azure.com',
+          config.apis.probationApi.url
+        ]
+      }
+    }
+  }))
 
   app.use(
     session({
@@ -199,13 +199,15 @@ module.exports = function createApp ({ signInService }) {
     next()
   })
 
-  app.get('/autherror', (req, res) => {
-    res.status(401)
-    return res.render('error', {
-      status: 401,
-      authURL: authLogoutUrl
+  app.get('/autherror',
+    pdsComponents.getPageComponents({ pdsUrl: config.apis.probationApi.url }),
+    (req, res) => {
+      res.status(401)
+      return res.render('error', {
+        status: 401,
+        authURL: authLogoutUrl
+      })
     })
-  })
 
   app.get('/login', passport.authenticate('oauth2'))
 
@@ -213,6 +215,8 @@ module.exports = function createApp ({ signInService }) {
     successReturnToOrRedirect: req.session.returnTo || '/',
     failureRedirect: '/autherror'
   })(req, res, next))
+
+  app.get('/sign-out', (req, res) => res.redirect('/logout'))
 
   app.use('/logout', catchErrors((req, res, next) => {
     if (req.user) {
@@ -227,6 +231,18 @@ module.exports = function createApp ({ signInService }) {
   }))
 
   app.use(authorisationMiddleware)
+
+  const envMap = {
+    prod: 'PRODUCTION',
+    preprod: 'PRE-PRODUCTION',
+    dev: 'DEV'
+  }
+  const environmentName = envMap[config.settings.pacEnvironment] || 'DEV'
+  app.use(pdsComponents.getPageComponents({
+    pdsUrl: config.apis.probationApi.url,
+    environmentName,
+    logger: log
+  }))
 
   app.use(
     '/',

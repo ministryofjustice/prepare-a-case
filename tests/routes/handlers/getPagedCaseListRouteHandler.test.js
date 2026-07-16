@@ -92,6 +92,89 @@ describe('getPagedCaseListRouteHandler', () => {
     jest.replaceProperty(settings, 'enableWorkflow', true)
   })
 
+  describe('page heading and title', () => {
+    beforeEach(() => {
+      jest.replaceProperty(settings, 'enablePastCasesNavigation', false)
+      jest.replaceProperty(settings, 'pacEnvironment', 'dev')
+    })
+
+    it('should always set the heading to "Cases"', async () => {
+      // Given
+      const mockRequest = createMockRequest()
+      caseService.getPagedCaseList.mockReturnValueOnce(standardCaseListResponse())
+
+      // When
+      await subject(mockRequest, mockResponse)
+
+      // Then
+      expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
+        heading: 'Cases'
+      })
+    })
+
+    const subsectionTitleCases = [
+      ['added', 'Cases - Recently added'],
+      ['removed', 'Cases - Removed cases'],
+      ['outcome-not-required', 'Cases - Hearing outcome not required'],
+      ['heard', 'Cases - Hearing outcome added']
+    ]
+
+    it.each(subsectionTitleCases)(
+      'should set the title to "%s" -> "%s"',
+      async (subsection, expectedTitle) => {
+        // Given
+        const mockRequest = createMockRequest({
+          params: { courtCode: 'ABC', date: '2020-11-11', limit: 10, subsection },
+          path: `/ABC/cases/2020-11-11/${subsection}`
+        })
+        caseService.getPagedCaseList.mockReturnValueOnce(standardCaseListResponse())
+
+        // When
+        await subject(mockRequest, mockResponse)
+
+        // Then
+        expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
+          title: expectedTitle
+        })
+      }
+    )
+
+    it('should fall back to "Cases - Case list" when no subsection and hearing outcomes disabled', async () => {
+      // Given
+      const mockRequest = createMockRequest()
+      caseService.getPagedCaseList.mockReturnValueOnce(
+        standardCaseListResponse({ hearingOutcomesEnabled: false })
+      )
+
+      // When
+      await subject(mockRequest, mockResponse)
+
+      // Then
+      expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
+        title: 'Cases - Case list'
+      })
+    })
+
+    it('should fall back to "Cases - Hearing outcome still to be added" when no subsection and hearing outcomes enabled', async () => {
+      // Given
+      const features = require('../../../server/utils/features')
+      const spy = jest.spyOn(features.hearingOutcomes, 'isEnabled').mockReturnValue(true)
+
+      const mockRequest = createMockRequest()
+      caseService.getPagedCaseList.mockReturnValueOnce(standardCaseListResponse())
+
+      // When
+      await subject(mockRequest, mockResponse)
+
+      // Then
+      expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
+        title: 'Cases - Hearing outcome still to be added'
+      })
+
+      spy.mockRestore()
+    })
+  })
+
   it('should render error page when getPagedCaseList returns errors', async () => {
     // Given
     const mockRequest = createMockRequest({
@@ -126,7 +209,7 @@ describe('getPagedCaseListRouteHandler', () => {
     expect(mockResponse.render).toHaveBeenCalledWith('case-list', expect.anything())
 
     expect(mockResponse.render.mock.calls[0][1]).toMatchObject({
-      title: 'Case list',
+      title: 'Cases - Case list',
       data: [mockCaseResult(), mockCaseResult(), mockCaseResult(), mockCaseResult()],
       params: {
         hearingOutcomesEnabled: expect.any(Boolean),
