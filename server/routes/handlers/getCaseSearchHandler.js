@@ -2,6 +2,7 @@ const log = require('../../log')
 const trackEvent = require('../../utils/analytics')
 const { settings } = require('../../config')
 const { getPagination } = require('../../utils/pagination')
+const featuresToggles = require('../../utils/features')
 
 const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req, res) => {
   const term = req.query.term
@@ -30,10 +31,14 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
     trackingEvent.length = data?.data?.items?.length
 
     const currentPage = parseInt(req.query.page || 1, 10)
+    const courtCode = req.cookies.currentCourt
+    const context = { court: courtCode, username: res.locals.user.username }
+    const hearingOutcomesEnabled = featuresToggles.hearingOutcomes.isEnabled(context)
     const templateValues = {
       params: {
         ...req.params,
-        courtCode: req.cookies.currentCourt
+        courtCode,
+        hearingOutcomesEnabled
       },
       data: {
         ...data.data
