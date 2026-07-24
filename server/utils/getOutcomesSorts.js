@@ -1,5 +1,5 @@
 module.exports = (selectedSorts) => {
-  const caseListSorts = [{ id: 'hearingDate', value: 'NONE' }]
+  const caseListSorts = [{ id: 'hearingDate', value: 'ASC' }]
 
   // Ensure selected filters are type Array
   if (selectedSorts) {

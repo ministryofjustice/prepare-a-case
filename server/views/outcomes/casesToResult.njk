@@ -3,6 +3,7 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {%- from "moj/components/button-menu/macro.njk" import mojButtonMenu -%}
 {%- from "components/modal/macro.njk" import modal -%}
+{%- from "components/sort-arrow/macro.njk" import sortArrow -%}
 
 {% block javascripts %}
     <script type="text/javascript" src="{{components.filterComponent.javascript}}"></script>
@@ -10,6 +11,8 @@
     <script type="text/javascript" src="/javascripts/case-progress-{{ appVersion }}.min.js"></script>
     <script type="text/javascript" src="/javascripts/checker_toggle-{{ appVersion }}.min.js"></script>
 {% endblock %}
+
+{% set sortArrowSvg = sortArrow({ sortDirection: params.hearingDateSort }) %}
 
 {% set tableData = {
   attributes: {
@@ -33,7 +36,7 @@
     { 
       text: ('
       <button id="button-hearing-outcome-sort" type="button" class="pac-sort-button" data-sort="' + params.hearingDateSort + '"
-          aria-controls="button-hearing-outcome-sort">Hearing date
+          aria-controls="button-hearing-outcome-sort">Hearing date ' + sortArrowSvg + '
       </button>
     ') | safe,
       format: 'numeric',

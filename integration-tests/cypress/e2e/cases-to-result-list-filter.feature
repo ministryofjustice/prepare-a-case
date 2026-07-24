@@ -145,10 +145,10 @@ Feature: Cases to Result List filters
       |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
       |  | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
+      |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
 
-    And I should see the "hearingDate" query have the value "ASC"
+    And I should see the "hearingDate" query have the value "DESC"
 
     When I click the "Hearing" sort button
 
@@ -158,10 +158,9 @@ Feature: Cases to Result List filters
       |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
 
     And I should see the following table rows
-      |  | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
+      |  | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
 
-    And I should see the "hearingDate" query have the value "DESC"
 
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
