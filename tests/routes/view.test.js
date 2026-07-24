@@ -184,7 +184,7 @@ describe('Routes', () => {
     app = require('../../server/app')
     app = appSetup(viewRoute)
     defaultFilters = [await getOutcomeTypesListFilters()]
-    defaultSort = [{ id: 'hearingDate', value: 'NONE' }]
+    defaultSort = [{ id: 'hearingDate', value: 'ASC' }]
   })
 
   afterEach(() => {
