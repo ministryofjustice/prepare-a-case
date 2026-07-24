@@ -184,7 +184,11 @@ describe('Routes', () => {
     app = require('../../server/app')
     app = appSetup(viewRoute)
     defaultFilters = [await getOutcomeTypesListFilters()]
-    defaultSort = [{ id: 'hearingDate', value: 'NONE' }]
+    defaultSort = [
+      { id: 'defendantName', value: 'NONE' },
+      { id: 'probationStatus', value: 'NONE' },
+      { id: 'hearingDate', value: 'NONE' }
+    ]
   })
 
   afterEach(() => {
@@ -678,7 +682,11 @@ describe('Routes', () => {
           expect(caseService.getOutcomesList).toHaveBeenCalledWith(
             'B14LO',
             { hearingDate: ['ASC'] },
-            [{ id: 'hearingDate', value: 'ASC' }],
+            [
+              { id: 'defendantName', value: 'NONE' },
+              { id: 'probationStatus', value: 'NONE' },
+              { id: 'hearingDate', value: 'ASC' }
+            ],
             'NEW'
           )
         })
@@ -699,7 +707,11 @@ describe('Routes', () => {
           expect(caseService.getOutcomesList).toHaveBeenCalledWith(
             'B14LO',
             { hearingDate: ['ASC'], outcomeType: ['ADJOURNED'] },
-            [{ id: 'hearingDate', value: 'ASC' }],
+            [
+              { id: 'defendantName', value: 'NONE' },
+              { id: 'probationStatus', value: 'NONE' },
+              { id: 'hearingDate', value: 'ASC' }
+            ],
             'NEW'
           )
         })

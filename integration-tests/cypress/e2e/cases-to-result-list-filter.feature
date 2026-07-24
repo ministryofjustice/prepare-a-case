@@ -12,7 +12,7 @@ Feature: Cases to Result List filters
     #    And I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
@@ -26,7 +26,7 @@ Feature: Cases to Result List filters
     #    Then I should see a tab with text "Cases to result (1)"
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table 1 rows
       |  | Gill Arnold | Report requested | Current | Offence title one | 5 Jul 2023 |
@@ -38,7 +38,7 @@ Feature: Cases to Result List filters
     #    Then I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
@@ -53,7 +53,7 @@ Feature: Cases to Result List filters
     #    And I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
@@ -67,7 +67,7 @@ Feature: Cases to Result List filters
     #    Then I should see a tab with text "Cases to result (1)"
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table 1 rows
       |  | English Madden | Adjourned | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
@@ -79,7 +79,7 @@ Feature: Cases to Result List filters
     #    Then I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
@@ -95,7 +95,7 @@ Feature: Cases to Result List filters
     #    And I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
@@ -115,7 +115,7 @@ Feature: Cases to Result List filters
     #    Then I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
@@ -131,7 +131,7 @@ Feature: Cases to Result List filters
     #    And I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
@@ -142,7 +142,7 @@ Feature: Cases to Result List filters
     #    Then I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (newest) |
 
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
@@ -155,13 +155,37 @@ Feature: Cases to Result List filters
     #    Then I should see a tab with text "Cases to result (2)"
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table rows
       |  | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
 
     And I should see the "hearingDate" query have the value "DESC"
+
+  Scenario: A user wants to order the list by "Probation status"
+    Given I am an authenticated user
+    When I navigate to the "outcomes" route
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
+    When I clear the filters
+
+    When I click the "Probation status" sort button
+    And I should see the "probationStatus" query have the value "ASC"
+
+    When I click the "Probation status" sort button
+    And I should see the "probationStatus" query have the value "DESC"
+
+  Scenario: A user wants to order the list by "Defendant"
+    Given I am an authenticated user
+    When I navigate to the "outcomes" route
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
+    When I clear the filters
+
+    When I click the "Defendant" sort button
+    And I should see the "defendantName" query have the value "ASC"
+
+    When I click the "Defendant" sort button
+    And I should see the "defendantName" query have the value "DESC"
 
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
@@ -170,7 +194,7 @@ Feature: Cases to Result List filters
     When I clear the filters
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
@@ -191,7 +215,7 @@ Feature: Cases to Result List filters
     When I clear the filters
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
@@ -203,7 +227,7 @@ Feature: Cases to Result List filters
     And I click the "Apply filters" button
 
     And I should see the following table headings
-      |  | Defendant | Outcome type | Probation status | Offence | Hearing date |
+      |  | Defendant | Outcome type | Probation status | Offence | Hearing date (oldest) |
 
     And I should see the following table 1 rows
       |  | Court Room Stub Loaded | Report requested | Current | Offence title one | 5 Jul 2023 |
