@@ -8,19 +8,38 @@
     <script type="text/javascript" src="/javascripts/case-progress-{{ appVersion }}.min.js"></script>
 {% endblock %}
 
+{% set defendantSortLabel = 'Defendant (Z-A)' if params.defendantSort == 'descending' else ('Defendant (A-Z)' if params.defendantSort == 'ascending' else 'Defendant') %}
+{% set hearingDateSortLabel = 'Hearing date (newest)' if params.hearingDateSort == 'descending' else 'Hearing date (oldest)' %}
+
 {% set tableData = {
   attributes: {
     'id': 'hearing-outcome-resulted'
   },
   head:
   [
-    { text: "Defendant" },
+    { text: ('
+      <button id="button-defendant-sort" type="button" class="pac-sort-button" data-sort="' + params.defendantSort + '"
+          aria-controls="button-defendant-sort">' + defendantSortLabel + '
+      </button>
+    ') | safe,
+      attributes: {
+      "aria-sort": params.defendantSort
+    }
+    },
     { text: "Outcome type" },
-    { text: "Probation status" },
+    { text: ('
+      <button id="button-probation-status-sort" type="button" class="pac-sort-button" data-sort="' + params.probationStatusSort + '"
+          aria-controls="button-probation-status-sort">Probation status
+      </button>
+    ') | safe,
+      attributes: {
+      "aria-sort": params.probationStatusSort
+    }
+    },
     { text: "Offence", "classes": "govuk-!-width-one-third" },
     { text: ('
       <button id="button-hearing-outcome-sort" type="button" class="pac-sort-button" data-sort="' + params.hearingDateSort + '"
-          aria-controls="button-hearing-outcome-sort">Hearing date
+          aria-controls="button-hearing-outcome-sort">' + hearingDateSortLabel + '
       </button>
     ') | safe,
       format: 'numeric',

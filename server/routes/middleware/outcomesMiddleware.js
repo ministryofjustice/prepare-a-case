@@ -26,7 +26,13 @@ const outcomesMiddleware = state => async (req, res, next) => {
     ASC: 'ascending',
     DESC: 'descending'
   }
-  const hearingDateSort = sortMapping[sorts && sorts.map(item => item.value).pop()]
+  const sortsById = (sorts || []).reduce((acc, sort) => {
+    acc[sort.id] = sort.value
+    return acc
+  }, {})
+  const hearingDateSort = sortMapping[sortsById.hearingDate]
+  const defendantSort = sortMapping[sortsById.defendantName]
+  const probationStatusSort = sortMapping[sortsById.probationStatus]
 
   const paramMap = new URLSearchParams({
     state
@@ -50,6 +56,8 @@ const outcomesMiddleware = state => async (req, res, next) => {
     title: 'Hearing outcomes',
     sorts,
     hearingDateSort,
+    defendantSort,
+    probationStatusSort,
     state,
     hearingOutcomesEnabled,
     pageSize: settings.hearingOutcomesPageSize,
