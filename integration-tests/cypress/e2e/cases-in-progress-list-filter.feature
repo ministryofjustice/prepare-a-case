@@ -96,13 +96,10 @@ Feature: Cases In progress List filters
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
     And I should see the following table rows
-      | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
-      | Olive Tree     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
       | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
 
-    And I should see the "hearingDate" query have the value "ASC"
-
-    And There should be no a11y violations
+    And I should see the "hearingDate" query have the value "DESC"
 
     When I click the "Hearing" sort button
 
@@ -110,10 +107,11 @@ Feature: Cases In progress List filters
       | Defendant | Outcome type | Probation status | Offence | Hearing date | Action |
 
     And I should see the following table rows
-      | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
       | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 | Move to resulted |
+      | Olive Tree     | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
+      | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 | Move to resulted |
 
-    And I should see the "hearingDate" query have the value "DESC"
+    And There should be no a11y violations
 
   Scenario: Display no matching cases message when no cases are returned due to applied filters
     Given I am an authenticated user
