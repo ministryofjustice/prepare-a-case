@@ -59,7 +59,7 @@ orbs:
   helm: circleci/helm@1.2.0
   kubernetes: circleci/kubernetes@1.3.0
   mem: circleci/rememborb@0.0.2
-  hmpps: ministryofjustice/hmpps@11
+  hmpps: ministryofjustice/hmpps@11.3.0
 
 parameters:
   alerts-slack-channel:
