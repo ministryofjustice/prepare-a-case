@@ -56,3 +56,6 @@ whitelist:
   petty-france-wifi: "213.121.161.112/28"
   dom1-ark-2: "194.33.192.0/25"
   dom1-ark-4: "194.33.196.0/25"
+  mod-platform-non-live-eu-west-2b-nat: "13.42.163.245/32"
+  mod-platform-non-live-eu-west-2a-nat: "13.43.9.198/32"
+  mod-platform-non-live-eu-west-2c-nat: "18.132.208.127/32"
