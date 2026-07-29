@@ -14,7 +14,17 @@ const populateTemplateValuesWithComponent = (templateValues, componentName, comp
 const getFilterComponent = (templateValues) => {
   const templatePath = nodePath.join(__dirname, '../../server/views/components/filter/') + 'template.njk'
   const filterTemplateValues = { ...templateValues }
-  filterTemplateValues.params.hiddenInputs = templateValues.params.sorts
+  const hiddenInputs = [...(templateValues.params.sorts || [])]
+
+  if (templateValues.params.includeDefendantSort && !hiddenInputs.find(input => input.id === 'defendantName')) {
+    hiddenInputs.push({ id: 'defendantName', value: 'NONE' })
+  }
+
+  if (templateValues.params.includeProbationStatusSort && !hiddenInputs.find(input => input.id === 'probationStatus')) {
+    hiddenInputs.push({ id: 'probationStatus', value: 'NONE' })
+  }
+
+  filterTemplateValues.params.hiddenInputs = hiddenInputs
 
   const componentHtml = nunjucks.render(templatePath, filterTemplateValues)
 

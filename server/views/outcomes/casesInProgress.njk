@@ -11,6 +11,21 @@
 {% endblock %}
 
 {% set sortArrowSvg = sortArrow({ sortDirection: params.hearingDateSort }) %}
+{% set defendantSortArrowSvg = sortArrow({ sortDirection: params.defendantSort }) %}
+{% set defendantSortLabel = 'Defendant' %}
+{% if params.defendantSort == 'ascending' %}
+  {% set defendantSortLabel = 'Defendant (A-Z)' %}
+{% elif params.defendantSort == 'descending' %}
+  {% set defendantSortLabel = 'Defendant (Z-A)' %}
+{% endif %}
+{% set probationStatusSortArrowSvg = sortArrow({ sortDirection: params.probationStatusSort }) %}
+{% set probationStatusSortLabel = 'Probation status' %}
+{% set hearingDateSortLabel = 'Hearing date' %}
+{% if params.hearingDateSort == 'ascending' %}
+  {% set hearingDateSortLabel = 'Hearing date (oldest)' %}
+{% elif params.hearingDateSort == 'descending' %}
+  {% set hearingDateSortLabel = 'Hearing date (newest)' %}
+{% endif %}
 
 {% set tableData = {
   attributes: {
@@ -18,14 +33,32 @@
   },
   head:
   [
-    { text: "Defendant" },
+    {
+      text: ('
+      <button id="button-hearing-outcome-defendant-sort" type="button" class="pac-sort-button" data-sort="' + (params.defendantSort or 'none') + '"
+          aria-controls="button-hearing-outcome-defendant-sort">' + defendantSortLabel + ' ' + defendantSortArrowSvg + '
+      </button>
+    ') | safe,
+      attributes: {
+        "aria-sort": params.defendantSort
+      }
+    },
     { text: "Outcome type" },
-    { text: "Probation status" },
+    {
+      text: ('
+      <button id="button-hearing-outcome-probation-status-sort" type="button" class="pac-sort-button" data-sort="' + (params.probationStatusSort or 'none') + '"
+          aria-controls="button-hearing-outcome-probation-status-sort">' + probationStatusSortLabel + ' ' + probationStatusSortArrowSvg + '
+      </button>
+    ') | safe,
+      attributes: {
+        "aria-sort": params.probationStatusSort
+      }
+    },
     { text: "Offence", "classes": "govuk-!-width-one-third" },
     { 
       text: ('
-      <button id="button-hearing-outcome-sort" type="button" class="pac-sort-button" data-sort="' + params.hearingDateSort + '"
-          aria-controls="button-hearing-outcome-sort">Hearing date ' + sortArrowSvg + '
+      <button id="button-hearing-outcome-sort" type="button" class="pac-sort-button" data-sort="' + (params.hearingDateSort or 'ascending') + '"
+          aria-controls="button-hearing-outcome-sort">' + hearingDateSortLabel + ' ' + sortArrowSvg + '
       </button>
     ') | safe,
       format: 'numeric',

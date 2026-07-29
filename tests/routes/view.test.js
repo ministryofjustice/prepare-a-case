@@ -705,6 +705,34 @@ describe('Routes', () => {
         })
     })
 
+    it('outcomes list route should call the case service to sort by defendant', async () => {
+      return request(app)
+        .get('/B14LO/outcomes?defendantName=ASC')
+        .then(response => {
+          expect(response.statusCode).toEqual(200)
+          expect(caseService.getOutcomesList).toHaveBeenCalledWith(
+            'B14LO',
+            { defendantName: ['ASC'] },
+            [{ id: 'defendantName', value: 'ASC' }],
+            'NEW'
+          )
+        })
+    })
+
+    it('outcomes list route should call the case service to sort by probation status', async () => {
+      return request(app)
+        .get('/B14LO/outcomes?probationStatus=ASC')
+        .then(response => {
+          expect(response.statusCode).toEqual(200)
+          expect(caseService.getOutcomesList).toHaveBeenCalledWith(
+            'B14LO',
+            { probationStatus: ['ASC'] },
+            [{ id: 'probationStatus', value: 'ASC' }],
+            'NEW'
+          )
+        })
+    })
+
     it('outcomes list route should call the case service to filter outcome list data with multiple filters', async () => {
       return request(app)
         .get(

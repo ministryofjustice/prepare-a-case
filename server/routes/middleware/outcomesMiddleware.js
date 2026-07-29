@@ -19,14 +19,34 @@ const outcomesMiddleware = state => async (req, res, next) => {
   } = req
 
   // sorting by hearing date is common to all outcomes pages
-  const sorts = getOutcomeListSorts(req.query)
+  let sorts = getOutcomeListSorts(req.query)
+
+  if (query.defendantName || query.probationStatus) {
+    sorts = sorts.filter(sort => sort.id !== 'hearingDate')
+
+    if (query.defendantName) {
+      sorts.push({
+        id: 'defendantName',
+        value: Array.isArray(query.defendantName) ? query.defendantName[0] : query.defendantName
+      })
+    }
+
+    if (query.probationStatus) {
+      sorts.push({
+        id: 'probationStatus',
+        value: Array.isArray(query.probationStatus) ? query.probationStatus[0] : query.probationStatus
+      })
+    }
+  }
 
   const sortMapping = {
     NONE: 'none',
     ASC: 'ascending',
     DESC: 'descending'
   }
-  const hearingDateSort = sortMapping[sorts && sorts.map(item => item.value).pop()]
+  const hearingDateSort = sortMapping[sorts.find(item => item.id === 'hearingDate')?.value] || ((query.defendantName || query.probationStatus) ? 'none' : 'ascending')
+  const defendantSort = sortMapping[sorts.find(item => item.id === 'defendantName')?.value] || 'none'
+  const probationStatusSort = sortMapping[sorts.find(item => item.id === 'probationStatus')?.value] || 'none'
 
   const paramMap = new URLSearchParams({
     state
@@ -50,6 +70,8 @@ const outcomesMiddleware = state => async (req, res, next) => {
     title: 'Hearing outcomes',
     sorts,
     hearingDateSort,
+    defendantSort,
+    probationStatusSort,
     state,
     hearingOutcomesEnabled,
     pageSize: settings.hearingOutcomesPageSize,

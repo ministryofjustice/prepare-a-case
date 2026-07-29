@@ -18,3 +18,4 @@ integration-tests/output/
 .DS_Store
 output/test-results
 output/
+.DS_Store
