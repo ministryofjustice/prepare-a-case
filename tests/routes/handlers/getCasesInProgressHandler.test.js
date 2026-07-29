@@ -79,4 +79,68 @@ describe('getCasesInProgressHandler', () => {
       })
     )
   })
+
+  it('should sort in progress cases by defendant name ascending when defendant sort is selected', async () => {
+    const requestWithDefendantSort = {
+      ...mockRequest,
+      params: {
+        ...mockRequest.params,
+        defendantSort: 'ascending'
+      }
+    }
+
+    caseService.getOutcomesList.mockReturnValueOnce({
+      totalElements: 2,
+      countsByState: { toResultCount: 2 },
+      courtRoomFilters: [],
+      cases: [
+        { name: { forename1: 'Zoe', surname: 'Alpha' }, defendantName: '' },
+        { name: { forename1: 'Adam', surname: 'Zulu' }, defendantName: '' }
+      ]
+    })
+
+    await subject(requestWithDefendantSort, mockResponse)
+
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/casesInProgress',
+      expect.objectContaining({
+        data: [
+          expect.objectContaining({ name: { forename1: 'Adam', surname: 'Zulu' } }),
+          expect.objectContaining({ name: { forename1: 'Zoe', surname: 'Alpha' } })
+        ]
+      })
+    )
+  })
+
+  it('should sort in progress cases by probation status ascending when probation status sort is selected', async () => {
+    const requestWithProbationStatusSort = {
+      ...mockRequest,
+      params: {
+        ...mockRequest.params,
+        probationStatusSort: 'ascending'
+      }
+    }
+
+    caseService.getOutcomesList.mockReturnValueOnce({
+      totalElements: 2,
+      countsByState: { toResultCount: 2 },
+      courtRoomFilters: [],
+      cases: [
+        { probationStatus: 'Possible NDelius record', defendantName: 'Z Last' },
+        { probationStatus: 'Current', defendantName: 'A First' }
+      ]
+    })
+
+    await subject(requestWithProbationStatusSort, mockResponse)
+
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/casesInProgress',
+      expect.objectContaining({
+        data: [
+          expect.objectContaining({ probationStatus: 'Current' }),
+          expect.objectContaining({ probationStatus: 'Possible NDelius record' })
+        ]
+      })
+    )
+  })
 })

@@ -4,6 +4,7 @@ const flagFilters = require('../../../utils/flagFilters')
 const { prepareCourtRoomFilters } = require('../../helpers')
 const { getFilterComponent, populateTemplateValuesWithComponent } = require('../../../utils/nunjucksComponents.js')
 const { getPagination } = require('../../../utils/pagination')
+const { formatDefendantName } = require('../../../utils/nunjucksFilters')
 const { OUTCOMES_HEADING } = require('./constants')
 
 const getPagelessQueryParams = params => {
@@ -12,6 +13,10 @@ const getPagelessQueryParams = params => {
 }
 
 const getPageTitle = () => `${OUTCOMES_HEADING} - Resulted cases`
+const sortDirectionToMultiplier = {
+  ascending: 1,
+  descending: -1
+}
 
 const getResultedCasesHandler = (caseService, userPreferenceService) => async (req, res) => {
   const {
@@ -35,7 +40,7 @@ const getResultedCasesHandler = (caseService, userPreferenceService) => async (r
     state
   )
 
-  const cases = response.cases
+  const cases = [...(response.cases || [])]
 
   const courtRoomFilter = {
     id: 'courtRoom',
@@ -59,6 +64,24 @@ const getResultedCasesHandler = (caseService, userPreferenceService) => async (r
     .map(filterObj => filterObj.items.filter(item => item.checked).length)
     .some(length => length > 0)
 
+  const defendantSortDirection = params.defendantSort
+  const probationStatusSortDirection = params.probationStatusSort
+  if (sortDirectionToMultiplier[defendantSortDirection]) {
+    const sortDirectionMultiplier = sortDirectionToMultiplier[defendantSortDirection]
+    cases.sort((firstCase, secondCase) => {
+      const firstDefendantName = formatDefendantName(firstCase)
+      const secondDefendantName = formatDefendantName(secondCase)
+      return firstDefendantName.localeCompare(secondDefendantName, undefined, { sensitivity: 'base' }) * sortDirectionMultiplier
+    })
+  } else if (sortDirectionToMultiplier[probationStatusSortDirection]) {
+    const sortDirectionMultiplier = sortDirectionToMultiplier[probationStatusSortDirection]
+    cases.sort((firstCase, secondCase) => {
+      const firstProbationStatus = firstCase?.probationStatus || ''
+      const secondProbationStatus = secondCase?.probationStatus || ''
+      return firstProbationStatus.localeCompare(secondProbationStatus, undefined, { sensitivity: 'base' }) * sortDirectionMultiplier
+    })
+  }
+
   const baseUrl = params.pagingBaseUrl + '&'
 
   let templateValues = {
@@ -66,6 +89,8 @@ const getResultedCasesHandler = (caseService, userPreferenceService) => async (r
       ...params,
       filters: flaggedFilters,
       filtersApplied,
+      includeDefendantSort: true,
+      includeProbationStatusSort: true,
       casesInProgressCount: response?.countsByState?.inProgressCount || 0,
       casesToResultCount: response?.countsByState?.toResultCount || 0
     },
