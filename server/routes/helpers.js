@@ -82,6 +82,8 @@ const getMatchedUrl = (matchType, matchDate, hearingId, defendantId, courtCode) 
     '/summary'
 }
 
+const MATCH_MANUAL_HEADING = 'Link an NDelius record to the defendant'
+
 module.exports = {
   getPsrRequestedConvictions,
   getLastSentencedConvictionPSR,
@@ -89,5 +91,6 @@ module.exports = {
   prepareCourtRoomFilters,
   getOrderTitle,
   getBackUrl,
-  getMatchedUrl
+  getMatchedUrl,
+  MATCH_MANUAL_HEADING
 }

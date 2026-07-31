@@ -2,7 +2,7 @@ const express = require('express')
 const { body } = require('express-validator')
 const getBaseDateString = require('../utils/getBaseDateString')
 const queryParamBuilder = require('../utils/queryParamBuilder')
-const { getMatchedUrl } = require('./helpers')
+const { getMatchedUrl, MATCH_MANUAL_HEADING } = require('./helpers')
 
 const {
   settings,
@@ -69,6 +69,7 @@ const { registerManageCourtsRoutes, manageCourtsRoute } = require('./manage-cour
 const caseService = require('../services/case-service')
 const trackEvent = require('../utils/analytics')
 const { setOriginScreenUrl } = require('../middleware/setOriginScreenUrl')
+const { formatName } = require('../utils/nunjucksFilters')
 
 module.exports = function Index ({ authenticationMiddleware }) {
   const router = express.Router()
@@ -117,37 +118,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.post('/set-notification', body('notification').trim(), catchErrors(setNotificationPostHandler))
 
-  router.get('/user-guide', (req, res) => {
-    res.render('user-guide')
-  })
-
-  router.get('/accessibility-statement', (req, res) => {
-    const { session } = req
-    res.render('accessibility-statement', {
-      params: { backLink: session.backLink }
-    })
-  })
-
-  router.get('/privacy-notice', (req, res) => {
-    const { session } = req
-    res.render('privacy-notice', { params: { backLink: session.backLink } })
-  })
-
-  router.get('/whats-new', (req, res) => {
-    res.render('whats-new')
-  })
-
-  router.get('/cookies-policy', (req, res) => {
-    res.render('cookies-policy', {
-      params: {
-        saved: req.query.saved,
-        preference: req.cookies && req.cookies.analyticsCookies
-      }
-    })
-  })
-
   router.post('/cookie-preference/:page?', (req, res) => {
-    const redirectUrl = req.params.page ? '/cookies-policy?saved=true' : '/'
     if (req.body.cookies) {
       if (req.body.cookies === 'reject') {
         for (const [key] of Object.entries(req.cookies)) {
@@ -158,7 +129,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
       }
       res
         .cookie('analyticsCookies', req.body.cookies)
-        .redirect(302, redirectUrl)
+        .redirect(302, '/')
     }
   })
 
@@ -544,7 +515,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
       templateValues.data.communityData = communityResponse || {}
 
-      templateValues.title = getOrderTitle(communityResponse)
+      const orderTitle = getOrderTitle(communityResponse)
+      const formattedName = formatName(templateValues.data.defendantName)
+      templateValues.title = formattedName + ' - ' + orderTitle
+      templateValues.heading = orderTitle
 
       res.render('case-summary/case-summary-record-order', templateValues)
     })
@@ -554,8 +528,11 @@ module.exports = function Index ({ authenticationMiddleware }) {
     '/:courtCode/hearing/:hearingId/defendant/:defendantId/record/:convictionId/breach/:breachId',
     defaults,
     catchErrors(async (req, res) => {
-      const templateValues = await getCaseAndTemplateValues(req) //
-      templateValues.title = 'Breach details'
+      const templateValues = await getCaseAndTemplateValues(req)
+      const formattedName = formatName(templateValues.data.defendantName)
+      const heading = 'Breach details'
+      templateValues.heading = heading
+      templateValues.title = formattedName + ' - ' + heading
 
       const {
         params: { convictionId, breachId }
@@ -601,7 +578,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors(async (req, res) => {
       const templateValues = await getCaseAndTemplateValues(req)
-      templateValues.title = 'Licence conditions details'
+      const formattedName = formatName(templateValues.data.defendantName)
+      const heading = 'Licence conditions details'
+      templateValues.heading = heading
+      templateValues.title = formattedName + ' - ' + heading
 
       const {
         data: { crn }
@@ -618,7 +598,8 @@ module.exports = function Index ({ authenticationMiddleware }) {
     defaults,
     catchErrors(async (req, res) => {
       const templateValues = await getCaseAndTemplateValues(req)
-      templateValues.title = 'Risk register'
+      const formattedName = formatName(templateValues.data.defendantName)
+      templateValues.title = formattedName + ' - ' + 'Risk register'
 
       const {
         data: { crn }
@@ -655,7 +636,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         data: response.cases
       }
       session.confirmedMatch = undefined
-      session.matchType = 'bulk'
+      session.matchType = 'bulk' // TODO: this design is bug-prone
       session.matchDate = date
       session.courtCode = courtCode
       res.render('match-records', templateValues)
@@ -712,7 +693,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
     catchErrors(async (req, res) => {
       const { session } = req
       const templateValues = await getCaseAndTemplateValues(req)
-      templateValues.title = 'Link an NDelius record to the defendant'
+      if (session.matchType === 'bulk') {
+        templateValues.title = MATCH_MANUAL_HEADING
+      } else {
+        const formattedName = formatName(templateValues.data.defendantName)
+        templateValues.title = formattedName + ' - ' + MATCH_MANUAL_HEADING
+      }
+      templateValues.heading = MATCH_MANUAL_HEADING
       templateValues.session = {
         ...session
       }
@@ -779,7 +766,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
       const templateValues = await getCaseAndTemplateValues(req)
       const detailResponse = await getDetails(crn)
       const probationStatusDetails = await getProbationStatusDetails(crn)
-      templateValues.title = 'Link an NDelius record to the defendant'
+      if (session.matchType === 'bulk') {
+        templateValues.title = MATCH_MANUAL_HEADING
+      } else {
+        const formattedName = formatName(templateValues.data.defendantName)
+        templateValues.title = formattedName + ' - ' + MATCH_MANUAL_HEADING
+      }
+      templateValues.heading = MATCH_MANUAL_HEADING
       templateValues.details = {
         ...detailResponse,
         probationStatus:
@@ -843,7 +836,10 @@ module.exports = function Index ({ authenticationMiddleware }) {
       } = req
       const templateValues = await getCaseAndTemplateValues(req)
       const detailResponse = await getDetails(crn)
-      templateValues.title = 'Unlink NDelius record from the defendant'
+      const heading = 'Unlink NDelius record from the defendant'
+      templateValues.heading = heading
+      const formattedName = formatName(templateValues.data.defendantName)
+      templateValues.title = formattedName + ' - ' + heading
       templateValues.hideSubnav = true
       templateValues.backText = 'Back'
       templateValues.backLink = `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`

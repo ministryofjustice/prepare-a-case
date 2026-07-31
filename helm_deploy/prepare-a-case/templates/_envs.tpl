@@ -124,5 +124,9 @@ env:
 
   - name: USER_PREFERENCE_SERVICE_URL
     value: {{ .Values.env.USER_PREFERENCE_SERVICE_URL | quote }}
+  
+  {{/* TODO: include the below when migrating to generic service */}}
+  - name: COMPONENT_API_URL
+    value: {{ .Values.env.COMPONENT_API_URL | quote }}
 
 {{- end -}}

@@ -7,8 +7,10 @@ Feature: Select court
   Scenario: View the page with a list of available courts
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see a level 1 heading with text "Which courts do you work in?"
+    And I should see the caption "Prepare a case for sentence"
 
+    And I should see the PDS Header with the "DEV" environment tag
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
@@ -21,7 +23,7 @@ Feature: Select court
   Scenario: Click the Add button without selecting a court
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see a level 1 heading with text "Which courts do you work in?"
     And I click the "Add" button
     Then I should see the error message "You must add a court"
     And There should be no a11y violations
@@ -30,7 +32,7 @@ Feature: Select court
   Scenario: Click the Save and continue button without selecting a court
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see a level 1 heading with text "Which courts do you work in?"
     And I click the "Save and continue" button
     Then I should see the error message "You must add a court"
     And There should be no a11y violations
@@ -39,13 +41,13 @@ Feature: Select court
   Scenario: Select a court from the list of available courts using the autocomplete component
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see a level 1 heading with text "Which courts do you work in?"
     When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
     And I click the "Add" button
     And I should see the following summary list text "Sheffield Magistrates' Court"
     And I should see link "Remove" with href "?remove=B14LO"
     When I click the "Save and continue" button
-    Then I should be on the "My courts" page
+    Then I should be on the "My courts - Prepare a case for sentence" page
     Then I should see link "Edit my courts" with href "/my-courts/edit"
     And I should see link "Sheffield Magistrates' Court" with href "/select-court/B14LO"
     And There should be no a11y violations
@@ -54,15 +56,17 @@ Feature: Select court
   Scenario: Edit my selected courts
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see a level 1 heading with text "Which courts do you work in?"
     When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
     And I click the "Add" button
     When I click the "Save and continue" button
-    Then I should be on the "My courts" page
+    Then I should be on the "My courts - Prepare a case for sentence" page
     Then I should see link "Edit my courts" with href "/my-courts/edit"
     And I should see link "Sheffield Magistrates' Court" with href "/select-court/B14LO"
     When I click the "Edit my courts" link
-    Then I should be on the "Edit my courts" page
+    Then I should be on the "Edit my courts - Prepare a case for sentence" page
+    Then I should see a level 1 heading with text "Edit my courts"
+    And I should see the caption "Prepare a case for sentence"
     And I should see the body text "Add or remove courts from your list."
     And I should see the following summary list text "Sheffield Magistrates' Court"
     And I should see link "Remove" with href "?remove=B14LO"
@@ -72,23 +76,24 @@ Feature: Select court
     When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
     And I click the "Add" button
     And I click the "Save list and continue" button
-    Then I should be on the "My courts" page
+    Then I should be on the "My courts - Prepare a case for sentence" page
     And There should be no a11y violations
 
   @cleanupCourt
   Scenario: View my court selection
     Given I am an authenticated user
     When I open the application
-    Then I should see the heading "Which courts do you work in?"
+    Then I should see a level 1 heading with text "Which courts do you work in?"
     When I enter the text "Sheff" into the "pac-select-court" input and press ENTER
     And I click the "Add" button
     When I click the "Save and continue" button
-    Then I should be on the "My courts" page
+    Then I should be on the "My courts - Prepare a case for sentence" page
     Then I click the "Edit my courts" link
-    Then I should be on the "Edit my courts" page
-    When I click the "My courts" header navigation link
-    Then I should be on the "My courts" page
+    Then I should be on the "Edit my courts - Prepare a case for sentence" page
+    When I click the "Cancel" link
+    Then I should be on the "My courts - Prepare a case for sentence" page
     When I click the "Sheffield Magistrates' Court" link
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the caption with the court name "Sheffield Magistrates' Court"
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
     And There should be no a11y violations

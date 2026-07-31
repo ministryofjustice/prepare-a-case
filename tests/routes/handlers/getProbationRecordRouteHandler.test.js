@@ -25,7 +25,7 @@ describe('getProbationRecordRouteHandler', () => {
     path: '/test/path'
   }
   const testCrn = 'test-crn'
-  const testCase = { caseId: 'test-case-id', crn: testCrn }
+  const testCase = { caseId: 'test-case-id', crn: testCrn, defendantName: 'Joe Bloggs' }
   const testCommunityResponse = { crn: testCrn }
 
   it('should return case and template values', async () => {
@@ -51,7 +51,7 @@ describe('getProbationRecordRouteHandler', () => {
       ...testTemplateValues,
       params: { ...testTemplateValues.params, showAllPreviousOrders: true },
       data: { ...testTemplateValues.data, communityData: testCommunityResponse },
-      title: 'Probation record'
+      title: 'Joe Bloggs - Probation record'
     })
   })
 

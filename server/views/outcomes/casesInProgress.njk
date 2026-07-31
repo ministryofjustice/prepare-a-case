@@ -1,5 +1,6 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {%- from "components/modal/macro.njk" import modal -%}
+{%- from "components/sort-arrow/macro.njk" import sortArrow -%}
 
 {%- set moment = params.moment -%}
 
@@ -9,20 +10,55 @@
   <script type="text/javascript" src="/javascripts/case-progress-{{ appVersion }}.min.js"></script>
 {% endblock %}
 
+{% set sortArrowSvg = sortArrow({ sortDirection: params.hearingDateSort }) %}
+{% set defendantSortArrowSvg = sortArrow({ sortDirection: params.defendantSort }) %}
+{% set defendantSortLabel = 'Defendant' %}
+{% if params.defendantSort == 'ascending' %}
+  {% set defendantSortLabel = 'Defendant (A-Z)' %}
+{% elif params.defendantSort == 'descending' %}
+  {% set defendantSortLabel = 'Defendant (Z-A)' %}
+{% endif %}
+{% set probationStatusSortArrowSvg = sortArrow({ sortDirection: params.probationStatusSort }) %}
+{% set probationStatusSortLabel = 'Probation status' %}
+{% set hearingDateSortLabel = 'Hearing date' %}
+{% if params.hearingDateSort == 'ascending' %}
+  {% set hearingDateSortLabel = 'Hearing date (oldest)' %}
+{% elif params.hearingDateSort == 'descending' %}
+  {% set hearingDateSortLabel = 'Hearing date (newest)' %}
+{% endif %}
+
 {% set tableData = {
   attributes: {
     'id': 'hearing-outcome-in-progress'
   },
   head:
   [
-    { text: "Defendant" },
+    {
+      text: ('
+      <button id="button-hearing-outcome-defendant-sort" type="button" class="pac-sort-button" data-sort="' + (params.defendantSort or 'none') + '"
+          aria-controls="button-hearing-outcome-defendant-sort">' + defendantSortLabel + ' ' + defendantSortArrowSvg + '
+      </button>
+    ') | safe,
+      attributes: {
+        "aria-sort": params.defendantSort
+      }
+    },
     { text: "Outcome type" },
-    { text: "Probation status" },
+    {
+      text: ('
+      <button id="button-hearing-outcome-probation-status-sort" type="button" class="pac-sort-button" data-sort="' + (params.probationStatusSort or 'none') + '"
+          aria-controls="button-hearing-outcome-probation-status-sort">' + probationStatusSortLabel + ' ' + probationStatusSortArrowSvg + '
+      </button>
+    ') | safe,
+      attributes: {
+        "aria-sort": params.probationStatusSort
+      }
+    },
     { text: "Offence", "classes": "govuk-!-width-one-third" },
     { 
       text: ('
-      <button id="button-hearing-outcome-sort" type="button" class="pac-sort-button" data-sort="' + params.hearingDateSort + '"
-          aria-controls="button-hearing-outcome-sort">Hearing date
+      <button id="button-hearing-outcome-sort" type="button" class="pac-sort-button" data-sort="' + (params.hearingDateSort or 'ascending') + '"
+          aria-controls="button-hearing-outcome-sort">' + hearingDateSortLabel + ' ' + sortArrowSvg + '
       </button>
     ') | safe,
       format: 'numeric',
@@ -125,7 +161,6 @@
       type: 'success'
     }) }}
   {% endif %}
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6" aria-label="{{ title }}">{{ title }}</h1>
 
 
   {{ components.filterComponent.html | safe}}
@@ -163,7 +198,7 @@
   }) }}
 
   <div class="govuk-tabs__panel">
-    <h1 class="govuk-heading-l">In progress</h1>
+    <h2 class="govuk-heading-l">In progress</h2>
     {% if tableData.rows | length %}
       {% block table %}
         {%- from "govuk/components/table/macro.njk" import govukTable -%}
@@ -178,4 +213,8 @@
     {% endif %}
   </div>
 
+{% endblock %}
+
+{% block beforeFooter %}
+  {% include "../partials/user-guide-link.njk" %}
 {% endblock %}

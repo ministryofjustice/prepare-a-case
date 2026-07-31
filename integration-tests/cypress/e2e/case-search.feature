@@ -6,13 +6,14 @@ Feature: Case search
   Scenario: Search for cases with the given CRN
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
     And I should see the text input label "Enter the CRN or full name of the person you are searching for."
 
     When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
+    Then I should see the PDS Header with the "DEV" environment tag
     Then I should see the level 3 heading "125 search results for C123456"
     And I should see the following table headings
       | Defendant | Probation status | Offence | Last hearing | Next hearing |
@@ -21,6 +22,8 @@ Feature: Case search
       | Adam Sandler  | Current  | Theft two from the person    | 16 December 2022 | No record       |
       | Adam Sandler  | Current  | Theft three from the person  | No record        | 23 January 2023 |
     And I see value "C123456" in the text input with id "search-term"
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
+    And I should see the PDS Footer
 
     When I enter "Jeff Bloggs" into text input with id "search-term"
     And I click the "Search" button
@@ -36,7 +39,7 @@ Feature: Case search
   Scenario: Should not show result table when search for given CRN does not return result
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
     And I should see the text input label "Enter the CRN or full name of the person you are searching for."
@@ -49,7 +52,7 @@ Feature: Case search
   Scenario: Case search results pagination
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
     And I should see the text input label "Enter the CRN or full name of the person you are searching for."
@@ -57,7 +60,7 @@ Feature: Case search
     When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
     Then I should see the level 3 heading "125 search results for C123456"
-    And I should see pagination text "Showing 1 to 20 of 125 results"
+    And I should see pagination text "Showing 1 to 20 of 125 total results"
     And I should see pagination
     And I should not see pagination previous link
     And I should see pagination page "1" highlighted
@@ -68,7 +71,7 @@ Feature: Case search
 
     When I click pagination next link
     Then the page 2 should be loaded
-    And I should see pagination text "Showing 21 to 40 of 125 results"
+    And I should see pagination text "Showing 21 to 40 of 125 total results"
     And I should see pagination previous link with href "page=1"
     And I should see pagination link "1" with href "page=1"
     And I should see pagination page "2" highlighted
@@ -80,7 +83,7 @@ Feature: Case search
     When I click pagination next link
     Then I click pagination link "4"
     Then the page 4 should be loaded
-    And I should see pagination text "Showing 61 to 80 of 125 results"
+    And I should see pagination text "Showing 61 to 80 of 125 total results"
     And I should see pagination previous link with href "page=3"
     And I should see pagination link "1" with href "page=1"
     And I should see pagination link "2" with href "page=2"
@@ -104,7 +107,7 @@ Feature: Case search
   Scenario: Should handle case search errors
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
     And I should see the text input label "Enter the CRN or full name of the person you are searching for."
@@ -117,6 +120,7 @@ Feature: Case search
     When I enter search term "o-hara" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "A123456" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "Joe Blogs" into search input and click search then I should see error "NO_ERROR"
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
 
 
 

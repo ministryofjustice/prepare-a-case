@@ -27,6 +27,10 @@
 
         <link type="text/css" rel="stylesheet" href="/stylesheets/style-{{ appVersion }}.min.css"/>
 
+        {% for css in feComponents.cssIncludes %}
+            <link href="{{ css }}" nonce="{{ nonce }}" rel="stylesheet" />
+        {% endfor %}
+
         <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
 
         {% if analyticsCookies === 'accept' %}
@@ -118,7 +122,7 @@
                             },
                             {
                                 text: "View cookies",
-                                href: "/cookies-policy",
+                                href: probationFrontendComponentsUrl + '/cookies-policy',
                                 classes: "govuk-link--no-visited-state"
                             }
                         ]
@@ -131,7 +135,7 @@
 {% endblock %}
 
 {% block header %}
-    {% include "./header.html" %}
+  {{ feComponents.header | safe }}
 {% endblock %}
 
 {% block phaseBanner %}
@@ -149,22 +153,24 @@
 {% block navigation %}
     {%- set currentCourtHtml %}
         <aside>
-            <span class="qa-court-name govuk-body govuk-!-font-size-16 govuk-!-font-weight-bold">{{ params.courtName }}</span>
-        </aside>
+            <span class="qa-court-name govuk-body govuk-!-font-size-19 govuk-!-font-weight-bold">{{ params.courtName }}</span>
+            {% if not hideCourtLink %}
+                <a class="govuk-link govuk-link--no-visited-state govuk-body govuk-!-font-size-19 govuk-!-margin-left-3" href="/my-courts">My courts</a>
+            {% endif %}
+    </aside>
     {% endset -%}
     {%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
     
     {% set navItems = [{
         text: 'Cases',
         href: '/' + params.courtCode + '/cases',
-        active: title === 'Case list'
+        active: heading === 'Cases'
     }] %}
-
     {%- if params.hearingOutcomesEnabled %}
         {% set navItems = (navItems.push({
             text: 'Outcomes',
             href: '/' + params.courtCode + '/outcomes',
-            active: title === 'Hearing outcomes'
+            active: heading === 'Hearing outcomes'
         }), navItems) %}
     {% endif -%}
 
@@ -196,38 +202,20 @@
 
 <div class="govuk-width-container">
     <main class="govuk-main-wrapper" id="main-content" role="main">
+        {% block pageHeading %}
+            <div class="govuk-width-container">
+                <span class="govuk-caption-xl">{{ mainTitle }}</span>
+                <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{ heading if heading else title }}</h1>
+            </div>
+        {% endblock %}
         {% block content %}{% endblock %}
     </main>
 </div>
 
+{% block beforeFooter %}{% endblock %}
+
 {% block footer %}
-    {%- from "govuk/components/footer/macro.njk" import govukFooter -%}
-    {{ govukFooter({
-        meta: {
-            items: [
-                {
-                    href: "/user-guide",
-                    text: "User guide"
-                },
-                {
-                    href: "/accessibility-statement",
-                    text: "Accessibility statement"
-                },
-                {
-                    href: "/cookies-policy",
-                    text: "Cookies"
-                 },
-                 {
-                    href: "/privacy-notice",
-                    text: "Privacy"
-                },
-                {
-                    href: "/whats-new",
-                    text: "What's new"
-                }
-            ]
-        }
-    }) }}
+    {{ feComponents.footer | safe }}
 {% endblock %}
 
 {% block bodyEnd %}

@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             templates.inprogress.after(element)
             // upload
             const xhr = new XMLHttpRequest()
-            xhr.timeout = 12500
+            xhr.timeout = 20000
             const formData = new FormData()
             formData.append('file', file)
             xhr.upload.addEventListener('progress', event => {

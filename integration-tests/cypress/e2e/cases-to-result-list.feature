@@ -7,14 +7,20 @@ Feature: Cases to Result List
   Scenario: Clicking on the Outcomes link should take me to the Outcomes page
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
 
+    And I should see the PDS Header with the "DEV" environment tag
     And I should see the Primary navigation
     And I should see the Primary navigation "Cases" link
 
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
+    And I should see link "View user guide" with href "https://justiceuk.sharepoint.com/sites/HMPPS_Group_CSA/"
+    And I should see the PDS Footer
+    And I should see a level 1 heading with text "Hearing outcomes"
+    And I should see the caption "Prepare a case for sentence"
 
     And I should see a tab with text "Cases to result (80)"
 
@@ -26,7 +32,7 @@ Feature: Cases to Result List
     And I should see the following table rows
       |  | Gill Arnold    | Report requested | Current          | Offence title one                        | 5 Jul 2023 |
       |  | English Madden | Adjourned        | Previously known | Attempt theft from the person of another | 5 Sep 2023 |
-    And I should see pagination text "Showing 1 to 2 of 80 results"
+    And I should see pagination text "Showing 1 to 2 of 80 total results"
     And I should see pagination page "1" highlighted
     And I should see pagination link "2" with href "page=2"
     And I should see pagination link "3" with href "page=3"
@@ -35,7 +41,7 @@ Feature: Cases to Result List
 
     When I click pagination next link
     Then the page 2 should be loaded
-    And I should see pagination text "Showing 3 to 4 of 80 results"
+    And I should see pagination text "Showing 3 to 4 of 80 total results"
     And I should see pagination previous link with href "page=1"
     And I should see pagination link "1" with href "page=1"
     And I should see pagination page "2" highlighted
@@ -48,7 +54,7 @@ Feature: Cases to Result List
 
     When I click pagination next link
     Then the page 3 should be loaded
-    And I should see pagination text "Showing 5 to 6 of 80 results"
+    And I should see pagination text "Showing 5 to 6 of 80 total results"
     And I should see pagination previous link with href "page=2"
     And I should see pagination link "1" with href "page=1"
     And I should see pagination link "2" with href "page=2"
@@ -61,7 +67,7 @@ Feature: Cases to Result List
 
     When I click pagination previous link
     Then the page 2 should be loaded
-    And I should see pagination text "Showing 3 to 4 of 80 results"
+    And I should see pagination text "Showing 3 to 4 of 80 total results"
     And I should see pagination previous link with href "page=1"
     And I should see pagination link "1" with href "page=1"
     And I should see pagination page "2" highlighted
@@ -75,6 +81,6 @@ Feature: Cases to Result List
   Scenario: Ensure the correct messages and results are shown when no cases are to be resulted
     Given I am an authenticated user
     When I navigate to the Northampton Court "outcomes" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - Cases to result - Prepare a case for sentence" page
     Then I should see the body text "There are no cases to be resulted."
     And There should be no a11y violations

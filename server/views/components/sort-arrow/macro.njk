@@ -1,0 +1,12 @@
+{#####
+  Renders the up / down / up-down sort direction arrow icon (matching the icons that
+  moj-frontend's sortable-table JS component would otherwise inject) so it can be used
+  on custom, server-rendered sort controls without needing that JS component.
+
+  params: {
+    * sortDirection: 'ascending' | 'descending' | 'none' - the current sort state
+  }
+######}
+{% macro sortArrow(params) %}
+  {%- include "./template.njk" -%}
+{% endmacro %}
