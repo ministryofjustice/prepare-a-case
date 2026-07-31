@@ -295,5 +295,35 @@ describe('caseListTableData', () => {
       const tableDataHeard = caseListTableData.constructTableData(paramsHeard, [])
       expect(tableDataHeard.head.some(header => header.html === 'Action')).toBe(false)
     })
+
+    it('should add MAPPA flag with blue label styling class', () => {
+      const caseWithMappa = {
+        ...mockCase,
+        multiAgencyPublicProtectionArrangementsOffence: true
+      }
+
+      const tableData = caseListTableData.constructTableData(mockParams, [caseWithMappa])
+      const row = tableData.rows[0]
+
+      expect(row[0].html).toContain('Possible MAPPA offence')
+      expect(row[0].html).toContain('class="pac-mappa-label"')
+    })
+
+    it('should apply flagged row class when MAPPA flag is present', () => {
+      const caseWithMappa = {
+        ...mockCase,
+        multiAgencyPublicProtectionArrangementsOffence: true
+      }
+
+      const tableData = caseListTableData.constructTableData(mockParams, [caseWithMappa])
+      const row = tableData.rows[0]
+
+      expect(row[0].classes).toBe('pac-sfo-row')
+      expect(row[1].classes).toBe('pac-sfo-row')
+      expect(row[2].classes).toBe('pac-sfo-row')
+      expect(row[3].classes).toBe('pac-sfo-row')
+      expect(row[4].classes).toBe('pac-sfo-row')
+      expect(row[5].classes).toBe('pac-sfo-row')
+    })
   })
 })
