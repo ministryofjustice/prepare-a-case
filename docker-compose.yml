@@ -1,11 +1,10 @@
-version: "3.7"
 networks:
   hmpps:
 
 services:
   hmpps-auth:
     image: wiremock/wiremock:3.3.1
-    container_name: hmpps-auth
+    container_name: hmpps-auth-pac
     networks:
       - hmpps
     entrypoint: [
