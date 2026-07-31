@@ -52,10 +52,11 @@ need to rebuild the docker container. Rebuilding the containers can be is fairly
 Note that changes to wiremocks will not auto refresh, you'll need to restart the specific wiremock container.
 
 ```
-docker compose restart hmpps-user-preferences
 docker compose restart hmpps-auth
 docker compose restart court-case-service
 ```
+
+Note: `hmpps-user-preferences` runs the real service image (`ghcr.io/ministryofjustice/hmpps-user-preferences`) with a local PostgreSQL database. You may still restart it with `docker compose restart hmpps-user-preferences` if needed.
 
 To override the API mocks with development service(s) running on your local machine you can use...
 
