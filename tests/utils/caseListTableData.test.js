@@ -305,8 +305,8 @@ describe('caseListTableData', () => {
       const tableData = caseListTableData.constructTableData(mockParams, [caseWithMappa])
       const row = tableData.rows[0]
 
-      expect(row[0].html).toContain('Possible MAPPA offence')
-      expect(row[0].html).toContain('class="pac-mappa-label"')
+      expect(row[0].html).toContain('Possible MAPPA')
+      expect(row[0].html).toContain('class="pac-flag-label pac-mappa-label"')
     })
 
     it('should apply flagged row class when MAPPA flag is present', () => {

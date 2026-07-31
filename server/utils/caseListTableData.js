@@ -147,8 +147,8 @@ const constructTableData = (params, data) => {
 
     const hasFlaggedOffence = item.seriousFurtherOffence || item.multiAgencyPublicProtectionArrangementsOffence
     const sfoClass = hasFlaggedOffence ? 'pac-sfo-row' : ''
-    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div><img src="/images/flag.svg" alt="Possible SFO" title="Possible SFO" class="pac-sfo-badge"><span class="pac-sfo-label">Possible SFO</span></div>' : ''
-    const mappaBadgeHtml = item.multiAgencyPublicProtectionArrangementsOffence ? '<div><img src="/images/flag.svg" alt="Possible MAPPA offence" title="Possible MAPPA offence" class="pac-sfo-badge"><span class="pac-mappa-label">Possible MAPPA offence</span></div>' : ''
+    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div><img src="/images/flag.svg" alt="Possible SFO" title="Possible SFO" class="pac-sfo-badge"><span class="pac-flag-label pac-sfo-label">Possible SFO</span></div>' : ''
+    const mappaBadgeHtml = item.multiAgencyPublicProtectionArrangementsOffence ? '<div><img src="/images/flag-blue.svg" alt="Possible MAPPA" title="Possible MAPPA" class="pac-sfo-badge"><span class="pac-flag-label pac-mappa-label" style="color:#003078;font-weight:bold;margin-left:4px;">Possible MAPPA</span></div>' : ''
 
     const tableRow = [
       { html: constructDefendantNameLink(a11yTitle, sanitisedDefendantFullName, crnDisplay, params.courtCode, item.hearingId, item.defendantId) + sfoBadgeHtml + mappaBadgeHtml, classes: sfoClass },
