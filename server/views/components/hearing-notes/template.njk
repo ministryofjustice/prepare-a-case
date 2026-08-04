@@ -74,7 +74,7 @@
         {% if params.enableHearingNotes %}
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-top-3 govuk-!-padding-bottom-2">
-                    <form id="save-notes-{{ params.hearing.hearingId }}" action="summary/notes" method="post">
+                    <form id="save-notes-{{ params.hearing.hearingId }}" class="hearing-note-form" action="summary/notes" method="post">
 
                         <details {{ 'open' if draftNote | length }} class="govuk-details govuk-!-margin-bottom-0"
                                                                     data-module="govuk-details">

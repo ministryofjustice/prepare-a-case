@@ -6,14 +6,14 @@ Feature: Case list Prep
   Background:
     Given I am an authenticated user
     When I navigate to the "cases" route for today
-    Then I should be on the "Case list" page
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     When I clear the filters
 
   # AC001 - NOT TESTED, THE BACKEND SETS THE DEFAULT STATE
   # Scenario: default state
   #  Given I am an authenticated user
   #  When I navigate to the "cases" route for today
-  #  Then I should be on the "Case list" page
+  #  Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
   #  And prep status of new items defaults to ‘Not started’
 
   # AC002
@@ -37,5 +37,5 @@ Feature: Case list Prep
 # Scenario: network send occurs
 #  Given I am an authenticated user
 #  When I navigate to the "cases" route for today
-#  Then I should be on the "Case list" page
+#  Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
 #  When I can set the prep status for select "2" to any option

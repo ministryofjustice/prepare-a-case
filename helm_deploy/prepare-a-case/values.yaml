@@ -53,7 +53,7 @@ generic-service:
     ENABLE_HEARING_OUTCOMES: "true"
     ENABLE_WORKFLOW: "true"
     ENABLE_MOVE_TO_RESULTED_ACTION: "true"
-    DEFAULT_TIMEOUT: "12500"
+    DEFAULT_TIMEOUT: "20000"
     REDIS_TLS_ENABLED: "true"
 
   namespace_secrets:

@@ -82,9 +82,10 @@ Given('I am an authenticated user', () => {
 })
 
 // ids shouldn't matter, use for generic features
-Given('I am on the case summary page', () => {
+Given('I am on the case summary page for {string}', $defendantName => {
   cy.visit('/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary')
-  cy.get('title').contains('Case summary - ')
+  const expectedTitle = $defendantName + ' - ' + 'Case summary - Prepare a case for sentence'
+  cy.title().should('eq', expectedTitle)
 })
 
 When('I navigate to the {string} route for today', $route => {
@@ -146,7 +147,7 @@ Then('I should see the caption with the court name {string}', $string => {
 })
 
 Then('I should be on the {string} page', $title => {
-  cy.get('title').contains(`${$title} - `)
+  cy.title().should('eq', $title)
 })
 
 Then('I should see the following table headings', $data => {
@@ -272,6 +273,7 @@ Then('I should see the caption text {string}', $text => {
   cy.get('.govuk-caption-m').contains($text)
 })
 
+// TODO: the use of this makes tests brittle
 Then('I should see link {string} in position {int} with href {string}', ($string, $int, $href) => {
   cy.get('.govuk-link').eq($int - 1).contains($string).should('exist').should('have.attr', 'href').and('include', $href)
 })
@@ -285,7 +287,7 @@ Then('Link with text {string} should not be visible', ($string) => {
 })
 
 Then('I should see footer link {string} with href {string}', ($string, $href) => {
-  cy.get('.govuk-footer__link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+  cy.get('footer').contains('a', $string).should('exist').should('have.attr', 'href').and('include', $href)
 })
 
 Then('I should see back link {string} with href {string}', ($string, $href) => {
@@ -326,6 +328,10 @@ When('I click the {string} header navigation link', $string => {
 
 When('I click the {string} button', $string => {
   cy.get('.govuk-button').contains($string).click()
+})
+
+When('I click the {string} button menu', $string => {
+  cy.contains($string).closest('button').click()
 })
 
 Then('I should see a button with the label {string}', $string => {
@@ -530,6 +536,18 @@ Then('I should not see govuk notification banner', () => {
   cy.get('.govuk-notification-banner').should('not.exist')
 })
 
+// Note: the fallback header will be rendered unless authenticating with dev
+Then('I should see the PDS Header with the {string} environment tag', ($env) => {
+  cy.get('.probation-common-fallback-header')
+    .find('strong.govuk-tag')
+    .should('contain.text', $env)
+})
+
+// Note: the fallback footer will be rendered unless authenticating with dev
+Then('I should see the PDS Footer', () => {
+  cy.get('.probation-common-fallback-footer').should('exist')
+})
+
 Then('I should see the Primary navigation', () => {
   cy.get('.moj-primary-navigation').should('exist')
 })
@@ -541,6 +559,18 @@ Then('I should clear the filters', () => {
 Then('I should see the Primary navigation {string} link', $string => {
   cy.get('nav.moj-primary-navigation').within(() => {
     cy.get('.moj-primary-navigation__link').contains($string)
+  })
+})
+
+Then('I should see the Primary navigation {string} text', $string => {
+  cy.get('div.moj-primary-navigation').within(() => {
+    cy.get('.moj-primary-navigation__search').contains($string)
+  })
+})
+
+Then('I should see the Primary navigation {string} link with href {string}', ($string, $href) => {
+  cy.get('div.moj-primary-navigation').within(() => {
+    cy.get('.moj-primary-navigation__search').contains('a', $string).should('have.attr', 'href').and('include', $href)
   })
 })
 
@@ -600,30 +630,30 @@ Then('I should see pagination', () => {
 })
 
 Then('I should not see pagination previous link', () => {
-  cy.get('.moj-pagination__item--prev').should('not.exist')
+  cy.get('.govuk-pagination__prev').should('not.exist')
 })
 
 Then('I should not see pagination next link', () => {
-  cy.get('.moj-pagination__item--next').should('not.exist')
+  cy.get('.govuk-pagination__next').should('not.exist')
 })
 
 Then('I should see pagination page {string} highlighted', $string => {
-  cy.get('.moj-pagination__item--active').contains($string).should('exist')
+  cy.get('.govuk-pagination__item--current').contains($string).should('exist')
 })
 
 Then('I should see pagination link {string} with href {string}', ($string, $href) => {
-  cy.get('.moj-pagination__link').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
+  cy.get('.govuk-pagination__item').contains($string).should('exist').should('have.attr', 'href').and('include', $href)
 })
 
 Then('I should see pagination next link with href {string}', ($href) => {
-  cy.get('.moj-pagination__item--next').within(() => {
-    cy.get('.moj-pagination__link').should('have.attr', 'href').and('include', $href)
+  cy.get('.govuk-pagination__next').within(() => {
+    cy.get('.govuk-pagination__link').should('have.attr', 'href').and('include', $href)
   })
 })
 
 Then('I should see pagination previous link with href {string}', ($href) => {
-  cy.get('.moj-pagination__item--prev').within(() => {
-    cy.get('.moj-pagination__link').should('have.attr', 'href').and('include', $href)
+  cy.get('.govuk-pagination__prev').within(() => {
+    cy.get('.govuk-pagination__link').should('have.attr', 'href').and('include', $href)
   })
 })
 
@@ -632,23 +662,23 @@ Then('I should not see pagination', () => {
 })
 
 Then('I click pagination link {string}', $string => {
-  cy.get('.moj-pagination__link').contains($string).click()
+  cy.get('.govuk-pagination__item').contains($string).click()
 })
 
 Then('I should see an ellipsis on the pagination', () => {
-  cy.get('.moj-pagination__item--dots').should('exist')
+  cy.get('.govuk-pagination__item--ellipsis').should('exist')
 })
 
 Then('I should not see an ellipsis on the pagination', () => {
-  cy.get('.moj-pagination__item--dots').should('not.exist')
+  cy.get('.govuk-pagination__item--ellipsis').should('not.exist')
 })
 
 Then('I click pagination next link', () => {
-  cy.get('.moj-pagination__item--next').click()
+  cy.get('.govuk-pagination__next').click()
 })
 
 Then('I click pagination previous link', () => {
-  cy.get('.moj-pagination__item--prev').click()
+  cy.get('.govuk-pagination__prev').click()
 })
 
 Then('I should see pagination text {string}', $string => {

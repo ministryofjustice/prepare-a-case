@@ -19,6 +19,7 @@ generic-service:
     ENABLE_MATCHER_LOGGING: "true"
     ENABLE_CLICK_ANALYTICS: "true"
     INGRESS_URL: "https://prepare-a-case-dev.apps.live-1.cloud-platform.service.justice.gov.uk"
+    COMPONENT_API_URL: https://probation-frontend-components-dev.hmpps.service.justice.gov.uk
 
   allowlist:
     dac: "194.75.245.154" # this one is not part of a group
@@ -37,7 +38,10 @@ generic-service:
     petty-france-wifi: "213.121.161.112/28"
     dom1-ark-2: "194.33.192.0/25"
     dom1-ark-4: "194.33.196.0/25"
-    # todo: can remove the above use the below after migrating to gha
+    mod-platform-non-live-eu-west-2b-nat: "13.42.163.245/32"
+    mod-platform-non-live-eu-west-2a-nat: "13.43.9.198/32"
+    mod-platform-non-live-eu-west-2c-nat: "18.132.208.127/32"
+    # todo: can remove the above use the below after migrating to gha (check mod-platform values)
     # groups:
     #   - moj_cloud_platform
     #   - digital_staff_and_mojo

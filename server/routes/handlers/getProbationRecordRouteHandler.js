@@ -1,5 +1,6 @@
 const { getPsrRequestedConvictions, getLastSentencedConvictionPSR } = require('../helpers')
 const trackEvent = require('../../utils/analytics')
+const { formatName } = require('../../utils/nunjucksFilters')
 
 const getProbationRecordRouteHandler = (communityService, getCaseAndTemplateValues) => async (req, res) => {
   const { session } = req
@@ -16,7 +17,9 @@ const getProbationRecordRouteHandler = (communityService, getCaseAndTemplateValu
     )
     return
   }
-  templateValues.title = 'Probation record'
+
+  const formattedName = formatName(templateValues.data.defendantName)
+  templateValues.title = formattedName + ' - ' + 'Probation record'
 
   const crn = templateValues.data.crn
   const communityResponse = await communityService.getProbationRecord(crn, true)

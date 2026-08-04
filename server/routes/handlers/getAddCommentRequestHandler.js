@@ -8,6 +8,9 @@ const getAddCaseCommentHandler = caseService => async (req, res) => {
   } else {
     await caseService.addCaseComment(caseId, defendantId, comment, res.locals.user.name)
 
+    // Delete any draft so a late-arriving auto-save doesn't re-populate the textarea
+    await caseService.deleteCaseCommentDraft(caseId, defendantId)
+
     if (!res.locals.user.name) {
       trackEvent('PiCAddCaseCommentNoName', res.locals.user)
     }

@@ -7,15 +7,21 @@ Feature: Cases in Progress List
   Scenario: Clicking on the Outcomes link should take me to the Outcomes page
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
     When I clear the filters
 
+    And I should see the PDS Header with the "DEV" environment tag
     And I should see the Primary navigation
     And I should see the Primary navigation "Cases" link
 
     And I should see the phase banner
     And I should see the tag "Feedback"
     And I should see phase banner link "Give us your feedback" with href "https://www.smartsurvey.co.uk/s/PLY6UR/"
+    And I should see the Primary navigation "My courts" link with href "/my-courts"
+    And I should see link "View user guide" with href "https://justiceuk.sharepoint.com/sites/HMPPS_Group_CSA/"
+    And I should see the PDS Footer
+    And I should see a level 1 heading with text "Hearing outcomes"
+    And I should see the caption "Prepare a case for sentence"
 
     And I should see a tab with text "Cases to result (8)"
 
@@ -31,7 +37,7 @@ Feature: Cases in Progress List
 
     And I should see pagination
     And I should not see pagination previous link
-    And I should see pagination text "Showing 1 to 2 of 21 results"
+    And I should see pagination text "Showing 1 to 2 of 21 total results"
     And I should see pagination page "1" highlighted
     And I should see pagination link "2" with href "page=2"
     And I should see pagination next link with href "page=2"
@@ -41,7 +47,7 @@ Feature: Cases in Progress List
   Scenario: Clicking on the Move to Resulted button should show a banner
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
     When I clear the filters
 
     When I click the Move to resulted button for defendant "English Madden"
@@ -50,7 +56,7 @@ Feature: Cases in Progress List
   Scenario: Clicking on a case the user is not assigned to should show a modal
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
     When I clear the filters
 
     And I should see the link "Gill Arnold" in a table row
@@ -65,19 +71,19 @@ Feature: Cases in Progress List
   Scenario: Clicking on a case the user is assigned to should not show a modal and take you directly to the Case Summary
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
     When I clear the filters
 
     And I should see the link "English Madden" in a table row
     And I should see the link "English Madden" "will not" open a modal with the "pac-reassign" trigger
 
     When I click the "English Madden" link
-    Then I should be on the "Case summary" page
+    Then I should be on the "English Madden - Case summary - Prepare a case for sentence" page
 
   Scenario: Clicking on a case the user is not assigned to should allow the user to assign to themselves
     Given I am an authenticated user
     When I navigate to the "outcomes/in-progress" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
     When I clear the filters
 
     When I click the "Olive Tree" link
@@ -90,13 +96,13 @@ Feature: Cases in Progress List
     And the "reassign-outcome-modal" modal should have the Cancel link as button
 
     When I click the "Assign to me" button
-    Then I should be on the "Case summary" page
+    Then I should be on the "English Madden - Case summary - Prepare a case for sentence" page
     And I should see govuk notification banner with header "Success" and message "You are assigned to result this case. It has moved to the in progress tab."
 
   Scenario: Ensure the correct messages and results are shown when no cases are in progress
     Given I am an authenticated user
     When I navigate to the Northampton Court "outcomes/in-progress" route
-    Then I should be on the "Hearing outcomes" page
+    Then I should be on the "Hearing outcomes - In progress - Prepare a case for sentence" page
     When I clear the filters
 
     Then I should see the body text "There are no cases in progress."

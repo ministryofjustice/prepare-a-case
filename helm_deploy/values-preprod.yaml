@@ -27,6 +27,7 @@ generic-service:
     ENABLE_MATCHER_LOGGING: "true"
     ENABLE_CLICK_ANALYTICS: "true"
     INGRESS_URL: "https://prepare-a-case-preprod.apps.live-1.cloud-platform.service.justice.gov.uk"
+    COMPONENT_API_URL: https://probation-frontend-components-preprod.hmpps.service.justice.gov.uk
 
   allowlist:
     moj-official-aws-preprod: "51.149.251.0/24" # this one is not part of a group

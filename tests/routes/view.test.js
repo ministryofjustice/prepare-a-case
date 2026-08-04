@@ -184,7 +184,7 @@ describe('Routes', () => {
     app = require('../../server/app')
     app = appSetup(viewRoute)
     defaultFilters = [await getOutcomeTypesListFilters()]
-    defaultSort = [{ id: 'hearingDate', value: 'NONE' }]
+    defaultSort = [{ id: 'hearingDate', value: 'ASC' }]
   })
 
   afterEach(() => {
@@ -197,30 +197,6 @@ describe('Routes', () => {
       .get('/')
       .then(response => {
         expect(response.statusCode).toEqual(302)
-      })
-  })
-
-  it('should route to the user guide', () => {
-    return request(app)
-      .get('/user-guide')
-      .then(response => {
-        expect(response.statusCode).toEqual(200)
-      })
-  })
-
-  it('should route to the accessibility statement', () => {
-    return request(app)
-      .get('/accessibility-statement')
-      .then(response => {
-        expect(response.statusCode).toEqual(200)
-      })
-  })
-
-  it('should route to the cookies policy page', () => {
-    return request(app)
-      .get('/cookies-policy')
-      .then(response => {
-        expect(response.statusCode).toEqual(200)
       })
   })
 
@@ -724,6 +700,34 @@ describe('Routes', () => {
             'B14LO',
             { hearingDate: ['ASC'], outcomeType: ['ADJOURNED'] },
             [{ id: 'hearingDate', value: 'ASC' }],
+            'NEW'
+          )
+        })
+    })
+
+    it('outcomes list route should call the case service to sort by defendant', async () => {
+      return request(app)
+        .get('/B14LO/outcomes?defendantName=ASC')
+        .then(response => {
+          expect(response.statusCode).toEqual(200)
+          expect(caseService.getOutcomesList).toHaveBeenCalledWith(
+            'B14LO',
+            { defendantName: ['ASC'] },
+            [{ id: 'defendantName', value: 'ASC' }],
+            'NEW'
+          )
+        })
+    })
+
+    it('outcomes list route should call the case service to sort by probation status', async () => {
+      return request(app)
+        .get('/B14LO/outcomes?probationStatus=ASC')
+        .then(response => {
+          expect(response.statusCode).toEqual(200)
+          expect(caseService.getOutcomesList).toHaveBeenCalledWith(
+            'B14LO',
+            { probationStatus: ['ASC'] },
+            [{ id: 'probationStatus', value: 'ASC' }],
             'NEW'
           )
         })
