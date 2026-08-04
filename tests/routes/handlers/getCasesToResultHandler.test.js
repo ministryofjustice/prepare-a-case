@@ -98,7 +98,7 @@ describe('getCasesToResultHandler', () => {
     )
   })
 
-  it('should sort cases by defendant name when defendant sort is selected', async () => {
+  it('should pass through cases in backend order when defendant sort is selected', async () => {
     // Given
     const requestWithDefendantSort = {
       ...mockRequest,
