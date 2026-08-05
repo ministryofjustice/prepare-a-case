@@ -14,17 +14,6 @@ function terminalLog (violations) {
     `${violations.length} accessibility violation${violations.length === 1 ? '' : 's'
     } ${violations.length === 1 ? 'was' : 'were'} detected`
   )
-
-  violations.forEach(({ id, nodes }) => {
-    nodes.forEach(({ target, html, failureSummary }) => {
-      cy.task('log', [
-        `Rule: ${id}`,
-        `Target: ${target.join(' ')}`,
-        `HTML: ${html}`,
-        failureSummary
-      ].join('\n'))
-    })
-  })
   
   // pluck specific keys to keep the table readable
   const violationData = violations.map(
