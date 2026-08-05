@@ -245,6 +245,13 @@ Then('I should see the caption {string}', $caption => {
 
 Then('There should be no a11y violations', () => {
   cy.injectAxe()
+
+    cy.window().then(window => {
+   cy.task(
+      'log',
+      `A11Y axe injected: ${Boolean(window.axe)}, version=${window.axe?.version || 'unknown'}`
+    )
+  })
   cy.checkA11y('main#main-content', null, terminalLog)
 })
 

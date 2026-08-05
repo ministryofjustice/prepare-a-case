@@ -122,11 +122,16 @@ jobs:
           name: Run integration tests
           command: >
             npx cypress run
-            --config-file integration-tests/cypress/cypress.config.js video=false
+            --config-file integration-tests/cypress/cypress.config.js
+            --reporter spec
+            --config video=true
           environment:
             DISPLAY: :99
+            CYPRESS_FAIL_FAST_ENABLED: false
       - store_artifacts:
           path: output/screenshots
+      - store_artifacts:
+          path: output/videos
       - store_artifacts:    
           path: services.log
 
