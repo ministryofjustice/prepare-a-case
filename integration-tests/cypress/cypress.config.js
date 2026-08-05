@@ -5,6 +5,7 @@ const { addCucumberPreprocessorPlugin } = require('@badeball/cypress-cucumber-pr
 const { resetStubs, stubSignIn } = require('./mockApis/wiremock')
 
 module.exports = {
+  defaultCommandTimeout: 20000,
   chromeWebSecurity: false,
   fixturesFolder: './output/fixtures',
   trashAssetsBeforeRuns: true,
