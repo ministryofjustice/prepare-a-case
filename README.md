@@ -52,15 +52,16 @@ need to rebuild the docker container. Rebuilding the containers can be is fairly
 Note that changes to wiremocks will not auto refresh, you'll need to restart the specific wiremock container.
 
 ```
-docker compose restart hmpps-user-preferences
 docker compose restart hmpps-auth
 docker compose restart court-case-service
 ```
 
+Note: `hmpps-user-preferences` runs the real service image (`ghcr.io/ministryofjustice/hmpps-user-preferences`) with a local PostgreSQL database. You may still restart it with `docker compose restart hmpps-user-preferences` if needed.
+
 To override the API mocks with development service(s) running on your local machine you can use...
 
 ```
-docker compose -f docker-compose.yml -f compose/user-auth.yml -f compose/user-preferences.yml -f compose/court-case-service.yml up --build
+docker compose -f docker-compose.yml -f compose/user-auth.yml -f compose/court-case-service.yml up --build
 ```
 
 To run a local branch of the court-case-service you can use the following. Note this isn't ideal because it's starting to enroach on the innards of the court-case-service internals. You may be better trying to start that stack as a separate entity and allowing it to connect to auth and prepare-a-case via URL ENV override. Pro's and cons!
@@ -68,7 +69,7 @@ To run a local branch of the court-case-service you can use the following. Note 
 if you do the following you'll need to build the court-case-service first using `./gradlew build`, which will then allow the DockerFile to be built. To do this you'll need Java 17 installed `brew install openjdk@17` and `export JAVA_HOME=`/usr/libexec/java_home -v 17` (on mac). This is subject to change.
 
 ```
-docker compose -f docker-compose.yml -f compose/user-auth.yml -f compose/user-preferences.yml -f compose/court-case-service.yml -f compose/court-case-service-local.yml up --build
+docker compose -f docker-compose.yml -f compose/user-auth.yml -f compose/court-case-service.yml -f compose/court-case-service-local.yml up --build
 ```
 
 If you created containers previously you may have network not found issues, removing the old containers will fix it.

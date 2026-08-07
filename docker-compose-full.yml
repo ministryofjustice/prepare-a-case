@@ -1,4 +1,3 @@
-version: '3.7'
 networks:
   hmpps:
 
@@ -100,14 +99,38 @@ services:
       - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
 
+  hmpps-user-preferences-db:
+    image: postgres:14.12-alpine
+    container_name: hmpps-user-preferences-db
+    networks:
+      - hmpps
+    environment:
+      - POSTGRES_DB=user-preferences
+      - POSTGRES_USER=preferences
+      - POSTGRES_PASSWORD=preferences
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U preferences -d user-preferences"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   hmpps-user-preferences:
-    image: wiremock/wiremock:3.3.1
+    image: ghcr.io/ministryofjustice/hmpps-user-preferences:latest
     container_name: hmpps-user-preferences
     networks:
       - hmpps
-    entrypoint: ["/docker-entrypoint.sh", "--disable-request-logging", "--disable-banner", "--global-response-templating"]
-    volumes:
-      - ./wiremock/mappings/hmpps-user-preferences:/home/wiremock/mappings
+    environment:
+      - SPRING_PROFILES_ACTIVE=postgres,dev
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://hmpps-user-preferences-db:5432/user-preferences
+      - SPRING_DATASOURCE_USERNAME=preferences
+      - SPRING_DATASOURCE_PASSWORD=preferences
+      - SPRING_FLYWAY_URL=jdbc:postgresql://hmpps-user-preferences-db:5432/user-preferences
+      - SPRING_FLYWAY_USER=preferences
+      - SPRING_FLYWAY_PASSWORD=preferences
+      - APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=fake-key
+    depends_on:
+      hmpps-user-preferences-db:
+        condition: service_healthy
     restart: always
     ports:
       - "9093:8080"
