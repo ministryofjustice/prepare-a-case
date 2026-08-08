@@ -8,6 +8,6 @@
         "dotenv": "16.0.0",
         "jsonwebtoken": "^9.0.2",
         "moment": "^2.30.1",
-        "superagent": "^10.2.1"
+        "superagent": "^10.2.2"
     }
 }
