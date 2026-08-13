@@ -20,7 +20,6 @@
         { text: "Last hearing" },
         {
           text: ('<button id="button-case-search-next-hearing-sort" type="button" class="pac-sort-button" data-sort="' + (params.nextHearingDateSort or 'descending') + '">' + nextHearingDateSortLabel + ' ' + sortArrowSvg + '</button>') | safe,
-          format: 'numeric',
           attributes: {
             "aria-sort": params.nextHearingDateSort
           }
