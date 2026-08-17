@@ -428,13 +428,14 @@ const createCaseService = apiUrl => {
       await create(urlString)
     },
 
-    searchCases: async (term, type, page, pageSize) => {
+    searchCases: async (term, type, page, pageSize, sortOrder) => {
       try {
         return await request(`${apiUrl}/search`, {
           term,
           type,
           page,
-          size: pageSize
+          size: pageSize,
+          ...(sortOrder && { sortBy: 'nextHearingDate', order: sortOrder })
         })
       } catch (e) {
         if (e.response && e.response.status === 404) {

@@ -10,6 +10,10 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
   const { cookies } = req
   const page = req.query.page > 0 ? req.query.page : undefined
 
+  const sortParamMapping = { ASC: 'ascending', DESC: 'descending' }
+  const nextHearingDateParam = req.query.nextHearingDate
+  const nextHearingDateSort = sortParamMapping[nextHearingDateParam] || 'descending'
+
   const trackingEvent = {
     term,
     type,
@@ -25,8 +29,9 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
 
   if (term && type) {
     const pageSize = settings.caseSearchResultPageSize
-    const data = await searchCases(term, type, page, pageSize)
-    const baseUrl = '/case-search?term=' + term + '&'
+    const data = await searchCases(term, type, page, pageSize, nextHearingDateParam || 'DESC')
+    const sortQueryPart = nextHearingDateParam ? '&nextHearingDate=' + nextHearingDateParam : ''
+    const baseUrl = '/case-search?term=' + term + sortQueryPart + '&'
 
     trackingEvent.length = data?.data?.items?.length
 
@@ -38,7 +43,8 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
       params: {
         ...req.params,
         courtCode,
-        hearingOutcomesEnabled
+        hearingOutcomesEnabled,
+        nextHearingDateSort
       },
       data: {
         ...data.data

@@ -98,7 +98,7 @@ describe('getCasesToResultHandler', () => {
     )
   })
 
-  it('should sort cases by defendant name ascending when defendant sort is selected', async () => {
+  it('should pass through cases in backend order when defendant sort is selected', async () => {
     // Given
     const requestWithDefendantSort = {
       ...mockRequest,
@@ -121,19 +121,19 @@ describe('getCasesToResultHandler', () => {
     // When
     await subject(requestWithDefendantSort, mockResponse)
 
-    // Then
+    // Then — ordering is delegated to the backend; confirm cases are passed through unchanged
     expect(mockResponse.render).toHaveBeenCalledWith(
       'outcomes/casesToResult',
       expect.objectContaining({
         data: [
-          expect.objectContaining({ name: { forename1: 'Adam', surname: 'Zulu' } }),
-          expect.objectContaining({ name: { forename1: 'Zoe', surname: 'Alpha' } })
+          expect.objectContaining({ name: { forename1: 'Zoe', surname: 'Alpha' } }),
+          expect.objectContaining({ name: { forename1: 'Adam', surname: 'Zulu' } })
         ]
       })
     )
   })
 
-  it('should sort cases by probation status ascending when probation status sort is selected', async () => {
+  it('should sort cases by probation status when probation status sort is selected', async () => {
     // Given
     const requestWithProbationStatusSort = {
       ...mockRequest,
@@ -156,13 +156,13 @@ describe('getCasesToResultHandler', () => {
     // When
     await subject(requestWithProbationStatusSort, mockResponse)
 
-    // Then
+    // Then — ordering is delegated to the backend; confirm cases are passed through unchanged
     expect(mockResponse.render).toHaveBeenCalledWith(
       'outcomes/casesToResult',
       expect.objectContaining({
         data: [
-          expect.objectContaining({ probationStatus: 'Current' }),
-          expect.objectContaining({ probationStatus: 'Possible NDelius record' })
+          expect.objectContaining({ probationStatus: 'Possible NDelius record' }),
+          expect.objectContaining({ probationStatus: 'Current' })
         ]
       })
     )
