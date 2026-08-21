@@ -96,8 +96,6 @@ You may need to specifically turn them off.
 
 ```
 PAC_ENV=dev 
-ENABLE_CASE_COMMENTS=true 
-ENABLE_CASE_PROGRESS=true
 ```
 
 Fair warning, the feature flags are a bit of a mess. Some need to be on for unit tests to work and then off for integration tests to work.
@@ -149,11 +147,6 @@ You can also target one test file using something like
 
 ```
 npm run test:unit -- tests/routes/thefile.test.js --collectCoverage=false
-```
-
-### Run PACT tests
-```
-npm run test:pact
 ```
 
 ### Run Integration tests
