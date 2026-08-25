@@ -58,7 +58,7 @@
     { "code": "B41US", "name": "Hatfield Magistrates' Court", "pilotCourt": true },
     { "code": "B12GH", "name": "Harrogate Justice Centre", "pilotCourt": true },
     { "code": "B63GN", "name": "Haverfordwest Magistrates' Court", "pilotCourt": true },
-    { "code": "B01GQ", "name": "Hendon Magistrates' Court", "pilotCourt": false },
+    { "code": "B01GQ", "name": "Hendon Magistrates' Court", "pilotCourt": true },
     { "code": "B22GR", "name": "Hereford Justice Centre", "pilotCourt": true },
     { "code": "B43OX", "name": "High Wycombe Magistrates' Court", "pilotCourt": true },
     { "code": "B01GU", "name": "Highbury Corner Magistrates' Court", "pilotCourt": true },
