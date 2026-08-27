@@ -314,7 +314,7 @@ const createCaseService = apiUrl => {
       post: (req, res, next, responseFormatter, hearingId, defendantId) =>
         proxy(apiUrl, {
           parseReqBody: false,
-          timeout: 12500,
+          timeout: 20000,
           proxyReqOptDecorator: proxyReqOpts => {
             proxyReqOpts.headers.Authorization = `Bearer ${req.user.token}`
             return proxyReqOpts
@@ -352,7 +352,7 @@ const createCaseService = apiUrl => {
         fileId
       ) =>
         proxy(apiUrl, {
-          timeout: 12500,
+          timeout: 20000,
           proxyReqOptDecorator: proxyReqOpts => {
             proxyReqOpts.headers.Authorization = `Bearer ${req.user.token}`
             return proxyReqOpts
@@ -384,7 +384,7 @@ const createCaseService = apiUrl => {
             // courtroom can be csv of courtrooms
             if (Array.isArray(values)) {
               const courtRooms = []
-              values = values.forEach(c => courtRooms.push(...c.split(',')))
+              values.forEach(c => courtRooms.push(...c.split(',')))
               values = courtRooms
             } else {
               values = values.split(',')
@@ -423,18 +423,19 @@ const createCaseService = apiUrl => {
       return response.data
     },
 
-    updateHearingOutcomeToResulted: async (hearingId, defendantId, correlationId) => {
-      const urlString = `${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome/result?correlationId=${correlationId}`
+    updateHearingOutcomeToResulted: async (courtCode, hearingId, defendantId, correlationId) => {
+      const urlString = `${apiUrl}/courts/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/outcome/result?correlationId=${correlationId}`
       await create(urlString)
     },
 
-    searchCases: async (term, type, page, pageSize) => {
+    searchCases: async (term, type, page, pageSize, sortOrder) => {
       try {
         return await request(`${apiUrl}/search`, {
           term,
           type,
           page,
-          size: pageSize
+          size: pageSize,
+          ...(sortOrder && { sortBy: 'nextHearingDate', order: sortOrder })
         })
       } catch (e) {
         if (e.response && e.response.status === 404) {
@@ -508,8 +509,8 @@ const createCaseService = apiUrl => {
         throw e
       }
     },
-    addHearingOutcome: async (hearingId, defendantId, hearingOutcomeType) => {
-      await update(`${apiUrl}/hearing/${hearingId}/defendant/${defendantId}/outcome`, {
+    addHearingOutcome: async (courtCode, hearingId, defendantId, hearingOutcomeType) => {
+      await update(`${apiUrl}/courts/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/outcome`, {
         hearingOutcomeType
       })
       await retryWithExponentialBackoff(async () => {

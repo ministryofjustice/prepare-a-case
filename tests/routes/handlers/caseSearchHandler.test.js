@@ -23,9 +23,9 @@ describe('caseSearchHandler', () => {
     searchByCrnMock.mockResolvedValueOnce({ data })
 
     await handler(mockRequest, mockResponse)
-    expect(searchByCrnMock).toHaveBeenCalledWith(term, 'CRN', 1, 20)
+    expect(searchByCrnMock).toHaveBeenCalledWith(term, 'CRN', 1, 20, 'DESC')
     expect(mockResponse.render).toHaveBeenCalledWith('case-search', {
-      params: { ...mockRequest.params, courtCode: 'B12345' },
+      params: { ...mockRequest.params, courtCode: 'B12345', hearingOutcomesEnabled: false, nextHearingDateSort: 'descending' },
       data: { ...data },
       term,
       currentPage: 1,

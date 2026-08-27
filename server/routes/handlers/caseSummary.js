@@ -1,7 +1,7 @@
 const moment = require('moment')
 const getNextHearing = require('../../utils/getNextHearing')
 const featuresToggles = require('../../utils/features')
-const { formatDefendantName } = require('../../utils/nunjucksFilters')
+const { formatDefendantName, formatName } = require('../../utils/nunjucksFilters')
 
 const {
   settings
@@ -22,8 +22,8 @@ const caseSummaryHandler = utils => async (req, res) => {
 
   const { session, path, params: { courtCode } } = req
   const templateValues = await utils.getCaseAndTemplateValues(req)
-  // console.log("🚀 ~ caseSummaryHandler ~ templateValues:", templateValues)
-  templateValues.title = 'Case summary'
+  const formattedName = formatName(templateValues.data.defendantName)
+  templateValues.title = formattedName + ' - ' + 'Case summary'
   templateValues.toggleOutcomeSuccessMessage = req.flash('toggle-outcome-success')
   templateValues.session = {
     ...session

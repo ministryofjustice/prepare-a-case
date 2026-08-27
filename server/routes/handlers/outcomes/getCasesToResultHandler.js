@@ -3,15 +3,18 @@ const flagFilters = require('../../../utils/flagFilters')
 const { prepareCourtRoomFilters } = require('../../helpers')
 const { getFilterComponent, populateTemplateValuesWithComponent } = require('../../../utils/nunjucksComponents.js')
 const { getPagination } = require('../../../utils/pagination')
+const { OUTCOMES_HEADING } = require('./constants')
 
 const getPagelessQueryParams = params => {
   const { page, ...remainder } = params
   return remainder
 }
 
+const getPageTitle = () => `${OUTCOMES_HEADING} - Cases to result`
+
 const getCasesToResultHandler = (caseService, userPreferenceService) => async (req, res) => {
   const {
-    params: { courtCode, title, sorts, state },
+    params: { courtCode, sorts, state },
     params,
     query: queryParams,
     session
@@ -53,6 +56,8 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
     .map(filterObj => filterObj.items.filter(item => item.checked).length)
     .some(length => length > 0)
 
+  const sortedCases = response.cases || []
+
   const baseUrl = params.pagingBaseUrl + '&'
 
   let templateValues = {
@@ -60,11 +65,14 @@ const getCasesToResultHandler = (caseService, userPreferenceService) => async (r
       ...params,
       filters,
       filtersApplied,
+      includeDefendantSort: true,
+      includeProbationStatusSort: true,
       casesInProgressCount: response?.countsByState?.inProgressCount || 0,
       casesToResultCount: response.totalElements
     },
-    title,
-    data: response.cases || [],
+    title: getPageTitle(),
+    heading: OUTCOMES_HEADING,
+    data: sortedCases,
     totalPages: response.totalPages,
     totalElements: response.totalElements,
     outcomeActionAssign: session.outcomeActionAssign,

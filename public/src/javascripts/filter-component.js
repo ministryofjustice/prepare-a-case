@@ -121,10 +121,11 @@
   function isLastFilter(form) {
     var formData = new FormData(form);
 
-    // hearingDate seems to always exist - so if its 'None' then ignore it for this check
-    if (formData.get('hearingDate') && formData.get('hearingDate') === 'NONE') {
-      formData.delete('hearingDate')
-    }
+    ['hearingDate', 'defendantName', 'probationStatus'].forEach(function removeNoneSortField(fieldName) {
+      if (formData.get(fieldName) && formData.get(fieldName) === 'NONE') {
+        formData.delete(fieldName)
+      }
+    })
 
     return Object.keys(Object.fromEntries(formData)).length <= 1 ? true : false
   }

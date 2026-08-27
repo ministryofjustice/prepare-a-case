@@ -21,13 +21,13 @@ Feature: Case mass action (assign to)
     Given I am an authenticated user
     When I navigate to the "outcomes" route
     And I check a checkbox for a case record
-    Then the option 'Assign to Me' in the Action menu is enabled
+    Then I should see a "enabled" button with the label "Assign to me"
 
   #AC004
   Scenario: action button defaults to disabled
     Given I am an authenticated user
     When I navigate to the "outcomes" route
-    Then the option 'Assign to Me' in the Action menu is disabled
+    Then I should see a "disabled" button with the label "Assign to me"
 
   #AC005
   Scenario: success banner shows correctly for singular assign

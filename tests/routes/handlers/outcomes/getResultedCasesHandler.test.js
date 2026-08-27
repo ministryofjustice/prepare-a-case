@@ -31,7 +31,8 @@ describe('getResultedCasesHandler', () => {
   const courtCode = 'B007'
 
   const params = {
-    title: 'Resulted cases',
+    title: 'Hearing outcomes - Resulted cases',
+    heading: 'Hearing outcomes',
     sorts: { sorts: 'hearingDate', order: 'ASC' },
     courtCode,
     state: 'RESULTED',
@@ -100,6 +101,8 @@ describe('getResultedCasesHandler', () => {
         ...params,
         filters,
         filtersApplied: false,
+        includeDefendantSort: true,
+        includeProbationStatusSort: true,
         casesInProgressCount: 5,
         casesToResultCount: 2
       },
@@ -108,11 +111,98 @@ describe('getResultedCasesHandler', () => {
       data: apiResponse.cases,
       totalElements: 2,
       totalPages: undefined,
+      heading: params.heading,
       pagination: {
         pageItems: [],
         previousLink: null,
         nextLink: null
       }
     })
+  })
+
+  it('should render the correct heading and title', async () => {
+    // Given
+    caseServiceMock.getOutcomesList.mockResolvedValueOnce({
+      totalElements: 2,
+      cases: [{}, {}],
+      countsByState: { toResultCount: 2, inProgressCount: 5 },
+      courtRoomFilters: ['01']
+    })
+
+    // When
+    await subject(mockRequest, mockResponse)
+
+    // Then
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/resultedCases',
+      expect.objectContaining({
+        heading: 'Hearing outcomes',
+        title: 'Hearing outcomes - Resulted cases'
+      })
+    )
+  })
+
+  it('should pass through resulted cases in backend order when defendant sort is selected', async () => {
+    const requestWithDefendantSort = {
+      ...mockRequest,
+      params: {
+        ...params,
+        defendantSort: 'ascending'
+      }
+    }
+
+    caseServiceMock.getOutcomesList.mockResolvedValueOnce({
+      totalElements: 2,
+      cases: [
+        { name: { forename1: 'Zoe', surname: 'Alpha' }, defendantName: '', probationStatus: 'Current' },
+        { name: { forename1: 'Adam', surname: 'Zulu' }, defendantName: '', probationStatus: 'Current' }
+      ],
+      countsByState: { toResultCount: 2, inProgressCount: 5 },
+      courtRoomFilters: ['01']
+    })
+
+    await subject(requestWithDefendantSort, mockResponse)
+
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/resultedCases',
+      expect.objectContaining({
+        data: [
+          expect.objectContaining({ name: { forename1: 'Zoe', surname: 'Alpha' } }),
+          expect.objectContaining({ name: { forename1: 'Adam', surname: 'Zulu' } })
+        ]
+      })
+    )
+  })
+
+  it('should pass through resulted cases in backend order when probation status sort is selected', async () => {
+    const requestWithProbationStatusSort = {
+      ...mockRequest,
+      params: {
+        ...params,
+        probationStatusSort: 'ascending'
+      }
+    }
+
+    caseServiceMock.getOutcomesList.mockResolvedValueOnce({
+      totalElements: 2,
+      cases: [
+        { probationStatus: 'Possible NDelius record', defendantName: 'Z Last' },
+        { probationStatus: 'Current', defendantName: 'A First' }
+      ],
+      countsByState: { toResultCount: 2, inProgressCount: 5 },
+      courtRoomFilters: ['01']
+    })
+
+    await subject(requestWithProbationStatusSort, mockResponse)
+
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/resultedCases',
+      expect.objectContaining({
+        data: [
+          expect.objectContaining({ probationStatus: 'Possible NDelius record' }),
+          expect.objectContaining({ probationStatus: 'Current' })
+        ]
+      })
+    )
   })
 })

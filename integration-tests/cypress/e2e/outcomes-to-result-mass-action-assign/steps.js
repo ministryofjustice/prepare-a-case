@@ -29,25 +29,12 @@ Then('checkboxes for all cases are checked', () => {
     .should('be.checked')
 })
 
-Then('the option \'Assign to Me\' in the Action menu is enabled', () => {
-  cy.get('.moj-button-menu >button')
-    .click()
-  cy.get('.common_checker_toggle_action')
-    .should('not.be.disabled')
-})
-
-Then('the option \'Assign to Me\' in the Action menu is disabled', () => {
-  cy.get('.moj-button-menu >button')
-    .click()
-  cy.get('.common_checker_toggle_action')
-    .should('be.disabled')
+Then('I should see a {string} button with the label {string}', ($state, $string) => {
+  cy.get('.moj-button-menu__single-button').contains($string).should($state === 'enabled' ? 'not.be.disabled' : 'be.disabled')
 })
 
 When('I click to assign the case', () => {
-  cy.get('.moj-button-menu >button')
-    .click()
-  cy.get('.common_checker_toggle_action')
-    .click()
+  cy.get('.common_checker_toggle_action').click()
 })
 
 Then('I see a success banner stating {string}', text => {

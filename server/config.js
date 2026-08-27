@@ -32,7 +32,6 @@ module.exports = {
     casesPastDays: get('CASES_PAST_DAYS', 14),
     caseTrackingPrePilotUsers: getCsvParamAsArray('CASE_TRACKING_PRE_PILOT_USERS'),
     liverpoolPrePilotUsers: getCsvParamAsArray('LIVERPOOL_PRE_PILOT_USERS'),
-    caseSearchUsers: getCsvParamAsArray('CASE_SEARCH_USERS'),
     pacEnvironment: get('PAC_ENV', 'UNKNOWN'),
     enablePastCasesNavigation: getBooleanParam('ENABLE_PAST_CASES_NAVIGATION'),
     enableHearingOutcomes: getBooleanParam('ENABLE_HEARING_OUTCOMES'),
@@ -116,6 +115,10 @@ module.exports = {
       apiClientId: get('API_CLIENT_ID', 'prepare-a-case-for-court'),
       apiClientSecret: get('API_CLIENT_SECRET', 'clientsecret'),
       role: get('ROLE', 'ROLE_PREPARE_A_CASE')
+    },
+    probationApi: {
+      url: get('COMPONENT_API_URL', 'https://probation-frontend-components-dev.hmpps.service.justice.gov.uk', requiredInProduction),
+      healthPath: '/health/ping'
     }
   },
   appVersion: get('APP_VERSION', 'dev-build'),

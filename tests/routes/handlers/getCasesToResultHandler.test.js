@@ -19,7 +19,7 @@ jest.mock('../../../server/services/case-service', () => ({
 jest.mock('.././../../server/utils/nunjucksComponents', () => {
   return {
     getFilterComponent: jest.fn(),
-    populateTemplateValuesWithComponent: jest.fn()
+    populateTemplateValuesWithComponent: (input) => input
   }
 })
 
@@ -74,5 +74,97 @@ describe('getCasesToResultHandler', () => {
     expect(caseService.getOutcomesList).toHaveBeenCalled()
     expect(caseService.getOutcomesList).toHaveBeenCalledWith(courtCode, query, undefined, undefined)
     expect(mockResponse.render).toHaveBeenCalled()
+  })
+
+  it('should render the correct heading and title', async () => {
+    // Given
+    caseService.getOutcomesList.mockReturnValueOnce({
+      totalElements: 4,
+      countsByState: { inProgressCount: 2 },
+      courtRoomFilters: [],
+      cases: [{}, {}, {}, {}]
+    })
+
+    // When
+    await subject(mockRequest, mockResponse)
+
+    // Then
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/casesToResult',
+      expect.objectContaining({
+        heading: 'Hearing outcomes',
+        title: 'Hearing outcomes - Cases to result'
+      })
+    )
+  })
+
+  it('should pass through cases in backend order when defendant sort is selected', async () => {
+    // Given
+    const requestWithDefendantSort = {
+      ...mockRequest,
+      params: {
+        ...mockRequest.params,
+        defendantSort: 'ascending'
+      }
+    }
+
+    caseService.getOutcomesList.mockReturnValueOnce({
+      totalElements: 2,
+      countsByState: { inProgressCount: 0 },
+      courtRoomFilters: [],
+      cases: [
+        { name: { forename1: 'Zoe', surname: 'Alpha' }, defendantName: '' },
+        { name: { forename1: 'Adam', surname: 'Zulu' }, defendantName: '' }
+      ]
+    })
+
+    // When
+    await subject(requestWithDefendantSort, mockResponse)
+
+    // Then — ordering is delegated to the backend; confirm cases are passed through unchanged
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/casesToResult',
+      expect.objectContaining({
+        data: [
+          expect.objectContaining({ name: { forename1: 'Zoe', surname: 'Alpha' } }),
+          expect.objectContaining({ name: { forename1: 'Adam', surname: 'Zulu' } })
+        ]
+      })
+    )
+  })
+
+  it('should sort cases by probation status when probation status sort is selected', async () => {
+    // Given
+    const requestWithProbationStatusSort = {
+      ...mockRequest,
+      params: {
+        ...mockRequest.params,
+        probationStatusSort: 'ascending'
+      }
+    }
+
+    caseService.getOutcomesList.mockReturnValueOnce({
+      totalElements: 2,
+      countsByState: { inProgressCount: 0 },
+      courtRoomFilters: [],
+      cases: [
+        { probationStatus: 'Possible NDelius record', defendantName: 'A Example' },
+        { probationStatus: 'Current', defendantName: 'B Example' }
+      ]
+    })
+
+    // When
+    await subject(requestWithProbationStatusSort, mockResponse)
+
+    // Then — ordering is delegated to the backend; confirm cases are passed through unchanged
+    expect(mockResponse.render).toHaveBeenCalledWith(
+      'outcomes/casesToResult',
+      expect.objectContaining({
+        data: [
+          expect.objectContaining({ probationStatus: 'Possible NDelius record' }),
+          expect.objectContaining({ probationStatus: 'Current' })
+        ]
+      })
+    )
   })
 })

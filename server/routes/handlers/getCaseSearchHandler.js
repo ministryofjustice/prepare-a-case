@@ -2,12 +2,17 @@ const log = require('../../log')
 const trackEvent = require('../../utils/analytics')
 const { settings } = require('../../config')
 const { getPagination } = require('../../utils/pagination')
+const featuresToggles = require('../../utils/features')
 
 const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req, res) => {
   const term = req.query.term
   const { searchType: type, error } = getCaseSearchType(term)
   const { cookies } = req
   const page = req.query.page > 0 ? req.query.page : undefined
+
+  const sortParamMapping = { ASC: 'ascending', DESC: 'descending' }
+  const nextHearingDateParam = req.query.nextHearingDate
+  const nextHearingDateSort = sortParamMapping[nextHearingDateParam] || 'descending'
 
   const trackingEvent = {
     term,
@@ -24,16 +29,22 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
 
   if (term && type) {
     const pageSize = settings.caseSearchResultPageSize
-    const data = await searchCases(term, type, page, pageSize)
-    const baseUrl = '/case-search?term=' + term + '&'
+    const data = await searchCases(term, type, page, pageSize, nextHearingDateParam || 'DESC')
+    const sortQueryPart = nextHearingDateParam ? '&nextHearingDate=' + nextHearingDateParam : ''
+    const baseUrl = '/case-search?term=' + term + sortQueryPart + '&'
 
     trackingEvent.length = data?.data?.items?.length
 
     const currentPage = parseInt(req.query.page || 1, 10)
+    const courtCode = req.cookies.currentCourt
+    const context = { court: courtCode, username: res.locals.user.username }
+    const hearingOutcomesEnabled = featuresToggles.hearingOutcomes.isEnabled(context)
     const templateValues = {
       params: {
         ...req.params,
-        courtCode: req.cookies.currentCourt
+        courtCode,
+        hearingOutcomesEnabled,
+        nextHearingDateSort
       },
       data: {
         ...data.data

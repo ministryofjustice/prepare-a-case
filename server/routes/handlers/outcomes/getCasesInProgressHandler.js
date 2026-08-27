@@ -4,15 +4,18 @@ const flagFilters = require('../../../utils/flagFilters')
 const { prepareCourtRoomFilters } = require('../../helpers')
 const { getFilterComponent, populateTemplateValuesWithComponent } = require('../../../utils/nunjucksComponents.js')
 const { getPagination } = require('../../../utils/pagination')
+const { OUTCOMES_HEADING } = require('./constants')
 
 const getPagelessQueryParams = params => {
   const { page, ...remainder } = params
   return remainder
 }
 
+const getPageTitle = () => `${OUTCOMES_HEADING} - In progress`
+
 const getCasesInProgressHandler = (caseService, userPreferenceService) => async (req, res) => {
   const {
-    params: { courtCode, title, sorts, state },
+    params: { courtCode, sorts, state },
     params,
     session,
     query: queryParams
@@ -45,7 +48,7 @@ const getCasesInProgressHandler = (caseService, userPreferenceService) => async 
     state
   )
 
-  const cases = response.cases
+  const cases = response.cases || []
 
   const courtRoomFilter = {
     id: 'courtRoom',
@@ -78,13 +81,16 @@ const getCasesInProgressHandler = (caseService, userPreferenceService) => async 
       ...params,
       filters: flaggedFilters,
       filtersApplied,
+      includeDefendantSort: true,
+      includeProbationStatusSort: true,
       casesInProgressCount: response?.totalElements || 0,
       casesToResultCount: response?.countsByState?.toResultCount || 0
     },
-    title,
+    title: getPageTitle(),
+    heading: OUTCOMES_HEADING,
     currentUserUuid: res.locals.user.uuid,
     moveToResultedSuccess: session.moveToResultedSuccess,
-    data: response.cases || [],
+    data: cases,
     totalPages: response.totalPages,
     totalElements: response.totalElements,
     flashMessage,

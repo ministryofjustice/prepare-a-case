@@ -53,6 +53,7 @@ module.exports = {
   },
 
   apostropheInName: name => {
+    if (!name) return ''
     const pattern = /\b(&#39;)\b/g
     return name.replace(pattern, "'")
   },
@@ -70,6 +71,15 @@ module.exports = {
     const ordinal =
       ['st', 'nd', 'rd'][((((number + 90) % 100) - 10) % 10) - 1] || 'th'
     return number + ordinal
+  },
+
+  // Mimics what was being done in the template, which now needs to be done in the handler
+  // Looks like a dupe of formatDefendantName, but order of operations differs so results theoretically could too
+  // This method ensures no UI change whilst minimising risk of refactoring formatDefendantName
+  // TODO: in future, try and use only one for consistency
+  formatName: name => {
+    const { properCase, removeTitle, apostropheInName } = module.exports
+    return removeTitle(properCase(apostropheInName(name)))
   },
 
   caseCommentTimeFormat: dateString => {
