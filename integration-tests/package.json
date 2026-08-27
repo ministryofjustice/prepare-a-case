@@ -1,14 +1,18 @@
 {
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^24.0.0",
+    "@badeball/cypress-cucumber-preprocessor": "27.0.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "axe-core": "4.11.1",
+    "cypress": "15.21.1",
     "cypress-axe": "^1.7.0",
     "cypress-fail-fast": "^7.1.1",
     "dotenv": "16.0.0",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.30.1",
     "superagent": "^10.2.1"
+  },
+  "overrides": {
+    "serialize-javascript": "7.1.0"
   }
 }

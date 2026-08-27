@@ -2,7 +2,6 @@ version: '3.7'
 networks:
   hmpps:
 
-#todo: remove quay
 services:
   court-case-service:
     image: quay.io/hmpps/court-case-service:latest
