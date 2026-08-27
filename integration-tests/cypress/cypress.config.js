@@ -5,6 +5,7 @@ const { addCucumberPreprocessorPlugin } = require('@badeball/cypress-cucumber-pr
 const { resetStubs, stubSignIn } = require('./mockApis/wiremock')
 
 module.exports = {
+  allowCypressEnv: false,
   defaultCommandTimeout: 20000,
   chromeWebSecurity: false,
   fixturesFolder: './output/fixtures',
@@ -15,7 +16,7 @@ module.exports = {
   reporterOptions: {
     mochaFile: './output/test-results/cypress/results-[hash].xml'
   },
-  env: {
+  expose: {
     TAGS: 'not @ignore'
   },
   taskTimeout: 20000,
@@ -26,11 +27,12 @@ module.exports = {
     excludeSpecPattern: ['*.js', '*.md'],
     supportFile: false,
     setupNodeEvents: async (on, config) => {
-      config.env = {
+      config.expose = {
+        ...config.expose,
         stepDefinitions: [
-          'integration-tests/cypress/e2e/[filepath]/**/*.{js,ts}',
-          'integration-tests/cypress/e2e/[filepath].{js,ts}',
-          'integration-tests/cypress/support/step_definitions/**/*.{js,ts}'
+          'integration-tests/cypress/e2e/[filepath]/**/*.{js,mjs,ts,tsx}',
+          'integration-tests/cypress/e2e/[filepath].{js,mjs,ts,tsx}',
+          'integration-tests/cypress/support/step_definitions/**/*.{js,mjs,ts,tsx}'
         ],
         CASES_TOTAL_DAYS: 28
       }
