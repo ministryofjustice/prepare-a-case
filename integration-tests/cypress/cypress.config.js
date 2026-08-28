@@ -16,9 +16,6 @@ module.exports = {
   reporterOptions: {
     mochaFile: './output/test-results/cypress/results-[hash].xml'
   },
-  expose: {
-    TAGS: 'not @ignore'
-  },
   taskTimeout: 20000,
   projectId: '2ew2jc',
   e2e: {
@@ -29,6 +26,7 @@ module.exports = {
     setupNodeEvents: async (on, config) => {
       config.expose = {
         ...config.expose,
+        tags: 'not @ignore',
         stepDefinitions: [
           'integration-tests/cypress/e2e/[filepath]/**/*.{js,mjs,ts,tsx}',
           'integration-tests/cypress/e2e/[filepath].{js,mjs,ts,tsx}',
