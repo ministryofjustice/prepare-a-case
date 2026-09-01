@@ -1,72 +1,59 @@
-# Stage: base image
+# Stage: base
 FROM ghcr.io/ministryofjustice/hmpps-node:24-alpine AS base
 
 ARG BUILD_NUMBER
 ARG GIT_REF
 ARG GIT_BRANCH
 
-RUN test -n "$BUILD_NUMBER" || (echo "BUILD_NUMBER not set" && false)
-RUN test -n "$GIT_REF" || (echo "GIT_REF not set" && false)
-RUN test -n "$GIT_BRANCH" || (echo "GIT_BRANCH not set" && false)
+RUN test -n "$BUILD_NUMBER" || (echo "BUILD_NUMBER not set" && false) \
+ && test -n "$GIT_REF" || (echo "GIT_REF not set" && false) \
+ && test -n "$GIT_BRANCH" || (echo "GIT_BRANCH not set" && false)
 
-ENV BUILD_NUMBER=${BUILD_NUMBER}
-ENV GIT_REF=${GIT_REF}
-ENV GIT_BRANCH=${GIT_BRANCH}
+ENV BUILD_NUMBER=${BUILD_NUMBER} \
+    GIT_REF=${GIT_REF} \
+    GIT_BRANCH=${GIT_BRANCH} \
+    CYPRESS_INSTALL_BINARY=0
 
-ENV CYPRESS_INSTALL_BINARY=0
+WORKDIR /app
 
-# Stage: build
-FROM base AS build
+# Stage: dependencies shared by build and development
+FROM base AS dependencies
 
 RUN apk add --no-cache \
-      python3 \
-      make \
-      g++ \
-      linux-headers \
-      libc6-compat \
-      libpng
+    python3 \
+    make \
+    g++ \
+    linux-headers \
+    libc6-compat \
+    libpng
 
 COPY package.json package-lock.json ./
 RUN npm ci
 
+# Stage: build production assets
+FROM dependencies AS build
+
 COPY . .
 
-ARG BUILD_NUMBER
-ARG GIT_REF
-ENV APP_VERSION=${BUILD_NUMBER}
-ENV NODE_ENV=production
+ENV APP_VERSION=${BUILD_NUMBER} \
+    NODE_ENV=production
 
-RUN export APP_VERSION=${BUILD_NUMBER} && \
-    export BUILD_NUMBER=${BUILD_NUMBER} && \
-    export GIT_REF=${GIT_REF} && \
-    ./bin/build-css && \
-    ./bin/build-js && \
-    npx webpack --config ./public/config/webpack.config.js && \
-    ./bin/record-build-info
-
-# Keep only production deps
-RUN npm prune --omit=dev --no-audit --no-fund
+RUN ./bin/build-css \
+ && ./bin/build-js \
+ && npx webpack --config ./public/config/webpack.config.js \
+ && ./bin/record-build-info \
+ && npm prune --omit=dev --no-audit --no-fund
 
 # Stage: development
-FROM base AS development
-
-RUN apk add --no-cache \
-      python3 \
-      make \
-      g++ \
-      linux-headers \
-      libc6-compat \
-      libpng
-
-COPY package.json package-lock.json ./
-RUN npm ci
+FROM dependencies AS development
 
 COPY . .
 
-RUN npm i -g concurrently
+RUN npm install --global concurrently
+
+ENV NODE_ENV=development
 
 EXPOSE 3000 9229
-ENV NODE_ENV=development
 USER 2000
 
 ENTRYPOINT ["concurrently"]
@@ -78,18 +65,32 @@ CMD [ \
 ]
 
 # Stage: production runtime
-FROM base AS production
+FROM ghcr.io/ministryofjustice/hmpps-node:24-alpine-runtime AS production
 
-# Runtime libs only (no compiler toolchain)
-RUN apk add --no-cache \
-      libc6-compat \
-      libpng
+ARG BUILD_NUMBER
+ARG GIT_REF
+ARG GIT_BRANCH
 
-COPY --from=build --chown=appuser:appgroup /app /app
+ENV BUILD_NUMBER=${BUILD_NUMBER} \
+    GIT_REF=${GIT_REF} \
+    GIT_BRANCH=${GIT_BRANCH} \
+    APP_VERSION=${BUILD_NUMBER} \
+    NODE_ENV=production
+
+WORKDIR /app
+
+COPY --from=build --chown=appuser:appgroup \
+    /app/package.json \
+    /app/package-lock.json \
+    /app/build-info.json \
+    ./
+
+COPY --from=build --chown=appuser:appgroup /app/node_modules ./node_modules
+COPY --from=build --chown=appuser:appgroup /app/server ./server
+COPY --from=build --chown=appuser:appgroup /app/public/build ./public/build
+COPY --from=build --chown=appuser:appgroup /app/bin/www ./bin/www
 
 EXPOSE 3000
-ENV NODE_ENV=production
 USER 2000
 
-ENTRYPOINT [ "node" ]
-CMD [ "./bin/www" ]
+CMD ["node", "./bin/www"]
