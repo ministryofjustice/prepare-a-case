@@ -5,7 +5,7 @@ generic-service:
   serviceAccountName: "court-case-service"
 
   image:
-    repository: quay.io/hmpps/prepare-a-case # todo: remove quay
+    repository: ghcr.io/ministryofjustice/prepare-a-case
     tag: latest
     port: 3000
     pullPolicy: Always
@@ -63,7 +63,7 @@ generic-service:
       NOTIFICATION_PASSWORD: NOTIFICATION_PASSWORD
       NOTIFICATION_USERNAME: NOTIFICATION_USERNAME
       SESSION_SECRET: SESSION_SECRET
-    applicationinsights-connection-string:
+    hmpps-prepare-a-case-application-insights:
       APPLICATIONINSIGHTS_CONNECTION_STRING: applicationinsights_connection_string
     liverpool-pre-pilot-users:
       LIVERPOOL_PRE_PILOT_USERS: liverpool_pre_pilot_users

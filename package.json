@@ -14,15 +14,20 @@
     "start:auth": "docker compose -f docker-compose.yml -f compose/user-auth.yml up",
     "start:detached": "npm run start -- --wait -d",
     "stop": "docker compose down",
-    "build": "docker compose pull && docker compose build",
+    "build:docker": "docker compose pull && docker compose build",
     "test": "npm run test:lint && npm run test:unit && npm run test:int",
     "test:lint": "docker exec -it prepare-a-case-app /app/node_modules/.bin/standard",
     "test:lint:fix": "npm run test:lint -- --fix",
     "test:unit": "docker exec -it -e ENABLE_HEARING_OUTCOMES=false prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit",
     "test:unit:watch": "docker exec -it -e ENABLE_HEARING_OUTCOMES=false prepare-a-case-app /app/node_modules/.bin/jest --config=./tests/jest.config.js --detectOpenHandles --watchAll",
     "security_audit": "npx audit-ci --config audit-ci.json",
-    "int-test": "cypress run --config-file integration-tests/cypress/cypress.config.js video=false",
-    "int-test-ui": "npx cypress open --config-file integration-tests/cypress/cypress.config.js --e2e --browser chrome"
+    "int-test-init:ci": "echo \"\" > .env && npm ci --no-audit && cd integration-tests && npm ci --no-audit",
+    "start-feature": "docker compose up -d --wait",
+    "int-test": "end=$(($(date +%s)+180)); until curl -sS http://localhost:3000/health > /dev/null; do [ $(date +%s) -ge $end ] && echo 'Timed out waiting for app' && exit 1; echo 'waiting for app'; sleep 3; done; npx cypress run --config-file integration-tests/cypress/cypress.config.js --config video=false",
+    "int-test-ui": "npx cypress open --config-file integration-tests/cypress/cypress.config.js --e2e --browser chrome",
+    "lint": "standard",
+    "build": "mkdir -p build && echo ok > build/info.txt",
+    "test:ci": "mkdir -p test_results && jest --config=./tests/jest.config.js --detectOpenHandles --ci --forceExit"
   },
   "config": {},
   "nodemonConfig": {
@@ -95,7 +100,7 @@
     "ajv": "^8.18.0",
     "ajv-errors": "3.0.0",
     "axe-core": "^4.11.1",
-    "cypress": "^14.5.4",
+    "cypress": "15.21.1",
     "cypress-axe": "^1.7.0",
     "cypress-fail-fast": "^7.1.1",
     "jest": "^29.7.0",
@@ -111,5 +116,8 @@
     "terser": "^5.26.0",
     "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4"
+  },
+  "overrides": {
+    "serialize-javascript": "7.1.0"
   }
 }
