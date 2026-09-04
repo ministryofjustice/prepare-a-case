@@ -2,10 +2,14 @@ const jwtDecode = require('jwt-decode')
 const config = require('../../config')
 const log = require('../../log')
 const axios = require('axios')
+const { AsyncLocalStorage } = require('async_hooks')
 
 const instance = axios.create()
 
-let authInterceptorId
+// Each request's bearer token is kept in its own async context so concurrent
+// requests from different users can never leak each other's tokens.
+const requestContext = new AsyncLocalStorage()
+let authInterceptorRegistered = false
 
 function authorisationMiddleware (req, res, next) {
   // Make sure only users with court admin role can access court app
@@ -17,19 +21,19 @@ function authorisationMiddleware (req, res, next) {
       return res.redirect('/autherror')
     }
 
-    if (authInterceptorId !== undefined) {
-      instance.interceptors.request.eject(authInterceptorId)
+    if (!authInterceptorRegistered) {
+      authInterceptorRegistered = true
+      instance.interceptors.request.use(requestConfig => {
+        const token = requestContext.getStore()?.token
+        requestConfig.headers = {
+          ...requestConfig.headers,
+          ...(token ? { Authorization: `Bearer ${token}` } : {})
+        }
+        return requestConfig
+      })
     }
 
-    authInterceptorId = instance.interceptors.request.use(config => {
-      config.headers = {
-        ...config.headers,
-        Authorization: `Bearer ${res.locals.user.token}`
-      }
-      return config
-    })
-
-    return next()
+    return requestContext.run({ token: res.locals.user.token }, next)
   }
   // No session: get one created
   req.session.returnTo = req.originalUrl
