@@ -145,11 +145,13 @@ const constructTableData = (params, data) => {
       return `<a href="${summaryUrl}" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" aria-label="${ariaLabel}">${sanitisedName}</a>${crn}`
     }
 
-    const sfoClass = item.seriousFurtherOffence ? 'pac-sfo-row' : ''
-    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div><img src="/images/flag.svg" alt="Possible SFO" title="Possible SFO" class="pac-sfo-badge"><span style="color:#D4351C;font-weight:bold;font-size:1rem;margin-left:4px;">Possible SFO</span></div>' : ''
+    const hasFlaggedOffence = item.seriousFurtherOffence || item.multiAgencyPublicProtectionArrangementsOffence
+    const sfoClass = hasFlaggedOffence ? 'pac-sfo-row' : ''
+    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div><img src="/images/flag.svg" alt="Possible SFO" title="Possible SFO" class="pac-sfo-badge"><span class="pac-flag-label pac-sfo-label">Possible SFO</span></div>' : ''
+    const mappaBadgeHtml = item.multiAgencyPublicProtectionArrangementsOffence ? '<div><img src="/images/flag-blue.svg" alt="Possible MAPPA" title="Possible MAPPA" class="pac-sfo-badge"><span class="pac-flag-label pac-mappa-label" style="color:#003078;font-weight:bold;margin-left:4px;">Possible MAPPA</span></div>' : ''
 
     const tableRow = [
-      { html: constructDefendantNameLink(a11yTitle, sanitisedDefendantFullName, crnDisplay, params.courtCode, item.hearingId, item.defendantId) + sfoBadgeHtml, classes: sfoClass },
+      { html: constructDefendantNameLink(a11yTitle, sanitisedDefendantFullName, crnDisplay, params.courtCode, item.hearingId, item.defendantId) + sfoBadgeHtml + mappaBadgeHtml, classes: sfoClass },
       { html: getProbationStatusHtml(item, notMatched), classes: sfoClass },
       { html: offences.join(''), classes: sfoClass },
       { html: listing.join(''), classes: sfoClass },
