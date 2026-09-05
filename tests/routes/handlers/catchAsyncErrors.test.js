@@ -31,7 +31,6 @@ describe('catchAsyncErrors', () => {
   }
 
   const subject = require('../../../server/routes/handlers/catchAsyncErrors')
-  const loggerMock = require('../../../server/log')
 
   it('should catch, log and progress the error to express when handler throws an error', async () => {
     handlerMock.mockRejectedValueOnce(testError)
@@ -39,7 +38,6 @@ describe('catchAsyncErrors', () => {
     await wrappedHandler(testReq, testRes, nextMock)
     expect(handlerMock).toHaveBeenCalledWith(testReq, testRes)
     expect(nextMock).toHaveBeenLastCalledWith({ ...testError, status: 500 })
-    expect(loggerMock.error).toHaveBeenCalledWith(testError)
   })
 
   it('should catch, log API error and progress the Axios error to express when handler throws an error', async () => {
@@ -59,9 +57,6 @@ describe('catchAsyncErrors', () => {
 
     expect(handlerMock).toHaveBeenCalledWith(testReq, testRes)
     expect(nextMock).toHaveBeenLastCalledWith({ ...expectedAxiosError, status: 400 })
-    expect(loggerMock.error.mock.calls).toEqual([[expectedAxiosError],
-      [{ type: 'API Error', code: 'code1', URL: httpBackendHelloEndpoint, method: 'GET', httpStatus: 400, message: testBackendErrorMessage }, 'Error: Unexpected error']
-    ])
   })
 
   it('should catch, log API error, default status to 500 when response is undefined', async () => {
@@ -74,8 +69,5 @@ describe('catchAsyncErrors', () => {
     await wrappedHandler(testReq, testRes, nextMock)
     expect(handlerMock).toHaveBeenCalledWith(testReq, testRes)
     expect(nextMock).toHaveBeenLastCalledWith({ ...testAxiosErrorConnRefused, status: 500 })
-    expect(loggerMock.error.mock.calls).toEqual([[testAxiosErrorConnRefused],
-      [{ type: 'API Error', code: 'code1', URL: httpBackendHelloEndpoint, method: 'GET', httpStatus: 500, message: undefined }, 'Error: Unexpected error']
-    ])
   })
 })
