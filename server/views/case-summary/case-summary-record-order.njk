@@ -321,7 +321,9 @@
                     Appointments to date</h3>
             </dt>
 
-            <dd class="govuk-grid-column-two-thirds govuk-!-margin-0 govuk-heading-m govuk-!-text-align-left govuk-!-padding-top-2 pac-dashboard-count">{{ attendances | length }}</dd>
+            <dd class="govuk-grid-column-two-thirds govuk-!-margin-0 govuk-heading-m govuk-!-padding-top-2">
+                <span class="pac-dashboard-count">{{ attendances | length }}</span>
+            </dd>
         </dl>
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible app-section-break--heavy govuk-!-width-two-thirds">
