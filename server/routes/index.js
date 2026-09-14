@@ -28,6 +28,7 @@ const {
   getCustodyDetails
 } = require('../services/community-service')
 const { getOrderTitle } = require('./helpers')
+const { clearFilters } = require('../services/user-preference-service')
 
 const { health } = require('./middleware/healthcheck')
 const { defaults } = require('./middleware/defaults')
@@ -141,10 +142,13 @@ module.exports = function Index ({ authenticationMiddleware }) {
 
   router.get(
     '/select-court/:courtCode',
-    catchErrors((req, res) => {
+    catchErrors(async (req, res) => {
       const {
         params: { courtCode }
       } = req
+
+      await clearFilters(res.locals.user.username, 'outcomesFilters')
+      await clearFilters(res.locals.user.username, 'caseFilters')
 
       res
         .status(201)
