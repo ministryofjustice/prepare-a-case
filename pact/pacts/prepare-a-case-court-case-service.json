@@ -1,0 +1,757 @@
+{
+  "consumer": {
+    "name": "prepare-a-case"
+  },
+  "interactions": [
+    {
+      "description": "a request for a defendant's probation record data",
+      "providerState": "an offender record exists",
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/offender/D991494/probation-record"
+      },
+      "response": {
+        "body": {
+          "convictions": [
+            {
+              "active": true,
+              "awaitingPsr": true,
+              "breaches": [
+                {
+                  "breachId": 11131322,
+                  "description": "Community Order",
+                  "started": "2020-10-20",
+                  "status": "Breach Initiated",
+                  "statusDate": "2020-12-18"
+                }
+              ],
+              "convictionDate": "2019-09-03",
+              "convictionId": "2500295345",
+              "custodialType": {
+                "code": "D",
+                "description": "In Custody"
+              },
+              "documents": [
+                {
+                  "author": "Andy Marke",
+                  "createdAt": "2019-09-04T00:00:00",
+                  "documentId": "1d842fce-ec2d-45dc-ac9a-748d3076ca6b",
+                  "documentName": "shortFormatPreSentenceReport_04092019_121424_OMIC_A_X320741.pdf",
+                  "extendedDescription": "Pre-Sentence Report - Fast requested by Sheffield Crown Court on 04/09/2018",
+                  "reportDocumentDates": {
+                    "completedDate": "2018-02-28T00:00:00",
+                    "requestedDate": "2018-09-04",
+                    "requiredDate": "2019-09-04"
+                  },
+                  "subType": {
+                    "code": "CJF",
+                    "description": "Pre-Sentence Report - Fast"
+                  },
+                  "type": "COURT_REPORT_DOCUMENT"
+                }
+              ],
+              "endDate": "2019-01-01",
+              "inBreach": true,
+              "licenceConditions": [
+                {
+                  "description": "Curfew Arrangement",
+                  "notes": "This is an example of licence condition notes",
+                  "startDate": "2020-02-01",
+                  "subTypeDescription": "ETE - High intensity"
+                },
+                {
+                  "description": "Participate or co-op with Programme or Activities",
+                  "notes": "This is an example of licence condition notes",
+                  "startDate": "2020-02-01",
+                  "subTypeDescription": "ETE - High intensity"
+                }
+              ],
+              "offences": [
+                {
+                  "description": "Arson - 05600",
+                  "main": true,
+                  "offenceDate": "2017-03-08"
+                }
+              ],
+              "psrReports": [
+                {
+                  "author": {
+                    "forenames": "Carrie",
+                    "surname": "Smith",
+                    "unallocated": false
+                  },
+                  "completedDate": "2019-09-03",
+                  "courtReportId": 1,
+                  "courtReportType": {
+                    "code": "CJF",
+                    "description": "Pre-Sentence Report - Fast"
+                  },
+                  "requestedDate": "2019-09-03",
+                  "requiredDate": "2019-09-03"
+                }
+              ],
+              "pssRequirements": [],
+              "requirements": [
+                {
+                  "active": false,
+                  "expectedEndDate": "2017-12-01",
+                  "expectedStartDate": "2017-06-01",
+                  "length": 60,
+                  "lengthUnit": "Hours",
+                  "requirementId": 2500083652,
+                  "requirementTypeMainCategory": {
+                    "code": "W",
+                    "description": "Unpaid Work"
+                  },
+                  "requirementTypeSubCategory": {
+                    "code": "W01",
+                    "description": "Regular"
+                  },
+                  "startDate": "2017-06-01",
+                  "terminationDate": "2017-12-01",
+                  "terminationReason": {
+                    "code": "74",
+                    "description": "Hours Completed Outside 12 months (UPW only)"
+                  }
+                },
+                {
+                  "active": true,
+                  "adRequirementTypeMainCategory": {
+                    "code": "7",
+                    "description": "Court - Accredited Programme"
+                  },
+                  "adRequirementTypeSubCategory": {
+                    "code": "P12",
+                    "description": "ASRO"
+                  },
+                  "commencementDate": "2015-06-29",
+                  "requirementId": 2500007925,
+                  "startDate": "2015-07-01"
+                }
+              ],
+              "sentence": {
+                "description": "CJA - Indeterminate Public Prot.",
+                "endDate": "2019-01-01",
+                "length": 5,
+                "lengthInDays": 1826,
+                "lengthUnits": "Years",
+                "sentenceId": "123457",
+                "startDate": "2014-01-01",
+                "terminationDate": "2019-01-01",
+                "terminationReason": "ICMS Miscellaneous Event"
+              }
+            }
+          ],
+          "crn": "D991494",
+          "offenderManagers": [
+            {
+              "allocatedDate": "2019-09-30",
+              "provider": "NPS North East",
+              "staff": {
+                "email": "d@none.com",
+                "forenames": "ANGEL",
+                "surname": "Extravaganza",
+                "telephone": "01154223456"
+              },
+              "team": {
+                "description": "OMIC OMU A",
+                "district": "OMiC POM Responsibility",
+                "localDeliveryUnit": "LDU Description",
+                "telephone": "0151 222 3333"
+              }
+            }
+          ]
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for a specific case",
+      "providerState": "a case exists with the given case id and defendant id",
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/hearing/1f93aa0a-7e46-4885-a1cb-f25a4be33a00/defendant/40db17d6-04db-11ec-b2d8-0242ac130002"
+      },
+      "response": {
+        "body": {
+          "awaitingPsr": true,
+          "breach": true,
+          "caseId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "caseNo": "1600028913",
+          "courtCode": "B10JQ",
+          "courtRoom": "1",
+          "createdToday": true,
+          "defendantAddress": {
+            "line1": "27",
+            "line2": "Elm Place",
+            "line3": "Bangor",
+            "postcode": "ad21 5dr"
+          },
+          "defendantDob": "1958-10-10",
+          "defendantId": "40db17d6-04db-11ec-b2d8-0242ac130002",
+          "defendantName": "Mr Johnny BALL",
+          "defendantSex": "M",
+          "defendantType": "PERSON",
+          "hearingId": "1f93aa0a-7e46-4885-a1cb-f25a4be33a00",
+          "listNo": "3rd",
+          "name": {
+            "forename1": "Johnny",
+            "forename2": "John",
+            "forename3": "Jon",
+            "surname": "BALL",
+            "title": "Mr"
+          },
+          "numberOfPossibleMatches": 3,
+          "offences": [
+            {
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+              "offenceSummary": "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.",
+              "offenceTitle": "Theft from a shop",
+              "sequenceNumber": 1
+            },
+            {
+              "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+              "offenceSummary": "On 01/01/2015 at own, stole article, to the value of £987.00, belonging to person.",
+              "offenceTitle": "Theft from a different shop",
+              "sequenceNumber": 2
+            }
+          ],
+          "phoneNumber": {
+            "home": "020 456 456 456",
+            "mobile": "07 123 123 123",
+            "work": "020 789 789 789"
+          },
+          "pnc": "A/1234560BA",
+          "preSentenceActivity": true,
+          "previouslyKnownTerminationDate": "2010-01-01",
+          "probationStatus": "Possible nDelius record",
+          "removed": false,
+          "session": "MORNING",
+          "sessionStartTime": "2019-12-14T09:00:00",
+          "source": "LIBRA",
+          "suspendedSentenceOrder": true,
+          "urn": "01WW0298121"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for a specific conviction breach details",
+      "providerState": "will return the specific conviction breach details",
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/offender/X320741/convictions/2500295343/breaches/2500003903"
+      },
+      "response": {
+        "body": {
+          "breachId": 2500003903,
+          "documents": [
+            {
+              "author": "Andy Marke",
+              "createdAt": "2019-09-16T00:00:00",
+              "documentId": "4191eada-6e03-4bd8-b52d-9e050eefa745",
+              "documentName": "NSI.pdf.pdf",
+              "extendedDescription": "Non Statutory Intervention for Custody - Accredited Programme on 02/09/2019",
+              "type": "NSI_DOCUMENT"
+            }
+          ],
+          "incidentDate": "2017-03-21",
+          "notes": "Paragraph 1: Some information.\nParagraph 2: And some more.",
+          "officer": "Unallocated Staff",
+          "order": "CJA - Community Order (12 Months)",
+          "provider": "CPA West Yorkshire",
+          "sentencingCourtName": "Bicester Magistrates Court",
+          "started": "2017-03-22",
+          "status": "Induction Completed - Opted Out",
+          "statusDate": "2017-05-22",
+          "team": "Unallocated"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for a specific conviction sentence details",
+      "providerState": "the defendant has an existing conviction with sentence",
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/offender/X320741/convictions/2500295343/sentence"
+      },
+      "response": {
+        "body": {
+          "actualReleaseDate": "2019-07-03",
+          "attendances": [
+            {
+              "attendanceDate": "2019-08-24",
+              "attended": true,
+              "complied": true,
+              "contactId": 1325,
+              "contactType": {
+                "code": "DSC01",
+                "description": "Description of contact type"
+              },
+              "outcome": "Description of outcome"
+            },
+            {
+              "attendanceDate": "2020-02-29",
+              "attended": false,
+              "complied": false,
+              "contactId": 8888888,
+              "contactType": {
+                "code": "DSC02",
+                "description": "8888888 Description of contact type"
+              },
+              "outcome": "8888888 Description of outcome"
+            }
+          ],
+          "custody": {
+            "custodialType": {
+              "code": "P",
+              "description": "Post Sentence Supervision"
+            },
+            "licenceExpiryDate": "2019-11-03",
+            "pssEndDate": "2020-06-03"
+          },
+          "length": 11,
+          "lengthUnits": "Months",
+          "links": {
+            "deliusContactList": "https://ndelius.test.probation.service.justice.gov.uk/NDelius-war/delius/JSP/deeplink.jsp?component=ContactList&offenderId=2500343964&eventId=2500295343"
+          },
+          "mainOffenceDescription": "Common assault and battery - 10501",
+          "sentenceDate": "2018-12-03",
+          "sentenceDescription": "CJA - Intermediate Public Prot.",
+          "sentenceId": 2500298861,
+          "unpaidWork": {
+            "acceptableAbsences": 1,
+            "appointmentsToDate": 5,
+            "attended": 2,
+            "minutesCompleted": 360,
+            "minutesOffered": 3600,
+            "status": "Being worked",
+            "unacceptableAbsences": 1
+          }
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for data of a specific conviction",
+      "providerState": "a defendant has an existing conviction",
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/offender/X320741/convictions/2500295343"
+      },
+      "response": {
+        "body": {
+          "active": true,
+          "breaches": [
+            {
+              "breachId": 11131322,
+              "description": "Community Order",
+              "started": "2020-10-20",
+              "status": "Breach Initiated",
+              "statusDate": "2020-12-18"
+            },
+            {
+              "breachId": 11131321,
+              "description": "Community Order",
+              "started": "2019-10-20",
+              "status": "Breach Initiated",
+              "statusDate": "2019-12-18"
+            }
+          ],
+          "convictionDate": "2017-06-01",
+          "convictionId": "2500295343",
+          "documents": [
+            {
+              "author": "Andy Marke",
+              "createdAt": "2019-09-04T00:00:00",
+              "documentId": "5058ca66-3751-4701-855a-86bf518d9392",
+              "documentName": "Event document 2.txt",
+              "subType": {
+                "code": "CR02",
+                "description": "Court Report"
+              },
+              "type": "COURT_REPORT_DOCUMENT"
+            }
+          ],
+          "endDate": "2018-05-31",
+          "inBreach": false,
+          "licenceConditions": [
+            {
+              "description": "Curfew Arrangement",
+              "notes": "This is an example of licence condition notes",
+              "startDate": "2020-02-01",
+              "subTypeDescription": "ETE - High intensity"
+            },
+            {
+              "description": "Participate or co-op with Programme or Activities",
+              "notes": "This is an example of licence condition notes",
+              "startDate": "2020-02-01",
+              "subTypeDescription": "ETE - High intensity"
+            }
+          ],
+          "offences": [
+            {
+              "description": "Arson - 05600"
+            }
+          ],
+          "pssRequirements": [],
+          "requirements": [
+            {
+              "active": false,
+              "expectedEndDate": "2017-12-01",
+              "expectedStartDate": "2017-06-01",
+              "length": 60,
+              "lengthUnit": "Hours",
+              "requirementId": 2500083652,
+              "requirementTypeMainCategory": {
+                "code": "W",
+                "description": "Unpaid Work"
+              },
+              "requirementTypeSubCategory": {
+                "code": "W01",
+                "description": "Regular"
+              },
+              "startDate": "2017-06-01",
+              "terminationDate": "2017-12-01",
+              "terminationReason": {
+                "code": "74",
+                "description": "Hours Completed Outside 12 months (UPW only)"
+              }
+            },
+            {
+              "active": true,
+              "adRequirementTypeMainCategory": {
+                "code": "7",
+                "description": "Court - Accredited Programme"
+              },
+              "adRequirementTypeSubCategory": {
+                "code": "P12",
+                "description": "ASRO"
+              },
+              "commencementDate": "2015-06-29",
+              "requirementId": 2500007925,
+              "startDate": "2015-07-01"
+            }
+          ],
+          "sentence": {
+            "description": "CJA - Community Order",
+            "endDate": "2018-05-31",
+            "length": 12,
+            "lengthInDays": 364,
+            "lengthUnits": "Months",
+            "startDate": "2017-06-01",
+            "terminationDate": "2017-12-01",
+            "terminationReason": "Completed - early good progress"
+          }
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for data of post custodial release dates",
+      "providerState": "a defendant has an existing conviction in custody",
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/offender/E654321/convictions/345464567/sentence/custody"
+      },
+      "response": {
+        "body": {
+          "homeDetentionCurfewActualDate": "21 Aug 2021",
+          "homeDetentionCurfewEndDate": "21 Oct 2021",
+          "licenceExpiryDate": "21 Jan 2022",
+          "releaseDate": "21 Jan 2021",
+          "topupSupervisionExpiryDate": "21 Jan 2022",
+          "topupSupervisionStartDate": "21 Oct 2021"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for defendant details",
+      "providerState": "an offender record exists",
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/offender/D991494/detail"
+      },
+      "response": {
+        "body": {
+          "dateOfBirth": "1949-09-23",
+          "forename": "Floella",
+          "middleNames": [
+            "Karen",
+            "Yunies"
+          ],
+          "otherIds": {
+            "crn": "D991494",
+            "croNumber": "CRO/aass23",
+            "offenderId": 198765,
+            "pncNumber": "PNC/1122"
+          },
+          "probationStatus": "No record",
+          "surname": "Benjamin",
+          "title": "Dame"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for defendant probation status details",
+      "providerState": "an offender record exists",
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/offender/D991494/probation-status-detail"
+      },
+      "response": {
+        "body": {
+          "inBreach": true,
+          "preSentenceActivity": true,
+          "previouslyKnownTerminationDate": "{{now offset='-1 months' format='yyyy-MM-dd'}}",
+          "status": "CURRENT"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for defendant risk details",
+      "providerState": "the defendant has an existing risk assessment",
+      "request": {
+        "headers": {
+          "Accept": "application/json"
+        },
+        "method": "GET",
+        "path": "/offender/D991494/registrations"
+      },
+      "response": {
+        "body": [
+          {
+            "active": false,
+            "endDate": "2020-01-01",
+            "nextReviewDate": "2019-12-30",
+            "notes": [
+              "01-01-20 - MAPPA has now ended."
+            ],
+            "startDate": "2019-09-30",
+            "type": "Low RoSH"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for match details",
+      "providerState": "the defendant has possible matches with existing offender records",
+      "request": {
+        "method": "GET",
+        "path": "/defendant/40db17d6-04db-11ec-b2d8-0242ac130002/matchesDetail"
+      },
+      "response": {
+        "body": {
+          "offenderMatchDetails": [
+            {
+              "address": {
+                "addressNumber": "19",
+                "county": "South Yorkshire",
+                "district": "Blackheath",
+                "postcode": "S10 2NA",
+                "streetName": "Junction Road",
+                "town": "Sheffield"
+              },
+              "dateOfBirth": "2000-07-19",
+              "forename": "Aadland",
+              "matchIdentifiers": {
+                "crn": "X320741",
+                "cro": "123456/04A",
+                "pnc": "2004/0712343H"
+              },
+              "middleNames": [
+                "Felix",
+                "Hope"
+              ],
+              "mostRecentEvent": {
+                "length": 5,
+                "lengthUnits": "Years",
+                "startDate": "2014-01-01",
+                "text": "CJA - Indeterminate Public Prot."
+              },
+              "probationStatus": "Previously known",
+              "probationStatusActual": "PREVIOUSLY_KNOWN",
+              "surname": "Bertrand",
+              "title": "Mr."
+            }
+          ]
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request to delete an offender from a defendant",
+      "providerState": "an offender exists with the given defendantId",
+      "request": {
+        "method": "DELETE",
+        "path": "/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/offender"
+      },
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "description": "a request to update the offender on a defendant",
+      "providerState": "an offender exists with the given defendantId",
+      "request": {
+        "body": {
+          "awaitingPsr": true,
+          "breach": true,
+          "crn": "X320741",
+          "cro": "CRO",
+          "pnc": "PNC",
+          "preSentenceActivity": true,
+          "previouslyKnownTerminationDate": "2010-01-01",
+          "probationStatus": "CURRENT",
+          "suspendedSentenceOrder": true
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "method": "PUT",
+        "path": "/defendant/062c670d-fdf6-441f-99e1-d2ce0c3a3846/offender"
+      },
+      "response": {
+        "body": {
+          "awaitingPsr": true,
+          "breach": true,
+          "crn": "X320741",
+          "cro": "CRO",
+          "pnc": "PNC",
+          "preSentenceActivity": true,
+          "previouslyKnownTerminationDate": "2010-01-01",
+          "probationStatus": "CURRENT",
+          "suspendedSentenceOrder": true
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "16.0.2"
+    },
+    "pactRust": {
+      "ffi": "0.4.28",
+      "models": "1.3.5"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "court-case-service"
+  }
+}
