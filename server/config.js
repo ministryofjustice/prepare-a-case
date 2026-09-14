@@ -32,7 +32,6 @@ module.exports = {
     casesPastDays: get('CASES_PAST_DAYS', 14),
     caseTrackingPrePilotUsers: getCsvParamAsArray('CASE_TRACKING_PRE_PILOT_USERS'),
     liverpoolPrePilotUsers: getCsvParamAsArray('LIVERPOOL_PRE_PILOT_USERS'),
-    caseSearchUsers: getCsvParamAsArray('CASE_SEARCH_USERS'),
     pacEnvironment: get('PAC_ENV', 'UNKNOWN'),
     enablePastCasesNavigation: getBooleanParam('ENABLE_PAST_CASES_NAVIGATION'),
     enableHearingOutcomes: getBooleanParam('ENABLE_HEARING_OUTCOMES'),

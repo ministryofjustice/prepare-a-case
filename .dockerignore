@@ -1,0 +1,25 @@
+# Git and local configuration
+.git
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Dependencies and generated output
+node_modules
+**/node_modules
+dist
+coverage
+output
+test-results
+test_results
+npm-debug.log*
+
+# Files not required to build the application
+tests
+integration-tests
+wiremock
+hmpps-user-preferences
+helm_deploy
+compose
+docker-compose*.yml

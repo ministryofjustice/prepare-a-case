@@ -6,6 +6,25 @@
     flex-shrink: 0;
     align-items: center;
     justify-content: space-between;
+    color: govuk-colour("white");
+
+    .govuk-notification-banner__title {
+      color: inherit;
+    }
+
+    .hearing-outcome-edit {
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        color: govuk-colour("white");
+      }
+
+      &:focus {
+        color: $govuk-focus-text-colour;
+        background-color: $govuk-focus-colour;
+      }
+    }
   }
 
   /* Card header */

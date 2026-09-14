@@ -321,7 +321,9 @@
                     Appointments to date</h3>
             </dt>
 
-            <dd class="govuk-grid-column-two-thirds govuk-!-margin-0 govuk-heading-m govuk-!-text-align-left govuk-!-padding-top-2 pac-dashboard-count">{{ attendances | length }}</dd>
+            <dd class="govuk-grid-column-two-thirds govuk-!-margin-0 govuk-heading-m govuk-!-padding-top-2">
+                <span class="pac-dashboard-count">{{ attendances | length }}</span>
+            </dd>
         </dl>
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible app-section-break--heavy govuk-!-width-two-thirds">
@@ -412,7 +414,9 @@
                     <dt class="govuk-grid-column-one-third pac-!-grid-column-18 govuk-heading-m govuk-!-margin-bottom-2">
                         <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0 govuk-!-display-inline-block">
                             Awaiting outcome</h3></dt>
-                    <dd class="govuk-grid-column-two-thirds govuk-!-margin-top-0 govuk-heading-m govuk-!-margin-left-0 govuk-!-margin-bottom-1 govuk-!-text-align-left pac-dashboard-count">{{ awaitingOutcome | length }}</dd>
+                    <dd class="govuk-grid-column-two-thirds govuk-!-margin-0 govuk-heading-m govuk-!-padding-top-2">
+                        <span class="pac-dashboard-count">{{ awaitingOutcome | length }}</span>
+                    </dd>
                 </dl>
             {% endif %}
         {% endif %}

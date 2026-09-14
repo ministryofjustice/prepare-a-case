@@ -108,11 +108,16 @@ const setFilters = async (userId, filterType, filters) => {
   await updatePreferences(userId, filterType, persistentFilters)
 }
 
+const clearFilters = async (userId, filterType) => {
+  await setFilters(userId, filterType, {})
+}
+
 module.exports = {
   getUserSelectedCourts,
   updateSelectedCourts,
   getPreferences,
   updatePreferences,
   getFilters,
-  setFilters
+  setFilters,
+  clearFilters
 }

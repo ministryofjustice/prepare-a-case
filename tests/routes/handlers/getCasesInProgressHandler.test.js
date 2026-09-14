@@ -80,7 +80,7 @@ describe('getCasesInProgressHandler', () => {
     )
   })
 
-  it('should sort in progress cases by defendant name ascending when defendant sort is selected', async () => {
+  it('should pass through in progress cases in backend order when defendant sort is selected', async () => {
     const requestWithDefendantSort = {
       ...mockRequest,
       params: {
@@ -105,14 +105,14 @@ describe('getCasesInProgressHandler', () => {
       'outcomes/casesInProgress',
       expect.objectContaining({
         data: [
-          expect.objectContaining({ name: { forename1: 'Adam', surname: 'Zulu' } }),
-          expect.objectContaining({ name: { forename1: 'Zoe', surname: 'Alpha' } })
+          expect.objectContaining({ name: { forename1: 'Zoe', surname: 'Alpha' } }),
+          expect.objectContaining({ name: { forename1: 'Adam', surname: 'Zulu' } })
         ]
       })
     )
   })
 
-  it('should sort in progress cases by probation status ascending when probation status sort is selected', async () => {
+  it('should pass through in progress cases in backend order when probation status sort is selected', async () => {
     const requestWithProbationStatusSort = {
       ...mockRequest,
       params: {
@@ -137,8 +137,8 @@ describe('getCasesInProgressHandler', () => {
       'outcomes/casesInProgress',
       expect.objectContaining({
         data: [
-          expect.objectContaining({ probationStatus: 'Current' }),
-          expect.objectContaining({ probationStatus: 'Possible NDelius record' })
+          expect.objectContaining({ probationStatus: 'Possible NDelius record' }),
+          expect.objectContaining({ probationStatus: 'Current' })
         ]
       })
     )
