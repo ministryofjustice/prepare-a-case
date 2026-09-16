@@ -3,25 +3,6 @@
   background-color: #FEFBE2;
 }
 
-.pac-sfo-badge {
-  vertical-align: middle;
-}
-
-.pac-flag-label {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-left: 4px;
-  vertical-align: middle;
-}
-
-.pac-sfo-label {
-  color: #D4351C;
-}
-
-.pac-mappa-label {
-  color: #003078 !important;
-}
-
 .pac-badge {
   display: block;
   margin-bottom: 3px;
@@ -31,5 +12,54 @@
     &:not(:last-child) {
       margin-right: 3px;
     }
+  }
+}
+
+.pac-badge--flag {
+  display: inline-block;
+  padding: 2px 4px;
+  border: 2px solid currentColor;
+  background-color: transparent!important;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-bottom: 6px;
+  margin-right: 8px!important;
+
+  &.moj-badge--red {
+    color: #D4351C!important;
+  }
+
+  &.moj-badge--purple {
+    color: #4C2C92!important;
+  }
+}
+
+.pac-case-summary-flags {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 8px 8px 0;
+  background-color: transparent!important;
+  border-top: 1px solid #d0d0d0;
+  border-bottom: 1px solid #d0d0d0;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    top: -1px;
+    bottom: -1px;
+    left: 50%;
+    width: 100vw;
+    content: '';
+    background-color: #e8e8e8;
+    transform: translateX(-50%);
+  }
+
+  .pac-badge--flag:first-child {
+    padding-left: 4px;
   }
 }

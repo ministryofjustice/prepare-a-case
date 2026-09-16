@@ -12,6 +12,7 @@ const getBadge = (item, notMatched) => {
 
   if (item.awaitingPsr) {
     badgeText = 'PSR'
+    badgeColour = 'blue'
   }
 
   if (item.breach) {
@@ -20,6 +21,18 @@ const getBadge = (item, notMatched) => {
 
   if (item.suspendedSentenceOrder) {
     badgeText = 'SSO'
+  }
+
+  if (badgeText === 'PSR') {
+    return `<div><strong class="govuk-tag govuk-tag--blue pac-badge">${badgeText}</strong></div>`
+  }
+
+  if (badgeText === 'Breach') {
+    return `<div><strong class="govuk-tag govuk-tag--purple pac-badge">${badgeText}</strong></div>`
+  }
+
+  if (badgeText === 'Possible NDelius Record') {
+    return `<div><strong class="govuk-tag govuk-tag--red pac-badge">${badgeText}</strong></div>`
   }
 
   return badgeText ? `<div><span class="moj-badge moj-badge--${badgeColour} pac-badge">${badgeText}</span></div>` : ''
@@ -147,11 +160,11 @@ const constructTableData = (params, data) => {
 
     const hasFlaggedOffence = item.seriousFurtherOffence || item.multiAgencyPublicProtectionArrangementsOffence
     const sfoClass = hasFlaggedOffence ? 'pac-sfo-row' : ''
-    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div><img src="/images/flag.svg" alt="Possible SFO" title="Possible SFO" class="pac-sfo-badge"><span class="pac-flag-label pac-sfo-label">Possible SFO</span></div>' : ''
-    const mappaBadgeHtml = item.multiAgencyPublicProtectionArrangementsOffence ? '<div><img src="/images/flag-blue.svg" alt="Possible MAPPA" title="Possible MAPPA" class="pac-sfo-badge"><span class="pac-flag-label pac-mappa-label" style="color:#003078;font-weight:bold;margin-left:4px;">Possible MAPPA</span></div>' : ''
+    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div><span class="moj-badge moj-badge--purple pac-badge pac-badge--flag">Possible SFO</span></div>' : ''
+    const mappaBadgeHtml = item.multiAgencyPublicProtectionArrangementsOffence ? '<div><span class="moj-badge moj-badge--red pac-badge pac-badge--flag">Possible MAPPA</span></div>' : ''
 
     const tableRow = [
-      { html: constructDefendantNameLink(a11yTitle, sanitisedDefendantFullName, crnDisplay, params.courtCode, item.hearingId, item.defendantId) + sfoBadgeHtml + mappaBadgeHtml, classes: sfoClass },
+      { html: constructDefendantNameLink(a11yTitle, sanitisedDefendantFullName, crnDisplay, params.courtCode, item.hearingId, item.defendantId) + mappaBadgeHtml + sfoBadgeHtml, classes: sfoClass },
       { html: getProbationStatusHtml(item, notMatched), classes: sfoClass },
       { html: offences.join(''), classes: sfoClass },
       { html: listing.join(''), classes: sfoClass },
