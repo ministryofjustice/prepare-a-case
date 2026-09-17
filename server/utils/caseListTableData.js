@@ -146,7 +146,7 @@ const constructTableData = (params, data) => {
     const formattedDefendantName = formatDefendantName(item)
     const sanitisedDefendantFullName = escapeHtml(formattedDefendantName)
     const a11yTitle = `View case for defendant ${sanitisedDefendantFullName}`
-    const crnDisplay = `<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">${item.crn ? item.crn : ''}</div>`
+    const crnDisplay = `<div class="pac-secondary-text pac-case-list-crn govuk-body-s govuk-!-margin-top-1">${item.crn ? item.crn : ''}</div>`
 
     const constructSummaryUrl = (courtCode, hearingId, defendantId) => {
       return `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`
@@ -160,8 +160,8 @@ const constructTableData = (params, data) => {
 
     const hasFlaggedOffence = item.seriousFurtherOffence || item.multiAgencyPublicProtectionArrangementsOffence
     const sfoClass = hasFlaggedOffence ? 'pac-sfo-row' : ''
-    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div><span class="moj-badge moj-badge--purple pac-badge pac-badge--flag">Possible SFO</span></div>' : ''
-    const mappaBadgeHtml = item.multiAgencyPublicProtectionArrangementsOffence ? '<div><span class="moj-badge moj-badge--red pac-badge pac-badge--flag">Possible MAPPA</span></div>' : ''
+    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div class="pac-case-list-flag pac-case-list-flag--following"><span class="moj-badge moj-badge--purple pac-badge pac-badge--flag">Possible SFO</span></div>' : ''
+    const mappaBadgeHtml = item.multiAgencyPublicProtectionArrangementsOffence ? '<div class="pac-case-list-flag"><span class="moj-badge moj-badge--red pac-badge pac-badge--flag">Possible MAPPA</span></div>' : ''
 
     const tableRow = [
       { html: constructDefendantNameLink(a11yTitle, sanitisedDefendantFullName, crnDisplay, params.courtCode, item.hearingId, item.defendantId) + mappaBadgeHtml + sfoBadgeHtml, classes: sfoClass },
