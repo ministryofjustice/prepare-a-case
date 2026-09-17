@@ -296,7 +296,7 @@ describe('caseListTableData', () => {
       expect(tableDataHeard.head.some(header => header.html === 'Action')).toBe(false)
     })
 
-    it('should add MAPPA badge with breach styling', () => {
+    it('should add MAPPA badge with red styling', () => {
       const caseWithMappa = {
         ...mockCase,
         multiAgencyPublicProtectionArrangementsOffence: true
