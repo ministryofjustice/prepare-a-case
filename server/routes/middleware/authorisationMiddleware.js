@@ -11,33 +11,46 @@ const instance = axios.create()
 const requestContext = new AsyncLocalStorage()
 let authInterceptorRegistered = false
 
-function authorisationMiddleware (req, res, next) {
-  // Make sure only users with court admin role can access court app
-  if (res.locals?.user?.token) {
-    const { authorities: roles, name, user_id: userId, user_uuid: uuid, user_name: username } = jwtDecode(res.locals.user.token)
-    Object.assign(res.locals.user, { name, uuid, username, userId })
-    if (!roles.includes(config.apis.oauth2.role)) {
-      log.warn(`User does not have required role ${config.apis.oauth2.role}`)
-      return res.redirect('/autherror')
-    }
-
-    if (!authInterceptorRegistered) {
-      authInterceptorRegistered = true
-      instance.interceptors.request.use(requestConfig => {
-        const token = requestContext.getStore()?.token
-        requestConfig.headers = {
-          ...requestConfig.headers,
-          ...(token ? { Authorization: `Bearer ${token}` } : {})
+function authorisationMiddleware (signInService) {
+  return async function (req, res, next) {
+    // Make sure only users with court admin role can access court app
+    if (res.locals?.user?.token) {
+      if (res.locals.user.refreshTime && Date.now() > res.locals.user.refreshTime) {
+        try {
+          const { token, refreshToken, refreshTime } = await signInService.getRefreshedToken(res.locals.user)
+          Object.assign(res.locals.user, { token, refreshToken, refreshTime })
+        } catch (err) {
+          log.warn(`Failed to refresh token for user ${res.locals.user.username}`, err)
+          req.session.returnTo = req.originalUrl
+          return res.redirect('/login')
         }
-        return requestConfig
-      })
-    }
+      }
 
-    return requestContext.run({ token: res.locals.user.token }, next)
+      const { authorities: roles, name, user_id: userId, user_uuid: uuid, user_name: username } = jwtDecode(res.locals.user.token)
+      Object.assign(res.locals.user, { name, uuid, username, userId })
+      if (!roles.includes(config.apis.oauth2.role)) {
+        log.warn(`User does not have required role ${config.apis.oauth2.role}`)
+        return res.redirect('/autherror')
+      }
+
+      if (!authInterceptorRegistered) {
+        authInterceptorRegistered = true
+        instance.interceptors.request.use(requestConfig => {
+          const token = requestContext.getStore()?.token
+          requestConfig.headers = {
+            ...requestConfig.headers,
+            ...(token ? { Authorization: `Bearer ${token}` } : {})
+          }
+          return requestConfig
+        })
+      }
+
+      return requestContext.run({ token: res.locals.user.token }, next)
+    }
+    // No session: get one created
+    req.session.returnTo = req.originalUrl
+    return res.redirect('/login')
   }
-  // No session: get one created
-  req.session.returnTo = req.originalUrl
-  return res.redirect('/login')
 }
 
 module.exports = {
