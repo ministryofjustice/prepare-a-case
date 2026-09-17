@@ -11,7 +11,7 @@ describe('caseListTableData', () => {
           suspendedSentenceOrder: false
         }, true)
 
-      expect(badge).toEqual('<div><strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong></div>')
+      expect(badge).toEqual('<div class="pac-badge--status"><strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong></div>')
     })
 
     it('should get awaiting PSR badge', () => {
@@ -33,7 +33,7 @@ describe('caseListTableData', () => {
           suspendedSentenceOrder: false
         }, false)
 
-      expect(badge).toEqual('<div><strong class="govuk-tag govuk-tag--purple pac-badge">Breach</strong></div>')
+      expect(badge).toEqual('<div class="pac-badge--status"><strong class="govuk-tag govuk-tag--purple pac-badge">Breach</strong></div>')
     })
 
     it('should get suspendedSentenceOrder badge', () => {
@@ -67,7 +67,7 @@ describe('caseListTableData', () => {
         }, true
       )
 
-      expect(html).toEqual('<div><strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong></div>Previously known<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended 1 January 1990</span>')
+      expect(html).toEqual('<div class="pac-badge--status"><strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong></div>Previously known<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended 1 January 1990</span>')
     })
   })
 
