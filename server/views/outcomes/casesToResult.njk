@@ -100,7 +100,7 @@
 
   {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
   {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
-  {% set crnDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
+  {% set crnDisplay = '<div class="pac-secondary-text pac-case-list-crn govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
   {% set summaryLink = '/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary' %}
   {% set mappaBadgeHtml = '<div><span class="moj-badge moj-badge--red pac-badge pac-badge--flag">Possible MAPPA</span></div>' if item.multiAgencyPublicProtectionArrangementsOffence else '' %}
   {%- set tableRow = [
