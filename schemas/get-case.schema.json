@@ -210,6 +210,16 @@
       "description": "Whether the offence is potentially subject to MAPPA.",
       "default": false
     },
+    "seriousFurtherOffence": {
+      "$id": "#/properties/seriousFurtherOffence",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "title": "The seriousFurtherOffence schema",
+      "description": "Whether the offence is potentially a Serious Further Offence (SFO).",
+      "default": false
+    },
     "preSentenceActivity": {
       "$id": "#/properties/preSentenceActivity",
       "type": [
