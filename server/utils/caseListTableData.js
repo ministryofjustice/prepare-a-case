@@ -12,7 +12,6 @@ const getBadge = (item, notMatched) => {
 
   if (item.awaitingPsr) {
     badgeText = 'PSR'
-    badgeColour = 'blue'
   }
 
   if (item.breach) {
