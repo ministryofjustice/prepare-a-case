@@ -12,7 +12,7 @@
             {% set title %}
                 {{ order.sentence.description + (' (' + order.sentence.length + ' ' + order.sentence.lengthUnits + ')' if order.sentence.length) }}
                 {% if order.inBreach %}
-                    <span class="moj-badge moj-badge--black pac-badge govuk-!-margin-left-1">Breach</span>
+                    <strong class="govuk-tag govuk-tag--purple pac-badge govuk-!-margin-left-1">Breach</strong>
                 {% endif %}
             {% endset %}
             {% set descriptionValue %}

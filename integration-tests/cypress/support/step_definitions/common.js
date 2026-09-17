@@ -590,7 +590,7 @@ Then('I should see a tab with text {string}', $string => {
 })
 
 Then('I should see the breach badge', () => {
-  cy.get('.moj-badge.moj-badge--black.pac-badge').contains('Breach').should('exist')
+  cy.get('.govuk-tag.govuk-tag--purple.pac-badge').contains('Breach').should('exist')
 })
 
 Then('I should not see the {string} filter', $string => {
