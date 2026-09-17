@@ -11,7 +11,7 @@ describe('caseListTableData', () => {
           suspendedSentenceOrder: false
         }, true)
 
-      expect(badge).toEqual('<div><span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span></div>')
+      expect(badge).toEqual('<div><strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong></div>')
     })
 
     it('should get awaiting PSR badge', () => {
@@ -22,7 +22,7 @@ describe('caseListTableData', () => {
           suspendedSentenceOrder: false
         }, false)
 
-      expect(badge).toEqual('<div><span class="moj-badge moj-badge--black pac-badge">PSR</span></div>')
+      expect(badge).toEqual('<div><strong class="govuk-tag govuk-tag--blue pac-badge">PSR</strong></div>')
     })
 
     it('should get breach badge', () => {
@@ -33,7 +33,7 @@ describe('caseListTableData', () => {
           suspendedSentenceOrder: false
         }, false)
 
-      expect(badge).toEqual('<div><span class="moj-badge moj-badge--black pac-badge">Breach</span></div>')
+      expect(badge).toEqual('<div><strong class="govuk-tag govuk-tag--purple pac-badge">Breach</strong></div>')
     })
 
     it('should get suspendedSentenceOrder badge', () => {
@@ -67,7 +67,7 @@ describe('caseListTableData', () => {
         }, true
       )
 
-      expect(html).toEqual('<div><span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span></div>Previously known<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended 1 January 1990</span>')
+      expect(html).toEqual('<div><strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong></div>Previously known<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended 1 January 1990</span>')
     })
   })
 
@@ -294,6 +294,62 @@ describe('caseListTableData', () => {
       const paramsHeard = { ...mockParams, hearingOutcomesEnabled: true, subsection: 'heard' }
       const tableDataHeard = caseListTableData.constructTableData(paramsHeard, [])
       expect(tableDataHeard.head.some(header => header.html === 'Action')).toBe(false)
+    })
+
+    it('should add MAPPA badge with red styling', () => {
+      const caseWithMappa = {
+        ...mockCase,
+        multiAgencyPublicProtectionArrangementsOffence: true
+      }
+
+      const tableData = caseListTableData.constructTableData(mockParams, [caseWithMappa])
+      const row = tableData.rows[0]
+
+      expect(row[0].html).toContain('Possible MAPPA')
+      expect(row[0].html).toContain('class="moj-badge moj-badge--red pac-badge pac-badge--flag"')
+    })
+
+    it('should add SFO badge with purple styling', () => {
+      const caseWithSfo = {
+        ...mockCase,
+        seriousFurtherOffence: true
+      }
+
+      const tableData = caseListTableData.constructTableData(mockParams, [caseWithSfo])
+      const row = tableData.rows[0]
+
+      expect(row[0].html).toContain('Possible SFO')
+      expect(row[0].html).toContain('class="moj-badge moj-badge--purple pac-badge pac-badge--flag"')
+    })
+
+    it('should show MAPPA before SFO when both flags are present', () => {
+      const caseWithBothFlags = {
+        ...mockCase,
+        seriousFurtherOffence: true,
+        multiAgencyPublicProtectionArrangementsOffence: true
+      }
+
+      const tableData = caseListTableData.constructTableData(mockParams, [caseWithBothFlags])
+      const row = tableData.rows[0]
+
+      expect(row[0].html.indexOf('Possible MAPPA')).toBeLessThan(row[0].html.indexOf('Possible SFO'))
+    })
+
+    it('should apply flagged row class when MAPPA flag is present', () => {
+      const caseWithMappa = {
+        ...mockCase,
+        multiAgencyPublicProtectionArrangementsOffence: true
+      }
+
+      const tableData = caseListTableData.constructTableData(mockParams, [caseWithMappa])
+      const row = tableData.rows[0]
+
+      expect(row[0].classes).toBe('pac-sfo-row')
+      expect(row[1].classes).toBe('pac-sfo-row')
+      expect(row[2].classes).toBe('pac-sfo-row')
+      expect(row[3].classes).toBe('pac-sfo-row')
+      expect(row[4].classes).toBe('pac-sfo-row')
+      expect(row[5].classes).toBe('pac-sfo-row')
     })
   })
 })

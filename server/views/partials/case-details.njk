@@ -69,6 +69,17 @@
 
 {% block backlink %}
 
+    {% if data.multiAgencyPublicProtectionArrangementsOffence or data.seriousFurtherOffence %}
+        <div class="pac-case-summary-flags govuk-!-margin-bottom-2">
+            {% if data.multiAgencyPublicProtectionArrangementsOffence %}
+                <span class="moj-badge moj-badge--red pac-badge pac-badge--flag">POSSIBLE MAPPA</span>
+            {% endif %}
+            {% if data.seriousFurtherOffence %}
+                <span class="moj-badge moj-badge--purple pac-badge pac-badge--flag">POSSIBLE SFO</span>
+            {% endif %}
+        </div>
+    {% endif %}
+
     {%- from "govuk/components/back-link/macro.njk" import govukBackLink -%}
     {{ govukBackLink({
         text: backText or "Back",

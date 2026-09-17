@@ -100,8 +100,9 @@
 
   {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
   {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
-  {% set crnDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
+  {% set crnDisplay = '<div class="pac-secondary-text pac-case-list-crn govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
   {% set summaryLink = '/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary' %}
+  {% set mappaBadgeHtml = '<div><span class="moj-badge moj-badge--red pac-badge pac-badge--flag">Possible MAPPA</span></div>' if item.multiAgencyPublicProtectionArrangementsOffence else '' %}
   {%- set tableRow = [
     { html: govukCheckboxes({
       name: "defendantHearingId",
@@ -112,9 +113,9 @@
         html: " "
       }]}) 
     },
-    { text: ('<a href="' + summaryLink + '" class="pac-defendant-link pac-assign govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" data-bs-toggle="modal" data-bs-target="#assign-outcome-modal" aria-label="' + a11yTitle + '" data-hearingid="' + item.hearingId + '" data-defendantid="' + item.defendantId + '" data-courtcode="' + params.courtCode + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay ) | safe },
+    { text: ('<a href="' + summaryLink + '" class="pac-defendant-link pac-assign govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" data-bs-toggle="modal" data-bs-target="#assign-outcome-modal" aria-label="' + a11yTitle + '" data-hearingid="' + item.hearingId + '" data-defendantid="' + item.defendantId + '" data-courtcode="' + params.courtCode + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay + mappaBadgeHtml ) | safe },
     { text: item.hearingOutcomeDescription | safe },
-    { text: ('<div>' + ('<span class="moj-badge moj-badge--red pac-badge">Possible NDelius Record</span>' | safe if notMatched ) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched)) | safe },
+    { text: ('<div>' + ('<strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong>' | safe if notMatched ) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched)) | safe },
     { text: offences | join('') | safe },
     { text: moment(item.hearingDate, 'YYYY-MM-DD').format("D MMM YYYY"), format: 'numeric' }
   ] -%}

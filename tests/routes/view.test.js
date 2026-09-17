@@ -341,7 +341,9 @@ describe('Routes', () => {
   it('case summary probation record route should call the case service to fetch case data', async () => {
     caseResponse = {
       probationStatus: 'Current',
-      crn: 'D985513'
+      crn: 'D985513',
+      multiAgencyPublicProtectionArrangementsOffence: true,
+      seriousFurtherOffence: true
     }
     const response = await request(app).get(
       '/B14LO/hearing/0fb0f325-ef18-4c0f-9e87-a6e916d9d1ec/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/record'
@@ -354,6 +356,8 @@ describe('Routes', () => {
       'D985513',
       true
     )
+    expect(response.text).toContain('POSSIBLE MAPPA')
+    expect(response.text).toContain('POSSIBLE SFO')
     return response
   })
 
@@ -471,7 +475,9 @@ describe('Routes', () => {
 
   it('case summary risk registers route should call the case service to fetch risk data', async () => {
     caseResponse = {
-      crn: 'D985513'
+      crn: 'D985513',
+      multiAgencyPublicProtectionArrangementsOffence: true,
+      seriousFurtherOffence: true
     }
 
     const response = await request(app).get(
@@ -482,6 +488,8 @@ describe('Routes', () => {
       '062c670d-fdf6-441f-99e1-d2ce0c3a3846'
     )
     expect(communityService.getRiskDetails).toHaveBeenCalledWith('D985513')
+    expect(response.text).toContain('POSSIBLE MAPPA')
+    expect(response.text).toContain('POSSIBLE SFO')
     return response
   })
 
@@ -653,6 +661,32 @@ describe('Routes', () => {
             'NEW'
           )
         })
+    })
+
+    it('outcomes table should show MAPPA badge without SFO badge', async () => {
+      caseService.getOutcomesList.mockResolvedValueOnce({
+        cases: [{
+          defendantName: 'Jane Doe',
+          name: { forename1: 'Jane', surname: 'Doe' },
+          crn: 'D123456',
+          hearingId: 'hearing-1',
+          defendantId: 'defendant-1',
+          hearingOutcomeDescription: 'Adjourned',
+          probationStatus: 'Current',
+          offences: ['Offence A'],
+          hearingDate: '2024-12-10',
+          multiAgencyPublicProtectionArrangementsOffence: true
+        }],
+        filters: [],
+        totalElements: 1,
+        countsByState: { inProgressCount: 0, resultedCount: 0, casesToResultCount: 1 }
+      })
+
+      const response = await request(app).get('/B14LO/outcomes')
+
+      expect(response.statusCode).toEqual(200)
+      expect(response.text).toContain('Possible MAPPA')
+      expect(response.text).not.toContain('Possible SFO')
     })
 
     it('outcomes list route should call the case service to filter outcome list data', async () => {
