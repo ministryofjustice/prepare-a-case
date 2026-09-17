@@ -27,11 +27,11 @@ const getBadge = (item, notMatched) => {
   }
 
   if (badgeText === 'Breach') {
-    return `<div><strong class="govuk-tag govuk-tag--purple pac-badge">${badgeText}</strong></div>`
+    return `<div class="pac-badge--status"><strong class="govuk-tag govuk-tag--purple pac-badge">${badgeText}</strong></div>`
   }
 
   if (badgeText === 'Possible NDelius Record') {
-    return `<div><strong class="govuk-tag govuk-tag--red pac-badge">${badgeText}</strong></div>`
+    return `<div class="pac-badge--status"><strong class="govuk-tag govuk-tag--red pac-badge">${badgeText}</strong></div>`
   }
 
   return badgeText ? `<div><span class="moj-badge moj-badge--${badgeColour} pac-badge">${badgeText}</span></div>` : ''
