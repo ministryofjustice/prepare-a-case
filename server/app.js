@@ -230,7 +230,7 @@ module.exports = function createApp ({ signInService }) {
     res.redirect(authLogoutUrl)
   }))
 
-  app.use(authorisationMiddleware)
+  app.use(authorisationMiddleware(signInService))
 
   const envMap = {
     prod: 'PRODUCTION',
