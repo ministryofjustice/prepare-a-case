@@ -115,7 +115,7 @@
     },
     { text: ('<a href="' + summaryLink + '" class="pac-defendant-link pac-assign govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state" data-bs-toggle="modal" data-bs-target="#assign-outcome-modal" aria-label="' + a11yTitle + '" data-hearingid="' + item.hearingId + '" data-defendantid="' + item.defendantId + '" data-courtcode="' + params.courtCode + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay + mappaBadgeHtml ) | safe },
     { text: item.hearingOutcomeDescription | safe },
-    { text: ('<div>' + ('<strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong>' | safe if notMatched ) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched)) | safe },
+    { text: ('<div class="pac-badge--status">' + ('<strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong>' | safe if notMatched ) + '</div>'+ (item.probationStatus | string | capitalize if not notMatched)) | safe },
     { text: offences | join('') | safe },
     { text: moment(item.hearingDate, 'YYYY-MM-DD').format("D MMM YYYY"), format: 'numeric' }
   ] -%}
