@@ -7,7 +7,6 @@ const catchAsyncErrors = (handler) => async (req, res, next) => {
     if (e.config && e.config.headers && e.config.headers.Authorization) {
       e.config.headers.Authorization = '***'
     }
-    logger.error(e)
     let status = e.status || 500
     let message
     if (e.isAxiosError) {
