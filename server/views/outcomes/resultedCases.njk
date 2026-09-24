@@ -89,17 +89,18 @@
 
   {% set defendantFullName = (item.name.forename1 + ' ' + item.name.surname) if (item.name.forename1 and item.name.surname) else item.defendantName %}
   {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
-  {% set crnDisplay = '<div class="pac-secondary-text pac-case-list-crn govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
+  {% set crnDisplay = ('<div class="pac-secondary-text pac-case-list-crn govuk-body-s govuk-!-margin-top-1">' + item.crn + '</div>') if item.crn else '' %}
   {% set assignedToCurrentUser = currentUserUuid === item.assignedToUuid %}
-  {% set mappaBadgeHtml = '<div><span class="moj-badge moj-badge--red pac-badge pac-badge--flag">Possible MAPPA</span></div>' if item.multiAgencyPublicProtectionArrangementsOffence else '' %}
+  {% set mappaBadgeHtml = '<div class="govuk-!-margin-top-2"><span class="moj-badge moj-badge--red pac-badge pac-badge--flag">Possible MAPPA</span></div>' if item.multiAgencyPublicProtectionArrangementsOffence else '' %}
+  {% set flaggedRowClass = 'pac-sfo-row' if item.seriousFurtherOffence or item.multiAgencyPublicProtectionArrangementsOffence else '' %}
   {%- set tableRow = [
-    { text: ('<a href="/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state pac-reassign-resulted" data-bs-toggle="modal" data-bs-target="#reassign-resulted-outcome-modal" aria-label="' + a11yTitle + '" data-hearingid="' + item.hearingId + '" data-defendantid="' + item.defendantId + '" data-courtcode="' + params.courtCode + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay + mappaBadgeHtml ) | safe },
-    { text: item.hearingOutcomeDescription | safe },
+    { text: ('<a href="/' + params.courtCode + '/hearing/' + item.hearingId + '/defendant/' + item.defendantId + '/summary" class="pac-defendant-link govuk-!-font-weight-bold govuk-link govuk-link--no-visited-state pac-reassign-resulted" data-bs-toggle="modal" data-bs-target="#reassign-resulted-outcome-modal" aria-label="' + a11yTitle + '" data-hearingid="' + item.hearingId + '" data-defendantid="' + item.defendantId + '" data-courtcode="' + params.courtCode + '">' + defendantFullName | escape | apostropheInName | properCase | removeTitle + '</a>' + crnDisplay + mappaBadgeHtml ) | safe, classes: flaggedRowClass },
+    { text: item.hearingOutcomeDescription | safe, classes: flaggedRowClass },
     { html: '<div class="pac-badge--status">' + ('<strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong>' | safe if notMatched ) + '</div>' +
-            (item.probationStatus | string | capitalize if not notMatched) },
-    { text: offences | join('') | safe },
-    { text: moment(item.hearingDate, 'YYYY-MM-DD').format("D MMM YYYY"), format: 'numeric' },
-    { html: item.assignedTo + '<br>on ' + (item.resultedDate | hearingOutcomeResultedDateFormat) }
+            (item.probationStatus | string | capitalize if not notMatched), classes: flaggedRowClass },
+    { text: offences | join('') | safe, classes: flaggedRowClass },
+    { text: moment(item.hearingDate, 'YYYY-MM-DD').format("D MMM YYYY"), format: 'numeric', classes: flaggedRowClass },
+    { html: item.assignedTo + '<br>on ' + (item.resultedDate | hearingOutcomeResultedDateFormat), classes: flaggedRowClass }
   ] -%}
   {{ tableData.rows.push(tableRow) }}
 
