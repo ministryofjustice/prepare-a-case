@@ -23,6 +23,15 @@
   margin-bottom: 6px;
 }
 
+.pac-badge--gap {
+  padding-bottom: 4px;
+}
+
+.pac-outcomes-mappa-flag {
+  padding-top: 0;
+  margin-top: -10px;
+}
+
 .pac-case-list-crn {
   margin-bottom: 0;
 }
@@ -35,12 +44,20 @@
   margin-top: 0;
 }
 
+.pac-case-list-flag--gap {
+  padding-top: 3px;
+}
+
 .pac-case-search-flag {
   margin-top: 8px;
 }
 
 .pac-case-search-flag--following {
   margin-top: 0;
+}
+
+.pac-case-search-flag--gap {
+  padding-top: 3px;
 }
 
 .pac-badge--flag {
