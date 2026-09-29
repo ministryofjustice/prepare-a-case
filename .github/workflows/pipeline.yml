@@ -19,27 +19,32 @@ on:
 
 permissions:
   contents: read
-  packages: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
+  check_publish:
+    name: Check publish flag
+    runs-on: ubuntu-latest
+    permissions: {}
+    outputs:
+      enabled: ${{ github.ref == 'refs/heads/main' && (inputs.push || inputs.push == null) }}
+    steps:
+      - name: Set publish flag
+        run: echo "Publishing enabled ${{ github.ref == 'refs/heads/main' && (inputs.push || inputs.push == null) }}"
   node_build:
     name: node build
     uses: ministryofjustice/hmpps-github-actions/.github/workflows/node_build.yml@v2 # WORKFLOW_VERSION
-    secrets: inherit
   node_unit_tests:
     name: node unit tests
     uses: ministryofjustice/hmpps-github-actions/.github/workflows/node_unit_tests.yml@v2 # WORKFLOW_VERSION
     needs: [node_build]
-    secrets: inherit
   node_integration_tests:
     name: node integration tests
     uses: ministryofjustice/hmpps-github-actions/.github/workflows/node_integration_tests.yml@v2 # WORKFLOW_VERSION
     needs: [node_build]
-    secrets: inherit
     with:
       wiremock_port: 9191 # todo: only run one wiremock, currently two running
   helm_lint:
@@ -48,7 +53,6 @@ jobs:
         environments: ['dev', 'preprod', 'prod']
     name: helm lint
     uses: ministryofjustice/hmpps-github-actions/.github/workflows/test_helm_lint.yml@v2 # WORKFLOW_VERSION
-    secrets: inherit
     with:
       environment: ${{ matrix.environments }}
   build:
@@ -57,18 +61,23 @@ jobs:
     needs:
       - node_integration_tests
       - node_unit_tests
+      - check_publish
+    permissions:
+      contents: read
+      packages: write
     with:
       docker_registry: 'ghcr.io'
       registry_org: 'ministryofjustice'
       additional_docker_tag: ${{ inputs.additional_docker_tag }}
-      push: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.push) }}
+      push: ${{ needs.check_publish.outputs.enabled == 'true' }}
       docker_multiplatform: false
   deploy_dev:
     name: Deploy to the development environment
-    if: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.push) }}
+    if: needs.check_publish.outputs.enabled == 'true'
     needs:
       - build
       - helm_lint
+      - check_publish
     uses: ministryofjustice/hmpps-github-actions/.github/workflows/deploy_env.yml@v2 # WORKFLOW_VERSION
     secrets: inherit
     with:
@@ -77,11 +86,12 @@ jobs:
       slack_notification: 'false' # if 'true', it needs a valid NONPROD_RELEASES_SLACK_CHANNEL variable to be set
   deploy_preprod:
     name: Deploy to pre-production environment
-    if: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.push) }}
+    if: needs.check_publish.outputs.enabled == 'true'
     needs:
       - build
       - helm_lint
       - deploy_dev
+      - check_publish
     uses: ministryofjustice/hmpps-github-actions/.github/workflows/deploy_env.yml@v2 # WORKFLOW_VERSION
     secrets: inherit
     with:
@@ -90,11 +100,12 @@ jobs:
       slack_notification: 'false'
   deploy_prod:
     name: Deploy to production environment
-    if: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.push) }}
+    if: needs.check_publish.outputs.enabled == 'true'
     needs:
       - build
       - helm_lint
       - deploy_preprod
+      - check_publish
     uses: ministryofjustice/hmpps-github-actions/.github/workflows/deploy_env.yml@v2 # WORKFLOW_VERSION
     secrets: inherit
     with:
