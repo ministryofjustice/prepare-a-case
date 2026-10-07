@@ -11,7 +11,7 @@ describe('caseListTableData', () => {
           suspendedSentenceOrder: false
         }, true)
 
-      expect(badge).toEqual('<div class="pac-badge--status"><strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong></div>')
+      expect(badge).toEqual('<div class="pac-badge--status pac-badge--gap"><strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong></div>')
     })
 
     it('should get awaiting PSR badge', () => {
@@ -22,7 +22,7 @@ describe('caseListTableData', () => {
           suspendedSentenceOrder: false
         }, false)
 
-      expect(badge).toEqual('<div><strong class="govuk-tag govuk-tag--blue pac-badge">PSR</strong></div>')
+      expect(badge).toEqual('<div class="pac-badge--gap"><strong class="govuk-tag govuk-tag--blue pac-badge">PSR</strong></div>')
     })
 
     it('should get breach badge', () => {
@@ -33,7 +33,7 @@ describe('caseListTableData', () => {
           suspendedSentenceOrder: false
         }, false)
 
-      expect(badge).toEqual('<div class="pac-badge--status"><strong class="govuk-tag govuk-tag--purple pac-badge">Breach</strong></div>')
+      expect(badge).toEqual('<div class="pac-badge--status pac-badge--gap"><strong class="govuk-tag govuk-tag--purple pac-badge">Breach</strong></div>')
     })
 
     it('should get suspendedSentenceOrder badge', () => {
@@ -44,7 +44,7 @@ describe('caseListTableData', () => {
           suspendedSentenceOrder: true
         }, false)
 
-      expect(badge).toEqual('<div><span class="moj-badge moj-badge--black pac-badge">SSO</span></div>')
+      expect(badge).toEqual('<div class="pac-badge--gap"><span class="moj-badge moj-badge--black pac-badge">SSO</span></div>')
     })
   })
 
@@ -67,7 +67,7 @@ describe('caseListTableData', () => {
         }, true
       )
 
-      expect(html).toEqual('<div class="pac-badge--status"><strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong></div>Previously known<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended 1 January 1990</span>')
+      expect(html).toEqual('<div class="pac-badge--status pac-badge--gap"><strong class="govuk-tag govuk-tag--red pac-badge">Possible NDelius Record</strong></div>Previously known<span data-cy="previously-known-termination-date" class="govuk-caption-m">Order ended 1 January 1990</span>')
     })
   })
 

@@ -23,18 +23,18 @@ const getBadge = (item, notMatched) => {
   }
 
   if (badgeText === 'PSR') {
-    return `<div><strong class="govuk-tag govuk-tag--blue pac-badge">${badgeText}</strong></div>`
+    return `<div class="pac-badge--gap"><strong class="govuk-tag govuk-tag--blue pac-badge">${badgeText}</strong></div>`
   }
 
   if (badgeText === 'Breach') {
-    return `<div class="pac-badge--status"><strong class="govuk-tag govuk-tag--purple pac-badge">${badgeText}</strong></div>`
+    return `<div class="pac-badge--status pac-badge--gap"><strong class="govuk-tag govuk-tag--purple pac-badge">${badgeText}</strong></div>`
   }
 
   if (badgeText === 'Possible NDelius Record') {
-    return `<div class="pac-badge--status"><strong class="govuk-tag govuk-tag--red pac-badge">${badgeText}</strong></div>`
+    return `<div class="pac-badge--status pac-badge--gap"><strong class="govuk-tag govuk-tag--red pac-badge">${badgeText}</strong></div>`
   }
 
-  return badgeText ? `<div><span class="moj-badge moj-badge--${badgeColour} pac-badge">${badgeText}</span></div>` : ''
+  return badgeText ? `<div class="pac-badge--gap"><span class="moj-badge moj-badge--${badgeColour} pac-badge">${badgeText}</span></div>` : ''
 }
 
 const getProbationStatusHtml = (item, notMatched) => {
@@ -159,7 +159,8 @@ const constructTableData = (params, data) => {
 
     const hasFlaggedOffence = item.seriousFurtherOffence || item.multiAgencyPublicProtectionArrangementsOffence
     const sfoClass = hasFlaggedOffence ? 'pac-sfo-row' : ''
-    const sfoBadgeHtml = item.seriousFurtherOffence ? '<div class="pac-case-list-flag pac-case-list-flag--following"><span class="moj-badge moj-badge--purple pac-badge pac-badge--flag">Possible SFO</span></div>' : ''
+    const bothFlagsPresent = item.seriousFurtherOffence && item.multiAgencyPublicProtectionArrangementsOffence
+    const sfoBadgeHtml = item.seriousFurtherOffence ? `<div class="pac-case-list-flag pac-case-list-flag--following${bothFlagsPresent ? ' pac-case-list-flag--gap' : ''}"><span class="moj-badge moj-badge--purple pac-badge pac-badge--flag">Possible SFO</span></div>` : ''
     const mappaBadgeHtml = item.multiAgencyPublicProtectionArrangementsOffence ? '<div class="pac-case-list-flag"><span class="moj-badge moj-badge--red pac-badge pac-badge--flag">Possible MAPPA</span></div>' : ''
 
     const tableRow = [
