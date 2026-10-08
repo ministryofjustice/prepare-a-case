@@ -22,8 +22,19 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
     userError: error
   }
 
+  const courtCode = req.cookies.currentCourt
+  const context = { court: courtCode, username: res.locals.user.username }
+  const hearingOutcomesEnabled = featuresToggles.hearingOutcomes.isEnabled(context)
+
+  const params = {
+    ...req.params,
+    courtCode,
+    hearingOutcomesEnabled,
+    nextHearingDateSort
+  }
+
   if (error) {
-    res.render('case-search', { searchError: error, term })
+    res.render('case-search', { searchError: error, term, params })
     return
   }
 
@@ -36,16 +47,8 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
     trackingEvent.length = data?.data?.items?.length
 
     const currentPage = parseInt(req.query.page || 1, 10)
-    const courtCode = req.cookies.currentCourt
-    const context = { court: courtCode, username: res.locals.user.username }
-    const hearingOutcomesEnabled = featuresToggles.hearingOutcomes.isEnabled(context)
     const templateValues = {
-      params: {
-        ...req.params,
-        courtCode,
-        hearingOutcomesEnabled,
-        nextHearingDateSort
-      },
+      params,
       data: {
         ...data.data
       },
