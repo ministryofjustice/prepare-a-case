@@ -248,7 +248,7 @@ Then('There should be no a11y violations', () => {
   cy.checkA11y(
     'main#main-content',
     {
-      // TODO: this should eventually be removed and accessibility issues resolved
+      // TODO: to be removed and accessibility issues resolved in PCFS-484
       rules: {
         'aria-hidden-focus': { enabled: false },
         'label-content-name-mismatch': { enabled: false }
