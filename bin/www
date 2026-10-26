@@ -5,6 +5,7 @@
  */
 
 const app = require('../server/index');
+const { flushTelemetry } = require('../server/utils/azure-appinsights');
 const debug = require('debug')('prepare-a-case:server');
 const http = require('http');
 
@@ -20,6 +21,21 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
+
+async function shutdown(signal) {
+  console.log(`${signal} received, shutting down`);
+
+  server.close(async error => {
+    try {
+      await flushTelemetry();
+    } finally {
+      process.exit(error ? 1 : 0);
+    }
+  });
+}
+
+process.once('SIGTERM', () => shutdown('SIGTERM'));
+process.once('SIGINT', () => shutdown('SIGINT'));
 
 /**
  * Listen on provided port, on all network interfaces.

@@ -1,5 +1,5 @@
-// Do appinsights first as it does some magic instrumentation work, i.e. it affects other 'require's
-// In particular, applicationinsights automatically collects bunyan logs
+// Initialise OpenTelemetry before loading Express, HTTP clients or Bunyan so
+// their modules can be instrumented when they are first required.
 const appInsightsClient = require('./utils/azure-appinsights')
 
 const createApp = require('./app')
