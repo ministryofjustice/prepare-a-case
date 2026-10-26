@@ -121,6 +121,7 @@
     "webpack-cli": "^5.1.4"
   },
   "overrides": {
+    "@opentelemetry/core": "2.12.0",
     "@ministryofjustice/frontend": {
       "moment": "2.31.0"
     },
