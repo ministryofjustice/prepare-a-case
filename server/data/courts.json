@@ -18,6 +18,7 @@
     { "code": "B50BU", "name": "Bodmin Magistrates' Court", "pilotCourt": true },
     { "code": "B06BV", "name": "Bolton Magistrates' Court", "pilotCourt": true },
     { "code": "B32BX", "name": "Boston Magistrates' Court", "pilotCourt": true },
+    { "code": "B55IS", "name": "Bournemouth Combined Court", "pilotCourt": true },
     { "code": "B13CC", "name": "Bradford and Keighley Magistrates' Court", "pilotCourt": true },
     { "code": "B16CJ", "name": "Bridlington Magistrates' Court", "pilotCourt": false },
     { "code": "B47CL", "name": "Brighton Magistrates' Court", "pilotCourt": false },
