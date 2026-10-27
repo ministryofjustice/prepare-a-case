@@ -68,7 +68,7 @@ describe('getProbationRecordRouteHandler', () => {
 
     // Then
     expect(getCaseAndTemplateValuesMock).toHaveBeenLastCalledWith(mockRequest)
-    expect(communityServiceMock.getProbationRecord).not.toBeCalled()
-    expect(mockResponse.render).toBeCalledWith('error', { status: testErrorResponse.status })
+    expect(communityServiceMock.getProbationRecord).not.toHaveBeenCalled()
+    expect(mockResponse.render).toHaveBeenCalledWith('error', { status: testErrorResponse.status })
   })
 })

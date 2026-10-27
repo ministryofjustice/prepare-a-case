@@ -47,13 +47,13 @@ const TAB_CONFIGS = [
   {
     key: 'hearing-outcome-pending',
     title: 'Hearing outcome still to be added',
-    a11yTitle: 'View outcome still to be added case list',
+    a11yTitle: 'View hearing outcome still to be added case list',
     subsection: '',
     showCondition: (params) => params.hearingOutcomesEnabled
   }, {
     key: 'hearing-outcome-added',
     title: 'Hearing outcome added',
-    a11yTitle: 'View outcome added case list',
+    a11yTitle: 'View hearing outcome added case list',
     subsection: 'heard',
     showCondition: (params) => params.hearingOutcomesEnabled
   }, {

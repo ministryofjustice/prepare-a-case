@@ -23,7 +23,7 @@ const nodeVersion = process.version
 const os = require('os')
 const pdsComponents = require('@ministryofjustice/hmpps-probation-frontend-components').default
 const hostName = os.hostname()
-
+const { telemetryMiddleware } = require('@ministryofjustice/hmpps-azure-telemetry')
 const { authenticationMiddleware } = auth
 const catchErrors = require('./routes/handlers/catchAsyncErrors')
 
@@ -176,6 +176,12 @@ module.exports = function createApp ({ signInService }) {
     res.locals.user = req.user
     next()
   })
+
+  app.use(telemetryMiddleware.addUserMetadataToTelemetry({
+    getAttributes: (req, res) => ({
+      username: res.locals.user?.username
+    })
+  }))
 
   // reduce noise during dev
   const healthcheck = healthcheckFactory(config.apis.oauth2.url, config.apis.courtCaseService.url, config.apis.userPreferenceService.url)
