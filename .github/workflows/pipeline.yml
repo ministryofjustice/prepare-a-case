@@ -21,7 +21,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref == 'refs/heads/main' && github.run_id || github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
@@ -92,6 +92,9 @@ jobs:
       - helm_lint
       - deploy_dev
       - check_publish
+    concurrency:
+      group: ${{ github.workflow }}-deploy-preprod
+      cancel-in-progress: false
     uses: ministryofjustice/hmpps-github-actions/.github/workflows/deploy_env.yml@v2 # WORKFLOW_VERSION
     secrets: inherit
     with:
@@ -106,6 +109,9 @@ jobs:
       - helm_lint
       - deploy_preprod
       - check_publish
+    concurrency:
+      group: ${{ github.workflow }}-deploy-prod
+      cancel-in-progress: false
     uses: ministryofjustice/hmpps-github-actions/.github/workflows/deploy_env.yml@v2 # WORKFLOW_VERSION
     secrets: inherit
     with:
