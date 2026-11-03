@@ -145,7 +145,7 @@ const constructTableData = (params, data) => {
     const formattedDefendantName = formatDefendantName(item)
     const sanitisedDefendantFullName = escapeHtml(formattedDefendantName)
     const a11yTitle = `View case for defendant ${sanitisedDefendantFullName}`
-    const crnDisplay = `<div class="pac-secondary-text pac-case-list-crn govuk-body-s govuk-!-margin-top-1">${item.crn ? item.crn : ''}</div>`
+    const crnDisplay = `<div class="govuk-body-s govuk-!-margin-top-1" data-cy="crn-display">${item.crn ? item.crn : ''}</div>`
 
     const constructSummaryUrl = (courtCode, hearingId, defendantId) => {
       return `/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary`

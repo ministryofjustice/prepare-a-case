@@ -20,7 +20,7 @@
               "title": "Ongoing"
             }
           },
-          "cssClass": "govuk-tag--blue"
+          "cssClass": "govuk-tag"
         },
         {
           "id": "COMPLETE",

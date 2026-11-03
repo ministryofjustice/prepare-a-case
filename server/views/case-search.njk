@@ -46,8 +46,8 @@
 
     {% set defendantFullName = item.defendantName %}
     {% set a11yTitle = 'View case for defendant ' + defendantFullName | escape | apostropheInName | properCase | removeTitle %}
-    {% set crnDisplay = '<div class="pac-secondary-text pac-case-list-crn govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
-    {% set noRecordDisplay = '<div class="pac-secondary-text govuk-body-s govuk-!-margin-top-1">No record</div>' %}
+    {% set crnDisplay = '<div class="pac-case-list-crn govuk-body-s govuk-!-margin-top-1">' + item.crn if item.crn else '' + '</div>' %}
+    {% set noRecordDisplay = '<div class="govuk-body-s govuk-!-margin-top-1">No record</div>' %}
 
     {%- set hasFlaggedOffence = item.seriousFurtherOffence or item.multiAgencyPublicProtectionArrangementsOffence -%}
     {%- set sfoRowClass = 'pac-sfo-row' if hasFlaggedOffence else '' -%}
