@@ -203,10 +203,8 @@
 <div class="govuk-width-container">
     <main class="govuk-main-wrapper" id="main-content" role="main">
         {% block pageHeading %}
-            <div class="govuk-width-container">
-                <span class="govuk-caption-xl">{{ mainTitle }}</span>
-                <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{ heading if heading else title }}</h1>
-            </div>
+            <span class="govuk-caption-xl">{{ mainTitle }}</span>
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{ heading if heading else title }}</h1>
         {% endblock %}
         {% block content %}{% endblock %}
     </main>

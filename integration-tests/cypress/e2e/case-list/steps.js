@@ -19,8 +19,8 @@ Then('I should see the matching inset text {string}', $string => {
   })
 })
 
-Then('I should see secondary text {string}', $string => {
-  cy.get('.pac-secondary-text').contains($string).should('exist')
+Then('I should see CRN {string}', crn => {
+  cy.contains('[data-cy="crn-display"]', crn).should('be.visible')
 })
 
 Then('I should not see that any defendants have possible NDelius records', () => {

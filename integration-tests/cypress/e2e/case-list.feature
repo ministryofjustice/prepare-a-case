@@ -48,7 +48,7 @@ Feature: Case list
 
     And I should see link "Kara Ayers" with href "/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary"
     And I should see link "Mann Carroll" with href "/hearing/a395526d-b805-4c52-8f61-3c41bca15537/defendant/d1d38809-af04-4ff0-9328-4db39c0a3d85/summary"
-    And I should see secondary text "V654123"
+    And I should see CRN "V654123"
 
     And I should see pagination
     And I should not see pagination previous link
