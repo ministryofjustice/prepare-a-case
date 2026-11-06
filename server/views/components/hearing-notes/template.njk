@@ -80,7 +80,9 @@
                                                                     data-module="govuk-details">
                             <summary class="govuk-details__summary govuk-!-margin-bottom-0 govuk-!-margin-top-2">
                                 {% if params.hearing.hearingDateTime | hearingDateStatus === 'today' %}
-                                    <span class="govuk-details__summary-text">Add a note for today's hearing</span>   
+                                    <span class="govuk-details__summary-text">Add a note for today's hearing</span>
+                                {% elif params.hearing.hearingDateTime | hearingDateStatus === 'future' %}
+                                    <span class="govuk-details__summary-text">Add a note for this future hearing</span>
                                 {% else %}
                                     <span class="govuk-details__summary-text">Expand to add a hearing note</span>
                                 {% endif %}

@@ -121,6 +121,11 @@
                                             text: "Today's hearing",
                                             classes: "govuk-tag--green"
                                         }) }}
+                                    {% elif hearing.hearingDateTime | hearingDateStatus === 'future'  %}
+                                        {{ govukTag({
+                                            text: "Future hearing",
+                                            classes: "govuk-tag--blue"
+                                        }) }}
                                     {% endif %}
                                 </div>
                             </div>
