@@ -1,6 +1,7 @@
 {%- from "components/modal/macro.njk" import modal -%}
 {% from "govuk/components/select/macro.njk" import govukSelect %}
 {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{%- from "govuk/components/tag/macro.njk" import govukTag -%}
 
 <div class="govuk-grid-row" id="caseProgressComponent">
     <div class="govuk-grid-column-two-thirds">
@@ -108,35 +109,51 @@
                             </div>
                         </div>
                     {% endif %}
-                    <header class="app-summary-card__header">
+                    <header class="app-summary-card__header govuk-!-padding-top-5 govuk-!-padding-bottom-5 govuk-!-margin-bottom-3">
                         <div class="app-summary-card__title">
                             <div class="govuk-grid-row">
-                                <div class="govuk-grid-column-full">
+                                <div class="govuk-grid-column-two-thirds">
                                     <span class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-display-inline">{{ hearing.hearingTypeLabel }}</span>
-                                    {% if hearing.hearingId === data.nextAppearanceHearingId %}
-                                        <span class="moj-badge moj-badge--blue pac-badge govuk-!-display-inline govuk-!-margin-left-3">NEXT APPEARANCE</span>
+                                </div>
+                                <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+                                    {% if hearing.hearingDateTime | hearingDateStatus === 'today'  %}
+                                        {{ govukTag({
+                                            text: "Today's hearing",
+                                            classes: "govuk-tag--green"
+                                        }) }}
+                                    {% elif hearing.hearingDateTime | hearingDateStatus === 'future'  %}
+                                        {{ govukTag({
+                                            text: "Future hearing",
+                                            classes: "govuk-tag--blue"
+                                        }) }}
                                     {% endif %}
                                 </div>
                             </div>
-                            {% set showAddHearingOutcomeButton = features.hearingOutcomesEnabled and hearing.notes and hearing.notes | length and (not hearing.hearingOutcome.hearingOutcomeType or hearing.hearingOutcome.hearingOutcomeType === 'NO_OUTCOME') %}
-
-                            <div class="govuk-grid-row">
-                                <div class="{{ "govuk-grid-column-two-thirds" if showAddHearingOutcomeButton else "govuk-grid-column-full" }}">
-                                    <div class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">
-                                        {{ hearing.hearingDateTime | hearingNoteTimeFormat }}, {{ 'Court ' if data.source === 'LIBRA' }} {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
-                                    </div>
-                                </div>
-                                {% if showAddHearingOutcomeButton %}
-                                    <div class="govuk-grid-column-one-third">
-                                        <button class="govuk-button btn-send-hearing-outcome govuk-!-margin-bottom-0"
-                                                data-hearingid="{{ hearing.hearingId }}" data-defendantId="{{ data.defendantId }}" data-module="govuk-button" data-bs-toggle="modal" data-bs-target="#add-hearing-outcome-modal">Send outcome to admin
-                                        </button>
-                                    </div>
-                                {% endif %}
-                            </div>
-
                         </div>
                     </header>
+
+                    <div class="govuk-grid-column-full">
+                        {% set showAddHearingOutcomeButton = features.hearingOutcomesEnabled and hearing.notes and hearing.notes | length and (not hearing.hearingOutcome.hearingOutcomeType or hearing.hearingOutcome.hearingOutcomeType === 'NO_OUTCOME') and hearing.hearingDateTime | hearingDateStatus !== 'future' %}
+
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-full">
+                                <div class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-0">
+                                    <div class="govuk-!-font-weight-bold">{{ hearing.hearingDateTime | hearingNoteTimeFormat }}</div>
+                                    {{ 'Court ' if data.source === 'LIBRA' }} {{ hearing.courtRoom }}, {{ hearing.session | lower }} session, {{ hearing.court }}
+                                </div>
+                            </div>
+                        </div>
+                        {% if showAddHearingOutcomeButton %}
+                            <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-full">
+                                    <button class="govuk-button btn-send-hearing-outcome govuk-!-margin-top-3 govuk-!-margin-bottom-0"
+                                            data-hearingid="{{ hearing.hearingId }}" data-defendantId="{{ data.defendantId }}" data-module="govuk-button" data-bs-toggle="modal" data-bs-target="#add-hearing-outcome-modal">Send outcome to admin
+                                    </button>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    </div>
 
                     {%- from "components/hearing-notes/macro.njk" import pacHearingNotes -%}
                     {{ pacHearingNotes({

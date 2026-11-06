@@ -1,4 +1,4 @@
-/* global describe, it, expect, jest */
+/* global describe, it, expect, jest, beforeEach, afterEach */
 const filters = require('../../server/utils/nunjucksFilters.js')
 
 describe('nunjucksFilters', () => {
@@ -268,6 +268,32 @@ describe('nunjucksFilters', () => {
       const hearingNoteTimeFormat = filters.hearingNoteTimeFormat(input)
 
       expect(hearingNoteTimeFormat).toEqual('Thursday 1 January 1970')
+    })
+  })
+
+  describe('hearingDateStatus', () => {
+    beforeEach(() => {
+      jest.useFakeTimers().setSystemTime(new Date('2026-11-06T12:00:00.000Z'))
+    })
+
+    afterEach(() => {
+      jest.useRealTimers()
+    })
+
+    it('returns null if input not supplied', () => {
+      expect(filters.hearingDateStatus(undefined)).toEqual(null)
+    })
+
+    it("returns 'today' when the hearing date is today", () => {
+      expect(filters.hearingDateStatus('2026-11-06T09:00:00.000Z')).toEqual('today')
+    })
+
+    it("returns 'past' when the hearing date is before today", () => {
+      expect(filters.hearingDateStatus('2026-11-05T09:00:00.000Z')).toEqual('past')
+    })
+
+    it("returns 'future' when the hearing date is after today", () => {
+      expect(filters.hearingDateStatus('2026-11-07T09:00:00.000Z')).toEqual('future')
     })
   })
 
