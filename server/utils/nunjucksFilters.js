@@ -117,6 +117,17 @@ module.exports = {
     return moment(dateString).format('dddd D MMMM YYYY')
   },
 
+  hearingDateStatus: hearingDateTime => {
+    if (!hearingDateTime) {
+      return null
+    }
+    const hearingDate = moment(hearingDateTime)
+    if (hearingDate.isSame(moment(), 'day')) {
+      return 'today'
+    }
+    return hearingDate.isBefore(moment(), 'day') ? 'past' : 'future'
+  },
+
   escapeHtml: unsafe => {
     return unsafe
       .replace(/&/g, '&amp;')
