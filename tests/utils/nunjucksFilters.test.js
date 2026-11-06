@@ -1,4 +1,4 @@
-/* global describe, it, expect, jest */
+/* global describe, it, expect, jest, beforeEach, afterEach */
 const filters = require('../../server/utils/nunjucksFilters.js')
 
 describe('nunjucksFilters', () => {
