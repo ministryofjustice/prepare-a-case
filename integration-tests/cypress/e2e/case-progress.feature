@@ -22,6 +22,18 @@ Feature: Case progress
     And I should see a Save button on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     And I should see a Cancel saving note link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
 
+  Scenario: See today's and future hearing tags on the case progress hearings
+    Given I am an authenticated user
+    And I click the "Accept analytics cookies" button
+    Then I should not see the cookie banner
+
+    When I navigate to the "/B14LO/hearing/9c1b2a3d-4e5f-4a6b-8c7d-1e2f3a4b5c6d/defendant/7d6c5b4a-3f2e-4d1c-9b8a-6f5e4d3c2b1a/summary" base route
+    Then I should be on the "Tag Visibility - Case summary - Prepare a case for sentence" page
+
+    And I should see "Future hearing" tag on hearing with id "1a1a1a1a-1111-4111-8111-111111111111"
+    And I should see "Today's hearing" tag on hearing with id "2b2b2b2b-2222-4222-8222-222222222222"
+    And I should not see a hearing status tag on hearing with id "3c3c3c3c-3333-4333-8333-333333333333"
+
   Scenario: View hearing note on the case summary page
     Given I am an authenticated user
     And I click the "Accept analytics cookies" button
@@ -40,13 +52,16 @@ Feature: Case progress
     And I should see a "m" sized level 3 heading with text "Case progress"
     And I should see 6 previous hearings headers
 
-    And I should see the following hearings with the hearing type label, hearing details and next appearance badge if applicable
-      | Millionth hearing   | Sunday 14 July 2999, Court 1, morning session, Neptune Mags       |                 | Add a note for this future hearing |
-      | Million-1th hearing | Saturday 14 July 2998, Court 1, morning session, Mars Mags        | NEXT APPEARANCE | Add a note for this future hearing |
-      | 12th hearing        | Saturday 14 December 2019, Court 2, morning session, Leicester    |                 | Expand to add a hearing note       |
-      | 8th hearing         | Wednesday 14 August 2019, Court 2, morning session, Leicester     |                 | Expand to add a hearing note       |
-      | 7th hearing         | Sunday 14 July 2019, Court 1, morning session, Leicester          |                 | Expand to add a hearing note       |
-      | 5th hearing         | Tuesday 14 May 2019, Court 2, morning session, North Shields      |                 | Expand to add a hearing note       |
+    And I should see the following hearings with the hearing type label and hearing details
+      | Millionth hearing   | Sunday 14 July 2999, Court 1, morning session, Neptune Mags       | Add a note for this future hearing |
+      | Million-1th hearing | Saturday 14 July 2998, Court 1, morning session, Mars Mags        | Add a note for this future hearing |
+      | 12th hearing        | Saturday 14 December 2019, Court 2, morning session, Leicester    | Expand to add a hearing note       |
+      | 8th hearing         | Wednesday 14 August 2019, Court 2, morning session, Leicester     | Expand to add a hearing note       |
+      | 7th hearing         | Sunday 14 July 2019, Court 1, morning session, Leicester          | Expand to add a hearing note       |
+      | 5th hearing         | Tuesday 14 May 2019, Court 2, morning session, North Shields      | Expand to add a hearing note       |
+
+    And I should see "Future hearing" tag on hearing with id "16605235-06a6-4b53-98b8-0d1236a4732a"
+    And I should not see a hearing status tag on hearing with id "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
 
     And I should see "Send outcome to admin" button on hearing with id "2aa6f5e0-f842-4939-bc6a-01346abc09e3" 
 
@@ -56,17 +71,17 @@ Feature: Case progress
     When I click the "Show all previous hearings" button
     Then I should see 10 previous hearings headers
 
-    And I should see the following hearings with the hearing type label, hearing details and next appearance badge if applicable
-      | Millionth hearing   | Sunday 14 July 2999, Court 1, morning session, Neptune Mags       |                 | Add a note for this future hearing |
-      | Million-1th hearing | Saturday 14 July 2998, Court 1, morning session, Mars Mags        | NEXT APPEARANCE | Add a note for this future hearing |
-      | 12th hearing        | Saturday 14 December 2019, Court 2, morning session, Leicester    |                 | Expand to add a hearing note       |
-      | 8th hearing         | Wednesday 14 August 2019, Court 2, morning session, Leicester     |                 | Expand to add a hearing note       |
-      | 7th hearing         | Sunday 14 July 2019, Court 1, morning session, Leicester          |                 | Expand to add a hearing note       |
-      | 5th hearing         | Tuesday 14 May 2019, Court 2, morning session, North Shields      |                 | Expand to add a hearing note       |
-      | 4th hearing         | Sunday 14 April 2019, Court 3, morning session, Leicester         |                 | Expand to add a hearing note       |
-      | 3rd hearing         | Thursday 14 March 2019, Court 3, morning session, Leicester       |                 | Expand to add a hearing note       |
-      | 2nd hearing         | Thursday 14 February 2019, Court 5, afternoon session, Leicester  |                 | Expand to add a hearing note       |
-      | 1st hearing         | Monday 14 January 2019, Court 1, morning session, Leicester       |                 | Expand to add a hearing note       |
+    And I should see the following hearings with the hearing type label and hearing details
+      | Millionth hearing   | Sunday 14 July 2999, Court 1, morning session, Neptune Mags       | Add a note for this future hearing |
+      | Million-1th hearing | Saturday 14 July 2998, Court 1, morning session, Mars Mags        | Add a note for this future hearing |
+      | 12th hearing        | Saturday 14 December 2019, Court 2, morning session, Leicester    | Expand to add a hearing note       |
+      | 8th hearing         | Wednesday 14 August 2019, Court 2, morning session, Leicester     | Expand to add a hearing note       |
+      | 7th hearing         | Sunday 14 July 2019, Court 1, morning session, Leicester          | Expand to add a hearing note       |
+      | 5th hearing         | Tuesday 14 May 2019, Court 2, morning session, North Shields      | Expand to add a hearing note       |
+      | 4th hearing         | Sunday 14 April 2019, Court 3, morning session, Leicester         | Expand to add a hearing note       |
+      | 3rd hearing         | Thursday 14 March 2019, Court 3, morning session, Leicester       | Expand to add a hearing note       |
+      | 2nd hearing         | Thursday 14 February 2019, Court 5, afternoon session, Leicester  | Expand to add a hearing note       |
+      | 1st hearing         | Monday 14 January 2019, Court 1, morning session, Leicester       | Expand to add a hearing note       |
 
     And I should see a button with the label "Hide older hearings"
 

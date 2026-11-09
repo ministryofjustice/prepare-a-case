@@ -1,0 +1,86 @@
+{
+  "id": "9c1b2a3d-4e5f-4a6b-8c7d-1e2f3a4b5c6d",
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/hearing/9c1b2a3d-4e5f-4a6b-8c7d-1e2f3a4b5c6d/defendant/7d6c5b4a-3f2e-4d1c-9b8a-6f5e4d3c2b1a"
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "caseId": "4a3b2c1d-5e6f-4a7b-8c9d-1e2f3a4b5c6e",
+      "hearingId": "9c1b2a3d-4e5f-4a6b-8c7d-1e2f3a4b5c6d",
+      "defendantId": "7d6c5b4a-3f2e-4d1c-9b8a-6f5e4d3c2b1a",
+      "caseNo": "1122334455",
+      "courtCode": "SHF",
+      "courtRoom": "1",
+      "sessionStartTime": "{{now format='yyyy-MM-dd'}}T09:30:00",
+      "listNo": "1st",
+      "pnc": "A/1234560BA",
+      "probationStatus": "No record",
+      "session": "MORNING",
+      "previouslyKnownTerminationDate": "",
+      "suspendedSentenceOrder": false,
+      "breach": false,
+      "preSentenceActivity": false,
+      "awaitingPsr": false,
+      "hearingOutcomeRequired": false,
+      "files": [],
+      "source": "LIBRA",
+      "urn": "01TAG12345",
+      "offences": [
+        {
+          "offenceTitle": "Theft from a shop",
+          "offenceSummary": "On 01/01/2020 at Sheffield stole a jacket to the value of £50.00, belonging to a shop.",
+          "act": "Contrary to section 1(1) and 7 of the Theft Act 1968.",
+          "sequenceNumber": 1
+        }
+      ],
+      "defendantSex": "M",
+      "defendantName": "Mr Tag Visibility",
+      "defendantAddress": {
+        "line1": "1",
+        "line2": "Test Street",
+        "postcode": "S1 1AA",
+        "line3": "Sheffield"
+      },
+      "defendantDob": "1990-01-01",
+      "phoneNumber": {
+        "mobile": "07 123 123 123",
+        "home": "020 456 456 456",
+        "work": "020 789 789 789"
+      },
+      "createdToday": true,
+      "removed": false,
+      "numberOfPossibleMatches": 0,
+      "hearings": [
+        {
+          "hearingId": "1a1a1a1a-1111-4111-8111-111111111111",
+          "court": "Sheffield",
+          "courtRoom": "1",
+          "session": "MORNING",
+          "hearingTypeLabel": "Future hearing",
+          "hearingDateTime": "{{now offset='7 days' format='yyyy-MM-dd'}}T09:00:00"
+        },
+        {
+          "hearingId": "2b2b2b2b-2222-4222-8222-222222222222",
+          "court": "Sheffield",
+          "courtRoom": "1",
+          "session": "MORNING",
+          "hearingTypeLabel": "Today hearing",
+          "hearingDateTime": "{{now format='yyyy-MM-dd'}}T09:00:00"
+        },
+        {
+          "hearingId": "3c3c3c3c-3333-4333-8333-333333333333",
+          "court": "Sheffield",
+          "courtRoom": "1",
+          "session": "MORNING",
+          "hearingTypeLabel": "Past hearing",
+          "hearingDateTime": "{{now offset='-7 days' format='yyyy-MM-dd'}}T09:00:00"
+        }
+      ]
+    }
+  }
+}
