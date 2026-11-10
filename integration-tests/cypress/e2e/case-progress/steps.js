@@ -61,6 +61,18 @@ Then('I should see "Send outcome to admin" button on hearing with id {string}', 
   })
 })
 
+Then('I should see {string} tag on hearing with id {string}', ($tagText, $hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.govuk-tag').invoke('text').then(text => expect(text.trim()).to.equal($tagText))
+  })
+})
+
+Then('I should not see a hearing status tag on hearing with id {string}', $hearingId => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
+    cy.get('.govuk-tag').should('not.exist')
+  })
+})
+
 Then('I should see a warning banner on hearing {string} with text {string}', ($hearingId, $string) => {
   cy.get(`#case-progress-hearing-${$hearingId} .hearing-note-container`).eq(0).within(() => {
     cy.get('.govuk-warning-text').contains($string).should('exist')
@@ -75,7 +87,7 @@ Then('I click Expand to add a hearing note on hearing with id {string}', ($heari
 
 Then('I should see {string} link on hearing with id {string}', ($title, $hearingId) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
-    cy.get('.govuk-details__summary-text').should('have.text', 'Expand to add a hearing note')
+    cy.get('.govuk-details__summary-text').should('have.text', $title)
   })
 })
 
@@ -106,26 +118,21 @@ Then('I should see a Cancel saving note link on hearing with id {string}', $hear
   })
 })
 
-Then('I should see the following hearings with the hearing type label, hearing details and next appearance badge if applicable', $data => {
+Then('I should see the following hearings with the hearing type label and hearing details', $data => {
   $data.raw().forEach((dataRow, index) => {
     cy.get('.app-summary-card').eq(index).within(() => {
-      const caseProgressCardHeader = cy.get('.app-summary-card__header > .app-summary-card__title').eq(0)
-      caseProgressCardHeader.within(() => {
-        cy.get('.govuk-heading-s').contains(dataRow[0])
-        cy.get('.govuk-body').contains(dataRow[1])
-        if (dataRow[2] === 'NEXT APPEARANCE') {
-          cy.get('.pac-badge').should('exist')
-        } else {
-          cy.get('.pac-badge').should('not.exist')
-        }
-      })
+      cy.get('.app-summary-card__header > .app-summary-card__title .govuk-heading-s').contains(dataRow[0])
+      // the hearing date renders in its own bold element, separate from the court/session details
+      const [hearingDate, ...hearingDetails] = dataRow[1].split(', ')
+      cy.get('.govuk-body .govuk-\\!-font-weight-bold').contains(hearingDate)
+      cy.get('.govuk-body').contains(hearingDetails.join(', '))
       const caseProgressCardPreviousNote = cy.get('.app-summary-card__body')
       caseProgressCardPreviousNote.within(() => {
         cy.get('span').should('exist')
       })
       const caseProgressCardBody = cy.get('.app-summary-card__body').eq(0)
       caseProgressCardBody.within(() => {
-        cy.get('summary > span').contains('Expand to add a hearing note')
+        cy.get('summary > span').contains(dataRow[2])
       })
     })
   })
