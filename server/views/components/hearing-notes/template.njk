@@ -34,14 +34,15 @@
                                 </span>
                             </div>
                             <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-3 hearing-note-links">
-                                <span class="govuk-!-margin-left-3">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}
-                                    {% if isUserNoteAuthor %}
+                                <div class="govuk-grid-column-two-thirds">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}</div>
+                                {% if isUserNoteAuthor %}
+                                    <div class="govuk-grid-column-one-third govuk-!-text-align-right">
                                         <a class="govuk-link govuk-!-margin-left-5 note-edit-link"
                                            href="#">Edit</a>
                                         <a class="govuk-link govuk-!-margin-left-5 note-delete-link"
                                            href="summary/notes/delete?targetHearingId={{ params.hearing.hearingId }}&noteId={{ previousNote.noteId }}">Delete</a>
-                                    {% endif %}
-                                </span>
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                         {% if isUserNoteAuthor %}
@@ -89,7 +90,14 @@
                             </summary>
                             <div class="govuk-details__text govuk-!-padding-bottom-0">
                                 <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
-                                <label class="govuk-label" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add information specific to this hearing.</label>
+                                {% if params.hearing.hearingDateTime | hearingDateStatus === 'today' %}
+                                    <label class="govuk-hint" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add information specific to today's hearing.</label>
+                                {% elif params.hearing.hearingDateTime | hearingDateStatus === 'future' %}
+                                    <label class="govuk-hint govuk-!-display-block govuk-!-margin-bottom-3" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add information specific to this future hearing.</label>
+                                    <label class="govuk-hint govuk-!-display-block" for="note-box-{{ params.hearing.hearingId }}" type="hidden">You wont be able to send the outcome to admin until {{ params.hearing.hearingDateTime | hearingNoteTimeFormat }}</label>
+                                {% else %}
+                                    <label class="govuk-hint" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add information specific to this hearing.</label>
+                                {% endif %}
                                 <textarea data-hearingid="{{ params.hearing.hearingId }}"
                                         class="govuk-textarea case-notes auto-save-text"
                                         id="note-box-{{ params.hearing.hearingId }}" name="note" rows="5"

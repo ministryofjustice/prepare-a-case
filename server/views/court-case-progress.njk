@@ -152,7 +152,11 @@
                                 </div>
                             </div>
                         {% endif %}
-                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                        {% if hearing.notes and hearing.notes | length %}
+                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible ">
+                        {% else %}
+                            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-0">
+                        {% endif %}
                     </div>
 
                     {%- from "components/hearing-notes/macro.njk" import pacHearingNotes -%}
