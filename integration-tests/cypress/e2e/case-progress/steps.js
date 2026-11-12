@@ -95,7 +95,7 @@ Then('I should see a text area with label {string} and admin deadline {string} o
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get('.govuk-details__text').within(() => {
       cy.get('label').eq(0).should('contain.text', $label)
-      cy.get('label').eq(1).should('contain.text', `You wont be able to send the outcome to admin until ${$deadline}`)
+      cy.get('label').eq(1).should('contain.text', `You will not be able to send the outcome to admin until ${$deadline}`)
       cy.get('textarea').should('exist')
     })
   })

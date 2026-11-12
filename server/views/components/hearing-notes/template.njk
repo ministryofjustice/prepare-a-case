@@ -91,12 +91,12 @@
                             <div class="govuk-details__text govuk-!-padding-bottom-0">
                                 <input type="hidden" name="hearingId" value="{{ params.hearing.hearingId }}"/>
                                 {% if params.hearing.hearingDateTime | hearingDateStatus === 'today' %}
-                                    <label class="govuk-hint" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add information specific to today's hearing.</label>
+                                    <label class="govuk-hint govuk-!-display-block" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add information specific to today's hearing.</label>
                                 {% elif params.hearing.hearingDateTime | hearingDateStatus === 'future' %}
                                     <label class="govuk-hint govuk-!-display-block govuk-!-margin-bottom-3" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add information specific to this future hearing.</label>
-                                    <label class="govuk-hint govuk-!-display-block" for="note-box-{{ params.hearing.hearingId }}" type="hidden">You wont be able to send the outcome to admin until {{ params.hearing.hearingDateTime | hearingNoteTimeFormat }}</label>
+                                    <label class="govuk-hint govuk-!-display-block" for="note-box-{{ params.hearing.hearingId }}" type="hidden">You will not be able to send the outcome to admin until {{ params.hearing.hearingDateTime | hearingNoteTimeFormat }}</label>
                                 {% else %}
-                                    <label class="govuk-hint" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add information specific to this hearing.</label>
+                                    <label class="govuk-hint govuk-!-display-block" for="note-box-{{ params.hearing.hearingId }}" type="hidden">Add information specific to this hearing.</label>
                                 {% endif %}
                                 <textarea data-hearingid="{{ params.hearing.hearingId }}"
                                         class="govuk-textarea case-notes auto-save-text"
