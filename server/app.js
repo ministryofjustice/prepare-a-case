@@ -251,7 +251,7 @@ module.exports = function createApp ({ signInService }) {
 
   app.use(telemetryMiddleware.addUserMetadataToTelemetry({
     getAttributes: (req, res) => ({
-      userUuid: res.locals.user?.uuid,
+      userUuid: res.locals.user?.uuid
     })
   }))
 
