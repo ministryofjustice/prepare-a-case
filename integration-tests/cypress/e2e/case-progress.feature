@@ -18,7 +18,7 @@ Feature: Case progress
     And I should see "Add a note for this future hearing" link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
 
     When I click Expand to add a hearing note on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
-    Then I should see a text area with label "Add information specific to this future hearing." and admin deadline "Saturday 14 July 2998" on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
+    Then I should see a text area with label "Add information specific to this future hearing." and admin deadline "Saturday 14 July 2998." on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     And I should see a Save button on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
     And I should see a Cancel saving note link on hearing with id "f26d6d4e-b987-417e-8323-18009ee001af"
 
