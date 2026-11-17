@@ -106,13 +106,13 @@ module.exports = function createApp ({ signInService }) {
   }))
 
   const sessionMiddleware = session({
-      store: new RedisStore({ client: redisClient }),
-      cookie: { secure: config.https, sameSite: 'lax', maxAge: config.session.expiry * 60 * 1000 },
-      secret: config.session.secret,
-      resave: false, // redis implements touch so shouldn't need this
-      saveUninitialized: false,
-      rolling: true
-    })
+    store: new RedisStore({ client: redisClient }),
+    cookie: { secure: config.https, sameSite: 'lax', maxAge: config.session.expiry * 60 * 1000 },
+    secret: config.session.secret,
+    resave: false, // redis implements touch so shouldn't need this
+    saveUninitialized: false,
+    rolling: true
+  })
 
   app.use((req, res, next) => {
     const boundNext = context.bind(context.active(), next)
