@@ -26,6 +26,7 @@ const hostName = os.hostname()
 const { telemetryMiddleware } = require('@ministryofjustice/hmpps-azure-telemetry')
 const { authenticationMiddleware } = auth
 const catchErrors = require('./routes/handlers/catchAsyncErrors')
+const { context } = require('@opentelemetry/api')
 
 const authLogoutUrl = `${config.apis.oauth2.redirect}/logout?client_id=${config.apis.oauth2.apiClientId}&redirect_uri=${config.domain}`
 
@@ -104,8 +105,7 @@ module.exports = function createApp ({ signInService }) {
     }
   }))
 
-  app.use(
-    session({
+  const sessionMiddleware = session({
       store: new RedisStore({ client: redisClient }),
       cookie: { secure: config.https, sameSite: 'lax', maxAge: config.session.expiry * 60 * 1000 },
       secret: config.session.secret,
@@ -113,7 +113,11 @@ module.exports = function createApp ({ signInService }) {
       saveUninitialized: false,
       rolling: true
     })
-  )
+
+  app.use((req, res, next) => {
+    const boundNext = context.bind(context.active(), next)
+    sessionMiddleware(req, res, boundNext)
+  })
 
   app.use(flash())
 
