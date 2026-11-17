@@ -236,23 +236,6 @@ module.exports = function createApp ({ signInService }) {
 
   app.use(authorisationMiddleware(signInService))
 
-  // Temporary diagnostics - will remove when telemetry is working as expected
-  app.use((req, res, next) => {
-    const { trace } = require('@opentelemetry/api')
-    const span = trace.getActiveSpan()
-
-    log.info({
-      diagnostic: 'user-telemetry-span',
-      hasUsername: Boolean(res.locals.user?.username),
-      hasUuid: Boolean(res.locals.user?.uuid),
-      activeSpan: Boolean(span),
-      recording: span?.isRecording(),
-      traceId: span?.spanContext().traceId
-    })
-
-    next()
-  })
-
   app.use(telemetryMiddleware.addUserMetadataToTelemetry({
     getAttributes: (req, res) => ({
       userUuid: res.locals.user?.uuid
