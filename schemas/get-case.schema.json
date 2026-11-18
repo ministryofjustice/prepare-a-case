@@ -521,6 +521,18 @@
                           "title": "The created time stamp",
                           "description": "An explanation about the purpose of this instance.",
                           "default": ""
+                        },
+                        "lastUpdated": {
+                          "$id": "#/properties/hearings/items/notes/items/anyOf/0/properties/lastUpdated",
+                          "type": ["string", "null"],
+                          "title": "The time stamp the note was last saved",
+                          "description": "Equals created if the note has never been edited since creation."
+                        },
+                        "lastUpdatedBy": {
+                          "$id": "#/properties/hearings/items/notes/items/anyOf/0/properties/lastUpdatedBy",
+                          "type": ["string", "null"],
+                          "title": "Who last saved the note",
+                          "description": "Formatted as username(clientId), null for legacy notes without audit data."
                         }
                       }
                     }
