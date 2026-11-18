@@ -6,7 +6,7 @@ const getUpdateCaseCommentHandler = caseService => async (req, res) => {
   await caseService.updateCaseComment(caseId, defendantId, commentId, comment, res.locals.user.name)
 
   if (!res.locals.user.name) {
-    trackEvent('PiCUpdateCaseCommentNoName', res.locals.user)
+    trackEvent('PiCUpdateCaseCommentNoName')
   }
 
   res.redirect(`/${courtCode}/hearing/${hearingId}/defendant/${defendantId}/summary#caseComments`)

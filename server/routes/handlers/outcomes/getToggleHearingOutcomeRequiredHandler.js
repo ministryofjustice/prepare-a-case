@@ -28,8 +28,7 @@ const getToggleHearingOutcomeRequiredHandler = caseService => async (req, res) =
       courtCode,
       defendantId,
       hearingOutcomeNotRequired,
-      userId: res.locals.user.uuid,
-      user: res.locals.user
+      userId: res.locals.user.uuid
     }
   )
 

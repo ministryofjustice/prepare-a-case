@@ -18,7 +18,7 @@ const getAddHearingNoteHandler = caseService => async (req, res) => {
     await caseService.deleteHearingNoteDraft(targetHearingId, defendantId)
 
     if (!res.locals.user.name) {
-      trackEvent('PiCAddHearingNoteNoName', res.locals.user)
+      trackEvent('PiCAddHearingNoteNoName')
     }
   }
 

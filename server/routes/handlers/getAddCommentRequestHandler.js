@@ -12,7 +12,7 @@ const getAddCaseCommentHandler = caseService => async (req, res) => {
     await caseService.deleteCaseCommentDraft(caseId, defendantId)
 
     if (!res.locals.user.name) {
-      trackEvent('PiCAddCaseCommentNoName', res.locals.user)
+      trackEvent('PiCAddCaseCommentNoName')
     }
 
     trackEvent('PiCCaseCommentSuccess', {

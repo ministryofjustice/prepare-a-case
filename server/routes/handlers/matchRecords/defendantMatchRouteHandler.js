@@ -26,7 +26,7 @@ const defendantMatchRouteHandler = (updateCaseDetails) => async (req, res) => {
         }
 
         if (settings.enableMatcherLogging) {
-          trackEvent('PiCMatcherLogging', response)
+          trackEvent('PiCMatcherLogging')
           if (matchProbability[0] <= 0.5) {
             trackEvent('PiCMatcherLessRelevantMatchSelected', caseId, hearingId, defendantId, crn)
           } else {
