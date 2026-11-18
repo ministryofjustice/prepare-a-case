@@ -70,8 +70,7 @@ describe('markHearingOutcomeNotRequiredHandler', () => {
         'PiCHearingOutcomeNotRequiredSuccess',
         {
           hearingId: 'hearing-123',
-          defendantId: 'defendant-456',
-          user: res.locals.user
+          defendantId: 'defendant-456'
         }
       )
     })
@@ -125,8 +124,7 @@ describe('markHearingOutcomeNotRequiredHandler', () => {
         {
           hearingId: 'hearing-123',
           defendantId: 'defendant-456',
-          error: 'Service unavailable',
-          user: res.locals.user
+          error: 'Service unavailable'
         }
       )
     })
@@ -177,8 +175,7 @@ describe('markHearingOutcomeNotRequiredHandler', () => {
         {
           hearingId: 'hearing-123',
           defendantId: 'defendant-456',
-          error: 'Network error',
-          user: res.locals.user
+          error: 'Network error'
         }
       )
     })

@@ -38,7 +38,11 @@ describe('postDefendantMatchRouteHandler', () => {
   })
 
   it('should set session.confirmedMatch and redirect to matched URL if updateCaseDetails is successful', async () => {
-    updateCaseDetailsMock.mockResolvedValue({ status: 200 })
+    updateCaseDetailsMock.mockResolvedValue({
+      status: 200,
+      data: { sensitive: 'test-case-data' },
+      config: { headers: { Authorization: 'test-token' } }
+    })
 
     await postDefendantMatchRouteHandler(updateCaseDetailsMock)(mockRequest, mockResponse)
 
@@ -55,7 +59,11 @@ describe('postDefendantMatchRouteHandler', () => {
 
   it('should not call trackEvent if enableMatcherLogging is false', async () => {
     jest.replaceProperty(settings, 'enableMatcherLogging', false)
-    updateCaseDetailsMock.mockResolvedValue({ status: 200 })
+    updateCaseDetailsMock.mockResolvedValue({
+      status: 200,
+      data: { sensitive: 'test-case-data' },
+      config: { headers: { Authorization: 'test-token' } }
+    })
 
     await postDefendantMatchRouteHandler(updateCaseDetailsMock)(mockRequest, mockResponse)
 

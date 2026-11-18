@@ -51,7 +51,7 @@ const matchingRecordRouteHandler = (getMatchDetails, getCaseAndTemplateValues) =
   const paginatedMatchData = response.offenderMatchDetails.slice(start, end)
 
   if (settings.enableMatcherLogging) {
-    trackEvent('PiCMatcherLogging')
+    trackEvent('PiCMatcherLogging', { status: response.status })
     trackEvent('PiCMatcherRecordsCount', offenderMatchDetails.length)
 
     if (currentPage > 1) {
