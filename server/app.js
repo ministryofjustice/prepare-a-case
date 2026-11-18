@@ -26,6 +26,7 @@ const hostName = os.hostname()
 const { telemetryMiddleware } = require('@ministryofjustice/hmpps-azure-telemetry')
 const { authenticationMiddleware } = auth
 const catchErrors = require('./routes/handlers/catchAsyncErrors')
+const { context } = require('@opentelemetry/api')
 
 const authLogoutUrl = `${config.apis.oauth2.redirect}/logout?client_id=${config.apis.oauth2.apiClientId}&redirect_uri=${config.domain}`
 
@@ -104,16 +105,19 @@ module.exports = function createApp ({ signInService }) {
     }
   }))
 
-  app.use(
-    session({
-      store: new RedisStore({ client: redisClient }),
-      cookie: { secure: config.https, sameSite: 'lax', maxAge: config.session.expiry * 60 * 1000 },
-      secret: config.session.secret,
-      resave: false, // redis implements touch so shouldn't need this
-      saveUninitialized: false,
-      rolling: true
-    })
-  )
+  const sessionMiddleware = session({
+    store: new RedisStore({ client: redisClient }),
+    cookie: { secure: config.https, sameSite: 'lax', maxAge: config.session.expiry * 60 * 1000 },
+    secret: config.session.secret,
+    resave: false, // redis implements touch so shouldn't need this
+    saveUninitialized: false,
+    rolling: true
+  })
+
+  app.use((req, res, next) => {
+    const boundNext = context.bind(context.active(), next)
+    sessionMiddleware(req, res, boundNext)
+  })
 
   app.use(flash())
 
@@ -231,23 +235,6 @@ module.exports = function createApp ({ signInService }) {
   }))
 
   app.use(authorisationMiddleware(signInService))
-
-  // Temporary diagnostics - will remove when telemetry is working as expected
-  app.use((req, res, next) => {
-    const { trace } = require('@opentelemetry/api')
-    const span = trace.getActiveSpan()
-
-    log.info({
-      diagnostic: 'user-telemetry-span',
-      hasUsername: Boolean(res.locals.user?.username),
-      hasUuid: Boolean(res.locals.user?.uuid),
-      activeSpan: Boolean(span),
-      recording: span?.isRecording(),
-      traceId: span?.spanContext().traceId
-    })
-
-    next()
-  })
 
   app.use(telemetryMiddleware.addUserMetadataToTelemetry({
     getAttributes: (req, res) => ({
