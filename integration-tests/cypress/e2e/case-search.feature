@@ -110,11 +110,11 @@ Feature: Case search
     Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
+    And I should see the text input label "Enter full URN, CRN, PNC ID or defendant's name"
 
     
-    When I enter search term " " into search input and click search then I should see error "You must enter a URN, CRN, PNC ID or defendant\'s name"
-    When I enter search term "o’hara" into search input and click search then I should see error "Remove any special characters apart from hyphens (-), apostrophes (\') and forward slashes (/)"
+    When I enter search term " " into search input and click search then I should see error "You must enter a URN, CRN, PNC ID or defendant's name"
+    When I enter search term "o’hara" into search input and click search then I should see error "Remove any special characters apart from hyphens (-), apostrophes (') and forward slashes (/)"
     When I enter search term "o'hara" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "o-hara" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "A123456" into search input and click search then I should see error "NO_ERROR"
