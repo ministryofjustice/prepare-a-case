@@ -9,12 +9,12 @@ Feature: Case search
     Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
+    And I should see the text input label "Enter full URN, CRN, PNC ID or defendant's name"
 
     When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
     Then I should see the PDS Header with the "DEV" environment tag
-    Then I should see the level 3 heading "125 search results for C123456"
+    Then I should see the level 3 heading "125 results for CRN 'C123456'"
     And I should see the following table headings
       | Defendant | Probation status | Offence | Last hearing | Next hearing |
     And I should see the following table rows
@@ -27,7 +27,7 @@ Feature: Case search
 
     When I enter "Jeff Bloggs" into text input with id "search-term"
     And I click the "Search" button
-    Then I should see the level 3 heading "125 search results for C123456"
+    Then I should see the level 3 heading "125 results for 'Jeff Bloggs'"
     And I should see the following table headings
       | Defendant | Probation status | Offence | Last hearing | Next hearing |
     And I should see the following table rows
@@ -42,11 +42,11 @@ Feature: Case search
     Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
+    And I should see the text input label "Enter full URN, CRN, PNC ID or defendant's name"
 
     When I enter "none" into text input with id "search-term"
     And I click the "Search" button
-    Then I should see the level 3 heading "0 search results for none"
+    Then I should see the level 3 heading "0 results found for 'none'"
     And I see value "none" in the text input with id "search-term"
 
   Scenario: Case search results pagination
@@ -55,11 +55,11 @@ Feature: Case search
     Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
     And I should see the level 2 heading "Search"
     And I should see a button with the label "Search"
-    And I should see the text input label "Enter the CRN or full name of the person you are searching for."
+    And I should see the text input label "Enter full URN, CRN, PNC ID or defendant's name"
 
     When I enter "C123456" into text input with id "search-term"
     And I click the "Search" button
-    Then I should see the level 3 heading "125 search results for C123456"
+    Then I should see the level 3 heading "125 results for CRN 'C123456'"
     And I should see pagination text "Showing 1 to 20 of 125 total results"
     And I should see pagination
     And I should not see pagination previous link
@@ -112,10 +112,9 @@ Feature: Case search
     And I should see a button with the label "Search"
     And I should see the text input label "Enter the CRN or full name of the person you are searching for."
 
-    When I enter search term "A12345" into search input and click search then I should see error "Enter a CRN in the format one letter followed by 6 numbers, for example A123456."
-    When I enter search term "A12345G" into search input and click search then I should see error "Enter a CRN in the format one letter followed by 6 numbers, for example A123456."
-    When I enter search term " " into search input and click search then I should see error "You must enter a CRN or a person’s name."
-    When I enter search term "o’hara" into search input and click search then I should see error "CRNs and names can only contain numbers 0 to 9, letters A to Z, hyphens and apostrophes."
+    
+    When I enter search term " " into search input and click search then I should see error "You must enter a URN, CRN, PNC ID or defendant\'s name"
+    When I enter search term "o’hara" into search input and click search then I should see error "Remove any special characters apart from hyphens (-), apostrophes (\') and forward slashes (/)"
     When I enter search term "o'hara" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "o-hara" into search input and click search then I should see error "NO_ERROR"
     When I enter search term "A123456" into search input and click search then I should see error "NO_ERROR"

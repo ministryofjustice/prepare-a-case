@@ -73,13 +73,14 @@
     }) }}
 
     {% if searchError | length == 0 %}
-        <h3 class="govuk-heading-m">{{ data.totalElements if data.totalElements > 0 else 0}} search results for {{ term }}</h3>
-        {% if data.totalElements == 0 %}
-            <p class="govuk-body">Improve your search by:</p>
+        <h3 class="govuk-heading-m">{{ data.totalElements if data.totalElements > 0 else 0}} result{{ 's' if data.totalElements != 1 else '' }}{{ ' found' if not data.totalElements else '' }} for {% if data.totalElements > 0 and searchType and searchType != 'NAME' %}{{ 'PNC ID' if searchType == 'PNC' else searchType }} {% endif %}'{{ term }}'</h3>
+        {% if not data.items or data.items | length == 0 %}
+            <p class="govuk-body">Do not use part of a name or reference number. Check that the name or reference number is spelt correctly and in the right format, for example:</p>
             <ul class="govuk-list govuk-list--bullet">
-                <li>double-checking the spelling</li>
-                <li>removing special characters like hyphens and accent letters</li>
-                <li>searching for a CRN instead of a name</li>
+                <li>URN: 12AB1234512 (11 digits)</li>
+                <li>CRN: A123456 (7 digits)</li>
+                <li>PNC ID: 2026/1234567A (13 digits)</li>
+                <li>defendant name or surname in full: 'Joe Bloggs' or 'Bloggs' (not 'J Bloggs')</li>
             </ul>
         {% endif %}
         {% set resultSize = data.items | length  %}
