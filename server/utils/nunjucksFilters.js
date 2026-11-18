@@ -117,6 +117,14 @@ module.exports = {
     return moment(dateString).format('dddd D MMMM YYYY')
   },
 
+  lastUpdatedByName: lastUpdatedBy => {
+    if (!lastUpdatedBy) {
+      return ''
+    }
+    const matches = lastUpdatedBy.match(/^([^(]+)\(/)
+    return matches ? matches[1].trim() : lastUpdatedBy
+  },
+
   hearingDateStatus: hearingDateTime => {
     if (!hearingDateTime) {
       return null

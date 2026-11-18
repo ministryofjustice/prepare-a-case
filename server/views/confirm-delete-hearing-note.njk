@@ -27,7 +27,10 @@
             <div class="govuk-grid-column-two-thirds">
                 <div class="confirm-delete-box scrollable-span">
                     <span class="govuk-caption-m govuk-!-padding-bottom-5">
-                        Added on the {{ created | hearingNoteTimeFormat }}
+                        Added {{ created | hearingNoteTimeFormat }}
+                        {% if lastUpdated and lastUpdated !== created and lastUpdatedBy | lastUpdatedByName %}
+                            <br/>Last updated {{ lastUpdated | hearingNoteTimeFormat }}
+                        {% endif %}
                     </span>
                     <span class="govuk-body case-comments-comment-display">{{ note }}</span>
                 </div>
