@@ -25,6 +25,14 @@ Feature: Case search
     And I should see the Primary navigation "My courts" link with href "/my-courts"
     And I should see the PDS Footer
 
+  Scenario: Search for cases with the given NAME
+    Given I am an authenticated user
+    When I navigate to the "cases" route for today
+    Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
+    And I should see the level 2 heading "Search"
+    And I should see a button with the label "Search"
+    And I should see the text input label "Enter full URN, CRN, PNC ID or defendant's name"
+
     When I enter "Jeff Bloggs" into text input with id "search-term"
     And I click the "Search" button
     Then I should see the level 3 heading "125 results for 'Jeff Bloggs'"
@@ -36,7 +44,7 @@ Feature: Case search
       | Adam Sandler  | Current  | Theft three from the person  | No record        | 23 January 2023 |
     And I see value "Jeff Bloggs" in the text input with id "search-term"
 
-  Scenario: Should not show result table when search for given CRN does not return result
+  Scenario: Should not show result table when search does not return result
     Given I am an authenticated user
     When I navigate to the "cases" route for today
     Then I should be on the "Cases - Hearing outcome still to be added - Prepare a case for sentence" page
