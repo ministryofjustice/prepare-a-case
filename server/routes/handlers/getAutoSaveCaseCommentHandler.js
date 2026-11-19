@@ -10,7 +10,7 @@ const getAutoSaveCaseCommentHandler = ({ saveDraftCaseComment }) => async (req, 
       logger.warn('Error while saving comment draft', { status: response.status, response: response.data, caseId })
     }
     if (!res.locals.user.name) {
-      trackEvent('PiCAutoSaveCaseCommentNoName', res.locals.user)
+      trackEvent('PiCAutoSaveCaseCommentNoName')
     }
     res.send(response.data, response.status)
   } else {

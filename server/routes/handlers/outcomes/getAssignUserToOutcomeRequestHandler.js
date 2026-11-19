@@ -8,7 +8,7 @@ const getAssignUserToOutcomeRequestHandler = caseService => async (req, res) => 
   session.assignHearingOutcomeSuccess = true
 
   if (!res.locals.user.name) {
-    trackEvent('PiCAssignUserToOutcomeNoName', res.locals.user)
+    trackEvent('PiCAssignUserToOutcomeNoName')
   }
 
   res.redirect(`/${courtCode}/hearing/${hearingId}/defendant/${targetDefendantId}/summary`)

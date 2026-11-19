@@ -27,6 +27,7 @@ const { telemetryMiddleware } = require('@ministryofjustice/hmpps-azure-telemetr
 const { authenticationMiddleware } = auth
 const catchErrors = require('./routes/handlers/catchAsyncErrors')
 const { context } = require('@opentelemetry/api')
+const userContext = require('./utils/userContext')
 
 const authLogoutUrl = `${config.apis.oauth2.redirect}/logout?client_id=${config.apis.oauth2.apiClientId}&redirect_uri=${config.domain}`
 
@@ -235,6 +236,7 @@ module.exports = function createApp ({ signInService }) {
   }))
 
   app.use(authorisationMiddleware(signInService))
+  app.use(userContext.middleware)
 
   app.use(telemetryMiddleware.addUserMetadataToTelemetry({
     getAttributes: (req, res) => ({

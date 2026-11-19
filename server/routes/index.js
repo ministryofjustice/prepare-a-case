@@ -432,8 +432,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
             hearingId,
             defendantId,
             outcomeNotRequired: outcomeNotRequiredBool,
-            error: response.error || response.message,
-            user: res.locals.user
+            error: response.error || response.message
           })
 
           const errorRedirectUrl = session.currentCaseListViewLink || `/${courtCode}/cases`
@@ -443,8 +442,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
         trackEvent('PiCHearingOutcomeToggleSuccess', {
           hearingId,
           defendantId,
-          outcomeNotRequired: outcomeNotRequiredBool,
-          user: res.locals.user
+          outcomeNotRequired: outcomeNotRequiredBool
         })
 
         const redirectUrl = session.currentCaseListViewLink || `/${courtCode}/cases`
@@ -456,8 +454,7 @@ module.exports = function Index ({ authenticationMiddleware }) {
           hearingId,
           defendantId,
           outcomeNotRequired: outcomeNotRequiredBool,
-          error: error.message,
-          user: res.locals.user
+          error: error.message
         })
 
         const errorRedirectUrl = session.currentCaseListViewLink || `/${courtCode}/cases`
