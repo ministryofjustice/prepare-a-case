@@ -28,7 +28,7 @@
                 <div class="confirm-delete-box scrollable-span">
                     <span class="govuk-caption-m govuk-!-padding-bottom-5">
                         Added {{ created | hearingNoteTimeFormat }}
-                        {% if lastUpdated and lastUpdated !== created %}
+                        {% if lastUpdated | wasNoteEdited(created) %}
                             <br/>Last updated {{ lastUpdated | hearingNoteTimeFormat }}
                         {% endif %}
                     </span>

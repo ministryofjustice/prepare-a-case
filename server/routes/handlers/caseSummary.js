@@ -43,7 +43,7 @@ const caseSummaryHandler = utils => async (req, res) => {
   })
   templateValues.data.hearings?.forEach(hearing => {
     hearing.notes = hearing.notes?.sort((a, b) => {
-      return moment(b.created).unix() - moment(a.created).unix()
+      return moment(a.created).unix() - moment(b.created).unix()
     })
   })
 
