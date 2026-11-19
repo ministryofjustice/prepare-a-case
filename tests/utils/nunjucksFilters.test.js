@@ -271,6 +271,22 @@ describe('nunjucksFilters', () => {
     })
   })
 
+  describe('lastUpdatedByName', () => {
+    it.each([
+      ['jane.smith(court-case-service-client)', 'jane.smith'],
+      ['jane.smith (court-case-service-client)', 'jane.smith'],
+      [null, ''],
+      [undefined, ''],
+      ['', '']
+    ])('should extract username from %s as %s', (input, expected) => {
+      expect(filters.lastUpdatedByName(input)).toEqual(expected)
+    })
+
+    it('returns value unchanged if it does not match the username(clientId) format', () => {
+      expect(filters.lastUpdatedByName('jane.smith')).toEqual('jane.smith')
+    })
+  })
+
   describe('hearingDateStatus', () => {
     beforeEach(() => {
       jest.useFakeTimers().setSystemTime(new Date('2026-11-06T12:00:00.000Z'))

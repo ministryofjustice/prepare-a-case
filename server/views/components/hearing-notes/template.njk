@@ -6,6 +6,7 @@
     <table class="govuk-table">
         {% for previousNote in params.hearing.notes %}
             {% set isUserNoteAuthor = previousNote.createdByUuid === params.currentUserUuid %}
+            {% set wasEdited = previousNote.lastUpdated and previousNote.lastUpdated !== previousNote.created %}
             {% if previousNote.draft %}
                 {% if isUserNoteAuthor %}
                     {% set draftNote = previousNote.note %}
@@ -18,7 +19,7 @@
                         <div class="hearing-note-display">
 
                             <div class="govuk-grid-row">
-                                <span class="govuk-grid-column-full hearing-note-display-text">
+                                <div class="govuk-grid-column-{{ 'two-thirds' if isUserNoteAuthor else 'full' }} hearing-note-display-text">
                                     {% if previousNote.legacy %}
                                     <div class="govuk-warning-text hearing-note-warning-container">
                                         <div class="hearing-note-warning-warning">
@@ -31,10 +32,7 @@
                                     </div>
                                     {% endif %}
                                     {{ previousNote.note | striptags(true) | escape | nl2br }}
-                                </span>
-                            </div>
-                            <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-3 hearing-note-links">
-                                <div class="govuk-grid-column-two-thirds">{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}</div>
+                                </div>
                                 {% if isUserNoteAuthor %}
                                     <div class="govuk-grid-column-one-third govuk-!-text-align-right">
                                         <a class="govuk-link govuk-!-margin-left-5 note-edit-link"
@@ -44,6 +42,14 @@
                                     </div>
                                 {% endif %}
                             </div>
+                            <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-0 hearing-note-links">
+                                <div class="govuk-grid-column-full"><span class="govuk-!-font-weight-bold">Added by </span>{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}</div>
+                            </div>
+                            {% if wasEdited %}
+                                <div class="govuk-grid-row govuk-!-margin-top-0 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-0 hearing-note-last-edited" data-test="note-last-edited">
+                                    <span class="govuk-!-margin-left-3"><span class="govuk-!-font-weight-bold">Last updated </span>{{ previousNote.lastUpdated | caseCommentTimeFormat }}</span>
+                                </div>
+                            {% endif %}
                         </div>
                         {% if isUserNoteAuthor %}
                             <div hidden class="note-edit-container">

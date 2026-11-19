@@ -79,6 +79,18 @@ Then('I should see a warning banner on hearing {string} with text {string}', ($h
   })
 })
 
+Then('I should see the text {string} for note with id {string} on hearing with id {string}', ($text, $noteId, $hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId} #previous-note-${$noteId}`).within(() => {
+    cy.get('[data-test="note-last-edited"]').should('contain.text', $text)
+  })
+})
+
+Then('I should not see last edited information for note with id {string} on hearing with id {string}', ($noteId, $hearingId) => {
+  cy.get(`#case-progress-hearing-${$hearingId} #previous-note-${$noteId}`).within(() => {
+    cy.get('[data-test="note-last-edited"]').should('not.exist')
+  })
+})
+
 Then('I click Expand to add a hearing note on hearing with id {string}', ($hearingId) => {
   cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get('.govuk-details__summary-text').click()
