@@ -7,7 +7,6 @@
         {% for previousNote in params.hearing.notes %}
             {% set isUserNoteAuthor = previousNote.createdByUuid === params.currentUserUuid %}
             {% set wasEdited = previousNote.lastUpdated and previousNote.lastUpdated !== previousNote.created %}
-            {% set lastUpdatedByName = previousNote.lastUpdatedBy | lastUpdatedByName %}
             {% if previousNote.draft %}
                 {% if isUserNoteAuthor %}
                     {% set draftNote = previousNote.note %}
@@ -46,9 +45,9 @@
                             <div class="govuk-grid-row govuk-!-margin-top-2 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-0 hearing-note-links">
                                 <div class="govuk-grid-column-full"><span class="govuk-!-font-weight-bold">Added by </span>{{ previousNote.author }} on {{ previousNote.created | caseCommentTimeFormat }}</div>
                             </div>
-                            {% if wasEdited and lastUpdatedByName %}
+                            {% if wasEdited %}
                                 <div class="govuk-grid-row govuk-!-margin-top-0 govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-0 hearing-note-last-edited" data-test="note-last-edited">
-                                    <span class="govuk-!-margin-left-3"><span class="govuk-!-font-weight-bold">Last updated </span>{{ lastUpdatedByName }} on {{ previousNote.lastUpdated | caseCommentTimeFormat }}</span>
+                                    <span class="govuk-!-margin-left-3"><span class="govuk-!-font-weight-bold">Last updated </span>{{ previousNote.lastUpdated | caseCommentTimeFormat }}</span>
                                 </div>
                             {% endif %}
                         </div>

@@ -175,7 +175,7 @@ Feature: Case progress
       | Jane Smith  | 9 July 2022, 17:13    | Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office. |
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" should have a draft note with text "This is a draft note"
     And I should see a warning banner on hearing "1f93aa0a-7e46-4885-a1cb-f25a4be33a00" with text "This note was added to a case with more than one defendant. Delete the note if it is not relevant to this defendant."
-    And I should see the text "Last updated jane.smith on 10 July 2022, 09:05" for note with id "1234560" on hearing with id "1f93aa0a-7e46-4885-a1cb-f25a4be33a00"
+    And I should see the text "Last updated 10 July 2022, 09:05" for note with id "1234560" on hearing with id "1f93aa0a-7e46-4885-a1cb-f25a4be33a00"
     And I should not see last edited information for note with id "987650" on hearing with id "1f93aa0a-7e46-4885-a1cb-f25a4be33a00"
 
   Scenario: Display hearing notes with line breaks
