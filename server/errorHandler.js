@@ -36,16 +36,15 @@ exports.developmentErrors = (error, req, res, next) => {
 
 exports.productionErrors = (error, req, res, next) => {
   logger.error(error)
+  const status = error.status || 500
   trackEvent(
     'PiCPrepareACaseErrorTrace',
     {
       operation: 'errorHandler[productionErrors]',
-      req,
-      res,
-      error
+      status,
+      errorType: error.name
     }
   )
-  const status = error.status || 500
   res.status(status)
   res.render('error', {
     status,

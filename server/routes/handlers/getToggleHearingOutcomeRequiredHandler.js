@@ -19,8 +19,7 @@ const getToggleHearingOutcomeRequiredHandler = (caseService) => async (req, res)
         hearingId,
         defendantId,
         outcomeNotRequired: isOutcomeNotRequired,
-        error: response.error || response.message,
-        user: res.locals.user
+        error: response.error || response.message
       })
 
       req.flash('global-error', 'Request was unsuccessful. Please try again.')
@@ -31,8 +30,7 @@ const getToggleHearingOutcomeRequiredHandler = (caseService) => async (req, res)
     trackEvent('PiCHearingOutcomeToggleSuccess', {
       hearingId,
       defendantId,
-      outcomeNotRequired: isOutcomeNotRequired,
-      user: res.locals.user
+      outcomeNotRequired: isOutcomeNotRequired
     })
 
     if (isOutcomeNotRequired === true) {
@@ -50,8 +48,7 @@ const getToggleHearingOutcomeRequiredHandler = (caseService) => async (req, res)
       hearingId,
       defendantId,
       outcomeNotRequired: isOutcomeNotRequired,
-      error: error.message,
-      user: res.locals.user
+      error: error.message
     })
 
     req.flash('global-error', error.message || 'Request was unsuccessful. Please try again.')
