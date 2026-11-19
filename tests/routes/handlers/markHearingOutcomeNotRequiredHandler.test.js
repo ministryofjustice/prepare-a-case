@@ -63,16 +63,14 @@ describe('markHearingOutcomeNotRequiredHandler', () => {
 
       trackEvent('PiCHearingOutcomeNotRequiredSuccess', {
         hearingId: req.params.hearingId,
-        defendantId: req.params.defendantId,
-        user: res.locals.user
+        defendantId: req.params.defendantId
       })
 
       expect(trackEvent).toHaveBeenCalledWith(
         'PiCHearingOutcomeNotRequiredSuccess',
         {
           hearingId: 'hearing-123',
-          defendantId: 'defendant-456',
-          user: res.locals.user
+          defendantId: 'defendant-456'
         }
       )
     })
@@ -117,8 +115,7 @@ describe('markHearingOutcomeNotRequiredHandler', () => {
         trackEvent('PiCHearingOutcomeNotRequiredError', {
           hearingId: req.params.hearingId,
           defendantId: req.params.defendantId,
-          error: response.error || response.message,
-          user: res.locals.user
+          error: response.error || response.message
         })
       }
 
@@ -127,8 +124,7 @@ describe('markHearingOutcomeNotRequiredHandler', () => {
         {
           hearingId: 'hearing-123',
           defendantId: 'defendant-456',
-          error: 'Service unavailable',
-          user: res.locals.user
+          error: 'Service unavailable'
         }
       )
     })
@@ -170,8 +166,7 @@ describe('markHearingOutcomeNotRequiredHandler', () => {
         trackEvent('PiCHearingOutcomeNotRequiredException', {
           hearingId: req.params.hearingId,
           defendantId: req.params.defendantId,
-          error: err.message,
-          user: res.locals.user
+          error: err.message
         })
       }
 
@@ -180,8 +175,7 @@ describe('markHearingOutcomeNotRequiredHandler', () => {
         {
           hearingId: 'hearing-123',
           defendantId: 'defendant-456',
-          error: 'Network error',
-          user: res.locals.user
+          error: 'Network error'
         }
       )
     })

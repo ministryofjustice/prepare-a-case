@@ -17,7 +17,7 @@ const getAutoSaveHearingNoteHandler =
       )
 
       if (!res.locals.user.name) {
-        trackEvent('PiCAutoSaveHearingNoteNoName', res.locals.user)
+        trackEvent('PiCAutoSaveHearingNoteNoName')
       }
 
       if (response.status < 200 || response.status > 399) {

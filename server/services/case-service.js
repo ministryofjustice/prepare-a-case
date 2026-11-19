@@ -54,7 +54,7 @@ const createCaseService = apiUrl => {
       ) || { data: {} }
 
       if (settings.enableMatcherLogging) {
-        trackEvent('PiCMatcherLoggingServiceFirst', res)
+        trackEvent('PiCMatcherLoggingServiceFirst', { status: res.status })
       }
       // Sort offenderMatchDetails based on matchProbability in descending order
       if (Array.isArray(res.data.offenderMatchDetails)) {
@@ -72,7 +72,7 @@ const createCaseService = apiUrl => {
       }
 
       if (settings.enableMatcherLogging) {
-        trackEvent('PiCMatcherLoggingServiceLast', res)
+        trackEvent('PiCMatcherLoggingServiceLast', { status: res.status })
       }
 
       return res.data
