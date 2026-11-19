@@ -129,7 +129,7 @@ module.exports = {
     if (!lastUpdated || !created) {
       return false
     }
-    return moment(lastUpdated).diff(moment(created), 'seconds') > 10
+    return moment(lastUpdated).diff(moment(created), 'seconds') > 3
   },
 
   hearingDateStatus: hearingDateTime => {

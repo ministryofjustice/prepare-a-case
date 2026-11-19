@@ -290,10 +290,10 @@ describe('nunjucksFilters', () => {
   describe('wasNoteEdited', () => {
     it.each([
       ['2022-07-09T17:13:09', '2022-07-09T17:13:09', false],
-      ['2022-07-09T17:13:15', '2022-07-09T17:13:09', false],
-      ['2022-07-09T17:13:20', '2022-07-09T17:13:09', true],
+      ['2022-07-09T17:13:11', '2022-07-09T17:13:09', false],
+      ['2022-07-09T17:13:15', '2022-07-09T17:13:09', true],
       [undefined, '2022-07-09T17:13:09', false],
-      ['2022-07-09T17:13:20', undefined, false]
+      ['2022-07-09T17:13:15', undefined, false]
     ])('should return %s when lastUpdated is %s and created is %s', (lastUpdated, created, expected) => {
       expect(filters.wasNoteEdited(lastUpdated, created)).toEqual(expected)
     })
