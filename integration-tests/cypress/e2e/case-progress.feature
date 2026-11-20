@@ -110,7 +110,7 @@ Feature: Case progress
 
     When I click delete hearing note with id "1288880" on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e3"
     Then I should see the heading "Are you sure you want to delete this note?"
-    And I should see the text "Added Saturday 9 July 2022" within element with class "govuk-caption-m"
+    And I should see the text "Added 9 July 2022, 17:13" within element with class "govuk-caption-m"
     And I should see a button with the label "Delete note"
     And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary#case-progress-hearing-2aa6f5e0-f842-4939-bc6a-01346abc09e3"
 
@@ -120,8 +120,8 @@ Feature: Case progress
 
     When I click delete hearing note with id "1234560" on hearing "1f93aa0a-7e46-4885-a1cb-f25a4be33a00"
     Then I should see the heading "Are you sure you want to delete this note?"
-    And I should see the text "Added Saturday 9 July 2022" within element with class "govuk-caption-m"
-    And I should see the text "Last updated Sunday 10 July 2022" within element with class "govuk-caption-m"
+    And I should see the text "Added 9 July 2022, 17:13" within element with class "govuk-caption-m"
+    And I should see the text "Last updated 10 July 2022, 09:05" within element with class "govuk-caption-m"
     And I should see a button with the label "Delete note"
     And I should see link "Cancel" with href "/B14LO/hearing/5b9c8c1d-e552-494e-bc90-d475740c64d8/defendant/8597a10b-d330-43e5-80c3-27ce3b46979f/summary#case-progress-hearing-1f93aa0a-7e46-4885-a1cb-f25a4be33a00"
 
@@ -171,8 +171,8 @@ Feature: Case progress
     And I should see 6 previous hearings headers
     And I should see header on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" with outcome "Adjourned" date "Monday 24 April 2023" and edit link
     And I should see below notes on hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" with author datetime and note with edit and delete links
-      | John Doe    | 9 August 2022, 17:16  | Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.   |
       | Jane Smith  | 9 July 2022, 17:13    | Result: 12 months Community Order 10 RAR UPW - 100hrs court costs induction required at local office. |
+      | John Doe    | 9 August 2022, 17:16  | Result: 6 months Community Order 10 RAR UPW - 50hrs court costs induction required at local office.   |
     And hearing "2aa6f5e0-f842-4939-bc6a-01346abc09e7" should have a draft note with text "This is a draft note"
     And I should see a warning banner on hearing "1f93aa0a-7e46-4885-a1cb-f25a4be33a00" with text "This note was added to a case with more than one defendant. Delete the note if it is not relevant to this defendant."
     And I should see the text "Last updated 10 July 2022, 09:05" for note with id "1234560" on hearing with id "1f93aa0a-7e46-4885-a1cb-f25a4be33a00"

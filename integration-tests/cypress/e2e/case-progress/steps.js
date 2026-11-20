@@ -74,7 +74,7 @@ Then('I should not see a hearing status tag on hearing with id {string}', $heari
 })
 
 Then('I should see a warning banner on hearing {string} with text {string}', ($hearingId, $string) => {
-  cy.get(`#case-progress-hearing-${$hearingId} .hearing-note-container`).eq(0).within(() => {
+  cy.get(`#case-progress-hearing-${$hearingId}`).within(() => {
     cy.get('.govuk-warning-text').contains($string).should('exist')
   })
 })
