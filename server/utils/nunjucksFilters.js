@@ -125,11 +125,8 @@ module.exports = {
     return matches ? matches[1].trim() : lastUpdatedBy
   },
 
-  wasNoteEdited: (lastUpdated, created) => {
-    if (!lastUpdated || !created) {
-      return false
-    }
-    return moment(lastUpdated).diff(moment(created), 'seconds') > 3
+  wasNoteEdited: version => {
+    return Number(version) > 1
   },
 
   hearingDateStatus: hearingDateTime => {

@@ -28,7 +28,7 @@
                 <div class="confirm-delete-box scrollable-span">
                     <span class="govuk-caption-m govuk-!-padding-bottom-5">
                         Added {{ created | caseCommentTimeFormat }}
-                        {% if lastUpdated | wasNoteEdited(created) %}
+                        {% if version | wasNoteEdited %}
                             <br/>Last updated {{ lastUpdated | caseCommentTimeFormat }}
                         {% endif %}
                     </span>
