@@ -533,6 +533,12 @@
                           "type": ["string", "null"],
                           "title": "Who last saved the note",
                           "description": "Formatted as username(clientId), null for legacy notes without audit data."
+                        },
+                        "version": {
+                          "$id": "#/properties/hearings/items/notes/items/anyOf/0/properties/version",
+                          "type": "integer",
+                          "title": "The note's revision number",
+                          "description": "Starts at 1 when created; incremented on each edit."
                         }
                       }
                     }
