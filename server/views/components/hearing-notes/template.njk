@@ -6,7 +6,7 @@
     <table class="govuk-table">
         {% for previousNote in params.hearing.notes %}
             {% set isUserNoteAuthor = previousNote.createdByUuid === params.currentUserUuid %}
-            {% set wasEdited = previousNote.version | wasNoteEdited %}
+            {% set wasEdited = previousNote.lastUpdated | wasNoteEdited(previousNote.created) %}
             {% if previousNote.draft %}
                 {% if isUserNoteAuthor %}
                     {% set draftNote = previousNote.note %}

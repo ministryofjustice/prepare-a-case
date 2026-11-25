@@ -289,14 +289,13 @@ describe('nunjucksFilters', () => {
 
   describe('wasNoteEdited', () => {
     it.each([
-      [1, false],
-      [2, true],
-      [3, true],
-      [0, false],
-      [undefined, false],
-      [null, false]
-    ])('should return %s when version is %s', (version, expected) => {
-      expect(filters.wasNoteEdited(version)).toEqual(expected)
+      ['2022-07-09T17:13:09', '2022-07-09T17:13:09', false],
+      ['2022-07-09T17:13:11', '2022-07-09T17:13:09', false],
+      ['2022-07-09T17:13:15', '2022-07-09T17:13:09', true],
+      [undefined, '2022-07-09T17:13:09', false],
+      ['2022-07-09T17:13:15', undefined, false]
+    ])('should return %s when lastUpdated is %s and created is %s', (lastUpdated, created, expected) => {
+      expect(filters.wasNoteEdited(lastUpdated, created)).toEqual(expected)
     })
   })
 
