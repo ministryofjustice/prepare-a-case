@@ -28,6 +28,7 @@ describe('caseSearchHandler', () => {
       params: { ...mockRequest.params, courtCode: 'B12345', hearingOutcomesEnabled: false, nextHearingDateSort: 'descending' },
       data: { ...data },
       term,
+      searchType: 'CRN',
       currentPage: 1,
       pageSize: 20,
       pagination: {
@@ -43,6 +44,19 @@ describe('caseSearchHandler', () => {
         nextLink: null
       }
     })
+  })
+
+  it('should trim the search term before classifying and searching', async () => {
+    const data = { items: [], totalElements: 1, totalPages: 1 }
+    const paddedTerm = '  C123456  '
+    getCaseSearchType.mockReturnValue({ searchType: 'CRN' })
+    searchByCrnMock.mockResolvedValueOnce({ data })
+
+    await handler({ ...mockRequest, query: { ...mockRequest.query, term: paddedTerm } }, mockResponse)
+
+    expect(getCaseSearchType).toHaveBeenCalledWith('C123456')
+    expect(searchByCrnMock).toHaveBeenCalledWith('C123456', 'CRN', 1, 20, 'DESC')
+    expect(mockResponse.render).toHaveBeenCalledWith('case-search', expect.objectContaining({ term: 'C123456' }))
   })
 
   it('should render template with error when getCaseSearchType resolves to error', async () => {

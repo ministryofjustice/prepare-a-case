@@ -1,0 +1,41 @@
+{
+  "id": "99b1737a-7b6f-4f41-94e1-12aa12345678",
+  "request": {
+    "method": "GET",
+    "urlPath": "/search",
+    "queryParameters": {
+      "term": {
+        "matches": "^(?:12AB1234567|12A12345678|ABC1234567|12345678AB12ABC|12AB1234567890123456AB)$"
+      },
+      "type": {
+        "equalTo": "URN"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "jsonBody": {
+      "totalElements": 1,
+      "totalPages": 1,
+      "items": [
+        {
+          "hearingId": "5b9c8c1d-e552-494e-bc90-d475740c64d8",
+          "defendantId": "8597a10b-d330-43e5-80c3-27ce3b46979f",
+          "crn": "C16000",
+          "urn": "12AA1234567",
+          "probationStatus": "Current",
+          "seriousFurtherOffence": true,
+          "offenceTitles": ["Theft from the person", "Theft from shop"],
+          "defendantName": "Miss Kara Ayers",
+          "lastHearingDate": "2022-12-16",
+          "lastHearingCourt": "Sheffield Mags",
+          "nextHearingDate": "2023-01-23",
+          "nextHearingCourt": "Leicester Mags"
+        }
+      ]
+    }
+  }
+}

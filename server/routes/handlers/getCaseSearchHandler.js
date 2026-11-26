@@ -5,7 +5,7 @@ const { getPagination } = require('../../utils/pagination')
 const featuresToggles = require('../../utils/features')
 
 const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req, res) => {
-  const term = req.query.term
+  const term = typeof req.query.term === 'string' ? req.query.term.trim() : req.query.term
   const { searchType: type, error } = getCaseSearchType(term)
   const { cookies } = req
   const page = req.query.page > 0 ? req.query.page : undefined
@@ -55,6 +55,7 @@ const getCaseSearchHandler = ({ searchCases }, getCaseSearchType) => async (req,
       currentPage,
       pageSize,
       term,
+      searchType: type,
       pagination: getPagination(currentPage, data.data.totalElements, pageSize, baseUrl)
     }
     res.render('case-search', templateValues)
