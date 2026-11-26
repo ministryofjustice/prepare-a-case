@@ -55,6 +55,9 @@ generic-service:
     ENABLE_MOVE_TO_RESULTED_ACTION: "true"
     DEFAULT_TIMEOUT: "20000"
     REDIS_TLS_ENABLED: "true"
+    AUDIT_SQS_REGION: "eu-west-2"
+    AUDIT_SERVICE_NAME: "prepare-a-case"
+    AUDIT_ENABLED: "true"
 
   namespace_secrets:
     prepare-a-case:
@@ -72,6 +75,9 @@ generic-service:
       REDIS_HOST: primary_endpoint_address
     case-tracking-pre-pilot-users:
       CASE_TRACKING_PRE_PILOT_USERS: case_tracking_pre_pilot_users
+    court-case-service:
+      sqs-hmpps-audit-secret:
+        AUDIT_SQS_QUEUE_URL: "sqs_queue_url"
 
 generic-prometheus-alerts:
   targetApplication: prepare-a-case
